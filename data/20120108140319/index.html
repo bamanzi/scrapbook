@@ -1,0 +1,727 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>SSH everything: TOC</title>
+
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div id="page-wrap"> 
+  <div id="inside"> 
+    <div id="header"> <img src="ssh_header.png" alt="How to do everything with SSH" height="110" width="442"> 
+    </div>
+	
+    <div id="menu"> 
+      <h1>Contents</h1>
+      <ol class="l1">
+        <li id="curr">Introduction and tables</li>
+        <li><a href="http://www.quarkphysics.ca/ssh/ssh_everything2.htm">Configuring a linux server</a></li>
+        <li><a href="http://www.quarkphysics.ca/ssh/ssh_everything3.htm">Using SSH and PuTTY</a></li>
+        <li><a href="http://www.quarkphysics.ca/ssh/ssh_everything4.htm">Handling a Dynamic IP</a></li>
+        <li><a href="http://www.quarkphysics.ca/ssh/ssh_everything5.htm">Extra security for home server</a></li>
+        <li><a href="http://www.quarkphysics.ca/ssh/ssh_everything6.htm">Reverse SSH connection from office</a></li>
+        <li><a href="http://www.quarkphysics.ca/ssh/ssh_everything7.htm">How to wake up your home computer remotely</a></li>
+        <li><a href="http://www.quarkphysics.ca/ssh/ssh_everything8.htm">How to print to a network printer/photocopier 
+          at the office</a></li>
+        <li><a href="http://www.quarkphysics.ca/ssh/ssh_everything9.htm">SSH and DD-WRT router</a></li>
+        <li><a href="http://www.quarkphysics.ca/ssh/ssh_everything10.htm">SSH and X forwarding</a></li>
+		<li><a href="http://www.quarkphysics.ca/ssh/ssh_everything11.htm">SSH and Active Directory</a></li>
+      </ol>
+    </div>
+
+    <div id="main"> 
+      <h1>Contents in Detail </h1>
+      <p><em>Note: you don't have to read each part in the order presented here.</em></p>
+      <h2>Part 1. Introduction and tables for future reference (this document):</h2>    
+	<ol class="l0" style="margin-left: 35px;">
+		<li><a href="#soft">Software programs used / referred to</a></li>
+        <li><a href="#setup">My network setup with rationale</a></li>
+		<li><a href="#diagrams">Diagrams: a visual explanation of the network connections</a></li>
+        <li><a href="#names">List of computer names and logins for this document</a></li>
+        <li><a href="#tunnels">List of tunnels to be made using SSH</a></li>
+		<li><a href="#ssh_not">One thing that SSH cannot do</a></li>
+      </ol>
+        
+      <h2>Part 2. <a href="http://www.quarkphysics.ca/ssh/ssh_everything2.htm">Setting up and preparing your 
+        home Linux server</a></h2>
+		<ul>
+		<li>Setting up your Linux server</li>
+		<li>How to secure your home linux server</li>
+		<li><a href="http://www.quarkphysics.ca/ssh/ssh_everything2.htm#portfwd">Setting up port forwarding on your router</a></li>
+		</ul>
+		
+      <h2>Part 3. <a href="http://www.quarkphysics.ca/ssh/ssh_everything3.htm">Setting up and using SSH</a></h2>
+      <p class="in"> How to have an encrypted connection to the internet from 
+        anywhere (via your home server). Automate the connection using Autoit 
+        and Putty. Access your desktop remotely using VNC.</p>
+		<h2>Part 4. <a href="http://www.quarkphysics.ca/ssh/ssh_everything4.htm">How to handle having a dynamic IP address</a></h2>
+		<p class="in">Controlling your Dynamic IP address yourself allows you to write better scripts to automate connections from anywhere</p>
+		<h2>Part 5. <a href="http://www.quarkphysics.ca/ssh/ssh_everything5.htm">Extra security for home server: route all tunnels though external server first</a></h2>
+		<p class="in">If you have an SSH account on another server. You can make your home server really
+		secure by forcing all connections to be routed through the other server (called Astro in this document).</p>
+        <h2>Part 6. <a href="http://www.quarkphysics.ca/ssh/ssh_everything6.htm">How to reverse an SSH connection (to connect to the office)</a></h2>
+		<p class="in">This part tells you how to break through your office firewall, so that you can print and access your work from home.</p>
+		<h2>Part 7. <a href="http://www.quarkphysics.ca/ssh/ssh_everything7.htm">How to wake up your home computer from over the internet</a></h2>
+		<p class="in">Your Linux server will always be powered on; it can wake up any other computer that you use at home.</p>
+        <h2>Part 8. <a href="http://www.quarkphysics.ca/ssh/ssh_everything8.htm">How to print to a network printer/photocopier at the office</a></h2>
+		<p class="in">Read this after part 6 is done.</p>
+		<h2>Part 9. <a href="http://www.quarkphysics.ca/ssh/ssh_everything9.htm">Using DD-WRT on your router as a server</a></h2>
+        <h2>Part 10. <a href="http://www.quarkphysics.ca/ssh/ssh_everything10.htm">Using X-forwarding for GUI control of your server</a></h2>
+		
+		<h2>Part 11. <a href="http://www.quarkphysics.ca/ssh/ssh_everything10.htm">How to access Active Directory from home</a></h2>
+		<p class="in">If you have part 6 done, you can also easily access files in Active Directory at the office</p>
+        <!--
+  <li>	X how to control a PC via cell phone</li>
+  
+  -->
+		<p>&nbsp;</p>
+      <hr>
+      <h1>Part 1: Introduction &amp; Overview</h1>
+      <p class="orange">SSH is a protocol that is used over the internet. It creates a secure 
+        encrypted connection between two computers. It also allows you to create 
+        things called tunnels which can send all sorts of other computer applications 
+        over the internet — encrypted to prevent anyone from intercepting it. 
+        Examples: remote desktop, email, web browsing, file transfer, remote printing. 
+      </p>
+	  <p><b>This document has an inherent tendency to get overly complicated. I am trying to keep things simple 
+	  and apologise for any confusion. Please <a href="http://quarkphysics.ca/contact.htm">email&nbsp;me</a> 
+	  if you find any errors or unclear explanations.</b></p>
+	  <p>While I explain how to do a lot of things with SSH, I am not sure if I am an expert. The problem is that there
+	  is no document clearly explaining how to do all of this. A lot of it, especially ssh -R, had to be discovered through
+	  trial and error, and by getting nuggets of information from many other sites. The title of this article is technically false, since <font color="#cc0000">I am not covering a few things like
+	  ssh-agent forwarding, file copying using ssh, scp or sftp, using ssh-copy-id, sshfs, or ssh-vulnkey.</font> 
+	  I don't use these things regularly and they are not essential to ssh connections and tunneling which is what
+	  I am focusing more on.</p>
+      <p>Note: there are two versions of SSH, make sure that you always 
+        use version 2, version 1 can be hacked.</p>
+	  
+		<a name="soft"><hr></a>
+      <h2><a name="soft">I. </a>Software referred to:</h2>
+      <p><font color="#0000CC"><strong>Windows XP</strong></font> - this is the 
+        operating system on my laptop, desktop, and office computers.</p>
+      <p><strong><font color="#0000CC">Ubuntu</font></strong> - the operating 
+        system on my Linux server. Very easy to setup .</p>
+      <p>There are a number of programs downloaded and added to it. These will 
+        be described as they show up below.</p>
+      <h3>Free windows programs:</h3>
+      <p> (1) <font color="#0000CC"><strong>Putty</strong></font> (and Pagent). 
+        This is the standard <strong>ssh </strong>program for Windows. It has 
+        a handy commandline version, but unfortunately some commands are missing 
+        (the GUI interface does more than the CLI) !<br>
+        <br>
+        The <strong>Putty Portable</strong> version is nice because you can create one 
+		setup exactly as you like it and trasnfer it to your laptop, USB drive, etc. 
+		The problem with this is that PuttyPortable only allows one instance of the program at a time.
+		This means that you can't set up one tunnel and then run putty to tunnel something
+		through the first tunnel. What I've done is setup Putty exactly how I want it on one computer, 
+		then exported the registry entries for Putty. On my other computers, etc. first I delete 
+		all previous Putty registry entries, then merge the ones from my ideal setup. 
+		See <a href="http://the.earth.li/%7Esgtatham/putty/0.58/htmldoc/Chapter4.html#config-file">"Configuring PuTTY"</a>
+	  </p>
+      <p>(2) <font color="#0000CC"><strong>SSH Secure Shell Client 3.2.9</strong></font> 
+        This is a program that is no longer supported. However it still works 
+        well for everything except for SOCKS proxies. The one wonderful feature 
+        that this program has is that SSH FTP is built in and is graphical!! You 
+        just point and click to transfer files using SSH. (This can also be done 
+        by downloading Filezilla and configuring that, but it is one more program 
+        to install.)</p>
+      <p>(3) <strong><font color="#0000CC">WGET</font></strong> or <strong><font color="#0000CC">CURL</font></strong>- 
+        a commandline utility to get a webpage and save it as a textfile. This 
+        program also works in Linux.</p>
+      <p>(4) <strong><font color="#0000CC">AutoIt</font></strong>- this is the 
+        scripting program that I use instead of batch files. It is much more powerful 
+        than batch files. It is also better than Kixtart which I was using before. 
+      </p>
+      <p>(5) <strong><font color="#0000CC">TightVNC</font></strong> This is one of the common VNC programs. Use any of them 
+	  to view and control your computer remotely. Unfortunately TightVNC Portable is not free! How dumb.</p>
+      <p>(6) <strong><font color="#0000CC">Filezilla</font></strong> If you don't use "SSH Secure Shell" 
+        for ftp transfers then you should probably use this. It is a GUI ftp program 
+        that can be tunneled though SSH.</p>
+	  <p><strong>Cygwin</strong>. This is a unix shell for windows. I tried using 
+        it for SSH, but ran into snags having SSH and SSH-AGENT stay running when 
+        I closed the shell. I also couldn't get them to restart SSH automatically 
+        when the internet connection is reset. Cygwin is used if you want to run 
+        an SSHD ssh-daemon in Windows.</p>      
+      <p>The programs SRVANY and LAUNCHSRV were used to try and launch Putty as 
+        a service, but it never worked properly.</p>
+	  <a name="setup"><hr></a>
+      <h2>II. Network Setup</h2>
+      <p>The following diagram explains my home/office network. I will be referring to these computers by their names and IP addresses as I explain how to use SSH in various ways.</p>
+      <p><img src="networkl.png" alt="" align="absbottom" border="1" height="537" width="622"></p>
+	  <ul>
+        <li>At the bottom right is my home. I need to access my home files from 
+          anywhere I go. </li>
+        <li>At the top left is my office. I need to be able to access my office 
+          computers from anywhere, and print from anywhere.</li>
+        <li> I have a unix account on a computer named Astro (this computer becomes 
+          very important for security reasons)</li>
+        <li>I also want to use my laptop securely at a hotel, etc. So I will route 
+          all my internet access through my home computers.</li>        
+        <li><u>All connections must be encrypted (using ssh).</u> The only connection 
+          that is not encrypted is the outgoing one from my ASDL modem (and then 
+          my ISP) to the rest of the internet (e.g. to Google.com)</li>
+        <li>I don't want the rest of the internet to be able to access my home 
+          computers</li>
+        <li>I don't want the rest of the internet to get at my office computers 
+          through the hole that I (surreptitiously) punch in my workplace's firewall.</li>
+        <li><img src="bluestar.gif" alt="" height="20" width="20"> My ISP assigns me 
+          a <strong><font color="#000099">dynamic address</font></strong>. Therefore 
+          it can change any time the link goes down. To deal with this, you need 
+          to have a webpage which you can update with scripts (more later). I 
+          assume that you have a webpage somewhere outside of your local home 
+          network that you can control and modify. I am writing these instructions 
+          to handle dynamic IP addresses. <br>
+          If you have a <strong>static IP</strong> address for your home, you 
+          can simplify these instructions a lot (ignore all of the <img src="bluestar.gif" alt="" height="20" width="20"> 
+          sections).</li>
+      </ul>
+      <p><strong><em><font color="#990000"><img src="redstar.gif" height="20" width="20"> 
+        Update: </font></em> I no longer have access to Astro! The university 
+        I was using finally cut me off.</strong> I will now modify these instructions 
+        so that they work without having access to a unix account on a computer 
+        like Astro. (Astro was important for hosting my webpage as well as doing 
+        SSH tunnelling.) <br>
+        Anything specific to Astro will be marked with a <img src="redstar.gif" alt="" height="20" width="20"> 
+        — mostly in <a href="http://www.quarkphysics.ca/ssh/ssh_everything5.htm">part 5</a>. Instead, I now am using a website 
+        that allows me to write Perl CGI scripts.</p>
+  		<a name="diagrams"><hr></a>
+		<h2>III. A picture is worth ... Network connection diagrams.</h2>
+		<!-- <p class="wbwb"></p>  -->
+		<table border="2">
+		<tbody><tr align="center"><td>
+		<img src="ssh_step1.png" alt="Part 4: Handling a Dynamic IP" border="2" height="288" width="293"><br>Part 4: Handling a Dynamic IP
+		</td><td>
+		<img src="ssh_step2.png" alt="Part 2(g): Setting up Port Forwarding on your Router" border="2" height="332" width="483"><br>Part 2(g): Setting up Port Forwarding on your Router
+		</td></tr>
+		<tr align="center"><td>
+		<img src="ssh_step3.png" border="2" height="361" width="418"><br>Part 3: Using SSH
+		</td><td>
+		<img src="ssh_step4.png" alt="Part 6: Reverse SSH from office" border="2" height="426" width="370"><br>Part 6: Reverse SSH from office
+		</td></tr>
+		<tr align="center" valign="top"><td>
+		<img src="ssh_step5.png" alt="Part 8: How to print to office printer" border="2" height="446" width="355"><br>Part 8: How to print to office printer
+		</td><td valign="top">
+        <img src="ssh_step6.png" border="2" height="287" width="344"><br>Part 11: accessing Active Directory
+		</td></tr></tbody></table>
+		<p></p>
+		<p>All of these possible connections are set up and work together. For instance, I can use any computer at home to print to the office or to access Active Directory at work. 
+		I an also use my laptop anywhere to securely connect to my home server and from there do anything that I can do from home.</p>
+		<a name="names"><hr></a>
+      <h2>IV. List of logins and computers referred to in this document</h2>
+	  <p>All names and ports are fake. Replace them with the names that you are using.</p>
+
+		<table class="table1">
+              <tbody><tr> 
+                <th>Computer </th>
+                <th>Login name</th>
+                <th>Purpose</th>
+              </tr>
+              <tr> 
+                <td><img src="redstar.gif" height="20" width="20">Astro</td>
+                <td><strong>starry</strong></td>
+                <td>the login that I use for astro</td>
+              </tr>
+              <tr> 
+                <td>Fishbuntu</td>
+                <td><strong>rubio</strong></td>
+                <td>the main login I use for Fishbuntu. sudo account</td>
+              </tr>
+              <tr> 
+                <td>Fishbuntu</td>
+                <td><strong>gia321</strong></td>
+                <td>limited shell login to Fishbuntu. Only allowed to make SSH 
+                  tunnels (for others to use)</td>
+              </tr>
+              <tr> 
+                <td>WorkLinSrv </td>
+                <td><strong>osmium</strong></td>
+                
+          <td>my login on Work-LinSrv. It is a sudo account, but doesn't have 
+            to be.</td>
+              </tr>
+              <tr> 
+                <td>mysite.com</td>
+                <td><strong>abcde</strong></td>
+                <td>A website on the internet that you can control (and run CGI 
+                  scripts)</td>
+              </tr>
+      </tbody></table>
+      <p>&nbsp;</p>
+		<a name="tunnels"><hr></a>
+      <h2>V. List of Tunnels and Ports used in Putty</h2>
+      <p>READ ME: This is a summary of all of the tunnels and ports that I use, and which 
+        computer they are tunneled to. This will become more clear later on. There 
+        are so many different things that I want to do, that it is important to 
+        organize them in a table. Each<strong> table</strong> 
+        is a seperate Putty profile. It looks really complicated, but it is used to configure Putty 
+		and/or write out ssh scripts, which I have added under each table. I'm not sure how to make this simpler or clearer. Don't let this confusion make you give up!</p>
+	
+	<p class="orange">1. General tunnels needed for access home server from anywhere (these go on your USB key or Laptop)</p>	
+      <table bgcolor="#FFFFFF" border="1" cellpadding="0" width="86%">
+        <!--<tr><th colspan="6"class="orange"> 1. General tunnels needed for access home server from anywhere (these go on your USB key or Laptop)</th></tr>
+        -->  
+        <tbody><tr> 
+          <th bgcolor="#CCCCCC" width="68">Username</th>
+            
+          <th bgcolor="#CCCCCC" width="50">SSH Port</th>
+            
+          <th bgcolor="#CCCCCC">to IP / computer</th>
+            
+          <th colspan="3" bgcolor="#CCCCCC">Purpose</th>
+        </tr>
+          
+        <tr> 
+          <td bgcolor="#999999"><img src="redstar.gif" height="20" width="20"> 
+            starry</td>
+            
+          <td bgcolor="#999999">22</td>
+            
+          <td bgcolor="#999999">Astro's IP</td>
+            
+          <td colspan="3" bgcolor="#999999"><strong>This sets up outer tunnel 
+            to Astro, all access to Fishbuntu goes through this (see Part 6).</strong> 
+            If you don't have access to Astro, then skip this section (with the 
+            red stars).</td>
+        </tr>
+          
+        <tr> 
+          <th bgcolor="#99FF99">&nbsp;</th>            
+          <th bgcolor="#99FF99">SrcPort</th>            
+          <th bgcolor="#99FF99" width="92">IP</th>            
+          <th bgcolor="#99FF99" width="52">DstPort</th>            
+          <th bgcolor="#99FF99" width="235">Purpose</th>            
+          <th bgcolor="#99FF99">Ancillary Program setting</th>
+        </tr>
+          
+        <tr> 
+          <td><img src="redstar.gif" height="20" width="20"></td>            
+          <td>2222</td>            
+          <td>fishbuntu<br>
+		  (87.63.99.204) </td>
+          <td>2202</td>            
+          <td>tunnel through Astro to my home</td>            
+          <td>Putty: ssh to localost:2222 
+            <!--<em>Include all of the tunnels listed below</em> -->
+          </td>
+        </tr>
+		  		  
+        <tr> 
+          <td colspan="6">Command line (PuTTY):<br>
+            ssh starry@astro.edu -i \path\myprivatekey -L 2222:87.63.99.204:2202</td>
+	  </tr>
+      </tbody></table>   
+        
+        
+      <table bgcolor="#FFFFFF" border="1" cellpadding="0" width="86%">
+        <tbody><tr> 
+          <th bgcolor="#CCCCCC" width="68">Username</th>            
+          <th bgcolor="#CCCCCC" width="50">SSH Port</th>            
+          <th bgcolor="#CCCCCC">to IP / computer</th>            
+          <th colspan="3" bgcolor="#CCCCCC">Purpose</th>
+        </tr>
+          
+        <tr> 
+          <td bgcolor="#999999">rubio</td>            
+          <td bgcolor="#999999">2202</td>            
+          <td bgcolor="#999999">Fishbuntu's IP</td>            
+          <td colspan="3" bgcolor="#999999">SSH to fisbuntu (see <a href="http://www.quarkphysics.ca/ssh/ssh_everything4.htm">part 
+            4</a> and <a href="http://www.quarkphysics.ca/ssh/ssh_everything5.htm">part 5</a>)<br>
+            <strong><img src="redstar.gif" height="20" width="20">(If you 
+            have access to Astro, then change this to connect to localhost port 
+            2222. i.e.</strong> "ssh rubio@localhost -P 2222 ..."<strong>)</strong><br>
+            <strong>All tunnels labelled <span class="orange2">#</span> connect to the office Linux server and require
+            additional set up: see <span class="orange2">part 3.</span></strong></td>
+        </tr>
+          
+        <tr> 
+          <th bgcolor="#99FF99">&nbsp;</th>            
+          <th bgcolor="#99FF99">SrcPort</th>            
+          <th bgcolor="#99FF99" width="92">IP</th>            
+          <th bgcolor="#99FF99" width="52">DstPort</th>            
+          <th bgcolor="#99FF99" width="235">Purpose</th>           
+          <th bgcolor="#99FF99">Ancillary Program setting</th>
+        </tr>
+          
+        <tr bgcolor="#FFFFFF"> 
+          <td>&nbsp;</td>
+            
+          <td>5522</td>
+            
+          <td>localhost</td>
+            
+          <td>5522</td>
+          <td>reverse SSH to Work-LinSrv <span class="orange2">#</span></td>
+            
+          <td>from fishbuntu commandline: <br>
+            ssh osmium@localhost -p 5522 <br>
+              or: from laptop: set up a putty session as described below</td>
+        </tr>
+          <tr> 
+            <td>&nbsp;</td>
+            <td>5511</td>
+            <td>localhost</td>
+            <td>5511</td>
+            <td>VNC to Work1 <span class="orange2">#</span></td>
+            <td>VNC to localhost:5511</td>
+          </tr>
+          <tr> 
+            <td>&nbsp;</td>
+            <td>9191</td>
+            <td>localhost</td>
+            <td>9191</td>
+            <td>network printing <span class="orange2">#</span></td>
+            <td>install a printer that prints to locahost:9191</td>
+          </tr>
+          <tr> 
+            <td>&nbsp;</td>
+            <td>5000</td>
+            <td>desktop<br>
+              192.168.1.4</td>
+            <td>5900</td>
+            <td>VNC to desktop</td>
+			<td><a href="http://www.quarkphysics.ca/ssh/ssh_everything3.htm#example">VNC to localhost:5000</a></td>            
+          </tr>
+          <tr> 
+            <td>&nbsp;</td>
+            <td>1234</td>
+            <td>localhost</td>
+            <td>3128</td>
+            <td>Squid</td>
+            <td><a href="http://www.quarkphysics.ca/ssh/ssh_everything3.htm#example">set browser proxy to localhost:1234</a></td>
+          </tr>
+          <tr> 
+            <td>&nbsp;</td>
+            <td><em>1974</em></td>
+            <td><em>localhost</em></td>
+            <td><em>1974</em></td>
+            <td><p><em>OpenVPN</em></p>
+            <p><em>(I haven't got this working yet)</em></p></td>
+            <td><em>set config file to go to localhost:1974<br>
+              configure Linux "route" command</em></td>
+          </tr>
+		<tr><td colspan="6">Command line (PuTTY):<br>
+            ssh rubio@87.63.99.204 -P 2202 -i \path\myprivatekey -L 5522:localhost:5522 
+            -L 5511:localhost:5511 -L&nbsp;9191:localhost:9191 -L 5000:192.168.1.4:5900 
+            -L 1234:localhost:3128</td>
+	  </tr>
+</tbody></table>
+         
+      <table bgcolor="#FFFFFF" border="1" cellpadding="0" width="86%">  
+        <tbody><tr> 
+          <th bgcolor="#CCCCCC" width="68">Username</th>
+            
+          <th bgcolor="#CCCCCC" width="50">SSH Port</th>
+            
+          <th bgcolor="#CCCCCC">to IP / computer</th>
+            
+          <th colspan="3" bgcolor="#CCCCCC">Purpose</th>
+        </tr>
+          
+        <tr> 
+          <td bgcolor="#999999">gia321</td>
+            
+          <td bgcolor="#999999">2202</td>
+            
+          <td bgcolor="#999999">Fishbuntu's IP</td>
+            
+          <td colspan="3" bgcolor="#999999">SSH to fisbuntu (for other people 
+            to use) See ___</td>
+        </tr>
+          
+        <tr> 
+          <th bgcolor="#99FF99">&nbsp;</th>
+            
+          <th bgcolor="#99FF99">SrcPort</th>
+            
+          <th bgcolor="#99FF99" width="92">IP</th>
+            
+          <th bgcolor="#99FF99" width="52">DstPort</th>
+            
+          <th bgcolor="#99FF99" width="235">Purpose</th>
+            
+          <th bgcolor="#99FF99">Ancillary Program setting</th>
+        </tr>
+          <tr> 
+            <td>gia321<br> </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>use whatever tunnels you want to allow people to access (e.g. 
+              Squid, but not network printing)</td>
+            <td>See settings above.</td>
+          </tr>		 
+		   <tr><td colspan="6">Command line (PuTTY):<br>
+            ssh gia321@87.63.99.204 -P 2202 -i \path\secondprivatekey -L 1234:localhost:3128</td>
+	  </tr>
+
+          
+      </tbody></table>
+         
+      <table bgcolor="#FFFFFF" border="1" cellpadding="0" width="86%">  
+        <tbody><tr> 
+          <th bgcolor="#CCCCCC" width="68">Username</th>            
+          <th bgcolor="#CCCCCC" width="50">SSH Port</th>            
+          <th bgcolor="#CCCCCC">to IP / computer</th>            
+          <th colspan="3" bgcolor="#CCCCCC">Purpose</th>
+        </tr>
+          
+        <tr> 
+          <td bgcolor="#999999">osmium</td>            
+          <td bgcolor="#999999">5522</td>            
+          <td bgcolor="#999999">localhost</td>            
+          <td colspan="3" bgcolor="#999999">SSH to Work-LinSrv (to command line) <span class="orange2">#</span></td>
+        </tr>
+          
+        <tr> 
+          <th bgcolor="#99FF99">&nbsp;</th>            
+          <th bgcolor="#99FF99">SrcPort</th>            
+          <th bgcolor="#99FF99" width="92">IP</th>            
+          <th bgcolor="#99FF99" width="52">DstPort</th>            
+          <th bgcolor="#99FF99" width="235">Purpose</th>            
+          <th bgcolor="#99FF99">&nbsp;</th>
+        </tr>
+        <tr> 
+            <td><br> </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>-- no tunnels needed</td>
+            <td>Note: this connection is useful if you do it with "SSH Secure 
+              Shell" instead of Putty. It will allow you to have a GUI sftp 
+              connection to transfer files from your current computer (laptop 
+              or desktop) to the office server.</td>
+        </tr>
+		<tr><td colspan="6">Command line (PuTTY):<br> ssh osmium@localhost -P 5522 </td>
+	    </tr>
+      </tbody></table>
+        <p>&nbsp;</p>
+		
+       <p class="orange">2. Tunnels needed only from home desktop
+               (same LAN as Fishbuntu)</p> 
+      <table bgcolor="#FFFFFF" border="1" cellpadding="0" width="86%">
+        
+       <!--<tr>      <th colspan="6" class="orange">2. Tunnels needed only from home desktop
+               (same LAN as Fishbuntu)</th>
+			   </tr>
+		-->
+        
+          <tbody><tr bgcolor="#CCCCCC"> 
+            <th width="68">Username</th>
+            
+          <th width="50">SSH Port</th>
+            <th>to IP / computer</th>
+            <th colspan="3">Purpose</th>
+          </tr>
+          <tr bgcolor="#999999"> 
+            <td>rubio</td>
+            
+          <td>2202</td>
+            <td>192.168.1.11</td>
+            <td colspan="3">SSH to fisbuntu </td>
+          </tr>
+          <tr bgcolor="#99FF99"> 
+            <th>&nbsp;</th>
+            <th>SrcPort</th>
+            <th width="92">IP</th>
+            <th width="52">DstPort</th>
+            <th width="235">Purpose</th>
+            <th>Ancillary Program setting</th>
+          </tr>
+          <tr> 
+            <td>&nbsp;</td>
+            <td>5522</td>
+            <td>localhost</td>
+            <td>5522</td>
+            <td>reverse SSH to Work-LinSrv <span class="orange2">#</span></td>
+            <td>--</td>
+          </tr>
+          <tr> 
+            <td>&nbsp;</td>
+            <td>5511</td>
+            <td>localhost</td>
+            <td>5511</td>
+            <td>VNC to Work1 <span class="orange2">#</span></td>
+            <td>VNC to localhost:5511</td>
+          </tr>
+          <tr> 
+            <td>&nbsp;</td>
+            <td>9191</td>
+            <td>localhost</td>
+            <td>9100</td>
+            <td>network printing <span class="orange2">#</span></td>
+            <td>install a printer that prints to locahost:9191</td>
+          </tr>
+		  <tr><td colspan="6">Command line (PuTTY):<br>
+            ssh rubio@192.168.1.11 -P 2202 -i \path\myprivatekey -L 5522:localhost:5522 
+            -L 5511:localhost:5511 -L 9191:localhost:9100</td>
+	  </tr>
+ 
+      </tbody></table>
+         
+      <table bgcolor="#FFFFFF" border="1" cellpadding="0" width="86%">  
+          <tbody><tr bgcolor="#CCCCCC"> 
+            <th width="68">Username</th>
+            
+          <th width="50">SSH Port</th>
+            <th>to IP / computer</th>
+            <th colspan="3">Purpose</th>
+          </tr>
+          <tr bgcolor="#999999"> 
+            <td>osmium</td>
+            <td>5522</td>
+            <td>localhost</td>
+            <td colspan="3">SSH to Work-LinSrv (to command line) <span class="orange2">#</span></td>
+          </tr>
+          <tr bgcolor="#99FF99"> 
+            <th>&nbsp;</th>
+            <th>SrcPort</th>
+            <th width="92">IP</th>
+            <th width="52">DstPort</th>
+            <th width="235">Purpose</th>
+            <th>&nbsp;</th>
+          </tr>
+          <tr> 
+            <td><br> </td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>-- no tunnels needed</td>
+            <td>&nbsp;</td>
+          </tr>
+		  		  <tr><td colspan="6">Command line (PuTTY):<br>
+            ssh osmium@localhost -P 5522</td>
+	  </tr>
+
+      </tbody></table>
+        <p>&nbsp;</p>
+      <p class="orange">3. Tunnels needed from Office Linux server (related to all the # above)</p>  
+      <table bgcolor="#FFFFFF" border="1" cellpadding="0" width="86%">        
+        <!--  <tr> <th colspan="5" class="orange">3. Tunnels needed from Office Linux server</th>
+          </tr>
+        -->  
+        <tbody><tr> 
+          <th bgcolor="#CCCCCC" width="68">Username</th>            
+          <th bgcolor="#CCCCCC" width="50">SSH Port</th>            
+          <th bgcolor="#CCCCCC">to IP / computer</th>            
+          <th colspan="3" bgcolor="#CCCCCC">Purpose</th>
+        </tr>
+          
+        <tr> 
+          <td bgcolor="#999999">gia321</td>            
+          <td bgcolor="#999999">2202</td>            
+          <td bgcolor="#999999">Fishbuntu's IP</td>            
+          <td colspan="3" bgcolor="#999999">Reverse SSH so that Fishbuntu can 
+            later connect to work computers.</td>
+        </tr>
+          
+        <tr> 
+          <th bgcolor="#CCCCCC" width="68">&nbsp;</th>            
+          <th bgcolor="#CCCCCC" width="50">Port</th>            
+          <th colspan="3" bgcolor="#CCCCCC">Purpose</th>
+        </tr>
+          
+        <tr> 
+          <th bgcolor="#99FF99">&nbsp;</th>            
+          <th bgcolor="#99FF99">SrcPort</th>            
+          <th bgcolor="#99FF99" width="92">IP</th>            
+          <th bgcolor="#99FF99" width="52">DstPort</th>            
+          <th bgcolor="#99FF99" width="235">Purpose</th>
+        </tr>
+          <tr> 
+            <td>-R</td>
+            <td>5522</td>
+            <td>localhost</td>
+            <td>22</td>
+            <td>reverse tunnel: SSH to Work-LinSrv</td>
+          </tr>
+          <tr> 
+            <td>-R</td>
+            <td>5511</td>
+            <td>10.10.0.101</td>
+            <td>5900</td>
+            <td>VNC to Work1</td>
+          </tr>
+          <tr> 
+            <td>-R</td>
+            <td>9191</td>
+            <td>10.10.200.54</td>
+            <td>9100</td>
+            <td>network printing</td>
+          </tr>
+          <tr> 
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>&nbsp;</td>
+            <td>(possibly add another if you are going to set up a VPN)</td>
+          </tr>
+          <!--  <tr> 
+    <td>-L</td>
+    <td> 1234</td>
+    <td>localhost</td>
+    <td>3128</td>
+    <td>Squid</td>
+  </tr>
+  <tr> 
+    <td>&nbsp;</td>
+    <td>5903</td>
+    <td>192.168.1.4<br>
+      (desktop)</td>
+    <td>5900</td>
+    <td>VNC to desktop</td>
+  </tr>
+ -->
+ <tr>
+		  <td colspan="5"><p>Command line (OpenSSH): see <a href="http://www.quarkphysics.ca/ssh/ssh_everything6.htm">section 
+              6</a> for automatic connection. </p>
+            <p>ssh -o StrictHostKeyChecking=no -R 5522:localhost:22 -R 9191:localhost:9100 
+              -R 5511:10.10.0.101:5900 -p 2202 gia321@`cat $HOME/scripts/myip.num` 
+            </p>
+          </td>
+	  </tr>
+      </tbody></table>
+
+<hr>
+      <h2><a name="ssh_not">VI. One thing that SSH cannot do</a></h2>
+      <p>SSH cannot overcome the problems of Microsoft Windows in one area: sharing 
+        network drives over SSH tunnels. Why is this needed anyway? You can easily 
+		transfer files using SSH (and sftp). The reason for doing this would be to stream
+		a file from your Windows desktop at home to your laptop when you're in a hotel
+		- e.g. to listen to an MP3 song or start watching a video without having to download it 
+		from your desktop first.<br>
+		There is a way to do it in MS Windows 
+        - you have to disable file and printer sharing, add a loopback device, 
+        tunnel port 139 ... The problem that I have with doing this is that it 
+        messes up my other network connections (e.g. my corporate email program 
+        won't work at all if I do this). I think that this problem occurs because 
+        Windows does not consider the possibility that you might be sharing drives 
+        remotely. </p>
+      <p>The solution is to set up a VPN - Virtual Private Network.<br>
+        Is it worth the trouble? Probably not. You can do so much with SSH that 
+        you probably don't need a VPN. The main reason for needing a VPN is if 
+        you need to access files from a number of servers - e.g. at the office. 
+        This allows you to connect to the office network just as if you are physically 
+        at the office. You can do this with SSH, but you would need a separate 
+        tunnel for each machine you want to connect to as well as something (sshd 
+        or VNC) each machine to accept the connection.</p>
+
+    </div><!-- main -->
+    <div id="footer"> 
+      <p>© Michael Harwood, 2010</p>
+    </div>
+    <div break="both"></div>
+  </div><!-- #inside -->
+</div><!-- #page -->
+
+
+</body>
+</html>

@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:fb="http://www.facebook.com/2008/fbml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+      <meta http-equiv="X-UA-Compatible" content="chrome=1">
+      <meta name="width" content="620">
+      <meta name="generator" content="Posterous">
+      
+      <!--[if lt IE 9]>
+        <script src="/javascripts/innershiv.js?1339008244" type="text/javascript"></script>
+      <![endif]-->
+      
+      <!--[if lt IE 9]>
+        <link href="/bundles/ie.css" media="screen" rel="stylesheet" type="text/css" />
+      <![endif]-->
+      <link rel="alternate" type="application/rss+xml" href="http://shebang.brandonmintern.com/rss.xml">
+      <meta name="medium" content="blog"><link rel="image_src" href="http://posterous.com/images/profile/missing-user-75.png">
+      
+      
+      
+      
+      
+      
+    <link rel="canonical" href="http://shebang.brandonmintern.com/tips-for-remote-unix-work-ssh-screen-and-vnc">
+        <meta charset="utf-8">
+        <link href="92235697818675691911318627542b8ux6in55k52qxw8gksf.png" rel="icon" type="image/x-png">
+        <title>Tips for Remote Unix Work (SSH, screen, and VNC) - #! (shebang)</title>
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        <!--[if lt IE 9]>
+        <style type="text/css">
+        
+        div.sharing-button {
+        top:-20px;
+        }
+        
+        .container {
+        border:solid 1px #ccc;
+        }
+        
+        #searchbox {
+        border:solid 1px #ccc;
+        }
+        
+    </style>
+        <![endif]-->
+    
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body><div class="posterous_site_data" data-post-id="87071220" data-posterous-hostname="posterous.com" data-show-type="post" data-site-id="3904512" data-site-is-private="false" data-site-location="false" data-site-type="posterous" data-slug-id="tips-for-remote-unix-work-ssh-screen-and-vnc" data-user-id="1948745"></div><div class="posterous_ojs" data-posterous-admin-box="true"></div><div class="posterousPrivateBox">
+	
+	
+</div>
+      <div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"><div><iframe src="index_1.html" name="fb_xdm_frame_http" id="fb_xdm_frame_http"></iframe><iframe src="index_2.html" name="fb_xdm_frame_https" id="fb_xdm_frame_https"></iframe></div><div><iframe src="index_3.html" class="FB_UI_Hidden" style="border: medium none; overflow: hidden; height: 240px; width: 575px;" name="f1af2bd9056ad96" id="f270c6c6a7b58" scrolling="no"></iframe></div><div></div></div></div>
+        
+    
+<div id="pbar">
+</div>
+        
+        <div class="header"></div>
+        
+        <div class="container"><div class="cw"><a href="http://themes.watilo.com/" target="_top">Posterous theme</a> by <a href="http://watilo.com/" target="_top">Cory Watilo</a><img src="untitled" style="border: medium none;"></div>
+            
+            <div id="post_column">
+                
+                
+                <section class="back_to_blog" id="extra_links">
+                    <a href="http://shebang.brandonmintern.com/" rel="up">← Back to blog</a>
+                </section>
+                
+                
+                
+                
+                
+                
+                
+                
+                <div id="articles">
+                    
+                    <article class="post clearfix" id="post_87071220">
+                        <div class="post-z-frame">
+                            <header>
+                                
+                                
+                                <time pubdate="pubdate" datetime="2011-12-17"><a href="http://shebang.brandonmintern.com/tips-for-remote-unix-work-ssh-screen-and-vnc">17 Dec 2011<br>03:14 am</a></time>
+                                
+                                
+                                
+                                
+                                <h1><a href="http://shebang.brandonmintern.com/tips-for-remote-unix-work-ssh-screen-and-vnc">Tips for Remote Unix Work (SSH, screen, and VNC)</a></h1>
+                                
+                                
+      	        
+            
+                                <div class="editbox">
+                                    
+        				
+                  
+                                    <ul class="mini_commands posterous_edit_box posterous_edit_box_hidden" data-posterous-edit-box="true" data-posterous-post-id="87071220">
+	
+	<li><a href="http://posterous.com/posts/edit/87071220">Edit</a></li>
+  <li><a href="http://shebang.brandonmintern.com/posts/destroy/87071220" onclick="if (confirm('Are you sure you want to delete this post?')) { var f = document.createElement('form'); f.style.display = 'none'; this.parentNode.appendChild(f); f.method = 'POST'; f.action = this.href;var m = document.createElement('input'); m.setAttribute('type', 'hidden'); m.setAttribute('name', '_method'); m.setAttribute('value', 'delete'); f.appendChild(m);var s = document.createElement('input'); s.setAttribute('type', 'hidden'); s.setAttribute('name', 'authenticity_token'); s.setAttribute('value', 'KaK/tNxQ0BBPhp1giX1+dhoECVa0Db3/Ob8VvQTPf3A='); f.appendChild(s);f.submit(); };return false;">Delete</a></li>
+	<li><a href="http://posterous.com/posts/87071220/tags/edit_multiple" data-post-id="87071220" data-posterous-modal="true" data-posterous-tag-form="true">Tags</a></li>
+	
+	  <li><a href="http://posterous.com/autopost/crosspost?post_id=87071220" data-posterous-modal="true">Autopost</a>
+	
+</li></ul>
+
+                                    
+                
+              
+                                </div>
+                                
+                            </header>
+                            <div class="body">
+                                <div class="inner">
+                                    <h2>I am not where the work is</h2>
+<p>If you are anything like me, you have programs running on all kinds of different servers. You probably have a <a href="http://github.com/">github</a> account, a free <a href="http://www.heroku.com/pricing#1-0">Heroku instance</a>, a work desktop, a couple website instances, and maybe even a home server. The best part is that using common Unix tools, you can connect to all of them from one place.</p>
+<p>In this post, I will review some of the more interesting aspects of my workflow, covering the usage of SSH, screen, and VNC, including a guide for getting started with VNC. I’ll give some quick start information and quickly progress to advanced topics (like SSH pipes and auto-session-creation) that even experienced Unix users may not be aware of.</p>
+<h2>SSH to rule them all</h2>
+<p>By now you’ve almost certainly used SSH. It’s the easiest way to login to a remote machine and get instant command line access. It’s as easy as <code>ssh user@example.com</code>. You type in your password, and you’re in! But you might not know that it can be even easier (and more secure) than that.</p>
+<h3>Logging in via SSH without a password</h3>
+<p>We have only recently seen websites start to offer solutions for logging in without a password. SSH has provided a secure mechanism for this (based on <a href="http://en.wikipedia.org/wiki/Public-key_cryptography">public-key cryptography</a>) since its inception. It’s pretty easy to setup once you know how it works.</p>
+<h4>1. Generate a public-private key pair</h4>
+<p>If you haven’t already, run <code>ssh-keygen</code> on your laptop, or whatever computer you will be doing your work from. You can just continue pressing Enter to accept the defaults, and you can leave the password blank (if you secure your laptop with encryption, a locking screensaver, and a <a href="http://passphra.se/">strong password</a>, your SSH key doesn’t require a password). This will generate a public key at <code>~/.ssh/id_rsa.pub</code> and a private key at <code>~/.ssh/id_rsa</code>. <strong>The private key should never leave your computer.</strong></p>
+<h4>2. Copy the public key to each computer you connect to</h4>
+<p>For each computer that you connect to, run the following command (edited thanks to a suggestion by <a href="http://news.ycombinator.com/item?id=3364149">rmc</a> in the <a href="http://news.ycombinator.com/item?id=3364025">Hacker News comment thread</a>):</p>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>ssh-copy-id user@example.com</pre></div>
+</div>
+
+</div>
+<p><em>Note that you can specify <code>-p PORT</code> or any other SSH arguments before the <code>user@example.com</code> portion of the above command</em></p>
+<p>This should be the last time you ever have to type your login password when connecting to the remote server. From now on, when you SSH to the remote server, its <code>sshd</code> service will encrypt some data using the public key that you appended to <code>authorized_keys</code>, and your local machine will be able to decode that challenge with your private key.</p>
+<h4>3. There is no step 3</h4>
+<p>It’s that easy! Don’t you wish you had set this up a long time ago?</p>
+<h3>SSH and pipes</h3>
+<p>If you take a look at the <code>ssh-copy-id</code> script, you'll see a line that roughly translates to:</p>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>cat ~/.ssh/id_rsa.pub | ssh user@example.com "umask 077; test -d ~/.ssh || mkdir ~/.ssh ; cat &gt;&gt; ~/.ssh/authorized_keys"</pre></div>
+</div>
+
+</div>
+<p>When you ran <code>ssh-copy-id</code> above, here's what that line did:</p>
+<ol>
+<li>The contents of <code>~/.ssh/id_rsa.pub</code> were piped into the SSH command</li>
+<li>SSH encrypted that data and sent it across the network to your remote machine</li>
+<li>Everything in double quotes after the host is a single argument to <code>ssh</code>; this specified that instead of giving you an interactive login, you instead wanted to run a command.</li>
+<li>The first portion of that command (<code>umask 077; test -d ~/.ssh || mkdir ~/.ssh ;</code>) created a <code>.ssh</code> directory <em>on the remote machine</em> if it did not already exist, ensuring that it had the proper permissions.</li>
+<li>The second portion (<code>cat &gt;&gt; ~/.ssh/authorized_keys</code>) received the standard input via the SSH tunnel and appended it to the <code>authorized_keys</code> file <em>on the remote machine</em>.</li>
+</ol>
+<p>This avoids the need to use SCP and login multiple times. SSH can do it all! Here are some more examples to show you some of the neat things you can do with SSH pipe functionality.</p>
+<h4>Send the files at ~/src/ to example.com:~/src/ without <code>rsync</code> or <code>scp</code></h4>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>cd &amp;&amp; tar czv src | ssh example.com 'tar xz'</pre></div>
+</div>
+
+</div>
+<h4>Copy the remote website at example.com:public_html/example.com to ~/backup/example.com</h4>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>mkdir -p ~/backup/
+cd !$
+ssh example.com 'cd public_html &amp;&amp; tar cz example.com' | tar xzv</pre></div>
+</div>
+
+</div>
+<h4>See if <code>httpd</code> is running on example.com</h4>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>ssh example.com 'ps ax | grep [h]ttpd'</pre></div>
+</div>
+
+</div>
+<h3>Other SSH tunnels</h3>
+<p>If piped data were the only thing that could be securely tunneled over SSH connections, that would still be useful. But SSH can also make remote ports seem local. Let’s say that you’re logged into example.com, and you’re editing a remote website that you’d like to test on port 8000. But you don’t want just anyone to be able to connect to example.com:8000, and besides, your firewall won’t allow it. What if you could get a connection to example.com, localhost:8000, but from your local computer and browser? Well, you can!</p>
+<h4>Create an SSH tunnel</h4>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>ssh -NT -L 9000:localhost:8000 example.com</pre></div>
+</div>
+
+</div>
+<p>Using the <code>-L</code> flag, you can tell SSH to listen on a local port (9000), and to reroute all data sent and received on that port to example.com:8000. To any process listening on example.com:8000, it will look like it’s talking to a local process (and it is; an SSH process). So open a terminal and run the above command, and then fire up your browser locally and browse to localhost:9000. You will be whisked away to example.com:8000 as if you were working on it locally!</p>
+<p>Let me clarify the argument to -L a bit more. The bit before the colon is the port on your local machine that you will connect to in order to be tunneled to the remote port. The part after the second colon is the port on the remote machine. The “localhost” bit is the remote machine you will be connected to, <em>from the perspective of example.com</em>. When you realize the ramifications of this, it becomes even more exciting! Perhaps you have a work computer to which you have SSH access, and you have a company intranet site at 192.168.10.10. Obviously, you can’t reach this from the outside. Using an SSH tunnel, however, you can!</p>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>ssh -NT -L 8080:192.168.10.10:80 work-account@work-computer.com</pre></div>
+</div>
+
+</div>
+<p>Now browse to localhost:8080 from your local machine, and smile as you can access your company intranet from home with your laptop’s browser, just as if you were on your work computer.</p>
+<h2>But my connection sucks, or, GNU screen</h2>
+<p>Have you ever started a long-running command, checked in on it periodically for a couple hours, and then watched horrified as your connection dropped and all the work was lost? Don’t let it happen again. Install <a href="http://www.gnu.org/s/screen/">GNU screen</a> on your remote machine, and when you reconnect you can resume your work right where you left off (it may have even completed while you were away).</p>
+<p>Now, instead of launching right into your work when you connect to your remote machine, first start up a screen session by running <code>screen</code>. From now on, all the work you are doing is going on inside screen. If your connection drops, you will be detached from the screen session, but it will continue running on the remote machine. You can reattach to it when you log back in by running <code>screen -r</code>. If you want to manually detach from the session but leave it running, type <code>Ctrl-a, d</code> from within the screen session.</p>
+<h3>Using screen</h3>
+<p>Screen is a complex program, and going into everything it can do would be a series of blog posts. Instead, check out this great <a href="http://aperiodic.net/screen/quick_reference">screen quick reference guide</a>. Some of screen’s more notable features are its ability to allow multiple terminal buffers in a single screen session and its scrollback buffer.</p>
+<h3>What happened to Control-a??</h3>
+<p>Screen intercepts Control-a to enable some pretty cool functionality. Unfortunately, you may be used to using Control-a for readline navigation. You can now do this by pressing <code>Ctrl-a, a</code>. Alternatively, you can remap it by invoking screen with the <code>-e</code> option. For example, running <code>screen -e ^jj</code> would cause Control-j to be intercepted by screen instead of Control-a. If you do this, just replace references to “C-a” in the aforementioned reference guide with whatever escape key you defined.</p>
+<h3>Shift-PageUp is broken</h3>
+<p>Like <code>vim</code> and <code>less</code>, <code>screen</code> uses the terminal window differently from most programs, controlling the entire window instead of just dumping text to standard output and standard error. Unfortunately, this breaks Shift-PageUp and Shift-PageDown in gnome-terminal. Fortunately, we can fix this by creating a <code>~/.screenrc</code> file with the following line in it:</p>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>termcapinfo xterm ti@:te@</pre></div>
+</div>
+
+</div>
+<p>And while you’re mucking around in <code>.screenrc</code>, you might as well add an <code>escape ^jj</code> line to it, so that you can stop typing in <code>-e ^jj</code> every time you invoke screen.</p>
+<h3>Starting screen automatically</h3>
+<p>It’s pretty easy to forget to run <code>screen</code> after logging in. Personally, any time I am using SSH to login and work interactively, I want to be in a screen session. We can combine SSH’s ability to run a remote command upon login with screen’s ability to reconnect to detached sessions. Simply create an alias in your <code>~/.bashrc</code> file:</p>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>alias sshwork='ssh -t work-username@my-work-computer.com "screen -dR"'</pre></div>
+</div>
+
+</div>
+<p>This will automatically fire up a screen session if there is not one running, and if there is one running, it will connect to it. Detaching from the screen session will also logout of the remote server.</p>
+<h2>Remote graphical work</h2>
+<p>Even in spite of SSH’s port forwarding capabilities, we still sometimes need to use graphical applications. If you have a fast connection or a simple GUI, passing the <code>-Y</code> flag to SSH could be enough to allow you run the application on your local desktop. Unfortunately, this often is a very poor user experience, and it does not work well with screen (a GUI application started in a screen session dies when you detach from the screen session).</p>
+<p>The time-tested Unix solution to this problem is VNC. This is effectively a combination of screen and a graphical environment. Unfortunately, it has several drawbacks.</p>
+<ul>
+<li>It can be tricky to setup reasonably</li>
+<li>It is inherently insecure, with unencrypted data and a weak password feature</li>
+<li>Its performance on a sub-optimal connection is less-than-stellar</li>
+<li>It doesn’t transfer sounds over the network</li>
+</ul>
+<p>I’m going to help you solve all of these problems, except the sound one. Who needs sounds, anyway?</p>
+<h3>VNC installation and setup</h3>
+<p>On the remote machine, you’ll need to install a VNC server and a decent lightweight window manager. I chose fluxbox and x11vnc:</p>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>sudo apt-get install x11vnc fluxbox</pre></div>
+</div>
+
+</div>
+<p>The programs that are started when you first start a VNC session are controlled by the <code>~/.vnc/xstartup</code> file. I prefer something a bit better than the defaults, so mine looks like this:</p>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>#!/bin/sh
+[ -x /etc/vnc/xstartup ] &amp;&amp; exec /etc/vnc/xstartup
+[ -r $HOME/.Xresources ] &amp;&amp; xrdb $HOME/.Xresources
+netbeans &amp;
+gnome-terminal &amp;
+fluxbox &amp;</pre></div>
+</div>
+
+</div>
+<p>Modify this to suit your own needs; I only invoke netbeans because it’s the only reason I ever use a remote GUI at all. NB: Although it may seem counterintuitive, it’s typically best to put the window manager command last.</p>
+<p>You can start a VNC server with the following command <strong>(this isn’t the way you should normally do it! Read on…)</strong>:</p>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>vncserver -geometry WIDTHxHEIGHT</pre></div>
+</div>
+
+</div>
+<p>where WIDTHxHEIGHT is your desired resolution. For me, it’s 1440x900. The first time you run this, it will ask you to create a password. We are going to ensure security through other means, so you can set it to whatever you want. Running the above command will give a message like “New ‘remote-machine:1 (username)’ desktop is remote-machine:1”. The “:1” is the display number. By adding 5900 to this, we can determine which port the VNC server is listening on. At this point, we can connect to remote-machine:5901 with a vncviewer and log in to the session we’ve created. We don’t want the entire Internet to be able to connect to our poorly-secured session, so let’s terminate that VNC server session:</p>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>vncserver -kill :1</pre></div>
+</div>
+
+</div>
+<h3>Securing the VNC server</h3>
+<p>Remember how we tunneled ports with SSH? We can do the same thing with VNC data. First, we’ll invoke our VNC server slightly differently:</p>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>vncserver -localhost -geometry WIDTHxHEIGHT -SecurityTypes None</pre></div>
+</div>
+
+</div>
+<p>This causes the VNC server to only accept connections that originate on the local machine. It also indicates that we will not need a password to connect to our session; simply being logged in locally as the user who created the session is enough. You should now have a VNC server running on a remote machine listening on localhost:5901.</p>
+<p>On your local machine, install a VNC viewer. I personally use gvncviewer, though I don’t particularly recommend it. Now, to connect to that remote port, you’ll need to start an SSH tunnel on your local machine:</p>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>ssh -NT -L 5901:localhost:5901 remote-machine.com</pre></div>
+</div>
+
+</div>
+<p>We can now run the VNC viewer on our local machine to connect via the tunnel to our VNC session:</p>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>gvncviewer :1</pre></div>
+</div>
+
+</div>
+<h3>Speeding up VNC?</h3>
+<p>When starting an SSH tunnel, we can compress the data it sends by including the <code>-C</code> flag. Depending on your connection speed, it may be worth including the flag in your tunnel command. Experiment with this option and see what works best for you.</p>
+<p>If you are really having problems, you might also want to check out the <code>-deferUpdate</code> option, which can delay how often display changes are sent to the client. For more information, <code>man Xvnc</code>.</p>
+<h3>Automatically starting and connecting to your VNC session</h3>
+<p>Putting everything together, we can create a script that does all of this for us. Simply set the GEOMETRY and SSH_ARGS variables appropriately (or modify it slightly to accept them as command line arguments).</p>
+<div class="code">
+<div class="CodeRay">
+  <div class="code"><pre>#!/bin/bash
+set -e
+
+GEOMETRY=1440x900
+SSH_ARGS='-p 22 username@remote-server.com'
+
+# Get VNC display number. If there is not a VNC process running, start one
+vnc_display="$(ssh $SSH_ARGS 'ps_text="$(ps x | grep X[v]nc | awk '"'"'{ print $6 }'"'"' | sed s/://)"; if [ "$ps_text" = "" ]; then vncserver -localhost -geometry '$GEOMETRY' -SecurityTypes none 2&gt;&amp;1 | grep New | sed '"'"'s/^.*:\([^:]*\)$/\1/'"'"'; else echo "$ps_text"; fi')"
+port=`expr 5900 + $vnc_display`
+ssh -NTC -L $port:localhost:$port $SSH_ARGS &amp;
+SSH_CMD=`echo $!`
+sleep 3
+gvncviewer :$vnc_display
+kill $SSH_CMD</pre></div>
+</div>
+
+</div>
+<p>The vnc_display line is pretty gross, so I’ll give some explanation. It uses SSH to connect to the remote server and look for a running process named Xvnc: this is the running VNC server. If there’s one running we extract the display number. Otherwise, we start one up with the specified geometry and grab the display number from there. This all happens within a single command executed by ssh, and the resulting output is piped across the network back into our vnc_display variable.</p>
+<p>Either way we get the value, we now know which port to connect to in order to reach our VNC server. We start our SSH tunnel and get the resulting PID. Finally, we invoke the vncviewer on that tunneled local port. When the VNC viewer exits, we automatically kill our SSH tunnel as well.</p>
+<h2>Concluding remarks</h2>
+<p>One of the best parts of Unix is that it was built to be run remotely from Day 1. Just about anything you can do on your local computer can also be done on a remote one. By leveraging tools like SSH, screen, and VNC, we can make remote work as easy and convenient as local work. I hope this post gave you some ideas for how you can create a productive workflow with these very common Unix tools.</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="post-head"></div>
+                        <div class="post-foot"></div>
+                    </article>
+                    
+                    <footer class="post-footer">
+                        
+                        
+                        <section class="author locations" id="statistics">
+                            Posted 
+                            
+              
+            
+                            
+              
+                
+              
+            
+                            |
+                            Viewed <div class="posterous_ojs" data-posterous-view-count="true" data-posterous-post-id="87071220"></div>&nbsp;times
+                        </section>
+                        
+                        
+                
+              
+                        
+                        
+                        
+                 
+              
+                
+                        <section class="share">
+                            
+                          
+                
+                  <div class="posterous_tweet_button">
+                    <a href="http://twitter.com/share" class="posterous_tweet_button twitter-share-button" data-url="http://post.ly/4MXb1" data-counturl="http://shebang.brandonmintern.com/tips-for-remote-unix-work-ssh-screen-and-vnc" data-via="" data-text="Tips for Remote Unix Work (SSH, screen, and VNC)" data-count="horizontal" data-related="posterous:Posterous is the place to post everything." data-lang="en">Tweet</a>
+                  </div>
+                
+              
+            
+                            <div class="facebook_like">
+                          
+                
+                  <fb:like class=" fb_edge_widget_with_comment fb_iframe_widget" href="http://shebang.brandonmintern.com/tips-for-remote-unix-work-ssh-screen-and-vnc" layout="button_count" show_faces="true" width="" action="like" font="lucida grande" colorscheme="light" ref=""><span style="height: 21px; width: 90px;"><iframe src="index_4.html" class="fb_ltr" title="Like this content on Facebook." style="border: medium none; overflow: hidden; height: 21px; width: 90px;" name="f198a5b261dfba6" id="fd3d24241b4a78" scrolling="no"></iframe></span></fb:like>
+                
+              
+            </div>
+                        </section>
+                        
+              
+            
+          
+                        
+                        
+              <aside class="p_responses light">
+                
+                        
+                        
+                        
+                        <nav class="p_response_widget">
+<ul class="clearfix">
+<li class="p_responses_link active"><a href="http://shebang.brandonmintern.com/responses/recent?post_id=87071220" data-posterous-response-count="87071220" data-response-post-id="87071220" title="View responses to this post"><strong>10</strong> responses</a></li>
+<li class="p_like_link"><a href="http://shebang.brandonmintern.com/likes/create?like_type=post&amp;post_id=87071220" class="like_post" data-like-url="/likes/create?like_type=post&amp;post_id=87071220" data-posterous-like-button-for-post-id="87071220" data-posterous-like-text="Like this post" data-posterous-like="true" data-posterous-unlike-text="Unlike this post" data-unlike-url="/likes/delete?like_type=post&amp;post_id=87071220" rel="nofollow" title="Like this post"><div class="p_like_icon"></div><div class="p_unlike_icon" style="display: none;"></div><span>Like</span></a></li>
+<li class="p_comment_link"><a href="http://shebang.brandonmintern.com/responses/recent?post_id=87071220" data-comment-post-id="87071220" title="Comment on this post"><div>Comment</div></a></li>
+</ul>
+</nav>
+
+                        <div data-posterous-responses-for-post-id="87071220">
+<div class="p_response_container">
+<a name="comment"></a>
+<div class="p_responses_list clearfix" data-posterous-responses-container="">
+<article class="p_comment p_response" style="">
+<div class="p_info">
+<span class="p_icon"></span>
+<time pubdate="1324133917">6 months ago</time>
+<a href="http://twitter.com/deinspanjer">deinspanjer (Twitter)</a> responded:
+</div>
+<div class="p_comment_body">
+<div class="p_profile_photo">
+<a href="http://twitter.com/deinspanjer"><img alt="Rzeaciul" src="rzeaciul.clipmanheart-100x100_normal.jpg"></a>
+</div>
+<div class="p_comment_text">
+This is a good post.  The termcap stuff was interesting, but not applicable since most of my screen sessions are on remote headless servers.<p>Since you mentioned setting up screen to automatically run, I thought I'd share an extension of that trick:</p><p>I use the SSH auth agent to do pubkey authentication, but if you connect to remote machine A and reconnect to a screen session there, you'll find that your auth agent won't work if you try to jump to another machine.  This is because it uses environment variables to work, and those are only set when the screen session is created, so when you reconnect, they are out of date.</p><p>I have this in my .bashrc:</p><p>if [ "$SSH_CONNECTION" ]; then  #we're in a ssh connection<br>    if [ -z "$STY" ]; then  #Screen is not currently running<br>        /home/deinspanjer/bin/grabssh</p><p>And the contents of grabssh:<br>$ cat bin/grabssh <br>#!/bin/bash<br>for x in ${!SSH_*} DISPLAY; do echo export "$x='${!x}'"; done 1&gt;~/bin/fixssh</p><p>Finally, whenever I attach to a screen, if I want to SSH somewhere else, I just type "fixssh" first and then pubkey authentication works.</p><p>I bet there is a good way to get screen to automatically run fixssh on each window when you reconnect, but I haven't investigated.</p>
+</div>
+</div>
+<ul class="p_action_links">
+</ul>
+
+</article>
+
+<article class="p_like p_response" data-likes_user_id="user-3333352" style="">
+<div class="p_info">
+<span class="p_icon"></span>
+<time pubdate="1324150107">6 months ago</time>
+<a href="http://posterous.com/users/eiWXQbqAS7Nrk">ninehills</a> liked this post.
+</div>
+</article>
+
+<article class="p_comment p_response" style="">
+<div class="p_info">
+<span class="p_icon"></span>
+<time pubdate="1324153146">6 months ago</time>
+<a href="http://twitter.com/dr_josiah">dr_josiah (Twitter)</a> responded:
+</div>
+<div class="p_comment_body">
+<div class="p_profile_photo">
+<a href="http://twitter.com/dr_josiah"><img alt="8919_798484408741_6015027_45137498_4018035_n_normal" src="8919_798484408741_6015027_45137498_4018035_n_normal.jpg"></a>
+</div>
+<div class="p_comment_text">
+As an alternative to VNC, you should check out FreeNX. There is an open-source version, a free-to-use version from NoMachine, and a paid-for version from NoMachine. In my experience, I've found the free-to-use and paid-for versions of FreeNX to be significantly better than VNC.
+</div>
+</div>
+<ul class="p_action_links">
+</ul>
+
+</article>
+
+<article class="p_like p_response" data-likes_user_id="user-1237436" style="">
+<div class="p_info">
+<span class="p_icon"></span>
+<time pubdate="1324187385">6 months ago</time>
+<a href="http://posterous.com/users/heO3MPJ24Ksye">Frank</a> liked this post.
+</div>
+</article>
+
+<article class="p_like p_response" data-likes_user_id="user-993999" style="">
+<div class="p_info">
+<span class="p_icon"></span>
+<time pubdate="1324212016">6 months ago</time>
+<a href="http://posterous.com/users/1lrY7T0WlRtf">Vitor Balocco</a> liked this post.
+</div>
+</article>
+
+<article class="p_like p_response" data-likes_user_id="user-1176617" style="">
+<div class="p_info">
+<span class="p_icon"></span>
+<time pubdate="1324313988">6 months ago</time>
+<a href="http://posterous.com/users/hdKt3mn2NfcEi">jclem</a> liked this post.
+</div>
+</article>
+
+<article class="p_comment p_response" style="">
+<div class="p_info">
+<span class="p_icon"></span>
+<time pubdate="1324331003">6 months ago</time>
+<a href="http://twitter.com/danmasq">danmasq (Twitter)</a> responded:
+</div>
+<div class="p_comment_body">
+<div class="p_profile_photo">
+<a href="http://twitter.com/danmasq"><img alt="Efiddle_twitter_normal" src="efiddle_twitter_normal.png"></a>
+</div>
+<div class="p_comment_text">
+in your screen section, you should check out byobu. It makes dealing with screen a little more intuitive! <a href="http://manpages.ubuntu.com/manpages/lucid/man1/byobu.1.html" rel="nofollow">http://manpages.ubuntu.com/manpages/lucid/man1/byobu.1.html</a>
+</div>
+</div>
+<ul class="p_action_links">
+</ul>
+
+</article>
+
+<article class="p_comment p_response" style="">
+<div class="p_info">
+<span class="p_icon"></span>
+<time pubdate="1325612064">5 months ago</time>
+ipv6hermit responded:
+</div>
+<div class="p_comment_body">
+<div class="p_profile_photo">
+<img alt="" src="missing-user-35.png">
+</div>
+<div class="p_comment_text">
+I like this post.  I already do everything you do with SSH and screen.  Instead of VNC I use X11 forwarding I find that launching just the app windows I need to my desktop works better than using VNC for the whole desktop.
+</div>
+</div>
+<ul class="p_action_links">
+</ul>
+
+</article>
+
+<article class="p_comment p_response" style="">
+<div class="p_info">
+<span class="p_icon"></span>
+<time pubdate="1326193388">5 months ago</time>
+Harry responded:
+</div>
+<div class="p_comment_body">
+<div class="p_profile_photo">
+<img alt="" src="missing-user-35.png">
+</div>
+<div class="p_comment_text">
+Thanks, that was VERY useful. <p>Please write more on ssh related jugglery if you can, and post to linux reddit. Tia and God bless...</p>
+</div>
+</div>
+<ul class="p_action_links">
+</ul>
+
+</article>
+
+<article class="p_comment p_response" style="">
+<div class="p_info">
+<span class="p_icon"></span>
+<time pubdate="1327065706">5 months ago</time>
+<a href="http://posterous.com/users/Q1vvWuG0Fj">Gorazd Božič</a> responded:
+</div>
+<div class="p_comment_body">
+<div class="p_profile_photo">
+<a href="http://posterous.com/users/Q1vvWuG0Fj"><img alt="Gorazd Božič" src="ikona_thumb.png"></a>
+</div>
+<div class="p_comment_text">
+Control-j is linefeed or \n, right? You might have problems if you choose that as the escape char (haven't tested it).
+</div>
+</div>
+<ul class="p_action_links">
+</ul>
+
+</article>
+
+</div>
+</div>
+</div>
+
+                        <div class="posterous_ojs" data-posterous-new-comment-form="true"></div>
+                        
+                        
+              </aside> 
+        		
+                        
+                    </footer>
+                    
+                    
+                    
+                </div>
+                <footer id="pagination">
+                    
+                </footer>
+            </div><!-- /#post_column -->
+            
+            
+            <aside id="sidebar">
+                
+                <header id="page_header">
+                    
+                    <hgroup>
+                        <h1><a href="http://shebang.brandonmintern.com/" title="#! (shebang)" rel="index">#! (shebang)</a></h1>
+                        
+                        <h2>Linux, Unix, and Programming</h2>
+                        
+                    </hgroup>
+                    
+                </header>
+                
+                <section id="profile">
+                    <h1>
+                        <a href="http://posterous.com/users/hgAnCLzq95fGW" title="Brandon Mintern's profile" class="profile_image">
+                            <img src="missing-user-75.png" alt="Brandon Mintern">
+                            <span class="stamp"></span>
+                        </a>
+                    </h1>
+                    <a href="http://posterous.com/users/hgAnCLzq95fGW" class="profile-link">Brandon Mintern</a>
+                    <div class="profile small">
+                        <p></p>
+                    </div>
+                    <div class="external"></div>
+                </section>
+                
+                
+              
+                
+                <section id="search">
+                    <form action="http://shebang.brandonmintern.com/tips-for-remote-unix-work-ssh-screen-and-vnc" class="search">
+                        <input name="sort" value="" type="hidden">
+                        <input name="search" class="text" id="searchbox" value="" type="text">
+                        <input class="submit" id=" " value="Search" style="display: none;" type="submit">
+                    </form>
+                    <div class="posterous_ojs" data-posterous-search-box="true" data-posterous-search-button-id="searchbox_button" data-posterous-search-box-id="searchbox"></div>
+                </section>
+                
+              
+          
+                
+                
+                
+                <section id="subscriptions">
+                    
+                    <div id="psubs1_content" style="display: none;">
+                        <h1>Follow</h1>
+                        <a href="http://shebang.brandonmintern.com/members/add_subscription/?site=3904512" id="psubs1_action">Follow this Space →</a>
+                    </div>
+                    
+                    
+                    
+                    <div id="psubs2_content" style="display: none;">
+                        <a href="http://shebang.brandonmintern.com/members/edit_member/?site=3904512" id="psubs2_action">Change Subscription</a>
+                    </div>
+                    
+                    
+                    
+                    <div id="psubs3_content" style="display: none;">
+                        <b>You're a contributor to this Space</b> (<a href="http://shebang.brandonmintern.com/members/edit_member/?site=3904512" id="psubs3_action">Edit</a>)
+                    </div>
+                    
+                    
+                    
+                    <div id="psubs4_content" style="display: none;">
+                        <b>You own this Space</b> (<a href="http://shebang.brandonmintern.com/members/edit_member/?site=3904512" id="psubs4_action">Edit</a>)
+                    </div>
+                    
+                    
+                    
+                    <div id="psubs5_content" style="display: none;">
+                        <h1>Follow</h1>
+                        <a href="http://shebang.brandonmintern.com/members/edit_member/?site=3904512" id="psubs5_action">Get Updates</a>
+                    </div>
+                    
+                    
+                    <div id="loading_div_CeJuhkpxmi" style="display: none;">
+                    <img src="ajax-loader.gif" alt="Loading...">            
+                    </div>
+                </section>
+                
+              <div class="posterous_ojs" data-posterous-subscribe2-link="true" data-posterous-subscription-unsubscribed-action="psubs1_action" data-posterous-subscription-unsubscribed-content="psubs1_content" data-posterous-subscription-subscribed-action="psubs2_action" data-posterous-subscription-subscribed-content="psubs2_content" data-posterous-subscription-contributor-action="psubs3_action" data-posterous-subscription-contributor-content="psubs3_content" data-posterous-subscription-admin-action="psubs4_action" data-posterous-subscription-admin-content="psubs4_content" data-posterous-subscription-non-user-action="psubs5_action" data-posterous-subscription-non-user-content="psubs5_content" data-posterous-loading="loading_div_CeJuhkpxmi" data-posterous-site-id="3904512"></div>
+                
+                
+            </aside>
+            
+            <div class="clear"></div>
+            
+        </div><!-- /.container -->
+    
+
+  
+      
+    	
+    
+  
+  <!-- Quantcast Tag --> 
+  
+  
+  
+  <!-- End Quantcast tag -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="posterous_ojs" data-posterous-twitter-oauth="true" data-posterous-post-ids="%7B%2287071220%22%3A%22http%3A%2F%2Fshebang.brandonmintern.com%2Ftips-for-remote-unix-work-ssh-screen-and-vnc%22%7D" data-posterous-redirect-url="http://posterous.com/oauth/init_oauth_and_redirect/?ssod=shebang.brandonmintern.com&amp;oauth_provider_type="></div>
+
+<iframe src="index_5.html" style="height: 1px; width: 1px; display: none;"></iframe>
+
+      
+    
+
+
+</body>
+</html>

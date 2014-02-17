@@ -1,0 +1,1137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" dir="ltr" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		
+				<meta name="keywords" content="Ubuntu Hacks/Virtualization and Emulation,Ubuntu Hacks/Virtualization and Emulation,Ubuntu Hacks,Ubuntu Hacks/Administration,Ubuntu Hacks/Colophon,Ubuntu Hacks/Credits,Ubuntu Hacks/Getting Started,Ubuntu Hacks/Mobile Ubuntu,Ubuntu Hacks/Multimedia,Ubuntu Hacks/Package Management,Ubuntu Hacks/Preface">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="search" type="application/opensearchdescription+xml" href="http://commons.oreilly.com/wiki/opensearch_desc.php" title="WikiContent (English)">
+		<title>Ubuntu Hacks/Virtualization and Emulation - WikiContent</title>
+		
+		
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/wiki/skins/monobook/IE50Fixes.css?97";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/wiki/skins/monobook/IE55Fixes.css?97";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/wiki/skins/monobook/IE60Fixes.css?97";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/wiki/skins/monobook/IE70Fixes.css?97";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/wiki/skins/common/IEFixes.js?97"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		
+                
+		
+		
+		
+		<!-- Head Scripts -->
+		
+	
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ns-0 ltr page-Ubuntu_Hacks_Virtualization_and_Emulation">
+	<div id="globalWrapper">
+		<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 class="firstHeading">Ubuntu Hacks/Virtualization and Emulation</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From WikiContent</h3>
+			<div id="contentSub"><span class="subpages">&lt; <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks" title="Ubuntu Hacks">Ubuntu Hacks</a></span></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			<table class="booktoc">
+<tbody><tr>
+<th> <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks" title="Ubuntu Hacks">Ubuntu Hacks</a>
+</th></tr>
+<tr>
+<td>
+<ul><li><a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Credits" title="Ubuntu Hacks/Credits">Credits</a>
+</li><li><a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Preface" title="Ubuntu Hacks/Preface">Preface</a>
+</li><li><a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Getting_Started" title="Ubuntu Hacks/Getting Started">Chapter 1: Getting Started</a>
+</li><li><a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/The_Linux_Desktop" title="Ubuntu Hacks/The Linux Desktop">Chapter 2: The Linux Desktop</a>
+</li><li><a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Multimedia" title="Ubuntu Hacks/Multimedia">Chapter 3: Multimedia</a>
+</li><li><a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Mobile_Ubuntu" title="Ubuntu Hacks/Mobile Ubuntu">Chapter 4: Mobile Ubuntu</a>
+</li><li><a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/X11" title="Ubuntu Hacks/X11">Chapter 5: X11</a>
+</li><li><a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Package_Management" title="Ubuntu Hacks/Package Management">Chapter 6: Package Management</a>
+</li><li><a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Security" title="Ubuntu Hacks/Security">Chapter 7: Security</a>
+</li><li><a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Administration" title="Ubuntu Hacks/Administration">Chapter 8: Administration</a>
+</li><li><strong class="selflink">Chapter 9: Virtualization and Emulation</strong>
+</li><li><a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Small_Office/Home_Office_Server" title="Ubuntu Hacks/Small Office/Home Office Server">Chapter 10: Small Office/Home Office Server</a>
+</li><li><a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Colophon" title="Ubuntu Hacks/Colophon">Colophon</a>
+</li></ul>
+</td></tr></tbody></table>
+<p>With all the power that today's computers have, why be content to run only one operating system on them? Thanks to modern advances in virtualization technology, you can run multiple operating systems on a single computer at near-native speeds. There are many choices for virtualization on Linux. On the proprietary end, you've got applications such as VMware, and on the open source end, you've got Xen, coLinux, and QEMU (for more information not covered in this chapter, see <i><a href="http://fabrice.bellard.free.fr/qemu/" class="external free" title="http://fabrice.bellard.free.fr/qemu/" rel="nofollow">http://fabrice.bellard.free.fr/qemu/</a></i>).
+</p><p>If you don't need a full-blown virtualization environment, the open source Wine suite may be just what you need: it's a call-level reimplementation of the Windows Application Programming Interfaces (APIs) that allows many Windows programs to run unmodified on Linux. With proprietary enhancements such as Cedega, Wine can even run many games!
+</p>
+<table id="toc" class="toc" summary="Contents"><tbody><tr><td><div id="toctitle"><h2>Contents</h2> <span class="toctoggle">[<a href="javascript:toggleToc()" class="internal" id="togglelink">hide</a>]</span></div>
+<ul>
+<li class="toclevel-1"><a href="#Run_Windows_Applications"><span class="tocnumber">1</span> <span class="toctext">Run Windows Applications</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Install_Wine"><span class="tocnumber">1.1</span> <span class="toctext">Install Wine</span></a></li>
+<li class="toclevel-2"><a href="#Configure_Wine"><span class="tocnumber">1.2</span> <span class="toctext">Configure Wine</span></a></li>
+<li class="toclevel-2"><a href="#Install_a_Windows_Application"><span class="tocnumber">1.3</span> <span class="toctext">Install a Windows Application</span></a></li>
+<li class="toclevel-2"><a href="#Run_Windows_Applications_2"><span class="tocnumber">1.4</span> <span class="toctext">Run Windows Applications</span></a></li>
+<li class="toclevel-2"><a href="#Working_with_Wine"><span class="tocnumber">1.5</span> <span class="toctext">Working with Wine</span></a></li>
+<li class="toclevel-2"><a href="#Running_Other_Windows_Components"><span class="tocnumber">1.6</span> <span class="toctext">Running Other Windows Components</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Play_Windows_Games"><span class="tocnumber">2</span> <span class="toctext">Play Windows Games</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Run_Blasts_from_the_Past"><span class="tocnumber">2.1</span> <span class="toctext">Run Blasts from the Past</span></a></li>
+<li class="toclevel-2"><a href="#Run_Current_Windows_Games_with_Cedega"><span class="tocnumber">2.2</span> <span class="toctext">Run Current Windows Games with Cedega</span></a></li>
+<li class="toclevel-2"><a href="#Run_Google_Earth_with_Wine"><span class="tocnumber">2.3</span> <span class="toctext">Run Google Earth with Wine</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Run_Ubuntu_Inside_Windows"><span class="tocnumber">3</span> <span class="toctext">Run Ubuntu Inside Windows</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Install_coLinux"><span class="tocnumber">3.1</span> <span class="toctext">Install coLinux</span></a></li>
+<li class="toclevel-2"><a href="#Set_Up_the_Debian_Image"><span class="tocnumber">3.2</span> <span class="toctext">Set Up the Debian Image</span></a></li>
+<li class="toclevel-2"><a href="#Install_Ubuntu"><span class="tocnumber">3.3</span> <span class="toctext">Install Ubuntu</span></a></li>
+<li class="toclevel-2"><a href="#Enabling_SSH"><span class="tocnumber">3.4</span> <span class="toctext">Enabling SSH</span></a></li>
+<li class="toclevel-2"><a href="#Running_X11_Applications"><span class="tocnumber">3.5</span> <span class="toctext">Running X11 Applications</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Use_Xen_to_Host_Virtual_Machines"><span class="tocnumber">4</span> <span class="toctext">Use Xen to Host Virtual Machines</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Initial_Host_Installation"><span class="tocnumber">4.1</span> <span class="toctext">Initial Host Installation</span></a></li>
+<li class="toclevel-2"><a href="#Base_Packages_Required_by_Xen"><span class="tocnumber">4.2</span> <span class="toctext">Base Packages Required by Xen</span></a></li>
+<li class="toclevel-2"><a href="#Obtain_Xen3_Binary_Distribution"><span class="tocnumber">4.3</span> <span class="toctext">Obtain Xen3 Binary Distribution</span></a></li>
+<li class="toclevel-2"><a href="#Extract_Binary_Distribution"><span class="tocnumber">4.4</span> <span class="toctext">Extract Binary Distribution</span></a></li>
+<li class="toclevel-2"><a href="#Configure_GRUB_Bootloader"><span class="tocnumber">4.5</span> <span class="toctext">Configure GRUB Bootloader</span></a></li>
+<li class="toclevel-2"><a href="#Xen_Services"><span class="tocnumber">4.6</span> <span class="toctext">Xen Services</span></a></li>
+<li class="toclevel-2"><a href="#Enable_Networking"><span class="tocnumber">4.7</span> <span class="toctext">Enable Networking</span></a></li>
+<li class="toclevel-2"><a href="#Disable_TLS_Libraries"><span class="tocnumber">4.8</span> <span class="toctext">Disable TLS Libraries</span></a></li>
+<li class="toclevel-2"><a href="#Reboot"><span class="tocnumber">4.9</span> <span class="toctext">Reboot</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Create_an_Ubuntu.2FXen_Virtual_Machine"><span class="tocnumber">5</span> <span class="toctext">Create an Ubuntu/Xen Virtual Machine</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Prepare_VM_Filesystems"><span class="tocnumber">5.1</span> <span class="toctext">Prepare VM Filesystems</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Root_filesystem"><span class="tocnumber">5.1.1</span> <span class="toctext">Root filesystem</span></a></li>
+<li class="toclevel-3"><a href="#Swap_filesystem"><span class="tocnumber">5.1.2</span> <span class="toctext">Swap filesystem</span></a></li>
+<li class="toclevel-3"><a href="#Mount_the_root_filesystem_image"><span class="tocnumber">5.1.3</span> <span class="toctext">Mount the root filesystem image</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Install_Ubuntu_into_the_Root_Filesystem"><span class="tocnumber">5.2</span> <span class="toctext">Install Ubuntu into the Root Filesystem</span></a></li>
+<li class="toclevel-2"><a href="#Configure_the_Virtual_Machine"><span class="tocnumber">5.3</span> <span class="toctext">Configure the Virtual Machine</span></a></li>
+<li class="toclevel-2"><a href="#Run_Setup_Within_the_VM_Image"><span class="tocnumber">5.4</span> <span class="toctext">Run Setup Within the VM Image</span></a></li>
+<li class="toclevel-2"><a href="#Get_Ready_to_Crank_Up_the_VM"><span class="tocnumber">5.5</span> <span class="toctext">Get Ready to Crank Up the VM</span></a></li>
+<li class="toclevel-2"><a href="#Configure_the_VM_in_Xen"><span class="tocnumber">5.6</span> <span class="toctext">Configure the VM in Xen</span></a></li>
+<li class="toclevel-2"><a href="#Boot_Your_Virtual_Machine"><span class="tocnumber">5.7</span> <span class="toctext">Boot Your Virtual Machine</span></a></li>
+<li class="toclevel-2"><a href="#Create_Additional_Guests"><span class="tocnumber">5.8</span> <span class="toctext">Create Additional Guests</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Split_Your_Machine.27s_Personality"><span class="tocnumber">6</span> <span class="toctext">Split Your Machine's Personality</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Installing_VMware_Server"><span class="tocnumber">6.1</span> <span class="toctext">Installing VMware Server</span></a></li>
+<li class="toclevel-2"><a href="#Running_VMware_Server"><span class="tocnumber">6.2</span> <span class="toctext">Running VMware Server</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></tbody></table>
+<a name="Run_Windows_Applications"></a><h2> <span class="mw-headline"> Run Windows Applications </span></h2>
+<p><b>If the Windows applications you need to run just happen to be supported by Wine, you won't need to dual-boot or run an emulator. Just run the installers and launch the programs as if they were any other Linux app.</b>
+</p><p>Novell, the company behind the SUSE distribution, recently ran a survey asking people which Windows applications they would most like ported to Linux. Adobe's Photoshop (number 1), Dreamweaver (3rd), and Flash (5th) all ranked very high (you can see the complete poll results here: <i><a href="http://www.novell.com/coolsolutions/feature/16917.html" class="external free" title="http://www.novell.com/coolsolutions/feature/16917.html" rel="nofollow">http://www.novell.com/coolsolutions/feature/16917.html</a></i>). Will Adobe be porting these much-requested apps to Linux soon, in response to the survey results? Probably not. But that doesn't mean you can't run them on Linux.
+</p><p>You can run all three of these applications, along with many more, thanks to Wine, an open source Windows compatibility layer. <i>W</i>ine <i>i</i>s <i>n</i>ot an <i>e</i>mulator (hence the name, in true GNU recursive style), but it does provide an alternative, 100-percent-non-Microsoft implementation of the DLLs that Windows programs use. (Wine can also use actual Windows DLLs as well.) The software has been in development for more than 12 years and just reached beta status in the fall of 2005. But Wine has been in widespread use for quite some time, and it's included in most distributions, including Ubuntu (in the universe repository <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Package_Management#Modify_the_List_of_Package_Repositories" title="Ubuntu Hacks/Package Management">[Hack #60]</a>).
+</p>
+<a name="Install_Wine"></a><h3> <span class="mw-headline"> Install Wine </span></h3>
+<p>The Wine software included with Ubuntu is frequently at least a step behind the current version, so to run the latest version you'll want to edit your <i>/etc/apt/sources.list</i> file and add Wine's own <i>apt</i> repository. You can do so manually, or with the Synaptic Package Manager.
+</p><p>To add the line yourself, open Terminal and enter this command:
+</p>
+<pre>$ <b>sudo nano /etc/apt/sources.list</b>
+            
+</pre>
+<p>After you furnish your password, the <i>nano</i> editor will open <i>sources.list</i>. Enter this line at the end of the file:
+</p>
+<pre>deb http://wine.sourceforge.net/apt binary/
+</pre>
+<p>Save the file (press Ctrl-O), then open Terminal again and run:
+</p>
+<pre>$ <b>sudo apt-get update </b>
+            
+</pre>
+<p>This will update the package cache. Now you can install Wine with the command:
+</p>
+<pre>$ <b>sudo apt-get install wine</b>
+            
+</pre>
+<p>If you prefer to add the Wine repository and install Wine with Synaptic <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Package_Management#Manage_Packages_with_Synaptic" title="Ubuntu Hacks/Package Management">[Hack #55]</a>, click System→Administration→Synaptic Package Manager and select Settings→Repositories. Then click Add, select Custom, and enter <tt>deb</tt> <tt><a href="http://wine.sourceforge.net/apt" class="external free" title="http://wine.sourceforge.net/apt" rel="nofollow">http://wine.sourceforge.net/apt</a></tt> <tt>binary/</tt> in the APT Line field, as shown in <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-1" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-1</a>.
+</p>
+<div id="IDFigure9-1">
+<p><b>Figure 9-1. Adding the Wine repository with Synaptic</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e23856.png" class="image" title="Adding the Wine repository with Synaptic"><img alt="Adding the Wine repository with Synaptic" src="ubuntu_hacks_d1e23856.png" border="0" height="246" width="489"></a>
+</p>
+</div>
+<p>Next, click Add Repository, and then click Reload to update the package cache. Now search for <i>wine</i>, highlight it, right-click the highlighted entry, and select Mark for Installation. Then click Apply, review the proposed changes, and click Apply again. Wine will proceed to download and install the latest version (0.9.10 as of this writing).
+</p><p>Wine is very much a work in progress, and each new version shows improvement, even if it sometimes temporarily breaks compatibility with Windows programs that formerly worked. The newer Wine is, the better it is, unlike its vintage namesake. Overall, each new version tends to be more stable and run more Windows software than its predecessor, so it's definitely worth running the latest version.
+</p>
+<a name="Configure_Wine"></a><h3> <span class="mw-headline"> Configure Wine </span></h3>
+<p>The first thing you will want to do with Wine is configure it. You do so by running the Wine configuration utility, <i>winecfg</i>. In Terminal, enter:
+</p>
+<pre>$ <b>winecfg</b>
+            
+</pre>
+<p>Running this command will create the Wine configuration directory in <i>/home/username/.wine</i>. It will also bring up the tabbed Wine configuration interface shown in <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-2" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-2</a>, which lets you adjust various parameters of your Wine installation, including the version of Windows that you want Wine to behave like. It's generally fine to accept the defaults, but you may find it helpful to add a new Windows drive (via the Drives tab) that explicitly maps to your CD-ROM drive. To do so, click the Add button to create a new Windows D drive, and then click Browse to select the path to your CD-ROM (such as <i>/media/cdrom0/</i>). Finally, click the Apply button to finish.
+</p>
+<div id="IDFigure9-2">
+<p><b>Figure 9-2. The Wine configuration interface</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e23899.png" class="image" title="The Wine configuration interface"><img alt="The Wine configuration interface" src="ubuntu_hacks_d1e23899.png" border="0" height="399" width="316"></a>
+</p>
+</div>
+<p>There's one more thing you should attend to before you begin to install Windows apps, and that is to install Microsoft TrueType fonts <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/X11#Make_Your_Fonts_Pretty" title="Ubuntu Hacks/X11">[Hack #53]</a> (so applications running in Wine can render text correctly) and <i>cabextract</i>, a useful tool for extracting the contents of Microsoft <i>.cab</i> archives. You can install both packages via <i>apt</i> by issuing this command in Terminal:
+</p>
+<pre>$ <b>sudo apt-get install msttcorefonts cabextract</b>
+            
+</pre>
+<p>You can also choose to install with Synaptic by searching for the <i>msttcorefonts</i> package, and then installing it. Synaptic will install the <i>cabextract</i> package along with <i>msttcorefonts</i>.
+</p>
+<a name="Install_a_Windows_Application"></a><h3> <span class="mw-headline"> Install a Windows Application </span></h3>
+<p>OK, now that you have Wine, <tt>msttcorefonts</tt>, and <tt>cabextract</tt> installed, you can install your first Windows application. If you have it, you may as well choose Photoshop, since it is currently the most requested app for porting to Linux (actually, I think the GIMP is more than fine for most web graphics work, but I'll defer to popular opinion here).
+</p>
+<div class="warning">
+<p><b>Warning</b>
+</p><p>Wine won't always run the current version of a Windows application; often, there will be some catching up to do. So, for example, the current version of Photoshop is not likely to work with the current version of Wine (although, at some point in their respective development cycles, it may). Usually, you will run Windows apps that are a generation or two behind. This is what I did with Photoshop. Since I tend to run that application more on OS X, my Windows version (Photoshop 6.0) is older. Photoshop 6 is no slouch in terms of functionality, though, and you can use these instructions to install a more recent version. Photoshop 7 is widely reported to work well, and it's possible you'll be able to get Photoshop CS working, too.
+</p>
+</div>
+<p>Pop the installation CD for your Windows app in your drive. Open Terminal and type the command <tt>wine</tt>, followed by the path to the installer. For example:
+</p>
+<pre>$ <b>wine "/media/cdrom0/Adobe Photoshop 6/Setup.exe"</b>
+            
+</pre>
+<p>That's it. If you're using an application that works with Wine, the installer will launch and install the application into the mock Windows filesystem in your <i>.wine</i> directory, as shown in <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-3" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-3</a>.
+</p>
+<div id="IDFigure9-3">
+<p><b>Figure 9-3. Installing Photoshop on Ubuntu</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e23984.png" class="image" title="Installing Photoshop on Ubuntu"><img alt="Installing Photoshop on Ubuntu" src="ubuntu_hacks_d1e23984.png" border="0" height="400" width="533"></a>
+</p>
+</div>
+<a name="Run_Windows_Applications_2"></a><h3> <span class="mw-headline"> Run Windows Applications </span></h3>
+<p>Now that you've installed a program, you can run it—but you have to find it first. For example, my Photoshop installation is located in the <i>/home/username/.wine/drive_c/Program&nbsp;Files/Adobe/Photoshop&nbsp;6.0/</i> directory. To launch Photoshop, I simply type the following command in Terminal:
+</p>
+<pre>$ <b>wine "c:\\Program Files\\Adobe\\Photoshop 6.0\\Photoshp.exe"</b>
+            
+</pre>
+<p>Photoshop will launch almost instantly (see <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-4" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-4</a>). And this old version runs <i>fast</i>—probably faster than it did/does on Windows. It also runs very well; I have yet to encounter any glitches.
+</p>
+<div class="tip">
+<p><b>Tip</b>
+</p><p>Whenever you have questions as to whether a particular Windows application will work with Wine, you should consult the Wine Application Database at <i><a href="http://appdb.winehq.org/" class="external free" title="http://appdb.winehq.org/" rel="nofollow">http://appdb.winehq.org/</a></i>. Frank's Corner (<i><a href="http://www.frankscorner.org/" class="external free" title="http://www.frankscorner.org/" rel="nofollow">http://www.frankscorner.org/</a></i>) is another good resource for checking whether your application is likely to work.
+</p>
+</div>
+<div id="IDFigure9-4">
+<p><b>Figure 9-4. Photoshop running on Ubuntu</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e24026.png" class="image" title="Photoshop running on Ubuntu"><img alt="Photoshop running on Ubuntu" src="ubuntu_hacks_d1e24026.png" border="0" height="400" width="533"></a>
+</p>
+</div>
+<a name="Working_with_Wine"></a><h3> <span class="mw-headline"> Working with Wine </span></h3>
+<p>When Wine works really well, there's no better way to run a Windows application in a Linux environment. Many people dual-boot, of course, but that is really cumbersome when all you want to do is use a particular application. Other people run Windows itself using emulation software, but that is a less well-integrated solution, more resource-intensive, and generally not as fast. Wine enables Windows apps to run at native speed (at least) and to interact seamlessly with Ubuntu. Photoshop (along with other Windows apps) can open and save files anywhere on your computer, with no special effort required (there's no need for Samba-based file sharing between Ubuntu and your Windows environment, for example). In addition to the mock C drive installed by Wine, there is a Z drive that maps to your Linux filesystem.
+</p><p>Running Wine on your Ubuntu system is very straightforward. You've already seen how to install and then launch Windows applications. Some other basic Wine commands to keep in mind include:
+</p>
+<dl><dt><tt>wine control</tt>
+</dt><dd> Some programs (such as QuickTime) install associated control-panel applets; <tt>wine</tt> <tt>control</tt> will let you access them.
+</dd><dt><tt>winefile</tt>
+</dt><dd> Running the <tt>winefile</tt> command will bring up a graphical interface, shown in <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-5" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-5</a>, that enables you to view your drive configuration and locate files. You can also run programs directly from this graphical environment; simply double-click on an <i>.exe</i>, just as in Windows.
+</dd></dl>
+<div id="IDFigure9-5">
+<p><b>Figure 9-5. Wine File, an Explorer-like graphical environment</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e24083.png" class="image" title="Wine File, an Explorer-like graphical environment"><img alt="Wine File, an Explorer-like graphical environment" src="ubuntu_hacks_d1e24083.png" border="0" height="400" width="533"></a>
+</p>
+</div>
+<dl><dt><tt>uninstaller</tt>
+</dt><dd> The <tt>uninstaller</tt> program, shown in <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-6" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-6</a>, is similar to the Windows Add/Remove Programs control-panel applet. Simply highlight the program you want to remove and click Uninstall. It's that straightforward.
+</dd></dl>
+<div id="IDFigure9-6">
+<p><b>Figure 9-6. Uninstaller gives you an easy way to remove programs</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e24109.png" class="image" title="Uninstaller gives you an easy way to remove programs"><img alt="Uninstaller gives you an easy way to remove programs" src="ubuntu_hacks_d1e24109.png" border="0" height="352" width="640"></a>
+</p>
+</div>
+<p>You can access a complete set of Wine documentation at the Wine HQ site: <i><a href="http://www.winehq.org/site/docs/wineusr-guide/index" class="external free" title="http://www.winehq.org/site/docs/wineusr-guide/index" rel="nofollow">http://www.winehq.org/site/docs/wineusr-guide/index</a></i>.
+</p>
+<a name="Running_Other_Windows_Components"></a><h3> <span class="mw-headline"> Running Other Windows Components </span></h3>
+<p>In addition to various Windows applications, you may find it interesting to run various Windows components as well—notably Internet Explorer, the infamous standards-shy browser that is nevertheless used by over 80 percent of all web surfers. There are a number of ways you can install IE.
+</p><p>The easiest way, by far, is to use one of the utilities that have sprung up around Wine to accomplish this very thing. The three major such utilities are WineTools (<i><a href="http://www.von-thadden.de/Joachim/WineTools/" class="external free" title="http://www.von-thadden.de/Joachim/WineTools/" rel="nofollow">http://www.von-thadden.de/Joachim/WineTools/</a></i>), Sidenet (<i><a href="http://sidenet.ddo.jp/winetips/config.html" class="external free" title="http://sidenet.ddo.jp/winetips/config.html" rel="nofollow">http://sidenet.ddo.jp/winetips/config.html</a></i>), and the awkwardly named IEs 4 Linux (so named because it will let you install IE 6, IE 5.5, and IE 5 all at once, if you so choose). Of the three, I recommend IEs 4 Linux (<i><a href="http://www.tatanka.com.br/ies4linux/" class="external free" title="http://www.tatanka.com.br/ies4linux/" rel="nofollow">http://www.tatanka.com.br/ies4linux/</a></i>). It is the only one that doesn't radically modify your Wine filesystem and that seems to work smoothly with the latest version of Wine.
+</p><p>To install IEs 4 Linux, first download it from here: <i><a href="http://www.tatanka.com.br/" class="external free" title="http://www.tatanka.com.br/" rel="nofollow">http://www.tatanka.com.br/</a></i> <i>ies4linux/en/instructions/</i>. Then open the <i>tar.gz</i> file and run the <i>ies4linux</i> program that's inside. You'll be given a choice of which version(s) of IE to install; I chose IE 6 only. IEs 4 Linux will then proceed to download the version(s) you selected; IE 6 alone is an 80 MB download. The Microsoft browser(s) will be installed in a separate, <i>.ies4linux</i> directory in your home directory; your <i>.wine</i> directory is left untouched.
+</p><p>A nice, if rather bizarre touch: an Internet Explorer icon (customized with Wine glass and shown in <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-7" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-7</a>) is placed on your Ubuntu desktop. You can simply double-click it to launch the security-challenged browser, which defaults, for safety's sake, to an <i>about:blank</i> home page.
+</p>
+<div id="IDFigure9-7">
+<p><b>Figure 9-7. Internet Explorer on the Ubuntu desktop</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e24173.png" class="image" title="Internet Explorer on the Ubuntu desktop"><img alt="Internet Explorer on the Ubuntu desktop" src="ubuntu_hacks_d1e24173.png" border="0" height="222" width="505"></a>
+</p>
+</div>
+<p>Perhaps you don't want an IE icon on your desktop—I certainly didn't. So I removed it and used Ubuntu's Applications Menu Editor to add Internet Explorer and some other Windows apps to the Ubuntu Applications menu. The result is shown in <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-8" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-8</a> (you'll find the Wine glass in <i>/usr/share/icons</i>).
+</p>
+<div id="IDFigure9-8">
+<p><b>Figure 9-8. Adding Windows programs to the Applications menu</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e24185.png" class="image" title="Adding Windows programs to the Applications menu"><img alt="Adding Windows programs to the Applications menu" src="ubuntu_hacks_d1e24185.png" border="0" height="400" width="581"></a>
+</p>
+</div>
+<p>Note that Wine's commercial cousins, CodeWeavers' CrossOver Office <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Multimedia#Buy_Songs_at_the_iTunes_Music_Store" title="Ubuntu Hacks/Multimedia">[Hack #31]</a> (<i><a href="http://www.codeweavers.com/" class="external free" title="http://www.codeweavers.com/" rel="nofollow">http://www.codeweavers.com/</a></i>) and TransGaming's Cedega <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#Play_Windows_Games" title="Ubuntu Hacks/Virtualization and Emulation">[Hack #88]</a> (<i><a href="http://www.transgaming.com/" class="external free" title="http://www.transgaming.com/" rel="nofollow">http://www.transgaming.com/</a></i>), can add the menu items for you.
+</p><p>Thomas Pletcher
+</p>
+<a name="Play_Windows_Games"></a><h2> <span class="mw-headline"> Play Windows Games </span></h2>
+<p><b>Those Windows games don't have to be trapped in that partition you rarely boot into. Instead, you can use Wine or Cedega to play them.</b>
+</p><p>Wine (<i><a href="http://www.winehq.com/" class="external free" title="http://www.winehq.com" rel="nofollow">http://www.winehq.com</a></i>), the open source Windows compatibility layer <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#Run_Windows_Applications" title="Ubuntu Hacks/Virtualization and Emulation">[Hack #87]</a>, is well known for its ability to run many popular Windows applications, and even certain Windows components such as Internet Explorer. Wine can also run some popular Windows games, though gaming is not its primary focus. Still, if a game runs successfully in Wine, then Wine is probably the best way to play it. It is usually a fairly straightforward matter to install and play games in Wine, not to mention the fact that Wine itself is free and open source software.
+</p><p>Still, there are other game-playing solutions for Linux that may often produce better results. That is certainly the case when it comes to classic, DOS-based games. For these, DOSBox (<i><a href="http://dosbox.sourceforge.net/" class="external free" title="http://dosbox.sourceforge.net" rel="nofollow">http://dosbox.sourceforge.net</a></i>) is your best bet. DOSBox is a free and open source x86 and DOS emulator that runs on multiple platforms (including modern versions of Windows and Mac OS X, as well as Linux). It is especially good with older games.
+</p>
+<a name="Run_Blasts_from_the_Past"></a><h3> <span class="mw-headline"> Run Blasts from the Past </span></h3>
+<p>DOSBox is included in Ubuntu's universe repository <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Package_Management#Modify_the_List_of_Package_Repositories" title="Ubuntu Hacks/Package Management">[Hack #60]</a>, and it is generally up-to-date. So you can simply install it by running:
+</p>
+<pre>$ <b>sudo apt-get install dosbox</b>
+            
+</pre>
+<p>or using Synaptic <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Package_Management#Manage_Packages_with_Synaptic" title="Ubuntu Hacks/Package Management">[Hack #55]</a> or Adept <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Package_Management#Manage_Packages_with_Adept" title="Ubuntu Hacks/Package Management">[Hack #56]</a>. In either case, the SDL multimedia library dependencies will also be installed. After you've installed DOSBox, you'll need to create a new directory in your home directory and name it something like <i>dosgames</i>. This is, of course, where you'll install those DOS classics you remember so fondly. Let's download and install a game to use with DOSBox; you'll find almost all the classic DOS games at the Abandonia site (<i><a href="http://www.abandonia.com/" class="external free" title="http://www.abandonia.com" rel="nofollow">http://www.abandonia.com</a></i>).
+</p><p>I chose a true all-time classic, the original Tetris (<i><a href="http://www.abandonia.com/games/en/69/Tetris.htm" class="external free" title="http://www.abandonia.com/games/en/69/Tetris.htm" rel="nofollow">http://www.abandonia.com/games/en/69/Tetris.htm</a></i>), and made a directory for it (<i>dosgames/Tetris</i>). Then I unzipped the Tetris download into the <i>dosgames/Tetris</i> directory. To launch DOSBox, you just type <tt>dosbox</tt> in Terminal.
+</p><p>Doing so brings up the DOSBox shell (shown in <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-9" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-9</a>), where you can enter various DOS commands and launch your games. The DOSBox shell opens in the Z directory by default, so you will need to mount the C directory, which contains your games. You can do so within the DOSBox shell by typing:
+</p>
+<pre>Z:&gt; <b>mount</b> 
+               <b>c</b> 
+               <b>/home</b>
+               
+<b>                  /username/dosgames</b>
+               
+            
+</pre>
+<p>where <tt><i>username</i></tt> is your username and <tt><i>dosgames</i></tt> is whatever you named the directory that contains your DOSBox games. After you've mounted the C directory, you can switch to it simply by typing <tt>c:</tt> within the shell.
+</p>
+<div id="IDFigure9-9">
+<p><b>Figure 9-9. The DOSBox shell</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e24334.png" class="image" title="The DOSBox shell"><img alt="The DOSBox shell" src="ubuntu_hacks_d1e24334.png" border="0" height="400" width="607"></a>
+</p>
+</div>
+<p>Now that you're in the C directory, type <tt>dir</tt> to have a look at its contents. (See the DOSBox Wiki at <i><a href="http://dosbox.sourceforge.net/wiki/index.php?page=DOSBoxWiki" class="external free" title="http://dosbox.sourceforge.net/wiki/index.php?page=DOSBoxWiki" rel="nofollow">http://dosbox.sourceforge.net/wiki/index.php?page=DOSBoxWiki</a></i> for a DOS command reference and other useful information.) If you've installed Tetris, you should see a line like this:
+</p>
+<pre>TETRIS   &lt;DIR&gt;   15-03-2006   14:14
+</pre>
+<p>which simply tells you that <i>TETRIS</i> is a directory, and gives you the time and date of its installation. Inside the <i>TETRIS</i> directory (change to it by typing <tt>cd</tt> <tt>tetris</tt>, and then look inside with <tt>dir</tt>), you'll see one file: <i>Tetris.com</i>. (DOS executable files have one of three extensions—<i>.exe</i>, <i>.com</i>, or <i>.bat</i>.) You can launch the game by typing <tt>tetris.com</tt>. (You can also launch the game by typing <tt>TETRIS.COM</tt>—don't worry about case sensitivity.) <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-10" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-10</a> shows the game in action.
+</p>
+<div id="IDFigure9-10">
+<p><b>Figure 9-10. Playing the original Tetris, with DOSBox</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e24395.png" class="image" title="Playing the original Tetris, with DOSBox"><img alt="Playing the original Tetris, with DOSBox" src="ubuntu_hacks_d1e24395.png" border="0" height="400" width="607"></a>
+</p>
+</div>
+<p>There are a few basic commands you can access if you need:
+</p>
+<ul><li> Ctrl-F7 decreases frameskip.
+</li><li> Ctrl-F8 increases frameskip.
+</li><li> Ctrl-F11 slows down the game.
+</li><li> Ctrl-F12 speeds up the game.
+</li></ul>
+<p>When you've finished your game, type <tt>z:</tt> at the prompt and press Enter. This takes you back to the <tt>Z:&gt;</tt> prompt, where you can type <tt>exit</tt> to quit the DOSBox shell.
+</p><p>You're not limited to antique classics like Tetris when you use DOSBox; many more graphically advanced games are available as well. Abandonia, in addition to its very wide selection of games, is also valuable for its compatibility ratings; you can see at a glance whether an older game is compatible with DOSBox (most are). And many collections of DOS games are available on CD-ROM, including classic role-playing games such as Wizardry and Might and Magic, as well as classic text adventures from Infocom. Some of these collections are easy to find in the $9.99 bin at your local computer store. Others are a bit harder to find, so you might have to check eBay.
+</p>
+<a name="Run_Current_Windows_Games_with_Cedega"></a><h3> <span class="mw-headline"> Run Current Windows Games with Cedega </span></h3>
+<p>Cedega (<i><a href="http://www.transgaming.com/" class="external free" title="http://www.transgaming.com" rel="nofollow">http://www.transgaming.com</a></i>) is a commercial version of Wine—commercial to a fault, some would say. Cedega, formerly known as WineX, is basically a fork of Wine that has gone proprietary. This has generated some resistance among free software fans, and you won't find Cedega in the Ubuntu repositories. But if you're a gamer, you'll want Cedega anyway; it's generally regarded as the best way to run recent Windows titles on Linux.
+</p><p>Cedega costs $5 per month, and you have to pay the first three months up front. However, there is a fully functional, two-week trial version available. I recommend you start with that; if you like it, you can convert to the paid version from the trial.
+</p><p>You can download the Cedega Time Demo from <i><a href="http://www.transgaming.com/products_linux.php" class="external free" title="http://www.transgaming.com/products_linux.php" rel="nofollow">http://www.transgaming.com/products_linux.php</a></i>. You'll find the download link near the bottom of the page, and you'll find system requirements and installation information at <i><a href="http://downloads.transgaming.com/files/timedemo_howto.html" class="external free" title="http://downloads.transgaming.com/files/timedemo_howto.html" rel="nofollow">http://downloads.transgaming.com/files/timedemo_howto.html</a></i>. Pay particular attention to the video-card requirements: Cedega won't be worth your subscription cost if your system isn't up to handling current games. NVIDIA GeForce or ATI Radeon class cards are pretty much the minimum requirement; pixel shaders are only available on NVIDIA FX class cards and above. ATI Radeon 8500 or better cards will also work, but only with proprietary ATI drivers. Intel and other cards may be able to drive some games, but probably not most.
+</p><p>To install the Cedega Time Demo, run the installation script with this command:
+</p>
+<pre>$ <b>sh</b> 
+               
+<b>                  /PATH_TO_INSTALLER/</b>
+               
+               <b>cedega_timedemo_installer</b>
+            
+</pre>
+<p>Note that the preceding command will install the Time Demo in your user directory. If you'd prefer a system-wide installation, then run the preceding command as <i>root</i>.
+</p><p>The installer will check for updates and then ask whether you want to install the Microsoft Core Fonts and the MozControl package. You must agree to the licenses for each before they are downloaded as part of the install.
+</p><p>The TransGaming people will email you a registration key, which you'll need to enter during the process of installing Cedega. <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-11" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-11</a> shows the Cedega registration process.
+</p>
+<div id="IDFigure9-11">
+<p><b>Figure 9-11. The Cedega demo must be registered during installation</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e24503.png" class="image" title="The Cedega demo must be registered during installation"><img alt="The Cedega demo must be registered during installation" src="ubuntu_hacks_d1e24503.png" border="0" height="400" width="350"></a>
+</p>
+</div>
+<p>Finally, before you play your first game with Cedega, a wizard will walk you through tests of various facets of your system. If your computer can't pass the OpenGL Direct Rendering and 3D Acceleration tests, in particular, Cedega is not going to run many games.
+</p><p>After installation, you can launch the Cedega Time Demo by entering:
+</p>
+<pre>$ <b>~/cedega_timedemo</b>
+            
+</pre>
+<p>in a Terminal. This brings up Cedega's graphical interface (see <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-12" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-12</a>).
+</p>
+<div id="IDFigure9-12">
+<p><b>Figure 9-12. The Cedega interface</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e24522.png" class="image" title="The Cedega interface"><img alt="The Cedega interface" src="ubuntu_hacks_d1e24522.png" border="0" height="400" width="515"></a>
+</p>
+</div>
+<p>In Cedega, almost everything can be done via the GUI. There are command-line options too, though. You can read about these options and other Cedega usage tips on the Cedega How-To Guide page at <i><a href="http://downloads.transgaming.com/files/Cedega-How-To-5.0.0-2.html" class="external free" title="http://downloads.transgaming.com/files/Cedega-How-To-5.0.0-2.html" rel="nofollow">http://downloads.transgaming.com/files/Cedega-How-To-5.0.0-2.html</a></i>. Note that the Cedega Time Demo is actually the same as the full subscription version, currently 5.1.
+</p><p>To install a game with Cedega, just click the Install button and then browse to and run the installer. You can download games from a wide variety of sources (e.g., Download.com), and you can even mix and match the original Windows <i>.pak</i> files from CDs with open source game binaries for games like Quake I, II, or III. You can also install demos to try a game before installing the full version (see <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-13" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-13</a>), but note that there can often be significant differences between the demo and the full game; both may not run. TransGaming has an extensive games database (<i><a href="http://transgaming.org/gamesdb/" class="external free" title="http://transgaming.org/gamesdb/" rel="nofollow">http://transgaming.org/gamesdb/</a></i>) you can consult.
+</p>
+<div id="IDFigure9-13">
+<p><b>Figure 9-13. Installing the Quake III demo</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e24548.png" class="image" title="Installing the Quake III demo"><img alt="Installing the Quake III demo" src="ubuntu_hacks_d1e24548.png" border="0" height="400" width="533"></a>
+</p>
+</div>
+<p>As noted earlier, you'll want the best graphics setup possible to take maximum advantage of Cedega and today's Windows titles. But Cedega (and Wine as well) can run some games even on underpowered machines—a title such as Delta Force 2 being a case in point (see <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-14" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-14</a>).
+</p>
+<div id="IDFigure9-14">
+<p><b>Figure 9-14. Running Delta Force 2</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e24557.png" class="image" title="Running Delta Force 2"><img alt="Running Delta Force 2" src="ubuntu_hacks_d1e24557.png" border="0" height="400" width="511"></a>
+</p>
+</div>
+<p>Cedega, in spite of its licensing and cost issues, is regarded by many as the best way to run current Windows games on Linux. For hardcore gamers, that alone is enough to recommend it. Just be sure your system is suitably equipped, and also make sure you have the time and inclination to tweak your system to get the most out of Cedega, and today's games. Sometimes a game will run "out of the box," but sometimes it won't. For many gamers, getting such games to work is part of the fun.
+</p>
+<a name="Run_Google_Earth_with_Wine"></a><h3> <span class="mw-headline"> Run Google Earth with Wine </span></h3>
+<p>Modern games aren't the only visually advanced Windows applications that can be challenging to run on Linux. Because it relies on DirectX and OpenGL, a sophisticated application like Google Earth poses similar issues, and there are similar rewards for those who can get it to run.
+</p><p>A HOWTO for Gentoo users for installing Google Earth with Wine was published at <i><a href="http://gentoo-wiki.com/HOWTO_Install_GoogleEarth_with_wine" class="external free" title="http://gentoo-wiki.com/HOWTO_Install_GoogleEarth_with_wine" rel="nofollow">http://gentoo-wiki.com/HOWTO_Install_GoogleEarth_with_wine</a></i>, and I was able to adapt these instructions for an Ubuntu PC. Your mileage may vary: chances are some additional tweaking will be required, depending on your computer's exact configuration. But you can use the following instructions as a starting point, and, if you're lucky, they'll be all that is needed. First, of course, you must install Wine <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#Run_Windows_Applications" title="Ubuntu Hacks/Virtualization and Emulation">[Hack #87]</a>.
+</p><p>Next, you need to install the Microsoft DCOM98 (Distributed Component Object Model for Windows 98). First, run <i>winecfg</i> and set the Windows version to Windows 98. Then, you can download DCOM98 from here: <i>http://</i> <i>download.microsoft.com/download/d/1/3/d13cd456-f0cf-4fb2-a17f-20afc79f8a51/</i> <i>DCOM98.EXE</i> (or just search for the link on Google; it's probably faster!). Now, install DCOM98 with a <tt>WINEDLLOVERRIDE</tt>, specifically:
+</p>
+<pre>$ <b>WINEDLLOVERRIDES="ole32=n" wine DCOM98.EXE</b>
+            
+</pre>
+<p>After you have DCOM98 installed, download the <i>psapi.dll</i> from <i><a href="http://www.dll-files.com/dllindex/pop.php?psapi" class="external free" title="http://www.dll-files.com/dllindex/pop.php?psapi" rel="nofollow">http://www.dll-files.com/dllindex/pop.php?psapi</a></i> and place the DLL in your <i>~/.wine/drive_c/windows/system32</i> directory.
+</p>
+<div class="warning">
+<p><b>Warning</b>
+</p><p>Downloading these DLLs from untrusted sources can be quite dangerous, since you have no way of knowing that they have not been compromised (for example, they could be harboring a Trojan horse). The safest option is to copy them over from a working Windows system that has recently been checked for spyware, viruses, and other malware.
+</p>
+</div>
+<p>Next, download Google Earth from <i><a href="http://earth.google.com/" class="external free" title="http://earth.google.com" rel="nofollow">http://earth.google.com</a></i>. Before you do so, though, run <i>winecfg</i> again and set the Windows version to Windows XP. Also, before you install Google Earth, make sure you download the <i>usp10.dll</i> (Google for the download location); place this in the <i>~/.wine/drive_c/windows/system32</i> directory as well.
+</p><p>Now, install Google Earth like so:
+</p>
+<pre>$ <b>WINEDLLOVERRIDES="ole32,oleaut32,rpcrt4=n" wine GoogleEarth.exe</b>
+            
+</pre>
+<p>After you've managed to install Google Earth, you reach the moment of truth: it's time to run it. Here's the command I used:
+</p>
+<pre>$ <b>WINEDLLOVERRIDES="ole32,usp10,msvcrt=n" \\</b>
+               <b>  wine "c:\\Program Files\\Google\\Google Earth\\GoogleEarth.exe"</b>
+            
+</pre>
+<p>This <i>should</i> work (see <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-15" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-15</a>). However, it might not work on <i>your</i> system, and therein lies the challenge. (If you do run into trouble getting it to work, be sure to check the HOWTO mentioned earlier in this section.) Getting Google Earth to run on Ubuntu or any Linux system is a worthy hack, and tools like Wine (along with DOSBox and Cedega, for vintage and state-of-the-art games) make it possible.
+</p><p>Thomas Pletcher
+</p>
+<div id="IDFigure9-15">
+<p><b>Figure 9-15. Google Earth launching via Wine</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e24692.png" class="image" title="Google Earth launching via Wine"><img alt="Google Earth launching via Wine" src="ubuntu_hacks_d1e24692.png" border="0" height="400" width="533"></a>
+</p>
+</div>
+<a name="Run_Ubuntu_Inside_Windows"></a><h2> <span class="mw-headline"> Run Ubuntu Inside Windows </span></h2>
+<p><b>If you want to avoid the confines of the emulator sandbox, give coLinux a whirl and run Ubuntu as a cooperative process alongside Windows.</b>
+</p><p>coLinux (Cooperative Linux), available from <i><a href="http://www.colinux.org/" class="external free" title="http://www.colinux.org/" rel="nofollow">http://www.colinux.org/</a></i>, takes a unique approach to solving the same problems that emulators do. Instead of providing a completely enclosed sandbox like Virtual PC or VMware, it's a port of the Linux kernel that lets you run Linux alongside Windows. This means that you don't get a fully emulated and/or virtualized PC environment. But you do get enough to launch a Linux distribution in console mode with networking support, and from there you can use <i>ssh</i> to tunnel into the coLinux system and run applications on your Windows X11 server. You can get a great, free X11 setup with Cygwin (<i><a href="http://www.cygwin.com/" class="external free" title="http://www.cygwin.com" rel="nofollow">http://www.cygwin.com</a></i>), a Windows port of many Linux tools and applications. With the combination of coLinux and Cygwin, you can get Ubuntu running alongside Windows, and without the overhead and complexity of other offerings, it runs quite fast.
+</p><p>To get Ubuntu up and running with coLinux, you'll first need to install coLinux itself and choose the minimal Debian disk image that comes along with it. With some <i>apt-get</i> trickery, you'll be able to turn that Debian installation into an Ubuntu system.
+</p>
+<a name="Install_coLinux"></a><h3> <span class="mw-headline"> Install coLinux </span></h3>
+<p>Download the latest installer from the coLinux web site, and run it under Windows. If you don't have WinPcap (<i><a href="http://winpcap.mirror.ethereal.com/install/default.htm" class="external free" title="http://winpcap.mirror.ethereal.com/install/default.htm" rel="nofollow">http://winpcap.mirror.ethereal.com/install/default.htm</a></i>) installed, you should download and install it (don't worry, the coLinux installer will remind you about this, too).
+</p><p>When you run the installer, it will try to install coLinux into <i>C:\\Program&nbsp;Files\\coLinux</i>. You should change this to <i>C:\\coLinux</i>, because the default configuration files expect to find it there. Plus, paths without spaces make everyone happier.
+</p><p>When you're prompted to choose a Linux distribution, select the Debian installer. This will download a small compressed file that you'll later expand to about 1 GB. Sometime during the install, you'll get a Windows Logo compatibility-testing error message about the TAP-Win32 adapter, which is necessary if you want to use networking, so you'll need to click Continue Anyway and let Windows install it.
+</p><p>When installation is finished, you'll be offered the opportunity to look at the <i>README</i> file. I know you would normally never do this, but with software that's this complicated, I think you should.
+</p>
+<a name="Set_Up_the_Debian_Image"></a><h3> <span class="mw-headline"> Set Up the Debian Image </span></h3>
+<p>Now that coLinux is installed, there are a few more steps to get it configured. By now, I hope you've installed Cygwin, since you'll need to use some of the utilities from it to get things set up nicely. If not, go install it now and, when you're ready, open a Windows command prompt, then <tt>cd</tt> to the <i>C:\\coLinux</i> directory. You'll need to expand the filesystem image you downloaded. It's probably compressed with <i>bzip</i>, so you should use the <i>bunzip2</i> utility from Cygwin to decompress it:
+</p>
+<pre>C:\\coLinux&gt;<b>\\cygwin\\bin\\bunzip2 Debian-3.0r2.ext3-mit-backports.1gb.bz2</b>
+            
+</pre>
+<div class="tip">
+<p><b>Tip</b>
+</p><p>Consider backing up this file before you unzip it, just in case you make a horrible error while you are hacking it and want to start out with a fresh image.
+</p>
+</div>
+<p>Next, you'll need to create a swapfile. Cygwin's <i>dd</i> is fine for this purpose. Windows has a utility called <i>fsutil</i> that can also create it, so either of these commands will create a 512 MB swapfile:
+</p>
+<pre>&gt; <b>fsutil file createnew swap_device 536870912</b>
+&gt; <b>c:\\cygwin\\bin\\dd if=/dev/zero of=swap_device bs=1M count=512</b>
+            
+</pre>
+<p>Now you need to work on the configuration file. Copy <i>default.colinux.xml</i> to <i>colinux.xml</i> and open <i>colinux.xml</i> in your favorite text editor.
+</p><p>Edit this file and make sure the paths to your filesystem image (default is <i>root_fs</i>) and swap device (default is <i>swap_device</i>) are correct. Bump up your memory size to whatever you feel comfortable setting aside (256 MB is good, assuming you have more than 512 MB of memory and don't plan to do something memory-intensive while your coLinux system is running).
+</p><p>Now it's time to get the network connection set up. Go to Control Panel→Network Connections and locate the TAP-Win32 adapter, highlighted in <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-16" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-16</a>. Change its name if you'd like (the default will be something like "Local Area Connection 5"), and add its name to the network entry in <i>colinux.xml</i>.
+</p>
+<div id="IDFigure9-16">
+<p><b>Figure 9-16. Finding the TAP adapter in Windows</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e24894.png" class="image" title="Finding the TAP adapter in Windows"><img alt="Finding the TAP adapter in Windows" src="ubuntu_hacks_d1e24894.png" border="0" height="400" width="447"></a>
+</p>
+</div>
+<p>Now you need to share your Internet connection. Locate your Internet connection in the Network Connections window, right-click on it, and select Properties. Go to the Advanced tab, click "Allow other network users to connect through this computer's Internet connection," and select the TAP adapter in the "Home networking connection" drop-down menu, as shown in <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-17" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-17</a>.
+</p>
+<div class="tip">
+<p><b>Tip</b>
+</p><p>In Windows 2000, you will need to first boot up coLinux; then select your Local Area Connection, select the Properties tab, and choose "Enable Internet Connection Sharing for this Connection." This is because Windows 2000 won't let you enable sharing unless the Tap interface is live at the time.
+</p>
+</div>
+<div id="IDFigure9-17">
+<p><b>Figure 9-17. Sharing your Internet connection</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e24907.png" class="image" title="Sharing your Internet connection"><img alt="Sharing your Internet connection" src="ubuntu_hacks_d1e24907.png" border="0" height="400" width="331"></a>
+</p>
+</div>
+<p>Next, return to the Command Prompt and start colinux as a standalone process. You can run it as a daemon, but it's easier to debug this way. The <tt>-t NT</tt> option uses the Windows command prompt as the console, for easier cutting and pasting, and the <tt>-c</tt> option specifies the configuration filename:
+</p>
+<pre>C:\\coLinux&gt;<b>colinux-daemon.exe -t NT -c colinux.xml</b>
+Cooperative Linux Daemon, 0.6.3
+Compiled on Sun Feb  5 20:25:03 2006
+
+Linux version 2.6.11-co-0.6.3 (george@CoDebianDevel) (gcc version
+3.4.4 20050314
+ (prerelease) (Debian 3.4.3-13)) #1 Sun 384MB LOWMEM available.
+ initrd enabled: start: 0xd7e10000  size: 0x001ef78a)
+ On node 0 totalpages: 98304
+</pre>
+<p>You'll see the usual messages scroll by until you get a login prompt. Log in as <i>root</i>, with the password <tt>root</tt>. At this point, networking won't be working, since there are some hardcoded (and incorrect) values in <i>/etc/network/interfaces</i>. Run the command <tt>pump</tt> <tt>-i</tt> <tt>eth0</tt> and check the output of <tt>ifconfig</tt> to see if you got an IP address from Windows connection sharing. If so, you can edit (you may want to do an <tt>apt-get</tt> <tt>update</tt> and then <tt>apt-get</tt> <tt>install vim</tt> or <tt>apt-get</tt> <tt>install</tt> <tt>emacs</tt>) <i>/etc/network/interfaces</i> and replace:
+</p>
+<pre>iface eth0 inet static
+ address 192.168.254.205
+ netmask 255.255.255.0
+ gateway 192.168.254.1
+</pre>
+<p>with:
+</p>
+<pre>iface eth0 inet dhcp
+</pre>
+<div class="tip">
+<p><b>Tip</b>
+</p><p>If you want the same address each time, you should instead replace 192.168.254.205 with the address you got from <i>pump</i>. As long as you're not running multiple coLinux instances, you'll never need to worry about IP address collisions. If you are running multiple instances, you can always choose IP addresses in the 192.168.0.0/24 that don't conflict.
+</p>
+</div>
+<p>At this point, you can issue the command <tt>halt</tt> inside of the coLinux distribution to shut down, start up coLinux again, and verify that networking is configured correctly on boot. Now you're ready to install Ubuntu.
+</p>
+<div class="warning">
+<p><b>Warning</b>
+</p><p>If your real network uses the same address range as that used by Windows (192.268.0.0/24), you'll have problems. If this happens, you'll need to change your physical network to use a different range of addresses.
+</p>
+</div>
+<a name="Install_Ubuntu"></a><h3> <span class="mw-headline"> Install Ubuntu </span></h3>
+<p>It's pretty easy to turn Debian into Ubuntu, but for the smoothest transition, you should make sure you've got the latest and greatest Debian system, so do an <tt>apt-get update; apt-get upgrade</tt>. You also need to update a few things to make sure your system has the necessary versions to install Ubuntu. This should do the trick:
+</p>
+<pre>$ <b>sudo apt-get install sed locales</b>
+            
+</pre>
+<div class="tip">
+<p><b>Tip</b>
+</p><p>For another (not quite as quick-and-dirty) approach to converting Debian to Ubuntu, see <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Package_Management#Convert_Debian_to_Ubuntu" title="Ubuntu Hacks/Package Management">"Convert Debian to Ubuntu" [Hack #66]</a>.
+</p>
+</div>
+<p>Next, edit <i>/etc/apt/sources.list</i>, delete everything in there, and insert the following lines:
+</p>
+<pre>deb http://archive.ubuntu.com/ubuntu dapper main restricted 
+deb-src http://archive.ubuntu.com/ubuntu dapper main restricted
+
+deb http://archive.ubuntu.com/ubuntu dapper-updates main restricted
+deb-src http://archive.ubuntu.com/ubuntu dapper-updates main restricted 
+
+deb http://security.ubuntu.com/ubuntu dapper-security main restricted 
+deb-src http://security.ubuntu.com/ubuntu dapper-security main restricted
+</pre>
+<p>Now, it should theoretically be smooth sailing from here, but it probably won't be. To kick off the update, run <tt>apt-get</tt> <tt>update</tt> and then <tt>apt-get</tt> <tt>dist-upgrade</tt>.
+</p>
+<div class="tip">
+<p><b>Tip</b>
+</p><p>If you see a message about configuring LILO, you can ignore it. coLinux doesn't use it.
+</p>
+</div>
+<p>During the upgrade, you will almost certainly get this error:
+</p>
+<pre>E: This installation run will require temporarily removing the
+essential package e2fsprogs due to a Conflicts/Pre-Depends loop.
+This is often bad, but if you re ally want to do it, activate the
+APT::Force-LoopBreak option.  
+E: Internal Error, Could not early remove e2fsprogs
+</pre>
+<p>If so, add <tt>-o</tt> <tt>"APT::Force-Loopbreak=true"</tt> to the <tt>apt-get</tt> <tt>dist-upgrade</tt> command line, as in:
+</p>
+<pre>$ <b>sudo apt-get -o "APT::Force-Loopbreak=true" dist-upgrade</b>
+            
+</pre>
+<p>If you continue to get errors, run this command to clear things up:
+</p>
+<pre>$ <b>sudo apt-get -o "APT::Force-Loopbreak=true" -f install</b>
+            
+</pre>
+<p>Then, run the <tt>apt-get</tt> <tt>dist-upgrade</tt> command again, and it should run to completion.
+</p><p>When it's done, you must <tt>apt-get</tt> <tt>install</tt> <tt>ubuntu-keyring</tt> so that <i>apt-get</i>can verify package signatures. Now you can start <i>apt-get</i>ting what you need. Pick out some high-level applications, since this will pull in a lot of other dependencies. I'd suggest something like:
+</p>
+<pre>$ <b>sudo apt-get install firefox openoffice.org2 gnome-games</b>
+            
+</pre>
+<p>Do what you can to prevent Ubuntu from installing an X server, since that can only complicate things.
+</p>
+<a name="Enabling_SSH"></a><h3> <span class="mw-headline"> Enabling SSH </span></h3>
+<p>If you'd rather not work in the coLinux console, you can SSH in to your coLinux system. First, run <tt>apt-get</tt> <tt>install</tt> <tt>ssh</tt>, then use <tt>ifconfig</tt> <tt>eth0</tt> to determine your IP address, which will be on the private network that Windows assigned for Internet connection sharing, such as 192.168.0.143. Fire up PuTTY or openssh (available in Cygwin) to connect to that IP address. If you're using Cygwin, you may need to set your <tt>TERM</tt> to something other than <tt>cygwin</tt>, such as <tt>ansi</tt>:
+</p>
+<pre>bjepson@thlon ~
+$ <b>ssh root@192.168.0.16</b>
+Password:
+Last login: Fri Mar  3 23:00:31 2006 from thlon.mshome.net
+Linux colinux 2.6.10-co-0.6.2 #5 Sat Feb 5 10:19:16 IST 2005 i686 GNU/Linux
+
+The programs included with the Ubuntu system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Ubuntu comes with ABSOLUTELY NO WARRANTY, to the extent permitted by
+applicable law.
+colinux:~#
+</pre>
+<a name="Running_X11_Applications"></a><h3> <span class="mw-headline"> Running X11 Applications </span></h3>
+<p>To run any X11 applications, you'll need to <tt>ssh</tt> <tt>-X</tt> into your coLinux system from within the Cygwin X11 environment and launch applications from there. (You will probably need to enable X11Forwarding in Ubuntu's <i>/etc/ssh/sshd_config</i> and restart <i>sshd</i> with <tt>/etc/init.d/sshd</tt> <tt>restart</tt> to get this working. You'll need to <tt>apt-get</tt> <tt>xauth</tt> as well.)
+</p><p>Now you're ready to start playing. Run the <tt>adduser</tt> <tt><i>username</i></tt> command to add a mortal user, and then you can log out as <i>root</i>.
+</p><p>Next, start up a Cygwin shell on the Windows system, and run the Cygwin X server with the command <tt>startxwin.sh</tt>. When the xterm appears, use <tt>ssh -X</tt> <tt><i>IP_ADDRESS</i></tt> to log in to your coLinux system. Replace <tt><i>IP_ADDRESS</i></tt> with either the fixed private network address you assigned it or the latest one it got from DHCP (use <i>ifconfig</i> in the Ubuntu system to find this out). Once you're logged in, you can start running your favorite programs (see <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-18" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-18</a>)!
+</p>
+<div id="IDFigure9-18">
+<p><b>Figure 9-18. Windows and Linux in perfect harmony</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e25220.png" class="image" title="Windows and Linux in perfect harmony"><img alt="Windows and Linux in perfect harmony" src="ubuntu_hacks_d1e25220.png" border="0" height="400" width="533"></a>
+</p>
+</div>
+<div class="warning">
+<p><b>Warning</b>
+</p><p>If you get the error "xterm Xt error: Can't open display: xterm: DISPLAY is not set," you should log out, and try <tt>ssh -X</tt> again, but with the <tt>-v</tt> option, which gives you verbose details on your connection attempt and should shed light on the situation. For example, if you see an error related to xauth, that means you need to <tt>apt-get</tt> <tt>xauth</tt> on the coLinux Ubuntu system.
+</p>
+</div>
+<p>Brian Jepson
+</p>
+<a name="Use_Xen_to_Host_Virtual_Machines"></a><h2> <span class="mw-headline"> Use Xen to Host Virtual Machines </span></h2>
+<p><b>Use Ubuntu as a deployment platform for multiple virtual machines.</b>
+</p><p>A <i>virtual machine</i> (VM) is a simulated computer-inside-a-computer, allowing you to boot an entire extra operating system inside your primary environment. You may already be familiar with the concept of emulation: booting Microsoft Windows within your Linux machine using VMware <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#Split_Your_Machine.27s_Personality" title="Ubuntu Hacks/Virtualization and Emulation">[Hack #92]</a>, running an arcade-game emulator such as MAME on your computer so you can play old-style console games on your PC, or using Virtual PC on a Macintosh to allow it to run Windows programs.
+</p><p>These systems generally work by using both software that pretends to be hardware (emulation) and software that encapsulates and grants access to physical devices (virtualization). So, in practice, what we commonly think of as an emulator is actually a combination of emulation and virtualization. For example, if you're running an x86 emulator on an x86 system, the CPU certainly doesn't need to be emulated (so it's virtualized), but other devices, such as network adapters, may be emulated. For performance reasons, a virtualization environment such as VMware will emulate as little as possible and virtualize everything it can.
+</p><p>This scheme allows an application designed for the target hardware to run unmodified. The application itself probably won't be able to tell the difference: it just thinks it's running on whatever hardware is being emulated and virtualized by the host system.
+</p><p>While this approach can be applied to single applications, it can even be applied to entire operating systems: it's possible to boot an entire extra copy of Ubuntu, for example, right inside the copy you already have running. The extra copy is a complete, self-contained virtual computer with its own IP address, kernel, users, and applications. Mainframe systems have been doing this for decades, with many virtual machines running simultaneously under the management of a <i>hypervisor</i>. By taking this approach, the primary operating system running directly on the hardware can be relatively simple since it doesn't need to provide any end-user services or applications itself. All it needs to do is run the hypervisor to manage the child operating systems and provide a stable environment on which they can run.
+</p><p>The benefit of this approach is that the core system itself can be extremely stable, secure, and reliable, allowing mainframes to run for years or decades without any downtime at all. Once the parent OS has been installed and configured, it can be left running indefinitely and be almost immune to hackers and other external threats by being completely segregated from the network. Then any applications or services that need to be provided to end users can be installed within a virtual machine that can be backed up easily and "rebooted" at any time without affecting the underlying hardware or any other virtual machines that happen to be running alongside it. Separating services into different virtual machines is a great way to limit the impact of security problems, since a compromised web server running on one virtual machine does not give the attackers any access to mail services running in a different virtual machine, even if they're on the same physical server.
+</p><p>Other advantages of this setup include rapid backups, versioning, and rollbacks; live migration of running services to another host; rapid provisioning of new services; segregated system administration; and support for multiple runtime environments running simultaneously on one server.
+</p><p>This technology has now started to filter down to Linux in a number of forms, including UML (User Mode Linux), VMware, and Xen. This hack focuses on Xen, a project to implement a mainframe-style hypervisor within a Linux environment, giving Linux much of the power and flexibility of the older Unix systems that inspired it. Xen's approach to virtualization is to provide a virtual architecture to which the Linux kernel can be ported. In just the same way that Linux is supported on architectures such as ia32 (386), ia64, PowerPC, AMD64, and many others, Xen defines an architecture for which the kernel can be compiled. This virtual architecture is provided by a special kernel that runs on the host machine, and virtual machines that execute on it run an otherwise unmodified kernel that has been compiled for the Xen architecture.
+</p><p>The host machine is generally referred to as <i>dom0</i>, and guest virtual machines that run on it are referred to as <i>domU</i> machines.
+</p>
+<a name="Initial_Host_Installation"></a><h3> <span class="mw-headline"> Initial Host Installation </span></h3>
+<p>The whole idea of virtualization is to run the <i>dom0</i> base system in a totally cut-down form with as little installed as possible. The less you have in the base system, the less there is that can go wrong. With an extremely stable base system, you can then run all your services in virtual machines.
+</p><p>Start by doing a clean install of Ubuntu in server mode <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Small_Office/Home_Office_Server#Install_and_Configure_an_Ubuntu_Server" title="Ubuntu Hacks/Small Office/Home Office Server">[Hack #93]</a> so you have as little cruft on your system as possible.
+</p>
+<a name="Base_Packages_Required_by_Xen"></a><h3> <span class="mw-headline"> Base Packages Required by Xen </span></h3>
+<p>To run Xen and provide networking services to virtual machines, you will need to install a number of packages:
+</p>
+<pre>$ <b>sudo apt-get install grub bridge-utils iproute python \\</b>
+               <b>  python-twisted gcc libcurl3 libcurl3-dev zlib1g zlib1g-dev</b>
+            
+</pre>
+<a name="Obtain_Xen3_Binary_Distribution"></a><h3> <span class="mw-headline"> Obtain Xen3 Binary Distribution </span></h3>
+<p>While you can apply the Xen patches and build a kernel <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Administration#Build_Kernels_the_Ubuntu_Way" title="Ubuntu Hacks/Administration">[Hack #78]</a>, the simpler approach for now is to just grab the latest prebuilt binaries from the Xen project and install them using the provided installer. To reduce load on the Xen project infrastructure, the developers request that P2P systems such as BitTorrent be used to fetch the binaries where possible, but if you submit your email address, they will also provide you with a direct download link if you prefer. Visit <i><a href="http://www.xensource.com/xen/downloads" class="external free" title="http://www.xensource.com/xen/downloads" rel="nofollow">http://www.xensource.com/xen/downloads</a></i> for more information. For Ubuntu, the item you need to download is the Xen 3.0 Tarball. (Even if you're on a single-processor system, it's OK to download the one marked 32-bit SMP.)
+</p>
+<a name="Extract_Binary_Distribution"></a><h3> <span class="mw-headline"> Extract Binary Distribution </span></h3>
+<p>Once you've downloaded the binary distribution, just unpack it and run the provided install script:
+</p>
+<pre>$ <b>tar zxf xen-3.0.1-install-[arch].tgz</b>
+$ <b>cd xen-3.0.1-install</b>
+$ <b>sudo ./install.sh</b>
+            
+</pre>
+<p>The install script places a number of special kernels and <i>initrd</i> images in <i>/boot</i>, so assuming all went well you should now have quite a few extra items in there.
+</p>
+<a name="Configure_GRUB_Bootloader"></a><h3> <span class="mw-headline"> Configure GRUB Bootloader </span></h3>
+<p>GRUB is designed to automatically detect new kernels and autoconfigure them, but unfortunately it doesn't manage the Xen kernels in quite the right way, so you will need to make some manual adjustments. Start by updating the autogenerated kernel list:
+</p>
+<pre>$ <b>sudo update-grub</b>
+            
+</pre>
+<p>You should see GRUB report your new Xen kernels in addition to any that were previously installed. Now open the GRUB configuration file (<i>/boot/grub/menu.lst</i>) in your favorite editor and look down near the bottom for all the autogenerated kernel definitions. You should find one that looks something like this:
+</p>
+<pre>title           Ubuntu, kernel 2.6-xen0
+root            (hd0,0)
+kernel          /boot/vmlinuz-2.6-xen0 root=/dev/hda1 ro quiet splash
+boot
+</pre>
+<p>To allow the Xen kernel to boot properly, the configuration stanza needs to be restructured. It's also a good idea to put the new stanza above the list of automagically detected kernels, so look for a line that reads:
+</p>
+<pre>### BEGIN AUTOMAGIC KERNELS LIST
+</pre>
+<p>and just before it, put in an entry using the same values as the autogenerated stanza but restructured to use a <tt>module</tt> line like the one shown here, and with the <tt>kernel</tt> line modified as shown:
+</p>
+<pre>title           Ubuntu, kernel 2.6-xen0 static
+root            (hd0,0)
+<b>kernel          /boot/xen-3.0.1.gz console=vga</b>
+               <b>module          /boot/vmlinuz-2.6-xen0 root=/dev/hda1 ro console=tty0</b>
+boot
+</pre>
+<p>The <tt>static</tt> entry in the title is just a label so that when GRUB displays a list of available kernels, you can tell which ones were added automagically and which one is your statically defined kernel.
+</p><p>Now tell GRUB to update its kernel list again, just to make sure you haven't made any mistakes:
+</p>
+<pre>$ <b>sudo update-grub</b>
+            
+</pre>
+<a name="Xen_Services"></a><h3> <span class="mw-headline"> Xen Services </span></h3>
+<p>Xen needs to start up a number of services at bootup, so set appropriate runlevel symlinks:
+</p>
+<pre>$ <b>sudo update-rc.d xend defaults 20 21</b>
+$ <b>sudo update-rc.d xendomains defaults 21 20</b>
+            
+</pre>
+<a name="Enable_Networking"></a><h3> <span class="mw-headline"> Enable Networking </span></h3>
+<p>Virtual machines you run on your host will most likely need some way to make network connections. Obviously, they don't have actual Ethernet cards installed in their virtual motherboards, so the usual solution is to have the host machine provide a virtual "bridge" from its own networking stack to the guest system. Each guest virtual machine can then be assigned its own IP address and even a virtual MAC address, with packets passing through the virtual bridge, into the host networking stack, and finally out the host's Ethernet card and onto the real network.
+</p><p>To keep everything as secure as possible, it's also a good idea to implement firewalling within the <i>dom0</i> host to prevent external machines attacking the <i>domU</i> guests.
+</p><p>Install the packages required to provide network connectivity and network-management services to the guest operating systems:
+</p>
+<pre>$ <b>sudo apt-get install iproute bridge-utils screen ssh</b>
+            
+</pre>
+<a name="Disable_TLS_Libraries"></a><h3> <span class="mw-headline"> Disable TLS Libraries </span></h3>
+<p>The standard Thread Local Storage (TLS) library is incompatible with the Xen kernel, so it's necessary to either disable the library or replace it with a special Xen-friendly version before attempting to reboot with the Xen kernel. Otherwise, an emulation mode is used within Xen that reduces performance considerably.
+</p><p>The simplest solution for now is to move the library aside so it's not available when the host reboots:
+</p>
+<pre>$ <b>sudo mv /lib/tls /lib/tls.disabled</b>
+            
+</pre>
+<p>If necessary, you can always move it back later if you need it for a non-Xen kernel.
+</p><p>For running heavily threaded code, you may prefer to install a <i>nosegneg</i> (no segmentation negotiation) version of the library.
+</p>
+<a name="Reboot"></a><h3> <span class="mw-headline"> Reboot </span></h3>
+<p>You should now be ready to reboot your <i>dom0</i> host with the Xen kernel, so <tt>sudo</tt> <tt>reboot</tt> and make sure GRUB loads the correct kernel when it restarts. You can also double-check the kernel version once the machine has finished booting:
+</p>
+<pre>$ <b>uname -r</b>
+2.6.12.6-xen0
+</pre>
+<p>Your <i>dom0</i> machine is now ready to host guest <i>domU</i> virtual machines, so either download a pre-prepared image or create your own <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#Create_an_Ubuntu.2FXen_Virtual_Machine" title="Ubuntu Hacks/Virtualization and Emulation">[Hack #91]</a>.
+</p>
+<a name="Create_an_Ubuntu.2FXen_Virtual_Machine"></a><h2> <span class="mw-headline"> Create an Ubuntu/Xen Virtual Machine </span></h2>
+<p><b>Install Ubuntu into a virtual-machine image and boot it using Xen.</b>
+</p><p>The previous hack showed you how to set up a Xen server <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#Use_Xen_to_Host_Virtual_Machines" title="Ubuntu Hacks/Virtualization and Emulation">[Hack #90]</a>. To make use of your newly Xen-enabled host, you need to create some <i>domU</i> virtual machines to run on it. In this hack, you'll set up a basic Dapper <i>virtual machine</i> (VM).
+</p>
+<a name="Prepare_VM_Filesystems"></a><h3> <span class="mw-headline"> Prepare VM Filesystems </span></h3>
+<p>The VM needs both root and swap filesystems. In a production environment, these would most likely be stored on some form of shared-access filesystem, such as a SAN or similar, but, to keep things simple, for now you should create them as loopback disk images on the local disk. So start by making a couple of directories to store them in:
+</p>
+<pre>$ <b>sudo mkdir -p /vm/vm_base</b>
+$ <b>sudo mkdir /vm/images</b>
+            
+</pre>
+<a name="Root_filesystem"></a><h4> <span class="mw-headline"> Root filesystem </span></h4>
+<p>The root filesystem will be a 2 GB image, so first use <i>dd</i> to create a disk image and then use <i>mkfs</i> to set up a filesystem in it. 2 GB should be enough space for initial testing, but if you want to vary the size, just change the <tt>count</tt> argument, which, when multiplied by the <tt>bs</tt> (block size) argument, determines the total disk size.
+</p><p>While <i>mkfs</i> is running, it will complain that <i>vm_base.img</i> is not a special block device and ask if you want to proceed anyway. Say <tt>y</tt>:
+</p>
+<pre>$ <b>sudo dd if=/dev/zero of=/vm/images/vm_base.img bs=1024k count=2000</b>
+$ <b>sudo mkfs.ext3 /vm/images/vm_base.img</b>
+               
+</pre>
+<a name="Swap_filesystem"></a><h4> <span class="mw-headline"> Swap filesystem </span></h4>
+<p>You can create a 200 MB swap image in a similar way:
+</p>
+<pre>$ <b>sudo dd if=/dev/zero of=/vm/images/vm_base-swap.img bs=1024k count=200</b>
+$ <b>sudo mkswap /vm/images/vm_base-swap.img</b>
+               
+</pre>
+<a name="Mount_the_root_filesystem_image"></a><h4> <span class="mw-headline"> Mount the root filesystem image </span></h4>
+<p>Mount the root filesystem image as a loopback device, allowing it to appear as a separate volume, even though it's only an image stored on the local disk:
+</p>
+<pre>$ <b>sudo mount -o loop /vm/images/vm_base.img /vm/vm_base</b>
+               
+</pre>
+<a name="Install_Ubuntu_into_the_Root_Filesystem"></a><h3> <span class="mw-headline"> Install Ubuntu into the Root Filesystem </span></h3>
+<p>Now you have the equivalent of a blank disk just waiting to have Linux installed on it. The system you install will become the <i>domU</i> virtual machine that is booted by Xen. Installing into a different volume can be a tricky exercise, but luckily Debian provides an extremely useful tool called <i>debootstrap</i> that takes care of all the hard work for you. First, grab <i>debootstrap</i>:
+</p>
+<pre>$ <b>sudo apt-get install debootstrap</b>
+            
+</pre>
+<p>Then, use it to build a new Breezy base system into the root filesystem. The installation process has been radically overhauled for Dapper, so for now it's easier to install Breezy first and <i>dist-upgrade</i> to Dapper afterwards:
+</p>
+<pre>$ <b>sudo debootstrap --arch i386 breezy /vm/vm_base/ \\</b>
+               <b>  http://archive.ubuntu.com/ubuntu</b>
+            
+</pre>
+<div class="tip">
+<p><b>Tip</b>
+</p><p>If you're wondering why you're installing Breezy, it's because <i>base-config</i> no longer exists in Dapper (the install process has been largely rewritten into a single-stage system, and we haven't yet figured out exactly how the initial configuration takes place). A simple workaround is to do a Breezy bootstrap and then update it to Dapper.
+</p>
+</div>
+<p>The preceding example specifies the architecture as <tt>i386</tt> (32-bit Intel). You may need to specify an alternative, such as <tt>powerpc</tt> or <tt>amd64</tt>, depending on your system architecture.
+</p><p>Running <i>debootstrap</i> can take quite a long time because it needs to download all the packages, and if you need to go through this process several times, you may want to set up a local package cache <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Package_Management#Cache_Packages_Locally_with_Apt-cacher" title="Ubuntu Hacks/Package Management">[Hack #61]</a> or replace the mirror address with a reference to <i>file:///media/cdrom</i> and use an Ubuntu install CD. If you have a local <i>apt-cacher</i> running already, you can include the cache address like so:
+</p>
+<pre>$ <b>sudo debootstrap --arch i386 breezy /vm/vm_base/  \\</b>
+               <b>  http://localhost/apt-cacher/archive.ubuntu.com/ubuntu</b>
+            
+</pre>
+<a name="Configure_the_Virtual_Machine"></a><h3> <span class="mw-headline"> Configure the Virtual Machine </span></h3>
+<p>At this point, you have a basic Ubuntu install, but it's totally unconfigured. If your host machine is running Ubuntu, you can save yourself some effort by copying in your <i>/etc/apt/sources.list</i> file:
+</p>
+<pre>$ <b>sudo cp -a /etc/apt/sources.list /vm/vm_base/etc/apt/</b>
+            
+</pre>
+<p>Then edit <i>/vm/vm_base/etc/apt/sources.list</i> and change any references from <tt>dapper</tt> to <tt>breezy</tt>, since you are starting with a base Breezy install.
+</p><p>Now edit <i>/vm/vm_base/etc/network/interfaces</i> and set up the loopback address and a virtual eth0 interface. You will need to adjust these values to suit your own network. The address allocated to eth0 needs to be one that's not in use yet:
+</p>
+<pre>auto lo
+iface lo inet loopback
+      address 127.0.0.1
+      netmask 255.0.0.0
+
+auto eth0
+iface eth0 inet static
+      address <i>192.168.0.101</i>
+      netmask <i>255.255.255.0</i>
+      gateway <i>192.168.0.1</i>
+            
+</pre>
+<p>Edit <i>/vm/vm_base/etc/hostname</i> and set it to <tt>vm01</tt>.
+</p><p>Edit <i>/vm/vm_base/etc/hosts</i> and put in some basic entries:
+</p>
+<pre>127.0.0.1 localhost.localdomain   localhost  vm01
+
+# The following lines are desirable for IPv6 capable hosts
+::1    ip6-localhost ip6-loopback
+fe00::0 ip6-localnet
+ff00::0 ip6-mcastprefix
+ff02::1 ip6-allnodes
+ff02::2 ip6-allrouters
+ff02::3 ip6-allhosts
+</pre>
+<p>The VM also needs to be given a filesystem configuration. Note that this is not necessarily the same as the configuration of the host, and the volume names have nothing to do with your actual local disk. The volumes that the VM will see when it starts up are virtual volumes that will be determined by the Xen configuration, so for now just edit <i>/vm/vm_base/etc/fstab</i> and set it up like this:
+</p>
+<pre>/dev/hda1       /           ext3    defaults  1   2
+/dev/hda5       none        swap    sw        0   0
+/dev/pts        devpts      gid=5,mode=620    0   0
+none            /dev/shm    tmpfs   defaults  0   0
+</pre>
+<a name="Run_Setup_Within_the_VM_Image"></a><h3> <span class="mw-headline"> Run Setup Within the VM Image </span></h3>
+<p>Use <i>chroot</i> to switch into the root of the VM filesystem:
+</p>
+<pre>$ <b>sudo chroot /vm/vm_base</b>
+            
+</pre>
+<p>From now on, everything you do will be within the context of the VM, so you can manually invoke the tools that are normally run in the last stages of the regular Ubuntu installer. Make sure the universe repository <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Package_Management#Modify_the_List_of_Package_Repositories" title="Ubuntu Hacks/Package Management">[Hack #60]</a> is enabled in <i>sources.list</i> (Breezy has a <i>universe</i> repository as well), and tell <i>apt</i> to update the package list and then set up locales:
+</p>
+<pre># <b>apt-get update</b>
+# <b>apt-get install localeconf</b>
+# <b>dpkg-reconfigure localeconf</b>
+            
+</pre>
+<p>You will then be asked a series of questions when the <tt>localeconf</tt> package is installed and then additional questions when you reconfigure it:
+</p>
+<dl><dt>Manage locale configuration files with debconf?
+</dt><dd> Answer Yes.
+</dd><dt>Replace existing locale configuration files?
+</dt><dd> Answer Yes.
+</dd><dt>Default system locale
+</dt><dd> Select the applicable default, such as <i>en_US ISO-8859-1</i>.
+</dd><dt>Environment settings that should override the default locale
+</dt><dd> Don't select any options; just select OK to proceed.
+</dd></dl>
+<p>At this point, many of the standard devices don't exist and locale generation won't be working, so mount the <i>proc</i> virtual filesystem and create the default devices:
+</p>
+<pre># <b>mount -t proc proc /proc</b>
+# <b>cd /dev</b>
+# <b>./MAKEDEV generic</b>
+            
+</pre>
+<p>When <i>MAKEDEV</i> finishes, run <i>base-config</i> to bootstrap the system:
+</p>
+<pre># <b>base-config</b>
+            
+</pre>
+<p><i>base-config</i> will ask you all the usual questions that you normally see when running the Ubuntu Breezy installer, so answer all the questions as normal, with one exception: when asked to specify an access method for <i>apt</i>, select "edit sources list by hand," which will then put you into the <i>vim</i> editor with the <i>sources.list</i> file open. Since it's already set up correctly, just type <tt>ZZ</tt> to save and exit <i>vim</i>, and let <i>apt</i> run through the process of verifying the repositories and installing all the base packages.
+</p><p>Once the Breezy installer has finished, edit the <i>/etc/apt/sources.list</i> again, and this time change all references from <tt>breezy</tt> to <tt>dapper</tt>. Then update the package list again and <i>dist-upgrade</i> to Dapper:
+</p>
+<pre># <b>apt-get update</b>
+# <b>apt-get dist-upgrade</b>
+            
+</pre>
+<p>You now have a basic Dapper install inside the loopback filesystem, so finally you can exit the chroot:
+</p>
+<pre># <b>exit</b>
+            
+</pre>
+<a name="Get_Ready_to_Crank_Up_the_VM"></a><h3> <span class="mw-headline"> Get Ready to Crank Up the VM </span></h3>
+<p>The <i>domU</i> virtual machine will be booted using the Xen kernel installed on the <i>dom0</i> host, so copy the kernel modules into its filesystem, disable TLS, and unmount the image:
+</p>
+<pre>$ <b>sudo cp -dpR /lib/modules/2.6.12.6-xenU /vm/vm_base/lib/modules/</b>
+$ <b>sudo mv /vm/vm_base/lib/tls /vm/vm_base/lib/tls.disabled</b>
+$ <b>sudo umount /vm/vm_base</b>
+            
+</pre>
+<p>It's quite likely that <i>umount</i> will complain that the device is busy even though nothing is using it anymore, so ignore the warning.
+</p><p>You now have one complete, functional <i>domU</i> virtual machine, but it's quite likely that you will ultimately want to create a few of them, so rather than boot the image you just created, it's best to treat it as a template and make copies of it to play with.
+</p><p>Copy the disk image to create a new VM:
+</p>
+<pre>$ <b>sudo cp -a /vm/images/vm_base.img /vm/images/vm01.img</b>
+$ <b>sudo cp -a /vm/images/vm_base-swap.img /vm/images/vm01-swap.img</b>
+            
+</pre>
+<a name="Configure_the_VM_in_Xen"></a><h3> <span class="mw-headline"> Configure the VM in Xen </span></h3>
+<p>You need to create a configuration file for each <i>domU</i> virtual machine so that Xen will know how to boot it. Start by copying the sample configuration file into place:
+</p>
+<pre>$ <b>sudo cp /etc/xen/xmexample1 /etc/xen/vm01.conf</b>
+            
+</pre>
+<p>The sample config file is very well commented, and most of the defaults are fine as a starting point, so open <i>/etc/xen/vm01.conf</i> in your favorite editor and start working through it. Highlights to pay attention to include:
+</p>
+<dl><dt>Kernel
+</dt><dd> The <tt>kernel</tt> parameter specifies the path to the <i>domU</i> kernel in the host system. Note that the <i>dom0</i> and <i>domU</i> kernels are almost identical, so you can use the <i>dom0</i> kernel image to boot the <i>domU</i> guest if you prefer. The <i>domU</i> kernel is basically just the <i>dom0</i> kernel, but with most of the modules stripped out because networking and many other services are supplied by the <i>dom0</i> host and the virtual machine doesn't need to manage such things itself. This makes the <i>domU</i> kernel about 30 percent smaller than the <i>dom0</i> kernel.
+</dd><dt>Memory
+</dt><dd> The <i>dom0</i> host preallocates RAM to each virtual machine using the <tt>memory</tt> parameter in the config file, so set it to some sensible value to start with, such as 128. You need to make sure you leave enough memory for the <i>dom0</i> host after all the <i>domU</i> guests have claimed their allocated address space; so if, for example, you have 512 MB RAM in the host, you could run three guests with 128 MB allocated each and still have 128 MB available for the host.
+</dd><dt>Name
+</dt><dd> Each <i>domU</i> host needs a unique name that will be used to identify it. Set it to <tt>vm01</tt> for now.
+</dd><dt>Virtual network interfaces
+</dt><dd> You can specify virtual network interface settings directly in the config file or leave a blank value to have the guest specify its own settings. For now, just leave this blank because you configured a virtual eth0 interface earlier: <tt>vif =</tt> <tt>[ '' ]</tt>.
+</dd></dl>
+<p></p><dl>
+<dt>Disk
+</dt><dd>The <i>dom0</i> host exposes real filesystems to the <i>domU</i> guest as if they were real filesystems, so the disk parameter allows you to specify what will be seen by the guest. For now, you should use the loopback disk images that were created earlier, so if you set up the guest's <i>/etc/fstab</i> in the way suggested earlier, you should set the disk parameter to:
+<p></p>
+<pre>disk = [ 'file:/vm/images/vm01.img,hda1,w','file:/vm/images/vm01-swap. ⏎
+img,hda5,w' ]
+</pre>
+<p>The disk images don't have to be mounted: the <tt>file</tt> argument tells Xen that it has to treat the target as a loopback disk image, and takes care of everything for you.
+</p></dd></dl>
+<p></p><p><br>
+</p>
+<a name="Boot_Your_Virtual_Machine"></a><h3> <span class="mw-headline"> Boot Your Virtual Machine </span></h3>
+<p>Virtual machines are managed using <i>xm</i>, the Xen Manager, which allows you to boot, shut down, list, and migrate them to other physical hosts. Start up your newly created VM:
+</p>
+<pre>$ <b>sudo xm create -c /etc/xen/vm01.conf</b>
+            
+</pre>
+<p>If all goes well, you will see Linux run through its boot sequence all the way up to a login prompt into your virtual machine. Log in as the user you created during the setup process and poke around. Try a few things like:
+</p>
+<pre>$ <b>cat /proc/cpuinfo</b>
+$ <b>cat /proc/meminfo</b>
+$ <b>uname -r</b>
+            
+</pre>
+<p>It should look exactly as if you're in a totally separate machine, and the network interface will be functional, with packets bridged to the physical Ethernet through the kernel in the <i>dom0</i> host so you can even <tt>apt-get</tt> <tt>install</tt> some packages or do whatever else you need to do to set up the virtual machine just the way you want it.
+</p><p>While your virtual machine is still running, open another terminal session onto the <i>dom0</i> host and try running:
+</p>
+<pre>$ <b>sudo xm list</b>
+            
+</pre>
+<p>to see a list of currently running guests. You can also view a dynamically updated list of hosts along with resource utilization:
+</p>
+<pre>$ <b>sudo xm top</b>
+            
+</pre>
+<p>If you want to nicely bring down a VM without logging in to it, you can do so through <i>xm</i>:
+</p>
+<pre>$ <b>sudo xm shutdown vm01</b>
+            
+</pre>
+<p>When you've finished playing around in your new VM, you can either shut it down from the <i>dom0</i> host using <i>xm</i> or shut it down from inside just like any other machine using <tt>sudo</tt> <tt>shutdown</tt>.
+</p>
+<a name="Create_Additional_Guests"></a><h3> <span class="mw-headline"> Create Additional Guests </span></h3>
+<p>To create additional guests, you need to repeat a number of the previous steps. Copy the templates again:
+</p>
+<pre>$ <b>sudo cp -a /vm/images/vm_base.img /vm/images/vm02.img</b>
+$ <b>sudo cp -a /vm/images/vm_base-swap.img /vm/images/vm02-swap.img</b>
+            
+</pre>
+<p>Mount the base image:
+</p>
+<pre>$ <b>sudo mount -o loop /vm/images/vm02.img /vm/vm_base</b>
+            
+</pre>
+<p>Edit <i>/vm/vm_base/etc/network/interfaces</i>, <i>/vm/vm_base/etc/network/hostname</i>, and <i>/vm/vm_base/etc/network/hosts</i> to set appropriate values for the hostname and IP address.
+</p><p>Unmount the base image:
+</p>
+<pre>$ <b>sudo umount /vm/vm_base</b>
+            
+</pre>
+<p>Copy the Xen configuration:
+</p>
+<pre>$ <b>sudo cp /etc/xen/vm01.conf /etc/xen/vm02.conf</b>
+            
+</pre>
+<p>Then edit it to change the paths to the disk images and the machine name, and you're ready to start up a second VM.
+</p>
+<a name="Split_Your_Machine.27s_Personality"></a><h2> <span class="mw-headline"> Split Your Machine's Personality </span></h2>
+<p><b>Give your machine split personalities by installing VMware Server, and get some virtual machines running.</b>
+</p><p>Virtualization is one of the current buzzwords in the computer industry. <i>Virtualization</i> is where a thin software layer is installed on a computer that allows its processor and other resources to be split among several <i>virtual machines</i> (VMs). This allows the computer operator to run several different operating systems underneath this virtualization layer. Each virtual machine has its own set of resources and operates independently from any other virtual machines that may be running at the same time.
+</p><p>VMware (<i><a href="http://www.vmware.com/" class="external free" title="http://www.vmware.com" rel="nofollow">http://www.vmware.com</a></i>) is one of the oldest companies in the virtualization business. It has had a Linux-based product lineup available for some time, both in the personal computer space (its Workstation product) and the server space (GSX and ESX server). Recently, however, VMware has released two new free (as in beer) products: VMware Player (<i><a href="http://www.vmware.com/products/player/" class="external free" title="http://www.vmware.com/products/player/" rel="nofollow">http://www.vmware.com/products/player/</a></i>) and VMware Server (<i><a href="http://www.vmware.com/products/server/" class="external free" title="http://www.vmware.com/products/server/" rel="nofollow">http://www.vmware.com/products/server/</a></i>). The VMware Player product allows you to "play," or use, a premade virtual machine. The VMware Server product is much more interesting, as it allows the creation of new virtual machines, and its modular, network-enabled console lets you control the virtual machines whether they're installed on your computer or another computer on the network.
+</p><p>VMware Server is like a Swiss army knife: its uses are limited only by your imagination. Need a particularly sticky Windows application working, but still want to run Linux? If it doesn't work in Wine <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#Run_Windows_Applications" title="Ubuntu Hacks/Virtualization and Emulation">[Hack #87]</a>, you can install VMware Server and run that application in a virtual machine. Want to test the latest Linux distribution but have only one computer? Install the new distro in a virtual machine and don't worry about your main system.
+</p>
+<a name="Installing_VMware_Server"></a><h3> <span class="mw-headline"> Installing VMware Server </span></h3>
+<p>VMware Server is really designed for use on a Red Hat-based Linux distribution, but it does work fine on Ubuntu. However, it requires that some packages be in place before installation, since it has to compile the VMware-specific kernel modules. VMware also has a dependency on <i>inetd</i>, if you want to remotely connect to your virtual machines from another computer on the network.
+</p><p>To install VMware, start by installing the <i>build-essential</i> and <i>netkit-inetd</i> packages. If you use the <i>aptitude</i> package manager, the additional recommended packages will get installed without any other intervention (be sure to replace <tt>linux-headers-386</tt> with the appropriate package for your architecture, such as <tt>linux-headers-686</tt> or <tt>linux-headers-k7</tt>):
+</p>
+<pre>bill@lexington:~$ <b>sudo aptitude install build-essential \\</b>
+               <b>  linux-headers-386 netkit-inetd</b>
+            
+</pre>
+<p>Next, get VMware Server from the download page (<i><a href="http://www.vmware.com/download/server/" class="external free" title="http://www.vmware.com/download/server/" rel="nofollow">http://www.vmware.com/download/server/</a></i>). You'll need to register on the site, and VMware will send you a serial number to activate your VMware Server installation. Ensure that you get the <i>.tar.gz</i> package, and not the <i>rpm</i> variant. Optionally, you can download the web interface and Windows console program separately. Once you've downloaded the package, untar it by running this command:
+</p>
+<pre>bill@lexington:~$ <b>tar zxvf VMware-server-e.x.p-22088.tar.gz</b>
+            
+</pre>
+<p>Then start VMware installer and answer the questions it asks. In most cases, you can accept the defaults. At the end of the installer, you will be prompted for your serial number. This was emailed to you by VMware after you registered, so check your mail for it:
+</p>
+<pre>bill@lexington:~/vmware-server-distrib$ <b>sudo ./vmware-install.pl</b>
+Password:
+Creating a new installer database using the tar3 format.
+
+Installing the content of the package.
+
+In which directory do you want to install the binary files?
+[/usr/bin]
+
+What is the directory that contains the init directories (rc0.d/ to rc6.d/)?
+[/etc]
+
+What is the directory that contains the init scripts?
+[/etc/init.d]
+
+In which directory do you want to install the daemon files?
+[/usr/sbin]
+
+In which directory do you want to install the library files?
+[/usr/lib/vmware]
+
+The path "/usr/lib/vmware" does not exist currently. This program is going to create it, including needed parent directories. Is this what
+you want? [yes]
+
+In which directory do you want to install the manual files?
+[/usr/share/man]
+
+In which directory do you want to install the documentation files?
+[/usr/share/doc/vmware]
+
+The path "/usr/share/doc/vmware" does not exist currently. This program is going to create it, including needed parent directories. Is this what you want? [yes]
+
+The installation of VMware Server e.x.p build-22088 for Linux completed
+successfully. You can decide to remove this software from your system at any
+time by invoking the following command: "/usr/bin/vmware-uninstall.pl".
+
+Before running VMware Server for the first time, you need to configure it by
+invoking the following command: "/usr/bin/vmware-config.pl". Do you want this program to invoke the command for you now? [yes]
+
+... lots of output truncated ...
+
+The configuration of VMware Server e.x.p build-22088 for Linux for this running kernel completed successfully.
+</pre>
+<div class="tip">
+<p><b>Tip</b>
+</p><p>See the VMware documentation for a detailed explanation of each installation and configuration option.
+</p>
+</div>
+<a name="Running_VMware_Server"></a><h3> <span class="mw-headline"> Running VMware Server </span></h3>
+<p>Once this process is over, the VMware installer will have added a VMware Server entry to your Applications→System Tools menu (see <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-19" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-19</a>). Click on this entry to start the VMware console.
+</p>
+<div id="IDFigure9-19">
+<p><b>Figure 9-19. Starting the VMware console</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e26506.png" class="image" title="Starting the VMware console"><img alt="Starting the VMware console" src="ubuntu_hacks_d1e26506.png" border="0" height="321" width="374"></a>
+</p>
+</div>
+<p>The VMware console is where you will create, manage, and interact with your virtual machines. Once the console starts, it will ask you if you want to connect to your locally installed VMware Server instance or connect over the network to another VMware server. Select "Local host," as shown in <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-20" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-20</a>, and then click Connect.
+</p>
+<div id="IDFigure9-20">
+<p><b>Figure 9-20. Connecting to a VMware Server</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e26515.png" class="image" title="Connecting to a VMware Server"><img alt="Connecting to a VMware Server" src="ubuntu_hacks_d1e26515.png" border="0" height="400" width="587"></a>
+</p>
+</div>
+<p>Once you've successfully connected to the VMware Server, you'll be presented with a screen in the console with various options (see <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-21" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-21</a>). You're going to create a new virtual machine, so click "Create a new virtual machine."
+</p>
+<div id="IDFigure9-21">
+<p><b>Figure 9-21. The main console window</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e26530.png" class="image" title="The main console window"><img alt="The main console window" src="ubuntu_hacks_d1e26530.png" border="0" height="400" width="586"></a>
+</p>
+</div>
+<p>The New Virtual Machine wizard will start up. Select Next to move past the splash screen. The wizard will ask you if you'd like to use a typical or custom virtual machine configuration; select Typical and click on Next. Now you get to the meat of the wizard: what type of operating system you'd like to install (see <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-22" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-22</a>). Select the guest OS family that you want to install in your new virtual machine and choose the version. Click Next to move on.
+</p>
+<div id="IDFigure9-22">
+<p><b>Figure 9-22. Choosing your VM's operating system</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e26539.png" class="image" title="Choosing your VM's operating system"><img alt="Choosing your VM's operating system" src="ubuntu_hacks_d1e26539.png" border="0" height="400" width="510"></a>
+</p>
+</div>
+<p>At this point, you'll be prompted to name the new virtual machine and select a location to store its files. The defaults are usually fine here, unless you'd like to name the system something more descriptive. When you've named your machine, click on Next, and you'll be asked to select the type of networking you want for your virtual machine (see <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-23" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-23</a>). There are several different types of network options: <i>bridged networking</i>, where your virtual machine will appear as another host on your LAN; <i>network address translation</i>, where your VM will be "firewalled" behind your host machine; and <i>host-only</i>, where your VM can communicate only with the host computer. In this example, you'll select "Bridged networking." Click on Next to continue.
+</p>
+<div id="IDFigure9-23">
+<p><b>Figure 9-23. Selecting VM networking types</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e26557.png" class="image" title="Selecting VM networking types"><img alt="Selecting VM networking types" src="ubuntu_hacks_d1e26557.png" border="0" height="400" width="510"></a>
+</p>
+</div>
+<p>The final screen, shown in <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-24" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-24</a>, lets you select how large you want the virtual machine's hard disk to be. We usually uncheck the "Allocate all disk space now" and "Split disk into 2GB files" boxes. If the "Allocate all disk space now" checkbox is selected, VMware Server will consume the amount of space specified in "Disk size" upon virtual-machine creation. If that box is unchecked, the virtual machine's disk will grow dynamically, so as you install the OS and add applications, the disk will gradually get larger. The only real reason to check that box is for performance reasons, as it is faster than dynamic allocation; otherwise, leave it unchecked. Click on Finish to complete the New Virtual Machine Wizard.
+</p>
+<div id="IDFigure9-24">
+<p><b>Figure 9-24. Specifying VM disk size</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e26573.png" class="image" title="Specifying VM disk size"><img alt="Specifying VM disk size" src="ubuntu_hacks_d1e26573.png" border="0" height="400" width="510"></a>
+</p>
+</div>
+<p>At this point, your virtual machine is ready to be powered up for the first time and begin its OS installation. You can perform any tweaking to the virtual machine in the console here, prior to OS installation. All the items in the right pane are clickable and adjustable, such as the amount of RAM you want to dedicate to the VM and what installation media or mount point you wish to use. One cool thing about the VMware console is that you can install your virtual machine from a CD in your server, a CD in your client, or straight from an <i>.iso</i> image (select VM→Removable Devices→CD-ROM 1→Edit). All those installation options really make life easy and give you options when you're installing a virtual machine.
+</p><p>All that remains at this point is to click the Power On button in the toolbar and watch your virtual machine boot for the first time. It will go through a virtual BIOS and POST check (see <a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation#IDFigure9-25" title="Ubuntu Hacks/Virtualization and Emulation">Figure 9-25</a>), and then it'll begin installing from whatever boot media you selected. You'll need to click in the console window to "capture" your mouse and keyboard for use in VMware (to get back to your main OS, press Ctrl and Alt on your keyboard at the same time).
+</p>
+<div id="IDFigure9-25">
+<p><b>Figure 9-25. First boot</b>
+</p><p><a href="http://commons.oreilly.com/wiki/index.php/Image:Ubuntu_Hacks_d1e26593.png" class="image" title="First boot"><img alt="First boot" src="ubuntu_hacks_d1e26593.png" border="0" height="400" width="514"></a>
+</p>
+</div>
+<p>Once you start using VMware, you'll find new uses and ways to leverage virtual machines that you never thought possible. We've even used a virtual machine to kick-start other physical Linux boxes!
+</p><!-- 
+Pre-expand include size: 800 bytes
+Post-expand include size: 1505 bytes
+Template argument size: 0 bytes
+Maximum: 2097152 bytes
+-->
+
+<!-- Saved in parser cache with key wikicontent:pcache:idhash:2050-0!1!0!!en!2!edit=0 and timestamp 20120108060231 -->
+<div class="printfooter">
+Retrieved from "<a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation">http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation</a>"</div>
+						<!-- end content -->
+			<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+					 <li id="ca-nstab-main" class="selected"><a href="http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation" title="View the content page [alt-c]" accesskey="c">Article</a></li>
+					 <li id="ca-talk" class="new"><a href="http://commons.oreilly.com/wiki/index.php?title=Talk:Ubuntu_Hacks/Virtualization_and_Emulation&amp;action=edit" title="Discussion about the content page [alt-t]" accesskey="t">Discussion</a></li>
+					 <li id="ca-viewsource"><a href="http://commons.oreilly.com/wiki/index.php?title=Ubuntu_Hacks/Virtualization_and_Emulation&amp;action=edit" title="This page is protected. You can view its source. [alt-e]" accesskey="e">View source</a></li>
+					 <li id="ca-history"><a href="http://commons.oreilly.com/wiki/index.php?title=Ubuntu_Hacks/Virtualization_and_Emulation&amp;action=history" title="Past versions of this page. [alt-h]" accesskey="h">History</a></li>
+				</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="http://commons.oreilly.com/wiki/index.php?title=Special:Userlogin&amp;returnto=Ubuntu_Hacks/Virtualization_and_Emulation" title="You are encouraged to log in, it is not mandatory however. [alt-o]" accesskey="o">Log in / create account</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-logo">
+		<a style="background-image: url('wiki-icon.gif');" href="http://commons.oreilly.com/wiki/index.php/O%27Reilly_Commons" title="Visit the Main Page [alt-z]" accesskey="z"></a>
+	</div>
+	
+		<div class="portlet" id="p-navigation">
+		<h5>Navigation</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-mainpage"><a href="http://commons.oreilly.com/wiki/index.php/O%27Reilly_Commons" title="Visit the Main Page [alt-z]" accesskey="z">O'Reilly Commons</a></li>
+				<li id="n-portal"><a href="http://commons.oreilly.com/wiki/index.php/WikiContent:Community_Portal" title="About the project, what you can do, where to find things">Community portal</a></li>
+				<li id="n-currentevents"><a href="http://commons.oreilly.com/wiki/index.php/Current_events" title="Find background information on current events">Current events</a></li>
+				<li id="n-recentchanges"><a href="http://commons.oreilly.com/wiki/index.php/Special:Recentchanges" title="The list of recent changes in the wiki. [alt-r]" accesskey="r">Recent changes</a></li>
+				<li id="n-randompage"><a href="http://commons.oreilly.com/wiki/index.php/Special:Random" title="Load a random page [alt-x]" accesskey="x">Random page</a></li>
+				<li id="n-help"><a href="http://commons.oreilly.com/wiki/index.php/Help:Contents" title="The place to find out.">Help</a></li>
+			</ul>
+		</div>
+	</div>
+		<div id="p-search" class="portlet">
+		<h5><label for="searchInput">Search</label></h5>
+		<div id="searchBody" class="pBody">
+			<form action="http://commons.oreilly.com/wiki/index.php/Special:Search" id="searchform"><div>
+				<input id="searchInput" name="search" title="Search WikiContent [alt-f]" accesskey="f" value="" type="text">
+				<input name="go" class="searchButton" id="searchGoButton" value="Go" type="submit">&nbsp;
+				<input name="fulltext" class="searchButton" id="mw-searchButton" value="Search" type="submit">
+			</div></form>
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="http://commons.oreilly.com/wiki/index.php/Special:Whatlinkshere/Ubuntu_Hacks/Virtualization_and_Emulation" title="List of all wiki pages that link here [alt-j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="http://commons.oreilly.com/wiki/index.php/Special:Recentchangeslinked/Ubuntu_Hacks/Virtualization_and_Emulation" title="Recent changes in pages linked from this page [alt-k]" accesskey="k">Related changes</a></li>
+<li id="t-upload"><a href="http://commons.oreilly.com/wiki/index.php/Special:Upload" title="Upload images or media files [alt-u]" accesskey="u">Upload file</a></li>
+<li id="t-specialpages"><a href="http://commons.oreilly.com/wiki/index.php/Special:Specialpages" title="List of all special pages [alt-q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="http://commons.oreilly.com/wiki/index.php?title=Ubuntu_Hacks/Virtualization_and_Emulation&amp;printable=yes" title="Printable version of this page [alt-p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="http://commons.oreilly.com/wiki/index.php?title=Ubuntu_Hacks/Virtualization_and_Emulation&amp;oldid=7777" title="Permanent link to this version of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+			<div id="footer">
+				<div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki"></a></div>
+			<ul id="f-list">
+				<li id="lastmod"> This page was last modified 13:49, 7 March 2008.</li>
+				<li id="viewcount">This page has been accessed 4,808 times.</li>
+				<li id="privacy"><a href="http://commons.oreilly.com/wiki/index.php/WikiContent:Privacy_policy" title="WikiContent:Privacy policy">Privacy policy</a></li>
+				<li id="about"><a href="http://commons.oreilly.com/wiki/index.php/WikiContent:About" title="WikiContent:About">About WikiContent</a></li>
+				<li id="disclaimer"><a href="http://commons.oreilly.com/wiki/index.php/WikiContent:General_disclaimer" title="WikiContent:General disclaimer">Disclaimers</a></li>
+			</ul>
+		</div>
+		
+	
+		
+</div>
+<!-- Served in 1.359 secs. -->
+</body>
+</html>

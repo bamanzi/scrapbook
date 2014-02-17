@@ -1,0 +1,321 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+			<title>  The Mastering Emacs Reading Guide | Mastering Emacs</title>
+	
+	<!-- Basic Meta Data -->
+	<meta name="Copyright" content="Design is copyright 2008 - 2012 The Theme Foundry">
+	<meta http-equiv="imagetoolbar" content="no">
+	
+	
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!--Stylesheets-->
+	
+	<!--[if lt IE 8]>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://www.masteringemacs.org/wp-content/themes/titan/stylesheets/ie.css" />
+	<![endif]-->
+
+	<!--Scripts-->
+	<!--[if lte IE 7]>
+	<script type="text/javascript">
+	sfHover=function(){var sfEls=document.getElementById("nav").getElementsByTagName("LI");for(var i=0;i<sfEls.length;i++){sfEls[i].onmouseover=function(){this.className+=" sfhover";}
+	sfEls[i].onmouseout=function(){this.className=this.className.replace(new RegExp(" sfhover\\b"),"");}}}
+	if (window.attachEvent)window.attachEvent("onload",sfHover);
+	</script>
+	<![endif]-->
+
+	<!--WordPress-->
+	<link rel="alternate" type="application/rss+xml" title="Mastering Emacs RSS Feed" href="http://www.masteringemacs.org/feed/">
+	<link rel="pingback" href="http://www.masteringemacs.org/xmlrpc.php">
+
+	<!--WP Hook-->
+		<link rel="alternate" type="application/rss+xml" title="Mastering Emacs » Reading Guide Comments Feed" href="http://www.masteringemacs.org/reading-guide/feed/">
+
+
+
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.masteringemacs.org/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="Mastering Emacs" href="http://www.masteringemacs.org/">
+<link rel="prev" title="Effective Editing" href="http://www.masteringemacs.org/effective-editing-series/">
+<link rel="canonical" href="http://www.masteringemacs.org/reading-guide/">
+
+
+<!-- HeadSpace SEO 3.6.34 by John Godley - urbangiraffe.com -->
+<meta name="description" content="Learn how to master Emacs, Emacs-Lisp and its many packages and keyboard shortcuts">
+<!-- HeadSpace -->
+<!-- Meta tags added by Robots Meta: http://yoast.com/wordpress/meta-robots-wordpress-plugin/ -->
+<meta name="robots" content="noarchive">
+<link rel="shortcut icon" href="favicon_001.ico" type="image/x-icon"><!-- Favi -->
+
+<!--[if IE]>
+<style type="text/css">
+.addtoany_list a img{filter:alpha(opacity=70)}
+.addtoany_list a:hover img,.addtoany_list a.addtoany_share_save img{filter:alpha(opacity=100)}
+</style>
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="page page-id-496"><iframe src="index_1.html" allowtransparency="true" transparency="true" style="border: 0pt none; left: 0pt; top: 0pt; position: absolute; z-index: 100000; display: none;" id="a2apage_sm_ifr" frameborder="0" height="1" width="1"></iframe><div style="position: static;"><div id="a2apage_dropdown" class="a2a_menu"><div class="a2a_menu_inside"><div id="a2apage_title_container" class="a2a_menu_title_container" style="display: none;"><input value="" id="a2apage_title" class="a2a_menu_title"></div><div class="a2apage_wide a2a_wide"><div class="a2a_tabs a2a_tabs_default"><div id="a2apage_DEFAULT" class="a2a_tab_selected" style="margin-right: 1px;" onclick="return a2a.tabs.open('DEFAULT')"><span class="a2a_i_share">分享</span></div></div><div class="a2a_tabs"><div title="通过电子邮件分享" id="a2apage_EMAIL" style="margin-right: 1px;" onclick="return a2a.tabs.open('EMAIL')"><span class="a2a_i_email"></span></div></div><div class="a2a_tabs"><div onclick="a2a.bmBrowser()" title="添加到浏览器的书签/收藏夹里" id="a2apage_BROWSER" style="margin-left: 1px;"><span class="a2a_i_bookmark"></span></div></div></div><div class="a2a_clear"></div><div id="a2apage_find_container" class="a2a_menu_find_container"><input value="" id="a2apage_find" class="a2a_menu_find" onclick="a2a.focus_find()" onkeyup="a2a.do_find()" autocomplete="off" onfocus="a2a['page'].find_focused=true;a2a.onMouseOver_stay()" title="快速查找您使用的服务" type="text"><span id="a2apage_find_icon" class="a2a_i_find" onclick="a2a.focus_find()"></span></div><div id="a2apage_cols_container" class="a2a_cols_container"><div class="a2a_col1" id="a2apage_col1"><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_sina_weibo"><span style="background-image: url('miniblog_icon_str16.png');">Sina Weibo</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_facebook"><span class="a2a_i_facebook">Facebook</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_twitter"><span class="a2a_i_twitter">Twitter</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_google_plus"><span class="a2a_i_google">Google+</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_delicious"><span class="a2a_i_delicious">Delicious</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_digg"><span class="a2a_i_digg">Digg</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_google_bookmarks"><span class="a2a_i_google">Google Bookmarks</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_myspace"><span class="a2a_i_myspace">MySpace</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_stumbleupon"><span class="a2a_i_stumbleupon">StumbleUpon</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_reddit"><span class="a2a_i_reddit">Reddit</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_live"><span class="a2a_i_live">Messenger</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_vodpod"><span class="a2a_i_vodpod">Vodpod</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_yahoo_bookmarks"><span class="a2a_i_yahoo">Yahoo Bookmarks</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_bebo"><span class="a2a_i_bebo">Bebo</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_mister_wong"><span class="a2a_i_mister-wong">Mister-Wong</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_wordpress"><span class="a2a_i_wordpress">WordPress</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_google_reader"><span class="a2a_i_reader">Google Reader</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_orkut"><span class="a2a_i_orkut">Orkut</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_xing"><span class="a2a_i_xing">XING</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_evernote"><span class="a2a_i_evernote">Evernote</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_netvibes_share"><span class="a2a_i_netvibes">Netvibes Share</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_strands"><span class="a2a_i_strands">Strands</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_posterous"><span class="a2a_i_posterous">Posterous</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_business_exchange"><span class="a2a_i_business_exchange">Business Exchange</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_arto"><span class="a2a_i_arto">Arto</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_tipd"><span class="a2a_i_tipd">Tipd</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_smaknews"><span class="a2a_i_smaknews">SmakNews</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_plurk"><span class="a2a_i_plurk">Plurk</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_aim"><span class="a2a_i_aim">AIM</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_yahoo_messenger"><span class="a2a_i_yim">Yahoo Messenger</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_identi_ca"><span class="a2a_i_identica">Identi.ca</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_mozillaca"><span class="a2a_i_mozillaca">Mozillaca</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_blogger_post"><span class="a2a_i_blogger">Blogger Post</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_typepad_post"><span class="a2a_i_typepad">TypePad Post</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_box_net"><span class="a2a_i_box">Box.net</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_netlog"><span class="a2a_i_netlog">Netlog</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_technorati_favorites"><span class="a2a_i_technorati">Technorati Favorites</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_citeulike"><span class="a2a_i_citeulike">CiteULike</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_jumptags"><span class="a2a_i_jumptags">Jumptags</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_hemidemi"><span class="a2a_i_hemidemi">Hemidemi</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_funp"><span class="a2a_i_funp">FunP</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_instapaper"><span class="a2a_i_instapaper">Instapaper</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_phonefavs"><span class="a2a_i_phonefavs">PhoneFavs</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_xerpi"><span class="a2a_i_xerpi">Xerpi</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_netvouz"><span class="a2a_i_netvouz">Netvouz</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_wink"><span class="a2a_i_wink">Wink</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_diigo"><span class="a2a_i_diigo">Diigo</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_bibsonomy"><span class="a2a_i_bibsonomy">BibSonomy</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_blogmarks"><span class="a2a_i_blogmarks">BlogMarks</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_tailrank"><span class="a2a_i_tailrank">Tailrank</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_startaid"><span class="a2a_i_startaid">StartAid</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_kledy"><span class="a2a_i_kledy">Kledy</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_khabbr"><span class="a2a_i_khabbr">Khabbr</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_meneame"><span class="a2a_i_meneame">Meneame</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_yoolink"><span class="a2a_i_yoolink">Yoolink</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_bookmarks_fr"><span class="a2a_i_bookmarks_fr">Bookmarks.fr</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_technotizie"><span class="a2a_i_technotizie">Technotizie</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_newsvine"><span class="a2a_i_newsvine">NewsVine</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_multiply"><span class="a2a_i_multiply">Multiply</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_friendfeed"><span class="a2a_i_friendfeed">FriendFeed</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_plaxo_pulse"><span class="a2a_i_plaxo">Plaxo Pulse</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_ping"><span class="a2a_i_ping">Ping</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_squidoo"><span class="a2a_i_squidoo">Squidoo</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_protopage_bookmarks"><span class="a2a_i_protopage">Protopage Bookmarks</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_blinklist"><span class="a2a_i_blinklist">Blinklist</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_faves"><span class="a2a_i_faves">Faves</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_yigg"><span class="a2a_i_yigg">YiGG</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_webnews"><span class="a2a_i_webnews">Webnews</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_segnalo"><span class="a2a_i_segnalo">Segnalo</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_pusha"><span class="a2a_i_pusha">Pusha</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_youmob"><span class="a2a_i_youmob">YouMob</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_slashdot"><span class="a2a_i_slashdot">Slashdot</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_fark"><span class="a2a_i_fark">Fark</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_allvoices"><span class="a2a_i_allvoices">Allvoices</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_jamespot"><span class="a2a_i_jamespot">Jamespot</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_imera_brazil"><span class="a2a_i_imera">Imera Brazil</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_twiddla"><span class="a2a_i_twiddla">Twiddla</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_linkagogo"><span class="a2a_i_linkagogo">LinkaGoGo</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_unalog"><span class="a2a_i_unalog">unalog</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_hugg"><span class="a2a_i_hugg">Hugg</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_diglog"><span class="a2a_i_diglog">Diglog</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_nowpublic"><span class="a2a_i_nowpublic">NowPublic</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_tumblr"><span class="a2a_i_tumblr">Tumblr</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_livejournal"><span class="a2a_i_livejournal">LiveJournal</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_current"><span class="a2a_i_current">Current</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_hellotxt"><span class="a2a_i_hellotxt">HelloTxt</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_spurl"><span class="a2a_i_spurl">Spurl</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_yample"><span class="a2a_i_yample">Yample</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_oneview"><span class="a2a_i_oneview">Oneview</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_linkatopia"><span class="a2a_i_linkatopia">Linkatopia</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_simpy"><span class="a2a_i_simpy">Simpy</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_linkedin"><span class="a2a_i_linkedin">LinkedIn</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_buddymarks"><span class="a2a_i_buddymarks">BuddyMarks</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_ask_com_mystuff"><span class="a2a_i_ask">Ask.com MyStuff</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_viadeo"><span class="a2a_i_viadeo">Viadeo</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_maple"><span class="a2a_i_maple">Maple</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_wists"><span class="a2a_i_wists">Wists</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_connotea"><span class="a2a_i_connotea">Connotea</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_backflip"><span class="a2a_i_backflip">Backflip</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_mylinkvault"><span class="a2a_i_mylinkvault">MyLinkVault</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_sitejot"><span class="a2a_i_sitejot">SiteJot</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_sphinn"><span class="a2a_i_sphinn">Sphinn</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_dzone"><span class="a2a_i_dzone">DZone</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_care2_news"><span class="a2a_i_care2">Care2 News</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_hyves"><span class="a2a_i_hyves">Hyves</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_sphere"><span class="a2a_i_sphere">Sphere</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_bitty_browser"><span class="a2a_i_bitty">Bitty Browser</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_gabbr"><span class="a2a_i_gabbr">Gabbr</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_symbaloo_feeds"><span class="a2a_i_symbaloo">Symbaloo Feeds</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_tagza"><span class="a2a_i_tagza">Tagza</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_folkd"><span class="a2a_i_folkd">Folkd</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_newstrust"><span class="a2a_i_newstrust">NewsTrust</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_amazon_wish_list"><span class="a2a_i_amazon">Amazon Wish List</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_printfriendly"><span class="a2a_i_printfriendly">PrintFriendly</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_read_it_later"><span class="a2a_i_read_it_later">Read It Later</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_tuenti"><span class="a2a_i_tuenti">Tuenti</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_email"><span class="a2a_i_email">Email</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_rediff"><span class="a2a_i_rediff">Rediff MyPage</span></a></div><div id="a2apage_2_col1" style="display: none;"><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_google_gmail"><span class="a2a_i_gmail">Google Gmail</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_yahoo_mail"><span class="a2a_i_yahoo">Yahoo Mail</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_hotmail"><span class="a2a_i_live">Hotmail</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_aol_mail"><span class="a2a_i_aol">AOL Mail</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i a2a_emailer" rel="nofollow" id="a2apage_any_email"><span class="a2a_i_email">Any email</span></a><a target="" href="http://www.masteringemacs.org/" class="a2a_i a2a_emailer a2a_email_client" rel="nofollow" id="a2apage_email_client"><span class="a2a_i_outlook">&nbsp;</span><span class="a2a_i_windows_mail">&nbsp;</span><span class="a2a_i_apple_mail">&nbsp;</span><span class="a2a_i_thunderbird">&nbsp;</span></a></div><div class="a2a_clear"></div></div><div id="a2apage_note_BROWSER" class="a2a_note" style="display: none;"></div><div class="a2apage_wide a2a_wide"><a href="javascript:void(0)" id="a2apage_show_more_less" class="a2a_menu_show_more_less" onclick="return a2a.show_more_less(0)" title="显示全部/展开"><span class="a2a_i_darr"></span></a></div><div class="a2a_menu_powered_by" id="a2apage_powered_by">By <a href="http://share.lockerz.com/" target="_top" title="Share Buttons">Lockerz</a></div></div></div></div>
+	<div class="skip-content"><a href="#content">Skip to content</a></div>
+	<div id="header" class="clear">
+		<div id="follow">
+			<div class="wrapper clear">
+				<dl>
+					<dt>Follow:</dt>
+					<dd><a class="rss" href="http://www.masteringemacs.org/feed/">RSS</a></dd>
+										 <dd><a class="email" href="#">Email</a></dd>
+															 <dd><a class="twitter" href="http://www.twitter.com/mickeynp">Twitter</a></dd>
+									</dl>
+			</div><!--end wrapper-->
+		</div><!--end follow-->
+		<div class="wrapper">
+			<div id="title"><a href="http://www.masteringemacs.org/"><img src="emacs22.png" alt="Emacs 22 Logo">Mastering Emacs</a></div>			<div id="description">
+				a blog about mastering the world's best text editor			</div><!--end description-->
+			<div id="navigation">
+				<ul id="nav">
+					<li class="page_item "><a href="http://www.masteringemacs.org/">Home</a></li>
+											<li class="page_item page-item-2"><a href="http://www.masteringemacs.org/about/" title="About">About</a></li>
+<li class="page_item page-item-277"><a href="http://www.masteringemacs.org/effective-editing-series/" title="Effective Editing">Effective Editing</a></li>
+<li class="page_item page-item-496 current_page_item"><a href="http://www.masteringemacs.org/reading-guide/" title="Reading Guide">Reading Guide</a></li>
+																	<li class="cat-item cat-item-5"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/articles/" title="View all posts filed under All Articles">All Articles</a>
+</li>
+	<li class="cat-item cat-item-3"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/beginner/" title="View all posts filed under For Beginners">For Beginners</a>
+</li>
+	<li class="cat-item cat-item-6"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/quick-tips/" title="View all posts filed under Quick Tips">Quick Tips</a>
+</li>
+	<li class="cat-item cat-item-4"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/tutorial/" title="View all posts filed under Tutorials">Tutorials</a>
+</li>
+									</ul>
+			</div><!--end navigation-->
+		</div><!--end wrapper-->
+	</div><!--end header-->
+<div class="content-background">
+	<div class="wrapper">
+		<div class="notice"></div>
+		<div id="content">				<h1 class="pagetitle">Reading Guide</h1>
+		<div class="entry page clear">
+			<p>Welcome to my Mastering Emacs reading guide. Here’s a selection of articles that cover a variety of topics that will make you better at Emacs.</p>
+<p>I recommend you read one article and try to absorb as much of the material as you can; don’t try to cram it — pick it up naturally. Ask yourself, if you’re trying to do something out of the “ordinary” if you can do it in a cleverer way by either consulting my site or using Google.</p>
+<h2>I’m New to Emacs</h2>
+<p>If you’re a complete beginner to Emacs, then you should start out by <em>first</em> reading the built-in tutorial (type <code>C-h t</code>) and <em>then</em> read my <a href="http://www.masteringemacs.org/articles/2010/10/04/beginners-guide-to-emacs/">Beginner’s Guide to Emacs</a>. In the article I explain some common Emacs terminology and how to accomplish the most common tasks that a new user would want to do:</p>
+<ul>
+<li>How do you customize Emacs?</li>
+<li>How can I make cut/copy/paste work like other editors?</li>
+<li>How do I load Emacs packages I found on the Internet?</li>
+<li>Why you shouldn’t use the terminal to edit your code (unless you must)</li>
+</ul>
+<p>… and much more.</p>
+<p>Next on the list is my very detailed guide to <a href="http://www.masteringemacs.org/articles/2011/01/14/effective-editing-movement/">effective editing and movement in Emacs</a>. In it, I explain all but the most esoteric “movement” commands available, out-of-the-box, in Emacs. I highly, <em>highly</em> recommend you read this next; if you’re going to go to the effort to learn Emacs, you may as well learn to use it like a pro.</p>
+<p>Once you’re familiar with the material in the two guides above, you’re free to read any of my articles; almost all of them assume no knowledge about the subject matter at all, and they invariably include a gentle introduction to the concepts required to understand the subject matter.</p>
+<p>Nevertheless, I do have some articles that’re written with beginners (and experts!) in mind:</p>
+<p>In my <a href="http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/">Beginner’s Guide to Emacs</a> article I briefly mention <em>IDO Mode</em>. IDO Mode is a replacement for the buffer switching and find file functionality in Emacs; it gives it fuzzy matching and “match-as-you-type” functionality — probably one of the most important and useful features in Emacs when you consider how often you find files and switch buffers! My article <a href="http://www.masteringemacs.org/articles/2010/10/10/introduction-to-ido-mode/">on IDO mode</a> will tell you all you need to know to get started with IDO Mode.</p>
+<p>Customization is the corner stone of Emacs. No other editor — <em>no other editor</em> — has the flexibility and extensibility offered by Emacs. Once you’re comfortable using the <code>M-x customize</code> GUI in Emacs you’re probably itching to customize Emacs’s keybindings — the one thing you cannot easily do, and persist to your .emacs file, without getting your hands dirty. My article on <a href="http://www.masteringemacs.org/articles/2011/02/08/mastering-key-bindings-emacs/">mastering key bindings in Emacs</a> explains, well, everything you’d care to know about binding keys in Emacs. I also include handy templates for the most frequent key binding tasks you’ll encounter, so it’s easy to snarf the example code and modify it to suit your needs.</p>
+<p>Emacs’s built-in Info system is the same as the one that powers Linux’s info manuals, but with one key difference: the Emacs Info browser is miles ahead of the old, crusty commandline viewer. If you’re not sure where to find something, you can use <a href="http://www.masteringemacs.org/articles/2011/08/04/full-text-searching-info-mode-apropos/">apropos with info</a> to full text search all the Info documents.</p>
+<h2>I want to Customize Emacs</h2>
+<p>Emacs has a wealth of built-in customization toggles, dials and switches; but unfortunately not everything is configurable through a UI. Here’s a handful of articles where I talk about changing some aspect of Emacs to make it better, more productive or easier to use.</p>
+<p>The first thing to read is probably my article on <a href="http://www.masteringemacs.org/articles/2010/11/14/disabling-prompts-emacs/">disabling prompts in Emacs</a>. The prompts are useful, yes; and they serve a purpose, yes; but they have a habit of driving you insane after a while.</p>
+<p>The next simple change is to <a href="http://www.masteringemacs.org/articles/2010/10/15/making-tooltips-appear-in-echo-area/">make tooltips appear in the echo area</a>. Very useful if you’re a keyboard person and don’t use a mouse. Along a similar vein, you can <a href="http://www.masteringemacs.org/articles/2010/10/18/maximizing-emacs-startup/">make Emacs start up maximized</a> so as to save you the hassle of maximizing Emacs manually.</p>
+<p>If you’re using a Window system you can <a href="http://www.masteringemacs.org/articles/2010/12/30/making-deleted-files-trash-can/">force Emacs to move deleted files to the trash can</a>, and <a href="http://www.masteringemacs.org/articles/2011/10/02/improving-performance-emacs-display-engine/">possibly improve Emacs’s display engine performance</a>.</p>
+<h2>Improving Productivity</h2>
+<p>These articles set out to improve productivity in some way. This may involve changing key bindings, copying some elisp code or explaining an underused feature.</p>
+<p>The first of the lot is how to <a href="http://www.masteringemacs.org/articles/2011/01/27/find-files-faster-recent-files-package/">find files faster by remembering recently used files</a> and hotwiring it so it uses <em>IDO mode</em> to display the files.</p>
+<p>Next on the list is <a href="http://www.masteringemacs.org/articles/2011/07/20/searching-buffers-occur-mode/">finding stuff faster using occur</a>, a very handy feature that searches an open buffer for a regexp of your choosing. I also show how to extend occur to make it more useful for searching multiple buffers at once.</p>
+<p>Another massive productivity booster is <a href="http://www.masteringemacs.org/articles/2011/10/19/executing-shell-commands-emacs/">learning how to execute shell commands in Emacs</a> <em>and</em> how to pipe input from a buffer and output from the command in and out of Emacs. Amazingly useful — especially if you’re good at commandline-fu and want to apply your one-liners to Emacs buffers.</p>
+<p>Once you’re comfortable invoking commands in Emacs, why not use Emacs’s own terminal emulators or some of its shell support? My article on <a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/">running shells in Emacs</a> will put you on the right path.</p>
+<p>Doing the same thing over and over again is normally a job for a macro; but what if you just want to <a href="http://www.masteringemacs.org/articles/2011/07/15/repeating-commands-emacs/">repeat the last command</a>?</p>
+<p>The dired functionality in Emacs is great, but it only works on one directory at a time. So what if you want to work on multiple files spread out over many directories? Why, <a href="http://www.masteringemacs.org/articles/2011/03/25/working-multiple-files-dired/">you use dired’s find file functionality</a>.</p>
+<h2>Working with Text</h2>
+<p>This is where Emacs starts to shine. Manipulating text. Other users of inferior editors invariably reach for a scripting language or a commandline tool to perform all but the most banal text manipulation tasks.<br>
+First up is <a href="http://www.masteringemacs.org/articles/2011/05/29/sorting-text-line-field-regexp-emacs/">sorting text in Emacs</a>. But actually, Emacs can do more than just sort by line. Check it out. Useful knowledge to have.</p>
+<p>If you’re a fan of regular expressions, you should be using <a href="http://www.masteringemacs.org/articles/2011/04/12/re-builder-interactive-regexp-builder/">re-builder</a>, Emacs’s regular expression builder. Even if you’re a skilled regex guy, it will come in handy occasionally.</p>
+<p><a href="http://www.masteringemacs.org/articles/2010/12/02/converting-tabs-whitespace/">Converting between tabs and spaces</a> is a useful thing to know, regardless of whether you’re in <em>this</em> camp or <em>that</em> camp.</p>
+<p>If you’re frequently reaching for a Unicode table to <a href="http://www.masteringemacs.org/articles/2010/10/13/diacritics-in-emacs/">insert diacritic marks</a>, look no further; Emacs’s input method engine will let you switch from the most likely and unlikely input sources to facilitate key input.</p>
+<h2>Workflow Articles</h2>
+<p>These articles cover very specific tasks in great detail, and they use a variety of commands and concepts, including elisp code where necessary. If you’re looking for examples of how to apply all your new-found knowledge in new and interesting ways, these articles can help.</p>
+<p>If you’re a python man and you work with Python and the Python inferior shell a lot, my article on <a href="http://www.masteringemacs.org/articles/2011/02/23/toggling-python-buffers/">writing code to toggle between python and the shell</a> may be of interest. Even if you don’t do Python you could adapt the code to other environments, such as Ruby.</p>
+<p>I’ve gotten hooked on the <a href="http://www.vimgolf.com/">Vimgolf</a> craze and I am solving the <a href="http://www.masteringemacs.org/articles/tag/vimgolf">Vimgolf puzzles using Emacs</a> instead of vim, of course!</p>
+<p>Here’s a very common problem people encounter: how do you <a href="http://www.masteringemacs.org/articles/2011/03/16/removing-blank-lines-buffer/">trim blank or whitespaced lines</a>?</p>
+<h2>Advanced Topics</h2>
+<p>All the way at the bottom is my section on “advanced” topics. They’re not <em>actually</em> advanced but they’re probably of less interest to all but the more serious Emacs users out there.</p>
+<p>First up is how to master the mysterious and, sadly, under-documented shell replacement, <a href="http://www.masteringemacs.org/articles/2010/12/13/complete-guide-mastering-eshell/">eshell</a>, a shell written entirely in Elisp.</p>
+<p>If you regularly use the mark commands to jump around your buffers, you’ll know that it doesn’t gel that well with transient mark mode. My article on <a href="http://www.masteringemacs.org/articles/2010/12/22/fixing-mark-commands-transient-mark-mode/">fixing the mark commands</a> tries to right that wrong.</p>
+<p>And last, but absolutely not least, a very detailed look at <a href="http://www.masteringemacs.org/articles/2010/11/29/evaluating-elisp-emacs/">evaluating elisp code in Emacs</a>. If you’re serious about learning elisp you must know how to evaluate and test your code.</p><div class="addtoany_share_save_container"><div class="a2a_kit a2a_target addtoany_list" id="wpa2a_1"><!--[if IE]><iframe frameborder="0" allowTransparency="true" class="addtoany_special_service google_plusone" src="https://plusone.google.com/u/0/_/%2B1/fastbutton?url=http%3A%2F%2Fwww.masteringemacs.org%2Freading-guide%2F&amp;size=medium&amp;count=true" scrolling="no" style="border:none;overflow:hidden;width:90px;height:20px"></iframe><![endif]--><!--[if !IE]><!--><iframe class="addtoany_special_service google_plusone" src="index_2.html" style="border: medium none; overflow: hidden; width: 90px; height: 20px;" scrolling="no"></iframe><!--<![endif]--><!--[if IE]><iframe frameborder="0" allowTransparency="true" class="addtoany_special_service twitter_tweet" src="http://platform.twitter.com/widgets/tweet_button.html?url=http%3A%2F%2Fwww.masteringemacs.org%2Freading-guide%2F&amp;counturl=http%3A%2F%2Fwww.masteringemacs.org%2Freading-guide%2F&amp;count=horizontal&amp;text=Reading%20Guide" scrolling="no" style="border:none;overflow:hidden;width:130px;height:20px"></iframe><![endif]--><!--[if !IE]><!--><iframe class="addtoany_special_service twitter_tweet" src="index_3.html" style="border: medium none; overflow: hidden; width: 130px; height: 20px;" scrolling="no"></iframe><!--<![endif]--><a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save#url=http%3A%2F%2Fwww.masteringemacs.org%2Freading-guide%2F&amp;title=Reading%20Guide&amp;description=Learn%20how%20to%20master%20Emacs%2C%20Emacs-Lisp%20and%20its%20many%20packages%20and%20keyboard%20shortcuts" style="background: url('favicon.png') no-repeat scroll 9px 0px transparent ! important; padding: 0pt 0pt 0pt 30px; display: inline-block; height: 16px; line-height: 16px; vertical-align: middle;"><span class="a2a_img a2a_img_text a2a_i_a2a"></span>Share</a></div>
+
+</div>								</div><!--end entry-->
+		<!-- You can start editing here. -->
+<div id="comments">
+	<div class="comment-number">
+		<span>2 Comments</span>
+					<a id="leavecomment" href="#respond" title="Leave One"> →</a>
+			</div><!--end comment-number-->
+	<ol class="commentlist">
+			<li class="comment even thread-even depth-1" id="comment-3262">
+		<div class="c-grav"><img alt="" src="5fd2b648abce0503577b5f38493186a5" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				bubo <span class="c-permalink"><a href="http://www.masteringemacs.org/reading-guide/#comment-3262">permalink</a></span>
+			</div>
+						<p>this is a VERY useful blog! thanks to your tips i’m already twice as fast editing with emacs, which is full of arcane functional miracles and hidden power tools… keep the good work up and have a nice day!</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/reading-guide/?replytocom=3262#respond" onclick='return addComment.moveForm("comment-3262", "3262", "respond", "496")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+	</ol>
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+			<h3 class="pinghead">Trackbacks &amp; Pingbacks</h3>
+		<ol class="pinglist">
+				<li id="comment-4952"><a href="http://irreal.org/blog/?p=345" rel="external nofollow" class="url">Happy Anniversary To Mastering Emacs | Irreal</a></li>
+		</ol>
+			</div><!--end comments-->
+
+
+	<div id="respond">
+		<div class="cancel-comment-reply">
+			<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.masteringemacs.org/reading-guide/#respond" style="display: none;">Click here to cancel reply.</a></small>
+		</div>
+		<h4 id="postcomment">Leave a Reply</h4>
+				<form action="http://www.masteringemacs.org/wp-comments-post.php" method="post" id="commentform">
+							<fieldset>
+					<label for="author" class="comment-field"><small>Name: (required):</small></label>
+					<input class="text-input" name="author" id="author" value="" tabindex="1" type="text">
+				</fieldset>
+				<fieldset>
+					<label for="email" class="comment-field"><small>Email: (required):</small></label>
+					<input class="text-input" name="email" id="email" value="" tabindex="2" type="text">
+				</fieldset>
+				<fieldset>
+					<label for="url" class="comment-field"><small>Website:</small></label>
+					<input class="text-input" name="url" id="url" value="" tabindex="3" type="text">
+				</fieldset>
+						<fieldset>
+				<label for="comment" class="comment-field"><small>Comment:</small></label>
+				<textarea name="comment" id="comment" cols="50" rows="10" tabindex="4"></textarea>
+			</fieldset>
+			<p class="guidelines"><strong>Note:</strong> XHTML is allowed. Your email address will <strong>never</strong> be published.</p>
+			<p class="comments-rss"><a href="http://www.masteringemacs.org/reading-guide/feed/">Subscribe to this comment feed via RSS</a></p>
+			<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="a442913362" type="hidden"></p>			<fieldset>
+				<input name="submit" id="submit" tabindex="5" value="Submit Comment" type="submit">
+				<input name="comment_post_ID" value="496" type="hidden">
+			</fieldset>
+			<input name="comment_post_ID" value="496" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+		</form><!--end commentform-->
+	</div><!--end respond-->
+
+
+	</div><!--end content-->
+<div id="sidebar">
+			<ul>	<li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2><div class="tagcloud"><a href="http://www.masteringemacs.org/articles/tag/admin/" class="tag-link-46" title="1 topic" style="font-size: 8pt;">admin</a>
+<a href="http://www.masteringemacs.org/articles/tag/ansi-term/" class="tag-link-38" title="1 topic" style="font-size: 8pt;">ansi-term</a>
+<a href="http://www.masteringemacs.org/articles/tag/autocomplete/" class="tag-link-24" title="1 topic" style="font-size: 8pt;">autocomplete</a>
+<a href="http://www.masteringemacs.org/articles/tag/beginner-2/" class="tag-link-18" title="7 topics" style="font-size: 15.6364pt;">beginner</a>
+<a href="http://www.masteringemacs.org/articles/tag/buffer/" class="tag-link-44" title="6 topics" style="font-size: 15pt;">buffer</a>
+<a href="http://www.masteringemacs.org/articles/tag/customization/" class="tag-link-11" title="22 topics" style="font-size: 21.4909pt;">customization</a>
+<a href="http://www.masteringemacs.org/articles/tag/cygwin/" class="tag-link-17" title="1 topic" style="font-size: 8pt;">cygwin</a>
+<a href="http://www.masteringemacs.org/articles/tag/editing/" class="tag-link-13" title="17 topics" style="font-size: 20.2182pt;">editing</a>
+<a href="http://www.masteringemacs.org/articles/tag/elisp/" class="tag-link-9" title="24 topics" style="font-size: 22pt;">elisp</a>
+<a href="http://www.masteringemacs.org/articles/tag/eshell/" class="tag-link-8" title="3 topics" style="font-size: 11.8182pt;">eshell</a>
+<a href="http://www.masteringemacs.org/articles/tag/eval/" class="tag-link-27" title="1 topic" style="font-size: 8pt;">eval</a>
+<a href="http://www.masteringemacs.org/articles/tag/files/" class="tag-link-37" title="7 topics" style="font-size: 15.6364pt;">files</a>
+<a href="http://www.masteringemacs.org/articles/tag/guide/" class="tag-link-19" title="4 topics" style="font-size: 13.0909pt;">guide</a>
+<a href="http://www.masteringemacs.org/articles/tag/ido/" class="tag-link-15" title="6 topics" style="font-size: 15pt;">ido</a>
+<a href="http://www.masteringemacs.org/articles/tag/ielm/" class="tag-link-25" title="1 topic" style="font-size: 8pt;">ielm</a>
+<a href="http://www.masteringemacs.org/articles/tag/inspect/" class="tag-link-28" title="1 topic" style="font-size: 8pt;">inspect</a>
+<a href="http://www.masteringemacs.org/articles/tag/key-bind/" class="tag-link-40" title="1 topic" style="font-size: 8pt;">key bind</a>
+<a href="http://www.masteringemacs.org/articles/tag/mark/" class="tag-link-34" title="3 topics" style="font-size: 11.8182pt;">mark</a>
+<a href="http://www.masteringemacs.org/articles/tag/multilingual/" class="tag-link-14" title="1 topic" style="font-size: 8pt;">multilingual</a>
+<a href="http://www.masteringemacs.org/articles/tag/navigation/" class="tag-link-12" title="10 topics" style="font-size: 17.4182pt;">navigation</a>
+<a href="http://www.masteringemacs.org/articles/tag/network/" class="tag-link-45" title="1 topic" style="font-size: 8pt;">network</a>
+<a href="http://www.masteringemacs.org/articles/tag/news/" class="tag-link-49" title="3 topics" style="font-size: 11.8182pt;">news</a>
+<a href="http://www.masteringemacs.org/articles/tag/opinion/" class="tag-link-23" title="13 topics" style="font-size: 18.8182pt;">opinion</a>
+<a href="http://www.masteringemacs.org/articles/tag/productivity/" class="tag-link-21" title="23 topics" style="font-size: 21.7455pt;">productivity</a>
+<a href="http://www.masteringemacs.org/articles/tag/prompt/" class="tag-link-22" title="2 topics" style="font-size: 10.2909pt;">prompt</a>
+<a href="http://www.masteringemacs.org/articles/tag/python/" class="tag-link-41" title="1 topic" style="font-size: 8pt;">python</a>
+<a href="http://www.masteringemacs.org/articles/tag/readability/" class="tag-link-10" title="3 topics" style="font-size: 11.8182pt;">readability</a>
+<a href="http://www.masteringemacs.org/articles/tag/recentf/" class="tag-link-39" title="1 topic" style="font-size: 8pt;">recentf</a>
+<a href="http://www.masteringemacs.org/articles/tag/regexp/" class="tag-link-50" title="4 topics" style="font-size: 13.0909pt;">regexp</a>
+<a href="http://www.masteringemacs.org/articles/tag/region/" class="tag-link-35" title="3 topics" style="font-size: 11.8182pt;">region</a>
+<a href="http://www.masteringemacs.org/articles/tag/repl/" class="tag-link-31" title="1 topic" style="font-size: 8pt;">repl</a>
+<a href="http://www.masteringemacs.org/articles/tag/scratch/" class="tag-link-26" title="1 topic" style="font-size: 8pt;">scratch</a>
+<a href="http://www.masteringemacs.org/articles/tag/shell/" class="tag-link-7" title="3 topics" style="font-size: 11.8182pt;">shell</a>
+<a href="http://www.masteringemacs.org/articles/tag/tabs/" class="tag-link-29" title="1 topic" style="font-size: 8pt;">tabs</a>
+<a href="http://www.masteringemacs.org/articles/tag/term/" class="tag-link-16" title="1 topic" style="font-size: 8pt;">term</a>
+<a href="http://www.masteringemacs.org/articles/tag/terminology/" class="tag-link-20" title="1 topic" style="font-size: 8pt;">terminology</a>
+<a href="http://www.masteringemacs.org/articles/tag/tips/" class="tag-link-51" title="3 topics" style="font-size: 11.8182pt;">tips</a>
+<a href="http://www.masteringemacs.org/articles/tag/tramp/" class="tag-link-32" title="1 topic" style="font-size: 8pt;">tramp</a>
+<a href="http://www.masteringemacs.org/articles/tag/transient/" class="tag-link-33" title="1 topic" style="font-size: 8pt;">transient</a>
+<a href="http://www.masteringemacs.org/articles/tag/trash-can/" class="tag-link-36" title="1 topic" style="font-size: 8pt;">trash can</a>
+<a href="http://www.masteringemacs.org/articles/tag/twitter/" class="tag-link-43" title="1 topic" style="font-size: 8pt;">twitter</a>
+<a href="http://www.masteringemacs.org/articles/tag/vc/" class="tag-link-47" title="1 topic" style="font-size: 8pt;">vc</a>
+<a href="http://www.masteringemacs.org/articles/tag/vimgolf/" class="tag-link-56" title="2 topics" style="font-size: 10.2909pt;">vimgolf</a>
+<a href="http://www.masteringemacs.org/articles/tag/whitespace/" class="tag-link-30" title="1 topic" style="font-size: 8pt;">whitespace</a>
+<a href="http://www.masteringemacs.org/articles/tag/workflow/" class="tag-link-42" title="7 topics" style="font-size: 15.6364pt;">workflow</a></div>
+</li><li id="pages-4" class="widget widget_pages"><h2 class="widgettitle">Pages</h2>		<ul>
+			<li class="page_item page-item-2"><a href="http://www.masteringemacs.org/about/" title="About">About</a></li>
+<li class="page_item page-item-277"><a href="http://www.masteringemacs.org/effective-editing-series/" title="Effective Editing">Effective Editing</a></li>
+<li class="page_item page-item-496 current_page_item"><a href="http://www.masteringemacs.org/reading-guide/" title="Reading Guide">Reading Guide</a></li>
+		</ul>
+		</li><li id="linkcat-2" class="widget widget_links"><h2 class="widgettitle">Blogroll</h2>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.reddit.com/r/emacs">Emacs on Reddit</a></li>
+<li><a href="http://www.twitter.com/mickeynp">Follow me on Twitter</a></li>
+<li><a href="http://irreal.org/blog/">Irreal's Emacs blog</a></li>
+<li><a href="http://www.emacswiki.org/">The Emacs Wiki</a></li>
+
+	</ul>
+</li>
+	</ul></div><!--end sidebar--></div><!--end wrapper-->
+</div><!--end content-background-->
+<div id="footer">
+	<div class="wrapper clear">
+		<div id="footer-about" class="footer-column">
+			<h2>About</h2>
+							<p>Hi, I'm Mickey and this is my blog about mastering Emacs. I've been using Emacs for eight years and I'd like to share with you all the things I've learned over the years.</p>
+<p>The blog will cover all facets of Emacs and will be suitable for beginners and -- I hope -- experts alike.</p>
+					</div>
+		<div id="footer-flickr" class="footer-column">
+							<ul>
+											<li class="widget widget_categories">
+							<h2 class="widgettitle">Categories</h2>
+							<ul>
+									<li class="cat-item cat-item-5"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/articles/" title="View all posts filed under All Articles">All Articles</a>
+</li>
+	<li class="cat-item cat-item-3"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/beginner/" title="View all posts filed under For Beginners">For Beginners</a>
+</li>
+	<li class="cat-item cat-item-6"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/quick-tips/" title="View all posts filed under Quick Tips">Quick Tips</a>
+</li>
+	<li class="cat-item cat-item-4"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/tutorial/" title="View all posts filed under Tutorials">Tutorials</a>
+</li>
+							</ul>
+						</li>
+									</ul>
+					</div>
+		<div id="footer-search" class="footer-column">
+			<h2>Search</h2>
+			<form method="get" id="search_form" action="http://www.masteringemacs.org/">
+	<div>
+		<input value="" name="s" id="s" class="search" type="text">
+		<input id="searchsubmit" value="Search" type="submit">
+	</div>
+</form>
+		</div>
+		<div id="copyright">
+			<p class="copyright-notice">Copyright © 2012 Mickey Petersen. <a href="http://thethemefoundry.com/titan/">Titan Theme</a> by <a href="http://thethemefoundry.com/">The Theme Foundry</a>.</p>
+		</div><!--end copyright-->
+	</div><!--end wrapper-->
+</div><!--end footer-->
+
+
+
+
+
+
+</body>
+</html>
