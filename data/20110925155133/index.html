@@ -1,0 +1,1014 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!--  -->
+    
+    <meta http-equiv="X-UA-Compatible" content="IE=7">
+    <title>New Delphi language features since Delphi 7</title>
+	
+	<meta name="description" content="See many of the major new language features in Delphi released after the Delphi 7 version">
+	
+	<!--
+	<link href="/styles/pe_menu.css" type="text/css" rel="stylesheet" />
+	<link href="/styles/pe_events.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/main.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/jquery-ui.css" type="text/css" rel="stylesheet" />
+	<link href="/styles/tags.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/products.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/article.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/yapp.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/pe_dlstyles.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/pe_forms.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/buttons.css" rel="stylesheet" type="text/css" />
+	<link href="/styles/codecentral.css" rel="stylesheet" type="text/css" />
+	-->
+	
+	
+	
+	<!--
+	<script src="/javascript/jquery.js" type="text/javascript"></script>
+	<script src="/javascript/jquery-ui.js" type="text/javascript"></script>
+    <script language="JavaScript" src="/javascript/planetembt_nav_jq.js" type="text/javascript"></script>
+    <script language="JavaScript" src="/javascript/library.js" type="text/javascript"></script>
+    <script language="JavaScript" src="/javascript/hide_show.js" type="text/javascript"></script>
+    <script language="JavaScript" src="/javascript/chatroominfo.js" type="text/javascript"></script>
+    <script language="JavaScript" src="/javascript/services.js" type="text/javascript"></script>
+    <script language="JavaScript" src="/javascript/searchhint.js" type="text/javascript"></script>
+    -->
+    
+    
+	
+
+	<link rel="shortcut icon" href="ednfavicon.ico" type="image/x-icon">
+
+	<link title="Embarcadero Search" rel="search" type="application/opensearchdescription+xml" href="http://static.embarcadero.com/javascript/search.xml">
+	
+	
+	<link rel="alternate" type="application/atom+xml" href="http://edn.embarcadero.com/article/34324/atom">
+<link rel="alternate" type="application/rss+xml" href="http://edn.embarcadero.com/article/34324/rss">
+
+	
+	
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body id="body"><div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;"><iframe src="index_1.html" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0pt none; left: 0pt; top: 0pt;" title="AddThis utility frame" id="_atssh731"></iframe></div>
+<table width="100%" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td>
+<div class="main_wrapper">
+  <div class="main_wrapper_inner_left">
+    <div class="main_wrapper2">
+      <div class="main_wrapper2_inner_right">
+	    <div class="shadow_bg_wrapper">
+		
+        <div class="header_wrapper" id="header_wrapper">        	
+			<div id="mininav_bar" class="mininav_wrapper">
+			<div style="float: right; height: 18px; line-height: 18px;">
+                <form class="search" name="search" method="get" action="http://edn.embarcadero.com/search">
+                    <input id="searchbox-q" name="q" class="s" size="18" maxlength="255" value="" autocomplete="off" type="text">
+					<div id="searchbox-qHintBox" class="search-hint-box"><div id="searchbox-qHintBoxHitCount" class="hitcount"></div><div id="searchbox-qHintBoxPhraseList" class="phraselist"></div></div>
+                    <input name="" src="search_btn.gif" type="image" align="absmiddle">
+                    <input name="allsites" value="y" type="hidden">
+		            <input name="allwords" value="y" type="hidden">
+                </form>                
+            </div>
+            
+		    <div style="float: right; height: 18px; line-height: 18px;">
+		        
+		        
+		        <a href="https://members.embarcadero.com/login.aspx?returnurl=http://edn.embarcadero.com/article/34324">
+			        Log On
+			    </a>		        
+            </div>
+            
+            
+            
+            <div style="float: right; height: 18px; line-height: 18px;">&nbsp;|&nbsp;</div>
+            <div class="langselect" style="float: right;">
+                <div class="primary-menu" style="background: none repeat scroll 0% 0% transparent; padding: 0pt;">
+                    <ul id="langlist" class="langbg">
+		                <li id="langselected"><a id="langselecteda" href="#">English</a>
+		                    <ul><li><a href="http://edn.embarcadero.com/language?clear=yes&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">My default language</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=ar&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Arabic</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=br&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Brazilian Portuguese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=bg&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Bulgarian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=hr&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Croatian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=cs&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Czech</a></li>
+<li class="selected"><a href="http://edn.embarcadero.com/language?code=en&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">English</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=fi&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Finnish</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=fr&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">French</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=de&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">German</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=he&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Hebrew</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=el&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Hellenic (Greek)</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=hu&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Hungarian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=it&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Italian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=jp&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Japanese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=kr&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Korean</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=no&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Norwegian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=pl&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Polish</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=pt&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Portuguese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=ru&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Russian</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=cn&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Simplified Chinese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=es&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Spanish</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=sv&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Swedish</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=tw&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Traditional Chinese</a></li>
+<li><a href="http://edn.embarcadero.com/language?code=tr&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">Turkish</a></li>
+</ul>
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+		    
+            
+            
+            <div style="float: right; height: 18px; line-height: 18px;">|</div>
+			<div style="float: right;">
+                <div class="primary-menu" style="background: none repeat scroll 0% 0% transparent; padding: 0pt;">
+                    <ul class="langbg countrylist">
+		                <li class="countryselected">
+		                    <!-- <img src="http://static.embarcadero.com://static.embarcadero.com/images/w3/icons-globe.gif" width="22" height="21" alt="" /> --><a class="countryselecteda" href="#">Location</a>
+                            <ul>
+		                    <li><a href="http://edn.embarcadero.com/country?clear=yes&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324">All Other</a></li>
+<li class="section">Regions</li><li><a href="http://edn.embarcadero.com/country?code=ASEAN&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="Brunei Darussalam, Cambodia, Indonesia, Laos, Malaysia, Philippines, Singapore, Thailand, Viet Nam">ASEAN</a></li><li><a href="http://edn.embarcadero.com/country?code=ANZ&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="Australia, New Zealand">Australia/New Zealand</a></li><li><a href="http://edn.embarcadero.com/country?code=BENELUX&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="Belgium, Luxembourg, Netherlands">Benelux</a></li><li><a href="http://edn.embarcadero.com/country?code=DACH&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="Austria, Germany, Switzerland">D-A-CH</a></li><li><a href="http://edn.embarcadero.com/country?code=CHINAHK&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="China, Hong Kong">Greater China</a></li><li><a href="http://edn.embarcadero.com/country?code=LATAM&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="Argentina, Bolivia, Chile, Colombia, Costa Rica, Dominican Republic, Ecuador, El Salvador, Guatemala, Honduras, Mexico, Nicaragua, Panama, Paraguay, Peru, Uruguay, Venezuela">Latin America</a></li><li><a href="http://edn.embarcadero.com/country?code=NORDIC&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="Denmark, Finland, Iceland, Norway, Sweden">Nordic</a></li><li><a href="http://edn.embarcadero.com/country?code=TW&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="">Taiwan</a></li><li><a href="http://edn.embarcadero.com/country?code=UKIR&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="Ireland, United Kingdom">UK and Ireland</a></li><li><a href="http://edn.embarcadero.com/country?code=USCARIB&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="Anguilla, Antigua and Barbuda, Aruba, Bahamas, Barbados, Belize, Bermuda, Cayman Islands, Dominica, Falkland Islands (Malvinas), Grenada, Guadeloupe, Guyana, Haiti, Jamaica, Martinique, Montserrat, Netherlands Antilles, Puerto Rico, Saint Kitts and Nevis, Saint Lucia, Saint Vincent and the Grenadines, St. Barthelemy, Suriname, Trinidad and Tobago, Turks and Caicos Islands, United States, Virgin Islands (British), Virgin Islands (U.S.)">US and Caribbean</a></li><li class="section">Countries</li><li><a href="http://edn.embarcadero.com/country?code=BR&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="">Brazil</a></li><li><a href="http://edn.embarcadero.com/country?code=CA&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="">Canada</a></li><li><a href="http://edn.embarcadero.com/country?code=FR&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="">France</a></li><li><a href="http://edn.embarcadero.com/country?code=IN&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="">India</a></li><li><a href="http://edn.embarcadero.com/country?code=IT&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="">Italy</a></li><li><a href="http://edn.embarcadero.com/country?code=JP&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="">Japan</a></li><li><a href="http://edn.embarcadero.com/country?code=KR&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="">Korea (South)</a></li><li><a href="http://edn.embarcadero.com/country?code=RU&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="">Russian Federation</a></li><li><a href="http://edn.embarcadero.com/country?code=ES&amp;returnurl=http%3a%2f%2fedn.embarcadero.com%2farticle%2f34324" title="">Spain</a></li>
+                            </ul>
+		                </li>
+		            </ul>
+		        </div>
+		    </div>
+		    
+		    
+		    <div style="float: left; height: 18px; line-height: 18px;">
+		        <a href="http://www.embarcadero.com/" class="site-home">Embarcadero Home</a>
+		    </div>
+		    &nbsp;
+		  </div>
+        <div id="social" style="position: relative; clear: right; float: right; top: 10px; width: 180px;">
+        <div id="sociallinks" style="position: absolute; float: right; top: 0px; right: 15px; z-index: 100;">
+        <a href="http://www.youtube.com/user/EmbarcaderoTechNet" title="Embarcadero on YouTube">
+          <img src="youtube_32x32.png" alt="YouTube" height="32" width="32" border="0">
+        </a>
+        <a href="http://twitter.com/EmbarcaderoTech" title="Embarcadero on Twitter
+">
+          <img src="twitter_32x32.png" alt="Twitter" height="32" width="32" border="0">
+        </a>
+        <a href="http://www.facebook.com/#/pages/Embarcadero-Technologies-Database-Application-Software-Tools/34960937498" title="Embarcadero on Facebook">
+          <img src="facebook_32x32.png" alt="Facebook" height="32" width="32" border="0">
+        </a>
+        <a href="http://www.linkedin.com/e/vgh/2551723/" title="Embarcadero on Linked In">
+          <img src="linked-in-icon-32.png" alt="Linked In" height="32" width="32" border="0">
+        </a>
+        </div>
+        <div id="socialtext" style="color: white; position: absolute; float: right; top: 30px; z-index: 100; right: 15px; text-align: right;">Watch, Follow, &amp; <br>Connect with Us
+</div>
+
+        <div id="addthis" class="addthis_toolbox addthis_default_style" style="position: absolute; float: right; top: 60px; right: 16px; text-align: right;">
+        <a href="http://www.addthis.com/bookmark.php?v=250&amp;pub=embarcadero" class="addthis_button_compact at300m" style="color: White;" title="Share this Embarcadero web page
+"><span class="at300bs at15nc at15t_compact"></span>Share This</a>
+        <div class="atclear"></div></div>
+        
+
+<!--
+        <div id="sharethis" style="position:absolute; color:white; float:right; top:60px; right:16px; z-index:100; text-align:right;">
+        <script type="text/javascript" src="http://w.sharethis.com/button/sharethis.js#publisher=8cc86461-c593-40bd-a158-87c043ff9862&amp;type=website&amp;buttonText=Share This&amp;embeds=true&amp;post_services=email%2Cfacebook%2Ctwitter%2Clinkedin%2Cdigg%2Ctechnorati%2Cdelicious%2Cwindows_live%2Cstumbleupon%2Cyahoo_bmarks%2Cblogger%2Csms%2Cmyspace%2Creddit%2Cgoogle_bmarks%2Cbebo%2Cybuzz%2Cmixx%2Cfriendfeed%2Cpropeller%2Cwordpress%2Cnewsvine%2Cxanga&amp;headerTitle=Share this Embarcadero web page
+"></script>
+        </div>
+-->
+        </div>
+		    
+		    <a href="http://edn.embarcadero.com/" class="ednlogo"><img src="edn.jpg" alt="Embarcadero Developer Network"></a>
+        	<a href="http://edn.embarcadero.com/" class="mainlogo"><img src="header_logo.gif" alt="Embarcadero Developer Network"></a>
+        </div>
+        	
+ 
+		<div class="main_nav_wrapper" id="main_nav">
+			<a href="#" id="Communities">Communities</a>
+			<a href="#" id="Articles">Articles</a>
+            <a href="http://blogs.embarcadero.com/" id="Blogs">Blogs</a>
+            <a href="#" id="Resources">Resources</a>
+            <a href="#" id="Downloads">Downloads</a>
+            <a href="http://edn.embarcadero.com/help" id="Help">Help</a>
+		</div>
+
+		<div class="content_wrapper_inside">
+		  <form name="ctl31" method="post" action="http://edn.embarcadero.com/article/34324" id="ctl31">
+<div>
+<input name="__EVENTTARGET" id="__EVENTTARGET" value="" type="hidden">
+<input name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" type="hidden">
+<input name="__VIEWSTATE" id="__VIEWSTATE" value="/wEPDwUKMTg0MDYyNTE1MA9kFgICkgEPZBYEAi4PDxYCHgdWaXNpYmxlaGRkAjgPZBYGZg9kFgJmDw8WAh8AaGRkAgwPZBYCZg8WAh4EVGV4dAXYCDx0YWJsZSB3aWR0aD0iMTAwJSI+DQo8dHI+DQo8dGQgdmFsaWduPSJ0b3AiIHdpZHRoPSIxMDAlIj48ZGl2IGNsYXNzPSJidXR0b24gYnV0dG9uLWltYWdlIGJ1dHRvbi1kbCI+PGEgaHJlZj0iaHR0cHM6Ly9kb3dubG9hZHMuZW1iYXJjYWRlcm8uY29tL2ZyZWUvZGVscGhpIiB0aXRsZT0iRG93bmxvYWQgYSBmcmVlIHRyaWFsIj5Eb3dubG9hZCBUcmlhbDwvYT48L2Rpdj4NCiAgPGRpdiBzdHlsZT0iaGVpZ2h0OiA0cHg7Ij48L2Rpdj4NCg0KPGRpdiBjbGFzcz0iYnV0dG9uIGJ1dHRvbi1pbWFnZSBidXR0b24tY2FydCI+PGEgaHJlZj0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vYnV5P2xpbms9NSwzIiB0aXRsZT0iUHVyY2hhc2UgYSBwcm9kdWN0IHJpZ2h0IG5vdyI+QnV5IE5vdzwvYT48L2Rpdj4NCjwvdGQ+DQo8L3RyPg0KPHRyPg0KPHRkIHZhbGlnbj0idG9wIiB3aWR0aD0iMTAwJSI+PHAgc3R5bGU9InRleHQtYWxpZ246IGNlbnRlcjsiPjxhIGhyZWY9Imh0dHA6Ly93d3cuZW1iYXJjYWRlcm8uY29tL3Byb2R1Y3RzL2RlbHBoaSI+PGltZyBhbHQ9IkRlbHBoaSAiIHNyYz0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vYXJ0aWNsZS8zOTYzMy9pbWFnZXMvMzk2MzMvRGVscGhpXzE1OXgyMjguanBnIiBpZD0iZG9jaW1hZ2UxIiAvPjwvYT48L3A+DQo8cCBzdHlsZT0idGV4dC1hbGlnbjogY2VudGVyOyI+PGEgaHJlZj0iaHR0cDovL3d3dy5lbWJhcmNhZGVyby5jb20vd29ybGQtdG91ciI+PGltZyBhbHQ9IlJBRCBTdHVkaW8gWEUyIFdvcmxkIFRvdXIiIHNyYz0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vYXJ0aWNsZS8zOTYzMy9pbWFnZXMvMzk2MzMvV29ybGRUb3VyX2Jhbm5lcl8xNTl4MjI4LmpwZyIgaWQ9ImRvY2ltYWdlMiIgLz48L2E+PC9wPg0KPHAgc3R5bGU9InRleHQtYWxpZ246IGNlbnRlcjsiPjxhIGhyZWY9Imh0dHA6Ly9iaXQubHkvcmFkZmFzdHJlcG9ydCI+PGltZyBhbHQ9IkZhc3RSZXBvcnQiIHNyYz0iaHR0cDovL2Vkbi5lbWJhcmNhZGVyby5jb20vYXJ0aWNsZS8zOTYzMy9pbWFnZXMvMzk2MzMvMTU5eDIyOGZydmNsLmdpZiIgaWQ9ImRvY2ltYWdlMyIgLz48L2E+PC9wPg0KPC90ZD4NCjwvdHI+DQo8L3RhYmxlPg0KZAIRD2QWAmYPZBYCZg9kFgJmD2QWAmYPZBYEAgEPDxYCHwEFpQE8ZGl2IGNsYXNzPSJ0YWdjbG91ZCI+DQo8c3BhbiBjbGFzcz0idGFnIj48YSBocmVmPSJodHRwOi8vZWRuLmVtYmFyY2FkZXJvLmNvbS90YWcvZW4sRGVscGhpIiBjbGFzcz0idGFnLW1lZGl1bSIgdGl0bGU9IlRhZ2dlZCBieSA4IHVzZXJzIj5EZWxwaGk8L2E+PC9zcGFuPg0KPC9kaXY+DQpkZAIDDw8WAh8AaGQWCgIBDw8WAh8BBQ1UYWcgTGFuZ3VhZ2U6ZGQCAw8QDxYGHg1EYXRhVGV4dEZpZWxkBQROYW1lHg5EYXRhVmFsdWVGaWVsZAUMVGVtcGxhdGVDb2RlHgtfIURhdGFCb3VuZGdkEBUYBkFyYWJpYxRCcmF6aWxpYW4gUG9ydHVndWVzZQlCdWxnYXJpYW4IQ3JvYXRpYW4FQ3plY2gHRW5nbGlzaAdGaW5uaXNoBkZyZW5jaAZHZXJtYW4GSGVicmV3EEhlbGxlbmljIChHcmVlaykJSHVuZ2FyaWFuB0l0YWxpYW4ISmFwYW5lc2UGS29yZWFuCU5vcndlZ2lhbgZQb2xpc2gKUG9ydHVndWVzZQdSdXNzaWFuElNpbXBsaWZpZWQgQ2hpbmVzZQdTcGFuaXNoB1N3ZWRpc2gTVHJhZGl0aW9uYWwgQ2hpbmVzZQdUdXJraXNoFRgCYXICYnICYmcCaHICY3MCZW4CZmkCZnICZGUCaGUCZWwCaHUCaXQCanACa3ICbm8CcGwCcHQCcnUCY24CZXMCc3YCdHcCdHIUKwMYZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnFgECBWQCBQ8PFgIfAQUEVGFnOmRkAgkPFgQeDVVzZUNvbnRleHRLZXlnHgpDb250ZXh0S2V5BQJlbmQCCw8PFgIfAQUHQWRkIFRhZ2RkZC2yrNyz0nOw8/mPuQGIYYE2+UjP" type="hidden">
+</div>
+
+
+
+
+
+
+
+
+
+		    
+        	<div class="top">    
+        	            
+            	<div class="print_btn">
+            	    <ul>
+  <li class="submit-translation"><a href="http://gp.embarcadero.com/articles/translate/34324.aspx"><span>Submit Translation</span></a></li>
+  <li class="print"><a href="http://edn.embarcadero.com/print/34324"><span>Printer-friendly</span></a></li>
+</ul>
+                </div>
+                
+                
+                
+                <div class="breadcrumb">
+                    <ul>
+  <li><a href="http://edn.embarcadero.com/"><span>EDN</span></a></li>
+  <li><span>»</span></li>
+  <li><a href="http://edn.embarcadero.com/delphi"><span>Delphi</span></a></li>
+  <li><span>»</span></li>
+  <li><a href="http://edn.embarcadero.com/delphi/programming"><span>Programming</span></a></li>
+  <li><span>»</span></li>
+  <li><a href="http://edn.embarcadero.com/delphi/programming/objectpascal"><span>Object Pascal</span></a></li>
+</ul>
+                </div>
+                
+            </div>
+            
+            
+            
+        
+			
+			
+        	<div class="content_wrapper_top">
+        	    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        	        <tbody><tr>
+			    
+                          
+                        <td valign="top" width="99%">      
+                <div id="article-div" class="article article-with-rightcol" style="overflow: hidden;">
+				    				    
+				    
+				    <div style="float: left;">
+                      <div id="langfilter" style="display: none;" width="1" nowrap="nowrap">
+                        <table id="langfiltertable" nowrap="nowrap" style="display: none; white-space: nowrap;" width="24px">
+                            <tbody><tr>
+                                <td><a href="javascript:showLanguage('',%20'All');">Show All</a></td>
+                            </tr>
+                        </tbody></table>
+                        <img src="langfilter.gif" alt="" onclick="showLangFilter();">&nbsp;<span id="langfiltername">[All]</span>
+                        
+                      </div>
+                    </div>
+                    <div id="article-inner-div">
+                    <h1 class="title3">
+                        <span id="expand-collapse-all">
+                            <span id="expand-all"><a href="javascript:expandAll();" title="Expand all article sections"></a></span>
+                            <span id="collapse-all"><a href="javascript:collapseAll();" title="Collapse all article sections"></a></span>
+                        </span>
+                        New Delphi language features since Delphi 7
+                    </h1>
+                    
+                    
+                    <p class="author">By: <a href="http://gp.embarcadero.com/authors/edit/1793.aspx">Nick Hodges</a></p>
+                    
+                    
+                    <p class="abstract">Abstract: See many of the major new language features in Delphi released after the Delphi 7 version</p>
+                    
+                    
+                    
+                    
+                    
+				    <div class="article-content">
+				    
+				    
+
+<span id="ArticleLabel"><table border="1" cellpadding="4">
+  <tbody><tr>
+    <td colspan="2">
+            <h2>Language and Compiler Features Since Delphi 7</h2><div class="section" header="Language and Compiler Features Since Delphi 7" id="docsection1"></div></td>
+
+  </tr>
+  <tr>
+    <td width="15%">
+		  <strong>Inlining</strong>
+		</td>
+    <td>
+		  Routines can now be marked with the <code>inline</code> directive.&nbsp; This tells the compiler that,
+		  instead of actually calling the routine, it should emit code that 
+		  includes the routine at the call site.
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>Operator Overloading</strong>
+		</td>
+    <td>
+		  <p>
+			Delphi allows certain functions, or operators, to be overloaded 
+			within record declarations
+		  </p>
+		  <pre language="ltDelphi" class="sourcecode">
+
+TMyClass = <code class="keyword">class</code>
+    <code class="keyword">class</code> operator Add(a, b: TMyClass): TMyClass; <code class="comment">// Addition of two operands of type TMyClass</code>
+    <code class="keyword">class</code> operator Subtract(a, b: TMyClass): TMyclass; <code class="comment">// Subtraction of type TMyClass</code>
+    <code class="keyword">class</code> operator Implicit(a: Integer): TMyClass; <code class="comment">// Implicit conversion of an Integer to type TMyClass</code>
+    <code class="keyword">class</code> operator Implicit(a: TMyClass): Integer; <code class="comment">// Implicit conversion of TMyClass to Integer</code>
+    <code class="keyword">class</code> operator Explicit(a: Double): TMyClass; <code class="comment">// Explicit conversion of a Double to TMyClass</code>
+<code class="keyword">end</code>;
+
+<code class="comment">// Example implementation of Add class operator </code>
+TMyClass.Add(a, b: TMyClass): TMyClass;
+<code class="keyword">begin</code>
+  ...
+<code class="keyword">end</code>;
+
+<code class="keyword">var</code>
+x, y: TMyClassbegin
+  x := 12; <code class="comment">// Implicit conversion from an Integer </code>
+  y := x + x; <code class="comment">// Calls TMyClass.Add(a, b: TMyClass): TMyClass </code>
+  b := b + 100; <code class="comment">// Calls TMyClass.Add(b, TMyClass.Implicit(100)) </code>
+<code class="keyword">end</code>;
+
+</pre>
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>Class Helpers</strong>
+		</td>
+    <td>
+		  <p>
+			A class helper is a type that - when associated with another 
+			class - introduces additional method names and properties which 
+			may be used in the context of the associated class (or its
+			descendants). Class helpers are a way to extend a class without 
+			using inheritance. A class helper simply introduces a wider scope 
+			for the compiler to use when resolving identifiers. When you 
+			declare a class helper, you state the helper name, and the name of 
+			the class you are going to extend with the helper. You can use the 
+			class helper any place where you can legally use the extended 
+			class. The compiler's resolution scope then becomes the original 
+			class, plus the class helper. Class helpers provide a way to 
+			extend a class, but they should not be viewed as a design tool to 
+			be used when developing new code. They should be used solely for 
+			their intended purpose, which is language and platform RTL 
+			binding.
+		  </p>
+<pre language="ltDelphi" class="sourcecode">
+<code class="keyword">type</code>
+  TMyClass = <code class="keyword">class</code>
+
+    <code class="keyword">procedure</code> MyProc;
+	<code class="keyword">function</code>  MyFunc: Integer;
+  <code class="keyword">end</code>;
+
+   ...
+
+   <code class="keyword">procedure</code> TMyClass.MyProc;
+   <code class="keyword">var</code>
+	 X: Integer;
+   <code class="keyword">begin</code>
+	  X := MyFunc;
+   <code class="keyword">end</code>;
+
+   <code class="keyword">function</code> TMyClass.MyFunc: Integer;
+   <code class="keyword">begin</code>
+	   ...
+   <code class="keyword">end</code>;
+
+...
+
+<code class="keyword">type</code>
+   TMyClassHelper = <code class="keyword">class</code> helper <code class="keyword">for</code> TMyClass
+	 <code class="keyword">procedure</code> HelloWorld;
+	 <code class="keyword">function</code> MyFunc: Integer;
+   <code class="keyword">end</code>;
+
+   ...
+
+   <code class="keyword">procedure</code> TMyClassHelper.HelloWorld;
+   <code class="keyword">begin</code>
+	 WriteLn(Self.ClassName); <code class="comment">// Self refers to TMyClass type, not TMyClassHelper</code>
+
+   <code class="keyword">end</code>;
+
+   <code class="keyword">function</code> TMyClassHelper.MyFunc: Integer;
+   <code class="keyword">begin</code>
+	 ...
+   <code class="keyword">end</code>;
+...
+
+<code class="keyword">var</code>
+  X: TMyClass;
+<code class="keyword">begin</code>
+  X := TMyClass.Create;
+  X.MyProc;    <code class="comment">// Calls TMyClass.MyProc</code>
+  X.HelloWorld; <code class="comment">// Calls TMyClassHelper.HelloWorld</code>
+  X.MyFunc; <code class="comment">// Calls TMyClassHelper.MyFunc</code>
+
+<code class="keyword">end</code>;
+</pre>
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>strict private</strong>
+		</td>
+    <td>
+		  <strong><span style="font-weight: normal;">The <code>private</code> keyword actually creates a "
+		  friendship" relationship between classes in the same unit.&nbsp;
+		     The <code>strict private</code>
+		  declaration creates a true private field, not viewable by any other
+		     class, not even classes in the same unit.</span></strong>
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>strict protected</strong>
+		</td>
+    <td>
+		  Similar to the <code>strict
+		     private</code> declaration, <code>strict protected</code>creates a true protected member, 
+		  visible only to the declaring class and its descendents.
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>Records with Methods</strong>
+		</td>
+    <td>
+		  <p>
+			In addition to fields, records now may have properties and 
+			methods (including constructors), class properties, class 
+			methods, class fields, and nested types.&nbsp;
+		  </p>
+<pre language="ltDelphi" class="sourcecode">
+<code class="keyword">type</code>
+  TMyRecord = <code class="keyword">record</code>
+    <code class="keyword">type</code>
+      TInnerColorType = Integer;
+    <code class="keyword">var</code>
+      Red: Integer;
+    <code class="keyword">class</code> <code class="keyword">var</code>
+      Blue: Integer;
+    <code class="keyword">procedure</code> printRed();
+    <code class="keyword">constructor</code> Create(val: Integer);
+    <code class="keyword">property</code> RedProperty: TInnerColorType <code class="keyword">read</code> Red <code class="keyword">write</code> Red;
+    <code class="keyword">class</code> <code class="keyword">property</code> BlueProp: TInnerColorType <code class="keyword">read</code> Blue <code class="keyword">write</code> Blue;
+  <code class="keyword">end</code>;
+
+<code class="keyword">constructor</code> TMyRecord.Create(val: Integer);
+<code class="keyword">begin</code>
+  Red := val;
+<code class="keyword">end</code>;
+
+<code class="keyword">procedure</code> TMyRecord.printRed;
+<code class="keyword">begin</code>
+  writeln(<code class="quote">'Red: '</code>, Red);
+<code class="keyword">end</code>;
+</pre>
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>class abstract</strong>
+		</td>
+    <td>
+		  <p>
+			Classes, and not just
+			   methods, can be declared as abstract.
+		  </p>
+<pre language="ltDelphi" class="sourcecode">
+<code class="keyword">type</code>
+  TAbstractClass = <code class="keyword">class</code> <code class="keyword">abstract</code>
+    <code class="keyword">procedure</code> SomeProcedure;
+<code class="keyword">end</code>;
+</pre>
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>class sealed</strong>
+		</td>
+    <td>
+		  Classes marked as sealed cannot be inherited from.
+		  <pre language="ltDelphi" class="sourcecode">
+<code class="keyword">type</code>
+  TAbstractClass = <code class="keyword">class</code> sealed
+    <code class="keyword">procedure</code> SomeProcedure;
+<code class="keyword">end</code>;
+</pre>
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>class const</strong>
+		</td>
+    <td>
+		  Classes can now have class constants -- a constant value associated 
+		  with the class itself and not an instance of the class.
+<pre language="ltDelphi" class="sourcecode">
+<code class="keyword">type</code>
+  TClassWithConstant = <code class="keyword">class</code>
+    <code class="keyword">public</code> 
+      <code class="keyword">const</code> SomeConst = <code class="quote">'This is a class constant'</code>;
+  <code class="keyword">end</code>;
+			
+
+<code class="keyword">procedure</code> TForm1.FormCreate(Sender: TObject);
+<code class="keyword">begin</code>
+  ShowMessage(TClassWithConstant.SomeConst);
+<code class="keyword">end</code>;
+</pre>
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>class type</strong>
+		</td>
+    <td>
+		  A class can now contain a type declaration that is usable only 
+		  within that class.
+		  <pre language="ltDelphi" class="sourcecode">
+
+<code class="keyword">type</code>
+  TClassWithClassType = <code class="keyword">class</code>
+  <code class="keyword">private</code>
+	<code class="keyword">type</code>
+	  TRecordWithinAClass = <code class="keyword">record</code>
+	  SomeField: <code class="keyword">string</code>;
+	<code class="keyword">end</code>;
+  <code class="keyword">public</code>
+
+	    <code class="keyword">class</code> <code class="keyword">var</code>
+	  RecordWithinAClass: TRecordWithinAClass;
+  <code class="keyword">end</code>;
+  ...
+<code class="keyword">procedure</code> TForm1.FormCreate(Sender: TObject);
+<code class="keyword">begin</code>
+  TClassWithClassType.RecordWithinAClass.SomeField := <code class="quote">'This is a field of a class type declaration'</code>;
+  ShowMessage(TClassWithClassType.RecordWithinAClass.SomeField);
+<code class="keyword">end</code>;
+
+</pre>
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>class var</strong>
+		</td>
+    <td>
+		  A class can also have a class variable, applicable only to the 
+		  class and not an instance of the class. See "class type" for an 
+		  example.
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>class property</strong>
+		</td>
+    <td>
+		  <strong><span style="font-weight: normal;">A class can have a class 
+		  property, which is a property that applies only to the class 
+		  reference and not to an instance of a class.&nbsp;&nbsp;The 
+		  accessors for the class property must be either class methods or 
+		  class variables.&nbsp;See the example in "static class methods"
+		     below.</span></strong>
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>nested classes</strong>
+		</td>
+    <td>
+		  Type declarations can be nested within class declarations. They 
+		  present a way to keep conceptually related types together, and to 
+		  avoid name collisions.
+		  <pre language="ltDelphi" class="sourcecode">
+<code class="keyword">type</code>
+  TOuterClass = <code class="keyword">class</code>
+  strict <code class="keyword">private</code>
+	MyField: Integer;
+  <code class="keyword">public</code>
+	<code class="keyword">type</code>
+      TInnerClass = <code class="keyword">class</code>
+	  <code class="keyword">public</code>
+        MyInnerField: Integer;
+		<code class="keyword">procedure</code> InnerProc;
+      <code class="keyword">end</code>;
+      <code class="keyword">procedure</code> OuterProc;
+  <code class="keyword">end</code>;
+
+<code class="keyword">procedure</code> TOuterClass.TInnerClass.InnerProc;
+<code class="keyword">begin</code>
+  ...
+<code class="keyword">end</code>;
+</pre>
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>final methods</strong>
+		</td>
+    <td>
+            
+		  A virtual method that you override can now be marked final, 
+		  preventing derived classes from overriding that method.
+<pre language="ltDelphi" class="sourcecode">
+TAbstractClass = classabstract
+  <code class="keyword">public</code>
+    <code class="keyword">procedure</code> Bar; <code class="keyword">virtual</code>;
+  <code class="keyword">end</code>;
+
+  TSealedClass = classsealed(TAbstractClass)
+  <code class="keyword">public</code>
+    <code class="keyword">procedure</code> Bar; <code class="keyword">override</code>;
+  <code class="keyword">end</code>;
+
+  TFinalMethodClass = <code class="keyword">class</code>(TAbstractClass)
+  <code class="keyword">public</code>
+    <code class="keyword">procedure</code> Bar; <code class="keyword">override</code>; <code class="keyword">final</code>;
+  <code class="keyword">end</code>;
+</pre></td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>sealed methods</strong>
+		</td>
+    <td>
+		  Classes marked as <code>sealed</code> cannot be descended from. See the 
+		  example in 'final methods'.
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>static class methods</strong>
+		</td>
+    <td>
+		  Classes can have static class methods -- i.e. methods that can be 
+		  called from a class type. Class static methods can be accessed 
+		  without an object reference. Unlike ordinary class methods, class 
+		  static methods have no <code>Self</code> parameter at all. They also cannot 
+		  access any instance members. (They still have access to class 
+		  fields, class properties, and class methods.) Also unlike class
+		  methods, class static methods cannot be declared virtual.
+<pre language="ltDelphi" class="sourcecode">
+<code class="keyword">type</code>
+  TMyClass = <code class="keyword">class</code>
+    strict <code class="keyword">private</code>
+      <code class="keyword">class</code> <code class="keyword">var</code>
+        FX: Integer;
+    strict <code class="keyword">protected</code>  
+
+    <code class="comment">// Note: accessors for class properties must be declared class static.</code>
+
+      <code class="keyword">class</code> <code class="keyword">function</code> GetX: Integer; <code class="keyword">static</code>;
+	  <code class="keyword">class</code> <code class="keyword">procedure</code> SetX(val: Integer); <code class="keyword">static</code>;
+    <code class="keyword">public</code>
+      <code class="keyword">class</code> <code class="keyword">property</code> X: Integer <code class="keyword">read</code> GetX <code class="keyword">write</code> SetX;
+	  <code class="keyword">class</code> <code class="keyword">procedure</code> StatProc(s: <code class="keyword">String</code>); <code class="keyword">static</code>;
+  <code class="keyword">end</code>;
+
+TMyClass.X := 17;
+TMyClass.StatProc(<code class="quote">'Hello'</code>);
+</pre>
+		</td>
+
+  </tr>
+  <tr>
+    <td>
+		  <strong>for-in loop</strong>
+		</td>
+    <td>
+		  Delphi 2007 for Win32 supports
+		     for-<i>element</i>-in-<i>collection </i>style iteration over 
+		  containers. The following container iteration patterns are
+		     recognized by the compiler:<br>
+<pre language="ltDelphi" class="sourcecode">
+  <code class="keyword">for</code> Element <code class="keyword">in</code> ArrayExpr <code class="keyword">do</code> Stmt;
+  <code class="keyword">for</code> Element <code class="keyword">in</code> StringExpr <code class="keyword">do</code> Stmt;
+  <code class="keyword">for</code> Element <code class="keyword">in</code> SetExpr <code class="keyword">do</code> Stmt;
+  <code class="keyword">for</code> Element <code class="keyword">in</code> CollectionExpr <code class="keyword">do</code> Stmt;
+</pre>
+		</td>
+
+  </tr>
+
+</tbody></table>
+</span>
+
+
+				    
+				    </div>
+				    </div>
+				    
+				    <div class="sidebar-dotsilver">
+<div class="module-container article-comments-container">
+<div id="secondary-nav-wrapper" class="module article-comments">
+
+<div>
+<div class="comments-inner">
+<table class="contentpadding" width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+	<td class="horizontal_dotted" valign="middle" align="left"><div></div></td>
+  </tr>
+</tbody></table>
+<h1><span id="commentsspan" class="sectioncollapse" title="Collapse section"><a href="javascript:hideShowElement('commentsspan',%20'commentsdiv')">&nbsp;&nbsp;</a></span><a href="javascript:hideShowElement('commentsspan',%20'commentsdiv')">Latest Comments</a> &nbsp;<a id="ctl35_hlViewAllComments" class="view-all" href="http://threads.embarcadero.com/threads/threads.exe/thread?&amp;sysid=1&amp;contentid=34324&amp;title=New%20Delphi%20language%20features%20since%20Delphi%207"><span>View All</span></a>&nbsp;<a id="ctl35_hlAddNewComment" class="add-new" href="http://threads.embarcadero.com/threads/threads.exe/add?&amp;sysid=1&amp;contentid=34324&amp;title=New%20Delphi%20language%20features%20since%20Delphi%207"><span>Add New</span></a>&nbsp;<a class="rssbtn" href="http://edn.embarcadero.com/article/34324/rss"><span>RSS</span></a>&nbsp;<a class="atombtn" href="http://edn.embarcadero.com/article/34324/atom"><span>ATOM</span></a></h1>
+<div class="section" header="Comments" id="commentsdiv"><em><font size="-2">Move mouse over comment to see the full text<br></font>
+</em>
+  <div id="Comment1" class="CommentBox"><div class="commentheader"><a class="button" href="http://threads.embarcadero.com/threads/threads.exe/reply?commentid=42892">Reply</a> &nbsp;Posted by <a href="http://threads.embarcadero.com/threads/threads.exe/userall?commentid=42892">gebzes gebzes</a> on Mar 03 2010</div><div class="commenttitle">New Delphi language features since Delphi 7</div><div class="commentexcerpt"><a href="http://threads.embarcadero.com/threads/threads.exe/view?commentid=42892">thanks </a><a href="http://www.sohbet.biz.tr/" title="sohbet">sohbet</a>
+<a href="http://www.sohbetcim.gen.tr/" title="cinsel sohbet">cinsel sohbet</a></div></div><div id="Comment2" class="CommentBox"><div class="commentheader"><a class="button" href="http://threads.embarcadero.com/threads/threads.exe/reply?commentid=42296">Reply</a> &nbsp;Posted by <a href="http://threads.embarcadero.com/threads/threads.exe/userall?commentid=42296">Ricardo Maroquio</a> on Jul 07 2009</div><div class="commenttitle">New Delphi language features since Delphi 7</div><div class="commentexcerpt"><a href="http://threads.embarcadero.com/threads/threads.exe/view?commentid=42296">What is the abstract class? It doesnt work in Delphi 2009. I though it was a class that couldn't be instantiated or couldn't have implementation. But you can do both things. So, whats the purpose of...</a></div></div><div id="Comment3" class="CommentBox"><div class="commentheader"><a class="button" href="http://threads.embarcadero.com/threads/threads.exe/reply?commentid=42295">Reply</a> &nbsp;Posted by <a href="http://threads.embarcadero.com/threads/threads.exe/userall?commentid=42295">Ricardo Maroquio</a> on Jul 07 2009</div><div class="commenttitle">New Delphi language features since Delphi 7</div><div class="commentexcerpt"><a href="http://threads.embarcadero.com/threads/threads.exe/view?commentid=42295">What is the abstract class? It doesnt work in Delphi 2009. I though it was a class that couldn't be instantiated or couldn't have implementation. But you can do both things. So, whats the purpose of...</a></div></div><div id="Comment4" class="CommentBox"><div class="commentheader"><a class="button" href="http://threads.embarcadero.com/threads/threads.exe/reply?commentid=40793">Reply</a> &nbsp;Posted by <a href="http://threads.embarcadero.com/threads/threads.exe/userall?commentid=40793">Chi SongTao</a> on Jan 13 2008</div><div class="commenttitle">I want the IDE of D7, too</div><div class="commentexcerpt"><a href="http://threads.embarcadero.com/threads/threads.exe/view?commentid=40793">I like the new language features, but I don't like IDE of D2005/6 at all. I really want a D7 IDE with a D2006 compiler.... really.
+
+Don't follow Microsoft's step, whick will lead Borland &amp; Codegear...</a></div></div><div id="Comment5" class="CommentBox"><div class="commentheader"><a class="button" href="http://threads.embarcadero.com/threads/threads.exe/reply?commentid=40787">Reply</a> &nbsp;Posted by <a href="http://threads.embarcadero.com/threads/threads.exe/userall?commentid=40787">sylvia miller</a> on Jan 10 2008</div><div class="commenttitle">re: New Delphi language features since Delphi 7</div><div class="commentexcerpt"><a href="http://threads.embarcadero.com/threads/threads.exe/view?commentid=40787">Stricter objects and re-shuffling the IDE was not where Delphi's problems were. The top feature requests in qc.codegear.com is pretty much representative of where the priorities lie...</a></div></div><div id="Comment6" class="CommentBox"><div class="commentheader"><a class="button" href="http://threads.embarcadero.com/threads/threads.exe/reply?commentid=40786">Reply</a> &nbsp;Posted by <a href="http://threads.embarcadero.com/threads/threads.exe/userall?commentid=40786">sylvia miller</a> on Jan 10 2008</div><div class="commenttitle">re: New Delphi language features since Delphi 7</div><div class="commentexcerpt"><a href="http://threads.embarcadero.com/threads/threads.exe/view?commentid=40786">Stricter objects and re-shuffling the IDE was not where Delphi's problems were. The top feature requests in qc.codegear.com is pretty much representative of where the priorities lie...</a></div></div><div id="Comment7" class="CommentBox"><div class="commentheader"><a class="button" href="http://threads.embarcadero.com/threads/threads.exe/reply?commentid=40737">Reply</a> &nbsp;Posted by <a href="http://threads.embarcadero.com/threads/threads.exe/userall?commentid=40737">S?ren Ulrik Lund</a> on Dec 18 2007</div><div class="commenttitle">New Delphi language features since Delphi 7</div><div class="commentexcerpt"><a href="http://threads.embarcadero.com/threads/threads.exe/view?commentid=40737">I really think these compiler feautures are usefull and need them in flexibel RTL software.
+I make complex objects and obj-factories etc. I use Delphi 2006 for industrial commucations
+controlling...</a></div></div><div id="Comment8" class="CommentBox"><div class="commentheader"><a class="button" href="http://threads.embarcadero.com/threads/threads.exe/reply?commentid=40708">Reply</a> &nbsp;Posted by <a href="http://threads.embarcadero.com/threads/threads.exe/userall?commentid=40708">Craven Weasel</a> on Dec 09 2007</div><div class="commenttitle">New Delphi language features since Delphi 7</div><div class="commentexcerpt"><a href="http://threads.embarcadero.com/threads/threads.exe/view?commentid=40708">I have a copy of Delphi 7 Personal that I run on a Windows 98 VM with 256MB RAM, no sound and a slightly old Pentium III. It is the only thing I can install Windows software onto, but D7 works a...</a></div></div><div id="Comment9" class="CommentBox"><div class="commentheader"><a class="button" href="http://threads.embarcadero.com/threads/threads.exe/reply?commentid=40650">Reply</a> &nbsp;Posted by <a href="http://threads.embarcadero.com/threads/threads.exe/userall?commentid=40650">Yordan Yanakiev</a> on Nov 11 2007</div><div class="commenttitle">New Delphi language features since Delphi 7</div><div class="commentexcerpt"><a href="http://threads.embarcadero.com/threads/threads.exe/view?commentid=40650">pff - It's realy sux .NET crapy IDE.
+In Bulgaria main part of developers keep on Delphi 7 mainly becouse messy IDE on above D7 versions.
+This is also one of the most important missfortunates on...</a></div></div><div id="Comment10" class="CommentBox"><div class="commentheader"><a class="button" href="http://threads.embarcadero.com/threads/threads.exe/reply?commentid=40530">Reply</a> &nbsp;Posted by <a href="http://threads.embarcadero.com/threads/threads.exe/userall?commentid=40530">massud ebrahimy</a> on Sep 25 2007</div><div class="commenttitle">New Delphi language features since Delphi 7</div><div class="commentexcerpt"><a href="http://threads.embarcadero.com/threads/threads.exe/view?commentid=40530">We are a programming company.
+When we give Delphi 2006, none of our Delphi programmers love that!
+They go back to D7. We hope they start Developer Studio 2006 and use ASP.NET and other new futures...</a></div></div>
+</div>
+<div class="comments-footer"><div><div></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+                </div>
+                        </td>
+                
+                
+                        <td class="colright-cell" valign="top" width="230">
+                <div class="colright" style="width: 230px;">                   
+                    <div class="sidebar-dotsilver sidebar-dotsilver-no-bullets">
+<div class="module-container article-translations-container">
+<div id="secondary-nav-wrapper" class="module article-translations">
+<h2><span id="Module4" class="sectionexpand" title="Expand section"><a href="javascript:hideShowElement('Module4',%20'ModuleContent4')">&nbsp;&nbsp;</a></span><a class="top" href="javascript:hideShowElement('Module4',%20'ModuleContent4')"><img src="icon-translation.gif">&nbsp;Translations</a></h2><div id="ModuleContent4" style="display: none;"><table><tbody><tr><td width="\'40px\'"><div class="article-alternatelanguage"><a href="http://edn.embarcadero.com/article/34409">jp</a></div></td><td class="translation-title"><a href="http://edn.embarcadero.com/article/34409">Delphi 7以降の言語およびコンパイラの新機能</a></td></tr>
+<tr><td width="\'40px\'"><div class="article-alternatelanguage"><a href="http://edn.embarcadero.com/article/34526">kr</a></div></td><td class="translation-title"><a href="http://edn.embarcadero.com/article/34526">델파이 7 이후 추가된 델파이 언어 기능들</a></td></tr>
+</tbody></table>
+</div></div>
+</div>
+</div>
+<br style="clear: both;">
+<div class="sidebar-dotsilver sidebar-dotsilver-no-bullets">
+<div class="module-container article-rating-container">
+<div id="secondary-nav-wrapper" class="module article-rating">
+<table border="0" cellpadding="0" cellspacing="0"><tbody><tr class="top"><td><table class="toptable" border="0" cellspacing="0"><tbody><tr><td><span id="Module5" class="sectionexpand" title="Expand section"><a href="javascript:hideShowElement('Module5',%20'ModuleContent5')">&nbsp;&nbsp;&nbsp;</a></span></td><td><h2><a href="javascript:hideShowElement('Module5',%20'ModuleContent5')">Rating</a></h2></td><td style="width: 100%;" width="100%">	<ul class="rating"> 
+	  <li class="r-existing" style="width: 84px;"><a>&nbsp;</a></li> 
+	  <li class="r1"><a href="http://edn.embarcadero.com/article/34324/rate/1" title="rate this as bad">&nbsp;</a></li> 
+	  <li class="r2"><a href="http://edn.embarcadero.com/article/34324/rate/2" title="rate this as poor">&nbsp;</a></li> 
+	  <li class="r3"><a href="http://edn.embarcadero.com/article/34324/rate/3" title="rate this as fair">&nbsp;</a></li> 
+	  <li class="r4"><a href="http://edn.embarcadero.com/article/34324/rate/4" title="rate this as good">&nbsp;</a></li> 
+	  <li class="r5"><a href="http://edn.embarcadero.com/article/34324/rate/5" title="rate this as excellent">&nbsp;</a></li> 
+	</ul> </td></tr></tbody></table></td></tr></tbody></table><div id="ModuleContent5" style="display: none;">
+<table border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+	<td colspan="9" valign="middle" align="center"><small><span id="ctl40_lblRatingStatus"></span></small></td>
+  </tr>
+  <tr id="ctl40_avgRow">
+	<td><img src="spacer.gif" alt="" height="20" width="6" border="0"></td>
+	<td colspan="8">Average rating:
+        <span id="ctl40_lblAverageRating">4.68</span></td>
+</tr>
+
+  <tr>
+	<td>&nbsp;</td>
+	<td>Votes:</td>
+	<td>&nbsp;</td>
+	<td align="center"><span id="ctl40_lblRatings1">2</span></td>
+	<td align="center"><span id="ctl40_lblRatings2">0</span></td>
+	<td align="center"><span id="ctl40_lblRatings3">1</span></td>
+	<td align="center"><span id="ctl40_lblRatings4">5</span></td>
+	<td align="center"><span id="ctl40_lblRatings5">39</span></td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+	<td><img src="spacer.gif" alt="" height="20" width="6" border="0"></td>
+	<td>&nbsp;</td>
+	<td><img src="spacer.gif" alt="" height="20" width="6" border="0"></td>
+	<td width="22" align="center"><img id="ctl40_imgBar1" src="vbar.jpg" alt="2 rated this 1" style="height: 50px; width: 22px; border-width: 0px;"></td>
+	<td width="22" align="center"><img id="ctl40_imgBar2" src="vbar_001.jpg" alt="0 rated this 2" style="height: 50px; width: 22px; border-width: 0px;"></td>
+	<td width="22" align="center"><img id="ctl40_imgBar3" src="vbar_002.jpg" alt="1 rated this 3" style="height: 50px; width: 22px; border-width: 0px;"></td>
+	<td width="22" align="center"><img id="ctl40_imgBar4" src="vbar_003.jpg" alt="5 rated this 4" style="height: 50px; width: 22px; border-width: 0px;"></td>
+	<td width="22" align="center"><img id="ctl40_imgBar5" src="vbar_004.jpg" alt="39 rated this 5" style="height: 50px; width: 22px; border-width: 0px;"></td>
+	<td><img src="spacer.gif" alt="" height="20" width="6" border="0"></td>
+  </tr>
+  <tr>
+	<td>&nbsp;</td>
+	<td>Rating:</td>
+	<td>&nbsp;</td>
+	<td align="center">1</td>
+	<td align="center">2</td>
+	<td align="center">3</td>
+	<td align="center">4</td>
+	<td align="center">5</td>
+	<td>&nbsp;</td>
+  </tr>
+  <tr>
+	<td colspan="9" valign="middle" align="center"><small>1=Poor, 5=Excellent</small></td>
+  </tr>
+</tbody></table>
+</div></div>
+</div>
+</div>
+<br style="clear: both;">
+<div class="sidebar-dotsilver">
+<div class="module-container product-pricing-container">
+<div id="secondary-nav-wrapper" class="module product-pricing">
+<table width="100%">
+<tbody><tr>
+<td valign="top" width="100%"><div class="button button-image button-dl"><a href="https://downloads.embarcadero.com/free/delphi" title="Download a free trial">Download Trial</a></div>
+  <div style="height: 4px;"></div>
+
+<div class="button button-image button-cart"><a href="http://edn.embarcadero.com/buy?link=5,3" title="Purchase a product right now">Buy Now</a></div>
+</td>
+</tr>
+<tr>
+<td valign="top" width="100%"><p style="text-align: center;"><a href="http://www.embarcadero.com/products/delphi"><img alt="Delphi " src="delphi_159x228.jpg" id="docimage1"></a></p>
+<p style="text-align: center;"><a href="http://www.embarcadero.com/world-tour"><img alt="RAD Studio XE2 World Tour" src="worldtour_banner_159x228.jpg" id="docimage2"></a></p>
+<p style="text-align: center;"><a href="http://bit.ly/radfastreport"><img alt="FastReport" src="159x228frvcl.gif" id="docimage3"></a></p>
+</td>
+</tr>
+</tbody></table>
+
+</div>
+</div>
+</div>
+<br style="clear: both;">
+<div class="sidebar-dotsilver sidebar-dotsilver-no-bullets">
+<div class="module-container article-tags-container">
+<div id="secondary-nav-wrapper" class="module article-tags">
+<h2><span class="top">Article Tags</span></h2><div id="ctl42_ctl00_TagsPanel">
+	
+    <span id="ctl42_ctl00_TagCloudLabel"><div class="tagcloud">
+<span class="tag"><a href="http://edn.embarcadero.com/tag/en,Delphi" class="tag-medium" title="Tagged by 8 users">Delphi</a></span>
+</div>
+</span>
+    
+  
+</div>
+
+</div>
+</div>
+</div>
+
+                    					
+                </div>
+                        </td>
+                
+                    </tr>
+                </tbody></table>
+                
+                <div class="clearblock"><img src="spacer_001.gif"></div>
+            	
+                
+                <p><small>Server Response from: ETNASC01</small></p>
+                
+                
+            </div>
+
+          
+
+
+</form>  
+        </div>
+		
+        </div>
+	  </div>
+    </div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="footer2">
+    <div class="footer_center">
+    
+    <div style="float: left;">
+    	Copyright© 1994 - 2010 Embarcadero Technologies, Inc. All rights reserved.
+        &nbsp;&nbsp;
+	  <a href="http://edn.embarcadero.com/sitemap" class="logintxt">Site Map</a>
+	</div>
+	</div>
+  </div>
+</div>
+</td></tr></tbody></table>
+
+
+
+<!-- START SUB NAV -->
+        <div style="top: 201px;" class="subnav_wrapper" id="subnav_wrapper">
+            <div style="left: -6px; width: 385px;" id="Communities_subnav" class="subnav">
+                <div class="col">
+					<h1>Developer Tools</h1>
+					<div class="col">
+						<a href="http://edn.embarcadero.com/blackfish_sql" style="border-top-style: solid;">Blackfish SQL</a>
+						<a href="http://edn.embarcadero.com/c_builder">C++Builder</a>
+						<a href="http://edn.embarcadero.com/delphi">Delphi</a>
+						<a href="http://edn.embarcadero.com/prism">Prism</a>
+						<a href="http://edn.embarcadero.com/interbase">InterBase</a>
+						<a href="http://edn.embarcadero.com/jbuilder">JBuilder</a>
+						<a href="http://edn.embarcadero.com/j_optimizer">J Optimizer</a>
+						<a href="http://edn.embarcadero.com/radphp">RadPHP</a>
+						<a href="http://edn.embarcadero.com/3rdrail">3rdRail &amp; TurboRuby</a>
+					</div>
+					<div class="clearblock"></div>
+				</div>
+				<div class="col">
+				<h1>Database Tools</h1>
+					<a href="http://edn.embarcadero.com/change_manager" style="border-top-style: solid;">Change Manager</a>
+					<a href="http://edn.embarcadero.com/dbartisan">DBArtisan</a>
+					<a href="http://edn.embarcadero.com/db_optimizer">DB Optimizer</a>
+					<a href="http://edn.embarcadero.com/er_studio">ER/Studio</a>
+					<a href="http://edn.embarcadero.com/performance_center">Performance Center</a>
+					<a href="http://edn.embarcadero.com/rapid_sql">Rapid SQL</a>
+				</div>
+            </div>
+            <div style="left: 159px; width: 190px;" id="Articles_subnav" class="subnav">
+               <div class="col">
+					<a href="http://edn.embarcadero.com/articles" style="border-top-style: solid;">Technical Articles</a>
+					<a href="http://edn.embarcadero.com/tutorials">Tutorials</a>
+					<a href="http://edn.embarcadero.com/whitepapers">White Papers</a>
+					<a href="http://edn.embarcadero.com/press">Press Releases</a>
+					<a href="http://edn.embarcadero.com/newsletters">Newsletters</a>
+				</div>
+            </div>
+            <!--
+            <div id="Blogs_subnav" class="subnav">
+            </div>
+            -->
+            <div style="left: 409px; width: 190px;" id="Resources_subnav" class="subnav">
+               <div class="col">
+                    <a href="http://gp.embarcadero.com/" title="Submit your own articles for publication and (optionally) get paid.">Add Content (GetPublished)</a>
+					<a href="http://edn.embarcadero.com/audio" title="Listen to Embarcadero's developers and management." style="border-top-style: solid;">Audio</a>
+                    <a href="http://edn.embarcadero.com/tv" title="View product demonstrations &amp; listen to Embarcadero's developers and management.">Audio &amp; Video</a>
+                    <a href="http://edn.embarcadero.com/video" title="Watch presentations and product demonstrations.">Video</a>
+                    <a href="http://qc.embarcadero.com/" title="Submit bugs and feature requests. Also known as QualityCentral.">Bugs &amp; Suggestions (QualityCentral)</a>
+                    <a href="https://forums.embarcadero.com/" title="Discussion Forums">Discussion Forums</a>
+                    <a href="http://cc.embarcadero.com/" title="Examples, code, etc.. Also known as CodeCentral.">Examples (CodeCentral)</a>
+                    <a href="http://edn.embarcadero.com/tag" title="Tags">Tags</a>
+                    <a href="http://tp.embarcadero.com/" title="Browse the Embarcadero Technology Partners database.">Technology Partners</a>
+                    <!--
+                    <a href="http://chat.embarcadero.com" >Chats</a>
+                    <a href="http://edn.embarcadero.com/article/37476" title="Embarcadero powered-by logos">Logos</a>
+                    <a href="http://conferences.embarcadero.com" title="Browse the rich resources of Embarcadero's Developer Conference Proceedings." >Conference Proceedings</a>
+                    <a href="http://edn.embarcadero.com/museum" title="Download antique versions of Embarcadero software." >Museum</a>
+                    <a href="http://support.embarcadero.com/forums/directory" >Discussion Forums</a>
+                    -->
+				</div>
+				
+            </div>
+            <div style="left: 561px; width: 190px;" id="Downloads_subnav" class="subnav">
+               <div class="col">
+                    <a href="http://www.embarcadero.com/downloads" style="border-top-style: solid;">Downloads</a>
+					<a href="https://downloads.embarcadero.com/free">Free Trials</a>
+					<a href="http://cc.embarcadero.com/myreg">Registered User Downloads</a>
+					<a href="http://www.embarcadero.com/products/beta-programs">Beta Programs</a>
+				</div>
+            </div>
+            <div style="left: 719px; width: 190px;" id="Help_subnav" class="subnav">
+               <div class="col">
+                    <a href="http://edn.embarcadero.com/help/gp">Add Content (GetPublished)</a>
+                    <a href="http://edn.embarcadero.com/help/articles" style="border-top-style: solid;">Articles</a>
+                    <a href="http://edn.embarcadero.com/help/blogs">Blogs</a>
+                    <a href="http://edn.embarcadero.com/help/qc">Bugs &amp; Suggestions (QualityCentral)</a>
+                    <a href="http://edn.embarcadero.com/help/chats">Chats</a>
+                    <a href="http://edn.embarcadero.com/help/forums">Discussion Forums</a>
+                    <a href="http://edn.embarcadero.com/help/cc">Examples (CodeCentral)</a>
+                    <a href="http://edn.embarcadero.com/help/members">Member Services</a>
+                    <a href="http://edn.embarcadero.com/help/about">About</a>
+				</div>
+            </div>
+        </div>
+        <!-- END SUB NAV -->
+
+
+    <div id="tOoLtIp0109" style="position: absolute; z-index: 1010; left: 0px; top: 0px; width: 602px; visibility: hidden;"><table style="background: none repeat scroll 0% 0% rgb(148, 146, 140);" width="600" bgcolor="#94928C" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><table width="100%" border="0" cellpadding="3" cellspacing="1"><tbody><tr><td style="text-align: left; padding: 3px;" align="left" bgcolor="#CCCCCC"><font style="color: Black; font-family: verdana,arial,helvetica,sans-serif; font-size: 11px; font-weight: normal;" color="Black" face="verdana,arial,helvetica,sans-serif"><div>We are a programming company.<br>When we give Delphi 2006, none of our Delphi programmers love that!<br>They go back to D7. We hope they start Developer Studio 2006 and use ASP.NET and other new futures.<br>Also we start learn them about asp.net and so more. We can not make our programs under Linux, PDA, Symbian and/or device driver programming yet with Delphi.<br>Delphi changed but not improves!<br>WHAT???</div></font></td></tr></tbody></table></td></tr></tbody></table><div id="tOoLtIp0109R" style="position: absolute; background: none repeat scroll 0% 0% Black; left: 600px; top: 3px; width: 2px; height: 1px; overflow: hidden;"></div><div style="position: relative; background: none repeat scroll 0% 0% Black; left: 3px; top: 0px; width: 597px; height: 2px; overflow: hidden;"></div></div><div id="tOoLtIp0106" style="position: absolute; z-index: 1010; left: 0px; top: 0px; width: 602px; visibility: hidden;"><table style="background: none repeat scroll 0% 0% rgb(148, 146, 140);" width="600" bgcolor="#94928C" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><table width="100%" border="0" cellpadding="3" cellspacing="1"><tbody><tr><td style="text-align: left; padding: 3px;" align="left" bgcolor="#CCCCCC"><font style="color: Black; font-family: verdana,arial,helvetica,sans-serif; font-size: 11px; font-weight: normal;" color="Black" face="verdana,arial,helvetica,sans-serif"><div>pff - It's realy sux .NET crapy IDE.<br>In Bulgaria main part of developers keep on Delphi 7 mainly becouse messy IDE on above D7 versions.<br>This is also one of the most important missfortunates on never versions.<br><br>We hope soon this to be changed , if not at first sign, some option or so on allowing changing to older style.</div></font></td></tr></tbody></table></td></tr></tbody></table><div id="tOoLtIp0106R" style="position: absolute; background: none repeat scroll 0% 0% Black; left: 600px; top: 3px; width: 2px; height: 1px; overflow: hidden;"></div><div style="position: relative; background: none repeat scroll 0% 0% Black; left: 3px; top: 0px; width: 597px; height: 2px; overflow: hidden;"></div></div><div id="tOoLtIp0103" style="position: absolute; z-index: 1010; left: 0px; top: 0px; width: 602px; visibility: hidden;"><table style="background: none repeat scroll 0% 0% rgb(148, 146, 140);" width="600" bgcolor="#94928C" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><table width="100%" border="0" cellpadding="3" cellspacing="1"><tbody><tr><td style="text-align: left; padding: 3px;" align="left" bgcolor="#CCCCCC"><font style="color: Black; font-family: verdana,arial,helvetica,sans-serif; font-size: 11px; font-weight: normal;" color="Black" face="verdana,arial,helvetica,sans-serif"><div>I have a copy of Delphi 7 Personal that I run on a Windows 98 VM with 256MB RAM, no sound and a slightly old Pentium III. It is the only thing I can install Windows software onto, but D7 works a breeze. When I tried to install Delphi 2005 (I just wanted to try it), it failed immediately. Also, my copy of Kylix 3 won't work on my Linux machine (stupid glibc....). I think that since version 8, CodeGear / Borland IDE's have been a bit of a joke.</div></font></td></tr></tbody></table></td></tr></tbody></table><div id="tOoLtIp0103R" style="position: absolute; background: none repeat scroll 0% 0% Black; left: 600px; top: 3px; width: 2px; height: 1px; overflow: hidden;"></div><div style="position: relative; background: none repeat scroll 0% 0% Black; left: 3px; top: 0px; width: 597px; height: 2px; overflow: hidden;"></div></div><div id="tOoLtIp0100" style="position: absolute; z-index: 1010; left: 0px; top: 0px; width: 602px; visibility: hidden;"><table style="background: none repeat scroll 0% 0% rgb(148, 146, 140);" width="600" bgcolor="#94928C" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><table width="100%" border="0" cellpadding="3" cellspacing="1"><tbody><tr><td style="text-align: left; padding: 3px;" align="left" bgcolor="#CCCCCC"><font style="color: Black; font-family: verdana,arial,helvetica,sans-serif; font-size: 11px; font-weight: normal;" color="Black" face="verdana,arial,helvetica,sans-serif"><div>I really think these compiler feautures are usefull and need them in flexibel RTL software.<br>I make complex objects and obj-factories etc. I use Delphi 2006 for industrial commucations<br>controlling hole plants. The 32 bit Delphi version is still king of the hill (the .Net part I use instead VS2005).<br>The new edittor looks as if CodeGear fired the old programmer (or he went to Redmont).<br>Its a bad Idear that Delphi, with the same source, should compile to any platform Linux,.Net 32 bit.<br>Give me a native Delphi.Linux , Delphi.Net and keep the Delphi.32 clean and plz make a Delphi.64 soon<br>And plzzzz dont mix it all together in the source/IDE, it does not look nice ;-(((<br>How about a Delphi pluckin into VS and  thats it with .Net</div></font></td></tr></tbody></table></td></tr></tbody></table><div id="tOoLtIp0100R" style="position: absolute; background: none repeat scroll 0% 0% Black; left: 600px; top: 3px; width: 2px; height: 1px; overflow: hidden;"></div><div style="position: relative; background: none repeat scroll 0% 0% Black; left: 3px; top: 0px; width: 597px; height: 2px; overflow: hidden;"></div></div><div id="tOoLtIp097" style="position: absolute; z-index: 1010; left: 0px; top: 0px; width: 602px; visibility: hidden;"><table style="background: none repeat scroll 0% 0% rgb(148, 146, 140);" width="600" bgcolor="#94928C" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><table width="100%" border="0" cellpadding="3" cellspacing="1"><tbody><tr><td style="text-align: left; padding: 3px;" align="left" bgcolor="#CCCCCC"><font style="color: Black; font-family: verdana,arial,helvetica,sans-serif; font-size: 11px; font-weight: normal;" color="Black" face="verdana,arial,helvetica,sans-serif"><div>Stricter objects and re-shuffling the IDE was not where Delphi's problems were. The top feature requests in qc.codegear.com is pretty much representative of where the priorities lie (64bit/Generics/Unicode/With/Designer undo). That, plus of course Help/Language Ref/User Guide. I also cannot fathom the bundling of personalities, it just clutters things. And I agree D5 was the cleanest Delphi, I still refer to the paper docs. I also resent being forced to install .Net just to use Delphi 2007 Win32. Nevertheless, I am pleased to see Delphi is back and I use D2007 in my current project.</div></font></td></tr></tbody></table></td></tr></tbody></table><div id="tOoLtIp097R" style="position: absolute; background: none repeat scroll 0% 0% Black; left: 600px; top: 3px; width: 2px; height: 1px; overflow: hidden;"></div><div style="position: relative; background: none repeat scroll 0% 0% Black; left: 3px; top: 0px; width: 597px; height: 2px; overflow: hidden;"></div></div><div id="tOoLtIp094" style="position: absolute; z-index: 1010; left: 0px; top: 0px; width: 602px; visibility: hidden;"><table style="background: none repeat scroll 0% 0% rgb(148, 146, 140);" width="600" bgcolor="#94928C" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><table width="100%" border="0" cellpadding="3" cellspacing="1"><tbody><tr><td style="text-align: left; padding: 3px;" align="left" bgcolor="#CCCCCC"><font style="color: Black; font-family: verdana,arial,helvetica,sans-serif; font-size: 11px; font-weight: normal;" color="Black" face="verdana,arial,helvetica,sans-serif"><div>Stricter objects and re-shuffling the IDE was not where Delphi's problems were. The top feature requests in qc.codegear.com is pretty much representative of where the priorities lie (64bit/Generics/Unicode/With/Designer undo). That, plus of course Help/Language Ref/User Guide. I also cannot fathom the bundling of personalities, it just clutters things. And I agree D5 was the cleanest Delphi, I still refer to the paper docs. I also resent being forced to install .Net just to use Delphi 2007 Win32. Nevertheless, I am pleased to see Delphi is back and I use D2007 in my current project.</div></font></td></tr></tbody></table></td></tr></tbody></table><div id="tOoLtIp094R" style="position: absolute; background: none repeat scroll 0% 0% Black; left: 600px; top: 3px; width: 2px; height: 1px; overflow: hidden;"></div><div style="position: relative; background: none repeat scroll 0% 0% Black; left: 3px; top: 0px; width: 597px; height: 2px; overflow: hidden;"></div></div><div id="tOoLtIp091" style="position: absolute; z-index: 1010; left: 0px; top: 0px; width: 602px; visibility: hidden;"><table style="background: none repeat scroll 0% 0% rgb(148, 146, 140);" width="600" bgcolor="#94928C" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><table width="100%" border="0" cellpadding="3" cellspacing="1"><tbody><tr><td style="text-align: left; padding: 3px;" align="left" bgcolor="#CCCCCC"><font style="color: Black; font-family: verdana,arial,helvetica,sans-serif; font-size: 11px; font-weight: normal;" color="Black" face="verdana,arial,helvetica,sans-serif"><div>I like the new language features, but I don't like IDE of D2005/6 at all. I really want a D7 IDE with a D2006 compiler.... really.<br><br>Don't follow Microsoft's step, whick will lead Borland &amp;Codegear to death.</div></font></td></tr></tbody></table></td></tr></tbody></table><div id="tOoLtIp091R" style="position: absolute; background: none repeat scroll 0% 0% Black; left: 600px; top: 3px; width: 2px; height: 1px; overflow: hidden;"></div><div style="position: relative; background: none repeat scroll 0% 0% Black; left: 3px; top: 0px; width: 597px; height: 2px; overflow: hidden;"></div></div><div id="tOoLtIp088" style="position: absolute; z-index: 1010; left: 0px; top: 0px; width: 602px; visibility: hidden;"><table style="background: none repeat scroll 0% 0% rgb(148, 146, 140);" width="600" bgcolor="#94928C" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><table width="100%" border="0" cellpadding="3" cellspacing="1"><tbody><tr><td style="text-align: left; padding: 3px;" align="left" bgcolor="#CCCCCC"><font style="color: Black; font-family: verdana,arial,helvetica,sans-serif; font-size: 11px; font-weight: normal;" color="Black" face="verdana,arial,helvetica,sans-serif"><div>What is the abstract class? It doesnt work in Delphi 2009. I though it was a class that couldn't be instantiated or couldn't have implementation. But you can do both things. So, whats the purpose of the abstract class in Delphi 2009????</div></font></td></tr></tbody></table></td></tr></tbody></table><div id="tOoLtIp088R" style="position: absolute; background: none repeat scroll 0% 0% Black; left: 600px; top: 3px; width: 2px; height: 1px; overflow: hidden;"></div><div style="position: relative; background: none repeat scroll 0% 0% Black; left: 3px; top: 0px; width: 597px; height: 2px; overflow: hidden;"></div></div><div id="tOoLtIp085" style="position: absolute; z-index: 1010; left: 0px; top: 0px; width: 602px; visibility: hidden;"><table style="background: none repeat scroll 0% 0% rgb(148, 146, 140);" width="600" bgcolor="#94928C" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><table width="100%" border="0" cellpadding="3" cellspacing="1"><tbody><tr><td style="text-align: left; padding: 3px;" align="left" bgcolor="#CCCCCC"><font style="color: Black; font-family: verdana,arial,helvetica,sans-serif; font-size: 11px; font-weight: normal;" color="Black" face="verdana,arial,helvetica,sans-serif"><div>What is the abstract class? It doesnt work in Delphi 2009. I though it was a class that couldn't be instantiated or couldn't have implementation. But you can do both things. So, whats the purpose of the abstract class in Delphi 2009????</div></font></td></tr></tbody></table></td></tr></tbody></table><div id="tOoLtIp085R" style="position: absolute; background: none repeat scroll 0% 0% Black; left: 600px; top: 3px; width: 2px; height: 1px; overflow: hidden;"></div><div style="position: relative; background: none repeat scroll 0% 0% Black; left: 3px; top: 0px; width: 597px; height: 2px; overflow: hidden;"></div></div><div id="tOoLtIp080" style="position: absolute; z-index: 1010; left: 0px; top: 0px; width: 602px; visibility: hidden;"><table style="background: none repeat scroll 0% 0% rgb(148, 146, 140);" width="600" bgcolor="#94928C" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td><table width="100%" border="0" cellpadding="3" cellspacing="1"><tbody><tr><td style="text-align: left; padding: 3px;" align="left" bgcolor="#CCCCCC"><font style="color: Black; font-family: verdana,arial,helvetica,sans-serif; font-size: 11px; font-weight: normal;" color="Black" face="verdana,arial,helvetica,sans-serif"><div>thanks <a href="http://www.sohbet.biz.tr/" title="sohbet">sohbet</a><br><a href="http://www.sohbetcim.gen.tr/" title="cinsel sohbet">cinsel sohbet</a></div></font></td></tr></tbody></table></td></tr></tbody></table><div id="tOoLtIp080R" style="position: absolute; background: none repeat scroll 0% 0% Black; left: 600px; top: 3px; width: 2px; height: 1px; overflow: hidden;"></div><div style="position: relative; background: none repeat scroll 0% 0% Black; left: 3px; top: 0px; width: 597px; height: 2px; overflow: hidden;"></div></div>
+
+
+    
+  
+
+
+
+
+
+
+
+
+
+<div id="left-module-dimmer" class="module-highlight module-left-border"></div><div id="right-module-dimmer" class="module-highlight module-right-border"></div><div id="top-module-dimmer" class="module-highlight module-top-border"></div><div id="bottom-module-dimmer" class="module-highlight module-bottom-border"></div></body>
+</html>

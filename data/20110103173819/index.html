@@ -1,0 +1,800 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	
+	<title>Setup Perfect Python Environment In Emacs « The website of Lei Chen</title>
+
+	
+	
+	<link rel="pingback" href="http://hide1713.wordpress.com/xmlrpc.php">
+
+	<link rel="alternate" type="application/rss+xml" title="The website of Lei Chen » Feed" href="http://hide1713.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="The website of Lei Chen » Comments Feed" href="http://hide1713.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="The website of Lei Chen » Setup Perfect Python Environment In&nbsp;Emacs Comments Feed" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/feed/">
+
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://hide1713.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://hide1713.wordpress.com/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="The website of Lei Chen" href="http://hide1713.wordpress.com/">
+<link rel="prev" title="Python: Search Google with Google Ajax&nbsp;API" href="http://hide1713.wordpress.com/2009/01/25/python-search-google-with-google-ajax-api/">
+<link rel="next" title="1/31/2009 10:30am google was&nbsp;hacked?!" href="http://hide1713.wordpress.com/2009/01/31/1312009-1030am-google-was-hacked/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/">
+<link rel="shortlink" href="http://wp.me/plWlQ-25">
+<link rel="shortcut icon" type="image/x-icon" href="favicon-stacked.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="favicon-stacked.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon" href="http://s0.wp.com/wp-content/themes/h4/i/webclip.png?m=1293299763g">
+	
+	<link rel="openid.server" href="http://hide1713.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="http://hide1713.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="http://hide1713.wordpress.com/osd.xml" title="The website of Lei Chen">
+<link rel="search" type="application/opensearchdescription+xml" href="http://wordpress.com/opensearch.xml" title="WordPress.com">
+<meta name="application-name" content="The website of Lei Chen"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Sunshine and rain of a developer"><meta name="msapplication-task" content="name=Subscribe;action-uri=http://hide1713.wordpress.com/feed/;icon-uri=http://s1.wp.com/i/favicon-stacked.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico">
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+
+<div id="container">
+	<div id="sitename">
+		<h1><a href="http://hide1713.wordpress.com/">The website of Lei Chen</a></h1>
+		<h2>Sunshine and rain of a developer</h2>
+	</div>
+
+	<div id="mainmenu">
+			<ul class="level1">
+		<li><a href="http://hide1713.wordpress.com/">Home</a></li>
+		<li class="page_item page-item-288"><a href="http://hide1713.wordpress.com/3d-battle-city-game/" title="3D Battle City&nbsp;Game">3D Battle City&nbsp;Game</a></li>
+<li class="page_item page-item-114"><a href="http://hide1713.wordpress.com/3dclawcrane/" title="3D Claw&nbsp;Crane">3D Claw&nbsp;Crane</a></li>
+<li class="page_item page-item-375"><a href="http://hide1713.wordpress.com/leo-nes-emulator/" title="Leo NES&nbsp;Emulator">Leo NES&nbsp;Emulator</a></li>
+<li class="page_item page-item-369"><a href="http://hide1713.wordpress.com/linux-config-files/" title="Linux Config&nbsp;Files">Linux Config&nbsp;Files</a></li>
+<li class="page_item page-item-390"><a href="http://hide1713.wordpress.com/london-town-mmo/" title="London Town&nbsp;MMO">London Town&nbsp;MMO</a></li>
+	</ul>
+	</div>
+
+<div id="wrap">
+<div id="leftside">
+
+	<ul>
+
+<li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">Archives</h2>
+		<ul>
+			<li><a href="http://hide1713.wordpress.com/2010/05/" title="May 2010">May 2010</a></li>
+	<li><a href="http://hide1713.wordpress.com/2010/02/" title="February 2010">February 2010</a></li>
+	<li><a href="http://hide1713.wordpress.com/2010/01/" title="January 2010">January 2010</a></li>
+	<li><a href="http://hide1713.wordpress.com/2009/11/" title="November 2009">November 2009</a></li>
+	<li><a href="http://hide1713.wordpress.com/2009/10/" title="October 2009">October 2009</a></li>
+	<li><a href="http://hide1713.wordpress.com/2009/09/" title="September 2009">September 2009</a></li>
+	<li><a href="http://hide1713.wordpress.com/2009/07/" title="July 2009">July 2009</a></li>
+	<li><a href="http://hide1713.wordpress.com/2009/06/" title="June 2009">June 2009</a></li>
+	<li><a href="http://hide1713.wordpress.com/2009/05/" title="May 2009">May 2009</a></li>
+	<li><a href="http://hide1713.wordpress.com/2009/04/" title="April 2009">April 2009</a></li>
+	<li><a href="http://hide1713.wordpress.com/2009/03/" title="March 2009">March 2009</a></li>
+	<li><a href="http://hide1713.wordpress.com/2009/02/" title="February 2009">February 2009</a></li>
+	<li><a href="http://hide1713.wordpress.com/2009/01/" title="January 2009">January 2009</a></li>
+	<li><a href="http://hide1713.wordpress.com/2008/12/" title="December 2008">December 2008</a></li>
+	<li><a href="http://hide1713.wordpress.com/2008/11/" title="November 2008">November 2008</a></li>
+		</ul>
+</li>
+		<li id="top-posts" class="widget widget_stats_topposts">			<h2 class="widgettitle">Top Posts</h2>
+			<ul><li><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/">Setup Perfect Python Environment In Emacs</a></li><li><a href="http://hide1713.wordpress.com/3d-battle-city-game/">3D Battle City Game</a></li><li><a href="http://hide1713.wordpress.com/2009/06/15/intergrade-cppunit-in-visual-studio-2008/">Intergrade CPPUNIT in Visual Studio 2008</a></li><li><a href="http://hide1713.wordpress.com/2009/06/18/configure-boost-library-in-visual-studio-2008/">Configure Boost library in Visual Studio 2008</a></li><li><a href="http://hide1713.wordpress.com/2008/11/29/ubuntu-stardict-with-sound-and-html-parser/">Ubuntu Stardict With Sound And HTML Parser</a></li><li><a href="http://hide1713.wordpress.com/3d-battle-city-game/lv2/">lv2</a></li><li><a href="http://hide1713.wordpress.com/2010/05/08/100-things-to-do-before-leo-die/">100 Things To Do Before Leo Die</a></li><li><a href="http://hide1713.wordpress.com/3d-battle-city-game/smoke/">smoke</a></li><li><a href="http://hide1713.wordpress.com/3d-battle-city-game/lv2_near/">lv2_near</a></li><li><a href="http://hide1713.wordpress.com/3dclawcrane/">3D Claw Crane</a></li></ul>		</li>
+   <li><form method="get" id="searchform" action="http://hide1713.wordpress.com/">
+<div><input id="searchbox" value="" name="s" type="text">
+<input id="searchbutton" value="Search" type="submit">
+</div>
+</form>
+</li>
+	</ul>
+</div>
+<!-- Right Sidebar Template -->
+<div id="rightside">
+	<ul>
+	<li><h2>Subscribe</h2>
+<ul>
+<li class="feed"><a href="http://hide1713.wordpress.com/feed/">Entries (RSS)</a></li>
+<li class="feed"><a href="http://hide1713.wordpress.com/comments/feed/">Comments (RSS)</a></li>
+</ul>
+</li>
+		<li id="recent-posts-2" class="widget widget_recent_entries">		<h2 class="widgettitle">Recent Posts</h2>
+		<ul>
+				<li><a href="http://hide1713.wordpress.com/2010/05/08/100-things-to-do-before-leo-die/" title="100 Things To Do Before Leo&nbsp;Die">100 Things To Do Before Leo&nbsp;Die</a></li>
+				<li><a href="http://hide1713.wordpress.com/2010/02/23/speed-comparison-between-1999-and-2010-cpu/" title="CPU Instruction Speed Benchmark (1999 –&nbsp;2010)">CPU Instruction Speed Benchmark (1999 –&nbsp;2010)</a></li>
+				<li><a href="http://hide1713.wordpress.com/2010/01/31/ubuntu-9-10-headphone-jack-troubleshooting-on-gateway-laptop/" title="Ubuntu 9.10 Headphone Jack Troubleshooting on Gateway&nbsp;laptop">Ubuntu 9.10 Headphone Jack Troubleshooting on Gateway&nbsp;laptop</a></li>
+				<li><a href="http://hide1713.wordpress.com/2010/01/10/python-decorator-by-example/" title="Python Decorator By&nbsp;Example">Python Decorator By&nbsp;Example</a></li>
+				<li><a href="http://hide1713.wordpress.com/2009/11/20/python-scope-horror/" title="Python Scope&nbsp;Horror">Python Scope&nbsp;Horror</a></li>
+				</ul>
+		</li>
+<li id="categories-307448531" class="widget widget_categories"><h2 class="widgettitle">Categories</h2>
+		<ul>
+			<li class="cat-item cat-item-2426"><a href="http://hide1713.wordpress.com/category/c/" title="View all posts filed under C">C</a>
+</li>
+	<li class="cat-item cat-item-132147"><a href="http://hide1713.wordpress.com/category/cpp/" title="View all posts filed under CPP">CPP</a>
+</li>
+	<li class="cat-item cat-item-20056"><a href="http://hide1713.wordpress.com/category/directx/" title="View all posts filed under DirectX">DirectX</a>
+</li>
+	<li class="cat-item cat-item-11362"><a href="http://hide1713.wordpress.com/category/emacs/" title="View all posts filed under Emacs">Emacs</a>
+</li>
+	<li class="cat-item cat-item-1778021"><a href="http://hide1713.wordpress.com/category/gamebryo-and-lightspeed/gamebryo/" title="View all posts filed under GameBryo">GameBryo</a>
+</li>
+	<li class="cat-item cat-item-608620"><a href="http://hide1713.wordpress.com/category/gamebryo-and-lightspeed/lightspeed/" title="View all posts filed under LightSpeed">LightSpeed</a>
+</li>
+	<li class="cat-item cat-item-277"><a href="http://hide1713.wordpress.com/category/misc/" title="View all posts filed under Misc">Misc</a>
+</li>
+	<li class="cat-item cat-item-22939"><a href="http://hide1713.wordpress.com/category/opengl/" title="View all posts filed under opengl">opengl</a>
+</li>
+	<li class="cat-item cat-item-832"><a href="http://hide1713.wordpress.com/category/python/" title="View all posts filed under Python">Python</a>
+</li>
+	<li class="cat-item cat-item-36435"><a href="http://hide1713.wordpress.com/category/screen/" title="View all posts filed under screen">screen</a>
+</li>
+	<li class="cat-item cat-item-43912"><a href="http://hide1713.wordpress.com/category/shell/" title="View all posts filed under shell">shell</a>
+</li>
+	<li class="cat-item cat-item-10346"><a href="http://hide1713.wordpress.com/category/sql/" title="View all posts filed under SQL">SQL</a>
+</li>
+	<li class="cat-item cat-item-255"><a href="http://hide1713.wordpress.com/category/ubuntu/" title="View all posts filed under Ubuntu">Ubuntu</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://hide1713.wordpress.com/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+		</ul>
+</li>
+<li id="wp_tag_cloud" class="widget wp_widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div style="overflow: hidden;"><a href="http://hide1713.wordpress.com/tag/boost/" class="tag-link-214632" title="1 topic" style="font-size: 8pt;">boost</a>
+<a href="http://hide1713.wordpress.com/tag/c/" class="tag-link-2426" title="2 topics" style="font-size: 11.2308pt;">C</a>
+<a href="http://hide1713.wordpress.com/tag/data-structure/" class="tag-link-89467" title="1 topic" style="font-size: 8pt;">Data Structure</a>
+<a href="http://hide1713.wordpress.com/tag/debug/" class="tag-link-28136" title="1 topic" style="font-size: 8pt;">debug</a>
+<a href="http://hide1713.wordpress.com/tag/gdb/" class="tag-link-320749" title="1 topic" style="font-size: 8pt;">gdb</a>
+<a href="http://hide1713.wordpress.com/tag/getopt/" class="tag-link-5953447" title="1 topic" style="font-size: 8pt;">getopt</a>
+<a href="http://hide1713.wordpress.com/tag/latex/" class="tag-link-8800" title="1 topic" style="font-size: 8pt;">latex</a>
+<a href="http://hide1713.wordpress.com/tag/opengl/" class="tag-link-22939" title="1 topic" style="font-size: 8pt;">opengl</a>
+<a href="http://hide1713.wordpress.com/tag/python/" class="tag-link-832" title="1 topic" style="font-size: 8pt;">Python</a>
+<a href="http://hide1713.wordpress.com/tag/screen/" class="tag-link-36435" title="2 topics" style="font-size: 11.2308pt;">screen</a>
+<a href="http://hide1713.wordpress.com/tag/shell/" class="tag-link-43912" title="1 topic" style="font-size: 8pt;">shell</a>
+<a href="http://hide1713.wordpress.com/tag/tips/" class="tag-link-1788" title="11 topics" style="font-size: 22pt;">tips</a>
+<a href="http://hide1713.wordpress.com/tag/xml/" class="tag-link-6852" title="1 topic" style="font-size: 8pt;">xml</a></div></li>
+<li id="text-307448532" class="widget widget_text">			<div class="textwidget">
+
+
+</div>
+		</li>
+		</ul>
+	</div>
+	
+<div id="content">
+		<div class="navigation">
+		<div class="alignleft">« <a href="http://hide1713.wordpress.com/2009/01/25/python-search-google-with-google-ajax-api/" rel="prev">Python: Search Google with Google Ajax&nbsp;API</a></div>
+		<div class="alignright"><a href="http://hide1713.wordpress.com/2009/01/31/1312009-1030am-google-was-hacked/" rel="next">1/31/2009 10:30am google was&nbsp;hacked?!</a> »</div>
+	</div>
+	<div class="post-129 post type-post status-publish format-standard hentry category-emacs" id="post-129">
+<h2><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/" rel="bookmark" title="Permanent link to Setup Perfect Python Environment In&nbsp;Emacs">Setup Perfect Python Environment In&nbsp;Emacs</a></h2>
+
+		<p class="date">Posted by hide1713 on January 30, 2009</p>
+
+		<div class="entrytext">
+			<p>This tutorial will show you how to setup a very convenient python IDE in Emacs. Many ideas in this tutorial came from <a href="http://www.emacswiki.org/emacs/PythonMode">emacs python wiki</a> and <a href="http://www.enigmacurry.com/2008/05/09/emacs-as-a-powerful-python-ide/">Ryan McGuire Homepage </a> . Many people on #emacs channel of freenode.net provided invaluable help. Freenode is one of the best communities I’ve ever known. It really takes time to combine all kinds of modes together and make them work. so I hope this tutorial could save you some time.</p>
+<h2>Requirments:</h2>
+<p>==========================</p>
+<p>Software Version:Ubuntu 8.04 Emacs 22.1</p>
+<p>Package required: python-mode.el , pymacs0.24 ,<a href="http://www.emacswiki.org/emacs/auto-complete.el"> </a>auto-complete.el,&nbsp; yasnippet.el, rope and&nbsp; ropemacs</p>
+<p>From my experience, many emacs packages in Ubuntu repository are out of data. So you’d better download emacs packages directly from <a href="http://www.emacswiki.org/emacs/SiteMap">Emacs wiki</a> or the homepage of that mode. It not only keeps you from compatibility issues but also gives you extra portability when you move to another machine.&nbsp;&nbsp; Let’s see some details of the final results. Hopefully,&nbsp; these will give you enough anticipation to finish this tutorial.</p>
+<h2>Features</h2>
+<p>==========================</p>
+<div id="attachment_131" class="wp-caption aligncenter" style="width: 197px;"><a href="http://hide1713.files.wordpress.com/2009/01/screenshot-emacs22-gtkhide1713-laptop2.png"><img class="size-full wp-image-131" title="screenshot-emacs22-gtkhide1713-laptop2" src="screenshot-emacs22-gtkhide1713-laptop2.png" alt="screenshot-emacs22-gtkhide1713-laptop2" height="94" width="187"></a><p class="wp-caption-text">Auto completion by auto-complete.el</p></div>
+<p>1. Auto complete variable/ function names within a file. It’s really fast!</p>
+<div id="attachment_132" class="wp-caption aligncenter" style="width: 310px;"><a href="http://hide1713.files.wordpress.com/2009/01/screenshot-emacs22-gtkhide1713-laptop-1.png"><img class="size-medium wp-image-132" title="screenshot-emacs22-gtkhide1713-laptop-1" src="screenshot-emacs22-gtkhide1713-laptop-1.png" alt="screenshot-emacs22-gtkhide1713-laptop-1" height="38" width="300"></a><p class="wp-caption-text">Code completion by Rope</p></div>
+<p>2. Complete names in other files or python libraries.</p>
+<p>3. code refectoring <a href="http://rope.sourceforge.net/ropemacs.html">for more detail</a></p>
+<div id="attachment_133" class="wp-caption aligncenter" style="width: 161px;"><a href="http://hide1713.files.wordpress.com/2009/01/screenshot-emacs22-gtkhide1713-laptop-2.png"><img class="size-full wp-image-133" title="screenshot-emacs22-gtkhide1713-laptop-2" src="screenshot-emacs22-gtkhide1713-laptop-2.png" alt="screenshot-emacs22-gtkhide1713-laptop-2" height="94" width="151"></a><p class="wp-caption-text">Code expansion by yasnippets</p></div>
+<p>4. templates&nbsp; expansion including class, function, file header and almost anything you want. I use it to generate stander file header and if __name__==”__main__”&nbsp; staff.</p>
+<div id="attachment_141" class="wp-caption aligncenter" style="width: 250px;"><a href="http://hide1713.files.wordpress.com/2009/01/screenshot-emacs22-gtkhide1713-laptop-4.png"><img class="size-full wp-image-141" title="screenshot-emacs22-gtkhide1713-laptop-4" src="screenshot-emacs22-gtkhide1713-laptop-4.png" alt="screenshot-emacs22-gtkhide1713-laptop-4" height="164" width="240"></a><p class="wp-caption-text">Display docstring by rope</p></div>
+<p>5. Online help system.</p>
+<p>6. Syntax checking on the fly</p>
+<p>Other features are:</p>
+<p>Smart Indent, Outdent, and Pair matching,             additional to syntactic and semantic highlighting,             code folding, instant rename refactoring, mark occurrences</p>
+<p>Interactive Python Console</p>
+<p>Smart math operator, Add space around operator such as =.+,-,*./ for better readability</p>
+<p>…</p>
+<h2>How to install:</h2>
+<p>==========================</p>
+<p>I assume that you have a .emacs file and .emacs.d directory in your home directory. If you don’t, create them and put this in your .emacs</p>
+<p><span style="color: rgb(102, 204, 102);">(</span>add<span style="color: rgb(102, 204, 102);">-</span>to<span style="color: rgb(102, 204, 102);">-</span><span style="color: rgb(177, 177, 0);">list</span> ‘load<span style="color: rgb(102, 204, 102);">-</span>path <span style="color: rgb(0, 0, 153);">“~/.emacs.d/”)</span></p>
+<p><a href="http://www.dotemacs.de/">Dotemacs</a> is a very good site for newbies. If you dont’ have .emacs, you want to go there and look for some basic settings</p>
+<p>==========================</p>
+<p class="lisp lisp">1.Download <a href="http://www.emacswiki.org/emacs/auto-complete.el">auto-completion.el</a> to .emacs.d and put the following line in .emacs</p>
+<div class="syntaxhighlighter  cpp" id="highlighter_240875"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><div class="item copyToClipboard"><embed id="highlighter_240875_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_240875" menu="false" src="clipboard.swf" height="16" width="16"></div><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="cpp plain">(require 'auto-complete)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="cpp plain">(global-auto-complete-mode t)</code></td></tr></tbody></table></div></div></div>
+<p>2. Download <a href="http://code.google.com/p/yasnippet/">yasnippet</a> to .emacs.d and edit .emacs</p>
+<div class="syntaxhighlighter  cpp" id="highlighter_918765"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><div class="item copyToClipboard"><embed id="highlighter_918765_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_918765" menu="false" src="clipboard.swf" height="16" width="16"></div><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="cpp plain">(require 'yasnippet)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="cpp plain">(yas/initialize)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="cpp plain">(yas/load-directory </code><code class="cpp string">"~/.emacs.d/snippets"</code><code class="cpp plain">)</code></td></tr></tbody></table></div></div></div>
+<p>3. Download <a href="http://sourceforge.net/projects/python-mode/">python-mode.el</a> and put it in .emacs.d,&nbsp; we will use it later.</p>
+<p>4. Setup Rope, Ropemacs and Pymacs.</p>
+<p>We need the latest development version of Rope and Ropemacs. Otherwise, emacs can not find the rope-completions function.<br>
+I just copy’n paste from Ryan’s website. You can find the original post<a href="http://www.enigmacurry.com/2009/01/21/autocompleteel-python-code-completion-in-emacs/"> here</a></p>
+<p class="bash bash" style="padding-left: 30px;">sudo apt-get install mercurial<br>
+mkdir /tmp/rope &amp;&amp; cd /tmp/rope<br>
+hg clone http://bitbucket.org/agr/rope<br>
+hg clone http://bitbucket.org/agr/ropemacs<br>
+hg clone http://bitbucket.org/agr/ropemode<br>
+sudo easy_install rope<br>
+ln -s ../ropemode/ropemode ropemacs/<br>
+sudo easy_install ropemacs</p>
+<p>5. Install pyflakes for auto syntax check</p>
+<p style="padding-left: 30px;">sudo apt-get install pyflakes</p>
+<p>6. Put everything together</p>
+<p>Create init_python.el in your .emacs.d. Add following content</p>
+<div class="syntaxhighlighter  cpp" id="highlighter_165416"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><div class="item copyToClipboard"><embed id="highlighter_165416_clipboard" type="application/x-shockwave-flash" title="copy to clipboard" allowscriptaccess="always" wmode="transparent" flashvars="highlighterId=highlighter_165416" menu="false" src="clipboard.swf" height="16" width="16"></div><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>001</code></td><td class="content"><code class="cpp plain">(autoload 'python-mode </code><code class="cpp string">"python-mode"</code> <code class="cpp string">"Python Mode."</code> <code class="cpp plain">t)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>002</code></td><td class="content"><code class="cpp plain">(add-to-list </code><code class="cpp string">'auto-mode-alist '</code><code class="cpp plain">(</code><code class="cpp string">"\\.py\\'"</code> <code class="cpp plain">. python-mode))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>003</code></td><td class="content"><code class="cpp plain">(add-to-list </code><code class="cpp string">'interpreter-mode-alist '</code><code class="cpp plain">(</code><code class="cpp string">"python"</code> <code class="cpp plain">. python-mode))</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>004</code></td><td class="content"><code class="cpp plain">(require 'python-mode)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>005</code></td><td class="content"><code class="cpp plain">(add-hook 'python-mode-hook</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>006</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(lambda ()</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>007</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(set-variable 'py-indent-offset 4)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>008</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">;(set-variable 'py-smart-indentation nil)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>009</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(set-variable 'indent-tabs-mode nil)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>010</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(define-key py-mode-map (kbd </code><code class="cpp string">"RET"</code><code class="cpp plain">) 'newline-and-indent)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>011</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">;(define-key py-mode-map [tab] 'yas/expand)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>012</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">;(setq yas/after-</code><code class="cpp functions bold">exit</code><code class="cpp plain">-snippet-hook 'indent-according-to-mode)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>013</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(smart-operator-mode-on)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>014</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>015</code></td><td class="content"><code class="cpp plain">;; pymacs</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>016</code></td><td class="content"><code class="cpp plain">(autoload 'pymacs-apply </code><code class="cpp string">"pymacs"</code><code class="cpp plain">)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>017</code></td><td class="content"><code class="cpp plain">(autoload 'pymacs-call </code><code class="cpp string">"pymacs"</code><code class="cpp plain">)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>018</code></td><td class="content"><code class="cpp plain">(autoload 'pymacs-eval </code><code class="cpp string">"pymacs"</code> <code class="cpp plain">nil t)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>019</code></td><td class="content"><code class="cpp plain">(autoload 'pymacs-exec </code><code class="cpp string">"pymacs"</code> <code class="cpp plain">nil t)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>020</code></td><td class="content"><code class="cpp plain">(autoload 'pymacs-load </code><code class="cpp string">"pymacs"</code> <code class="cpp plain">nil t)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>021</code></td><td class="content"><code class="cpp plain">;;(eval-after-load </code><code class="cpp string">"pymacs"</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>022</code></td><td class="content"><code class="cpp plain">;;&nbsp; </code><code class="cpp string">'(add-to-list '</code><code class="cpp plain">pymacs-load-path YOUR-PYMACS-DIRECTORY"))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>023</code></td><td class="content"><code class="cpp plain">(pymacs-load </code><code class="cpp string">"ropemacs"</code> <code class="cpp string">"rope-"</code><code class="cpp plain">)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>024</code></td><td class="content"><code class="cpp plain">(setq ropemacs-enable-autoimport t)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>025</code></td><td class="content"><code class="cpp plain">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>026</code></td><td class="content"><code class="cpp plain">;;; Auto-completion</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>027</code></td><td class="content"><code class="cpp plain">;;;&nbsp; Integrates:</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>028</code></td><td class="content"><code class="cpp plain">;;;&nbsp;&nbsp; 1) Rope</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>029</code></td><td class="content"><code class="cpp plain">;;;&nbsp;&nbsp; 2) Yasnippet</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>030</code></td><td class="content"><code class="cpp plain">;;;&nbsp;&nbsp; all with AutoComplete.el</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>031</code></td><td class="content"><code class="cpp plain">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>032</code></td><td class="content"><code class="cpp plain">(defun prefix-list-elements (list prefix)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>033</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">(let (value)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>034</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(nreverse</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>035</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(dolist (element list value)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>036</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(setq value (cons (format </code><code class="cpp string">"%s%s"</code> <code class="cpp plain">prefix element) value))))))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>037</code></td><td class="content"><code class="cpp plain">(defvar ac-source-rope</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>038</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">'((candidates</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>039</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">. (lambda ()</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>040</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(prefix-list-elements (rope-completions) ac-target))))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>041</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp string">"Source for Rope"</code><code class="cpp plain">)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>042</code></td><td class="content"><code class="cpp plain">(defun ac-python-find ()</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>043</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp string">"Python `ac-find-function'."</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>044</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">(require 'thingatpt)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>045</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">(let ((symbol (car-safe (bounds-of-thing-at-point 'symbol))))</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>046</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(null symbol)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>047</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(string= </code><code class="cpp string">"."</code> <code class="cpp plain">(buffer-substring (- (point) 1) (point)))</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>048</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(point)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>049</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">nil)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>050</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">symbol)))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>051</code></td><td class="content"><code class="cpp plain">(defun ac-python-candidate ()</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>052</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp string">"Python `ac-candidates-function'"</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>053</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">(let (candidates)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>054</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(dolist (source ac-sources)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>055</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(symbolp source)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>056</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(setq source (symbol-value source)))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>057</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(let* ((ac-limit (or (cdr-safe (assq 'limit source)) ac-limit))</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>058</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(requires (cdr-safe (assq 'requires source)))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>059</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">cand)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>060</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(or (null requires)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>061</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(&gt;= (length ac-target) requires))</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>062</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(setq cand</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>063</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(delq nil</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>064</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(mapcar (lambda (candidate)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>065</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(propertize candidate 'source source))</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>066</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(funcall (cdr (assq 'candidates source)))))))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>067</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(and (&gt; ac-limit 1)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>068</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(&gt; (length cand) ac-limit))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>069</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(setcdr (nthcdr (1- ac-limit) cand) nil))</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>070</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(setq candidates (append candidates cand))))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>071</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(</code><code class="cpp keyword bold">delete</code><code class="cpp plain">-dups candidates)))</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>072</code></td><td class="content"><code class="cpp plain">(add-hook 'python-mode-hook</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>073</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(lambda ()</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>074</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(auto-complete-mode 1)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>075</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(set (make-local-variable 'ac-sources)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>076</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(append ac-sources </code><code class="cpp string">'(ac-source-rope) '</code><code class="cpp plain">(ac-source-yasnippet)))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>077</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(set (make-local-variable </code><code class="cpp string">'ac-find-function) '</code><code class="cpp plain">ac-python-find)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>078</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(set (make-local-variable </code><code class="cpp string">'ac-candidate-function) '</code><code class="cpp plain">ac-python-candidate)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>079</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(set (make-local-variable 'ac-auto-start) nil)))</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>080</code></td><td class="content"><code class="cpp plain">;;Ryan's python specific tab completion</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>081</code></td><td class="content"><code class="cpp plain">(defun ryan-python-tab ()</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>082</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">; Try the following:</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>083</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">; 1) Do a yasnippet expansion</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>084</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">; 2) Do a Rope code completion</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>085</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">; 3) Do an indent</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>086</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">(interactive)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>087</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">(</code><code class="cpp keyword bold">if</code> <code class="cpp plain">(eql (ac-start) 0)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>088</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(indent-</code><code class="cpp keyword bold">for</code><code class="cpp plain">-tab-command)))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>089</code></td><td class="content"><code class="cpp plain">(defadvice ac-start (before advice-turn-on-auto-start activate)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>090</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">(set (make-local-variable 'ac-auto-start) t))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>091</code></td><td class="content"><code class="cpp plain">(defadvice ac-cleanup (after advice-turn-off-auto-start activate)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>092</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">(set (make-local-variable 'ac-auto-start) nil))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>093</code></td><td class="content"><code class="cpp plain">(define-key py-mode-map </code><code class="cpp string">"\t"</code> <code class="cpp plain">'ryan-python-tab)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>094</code></td><td class="content"><code class="cpp plain">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>095</code></td><td class="content"><code class="cpp plain">;;; End Auto Completion</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>096</code></td><td class="content"><code class="cpp plain">;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>097</code></td><td class="content"><code class="cpp plain">;; Auto Syntax Error Hightlight</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>098</code></td><td class="content"><code class="cpp plain">(when (load </code><code class="cpp string">"flymake"</code> <code class="cpp plain">t)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>099</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">(defun flymake-pyflakes-init ()</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>100</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(let* ((temp-file (flymake-init-create-temp-buffer-copy</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>101</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">'flymake-create-temp-inplace))</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>102</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(local-file (file-relative-name</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>103</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">temp-file</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>104</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(file-name-directory buffer-file-name))))</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>105</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp plain">(list </code><code class="cpp string">"pyflakes"</code> <code class="cpp plain">(list local-file))))</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>106</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="cpp plain">(add-to-list 'flymake-allowed-file-name-masks</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>107</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="cpp string">'("\\.py\\'</code><code class="cpp plain">" flymake-pyflakes-init)))</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>108</code></td><td class="content"><code class="cpp plain">(add-hook </code><code class="cpp string">'find-file-hook '</code><code class="cpp plain">flymake-find-file-hook)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>109</code></td><td class="content"><code class="cpp plain">(provide 'init_python)</code></td></tr></tbody></table></div></div></div>
+<h3>7.Add (load-library “init_python”) in your .emacs file.</h3>
+<h2>How to use it?</h2>
+<p>==========================</p>
+<p>Use <em>Tab</em> when you want</p>
+<p>1. Expand the code. ex.&nbsp; tab after “class” would triger class expansion</p>
+<p>2. Complete code.</p>
+<p>3. Tab</p>
+<p><em>C-c d </em>Display doc string</p>
+<p><em>C-c c</em> Run file in python</p>
+<p><em>C-h m</em> Show more key binding</p>
+<div style="margin-top: 1em;" class="possibly-related"><hr><p><strong>Possibly related posts: (automatically generated)</strong></p><ul><li><a rel="related nofollow" href="http://yilmazhuseyin.wordpress.com/2010/09/29/how-to-setup-emacs-for-python-django-development/">How to setup emacs for python (django) development</a></li><li><a rel="related nofollow" href="http://letstrythatagain.wordpress.com/2009/12/04/back-to-python/">Back to Python</a></li><li><a rel="related nofollow" href="http://davidbrenneman.wordpress.com/2010/04/21/cocoa-emacs-23-as-a-python-ide-on-macos-10-6-snow-leopard-part-one/">Cocoa Emacs 23 as a Python IDE on MacOS 10.6 Snow Leopard: Part One</a></li></ul></div>
+<!--adcode-->
+<div style="padding-top: 5px; text-align: left;" class="adcode" align="center">
+
+<div style="margin-top: 15px;"><a href="http://www.google.com/url?ct=abg&amp;q=https://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/%26hl%3Den%26client%3Dca-pub-3443918307802676%26adU%3Dwww.spectrum-instrumentation.com%26adT%3DLinux%2BPC%2BInstrumentation%26gl%3DCN&amp;usg=AFQjCNG9WvZ94SE2C8dA1p9ezaU6GX0bgg" style="border-bottom: medium none; text-decoration: none;">Ads by Google</a><br><div style="display: block; float: left; padding-right: 10px; font-size: 130%; margin: auto;"><a href="s-p:%20Go%20to%20www.spectrum-instrumentation.com" onclick="advert_cookie(); window.location='http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BFLdi_ZghTZbLHsOZkgXCjuiHBKDApRrSq8ORAcCNtwGQoQ8QARgBIKTunwY4AFCi2ODeB2Cdod-B2AWgAfqU2_4DsgEWaGlkZTE3MTMud29yZHByZXNzLmNvbboBCjMzNngyODBfanPIAQHaAVNodHRwOi8vaGlkZTE3MTMud29yZHByZXNzLmNvbS8yMDA5LzAxLzMwL3NldHVwLXBlcmZlY3QtcHl0aG9uLWVudmlyb25tZW50LWluLWVtYWNzL6kC9qIHkHJPtj6oAwHoA90F6AMf9QMKAADE&amp;num=1&amp;sig=AGiWqty0nUC2FxjSj-0c8t_9ZtE_-D7vCw&amp;client=ca-pub-3443918307802676&amp;adurl=http://www.spectrum-instrumentation.com/gawe_linux.html'; return false;"><span class="gad-head" style="font-size: 1.2em; font-weight: bold;">Linux PC Instrumentation</span></a><br><span style="">Digitizer, AWG, DAQ, Digital I/O PCI, PXI, cPCI with Linux support!<br></span><a href="s-p:%20Go%20to%20www.spectrum-instrumentation.com" onclick="advert_cookie(); window.location='http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BFLdi_ZghTZbLHsOZkgXCjuiHBKDApRrSq8ORAcCNtwGQoQ8QARgBIKTunwY4AFCi2ODeB2Cdod-B2AWgAfqU2_4DsgEWaGlkZTE3MTMud29yZHByZXNzLmNvbboBCjMzNngyODBfanPIAQHaAVNodHRwOi8vaGlkZTE3MTMud29yZHByZXNzLmNvbS8yMDA5LzAxLzMwL3NldHVwLXBlcmZlY3QtcHl0aG9uLWVudmlyb25tZW50LWluLWVtYWNzL6kC9qIHkHJPtj6oAwHoA90F6AMf9QMKAADE&amp;num=1&amp;sig=AGiWqty0nUC2FxjSj-0c8t_9ZtE_-D7vCw&amp;client=ca-pub-3443918307802676&amp;adurl=http://www.spectrum-instrumentation.com/gawe_linux.html'; return false;">www.spectrum-instrumentation.com</a></div><br clear="all"><br clear="all"></div>
+</div>
+<div style="clear: both;"><br></div>
+<!--/adcode-->
+</div>
+
+						<p class="postmetadata">
+				 		This entry was posted on January 30, 2009 at 1:30 am						and is filed under <a href="http://en.wordpress.com/tag/emacs/" title="View all posts in Emacs" rel="category tag">Emacs</a>.
+												You can follow any responses to this entry through the <a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/feed/">RSS 2.0</a> feed. 
+						
+													You can <a href="#respond">leave a response</a>, or <a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/trackback/" rel="trackback">trackback</a> from your own site.
+						
+									</p>		
+		
+	</div>
+		
+	<div id="wpl-likebox"><div id="wpl-button"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?like=1&amp;_wpnonce=3852e117d8" title="I like this post" class="like needs-login"><span>Like</span></a></div><div id="wpl-count">Be the first to like this post.</div></div><h3 id="comments">29 Responses to “Setup Perfect Python Environment In&nbsp;Emacs”</h3> 
+ 
+<ol class="commentlist">
+	<li class="comment even thread-even depth-1" id="comment-208">
+	<div class="comment-author vcard">
+	<img id="grav-2eb7b53d42601d1835ca6761272e2fda-1" alt="" src="2eb7b53d42601d1835ca6761272e2fda" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">NewtoPython</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-208">
+	September 23, 2010 at 2:00 pm</a> </small>
+	
+	<p>I had a similar problem with this error-message:</p>
+<p><q cite="‘python-mode-map"></q></p>
+<p><q cite="‘python-mode-map">I had to go to the python-mode.el file, where the variable “python-mode-map” is defined, but with the name “py-mode-map”.     </q></p>
+<p><q cite="‘python-mode-map">I put the following line behind the “defvar py-mode-map”:<br>
+(defvaralias ‘python-mode-map ‘py-mode-map)</q></p>
+<p><q cite="‘python-mode-map">;;; (defvaralias new-alias base-variable);;;</q></p>
+<p><q cite="‘python-mode-map">more info here: <a href="http://www.gnu.org/s/emacs/manual/html_node/elisp/Variable-Aliases.html" rel="nofollow">http://www.gnu.org/s/emacs/manual/html_node/elisp/Variable-Aliases.html</a></q></p>
+<p><q cite="‘python-mode-map">I used (in Emacs) M-x byte-compile-file to make a python-mode.elc file. Then I had two different python-mode.elc files, so I had to replace the old one with the new one, then it worked. </q></p>
+<p><q cite="‘python-mode-map">Thanks for the great post!</q></p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=208#respond" onclick='return addComment.moveForm("comment-208", "208", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-203">
+	<div class="comment-author vcard">
+	<img id="grav-22d963978f6fc5d6e7cde1c3a8b7bd9f-1" alt="" src="22d963978f6fc5d6e7cde1c3a8b7bd9f" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">Narren</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-203">
+	August 20, 2010 at 10:13 pm</a> </small>
+	
+	<p>Tried this setup for emacs 23 under ubuntu 10.04. It’s not quite working for me.<br>
+When I type something like:<br>
+<code>import sys<br>
+sys.[TAB]</code><br>
+It does not show auto-complete menu and message appears:<br>
+<cite>setq: Symbol’s value as variable is void: ac-source-yasnippet</cite><br>
+I’ve checked rope, M-/ works as expected.<br>
+Also, I can’t indent by hitting TAB at new line.<br>
+Any suggestions?</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=203#respond" onclick='return addComment.moveForm("comment-203", "203", "respond", "129")'>Reply</a>	</div>
+<ul class="children">
+	<li class="comment byuser comment-author-hide1713 bypostauthor even depth-2" id="comment-204">
+	<div class="comment-author vcard">
+	<img id="grav-60a05cdce2660296672b37ad2654e00f-5" alt="" src="60a05cdce2660296672b37ad2654e00f" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">hide1713</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-204">
+	August 21, 2010 at 3:50 am</a> </small>
+	
+	<p>This post is quite old and I can’t guarantee everything would work now. Make sure you have yasnippet installed and loaded. You can simply disable the smart TAB and or bind yasnippet to different keys.</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=204#respond" onclick='return addComment.moveForm("comment-204", "204", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="comment byuser comment-author-hide1713 bypostauthor odd alt depth-2" id="comment-212">
+	<div class="comment-author vcard">
+	<img id="grav-60a05cdce2660296672b37ad2654e00f-0" alt="" src="60a05cdce2660296672b37ad2654e00f" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">hide1713</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-212">
+	October 2, 2010 at 1:11 am</a> </small>
+	
+	<p>Check your yasnippet again and make sure you load yasnippet in your .emacs file</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=212#respond" onclick='return addComment.moveForm("comment-212", "212", "respond", "129")'>Reply</a>	</div>
+</li>
+</ul>
+</li>
+	<li class="comment even thread-even depth-1" id="comment-171">
+	<div class="comment-author vcard">
+	<img id="grav-9f732350b2ff7c5dc17de7d87c227dce-1" alt="" src="9f732350b2ff7c5dc17de7d87c227dce" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">duanedesign</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-171">
+	July 3, 2010 at 11:56 pm</a> </small>
+	
+	<p>I had the same error others are getting:</p>
+<p>Symbol’s value as variable is void: ‘auto-complete</p>
+<p>The how-to has a small typo.</p>
+<p>(require ‘auto-complete)</p>
+<p>should be:</p>
+<p>(require ‘auto-complete)</p>
+<p>Hope that helps some people.<br>
+Great guide overall.</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=171#respond" onclick='return addComment.moveForm("comment-171", "171", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-167">
+	<div class="comment-author vcard">
+		<h3 class="commenttitle"><cite class="fn"><a href="http://www.blackcity.com.cn/?p=427" rel="external nofollow" class="url">网域黑城 – tiger's notes » Blog Archive » 配置Emacs下的Python开发环境 - 技术仅仅是一个工具，是你在人生一个阶段生存的工具，你可以一辈子喜欢它，但最好不要一辈子靠它生存。</a></cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-167">
+	June 25, 2010 at 3:10 am</a> </small>
+	
+	<p>[...] 在Linux论坛上总有人问Python用什么IDE比较好，然后总会有人回答说Emacs。最近开始学Python，也花了点时间研究怎么配置Emacs，发现没有想象中的那么麻烦。这篇文章大致上来自于Lei Chen博客文章的翻译，完成以后的Emacs具有以下特性: [...]</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=167#respond" onclick='return addComment.moveForm("comment-167", "167", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="comment even thread-even depth-1" id="comment-145">
+	<div class="comment-author vcard">
+	<img id="grav-6a2f4b89354baa2f50c79766bb9934c9-1" alt="" src="6a2f4b89354baa2f50c79766bb9934c9" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn"><a href="http://www.djangodummy.com/" rel="external nofollow" class="url">Julie Bohman</a></cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-145">
+	March 6, 2010 at 11:30 pm</a> </small>
+	
+	<p>Cool Thanks for your article. I am starting django and this got me straight.</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=145#respond" onclick='return addComment.moveForm("comment-145", "145", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-143">
+	<div class="comment-author vcard">
+	<img id="grav-a4047befcf7a39f97ae736b222e7087a-1" alt="" src="a4047befcf7a39f97ae736b222e7087a" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn"><a href="http://www.thesharksteamcleaner.com/" rel="external nofollow" class="url">Miles Melder</a></cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-143">
+	March 4, 2010 at 2:37 am</a> </small>
+	
+	<p>Unbelievably good info on this site I am grateful to have found it, I would highly recommend it for anyone looking for solutions to their problems.</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=143#respond" onclick='return addComment.moveForm("comment-143", "143", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="comment even thread-even depth-1" id="comment-134">
+	<div class="comment-author vcard">
+	<img id="grav-ec851f350c80d858d116949f55a2f7d0-1" alt="" src="ec851f350c80d858d116949f55a2f7d0" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">Simon</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-134">
+	February 20, 2010 at 2:28 am</a> </small>
+	
+	<p>smart-operator-mode is in the latest smart-operator.el, found at:</p>
+<p>The one at the <a href="http://emacswiki.org/" rel="nofollow">EmacsWiki</a> is a bit old (like 4 years).</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=134#respond" onclick='return addComment.moveForm("comment-134", "134", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-122">
+	<div class="comment-author vcard">
+	<img id="grav-ee888cdde2813f9794bd27b3b882fa19-1" alt="" src="ee888cdde2813f9794bd27b3b882fa19" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">Fena</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-122">
+	February 5, 2010 at 1:07 pm</a> </small>
+	
+	<p>Humm, I’ve loved this setup but I’m having a little problem with it. When I’m in the middle of a Yas expansion auto-complete will only work if I use enter. Is there any way to configure auto-complete TAB to work inside the Yas expansion?</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=122#respond" onclick='return addComment.moveForm("comment-122", "122", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="pingback even thread-even depth-1" id="comment-112">
+	<div class="comment-author vcard">
+		<h3 class="commenttitle"><cite class="fn"><a href="http://www.ymer.org/amir/2010/01/28/pyflakes-flymake-for-python-programming-in-emacs/" rel="external nofollow" class="url">Amir Saffari’s Website » PyFlakes-Flymake for Python Programming in Emacs</a></cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-112">
+	January 31, 2010 at 11:25 am</a> </small>
+	
+	<p>[...] that I found this setting in this page as a rather more complete setup. However, I found out that for my taste the PyFlakes and the [...]</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=112#respond" onclick='return addComment.moveForm("comment-112", "112", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-94">
+	<div class="comment-author vcard">
+	<img id="grav-a2293900882e70f2fb368f5a441dde1f-2" alt="" src="a2293900882e70f2fb368f5a441dde1f" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn"><a href="http://mtechnical.net/" rel="external nofollow" class="url">Matthew Strand</a></cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-94">
+	December 21, 2009 at 11:42 am</a> </small>
+	
+	<p>Thanks for posting this. It took me forever, but I finally got it setup. Here are some tips:</p>
+<p>1. Rob C’s reply to comment #4 was required. </p>
+<p>2. (smart-operator-mode-on) needed this file:<br>
+<a href="http://xwl.appspot.com/ref/smart-operator.el" rel="nofollow">http://xwl.appspot.com/ref/smart-operator.el</a><br>
+and then (require ‘smart-operator) near the top in .emacs</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=94#respond" onclick='return addComment.moveForm("comment-94", "94", "respond", "129")'>Reply</a>	</div>
+<ul class="children">
+	<li class="comment even depth-2" id="comment-95">
+	<div class="comment-author vcard">
+	<img id="grav-a2293900882e70f2fb368f5a441dde1f-0" alt="" src="a2293900882e70f2fb368f5a441dde1f" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn"><a href="http://mtechnical.net/" rel="external nofollow" class="url">Matthew Strand</a></cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-95">
+	December 23, 2009 at 7:07 am</a> </small>
+	
+	<p>Well I see now that the comments add to the top so “Comment 4″ is meaningless. It was RobC’s reply to Rutku regarding auto-complete-config.el.</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=95#respond" onclick='return addComment.moveForm("comment-95", "95", "respond", "129")'>Reply</a>	</div>
+</li>
+</ul>
+</li>
+	<li class="comment byuser comment-author-michellejw odd alt thread-even depth-1" id="comment-92">
+	<div class="comment-author vcard">
+	<img id="grav-0faa793caaa342c043d5e7b7b921211c-1" alt="" src="0faa793caaa342c043d5e7b7b921211c" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">michellejw</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-92">
+	December 8, 2009 at 3:30 pm</a> </small>
+	
+	<p>Thanks – I used the heck out of this tutorial.  It was very helpful!</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=92#respond" onclick='return addComment.moveForm("comment-92", "92", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="pingback even thread-odd thread-alt depth-1" id="comment-91">
+	<div class="comment-author vcard">
+		<h3 class="commenttitle"><cite class="fn"><a href="http://letstrythatagain.wordpress.com/2009/12/06/emacs-and-python/" rel="external nofollow" class="url">Emacs and Python « How did I do that again?</a></cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-91">
+	December 7, 2009 at 5:46 am</a> </small>
+	
+	<p>[...] font.&nbsp; Now to make it do Python stuff.&nbsp; I’m following a tutorial that can be found here.&nbsp; I’m starting off by downloading several packages: python-mode.el , pymacs0.24 , [...]</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=91#respond" onclick='return addComment.moveForm("comment-91", "91", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="pingback odd alt thread-even depth-1" id="comment-58">
+	<div class="comment-author vcard">
+		<h3 class="commenttitle"><cite class="fn"><a href="http://ranjiao.com/blog/?p=30986" rel="external nofollow" class="url">配置Emacs下的Python开发环境 : 没头苍蝇的窝</a></cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-58">
+	November 2, 2009 at 8:23 am</a> </small>
+	
+	<p>[...] 在Linux论坛上总有人问Python用什么IDE比较好，然后总会有人回答说Emacs。最近开始学Python，也花了点时间研究怎么配置Emacs，发现没有想象中的那么麻烦。这篇文章大致上来自于Lei Chen博客文章的翻译，完成以后的Emacs具有以下特性: [...]</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=58#respond" onclick='return addComment.moveForm("comment-58", "58", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-56">
+	<div class="comment-author vcard">
+	<img id="grav-75d3c6ae1699d8dd2e0d04b4fa911e4c-1" alt="" src="75d3c6ae1699d8dd2e0d04b4fa911e4c" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn"><a href="http://www.racih.com/" rel="external nofollow" class="url">Rutku</a></cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-56">
+	October 29, 2009 at 2:10 pm</a> </small>
+	
+	<p>Hi, thank you for article,<br>
+I don’t work Tab . This output :<br>
+Symbol’s value as variable is void: ac-source-yasnippet</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=56#respond" onclick='return addComment.moveForm("comment-56", "56", "respond", "129")'>Reply</a>	</div>
+<ul class="children">
+	<li class="comment odd alt depth-2" id="comment-85">
+	<div class="comment-author vcard">
+	<img id="grav-023fd25f8adef6a1baef288dac80ba83-1" alt="" src="023fd25f8adef6a1baef288dac80ba83" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn"><a href="http://blog.fogtunes.com/" rel="external nofollow" class="url">Rob C</a></cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-85">
+	November 25, 2009 at 11:33 pm</a> </small>
+	
+	<p>Try adding this to ~/.emacs.d/: auto-complete-config.el from github (<a href="http://github.com/m2ym/auto-complete/raw/master/auto-complete-config.el" rel="nofollow">http://github.com/m2ym/auto-complete/raw/master/auto-complete-config.el</a>)<br>
+Then just out (require ‘auto-complete-config) in your ~/.emacs file.</p>
+<p>Got rid of this error for me.  I still cannot get tab to actually indent anything though :(</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=85#respond" onclick='return addComment.moveForm("comment-85", "85", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="comment even depth-2" id="comment-163">
+	<div class="comment-author vcard">
+	<img id="grav-e9d858f462ead7c356c030819edf65c3-1" alt="" src="e9d858f462ead7c356c030819edf65c3" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">too</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-163">
+	May 10, 2010 at 3:31 pm</a> </small>
+	
+	<p>I have this problem too.<br>
+That’s because we are using AutoComplete.el version 0.2.0, not the old one 0.1.0…</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=163#respond" onclick='return addComment.moveForm("comment-163", "163", "respond", "129")'>Reply</a>	</div>
+</li>
+</ul>
+</li>
+	<li class="comment odd alt thread-even depth-1" id="comment-49">
+	<div class="comment-author vcard">
+	<img id="grav-6afdec638daab3f86fdc5ec8101d4622-1" alt="" src="6afdec638daab3f86fdc5ec8101d4622" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">Joey Liu</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-49">
+	August 14, 2009 at 8:56 am</a> </small>
+	
+	<p>it works for me, but only one question</p>
+<p>(if (eql (ac-start) 0)<br>
+(indent-for-tab-command))</p>
+<p>it seems that ac-start will never equal to 0, so indent-for-tab-command will never run.</p>
+<p>i’m using auto-complete.el 0.2.0</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=49#respond" onclick='return addComment.moveForm("comment-49", "49", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="comment-22">
+	<div class="comment-author vcard">
+	<img id="grav-e75c32b207f7f4994772f4ee141f8841-1" alt="" src="e75c32b207f7f4994772f4ee141f8841" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">Walt</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-22">
+	May 4, 2009 at 12:58 am</a> </small>
+	
+	<p>This might be a stupid question, but I don´t know elisp:<br>
+On line 41, where it says “Source for Rope”, are we supposed to fill in the path to Rope, or is it just a comment? Seems to be working quite well for me right now at least. Thansk for a good post.</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=22#respond" onclick='return addComment.moveForm("comment-22", "22", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="comment odd alt thread-even depth-1" id="comment-19">
+	<div class="comment-author vcard">
+	<img id="grav-b626318a609f644276cd6e7eab827e02-2" alt="" src="b626318a609f644276cd6e7eab827e02" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">catonano</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-19">
+	April 5, 2009 at 7:43 am</a> </small>
+	
+	<p>Sorry ro bother: it worked</p>
+<p>I just mis-copied the snippet, look:</p>
+<p>(require ‘auto-complete)<br>
+(global-auto-complete-mode t)</p>
+<p>;;(require ‘auto-complete)<br>
+;;(global-auto-complete-mode t)</p>
+<p>‘  and  ‘  are different !</p>
+<p>Bye<br>
+Cato</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=19#respond" onclick='return addComment.moveForm("comment-19", "19", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="comment-18">
+	<div class="comment-author vcard">
+	<img id="grav-b626318a609f644276cd6e7eab827e02-0" alt="" src="b626318a609f644276cd6e7eab827e02" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">catonano</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-18">
+	April 5, 2009 at 7:36 am</a> </small>
+	
+	<p>Hi,</p>
+<p>I’m a total Emacs newbie, I’m on Ubuntu 8.10. </p>
+<p>I copied </p>
+<p>(require ‘auto-complete)<br>
+(global-auto-complete-mode t)</p>
+<p>in my .emacs file and got a message on the *Messages* buffer:</p>
+<p>An error has occurred while loading `/home/catonano/.emacs’:</p>
+<p>Symbol’s value as variable is void: ‘auto-complete</p>
+<p>Thanks</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=18#respond" onclick='return addComment.moveForm("comment-18", "18", "respond", "129")'>Reply</a>	</div>
+</li>
+	<li class="comment odd alt thread-even depth-1 parent" id="comment-16">
+	<div class="comment-author vcard">
+	<img id="grav-ac7e1627a6d5da12f710770aac1fcb23-2" alt="" src="ac7e1627a6d5da12f710770aac1fcb23" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">ap</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-16">
+	April 2, 2009 at 7:07 pm</a> </small>
+	
+	<p>A comment from <a href="http://www.enigmacurry.com/2009/01/21/autocompleteel-python-code-completion-in-emacs/" rel="nofollow">http://www.enigmacurry.com/2009/01/21/autocompleteel-python-code-completion-in-emacs/</a> says that setting robe project root folder might be the problem.what does robe root folder exactly mean.Any advice on that. Also how do i set emacs to point to my python path. i am a newbie with emacs</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=16#respond" onclick='return addComment.moveForm("comment-16", "16", "respond", "129")'>Reply</a>	</div>
+<ul class="children">
+	<li class="comment byuser comment-author-hide1713 bypostauthor even depth-2" id="comment-17">
+	<div class="comment-author vcard">
+	<img id="grav-60a05cdce2660296672b37ad2654e00f-1" alt="" src="60a05cdce2660296672b37ad2654e00f" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">hide1713</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-17">
+	April 2, 2009 at 11:18 pm</a> </small>
+	
+	<p>I am not sure about the problem. I didn’t set the rope project root folder variable because I have projects in different location. Emacs will ask you for root folder name the first time when you try to complete a name. </p>
+<blockquote><p>how do i set emacs to point to my python path. </p></blockquote>
+<p>I don’t see any reason for doing that.</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=17#respond" onclick='return addComment.moveForm("comment-17", "17", "respond", "129")'>Reply</a>	</div>
+</li>
+</ul>
+</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-14">
+	<div class="comment-author vcard">
+	<img id="grav-ac7e1627a6d5da12f710770aac1fcb23-0" alt="" src="ac7e1627a6d5da12f710770aac1fcb23" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">ap</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-14">
+	April 1, 2009 at 11:16 am</a> </small>
+	
+	<p>everything is working but when i do something like import os.path the screen freezes for long period.any suggestion</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=14#respond" onclick='return addComment.moveForm("comment-14", "14", "respond", "129")'>Reply</a>	</div>
+<ul class="children">
+	<li class="comment byuser comment-author-hide1713 bypostauthor even depth-2" id="comment-15">
+	<div class="comment-author vcard">
+	<img id="grav-60a05cdce2660296672b37ad2654e00f-2" alt="" src="60a05cdce2660296672b37ad2654e00f" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">hide1713</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-15">
+	April 1, 2009 at 11:19 am</a> </small>
+	
+	<p>I am not sure what is happening on your machine. You need provide me more information. Maybe you should try compile those .el file to byte code.</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=15#respond" onclick='return addComment.moveForm("comment-15", "15", "respond", "129")'>Reply</a>	</div>
+</li>
+</ul>
+</li>
+	<li class="comment odd alt thread-even depth-1 parent" id="comment-6">
+	<div class="comment-author vcard">
+	<img id="grav-da9af4ed7a3c92338951812348c1092b-1" alt="" src="da9af4ed7a3c92338951812348c1092b" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">kakarotoBR</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-6">
+	February 5, 2009 at 1:52 am</a> </small>
+	
+	<p>Hello, i’m using emacs-snapshot on ubuntu 8.10 and everything is working except C-c C-c Ret gives the following error:<br>
+Symbol’s function definition is void: smart-operator-mode-on<br>
+But smart-operator.el is in my load path and (require ‘smart-operator) in my .emacs. Any help would be much appreciated</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=6#respond" onclick='return addComment.moveForm("comment-6", "6", "respond", "129")'>Reply</a>	</div>
+<ul class="children">
+	<li class="comment byuser comment-author-hide1713 bypostauthor even depth-2" id="comment-7">
+	<div class="comment-author vcard">
+	<img id="grav-60a05cdce2660296672b37ad2654e00f-3" alt="" src="60a05cdce2660296672b37ad2654e00f" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">	<h3 class="commenttitle"><cite class="fn">hide1713</cite> <span class="says">said</span></h3>
+	</div>
+	
+	<small class="comment-meta commentmetadata"><a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#comment-7">
+	February 5, 2009 at 2:20 am</a> </small>
+	
+	<p>Your emacs can not find smart-operator-mode-on because this function is not exists. I didn’t find smart-operator-mode-on function in my smart-operator.el.  You can toggle the smart-operator by calling smart-operator-mode function.</p>
+
+	<div class="reply">
+	<a class="comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/?replytocom=7#respond" onclick='return addComment.moveForm("comment-7", "7", "respond", "129")'>Reply</a>	</div>
+</li>
+</ul>
+</li>
+</ol>
+ 
+<div class="navigation">
+<div class="alignleft"></div>
+<div class="alignright"></div>
+</div>
+
+									<div id="respond">
+				<h3 id="reply-title">Leave a Comment <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/#respond" style="display: none;">Cancel reply</a></small></h3>
+									<form action="http://hide1713.wordpress.com/wp-comments-post.php" method="post" id="commentform">
+																			<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name</label> <span class="required">*</span><input id="author" name="author" value="" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-email"><label for="email">Email</label> <span class="required">*</span><input id="email" name="email" value="" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" value="" size="30" type="text"></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;pre&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" id="submit" value="Post Comment" type="submit">
+							<input name="comment_post_ID" value="129" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						
+<input name="genseq" value="1294047481" type="hidden">
+<p><input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" tabindex="6" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe">Notify me of follow-up comments via email.</label></p><p><input name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;" tabindex="7" type="checkbox"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Send me site updates</label></p><input name="sub-type" value="comment-form-text3" type="hidden"><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="32dd304568" type="hidden"></p>					</form>
+							</div><!-- #respond -->
+						<div class="bottomnavigation">
+			<div class="alignleft">« <a href="http://hide1713.wordpress.com/2009/01/25/python-search-google-with-google-ajax-api/" rel="prev">Python: Search Google with Google Ajax&nbsp;API</a></div>
+			<div class="alignright"><a href="http://hide1713.wordpress.com/2009/01/31/1312009-1030am-google-was-hacked/" rel="next">1/31/2009 10:30am google was&nbsp;hacked?!</a> »</div>
+		</div>
+	
+</div>
+
+</div>
+<div class="clearingdiv">&nbsp;</div>
+</div>
+
+<div id="footer">
+<a href="http://wordpress.com/?ref=footer" rel="generator">Blog at WordPress.com</a>. | Theme: <a href="http://theme.wordpress.com/themes/andreas09/">Andreas09</a> by <a href="http://andreasviklund.com/" rel="designer">Andreas Viklund</a>.</div>
+
+	
+
+
+
+
+	
+	<div style="display: none;">
+	<div class="grofile-hash-map-2eb7b53d42601d1835ca6761272e2fda">
+	</div>
+	<div class="grofile-hash-map-22d963978f6fc5d6e7cde1c3a8b7bd9f">
+	</div>
+	<div class="grofile-hash-map-60a05cdce2660296672b37ad2654e00f">
+	</div>
+	<div class="grofile-hash-map-9f732350b2ff7c5dc17de7d87c227dce">
+	</div>
+	<div class="grofile-hash-map-19293422ee12062be1492bcd8d632bb0">
+	</div>
+	<div class="grofile-hash-map-2c1916081e275a10d0fafd7f10a721b1">
+	</div>
+	<div class="grofile-hash-map-ec851f350c80d858d116949f55a2f7d0">
+	</div>
+	<div class="grofile-hash-map-ee888cdde2813f9794bd27b3b882fa19">
+	</div>
+	<div class="grofile-hash-map-a2293900882e70f2fb368f5a441dde1f">
+	</div>
+	<div class="grofile-hash-map-0faa793caaa342c043d5e7b7b921211c">
+	</div>
+	<div class="grofile-hash-map-75d3c6ae1699d8dd2e0d04b4fa911e4c">
+	</div>
+	<div class="grofile-hash-map-023fd25f8adef6a1baef288dac80ba83">
+	</div>
+	<div class="grofile-hash-map-e9d858f462ead7c356c030819edf65c3">
+	</div>
+	<div class="grofile-hash-map-6afdec638daab3f86fdc5ec8101d4622">
+	</div>
+	<div class="grofile-hash-map-e75c32b207f7f4994772f4ee141f8841">
+	</div>
+	<div class="grofile-hash-map-b626318a609f644276cd6e7eab827e02">
+	</div>
+	<div class="grofile-hash-map-ac7e1627a6d5da12f710770aac1fcb23">
+	</div>
+	<div class="grofile-hash-map-da9af4ed7a3c92338951812348c1092b">
+	</div>
+	</div>
+
+
+
+
+
+<img id="wpstats" src="g.gif" alt=""><img id="wpstats2" src="g_001.gif" alt="" style="display: none;"><img id="wpstats" src="g_002.gif" alt="" style="display: none;">
+
+<div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; opacity: 0.9;"></div></body>
+</html>

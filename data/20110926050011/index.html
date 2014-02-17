@@ -1,0 +1,378 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="de" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>Run KDE4 in Chroot (Gentoo/Debian/Ubuntu Howto) « Dedors’s Weblog</title>
+
+	
+
+	<link rel="pingback" href="http://dedors.wordpress.com/xmlrpc.php">
+	<link rel="alternate" type="application/rss+xml" title="Dedors's Weblog » Feed" href="http://dedors.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Dedors's Weblog » Kommentar Feed" href="http://dedors.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Dedors's Weblog » Run KDE4 in Chroot (Gentoo/Debian/Ubuntu&nbsp;Howto) Kommentar Feed" href="http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/feed/">
+
+
+
+
+
+
+
+
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='http://s0.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1307172301g&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://dedors.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://dedors.wordpress.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="IWL4965 with Ubuntu Intrepid Ibex and Injection with Compat-Wireless&nbsp;2.6" href="http://dedors.wordpress.com/2008/11/05/iwl4965-with-ubuntu-intrepid-ibex-and-injection/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/">
+<link rel="shortlink" href="http://wp.me/pgOZS-1D">
+<link rel="alternate" type="application/json+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=http%3A%2F%2Fdedors.wordpress.com%2F2008%2F12%2F10%2Frun-kde4-in-chroot-gentoodebianubuntu-howto%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=http%3A%2F%2Fdedors.wordpress.com%2F2008%2F12%2F10%2Frun-kde4-in-chroot-gentoodebianubuntu-howto%2F&amp;for=wpcom-auto-discovery"><meta property="og:type" content="article">
+<meta property="og:title" content="Run KDE4 in Chroot (Gentoo/Debian/Ubuntu&nbsp;Howto)">
+<meta property="og:url" content="http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/">
+<meta property="og:description" content="As I have some home server services running on a same machine I use as surf/music/mail/chat station. I like to mess around with the new KDE&nbsp; as I want the newest features but still a stable and sa...">
+<meta property="og:site_name" content="Dedors's Weblog">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="http://s0.wp.com/i/webclip.png?m=1311618116g">
+<link rel="openid.server" href="http://dedors.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="http://dedors.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="http://dedors.wordpress.com/osd.xml" title="Dedors's Weblog">
+<link rel="search" type="application/opensearchdescription+xml" href="http://wordpress.com/opensearch.xml" title="WordPress.com">
+	
+	
+<meta name="application-name" content="Dedors's Weblog"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Just another WordPress.com weblog"><meta name="msapplication-task" content="name=Abonnieren;action-uri=http://dedors.wordpress.com/feed/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Wordpress.com Support;action-uri=http://support.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com-Foren;action-uri=http://forums.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico">
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="typekit-enabled highlander-enabled highlander-light">
+<div id="rap">
+<h1 id="header"><a href="http://dedors.wordpress.com/">Dedors’s Weblog</a></h1>
+
+<div id="content">
+<!-- end header -->
+
+
+<h2>10. Dezember 2008</h2>
+<div class="post-101 post type-post status-publish format-standard hentry category-linux category-uncategorized tag-chroot tag-debian tag-gentoo tag-kde tag-kde-crazy tag-kde4 tag-stable-base-system-unstable-desktop tag-ubuntu" id="post-101">
+	 <h3 class="storytitle"><a href="http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/" rel="bookmark">Run KDE4 in Chroot (Gentoo/Debian/Ubuntu&nbsp;Howto)</a></h3>
+	<div class="meta">Einsortiert unter:  <a href="http://dedors.wordpress.com/category/linux/" title="Alle Artikel in Linux ansehen" rel="category tag">Linux</a>,<a href="http://dedors.wordpress.com/category/uncategorized/" title="Alle Artikel in Uncategorized ansehen" rel="category tag">Uncategorized</a> — dedors @ 05:27 <br>Tags: <a href="http://dedors.wordpress.com/tag/chroot/" rel="tag">chroot</a>, <a href="http://dedors.wordpress.com/tag/debian/" rel="tag">debian</a>, <a href="http://dedors.wordpress.com/tag/gentoo/" rel="tag">gentoo</a>, <a href="http://dedors.wordpress.com/tag/kde/" rel="tag">kde</a>, <a href="http://dedors.wordpress.com/tag/kde-crazy/" rel="tag">kde-crazy</a>, <a href="http://dedors.wordpress.com/tag/kde4/" rel="tag">kde4</a>, <a href="http://dedors.wordpress.com/tag/stable-base-system-unstable-desktop/" rel="tag">stable base system unstable desktop</a>, <a href="http://dedors.wordpress.com/tag/ubuntu/" rel="tag">ubuntu</a><br></div>
+
+	<div class="storycontent">
+		<p>As I have some home server services running on a same machine I use as surf/music/mail/chat station. I like to mess around with the new KDE&nbsp; as I want the newest features but still a stable and safe to run always base system with nfs, samba, music deamon, dns, router, printer and webserver.</p>
+<p>So I set up a Chroot for KDE with that I can mess around as much as I want <img src="icon_smile.gif" alt=":)" class="wp-smiley">  But it’s a little bit tricky, so here I share my knowledge: <strong>This is not fully polished or redone yet, so no guarantee.</strong> Let me know if you have any problems.</p>
+<p><strong>#Short Basics: Set up Chroot</strong><br>
+#you have several ways to do that, beginning from copy the current system to a new subdir or partition, or create a chroot with downloading<br>
+#strage3 or on a debian system with dchroot. google is your friend here and its not difficult to find your way.<br>
+#in the chroot you can choose to take a non-stable build, like portage 2.2 with kde-crazy overlay, or ubuntu with kde-nightly. May I add later more informations on how to set that up.</p>
+<p>i had to <strong>enable rc_parallel=“YES“</strong> in <strong>both /etc/rc.conf </strong>and <strong>(chroot)/etc/rc.conf </strong>to allow to start in-chroot services on a gentoo-chroot-gentoo system (should work with debian or mixed)</p>
+<p><strong>Create these 3 files:</strong></p>
+<p>/usr/bin/prepchroot</p>
+<p style="padding-left: 30px;">#!/bin/bash<br>
+mount -a<br>
+mount /extchroot<br>
+mount -o bind /proc /extchroot/proc<br>
+mount -o bind /dev /extchroot/dev<br>
+mount -o bind /sys /extchroot/sys<br>
+mount -o bind /tmp /extchroot/tmp<br>
+mount -t devpts none /extchroot/dev/pts<br>
+mount -o bind /media /extchroot/media<br>
+mount -o bind /var/lib/dbus /extchroot/var/lib/dbus<br>
+mount -o bind /usr/src/linux /extchroot/usr/src/linux #you set the later linux kernel in the chroot and compile it in the real root.<br>
+ln -s /home/dedi/.Xauthority /extchroot/home/dedi/.Xauthority #only need once<br>
+chroot /extchroot /bin/bash</p>
+<p>nano (chroot)/usr/bin/hichroot</p>
+<p style="text-align: left; padding-left: 30px;">#!/bin/bash<br>
+mount /media<br>
+/etc/init.d/dhald start<br>
+/etc/init.d/dbus start<br>
+/etc/init.d/xdm restart</p>
+<p style="text-align: left;">nano (chroot)/usr/bin/byechroot</p>
+<p style="text-align: left; padding-left: 30px;">#!/bin/bash<br>
+/etc/init.d/dbus stop<br>
+/etc/init.d/hald stop<br>
+umount /media<br>
+umount -a</p>
+<p style="text-align: left;">now chmod +x all of these 3 files</p>
+<p style="text-align: left;">
+</p><p style="text-align: left;"><strong>to enter the chroot just run „prepchroot“, it will set up everything that is needed inside</strong></p>
+<p style="text-align: left;"><strong>after you entered the chroot run „hichroot“, it prepares to start X</strong></p>
+<p style="text-align: left;"><strong>to end a session (e.g. for reboot) you should NOT reboot it from KDE. Quit the Session, run „byechroot“ in the console, then exit and reboot.</strong></p>
+<p style="text-align: left;">A side note:&nbsp; I have nfs setup already, and just getting all my storage with nfs from the chroot to outside, as ln and mount -o seems not to work. if anyone knows a better solution, please tell me.</p>
+<p style="text-align: left;">Another side note:&nbsp; at the beginning i had the problem not being able to start /etc/init.d services in the chroot, something made this gone away, i think its the reason i wrote up there. If not, you can still start dbus inside chroot directly, and start X with „startx“, after you „su user“ as you dont have a login that way.</p>
+<div class="sharedaddy sd-like-enabled"><div id="wpl-likebox" class="sd-block sd-like"><h3 class="sd-title">Gefällt mir:</h3><div class="sd-content"><div id="wpl-button"><a href="http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/?like=1&amp;_wpnonce=1bcf7ae9e0" title="Mir gefällt diese(r) post" class="like needs-login sd-button" rel="nofollow"><span>Like</span></a></div><div id="wpl-count" class="sd-like-count">Sei der Erste, dem dieser post gefällt.</div></div></div></div>	</div>
+
+	<div class="feedback">
+                        <a href="http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/#comments" title="Kommentiere Run KDE4 in Chroot (Gentoo/Debian/Ubuntu&nbsp;Howto)">Kommentare (2)</a>	</div>
+
+</div>
+
+
+<h2 id="comments">2 Kommentare 
+	<a href="#postcomment" title="Hinterlasse einen Kommentar">»</a>
+</h2>
+
+<ol id="commentlist">
+<li class="comment even thread-even depth-1 highlander-comment" id="comment-17">
+	<div id="div-comment-17">
+		<div class="comment-author vcard">
+			<img id="grav-4261ee7261b2dd8cb80ec92427206310-0" alt="" src="4261ee7261b2dd8cb80ec92427206310" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">			<p>ubuntu each one of the best<br>
+<a href="http://www.tutoslinux.com/" rel="nofollow">Tutos Linux</a></p>
+			<p><cite>Kommentar von <span class="fn"><a href="http://www.tutoslinux.com/" rel="external nofollow" class="url">tutos Linux</a></span> — 20. Dezember 2008 @ <a href="#comment-17">21:50</a></cite> 				<span class="reply">
+					 | <a class="comment-reply-link" href="http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/?replytocom=17#respond" onclick='return addComment.moveForm("div-comment-17", "17", "respond", "101")'>Antworten</a>				</span>
+			</p>
+		</div>
+	</div>
+</li>
+<li class="comment odd alt thread-odd thread-alt depth-1 highlander-comment" id="comment-20">
+	<div id="div-comment-20">
+		<div class="comment-author vcard">
+			<img id="grav-433ef32e805f353aceb51040ff8d26a3-0" alt="" src="433ef32e805f353aceb51040ff8d26a3" class="avatar avatar-32 grav-hashed grav-hijack" height="32" width="32">			<p>Super, dass das hier mal in der Form besprochen wird. , an dem Thema solltet Ihr dranbleiben. Ich glaube, dass ich vor einigen Tagen woanders im Web einen ähnlichen Beitrag gesehen habe.</p>
+			<p><cite>Kommentar von <span class="fn"><a href="http://www.kontaktlinsen-check.de/cc/monatslinsen.html" rel="external nofollow" class="url">Clemens Hähnel</a></span> — 17. März 2010 @ <a href="#comment-20">12:28</a></cite> 				<span class="reply">
+					 | <a class="comment-reply-link" href="http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/?replytocom=20#respond" onclick='return addComment.moveForm("div-comment-20", "20", "respond", "101")'>Antworten</a>				</span>
+			</p>
+		</div>
+	</div>
+</li>
+</ol>
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+	<br>
+
+	<p><a href="http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/feed/"><abbr title="Really Simple Syndication">RSS</abbr>-Feed für Kommentare zu diesem Artikel.</a> 
+	<a href="http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/trackback/" rel="trackback">TrackBack <abbr title="Uniform Resource Identifier">URI</abbr></a>
+</p>
+
+								<div class="js" id="respond">
+				<h3 id="reply-title">Hinterlasse eine Antwort <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/#respond" style="display: none;">Antwort abbrechen</a></small></h3>
+									<form action="http://dedors.wordpress.com/wp-comments-post.php" method="post" id="commentform">
+																										
+
+
+												
+<input name="hc_post_as" id="hc_post_as" value="guest" type="hidden">
+
+<div class="comment-form-field comment-textarea">
+	<label for="comment">Gib hier Deinen Kommentar ein ...</label>
+	<div id="comment-form-comment"><textarea tabindex="-1" style="resize: none; overflow-y: hidden; position: absolute; top: 0px; left: -9999px; height: 145px; width: 611px; line-height: 16px; text-decoration: none; letter-spacing: normal;"></textarea><textarea style="resize: none; overflow-y: hidden; height: 145px;" id="comment" name="comment"></textarea></div>
+</div>
+
+<div id="comment-form-identity">
+
+	<div id="comment-form-nascar">
+		<ul>
+			<li class="selected"><a href="#comment-form-guest" title="Gast" id="postas-guest" class="social_buttons sb_24 sb_guest"><span>Gast</span></a></li>
+			<li><a href="#comment-form-wordpress" title="Anmelden" id="postas-wordpress" class="social_buttons sb_24 sb_wordpress"><span>Anmelden</span></a></li>
+			<li><a href="#comment-form-load-service:Twitter" title="Anmelden" id="postas-twitter" class="social_buttons sb_24 sb_twitter"><span>Anmelden</span></a></li>
+			<li><a href="#comment-form-load-service:Facebook" title="Anmelden" id="postas-facebook" class="social_buttons sb_24 sb_facebook"><span>Anmelden</span></a></li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Gravatar" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">E-Mail <span class="required">(erforderlich)</span> <span class="nopublish">(Not published)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" value="" type="text"></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name <span class="required">(erforderlich)</span></label>
+					<div class="comment-form-input"><input id="author" name="author" value="" type="text"></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Webseite</label>
+					<div class="comment-form-input"><input id="url" name="url" value="" type="text"></div>
+				</div> 
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="wplogo.png" alt="WordPress.com-Logo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+					<p id="wordpress-login-first">Melde Dich bitte bei WordPress.com an, um einen Kommentar auf deinem Blog zu schreiben.</p>
+				<iframe src="index_1.html" id="wordpress-login-iframe" data-srcurl="http://dedors.wordpress.com/wp-login.php?redirect_to=http%3A%2F%2Fdedors.wordpress.com%2Fhighlander.login%2F&amp;action=highlander-login&amp;skin=light"></iframe>
+				</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Twitter-Bild" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" type="hidden">
+				<p class="comment-form-posting-as"><strong></strong> Du kommentierst mit Deinem Twitter-Konto. <span class="comment-form-log-out">(<a href="javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);">Abmelden</a>)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Facebook-Foto" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" type="hidden">
+				<p class="comment-form-posting-as"><strong></strong> Du kommentierst mit Deinem Facebook-Konto. <span class="comment-form-log-out">(<a href="javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);">Abmelden</a>)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service"> 
+		<p>Verbinde mit %s</p> 
+	</div>
+
+	
+</div>
+
+
+<div id="comment-form-subscribe"> 
+<p class="comment-subscription-form"><input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" tabindex="6" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe">Benachrichtigung bei weiteren Kommentaren per E-Mail senden.</label></p><p class="comment-subscription-form"><input name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;" tabindex="7" type="checkbox"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Informiere mich über neue Beiträge per E-Mail.</label></p></div>
+												<p class="form-submit">
+							<input name="submit" id="comment-submit" value="Kommentar absenden" type="submit">
+							<input name="comment_post_ID" value="101" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						
+<input name="genseq" value="1316955586" type="hidden">
+<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="c87b231b52" type="hidden"></p>
+<p style="display: none;"><input id="ak_js" name="ak_js" value="1316984396354" type="hidden"></p>					</form>
+							</div><!-- #respond -->
+			<div style="clear: both;"></div>			
+
+
+<!-- begin footer -->
+</div>
+
+
+<!-- begin sidebar -->
+<div id="menu">
+
+<ul>
+
+	<li class="pagenav">Seiten<ul><li class="page_item page-item-2"><a href="http://dedors.wordpress.com/about/" title="About">About</a></li>
+</ul></li>	<li id="linkcat-1356" class="linkcat"><h2>Blogroll</h2>
+	<ul class="xoxo blogroll">
+<li><a href="http://de.wordpress.com/?ref=footer" rel="generator">Bloggen Sie auf WordPress.com</a>.</li>
+<li><a href="http://de.wordpress.com/?ref=footer" rel="generator">Bloggen Sie auf WordPress.com</a>.</li>
+
+	</ul>
+</li>
+ <li id="categories">Kategorien:	<ul>
+		<li class="cat-item cat-item-1256"><a href="http://dedors.wordpress.com/category/gaming/" title="Alle unter Gaming abgelegten Artikel ansehen">Gaming</a>
+</li>
+	<li class="cat-item cat-item-610"><a href="http://dedors.wordpress.com/category/linux/" title="Alle unter Linux abgelegten Artikel ansehen">Linux</a>
+</li>
+	<li class="cat-item cat-item-4558"><a href="http://dedors.wordpress.com/category/sound/" title="Alle unter Sound abgelegten Artikel ansehen">Sound</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://dedors.wordpress.com/category/uncategorized/" title="Alle unter Uncategorized abgelegten Artikel ansehen">Uncategorized</a>
+</li>
+	</ul>
+ </li>
+ <li id="search">
+   <label for="s">Suchen:</label>
+   <form id="searchform" method="get" action="http://dedors.wordpress.com/">
+	<div>
+		<input value="" name="s" id="s" size="15" type="text"><br>
+		<input value="Suchen" type="submit">
+	</div>
+	</form>
+ </li>
+ <li id="archives">Archiv: 	<ul>
+	 	<li><a href="http://dedors.wordpress.com/2008/12/" title="Dezember 2008">Dezember 2008</a></li>
+	<li><a href="http://dedors.wordpress.com/2008/11/" title="November 2008">November 2008</a></li>
+	<li><a href="http://dedors.wordpress.com/2008/08/" title="August 2008">August 2008</a></li>
+	<li><a href="http://dedors.wordpress.com/2008/07/" title="Juli 2008">Juli 2008</a></li>
+	<li><a href="http://dedors.wordpress.com/2008/06/" title="Juni 2008">Juni 2008</a></li>
+ 	</ul>
+ </li>
+ <li id="meta">Meta: 	<ul>
+		<li><a href="http://dedors.wordpress.com/wp-login.php?action=register">Registrieren</a></li>		<li><a href="http://dedors.wordpress.com/wp-login.php">Anmelden</a></li>
+		<li><a href="http://dedors.wordpress.com/feed/" title="Abonniere diese Seite mit RSS"><abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="http://dedors.wordpress.com/comments/feed/" title="Die neuesten Kommentare zu allen Beiträgen als RSS">Kommentare als <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+		<li><a href="http://gmpg.org/xfn/"><abbr title="XHTML Freunde Netzwerk">XFN</abbr></a></li>
+		<li><a href="http://de.wordpress.com/?ref=footer" rel="generator">Bloggen Sie auf WordPress.com</a>.</li>
+			</ul>
+ </li>
+
+</ul>
+
+</div>
+<!-- end sidebar -->
+
+<p class="credit"><cite>Theme: <a href="http://theme.wordpress.com/themes/rubric/">Rubric</a>. <a href="http://de.wordpress.com/?ref=footer" rel="generator">Bloggen Sie auf WordPress.com</a>. </cite></p>
+
+</div>
+
+
+
+
+	
+
+
+
+	<div style="display: none;">
+	<div class="grofile-hash-map-4261ee7261b2dd8cb80ec92427206310">
+	</div>
+	<div class="grofile-hash-map-cd0dcaa343f3ff46fb449c7bb9f69d32">
+	</div>
+	</div>
+		
+
+	
+	<div style="bottom: -261px;" id="bit" class="">
+		<a class="bsub" href="javascript:void(0)"><span id="bsub-text">Follow</span></a>
+		<div id="bitsubscribe">
+		
+		<h3><label for="loggedout-follow-field">Dieses Blog abonnieren</label></h3>
+		
+					<form action="http://subscribe.wordpress.com/" method="post" accept-charset="utf-8" id="loggedout-follow">
+			<p>Get every new post on this blog delivered to your Inbox.</p>
+			
+						
+			<p><input name="email" style="width: 95%; padding: 1px 2px;" value="Enter email address" onfocus='this.value=(this.value=="Enter email address") ? "" : this.value;' onblur='this.value=(this.value=="") ? "Enter email address" : this.value;' id="loggedout-follow-field" type="text"></p>
+
+			<input name="action" value="subscribe" type="hidden">
+			<input name="blog_id" value="4009284" type="hidden">
+			<input name="source" value="http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/" type="hidden">
+			<input name="sub-type" value="loggedout-follow" type="hidden">
+
+			<input id="_wpnonce" name="_wpnonce" value="8eab316ada" type="hidden"><input name="_wp_http_referer" value="/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/" type="hidden">
+			<p id="bsub-subscribe-button"><input value="Anmelden!" type="submit"></p>
+			<p id="bsub-credit"><span><a href="http://wordpress.com/">Powered by WordPress.com</a></span></p><p>&nbsp;</p>
+			</form>
+				</div>
+	</div>
+ 
+		<img src="b.gif" alt="" style="display: none;">
+		
+<img id="wpstats" src="g.gif" alt=""><img id="wpstats2" src="g_001.gif" alt="" style="display: none;">
+
+
+
+</body>
+</html>

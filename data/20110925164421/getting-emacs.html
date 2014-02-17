@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Getting Emacs - GNU Emacs FAQ For MS Windows</title>
+
+<meta name="description" content="Answers to Frequently asked Questions about using Emacs on Microsoft Windows.">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="http://www.gnu.org/software/emacs/windows/index.html#Top">
+<link rel="prev" href="http://www.gnu.org/software/emacs/windows/Introduction.html#Introduction" title="Introduction">
+<link rel="next" href="http://www.gnu.org/software/emacs/windows/Installing-Emacs.html#Installing-Emacs" title="Installing Emacs">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 2008, 2010-2011 Free Software Foundation, Inc.
+
+     This list of frequently asked questions about GNU Emacs on MS
+     Windows with answers (``FAQ'') may be translated into other
+     languages, transformed into other formats (e.g. Texinfo, Info,
+     WWW), and updated with new information.
+
+     The same conditions apply to any derivative of the FAQ as apply to
+     the FAQ itself.  Every copy of the FAQ must include this notice or
+     an approved translation, information on who is currently
+     maintaining the FAQ and how to contact them (including their
+     e-mail address), and information on where the latest version of
+     the FAQ is archived (including FTP information).
+
+     The FAQ may be copied and redistributed under these conditions,
+     except that the FAQ may not be embedded in a larger literary work
+     unless that work itself allows free copying and redistribution.
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+</head>
+<body>
+<div class="node">
+<a name="Getting-Emacs"></a>
+<p>
+Next:&nbsp;<a indepth="true" rel="next" accesskey="n" href="installing-emacs.html#Installing-Emacs">Installing Emacs</a>,
+Previous:&nbsp;<a indepth="true" rel="previous" accesskey="p" href="introduction.html#Introduction">Introduction</a>,
+Up:&nbsp;<a indepth="true" rel="up" accesskey="u" href="default_001.html#Top">Top</a>
+</p><hr>
+</div>
+
+<h2 class="chapter">2 Getting Emacs</h2>
+
+<!-- Backwards compatibility with the old FAQ, as many sites link -->
+<!-- directly here. We also need to link the output page to faq2.html -->
+<p><a name="where_002dprecompiled"></a>
+
+</p><h3 class="section">2.1 Where can I get pre-compiled versions?</h3>
+
+<p><a name="index-precompiled-binaries-11"></a><a name="index-where-to-get-Emacs-binaries-12"></a>
+Pre-compiled versions are distributed from
+<a href="http://ftp.gnu.org/gnu/emacs/windows/">ftp.gnu.org</a> and its
+mirrors<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>.  Emacs binaries are distributed as zip files, digitally
+signed by the developer who built them.  Generally most users will
+want the file <samp><span class="file">emacs-23.3-bin-i386.zip</span></samp>, which
+contains everything you need to get started.  The file
+<samp><span class="file">emacs-23.3-barebin-i386.zip</span></samp> is provided for users
+who already have the source, but had second thoughts about compiling
+it themselves.
+
+</p><h3 class="section">2.2 Where can I get the source distribution?</h3>
+
+<p><a name="index-where-to-get-sources-13"></a><a name="index-Emacs-source-code-14"></a><a name="index-source-for-Emacs-15"></a>
+The latest source is always available from
+<a href="http://ftp.gnu.org/gnu/emacs/">ftp.gnu.org</a> and its mirrors. 
+It is distributed as a gzipped tar file, digitally signed by the maintainer
+who made the release.  For minor releases, xdeltas for patching the previous
+release are also available.
+
+</p><h3 class="section">2.3 Can I get the source from CVS?</h3>
+
+<p><a name="index-CVS_002c-getting-Emacs-16"></a><a name="index-latest-development-version-of-Emacs-17"></a><a name="index-Emacs-Development-18"></a>
+Yes you can.  See the instructions on
+<a href="http://savannah.gnu.org/projects/emacs">Savannah</a>, the GNU
+development site, for details.
+
+</p><h3 class="section">2.4 How can I compile Emacs myself?</h3>
+
+<p><a name="index-compiling-Emacs-19"></a>
+To compile Emacs on Windows, you will need the MingW or Cygwin port of
+GCC with MingW make, or a Microsoft C compiler with nmake and the
+single threaded C runtime library.  Recent versions of Microsoft
+Visual Studio no longer come with the single threaded C runtime
+library, which is required for certain POSIX compatibility, so MingW
+is usually the best choice.  Image support requires external
+libraries, the headers and import libraries for which will need to be
+installed where your compiler can find them.  You will also need ports
+of GNU <samp><span class="command">rm</span></samp> and <samp><span class="command">cp</span></samp>, as the Windows native
+equivalents are not consistent between versions.  GNU texinfo will be
+required to build the manuals.  See <a indepth="true" href="other-useful-ports.html#Other-useful-ports">Other useful ports</a>.
+
+   </p><p>After unpacking the source, or checking out of CVS, be sure to read the
+instructions in <samp><span class="file">nt/README</span></samp> and <samp><span class="file">nt/INSTALL</span></samp>.
+
+</p><h3 class="section">2.5 How do I use a debugger on Emacs?</h3>
+
+<p><a name="index-debugging-Emacs-20"></a><a name="index-bugs-in-Emacs_002c-how-to-debug-21"></a><a name="index-Emacs-debugging-22"></a>
+By default, Emacs is compiled with debugging on, and optimizations enabled. 
+The optimizations may interfere with some types of debugging; the debugger
+may not show clearly where it is, or may not be able to inspect certain
+variables.  If this is the case, reconfigure with <samp><span class="option">--no-opt</span></samp>.
+
+   </p><p>The file <samp><span class="file">etc/DEBUG</span></samp> contains general debugging hints, as well as
+specific notes about debugging Emacs with both gdb and Microsoft debuggers.
+
+</p><h4 class="subsection">2.5.1 GDB</h4>
+
+<p><a name="index-GDB_002c-debugging-Emacs-with-23"></a><a name="index-debugging-Emacs-with-GDB-24"></a>
+GDB is the GNU debugger, which can be used to debug Emacs when it has
+been compiled with GCC.  The best results will be obtained if you
+start gdb from the <samp><span class="file">src</span></samp> directory as ‘<samp><span class="samp">gdb oo/i386/emacs.exe</span></samp>’. 
+This will load the init file <samp><span class="file">.gdbinit</span></samp> in that directory, to
+define some extra commands for working with lisp while debugging, and
+set up breakpoints to catch abnormal aborts.
+
+</p><h4 class="subsection">2.5.2 Microsoft Developer Studio</h4>
+
+<p><a name="index-MSVC_002b_002b_002c-debugging-Emacs-with-25"></a><a name="index-DevStudio_002c-debugging-Emacs-with-26"></a><a name="index-debugging-Emacs-with-MS-DevStudio-27"></a>
+MS DevStudio can be used to debug Emacs when it has been compiled with
+a Microsoft compiler.  To view lisp variables, you can call the
+function <code>debug_print</code> from the Quickwatch window.  Some
+<a href="http://www.gnu.org/software/emacs/windows/ntemacs/discuss/debug.txt">old tips</a> are probably still valid.
+
+<!--  -->
+   </p><div class="footnote">
+<hr>
+<h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> <a href="http://www.gnu.org/order/ftp.html">GNU FTP mirrors</a></p>
+
+   <hr></div>
+
+   
+
+
+
+</body></html>

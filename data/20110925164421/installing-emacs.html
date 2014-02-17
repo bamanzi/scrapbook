@@ -1,0 +1,386 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Installing Emacs - GNU Emacs FAQ For MS Windows</title>
+
+<meta name="description" content="Answers to Frequently asked Questions about using Emacs on Microsoft Windows.">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="http://www.gnu.org/software/emacs/windows/index.html#Top">
+<link rel="prev" href="http://www.gnu.org/software/emacs/windows/Getting-Emacs.html#Getting-Emacs" title="Getting Emacs">
+<link rel="next" href="http://www.gnu.org/software/emacs/windows/Display-Settings.html#Display-Settings" title="Display Settings">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 2008, 2010-2011 Free Software Foundation, Inc.
+
+     This list of frequently asked questions about GNU Emacs on MS
+     Windows with answers (``FAQ'') may be translated into other
+     languages, transformed into other formats (e.g. Texinfo, Info,
+     WWW), and updated with new information.
+
+     The same conditions apply to any derivative of the FAQ as apply to
+     the FAQ itself.  Every copy of the FAQ must include this notice or
+     an approved translation, information on who is currently
+     maintaining the FAQ and how to contact them (including their
+     e-mail address), and information on where the latest version of
+     the FAQ is archived (including FTP information).
+
+     The FAQ may be copied and redistributed under these conditions,
+     except that the FAQ may not be embedded in a larger literary work
+     unless that work itself allows free copying and redistribution.
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+</head>
+<body>
+<div class="node">
+<a name="Installing-Emacs"></a>
+<p>
+Next:&nbsp;<a indepth="true" rel="next" accesskey="n" href="display-settings.html#Display-Settings">Display Settings</a>,
+Previous:&nbsp;<a indepth="true" rel="previous" accesskey="p" href="getting-emacs.html#Getting-Emacs">Getting Emacs</a>,
+Up:&nbsp;<a indepth="true" rel="up" accesskey="u" href="default_001.html#Top">Top</a>
+</p><hr>
+</div>
+
+<h2 class="chapter">3 Installing Emacs</h2>
+
+<h3 class="section">3.1 How do I unpack the distributions?</h3>
+
+<p><a name="index-unpacking-Emacs-distribution-28"></a><a name="index-extracting-Emacs-distribution-29"></a><a name="index-unzipping-Emacs-distribution-30"></a><a name="index-untarring-Emacs-distribution-31"></a><a name="index-zip-files_002c-how-to-unpack-Emacs-binaries-32"></a><a name="index-tar_002egz-files_002c-how-to-unpack-Emacs-sources-33"></a>
+The binary distributions are distributed as zip files, which are handled
+natively by Windows XP and later.  For earlier versions, there are many
+tools that can handle the zip format, from InfoZip's command line unzip
+tool, to 7zip's multi-format graphical archive explorer.  Although
+popular, WinZip has caused problems with line-ends in the past, and is not
+Free software, so we do not recommend it.
+
+   </p><p>Source distributions are distributed as gzipped tar files.  7zip and
+similar multi-format graphical tools can handle these, or you can get
+Windows ports of the command line gzip and tar tools from multiple sources. 
+See <a indepth="true" href="other-useful-ports.html#Other-useful-ports">Other useful ports</a>.
+
+   </p><p>The command to unpack a source distribution from the command line is:
+</p><pre class="example">     tar xzf emacs-23.3.tar.gz
+</pre>
+   <p>If this does not work with the versions of tar and gzip that you have,
+you may need to try a two step process:
+</p><pre class="example">     gzip -dc emacs-23.3.tar.gz | tar xvf -
+</pre>
+   <p>You may see many messages from tar complaining about being unable to change
+the modification time on directories, and from gzip complaining about a
+broken pipe.  These messages are usually harmless, caused by incomplete ports
+that are not fully aware of the limitations of Windows.
+
+</p><h3 class="section">3.2 How do I install Emacs after unpacking?</h3>
+
+<p><a name="index-installing-Emacs-34"></a><a name="index-addpm-35"></a><a name="index-Start-Menu_002c-creating-icons-for-Emacs-36"></a>
+You can run Emacs without any extra steps, but if you want icons in your
+Start Menu, or for Emacs to detect the image libraries that are already
+installed on your system as part of GTK, then you should run the program
+<samp><span class="file">emacs-23.3\bin\addpm.exe</span></samp>.
+
+</p><h3 class="section">3.3 How do I get image support?</h3>
+
+<p><a name="index-images_002c-installing-libraries-for-37"></a><a name="index-jpeg_002c-installing-image-support-in-Emacs-38"></a><a name="index-png_002c-installing-image-support-in-Emacs-39"></a><a name="index-gif_002c-installing-image-support-in-Emacs-40"></a><a name="index-tiff_002c-installing-image-support-in-Emacs-41"></a><a name="index-xpm_002c-installing-image-support-in-Emacs-42"></a><a name="index-toolbar_002c-installing-color-icons-in-43"></a><a name="index-color-images_002c-installing-support-for-images-in-Emacs-44"></a><a name="index-monochrome-images_002c-getting-color-images-in-Emacs-45"></a><a name="index-black-and-white-images_002c-getting-color-images-in-Emacs-46"></a>
+Emacs has built in support for XBM and PBM/PGM/PPM images.  This is
+sufficient to see the monochrome splash screen and tool-bar icons. 
+Since 22.2, the official precompiled binaries for Windows have bundled
+libXpm, which is required to display the color versions of those images.
+
+   </p><p>Emacs is compiled to recognize JPEG, PNG, GIF and TIFF images also,
+but displaying these image types require external DLLs which are not
+bundled with Emacs.  See <a indepth="true" href="other-useful-ports.html#Other-useful-ports">Other useful ports</a>.
+
+</p><h3 class="section">3.4 What is my init file?</h3>
+
+<p><a name="index-g_t_002eemacs-47"></a><a name="index-init-file-48"></a>
+When Emacs starts up, it attempts to load and execute the contents of
+a file commonly called <samp><span class="file">.emacs</span></samp> (though it may have other names,
+see <a indepth="true" href="installing-emacs.html#Installing-Emacs">Where do I put my init file?</a>) which contains any
+customizations you have made.  You can manually add lisp code to your
+.emacs, or you can use the Customization interface accessible from the
+<em>Options</em> menu.  If the file does not exist, Emacs will start
+with the default settings.
+
+</p><h3 class="section">3.5 Where do I put my init file?</h3>
+
+<p><a name="index-HOME-directory-49"></a><a name="index-g_t_002eemacs_002ed-50"></a><a name="index-g_t_005femacs-51"></a><a name="index-init_002eel-52"></a><a name="index-registry_002c-setting-the-HOME-directory-in-53"></a>
+On Windows, the .emacs file may be called _emacs for backward
+compatibility with DOS and FAT filesystems where filenames could not
+start with a dot.  Some users prefer to continue using such a name,
+because Explorer cannot create a file with a name starting with a dot,
+even though the filesystem and most other programs can handle it. 
+In Emacs 22 and later, the init file may also be called
+<samp><span class="file">.emacs.d/init.el</span></samp>.  Many of the other files that are created
+by lisp packages are now stored in the <samp><span class="file">.emacs.d</span></samp> directory too,
+so this keeps all your Emacs related files in one place.
+
+   </p><p>All the files mentioned above should go in your <samp><span class="env">HOME</span></samp> directory. 
+The <samp><span class="env">HOME</span></samp> directory is determined by following the steps below:
+
+     </p><ol start="1" type="1">
+<li>If the environment variable <samp><span class="env">HOME</span></samp> is set, use the directory it indicates. 
+</li><li>If the registry entry <code>HKCU\SOFTWARE\GNU\Emacs\HOME</code> is set, use the
+directory it indicates. 
+</li><li>If the registry entry <code>HKLM\SOFTWARE\GNU\Emacs\HOME</code> is set, use the
+directory it indicates.  Not recommended, as it results in users sharing
+the same HOME directory. 
+</li><li>If <samp><span class="file">C:\.emacs</span></samp> exists, then use <samp><span class="file">C:/</span></samp>.  This is for
+backward compatibility, as previous versions defaulted to <samp><span class="file">C:/</span></samp>
+if <samp><span class="env">HOME</span></samp> was not set. 
+</li><li>Use the user's AppData directory, usually a directory called
+<samp><span class="file">Application Data</span></samp> under the user's profile directory, the location
+of which varies according to Windows version and whether the computer is
+part of a domain.
+        </li></ol>
+
+   <p>Within Emacs, &lt;~&gt; at the beginning of a file name is expanded to your
+<samp><span class="env">HOME</span></samp> directory, so you can always find your .emacs file with
+<kbd>C-x C-f ~/.emacs</kbd>.
+
+</p><h4 class="subsection">3.5.1 Troubleshooting init file problems</h4>
+
+<p><a name="index-troubleshooting-init-problems-54"></a><a name="index-debugging-init-problems-55"></a><a name="index-checking-that-HOME-is-set-correctly-56"></a>
+If you've set <samp><span class="env">HOME</span></samp> to a directory using one of the above
+methods, and Emacs still doesn't load your init file, the first
+thing you should do is check to see what Emacs thinks <samp><span class="env">HOME</span></samp> is set
+to.  You can do this by evaluating the following expression in the
+<samp><span class="file">*scratch*</span></samp> buffer using <kbd>C-x C-e</kbd>:
+
+</p><pre class="example">     (insert (getenv "HOME"))
+</pre>
+   <p>Look carefully at what is printed and make sure the value is
+valid.  For example, if the value has trailing whitespace, Emacs won't
+be able to find the directory.  Also, be sure that the value isn't a
+relative drive letter (e.g., <samp><span class="file">d:</span></samp> without a backslash); if it is,
+then <samp><span class="env">HOME</span></samp> is going to be whatever the current directory on that
+drive is, which is likely not what you want to happen.
+
+</p><h3 class="section">3.6 How do I associate files with Emacs?</h3>
+
+<p><a name="index-Explorer_002c-associating-Emacs-with-files-in-57"></a><a name="index-emacsclient_002c-associating-files-with-58"></a><a name="index-file-associations-59"></a><a name="index-associating-files-with-Emacs-60"></a><a name="index-ALTERNATE_005fEDITOR-61"></a><a name="index-server_002dstart-62"></a>
+The recommended way to associate files is to associate them with
+<samp><span class="command">emacsclientw.exe</span></samp>.  In order for this to work when Emacs is
+not yet started, you will also need to set the environment variable
+<samp><span class="env">ALTERNATE_EDITOR</span></samp> to <samp><span class="command">runemacs.exe</span></samp>.  To open files
+in a running instance of Emacs, you will need to add the following
+to your init file:
+</p><pre class="example">     (server-start)
+</pre>
+   <h4 class="subsection">3.6.1 For use with Internet Explorer</h4>
+
+<p><a name="index-Internet-Explorer_002c-view-source-in-Emacs-63"></a><a name="index-mailto-urls_002c-associating-with-Emacs-64"></a><a name="index-news-urls_002c-associating-with-Emacs-65"></a><a name="index-URLs_002c-associating-mail-and-news-URLs-with-Emacs-66"></a>
+You can use Emacs as the editor for composing mail for
+&lt;<code>mailto:</code>&gt; links, reading usenet for &lt;<code>news:</code>&gt;
+links, and viewing source.  The following registry entries control
+this:
+
+     </p><ul>
+<li>Mail
+          <ul>
+<li><strong>Key:</strong> HKCR\mailto\shell\open\command\(Default)
+</li><li><strong>Value:</strong> emacsclientw -e "(message-mail (substring \"%1\" 7))"
+</li></ul>
+
+     </li><li>News
+          <ul>
+<li><strong>Key:</strong> HKCR\news\shell\open\command\(Default)
+</li><li><strong>Value:</strong> emacsclientw -e "(gnus-fetch-group (substring \"%1\" 5)"
+</li></ul>
+
+     </li><li>View Source
+          <ul>
+<li><strong>Key:</strong> HKCR\htmlfile\shell\edit\command\(Default)
+</li><li><strong>Value:</strong> emacsclientw "%1"
+</li></ul>
+
+   </li></ul>
+
+   <p>Thanks to <a href="mailto:jasonr@gnu.org">Jason Rumney</a>  and
+<a href="mailto:sigbjorn@cse.ogi.edu">Sigbjorn Finne</a>  for these tips.
+
+</p><h3 class="section">3.7 How do I use find-file to open files that are on the Desktop?</h3>
+
+<p><a name="index-Desktop_002c-finding-where-it-is-67"></a><a name="index-finding-the-Desktop-68"></a><a name="index-locating-files-on-the-Desktop-69"></a>
+The location of the Desktop varies between different versions of
+Windows, and in a corporate environment can be moved around by the
+network administrator.  On NT derivatives, you can use the value of
+the <samp><span class="env">USERPROFILE</span></samp> environment variable to find where the desktop
+might be:
+
+</p><pre class="example">     <kbd>C-x C-f $USERPROFILE/Desktop</kbd>
+</pre>
+   <p>If this doesn't work, then you probably have to forgo the keyboard
+just this once, and either drag a file onto the Emacs frame from the
+desktop, or use the file dialog (displayed when you use the toolbar or
+menu by default).  Once you have a file from the Desktop inside Emacs,
+<kbd>C-x C-f</kbd> will quickly reveal where your desktop is kept.
+
+</p><h3 class="section">3.8 How can I modify Windows to act more like X?</h3>
+
+<p><a name="index-X_002c-making-Windows-behave-like-70"></a>
+
+</p><h4 class="subsection">3.8.1 How do it make the active window follow the mouse?</h4>
+
+<p><a name="index-focus_002dfollows_002dmouse-71"></a><a name="index-point-to-focus-72"></a><a name="index-mouse-over-to-focus-73"></a>
+Customize the variables <code>focus-follows-mouse</code> and
+<code>mouse-autoselect-window</code>.  The former can be used to mislead
+Emacs into giving focus to other frames when the mouse is over them,
+even though Windows has a click to focus policy by default (there is
+software available to change that though).  The latter can be used to
+make Emacs use a focus-follow-mouse policy within its own frames.
+
+</p><h4 class="subsection">3.8.2 How do I swap CapsLock and Control?</h4>
+
+<p><a name="index-scan-codes_002c-modifying-74"></a><a name="index-key-layout_002c-customizing-75"></a><a name="index-caps_002dlock_002c-swapping-with-control-key-76"></a><a name="index-control-key_002c-swapping-with-caps_002dlock-77"></a><a name="index-windows-key_002c-use-as-alt-78"></a><a name="index-alt-key_002c-using-windows-keys-as-additional-79"></a>
+This cannot be done within Emacs, but you can modify the scan code
+mappings in the registry or define a new keyboard layout to swap the
+keys on a system wide basis.
+
+</p><h5 class="subsubsection">3.8.2.1 Windows NT/2000/XP/Vista?</h5>
+
+     <ul>
+<li>From <a href="mailto:cmcmahan@surefirev.com">Chris McMahon</a>: Download
+<a href="http://ftp.gnu.org/old-gnu/emacs/windows/docs/ntemacs/contrib/caps-as-ctrl.reg">caps-as-ctrl.reg</a> to make CapsLock a Control key (leaving your
+original control keys as they were), or
+<a href="http://ftp.gnu.org/old-gnu/emacs/windows/docs/ntemacs/contrib/caps-ctrl-swap.reg">caps-ctrl-swap.reg</a> to swap CapsLock and the left Control key.  Once
+you've downloaded them, double-click on the .reg files in Explorer or
+"run" them from a command prompt to have them update your registry. 
+</li><li><a href="mailto:cmcmahan@surefirev.com">Chris McMahon</a> gives explicit step-by-step
+<a href="http://ftp.gnu.org/old-gnu/emacs/windows/docs/ntemacs/contrib/caps-ctrl-registry2.txt">instructions</a> on modifying the registry. 
+</li><li><a href="mailto:holder@mordor.rsn.hp.com">Shane Holder</a> gives some
+<a href="http://ftp.gnu.org/old-gnu/emacs/windows/docs/ntemacs/contrib/caps-ctrl-registry.txt">background</a> on how "Scancode Map" is being used by the system. 
+</li><li><a href="mailto:ulfar@decode.is">Ulfar Erlingsson</a> has provided a registry file
+<a href="http://ftp.gnu.org/old-gnu/emacs/windows/docs/ntemacs/contrib/caps-and-win.reg">caps-and-win.reg</a> that sets the CapsLock key to be a Control key
+and the Windows key to be an Alt key. 
+</li></ul>
+
+<h5 class="subsubsection">3.8.2.2 Windows 95/98/ME</h5>
+
+<p>Microsoft has a tool called keyremap that is part of their Kernel Toys add ons
+for Windows 95.  The tool has also been confirmed to work on Windows 98.
+
+</p><h3 class="section">3.9 How can I modify Emacs to act more like a Windows app?</h3>
+
+<p><a name="index-Windows_002c-making-Emacs-act-more-like-80"></a><a name="index-UI_002c-making-Emacs-more-like-other-Windows-apps-81"></a>
+Many beginning users find Emacs difficult to use because its user
+interface is different in many ways.  Emacs predates most UI
+standards, and experienced Emacs users are used to the way things are,
+so changing the defaults is difficult.  Most of the “standard”
+behavior can be approximated in Emacs after some configuring though.
+
+</p><h4 class="subsection">3.9.1 Highlighting the selection</h4>
+
+<p><a name="index-transient_002dmark_002dmode-82"></a><a name="index-selection_002c-highlighting-83"></a><a name="index-region_002c-highlighting-84"></a><a name="index-highlighting-the-selected-region-85"></a><a name="index-marked-region_002c-highlighting-86"></a><a name="index-point-and-mark_002c-highlighting-the-region-between-87"></a><a name="index-delete_002dselection_002dmode-88"></a><a name="index-overwriting-the-selected-region-89"></a>
+Emacs has a concept of a mark and point that is similar to selections
+in other programs.  But the mark in Emacs is used for more than just
+defining the selected region, it lives on while you continue to edit
+and move around the buffer so it can also be a kind of bookmark.  The
+history of marks is saved so you can pop previous marks back to the
+top of the stack to go back to somewhere you were some time ago. 
+Because of this dual purpose, the region between mark and point is not
+highlighted by default unless you select a region by clicking and
+dragging the mouse.
+
+   </p><p>The minor mode <code>transient-mark-mode</code> changes the behavior of
+the mark in two ways.  First, it distinguishes between an active mark
+that has just been defined or reactivated, and an inactive mark.  When
+the mark is active, some commands that normally act on lines, words,
+buffers etc. will instead act on the region.  An inactive mark needs
+to be reactivated to operate on it, unless <code>mark-even-if-inactive</code>
+is set.  Secondly, <code>transient-mark-mode</code> also highlights the
+region when it is active, providing the same visual clue that you get
+in other programs.
+
+   </p><p>In addition to seeing the highlighting, new Emacs users often expect
+editing commands to replace the region when it is active.  This behavior
+can be obtained with <code>delete-selection-mode</code>, but see the following
+question also.
+
+</p><h4 class="subsection">3.9.2 Standard Windows key bindings</h4>
+
+<p><a name="index-cua_002dmode-90"></a><a name="index-CUA-keybindings-91"></a><a name="index-shift-key_002c-selecting-with-92"></a><a name="index-standard-Windows-keybindings-93"></a><a name="index-paste-with-C_002dv-94"></a><a name="index-cut-with-C_002dx-95"></a><a name="index-copy-with-C_002dc-96"></a><a name="index-C_002dc-to-copy-97"></a><a name="index-C_002dx-to-cut-98"></a><a name="index-C_002dv-to-paste-99"></a>
+The keybindings of Emacs predate modern GUIs, and the keys that were
+chosen by later GUIs for cut and copy were given important functions
+as extended keymaps in Emacs.  CUA mode attempts to let both bindings
+co-exist by defining C-x and C-c as <code>kill-region</code> and
+<code>copy-region-as-kill</code> when the region is active, and letting
+them have their normal Emacs bindings when the region is not active. 
+Many people find this to be an acceptable compromise.  CUA mode also
+defines a number of other keys (C-v, Shift selection), and can be turned
+on from the <em>Options</em> menu.
+
+</p><h3 class="section">3.10 Window operations</h3>
+
+<p><a name="index-maximize-frames-from-lisp-100"></a><a name="index-minimize-frames-from-lisp-101"></a><a name="index-WM_005fSYSCOMMAND_002c-sending-system-commands-from-lisp-102"></a><a name="index-system-menu_002c-simulating-from-lisp-103"></a>
+The function <code>w32-send-sys-command</code> can be used to simulate
+choosing commands from the system menu (in the top left corner of the
+Window) and a few other system wide functions.  It takes an integer
+argument, the value of which should be a valid <code>WM_SYSCOMMAND</code>
+message as documented in Microsoft's API documentation.
+
+</p><h3 class="section">3.11 How do I uninstall Emacs?</h3>
+
+<p><a name="index-uninstall-Emacs-104"></a><a name="index-remove-Emacs-105"></a><a name="index-clean-Emacs-registry-settings-106"></a><a name="index-registry_002c-cleaning-the-Emacs-settings-107"></a><a name="index-Start-Menu_002c-removing-Emacs-from-108"></a><a name="index-upgrading-Emacs-109"></a><a name="index-delete-Emacs-directory-110"></a>
+Emacs does not come with an uninstall program.  No files are installed
+outside of the Emacs base directory, so deleting that directory is
+sufficient to clean away the files.  If you ran <samp><span class="command">addpm</span></samp>,
+you'll need to delete the Start Menu group too.  The registry entries
+inserted by <samp><span class="command">addpm</span></samp> will not cause any problems if you leave
+them there, but for the sake of completeness, you can use <samp><span class="command">regedit</span></samp>
+to remove the keys under <code>HKEY_LOCAL_MACHINE</code> orx
+<code>HKEY_CURRENT_USER</code>: <code>SOFTWARE\GNU\Emacs</code>, and the key
+<code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\emacs.exe</code> if it exists.
+
+</p><h3 class="section">3.12 When I run Emacs nothing happens</h3>
+
+<p><a name="index-troubleshooting-installation-problems-111"></a><a name="index-window-not-appearing_002c-Emacs-112"></a><a name="index-failure-to-run_002c-Emacs-113"></a><a name="index-g_t8_002e3-filenames_002c-problems-caused-114"></a>
+Emacs could have failed to run for a number of reasons.  The most
+common symptom is that, when Emacs is started, the cursor changes for
+a second but nothing happens.  If this happens to you, it is quite
+likely that the distribution was unpacked incorrectly.
+
+   </p><p>Check for the following to see if there was a problem during unpacking:
+     </p><ol start="1" type="1">
+<li>Be sure to disable the CR/LF translation or the executables will be
+unusable.  Older versions of WinZipNT would enable this translation by
+default.  If you are using WinZipNT, disable it. 
+</li><li>Check that filenames were not truncated to 8.3.  For example, there
+should be a file CONTRIBUTE in the top level directory; if this has
+been truncated to CONTRIBU or CONTRI~1, your distribution has been
+corrupted while unpacking and Emacs will not start.
+        </li></ol>
+
+   <p>If it is still not working, send mail to the list, describing what
+you've done, and what you are seeing. (The more information you send
+the more likely it is that you'll receive a helpful response..
+
+</p><h3 class="section">3.13 Does Emacs contain a virus?</h3>
+
+<p><a name="index-virus-reported-in-Emacs-115"></a><a name="index-anti_002dvirus-software-reporting-a-virus-in-Emacs-116"></a>
+There have been reports in the past that some virus scanners claim
+that the Emacs distribution has a virus.  This is extremely unlikely if
+you have downloaded Emacs from the GNU FTP site or one of its mirrors
+and the GPG signature for it is valid and listed in the GNU keyring,
+unless perhaps it is a new release made in the last few days, in which
+case you should exercise more caution and report the problem.  Past
+problems seem to have been caused by virus checkers running into a
+buffer size limit when unpacking large tar.gz files for scanning, and
+reporting the failure as an “unknown virus”.
+
+</p><h3 class="section">3.14 What known problems are there with anti-virus software?</h3>
+
+<p><a name="index-anti_002dvirus-software_002c-bad-interaction-with-117"></a><a name="index-virus-software_002c-bad-interaction-with-118"></a><a name="index-firewall_002c-bad-interaction-with-119"></a><a name="index-scan-all-files_002c-anti_002dvirus-option-causing-problems-120"></a><a name="index-auto-protect_002c-anti_002dvirus-option-causing-problems-121"></a><a name="index-shell_002c-interacting-badly-with-anti_002dvirus-122"></a><a name="index-subprocesses_002c-interacting-badly-with-anti_002dvirus-123"></a>
+Anti-virus and firewall software can block Emacs from starting subprocesses
+and opening network connections.  Most such products have an Advanced
+mode where they will prompt you rather than silently blocking.  In some cases
+the “scan all files” or “auto protect” option of anti-virus programs
+has caused failures running shell related commands within Emacs. 
+See <a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">Why is nothing happening when I enter shell commands?</a>.
+
+<!--  -->
+   
+
+</p>
+
+</body></html>

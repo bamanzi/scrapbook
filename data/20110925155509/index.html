@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>EmacsWiki: NTEmacs With Cygwin</title><link rel="alternate" type="application/wiki" title="編輯本頁" href="http://www.emacswiki.org/emacs?action=edit;id=NTEmacsWithCygwin"><meta name="robots" content="INDEX,FOLLOW"><link rel="alternate" type="application/rss+xml" title="EmacsWiki" href="http://www.emacswiki.org/emacs?action=rss"><link rel="alternate" type="application/rss+xml" title="EmacsWiki: NTEmacsWithCygwin" href="http://www.emacswiki.org/emacs?action=rss;rcidonly=NTEmacsWithCygwin">
+<link rel="alternate" type="application/rss+xml" title="Emacs Wiki with page content" href="http://www.emacswiki.org/emacs/full.rss">
+<link rel="alternate" type="application/rss+xml" title="Emacs Wiki with page content and diff" href="http://www.emacswiki.org/emacs/full-diff.rss">
+<link rel="alternate" type="application/rss+xml" title="Emacs Wiki including minor differences" href="http://www.emacswiki.org/emacs/minor-edits.rss">
+<link rel="alternate" type="application/rss+xml" title="Changes for NTEmacsWithCygwin only" href="http://www.emacswiki.org/emacs?action=rss;rcidonly=NTEmacsWithCygwin">
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="http://www.emacswiki.org/emacs"><div class="header"><a class="logo" href="http://www.emacswiki.org/emacs/%e7%b6%b2%e7%ab%99%e5%9c%b0%e5%9c%96"><img class="logo" src="emacs_logo.png" alt="[首頁]"></a><span class="gotobar bar"><a class="local" href="http://www.emacswiki.org/emacs/%e7%b6%b2%e7%ab%99%e5%9c%b0%e5%9c%96">網站地圖</a> <a class="local" href="http://www.emacswiki.org/emacs/%e6%9c%80%e8%bf%91%e6%9b%b4%e6%96%b0">最近更新</a> <a class="local" href="http://www.emacswiki.org/emacs/News">News</a> <a class="local" href="http://www.emacswiki.org/emacs/ElispArea">ElispArea</a> <a class="local" href="http://www.emacswiki.org/emacs/%e6%95%99%e5%af%bc">教导</a> </span>
+<!-- Google CSE Search Box Begins  -->
+<form class="tiny" action="http://www.google.com/cse" id="searchbox_004774160799092323420:6-ff2s0o6yi"><p>
+<input name="cx" value="004774160799092323420:6-ff2s0o6yi" type="hidden">
+<input value="" style="background: url('google_custom_search_watermark.gif') no-repeat scroll left center rgb(255, 255, 255);" name="q" size="25" type="text">
+<input name="sa" value="Search" type="submit">
+</p><input value="www.emacswiki.org/emacs/NTEmacsWithCygwin" name="siteurl" type="hidden"></form>
+
+<!-- Google CSE Search Box Ends -->
+<h1><a title="按下即可以搜尋參考至本頁的資料" rel="nofollow" href="http://www.google.com/cse?cx=004774160799092323420:6-ff2s0o6yi&amp;q=%22NTEmacsWithCygwin%22">NTEmacsWithCygwin</a></h1></div><div class="wrapper"><div class="content browse"><p>NTEmacs is commonly used to denote Emacs compiled as a native w32 application. For precompiled versions and instructions on how to build see <a class="local" href="http://www.emacswiki.org/emacs/CategoryWThirtyTwo">CategoryWThirtyTwo</a>.</p><p>Why use NTEmacs with Cygwin?</p><p>Because Cygwin is wonderful … but the Emacsen that come with it suffer from a few problems: </p><ul><li>It’s kinda slow (although recent Cygwin builds of X seem faster – 4.3.0-61, e.g.)</li><li>“I can’t remember specific details, but I’m pretty sure the Cygwin X server is unreliable” (according to the original author of this page)</li><li>Using it under the Win32 console, as opposed to under X, is too painful, since there is no mouse support and the Meta key doesn’t work properly (see <a class="local" href="http://www.emacswiki.org/emacs/CygwinMeta">CygwinMeta</a>). </li></ul><div class="color one level0"><p> Actually the third point is not strictly true, depending on what you mean by “Win32 console”. If you use a different console, such as mintty, you can have mouse support but must use the emacs-X11 binary not emacs-nox. It might even work with the MS Win32 console, but I wouldn’t put money on it. And since you don’t need to run X I think the first two points kind of fall out, too. </p></div><div class="color two level0"><p>So I find myself using venerable NTEmacs, which is a native Win32 app (hence fast) with the Cygwin tools (again by the first author). The second editor of this page uses NTEmacs quite successfully with Cygwin with little changes.</p><p>The following code will produce a reasonable approximation of Unix Emacs on NT:</p><pre>  ;;;;
+  ;;;; cygwin support
+  ;;;;</pre><pre>  ;; Sets your shell to use cygwin's bash, if Emacs finds it's running
+  ;; under Windows and c:\cygwin exists. Assumes that C:\cygwin\bin is
+  ;; not already in your Windows Path (it generally should not be).
+  ;;
+  (let* ((cygwin-root "c:/cygwin")
+         (cygwin-bin (concat cygwin-root "/bin")))
+    (when (and (eq 'windows-nt system-type)
+  	     (file-readable-p cygwin-root))
+    
+      (setq exec-path (cons cygwin-bin exec-path))
+      (setenv "PATH" (concat cygwin-bin ";" (getenv "PATH")))
+    
+      ;; By default use the Windows HOME.
+      ;; Otherwise, uncomment below to set a HOME
+      ;;      (setenv "HOME" (concat cygwin-root "/home/eric"))
+    
+      ;; NT-emacs assumes a Windows shell. Change to baash.
+      (setq shell-file-name "bash")
+      (setenv "SHELL" shell-file-name) 
+      (setq explicit-shell-file-name shell-file-name) 
+    
+      ;; This removes unsightly ^M characters that would otherwise
+      ;; appear in the output of java applications.
+      (add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m)))</pre><p>This code first verifies it is running under windows with cygwin installed, so this snippet can be safely placed in a .emacs file that is also used on emacs in unices.</p><p>You will also need <a class="inter Lisp" href="http://www.emacswiki.org/emacs/cygwin-mount.el"><span class="site">Lisp</span><span class="separator">:</span><span class="page">cygwin-mount.el</span></a> if you want Emacs to understand Cygwin paths.</p><p>Note that this is substantially the same as the bit of code given in the Cygwin FAQ: <a class="url http" href="http://www.cygwin.com/faq/faq.using.html#faq.using.ntemacs">http://www.cygwin.com/faq/faq.using.html#faq.using.ntemacs</a></p><p>See <a class="local" href="http://www.emacswiki.org/emacs/CustomizingBoth">CustomizingBoth</a> to get fancier.</p></div><div class="color one level0"><p> FWIW, I have been using Cygwin with vanilla native <a class="local" href="http://www.emacswiki.org/emacs/GnuEmacs">GnuEmacs</a> on Windows for years. To do that, I just load <tt><a class="local" href="http://www.emacswiki.org/emacs/cygwin-mount.el">cygwin-mount.el</a></tt> and <tt><a class="local" href="http://www.emacswiki.org/emacs/setup-cygwin.el">setup-cygwin.el</a></tt>, in that order.</p><p><a class="local" href="http://www.emacswiki.org/emacs/EliZaretskii">EliZaretskii</a>, who is very knowledgable about Emacs on Windows (among other things), advises against doing that, however. I don’t make heavy use of Cygwin, and I don’t use it much outside Emacs, so maybe that’s why I’ve never encountered a problem. HTH – <a class="local" href="http://www.emacswiki.org/emacs/DrewAdams">DrewAdams</a></p></div><h2 id="toc1">Problems</h2><p>summary: cmd.exe can’t deal with cygwin ‘links’.</p><p><code>‘shell-file-name’</code> defaults to cmdproxy.exe - which simply prepends “/c “ to the args and sends that to cmd.exe or command.com (NT, 9x). But cmd.exe doesn’t understand cygwin links, so the call to any such program fails - sometimes silently. For instance: with my setup, gunzip.exe fails with Emacs reporting “(Shell command succeeded with no output)”.</p><p>Poking around, I found Cygwin’s gunzip.exe is 19 bytes long. The contents are: “!&lt;symlink&gt;gzip.exe” (with a trailing ^@).</p><p>to fix this, either copy gzip.exe to gunzip.exe, or use “bash” as your <code>‘shell-file-name’</code></p><hr><p>“Assumes that <code>C:\cygwin\bin</code> is not already in your Windows Path (it generally should not be).”</p><p>Why not?</p><p>The cygwin documentation itself seems to disagree: <a class="url http" href="http://cygwin.com/cygwin-ug-net/setup-env.html">http://cygwin.com/cygwin-ug-net/setup-env.html</a> </p><hr><p>M-x rgrep may generate a find command which includes the null-device, and NTEmacs uses “NUL” (the Windows null device) rather than “/dev/null”.</p><p>e.g.: <code>C-u C-u M-x rgrep RET</code> results in the following prompt: <code>Run: find . -type f -exec grep -nH  {} NUL \;</code></p><p>This causes the rgrep output to output numerous “grep: NUL: No such file or directory” errors.</p><p>We can advise the grep-compute-defaults function to make it see the cygwin null device when establishing the find command. Interestingly enough, this causes it to drop any mention of the null device, and pipe the find results through xargs instead of using -exec. I couldn’t follow the logic, but the resulting command prompt is certainly fine.</p><p><code>Run: find . -type f -print0 | xargs -0 -e grep -nH -e </code></p><p>You should restart emacs after adding this to your .emacs file (rather than just reloading .emacs), as the default find command is cached once it has been established, and will not be re-generated otherwise.</p><pre class="real">;; Prevent issues with the Windows null device (NUL)
+;; when using cygwin find with rgrep.
+(defadvice grep-compute-defaults (around grep-compute-defaults-advice-null-device)
+  "Use cygwin's /dev/null as the null-device."
+  (let ((null-device "/dev/null"))
+	ad-do-it))
+(ad-activate 'grep-compute-defaults)
+</pre><div class="color one level0"><p> Another option may be to use the <i>-r</i> option to <i>grep</i> (this works with GNU grep) instead of piping to <i>find</i>. I believe this should work for both the gnuwin32 grep and the cygwin grep. There is an implementation of this in <i>w32-grep.el</i> in <a class="local" href="http://www.emacswiki.org/emacs/EmacsW32">EmacsW32</a>. Could someone please test it with Cygwin? (The file <i>w32-grep.el</i> is only available in <a class="local" href="http://www.emacswiki.org/emacs/EmacsW32">EmacsW32</a>, but you could mail me if you want a copy for testing.)</p></div><div class="color two level0"><p> I found w32-grep.el in the latest zip file in the <a class="url http outside" href="http://ourcomments.org/Emacs/DL/EmacsW32-only/">EmacsW32-only</a> directory listing. That could be easier to find (the home page says “This download is no longer available”).</p><p>After loading w32-grep.el, <code>C-u C-u M-x rgrep RET</code> returns an invalid prompt: <code>grep -r &lt;C&gt; -nH . --include=</code></p></div><div class="color one level0"><p> The other option is setting <code>‘null-device’</code> to “/dev/null” permanently in the Cygwin section of your .emacs.</p></div><div class="color two level0"><p> Is that actually true? I would have thought making that change permanent would break any non-Cygwin functionality in NTEmacs that utilises the null-device. Surely the change needs to be made selectively, only for Cygwin-based functionality that relies upon it (as with the above advice-based solution for the rgrep issue)?</p><p>I know that cygwin-mount allows you to access cygwin paths natively in emacs, so perhaps /dev/null will actually work in a cygwin-mounted emacs, but I’m unsure whether that would actually be a consistent solution in all circumstances. Can anyone confirm this categorically?</p></div><div class="color one level0"><p> No, it is not true. What cygwin-mount.el does is replacing file paths when using Emacs file primitive (it installs itself as a file handler).</p><p>So if <code>‘null-device’</code> is used in a way where it is not translated cygwin-mount.el can’t help.</p></div><div class="color two level0"><p> Cygwin-mount is a non sequitur here, since no one would actually open <code>/dev/null</code> in Emacs.</p><p>Yes, using <code>/dev/null</code> globally and for all scenarios would break any NT Emacs commands that use “non-Cygwin functionality” and use <code>‘null-device’</code>. A feature that requires such a combination doesn’t exist. If otherwise, let it be known.</p></div><hr><p>If you want to launch NTEmacs via Cygwin (in order that it inherits your Cygwin environment variables – particularly useful if your bash profile does things like managing a ssh-agent), then you can use a shortcut like the following to enable this, while maintaining consistency with the standard (for NTEmacs) HOME directory:</p><p><code>C:\cygwin\bin\bash.exe --login -c "env HOME=\"`cygpath '%APPDATA%'`\" /cygdrive/c/emacs/emacs-23.2/bin/runemacs.exe"</code></p><hr><p><a class="local" href="http://www.emacswiki.org/emacs/CygWin">CygWin</a></p></div><div class="wrapper close"></div></div><div class="footer"><hr><span class="gotobar bar"><a class="local" href="http://www.emacswiki.org/emacs/%e7%b6%b2%e7%ab%99%e5%9c%b0%e5%9c%96">網站地圖</a> <a class="local" href="http://www.emacswiki.org/emacs/%e6%9c%80%e8%bf%91%e6%9b%b4%e6%96%b0">最近更新</a> <a class="local" href="http://www.emacswiki.org/emacs/News">News</a> <a class="local" href="http://www.emacswiki.org/emacs/ElispArea">ElispArea</a> <a class="local" href="http://www.emacswiki.org/emacs/%e6%95%99%e5%af%bc">教导</a> </span><span class="translation bar"><br>  <a class="translation new" rel="nofollow" href="http://www.emacswiki.org/emacs?action=translate;id=NTEmacsWithCygwin;missing=de_es_fr_it_ja_ko_pt_ru_se_zh">Add Translation</a></span><span class="edit bar"><br> <a class="edit" accesskey="e" title="按此即可編輯此頁面" rel="nofollow" href="http://www.emacswiki.org/emacs?action=edit;id=NTEmacsWithCygwin">編輯本頁</a> <a class="history" rel="nofollow" href="http://www.emacswiki.org/emacs?action=history;id=NTEmacsWithCygwin">參閱其他版本</a> <a class="admin" rel="nofollow" href="http://www.emacswiki.org/emacs?action=admin;id=NTEmacsWithCygwin">管理 Oddmuse</a></span><span class="time"><br> 最後編輯於 2010-06-17 23:40 UTC 由 hume.signify.co.nz <a class="diff" rel="nofollow" href="http://www.emacswiki.org/emacs?action=browse;diff=2;id=NTEmacsWithCygwin">(比較差異)</a></span><div style="float: right; margin-left: 1ex;">
+<!-- Creative Commons License -->
+<a href="http://creativecommons.org/licenses/GPL/2.0/"><img alt="CC-GNU GPL" style="border: medium none;" src="cc-gpl-a.png"></a>
+<!-- /Creative Commons License -->
+</div>
+
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+ xmlns:dc="http://purl.org/dc/elements/1.1/"
+ xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="">
+   <license rdf:resource="http://creativecommons.org/licenses/GPL/2.0/" />
+  <dc:type rdf:resource="http://purl.org/dc/dcmitype/Software" />
+</Work>
+
+<License rdf:about="http://creativecommons.org/licenses/GPL/2.0/">
+   <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+   <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+   <requires rdf:resource="http://web.resource.org/cc/Notice" />
+   <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+   <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+   <requires rdf:resource="http://web.resource.org/cc/SourceCode" />
+</License>
+</rdf:RDF>
+-->
+
+<p class="legal">
+This work is licensed to you under version 2 of the
+<a href="http://www.gnu.org/">GNU</a> <a href="http://www.emacswiki.org/GPL">General Public License</a>.
+Alternatively, you may choose to receive this work under any other
+license that grants the right to use, copy, modify, and/or distribute
+the work, as long as that license imposes the restriction that
+derivative works have to grant the same rights and impose the same
+restriction. For example, you may choose to receive this work under
+the
+<a href="http://www.gnu.org/">GNU</a>
+<a href="http://www.emacswiki.org/FDL">Free Documentation License</a>, the
+<a href="http://creativecommons.org/">CreativeCommons</a>
+<a href="http://creativecommons.org/licenses/sa/1.0/">ShareAlike</a>
+License, the XEmacs manual license, or
+<a href="http://www.emacswiki.org/OLD">similar licenses</a>.
+</p>
+</div>
+
+
+</body>
+</html>

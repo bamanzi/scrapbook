@@ -1,0 +1,666 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+
+	
+	<title>Ashutosh Mehra’s Blog » Aha! Emacs 23!</title>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - all posts" href="http://ashutoshmehra.net/blog/feed/">
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - all comments" href="http://ashutoshmehra.net/blog/comments/feed/">
+	<link rel="pingback" href="http://ashutoshmehra.net/blog/xmlrpc.php">
+
+	<!-- style START -->
+	
+	
+			<!-- style END -->
+
+	<!-- script START -->
+	
+			<!-- script END -->
+
+	<link rel="alternate" type="application/rss+xml" title="Ashutosh Mehra's Blog » Aha! Emacs 23! Comments Feed" href="http://ashutoshmehra.net/blog/2009/04/aha-emacs-23/feed/">
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://ashutoshmehra.net/blog/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://ashutoshmehra.net/blog/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="Ashutosh Mehra’s Blog" href="http://ashutoshmehra.net/blog/">
+<link rel="start" title="In lieu of a foreword" href="http://ashutoshmehra.net/blog/2008/12/foreword/">
+<link rel="prev" title="Read wrote Wright… Graph Theorists playing with words" href="http://ashutoshmehra.net/blog/2009/03/read-wrote-wright/">
+<link rel="next" title="On &lt;i&gt;Asymptotic Methods in Analysis&lt;/i&gt;: Prof. de Bruijn’s beautiful little book" href="http://ashutoshmehra.net/blog/2009/05/asymptotic-methods-in-analysis/">
+<meta name="generator" content="WordPress 3.2.1">
+<link rel="shortlink" href="http://ashutoshmehra.net/blog/?p=327">
+
+<!-- All in One SEO Pack 1.6.13.3 by Michael Torbert of Semper Fi Web Design[-1,-1] -->
+<meta name="description" content="Some emacs 23 features I found interesting. I take up features like the line motion commands, emacs daemon, directory local variables, transparent frames, ...">
+<meta name="keywords" content="emacs, emacs 23, pretest, emacsclient, daemon, frame, session, tty, multi-tty, x11, anti-aliased font, emacs news">
+<link rel="canonical" href="http://ashutoshmehra.net/blog/2009/04/aha-emacs-23/">
+<!-- /all in one seo pack -->
+		
+		<!-- Google Analytics Tracking by Google Analyticator 6.2: http://ronaldheft.com/code/analyticator/ -->
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+	<div id="wrap">
+		<div id="container">
+
+<!-- header START -->
+<div id="header">
+	<div id="title">
+		<h1><a href="http://ashutoshmehra.net/blog/">Ashutosh Mehra’s Blog</a></h1>
+		<div id="tagline">Notes on Math, Computer Science &amp; Programming</div>
+	</div>
+
+	<!-- WordPress searchbox -->
+	<div class="searchbox">
+		<form action="http://ashutoshmehra.net/blog/" method="get">
+			<div class="content">
+				<input class="textfield" name="s" size="24" value="" type="text">
+				<input class="button" value="Search" type="submit">
+			</div>
+		</form>
+	</div>
+
+	<div class="fixed"></div>
+</div>
+<!-- header END -->
+
+<!-- content START -->
+<div id="content">
+
+	<!-- menubar START -->
+	<div id="menubar">
+		<ul id="menus">
+			<li class="page_item"><a title="Home" href="http://ashutoshmehra.net/blog/">Home</a></li>
+			<li class="page_item page-item-2"><a href="http://ashutoshmehra.net/blog/about/" title="About">About</a></li>
+		</ul>
+		<div id="subscribe" class="feed">
+<a title="Subscribe to this blog..." class="feedlink" href="http://ashutoshmehra.net/blog/feed/"><img src="feed-icon16x16.png" alt="" style="vertical-align: middle; border: 0pt none;">&nbsp;RSS feed</a>
+					</div>
+
+		<span id="copyright">
+			Copyright © 2008-2011			Ashutosh Mehra’s Blog		</span>
+		<div class="fixed"></div>
+	</div>
+	<!-- menubar END -->
+
+	<!-- main START -->
+	<div id="main">
+
+<div class="post" id="post-327">
+	<div class="caption">
+		<h2 class="title">Aha! Emacs 23!</h2>
+		<!-- ratings -->
+				<div class="fixed"></div>
+	</div>
+	<div class="meta">
+		<div class="info">
+			April 10th, 2009			 | Categories: <a href="http://ashutoshmehra.net/blog/category/emacs/" title="View all posts in Emacs" rel="category tag">Emacs</a>		</div>
+		<div class="comments">
+			<a href="#respond">Leave a comment</a>
+						 | <a href="http://ashutoshmehra.net/blog/2009/04/aha-emacs-23/trackback/" rel="trackback">Trackback</a>
+								</div>
+		<div class="fixed"></div>
+	</div>
+
+        
+	<div class="content">
+		<p><img src="emacs128x128icon.png" alt="Emacs Logo" title="Emacs Logo" class="alignleft size-full wp-image-360" height="128" width="128"><br>
+Some days ago I migrated to the <a href="http://alpha.gnu.org/gnu/emacs/pretest/">emacs 23 pretest</a> (<a href="http://alpha.gnu.org/gnu/emacs/pretest/windows/"><tt>23.0.92</tt> Windows binaries</a> and <a href="http://www.porkrind.org/emacs/"><tt>23.0.91</tt> Cocoa Mac binaries</a>). In this post I’ll give brief notes of several of the cool features I found in emacs 23. </p>
+<p>First, the good news: My zillions of customizations, installed packages and hooks all worked without a glitch and my most frequently used modes have been working great <span id="more-327"></span> — <tt>c++</tt>, <tt>emacs-lisp</tt>, <tt>haskell</tt> (with <tt>ghci</tt> interaction), <tt>dired</tt>, <tt>eshell</tt> and the dear old <tt>text</tt>. Also there have been no crashes or freezes or (I shudder!) data corruptions. The pretest looks rock-solid. The only major thing that didn’t work for me was <tt>w3m</tt> (it asked me to try the development version; that might likely have worked).</p>
+<p>So, what’s new?</p>
+<h4>The <tt>C-n</tt> and <tt>C-p</tt> line-motion commands now move by screen lines</h4>
+<p>Now <tt>next-line</tt>/<tt>previous-line</tt> go to the next/previous <i>visual</i> line as opposed to the <i>logical</i> line. In the words of StackOverflow poster Chris R, emacs navigation now <a href="http://stackoverflow.com/questions/515946/emacs-navigation-in-new-versions-acts-like-notepad">acts like notepad</a>.</p>
+<p>While it’s just a change of defaults and one could revert to the earlier behavior by setting <tt>line-move-visual</tt> to <tt>nil</tt>, I still think, this is, by far, the biggest change in behavior of emacs 23. And I can safely bet that it would break many keyboard macros. In less than a week of use, this behavior bit me twice while calling some keyboard macros. Note that our friends <tt>C-a</tt> and <tt>C-e</tt> (<tt>move-beginning-of-line</tt> and <tt>move-end-of-line</tt>) still act on logical lines.</p>
+<p>With this new default, the usual technique of jumping to the next/previous visual line (of a long logical line) via a quick isearch is no longer needed. But more keystrokes have to be pressed to go next/previous logical line.</p>
+<p>There seems to have been a fair bit of discussion around <a href="http://www.opensubscriber.com/message/emacs-devel@gnu.org/11355250.html">the behavior of <tt>C-n</tt> and <tt>C-p</tt></a>.</p>
+<h4>Emacs can start as a daemon (the <i>multi-tty</i> feature)</h4>
+<p>With the <tt>--daemon</tt> command-line argument, emacs starts running in background (with no visible terminal session or <a href="http://emacsworld.blogspot.com/2008/08/emacs-frames-and-windows.html">frame</a>).  New terminal sessions or frames can be created using <tt>emacsclient</tt>: specify <tt>-c</tt> to <b>c</b>reate frames or <tt>-t</tt> for <b>t</b>erminal sessions; and optionally <tt>-n</tt> if you don’t wish <tt>emacsclient</tt> to wait for the editing to finish. And if you’re feeling all hackerish, there’s even a <tt>-e</tt> option to supply an expression to be eval’ed!</p>
+<p><tt>emacsclient</tt> also worked way back with emacs 21, but only after a <tt>server-start</tt> had been done from a running emacs session. Then <tt>emacsclient</tt> would just create a new buffer in that existing session/frame.</p>
+<p>With the new daemon support, distinct sessions/frames can be created, all connected with the same server. One thing I find cool with this setup is that different sessions opened simultaneously share buffers and other state. So if you make some changes (add text, delete paragraphs whatever) in a buffer in one session, you can see those changes get reflected in the view of that buffer in another session <i>in real time</i>. Finally, even if all sessions are closed, the buffers remain open.</p>
+<p></p><center><div id="attachment_364" class="wp-caption alignnone" style="width: 410px;"><a href="http://ashutoshmehra.net/blog/wp-content/uploads/2009/04/emacs23_server_edit.png"><img src="emacs23_server_edit_ss.png" alt="Two sessions (terminal and frame) working on the same buffer" title="Two sessions (terminal and frame) working on the same buffer" class="size-full wp-image-364" height="305" width="400"></a><p class="wp-caption-text">Two sessions (terminal and frame) working on the same buffer.</p></div></center><p></p>
+<p>In emacs 21, <tt>emacsclient</tt> was already instantaneous because it didn’t have to load up a new copy of emacs and do all the startup initialization. Hence it could be safely set as the <tt>$EDITOR</tt> on Mac or Linux (See Jared’s post <a href="http://curiousprogrammer.wordpress.com/2009/01/29/what-is-your-dollar-editor/">What is your $EDITOR?</a>). The same is true with emacs 23 running in <tt>--daemon</tt> mode, and now we have the added flexibility to create new sessions/frames.</p>
+<p><tt>--daemon</tt> worked great for me on the Mac but on Windows, emacs refused to launch in the daemon mode, giving the error “This platform does not support the -daemon flag.” I wonder if daemon support for Windows would be included in the final emacs 23.</p>
+<p>Emacs sessions created via <tt>emacsclient</tt> have a special indicator <tt>@</tt> in the mode-line and the minor-mode indicator <tt>Server</tt>. <tt>C-x C-c</tt> is now mapped to <tt>save-buffers-kill-<i>terminal</i></tt> rather than <tt>save-buffers-kill-<i>emacs</i></tt>.</p>
+<p>See <tt>djcb</tt>‘s entries at <a href="http://emacs-fu.blogspot.com/">emacs-fu</a> (a good regular source of emacs tricks) on <a href="http://emacs-fu.blogspot.com/2009/02/emacs-daemon.html">emacs –daemon</a> and <a href="http://emacs-fu.blogspot.com/2009/03/windows-and-daemons.html">windows and daemons</a>.</p>
+<h4>Directory-local Variables</h4>
+<p>Directory-local variables are a great way to associate certain mode-specific variables to every file contained in a particular directory (or in its subdirectories).</p>
+<p>As an example, say, you’re working on a <tt>C++</tt> project that has peculiar code indentation requirements (indents are to be real tab character worth 8-space) while your usual indentation style is quite different (always 2-space indents, never tabs). Using directory-local variables, you can emacs pick the project’s indent style for files in the project’s directory and otherwise use your regular style. Something like the following setup would do the trick.</p>
+<p>First, as usual, in your <tt>.emacs</tt> define your own personal style, via, say:<br>
+</p><div id="gist-93143" class="gist">
+  
+  
+    
+      
+        
+        
+
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+            
+            
+              <div class="gist-highlight"><pre><div class="line" id="LC1"><span class="p">(</span><span class="nf">setq-default</span> <span class="nv">c-basic-offset</span> <span class="mi">2</span><span class="p">)</span></div><div class="line" id="LC2"><span class="p">(</span><span class="nf">setq-default</span> <span class="nv">indent-tabs-mode</span> <span class="nv">nil</span><span class="p">)</span></div></pre></div>
+            
+          </div>
+
+          <div class="gist-meta">
+            <a href="https://gist.github.com/raw/93143/4e956672b4dbe63199e0672f0125fe728a2e2b09/gistfile1.el" style="float: right;">view raw</a>
+            <a href="https://gist.github.com/93143#file_gistfile1.el" style="float: right; margin-right: 10px; color: rgb(102, 102, 102);">gistfile1.el</a>
+            <a href="https://gist.github.com/93143">This Gist</a> brought to you by <a href="http://github.com/">GitHub</a>.
+          </div>
+        </div>
+      
+    
+  
+</div>
+<p></p>
+<p>Next, define variables like <tt>c-basic-offset</tt>, <tt>tab-width</tt>, <tt>indent-tabs-mode</tt> to match your project’s style and associate them to the root of your source repository. So if your projects root is at “d:/work/BeautifulCode/”, you do this in your <tt>.emacs</tt>:<br>
+</p><div id="gist-93142" class="gist">
+  
+  
+    
+    
+      
+        
+        
+
+        <div class="gist-file">
+          <div class="gist-data gist-syntax">
+            
+            
+            
+              <div class="gist-highlight"><pre><div class="line" id="LC1"><span class="p">(</span><span class="nf">dir-locals-set-class-variables</span></div><div class="line" id="LC2">&nbsp;<span class="ss">'beautiful-code</span></div><div class="line" id="LC3">&nbsp;<span class="o">'</span><span class="p">((</span><span class="nf">c++-mode</span> <span class="o">.</span> <span class="p">((</span><span class="nf">c-basic-offset</span> <span class="o">.</span> <span class="mi">8</span><span class="p">)</span></div><div class="line" id="LC4">				<span class="p">(</span><span class="nf">tab-width</span> <span class="o">.</span> <span class="mi">8</span><span class="p">)</span></div><div class="line" id="LC5">				<span class="p">(</span><span class="nf">indent-tabs-mode</span> <span class="o">.</span> <span class="nv">t</span><span class="p">)))))</span></div><div class="line" id="LC6"><br></div><div class="line" id="LC7"><span class="p">(</span><span class="nf">dir-locals-set-directory-class</span></div><div class="line" id="LC8">&nbsp;<span class="s">"d:/work/BeautifulCode/"</span> <span class="ss">'beautiful-code</span><span class="p">)</span></div></pre></div>
+            
+          </div>
+
+          <div class="gist-meta">
+            <a href="https://gist.github.com/raw/93142/5b1dd04f40329352dd439f5875c0aea841a813a1/gistfile1.el" style="float: right;">view raw</a>
+            <a href="https://gist.github.com/93142#file_gistfile1.el" style="float: right; margin-right: 10px; color: rgb(102, 102, 102);">gistfile1.el</a>
+            <a href="https://gist.github.com/93142">This Gist</a> brought to you by <a href="http://github.com/">GitHub</a>.
+          </div>
+        </div>
+      
+    
+  
+  
+</div>
+<p></p>
+<p>Now, whenever you open any <tt>C++</tt> file under your project’s root, the project-specific formatting would get applied. You can work this way with many different projects, each having different formatting requirements, without having to write specific customizations via a magic first line at the top of each file like:</p>
+<pre>/* -*- c-basic-offset: 8; tab-width: 8; indent-tabs-mode: t; -*- */
+</pre>
+<p>Using directory-local variables, one could also define scm parameters (server/port, repository root, …) on a per root-directory basis. I think it’s a very powerful feature.</p>
+<p>Similar to the above configuration via <tt>dir-locals-set-directory-class</tt> and <tt>dir-locals-set-class-variables</tt>, it is possible to define directory-local variables via a <tt>.dir-locals.el</tt> file (actually, the file defined by the <tt>dir-locals-file</tt> variable).</p>
+<p>The idea is to place all project-related customizations in a <tt>.dir-locals.el</tt> file placed at the root of the project source tree. Then, when emacs opens any file under it, it applies these customizations. This way, uniform configurations can be shared across multiple developers using emacs.</p>
+<p>Also see <a href="http://atomized.org/2009/01/emacs-23-directory-local-variables/">atomized’s post on directory local variables</a> where he brings up some problems he’s faced with the directory-local variables feature.</p>
+<h4>Emacs can have transparent frames</h4>
+<p>The transparency of the emacs frame can be now controlled via the <tt>alpha</tt> frame parameter. Try something like: <tt>(set-frame-parameter (selected-frame) 'alpha 70)</tt></p>
+<p></p><center><div id="attachment_366" class="wp-caption alignnone" style="width: 410px;"><a href="http://ashutoshmehra.net/blog/wp-content/uploads/2009/04/emacs23_transparency_support.png"><img src="emacs23_transparency_support_sm.png" alt="A Transparent emacs frame" title="A Transparent emacs frame" class="size-full wp-image-366" height="284" width="400"></a><p class="wp-caption-text">A Transparent emacs frame</p></div></center><p></p>
+<p>This is undoubtedly cool (I bet XCode and Visual Studio can’t do that!) and maybe useful in one-off cases. But I don’t think anyone would have long emacs sessions with a transparent frame — it hinders visibility and is distracting.</p>
+<h4>D-Bus and ZeroConf</h4>
+<p><a href="http://en.wikipedia.org/wiki/D-Bus">D-Bus</a> is a Unix IPC system for applications to talk to each other. I’ve not had a chance to play with it, but for an example of using <tt>dbus</tt> in emacs, see <tt>djcb</tt>‘s <a href="http://emacs-fu.blogspot.com/2009/01/using-d-bus-example.html">using D-Bus example</a>.</p>
+<h4>Anti-aliased font on X11</h4>
+<p>This will be a welcome enhancement for linux programmers. Being a Mac/Win user, I’ve enjoyed anti-aliased fonts for some time now. For details and screenshots on Linux, see <a href="http://www.emacswiki.org/cgi-bin/wiki/XftGnuEmacs">XftGnuEmacs</a> on EmacsWiki. Alexandre Vassalotti has a <a href="http://peadrop.com/blog/2007/09/17/pretty-emacs-reloaded/">Pretty Emacs Reloaded</a> package for Ubuntu. <a href="http://dagobart.wordpress.com/2009/04/08/for-purpose-of-reference-anti-alias-emacs/">Another page</a> describing how to set this up on Linux.</p>
+<p>By the way, with anti-aliasing, I love the <a href="http://www.gnome.org/fonts/">Bitstream Vera Sans Mono</a> and <a href="http://www.webdevkungfu.com/textmate-envy-aka-monaco-font-for-windows/">Monaco</a> fonts for programming (in particular because they have nice distinct shapes for <tt>l</tt>/<tt>1</tt>).</p>
+<h4>Recycle Bin/Trash can be used for file deletion</h4>
+<p>If <tt>delete-by-moving-to-trash</tt> is non-nil, then deleted files are moved to the Recycle Bin/Trash. It’s surprising that this feature wasn’t already available.</p>
+<h4>Search Enhancements</h4>
+<p>Some neat search and highlight related enhancements I found:</p>
+<ul>
+<li><tt>M-s a C-s</tt> and <tt>M-s a M-C-s</tt> in dired runs multi-file isearch on the marked files. Should come in handy.</li>
+<li>For incremental <i>word</i> search, there’s a new command <tt>isearch-forward-word</tt> globally bound to <tt>M-s w</tt>. While doing an isearch, the same key <tt>M-s w</tt> (now bound to another new command <tt>isearch-toggle-word</tt>) toggles word searching on/off.</li>
+<li><tt>M-s h r</tt> (bound globally to the command <tt>highlight-regexp</tt>) can be used to highlight all occurances of a regexp in a buffer. The same key can be used when doing isearch to highlight all occurrances of the current search string (it calls <tt>isearch-highlight-regexp</tt> internally).</li>
+<li><tt>occur</tt> can now be invoked using <tt>M-s o</tt>. The same key runs an <tt>isearch-occur</tt> when doing an isearch.</li>
+<li>If an isearch is started in the minibuffer, it searches <i>in the minibuffer</i>!</li>
+<li>You can now specify group numbers explicitly in the regexp via an extended form of “shy” groups: <tt>\(?<i>number</i>:<i>regexp</i>\)</tt>. Again a handy thing.</li>
+</ul>
+<h4>Some New Default Keybindings</h4>
+<ul>
+<li><tt>C-x C-+</tt> or <tt>C-x C-=</tt> increase the text face size (font size), while <tt>C-x C--</tt> decreases it (that is, zooming in/out). <tt>C-x C-0</tt> restores to the default size. These are mapped to <tt>text-scale-adjust</tt>. You can also do stuff like <tt>C-x C-+ C-+ C-+</tt>, that is, omit the <tt>C-x</tt> on repeated commands.</li>
+<li><tt>C-l</tt> now does something more useful. On the first invocation, it moves the current line to center of the window (as it did earlier). But on the second successive invocation, it moves the current line to the top of the window; and then to the bottom on a third invocation. Subsequent invocations cycle through these three placements. <tt>C-l</tt> is now bound to the <tt>recenter-top-bottom</tt> (in previous versions, it was bound to <tt>recenter</tt>).</li>
+</ul>
+<h4>New Modes</h4>
+<ul>
+<li><tt>linum-mode</tt> is a minor-mode for line numbers in the left margin. This is like vi’s <tt>:set nu</tt> command. I have already had <a href="http://stud4.tuwien.ac.at/%7Ee0225855/linum/linum.html">the linum package</a> installed for some years now, and had used it occasionally. It is nice to see it finally become a part of emacs.</li>
+<li>There’s a new game called <tt>bubbles</tt> (somewhat like “bejeweled”)</li>
+<li><tt>proced</tt> is a “process editor” and creates a buffer with a list of processes running on the system (much like <tt>ibuffer</tt> does for buffers, or <tt>dired</tt> for files). You can use commands like <tt>k</tt> to kill a process etc. <tt>proced</tt> was not available on the Mac, while on Windows, it didn’t allow me to kill processes.</li>
+</ul>
+<h4>New Behaviors</h4>
+<ul>
+<li>The <tt>shift-select-mode</tt> variable (<tt>t</tt> by default) enables Win/Mac style selection by pressing the shift key first, and then pressing the right/left arrow keys to grow/shrink selection.</li>
+<li>Pressing <tt>TAB</tt> when transient mark mode is now on (the default now) causes certain commands like <tt>M-q</tt> (<tt>fill-paragraph</tt>), <tt>M-$</tt> (<tt>ispell-word</tt>) and <tt>TAB</tt> to operate on the region instead.</li>
+<li>Completion now takes text after the point in minibuffer into account for filtering the remaining alternatives (that were generated by the text before the point). For instance, if I’m trying to open the emacs PROBLEMS file, and the minibuffer input is <tt>d:/progs/emacs/etc/</tt>, and I type <tt>oo</tt> and bring the point back to before the <tt>oo</tt>, so that the input now looks like:<br>
+<p></p><center><a href="http://ashutoshmehra.net/blog/wp-content/uploads/2009/04/completion_pre.png"><img src="completion_pre.png" alt="Minibuffer input before completion" title="Minibuffer input before completion" class="size-full wp-image-362" height="32" width="513"></a></center><p></p>
+<p>If I then press <tt>TAB</tt>, emacs not only restricts the choices to the two files that have <tt>oo</tt> in them (<tt>COOKIES</tt> and <tt>spook.lines</tt>) but also updates the minibuffer input <tt>oo</tt> to <tt>ook</tt> (since both of these have a <tt>k</tt> following <tt>oo</tt>):<br></p>
+<p></p><center><a href="http://ashutoshmehra.net/blog/wp-content/uploads/2009/04/completion_post.png"><img src="completion_post.png" alt="Updated minibuffer input and suggestion completion changes" title="Updated minibuffer input and suggestion completion changes" class="size-full wp-image-361" height="302" width="499"></a></center><p></p>
+</li>
+<li>Minibuffer input for shell commands (<tt>M-!</tt>) also allows completion.</li>
+<li><tt>M-x butterfly</tt> flips the <a href="http://xkcd.com/378/">desired bit on the disk platter</a>. It is almost a cliché now — but somehow it’s still funny!</li>
+</ul>
+<p>That’s about it! More pleasant surprises will turn up as I play more with it.</p>
+<p><i>A word on the emacs <tt>etc/NEWS</tt> file</i>. I would never have discovered some of the features mentioned above without digging through the <tt>NEWS</tt> file. It lists several other improvements and additions that I’ve not even had time to try! I couldn’t find a copy online, so here’s a link to a local copy of the <a href="http://ashutoshmehra.net/blog/wp-content/uploads/2009/04/news-230921.txt">emacs 23 NEWS file (build 23.0.92.1)</a>.</p>
+<div class="fblikebutton_button" style="float: left; width: 75px;"><iframe src="index_1.html" allowtransparency="true" style="border: medium none; overflow: hidden; width: 450px; height: 26px;" frameborder="0" scrolling="no"></iframe></div>
+<div id="tweetbutton327" class="tw_button" style="float: left; width: 75px;"><iframe title="Twitter For Websites: Tweet Button" style="width: 55px; height: 20px;" class="twitter-share-button twitter-count-none" src="index_2.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe></div>		<div class="fixed"></div>
+	</div>
+
+        </div>
+
+<!-- related posts -->
+
+<div id="postnavi">
+	<span class="alignleft floatleft"><a href="http://ashutoshmehra.net/blog/2009/05/asymptotic-methods-in-analysis/" rel="next">On <i>Asymptotic Methods in Analysis</i>: Prof. de Bruijn’s beautiful little book</a></span>
+	<span class="alignright floatright"><a href="http://ashutoshmehra.net/blog/2009/03/read-wrote-wright/" rel="prev">Read wrote Wright… Graph Theorists playing with words</a></span>
+	<div class="fixed"></div></div>
+
+
+
+
+	
+	<div id="commentlist">
+		<ol id="comments">
+			
+	<li class=" regularcomment" id="comment-115">
+
+		<div class="authorinfo">
+			<div class="authoravatar"><img alt="" src="8df54c5a942cbce5c0ac3a26b5949d1b" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="authortext">
+									<a class="authorname" id="commentauthor-115" href="http://www.clintonsecurity.com/">
+				
+				Clint
+									</a>
+								<div class="date">May 6th, 2009 at 03:21</div>
+			</div>
+			<div class="count">
+									<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-115', 'comment-115', 'comment');">Reply</a> | 
+					<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-115', 'comment-115', 'commentbody-115', 'comment');">Quote</a> | 
+												<a href="#comment-115">#1</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-115">
+					<p>Thanks for the great review. I’ll be trying some of this today.</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+	</li>
+
+
+
+	<li class=" regularcomment" id="comment-1508">
+
+		<div class="authorinfo">
+			<div class="authoravatar"><img alt="" src="794f1c2a435d095f276e1e9704d13330" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="authortext">
+									<span class="authorname" id="commentauthor-1508">
+				
+				Anonymous coward
+									</span>
+								<div class="date">September 3rd, 2009 at 20:17</div>
+			</div>
+			<div class="count">
+									<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-1508', 'comment-1508', 'comment');">Reply</a> | 
+					<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-1508', 'comment-1508', 'commentbody-1508', 'comment');">Quote</a> | 
+												<a href="#comment-1508">#2</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-1508">
+					<p>Thank you for taking the time to write such a thoughtful and entertaining review.</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+	</li>
+
+
+
+	<li class=" regularcomment" id="comment-1546">
+
+		<div class="authorinfo">
+			<div class="authoravatar"><img alt="" src="528655ca2fe4b0d90afe29bdb52bca11" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="authortext">
+									<a class="authorname" id="commentauthor-1546" href="http://www.fettesps.com/">
+				
+				Brad
+									</a>
+								<div class="date">February 17th, 2011 at 09:24</div>
+			</div>
+			<div class="count">
+									<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-1546', 'comment-1546', 'comment');">Reply</a> | 
+					<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-1546', 'comment-1546', 'commentbody-1546', 'comment');">Quote</a> | 
+												<a href="#comment-1546">#3</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-1546">
+					<p>“But I don’t think anyone would have long emacs sessions with a transparent frame — it hinders visibility and is distracting”</p>
+<p>I spend 8+ hours a day coding with a transparent background and have done so since long before emacs added this feature.  I rely on the terminal emulator to do the transparency.  I have my desktop background rotate every 30 min, giving me something fresh to look at at all times.  Wouldnt say it’s in any way distracting, as long as you set the opacity correctly.</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+	</li>
+
+
+
+	<li class=" regularcomment" id="comment-1557">
+
+		<div class="authorinfo">
+			<div class="authoravatar"><img alt="" src="1727a6d5de54562f95f57b66085c3a1a" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="authortext">
+									<span class="authorname" id="commentauthor-1557">
+				
+				David Fox
+									</span>
+								<div class="date">April 7th, 2011 at 18:27</div>
+			</div>
+			<div class="count">
+									<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-1557', 'comment-1557', 'comment');">Reply</a> | 
+					<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-1557', 'comment-1557', 'commentbody-1557', 'comment');">Quote</a> | 
+												<a href="#comment-1557">#4</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-1557">
+					<p>Although line-move-visual is a significant change, for me the biggest change is the new window splitting behavior, which is restored using (setq split-width-threshold most-positive-fixnum)</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+	</li>
+
+
+
+	<li class=" admincomment" id="comment-1558">
+
+		<div class="authorinfo">
+			<div class="authoravatar"><img alt="" src="040078966ab3cac2bfeaf5ccce7f112b" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="authortext">
+									<a class="authorname" id="commentauthor-1558" href="http://ashutoshmehra.net/">
+				
+				Ashutosh
+									</a>
+								<div class="date">April 7th, 2011 at 18:48</div>
+			</div>
+			<div class="count">
+									<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-1558', 'comment-1558', 'comment');">Reply</a> | 
+					<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-1558', 'comment-1558', 'commentbody-1558', 'comment');">Quote</a> | 
+												<a href="#comment-1558">#5</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-1558">
+					<p>@David: Very interesting! I never know about this window splitting change. And with almost two years of use I never faced this. Not once. I guess you need a very wide window for that or emacs just knows my taste! Good hack though :-)</p>
+<p>@Brad: Backgrounds or other “neutral” objects behind a text window (emacs or console) are probably okay. But if there’s another text-ful of window (like a browser or a terminal) behind a emacs session, it just looks very distracting. Anyway, I think it’s a matter of preference after all.</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+	</li>
+
+
+
+	<li class=" regularcomment" id="comment-1691">
+
+		<div class="authorinfo">
+			<div class="authoravatar"><img alt="" src="458afb17fa67e3951f0e41e6a44c774c" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="authortext">
+									<span class="authorname" id="commentauthor-1691">
+				
+				Ashish
+									</span>
+								<div class="date">April 18th, 2011 at 09:22</div>
+			</div>
+			<div class="count">
+									<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-1691', 'comment-1691', 'comment');">Reply</a> | 
+					<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-1691', 'comment-1691', 'commentbody-1691', 'comment');">Quote</a> | 
+												<a href="#comment-1691">#6</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-1691">
+					<p>Wondering if u can help me with this….<br>
+Am trying to get C++ syntax high lighting work for emacs 23. Tried various things. Couldn’t make it work….<br>
+Any suggestions !!!</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+	</li>
+
+
+
+	<li class=" admincomment" id="comment-1693">
+
+		<div class="authorinfo">
+			<div class="authoravatar"><img alt="" src="040078966ab3cac2bfeaf5ccce7f112b" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="authortext">
+									<a class="authorname" id="commentauthor-1693" href="http://ashutoshmehra.net/">
+				
+				Ashutosh
+									</a>
+								<div class="date">April 18th, 2011 at 15:34</div>
+			</div>
+			<div class="count">
+									<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-1693', 'comment-1693', 'comment');">Reply</a> | 
+					<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-1693', 'comment-1693', 'commentbody-1693', 'comment');">Quote</a> | 
+												<a href="#comment-1693">#7</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-1693">
+					<p>@Ashish: Try putting the following lines in your .emacs file (if you don’t have one, create one in you $HOME directory on Mac/Linux, or your %HOME% dir on Windows and define an environment variable so that HOME points to something like c:\home etc.)</p>
+<p>(require ‘font-lock)<br>
+(global-font-lock-mode 1)<br>
+(setq font-lock-maximum-decoration t)<br>
+(setq font-lock-maximum-size nil)</p>
+<p>Relaunch reader and see if that works. I don’t know if even that is required any more these days, but I have those settings and it works for me.</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+	</li>
+
+
+
+	<li class=" regularcomment" id="comment-1949">
+
+		<div class="authorinfo">
+			<div class="authoravatar"><img alt="" src="452b70ed3dc461e5294fdfd7c925a568" class="avatar avatar-24 photo" height="24" width="24"></div>			<div class="authortext">
+									<span class="authorname" id="commentauthor-1949">
+				
+				Aartist
+									</span>
+								<div class="date">July 14th, 2011 at 20:39</div>
+			</div>
+			<div class="count">
+									<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-1949', 'comment-1949', 'comment');">Reply</a> | 
+					<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-1949', 'comment-1949', 'commentbody-1949', 'comment');">Quote</a> | 
+												<a href="#comment-1949">#8</a>
+			</div>
+			<div class="fixed"></div>
+		</div>
+
+					<div class="content">
+				
+				<div id="commentbody-1949">
+					<p>Really wonderful features, unknown to me.</p>
+<p>One I like is about find-file: I can just type p.org and it will give me all files with p.*org with M-x find-file (rather than ido or something like that).</p>
+				</div>
+			</div>
+		
+		<div class="fixed"></div>
+	</li>
+
+
+		</ol>
+	</div>
+
+
+
+	<form action="http://ashutoshmehra.net/blog/wp-comments-post.php" method="post" id="commentform">
+	<div id="respond">
+
+		<!-- comment info -->
+					
+			<div id="author_info">
+				<div class="row">
+					<input name="author" id="author" class="textfield" value="" size="24" tabindex="1" type="text">
+					<label for="author" class="small">Name (required)</label>
+				</div>
+				<div class="row">
+					<input name="email" id="email" class="textfield" value="" size="24" tabindex="2" type="text">
+					<label for="email" class="small">E-Mail (will not be published) (required)</label>
+				</div>
+				<div class="row">
+					<input name="url" id="url" class="textfield" value="" size="24" tabindex="3" type="text">
+					<label for="url" class="small">Website</label>
+				</div>
+			</div>
+
+			
+		
+	<!-- comment input -->
+	<div class="row">
+		<textarea name="comment" id="comment" tabindex="4" rows="8" cols="50"></textarea>
+	</div>
+
+	<!-- comment submit and rss -->
+	<div id="submitbox">
+			<div class="feed floatleft">
+			<span class="feed">
+				<a href="http://ashutoshmehra.net/blog/comments/feed/">Subscribe to comments feed</a>
+			</span>
+		</div>
+			<div class="floatright">
+			<input name="submit" id="submit" class="button" tabindex="5" value="Submit Comment" type="submit">
+		</div>
+				<input name="comment_post_ID" value="327" type="hidden">
+		<div class="fixed"></div>
+	</div>
+
+	<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="53055eaec4" type="hidden"></p>
+	</div>
+	</form>
+
+
+	</div>
+	<!-- main END -->
+
+		
+<!-- sidebar START -->
+<div id="sidebar" class="dbx-group">
+
+	<!-- showcase -->
+	
+		<div class="widget dbx-box recent-posts-2">		<h3 class="dbx-handle">Recent Posts</h3><div class="content dbx-content">		<ul>
+				<li><a href="http://ashutoshmehra.net/blog/2010/02/long-function-names/" title="RtlWriteDecodedUcsDataIntoSmartLBlobUcsWritingContext and Other Long Function Names">RtlWriteDecodedUcsDataIntoSmartLBlobUcsWritingContext and Other Long Function Names</a></li>
+				<li><a href="http://ashutoshmehra.net/blog/2009/09/wire-identification-problem/" title="The Wire Identification Problem">The Wire Identification Problem</a></li>
+				<li><a href="http://ashutoshmehra.net/blog/2009/06/kernighan-plauger-programming-style/" title="Kernighan &amp; Plauger on &lt;i&gt;Programming Style&lt;/i&gt;">Kernighan &amp; Plauger on <i>Programming Style</i></a></li>
+				<li><a href="http://ashutoshmehra.net/blog/2009/05/asymptotic-methods-in-analysis/" title="On &lt;i&gt;Asymptotic Methods in Analysis&lt;/i&gt;: Prof. de Bruijn’s beautiful little book">On <i>Asymptotic Methods in Analysis</i>: Prof. de Bruijn’s beautiful little book</a></li>
+				<li><a href="http://ashutoshmehra.net/blog/2009/04/aha-emacs-23/" title="Aha! Emacs 23!">Aha! Emacs 23!</a></li>
+				<li><a href="http://ashutoshmehra.net/blog/2009/03/read-wrote-wright/" title="Read wrote Wright… Graph Theorists playing with words">Read wrote Wright… Graph Theorists playing with words</a></li>
+				<li><a href="http://ashutoshmehra.net/blog/2009/03/solving-project-euler-problems-with-zdds/" title="Solving Project Euler Problems 161 (Trominoes Tiling) and 185 (Number Mind) with ZDDs">Solving Project Euler Problems 161 (Trominoes Tiling) and 185 (Number Mind) with ZDDs</a></li>
+				<li><a href="http://ashutoshmehra.net/blog/2008/12/notes-on-zdds/" title="Fun with ZDDs: Notes from Knuth’s 14th Annual Christmas Tree Lecture">Fun with ZDDs: Notes from Knuth’s 14th Annual Christmas Tree Lecture</a></li>
+				<li><a href="http://ashutoshmehra.net/blog/2008/12/a-limiting-probability/" title="Analytically evaluating a limiting probability (June 2007 Ponder This)">Analytically evaluating a limiting probability (June 2007 Ponder This)</a></li>
+				<li><a href="http://ashutoshmehra.net/blog/2008/12/autorickshaw-phenomena/" title="Certain autorickshaw phenomena">Certain autorickshaw phenomena</a></li>
+				<li><a href="http://ashutoshmehra.net/blog/2008/12/foreword/" title="In lieu of a foreword">In lieu of a foreword</a></li>
+				</ul>
+		</div></div><div class="widget dbx-box categories-293726351"><h3 class="dbx-handle">Categories</h3><div class="content dbx-content">		<ul>
+	<li class="cat-item cat-item-21"><a href="http://ashutoshmehra.net/blog/category/emacs/" title="View all posts filed under Emacs">Emacs</a> (1)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://ashutoshmehra.net/blog/category/humor/" title="Where I log things that I find funny">Humor</a> (3)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://ashutoshmehra.net/blog/category/math/" title="Where I describe all things related to math, combinatorics, pose problems">Math</a> (4)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://ashutoshmehra.net/blog/category/ponder/" title="Where I explain my previous Ponder This solutions that I found neat">Ponder</a> (1)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://ashutoshmehra.net/blog/category/programming/" title="Everything related to programming goes in here">Programming</a> (3)
+</li>
+	<li class="cat-item cat-item-12"><a href="http://ashutoshmehra.net/blog/category/project-euler/" title="Where I describe my solutions to Project Euler problems">Project Euler</a> (1)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://ashutoshmehra.net/blog/category/taocp/" title="This is where I collect my notes for Knuth's &quot;The Art of Computer Programming&quot;">TAOCP</a> (3)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://ashutoshmehra.net/blog/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a> (1)
+</li>
+		</ul>
+</div></div><div class="widget dbx-box pages-2"><h3 class="dbx-handle">Pages</h3><div class="content dbx-content">		<ul>
+			<li class="page_item page-item-2"><a href="http://ashutoshmehra.net/blog/about/" title="About">About</a>
+<ul class="children">
+	<li class="page_item page-item-300"><a href="http://ashutoshmehra.net/blog/about/knuth-reward-checks-and-certificates/" title="Knuth Reward Checks &amp; Certificates">Knuth Reward Checks &amp; Certificates</a></li>
+	<li class="page_item page-item-247"><a href="http://ashutoshmehra.net/blog/about/resume/" title="Résumé">Résumé</a></li>
+</ul>
+</li>
+		</ul>
+		</div></div><div class="widget dbx-box archives-2"><h3 class="dbx-handle">Archives</h3><div class="content dbx-content">		<ul>
+			<li><a href="http://ashutoshmehra.net/blog/2010/02/" title="February 2010">February 2010</a>&nbsp;(1)</li>
+	<li><a href="http://ashutoshmehra.net/blog/2009/09/" title="September 2009">September 2009</a>&nbsp;(1)</li>
+	<li><a href="http://ashutoshmehra.net/blog/2009/06/" title="June 2009">June 2009</a>&nbsp;(1)</li>
+	<li><a href="http://ashutoshmehra.net/blog/2009/05/" title="May 2009">May 2009</a>&nbsp;(1)</li>
+	<li><a href="http://ashutoshmehra.net/blog/2009/04/" title="April 2009">April 2009</a>&nbsp;(1)</li>
+	<li><a href="http://ashutoshmehra.net/blog/2009/03/" title="March 2009">March 2009</a>&nbsp;(2)</li>
+	<li><a href="http://ashutoshmehra.net/blog/2008/12/" title="December 2008">December 2008</a>&nbsp;(4)</li>
+		</ul>
+</div></div><div class="widget dbx-box twitter-2"><div><h3 class="dbx-handle"><a class="twitterwidget twitterwidget-title" title="Twitter: ashutoshmehra" href="http://twitter.com/ashutoshmehra">My tweetstream</a></h3><div class="content dbx-content"><div class="twitter-avatar"><a href="http://twitter.com/ashutoshmehra" title="Ashutosh Mehra"><img alt="Ashutosh Mehra" src="profile_image"></a></div><ul><li><span class="entry-content">"Might want to do some deep knee bends and some breathing exercises first so you don’t cramp up from all the laughing" <a href="http://t.co/nDlrwwv8">http://t.co/nDlrwwv8</a></span> <span class="entry-meta"><span class="time-meta"><a href="http://twitter.com/ashutoshmehra/statuses/117698897467543554">about 12 hours ago</a></span> <span class="from-meta">from <a href="http://twitter.com/#%21/download/ipad" rel="nofollow">Twitter for iPad</a></span></span></li><li><span class="entry-content">RT <a href="http://twitter.com/markloiseau" class="twitter-user">@markloiseau</a>: Go to Google and click the long green muppet, then push any arrow key ~15 times really quickly. &lt;&lt; cool.</span> <span class="entry-meta"><span class="time-meta"><a href="http://twitter.com/ashutoshmehra/statuses/117661570934390785">about 14 hours ago</a></span> <span class="from-meta">from <a href="http://tapbots.com/tweetbot" rel="nofollow">Tweetbot for iPhone</a></span></span></li><li><span class="entry-content">RT <a href="http://twitter.com/nickm_tor" class="twitter-user">@nickm_tor</a>: My Tor vs BEAST SSL attack analysis up at <a href="http://t.co/WvzDjqN1">http://t.co/WvzDjqN1</a> , with a (hopefully) easy-to-follow explanation of the attack.</span> <span class="entry-meta"><span class="time-meta"><a href="http://twitter.com/ashutoshmehra/statuses/117448384230596609">04:00:51 AM September 24, 2011</a></span> <span class="from-meta">from <a href="http://tapbots.com/tweetbot" rel="nofollow">Tweetbot for iPhone</a></span></span></li></ul></div></div></div>
+<!-- showcase 2 -->
+
+
+<!-- AMEHRA Addition -->
+<br>
+<p><iframe title="" style="width: 300px; height: 20px;" class="twitter-follow-button" src="index_3.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+</p>
+<br>
+
+<p><a href="http://ashutoshmehra.net/blog/feed/"><img src="ashutoshmehrablog" style="border: 0pt none;" alt="Feed Statistics" height="26" width="88"></a></p>
+
+<p><img src="wrd7_sm.png" alt="Ashutosh Mehra's Blog Worlde created using http://www.wordle.net/"></p>
+
+</div>
+<!-- sidebar END -->
+
+	<div class="fixed"></div>
+
+	<!-- footer START -->
+	<div id="footer">
+		<div id="about">
+			Powered by <a href="http://wordpress.org/">WordPress</a>			 | Theme by <a href="http://www.neoease.com/">mg12</a>			 | Valid <a href="http://validator.w3.org/check?uri=referer">XHTML 1.1</a> and <a href="http://jigsaw.w3.org/css-validator/">CSS 3</a>		</div>
+		<ul id="admin">
+						<li><a href="http://ashutoshmehra.net/blog/wp-login.php">Log in</a></li>
+			<li id="gotop"><a href="#" onclick="MGJS.goTop();return false;">TOP</a></li>
+		</ul>
+		<div class="fixed"></div>
+	</div>
+	<!-- footer END -->
+
+</div>
+<!-- content END -->
+
+		</div><!-- container -->
+	</div><!-- wrap -->
+
+
+
+
+</body>
+</html>

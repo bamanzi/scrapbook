@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="keywords" content="emacs, elisp, emacs 23">
+
+<title>New Features in Emacs 23</title>
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div class="hdζ"><span class="σ">∑</span> <a href="http://xahlee.org/index.html">Home</a> ◇ <a href="http://xahlee.org/Periodic_dosage_dir/cmaci_girzu.html">Math</a> ◇ <a href="http://xahlee.org/Periodic_dosage_dir/skami_prosa.html">Computing</a> ◇ <a href="http://xahlee.org/arts/index.html">Arts</a> ◇ <a href="http://xahlee.org/PageTwo_dir/Vocabulary_dir/vocabulary.html">Words</a> ◇ <a href="http://xahlee.org/Periodic_dosage_dir/t2/mirrored.html">Literature</a> ◇ <a href="http://xahlee.org/music/index.html">Music</a> ◆ <a href="http://twitter.com/xah_lee" target="_top"><img src="favicon.ico" alt="twitter"></a> <a href="http://www.facebook.com/xahlee" target="_top"><img src="fb3.png" alt="facebook"></a> <a href="http://gplus.to/xah" target="_top"><img src="gp.png" alt="g+"></a> <a href="http://xahlee.blogspot.com/feeds/posts/default" target="_top"><img src="wf.png" alt="webfeed"></a></div>
+
+<div id="cse" style="width: 100%;"><div dir="ltr" class="gsc-control-cse gsc-control-cse-en"><form action="http://xahlee.org/emacs/emacs23_features.html" accept-charset="utf-8" class="gsc-search-box"><table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-input"><input value="" style="background: url('google_custom_search_watermark.gif') no-repeat scroll left center rgb(255, 255, 255);" title="search" name="search" class=" gsc-input" size="10" autocomplete="off" type="text"></td><td class="gsc-search-button"><input title="search" class="gsc-search-button" value="Search" type="submit"></td><td class="gsc-clear-button"><div title="clear results" class="gsc-clear-button">&nbsp;</div></td></tr></tbody></table><table class="gsc-branding" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td><td class="gsc-branding-img"><img class="gsc-branding-img" src="small-logo.png"></td></tr></tbody></table></form><div class="gsc-tabsAreaInvisible"><div class="gsc-tabHeader gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div><div class="gsc-tabsAreaInvisible"></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><table class="gsc-resultsHeader" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-twiddleRegionCell"><div class="gsc-twiddle"><div class="gsc-title">Web</div></div><div class="gsc-stats"></div><div class="gsc-results-selector gsc-all-results-active"><div title="show one result" class="gsc-result-selector gsc-one-result">&nbsp;</div><div title="show more results" class="gsc-result-selector gsc-more-results">&nbsp;</div><div title="show all results" class="gsc-result-selector gsc-all-results">&nbsp;</div></div></td><td class="gsc-configLabelCell"></td></tr></tbody></table><div class="gsc-results gsc-webResult"></div></div></div><div style="display: none;" id="gsc-loading-id">Loading...</div></div></div></div>
+
+
+
+<div class="chtk"><div id="chitikaAdBeacon-129"></div><div style="position: static;"><iframe id="ch_ad_ctr129" name="ch_ad_ctr129" allowtransparency="allowTransparency" class="chitikaAdBlock" marginheight="0" marginwidth="0" style="border: 0pt none; padding: 0pt; margin: 0pt;" src="index_1.html" frameborder="0" height="90" scrolling="no" width="550"></iframe></div><iframe id="ch_ad129" name="ch_ad129" src="index_2.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>
+
+<div class="nav"><a href="http://xahlee.org/emacs/emacs.html">Emacs Tutorial</a></div><div style="display: table; position: fixed; right: 1ex; top: 25%; margin: 0.5ex;" class="twt"><iframe title="Twitter For Websites: Tweet Button" style="width: 55px; height: 20px;" class="twitter-share-button twitter-count-none" src="index_3.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe></div>
+
+<div style="text-align: center;">If you spend more than 2 hours on the site, please pay USD $6. <a href="http://xahlee.org/thanks.html">Thank you</a> <form action="https://www.paypal.com/cgi-bin/webscr" method="post"><div><input name="cmd" value="_s-xclick" type="hidden"><input name="hosted_button_id" value="Y4V2F8TA949M2" type="hidden"><input src="btn_paynowcc_lg.gif" name="submit" alt="PayPal" type="image"><img alt="" src="pixel.gif" height="1" width="1"></div></form></div><h1>New Features in Emacs 23</h1>
+<div class="βds">
+<div class="¤xd"><a href="http://xahlee.org/ads.html">Advertise Here For Profit</a></div>
+</div>
+
+<p>Xah Lee, 2009-08-12, 2009-08-21</p>
+
+<p>This page is a list of major new features in emacs 23 (technically, 23.1.1), released in 2009-07-30. It also includes practical tips about using the new features. This page only lists the most important or practical changes relevant to average emacs users. It may miss features or changes you find important.</p>
+
+<p>For features in emacs 23.2, see: <a href="http://xahlee.org/emacs/emacs23.2_features.html">Emacs 23.2 Features</a>.</p>
+
+<h2>Editing Text</h2>
+
+<h3>Text Selection Highlighted</h3>
+
+
+<p>Text selection is highlighted by default. This is done by having transient-mark-mode on by default. To turn it off, put the following in your emacs init file:</p>
+
+<pre class="elisp">(transient-mark-mode 0) <span class="comment-delimiter">; </span><span class="comment">1 for on, 0 for off
+</span></pre>
+
+<p>When transient-mark-mode is on, several emacs commands now will work on the selected text if you have text selected. These commands are:</p>
+
+<table class="nrm">
+<caption>Commands That Automatically Apply To Text Selection If Exists</caption>
+<tbody><tr><th>purpose</th><th>emacs command name</th><th>shortcut</th></tr>
+<tr><td>add line breaks</td><td>fill-paragraph</td><td><kbd>Alt</kbd>+<kbd>q</kbd></td></tr>
+<tr><td>indenting code</td><td>indent-for-tab-command or other</td><td><kbd>Tab</kbd></td></tr>
+<tr><td>check spelling</td><td>ispell-word</td><td><kbd>Alt</kbd>+<kbd>$</kbd></td></tr>
+</tbody></table>
+
+<h3>Shift+Arrow To Select Text</h3>
+
+<p>Also, now you can hold down the Shift key then press arrows key to select text. To turn this off, put:</p>
+
+<pre class="elisp">(setq shift-select-mode nil) <span class="comment-delimiter">; </span><span class="comment">“t” for true, “nil” for false
+</span></pre>
+
+<p>However, by default, pressing delete key will not delete selected text. If you want this, put:</p>
+
+<pre class="elisp">(delete-selection-mode 1) <span class="comment-delimiter">; </span><span class="comment">make typing override text selection
+</span></pre>
+
+<h3>Down Arrow Key By Visual Line</h3>
+
+<p>Pressing down arrow key moves the cursor by a screen line. In emacs 22, pressing down arrow moves the cursor by newline as determined by line breaks. (thanks to
+<a href="http://www.iro.umontreal.ca/%7Emonnier/">Stefan Monnier</a>
+for implementing this.)</p>
+
+<p>To have emacs 22 behavior, put this:</p>
+
+<pre class="elisp">(setq line-move-visual nil) <span class="comment-delimiter">; </span><span class="comment">use “t” for true, “nil” for false
+</span></pre>
+
+<p>If you just want it temporarily on or off, you can call “set-variable”.</p>
+
+<p>Following is a command definition that lets you toggle line-move-visual.</p>
+
+<pre class="elisp">(<span class="keyword">defun</span> <span class="function-name">toggle-line-move-visual</span> ()
+  <span class="doc">"Toggle behavior of up/down arrow key, by visual line vs logical line."</span>
+  (interactive)
+  (<span class="keyword">if</span> line-move-visual
+      (setq line-move-visual nil)
+    (setq line-move-visual t))
+  )
+</pre>
+
+<p>If you have personal keyboard macros, they usually rely on up/down arrow keys moving lines determined by line breaks. So, when you need to call your macros, or record new, you may want to temporarily set line-move-visual to nil.</p>
+
+<h3>Wrap Long Lines By Word Boundary</h3>
+
+<p>Long lines that go over window width can be displayed so that they are wrapped at word boundary, not cutting a word in half into the next line. This is done by having visual-line-mode on. By default, this is off.</p>
+
+<figure>
+<img src="emacs23_word_wrap.png" alt="emacs23 word wrap" height="499" width="489">
+<figcaption>visual-line-mode off (top) and on (bottom) in emacs 23.</figcaption>
+</figure>
+
+<p>Calling “visual-line-mode” toggles the behavior. Or, use the menu 〖Options▸Line Wrapping in this Buffer〗.</p>
+
+<p>To toggle globally, call “global-visual-line-mode”. To set it on or off permanently, put in your emacs init file:</p>
+
+<pre class="elisp">(global-visual-line-mode 1) <span class="comment-delimiter">; </span><span class="comment">1 for on, 0 for off.
+</span></pre>
+
+<p><span class="ref"><a href="http://xahlee.org/emacs_manual/emacs/Visual-Line-Mode.html">(info "(emacs) Visual-Line-Mode")</a></span></p>
+
+<p>The visual line mode actually does several things. From a user's point of view, it:</p>
+
+<ul>
+<li>Makes (long) lines wrap, at word boundaries, near the window edge. (controlled by var truncate-lines and word-wrap.)</li>
+<li>Makes up/down arrow keys move by a visual line. (controlled by the var line-move-visual.)</li>
+<li>Makes the kill-line command delete by a visual line, as opposed to a logical line.</li>
+<li>Turns off the display of little return arrow at the edge of window. (controlled by the var fringe-indicator-alist.)</li>
+</ul>
+
+<h3>Line Numbers on Margin</h3>
+
+<p>Now you can show line numbers on the margin, a common feature in other editors. (Thanks to
+<a href="http://stud4.tuwien.ac.at/%7Ee0225855/index.html">Markus Triska</a>
+for this feature)</p>
+
+<figure>
+<img src="emacs_line_numbers.png" alt="emacs line numbers" height="440" width="592">
+<figcaption>Emacs with linum-mode on.</figcaption>
+</figure>
+
+<p>To toggle it in current buffer, call “linum-mode”. To toggle globally, call “global-linum-mode”. To set it permanetnly, put:</p>
+
+<pre class="elisp">(global-linum-mode 1) <span class="comment-delimiter">; </span><span class="comment">always show line numbers
+</span></pre>
+
+<h3>Wildcard in Keyword Completion</h3>
+
+<p>Minibuffer's command completion support wildcard char <code>*</code>, and also support substring matching in some situations.</p>
+
+<p>For example, if you start to open a file, and emacs prompts you for file name in the minibuffer, you can type <code>*report</code> then <kbd>Tab</kbd>, and emacs will suggest all file names that has the word “report” in it. You can use more than one wildcard at different places and in dir paths, for example: 〔~/*/report/ja*〕.</p>
+
+<p>Completion with wildcard works in minibuffer prompt whenever it makes sense. For example, when you call switch-to-buffer 【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>b</kbd>】, execute-extended-command 【<kbd>Alt</kbd>+<kbd>x</kbd>】, describe-function 【<kbd>Ctrl</kbd>+<kbd>h</kbd>&nbsp;<kbd>f</kbd>】, etc.</p>
+
+<p>Note: this new completion feature applies in minibuffer only. When you are in a programing mode and pressing M-TAB for completing function names, wildcard does not apply, nor substring matching.</p>
+
+<p><span class="ref"><a href="http://xahlee.org/emacs_manual/emacs/Completion.html">(info "(emacs) Completion")</a></span></p>
+
+<p>In emacs 22, you can turn on partial-completion-mode or ido-mode for similar  features. Both are still available in emacs 23. For some detail, see <a href="http://www.emacswiki.org/emacs/Completion">emacswiki</a>.</p>
+
+<h3>View Whitespaces</h3>
+
+<p>whitespace-mode is a mode that make whitespace visible. Calling it toggles it. whitespace-newline-mode is similar, except that it is only for newline char. (Thanks to 
+<a href="http://www.emacswiki.org/emacs/ViniciusJoseLatorre">Vinicius Jose Latorre</a>
+for this feature)</p>
+
+<p>This feature is useful when you need to trim your whitespaces. For example, Python code copied from the web, or working with tab delimited files of spreadsheets and address books.</p>
+
+<p>For some tips and detail, see: <a href="http://xahlee.org/emacs/whitespace-mode.html">How to use and setup Emacs's whitespace-mode</a>.</p>
+
+<h2>File Management</h2>
+
+<h3>Opening Multiple Files in Buffer</h3>
+
+<p>Now you can open multiple files in dired in one shot. When you open a file (find-file; 【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>Ctrl</kbd>+<kbd>f</kbd>】), you can type for example <code>*.html</code>, and emacs will open all those files in background buffers. (call “ibuffer” to see your buffers.)</p>
+
+<h3>Renaming Files</h3>
+
+<p>In dired, the function wdired-change-to-wdired-mode now has a shortcut 【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>Ctrl</kbd>+<kbd>q</kbd>】. Look at the menu 〖Immediate▸Edit File Names〗. This is a very useful and little known command. It lets you rename files just by editing the dired buffer. This feature is more convenient than the rename by regex (shortcut 【<kbd>%</kbd>&nbsp;<kbd>R</kbd>】), because it is visual and not abstract as regex. When you are done editing file names, type 【<kbd>Ctrl</kbd>+<kbd>c</kbd>&nbsp;<kbd>Ctrl</kbd>+<kbd>c</kbd>】 to commit, 【<kbd>Ctrl</kbd>+<kbd>c</kbd>&nbsp;<kbd>Esc</kbd>】 to abort. Or, you can press 【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>Ctrl</kbd>+<kbd>q</kbd>】 again, and emacs will ask you if you want to commit the renaming.</p>
+
+<h3>Find ＆ Replace on Multiple Files</h3>
+
+<p>In dired, the command “dired-do-query-replace-regexp” <kbd>Q</kbd> does interactive find ＆ replace on multiple files. (See <a href="http://xahlee.org/emacs/find_replace_inter.html">tutorial</a>.)</p>
+
+<p>In emacs 23, there are 2 new functionalities. During query replace, Pressing “Y” replaces all remaining matches in ALL REMAINING FILES. Pressing “N” stops doing replacements in the current file and skips to the next file. These 2 new functionalities is available for all commands that use “tags-query-replace”.</p>
+
+<p>This is a implementation of suggestion in bug 267
+(See: <a href="http://xahlee.org/emacs/modernization_find_replace_multi.html">Emacs Suggestion: dired-do-query-replace-regex Replace ALL</a>).</p>
+
+<h2>New Font Engine</h2>
+
+<p>The font engine has been rewritten. Now it support the operating system's fonts, and also supports anti-aliasing, on Windows, Mac, Linux.</p>
+
+<p>To choose font, use menu 〖Options▸Set Default Font…〗. Use 〖Options▸Save Options〗 to save for future sessions.</p>
+
+<p>(Font rendering with Fontconfig and <a href="http://en.wikipedia.org/wiki/Xft">Xft</a>. (Thanks to
+<a href="http://en.wikipedia.org/wiki/Keith_Packard">Keith Packard</a> (<a href="http://keithp.com/">keithp.com</a>)
+for work on this.))</p>
+
+<figure>
+<img src="emacs23_font_selection_dialog.png" alt="emacs23 font selection dialog" height="355" width="447">
+<figcaption>The font selection dialog in Emacs 23 on Windows. Emacs now uses operating system's fonts.</figcaption>
+</figure>
+
+<figure>
+<img src="emacs22_vs_emacs23_font.png" alt="emacs22 vs emacs23 font" height="520" width="588">
+<figcaption>Font rendering in Emacs 22 and Emacs 23. The top is emacs 22 compiled normally with X11 support, running in Mac OS X's X11. The bottom is emacs 23 compiled “--with-ns”, for Mac OS X.</figcaption>
+</figure>
+
+<h2>Unicode</h2>
+
+<p>Characters are now represented by Unicode's utf-8 encoding internally. Much thanks to
+<a href="http://savannah.gnu.org/users/handa">Kenichi Handa</a> for implementing this.</p>
+
+<p>You can see a effect of the change by calling “describe-char”.</p>
+
+<pre class="bdr">Output of “describe-char” on char “★” in Emacs 22
+
+  character: ★ (299365, #o1110545, #x49165, U+2605)
+    charset: mule-unicode-2500-33ff
+	     (Unicode characters of the range U+2500..U+33FF.)
+ code point: #x22 #x65
+     syntax: w 	which means: word
+buffer code: #x9C #xF2 #xA2 #xE5
+  file code: #xE2 #x98 #x85 (encoded by coding system mule-utf-8-unix)
+    display: by this font (glyph code)
+     -apple-monaco-medium-r-normal--12-120-72-72-m-120-iso10646-1 (#x2605)
+</pre>
+
+<pre class="bdr">Output of “describe-char” on char “★” in Emacs 23
+
+        character: ★ (9733, #o23005, #x2605)
+preferred charset: unicode (Unicode (ISO10646))
+       code point: 0x2605
+           syntax: _ 	which means: symbol
+         category: .:Base, c:Chinese, h:Korean, j:Japanese
+      buffer code: #xE2 #x98 #x85
+        file code: #xE2 #x98 #x85 (encoded by coding system utf-8-unix)
+          display: by this font (glyph code)
+    uniscribe:-outline-BatangChe-normal-normal-normal-mono-13-*-*-*-c-*-gb2312.1980*-* (#xB18)
+
+Character code properties: customize what to show
+  name: BLACK STAR
+  general-category: So (Symbol, Other)
+</pre>
+
+<p>Note the lines “buffer code:” and “file code:” above. In emacs 23, the info also shows the char's unicode name.</p>
+
+<p>The new character engine is a critical improvement, although you may not feel it much in your daily use of emacs. Because of the new character engine, new in emacs 23 are support for languages, encodings, input systems that was not there before. See: list-input-methods, list-coding-systems, list-character-sets, list-charset-chars.</p>
+
+<p>Byte compiled elisp files (byte-compile-file) that contains
+non-ascii chars now will not be compatible with emacs 22. This means
+elisp files that contains non-ascii chars and is byte compiled in
+emacs 23, cannot run in emacs 22. However, emacs 22 byte compiled
+files still runs in emacs 23, because emacs 23 still understand the
+mule encoding used by 22. You should byte compile your emacs 22's
+〔.elc〕 files if you don't plan to use emacs 22 anymore, because it
+saves a decoding process and loads faster. (if you don't understand
+this paragraph, you need not worry about it.)</p>
+
+<p>This also means that autosave file are utf-8 encoded, instead of emacs 22's emacs-mule encoding. This means, those “#autosave#” files containing non-ascii chars can be viewed legibly by any editor that supports unicode, not just emacs.</p>
+
+<p>The ucs-insert command now has the shortcut 【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>8</kbd>&nbsp;<kbd>Enter</kbd>】, and it also support wildcard completion on unicode char names. For example, suppose you are looking for a unicode char that represent a star. Call “ucs-insert”, then type <code>*star</code> then <kbd>Tab</kbd>, then emacs will list all unicode char names that have a “star” in it.</p>
+
+<p><span class="ref"><a href="http://xahlee.org/emacs_manual/emacs/International.html">(info "(emacs) International")</a></span></p>
+
+<h2>Emacs Server/Client</h2>
+
+<p>Emacs can be run as a server/client. This allows you to start emacs in remote machine, and have multiple terminal emacs instances connected to it, without the delay or resource in starting another emacs instance. You can of course still start multiple emacs full process as before.</p>
+
+<p>Thanks to 
+<a href="http://blog.lorentey.hu/">Károly Lőrentey</a>,
+<a href="http://savannah.gnu.org/users/dann">Dan Nicolaescu</a>
+for this great feature.</p>
+
+<p>To launch a emacs server, type <code>emacs --daemon</code> in shell. Or, within emacs, call “server-start”. Note that a emacs server simply runs in the background, ready for clients to launch and connect.</p>
+
+<p>To start a emacs client, type <code>emacsclient ~</code> in shell. Note that you must provide a file name or dir. When a client starts, it starts in text mode in shell, not GUI.</p>
+
+<p>You can set your environment variable “EDITOR” to “emacsclient”, so that, other shell apps such as mail, cron, etc will automatically launch emacs client. Multiple clients can connect to the same server.</p>
+
+<p>On Windows, you start emacs server by first launching emacs, then call the command “server-start”. Running <code>emacs --daemon</code> in shell is not supported. (The error message is: “This platform does not support the -daemon flag.”)</p>
+
+<p>On Mac, you launch server like this: <code>/Applications/Emacs.app/Contents/MacOS/Emacs --daemon</code>, then client like this: <code>/Applications/Emacs.app/Contents/MacOS/bin/emacsclient ~</code>. Of course, you can setup a alias in bash to avoid typing the long path. Like this:</p>
+
+<pre class="bash">alias <span class="variable-name">myemacs</span>=<span class="string">'/Applications/Emacs.app/Contents/MacOS/Emacs'</span>
+</pre>
+
+<p><span class="ref"><a href="http://xahlee.org/emacs_manual/emacs/Emacs-Server.html">(info "(emacs) Emacs Server")</a></span></p>
+
+<h2>nxml-mode</h2>
+
+<p>nxml-mode by <a href="http://en.wikipedia.org/wiki/James_Clark_%28XML_expert%29">James Clark</a> (<a href="http://www.jclark.com/">jclark.com</a>).</p>
+
+<p>This is a superb mode for working with XML documents. It validates your XML as you type.</p>
+
+<p>However, in emacs 23.1.50, the default mode for 〔.xml〕 file is still the old xml mode (xml-mode based on sgml-mode), not nxml-mode. To fix that, put:</p>
+
+<pre class="elisp"><span class="comment-delimiter">; </span><span class="comment">for xml files, use nxml-mode instead of sgml-mode
+</span>(add-to-list 'auto-mode-alist '(<span class="string">"\\.xml\\'"</span> . nxml-mode))
+</pre>
+
+<p>Note that James Clark is one of the world's top expert on SGML and XML, author of the widely used <a href="http://en.wikipedia.org/wiki/Expat_%28XML%29">Expat</a> XML parser. The nxml-mode + emacs is probably the world's most advanced xml editor.</p>
+
+<p><span class="ref">(info "(nxml-mode) Top")</span></p>
+
+<h2>View System Processes</h2>
+
+<p>“proced” by <a href="http://www.niu.edu/%7Erwinkler/">Roland Winkler</a>, for managing OS processes, similar to dired in managing files.</p>
+
+<p>Start it by calling “proced”.</p>
+
+<figure>
+<img src="emacs23_proced.png" alt="emacs23 proced" height="504" width="520">
+<figcaption>Emacs 23's proced mode, showing running processes.</figcaption>
+</figure>
+
+<p>You can click on the column at the top to sort by that. In the mode, call “describe-mode” 【<kbd>Ctrl</kbd>+<kbd>h</kbd>&nbsp;<kbd>m</kbd>】 to see its inline doc, as usual.</p>
+
+<p>You use it pretty much like dired. Type <kbd>m</kbd> to mark the process; Type <kbd>u</kbd> to unmark; Type <kbd>x</kbd> to send a signal to the process; Type <kbd>Tab</kbd> to see what signal you can send.</p>
+
+<p>Be sure to check the menu “Proced” while you are in proced mode.</p>
+
+<p>Note that this feature does not work on Mac OS X out of the box.</p>
+
+<h2>Other New Modes</h2>
+
+<h3>ruby-mode</h3>
+
+<p>ruby-mode by <a href="http://en.wikipedia.org/wiki/Yukihiro_Matsumoto">Yukihiro Matsumoto</a> and <a href="http://friendfeed.com/n0kada">Nobuyoshi Nakada</a>.</p>
+
+<h3>rst-mode</h3>
+
+<p>rst-mode by <a href="http://www.emacswiki.org/emacs/MartinBlais">Martin Blais</a> et al.
+<a href="http://en.wikipedia.org/wiki/ReStructuredText">ReStructuredText</a> is a lightweight markup format, mostly used in Python community for inline documentation of code, pretty much like Perl's 
+<a href="http://en.wikipedia.org/wiki/Plain_Old_Documentation">pod</a> or
+Java's <a href="http://en.wikipedia.org/wiki/Javadoc">Javadoc</a>.
+rst-mode documentation is at: <a href="http://docutils.sourceforge.net/docs/user/emacs.html">http://docutils.sourceforge.net/docs/user/emacs.html</a>.</p>
+
+<h3>doc-view-mode</h3>
+
+<p>doc-view-mode by <a href="http://www.tsdh.de/">Tassilo Horn</a>. This allows you to view PDF documents within emacs, as well as PostScript and DVI files.</p>
+
+<p>This feature does not work on Windows or Mac OS X out of the box.</p>
+
+<p>If you want it to work out of the box on Windows, use <a href="http://ergoemacs.org/">ErgoEmacs</a>.</p>
+
+<p><span class="ref"><a href="http://xahlee.org/emacs_manual/emacs/Document-View.html">(info "(emacs) Document View")</a></span></p>
+
+<h3>Interface To GNU Privacy Guard</h3>
+
+<p>EasyPG Assistant (epa) is interface to <a href="http://en.wikipedia.org/wiki/GNU_Privacy_Guard">GNU Privacy Guard</a> (gpg).</p>
+
+<p>The tools can be invoked in the menu 〖Tools▸Encryption/Decryption〗. To see what command are available, type 【<kbd>Alt</kbd>+<kbd>x</kbd> epa-】 then <kbd>Tab</kbd>.</p>
+
+<p>In dired, you can call these function with keyboard shortcuts:</p>
+
+<table class="nrm">
+<tbody><tr><th>Shortcut</th><th>Purpose</th></tr>
+<tr><td>:e</td><td>Encrypt</td></tr>
+<tr><td>:s</td><td>Sign</td></tr>
+<tr><td>:v</td><td>Verify</td></tr>
+<tr><td>:d</td><td>Decrypt</td></tr>
+</tbody></table>
+
+<p>These are listed in the menu “Immediate” while in dired.</p>
+
+<p><span class="ref">(info "(epa) Top")</span></p>
+
+<h3>Deleting Files to Trash Folder</h3>
+
+<p>Deleting files in emacs can now be set so that they move to the OS's trash folder</p>
+
+<pre class="elisp"><span class="comment-delimiter">; </span><span class="comment">deleting files goes to OS's trash folder
+</span>(setq delete-by-moving-to-trash t) <span class="comment-delimiter">; </span><span class="comment">“t” for true, “nil” for false
+</span></pre>
+
+<p>However, this feature has a few problems. When this is on, your trash folder will be filled with tens or hundreds of emacs temp files, such as those “#autosave#” files, “backup~” files, “.emacs.desktop”, “emacs00164”, “server”, etc. Also, when deleting a directory from dired, your system trash will end up with each individual files, instead of just a folder. If the folder has few hundred files, the process will be super slow. This happens at least on emacs for Windows.</p>
+
+<h3>Quick Note Taking</h3>
+
+<p>“remember” by <a href="http://www.emacswiki.org/emacs/JohnWiegley">John Wiegley</a>. Lets you write down notes quickly. Basically, it is a shortcut that always opens a particular file, so you can press a button and start writing down notes. I don't find this useful.</p>
+
+<p>To start, type 【<kbd>Alt</kbd>+<kbd>x</kbd> remember】. Then type your notes. When done, type 【<kbd>Ctrl</kbd>+<kbd>c</kbd>&nbsp;<kbd>Ctrl</kbd>+<kbd>c</kbd>】, then it should save the data to 〔~/.notes〕 and close the buffer.</p>
+
+<p><span class="ref">(info "(remember) Top")</span></p>
+
+<h2>Linux Specific Features</h2>
+
+<p>Support <a href="http://en.wikipedia.org/wiki/D-BUS">D-BUS</a>, thanks to 
+<a href="http://www.ohloh.net/accounts/albinus">Michael Albinus</a>. This feature allows emacs to provide and receive services from other apps. <span class="ref">(info "(dbus) Top")</span></p>
+
+<p>Support <a href="http://en.wikipedia.org/wiki/Xesam">Xesam</a> spec for desktop search. Thanks to Michael Albinus. If you have desktop search tools installed such as Beagle, Strigi, then you can invoke search by the command xesam-search. You'll need to load it first by “(require 'xesam)”.</p>
+
+<p>Support X11's <a href="http://en.wikipedia.org/wiki/XEmbed">XEmbed</a> protocol. This means, you can embed emacs in other apps.</p>
+
+<h2>References</h2>
+
+<p>Thanks to all the Emacs developers.</p>
+
+<p><cite>Emacs 23.1 released</cite> (2009-07-29) by <a href="http://savannah.gnu.org/users/cyd">Chong Yidong</a>, on emacs-dev mailing list. <a href="http://lists.gnu.org/archive/html/emacs-devel/2009-07/msg01526.html">http://lists.gnu.org/archive/html/emacs-devel/2009-07/msg01526.html</a></p>
+
+<p>Official Emacs release notes: <a href="http://www.gnu.org/software/emacs/NEWS.23.1">http://www.gnu.org/software/emacs/NEWS.23.1</a></p>
+
+<p>Interview with emacs maintainer Chong Yidong and Stefan Monnier, 2009-08-03:
+<a class="sorc" href="http://emacs-fu.blogspot.com/2009/08/interview-with-chong-yidong-and-stefan.html" title="accessed:2009-08-04">Source emacs-fu.blogspot.com</a>.</p>
+
+<div class="blgcmt"><a href="http://xahlee.blogspot.com/2009/08/emacs-23-features.html">✍</a></div>
+
+
+<div class="rltd">
+<ul>
+<li><a href="http://xahlee.org/emacs/emacs23.2_features.html">Emacs 23.2 Features</a></li>
+<li><a href="http://xahlee.org/emacs/effective_emacs.html">Tips on Long Term Emacs Productivity</a></li>
+</ul>
+</div>
+
+
+<div id="disqus_thread"><div style="display: none;" id="dsq-content-stub">There was a problem loading Disqus. For more information, please visit <a href="http://status.disqus.com/">status.disqus.com</a>.</div><div class="clearfix" style="display: block;" id="dsq-content">      <div id="dsq-global-toolbar" class="dsq-clearfix">        <ul class="dsq-global-toolbar-right dsq-clearfix">                            <li class="dsq-community-box">                <a href="http://xahlee.org/emacs/community.show" class="dsq-toolbar-item dsq-tt" title="Expand Community Box"><span class="dsq-toolbar-icon"></span></a>            </li>                            <li class="dsq-global-toolbar-dropdown-container">                    <div id="dsq-toolbar-dropdown">    <a href="#" onclick="return false" class="dsq-toolbar-logo dsq-toolbar-item dsq-clearfix"><span class="dsq-toolbar-icon">Disqus</span></a>    <div id="dsq-toolbar-dropdown-wrap" style="display: none;">      <ul class="dsq-clearfix">                    <li class="dsq-login-link"><a href="http://xahlee.org/emacs/auth.login"><span class="dsq-toolbar-icon"></span><span class="dsq-toolbar-label">Login</span></a></li>                    <li class="dsq-about-link"><a href="http://disqus.com/" target="_top"><span class="dsq-toolbar-icon"></span><span class="dsq-toolbar-label">About Disqus</span></a></li>      </ul>    </div>  </div>            </li>        </ul>            </div>    <div id="dsq-like-tooltip">      <div id="dsq-share-step-1" class="dsq-share-step">        <h3>Glad you liked it. Would you like to share?</h3>        <p class="dsq-tooltip-checkbox"><input id="dsq-share-thread-facebook" value="Facebook" type="checkbox"><label for="dsq-share-thread-facebook"><span class="dsq-facebook">Facebook</span></label></p>        <p class="dsq-tooltip-checkbox"><input id="dsq-share-thread-twitter" value="Twitter" type="checkbox"><label for="dsq-share-thread-twitter"><span class="dsq-twitter">Twitter</span></label></p>        <ul id="dsq-tooltip-actions">                        <li><a href="http://xahlee.org/emacs/thread.share" class="dsq-primary-action">Share</a></li>                    <li><a href="http://xahlee.org/emacs/thread.share.cancel" class="dsq-secondary-action">No thanks</a></li>        </ul>      </div>      <div id="dsq-share-step-2" class="dsq-share-step" style="display: none ! important;">        <p>Sharing this page …</p>      </div>      <div id="dsq-share-step-3" class="dsq-share-step" style="display: none ! important;">        <p>Thanks! <a href="http://xahlee.org/emacs/thread.share.cancel" class="dsq-tooltip-decline">Close</a></p>      </div>    </div>                    <div id="dsq-new-post" class="dsq-post-area dsq-unauthenticated">          <h3>Add New Comment</h3>      <div style="clear: both;"></div>              <div id="dsq-form-area">      <div class="dsq-textarea">        <div style="height: auto;" class="dsq-textarea-wrapper" id="dsq-textarea-wrapper">            <!-- filled dynamically -->        <iframe style="position: relative; top: 0px; height: 58px;" src="index_4.html" id="easyXDM_DISQUS_net_default9709_provider" name="easyXDM_DISQUS_net_default9709_provider" frameborder="0" scrolling="no"></iframe></div>      </div>              <div id="dsq-media-preview" class="dsq-media-preview" style="display: none;">        </div>                  <div class="dsq-post-footer">              <div class="dsq-attach-media">            <div class="dsq-attach-media-container">                <span>Image</span>                <!-- filled dynamically -->            <iframe src="index_5.html" id="easyXDM_DISQUS_net_default9710_provider" name="easyXDM_DISQUS_net_default9710_provider" frameborder="0" scrolling="no"></iframe></div>        </div>                                    <button type="button" class="dsq-button" id="dsq-post-button" onclick="DISQUS.dtpl.actions.fire('comments.validate', null);">            <span>              Post as …            </span>          </button>                      </div>      <div style="clear: both;"></div>    </div>  </div>              <div id="dsq-comments-title">    <h3>                        Showing <span id="dsq-num-posts">1</span> comment                  </h3>  </div>  <div class="dsq-options">      <span class="dsq-item-sort">    Sort by    <select id="dsq-sort-select" onchange="DISQUS.dtpl.actions.fire('thread.sort', this.value);">            <option value="hot" selected="selected">Popular now</option>            <option value="best">Best rating</option>            <option value="newest">Newest first</option>            <option value="oldest">Oldest first</option>          </select>  </span>      <span class="dsq-subscribe-email">    <img src="email.png" alt="">&nbsp;    <span id="dsq-subscribe">            <a href="http://xahlee.org/emacs/thread.subscribe">Subscribe by email</a>          </span>    <span class="dsq-subscribe-rss">      <img src="bullet-feed.png" alt="">&nbsp;      <a href="http://xahlee.disqus.com/new_features_in_emacs_23/latest.rss">Subscribe by RSS</a>    </span>  </span>  </div>                  <ul id="dsq-comments">            <div id="comment-151223058"></div><li id="dsq-comment-151223058" style="margin-left: 0px;" class="dsq-comment     dsq-even ">  <!-- placeholder for collapsed comment block (inserted dynamically later) -->  <div id="dsq-collapsed-comment-151223058" class="dsq-collapsed-comment"></div>  <div class="dsq-full-comment"> <!-- wraps header, body, footer -->    <div id="dsq-comment-header-151223058" class="dsq-comment-header">      <table>        <tbody><tr>          <td id="dsq-header-avatar-151223058" class="dsq-header-avatar">            <a id="dsq-avatar-151223058" class="dsq-avatar dsq-tt" title="Expand No's profile" href="http://disqus.com/guest/7ab375277c1e5fde82883892573f745b/" onclick="return DISQUS.dtpl.actions.fire('profile.show', 151223058, null);">                            <img src="noavatar32.png" class="dsq-deferred-avatar" data-src="http://mediacdn.disqus.com/1316728242/images/noavatar32.png" alt="" height="32" width="32">                          </a>          </td>          <td class="dsq-comment-header-meta">            <div class="dsq-comment-header-meta-wrapper">              <cite id="dsq-cite-151223058" class="dsq-comment-cite">                                <span id="dsq-author-user-151223058">No</span>                                <img src="moderator.png" class="dsq-moderator-star" title="Moderator" height="14" width="15">                              </cite>              <span class="dsq-comment-header-time">                <a href="http://xahlee.org/emacs/comments.permalink" title="Link to comment by No">7 months ago</a>              </span>              <a class="dsq-comment-hide-thread" href="http://xahlee.org/emacs/comments.collapse" title="Collapse thread"></a>            </div>          </td>        </tr>      </tbody></table>    </div>    <div id="dsq-comment-body-151223058" class="dsq-comment-body">        <div class="dsq-comment-message" id="dsq-comment-message-151223058">                <div class="dsq-comment-text" id="dsq-comment-text-151223058">        Thanks a lot! This was really insightful!      </div>                        </div>          </div>    <div class="dsq-comment-footer" id="dsq-comment-footer-151223058">      <div class="dsq-comment-footer-left">                    <a href="http://xahlee.org/emacs/comments.report" id="dsq-post-report-151223058" class="dsq-post-report">Flag</a>              </div>            <div class="dsq-comment-footer-right">                <span class="dsq-comment-buttons">                    <span id="dsq-like-151223058" class="dsq-like">            <button type="button" class="dsq-button-small " data-vote="0" onclick="DISQUS.dtpl.actions.fire('comments.like', this, 151223058);">                        Like            </button>          </span>                                        <span class="dsq-comment-footer-reply" id="dsq-comment-footer-reply-151223058" onclick="DISQUS.dtpl.actions.fire('comments.reply', 151223058, this);">            <button type="button" class="dsq-button-small">Reply</button>            <button type="button" class="dsq-comment-footer-reply-tab">Reply</button>            <span></span>          </span>                  </span>      </div> <!-- /comment-footer-right -->          </div> <!-- /comment-footer -->  </div> <!-- dsq-full-comment --></li><div id="dsq-append-post-151223058"></div>      </ul>        <div id="dsq-pagination" class="dsq-pagination">        </div>          </div><div>  </div></div><a href="http://disqus.com/" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+<iframe src="index_6.html" frameborder="0" width="100%"></iframe>
+
+
+
+<iframe src="index_7.html" style="position: absolute; top: -2000px; left: 0px;" id="easyXDM_DISQUS_net_default9708_provider" name="easyXDM_DISQUS_net_default9708_provider" frameborder="0"></iframe></body>
+</html>

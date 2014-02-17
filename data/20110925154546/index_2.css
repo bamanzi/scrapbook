@@ -1,0 +1,12 @@
+body { margin: 0px; padding: 0px; }
+a:visited { color: rgb(0, 0, 0); }
+#tweetmeme_button { font-family: arial,helvetica,sans-serif; height: 20px; overflow: hidden; }
+a { text-decoration: none; border: medium none; }
+.count { float: left; display: block; margin: 0px 5px 0px 0px; font-size: 14px; font-weight: bold; color: rgb(66, 66, 66); }
+.retweet { height: 16px; margin: 0px 3px; display: block; cursor: pointer; padding: 0px 2px; font-size: 11px; color: rgb(255, 255, 255); text-decoration: none; line-height: 16px; position: relative; text-align: center; float: left; background: url('b.gif') repeat-x scroll 0px -100px transparent; }
+.retweet span { display: block; height: 16px; background: url('b.gif') repeat-x scroll 0% 0% transparent; width: 3px; position: absolute; top: 0px; }
+.retweet span.left { left: -3px; background-position: 0px -84px; }
+.retweet span.right { right: -3px; background-position: 3px -84px; }
+.retweet:hover, .retweet.selected { background-position: 0px -132px; color: rgb(128, 182, 42); }
+.retweet:hover span.left, .retweet.selected span.left { background-position: 0px -116px; }
+.retweet:hover span.right, .retweet.selected span.right { background-position: 3px -116px; }

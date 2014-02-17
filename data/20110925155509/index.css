@@ -1,0 +1,31 @@
+/* ::::: http://www.emacswiki.org/emacs/wiki.css ::::: */
+
+body, rss { background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); font-weight: normal; padding: 1em 2em; }
+div.header h1, title { font-size: 250%; line-height: 105%; font-family: inherit; font-weight: normal; letter-spacing: 0.1em; margin: 1em 0pt; }
+div.header h1 a, div.journal h1 a { text-decoration: none; color: rgb(0, 0, 0); }
+h1, h2, item title { font-size: larger; font-weight: normal; letter-spacing: 0.1em; margin: 2em 0pt 1em; }
+a:link { color: rgb(0, 0, 255); }
+a:visited { color: rgb(170, 0, 170); }
+a:active { color: rgb(255, 0, 0); }
+span.bar a { margin-right: 1ex; }
+img { border-style: none; }
+img.logo { float: right; clear: right; }
+form.tiny, form.tiny p { display: inline; white-space: nowrap; }
+form.tiny input { margin: 0.1em; font-size: 80%; font-family: inherit; }
+div.color { clear: left; }
+div.one { background-color: rgb(238, 238, 238); padding: 0.1ex 0pt; }
+li { margin-left: 1em; }
+ol, ul, dl { padding-top: 0.5em; }
+dd, li { margin-bottom: 0.5em; }
+h2, h3, h4, h5, h6, hr, div.footer { clear: both; }
+div.footer { margin-top: 2em; }
+.legal { font-size: 80%; }
+@media print {
+  body { font-size: 10pt; line-height: 12pt; }
+  a:link, a:visited { color: rgb(0, 0, 0); text-decoration: none; }
+  img.logo, img.logo, div.header span, div.header br, div.header form, div.diff, a.edit, a.number span, div.footer, div.footer + hr, div.sister { display: none; }
+  a[class="url number"]:after, a[class="inter number"]:after { content: "[" attr(href) "]"; }
+  a[class="local number"]:after { content: "[" attr(title) "]"; }
+}
+link { font-size: small; margin-bottom: 2ex; }
+link, license { font-size: 10pt; }

@@ -1,0 +1,181 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Network access - GNU Emacs FAQ For MS Windows</title>
+
+<meta name="description" content="Answers to Frequently asked Questions about using Emacs on Microsoft Windows.">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="http://www.gnu.org/software/emacs/windows/index.html#Top">
+<link rel="prev" href="http://www.gnu.org/software/emacs/windows/Sub_002dprocesses.html#Sub_002dprocesses" title="Sub-processes">
+<link rel="next" href="http://www.gnu.org/software/emacs/windows/Text-and-Utility-modes.html#Text-and-Utility-modes" title="Text and Utility modes">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 2008, 2010-2011 Free Software Foundation, Inc.
+
+     This list of frequently asked questions about GNU Emacs on MS
+     Windows with answers (``FAQ'') may be translated into other
+     languages, transformed into other formats (e.g. Texinfo, Info,
+     WWW), and updated with new information.
+
+     The same conditions apply to any derivative of the FAQ as apply to
+     the FAQ itself.  Every copy of the FAQ must include this notice or
+     an approved translation, information on who is currently
+     maintaining the FAQ and how to contact them (including their
+     e-mail address), and information on where the latest version of
+     the FAQ is archived (including FTP information).
+
+     The FAQ may be copied and redistributed under these conditions,
+     except that the FAQ may not be embedded in a larger literary work
+     unless that work itself allows free copying and redistribution.
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+</head>
+<body>
+<div class="node">
+<a name="Network-access"></a>
+<p>
+Next:&nbsp;<a indepth="true" rel="next" accesskey="n" href="text-and-utility-modes.html#Text-and-Utility-modes">Text and Utility modes</a>,
+Previous:&nbsp;<a indepth="true" rel="previous" accesskey="p" href="sub_002dprocesses.html#Sub_002dprocesses">Sub-processes</a>,
+Up:&nbsp;<a indepth="true" rel="up" accesskey="u" href="default_001.html#Top">Top</a>
+</p><hr>
+</div>
+
+<h2 class="chapter">8 Network access</h2>
+
+<h3 class="section">8.1 How do I use mail in Emacs?</h3>
+
+<p>Emacs comes with several options for reading and writing mail.  These
+are documented in the manual, and the choice of which method to use
+depends on personal taste.  There are some issues specific to Windows
+however, related to the fact that Windows machines do not have the
+mail infrastructure that is commonly installed on other platforms, so
+mail will not work without some configuration.
+
+</p><h4 class="subsection">8.1.1 Outgoing mail</h4>
+
+<p><a name="index-mail_002c-outgoing-280"></a><a name="index-smtp-server-281"></a><a name="index-user_002dfull_002dname-282"></a><a name="index-user_002dmail_002daddress-283"></a><a name="index-smtpmail_002ddefault_002dsmtp_002dserver-284"></a><a name="index-smtpmail_002dsmtp_002dserver-285"></a><a name="index-send_002dmail_002dcommand-286"></a><a name="index-message_002dsend_002dmail_002dfunction-287"></a><a name="index-smtpmail_002dsend_002dit-288"></a><a name="index-smtpmail_002ddebug_002dinfo-289"></a>
+For outgoing mail, you will need to use <samp><span class="file">smtpmail.el</span></samp> which
+allows Emacs to talk directly to SMTP mail servers.  This is included
+with Emacs, and can be set up as follows:
+
+</p><pre class="example">     (setq user-full-name "<var>Your full name</var>")
+     (setq user-mail-address "<var>Your@email.address</var>")
+     (setq smtpmail-default-smtp-server "<var>domain.name.of.your.smtp.server</var>")
+     
+     (setq send-mail-command 'smtpmail-send-it) ; For mail-mode (Rmail)
+     (setq message-send-mail-function 'smtpmail-send-it) ; For message-mode (Gnus)
+</pre>
+   <p>Note that if you want to change the name of the SMTP server after
+smtpmail is loaded, then you'll need to change
+<code>smtpmail-smtp-server</code>.
+
+   </p><p>If you are experiencing problems with sending large messages, check
+the value of the variable <code>smtpmail-debug-info</code>. If it is non-nil, you
+should set it to <code>nil</code>:
+
+</p><h4 class="subsection">8.1.2 Incoming mail with Rmail and POP3</h4>
+
+<p><a name="index-mail_002c-incoming-with-rmail-290"></a><a name="index-pop3_002c-using-rmail-291"></a><a name="index-rmail_002c-mail-client-292"></a><a name="index-movemail_002c-using-pop3-293"></a><a name="index-MAILHOST-294"></a><a name="index-rmail_002dprimary_002dinbox_002dlist-295"></a><a name="index-rmail_002dpop_002dpassword_002drequired-296"></a>
+For incoming mail using the Rmail package and a POP3 server, you will
+need the following configuration:
+
+</p><pre class="example">     (setenv "MAILHOST" "<var>domain.name.of.your.pop3.server</var>")
+     (setq rmail-primary-inbox-list '("po:<var>your logon id</var>"))
+     (setq rmail-pop-password-required t)
+</pre>
+   <h4 class="subsection">8.1.3 Incoming mail with Gnus</h4>
+
+<p><a name="index-mail_002c-incoming-with-Gnus-297"></a><a name="index-pop3_002c-using-Gnus-298"></a><a name="index-imap_002c-using-Gnus-299"></a><a name="index-gnus_002c-mail-and-news-client-300"></a>
+Although Gnus started life as a Usenet news reader, it also makes a
+good mail reader, particularly if you subscribe to a lot of mailing
+lists, or you want to use IMAP rather than POP3, which is not
+supported by Rmail.  Because of the varied ways of setting up Gnus,
+it is best that you read the Gnus manual, and seek help on
+<a href="news:gnu.emacs.gnus">news:gnu.emacs.gnus</a> if needed.
+
+</p><h4 class="subsection">8.1.4 Other incoming mail options</h4>
+
+<p><a name="index-mail_002c-other-options-301"></a><a name="index-wanderlust_002c-mail-and-news-client-302"></a><a name="index-vm_002c-mail-client-303"></a><a name="index-mh_002de_002c-mail-client-304"></a>
+Other options for reading mail in Emacs include VM, MH-E and
+Wanderlust.  All of these require lisp or executable code that does
+not come with Emacs, so you should seek help where you obtained the
+packages from if you want to use them.
+
+</p><h3 class="section">8.2 How do I open attachments in Gnus?</h3>
+
+<p><a name="index-gnus_002c-attachments-305"></a><a name="index-attachments_002c-in-gnus-306"></a><a name="index-mail_002c-attachments-in-gnus-307"></a><a name="index-g_t_002emailcap-308"></a><a name="index-MIME_002c-configuration-for-Gnus-309"></a>
+In your <samp><span class="env">HOME</span></samp> directory create a file called <samp><span class="file">.mailcap</span></samp>,
+with contents like the following:
+</p><pre class="example">     application/zip "C:/Program Files/7-Zip/7zFM.exe"
+     video/* "C:/Program Files/VideoLAN/VLC/vlc.exe"
+</pre>
+   <p><strong>Warning:</strong> Associating MIME types with <samp><span class="command">start</span></samp> or other
+generic Windows commands to open arbitrary files might seem like a
+good idea, but it leaves your system as open to attack as Outlook
+Express was at its worst.  Especially dangerous is associating
+application/* or */* in this way.
+
+</p><h3 class="section">8.3 How do I use FTP within Emacs?</h3>
+
+<p><a name="index-ftp_002c-using-within-Emacs-310"></a><a name="index-ange_002dftp-311"></a><a name="index-tramp_002c-ftp-312"></a><a name="index-remote-hosts-via-ftp-313"></a><a name="index-ange_002dftp_002dftp_002dprogram_002dname-314"></a>
+Windows built in FTP client can be used with ange-ftp.  Ange-ftp is
+the Emacs package that provides FTP connectivity to tramp, a
+multi-protocol remote file access package for Emacs that is enabled by
+default.
+
+   </p><p>The Windows FTP client does have problems with some firewalls, due to
+lack of passive mode support, so you may want to try an alternative
+ftp client instead.  Make sure that the client you are trying is in
+your <samp><span class="env">PATH</span></samp> before the default Windows client, or rename the
+default Windows client to avoid it getting in the way.  Alternatively
+you can customize <code>ange-ftp-ftp-program-name</code> to the full path to
+the version you are trying.  See <a indepth="true" href="other-useful-ports.html#Other-useful-ports">Other useful ports</a>.
+
+</p><h3 class="section">8.4 How do I use Tramp to work in Emacs via SSH?</h3>
+
+<p><a name="index-tramp_002c-ssh-315"></a><a name="index-ssh_002c-accessing-remote-hosts-within-Emacs-316"></a><a name="index-remote-hosts-via-ssh-317"></a><a name="index-openssh-318"></a><a name="index-PuTTY-319"></a><a name="index-plink-320"></a><a name="index-tramp_002ddefault_002dmethod-321"></a><a name="index-tramp_002ddefault_002dmethod_002dalist-322"></a>
+Tramp can use a number of protocols to connect to remote machines to
+read files and even run commands on those files remotely.  A popular
+one is ssh.  As well as Cygwin versions of openssh, you can use
+PuTTY's command line plink program as the ssh client.  The relevant
+methods to use in <code>tramp-default-method</code> or
+<code>tramp-default-method-alist</code> for these options are:
+     </p><ul>
+<li>openssh
+          <ul>
+<li><code>scp</code> Uses scp for copying, ssh for shell operations. 
+</li><li><code>scp1</code> scp with forced SSH protocol version 1
+</li><li><code>scp2</code> scp with forced SSH protocol version 2
+</li><li><code>ssh</code> Uses ssh with encoding on stdin/stdout for file transfer. 
+</li><li><code>ssh1</code> ssh with forced SSH protocol version 1
+</li><li><code>ssh2</code> ssh with forced SSH protocol version 2
+</li></ul>
+
+     </li><li>PuTTY
+          <ul>
+<li><code>pscp</code> Uses pscp for copying, plink for shell operations. 
+</li><li><code>pscp1</code> pscp, with forced SSH protocol version 1
+</li><li><code>pscp2</code> pscp, with forced SSH protocol version 2
+</li><li><code>plink</code> Uses plink with encoding on stdin/stdout for file transfer. 
+</li><li><code>plink1</code> plink with forced SSH protocol version 1
+</li><li><code>plink2</code> plink with forced SSH protocol version 2
+</li></ul>
+     </li></ul>
+
+<h3 class="section">8.5 How do I use telnet with Emacs?</h3>
+
+<p><a name="index-telnet_002c-in-Emacs-323"></a><a name="index-telnet-324"></a><a name="index-telnet-client_002c-that-works-with-Emacs-325"></a>
+To use telnet-mode on Windows, you need a telnet client that uses
+stdin and stdout for input and output.  The default Windows client is
+a Windows application, and will not work as a subprocess.  Several
+options exist, but information that was formerly in this FAQ is out of
+date now, so no concrete pointers are available.
+
+<!--  -->
+   
+
+</p>
+
+</body></html>

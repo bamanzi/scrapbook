@@ -1,0 +1,245 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+<meta name="robots" content="index,nofollow">
+
+<title>TipsAndTricks/TextBasedLinuxInstall - Dropbox Wiki</title>
+
+
+
+
+
+
+
+
+
+
+<!-- css only for MSIE browsers -->
+<!--[if IE]>
+   <link rel="stylesheet" type="text/css" charset="utf-8" media="all" href="/wiki/dropbox/css/msie.css">
+<![endif]-->
+
+
+
+
+<link rel="Start" href="http://wiki.dropbox.com/FrontPage">
+<link rel="Alternate" title="维基标记" href="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall?action=raw">
+<link rel="Alternate" media="print" title="打印视图" href="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall?action=print">
+<link rel="Up" href="http://wiki.dropbox.com/TipsAndTricks">
+<link rel="Appendix" title="dropboxp2p.py" href="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall?action=AttachFile&amp;do=view&amp;target=dropboxp2p.py">
+<link rel="Appendix" title="package.zip" href="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall?action=AttachFile&amp;do=view&amp;target=package.zip">
+<link rel="Search" href="http://wiki.dropbox.com/FindPage">
+<link rel="Index" href="http://wiki.dropbox.com/TitleIndex">
+<link rel="Glossary" href="http://wiki.dropbox.com/WordIndex">
+<link rel="Help" href="http://wiki.dropbox.com/HelpOnFormatting">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body dir="ltr" lang="zh">
+
+<div id="header">
+<div id="logo"><a href="http://wiki.dropbox.com/FrontPage"><img src="new_logo.png" alt="Dropbox"></a></div>
+<ul id="username"><li><a href="https://www.dropbox.com/login?cont=http%3A//wiki.dropbox.com" id="login">Login</a></li></ul>
+<br><br>
+<div id="locationline">
+
+</div>
+<div id="pageline"><hr style="display: none;"></div>
+
+</div>
+
+<div id="right_column">
+<img class="topround" alt="" src="right_wiki_rounded_top.gif">
+<div id="searchform-div">
+
+<form id="searchform" method="get" action="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall">
+<div>
+<input name="action" value="fullsearch" type="hidden">
+<input name="context" value="180" type="hidden">
+<label style="display: none;" for="searchinput">搜索：</label>
+<input class="disabled" id="searchinput" name="value" value="搜索" size="20" onfocus="searchFocus(this)" onblur="searchBlur(this)" onkeyup="searchChange(this)" onchange="searchChange(this)" alt="Search" type="text">
+<input disabled="disabled" id="titlesearch" name="titlesearch" value="标题" alt="Search Titles" type="submit">
+<input disabled="disabled" id="fullsearch" name="fullsearch" value="正文" alt="Search Full Text" type="submit">
+</div>
+</form>
+
+
+</div>
+
+<ul id="navibar">
+<li class="wikilink"><a href="http://wiki.dropbox.com/TipsAndTricks">TipsAndTricks</a></li><li class="wikilink"><a href="http://wiki.dropbox.com/KnownIssues">KnownIssues</a></li><li class="wikilink"><a href="http://wiki.dropbox.com/ChangeLogs">ChangeLogs</a></li><li class="wikilink"><a href="http://wiki.dropbox.com/DropboxAddons">DropboxAddons</a></li><li class="wikilink"><a href="http://wiki.dropbox.com/FeatureRequests">FeatureRequests</a></li><li class="wikilink"><a href="http://wiki.dropbox.com/RecentChanges">RecentChanges</a></li><li class="wikilink"><a href="http://wiki.dropbox.com/FindPage">FindPage</a></li><li class="wikilink"><a href="http://wiki.dropbox.com/HelpContents">HelpContents</a></li><li class="current"><a href="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall">TextBasedLinuxInstall</a></li>
+</ul>
+
+<ul class="editbar"><li><span class="disabled">只读网页</span></li><li><a href="#" class="toggleCommentsButton" style="display: none;" onclick="toggleComments();return false;">备注</a></li><li><a class="nbinfo" href="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall?action=info" rel="nofollow">信息</a></li><li>
+<form class="actionsmenu" method="GET" action="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall">
+<div>
+    
+    <select name="action" onchange="if ((this.selectedIndex != 0) &amp;&amp;
+                      (this.options[this.selectedIndex].disabled == false)) {
+                this.form.submit();
+            }
+            this.selectedIndex = 0;">
+        <option value="show">更多操作：</option><option value="raw">源码</option>
+<option value="print">打印视图</option>
+<option value="RenderAsDocbook">输出Docbook格式</option>
+<option value="refresh">删除缓存</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="SpellCheck">拼写检查</option>
+<option value="LikePages">相似网页</option>
+<option value="LocalSiteMap">本站地图</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="RenamePage" disabled="disabled" class="disabled">改名</option>
+<option value="CopyPage">复制网页</option>
+<option value="DeletePage" disabled="disabled" class="disabled">删除</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="MyPages">我的网页</option>
+<option value="show" disabled="disabled" class="disabled">订阅</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="show" disabled="disabled" class="disabled">删除垃圾广告</option>
+<option value="show" disabled="disabled" class="disabled">恢复成此版本</option>
+<option value="show" disabled="disabled" class="disabled">网页打包</option>
+<option value="SyncPages">同步网页</option>
+<option value="show" disabled="disabled" class="disabled">------------------------</option>
+<option value="Load">加载</option>
+<option value="Save">保存</option>
+    </select>
+    
+    
+</div>
+
+</form>
+</li></ul>
+
+<img class="bottomround" alt="" src="right_wiki_rounded_bottom.gif">
+<br class="clear"></div>
+<div id="left_column">
+<div id="page" dir="ltr" lang="en">
+
+
+<ul id="pagelocation">
+<li><a href="http://wiki.dropbox.com/TipsAndTricks">TipsAndTricks</a></li><li><a class="backlink" href="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall?action=fullsearch&amp;context=180&amp;value=linkto%3A%22TipsAndTricks/TextBasedLinuxInstall%22" rel="nofollow" title="点击对这个标题进行全文检索">TextBasedLinuxInstall</a></li>
+</ul>
+<div dir="ltr" id="content" lang="en"><span class="anchor" id="top"></span>
+<span class="anchor" id="line-1"></span><p class="line867"></p><div class="table-of-contents"><p class="table-of-contents-heading">目录</p><ol><li>
+<a href="#HowToInstallDropboxInAnEntirelyTextBasedLinuxEnvironment">How To Install Dropbox In An Entirely Text Based Linux Environment</a><ol><li>
+<a href="#Prerequisites">Prerequisites</a></li><li>
+<a href="#Setupprocess">Setup process</a><ol><li>
+<a href="#Shortversion">Short version</a></li><li>
+<a href="#Step-by-stepversion">Step-by-step version</a></li><li>
+<a href="#dropboxddidn.27tgivemealinkURL.21">dropboxd didn't give me a link URL!</a></li><li>
+<a href="#NotesonCustomPythonScripts">Notes on Custom Python Scripts</a><ol><li>
+<a href="#pyDropboxValues">pyDropboxValues</a></li><li>
+<a href="#dbreadconfig.py">dbreadconfig.py</a></li></ol></li></ol></li><li>
+<a href="#Post-installation">Post-installation</a></li><li>
+<a href="#Changingthedropboxfolderlocation">Changing the dropbox folder location</a></li><li>
+<a href="#SuppressLANSyncbroadcasts">Suppress LAN Sync broadcasts</a></li><li>
+<a href="#Unlink.2BAC8Relinkdropboxaccount">Unlink / Relink dropbox account</a></li><li>
+<a href="#Runningonsystemstartup">Running on system startup</a><ol><li>
+<a href="#Debian.2BAC8-Ubuntu">Debian/Ubuntu</a><ol><li>
+<a href="#usingupstart">using upstart</a></li></ol></li><li>
+<a href="#Fedora.2BAC8-Redhat">Fedora/Red hat</a></li><li>
+<a href="#Gentoo">Gentoo</a></li></ol></li></ol></li></ol></div> <span class="anchor" id="line-2"></span><span class="anchor" id="line-3"></span><p class="line867">
+</p><h1 id="HowToInstallDropboxInAnEntirelyTextBasedLinuxEnvironment">How To Install Dropbox In An Entirely Text Based Linux Environment</h1>
+<span class="anchor" id="line-4"></span><p class="line867"><a href="http://wiki.dropbox.com/TipsAndTricks/UbuntuServerInstall">../UbuntuServerInstall</a> also contains some notes on getting Dropbox running via the command line. <span class="anchor" id="line-5"></span><span class="anchor" id="line-6"></span></p><p class="line867">
+</p><h2 id="Prerequisites">Prerequisites</h2>
+<span class="anchor" id="line-7"></span><ul><li>At least version 2.4 of the C library <span class="anchor" id="line-8"></span></li><li><p class="line891"><tt class="backtick">wget</tt> <span class="anchor" id="line-9"></span></p></li><li>Python 2.5 <span class="anchor" id="line-10"></span></li><li>a web browser <span class="anchor" id="line-11"></span><span class="anchor" id="line-12"></span></li></ul><p class="line867">
+</p><h2 id="Setupprocess">Setup process</h2>
+<span class="anchor" id="line-13"></span><p class="line867">
+</p><h3 id="Shortversion">Short version</h3>
+<span class="anchor" id="line-14"></span><ol type="1"><li>Get the latest release tar from the download page: <span class="anchor" id="line-15"></span><ul><li><p class="line891"><a class="http" href="http://www.dropbox.com/download/?plat=lnx.x86">x86</a> <span class="anchor" id="line-16"></span></p></li><li><p class="line891"><a class="http" href="http://www.dropbox.com/download/?plat=lnx.x86_64">x86_64</a> <span class="anchor" id="line-17"></span></p></li><li><p class="line891"><a class="http" href="http://forums.dropbox.com/">forum testing build</a> <span class="anchor" id="line-18"></span><span class="anchor" id="line-19"></span></p></li></ul></li><li class="gap"><p class="line862">Files are extracted to <tt class="backtick">.dropbox-dist</tt>. <span class="anchor" id="line-20"></span><span class="anchor" id="line-21"></span></p></li><li class="gap"><p class="line862">Run <tt class="backtick">dropboxd</tt>. <span class="anchor" id="line-22"></span><span class="anchor" id="line-23"></span></p></li></ol><p class="line867">
+</p><h3 id="Step-by-stepversion">Step-by-step version</h3>
+<span class="anchor" id="line-24"></span><ol type="1"><li>Log in to your Linux server so you obtain a shell prompt, and change to your home directory. <span class="anchor" id="line-25"></span><span class="anchor" id="line-26"></span><span class="anchor" id="line-27"></span><pre>cd</pre><span class="anchor" id="line-28"></span><span class="anchor" id="line-29"></span></li><li class="gap">  a. Stable 32-bit: <span class="anchor" id="line-30"></span><ul><li style="list-style-type: none;"><span class="anchor" id="line-31"></span><span class="anchor" id="line-32"></span><pre>wget -O dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86"</pre><span class="anchor" id="line-33"></span><span class="anchor" id="line-34"></span></li><li class="gap">Stable 64-bit: <span class="anchor" id="line-35"></span><span class="anchor" id="line-36"></span><span class="anchor" id="line-37"></span><pre>wget -O dropbox.tar.gz "http://www.dropbox.com/download/?plat=lnx.x86_64"</pre><span class="anchor" id="line-38"></span><span class="anchor" id="line-39"></span></li></ul></li><li class="gap">Sanity check to make sure we're not going to clog our home directory. <span class="anchor" id="line-40"></span><span class="anchor" id="line-41"></span><span class="anchor" id="line-42"></span><pre>tar -tzf dropbox.tar.gz</pre><span class="anchor" id="line-43"></span><span class="anchor" id="line-44"></span></li><li class="gap">Extract <span class="anchor" id="line-45"></span><span class="anchor" id="line-46"></span><span class="anchor" id="line-47"></span><pre>tar -xvzf dropbox.tar.gz</pre><span class="anchor" id="line-48"></span><span class="anchor" id="line-49"></span></li><li class="gap"><p class="line862">Run <tt>dropboxd</tt>: <span class="anchor" id="line-50"></span><span class="anchor" id="line-51"></span><span class="anchor" id="line-52"></span></p><pre>~/.dropbox-dist/dropboxd</pre><span class="anchor" id="line-53"></span><span class="anchor" id="line-54"></span></li><li class="gap">You should see output like this: <span class="anchor" id="line-55"></span><span class="anchor" id="line-56"></span><span class="anchor" id="line-57"></span><span class="anchor" id="line-58"></span><pre>This client is not linked to any account...
+Please visit https://www.dropbox.com/cli_link?host_id=7d44a557aa58f285f2da0x67334d02c1 to link this machine.</pre><span class="anchor" id="line-59"></span><span class="anchor" id="line-60"></span></li><li class="gap"><p class="line891"><img alt="&lt;!&gt;" src="attention.png" title="&lt;!&gt;" height="15" width="15"> <strong><tt class="backtick">dropboxd</tt> will create a ~/Dropbox folder and start synchronizing it after this step!</strong> Go to the URL given; you should see a success message at the top of your screen. <span class="anchor" id="line-61"></span><span class="anchor" id="line-62"></span></p></li></ol><p class="line862">NOTE: If you want to change the account it is linked to, unlink it from the first account, then kill the running dropbox process, start it up again (with "~/.dropbox-dist/dropboxd &amp;") and obtain the new host_id with dbreadconfig.py . If you don't restart the dropbox client, it will give the same host_id (which for some reason cause me to be unable to change the account it is linked to). <span class="anchor" id="line-63"></span><span class="anchor" id="line-64"></span></p><p class="line867">
+</p><h3 id="dropboxddidn.27tgivemealinkURL.21">dropboxd didn't give me a link URL!</h3>
+<span class="anchor" id="line-65"></span><p class="line862">Run the <a class="http" href="http://dl.dropbox.com/u/8709885/dbreadconfig.py">dbreadconfig.py</a> script to get the URL with the hostid.  It's documented <a href="http://wiki.dropbox.com/DropboxAddons/PythonScriptToDisplayConfig">here</a>. <span class="anchor" id="line-66"></span><span class="anchor" id="line-67"></span></p><p class="line867">
+</p><h3 id="NotesonCustomPythonScripts">Notes on Custom Python Scripts</h3>
+<span class="anchor" id="line-68"></span><p class="line867">
+</p><h4 id="pyDropboxValues">pyDropboxValues</h4>
+<span class="anchor" id="line-69"></span><p class="line862">I have created a (hopefully) 'better' version of <tt class="backtick">dbreadconfig.py</tt> <a href="http://wiki.dropbox.com/DropboxAddons/PyDropboxValues">here</a>. You can then replace the call to <tt class="backtick">dbreadconfig.py</tt> above with <tt class="backtick">pyDropboxValues.py&nbsp;_linkurl</tt>. I won't update the instructions above though till I get feedback that my version works correctly. -- <a href="http://wiki.dropbox.com/AndrewS1">AndrewS1</a> 2010-10-15 01:41:03 <span class="anchor" id="line-70"></span><span class="anchor" id="line-71"></span></p><p class="line867">
+</p><h4 id="dbreadconfig.py">dbreadconfig.py</h4>
+<span class="anchor" id="line-72"></span><ul><li><p class="line862">dbreadconfig.py fails on my machine (gutsy) when importing ctypes. Try deleting all the code which uses ctypes, since you only need that for Windows anyway. -- <a class="nonexistent" href="http://wiki.dropbox.com/TrevorB">TrevorB</a> 2009-03-18 01:52:58 <span class="anchor" id="line-73"></span></p></li><li>dbreadconfig.py failed on my Ubuntu 8.04 - I just had to apt-get install gcc and libc6-dev. -- Mario <span class="anchor" id="line-74"></span></li><li>Also, separately, please put each import statement on a different line so that debugging can  go much faster, among other reasons (PEP 8).  -- jperla <span class="anchor" id="line-75"></span></li><li>If dropboxd just exits without any reason, check that you allow enough size for data seg, stack, virtual memory (ulimit -a). -- tomle <span class="anchor" id="line-76"></span></li><li>Sometimes you need to use python2.6 instead of just python <span class="anchor" id="line-77"></span><span class="anchor" id="line-78"></span><span class="anchor" id="line-79"></span><pre>python2.6 ~/bin/dropbox.py help</pre><span class="anchor" id="line-80"></span></li><li><p class="line862">dropbox can also be set up on a shared hosting account, the only difference with this here <a href="http://wiki.dropbox.com/TipsAndTricks/Dropboxwithdaemontools">TipsAndTricks/Dropboxwithdaemontools</a> is that rather than creating a new user one has to follow the instruction with the same user available for the hosting account. - luisc <span class="anchor" id="line-81"></span><span class="anchor" id="line-82"></span></p></li></ul><p class="line867">
+</p><h2 id="Post-installation">Post-installation</h2>
+<span class="anchor" id="line-83"></span><p class="line862">Following on from that, there are a few different options to run the Dropbox client on an ongoing basis. You could put the above line in your server startup scripts, e.g.<tt>/etc/rc.local</tt>, or maybe just a certain user's login scripts. <span class="anchor" id="line-84"></span><span class="anchor" id="line-85"></span></p><p class="line862">It is recommended to download the <a class="http" href="http://www.dropbox.com/download?dl=packages/dropbox.py">official Dropbox CLI</a> to start the dropbox daemon (as an unprivileged user) and get its status. <span class="anchor" id="line-86"></span><span class="anchor" id="line-87"></span></p><p class="line867"><span class="anchor" id="line-88"></span><span class="anchor" id="line-89"></span><span class="anchor" id="line-90"></span><span class="anchor" id="line-91"></span><span class="anchor" id="line-92"></span></p><pre>$ mkdir -p ~/bin
+$ wget -O ~/bin/dropbox.py "http://www.dropbox.com/download?dl=packages/dropbox.py"
+$ chmod 755 ~/bin/dropbox.py
+$ ~/bin/dropbox.py help</pre><span class="anchor" id="line-93"></span><p class="line874">In case you are using Debian and get the following error (after trying to run the Dropbox CLI): <span class="anchor" id="line-94"></span><span class="anchor" id="line-95"></span></p><p class="line867"><span class="anchor" id="line-96"></span><span class="anchor" id="line-97"></span><span class="anchor" id="line-98"></span><span class="anchor" id="line-99"></span><span class="anchor" id="line-100"></span><span class="anchor" id="line-101"></span></p><pre>$ ~/bin/dropbox.py help
+  File "/home/username/bin/dropbox.py", line 91
+    with open(pidfile, "r") as f:
+            ^
+SyntaxError: invalid syntax</pre><span class="anchor" id="line-102"></span><p class="line874">update to Python 2.6 and it will go away.  Or better try python2.6 rather than your plain command python as you may already have it installed. <span class="anchor" id="line-103"></span><span class="anchor" id="line-104"></span></p><p class="line867">
+</p><h2 id="Changingthedropboxfolderlocation">Changing the dropbox folder location</h2>
+<span class="anchor" id="line-105"></span><p class="line874">To move an existing dropbox folder to /foo/bar: <span class="anchor" id="line-106"></span><span class="anchor" id="line-107"></span></p><p class="line867"><span class="anchor" id="line-108"></span><span class="anchor" id="line-109"></span><span class="anchor" id="line-110"></span><span class="anchor" id="line-111"></span><span class="anchor" id="line-112"></span><span class="anchor" id="line-113"></span><span class="anchor" id="line-114"></span><span class="anchor" id="line-115"></span></p><pre>$ dropbox stop
+$ cp ~/.dropbox/dropbox.db dropbox.db.backup
+$ wget http://dl.dropbox.com/u/119154/permalink/dropboxdir.py
+$ chmod +x dropboxdir.py
+$ mv ~/Dropbox /foo/bar
+$ ./dropboxdir --setfolder=/foo/bar
+$ dropbox start</pre><span class="anchor" id="line-116"></span><p class="line862">(Do <em>not</em> just create a new empty directory and setfolder to it - when you restart dropbox, it will think you've deleted all your files, and delete them from everywhere else too.) <span class="anchor" id="line-117"></span><span class="anchor" id="line-118"></span></p><p class="line874">(The script dropboxdir.py must be located in parent directory to ~/.dropbox-dist/ ) <span class="anchor" id="line-119"></span><span class="anchor" id="line-120"></span></p><p class="line862">Note that the script above currently only works for Dropbox 0.7.x and <strong>not</strong> 1.0.x - for Dropbox 1.0 you can use <a href="http://wiki.dropbox.com/DropboxAddons/MoveDropbox">this PHP</a> script or <a class="http" href="http://forums.dropbox.com/topic.php?id=9665&amp;page=4&amp;replies=119#post-182626">this Python</a> script. <span class="anchor" id="line-121"></span><span class="anchor" id="line-122"></span></p><p class="line867">
+</p><h2 id="SuppressLANSyncbroadcasts">Suppress LAN Sync broadcasts</h2>
+<span class="anchor" id="line-123"></span><p class="line862">To stop dropbox from sending LAN Sync broadcasts every 30 seconds over port 17500 (<a class="http" href="http://forums.dropbox.com/topic.php?id=16253">http://forums.dropbox.com/topic.php?id=16253</a>) see <a href="http://wiki.dropbox.com/DropboxAddons/DisableLanSync">DropboxAddons/DisableLanSync</a> <span class="anchor" id="line-124"></span><span class="anchor" id="line-125"></span></p><p class="line867">
+</p><h2 id="Unlink.2BAC8Relinkdropboxaccount">Unlink / Relink dropbox account</h2>
+<span class="anchor" id="line-126"></span><p class="line874">You shouldn't need to do this, but occasionally it can fix "odd quirks", so is often recommended as a troubleshooting tip on the forums. <span class="anchor" id="line-127"></span><span class="anchor" id="line-128"></span></p><p class="line874">To unlink: <span class="anchor" id="line-129"></span><span class="anchor" id="line-130"></span></p><p class="line867"><span class="anchor" id="line-131"></span><span class="anchor" id="line-132"></span><span class="anchor" id="line-133"></span></p><pre>dropbox stop
+mv ~/.dropbox ~/.dropbox.old</pre><span class="anchor" id="line-134"></span><ul><li style="list-style-type: none;">To relink: <span class="anchor" id="line-135"></span><span class="anchor" id="line-136"></span></li></ul><p class="line867"><span class="anchor" id="line-137"></span><span class="anchor" id="line-138"></span></p><pre>dropbox start</pre><span class="anchor" id="line-139"></span><p class="line867">
+</p><h2 id="Runningonsystemstartup">Running on system startup</h2>
+<span class="anchor" id="line-140"></span><p class="line862">You can also use an <tt>init.d</tt> or <tt>event.d</tt> script to automatically run dropboxd. <span class="anchor" id="line-141"></span></p><div><table><tbody><tr>  <td><p class="line862"> </p></td>
+  <td><p class="line862"> <strong>Debian/Ubuntu</strong> </p></td>
+  <td><p class="line862"> <strong>Fedora/Redhat</strong> </p></td>
+  <td><p class="line862"> <strong>Gentoo</strong> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-142"></span><p class="line862"> <strong>init.d scripts</strong> </p></td>
+  <td><p class="line862"> <a href="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall/UbuntuStartup">/UbuntuStartup</a> </p></td>
+  <td><p class="line862"> <a href="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall/FedoraStartup">/FedoraStartup</a> </p></td>
+  <td><p class="line862"> <a href="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall/GentooStartup">/GentooStartup</a> </p></td>
+</tr>
+<tr>  <td><span class="anchor" id="line-143"></span><p class="line862"> <strong>invocation</strong> </p></td>
+  <td><p class="line862"> <tt class="backtick">/etc/init.d/dropbox</tt> </p></td>
+  <td><p class="line862"> <tt class="backtick">service&nbsp;dropbox</tt> </p></td>
+  <td><p class="line862"> <tt class="backtick">/etc/init.d/dropbox</tt> </p></td>
+</tr>
+</tbody></table></div><span class="anchor" id="line-144"></span><span class="anchor" id="line-145"></span><span class="anchor" id="line-146"></span><span class="anchor" id="line-147"></span><span class="anchor" id="line-148"></span><p class="line867"><tt class="backtick">/etc/init.d/dropbox</tt> and <tt class="backtick">service&nbsp;dropbox</tt> can be called with <tt class="backtick">start</tt>, <tt class="backtick">stop</tt>, <tt class="backtick">restart</tt> and <tt class="backtick">status</tt>. <span class="anchor" id="line-149"></span><span class="anchor" id="line-150"></span></p><p class="line862">Check below for further instructions once you have downloaded the <tt class="backtick">init.d</tt> script for your platform. <span class="anchor" id="line-151"></span><span class="anchor" id="line-152"></span></p><p class="line867">
+</p><h3 id="Debian.2BAC8-Ubuntu">Debian/Ubuntu</h3>
+<span class="anchor" id="line-153"></span><p class="line867"><a href="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall/UbuntuStartup">Click here</a> for a sample <tt class="backtick">init.d</tt> script for Debian/Ubuntu and the <tt class="backtick">event.d</tt> sample. <span class="anchor" id="line-154"></span><span class="anchor" id="line-155"></span></p><p class="line867"><span class="anchor" id="line-156"></span><span class="anchor" id="line-157"></span><span class="anchor" id="line-158"></span></p><pre>$ chmod +x /etc/init.d/dropbox
+$ update-rc.d dropbox defaults</pre><span class="anchor" id="line-159"></span><p class="line867">
+</p><h4 id="usingupstart">using upstart</h4>
+<span class="anchor" id="line-160"></span><p class="line862">If you want to use the newer upstart init present on Ubuntu installations and are running dropboxd under a sandbox user (say, <tt>dropbox</tt>), you can place the following script into <tt>/etc/event.d</tt>, naming it <tt>dropbox</tt> <span class="anchor" id="line-161"></span><span class="anchor" id="line-162"></span></p><p class="line867"><span class="anchor" id="line-163"></span><span class="anchor" id="line-164"></span><span class="anchor" id="line-165"></span><span class="anchor" id="line-166"></span><span class="anchor" id="line-167"></span><span class="anchor" id="line-168"></span><span class="anchor" id="line-169"></span><span class="anchor" id="line-170"></span><span class="anchor" id="line-171"></span><span class="anchor" id="line-172"></span><span class="anchor" id="line-173"></span><span class="anchor" id="line-174"></span><span class="anchor" id="line-175"></span><span class="anchor" id="line-176"></span></p><pre>start on runlevel 2
+start on runlevel 3
+start on runlevel 4
+start on runlevel 5
+stop on shutdown
+respawn
+
+script
+  # Without next line DB does not sync non ASCII characters (ubuntu 10.04-x86_64, db 0.7.110)
+  export LANG=en_US.UTF-8
+  cd /home/dropbox
+  exec sudo -H -u dropbox ./.dropbox-dist/dropbox
+end script</pre><span class="anchor" id="line-177"></span><p class="line862">After creating the file, run <tt>initctl&nbsp;start&nbsp;dropbox</tt> and you're set!  Alternatively, if only one user of the system is running Dropbox, you can run the script as that user, replacing <tt>/home/dropbox</tt> with <tt>/home/USERNAME</tt> and <tt>sudo&nbsp;-H&nbsp;-u&nbsp;dropbox</tt> with <tt>sudo&nbsp;-H&nbsp;-u&nbsp;USERNAME</tt> <span class="anchor" id="line-178"></span><span class="anchor" id="line-179"></span></p><p class="line862">If gives the error about the job not existing, although this time it says <tt>Unknown&nbsp;job:&nbsp;dropbox</tt> <span class="anchor" id="line-180"></span><span class="anchor" id="line-181"></span></p><p class="line862">Put the content of the script on: <tt>/etc/init/dropbox.conf</tt> <span class="anchor" id="line-182"></span><span class="anchor" id="line-183"></span></p><p class="line874">(The latter version is for Ubuntu 10.4 and, presumably, later versions.) <span class="anchor" id="line-184"></span><span class="anchor" id="line-185"></span></p><p class="line867">
+</p><h3 id="Fedora.2BAC8-Redhat">Fedora/Red hat</h3>
+<span class="anchor" id="line-186"></span><p class="line867"><a href="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall/FedoraStartup">Click here</a> for the Fedora/RedHat <tt class="backtick">init.d</tt> script.  Save it to <tt class="backtick">/etc/init.d/dropbox</tt>. <span class="anchor" id="line-187"></span><span class="anchor" id="line-188"></span></p><p class="line874">Add the file /etc/sysconfig/dropbox with one line setting the variable DROPBOX_USERS to include all users that want to run dropboxd in quotes and separated by spaces. <span class="anchor" id="line-189"></span><span class="anchor" id="line-190"></span></p><p class="line867"><span class="anchor" id="line-191"></span><span class="anchor" id="line-192"></span><span class="anchor" id="line-193"></span></p><pre>$ cat /etc/sysconfig/dropbox
+DROPBOX_USERS="user1 user2"</pre><span class="anchor" id="line-194"></span><p class="line874">Fix file permissions: <span class="anchor" id="line-195"></span><span class="anchor" id="line-196"></span></p><p class="line867"><span class="anchor" id="line-197"></span><span class="anchor" id="line-198"></span><span class="anchor" id="line-199"></span><span class="anchor" id="line-200"></span></p><pre>$ /bin/chmod 0755 /etc/init.d/dropbox
+$ /bin/chmod 0644 /etc/sysconfig/dropbox
+$ /bin/ls -l /etc/init.d/dropbox /etc/sysconfig/dropbox</pre><span class="anchor" id="line-201"></span><p class="line874">Fix SELinux permissions: <span class="anchor" id="line-202"></span><span class="anchor" id="line-203"></span></p><p class="line867"><span class="anchor" id="line-204"></span><span class="anchor" id="line-205"></span><span class="anchor" id="line-206"></span><span class="anchor" id="line-207"></span></p><pre>$ /usr/bin/chcon -u system_u -t initrc_exec_t /etc/init.d/dropbox
+$ /usr/bin/chcon -u system_u -t etc_t /etc/sysconfig/dropbox
+$ /bin/ls -lZ /etc/init.d/dropbox /etc/sysconfig/dropbox</pre><span class="anchor" id="line-208"></span><p class="line874">For Fedora/RedHat run: <span class="anchor" id="line-209"></span><span class="anchor" id="line-210"></span></p><p class="line867"><span class="anchor" id="line-211"></span><span class="anchor" id="line-212"></span></p><pre>$ chkconfig dropbox on</pre><span class="anchor" id="line-213"></span><p class="line874">Verify it worked.  You should see dropbox in the list. <span class="anchor" id="line-214"></span><span class="anchor" id="line-215"></span></p><p class="line867"><span class="anchor" id="line-216"></span><span class="anchor" id="line-217"></span></p><pre>$ chkconfig --list | egrep '3:on|5:on' | less</pre><span class="anchor" id="line-218"></span><p class="line867">
+</p><h3 id="Gentoo">Gentoo</h3>
+<span class="anchor" id="line-219"></span><p class="line867"><a href="http://wiki.dropbox.com/TipsAndTricks/TextBasedLinuxInstall/GentooStartup">Click here</a> for the Gentoo <tt class="backtick">init.d</tt> scripts. <span class="anchor" id="line-220"></span><span class="anchor" id="line-221"></span></p><p class="line867"><span class="anchor" id="line-222"></span><span class="anchor" id="line-223"></span></p><pre>rc-update add dropbox default</pre><span class="anchor" id="line-224"></span><span class="anchor" id="bottom"></span></div><p id="pageinfo" class="info" dir="ltr" lang="zh">TipsAndTricks/TextBasedLinuxInstall  (2010-12-29 03:50:49由<span title="AndrewS1"><a href="http://wiki.dropbox.com/AndrewS1" title="AndrewS1">AndrewS1</a></span>编辑)</p>
+
+<div id="pagebottom"></div>
+</div>
+
+</div>
+
+<div id="footer">
+<ul id="credits">
+<li><a href="http://moinmo.in/" title="This site uses the MoinMoin Wiki software.">MoinMoin Powered</a></li><li><a href="http://moinmo.in/Python" title="MoinMoin is written in Python.">Python Powered</a></li><li><a href="http://moinmo.in/GPL" title="MoinMoin is GPL licensed.">GPL licensed</a></li><li><a href="http://validator.w3.org/check?uri=referer" title="Click here to validate this page.">Valid HTML 4.01</a></li>
+</ul>
+
+
+</div>
+<div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; opacity: 0.9;"></div></body>
+</html>

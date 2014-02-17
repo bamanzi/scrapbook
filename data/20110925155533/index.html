@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="description" content="Tips on using emacs effectively, long term.">
+<meta name="keywords" content="emacs, emacs productivity">
+
+<title>Tips on Long Term Emacs Productivity</title>
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div class="hdζ"><span class="σ">∑</span> <a href="http://xahlee.org/index.html">Home</a> ◇ <a href="http://xahlee.org/Periodic_dosage_dir/cmaci_girzu.html">Math</a> ◇ <a href="http://xahlee.org/Periodic_dosage_dir/skami_prosa.html">Computing</a> ◇ <a href="http://xahlee.org/arts/index.html">Arts</a> ◇ <a href="http://xahlee.org/PageTwo_dir/Vocabulary_dir/vocabulary.html">Words</a> ◇ <a href="http://xahlee.org/Periodic_dosage_dir/t2/mirrored.html">Literature</a> ◇ <a href="http://xahlee.org/music/index.html">Music</a> ◆ <a href="http://twitter.com/xah_lee" target="_top"><img src="favicon.ico" alt="twitter"></a> <a href="http://www.facebook.com/xahlee" target="_top"><img src="fb3.png" alt="facebook"></a> <a href="http://gplus.to/xah" target="_top"><img src="gp.png" alt="g+"></a> <a href="http://xahlee.blogspot.com/feeds/posts/default" target="_top"><img src="wf.png" alt="webfeed"></a></div>
+
+<div id="cse" style="width: 100%;"><div dir="ltr" class="gsc-control-cse gsc-control-cse-en"><form action="http://xahlee.org/emacs/effective_emacs.html" accept-charset="utf-8" class="gsc-search-box"><table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-input"><input value="" style="background: url('google_custom_search_watermark.gif') no-repeat scroll left center rgb(255, 255, 255);" title="search" name="search" class=" gsc-input" size="10" autocomplete="off" type="text"></td><td class="gsc-search-button"><input title="search" class="gsc-search-button" value="Search" type="submit"></td><td class="gsc-clear-button"><div title="clear results" class="gsc-clear-button">&nbsp;</div></td></tr></tbody></table><table class="gsc-branding" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td><td class="gsc-branding-img"><img class="gsc-branding-img" src="small-logo.png"></td></tr></tbody></table></form><div class="gsc-tabsAreaInvisible"><div class="gsc-tabHeader gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div><div class="gsc-tabsAreaInvisible"></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><table class="gsc-resultsHeader" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-twiddleRegionCell"><div class="gsc-twiddle"><div class="gsc-title">Web</div></div><div class="gsc-stats"></div><div class="gsc-results-selector gsc-all-results-active"><div title="show one result" class="gsc-result-selector gsc-one-result">&nbsp;</div><div title="show more results" class="gsc-result-selector gsc-more-results">&nbsp;</div><div title="show all results" class="gsc-result-selector gsc-all-results">&nbsp;</div></div></td><td class="gsc-configLabelCell"></td></tr></tbody></table><div class="gsc-results gsc-webResult"></div></div></div><div style="display: none;" id="gsc-loading-id">Loading...</div></div></div></div>
+
+
+
+<div class="chtk"><div id="chitikaAdBeacon-257"></div><div style="position: static;"><iframe id="ch_ad_ctr257" name="ch_ad_ctr257" allowtransparency="allowTransparency" class="chitikaAdBlock" marginheight="0" marginwidth="0" style="border: 0pt none; padding: 0pt; margin: 0pt;" src="index_1.html" frameborder="0" height="90" scrolling="no" width="550"></iframe></div><iframe id="ch_ad257" name="ch_ad257" src="index_2.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>
+
+<div class="nav"><a href="http://xahlee.org/emacs/emacs.html">Emacs Tutorial</a></div><div style="display: table; position: fixed; right: 1ex; top: 25%; margin: 0.5ex;" class="twt"><iframe title="Twitter For Websites: Tweet Button" style="width: 55px; height: 20px;" class="twitter-share-button twitter-count-none" src="index_3.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe></div>
+
+<div style="text-align: center;">If you spend more than 2 hours on the site, please pay USD $6. <a href="http://xahlee.org/thanks.html">Thank you</a> <form action="https://www.paypal.com/cgi-bin/webscr" method="post"><div><input name="cmd" value="_s-xclick" type="hidden"><input name="hosted_button_id" value="Y4V2F8TA949M2" type="hidden"><input src="btn_paynowcc_lg.gif" name="submit" alt="PayPal" type="image"><img alt="" src="pixel.gif" height="1" width="1"></div></form></div><h1>Tips on Long Term Emacs Productivity</h1>
+<div class="βds">
+<div class="¤xd"><a href="http://xahlee.org/ads.html">Advertise Here For Profit</a></div>
+</div>
+
+<p>Xah Lee, 2008-05-29, 2010-05-21, 2010-08-28</p>
+
+<p>I have used emacs daily since 1998, on average perhaps 5 hours a day. I also program emacs lisp since 2005. On average, perhaps 10 hours per week, and have created some major modes
+<a href="http://xahlee.org/emacs/xbbcode-mode.html">BBCode</a>,
+<a href="http://xahlee.org/mswin/emacs_autohotkey_mode.html">AutoHotkey</a>,
+<a href="http://xahlee.org/sl/ls-emacs.html">LSL</a>,
+<a href="http://xahlee.org/emacs/xmsi-math-symbols-input.html">Math Symbols Input</a>,
+<a href="http://xahlee.org/emacs/unicode-browser.html">Unicode Browser</a>,
+and a Emacs distribution
+<a href="http://ergoemacs.org/">ErgoEmacs</a>.
+Here are 7 general emacs tips i felt that's the most important in
+emacs productivity.</p>
+
+<h2>Everything is a Command</h2>
+
+<p>In emacs, every keystroke is bound to a command (practically speaking). For
+example, when you type a key “e”, emacs actually runs the command
+self-insert-command. Any key or key combination or key sequence you press is
+bound to a command. There are about 3000 commands in emacs out of the box (not
+counting proper elisp functions). Most commonly used commands have a keyboard
+shortcut. For example, moving the cursor, opening file, copy paste, close a
+file, search text. To execute a command by name, type
+【<kbd>Alt</kbd>+<kbd>x</kbd>】</p>
+
+<p>The following will let you execute any command, or cancel it.</p>
+
+<table class="nrm">
+<tbody><tr><th>Command Name</th><th>Shortcut</th><th>Purpose</th></tr>
+<tr><td>execute-extended-command</td><td>【<kbd>Alt</kbd>+<kbd>x</kbd>】</td><td>Execute a command by name</td></tr>
+<tr><td>keyboard-quit</td><td>【<kbd>Ctrl</kbd>+<kbd>g</kbd>】</td><td>Cancel any key sequence or command in progress</td></tr>
+</tbody></table>
+
+<p>The following will let you find out any command's name of a given shortcut, or a shortcut of a given command name.</p>
+
+<table class="nrm">
+<tbody><tr><th>Command Name</th><th>Shortcut</th><th>Purpose</th></tr>
+<tr><td>describe-key</td><td>【<kbd>Ctrl</kbd>+<kbd>h</kbd>&nbsp;<kbd>k</kbd>】</td><td>Find out what command is assigned a given shortcut (or menu)</td></tr>
+<tr><td>describe-function</td><td>【<kbd>Ctrl</kbd>+<kbd>h</kbd>&nbsp;<kbd>f</kbd>】</td><td>Find out what shortcut(s) is assigned to a given function (and what the function do)</td></tr>
+</tbody></table>
+
+<p>The following will let you find out any commands or shortcuts a mode provides, and any command that you forgot the name.</p>
+
+<table class="nrm">
+<tbody><tr><th>Command Name</th><th>Shortcut</th><th>Purpose</th></tr>
+<tr><td>describe-mode</td><td>【<kbd>Ctrl</kbd>+<kbd>h</kbd>&nbsp;<kbd>m</kbd>】</td><td>Read the inline doc of the current mode. For example, find out what commands it provides.</td></tr>
+<tr><td>apropos-command</td><td>【<kbd>Ctrl</kbd>+<kbd>h</kbd>&nbsp;<kbd>a</kbd>】</td><td>List all commands who's name contains a given string.</td></tr>
+</tbody></table>
+
+<p>Any operation in emacs is ultimately a command, and most frequently used ones have a keyboard shortcut. By mastering the above 6 commands, you will be able to find out any commands or shortcuts, in about any use of emacs.</p>
+
+<h2>Master Window Splitting</h2>
+
+<p>Use “split-window-vertically” extensively, and give it a easy shortcut. For me, i use:</p>
+
+<ul>
+<li>【<kbd>Alt</kbd>+<kbd>4</kbd>】 split to top/bottom</li>
+<li>【<kbd>Alt</kbd>+<kbd>3</kbd>】 unsplit</li>
+<li>【<kbd>Alt</kbd>+<kbd>s</kbd>】 move cursor to the next pane</li>
+</ul>
+
+<p>I chose “s” because i'm using
+<a href="http://xahlee.org/comp/dvorak_keyboard_layout.html">Dvorak Keyboard Layout</a>. Dvorak's “o” is on qwerty's “s”, and is right in the home row.
+For 3 and 4, because they are easiest number keys, together with 8 and 9. But 8 and 9 i already used.</p>
+
+<pre class="elisp"><span class="comment-delimiter">;;; </span><span class="comment">WINDOW SPLITING
+</span>(global-set-key (kbd <span class="string">"M-4"</span>) 'split-window-vertically) <span class="comment-delimiter">; </span><span class="comment">was digit-argument
+</span>(global-set-key (kbd <span class="string">"M-3"</span>) 'delete-other-windows) <span class="comment-delimiter">; </span><span class="comment">was digit-argument
+</span>(global-set-key (kbd <span class="string">"M-s"</span>) 'other-window) <span class="comment-delimiter">; </span><span class="comment">was center-line
+</span></pre>
+
+<p>In emacs, the window is split into panes frequently. It may be split by a shell-command's output, by various text matching commands (e.g.
+<a href="http://xahlee.org/emacs/elisp_list_matching_lines.html">list-matching-lines</a>, grep-find,
+grep, rgrep), by emacs's various diff commands (diff, ediff, diff-backup, …),
+by viewing man page 【<kbd>Alt</kbd>+<kbd>x</kbd> manual-entry】, by
+list-buffers, by viewing inline doc (e.g. describe-function), by calc or
+calendar, or by lisp error messages.
+In emacs-generated panes, usually you can type “q” to close the pane if your
+cursor is there, but not always. And, some of the split panes put your cursor in
+the pane, but not all.</p>
+
+<p>By mastering the above 3 generic window splitting commands, with easy-to-press shortcuts, you'll save a lot time opening or closing split panes.
+Also, by having a easy shortcut, now you can split and unsplit panes whenever you want and frequently. For example, i constantly have one pane showing dired and another pane for a different dir, or file content, or shell.
+A top/bottom split window is extremely useful when coding. (for example, when i need to edit part of a file based on the current location, i often do a split pane first, then use isearch-forward
+ 【<kbd>Ctrl</kbd>+<kbd>s</kbd>】 to the location and edit, while viewing the original position in the other pane.)</p>
+
+<p>Note: the default shortcut to split pane is 【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>2</kbd>】. Expanding the current pane is 【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>1</kbd>】. Switch cursor to the other pane is 【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>o</kbd>】. Splitting side by side is:
+【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>3</kbd>】.</p>
+
+<h2>Master Dired</h2>
+
+<p>In coding, almost every hour you need to look at different files or
+directories, or do copying, deleting, renaming files or
+directories. Emacs provides a file management mode, called
+“dired”. (“dired” is acronym for DIRectory EDit. “Directory Editing”
+is 1980's term for file management.)</p>
+
+<p>Dired is very useful. Once you master it, you will almost never use
+a graphical desktop nor command line OS shell. The only time i need to
+switch to OS's graphical desktop is when dealing with special files
+such as video, sound, images, etc. Emacs dired together with emacs's
+other commands is also more convenient than unix command line
+utilities such as ls, cp, mv, mkdir, rmdir, chmod, chown, cat, less,
+touch, grep, find/xargs, etc. Doing sys admin on Solaris for 4 years, i
+almost always do these operations using dired or emacs's
+equivalent. Also, emacs uses the same interface of dired for
+ftp/sftp. So, for example, you can copy, move, delete, change file
+owner/perm, or edit files on remote servers (may it be Windows, OS X,
+or Linux), using the same dired interface and commands.</p>
+
+<p>To activate dired, just use the same shortcut to open a file 【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>Ctrl</kbd>+<kbd>f</kbd>】, then give a directory path. Once in dired, you can look at the new menu “Operate”, “Mark”, “Regexp”, “Immediate”, “Subdir” to see what you can do. For a tutorial about dired, see <a href="http://xahlee.org/emacs/file_management.html">File Management with Emacs (dired tutorial)</a>.</p>
+
+<p>Also, in combination of dired, you should master the command “shell-command” 【<kbd>Alt</kbd>+<kbd>!</kbd>】 and “shell”. They compliment dired very well.
+(See: <a href="http://xahlee.org/emacs/emacs_unix.html">Emacs Shell Tutorial (bash, cmd.exe, PowerShell)</a>).</p>
+
+<h2>Master Buffer Switching</h2>
+
+<p>In emacs, every file is represented in a “buffer”.
+The term “buffer” means a temp area of storage in computer science.
+From a application user's perspective, it might be better to think of it as “tabbed window” or “workspace”, as these terms are used web browsers or IDEs. It basically means a single window is used to represent several different files or work area, but only one is shown. Emacs's “buffers” feature can be thought of as tabbed window, it's just that it doesn't actually have the tab widgets as visual clue.</p>
+
+<p>A typical emacs user will have tens of buffers in a session.
+Master how to manipulate buffers will benefit you greatly.</p>
+
+<p>Here's the classic commands related to buffers:</p>
+
+<table class="nrm">
+<tbody><tr><th>Command</th><th>Shortcut</th><th>Purpose</th></tr>
+<tr><td>next-buffer</td><td>【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>Ctrl</kbd>+<kbd>→</kbd>】</td><td>switch to next buffer</td></tr>
+<tr><td>previous-buffer</td><td>【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>Ctrl</kbd>+<kbd>←</kbd>】</td><td>switch to previous buffer</td></tr>
+<tr><td>list-buffers</td><td>【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>Ctrl</kbd>+<kbd>b</kbd>】</td><td>show all buffers</td></tr>
+<tr><td>switch-to-buffer</td><td>【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>b</kbd>】</td><td>switch to a specific buffer</td></tr>
+</tbody></table>
+
+<h3>Use ibuffer</h3>
+
+<p>In emacs 22 (released in 2007), there's a new mode called ibuffer. (start it by 【<kbd>Alt</kbd>+<kbd>x</kbd> ibuffer】) “ibuffers” is a major improvement of the classic “Buffer menu” mode, while practically 100% compatible. It includes color-differentiated buffer listing, and few more powerful regex commands that manipulate buffers in batch. I've been using ibuffers since about 2006, and found it completely replace the “Buffer Menu” mode used by list-buffers.</p>
+
+<figure>
+<img src="emacs_ibuffer.png" alt="emacs ibuffer" height="577" width="690">
+<figcaption>A screenshot of ibuffer mode.</figcaption>
+</figure>
+
+<p>You can do operation in batch to the marked ones, such as save all
+unsaved files, close all files of a given dir, close all Java files,
+etc. The concept and keys are very similar to dired. Look at the graphical menu 〖View〗 and 〖Mark〗 for list of commands.</p>
+
+<figure>
+<img src="emacs_ibuffer_mark.png" alt="emacs ibuffer mark" height="363" width="303">
+<figcaption>Emacs's ibuffer mode's “Mark” menu.</figcaption>
+</figure>
+
+<p>Here's the ibuffer commands i use frequently:</p>
+
+<table class="nrm">
+<tbody><tr><th>Shortcut</th><th>Purpose</th></tr>
+<tr><td>m</td><td>Mark</td></tr>
+<tr><td>u</td><td>Unmark</td></tr>
+<tr><td>*u</td><td>Mark unsaved</td></tr>
+<tr><td>S</td><td>Save marked buffer</td></tr>
+<tr><td>D</td><td>Close marked buffers</td></tr>
+</tbody></table>
+
+<p>In ibuffer, the key sequence 【<kbd>*</kbd>&nbsp;<kbd>u</kbd>&nbsp;<kbd>S</kbd>&nbsp;<kbd>D</kbd>】 will save all unsaved files and close them. This is particularly useful after you've done a find ＆ replace on hundreds of files with “dired-do-query-replace-regexp”.
+(See: <a href="http://xahlee.org/emacs/find_replace_inter.html">Interactively Find ＆ Replace String Patterns on Multiple Files</a>.)</p>
+
+<p>Because ibuffer completely replaces the functionality of list-buffers command,
+you can alias the command name list-buffers to ibuffer. Like this:</p>
+
+<pre class="elisp">(<span class="keyword">defalias</span> '<span class="function-name">list-buffers</span> 'ibuffer)
+</pre>
+
+<p>Emacs often generates a lot internal buffers that users are not interested in cycling thru. For example: *scratch*, *Messages*, *shell*, *Shell Command Output*, *Occur*, *Completions*, *Apropos*, *info*, etc. You might define your own next-user-buffer that skips emacs's buffers, and you might define next-emacs-buffer that cycles thru just the emacs's buffers.
+You can find the elisp code at
+<a href="http://code.google.com/p/ergoemacs/source/browse/trunk/ergoemacs/ergoemacs-keybindings/functions.el">code.google.com ergoemacs</a>, look for the functions
+next-user-buffer and previous-user-buffer.
+(if you are already using <a href="http://xahlee.org/emacs/ergonomic_emacs_keybinding.html">ErgoEmacs Keybindings</a>, the functions are already there. The shortcuts are 【<kbd>Ctrl</kbd>+<kbd>PageUp</kbd>】 and 【<kbd>Ctrl</kbd>+<kbd>PageDown</kbd>】.)</p>
+
+<p>Also, the default shortcut for next-buffer 【<kbd>Ctrl</kbd>+<kbd>x</kbd>&nbsp;<kbd>Ctrl</kbd>+<kbd>→</kbd>】 has too many keystrokes, you can define a single-hotkey for it. Here's a example code:</p>
+
+<pre class="elisp"><span class="comment-delimiter">;; </span><span class="comment">sample easy shortcuts
+</span>
+(global-set-key (kbd <span class="string">"&lt;f5&gt;"</span>) 'find-file) <span class="comment-delimiter">; </span><span class="comment">Open file or dir
+</span>(global-set-key (kbd <span class="string">"&lt;f6&gt;"</span>) 'ibuffer) <span class="comment-delimiter">; </span><span class="comment">list buffers
+</span>
+(global-set-key (kbd <span class="string">"&lt;f7&gt;"</span>) 'previous-user-buffer)
+(global-set-key (kbd <span class="string">"&lt;f8&gt;"</span>) 'next-user-buffer)
+(global-set-key (kbd <span class="string">"S-&lt;f7&gt;"</span>) 'previous-emacs-buffer) <span class="comment-delimiter">; </span><span class="comment">Shift+f7
+</span>(global-set-key (kbd <span class="string">"S-&lt;f8&gt;"</span>) 'next-emacs-buffer) <span class="comment-delimiter">; </span><span class="comment">Shift+f8
+</span>
+(global-set-key (kbd <span class="string">"&lt;f9&gt;"</span>) 'kill-this-buffer) <span class="comment-delimiter">; </span><span class="comment">Close file
+</span></pre>
+
+<p>See: <a href="http://xahlee.org/emacs/keyboard_shortcuts.html">Emacs: How to Define Keyboard Shortcuts</a>.</p>
+
+
+<h2>Remap Most Frequently Used Shortcuts</h2>
+
+<p>The cursor moving commands are
+<a href="http://xahlee.org/emacs/command-frequency.html">statistically the most frequently used shortcuts</a>. You use them every few seconds.</p>
+
+<p>Emacs's default cursor moving shortcuts are 【<kbd>Ctrl</kbd>+<kbd>f</kbd>】, 【<kbd>Ctrl</kbd>+<kbd>b</kbd>】, 【<kbd>Ctrl</kbd>+<kbd>n</kbd>】, 【<kbd>Ctrl</kbd>+<kbd>p</kbd>】. The keys {f, b, n, p} are scattered around the keyboard and are not under the home row. Also, Control key is typed by the weak pinky finger. The Meta key (the Alt under thumb) is much easier to type. So, remap keys so that Alt with a home-row key moves the cursor.</p>
+
+<pre class="elisp"><span class="comment-delimiter">;; </span><span class="comment">make cursor movement keys under right hand's home-row.
+</span>(global-set-key (kbd <span class="string">"M-j"</span>) 'backward-char) <span class="comment-delimiter">; </span><span class="comment">was indent-new-comment-line
+</span>(global-set-key (kbd <span class="string">"M-l"</span>) 'forward-char)  <span class="comment-delimiter">; </span><span class="comment">was downcase-word
+</span>(global-set-key (kbd <span class="string">"M-i"</span>) 'previous-line) <span class="comment-delimiter">; </span><span class="comment">was tab-to-tab-stop
+</span>(global-set-key (kbd <span class="string">"M-k"</span>) 'next-line) <span class="comment-delimiter">; </span><span class="comment">was kill-sentence
+</span>
+(global-set-key (kbd <span class="string">"M-SPC"</span>) 'set-mark-command) <span class="comment-delimiter">; </span><span class="comment">was just-one-space
+</span>(global-set-key (kbd <span class="string">"M-a"</span>) execute-extended-command) <span class="comment-delimiter">; </span><span class="comment">was backward-sentence
+</span></pre>
+
+<p>For more extensive remapping, see: <a href="http://xahlee.org/emacs/ergonomic_emacs_keybinding.html">ErgoEmacs Keybinding</a>.</p>
+
+<h2>Master Find ＆ Replace and Emacs Regex</h2>
+
+<p>Searching text and find ＆ replace text is tremendously useful. I use it many times every hour. The following are the most useful search or find-replace commands:</p>
+
+<table class="nrm">
+<tbody><tr><th>Command Name</th><th>Shortcut</th><th>Target</th><th>Description</th></tr>
+<tr><td>isearch-forward</td><td>【<kbd>Ctrl</kbd>+<kbd>s</kbd>】</td><td>cursor point to end (cycles back to file beginning)</td><td>interactive search</td></tr>
+<tr><td>query-replace</td><td>【<kbd>Alt</kbd>+<kbd>%</kbd>】</td><td>region, or cursor point to end</td><td>interactive find ＆ replace</td></tr>
+<tr><td>query-replace-regexp</td><td>【<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>%</kbd>】</td><td>region, or cusor point to end</td><td>interactive find ＆ replace with regex pattern</td></tr>
+<tr><td>dired-do-query-replace-regexp</td><td>In dired, <kbd>Q</kbd></td><td>multiple files</td><td>interactive find ＆ replace with regex pattern on multiple files</td></tr>
+</tbody></table>
+
+<p>For detail about using these commands, in particular, how to control whether the search is case-sensitive, or whether the replacement is case-sensitive, see:
+<a href="http://xahlee.org/emacs/emacs_find_replace.html">Find ＆ Replace with Emacs</a>.</p>
+
+<p>
+Many emacs find-replace commands uses a regex. Emacs has many other commands that uses regex. For example, list-matching-lines, delete-matching-lines, highlight-regexp, grep, find-dired, dired-do-query-replace-regexp, dired-do-rename-regexp, apropos-command. Mastering emacs regex will be a good investment. Also, you should know how to enter TAB or Return character when using emacs regex interactively. (“\t” or “\n” does not work.) For a short tutorial on most important tips of emacs's regex, see: <a href="http://xahlee.org/emacs/emacs_regex.html">Text Pattern Matching in Emacs</a>.</p>
+
+<h2>Get A Good Keyboard</h2>
+
+<p>You switch to different applications all day. Web browsers, emacs, terminal, Desktop, music player, image editor, … etc. Their usage and interface changes, but there is one thing that does not change: Your keyboard.</p>
+
+<p>Your keyboard is a intimate item. You touch it every minute. Emacs in particular, use modifier keys extensively. This may sound silly, but a good keyboard is one of the most important thing in productivity with emacs.</p>
+
+<p>A good keyboard for emacs, should be one with large Alt and Control keys, and they should be available on both sides (one set for each hand, just like Shift key), and the right side's set should be positioned symmetrically. The distance from F to left Alt, and distance from J to the right Alt, should be the same.</p>
+
+<figure>
+<p><span class="b3">BAD</span></p>
+<img src="m3261_apple_keyboard-s.jpg" alt="Apple keyboard" title="the Apple keyboard as of 2006." height="297" width="988">
+<figcaption>The Apple keyboard as of 2006. Note the ridiculous distance of the right side's modifier keys. It is not possible, to comfortably use the right thumb to hold the right Alt key while the index finger remains on the J.
+</figcaption>
+</figure>
+
+
+<figure>
+<p><span class="b3">GOOD</span></p>
+<img src="ms_n4000_keyboard.jpg" alt="Microsoft Natural Ergonomic Keyboard 4000" height="433" width="783">
+<figcaption>
+<a href="http://xahlee.org/emacs/ms_keyboard/ms_natural_keyboard_4000.html">Microsoft Keyboard 4000</a>.
+The keys are split and oriented for each hand. And, the Ctrl, Alt are very
+large and symmetrically positioned with respect to each hand's thumb.</figcaption>
+</figure>
+
+<p>Doesn't matter whether you like ergonomic keyboards, you should take a closer look at your keyboard, and see if it works with emacs well. Also, it's good to develop good habits when pressing the Control key. You should avoid pressing it with pinky, and should learn using alternate hand for Control-key combination, like you would with Shift key. For detail, see: <a href="http://xahlee.org/emacs/emacs_pinky.html">How To Avoid The Emacs Pinky Problem</a>.</p>
+
+<p>PS This article is inspired by Stevey Yegge's blog article:
+<cite>Effective Emacs</cite> (2006) @ <a class="sorc" href="http://sites.google.com/site/steveyegge2/effective-emacs" title="accessed:2010-01-20">sites.google.com</a>. I like to thank Steve for his article. There are a few of his tips i disagree strongly, see: <a href="http://xahlee.org/emacs/yegge_effective_emacs.html">Stevey Yegge's Effective Emacs</a>.</p>
+
+
+<div id="disqus_thread"><div style="display: none;" id="dsq-content-stub">There was a problem loading Disqus. For more information, please visit <a href="http://status.disqus.com/">status.disqus.com</a>.</div><div class="clearfix" style="display: block;" id="dsq-content">      <div id="dsq-global-toolbar" class="dsq-clearfix">        <ul class="dsq-global-toolbar-right dsq-clearfix">                            <li class="dsq-community-box">                <a href="http://xahlee.org/emacs/community.show" class="dsq-toolbar-item dsq-tt" title="Expand Community Box"><span class="dsq-toolbar-icon"></span></a>            </li>                            <li class="dsq-global-toolbar-dropdown-container">                    <div id="dsq-toolbar-dropdown">    <a href="#" onclick="return false" class="dsq-toolbar-logo dsq-toolbar-item dsq-clearfix"><span class="dsq-toolbar-icon">Disqus</span></a>    <div id="dsq-toolbar-dropdown-wrap" style="display: none;">      <ul class="dsq-clearfix">                    <li class="dsq-login-link"><a href="http://xahlee.org/emacs/auth.login"><span class="dsq-toolbar-icon"></span><span class="dsq-toolbar-label">Login</span></a></li>                    <li class="dsq-about-link"><a href="http://disqus.com/" target="_top"><span class="dsq-toolbar-icon"></span><span class="dsq-toolbar-label">About Disqus</span></a></li>      </ul>    </div>  </div>            </li>        </ul>            </div>    <div id="dsq-like-tooltip">      <div id="dsq-share-step-1" class="dsq-share-step">        <h3>Glad you liked it. Would you like to share?</h3>        <p class="dsq-tooltip-checkbox"><input id="dsq-share-thread-facebook" value="Facebook" type="checkbox"><label for="dsq-share-thread-facebook"><span class="dsq-facebook">Facebook</span></label></p>        <p class="dsq-tooltip-checkbox"><input id="dsq-share-thread-twitter" value="Twitter" type="checkbox"><label for="dsq-share-thread-twitter"><span class="dsq-twitter">Twitter</span></label></p>        <ul id="dsq-tooltip-actions">                        <li><a href="http://xahlee.org/emacs/thread.share" class="dsq-primary-action">Share</a></li>                    <li><a href="http://xahlee.org/emacs/thread.share.cancel" class="dsq-secondary-action">No thanks</a></li>        </ul>      </div>      <div id="dsq-share-step-2" class="dsq-share-step" style="display: none ! important;">        <p>Sharing this page …</p>      </div>      <div id="dsq-share-step-3" class="dsq-share-step" style="display: none ! important;">        <p>Thanks! <a href="http://xahlee.org/emacs/thread.share.cancel" class="dsq-tooltip-decline">Close</a></p>      </div>    </div>                    <div id="dsq-new-post" class="dsq-post-area dsq-unauthenticated">          <h3>Add New Comment</h3>      <div style="clear: both;"></div>              <div id="dsq-form-area">      <div class="dsq-textarea">        <div style="height: auto;" class="dsq-textarea-wrapper" id="dsq-textarea-wrapper">            <!-- filled dynamically -->        <iframe style="position: relative; top: 0px; height: 58px;" src="index_4.html" id="easyXDM_DISQUS_net_default9398_provider" name="easyXDM_DISQUS_net_default9398_provider" frameborder="0" scrolling="no"></iframe></div>      </div>              <div id="dsq-media-preview" class="dsq-media-preview" style="display: none;">        </div>                  <div class="dsq-post-footer">              <div class="dsq-attach-media">            <div class="dsq-attach-media-container">                <span>Image</span>                <!-- filled dynamically -->            <iframe src="index_5.html" id="easyXDM_DISQUS_net_default9399_provider" name="easyXDM_DISQUS_net_default9399_provider" frameborder="0" scrolling="no"></iframe></div>        </div>                                    <button type="button" class="dsq-button" id="dsq-post-button" onclick="DISQUS.dtpl.actions.fire('comments.validate', null);">            <span>              Post as …            </span>          </button>                      </div>      <div style="clear: both;"></div>    </div>  </div>              <div id="dsq-comments-title">    <h3>                        Showing <span id="dsq-num-posts">4</span> comments                  </h3>  </div>  <div class="dsq-options">      <span class="dsq-item-sort">    Sort by    <select id="dsq-sort-select" onchange="DISQUS.dtpl.actions.fire('thread.sort', this.value);">            <option value="hot" selected="selected">Popular now</option>            <option value="best">Best rating</option>            <option value="newest">Newest first</option>            <option value="oldest">Oldest first</option>          </select>  </span>      <span class="dsq-subscribe-email">    <img src="email.png" alt="">&nbsp;    <span id="dsq-subscribe">            <a href="http://xahlee.org/emacs/thread.subscribe">Subscribe by email</a>          </span>    <span class="dsq-subscribe-rss">      <img src="bullet-feed.png" alt="">&nbsp;      <a href="http://xahlee.disqus.com/tips_on_long_term_emacs_productivity/latest.rss">Subscribe by RSS</a>    </span>  </span>  </div>                  <ul id="dsq-comments">            <div id="comment-95757445"></div><li id="dsq-comment-95757445" style="margin-left: 0px;" class="dsq-comment     dsq-even ">  <!-- placeholder for collapsed comment block (inserted dynamically later) -->  <div id="dsq-collapsed-comment-95757445" class="dsq-collapsed-comment"></div>  <div class="dsq-full-comment"> <!-- wraps header, body, footer -->    <div id="dsq-comment-header-95757445" class="dsq-comment-header">      <table>        <tbody><tr>          <td id="dsq-header-avatar-95757445" class="dsq-header-avatar">            <a id="dsq-avatar-95757445" class="dsq-avatar dsq-tt" title="Expand Markovojvodic's profile" href="http://disqus.com/guest/bda8185542946edac7ff0d0609f4575a/" onclick="return DISQUS.dtpl.actions.fire('profile.show', 95757445, null);">                            <img src="noavatar32.png" class="dsq-deferred-avatar" data-src="http://mediacdn.disqus.com/1316728242/images/noavatar32.png" alt="" height="32" width="32">                          </a>          </td>          <td class="dsq-comment-header-meta">            <div class="dsq-comment-header-meta-wrapper">              <cite id="dsq-cite-95757445" class="dsq-comment-cite">                                <span id="dsq-author-user-95757445">Markovojvodic</span>                                <img src="moderator.png" class="dsq-moderator-star" title="Moderator" height="14" width="15">                              </cite>              <span class="dsq-comment-header-time">                <a href="http://xahlee.org/emacs/comments.permalink" title="Link to comment by Markovojvodic">10 months ago</a>              </span>              <a class="dsq-comment-hide-thread" href="http://xahlee.org/emacs/comments.collapse" title="Collapse thread"></a>            </div>          </td>        </tr>      </tbody></table>    </div>    <div id="dsq-comment-body-95757445" class="dsq-comment-body">        <div class="dsq-comment-message" id="dsq-comment-message-95757445">                <div class="dsq-comment-text" id="dsq-comment-text-95757445">        Nice tutorial btw.      </div>                        </div>          </div>    <div class="dsq-comment-footer" id="dsq-comment-footer-95757445">      <div class="dsq-comment-footer-left">                    <a href="http://xahlee.org/emacs/comments.report" id="dsq-post-report-95757445" class="dsq-post-report">Flag</a>              </div>            <div class="dsq-comment-footer-right">                <span class="dsq-comment-buttons">                    <span id="dsq-like-95757445" class="dsq-like">            <button type="button" class="dsq-button-small " data-vote="0" onclick="DISQUS.dtpl.actions.fire('comments.like', this, 95757445);">                        Like            </button>          </span>                                        <span class="dsq-comment-footer-reply" id="dsq-comment-footer-reply-95757445" onclick="DISQUS.dtpl.actions.fire('comments.reply', 95757445, this);">            <button type="button" class="dsq-button-small">Reply</button>            <button type="button" class="dsq-comment-footer-reply-tab">Reply</button>            <span></span>          </span>                  </span>      </div> <!-- /comment-footer-right -->          </div> <!-- /comment-footer -->  </div> <!-- dsq-full-comment --></li><div id="dsq-append-post-95757445"></div>            <div id="comment-95333259"></div><li id="dsq-comment-95333259" style="margin-left: 0px;" class="dsq-comment     dsq-odd dsq-comment-is-parent">  <!-- placeholder for collapsed comment block (inserted dynamically later) -->  <div id="dsq-collapsed-comment-95333259" class="dsq-collapsed-comment"></div>  <div class="dsq-full-comment"> <!-- wraps header, body, footer -->    <div id="dsq-comment-header-95333259" class="dsq-comment-header">      <table>        <tbody><tr>          <td id="dsq-header-avatar-95333259" class="dsq-header-avatar">            <a id="dsq-avatar-95333259" class="dsq-avatar dsq-tt" title="Expand Markovojvodic's profile" href="http://disqus.com/guest/bda8185542946edac7ff0d0609f4575a/" onclick="return DISQUS.dtpl.actions.fire('profile.show', 95333259, null);">                            <img src="noavatar32.png" class="dsq-deferred-avatar" data-src="http://mediacdn.disqus.com/1316728242/images/noavatar32.png" alt="" height="32" width="32">                          </a>          </td>          <td class="dsq-comment-header-meta">            <div class="dsq-comment-header-meta-wrapper">              <cite id="dsq-cite-95333259" class="dsq-comment-cite">                                <span id="dsq-author-user-95333259">Markovojvodic</span>                                <img src="moderator.png" class="dsq-moderator-star" title="Moderator" height="14" width="15">                              </cite>              <span class="dsq-comment-header-time">                <a href="http://xahlee.org/emacs/comments.permalink" title="Link to comment by Markovojvodic">10 months ago</a>              </span>              <a class="dsq-comment-hide-thread" href="http://xahlee.org/emacs/comments.collapse" title="Collapse thread"></a>            </div>          </td>        </tr>      </tbody></table>    </div>    <div id="dsq-comment-body-95333259" class="dsq-comment-body">        <div class="dsq-comment-message" id="dsq-comment-message-95333259">                <div class="dsq-comment-text" id="dsq-comment-text-95333259">        Whats with macros?      </div>                        </div>          </div>    <div class="dsq-comment-footer" id="dsq-comment-footer-95333259">      <div class="dsq-comment-footer-left">                    <a href="http://xahlee.org/emacs/comments.report" id="dsq-post-report-95333259" class="dsq-post-report">Flag</a>              </div>            <div class="dsq-comment-footer-right">                <span class="dsq-comment-buttons">                    <span id="dsq-like-95333259" class="dsq-like">            <button type="button" class="dsq-button-small " data-vote="0" onclick="DISQUS.dtpl.actions.fire('comments.like', this, 95333259);">                        Like            </button>          </span>                                        <span class="dsq-comment-footer-reply" id="dsq-comment-footer-reply-95333259" onclick="DISQUS.dtpl.actions.fire('comments.reply', 95333259, this);">            <button type="button" class="dsq-button-small">Reply</button>            <button type="button" class="dsq-comment-footer-reply-tab">Reply</button>            <span></span>          </span>                  </span>      </div> <!-- /comment-footer-right -->          </div> <!-- /comment-footer -->  </div> <!-- dsq-full-comment --></li><div id="dsq-append-post-95333259"></div>            <div id="comment-95457974"></div><li id="dsq-comment-95457974" style="margin-left: 30px;" class="dsq-comment  dsq-comment child dsq-depth-1 dsq-parent-is-95333259 special dsq-special dsq-moderator dsq-even dsq-comment-is-parent">  <!-- placeholder for collapsed comment block (inserted dynamically later) -->  <div id="dsq-collapsed-comment-95457974" class="dsq-collapsed-comment"></div>  <div class="dsq-full-comment"> <!-- wraps header, body, footer -->    <div id="dsq-comment-header-95457974" class="dsq-comment-header">      <table>        <tbody><tr>          <td id="dsq-header-avatar-95457974" class="dsq-header-avatar">            <a id="dsq-avatar-95457974" class="dsq-avatar dsq-tt" title="Expand Xah Lee's profile" href="http://disqus.com/xahlee/" onclick="return DISQUS.dtpl.actions.fire('profile.show', 95457974, null);">                            <img src="noavatar32.png" class="dsq-deferred-avatar" data-src="http://mediacdn.disqus.com/uploads/users/475/529/avatar32.jpg?1316100683" alt="" height="32" width="32">                          </a>          </td>          <td class="dsq-comment-header-meta">            <div class="dsq-comment-header-meta-wrapper">              <cite id="dsq-cite-95457974" class="dsq-comment-cite">                                <a id="dsq-author-user-95457974" href="http://xahlee.org/" target="_top" rel="nofollow">Xah Lee</a>                                <img src="moderator.png" class="dsq-moderator-star" title="Moderator" height="14" width="15">                              </cite>              <span class="dsq-comment-header-time">                <a href="http://xahlee.org/emacs/comments.permalink" title="Link to comment by Xah Lee">10 months ago</a>              </span><a href="http://xahlee.org/emacs/comments.showParent" title="Jump to comment" class="dsq-reply-link">in reply to&nbsp;Markovojvodic</a>              <a class="dsq-comment-hide-thread" href="http://xahlee.org/emacs/comments.collapse" title="Collapse thread"></a>            </div>          </td>        </tr>      </tbody></table>    </div>    <div id="dsq-comment-body-95457974" class="dsq-comment-body">        <div class="dsq-comment-message" id="dsq-comment-message-95457974">                <div class="dsq-comment-text" id="dsq-comment-text-95457974">        @Markovojvodic, for some reason i myself dont used keyboard macro that often. But yeah, macros is fantastic.      </div>                        </div>          </div>    <div class="dsq-comment-footer" id="dsq-comment-footer-95457974">      <div class="dsq-comment-footer-left">                    <a href="http://xahlee.org/emacs/comments.report" id="dsq-post-report-95457974" class="dsq-post-report">Flag</a>              </div>            <div class="dsq-comment-footer-right">                <span class="dsq-comment-buttons">                    <span id="dsq-like-95457974" class="dsq-like">            <button type="button" class="dsq-button-small " data-vote="0" onclick="DISQUS.dtpl.actions.fire('comments.like', this, 95457974);">                        Like            </button>          </span>                                        <span class="dsq-comment-footer-reply" id="dsq-comment-footer-reply-95457974" onclick="DISQUS.dtpl.actions.fire('comments.reply', 95457974, this);">            <button type="button" class="dsq-button-small">Reply</button>            <button type="button" class="dsq-comment-footer-reply-tab">Reply</button>            <span></span>          </span>                  </span>      </div> <!-- /comment-footer-right -->          </div> <!-- /comment-footer -->  </div> <!-- dsq-full-comment --></li><div id="dsq-append-post-95457974"></div>            <div id="comment-95734119"></div><li id="dsq-comment-95734119" style="margin-left: 60px;" class="dsq-comment  dsq-comment child dsq-depth-2 dsq-parent-is-95457974   dsq-odd ">  <!-- placeholder for collapsed comment block (inserted dynamically later) -->  <div id="dsq-collapsed-comment-95734119" class="dsq-collapsed-comment"></div>  <div class="dsq-full-comment"> <!-- wraps header, body, footer -->    <div id="dsq-comment-header-95734119" class="dsq-comment-header">      <table>        <tbody><tr>          <td id="dsq-header-avatar-95734119" class="dsq-header-avatar">            <a id="dsq-avatar-95734119" class="dsq-avatar dsq-tt" title="Expand Markovojvodic's profile" href="http://disqus.com/guest/bda8185542946edac7ff0d0609f4575a/" onclick="return DISQUS.dtpl.actions.fire('profile.show', 95734119, null);">                            <img src="noavatar32.png" class="dsq-deferred-avatar" data-src="http://mediacdn.disqus.com/1316728242/images/noavatar32.png" alt="" height="32" width="32">                          </a>          </td>          <td class="dsq-comment-header-meta">            <div class="dsq-comment-header-meta-wrapper">              <cite id="dsq-cite-95734119" class="dsq-comment-cite">                                <span id="dsq-author-user-95734119">Markovojvodic</span>                                <img src="moderator.png" class="dsq-moderator-star" title="Moderator" height="14" width="15">                              </cite>              <span class="dsq-comment-header-time">                <a href="http://xahlee.org/emacs/comments.permalink" title="Link to comment by Markovojvodic">10 months ago</a>              </span><a href="http://xahlee.org/emacs/comments.showParent" title="Jump to comment" class="dsq-reply-link">in reply to&nbsp;Xah Lee</a>              <a class="dsq-comment-hide-thread" href="http://xahlee.org/emacs/comments.collapse" title="Collapse thread"></a>            </div>          </td>        </tr>      </tbody></table>    </div>    <div id="dsq-comment-body-95734119" class="dsq-comment-body">        <div class="dsq-comment-message" id="dsq-comment-message-95734119">                <div class="dsq-comment-text" id="dsq-comment-text-95734119">        I started using macros few days ago :). Thought they were difficult to learn so haven't tried them since then. I learned them in 10 min and felt like I discovered a real miracle :).      </div>                        </div>          </div>    <div class="dsq-comment-footer" id="dsq-comment-footer-95734119">      <div class="dsq-comment-footer-left">                    <a href="http://xahlee.org/emacs/comments.report" id="dsq-post-report-95734119" class="dsq-post-report">Flag</a>              </div>            <div class="dsq-comment-footer-right">                <span class="dsq-comment-buttons">                    <span id="dsq-like-95734119" class="dsq-like">            <button type="button" class="dsq-button-small " data-vote="0" onclick="DISQUS.dtpl.actions.fire('comments.like', this, 95734119);">                        Like            </button>          </span>                                        <span class="dsq-comment-footer-reply" id="dsq-comment-footer-reply-95734119" onclick="DISQUS.dtpl.actions.fire('comments.reply', 95734119, this);">            <button type="button" class="dsq-button-small">Reply</button>            <button type="button" class="dsq-comment-footer-reply-tab">Reply</button>            <span></span>          </span>                  </span>      </div> <!-- /comment-footer-right -->          </div> <!-- /comment-footer -->  </div> <!-- dsq-full-comment --></li><div id="dsq-append-post-95734119"></div>      </ul>        <div id="dsq-pagination" class="dsq-pagination">        </div>          </div><div>  </div></div><a href="http://disqus.com/" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+<iframe src="index_6.html" frameborder="0" width="100%"></iframe>
+
+
+
+<iframe src="index_7.html" style="position: absolute; top: -2000px; left: 0px;" id="easyXDM_DISQUS_net_default9397_provider" name="easyXDM_DISQUS_net_default9397_provider" frameborder="0"></iframe></body>
+</html>

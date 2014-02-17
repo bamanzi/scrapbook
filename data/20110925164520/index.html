@@ -1,0 +1,726 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN" dir="ltr" xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+
+
+<title>25 条 SSH 命令和技巧 [技巧] |  Wow!Ubuntu</title>
+<meta name="generator" content="WordPress.com"> 
+<meta name="readability-verification" content="ycsHDMk5ARV2d4pk6wanVsy49KDts5txV4dDPek2">
+
+
+
+
+<link rel="alternate" type="application/rss+xml" title="Wow! Ubuntu RSS Feed" href="http://wowubuntu.com/feed">
+<link rel="pingback" href="http://wowubuntu.com/xmlrpc.php">
+<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+<link rel="alternate" type="application/rss+xml" title="Wow! Ubuntu » 25 条 SSH 命令和技巧 评论 Feed" href="http://wowubuntu.com/25-ssh-cmd.html/feed">
+
+
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://wowubuntu.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://wowubuntu.com/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="Wow! Ubuntu" href="http://wowubuntu.com/">
+<link rel="start" title="RedoBackup: 基于 Linux 的备份/还原工具" href="http://wowubuntu.com/redobackup.html">
+<link rel="prev" title="在 Ubuntu 10.10 上快速构建 Wayland" href="http://wowubuntu.com/build-wayland.html">
+<link rel="next" title="Zenmap : nmap 的前端程序" href="http://wowubuntu.com/zenmap.html">
+<meta name="generator" content="WordPress 3.2.1">
+<link rel="shortlink" href="http://wowubuntu.com/?p=1839">
+
+<meta name="description" content="来源： 51CTO / 英文原文：25 BEST SSH COMMANDS /">
+<meta name="keywords" content="ssh,技巧">
+<link rel="canonical" href="http://wowubuntu.com/25-ssh-cmd.html">
+<!-- wp thread comment 1.4.9.4.002 -->
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body><div id="tyntPrint"></div>
+
+<div id="top"></div>
+
+<!-- Start BG -->
+<div id="bg">
+
+<!-- Start Header -->
+<div id="header">
+
+<!-- Start Head -->
+<div class="head">
+
+<div class="logo">
+ <div class="img">
+ <a href="http://wowubuntu.com/"><img src="logo.png" alt="Wow! Ubuntu - Ubuntu 及 Linux 新闻、技巧、软件及游戏！"></a>
+</div>
+</div>
+ 
+ <div class="search">
+  <h2>Search</h2>
+  <form method="get" action="http://wowubuntu.com/">
+   <fieldset>
+   <input value="" name="s" type="text">
+   <input id="searchsubmit" value="Search" type="submit">
+   <!--<button type="submit">搜索</button>-->
+   </fieldset>
+  </form>
+ </div>
+ 
+
+ 
+</div>
+<!-- End Head -->
+
+<!-- Start Menu -->
+<div class="menu">
+ <div class="pages">
+   <ul>
+   <li><a href="http://wowubuntu.com/"><span>Home</span></a></li>
+
+<li><a href="http://wowubuntu.com/category/news">新闻</a></li>
+<li><a href="http://wowubuntu.com/category/app">软件</a></li>
+<li><a href="http://wowubuntu.com/category/tips">技巧</a></li>
+<li><a href="http://wowubuntu.com/category/games">游戏</a></li>
+<li><a href="http://wowubuntu.com/category/prettify">美化</a></li>
+<li><a href="http://wowubuntu.com/vps.html">Ubuntu VPS</a></li>
+<li><a href="http://wowubuntu.com/community.html">社区</a></li>
+
+<li class="page_item page-item-2"><a href="http://wowubuntu.com/about" title="关于"><span>关于</span></a></li>
+<li class="page_item page-item-228"><a href="http://wowubuntu.com/submit" title="联系"><span>联系</span></a></li>
+<li class="page_item page-item-284"><a href="http://wowubuntu.com/archives" title="存档"><span>存档</span></a></li>
+<li class="page_item page-item-2490"><a href="http://wowubuntu.com/donate" title="捐赠"><span>捐赠</span></a></li>
+
+
+
+  </ul>
+<!--? unset($pages); ?--> 
+ </div>
+ 
+<div class="feed">
+ <ul>
+  <li class="rss"><a href="http://wowubuntu.com/feed">全文</a>&nbsp; | &nbsp;<a href="http://wowubuntu.com/comments/feed">评论</a></li>
+  <li class=""><a href="http://feeds.feedburner.com/ubuntu_tips">FeedBurner</a></li>
+  <li class=""><a href="http://feedburner.google.com/fb/a/mailverify?uri=ubuntu_tips&amp;loc=en_US">邮件订阅</a></li>
+
+ </ul>
+ </div> 
+</div> 
+<!-- End Menu -->
+
+</div>
+<!-- End Header -->
+
+
+<div class="border"></div>
+
+<!-- Start Container-->
+<div id="container">
+
+<!-- Start Sidebar -->
+<!--Start Right -->
+<div id="right">
+
+<div class="r1">
+
+   
+<!--Start Dynamic Sidebar -->
+<div id="text-8" class="widget widget_text">			<div class="textwidget"># <a href="http://wowubuntu.com/join.html">加入我们</a> /  <a href="http://wowubuntu.com/wp-admin/post-new.php?post_type=post">提交文章</a> 
+
+</div>
+		</div>		<div id="recent-posts-3" class="widget widget_recent_entries">		<h3 class="widgettitle">最新文章</h3>		<ul>
+				<li><a href="http://wowubuntu.com/oneiric-beta2.html" title="Ubuntu 11.10 Oneiric Beta 2 发布">Ubuntu 11.10 Oneiric Beta 2 发布</a></li>
+				<li><a href="http://wowubuntu.com/linux-report.html" title="51CTO 发布国内 Linux 桌面发行版生存状况报告(PDF)">51CTO 发布国内 Linux 桌面发行版生存状况报告(PDF)</a></li>
+				<li><a href="http://wowubuntu.com/wunderlist.html" title="GTD 工具 Wunderlist 发布 Linux 版本">GTD 工具 Wunderlist 发布 Linux 版本</a></li>
+				<li><a href="http://wowubuntu.com/ubuntuone-win-beta2.html" title="Ubuntu One for Windows Beta2 发布">Ubuntu One for Windows Beta2 发布</a></li>
+				<li><a href="http://wowubuntu.com/minus-social-simple-file-share.html" title="Minus 社会化文件分享">Minus 社会化文件分享</a></li>
+				<li><a href="http://wowubuntu.com/netbootcd.html" title="NetBootCD : 多系统网络安装光盘">NetBootCD : 多系统网络安装光盘</a></li>
+				<li><a href="http://wowubuntu.com/2011-hf-ustc-sfd.html" title="2011年度自由软件日合肥站活动通知（有粉多纪念品发放哦~）">2011年度自由软件日合肥站活动通知（有粉多纪念品发放哦~）</a></li>
+				<li><a href="http://wowubuntu.com/2011-tianjin-sfd.html" title="2011年度自由软件日天津站活动通知（有很萌的礼品哦~~）">2011年度自由软件日天津站活动通知（有很萌的礼品哦~~）</a></li>
+				<li><a href="http://wowubuntu.com/win-unity.html" title="把 Windows 7 / XP 打造成 Ubuntu Unity 风格">把 Windows 7 / XP 打造成 Ubuntu Unity 风格</a></li>
+				<li><a href="http://wowubuntu.com/sweet-home-3d.html" title="Sweet Home 3D: 免费的室内设计软件">Sweet Home 3D: 免费的室内设计软件</a></li>
+				</ul>
+		</div><div id="linkcat-2" class="widget widget_links"><h3 class="widgettitle">Blogroll</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.freebsd.org/">FreeBSD</a></li>
+<li><a href="http://www.freebsdchina.org/" target="_top">FreeBSD China</a></li>
+<li><a href="http://freebsdtips.net/">FreeBSD Tips</a></li>
+<li><a href="http://freebsdvps.net/">FreeBSD VPS</a></li>
+<li><a href="http://fullcirclemagazine.org/" target="_top">Full Circle</a></li>
+<li><a href="http://linuxtoy.org/" title="LinuxTOY 是一个致力于提供 Linux 相关资讯的专题站点。" target="_top">LinuxToy.org</a></li>
+<li><a href="http://www.ptubuntu.com/" target="_top">PT Ubuntu</a></li>
+<li><a href="http://www.shlug.org/" target="_top">SHLUG</a></li>
+<li><a href="http://tmublr.com/">Tmublr.com</a></li>
+<li><a href="http://forum.ubuntu.org.cn/">Ubuntu 中文论坛</a></li>
+
+	</ul>
+</div>
+<div id="knrauthorlistwidget-4" class="widget widget_knrauthorlistwidget"><h3 class="widgettitle">贡献者</h3>                        <ul class="">
+
+		<li>
+			<a href="http://wowubuntu.com/author/admin" title="Posts by riku ">
+			riku 
+			</a>
+		 (666)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/storezhang" title="Posts by zhang chuan">
+			zhang chuan
+			</a>
+		 (4)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/ghostm55" title="Posts by Thomas Yao">
+			Thomas Yao
+			</a>
+		 (6)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/jonsensun" title="Posts by jonsensun ">
+			jonsensun 
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/yicuan" title="Posts by yicuan ">
+			yicuan 
+			</a>
+		 (13)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/freetstar" title="Posts by freetstar ">
+			freetstar 
+			</a>
+		 (57)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/foxbrain" title="Posts by foxbrain ">
+			foxbrain 
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/ptubuntu" title="Posts by ptubuntu ">
+			ptubuntu 
+			</a>
+		 (9)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/pityonline" title="Posts by pityonline ">
+			pityonline 
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/osmsg" title="Posts by OSMSG ">
+			OSMSG 
+			</a>
+		 (4)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/guest" title="Posts by 投稿/转载 ">
+			投稿/转载 
+			</a>
+		 (21)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/ericahdu" title="Posts by Erica Wang">
+			Erica Wang
+			</a>
+		 (2)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/umfs" title="Posts by Micah Chen">
+			Micah Chen
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/alienstriker" title="Posts by AlienStriker ">
+			AlienStriker 
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/bentutu-com" title="Posts by Bentutu ">
+			Bentutu 
+			</a>
+		 (5)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/aenon" title="Posts by Aenon Sun">
+			Aenon Sun
+			</a>
+		 (2)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/ivarptr" title="Posts by ivarptr ">
+			ivarptr 
+			</a>
+		 (6)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/tonkv" title="Posts by tonkv ">
+			tonkv 
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/lanpice" title="Posts by Lanpice ">
+			Lanpice 
+			</a>
+		 (2)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/ericyue" title="Posts by Ericyue ">
+			Ericyue 
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/lijiantao" title="Posts by O湛狼O-aitilife ">
+			O湛狼O-aitilife 
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/aitilife" title="Posts by O湛狼O-aitilife ">
+			O湛狼O-aitilife 
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/osk" title="Posts by kirk ">
+			kirk 
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/authur" title="Posts by Authur ">
+			Authur 
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/bachue" title="Posts by bachue ">
+			bachue 
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/chinacnd" title="Posts by imcn ">
+			imcn 
+			</a>
+		 (2)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/atone" title="Posts by 独占幸福 ">
+			独占幸福 
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/lendylongli" title="Posts by Leon Lee">
+			Leon Lee
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/itwhy" title="Posts by ITwhy ">
+			ITwhy 
+			</a>
+		 (4)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/21wmd" title="Posts by 21wmd ">
+			21wmd 
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/richard" title="Posts by Richard ">
+			Richard 
+			</a>
+		 (2)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/linux20" title="Posts by linux20 ">
+			linux20 
+			</a>
+		 (1)</li>
+
+		<li>
+			<a href="http://wowubuntu.com/author/wuyanteng-ubuntu" title="Posts by gary gary">
+			gary gary
+			</a>
+		 (5)</li>
+                        </ul>
+</div><!--End Dynamic Sidebar -->
+
+</div>
+
+
+
+
+<div class="r2">
+
+
+
+<!--Start Dynamic Sidebar -->
+ <div id="text-3" class="widget widget_text">			<div class="textwidget"><p># <a href="http://feeds.feedburner.com/ubuntu_tips" rel="alternate" type="application/rss+xml">Feed</a>
+/
+<a href="http://twitter.com/ubuntu_tips">Twitter</a> / 
+<a href="http://t.sina.com.cn/utips">新浪微博</a>
+</p>
+
+
+<p>
+# 本站架设于 <a href="http://www.photonvps.com/billing/aff.php?aff=129">PhotonVPS</a> ，由 <a href="http://www.freebsd.org/">FreeBSD</a> 强力驱动，请
+  <a href="http://wowubuntu.com/donate">赞助我们 </a> 用于支付服务器费用！ </p>
+
+<p>最牛 B 的 Linux Shell 命令:
+<a href="http://wowubuntu.com/linux-shell-pdf.html">PDF 下载</a>
+</p>
+
+<p>
+# <a href="http://vps.wowubuntu.com/">Server status and uptime!</a></p></div>
+		</div><div id="text-10" class="widget widget_text"><h3 class="widgettitle">AD</h3>			<div class="textwidget"><p><a href="http://tto.me/kfstee" target="_top"><img src="kfs-banner4.png" alt="定制 ubuntu T-shirt/卫衣" border="0"></a></p></div>
+		</div><div id="featured-posts-3" class="widget widget_featured_entries"><h3 class="widgettitle">精选文章</h3>        <ul>              <li><a href="http://wowubuntu.com/ssh-tips.html" title="16 条技巧让你更高效使用 SSH">16 条技巧让你更高效使用 SSH</a></li>             <li><a href="http://wowubuntu.com/ibu-googlepinyin.html" title="ibus 的谷歌拼音输入法发布">ibus 的谷歌拼音输入法发布</a></li>             <li><a href="http://wowubuntu.com/webmin.html" title="Web 主机管理（SSL加密的HTTPS） -- Webmin">Web 主机管理（SSL加密的HTTPS） -- Webmin</a></li>             <li><a href="http://wowubuntu.com/sopcast-tv.html" title="Sopcast TV 电视直播软件">Sopcast TV 电视直播软件</a></li>             <li><a href="http://wowubuntu.com/synapse-024-2.html" title="Synapse升级至0.2.4 (新增插件)">Synapse升级至0.2.4 (新增插件)</a></li>             <li><a href="http://wowubuntu.com/boot-12.html" title="Ubuntu 11.10 实现 12 秒启动, 你被Hold住了吗?">Ubuntu 11.10 实现 12 秒启动, 你被Hold住了吗?</a></li>             <li><a href="http://wowubuntu.com/asdm.html" title="ubuntu 11.04 成功安装 Cisco ASDM Launcher">ubuntu 11.04 成功安装 Cisco ASDM Launcher</a></li>             <li><a href="http://wowubuntu.com/hardinfo.html" title="Ubuntu 上获取硬件信息的几件方式">Ubuntu 上获取硬件信息的几件方式</a></li>             <li><a href="http://wowubuntu.com/google-opensource.html" title="Chris diBona 谈 Google 与开源及 Ubuntu">Chris diBona 谈 Google 与开源及 Ubuntu</a></li>             <li><a href="http://wowubuntu.com/oneiric-alpha2.html" title="Ubuntu 11.10 Oneiric Alpha 2 发布">Ubuntu 11.10 Oneiric Alpha 2 发布</a></li>         </ul> </div><div id="archives-2" class="widget widget_archive"><h3 class="widgettitle">文章归档</h3>		<ul>
+			<li><a href="http://wowubuntu.com/2011/09" title="2011 年九月">2011 年九月</a>&nbsp;(18)</li>
+	<li><a href="http://wowubuntu.com/2011/08" title="2011 年八月">2011 年八月</a>&nbsp;(22)</li>
+	<li><a href="http://wowubuntu.com/2011/07" title="2011 年七月">2011 年七月</a>&nbsp;(22)</li>
+	<li><a href="http://wowubuntu.com/2011/06" title="2011 年六月">2011 年六月</a>&nbsp;(44)</li>
+	<li><a href="http://wowubuntu.com/2011/05" title="2011 年五月">2011 年五月</a>&nbsp;(64)</li>
+	<li><a href="http://wowubuntu.com/2011/04" title="2011 年四月">2011 年四月</a>&nbsp;(52)</li>
+	<li><a href="http://wowubuntu.com/2011/03" title="2011 年三月">2011 年三月</a>&nbsp;(56)</li>
+	<li><a href="http://wowubuntu.com/2011/02" title="2011 年二月">2011 年二月</a>&nbsp;(41)</li>
+	<li><a href="http://wowubuntu.com/2011/01" title="2011 年一月">2011 年一月</a>&nbsp;(84)</li>
+	<li><a href="http://wowubuntu.com/2010/12" title="2010 年十二月">2010 年十二月</a>&nbsp;(77)</li>
+	<li><a href="http://wowubuntu.com/2010/11" title="2010 年十一月">2010 年十一月</a>&nbsp;(82)</li>
+	<li><a href="http://wowubuntu.com/2010/10" title="2010 年十月">2010 年十月</a>&nbsp;(60)</li>
+	<li><a href="http://wowubuntu.com/2010/09" title="2010 年九月">2010 年九月</a>&nbsp;(70)</li>
+	<li><a href="http://wowubuntu.com/2010/08" title="2010 年八月">2010 年八月</a>&nbsp;(68)</li>
+	<li><a href="http://wowubuntu.com/2010/07" title="2010 年七月">2010 年七月</a>&nbsp;(66)</li>
+		</ul>
+</div><!--End Dynamic Sidebar -->
+
+</div>
+
+</div>
+<!--End Right --><!-- End Sidebar -->
+
+
+<!-- Start Center -->
+<div id="center"><div id="center-wap">
+
+<div class="post-1839 post type-post status-publish format-standard hentry category-tips tag-ssh" id="post-1839" style="margin-bottom: 40px;">
+
+<div class="p-head">
+<h1>25 条 SSH 命令和技巧</h1>
+<small class="p-time">
+<strong class="day">26</strong>
+<strong class="month-year">十一 <br>2010</strong>
+</small></div>
+
+# 作者:<a href="http://riku.wowubuntu.com/" target="_top"> riku </a> /
+
+本文采用<a href="http://creativecommons.org/licenses/by-nc-sa/2.5/cn/">CC BY-NC-SA 2.5协议</a>授权，转载请注明<a href="http://wowubuntu.com/25-ssh-cmd.html" title="Permalink">本文链接</a>。
+
+
+
+<div class="p-con">
+<div class="wp_plus_one_button" style="margin: 0pt 0pt 8px 8px; float: right;"><div style="height: 24px; width: 106px; display: inline-block; text-indent: 0pt; margin: 0pt; padding: 0pt; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline;" id="___plusone_0"><iframe allowtransparency="true" hspace="0" id="I1_1316940294911" marginheight="0" marginwidth="0" name="I1_1316940294911" src="index_1.html" style="position: static; left: 0pt; top: 0pt; width: 106px; margin: 0px; border-style: none; height: 24px; visibility: visible;" tabindex="-1" vspace="0" title="+1" frameborder="0" scrolling="no" width="100%"></iframe></div></div><p>来源： <a href="http://os.51cto.com/art/201011/235252.htm">51CTO</a> / 英文原文：<a href="http://blog.urfix.com/25-ssh-commands-tricks/">25 BEST SSH COMMANDS / TRICKS</a></p>
+<p>SSH是一个非常伟大的工具，如果你要在互联网上远程连接到服务器，那么SSH无疑是最佳的候选。下面是通过网络投票选出的25个最佳SSH命令，你必须牢记于心。</p>
+<p>1、复制SSH密钥到目标主机，开启无密码SSH登录</p>
+<blockquote><p>ssh-copy-id user@host</p></blockquote>
+<p>如果还没有密钥，请使用ssh-keygen命令生成。</p>
+<p>2、从某主机的80端口开启到本地主机2001端口的 ssh 隧道</p>
+<blockquote><p>ssh -N -L2001:localhost:80 somemachine</p></blockquote>
+<p>现在你可以直接在浏览器中输入http://localhost:2001访问这个网站。</p>
+<p>3、将你的麦克风输出到远程计算机的扬声器</p>
+<blockquote><p>dd if=/dev/dsp | ssh -c arcfour -C username@host dd of=/dev/dsp</p></blockquote>
+<p>这样来自你麦克风端口的声音将在SSH目标计算机的扬声器端口输出，但遗憾的是，声音质量很差，你会听到很多嘶嘶声。</p>
+<p><span id="more-1839"></span></p>
+<p>4、比较远程和本地文件</p>
+<blockquote><p>ssh user@host cat /path/to/remotefile | diff /path/to/localfile –</p></blockquote>
+<p>在比较本地文件和远程文件是否有差异时这个命令很管用。</p>
+<p>5、通过SSH挂载目录/文件系统</p>
+<blockquote><p>sshfs name@server:/path/to/folder /path/to/mount/point</p></blockquote>
+<p>从http://fuse.sourceforge.net/sshfs.html下载sshfs，它允许你跨网络安全挂载一个目录。</p>
+<p>6、通过中间主机建立SSH连接</p>
+<blockquote><p>ssh -t reachable_host ssh unreachable_host</p></blockquote>
+<p>Unreachable_host表示从本地网络无法直接访问的主机，但可以从reachable_host所在网络访问，这个命令通过到reachable_host的“隐藏”连接，创建起到unreachable_host的连接。</p>
+<p>7、通过你的电脑，复制远程 host1 主机上的文件到远程 host2 主机上的文件</p>
+<blockquote><p>ssh root@host1 “cd /somedir/tocopy/ &amp;&amp; tar -cf – .” | ssh root@host2 “cd /samedir/tocopyto/ &amp;&amp; tar -xf -”</p></blockquote>
+<p>如果只有你能同时访问 host1 和 host 2 ，但它们不能访问你的主机（因此 ncat 是无法工作的），而且它们之间也无法直接访问。</p>
+<p>8、运行任何远程主机上的 GUI 程序</p>
+<blockquote><p>ssh -fX &lt;user&gt;@&lt;host&gt; &lt;program&gt;</p></blockquote>
+<p>SSH 服务器端必须要具备以下条件：</p>
+<p>X11Forwarding yes  ＃确保 X11 转发是打开的</p>
+<p>同时也可以打开</p>
+<p>Compression delayed</p>
+<p>当然，你要能访问主机A才行。</p>
+<p>9、创建到目标主机的持久化连接</p>
+<blockquote><p>ssh -MNf &lt;user&gt;@&lt;host&gt;</p></blockquote>
+<p>在后台创建到目标主机的持久化连接，将这个命令和你~/.ssh/config中的配置结合使用：</p>
+<blockquote><p>Host host<br>
+ControlPath ~/.ssh/master-%r@%h:%p<br>
+ControlMaster no</p></blockquote>
+<p>所有到目标主机的SSH连接都将使用持久化SSH套接字，如果你使用SSH定期同步文件（使用rsync/sftp/cvs/svn），这个命令将非常有用，因为每次打开一个SSH连接时不会创建新的套接字。</p>
+<p>10、通过SSH 直接开启并还原 screen 命令</p>
+<blockquote><p>ssh -t remote_host screen –r</p></blockquote>
+<p>直接连接到远程 screen 会话（节省了无用的父bash进程）。</p>
+<p>11、端口检测（敲门）</p>
+<blockquote><p>knock &lt;host&gt; 3000 4000 5000 &amp;&amp; ssh -p &lt;port&gt; user@host &amp;&amp; knock &lt;host&gt; 5000 4000 3000</p></blockquote>
+<p>在一个端口上敲一下打开某个服务的端口（如SSH），再敲一下关闭该端口，需要先安装knockd，下面是一个配置文件示例。</p>
+<blockquote><p>[options]<br>
+logfile = /var/log/knockd.log<br>
+[openSSH]<br>
+sequence = 3000,4000,5000<br>
+seq_timeout = 5<br>
+command = /sbin/iptables -A INPUT -i eth0 -s %IP% -p tcp –dport 22 -j ACCEPT<br>
+tcpflags = syn<br>
+[closeSSH]<br>
+sequence = 5000,4000,3000<br>
+seq_timeout = 5<br>
+command = /sbin/iptables -D INPUT -i eth0 -s %IP% -p tcp –dport 22 -j ACCEPT<br>
+tcpflags = syn</p></blockquote>
+<p>12、删除文本文件中的一行内容，有用的修复</p>
+<blockquote><p>ssh-keygen -R &lt;the_offending_host&gt;</p></blockquote>
+<p>在这种情况下，最好使用专业的工具。</p>
+<p>13、通过SSH运行复杂的远程shell命令</p>
+<blockquote><p>ssh host -l user $(&lt;cmd.txt)</p></blockquote>
+<p>更具移植性的版本：</p>
+<blockquote><p>ssh host -l user “`cat cmd.txt`”</p></blockquote>
+<p>14、通过SSH将MySQL数据库复制到新服务器</p>
+<blockquote><p>mysqldump –add-drop-table –extended-insert –force –log-error=error.log -uUSER -pPASS OLD_DB_NAME | ssh -C user@newhost “mysql -uUSER -pPASS NEW_DB_NAME”</p></blockquote>
+<p>通过压缩的SSH隧道Dump一个MySQL数据库，将其作为输入传递给mysql命令，我认为这是迁移数据库到新服务器最快最好的方法。</p>
+<p>15、删除文本文件中的一行，修复“SSH主机密钥更改”的警告</p>
+<blockquote><p>sed -i 8d ~/.ssh/known_hosts</p></blockquote>
+<p>16、从一台没有SSH-COPY-ID命令的主机将你的SSH公钥复制到服务器</p>
+<blockquote><p>cat ~/.ssh/id_rsa.pub | ssh user@machine “mkdir ~/.ssh; cat &gt;&gt; ~/.ssh/authorized_keys”</p></blockquote>
+<p>如果你使用Mac OS X或其它没有ssh-copy-id命令的*nix变种，这个命令可以将你的公钥复制到远程主机，因此你照样可以实现无密码SSH登录。</p>
+<p>17、实时SSH网络吞吐量测试</p>
+<blockquote><p>yes | pv | ssh $host “cat &gt; /dev/null”</p></blockquote>
+<p>通过SSH连接到主机，显示实时的传输速度，将所有传输数据指向/dev/null，需要先安装pv。</p>
+<p>如果是Debian：</p>
+<blockquote><p>apt-get install pv</p></blockquote>
+<p>如果是Fedora：</p>
+<blockquote><p>yum install pv</p></blockquote>
+<p>（可能需要启用额外的软件仓库）。</p>
+<p>18、如果建立一个可以重新连接的远程GNU screen</p>
+<blockquote><p>ssh -t user@some.domain.com /usr/bin/screen –xRR</p></blockquote>
+<p>人们总是喜欢在一个文本终端中打开许多shell，如果会话突然中断，或你按下了“Ctrl-a d”，远程主机上的shell不会受到丝毫影响，你可以重新连接，其它有用的screen命令有“Ctrl-a c”（打开新的shell）和“Ctrl-a a”（在shell之间来回切换），请访问http://aperiodic.net/screen/quick_reference阅读更多关于screen命令的快速参考。</p>
+<p>19、继续SCP大文件</p>
+<blockquote><p>rsync –partial –progress –rsh=ssh $file_source $user@$host:$destination_file</p></blockquote>
+<p>它可以恢复失败的rsync命令，当你通过VPN传输大文件，如备份的数据库时这个命令非常有用，需要在两边的主机上安装rsync。</p>
+<blockquote><p>rsync –partial –progress –rsh=ssh $file_source $user@$host:$destination_file local -&gt; remote</p></blockquote>
+<p>或</p>
+<blockquote><p>rsync –partial –progress –rsh=ssh $user@$host:$remote_file $destination_file remote -&gt; local</p></blockquote>
+<p>20、通过SSH W/ WIRESHARK分析流量</p>
+<blockquote><p>ssh root@server.com ‘tshark -f “port !22″ -w -' | wireshark -k -i –</p></blockquote>
+<p>使用tshark捕捉远程主机上的网络通信，通过SSH连接发送原始pcap数据，并在wireshark中显示，按下Ctrl+C将停止捕捉，但也会关闭wireshark窗口，可以传递一个“-c #”参数给tshark，让它只捕捉“#”指定的数据包类型，或通过命名管道重定向数据，而不是直接通过SSH传输给wireshark，我建议你过滤数据包，以节约带宽，tshark可以使用tcpdump替代：</p>
+<blockquote><p>ssh root@example.com tcpdump -w – ‘port !22′ | wireshark -k -i –</p></blockquote>
+<p>21、保持SSH会话永久打开</p>
+<blockquote><p>autossh -M50000 -t server.example.com ‘screen -raAd mysession’</p></blockquote>
+<p>打开一个SSH会话后，让其保持永久打开，对于使用笔记本电脑的用户，如果需要在Wi-Fi热点之间切换，可以保证切换后不会丢失连接。</p>
+<p>22、更稳定，更快，更强的SSH客户端</p>
+<blockquote><p>ssh -4 -C -c blowfish-cbc</p></blockquote>
+<p>强制使用IPv4，压缩数据流，使用Blowfish加密。</p>
+<p>23、使用cstream控制带宽</p>
+<blockquote><p>tar -cj /backup | cstream -t 777k | ssh host ‘tar -xj -C /backup’</p></blockquote>
+<p>使用bzip压缩文件夹，然后以777k bit/s速率向远程主机传输。Cstream还有更多的功能，请访问http://www.cons.org/cracauer/cstream.html#usage了解详情，例如：</p>
+<blockquote><p>echo w00t, i’m 733+ | cstream -b1 -t2</p></blockquote>
+<p>24、一步将SSH公钥传输到另一台机器</p>
+<blockquote><p>ssh-keygen; ssh-copy-id user@host; ssh user@host</p></blockquote>
+<p>这个命令组合允许你无密码SSH登录，注意，如果在本地机器的~/.ssh目录下已经有一个SSH密钥对，ssh-keygen命令生成的新密钥可能会覆盖它们，ssh-copy-id将密钥复制到远程主机，并追加到远程账号的~/.ssh/authorized_keys文件中，使用SSH连接时，如果你没有使用密钥口令，调用ssh user@host后不久就会显示远程shell。</p>
+<p>25、将标准输入（stdin）复制到你的X11缓冲区</p>
+<blockquote><p>ssh user@host cat /path/to/some/file | xclip</p></blockquote>
+<p>你是否使用scp将文件复制到工作用电脑上，以便复制其内容到电子邮件中？xclip可以帮到你，它可以将标准输入复制到X11缓冲区，你需要做的就是点击鼠标中键粘贴缓冲区中的内容。</p>
+<p>如果你还有其它SSH命令技巧，欢迎在本文评论中帖出。另外，想学到更多 Shell 命令，请下载<a href="http://wowubuntu.com/linux-shell-pdf.html">最牛B的 Linux Shell 命令PDF 手册</a>。</p>
+<div class="wumii-hook"><div id="wumiiBtnDiv" style="clear: both; overflow: hidden; margin: 0pt; padding: 10px 0pt 0pt; text-shadow: none; text-indent: 0pt;">
+    <div id="wumiiLikeBtnDiv" style="position: static; float: left; display: inline; width: 89px; height: 28px; margin: 0pt 0pt 0pt 33px; padding: 0pt; background: url('widget_buttons_skyblue.png') no-repeat scroll 0pt 0pt transparent; text-indent: 0pt;">
+        <span id="wumiiNumLikes" style="float: left; width: 45px; height: 19px; line-height: 21px; margin: 4px 0pt 0pt; padding: 0pt; color: rgb(90, 115, 138); letter-spacing: 0pt; text-align: center; text-indent: 0pt; font-size: 12px;">6</span>
+        <span style="float: left; width: 40px; height: 29px; margin: 0pt; padding: 0pt; outline: medium none; cursor: pointer;" id="wumiiLikeBtn" hidefocus="true"></span>
+    </div>
+    <div id="wumiiRecommendBtnDiv" style="position: static; clear: none; float: left; display: inline; height: 28px; margin: 0pt; padding: 0pt 5px; text-indent: 0pt;">
+        <span id="wumiiRecommendBtn" hidefocus="true" style="float: left; display: inline; width: 60px; height: 28px; margin: 0pt 0pt 0pt 5px; padding: 0pt; background: url('widget_buttons_skyblue.png') no-repeat scroll -267px 0pt transparent; cursor: pointer; outline: medium none;"></span>
+        <img src="loading.gif" id="wumiiLoading" style="clear: none; display: none; height: 15px; margin: 7px 0pt 0pt 8px; padding: 0pt; border: 0pt none; background: none repeat scroll 0% 0% transparent; cursor: default;" alt="正在加载推荐文章">
+    </div>
+</div><div class="wumii-related-items-div" style="margin: 0pt; border: medium none; padding: 0pt; clear: both; overflow: hidden;">
+    <div class="wumii-widget-title" style="clear: both; margin: 0pt; border: medium none; padding: 20px 0pt 5px; text-indent: 0pt; text-align: left; font-weight: bold;">相关文章：</div>
+    <ul class="wumii-text-ul" style="padding: 0pt; margin: 0pt 0pt 0pt 1px;">
+            <li class="wumii-text-li" style="list-style: disc inside none; display: list-item; line-height: 1.65em; background: none repeat scroll 0pt 0pt transparent; padding: 0pt; margin: 0pt; text-indent: 0pt; text-align: left; font-size: 13px;">
+                <a class="wumii-text-a" hidefocus="true" href="http://wowubuntu.com/ssh-tips.html" onmousedown="this.href='http://app.wumii.com/ext/redirect.htm?url=http%3A%2F%2Fwowubuntu.com%2Fssh-tips.html&amp;ts=' + (new Date()).getTime() + '&amp;from=http%3A%2F%2Fwowubuntu.com%2F25-ssh-cmd.html' + '&amp;ref=relatedItems'; return true;" onmouseup="t=this; setTimeout(function() {t.href='http://wowubuntu.com/ssh-tips.html';}, 50); return true;" style="text-decoration: none; border-bottom: medium none; outline: medium none; color: rgb(51, 51, 51);"><span>16 条技巧让你更高效使用 SSH</span></a>
+            </li>
+            <li class="wumii-text-li" style="list-style: disc inside none; display: list-item; line-height: 1.65em; background: none repeat scroll 0pt 0pt transparent; padding: 0pt; margin: 0pt; text-indent: 0pt; text-align: left; font-size: 13px;">
+                <a class="wumii-text-a" hidefocus="true" href="http://wowubuntu.com/ssh_tunnel.html" onmousedown="this.href='http://app.wumii.com/ext/redirect.htm?url=http%3A%2F%2Fwowubuntu.com%2Fssh_tunnel.html&amp;ts=' + (new Date()).getTime() + '&amp;from=http%3A%2F%2Fwowubuntu.com%2F25-ssh-cmd.html' + '&amp;ref=relatedItems'; return true;" onmouseup="t=this; setTimeout(function() {t.href='http://wowubuntu.com/ssh_tunnel.html';}, 50); return true;" style="text-decoration: none; border-bottom: medium none; outline: medium none; color: rgb(51, 51, 51);"><span>Ubuntu 下如何使用 SSH Tunneling Proxy ?</span></a>
+            </li>
+            <li class="wumii-text-li" style="list-style: disc inside none; display: list-item; line-height: 1.65em; background: none repeat scroll 0pt 0pt transparent; padding: 0pt; margin: 0pt; text-indent: 0pt; text-align: left; font-size: 13px;">
+                <a class="wumii-text-a" hidefocus="true" href="http://wowubuntu.com/ssh-host.html" onmousedown="this.href='http://app.wumii.com/ext/redirect.htm?url=http%3A%2F%2Fwowubuntu.com%2Fssh-host.html&amp;ts=' + (new Date()).getTime() + '&amp;from=http%3A%2F%2Fwowubuntu.com%2F25-ssh-cmd.html' + '&amp;ref=relatedItems'; return true;" onmouseup="t=this; setTimeout(function() {t.href='http://wowubuntu.com/ssh-host.html';}, 50); return true;" style="text-decoration: none; border-bottom: medium none; outline: medium none; color: rgb(51, 51, 51);"><span>SSH 小技巧：设置主机别名</span></a>
+            </li>
+            <li class="wumii-text-li" style="list-style: disc inside none; display: list-item; line-height: 1.65em; background: none repeat scroll 0pt 0pt transparent; padding: 0pt; margin: 0pt; text-indent: 0pt; text-align: left; font-size: 13px;">
+                <a class="wumii-text-a" hidefocus="true" href="http://wowubuntu.com/ssh-security.html" onmousedown="this.href='http://app.wumii.com/ext/redirect.htm?url=http%3A%2F%2Fwowubuntu.com%2Fssh-security.html&amp;ts=' + (new Date()).getTime() + '&amp;from=http%3A%2F%2Fwowubuntu.com%2F25-ssh-cmd.html' + '&amp;ref=relatedItems'; return true;" onmouseup="t=this; setTimeout(function() {t.href='http://wowubuntu.com/ssh-security.html';}, 50); return true;" style="text-decoration: none; border-bottom: medium none; outline: medium none; color: rgb(51, 51, 51);"><span>增强 SSH 安全性的 7 条技巧</span></a>
+            </li>
+            <li class="wumii-text-li" style="list-style: disc inside none; display: list-item; line-height: 1.65em; background: none repeat scroll 0pt 0pt transparent; padding: 0pt; margin: 0pt; text-indent: 0pt; text-align: left; font-size: 13px;">
+                <a class="wumii-text-a" hidefocus="true" href="http://wowubuntu.com/gcm.html" onmousedown="this.href='http://app.wumii.com/ext/redirect.htm?url=http%3A%2F%2Fwowubuntu.com%2Fgcm.html&amp;ts=' + (new Date()).getTime() + '&amp;from=http%3A%2F%2Fwowubuntu.com%2F25-ssh-cmd.html' + '&amp;ref=relatedItems'; return true;" onmouseup="t=this; setTimeout(function() {t.href='http://wowubuntu.com/gcm.html';}, 50); return true;" style="text-decoration: none; border-bottom: medium none; outline: medium none; color: rgb(51, 51, 51);"><span>Gnome Connection Manager:又一个 SSH 连接管理器</span></a>
+            </li>
+    </ul>
+        <div style="margin: 0pt; border: medium none; padding: 5px 0pt; clear: both; text-align: right;">
+            <a href="http://www.wumii.com/widget/relatedItems.htm" target="_top" title="无觅相关文章插件" style="font: 12px arial; color: rgb(187, 187, 187); border-bottom: medium none; word-wrap: normal; display: inline;">无觅</a>
+            
+        </div>
+</div>
+
+</div>
+<div class="wp-about-author-containter-top" style="background-color: rgb(232, 232, 232);"><div class="wp-about-author-pic"><img alt="" src="730f4bb2007b2aabeeed8dc240a0d99f-100.jpg" class="avatar avatar-100 photo" height="100" width="100"></div><div class="wp-about-author-text"><h3>作者：<a href="http://wowubuntu.com/author/admin" title="riku">riku</a></h3>Bio: 关注新网络、Web2.0、移动应用；Nokia 5800，iPad，FreeBSD，Ubuntu 用户；伪设计师，好推墙运动。<br>链接：<a href="http://riku.wowubuntu.com/" title="riku">Blog</a> - <a href="http://twitter.com/riku" title="rikuon Twitter">Twitter</a> - <a href="http://facebook.com/rikulu" title="riku on Facebook">Facebook</a> - <a href="http://wowubuntu.com/author/admin" title="More posts by riku"> 此作者的更多文章</a> <br></div></div></div>
+
+<div class="p-det">
+ <ul>
+<li class="p-det-cat">作者:<a href="http://riku.wowubuntu.com/" target="_top"> riku </a></li>
+<li class="p-det-cat"> Post Time: 2010/11/26 12:31:55 下午 </li>
+
+  <li class="p-det-cat">In: <a href="http://wowubuntu.com/category/tips" title="查看 技巧 中的全部文章" rel="category tag">技巧</a></li>
+   <li class="p-det-tag">Tags: <a href="http://wowubuntu.com/tag/ssh" rel="tag">ssh</a></li> 
+
+
+ </ul>
+</div>
+
+</div>	
+
+
+
+<!-- You can start editing here. -->
+
+<div id="comments" class="comments-list">
+<h2>7 Responses to 25 条 SSH 命令和技巧</h2>
+       
+ <div class="entry  alt" id="comment-1748">
+ <p class="avt"><img src="avatar.php" alt="Avatar">  </p>
+ <p class="name">Umfs  </p>  <img src="safari.png" title="Safari 4.0.5" style="border: 0px none; vertical-align: middle;" alt="Safari 4.0.5"> Safari 4.0.5  <img src="iphone.png" title="iPod iOS 4.1" style="border: 0px none; vertical-align: middle;" alt="iPod iOS 4.1"> iPod iOS 4.1 
+ <p class="date"><a href="#comment-1748">十一月 26th, 2010 at 1:25 下午</a>  </p>
+ <div class="con"><p>这篇内容真丰富啊 哈哈</p>
+<p class="thdrpy">[<a href="javascript:void(0)" onclick="movecfm(event,1748,1,'Umfs');">Reply</a>]</p></div>
+</div>
+
+ <div class="entry " id="comment-1753">
+ <p class="avt"><img src="avatar_001.php" alt="Avatar">  </p>
+ <p class="name"><a href="http://holin.info/" rel="external nofollow" class="url">holin</a>  </p>  <img src="chrome.png" title="Google Chrome 7.0.517.44" style="border: 0px none; vertical-align: middle;" alt="Google Chrome 7.0.517.44"> Google Chrome 7.0.517.44  <img src="mac-3.png" title="Mac OS X 10.6.4" style="border: 0px none; vertical-align: middle;" alt="Mac OS X 10.6.4"> Mac OS X 10.6.4 
+ <p class="date"><a href="#comment-1753">十一月 26th, 2010 at 4:04 下午</a>  </p>
+ <div class="con"><p>内容真多。有些东西现在没什么机会用到</p>
+<p class="thdrpy">[<a href="javascript:void(0)" onclick="movecfm(event,1753,1,'holin');">Reply</a>]</p></div>
+</div>
+
+ <div class="entry  alt " id="comment-1765">
+ <p class="avt"><img src="avatar_002.php" alt="Avatar">  </p>
+ <p class="name">Wangzi  </p>  <img src="chrome.png" title="Google Chrome 7.0.517.44" style="border: 0px none; vertical-align: middle;" alt="Google Chrome 7.0.517.44"> Google Chrome 7.0.517.44  <img src="linux.png" title="GNU/Linux" style="border: 0px none; vertical-align: middle;" alt="GNU/Linux"> GNU/Linux 
+ <p class="date"><a href="#comment-1765">十一月 27th, 2010 at 8:41 上午</a>  </p>
+ <div class="con"><p>好复杂</p>
+<p class="thdrpy">[<a href="javascript:void(0)" onclick="movecfm(event,1765,1,'Wangzi');">Reply</a>]</p></div>
+</div>
+
+ <div class="entry " id="comment-1785">
+ <p class="avt"><img src="avatar_003.php" alt="Avatar">  </p>
+ <p class="name">張旭  </p>  <img src="chrome.png" title="Google Chrome 7.0.517.44" style="border: 0px none; vertical-align: middle;" alt="Google Chrome 7.0.517.44"> Google Chrome 7.0.517.44  <img src="linux.png" title="GNU/Linux" style="border: 0px none; vertical-align: middle;" alt="GNU/Linux"> GNU/Linux 
+ <p class="date"><a href="#comment-1785">十一月 28th, 2010 at 1:43 下午</a>  </p>
+ <div class="con"><p>這篇對我來說太有用了！！！！！！！</p>
+<p class="thdrpy">[<a href="javascript:void(0)" onclick="movecfm(event,1785,1,'張旭');">Reply</a>]</p></div>
+</div>
+
+ <div class="entry  alt " id="comment-1790">
+ <p class="avt"><img src="avatar_004.php" alt="Avatar">  </p>
+ <p class="name">hanf  </p>  <img src="firefox.png" title="Firefox 3.6.12" style="border: 0px none; vertical-align: middle;" alt="Firefox 3.6.12"> Firefox 3.6.12  <img src="win-4.png" title="Windows 7" style="border: 0px none; vertical-align: middle;" alt="Windows 7"> Windows 7 
+ <p class="date"><a href="#comment-1790">十一月 28th, 2010 at 8:19 下午</a>  </p>
+ <div class="con"><p>对我很有用，工作中离不开SSH</p>
+<p class="thdrpy">[<a href="javascript:void(0)" onclick="movecfm(event,1790,1,'hanf');">Reply</a>]</p></div>
+</div>
+
+ <div class="entry " id="comment-1838">
+ <p class="avt"><img src="avatar_005.php" alt="Avatar">  </p>
+ <p class="name"><a href="http://wowubuntu.com/ssh-host.html" rel="external nofollow" class="url">» SSH 小技巧：设置主机别名 Wow! Ubuntu / Ubuntu 及 Linux 新闻、技巧、软件及游戏！</a>  </p>  <img src="wordpress.png" title="WordPress 3.0.1" style="border: 0px none; vertical-align: middle;" alt="WordPress 3.0.1"> WordPress 3.0.1 
+ <p class="date"><a href="#comment-1838">十一月 30th, 2010 at 10:42 下午</a>  </p>
+ <div class="con"><p>[...] 更多 SSH 技巧见此文。 [...]</p>
+</div>
+</div>
+
+ <div class="entry  alt " id="comment-4336">
+ <p class="avt"><img src="avatar_005.php" alt="Avatar">  </p>
+ <p class="name"><a href="http://a.iphouch.com/?p=110" rel="external nofollow" class="url">SSH 小技巧：设置主机别名 | My Blog</a>  </p>  <img src="wordpress.png" title="WordPress 3.0.5" style="border: 0px none; vertical-align: middle;" alt="WordPress 3.0.5"> WordPress 3.0.5 
+ <p class="date"><a href="#comment-4336">二月 22nd, 2011 at 12:28 上午</a>  </p>
+ <div class="con"><p>[...] SSH 技巧见此文。   This entry was posted in Linux. Bookmark the permalink.    ← 几条实用的 Linux Shell [...]</p>
+</div>
+</div>
+
+							
+</div>
+
+	
+<div class="comments-form">					
+<h3 id="respond">Comment Form</h3>
+<form id="comment-form" action="http://wowubuntu.com/wp-comments-post.php" method="post">
+								
+<p><input id="comment-name" value="" name="author" type="text"> <label for="comment-name">Your Name <strong class="required">(required)</strong></label></p>
+<p><input id="comment-email" name="email" value="" type="text"> <label for="comment-name">Your Email <strong class="required">(required)</strong></label></p>
+<p><input id="comment-url" name="url" value="" type="text"> <label for="comment-name">Your URL</label></p>
+								
+<p><textarea name="comment" cols="50" rows="8"></textarea></p>
+<p><input name="submit" id="submit" tabindex="5" class="button" value="Submit Comment" type="submit">
+<input name="comment_post_ID" value="1839" type="hidden">
+</p><p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="176541049f" type="hidden"></p><p><input id="comment_reply_ID" name="comment_reply_ID" value="0" type="hidden"><input id="comment_reply_dp" name="comment_reply_dp" value="0" type="hidden"></p><div id="cancel_reply" style="display: none;"><a href="javascript:void(0)" onclick="movecfm(null,0,1,null);" style="color: red;">取消回复</a></div>
+
+
+</form>
+							
+</div>				
+<div class="nav">
+ 	<div class="left"></div>
+ 	<div class="right"></div>
+</div>
+</div></div>
+<!-- End Center -->
+
+</div>
+<!-- End Container -->
+
+<div id="b-top"><span><a href="#top" onclick="document.location.hash=this.href.split('#')[1];return false;" title="top">top</a></span></div>
+
+<!-- Start Footer -->
+<div id="footer">
+ <p class="copy">Copyright ®2008 - Wow! Ubuntu - <a href="http://wowubuntu.com/wp-login.php">登录</a></p>
+ <p class="by">Powered by WordPress | Evidens [White] Theme by <a href="http://designdisease.com/" rel="designer" title="blog design">Design Disease</a> for <a href="http://premiumthemes.com/">PremiumThemes.com</a> | 
+
+<div title="Click to see stats for this site by whos.amung.us (bll77vof1u1i)" style="position: relative; display: inline-block; background-image: url('undefined'); width: 80px; height: 15px; padding: 0pt; margin: 0pt; overflow: hidden; cursor: pointer;"><div style="background-image: url('undefined'); background-repeat: no-repeat; background-attachment: scroll; background-position: -8px -15px; position: absolute; width: 5px; height: 8px; top: 4px; left: 20px; line-height: 8px; overflow: hidden; padding: 0pt; margin: 0pt;"></div><div style="background-image: url('undefined'); background-repeat: no-repeat; background-attachment: scroll; background-position: -18px -15px; position: absolute; width: 5px; height: 8px; top: 4px; left: 26px; line-height: 8px; overflow: hidden; padding: 0pt; margin: 0pt;"></div><div style="background-image: url('undefined'); background-repeat: no-repeat; background-attachment: scroll; background-position: -50px -15px; position: absolute; width: 24px; height: 8px; top: 4px; left: 32px; line-height: 8px; overflow: hidden; padding: 0pt; margin: 0pt;"></div></div>
+
+</p>
+</div>
+<!-- End Footer -->
+
+</div>
+<!-- End BG -->
+
+
+
+	
+<p style="margin: 0pt; padding: 0pt; height: 1px; overflow: hidden;">
+    <a href="http://www.wumii.com/widget/relatedItems.htm" style="border: 0pt none;"><img src="pixel.png" alt="无觅相关文章插件，快速提升流量" style="border: 0pt none; padding: 0pt; margin: 0pt;"></a>
+</p><!-- Generated in 0.371 seconds. Made 60 queries to database and 38 cached queries. Memory used - 34.31MB -->
+<!-- Cached by DB Cache Reloaded -->
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

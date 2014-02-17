@@ -1,0 +1,511 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+
+	<title>segfault.in » Recording and copying system configuration in Debian/Ubuntu</title>
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - all posts" href="http://segfault.in/feed/">
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0 - all comments" href="http://segfault.in/comments/feed/">
+	<link rel="pingback" href="http://segfault.in/xmlrpc.php">
+
+	<!-- style START -->
+	<!-- default style -->
+	
+	<!-- for translations -->
+		<!--[if IE]>
+		<link rel="stylesheet" href="http://segfault.in/wp-content/themes/inove/ie.css" type="text/css" media="screen" />
+	<![endif]-->
+	<!-- style END -->
+
+	<!-- script START -->
+	
+	
+	<!-- script END -->
+
+	<link rel="alternate" type="application/rss+xml" title="segfault.in » Recording and copying system configuration in Debian/Ubuntu Comments Feed" href="http://segfault.in/2010/07/recording-and-copying-system-configuration-in-debian-ubuntu/feed/">
+
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://segfault.in/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://segfault.in/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="segfault.in" href="http://segfault.in/">
+<link rel="start" title="Hello world!" href="http://segfault.in/1970/01/hello-world/">
+<link rel="prev" title="Using The Debian Alternatives System" href="http://segfault.in/2010/04/using-the-debian-alternatives-system/">
+<link rel="next" title="PDF Manipulations And Conversions From Linux Command Prompt" href="http://segfault.in/2010/07/pdf-manipulations-and-conversions-from-linux-command-prompt/">
+<meta name="generator" content="WordPress 3.1">
+<link rel="canonical" href="http://segfault.in/2010/07/recording-and-copying-system-configuration-in-debian-ubuntu/">
+<link rel="shortlink" href="http://wp.me/pogDp-ed">
+<!-- All in one Webmaster by CrunchMeme.com - @CrunchMeme --><meta name="google-site-verification" content="pCNCQSNU-4-QoUsFWfaANF7WjzEGsfIrUvO5Lol-Q2M"> 
+<!-- /All in one Webmaster -->
+	<!--Facebook Like Button OpenGraph Settings Start-->
+	<meta property="og:site_name" content="segfault.in">
+	<meta property="og:title" content="Recording and copying system configuration in Debian/Ubuntu">
+		<meta property="og:description" content="">
+	
+	<meta property="og:url" content="http://segfault.in/2010/07/recording-and-copying-system-configuration-in-debian-ubuntu/">
+	<meta property="fb:admins" content="">
+	<meta property="fb:app_id" content="">
+	<meta property="og:image" content="">
+	<meta property="og:type" content="article">
+		<!--Facebook Like Button OpenGraph Settings End-->
+	
+
+	
+<!-- Wordpress Popular Posts v2.1.4 -->
+
+<!-- End Wordpress Popular Posts v2.1.4 -->
+            
+<!-- Wordpress Popular Posts v2.1.4 -->
+
+<!-- End Wordpress Popular Posts v2.1.4 -->
+<!-- Google Analytics Tracking by Google Analyticator 6.1.2: http://ronaldheft.com/code/analyticator/ -->
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<!-- wrap START -->
+<div id="wrap">
+
+<!-- container START -->
+<div id="container">
+
+<!-- header START -->
+<div id="header">
+
+	<!-- banner START -->
+		<!-- banner END -->
+
+	<div id="caption">
+		<h1 id="title"><a href="http://segfault.in/">segfault.in</a></h1>
+		<div id="tagline">vinod's blog</div>
+	</div>
+
+        <div id="topright">
+                <!--a href="http://www.trafficrevenue.net/register/vinod"><img src="http://www.trafficrevenue.net/b1.gif" width="480" height="60" alt="TrafficRevenue"></a-->
+        </div><!-- Closes topright -->
+
+	<div class="fixed"></div>
+</div>
+<!-- header END -->
+
+<!-- navigation START -->
+<div id="navigation">
+	<!-- menus START -->
+	<ul id="menus">
+		<li class="page_item"><a class="home" title="Home" href="http://segfault.in/">Home</a></li>
+			<li class="cat-item cat-item-81"><a href="http://segfault.in/topic/debianubuntu/" title="View all posts filed under DEBIAN/UBUNTU">DEBIAN/UBUNTU</a>
+</li>
+	<li class="cat-item cat-item-4"><a href="http://segfault.in/topic/freebsd/" title="View all posts filed under FREEBSD">FREEBSD</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://segfault.in/topic/how-tos/" title="View all posts filed under HOW-TOS">HOW-TOS</a>
+</li>
+	<li class="cat-item cat-item-8"><a href="http://segfault.in/topic/java/" title="View all posts filed under JAVA">JAVA</a>
+</li>
+	<li class="cat-item cat-item-9"><a href="http://segfault.in/topic/linux/" title="View all posts filed under LINUX">LINUX</a>
+</li>
+	<li class="cat-item cat-item-84"><a href="http://segfault.in/topic/php/" title="View all posts filed under PHP">PHP</a>
+</li>
+	<li class="cat-item cat-item-11"><a href="http://segfault.in/topic/programming/" title="View all posts filed under PROGRAMMING">PROGRAMMING</a>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://segfault.in/topic/python/" title="View all posts filed under PYTHON">PYTHON</a>
+</li>
+	<li class="cat-item cat-item-1"><a href="http://segfault.in/topic/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a>
+</li>
+	<li class="cat-item cat-item-14"><a href="http://segfault.in/topic/vim/" title="View all posts filed under VIM">VIM</a>
+</li>
+		<li><a class="lastmenu" href="javascript:void(0);"></a></li>
+	</ul>
+	<!-- menus END -->
+
+	<!-- searchbox START -->
+	<!--div id="searchbox">
+					<form action="http://segfault.in" method="get">
+				<div class="content">
+					<input type="text" class="textfield" name="s" size="24" value="" />
+					<input type="submit" class="button" value="" />
+				</div>
+			</form>
+			</div-->
+
+	<!-- searchbox END -->
+
+	<div class="fixed"></div>
+</div>
+<!-- navigation END -->
+
+<!-- content START -->
+<div id="content">
+
+	<!-- main START -->
+	<div id="main">
+
+
+	<div id="postpath">
+		<a title="Go to homepage" href="http://segfault.in/">Home</a>
+		 &gt; <a href="http://segfault.in/topic/debianubuntu/" title="View all posts in DEBIAN/UBUNTU" rel="category tag">DEBIAN/UBUNTU</a>, <a href="http://segfault.in/topic/how-tos/" title="View all posts in HOW-TOS" rel="category tag">HOW-TOS</a>		 &gt; Recording and copying system configuration in Debian/Ubuntu	</div>
+
+	<div class="post" id="post-881">
+		<h2>Recording and copying system configuration in Debian/Ubuntu</h2>
+		<div class="info">
+			<span class="date">July 9th, 2010</span>
+			<span class="author"><a href="http://segfault.in/author/vinod/" title="Posts by vinod">vinod</a></span>									<div class="fixed"></div>
+		</div>
+		<div class="content">
+			<p><img src="debian.jpeg" alt="debian" title="debian" class="alignleft size-full wp-image-722" height="91" width="91">You can make a local copy of the package and debconf selection states using dpkg and debconf-get-selections command. The debconf-get-selections command output the content of current debconf database.</p>
+<p>You will require the “debconf-utils” packages to do that.</p>
+<p>Install debconf-utils:</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;">$ <span style="color: rgb(194, 12, 185); font-weight: bold;">sudo</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">aptitude</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">install</span> debconf-utils</pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;">$ <span style="color: rgb(194, 12, 185); font-weight: bold;">sudo</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">dpkg</span> <span style="color: rgb(102, 0, 51);">--get-selections</span> <span style="color: rgb(255, 0, 0);">'*'</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">&gt;</span> selection.dpkg
+$ <span style="color: rgb(194, 12, 185); font-weight: bold;">sudo</span> debconf-get-selections    <span style="color: rgb(0, 0, 0); font-weight: bold;">&gt;</span> selection.debconf</pre></div></div>
+
+<p>Here, “*” makes “selection.dpkg” to include package entries for “purge” too.</p>
+<p>You can transfer these 2 files to another computer, and install there with the following.</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;">$ <span style="color: rgb(194, 12, 185); font-weight: bold;">sudo</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">dselect</span> update
+$ <span style="color: rgb(194, 12, 185); font-weight: bold;">sudo</span> debconf-set-selections <span style="color: rgb(0, 0, 0); font-weight: bold;">&lt;</span> myselection.debconf
+$ <span style="color: rgb(194, 12, 185); font-weight: bold;">sudo</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">dpkg</span> <span style="color: rgb(102, 0, 51);">--set-selections</span>  <span style="color: rgb(0, 0, 0); font-weight: bold;">&lt;</span> myselection.dpkg
+$ <span style="color: rgb(194, 12, 185); font-weight: bold;">sudo</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">apt-get</span> <span style="color: rgb(102, 0, 51);">-u</span> dselect-upgrade    <span style="color: rgb(102, 102, 102); font-style: italic;"># or dselect install</span></pre></div></div>
+
+<p>If you are thinking about managing many servers in a cluster with practically the same configuration, you should consider to use specialized package such as fai to manage the whole system.</p>
+<div class="dd_post_share"><div class="dd_buttons"><div class="dd_button"><iframe title="Twitter For Websites: Tweet Button" style="width: 110px; height: 20px;" class="twitter-share-button twitter-count-horizontal" src="index_1.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe></div><div class="dd_button"><iframe src="index_2.html" frameborder="0" height="20" scrolling="no" width="90"></iframe></div><div class="dd_button"><iframe src="index_3.html" no'="" style="border: medium none; overflow: hidden; width: 92px; height: 20px;" allowtransparency="true" frameborder="0"></iframe></div><div class="dd_button"><a class="dd-delicious" style="background: url('delicious-compact.png') no-repeat scroll 0% 0% transparent;" href="http://delicious.com/save" onclick="window.open('http://delicious.com/save?v=5&amp;noui&amp;jump=close&amp;url='+encodeURIComponent('http://segfault.in/2010/07/recording-and-copying-system-configuration-in-debian-ubuntu/')+'&amp;title='+encodeURIComponent('Recording and copying system configuration in Debian/Ubuntu'),'delicious', 'toolbar=no,width=550,height=550'); return false;"><span id="DD_DELICIOUS_AJAX_POST_ID">0</span></a></div></div><div style="clear: both;"></div></div><!-- Social Buttons Voted Counts Generated by Digg Digg plugin v4.5.0.7, 
+    Author : Yong Mook Kim
+    Website : http://www.mkyong.com/blog/digg-digg-wordpress-plugin/ -->
+<div style="font-size: 0px; height: 0px; line-height: 0px; margin: 0pt; padding: 0pt; clear: both;"></div>
+
+<p>Related posts:</p><ol><li><a href="http://segfault.in/2010/04/automatic-download-and-upgrade-of-packages-for-debian-ubuntu/" rel="bookmark" title="Permanent Link: Automatic download and upgrade of packages In Debian/Ubuntu">Automatic download and upgrade of packages In Debian/Ubuntu</a></li>
+<li><a href="http://segfault.in/2010/04/using-the-debian-alternatives-system/" rel="bookmark" title="Permanent Link: Using The Debian Alternatives System">Using The Debian Alternatives System</a></li>
+<li><a href="http://segfault.in/2010/03/purge-removed-packages-on-ubuntu/" rel="bookmark" title="Permanent Link: Purge Removed Packages On Ubuntu/Debian">Purge Removed Packages On Ubuntu/Debian</a></li>
+<li><a href="http://segfault.in/2010/03/basic-package-management-operations-using-aptitude/" rel="bookmark" title="Permanent Link: Basic Package Management Operations Using Aptitude">Basic Package Management Operations Using Aptitude</a></li>
+<li><a href="http://segfault.in/2010/03/keep-track-of-configuration-changes-using-etckeeper/" rel="bookmark" title="Permanent Link: Keep Track Of Configuration Changes Using etckeeper">Keep Track Of Configuration Changes Using etckeeper</a></li>
+</ol>			<div class="fixed"></div>
+		</div>
+		<div class="under">
+			<span class="categories">Categories: </span><span><a href="http://segfault.in/topic/debianubuntu/" title="View all posts in DEBIAN/UBUNTU" rel="category tag">DEBIAN/UBUNTU</a>, <a href="http://segfault.in/topic/how-tos/" title="View all posts in HOW-TOS" rel="category tag">HOW-TOS</a></span>			<span class="tags">Tags: </span><span><a href="http://segfault.in/tag/configuration/" rel="tag">configuration</a>, <a href="http://segfault.in/tag/debconf/" rel="tag">debconf</a>, <a href="http://segfault.in/tag/debianubuntu/" rel="tag">DEBIAN/UBUNTU</a></span>		</div>
+	</div>
+
+	<!-- related posts START -->
+	<div id="related_posts"><ul class="related_post"><li><a href="http://segfault.in/2010/10/freebsd-net-inet-ip-sysctls-explained/" title="FreeBSD net.inet.ip Sysctls Explained">FreeBSD net.inet.ip Sysctls Explained</a></li><li><a href="http://segfault.in/2010/04/using-the-debian-alternatives-system/" title="Using The Debian Alternatives System">Using The Debian Alternatives System</a></li><li><a href="http://segfault.in/2010/03/basic-package-management-operations-using-aptitude/" title="Basic Package Management Operations Using Aptitude">Basic Package Management Operations Using Aptitude</a></li><li><a href="http://segfault.in/2010/03/whats-in-your-gitconfig/" title="What's In Your .gitconfig?">What's In Your .gitconfig?</a></li></ul></div><div class="fixed"></div>	<!-- related posts END -->
+
+	
+
+
+
+<div id="comments">
+
+<div id="cmtswitcher">
+			<a id="commenttab" class="curtab" href="javascript:void(0);" onclick="MGJS.switchTab('thecomments,commentnavi', 'thetrackbacks', 'commenttab', 'curtab', 'trackbacktab', 'tab');">Comments (1)</a>
+		<a id="trackbacktab" class="tab" href="javascript:void(0);" onclick="MGJS.switchTab('thetrackbacks', 'thecomments,commentnavi', 'trackbacktab', 'curtab', 'commenttab', 'tab');">Trackbacks (1)</a>
+					<span class="addtrackback"><a href="http://segfault.in/2010/07/recording-and-copying-system-configuration-in-debian-ubuntu/trackback/">Trackback</a></span>
+		<div class="fixed"></div>
+</div>
+
+<div id="commentlist">
+	<!-- comments START -->
+	<ol id="thecomments">
+		<li class="comment regularcomment" id="comment-77">
+		<div class="author">
+			<div class="pic">
+				<img alt="" src="ad516503a11cd5ca435acc9bb6523536" class="avatar avatar-32 photo avatar-default" height="32" width="32">			</div>
+			<div class="name">
+									<a id="commentauthor-77" class="url" href="http://thegzeus.myopenid.com/" rel="external nofollow">
+				
+				TheGZeus
+									</a>
+							</div>
+		</div>
+
+		<div class="info">
+			<div class="date">
+				July 11th, 2010 at 11:19					 | <a href="#comment-77">#1</a>
+			</div>
+			<div class="act">
+				<a href="javascript:void(0);" onclick="MGJS_CMT.reply('commentauthor-77', 'comment-77', 'comment');">Reply</a> | 
+				<a href="javascript:void(0);" onclick="MGJS_CMT.quote('commentauthor-77', 'comment-77', 'commentbody-77', 'comment');">Quote</a>
+							</div>
+			<div class="fixed"></div>
+			<div class="content">
+				
+				<div id="commentbody-77">
+					<p>This isn't really system configuration, just the sum total of a given system's packages.<br>You also need apt's config files, etc.</p>
+<p>But really, it might be better to be using dd for a cluster of nigh-identical machines. Install once, copy many.<br>Be nice to Debian's servers, they're free.</p>
+				</div>
+			</div>
+		</div>
+		<div class="fixed"></div>
+
+</li>
+	</ol>
+	<!-- comments END -->
+
+
+	<!-- trackbacks START -->
+			<ol id="thetrackbacks">
+												<li class="trackback">
+						<div class="date">
+							July 12th, 2010 at 00:43							 | <a href="#comment-78">#1</a>
+						</div>
+						<div class="act">
+													</div>
+						<div class="fixed"></div>
+						<div class="title">
+							<a href="http://techrights.org/2010/07/11/schools-are-dumping-windows/">
+								Links 11/7/2010: 2,750 (or 3,650) Schools Are Moving to GNU/Linux Desktops | Techrights							</a>
+						</div>
+					</li>
+				
+					</ol>
+		<div class="fixed"></div>
+	<!-- trackbacks END -->
+</div>
+
+</div>
+
+	<div class="messagebox">
+		Comments are closed.	</div>
+
+	<div id="postnavi">
+		<span class="prev"><a href="http://segfault.in/2010/07/pdf-manipulations-and-conversions-from-linux-command-prompt/" rel="next">PDF Manipulations And Conversions From Linux Command Prompt</a></span>
+		<span class="next"><a href="http://segfault.in/2010/04/using-the-debian-alternatives-system/" rel="prev">Using The Debian Alternatives System</a></span>
+		<div class="fixed"></div>
+	</div>
+
+
+	</div>
+	<!-- main END -->
+
+	
+<!-- sidebar START -->
+<div id="sidebar">
+
+<!-- sidebar north START -->
+<div id="northsidebar" class="sidebar">
+
+	<!-- feeds -->
+	<!--div class="widget widget_feeds">
+		<div class="content">
+			<div id="subscribe">
+				<a rel="external nofollow" id="feedrss" title="Subscribe to this blog..." href="http://segfault.in/feed/"><abbr title="Really Simple Syndication">RSS</abbr></a>
+									<ul id="feed_readers">
+						<li id="google_reader"><a rel="external nofollow" class="reader" title="Subscribe with Google" href="http://fusion.google.com/add?feedurl=http://segfault.in/feed/"><span>Google</span></a></li>
+						<li id="youdao_reader"><a rel="external nofollow" class="reader" title="Subscribe with Youdao" href="http://reader.youdao.com/#url=http://segfault.in/feed/"><span>Youdao</span></a></li>
+						<li id="xianguo_reader"><a rel="external nofollow" class="reader" title="Subscribe with Xian Guo" href="http://www.xianguo.com/subscribe.php?url=http://segfault.in/feed/"><span>Xian Guo</span></a></li>
+						<li id="zhuaxia_reader"><a rel="external nofollow" class="reader" title="Subscribe with Zhua Xia" href="http://www.zhuaxia.com/add_channel.php?url=http://segfault.in/feed/"><span>Zhua Xia</span></a></li>
+						<li id="yahoo_reader"><a rel="external nofollow" class="reader" title="Subscribe with My Yahoo!"	href="http://add.my.yahoo.com/rss?url=http://segfault.in/feed/"><span>My Yahoo!</span></a></li>
+						<li id="newsgator_reader"><a rel="external nofollow" class="reader" title="Subscribe with newsgator"	href="http://www.newsgator.com/ngs/subscriber/subfext.aspx?url=http://segfault.in/feed/"><span>newsgator</span></a></li>
+						<li id="bloglines_reader"><a rel="external nofollow" class="reader" title="Subscribe with Bloglines"	href="http://www.bloglines.com/sub/http://segfault.in/feed/"><span>Bloglines</span></a></li>
+						<li id="inezha_reader"><a rel="external nofollow" class="reader" title="Subscribe with iNezha"	href="http://inezha.com/add?url=http://segfault.in/feed/"><span>iNezha</span></a></li>
+					</ul>
+							</div>
+						<div class="fixed"></div>
+		</div>
+	</div-->
+
+	<!-- showcase -->
+	
+<div id="subscribe_me-3" class="widget subscribe_me"><h3>Syndicate</h3><div class="subscribe_me_services">
+<div class="float_feed_button"><a href="http://segfault.in/feed/" title="RSS Feed" class="no_icon"><img src="feed-large.gif" alt="RSS feed" height="48" width="48"></a></div>
+<div class="subscribe_me_text">
+<p>Subscribe to this site's RSS feed.</p>
+</div>
+</div>
+<div class="subscribe_me_ruler"></div>
+<div class="subscribe_me_extra" style="display: none;">
+<a href="feed://http//segfault.in/feed/" class="rss_feed no_icon" title="Desktop Reader" rel="nofollow">Desktop Reader</a>
+<a href="http://www.bloglines.com/sub/http://segfault.in/feed/" class="bloglines no_icon" title="Bloglines" rel="nofollow">Bloglines</a>
+<a href="http://fusion.google.com/add?feedurl=http%3A%2F%2Fsegfault.in%2Ffeed%2F" class="google no_icon" title="Google" rel="nofollow">Google</a>
+<a href="http://www.live.com/?add=http%3A%2F%2Fsegfault.in%2F" class="live no_icon" title="Live" rel="nofollow">Live</a>
+<a href="http://www.netvibes.com/subscribe.php?url=http%3A%2F%2Fsegfault.in%2Ffeed%2F" class="netvibes no_icon" title="Netvibes" rel="nofollow">Netvibes</a>
+<a href="http://www.newsgator.com/ngs/subscriber/subext.aspx?url=http%3A%2F%2Fsegfault.in%2Ffeed%2F" class="newsgator no_icon" title="Newsgator" rel="nofollow">Newsgator</a>
+<a href="http://add.my.yahoo.com/rss?url=http%3A%2F%2Fsegfault.in%2Ffeed%2F" class="yahoo no_icon" title="Yahoo!" rel="nofollow">Yahoo!</a>
+<a href="http://www.semiologic.com/resources/blogging/help-with-feeds/" class="help no_icon" title="What's This?" rel="nofollow">What's This?</a>
+<div class="subscribe_me_spacer"></div>
+</div>
+</div><div id="text-4" class="widget widget_text">			<div class="textwidget"><fb:like-box class="  fb_iframe_widget " href="http://www.facebook.com/segfault.in" width="252" connections="0" stream="false" header="false"><span><iframe src="index_4.html" class="fb_ltr" style="border: medium none; overflow: hidden; height: 62px; width: 252px;" name="f19736f42407076" id="f2f59a69886f98a" scrolling="no"></iframe></span></fb:like-box></div>
+		</div><div id="feedburneremailwidget-3" class="widget FeedburnerEmailWidget"><h3>Subscribe Via E-Mail</h3><form id="feedburner_email_widget_sbef" action="http://feedburner.google.com/fb/a/mailverify" method="post" onsubmit="window.open('http://feedburner.google.com/fb/a/mailverify?uri=segfaultblog', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true;" target="popupwindow"><label><br></label><input value="" id="feedburner_email_widget_sbef_email" name="email" type="text"><input value="segfaultblog" name="uri" type="hidden"><input name="loc" value="en_US" type="hidden"><input id="feedburner_email_widget_sbef_submit" value="Subscribe" type="submit"><label>Delivered by <a href="http://feedburner.google.com/" target="_top">FeedBurner</a></label></form></div><!-- Wordpress Popular Posts Plugin v2.1.4 [W] [all] [regular] -->
+<div id="wpp-3" class="widget popular-posts">
+<h3>Popular Posts</h3><ul>
+<li><a href="http://segfault.in/2010/03/paramiko-ssh-and-sftp-with-python/" title="Paramiko: SSH and SFTP With Python"><span class="wpp-post-title">Paramiko: SSH and SFTP With Python</span></a> </li>
+<li><a href="http://segfault.in/2010/03/python-rrdtool-tutorial/" title="Python RRDTool Tutorial"><span class="wpp-post-title">Python RRDTool Tutorial</span></a> </li>
+<li><a href="http://segfault.in/2010/10/ffmpeg-tricks-you-should-know-about/" title="FFmpeg Tricks You Should Know About"><span class="wpp-post-title">FFmpeg Tricks You Should Know About</span></a> </li>
+<li><a href="http://segfault.in/2010/07/playing-with-python-and-gmail-part-1/" title="Playing With Python And Gmail"><span class="wpp-post-title">Playing With Python And Gmail</span></a> </li>
+<li><a href="http://segfault.in/2010/07/parsing-html-table-in-python-with-beautifulsoup/" title="Parsing HTML table in Python with BeautifulSoup"><span class="wpp-post-title">Parsing HTML table in Python with BeautifulSoup</span></a> </li>
+<li><a href="http://segfault.in/2010/02/5-ssh-tricks-you-must-know/" title="5 SSH Tricks You Must Know"><span class="wpp-post-title">5 SSH Tricks You Must Know</span></a> </li>
+<li><a href="http://segfault.in/2010/11/decrypt-https-traffic-using-wireshark-and-key-file/" title="Decrypt HTTPS Traffic Using Wireshark And Key File"><span class="wpp-post-title">Decrypt HTTPS Traffic Using Wireshark And Key File</span></a> </li>
+<li><a href="http://segfault.in/2010/12/sending-gmail-from-python/" title="Sending Emails Via Gmail SMTP With Python"><span class="wpp-post-title">Sending Emails Via Gmail SMTP With Python</span></a> </li>
+<li><a href="http://segfault.in/2010/03/choose-your-vim-color-scheme-with-color-sampler-pack/" title="Choose Your VIM Color Scheme With Color Sampler Pack"><span class="wpp-post-title">Choose Your VIM Color Scheme With Color Sampler Pack</span></a> </li>
+<li><a href="http://segfault.in/2010/08/playing-with-python-and-gmail-part-2/" title="Playing With Python And Gmail - Part 2"><span class="wpp-post-title">Playing With Python And Gmail - Part 2</span></a> </li>
+<li><a href="http://segfault.in/2010/01/vim-plugins-nerd-commenter/" title="Vim Plugin: NERD Commenter"><span class="wpp-post-title">Vim Plugin: NERD Commenter</span></a> </li>
+<li><a href="http://segfault.in/2010/03/keep-track-of-configuration-changes-using-etckeeper/" title="Keep Track Of Configuration Changes Using etckeeper"><span class="wpp-post-title">Keep Track Of Configuration Changes Using etckeeper</span></a> </li>
+<li><a href="http://segfault.in/2010/11/playing-with-python-and-couchdb/" title="Playing With Python And CouchDB"><span class="wpp-post-title">Playing With Python And CouchDB</span></a> </li>
+<li><a href="http://segfault.in/2010/07/pdf-manipulations-and-conversions-from-linux-command-prompt/" title="PDF Manipulations And Conversions From Linux Command Prompt"><span class="wpp-post-title">PDF Manipulations And Conversions From Linux Command Prompt</span></a> </li>
+<li><a href="http://segfault.in/2010/10/freebsd-net-inet-ip-sysctls-explained/" title="FreeBSD net.inet.ip Sysctls Explained"><span class="wpp-post-title">FreeBSD net.inet.ip Sysctls Explained</span></a> </li>
+
+</ul>
+</div>
+<!-- End Wordpress Popular Posts Plugin v2.1.4 -->
+		<div id="recent-posts-3" class="widget widget_recent_entries">		<h3>Recent Posts</h3>		<ul>
+				<li><a href="http://segfault.in/2010/12/ssh-and-scp-with-php/" title="PHP SSH2: Bindings for the libssh2 library">PHP SSH2: Bindings for the libssh2 library</a></li>
+				<li><a href="http://segfault.in/2010/12/sending-gmail-from-python/" title="Sending Emails Via Gmail SMTP With Python">Sending Emails Via Gmail SMTP With Python</a></li>
+				<li><a href="http://segfault.in/2010/11/decrypt-https-traffic-using-wireshark-and-key-file/" title="Decrypt HTTPS Traffic Using Wireshark And Key File">Decrypt HTTPS Traffic Using Wireshark And Key File</a></li>
+				<li><a href="http://segfault.in/2010/11/java-tip-non-blocking-way-to-download-contents-from-web/" title="[Java-Tip] Non-Blocking Method To Download Files From Web">[Java-Tip] Non-Blocking Method To Download Files From Web</a></li>
+				<li><a href="http://segfault.in/2010/11/playing-with-python-and-couchdb/" title="Playing With Python And CouchDB">Playing With Python And CouchDB</a></li>
+				<li><a href="http://segfault.in/2010/10/how-to-expand-usable-storage-space-in-ubuntu/" title="How To Expand Usable Storage Space In Ubuntu">How To Expand Usable Storage Space In Ubuntu</a></li>
+				<li><a href="http://segfault.in/2010/10/freebsd-net-inet-ip-sysctls-explained/" title="FreeBSD net.inet.ip Sysctls Explained">FreeBSD net.inet.ip Sysctls Explained</a></li>
+				<li><a href="http://segfault.in/2010/10/ffmpeg-tricks-you-should-know-about/" title="FFmpeg Tricks You Should Know About">FFmpeg Tricks You Should Know About</a></li>
+				<li><a href="http://segfault.in/2010/10/vim-plugin-for-gist/" title="gist.vim: Vim Plugin For Gist">gist.vim: Vim Plugin For Gist</a></li>
+				<li><a href="http://segfault.in/2010/10/shorten-urls-using-python-and-bit-ly/" title="Shorten URLs using Python and bit.ly">Shorten URLs using Python and bit.ly</a></li>
+				<li><a href="http://segfault.in/2010/10/shorten-urls-using-google-and-python/" title="Shorten URLs using goo.gl and Python">Shorten URLs using goo.gl and Python</a></li>
+				<li><a href="http://segfault.in/2010/09/how-to-set-cpu-affinity-for-a-process-in-freebsd/" title="How to set CPU affinity for a process in FreeBSD">How to set CPU affinity for a process in FreeBSD</a></li>
+				<li><a href="http://segfault.in/2010/08/data-compression-and-archiving-using-python/" title="Data Compression and Archiving Using Python">Data Compression and Archiving Using Python</a></li>
+				<li><a href="http://segfault.in/2010/08/playing-with-python-and-gmail-part-2/" title="Playing With Python And Gmail – Part 2">Playing With Python And Gmail – Part 2</a></li>
+				<li><a href="http://segfault.in/2010/07/playing-with-python-and-gmail-part-1/" title="Playing With Python And Gmail">Playing With Python And Gmail</a></li>
+				</ul>
+		</div><div id="categories-4" class="widget widget_categories"><h3>Categories</h3>		<ul>
+	<li class="cat-item cat-item-81"><a href="http://segfault.in/topic/debianubuntu/" title="View all posts filed under DEBIAN/UBUNTU">DEBIAN/UBUNTU</a> (6)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://segfault.in/topic/freebsd/" title="View all posts filed under FREEBSD">FREEBSD</a> (3)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://segfault.in/topic/how-tos/" title="View all posts filed under HOW-TOS">HOW-TOS</a> (14)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://segfault.in/topic/java/" title="View all posts filed under JAVA">JAVA</a> (1)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://segfault.in/topic/linux/" title="View all posts filed under LINUX">LINUX</a> (5)
+</li>
+	<li class="cat-item cat-item-84"><a href="http://segfault.in/topic/php/" title="View all posts filed under PHP">PHP</a> (1)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://segfault.in/topic/programming/" title="View all posts filed under PROGRAMMING">PROGRAMMING</a> (2)
+</li>
+	<li class="cat-item cat-item-12"><a href="http://segfault.in/topic/python/" title="View all posts filed under PYTHON">PYTHON</a> (12)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://segfault.in/topic/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a> (1)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://segfault.in/topic/vim/" title="View all posts filed under VIM">VIM</a> (4)
+</li>
+		</ul>
+</div><div id="recent-comments-3" class="widget widget_recent_comments"><h3>Recent Comments</h3><ul id="recentcomments"><li class="recentcomments">grillermo on <a href="http://segfault.in/2010/03/paramiko-ssh-and-sftp-with-python/#comment-4563">Paramiko: SSH and SFTP With Python</a></li><li class="recentcomments"><a href="http://www.radnombugs.com/" class="url">Sacx</a> on <a href="http://segfault.in/2010/12/ssh-and-scp-with-php/#comment-3558">PHP SSH2: Bindings for the libssh2 library</a></li><li class="recentcomments"><a href="http://www.dound.com/" class="url">David Underhill</a> on <a href="http://segfault.in/2010/03/paramiko-ssh-and-sftp-with-python/#comment-2730">Paramiko: SSH and SFTP With Python</a></li><li class="recentcomments">Vimal on <a href="http://segfault.in/2010/07/reveal-invisible-mode-friends-in-your-gtalk-buddy-list/#comment-2650">Catch Invisible Friends On GTalk The Python Way</a></li><li class="recentcomments">crinus on <a href="http://segfault.in/2010/07/playing-with-python-and-gmail-part-1/#comment-2538">Playing With Python And Gmail</a></li></ul></div><div id="text-5" class="widget widget_text">			<div class="textwidget"><a rel="nofollow" href="http://www.alexa.com/siteinfo/segfault.in"><a class="AlexaSiteStatsWidget" href="http://www.alexa.com/data/details/main?url=http://segfault.in"><img alt="Alexa Certified Site Stats for segfault.in" src="s.gif" border="0"></a></a></div>
+		</div></div>
+<!-- sidebar north END -->
+
+<div id="centersidebar">
+
+	<!-- sidebar east START -->
+	<div id="eastsidebar" class="sidebar">
+	<div id="text-6" class="widget widget_text">			<div class="textwidget"><a href="http://topofblogs.com/linux_unix"><img src="38779" alt="TopOfBlogs" rel="nofollow" border="0"></a></div>
+		</div>	</div>
+	<!-- sidebar east END -->
+
+	<!-- sidebar west START -->
+	<div id="westsidebar" class="sidebar">
+	<div id="tag_cloud-2" class="widget widget_tag_cloud"><h3>Tags</h3><div class="tagcloud"><a href="http://segfault.in/tag/etc/" class="tag-link-15" title="1 topic" style="font-size: 8pt;">/etc</a>
+<a href="http://segfault.in/tag/affinity/" class="tag-link-16" title="1 topic" style="font-size: 8pt;">affinity</a>
+<a href="http://segfault.in/tag/api/" class="tag-link-17" title="1 topic" style="font-size: 8pt;">api</a>
+<a href="http://segfault.in/tag/apt/" class="tag-link-18" title="1 topic" style="font-size: 8pt;">apt</a>
+<a href="http://segfault.in/tag/aptitude/" class="tag-link-19" title="2 topics" style="font-size: 11.8769pt;">aptitude</a>
+<a href="http://segfault.in/tag/archives/" class="tag-link-20" title="1 topic" style="font-size: 8pt;">archives</a>
+<a href="http://segfault.in/tag/audio-conversion/" class="tag-link-21" title="1 topic" style="font-size: 8pt;">audio conversion</a>
+<a href="http://segfault.in/tag/beautifulsoup/" class="tag-link-22" title="1 topic" style="font-size: 8pt;">beautifulsoup</a>
+<a href="http://segfault.in/tag/bit-ly/" class="tag-link-23" title="1 topic" style="font-size: 8pt;">bit.ly</a>
+<a href="http://segfault.in/tag/bzip/" class="tag-link-24" title="1 topic" style="font-size: 8pt;">bzip</a>
+<a href="http://segfault.in/tag/chat/" class="tag-link-26" title="1 topic" style="font-size: 8pt;">chat</a>
+<a href="http://segfault.in/tag/command/" class="tag-link-27" title="1 topic" style="font-size: 8pt;">command</a>
+<a href="http://segfault.in/tag/compression/" class="tag-link-28" title="1 topic" style="font-size: 8pt;">compression</a>
+<a href="http://segfault.in/tag/configuration/" class="tag-link-29" title="3 topics" style="font-size: 14.4615pt;">configuration</a>
+<a href="http://segfault.in/tag/couchdb/" class="tag-link-30" title="1 topic" style="font-size: 8pt;">couchdb</a>
+<a href="http://segfault.in/tag/cpu/" class="tag-link-31" title="2 topics" style="font-size: 11.8769pt;">cpu</a>
+<a href="http://segfault.in/tag/crypt/" class="tag-link-32" title="1 topic" style="font-size: 8pt;">crypt</a>
+<a href="http://segfault.in/tag/currency/" class="tag-link-33" title="1 topic" style="font-size: 8pt;">currency</a>
+<a href="http://segfault.in/tag/debconf/" class="tag-link-34" title="1 topic" style="font-size: 8pt;">debconf</a>
+<a href="http://segfault.in/tag/debianubuntu/" class="tag-link-81" title="3 topics" style="font-size: 14.4615pt;">DEBIAN/UBUNTU</a>
+<a href="http://segfault.in/tag/decrypt/" class="tag-link-35" title="1 topic" style="font-size: 8pt;">decrypt</a>
+<a href="http://segfault.in/tag/email/" class="tag-link-36" title="1 topic" style="font-size: 8pt;">email</a>
+<a href="http://segfault.in/tag/etckeeper/" class="tag-link-37" title="1 topic" style="font-size: 8pt;">etckeeper</a>
+<a href="http://segfault.in/tag/ffmpef/" class="tag-link-38" title="1 topic" style="font-size: 8pt;">ffmpef</a>
+<a href="http://segfault.in/tag/filesystem/" class="tag-link-39" title="1 topic" style="font-size: 8pt;">filesystem</a>
+<a href="http://segfault.in/tag/finance/" class="tag-link-40" title="1 topic" style="font-size: 8pt;">finance</a>
+<a href="http://segfault.in/tag/gist/" class="tag-link-41" title="1 topic" style="font-size: 8pt;">gist</a>
+<a href="http://segfault.in/tag/git/" class="tag-link-42" title="1 topic" style="font-size: 8pt;">git</a>
+<a href="http://segfault.in/tag/gmail/" class="tag-link-43" title="5 topics" style="font-size: 18.3385pt;">gmail</a>
+<a href="http://segfault.in/tag/google/" class="tag-link-44" title="1 topic" style="font-size: 8pt;">google</a>
+<a href="http://segfault.in/tag/gtalk/" class="tag-link-45" title="1 topic" style="font-size: 8pt;">gtalk</a>
+<a href="http://segfault.in/tag/gzip/" class="tag-link-46" title="1 topic" style="font-size: 8pt;">gzip</a>
+<a href="http://segfault.in/tag/html/" class="tag-link-47" title="1 topic" style="font-size: 8pt;">html</a>
+<a href="http://segfault.in/tag/https/" class="tag-link-48" title="1 topic" style="font-size: 8pt;">https</a>
+<a href="http://segfault.in/tag/ilb/" class="tag-link-49" title="1 topic" style="font-size: 8pt;">ilb</a>
+<a href="http://segfault.in/tag/imap/" class="tag-link-50" title="2 topics" style="font-size: 11.8769pt;">imap</a>
+<a href="http://segfault.in/tag/imaplib/" class="tag-link-51" title="2 topics" style="font-size: 11.8769pt;">imaplib</a>
+<a href="http://segfault.in/tag/interface/" class="tag-link-52" title="1 topic" style="font-size: 8pt;">interface</a>
+<a href="http://segfault.in/tag/java/" class="tag-link-8" title="1 topic" style="font-size: 8pt;">JAVA</a>
+<a href="http://segfault.in/tag/java-tips/" class="tag-link-53" title="1 topic" style="font-size: 8pt;">java-tips</a>
+<a href="http://segfault.in/tag/mail/" class="tag-link-82" title="1 topic" style="font-size: 8pt;">mail</a>
+<a href="http://segfault.in/tag/plugin/" class="tag-link-60" title="4 topics" style="font-size: 16.6154pt;">plugin</a>
+<a href="http://segfault.in/tag/python/" class="tag-link-12" title="8 topics" style="font-size: 22pt;">PYTHON</a>
+<a href="http://segfault.in/tag/ssh/" class="tag-link-65" title="3 topics" style="font-size: 14.4615pt;">SSH</a>
+<a href="http://segfault.in/tag/tips/" class="tag-link-69" title="2 topics" style="font-size: 11.8769pt;">tips</a></div>
+</div>	</div>
+	<!-- sidebar west END -->
+	<div class="fixed"></div>
+</div>
+
+<!-- sidebar south START -->
+<div id="southsidebar" class="sidebar">
+<div id="archives-4" class="widget widget_archive"><h3>Archives</h3>		<ul>
+			<li><a href="http://segfault.in/2010/12/" title="December 2010">December 2010</a>&nbsp;(2)</li>
+	<li><a href="http://segfault.in/2010/11/" title="November 2010">November 2010</a>&nbsp;(3)</li>
+	<li><a href="http://segfault.in/2010/10/" title="October 2010">October 2010</a>&nbsp;(6)</li>
+	<li><a href="http://segfault.in/2010/09/" title="September 2010">September 2010</a>&nbsp;(1)</li>
+	<li><a href="http://segfault.in/2010/08/" title="August 2010">August 2010</a>&nbsp;(2)</li>
+	<li><a href="http://segfault.in/2010/07/" title="July 2010">July 2010</a>&nbsp;(7)</li>
+	<li><a href="http://segfault.in/2010/04/" title="April 2010">April 2010</a>&nbsp;(2)</li>
+	<li><a href="http://segfault.in/2010/03/" title="March 2010">March 2010</a>&nbsp;(10)</li>
+	<li><a href="http://segfault.in/2010/02/" title="February 2010">February 2010</a>&nbsp;(1)</li>
+	<li><a href="http://segfault.in/2010/01/" title="January 2010">January 2010</a>&nbsp;(1)</li>
+	<li><a href="http://segfault.in/2009/12/" title="December 2009">December 2009</a>&nbsp;(1)</li>
+	<li><a href="http://segfault.in/2008/05/" title="May 2008">May 2008</a>&nbsp;(1)</li>
+	<li><a href="http://segfault.in/2008/04/" title="April 2008">April 2008</a>&nbsp;(2)</li>
+	<li><a href="http://segfault.in/2011/09/" title=" 0"> 0</a>&nbsp;(1)</li>
+		</ul>
+</div></div>
+<!-- sidebar south END -->
+
+</div>
+<!-- sidebar END -->
+	<div class="fixed"></div>
+</div>
+<!-- content END -->
+
+<!-- footer START -->
+<div id="footer">
+	<a id="gotop" href="#" onclick="MGJS.goTop();return false;">Top</a>
+	<a id="powered" href="http://wordpress.org/">WordPress</a>
+	<div id="copyright">
+		Copyright © 2008-2011 segfault.in	</div>
+	<div id="themeinfo">
+		Theme by <a href="http://www.neoease.com/">NeoEase</a>. Valid <a href="http://validator.w3.org/check?uri=referer">XHTML 1.1</a> and <a href="http://jigsaw.w3.org/css-validator/check/referer?profile=css3">CSS 3</a>.	</div>
+</div>
+<!-- footer END -->
+
+</div>
+<!-- container END -->
+</div>
+<!-- wrap END -->
+
+
+<div style="text-align: center; font-size: 10px;">
+		<small>Blog WebMastered by <a href="http://crunchmeme.com/plugins/all-in-one-webmaster/" target="_top">All in One Webmaster</a>.</small></div><!--stats_footer_test-->
+<img id="wpstats" src="g.gif" alt="">
+
+
+
+
+</body>
+</html>

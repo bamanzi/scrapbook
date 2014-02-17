@@ -1,0 +1,99 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Display Settings - GNU Emacs FAQ For MS Windows</title>
+
+<meta name="description" content="Answers to Frequently asked Questions about using Emacs on Microsoft Windows.">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="http://www.gnu.org/software/emacs/windows/index.html#Top">
+<link rel="prev" href="http://www.gnu.org/software/emacs/windows/Installing-Emacs.html#Installing-Emacs" title="Installing Emacs">
+<link rel="next" href="http://www.gnu.org/software/emacs/windows/Fonts-and-text-translation.html#Fonts-and-text-translation" title="Fonts and text translation">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 2008, 2010-2011 Free Software Foundation, Inc.
+
+     This list of frequently asked questions about GNU Emacs on MS
+     Windows with answers (``FAQ'') may be translated into other
+     languages, transformed into other formats (e.g. Texinfo, Info,
+     WWW), and updated with new information.
+
+     The same conditions apply to any derivative of the FAQ as apply to
+     the FAQ itself.  Every copy of the FAQ must include this notice or
+     an approved translation, information on who is currently
+     maintaining the FAQ and how to contact them (including their
+     e-mail address), and information on where the latest version of
+     the FAQ is archived (including FTP information).
+
+     The FAQ may be copied and redistributed under these conditions,
+     except that the FAQ may not be embedded in a larger literary work
+     unless that work itself allows free copying and redistribution.
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+</head>
+<body>
+<div class="node">
+<a name="Display-Settings"></a>
+<p>
+Next:&nbsp;<a indepth="true" rel="next" accesskey="n" href="fonts-and-text-translation.html#Fonts-and-text-translation">Fonts and text translation</a>,
+Previous:&nbsp;<a indepth="true" rel="previous" accesskey="p" href="installing-emacs.html#Installing-Emacs">Installing Emacs</a>,
+Up:&nbsp;<a indepth="true" rel="up" accesskey="u" href="default_001.html#Top">Top</a>
+</p><hr>
+</div>
+
+<h2 class="chapter">4 Display Settings</h2>
+
+<h3 class="section">4.1 Emacs in console mode goes beyond the window size</h3>
+
+<p><a name="index-console_002c-window-size-124"></a><a name="index-telnet_002c-display-size-problems-running-emacs-over-125"></a><a name="index-g_t_002dnw_002c-window-size-126"></a><a name="index-w32_002duse_002dfull_002dscreen_002dbuffer-127"></a>
+The variable <code>w32-use-full-screen-buffer</code> controls whether Emacs uses
+the window size or buffer size to determine the number of lines on screen. 
+Normally the window size is correct, but when running Emacs over some
+telnet servers, the buffer size needs to be used.  Emacs tries to guess
+the correct value at startup, but if it guesses wrong, you can customize
+that variable yourself.
+
+</p><h3 class="section">4.2 What do I do if I have problems with my mouse buttons?</h3>
+
+<p><a name="index-mouse-buttons_002c-problems-with-128"></a><a name="index-g_t2-button-mouse-129"></a><a name="index-two-button-mouse-130"></a><a name="index-third-mouse-button_002c-simulating-131"></a><a name="index-middle-mouse-button_002c-simulating-132"></a><a name="index-simulating-three-button-mouse-with-two-buttons-133"></a><a name="index-swap-right-and-middle-mouse-buttons-134"></a><a name="index-exchange-mouse_002d2-and-mouse_002d3-buttons-135"></a><a name="index-w32_002dmouse_002dbutton_002dtolerance-136"></a><a name="index-w32_002dnum_002dmouse_002dbuttons-137"></a><a name="index-w32_002dswap_002dmouse_002dbuttons-138"></a>
+Emacs assigns bindings assuming a three button mouse.  On Windows, if
+a two button mouse is detected, a hack is enabled which lets you
+simulate the third button by pressing both mouse buttons
+simultaneously.  <code>w32-mouse-button-tolerance</code> defines the timeout
+for what is considered “simultaneous”.  You can check how many
+buttons Emacs thinks your mouse has with <kbd>C-h v</kbd>
+<code>w32-num-mouse-buttons</code>.
+
+   </p><p>If you find yourself needing the mouse-3 bindings more often than mouse-2,
+you can swap the buttons with the following code in your init file:
+</p><pre class="example">     (setq w32-swap-mouse-buttons t)
+</pre>
+   <h3 class="section">4.3 How do I cut and paste text with NUL characters?</h3>
+
+<p><a name="index-clipboard_002c-NUL-characters-139"></a>
+If you attempt to cut and paste text with NUL characters embedded in it,
+then the text will be truncated at the first NUL character.  This is a
+limitation of the Windows clipboard, and does not affect killing and yanking
+from the kill-ring within Emacs.
+
+</p><h3 class="section">4.4 How can I fix garbled text yanked from the clipboard?</h3>
+
+<p><a name="index-clipboard_002c-corruption-of-140"></a><a name="index-garbage-on-the-clipboard-141"></a><a name="index-clipboard-encoding-142"></a><a name="index-encoding_002c-clipboard-143"></a><a name="index-set_002dselection_002dcoding_002dsystem-144"></a>
+You can try <code>set-selection-coding-system</code>, but generally such
+corruption is a thing of the past, as Emacs uses Unicode for the clipboard
+by default now.
+
+</p><h3 class="section">4.5 How do I change the sound of the Emacs beep?</h3>
+
+<p><a name="index-beep_002c-changing-the-sound-145"></a><a name="index-sound_002c-changing-the-beep-146"></a><a name="index-set_002dmessage_002dbeep-147"></a>
+You can use the function <code>set-message-beep</code> to change the sound
+that Emacs uses for its beep.  This affects both console and GUI frames. 
+The doc string contains a list of the system sounds you can use.
+
+<!--  -->
+   
+
+</p>
+
+</body></html>

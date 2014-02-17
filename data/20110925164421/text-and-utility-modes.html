@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Text and Utility modes - GNU Emacs FAQ For MS Windows</title>
+
+<meta name="description" content="Answers to Frequently asked Questions about using Emacs on Microsoft Windows.">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="http://www.gnu.org/software/emacs/windows/index.html#Top">
+<link rel="prev" href="http://www.gnu.org/software/emacs/windows/Network-access.html#Network-access" title="Network access">
+<link rel="next" href="http://www.gnu.org/software/emacs/windows/Developing-with-Emacs.html#Developing-with-Emacs" title="Developing with Emacs">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 2008, 2010-2011 Free Software Foundation, Inc.
+
+     This list of frequently asked questions about GNU Emacs on MS
+     Windows with answers (``FAQ'') may be translated into other
+     languages, transformed into other formats (e.g. Texinfo, Info,
+     WWW), and updated with new information.
+
+     The same conditions apply to any derivative of the FAQ as apply to
+     the FAQ itself.  Every copy of the FAQ must include this notice or
+     an approved translation, information on who is currently
+     maintaining the FAQ and how to contact them (including their
+     e-mail address), and information on where the latest version of
+     the FAQ is archived (including FTP information).
+
+     The FAQ may be copied and redistributed under these conditions,
+     except that the FAQ may not be embedded in a larger literary work
+     unless that work itself allows free copying and redistribution.
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+</head>
+<body>
+<div class="node">
+<a name="Text-and-Utility-modes"></a>
+<p>
+Next:&nbsp;<a indepth="true" rel="next" accesskey="n" href="developing-with-emacs.html#Developing-with-Emacs">Developing with Emacs</a>,
+Previous:&nbsp;<a indepth="true" rel="previous" accesskey="p" href="network-access.html#Network-access">Network access</a>,
+Up:&nbsp;<a indepth="true" rel="up" accesskey="u" href="default_001.html#Top">Top</a>
+</p><hr>
+</div>
+
+<h2 class="chapter">9 Text and Utility modes</h2>
+
+<h3 class="section">9.1 How do I use TeX with Emacs?</h3>
+
+<p><a name="index-tex-326"></a><a name="index-typesetting-327"></a>
+You will need an implementation of TeX for Windows. 
+A number of implementations are listed on the
+<a href="http://www.tug.org/interest.html#free">TeX Users Group</a> website.
+
+</p><h4 class="subsection">9.1.1 AUCTeX</h4>
+
+<p><a name="index-auctex_002c-precompiled-for-Windows-328"></a><a name="index-latex-329"></a><a name="index-preview_002dlatex-330"></a>
+AUCTeX is an Emacs package for writing LaTeX files, which also
+includes preview-latex, an Emacs mode for previewing the formatted
+contents of LaTeX documents.  Pre-compiled versions for Windows are
+available from
+<a href="http://www.gnu.org/software/auctex/download-for-windows.html">the AUCTeX site</a>.
+
+</p><h3 class="section">9.2 How do I perform spell checks?</h3>
+
+<p><a name="index-spell-checking-331"></a><a name="index-ispell-332"></a><a name="index-aspell-333"></a><a name="index-flyspell-334"></a><a name="index-ispell_002dprogram_002dname-335"></a><a name="index-flyspell_002dmode-336"></a>
+Emacs has support for spell checking on demand (<code>ispell</code>) and as
+your type (<code>flyspell</code>).  Both packages depend on a copy of
+<samp><span class="command">ispell</span></samp> 3.2 or a compatible spell-checking program. 
+GNU Aspell is a popular choice these days, Windows installers are
+available from the <a href="http://aspell.net/win32/">official site</a>.
+
+   </p><p>Once installed, you will need to configure <code>ispell-program-name</code>
+to tell ispell and flyspell to use <samp><span class="command">aspell</span></samp> as a replacement for
+ispell.  You can include the full path to the <samp><span class="file">aspell</span></samp> binary, which
+means you do not need to add its installation directory to the <samp><span class="env">PATH</span></samp>.
+
+</p><h3 class="section">9.3 Emacs and encryption</h3>
+
+<p><a name="index-encryption-337"></a><a name="index-gpg_002c-Windows-binaries-338"></a><a name="index-pgp-encryption_002c-with-GNU-Privacy-Guard-339"></a><a name="index-signatures-on-Emacs-distribution_002c-checking-340"></a><a name="index-Emacs-distribution_002c-checking-digital-signatures-341"></a>
+GNU Privacy Guard is a Free replacement for PGP, with Windows binaries
+available.  See <a href="http://www.gnupg.org/">http://www.gnupg.org/</a>.
+
+</p><h3 class="section">9.4 Why doesn't my wheel mouse work in Emacs?</h3>
+
+<p><a name="index-mouse-wheel-342"></a><a name="index-wheel-mouse-343"></a><a name="index-middle-button_002c-on-wheel-mouse-344"></a><a name="index-scrolling_002c-with-mouse-wheel-345"></a>
+Some wheel mice ship with default settings that do not send the
+standard wheel events to programs, but instead try to simulate scroll
+bar events.  Usually this is configurable from the hardware specific
+pages on the mouse control panel.  The middle button is often mapped
+in the same settings to have some functionality other than sending
+middle mouse button events.  In some cases, uninstalling the
+manufacturer's drivers and telling Windows to use the generic USB or
+PS/2 drivers is the only way to make the mouse work properly.
+
+</p><h3 class="section">9.5 How do I use grep with Emacs?</h3>
+
+<p><a name="index-searching-through-files-with-grep-346"></a><a name="index-grep-347"></a><a name="index-findstr-348"></a><a name="index-grep-349"></a>
+The best way to use <kbd>M-x grep</kbd> with Emacs is to download a port of
+GNU <samp><span class="command">grep</span></samp>. See <a indepth="true" href="other-useful-ports.html#Other-useful-ports">Other useful ports</a>.
+
+   </p><p>If you want a quick solution without installing extra tools, a poor
+substitute that works for simple text searches is to specify the built
+in Windows command <samp><span class="command">findstr</span></samp> as the command to run at the
+<kbd>M-x grep</kbd> prompt.  Normally you will want to use the <samp><span class="option">/n</span></samp>
+argument to <samp><span class="command">findstr</span></samp>.
+
+</p><h4 class="subsection">9.5.1 How do I do a recursive grep?</h4>
+
+<p><a name="index-recursive-searching-with-grep-350"></a><a name="index-grep_002c-recursive-through-subdirectories-351"></a><a name="index-findstr_002c-recursive-352"></a><a name="index-find_002c-using-with-grep-353"></a><a name="index-find_002c-the-POSIX-command-354"></a><a name="index-rgrep-355"></a><a name="index-grep_002dfind-356"></a><a name="index-find_002dgrep_002ddired-357"></a><a name="index-find_002dprogram-358"></a><a name="index-grep_002dfind_002dcommand-359"></a>
+The Emacs commands <code>rgrep</code>, <code>grep-find</code>
+and <code>find-grep-dired</code> are all different interfaces for
+grepping recursively into subdirectories.  By default, they use the
+command <samp><span class="command">find</span></samp> to determine which files to work on, and either
+run <samp><span class="command">grep</span></samp> directly from find, or use <samp><span class="command">xargs</span></samp> to batch
+up files and reduce the number of invocations of <samp><span class="command">grep</span></samp>.
+
+   </p><p>Windows also comes with a <samp><span class="command">find</span></samp> command, but it is not in any
+way compatible with the POSIX <samp><span class="command">find</span></samp> that Emacs tries to use. 
+Emacs expects a <samp><span class="command">find</span></samp> compatible with GNU findutils. 
+See <a indepth="true" href="other-useful-ports.html#Other-useful-ports">Other useful ports</a>.  After you have installed it, you will need
+to make sure that Emacs finds this version, not the standard Windows
+<samp><span class="command">find</span></samp> command.  You can do this by either renaming the
+Windows command, changing your <samp><span class="env">PATH</span></samp> to ensure that the directory
+containing the findutils <samp><span class="file">bin</span></samp> directory comes before the Windows
+system directory, or set the variable <code>find-program</code> to the full
+path to the findutils <samp><span class="command">find</span></samp> command.
+
+   </p><p>An alternative if you have a recent version of grep is to customize
+<code>grep-find-command</code> to use ‘<samp><span class="samp">grep -r</span></samp>’ instead of both find
+and grep.  Another alternative if you don't need the full capabilities
+of grep is to use ‘<samp><span class="samp">findstr /n /r</span></samp>’.
+
+<!--  -->
+   
+
+</p>
+
+</body></html>

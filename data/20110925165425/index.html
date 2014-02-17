@@ -1,0 +1,804 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>keysnail 使用方法与一些技巧搜集贴 - 巴蛮子 - 博客园</title>
+<meta name="keywords" content="firefox,emacs">
+
+
+
+
+
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/bamanzi/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/bamanzi/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/bamanzi/wlwmanifest.xml"> 
+  
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+    <a name="top"></a>
+    <form method="post" action="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html" id="Form1">
+<div class="aspNetHidden">
+<input name="__EVENTTARGET" id="__EVENTTARGET" value="" type="hidden">
+<input name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" type="hidden">
+<input name="__VIEWSTATE" id="__VIEWSTATE" value="" type="hidden">
+</div>
+
+
+
+
+        
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/bamanzi/"><img id="blogLogo" src="logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/bamanzi/">巴蛮子的烂笔头</a></h1>
+<h2>好记性不如烂笔头啊。
+<br>跟我联系: bamanzi AT gmail.com <u><a href="http://www.cnblogs.com/bamanzi/articles/1871009.html">更多关于巴蛮子的信息</a></u><br></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="navigator">
+			
+<!--done-->
+			<ul id="navList">
+				<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+				<li><a id="MyLinks1_IngLink" class="menu" href="http://home.cnblogs.com/ing/">闪存</a></li>
+				<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/bamanzi/">首页</a></li>
+				<li><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://www.cnblogs.com/bamanzi/admin/EditPosts.aspx?opt=1">新随笔</a></li>
+				<li><a id="MyLinks1_ContactLink" accesskey="9" class="menu" rel="nofollow" href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90">联系</a></li>
+				<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://www.cnblogs.com/bamanzi/admin/EditPosts.aspx">管理</a></li>
+				<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/bamanzi/rss">订阅</a>
+				<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/bamanzi/rss"><img src="rss.gif" alt="订阅"></a></li>
+			</ul>
+
+
+			<div class="blogStats">
+				
+				
+<!--done-->
+随笔- 50&nbsp;
+文章- 2&nbsp;
+评论- 213&nbsp;
+
+				
+			</div><!--end: blogStats -->
+		</div><!--end: navigator 博客导航栏 -->
+		
+					
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="ctl02_TitleUrl" class="postTitle2" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/firefox-keysnail-tips.html">keysnail 使用方法与一些技巧搜集贴</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p><span id="comment_body_2140486" class="blog_comment_body">最开始打算写这篇博文的时候，<a href="https://github.com/mooz/keysnail/wiki/">Keysnail自己的Wiki</a>上还说得不清不楚，一上来就是key.setGlobalKey等几个函数的参数说明，而没有使用说明，也没有vimperator那样的帮助文档（:help），让人云里雾里，闹不清楚。<br><br>虽
+Keysnail的主要宣传语是“<strong>For Vim users, there is Vimperator. For Emacs users, 
+there is 
+KeySnail</strong>.”，但其实它跟vimperator还是有很大的不同，vimperator尽力在各方面模仿vim，从快捷键到选项，从配置文件格式
+到帮助系统，而keysnail基本上只有快捷键，甚至缺省提供了一套仿emacs的，还提供了一套仿vim的。<br><br>当然，它还是有一些Emacs特色的，比如可以用C-1..C-9, C--, C-u做为前缀参数，有rectangle操作方式，有M-x命令；<br><br>但总体而言，keysnail其实跟keyconfig比较象，主要就是将某个快捷键绑定到一段javascript上，所以主要的配置工作就是编辑自己的 .keysnail.js 文件。<br><br>我弃用vimperator改用keysnail的主要原因是：1)vimperator的单个字母跟很多网页应用（比如Google Reader, 
+GMail, 
+以及Brief这样的Firefox扩展)的快捷键相冲突; 2)想自己添加一些新功能到某个快捷键总是觉得麻烦（感觉keysnail就简单多了）; 3)vimperator中，在textarea中输入文字时需要在模式间来回切换，感觉很麻烦；<br><br></span></p>
+<h3><span id="comment_body_2140486" class="blog_comment_body">* 快捷键设置</span></h3>
+<p><span id="comment_body_2140486" class="blog_comment_body">如果你只是想修改哪个快捷键对应哪个功能，可以直接在Keysnail设置界面修改（【工具.Keysnail. Open proferences dialog】。界面操作比较简单，自己摸索一下即可。</span></p>
+<p><span class="blog_comment_body"><img alt="keysnail keybindings dialog" src="preference-dialog.png" height="712" width="691"></span></p>
+<h3><span id="comment_body_2140585" class="blog_comment_body">* 添加新的功能（并绑定到快捷键）</span></h3>
+<p><span id="comment_body_2140585" class="blog_comment_body"><br>如果想扩展一些快捷键功能，则需要了解如下几个函数:<br><br><span style="font-family: courier new,courier;">key.setGlobalKey(keys, func, ksDescription, ksNoRepeat);</span><br><span style="font-family: courier new,courier;">key.setEditKey(keys, func, ksDescription, ksNoRepeat);</span><br><span style="font-family: courier new,courier;">key.setViewKey(keys, func, ksDescription, ksNoRepeat);</span><br><span style="font-family: courier new,courier;">key.setCaretKey(keys, func, ksDescription, ksNoRepeat);</span><br><br>setGlobalKey 设置的快捷键是全局有效的，即使你在输入框中、Caret模式下，这些快捷键都有效；<br>setEditKey 设置的是在编辑框中的快捷键，对于Firefox自身的输入框(XUL)和HTML输入框都是有效的；<br>setViewKey 模式设置的是网页浏览时的快捷键，不再<br>setCaretKey涉及到caret模式，这是网页浏览的一个特殊模式，该模式下Firefox能显示光标所在位置，且能移动光标，下面评论部分有详细说明。<br><br>以C-f为例，配置方式如下:</span></p>
+<p><span id="comment_body_2140585" class="blog_comment_body">
+</span></p>
+<div class="cnblogs_code">
+<pre><div><span style="color: rgb(0, 128, 0);">//</span><span style="color: rgb(0, 128, 0);">key.setEditKey(keys, func, ksDescription, ksNoRepeat);</span><span style="color: rgb(0, 128, 0);"><br></span><span style="color: rgb(0, 0, 0);"><br>key.setEditKey(</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">C-f</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">, </span><span style="color: rgb(0, 0, 255);">function</span><span style="color: rgb(0, 0, 0);"> (ev, arg) {    <br>    command.nextChar(ev);    <br>}, </span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">Scroll right</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">);</span></div></pre>
+</div>
+
+<p><span id="comment_body_2140585" class="blog_comment_body"><strong>keys:</strong> 
+键名的写法基本上跟Emacs里面一致，比如C-f, M-f，&lt;up&gt;。补充两点: 1)对于C-x 
+C-f这样的组合按键，需要写成['C-x', 'C-f']； 2)如果你想为同一个功能绑定两个组合键，需要写成[['C-x', 'K'], 
+['C-x', '5', '0']]<br><br><strong>func:</strong> 这里需要提供一个函数，即由上述按键触发的处理函数，函数形式为 function (ev, arg)。keysnail可传入两个参数<br>第
+一个参数ev是触发按键的事件，从这个参数中你能够得知事件的详细内容，比如到底是按了什么键(ev.charCode, ev.ctrlKey, 
+ev.metaKey等)，是在哪个位置按的(ev.clientX, ev.screenX等), 
+是在哪个输入框按的(ev.target等)，详细内容可参看<a href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/%27http://developer.mozilla.org/en/docs/DOM:event" target="_top">MDN Docs: DOM Event</a> —— 不过大多数时候你不大会用到它；<br>第
+二个参数arg，跟Emacs里面的arg一致，是由C-1..C-0, C-u, 
+C--等前缀键传递过来的。注意，如果要使用这个参数，需要将setXXXKey的最后一个参数ksNoRepeat设置为true(缺省为
+false)，否则keysnail会将C-2变成重复调用你的函数2次，C-u变成重复4次。<br><br><strong>ksDescription</strong>: 快捷键功能说明，帮助你记忆的，随便写。此参数可省略。<br><br><strong>ksNoRepeat</strong>: 设置前缀参数(prefix argument, 即C-1..C-0, C-u)的使用方式，为true时前缀参数传递给处理函数func, 为false时重复调用func若干次；此参数可省略，缺省为false。<br><br>示例: 用 C-x 8 - 输入特殊字符'…'</span></p>
+<p><span class="blog_comment_body">
+</span></p>
+<div class="cnblogs_code">
+<pre><div><span style="color: rgb(0, 0, 0);">key.setEditKey([</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">C-x</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">, </span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">8</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">, </span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">], </span><span style="color: rgb(0, 0, 255);">function</span><span style="color: rgb(0, 0, 0);">(ev, arg) {<br>    </span><span style="color: rgb(0, 0, 255);">var</span><span style="color: rgb(0, 0, 0);"> aInput </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> ev.originalTarget;<br>    </span><span style="color: rgb(0, 0, 255);">var</span><span style="color: rgb(0, 0, 0);"> value </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> aInput.value;<br>    </span><span style="color: rgb(0, 0, 255);">var</span><span style="color: rgb(0, 0, 0);"> originalSelStart </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> aInput.selectionStart; <br>    <br>    aInput.value </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> value.slice(</span><span style="color: rgb(0, 0, 0);">0</span><span style="color: rgb(0, 0, 0);">, aInput.selectionStart) </span><span style="color: rgb(0, 0, 0);">+</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">…</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">+</span><span style="color: rgb(0, 0, 0);"> value.slice(aInput.selectionEnd, value.length)<br>    <br>    aInput.selectionStart </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> originalSelStart </span><span style="color: rgb(0, 0, 0);">+</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">1</span><span style="color: rgb(0, 0, 0);">;<br>    aInput.selectionEnd </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> aInput.selectionStart;<br>}, </span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">Input …</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">, </span><span style="color: rgb(0, 0, 255);">true</span><span style="color: rgb(0, 0, 0);">);</span></div></pre>
+</div>
+
+<h3><span id="comment_body_2140587" class="blog_comment_body">* Ext -- Keysnail里面的M-x</span></h3>
+<p><span id="comment_body_2140587" class="blog_comment_body">Keysnail也提供了Emacs里面的M-x方式来调用某些功能，不过缺省没有提供任何命令，你得安装一下<a href="http://github.com/mooz/keysnail/raw/master/plugins/builtin-commands-ext.ks.js" target="_top">Builtin command as Ext</a>这个插件，这样Keysnail内置的很多功能都可以以命令名的方式调用了，比如M-x restart-firefox, M-x select-next-tab。 另外很多插件都是通过ext的方式来提供新命令的（缺省不绑定快捷键，留给用户自己来决定）。<br><br>要自己添加新的命令也很简单，在自己的.keysnail.js的PRESERVE区(即{{%PRESERVE%和%PRESERVE%}}之间)按如下格式添加代码就可以了<br> <span style="font-family: courier new,courier;">&nbsp;</span></span></p>
+<p><span id="comment_body_2140587" class="blog_comment_body"><span style="font-family: courier new,courier;">ext.add(cmdname, func, desc)</span><br><br><strong>cmdname </strong>是命令名称，即M-x后输入它来激活相应的功能<br><strong>func</strong> 为功能实现，跟上面的key.setXXXKey里面的func是一回事<br><strong>desc</strong> 是描述，随便写<br><br>示例: 下面代码实现了vimperator里面p命令的功能（也免除了单独安装Paste and Go扩展的必要）</span></p>
+<p><span class="blog_comment_body">
+</span></p>
+<div class="cnblogs_code">
+<pre><div><span style="color: rgb(0, 0, 0);">ext.add(</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">paste-and-go</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">, </span><span style="color: rgb(0, 0, 255);">function</span><span style="color: rgb(0, 0, 0);">() {<br>    </span><span style="color: rgb(0, 0, 255);">var</span><span style="color: rgb(0, 0, 0);"> url </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> command.getClipboardText();<br>    </span><span style="color: rgb(0, 0, 255);">if</span><span style="color: rgb(0, 0, 0);"> (url.indexOf(</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">://</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">) </span><span style="color: rgb(0, 0, 0);">!=</span><span style="color: rgb(0, 0, 0);"> </span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">1</span><span style="color: rgb(0, 0, 0);">)    {<br>        window._content.location </span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);"> url;<br>    } </span><span style="color: rgb(0, 0, 255);">else</span><span style="color: rgb(0, 0, 0);"> {<br>        BrowserSearch.loadSearch(url, </span><span style="color: rgb(0, 0, 255);">false</span><span style="color: rgb(0, 0, 0);">);<br>    }<br>}, </span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">Paste the URL or keyword from clipboard and Go</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">);</span></div></pre>
+</div>
+
+<p><span id="comment_body_2140900" class="blog_comment_body">如果想将这个paste-and-go绑定到某个键的话，可用下面的方式:</span></p>
+<p><span id="comment_body_2140900" class="blog_comment_body">
+</span></p>
+<div class="cnblogs_code">
+<pre><div><span style="color: rgb(0, 0, 0);">key.setViewKey([</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">C-c</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">, </span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">p</span><span style="color: rgb(0, 0, 0);">'</span><span style="color: rgb(0, 0, 0);">], </span><span style="color: rgb(0, 0, 255);">function</span><span style="color: rgb(0, 0, 0);">(ev, arg) {<br>    ext.exec(</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">paste-and-go</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">);<br>}, </span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">Paste and Go</span><span style="color: rgb(0, 0, 0);">"</span><span style="color: rgb(0, 0, 0);">, </span><span style="color: rgb(0, 0, 255);">true</span><span style="color: rgb(0, 0, 0);">);</span></div></pre>
+</div>
+
+<h3><br>* 如何在keysnail中得到vimperator里面的xx功能</h3>
+<p>keysnail 缺省带有一套仿vim 的配置，跟vimperator 的相似度也挺高，不过还是缺一些功能:</p>
+<ul>
+<li><span id="comment_body_2140900" class="blog_comment_body"><strong>o/t (即:open/:tabopen)</strong>: 在keysnail中是一样的:open/:tabopen，也可以用搜索引擎的缩写（比如:tabopen go 
+keysnail——如果你在搜索引擎框里配置了go这个缩写的话)，不过缺省没有绑定到快捷键，你想要的话，可自行绑定
+<span style="font-family: courier new,courier;">shell.input(":open ")</span>这段代码</span></li>
+<li><span id="comment_body_2140900" class="blog_comment_body"><strong> QuickHints (f/F/;y/;Y等)</strong>: 输入几个字母就打开链接/复制链接；keysnail缺省不带这个功能，你需要安装<a href="http://github.com/mooz/keysnail/raw/master/plugins/hok.ks.js" target="_top">HoK</a>插
+件，使用方法:M-x hok-start-foreground-mode, M-x hok-start-background-mode，M-x 
+hok-start-extended-mode, M-x hok-start-continuous-mode 
+或者将这几个命令绑定快捷键；如果想跳到任意段落（而不仅仅是链接上），可再安装<a href="http://github.com/mooz/keysnail/raw/master/plugins/caret-hint.ks.js" target="_top">Caret hint</a>插件；</span></li>
+<li><span id="comment_body_2140900" class="blog_comment_body"><strong>C-a和C-d</strong>: 对URL中的最后一个数字加1或减1，一般用于浏览分页文章。这个功能缺省没有，见文末评论部分的补充。</span></li>
+<li><span id="comment_body_2140900" class="blog_comment_body"><strong> [[ 和]]:</strong>&nbsp; 即上一页、下一页，对于浏览分页文章、论坛之类的很有用。这个功能缺省没有，见</span><span id="comment_body_2140900" class="blog_comment_body">文末评论部分</span><span id="comment_body_2140900" class="blog_comment_body">的补充。</span></li>
+<li><span id="comment_body_2140900" class="blog_comment_body"><strong> p和P:</strong> 即Paste and Go和Paste to new tab and Go。这个功能缺省没有，见</span><span id="comment_body_2140900" class="blog_comment_body">文末评论部分</span><span id="comment_body_2140900" class="blog_comment_body">的补充。</span></li>
+</ul>
+<h3><span id="comment_body_2140900" class="blog_comment_body"><br>* 一些类似Emacs的特色</span></h3>
+<ul>
+<li><strong>前缀参数</strong>: 可在设置对话框中设置使用C-1..C-0，M-1..M-0或者C-M-1..C-M-0，这表示传递相应数值给处理函数；另外还有除了C--和C-u；</li>
+<li><span id="comment_body_2140900" class="blog_comment_body"><strong>kill ring: </strong>跟Emacs里面一样，keysnail 里面内置了“剪贴板历史”，你可以用M-y粘贴上一个、再上一个；<br></span></li>
+<li><span id="comment_body_2140900" class="blog_comment_body"><strong>rectangle: </strong>在输入框中，你也可以用Emacs 里面的矩形块操作，比如用C-x r t 给矩形块中每一行添加文字；<br></span></li>
+<li><span id="comment_body_2140900" class="blog_comment_body"><strong>keyboard macro: </strong>也是用F3录制，F4结束录制或者回放，不过我没找到记录为代码并编辑的地方；<br></span></li>
+<li><span id="comment_body_2140900" class="blog_comment_body"><strong>anthing</strong>: keysnail自身就提供anything风格，它的M-x用的就是这种，而且有不少插件都利用了keysnail内部提供的prompt.reader()和prompt.selector()的机制来让用户挑选备选项，比如<a href="http://github.com/myuhe/KeySnail_Plugin/raw/master/Tanything.ks.js" target="_top">Tanything</a>可以让你用anything的方式来挑选要跳到哪一个标签页；<a href="http://github.com/mooz/keysnail/raw/master/plugins/bmany.ks.js" target="_top">bmany</a>可以用来选取书签；</span></li>
+</ul>
+<h3>参考资料</h3>
+<ul>
+<li><a href="https://github.com/mooz/keysnail/wiki/tips">Keysnail Wiki: Tips</a></li>
+<li><a href="http://www.cnblogs.com/sinianyufang/archive/2011/03/28/1997682.html">keyconfig快捷键的自定义</a></li>
+<li><a href="http://www.slimeden.com/2010/08/firefox/customize-firefox-shortcut#comment-555">Xiao Shan » Customize firefox shortcuts – 自定义firefox快捷键</a></li>
+<li><a href="http://www.slimeden.com/2011/03/firefox/keysineditmode">Xiao Shan » [KeySnail]编辑模式下使用可输入字符作为快捷键</a></li>
+</ul>
+
+<p>其它小技巧可查看下面的评论部分，我会时不时将新发现的内容添加上去。</p>
+<p>另，我的配置文件放在这里，有兴趣的可以参考:&nbsp; <a href="http://code.google.com/p/bamanzi-misc/source/browse/trunk/firefox/keysnail/.keysnail.js">http://code.google.com/p/bamanzi-misc/source/browse/trunk/firefox/keysnail/.keysnail.js</a></p></div>
+
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/bamanzi/tag/firefox/">firefox</a>, <a href="http://www.cnblogs.com/bamanzi/tag/emacs/">emacs</a></div>
+<div id="green_channel" style="">
+绿色通道：<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(cb_entryId,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a><a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a><a id="green_channel_favorite" onclick="AddToWz(2013830);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">与我联系</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="icon_sina.gif" alt=""></a>
+</div>
+<div id="digg_block">
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info"><a href="http://home.cnblogs.com/u/bamanzi/" target="_top"><img src="u163248.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/bamanzi/">巴蛮子</a><br><a href="http://home.cnblogs.com/u/bamanzi/followees">关注 - 18</a><br><a href="http://home.cnblogs.com/u/bamanzi/followers">粉丝 - 10</a></div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow"><a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a></div>
+</div>
+<div id="div_digg" style="">										
+	<div class="diggit" onclick="DiggIt(cb_entryId,cb_blogId,1)"> 
+		<span class="diggnum" id="digg_count">0</span>
+	</div>
+	<div class="buryit" onclick="DiggIt(cb_entryId,cb_blogId,2)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">(请您对文章做出评价)</div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/bamanzi/archive/2011/04/11/emacs-code-folding.html" class="p_n_p_prefix">« </a> 博主前一篇：<a href="http://www.cnblogs.com/bamanzi/archive/2011/04/11/emacs-code-folding.html" title="发布于2011-04-11 06:57">Emacs的代码折叠</a><br><a href="http://www.cnblogs.com/bamanzi/archive/2011/04/22/choose-with-ido-or-anything.html" class="p_n_p_prefix">» </a> 博主后一篇：<a href="http://www.cnblogs.com/bamanzi/archive/2011/04/22/choose-with-ido-or-anything.html" title="发布于2011-04-22 13:30">[emacs] 用 ido 或 anything 进行选择</a><br></div>
+</div>
+
+
+
+
+
+		</div>
+		<div class="postDesc">posted @ 2011-04-12 16:33 <a href="http://www.cnblogs.com/bamanzi/">巴蛮子</a> 阅读(302) <a href="#commentform">评论(19)</a>  <a href="http://www.cnblogs.com/bamanzi/admin/EditPosts.aspx?postid=2013830" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(2013830);return false;">收藏</a></div>
+	</div>
+	<img src="2013830.html" alt="" height="1px" width="1px">
+	
+</div><!--end: topics 文章、评论容器-->
+<a name="pagedcomment"></a>
+<!--done-->
+<br>
+<div class="feedback_area_title">评论</div>
+<div class="feedbackNoItems"><span id="span_comment_maxid" style="display: none;">2207007</span></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2068815,this);" id="Comments1_CommentList_DeleteLink_0" href="javascript:__doPostBack('Comments1$CommentList$ctl00$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_0" causesvalidation="False" onclick="BindComment(2068815);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2068815">#1楼</a><a name="2068815" id="comment_anchor_2068815"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-04-12 16:54</span> | <a id="Comments1_CommentList_NameLink_0" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2068815" class="blog_comment_body">类似vimperator的]]和[[ (下一页、上一页)<br><br><div class="syntaxhighlighter  " id="highlighter_203839"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">ext.add(</code><code class="string">"previous-page"</code><code class="plain">, </code><code class="keyword">function</code> <code class="plain">() {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">document = window._content.document;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">links = document.links;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">for</code><code class="plain">(i = 0; i &lt; links.length; i++) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code> <code class="plain">(&nbsp;&nbsp; (links[i].text == </code><code class="string">'上一页'</code><code class="plain">)&nbsp;&nbsp; || (links[i].text == </code><code class="string">'&lt;上一页'</code><code class="plain">) </code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">|| (links[i].text == </code><code class="string">'Previous'</code><code class="plain">) || (links[i].text == </code><code class="string">'Prev'</code><code class="plain">) </code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">|| (links[i].text == </code><code class="string">'&lt;'</code><code class="plain">)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; || (links[i].text == </code><code class="string">'&lt;&lt;'</code><code class="plain">)) </code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">document.location = links[i].href;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="plain">}, </code><code class="string">"Previous page"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="plain">ext.add(</code><code class="string">"next-page"</code><code class="plain">, </code><code class="keyword">function</code> <code class="plain">() {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">document = window._content.document;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">links = document.links;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">for</code><code class="plain">(i = 0; i &lt; links.length; i++) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code> <code class="plain">(&nbsp;&nbsp; (links[i].text == </code><code class="string">'下一页'</code><code class="plain">)&nbsp; || (links[i].text == </code><code class="string">'下一页&gt;'</code><code class="plain">) </code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">|| (links[i].text == </code><code class="string">'Next'</code><code class="plain">)&nbsp;&nbsp;&nbsp; || (links[i].text == </code><code class="string">'next'</code><code class="plain">) </code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>18</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">|| (links[i].text == </code><code class="string">'&gt;'</code><code class="plain">)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; || (links[i].text == </code><code class="string">'&gt;&gt;'</code><code class="plain">)) </code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>19</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">document.location = links[i].href;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>20</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>21</code></td><td class="content"><code class="plain">}, </code><code class="string">"Next page"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>22</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>23</code></td><td class="content"><code class="plain">key.setViewKey([</code><code class="string">'['</code><code class="plain">, </code><code class="string">'['</code><code class="plain">], </code><code class="keyword">function</code><code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>24</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">ext.exec(</code><code class="string">"previous-page"</code><code class="plain">, arg, ev);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>25</code></td><td class="content"><code class="plain">}, </code><code class="string">"Previous page"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>26</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>27</code></td><td class="content"><code class="plain">key.setViewKey([</code><code class="string">']'</code><code class="plain">, </code><code class="string">']'</code><code class="plain">], </code><code class="keyword">function</code><code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>28</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">ext.exec(</code><code class="string">"next-page"</code><code class="plain">, arg, ev);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>29</code></td><td class="content"><code class="plain">}, </code><code class="string">"Next page"</code><code class="plain">);</code></td></tr></tbody></table></div></div></div></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2068830,this);" id="Comments1_CommentList_DeleteLink_1" href="javascript:__doPostBack('Comments1$CommentList$ctl01$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_1" causesvalidation="False" onclick="BindComment(2068830);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2068830">#2楼</a><a name="2068830" id="comment_anchor_2068830"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-04-12 17:02</span> | <a id="Comments1_CommentList_NameLink_1" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2068830" class="blog_comment_body"><b>Caret模式</b><br><br>Caret模式是网页浏览的一个特殊模式，该模式下Firefox能显示光标所在位置，且能移动光标。通常情况下网页浏览没有光标，而且似乎也不需要。但指望只用键盘的，就用得上这个光标了。<br><br>好在为Firefox提供了caret navigation功能，这是为残障人士提供的<a href="http://en.wikipedia.org/wiki/Comparison_of_web_browsers#Accessibility_features" target="_top">accessibility特性</a>中一项，不过Google Chrome, Opera, IE&lt;8不支持这一项，Sarafi倒是支持。<br><br>原本以为keysnail不支持caret模式，但无意当中发现它配置为仿vim时有i命令，查了一下实现才发现可用如下的代码进入/退出caret模式 <br><div class="syntaxhighlighter  " id="highlighter_707667"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="plain">util.setBoolPref(</code><code class="string">"accessibility.browsewithcaret"</code><code class="plain">, </code><code class="keyword">true</code><code class="plain">);</code></td></tr></tbody></table></div></div></div><br><br>但可以加一点视觉效果，提醒用户当前是在caret模式<br><div class="syntaxhighlighter  " id="highlighter_93241"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="comments">//this add some visual effect indicating the caret mode</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="plain">key.setViewKey([</code><code class="string">'C-c'</code><code class="plain">, </code><code class="string">'i'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">children = document.getElementById(</code><code class="string">"nav-bar"</code><code class="plain">).children;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">for</code> <code class="plain">(i = 0; i &lt; children.length; i++) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">children[i].style.backgroundColor = </code><code class="string">"pink"</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">util.setBoolPref(</code><code class="string">"accessibility.browsewithcaret"</code><code class="plain">, </code><code class="keyword">true</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="plain">}, </code><code class="string">'Start Caret-Browse Mode'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="plain">key.setCaretKey([</code><code class="string">'C-c'</code><code class="plain">, </code><code class="string">'i'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">children = document.getElementById(</code><code class="string">"nav-bar"</code><code class="plain">).children;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">for</code> <code class="plain">(i = 0; i &lt; children.length; i++) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">children[i].style.backgroundColor = </code><code class="string">"transparent"</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">util.setBoolPref(</code><code class="string">"accessibility.browsewithcaret"</code><code class="plain">, </code><code class="keyword">false</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content"><code class="plain">}, </code><code class="string">'Exit Caret-Browse Mode'</code><code class="plain">);</code></td></tr></tbody></table></div></div></div><br></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2068833,this);" id="Comments1_CommentList_DeleteLink_2" href="javascript:__doPostBack('Comments1$CommentList$ctl02$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_2" causesvalidation="False" onclick="BindComment(2068833);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2068833">#3楼</a><a name="2068833" id="comment_anchor_2068833"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-04-12 17:03</span> | <a id="Comments1_CommentList_NameLink_2" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2068833" class="blog_comment_body">窗口分割，结合SplitBrowser扩展 (Fx4上目前不行）<br><br>具体参见我上次的博文<br><a href="http://www.cnblogs.com/bamanzi/archive/2011/04/06/firefox-splitbrowser.html" target="_top">Firefox上的窗口分割扩展(以及Vimperator/Keysnail插件脚本)</a></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2068874,this);" id="Comments1_CommentList_DeleteLink_3" href="javascript:__doPostBack('Comments1$CommentList$ctl03$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_3" causesvalidation="False" onclick="BindComment(2068874);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2068874">#4楼</a><a name="2068874" id="comment_anchor_2068874"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-04-12 17:39</span> | <a id="Comments1_CommentList_NameLink_3" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2068874" class="blog_comment_body">keysnail其实有与Vimperator的o/t键那样的功能，也可以用Esc :在状态栏打开一个命令输入栏，然后输入open http://foobar.com或者tabopen http://foobar.com，甚至也支持在open/tabopen后跟一个搜索引擎关键字的方式来搜索，比如open g vmware vcenter （我原来一直不知道这个功能，在网上到处看有没有谁写类似的插件，后来翻keysnail的vim风格配置时无意中发现了它——原来一直没想到它是放置在shell里面的）<br><br>不过如果没采用vim风格的配置的情况下，这两个功能没有快捷键，要自己配一个也很简单:<br><div class="syntaxhighlighter  " id="highlighter_666686"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">key.setGlobalKey([</code><code class="string">'C-o'</code><code class="plain">, </code><code class="string">'o'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">shell.input(</code><code class="string">"open "</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="plain">}, </code><code class="string">'Open URL (with search engine)'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="plain">key.setGlobalKey([</code><code class="string">'C-o'</code><code class="plain">, </code><code class="string">'t'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">shell.input(</code><code class="string">"tabopen "</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="plain">}, </code><code class="string">'Open URL (with search engine) in new tab'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="plain">key.setGlobalKey([</code><code class="string">'C-o'</code><code class="plain">, </code><code class="string">'O'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">url = window._content.document.location;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">shell.input(</code><code class="string">"open "</code> <code class="plain">+ url);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="plain">}, </code><code class="string">'Edit current url and open it'</code><code class="plain">);</code></td></tr></tbody></table></div></div></div><br><br></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2068894,this);" id="Comments1_CommentList_DeleteLink_4" href="javascript:__doPostBack('Comments1$CommentList$ctl04$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_4" causesvalidation="False" onclick="BindComment(2068894);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2068894">#5楼</a><a name="2068894" id="comment_anchor_2068894"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-04-12 17:54</span> | <a id="Comments1_CommentList_NameLink_4" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2068894" class="blog_comment_body">Caret模式下进入Visual模式。<br><br>来自harnack: <a href="http://www.slimeden.com/2010/08/firefox/customize-firefox-shortcut#comment-555" target="_top">http://www.slimeden.com/2010/08/firefox/customize-firefox-shortcut#comment-555</a><br><br><fieldset class="comment_quote"><legend>引用</legend>虽然现在不用了，不过我记得以前折腾KeySnail的时候发现它的确是有visual模式的，要通过修改ksMarked来切换，可惜作者对此只字未提。比如你可以试试在配置文件中加入如下代码：<br><div class="syntaxhighlighter  " id="highlighter_529617"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="plain">key.setCaretKey(</code><code class="string">'v'</code><code class="plain">, </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="plain">content.document.documentElement.ksMarked = !content.document.documentElement.ksMarked;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="plain">}, </code><code class="string">'Toggle visual mode'</code><code class="plain">);</code></td></tr></tbody></table></div></div></div><br>这样在caret模式中按v即可切换visual模式，进入visual模式后用jkhl即可选择页面文字。</fieldset><br><br><br><br></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2070060,this);" id="Comments1_CommentList_DeleteLink_5" href="javascript:__doPostBack('Comments1$CommentList$ctl05$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_5" causesvalidation="False" onclick="BindComment(2070060);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2070060">#6楼</a><a name="2070060" id="comment_anchor_2070060"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-04-13 19:18</span> | <a id="Comments1_CommentList_NameLink_5" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2070060" class="blog_comment_body"><br><div class="syntaxhighlighter  " id="highlighter_815701"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="plain">key.setViewKey(</code><code class="string">'M-&lt;down&gt;'</code><code class="plain">, </code><code class="keyword">function</code><code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">backForwardMenu = document.getElementById(</code><code class="string">"backForwardMenu"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;</code><code class="plain">backForwardMenu.openPopupAtScreen(document.width / 2, document.height / 2, </code><code class="keyword">true</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>4</code></td><td class="content"><code class="plain">}, </code><code class="string">'Show page history menu'</code><code class="plain">);</code></td></tr></tbody></table></div></div></div></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2073438,this);" id="Comments1_CommentList_DeleteLink_6" href="javascript:__doPostBack('Comments1$CommentList$ctl06$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_6" causesvalidation="False" onclick="BindComment(2073438);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2073438">#7楼</a><a name="2073438" id="comment_anchor_2073438"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-04-17 15:51</span> | <a id="Comments1_CommentList_NameLink_6" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2073438" class="blog_comment_body"><b>Paste and Go</b><br><div class="syntaxhighlighter  " id="highlighter_125104"><div class="bar          "><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">ext.add(</code><code class="string">"paste-and-go"</code><code class="plain">, </code><code class="keyword">function</code><code class="plain">() {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">url = command.getClipboardText();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code> <code class="plain">(url.indexOf(</code><code class="string">"://"</code><code class="plain">) != -1)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">window._content.location = url;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">else</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">//url = util.format("<a href="http://www.google.com/search?q=%s&amp;ie=utf-8&amp;oe=utf-8">http://www.google.com/search?q=%s&amp;ie=utf-8&amp;oe=utf-8</a>", encodeURIComponent(url));</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">BrowserSearch.loadSearch(url, </code><code class="keyword">false</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="plain">}, </code><code class="string">"Paste the URL or keyword from clipboard and Go"</code><code class="plain">);</code></td></tr></tbody></table></div></div></div><br><br><b>Paste to Tab and Go</b><br><div class="syntaxhighlighter  " id="highlighter_761618"><div class="bar        "><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">ext.add(</code><code class="string">"paste-to-tab-and-go"</code><code class="plain">, </code><code class="keyword">function</code><code class="plain">() {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">url = command.getClipboardText();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code> <code class="plain">(url.indexOf(</code><code class="string">"://"</code><code class="plain">) != -1)</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">gBrowser.loadOneTab(url, </code><code class="keyword">null</code><code class="plain">, </code><code class="keyword">null</code><code class="plain">, </code><code class="keyword">null</code><code class="plain">, </code><code class="keyword">false</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">else</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">{</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">//url = util.format("<a href="http://www.google.com/search?q=%s&amp;ie=utf-8&amp;oe=utf-8">http://www.google.com/search?q=%s&amp;ie=utf-8&amp;oe=utf-8</a>", encodeURIComponent(url));</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">BrowserSearch.loadSearch(url, </code><code class="keyword">true</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="plain">}, </code><code class="string">"Paste the URL or keyword from clipboard to a new tab and Go"</code><code class="plain">);</code></td></tr></tbody></table></div></div></div></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2083357,this);" id="Comments1_CommentList_DeleteLink_7" href="javascript:__doPostBack('Comments1$CommentList$ctl07$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_7" causesvalidation="False" onclick="BindComment(2083357);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2083357">#8楼</a><a name="2083357" id="comment_anchor_2083357"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-04-29 14:28</span> | <a id="Comments1_CommentList_NameLink_7" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2083357" class="blog_comment_body">其它的“打开”方法<br><div class="syntaxhighlighter  " id="highlighter_971782"><div class="bar          "><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">key.setGlobalKey([</code><code class="string">'C-o'</code><code class="plain">, </code><code class="string">'f'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">BrowserOpenFileWindow();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="plain">}, </code><code class="string">'Open local file'</code><code class="plain">, </code><code class="keyword">true</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="plain">key.setGlobalKey([</code><code class="string">'C-o'</code><code class="plain">, </code><code class="string">'b'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">ext.exec(</code><code class="string">"bmany-list-all-bookmarks"</code><code class="plain">, arg, ev);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="plain">}, </code><code class="string">'bmany - List all bookmarks'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="plain">key.setGlobalKey([</code><code class="string">'C-o'</code><code class="plain">, </code><code class="string">'B'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">ext.exec(</code><code class="string">"bmany-list-toolbar-bookmarks"</code><code class="plain">, arg, ev);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="plain">}, </code><code class="string">'bmany - List all bookmarklets'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="plain">key.setGlobalKey([</code><code class="string">'C-o'</code><code class="plain">, </code><code class="string">'k'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">ext.exec(</code><code class="string">"bmany-list-bookmarks-with-keyword"</code><code class="plain">, arg, ev);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="plain">}, </code><code class="string">'bmany - List bookmarks with keyword'</code><code class="plain">);</code></td></tr></tbody></table></div></div></div><br>后三个需要bmany插件</span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2092910,this);" id="Comments1_CommentList_DeleteLink_8" href="javascript:__doPostBack('Comments1$CommentList$ctl08$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_8" causesvalidation="False" onclick="BindComment(2092910);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2092910">#9楼</a><a name="2092910" id="comment_anchor_2092910"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-05-11 13:31</span> | <a id="Comments1_CommentList_NameLink_8" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2092910" class="blog_comment_body"><div class="syntaxhighlighter  " id="highlighter_552986"><div class="bar      "><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">key.setViewKey([</code><code class="string">'C-c'</code><code class="plain">, </code><code class="string">'*'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">word = getBrowserSelection();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code> <code class="plain">(word) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">gFindBar._findField.value = word;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">gFindBar._highlightDoc(</code><code class="keyword">true</code><code class="plain">, word);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">gFindBar.onFindAgainCommand(</code><code class="keyword">false</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="plain">}, </code><code class="string">'highlight next occurence of current selected word'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="plain">key.setViewKey([</code><code class="string">'C-c'</code><code class="plain">, </code><code class="string">'#'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">word = getBrowserSelection();</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code> <code class="plain">(word) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">gFindBar._findField.value = word;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">gFindBar._highlightDoc(</code><code class="keyword">true</code><code class="plain">, word);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">gFindBar.onFindAgainCommand(</code><code class="keyword">true</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content"><code class="plain">}, </code><code class="string">'highlight previous occurence of current selected word'</code><code class="plain">);</code></td></tr></tbody></table></div></div></div></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2124744,this);" id="Comments1_CommentList_DeleteLink_9" href="javascript:__doPostBack('Comments1$CommentList$ctl09$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_9" causesvalidation="False" onclick="BindComment(2124744);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2124744">#10楼</a><a name="2124744" id="comment_anchor_2124744"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-06-14 10:54</span> | <a id="Comments1_CommentList_NameLink_9" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2124744" class="blog_comment_body"><b>is.gd</b><br><br><div class="syntaxhighlighter  " id="highlighter_761581"><div class="bar        "><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">ext.add(</code><code class="string">"is.gd"</code><code class="plain">, </code><code class="keyword">function</code> <code class="plain">() {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">let endpoint = </code><code class="string">"<a href="http://is.gd/api.php?longurl=">http://is.gd/api.php?longurl=</a>"</code> <code class="plain">+ encodeURIComponent(window._content.document.location);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">let result = util.httpGet(endpoint, </code><code class="keyword">true</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code> <code class="plain">(result.responseText) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">command.setClipboardText(result.responseText);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">display.echoStatusBar(</code><code class="string">"Short URL copied into clipboard: "</code> <code class="plain">+ result.responseText, 3000);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">else</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">display.echoStatusBar(</code><code class="string">"is.gd service failed: "</code> <code class="plain">+ result.statusText, 3000);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="plain">}, </code><code class="string">"Shorten current page's URL with <a href="http://is.gd/">http://is.gd</a> service"</code><code class="plain">);</code></td></tr></tbody></table></div></div></div></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2124752,this);" id="Comments1_CommentList_DeleteLink_10" href="javascript:__doPostBack('Comments1$CommentList$ctl10$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_10" causesvalidation="False" onclick="BindComment(2124752);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2124752">#11楼</a><a name="2124752" id="comment_anchor_2124752"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-06-14 10:59</span> | <a id="Comments1_CommentList_NameLink_10" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2124752" class="blog_comment_body"><b>Tanything</b><br>Tanything - Manipulate tabs using anything.el like interface<br><br>可以根据标题、URL跳转到各个已经打开的标签页了，可根据输入的字符动态缩小匹配范围<br><br>喜欢anything的Emacs粉丝应该很喜欢这个插件。我把它绑定到了C-x b，</span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2124917,this);" id="Comments1_CommentList_DeleteLink_11" href="javascript:__doPostBack('Comments1$CommentList$ctl11$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_11" causesvalidation="False" onclick="BindComment(2124917);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2124917">#12楼</a><a name="2124917" id="comment_anchor_2124917"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-06-14 13:41</span> | <a id="Comments1_CommentList_NameLink_11" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2124917" class="blog_comment_body"><div class="syntaxhighlighter  " id="highlighter_826578"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">ext.add(</code><code class="string">"scrapbook-highlight"</code><code class="plain">, </code><code class="keyword">function</code><code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="comments">//if ARG given, switch to correspding highligher and use it</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">sbPageEditor.highlight(arg);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="plain">}, </code><code class="string">"Highlight selection with scrapbook's highlighter"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="plain">ext.add(</code><code class="string">"scrapbook-undo"</code><code class="plain">, </code><code class="keyword">function</code><code class="plain">() {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">sbPageEditor.undo();</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="plain">}, </code><code class="string">"Scrapbook Editor's undo."</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="plain">ext.add(</code><code class="string">"scrapbook-save"</code><code class="plain">, </code><code class="keyword">function</code><code class="plain">() {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">sbPageEditor.saveOrCapture();</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="plain">}, </code><code class="string">"Capture current page to Scrapbook, or save modification."</code><code class="plain">);</code></td></tr></tbody></table></div></div></div></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2130313,this);" id="Comments1_CommentList_DeleteLink_12" href="javascript:__doPostBack('Comments1$CommentList$ctl12$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_12" causesvalidation="False" onclick="BindComment(2130313);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2130313">#13楼</a><a name="2130313" id="comment_anchor_2130313"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-06-20 17:07</span> | <a id="Comments1_CommentList_NameLink_12" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2130313" class="blog_comment_body">实现Vimperator里面C-a/C-d的功能（URL里面最后一个数字加1/减1，主要用于跳转到多页文章的下一页）<br><br><div class="syntaxhighlighter  " id="highlighter_750457"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">key.setViewKey([</code><code class="string">'C-c'</code><code class="plain">, </code><code class="string">'C-a'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">pattern = /(.*?)([0]*)([0-9]+)([^0-9]*)$/;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">url = content.location.href;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">digit = url.match(pattern);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code> <code class="plain">(digit[1] &amp;&amp; digit[3]) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">let len = digit[3].length;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">let next = +digit[3] + (arg ? arg : 1);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">content.location.href = digit[1] + (digit[2] || </code><code class="string">""</code><code class="plain">).slice(next.toString().length - len) + next + (digit[4] || </code><code class="string">""</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="plain">}, </code><code class="string">'Increment last digit in the URL'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="plain">key.setViewKey([</code><code class="string">'C-c'</code><code class="plain">, </code><code class="string">'C-d'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">pattern = /(.*?)([0]*)([0-9]+)([^0-9]*)$/;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">url = content.location.href;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">digit = url.match(pattern);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code> <code class="plain">(digit[1] &amp;&amp; digit[3]) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">let len = digit[3].length;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>18</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">let next = +digit[3] - (arg ? arg : 1);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>19</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">content.location.href = digit[1] + (digit[2] || </code><code class="string">""</code><code class="plain">).slice(next.toString().length - len) + next + (digit[4] || </code><code class="string">""</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>20</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>21</code></td><td class="content"><code class="plain">}, </code><code class="string">'Decrement last digit in the URL'</code><code class="plain">);</code></td></tr></tbody></table></div></div></div></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2138135,this);" id="Comments1_CommentList_DeleteLink_13" href="javascript:__doPostBack('Comments1$CommentList$ctl13$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_13" causesvalidation="False" onclick="BindComment(2138135);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2138135">#14楼</a><a name="2138135" id="comment_anchor_2138135"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-06-29 10:28</span> | <a id="Comments1_CommentList_NameLink_13" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2138135" class="blog_comment_body">输入框中输入一些特殊字符:<br><br><div class="syntaxhighlighter  " id="highlighter_766815"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">key.setEditKey([</code><code class="string">"C-c"</code><code class="plain">, </code><code class="string">"["</code><code class="plain">], </code><code class="keyword">function</code><code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">aInput = ev.originalTarget;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">aInput.value = aInput.value + </code><code class="string">"「"</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="plain">}, </code><code class="string">"Input 「 "</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="plain">key.setEditKey([</code><code class="string">"C-c"</code><code class="plain">, </code><code class="string">"]"</code><code class="plain">], </code><code class="keyword">function</code><code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">aInput = ev.originalTarget;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">aInput.value = aInput.value + </code><code class="string">"」"</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="plain">}, </code><code class="string">"Input&nbsp; 」 "</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="plain">key.setEditKey([</code><code class="string">"C-c"</code><code class="plain">, </code><code class="string">"{"</code><code class="plain">], </code><code class="keyword">function</code><code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">aInput = ev.originalTarget;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">aInput.value = aInput.value + </code><code class="string">"『"</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="plain">}, </code><code class="string">"Input 『"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content"><code class="plain">key.setEditKey([</code><code class="string">"C-c"</code><code class="plain">, </code><code class="string">"{"</code><code class="plain">], </code><code class="keyword">function</code><code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">aInput = ev.originalTarget;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>18</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">aInput.value = aInput.value + </code><code class="string">"』"</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>19</code></td><td class="content"><code class="plain">}, </code><code class="string">"Input 』"</code><code class="plain">);</code></td></tr></tbody></table></div></div></div></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2139398,this);" id="Comments1_CommentList_DeleteLink_14" href="javascript:__doPostBack('Comments1$CommentList$ctl14$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_14" causesvalidation="False" onclick="BindComment(2139398);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2139398">#15楼</a><a name="2139398" id="comment_anchor_2139398"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-06-30 10:41</span> | <a id="Comments1_CommentList_NameLink_14" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2139398" class="blog_comment_body">上面的输入特殊字符的代码有点问题：只能在最后添加，不能在中间插入，跟一般的输入习惯不相符。改进如下:<br><br><div class="syntaxhighlighter  " id="highlighter_512684"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">key.setEditKey([</code><code class="string">"C-x"</code><code class="plain">, </code><code class="string">"8"</code><code class="plain">, </code><code class="string">"-"</code><code class="plain">], </code><code class="keyword">function</code><code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">aInput = ev.originalTarget;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">value = aInput.value;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">originalSelStart = aInput.selectionStart;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">aInput.value = value.slice(0, aInput.selectionStart) + </code><code class="string">"…"</code> <code class="plain">+ value.slice(aInput.selectionEnd, value.length)</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">aInput.selectionStart = originalSelStart + 1;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">aInput.selectionEnd = aInput.selectionStart;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="plain">}, </code><code class="string">"Input …"</code><code class="plain">);</code></td></tr></tbody></table></div></div></div></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2171227,this);" id="Comments1_CommentList_DeleteLink_15" href="javascript:__doPostBack('Comments1$CommentList$ctl15$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_15" causesvalidation="False" onclick="BindComment(2171227);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2171227">#16楼</a><a name="2171227" id="comment_anchor_2171227"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-08-08 12:32</span> | <a id="Comments1_CommentList_NameLink_15" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2171227" class="blog_comment_body"><b>Toggle Proxy</b>:<br><div class="syntaxhighlighter  " id="highlighter_54633"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="plain">key.setEditKey([</code><code class="string">"&lt;C-f10&gt;"</code><code class="plain">, </code><code class="string">'p'</code><code class="plain">], </code><code class="keyword">function</code><code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">toggleproxy.toggleProxy();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="plain">}, </code><code class="string">"Toggle proxy."</code><code class="plain">);</code></td></tr></tbody></table></div></div></div><br><br><b>Color Toggle</b>:<br><div class="syntaxhighlighter  " id="highlighter_699806"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="plain">key.setEditKey([</code><code class="string">"&lt;C-f10&gt;"</code><code class="plain">, </code><code class="string">'c'</code><code class="plain">], </code><code class="keyword">function</code><code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">addon9408.ctmain.btDoToggle();</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="plain">}, </code><code class="string">"Toggle proxy."</code><code class="plain">);</code></td></tr></tbody></table></div></div></div></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2206602,this);" id="Comments1_CommentList_DeleteLink_16" href="javascript:__doPostBack('Comments1$CommentList$ctl16$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_16" causesvalidation="False" onclick="BindComment(2206602);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2206602">#17楼</a><a name="2206602" id="comment_anchor_2206602"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-09-23 17:53</span> | <a id="Comments1_CommentList_NameLink_16" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2206602" class="blog_comment_body"><b>Split Panel扩展</b><br><br><div class="syntaxhighlighter  " id="highlighter_97506"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">key.setGlobalKey([</code><code class="string">'M-g'</code><code class="plain">, </code><code class="string">'p'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">splitpannel.toggle(window._content.document.location, </code><code class="keyword">true</code><code class="plain">, </code><code class="string">"right"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="plain">}, </code><code class="string">'Open Split Panel and load current URL in it .'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="plain">key.setGlobalKey([</code><code class="string">'M-g'</code><code class="plain">, </code><code class="string">'i'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">splitpannel.toggle(</code><code class="string">"<a href="http://space.cnblogs.com/mi/">http://space.cnblogs.com/mi/</a>"</code><code class="plain">, </code><code class="keyword">true</code><code class="plain">, </code><code class="string">"right"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="plain">}, </code><code class="string">'Open Split Panel and load <a href="http://space.cnblogs.com/mi/">http://space.cnblogs.com/mi/</a> in it .'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="plain">key.setGlobalKey([</code><code class="string">'M-g'</code><code class="plain">, </code><code class="string">'I'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">splitpannel.toggle(</code><code class="string">"<a href="http://space.cnblogs.com/ml/">http://space.cnblogs.com/ml/</a>"</code><code class="plain">, </code><code class="keyword">true</code><code class="plain">, </code><code class="string">"right"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="plain">}, </code><code class="string">'Open Split Panel and load <a href="http://space.cnblogs.com/ml/">http://space.cnblogs.com/ml/</a> in it .'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="plain">key.setGlobalKey([</code><code class="string">'M-g'</code><code class="plain">, </code><code class="string">'t'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">splitpannel.toggle(</code><code class="string">"<a href="http://translate.google.com/m?hl=zh-CN&amp;sl=auto&amp;tl=en&amp;ie=UTF-8">http://translate.google.com/m?hl=zh-CN&amp;sl=auto&amp;tl=en&amp;ie=UTF-8</a>"</code><code class="plain">, </code><code class="keyword">true</code><code class="plain">, </code><code class="string">"right"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>15</code></td><td class="content"><code class="plain">}, </code><code class="string">'Open Split Panel and load Google auto-&gt;en translate page'</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>16</code></td><td class="content">&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>17</code></td><td class="content"><code class="plain">key.setGlobalKey([</code><code class="string">'M-g'</code><code class="plain">, </code><code class="string">'T'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>18</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">splitpannel.toggle(</code><code class="string">"<a href="http://translate.google.com/m?hl=zh-CN&amp;sl=auto&amp;tl=zh-CN&amp;ie=UTF-8">http://translate.google.com/m?hl=zh-CN&amp;sl=auto&amp;tl=zh-CN&amp;ie=UTF-8</a>"</code><code class="plain">, </code><code class="keyword">true</code><code class="plain">, </code><code class="string">"right"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>19</code></td><td class="content"><code class="plain">}, </code><code class="string">'Open Split Panel and load Google auto-&gt;zh translation page'</code><code class="plain">);</code></td></tr></tbody></table></div></div></div></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2206604,this);" id="Comments1_CommentList_DeleteLink_17" href="javascript:__doPostBack('Comments1$CommentList$ctl17$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_17" causesvalidation="False" onclick="BindComment(2206604);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2206604">#18楼</a><a name="2206604" id="comment_anchor_2206604"></a>[<span class="louzhu">楼主</span>]<span class="comment_date">2011-09-23 17:55</span> | <a id="Comments1_CommentList_NameLink_17" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2206604" class="blog_comment_body"><b>Speed Dial扩展</b><br><br><div class="syntaxhighlighter  " id="highlighter_640616"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>01</code></td><td class="content"><code class="plain">key.setGlobalKey([</code><code class="string">'M-g'</code><code class="plain">, </code><code class="string">'G'</code><code class="plain">], </code><code class="keyword">function</code> <code class="plain">() {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>02</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">const pref_prefix = </code><code class="string">"extensions.speeddial.thumbnail-"</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>03</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">collection = [];</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>04</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">for</code> <code class="plain">(</code><code class="keyword">var</code> <code class="plain">id = 1; id &lt; 9; id++) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>05</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">url = util.getUnicharPref(pref_prefix + id + </code><code class="string">"-url"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>06</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">if</code> <code class="plain">(!url) {</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>07</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">continue</code><code class="plain">;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>08</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>09</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">title = util.getUnicharPref(pref_prefix + id + </code><code class="string">"-label"</code><code class="plain">);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>10</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">icon = util.getFaviconPath(url);</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>11</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">collection.push([icon, id, title, url]);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>12</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">}</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>13</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">prompt.selector({message: </code><code class="string">"speed dial: "</code><code class="plain">, flags: [ICON | IGNORE, 0, 0, 0], header: [</code><code class="string">"id"</code><code class="plain">, </code><code class="string">"title"</code><code class="plain">, </code><code class="string">"url"</code><code class="plain">], collection: collection, onChange: </code><code class="keyword">function</code> <code class="plain">(arg) {</code><code class="keyword">if</code> <code class="plain">(arg.event.keyCode &gt;= </code><code class="string">"1"</code> <code class="plain">&amp;&amp; arg.event.keyCode &lt;= </code><code class="string">"9"</code><code class="plain">) {arg.finish();}}, callback: </code><code class="keyword">function</code> <code class="plain">(arg) {alert(arg);</code><code class="keyword">var</code> <code class="plain">url = getUnicharPref(</code><code class="string">"extensions.speeddial.thumbnail-"</code> <code class="plain">+ arg + </code><code class="string">"-url"</code><code class="plain">);</code><code class="keyword">if</code> <code class="plain">(url) {gBrowser.loadOneTab(url);}}});</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>14</code></td><td class="content"><code class="plain">}, </code><code class="string">'Speed Dial via keysnail prompt.'</code><code class="plain">);</code></td></tr></tbody></table></div></div></div></span><br>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					<a title="查看该作者发表过的评论" href="http://www.cnblogs.com/CommentsByAuthor.aspx?author=%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">查看</a>　<a onclick="return DelComment(2207007,this);" id="Comments1_CommentList_DeleteLink_18" href="javascript:__doPostBack('Comments1$CommentList$ctl18$DeleteLink','')">删除</a>&nbsp;&nbsp;<a id="Comments1_CommentList_EditLink_18" causesvalidation="False" onclick="BindComment(2207007);" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/2013830.html#commentform">修改</a>
+				</div>
+				<a href="#2207007">#19楼</a><a name="2207007" id="comment_anchor_2207007"></a>[<span class="louzhu">楼主</span>]<a name="Post"></a><span class="comment_date">2011-09-24 18:16</span> | <a id="Comments1_CommentList_NameLink_18" href="http://www.cnblogs.com/bamanzi/" target="_top">巴蛮子</a>&nbsp;<a href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" title="给此人发送站内短消息" class="sendMsg2This">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<span id="comment_body_2207007" class="blog_comment_body"><div class="syntaxhighlighter  " id="highlighter_927876"><div class="bar"><div class="toolbar"><a class="item viewSource" style="width: 16px; height: 16px;" title="view source" href="#viewSource">view source</a><a class="item printSource" style="width: 16px; height: 16px;" title="print" href="#printSource">print</a><a class="item about" style="width: 16px; height: 16px;" title="?" href="#about">?</a></div></div><div class="lines"><div class="line alt1"><table><tbody><tr><td class="number"><code>1</code></td><td class="content"><code class="plain">ext.add(</code><code class="string">"count-region"</code><code class="plain">, </code><code class="keyword">function</code><code class="plain">(ev, arg) {</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>2</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">aInput = ev.originalTarget;</code></td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>3</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="keyword">var</code> <code class="plain">value = aInput.value;</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>4</code></td><td class="content"><code class="spaces">&nbsp;</code>&nbsp;</td></tr></tbody></table></div><div class="line alt1"><table><tbody><tr><td class="number"><code>5</code></td><td class="content"><code class="spaces">&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain">display.echoStatusBar(</code><code class="string">"Char count : "</code> <code class="plain">+ value.length, 3000);</code></td></tr></tbody></table></div><div class="line alt2"><table><tbody><tr><td class="number"><code>6</code></td><td class="content"><code class="plain">}, </code><code class="string">"Count chars."</code><code class="plain">);&nbsp;&nbsp;&nbsp; </code></td></tr></tbody></table></div></div></div></span><br>
+			</div>
+		</div>
+	
+
+<div id="comment_form" class="commentform">
+
+
+
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="#" onclick="return RefreshCommentList(2013830);" name="commentform" id="lnk_RefreshComments">刷新评论列表</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="commentform_title">发表评论</div>
+<span id="tip_comment" style="color: Red;"></span>
+<p>
+昵称：<input name="ctl03$tbCommentAuthor" id="ctl03_tbCommentAuthor" class="author" value="巴蛮子" disabled="disabled" type="text">
+</p>
+<p>
+主页：<input name="ctl03$tbCommentAuthorUrl" id="ctl03_tbCommentAuthorUrl" class="url" value="http://home.cnblogs.com/u/bamanzi/" disabled="disabled" type="text">
+</p>
+<div class="commentbox_main">
+<div class="commentbox_title">
+<div class="commentbox_title_left">评论内容： </div>
+<div class="commentbox_title_right">
+<img id="ubb_quote" class="comment_icon" src="quote.gif" alt="引用" title="添加引用" onclick="insertUBB('tbCommentBody','quote')">
+<img id="ubb_bold" class="comment_icon" src="b.png" alt="粗体" title="添加粗体" onclick="insertUBB('tbCommentBody','b')">
+<img id="ubb_url" class="comment_icon" src="lk.png" alt="链接" title="添加链接" onclick="insertUbbUrl('tbCommentBody')">
+<img id="ubb_indent" class="comment_icon" src="indent.png" alt="缩进" title="添加首行缩进" onclick="insertIndent('tbCommentBody')">
+<img id="ubb_code" class="comment_icon" src="insertcode.gif" alt="代码" title="添加代码" onclick="insertUbbCode()">
+<img id="ubb_img" class="comment_icon" src="img.gif" alt="图片" title="添加图片" onclick="insertUbbImg('tbCommentBody')">
+<a href="javascript:OpenImageUploadWindow();" class="comment_uploadimg_a" title="上传图片并插入评论框">上传图片</a>
+</div>
+</div>
+<div class="clear"></div>
+<textarea id="tbCommentBody" class="comment_textarea" onkeydown="return clt_enter(event)"></textarea>
+</div>
+<p>
+<input id="btn_comment_submit" class="comment_btn" value="提交" onclick="PostComment();return false;" type="button">
+&nbsp;&nbsp;<span id="span_comment_canceledit" style="display: none;"><a href="###" onclick="return CancelCommentEdit()">不改了</a>&nbsp;&nbsp;</span><a href="http://passport.cnblogs.com/logout.aspx?ReturnUrl=http%3a%2f%2fwww.cnblogs.com%2fbamanzi%2farchive%2f2011%2f04%2f12%2f2013830.html%3flogout%3d1%23commentform" onclick="return confirm('确认注销吗？')">注销</a>&nbsp;&nbsp;
+</p>
+<p>
+[使用Ctrl+Enter键快速提交]
+</p>
+<div style="display: none;">
+<span id="comment_edit_id"></span><span id="span_parentcomment_id">0</span>
+<span id="span_parent_id">2013830</span>
+<span id="span_comment_replyto"></span>
+<span id="span_comment_title">keysnail 使用方法与一些技巧搜集贴</span>
+<span id="span_comment_posted"></span>
+</div>
+
+<div id="clear_read_link"><a href="http://archive.cnblogs.com/a/2013830/" target="_top">简洁阅读版式</a></div>
+
+
+
+<div class="itnews c_ad_block">
+<b>最新IT新闻</b>:<br>
+
+          ·  <a href="http://news.cnblogs.com/n/116422/" target="_top">惠普董事会：八周前就在密谋解聘李艾科</a><br>
+	
+          ·  <a href="http://news.cnblogs.com/n/116421/" target="_top">调查发现女人比男人更喜欢使用社交网站(组图)</a><br>
+	
+          ·  <a href="http://news.cnblogs.com/n/116420/" target="_top">微软将为智能手机开发Xbox 360视频游戏</a><br>
+	
+          ·  <a href="http://news.cnblogs.com/n/116418/" target="_top">研究人员创造外星人语言</a><br>
+	
+          ·  <a href="http://news.cnblogs.com/n/116417/" target="_top">NASA卫星坠落在加拿大</a><br>
+	
+» <a href="http://news.cnblogs.com/" title="IT新闻" target="_top">更多新闻...</a>
+</div>
+
+
+<div class="itnews c_ad_block" id="kb_block">
+<b>最新知识库文章</b>:<br>
+<div id="kb_recent">
+
+·  <a href="http://kb.cnblogs.com/page/107602/" target="_top">给移动应用开发新手的6个建议</a><br>
+
+·  <a href="http://kb.cnblogs.com/page/107590/" target="_top">观点：如何正确的对待设计模式</a><br>
+
+·  <a href="http://kb.cnblogs.com/page/107285/" target="_top">创业编程七个错误认识</a><br>
+
+·  <a href="http://kb.cnblogs.com/page/107213/" target="_top">IBM面试记</a><br>
+
+·  <a href="http://kb.cnblogs.com/page/107117/" target="_top">[WCF权限控制]从两个重要的概念谈起：Identity与Principal</a><br>
+
+</div>
+» <a href="http://kb.cnblogs.com/" target="_top">更多知识库文章...</a>
+</div>
+
+<div id="HistoryToday" class="c_ad_block">
+</div>
+
+
+<div id="site_nav_under" class="c_ad_block">
+<a href="http://www.cnblogs.com/" target="_top" title="程序员的网上家园">网站首页</a><a href="http://q.cnblogs.com/" target="_top">博问</a><a href="http://kb.cnblogs.com/" target="_top">知识库</a><a href="http://news.cnblogs.com/" target="_top">IT新闻</a><a href="http://home.cnblogs.com/" target="_top">我的园子</a><a href="http://home.cnblogs.com/ing/" target="_top">闪存</a><a href="http://job.cnblogs.com/" target="_top">程序员招聘</a> 
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+				
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/bamanzi/">巴蛮子</a><br>园龄：<a href="http://home.cnblogs.com/u/bamanzi/" title="入园时间：2010-10-09">11个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/bamanzi/followers/">10</a><br>关注：<a href="http://home.cnblogs.com/u/bamanzi/followees/">18</a><div id="p_b_follow"></div><div id="p_b_ing"><a href="http://home.cnblogs.com/ing/my/">我的闪存</a></div></div>
+</div>
+
+			<div id="calendar"><table id="Calendar1_entryCal" class="Cal" title="Calendar" cellpadding="0" cellspacing="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:__doPostBack('Calendar1$entryCal','V4077')" style="color: Black;" title="Go to the previous month">&lt;</a></td><td align="center">2011年4月</td><td class="CalNextPrev" align="right"><a href="javascript:__doPostBack('Calendar1$entryCal','V4138')" style="color: Black;" title="Go to the next month">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">27</td><td class="CalOtherMonthDay" align="center">28</td><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td><td align="center">1</td><td class="CalWeekendDay" align="center">2</td></tr><tr><td class="CalWeekendDay" align="center">3</td><td align="center">4</td><td align="center">5</td><td align="center"><a href="http://www.cnblogs.com/bamanzi/archive/2011/4/6.html"><u>6</u></a></td><td align="center">7</td><td align="center">8</td><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/bamanzi/archive/2011/4/9.html"><u>9</u></a></td></tr><tr><td class="CalWeekendDay" align="center"><a href="http://www.cnblogs.com/bamanzi/archive/2011/4/10.html"><u>10</u></a></td><td align="center"><a href="http://www.cnblogs.com/bamanzi/archive/2011/4/11.html"><u>11</u></a></td><td align="center"><a href="http://www.cnblogs.com/bamanzi/archive/2011/4/12.html"><u>12</u></a></td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td class="CalWeekendDay" align="center">16</td></tr><tr><td class="CalWeekendDay" align="center">17</td><td align="center">18</td><td align="center">19</td><td align="center">20</td><td align="center">21</td><td align="center"><a href="http://www.cnblogs.com/bamanzi/archive/2011/4/22.html"><u>22</u></a></td><td class="CalWeekendDay" align="center">23</td></tr><tr><td class="CalWeekendDay" align="center">24</td><td align="center">25</td><td align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td class="CalWeekendDay" align="center">30</td></tr><tr><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td></tr>
+</tbody></table>
+</div>
+			
+			<div id="leftcontentcontainer">
+				
+<div id="side_ing_block">
+<h3 class="catListTitle">最新闪存</h3>
+<ul><li>[unix][shell] atool is a script for managing file archives of various types (tar, tar+gzip, zip, bzip2, rar, 7zip, ...): aunpack/apack/als  <a href="http://www.nongnu.org/atool/" target="_top" class="gray" title="http://www.nongnu.org/atool/">www.nongnu.org...</a>  <a href="http://home.cnblogs.com/ing/218971/" class="ing_lnk">09-24 17:39</a></li><li>[firefox] splitpanel扩展禁止将拖拽到内容区的文字做为网址(仍然可以拖到其工具栏上): overlay.js中browser()函数里，注释掉后面8行 //if (window.nsDragAndDrop) ... <a href="http://home.cnblogs.com/ing/218969/" class="ing_lnk">09-24 17:23</a></li><li>续: 一个例子是我在看这篇Clojure-v2.pdf   <a href="http://is.gd/xpt6w2" target="_top" class="gray" title="http://is.gd/xpt6w2">is.gd...</a>  ，中间讲并发的部分看得稀里糊涂的，看IBM dw这篇『Clojure与并发性』一下就看明白了  <a href="http://is.gd/UOssXQ" target="_top" class="gray" title="http://is.gd/UOssXQ">is.gd...</a>  <a href="http://home.cnblogs.com/ing/218931/" class="ing_lnk">09-24 13:16</a></li><li>presentation/ppt真不是什么好东西，层次不清，很多内容在文档之外，《Joel谈软件开发》里面选了一篇文章来说这个问题: PowerPoint Remix PowerPoint Remix   <a href="http://www.aaronsw.com/weblog/000931" target="_top" class="gray" title="http://www.aaronsw.com/weblog/000931">www.aaronsw.com...</a>  <a href="http://home.cnblogs.com/ing/218930/" class="ing_lnk">09-24 13:05</a></li><li>续: gs.exe: 从  <a href="http://sourceforge.net/projects/ghostscript/files/GPL%20Ghostscript/" target="_top" class="gray" title="http://sourceforge.net/projects/ghostscript/files/GPL%20Ghostscript/">sourceforge.net...</a>  下载，然后将gswin32c.exe改名为gs.exe，那个dll也是需要的，其它文件可以删除 <a href="http://home.cnblogs.com/ing/218715/" class="ing_lnk">09-23 15:35</a></li><li><a href="http://home.cnblogs.com/bamanzi/ing/" class="ing_lnk">更多闪存...</a></li></ul>
+</div>
+
+
+
+<div class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+
+<div class="div_my_zzk"><input value="" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+
+<div class="div_my_zzk"><input value="" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk" type="text">&nbsp;<input onclick="google_go()" value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+
+</div>
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+
+		<li><a id="SingleColumn1_ctl02_rptMainLinks_lnkLinkItem_0" href="http://www.cnblogs.com/bamanzi/MyPosts.html">我的随笔</a></li>
+	
+		<li><a id="SingleColumn1_ctl02_rptMainLinks_lnkLinkItem_1" href="http://home.cnblogs.com/bamanzi/">我的空间</a></li>
+	
+		<li><a id="SingleColumn1_ctl02_rptMainLinks_lnkLinkItem_2" href="http://space.cnblogs.com/msg/recent">我的短信</a></li>
+	
+		<li><a id="SingleColumn1_ctl02_rptMainLinks_lnkLinkItem_3" href="http://www.cnblogs.com/bamanzi/MyComments.html">我的评论</a></li>
+	
+<li><a id="itemListLink" onclick="this.blur();WarpClass('itemListLink', 'itemListLin_con');return false;" href="#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display: none;">
+<ul>
+
+		<li><a id="SingleColumn1_ctl02_repeaterLinks_lnkLinkItem_0" href="http://www.cnblogs.com/bamanzi/MyArticles.html">我的文章</a></li>
+	
+		<li><a id="SingleColumn1_ctl02_repeaterLinks_lnkLinkItem_1" title="我发表过评论的随笔" href="http://www.cnblogs.com/bamanzi/OtherPosts.html">我的参与</a></li>
+	
+		<li><a id="SingleColumn1_ctl02_repeaterLinks_lnkLinkItem_2" href="http://www.cnblogs.com/bamanzi/MyNews.html">我的新闻</a></li>
+	
+		<li><a id="SingleColumn1_ctl02_repeaterLinks_lnkLinkItem_3" href="http://www.cnblogs.com/bamanzi/RecentComments.html">最新评论</a></li>
+	
+		<li><a id="SingleColumn1_ctl02_repeaterLinks_lnkLinkItem_4" href="http://www.cnblogs.com/bamanzi/tag/">我的标签</a></li>
+	
+</ul>
+</div>
+</div>
+
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/bamanzi/tag/emacs/">emacs(29)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/linux/">linux(6)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/firefox/">firefox(5)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/debian/">debian(5)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/lmde/">lmde(3)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/vim/">vim(2)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/chm/">chm(2)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/geek/">geek(2)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/microemacs/">microemacs(2)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/python/">python(2)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/">更多</a></li>
+</ul>
+</div>
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/bamanzi/archive/2011/08.html">2011年8月 (4)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/bamanzi/archive/2011/06.html">2011年6月 (6)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/bamanzi/archive/2011/05.html">2011年5月 (2)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/bamanzi/archive/2011/04.html">2011年4月 (9)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/bamanzi/archive/2011/03.html">2011年3月 (11)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/bamanzi/archive/2011/02.html">2011年2月 (4)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/bamanzi/archive/2010/11.html">2010年11月 (2)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/bamanzi/archive/2010/10.html">2010年10月 (2)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListImageCategory">
+<h3 class="catListTitle">相册</h3>
+
+<ul>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_1_Link_0" rel="nofollow" href="http://www.cnblogs.com/bamanzi/gallery/269742.html">缺省</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListFavoritCategory">
+<h3 class="catListTitle">收藏夹</h3>
+
+<ul>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_2_Link_0" rel="nofollow" href="http://www.cnblogs.com/bamanzi/favorite/268288.html">Misc</a> <a id="SingleColumn1_Categories_CatList_LinkList_2_RssLink_0" href="http://www.cnblogs.com/bamanzi/favorite/268288.html/rss">(rss)</a></li>
+
+</ul>
+
+</div>
+
+
+
+<div class="catListComment">
+<h3 class="catListTitle">最新评论<a id="SingleColumn1__2573d98_RSSHyperlink1" title="RSS订阅最最新评论" href="http://www.cnblogs.com/bamanzi/CommentsRSS.aspx"><img title="RSS订阅最最新评论" src="xml.gif" alt=""></a></h3>
+
+	
+			<div class="divRecentCommentAticle">
+				<a id="SingleColumn1__2573d98_CommentList_Hyperlink2_0" class="listitem" href="http://www.cnblogs.com/bamanzi/archive/2011/08/20/firefox-addon-2-keysnail.html#2207299">1.&nbsp;Re:keysnail: 如何将把Scrapbook的收集快捷键从Ctrl+Shift+L改为其它键?</a>
+			</div>
+			<div class="divRecentComment">
+				我们可以在places.js里面的loadAllTabsFromBookmarks()看到bmId的来源: 书签系统中相应目录的id试验代码:
+function findTMTRowByName(ro... (巴蛮子)
+			</div>		
+		
+			<div class="divRecentCommentAticle">
+				<a id="SingleColumn1__2573d98_CommentList_Hyperlink2_1" class="listitem" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/firefox-keysnail-tips.html#2207007">2.&nbsp;Re:keysnail 使用方法与一些技巧搜集贴</a>
+			</div>
+			<div class="divRecentComment">
+				
+ext.add("count-region", function(ev, arg) {
+    var aInput = ev.originalTarget;
+    var v... (巴蛮子)
+			</div>		
+		
+			<div class="divRecentCommentAticle">
+				<a id="SingleColumn1__2573d98_CommentList_Hyperlink2_2" class="listitem" href="http://www.cnblogs.com/bamanzi/archive/2011/04/06/firefox-splitbrowser.html#2206990">3.&nbsp;Re:Firefox上的窗口分割扩展(以及Vimperator/Keysnail插件脚本)</a>
+			</div>
+			<div class="divRecentComment">
+				splitpanel有个功能我不喜欢: 从其它地方拖拽文字到Split Panel里面的输入框时，Split Panel会将被拖的内容做为网址，从而(试图)转过去。禁用这个功能的方法是修改 overl... (巴蛮子)
+			</div>		
+		
+			<div class="divRecentCommentAticle">
+				<a id="SingleColumn1__2573d98_CommentList_Hyperlink2_3" class="listitem" href="http://www.cnblogs.com/bamanzi/archive/2011/08/20/firefox-addon-2-keysnail.html#2206856">4.&nbsp;Re:keysnail: 如何将把Scrapbook的收集快捷键从Ctrl+Shift+L改为其它键?</a>
+			</div>
+			<div class="divRecentComment">
+				下面我们来看bmId是什么:继续看刚才代码的上面几行:
+            var rows = gTMTRowPanel.childNodes;
+            for (var i=0... (巴蛮子)
+			</div>		
+		
+			<div class="divRecentCommentAticle">
+				<a id="SingleColumn1__2573d98_CommentList_Hyperlink2_4" class="listitem" href="http://www.cnblogs.com/bamanzi/archive/2011/08/20/firefox-addon-2-keysnail.html#2206855">5.&nbsp;Re:keysnail: 如何将把Scrapbook的收集快捷键从Ctrl+Shift+L改为其它键?</a>
+			</div>
+			<div class="divRecentComment">
+				将当前标签页加入到某个Row，方法有两个，一个是右键菜单的“发送此标签页到TooManyTabs”，而且可以选择到哪个row ；另一个是将鼠标移动到标签页的图标上，等它变成向上的箭头时点一个，TMT会... (巴蛮子)
+			</div>		
+		
+</div>
+
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	
+			<ul>
+		
+			<li>
+				<a id="SingleColumn1_ctl06_TopList_Hyperlink1_0" href="http://www.cnblogs.com/bamanzi/archive/2010/10/19/iphone-chm-viewer-comparision.html">1.&nbsp;iPhone上面几个CHM阅读工具对比(3015)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1_ctl06_TopList_Hyperlink1_1" href="http://www.cnblogs.com/bamanzi/archive/2010/11/06/vimperator-tips.html">2.&nbsp;Vimperator技巧几则(573)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1_ctl06_TopList_Hyperlink1_2" href="http://www.cnblogs.com/bamanzi/archive/2010/10/31/delphi2010lite-install-help.html">3.&nbsp;Delphi 2010 lite加装帮助的方法(556)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1_ctl06_TopList_Hyperlink1_3" href="http://www.cnblogs.com/bamanzi/archive/2011/05/06/emacs-code-completion-for-python-methods.html">4.&nbsp;[emacs] Python代码补全的各种方法介绍以及对比(535)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1_ctl06_TopList_Hyperlink1_4" href="http://www.cnblogs.com/bamanzi/archive/2011/03/07/emacs-auto-complete-scite-api.html">5.&nbsp;[emacs] auto-complete上使用scite的api文件进行补全(524)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	
+			<ul>
+		
+			<li>
+				<a id="SingleColumn1_ctl07_TopList_Hyperlink1_0" href="http://www.cnblogs.com/bamanzi/archive/2011/03/06/emacs-elisp-snippets.html">1.&nbsp;我的Emacs elisp代码搜集贴(35)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1_ctl07_TopList_Hyperlink1_1" href="http://www.cnblogs.com/bamanzi/archive/2011/05/06/emacs-code-completion-for-python-methods.html">2.&nbsp;[emacs] Python代码补全的各种方法介绍以及对比(21)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1_ctl07_TopList_Hyperlink1_2" href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/firefox-keysnail-tips.html">3.&nbsp;keysnail 使用方法与一些技巧搜集贴(19)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1_ctl07_TopList_Hyperlink1_3" href="http://www.cnblogs.com/bamanzi/archive/2011/04/22/choose-with-ido-or-anything.html">4.&nbsp;[emacs] 用 ido 或 anything 进行选择(15)</a>
+			</li>
+		
+			<li>
+				<a id="SingleColumn1_ctl07_TopList_Hyperlink1_4" href="http://www.cnblogs.com/bamanzi/archive/2011/04/06/firefox-4-tips.html">5.&nbsp;与firefox 4相关的一些小贴士(10)</a>
+			</li>
+		
+			</ul>
+		
+</div>
+
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2011 巴蛮子
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+    </form> 
+    
+    
+    
+
+
+</body>
+</html>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="keywords" content="emacs, emacs productivity">
+
+<title>How To Set Emacs's User Interface to Modern Conventions</title>
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div class="hdζ"><span class="σ">∑</span> <a href="http://xahlee.org/index.html">Home</a> ◇ <a href="http://xahlee.org/Periodic_dosage_dir/cmaci_girzu.html">Math</a> ◇ <a href="http://xahlee.org/Periodic_dosage_dir/skami_prosa.html">Computing</a> ◇ <a href="http://xahlee.org/arts/index.html">Arts</a> ◇ <a href="http://xahlee.org/PageTwo_dir/Vocabulary_dir/vocabulary.html">Words</a> ◇ <a href="http://xahlee.org/Periodic_dosage_dir/t2/mirrored.html">Literature</a> ◇ <a href="http://xahlee.org/music/index.html">Music</a> ◆ <a href="http://twitter.com/xah_lee" target="_top"><img src="favicon.ico" alt="twitter"></a> <a href="http://www.facebook.com/xahlee" target="_top"><img src="fb3.png" alt="facebook"></a> <a href="http://gplus.to/xah" target="_top"><img src="gp.png" alt="g+"></a> <a href="http://xahlee.blogspot.com/feeds/posts/default" target="_top"><img src="wf.png" alt="webfeed"></a></div>
+
+<div id="cse" style="width: 100%;"><div dir="ltr" class="gsc-control-cse gsc-control-cse-en"><form action="http://xahlee.org/emacs/emacs_make_modern.html" accept-charset="utf-8" class="gsc-search-box"><table class="gsc-search-box" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-input"><input value="" style="background: url('google_custom_search_watermark.gif') no-repeat scroll left center rgb(255, 255, 255);" title="search" name="search" class=" gsc-input" size="10" autocomplete="off" type="text"></td><td class="gsc-search-button"><input title="search" class="gsc-search-button" value="Search" type="submit"></td><td class="gsc-clear-button"><div title="clear results" class="gsc-clear-button">&nbsp;</div></td></tr></tbody></table><table class="gsc-branding" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-branding-user-defined"></td><td class="gsc-branding-text"><div class="gsc-branding-text">powered by</div></td><td class="gsc-branding-img"><img class="gsc-branding-img" src="small-logo.png"></td></tr></tbody></table></form><div class="gsc-tabsAreaInvisible"><div class="gsc-tabHeader gsc-tabhActive">Custom Search</div><span class="gs-spacer"> </span></div><div class="gsc-tabsAreaInvisible"></div><div class="gsc-adBlockInvisible"></div><div class="gsc-wrapper"><div class="gsc-adBlockInvisible"></div><div class="gsc-resultsbox-invisible"><div class="gsc-resultsRoot gsc-tabData gsc-tabdActive"><table class="gsc-resultsHeader" cellpadding="0" cellspacing="0"><tbody><tr><td class="gsc-twiddleRegionCell"><div class="gsc-twiddle"><div class="gsc-title">Web</div></div><div class="gsc-stats"></div><div class="gsc-results-selector gsc-all-results-active"><div title="show one result" class="gsc-result-selector gsc-one-result">&nbsp;</div><div title="show more results" class="gsc-result-selector gsc-more-results">&nbsp;</div><div title="show all results" class="gsc-result-selector gsc-all-results">&nbsp;</div></div></td><td class="gsc-configLabelCell"></td></tr></tbody></table><div class="gsc-results gsc-webResult"></div></div></div><div style="display: none;" id="gsc-loading-id">Loading...</div></div></div></div>
+
+
+
+<div class="chtk"><div id="chitikaAdBeacon-533"></div><div style="position: static;"><iframe id="ch_ad_ctr533" name="ch_ad_ctr533" allowtransparency="allowTransparency" class="chitikaAdBlock" marginheight="0" marginwidth="0" style="border: 0pt none; padding: 0pt; margin: 0pt;" src="index_1.html" frameborder="0" height="90" scrolling="no" width="550"></iframe></div><iframe id="ch_ad533" name="ch_ad533" src="index_2.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>
+
+<div class="nav"><a href="http://xahlee.org/emacs/emacs.html">Emacs Tutorial</a></div><div style="display: table; position: fixed; right: 1ex; top: 25%; margin: 0.5ex;" class="twt"><iframe title="Twitter For Websites: Tweet Button" style="width: 55px; height: 20px;" class="twitter-share-button twitter-count-none" src="index_3.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe></div>
+
+<div style="text-align: center;">If you spend more than 2 hours on the site, please pay USD $6. <a href="http://xahlee.org/thanks.html">Thank you</a> <form action="https://www.paypal.com/cgi-bin/webscr" method="post"><div><input name="cmd" value="_s-xclick" type="hidden"><input name="hosted_button_id" value="Y4V2F8TA949M2" type="hidden"><input src="btn_paynowcc_lg.gif" name="submit" alt="PayPal" type="image"><img alt="" src="pixel.gif" height="1" width="1"></div></form></div><h1>How To Set Emacs's User Interface to Modern Conventions</h1>
+<div class="βds">
+<div class="¤xd"><a href="http://xahlee.org/ads.html">Advertise Here For Profit</a></div>
+</div>
+
+<p>Xah Lee, 2008-06, 2009, 2010, 2011-07-10</p>
+
+<p>This page shows you how to set up emacs so its user interface
+is more compatible with modern applications.</p>
+
+<p>The following guide assume you are using GNU Emacs version 22 (released in 2007). Emacs 23 (released in 2009-07) will be mentioned specifically.
+(see: <a href="http://xahlee.org/emacs/emacs23_features.html">New Features in Emacs 23</a>.)
+</p>
+
+<p>If you want a out-of-the-box solutions, you can download:
+<a href="http://ergoemacs.org/">ErgoEmacs</a> (Windows),
+<a href="http://aquamacs.org/">Aquamacs Emacs</a> (Mac).</p>
+
+<h2>Keybard Shortcuts</h2>
+
+<p class="q">How to have standard keys for Copy and Paste?</p>
+<div class="a">
+<p>Turn on the CUA mode, pull the menu 〖Options▸C-x/C-c/C-v Cut and Paste (CUA)〗, then pull menu 〖Options▸Save Options〗.</p>
+
+<p>The CUA mode will do 4 things:</p>
+
+<ul>
+<li>① Cut Copy Paste Undo have X C V Z keys.</li>
+<li>② Typing while a region is selected will delete it or over-ride it.</li>
+<li>③ Text selection will be highlighted. (this is default in emacs 23)</li>
+<li>④ Text selection can be done by holding down the <kbd>Shift</kbd> key and press a arrow key. (default in emacs 23)</li>
+</ul>
+
+</div>
+
+<p class="q">How to have standard shortcut keys for Open, Close, Save, Save As, Select All …?</p>
+<div class="a">
+<p>Use the package <a href="http://xahlee.org/emacs/ergonomic_emacs_keybinding.html">ErgoEmacs Keybinding</a>.
+
+</p><p>It supports
+{
+Open 【<kbd>Ctrl</kbd>+<kbd>o</kbd>】,
+Close 【<kbd>Ctrl</kbd>+<kbd>w</kbd>】,
+Save 【<kbd>Ctrl</kbd>+<kbd>s</kbd>】,
+New 【<kbd>Ctrl</kbd>+<kbd>n</kbd>】,
+Select All 【<kbd>Ctrl</kbd>+<kbd>a</kbd>】, …
+}.</p>
+</div>
+
+<p class="q">How to have redo?</p>
+<div class="a">
+<p>You need to install a redo mode.
+I recommend <a href="http://www.wonderworks.com/download/redo.el">redo.el</a>  by Kyle E Jones et al,
+or <a href="http://www.emacswiki.org/emacs/redo+.el">redo+.el</a>,
+or <a href="http://www.emacswiki.org/emacs/UndoTree">UndoTree</a>.
+Any one of them will do the job.
+Once you install it, put the following code in your emacs init file:</p>
+
+<pre class="elisp">(global-set-key (kbd <span class="string">"C-z"</span>) 'undo) <span class="comment-delimiter">; </span><span class="comment">Ctrl+z
+</span>(global-set-key (kbd <span class="string">"C-S-z"</span>) 'redo) <span class="comment-delimiter">; </span><span class="comment"> Ctrl+Shift+z
+</span></pre>
+</div>
+
+<p class="q">How to make the copy key copy the current line when there's no selection? </p>
+<div class="a">
+<p>See:</p>
+
+<ul>
+<li><a href="http://xahlee.org/emacs/emacs_copy_cut_current_line.html">Emacs: How to Copy/Cut Current Line</a></li>
+<li><a href="http://xahlee.org/emacs/emacs_delete_whole_line.html">Emacs: Single Command to Delete Whole Line</a></li>
+</ul>
+</div>
+
+<h2>Text Highlighting</h2>
+
+<p class="q">How to have emacs highlight text selections?</p>
+<div class="a">
+<p>Use the menu 〖Options▸Active Region Highlighting〗, then 〖Options▸Save Options〗.</p>
+
+<p>Or, put this in your emacs init file:</p>
+
+<pre class="elisp">(transient-mark-mode 1) <span class="comment-delimiter">; </span><span class="comment">highlight text selection
+</span>(delete-selection-mode 1) <span class="comment-delimiter">; </span><span class="comment">delete seleted text when typing
+</span></pre>
+
+<p>When “delete-selection-mode” is on, it turns on “transient-mark-mode” automatically. So, turning on “transient-mark-mode” before is not necessary. Also, when “cua-mode” is on, the behavior of both “transient-mark-mode” and “delete-selection-mode” are there, but “cua-mode” has its own implementation and does not actually rely on them.</p>
+
+<p>Note: Emacs 23 has “transient-mark-mode” on by default, but does not have “delete-selection-mode” on by default.</p>
+</div>
+
+<p class="q">How to have syntax coloring on by default?</p>
+<div class="a">
+<p>This is on by default in emacs 22 and 23.</p>
+
+<p>If not on, you can use the menu 〖Options▸Syntax Highlighting〗. If you always want this on, then pull 〖Options▸Save Options〗.</p>
+
+<p>Alternatively, put the following code in your emacs init file:</p>
+
+<pre class="elisp">(global-font-lock-mode 1) <span class="comment-delimiter">; </span><span class="comment">turn on syntax coloring
+</span></pre>
+</div>
+
+<p class="q">How to have matching parenthesis highlighted?</p>
+<div class="a">
+  <p>Use the menu 〖Options▸Paren Match Highlighting〗 then 〖Options▸Save Options〗.</p>
+
+<p>Or, you can put the following code in your emacs init file:</p>
+
+<pre class="elisp">(show-paren-mode 1) <span class="comment-delimiter">; </span><span class="comment">turn on paren match highlighting
+</span></pre>
+
+<p>show-paren-mode can be setup so that it highlight the entire paren enclosed text, instead of just the two paren chars. For how to, see:
+<a href="http://xahlee.org/emacs/emacs_editing_lisp.html">Tips For Editing Lisp Code With Emacs</a>.
+</p>
+</div>
+
+<p class="q">How to have the current line highlighted?</p>
+<div class="a">
+<p>Call “hl-line-mode”. Call it again to toggle off.
+Call “global-hl-line-mode” to toggle globally.</p>
+
+<pre class="elisp"><span class="comment-delimiter">;; </span><span class="comment">turn on highlighting current line
+</span>(global-hl-line-mode 1)
+</pre>
+</div>
+
+<h2>Font</h2>
+
+<p class="q">How to change the default font?</p>
+<div class="a">
+<p>Use the menu: 〖Options▸Set Font〗, then 〖Options▸Save Options〗.</p>
+
+<p>See also: <a href="http://xahlee.org/emacs/emacs_switching_fonts.html">How to Quickly Switch Fonts in Emacs</a> ◇
+<a href="http://xahlee.org/emacs/emacs_unicode_fonts.html">Best Fonts for Unicode</a>.</p>
+
+</div>
+
+<h2>Displaying Line Numbers and Column Number</h2>
+
+<p class="q">How to show line numbers?</p>
+<div class="a">
+<p>Type 【<kbd>Alt</kbd>+<kbd>x</kbd> line-number-mode】. After that, the line number the cursor is on shows in the status bar at the bottom.</p>
+
+<p>In emacs 23, you can have line numbers displayed in the left vertical margin. To turn it on, type 【<kbd>Alt</kbd>+<kbd>x</kbd> linum-mode】.</p>
+
+<p>To have these on by default, put the following:</p>
+
+<pre class="elisp"><span class="comment-delimiter">; </span><span class="comment">show line number the cursor is on, in status bar (the mode line)
+</span>(line-number-mode 1)
+
+<span class="comment-delimiter">; </span><span class="comment">display line numbers in margin (fringe). Emacs 23 only.
+</span>(global-linum-mode 1) <span class="comment-delimiter">; </span><span class="comment">always show line numbers
+</span></pre>
+
+<figure>
+<img src="emacs_line_numbers.png" alt="emacs line numbers" height="440" width="592">
+<figcaption>Emacs 23 with linum-mode on.</figcaption>
+</figure>
+
+</div>
+
+<p class="q">How to show the cursor's column position?</p>
+<div class="a">
+<p>【<kbd>Alt</kbd>+<kbd>x</kbd> column-number-mode】.  After you turned it on, the cursor's line position and column position will show in the status bar, like this: <code>(166,3)</code>.  The first is line number, the second is position from the beginning of line.</p>
+
+<p>To always have it on, put the following code in your emacs init file.</p>
+<pre class="elisp">(column-number-mode 1)
+</pre>
+</div>
+
+<h2>Backup ＆ Files</h2>
+
+<p class="q">How to make emacs stop creating those “backup~” files or those “#autosave#” files?</p>
+<div class="a">
+<p>Put the following in your emacs init file.</p>
+<pre class="elisp">(setq make-backup-files nil) <span class="comment-delimiter">; </span><span class="comment">stop creating those backup~ files
+</span>(setq auto-save-default nil) <span class="comment-delimiter">; </span><span class="comment">stop creating those #autosave# files
+</span></pre>
+</div>
+
+<p class="q">How to have a menu of recently opened files?</p>
+<div class="a">
+<p>You need to turn on the recentf mode. Put the following in your emacs init file:
+</p><pre class="elisp">(recentf-mode 1)
+</pre>
+
+<p>Once turned on, you can open recently opened files under menu 〖File▸Open Recent〗, or by typing 【<kbd>Alt</kbd>+<kbd>x</kbd> recentf-open-files】.</p>
+</div>
+
+<h2>Line Margin and Line Spacing</h2>
+
+<p class="q">How to have the down arrow key move by screen lines?</p>
+<div class="a">
+<p>This is default with emacs 23. For detail on how to turn it on/off, see: <a href="http://xahlee.org/emacs/emacs23_features.html">New Features in Emacs 23</a>.</p>
+
+<p>For emacs 22, there's no robust solution. See: <a href="http://www.emacswiki.org/cgi-bin/wiki/MoveByVisibleLineCommands">emacswiki.org move by visible line</a>.</p>
+</div>
+
+<p class="q">How to have lines soft wrapped at word boundary?</p>
+<div class="a">
+<p>In emacs 23, pull the menu 〖Options▸Line Wrapping in this Buffer〗, or type 【<kbd>Alt</kbd>+<kbd>x</kbd> visual-line-mode】 toggles the behavior.</p>
+
+<figure>
+<img src="emacs23_word_wrap.png" alt="emacs23 word wrap" height="499" width="489">
+<figcaption>visual-line-mode off (top) and on (bottom) in emacs 23.</figcaption>
+</figure>
+
+<p>To toggle globally, type 【<kbd>Alt</kbd>+<kbd>x</kbd> global-visual-line-mode】. To set it on or off permanently, use:</p>
+
+<pre class="elisp">(global-visual-line-mode 1) <span class="comment-delimiter">; </span><span class="comment">1 for on, 0 for off.
+</span></pre>
+
+</div>
+
+<p class="q">How to set the right margin to something like infinity, so that long lines runs off screen instead wrapping at the window border?</p>
+<div class="a">
+<p>
+Use the menu 〖Options▸Truncate Long Lines in this Buffer〗.</p>
+
+<p>In Emacs 23, there's a built-in command toggle-truncate-lines. You can set a shortcut for it, like this:</p>
+<pre class="elisp">(global-set-key (kbd <span class="string">"&lt;f7&gt;"</span>) 'toggle-truncate-lines)
+</pre>
+
+<p>If you are using emacs 22, you can define it like this:</p>
+<pre class="elisp">(<span class="keyword">defun</span> <span class="function-name">toggle-truncate-lines</span> ()
+<span class="doc">"Toggle whether to wrap lines at right window border."</span>
+(interactive)
+   (<span class="keyword">if</span> (eq truncate-lines nil)
+     (set-variable 'truncate-lines 't)
+     (set-variable 'truncate-lines nil)
+    ) )
+</pre>
+</div>
+
+<p class="q">How to set the spacing between lines?</p>
+<div class="a">
+<p>Type 【<kbd>Alt</kbd>+<kbd>x</kbd> setq-default】, then “line-spacing” with value 5. This means there will be 5 pixels between lines. You can also use a decimal. If you set “line-spacing” to 0.5, then it means there will be a extra 50% of normal line height between lines.</p>
+
+<p>You can put the following elisp code in your emacs init file for easy toggle.</p>
+
+<pre class="elisp">(<span class="keyword">defun</span> <span class="function-name">toggle-line-spacing</span> ()
+<span class="doc">"Toggle line spacing between no extra space to extra half line height."</span>
+(interactive)
+(<span class="keyword">if</span> (eq line-spacing nil)
+    (setq-default line-spacing 0.5) <span class="comment-delimiter">; </span><span class="comment">add 0.5 height between lines
+</span>  (setq-default line-spacing nil)   <span class="comment-delimiter">; </span><span class="comment">no extra heigh between lines
+</span>  ))
+
+(global-set-key (kbd <span class="string">"&lt;f7&gt;"</span>) 'toggle-line-spacing)
+</pre>
+
+<p>With the above code, pressing <kbd>F7</kbd> will toggle line spacing to small and large. This is useful for example, when you often switch between coding and document reading or novel reading.</p>
+
+<p>Note that the spacing height between lines also depends on font. If you want to toggle between coding mode and novel-reading mode, you might just toggle font.
+See: <a href="http://xahlee.org/emacs/emacs_switching_fonts.html">How to Quickly Switch Fonts in Emacs</a>.</p>
+</div>
+
+<h2>Reformatting Lines</h2>
+
+<p class="q">How to reformat paragraphs so that lines are not longer than 70 chars?</p>
+<div class="a">
+<p>Type 【<kbd>Alt</kbd>+<kbd>q</kbd>】 (fill-paragraph) will reformat the current block of text your cursor is on. Type 【<kbd>Alt</kbd>+<kbd>x</kbd> fill-region】 to reformat a selection of text. To have lines automatically cut as you type, use auto-fill-mode.</p>
+
+<p>You can set the width used in the above commands. Type 【<kbd>Alt</kbd>+<kbd>x</kbd> set-variable】, then given variable “fill-column”.</p>
+
+<p>Note: these commands actually insert newline characters into your file. This type of wrapping is called hard-wrap.
+Hard-wrap for display purposes should be avoided. See:
+<a href="http://xahlee.org/UnixResource_dir/writ/hard-wrap.html">The Harm of hard-wrapping Lines</a>.</p>
+</div>
+
+<p class="q">Is there a unfill-paragraph? I want to delete the hard-wrapped line endings in a paragraph.</p>
+<div class="a">
+<p>See: <a href="http://xahlee.org/emacs/emacs_unfill-paragraph.html">Emacs unfill-paragraph, unfill-region, compact-uncompact-block</a>.
+</p>
+</div>
+
+<h2>Misc</h2>
+
+<p class="q">How to set up emacs so that each file opens in a new window?</p>
+<div class="a">
+<p>Put this code in your emacs init file:</p>
+<pre class="elisp">(setq pop-up-frames t)
+</pre>
+</div>
+
+
+<div class="rltd">
+<ul>
+<li><a href="http://xahlee.org/emacs/emacs23_features.html">New Features in Emacs 23</a></li>
+<li><a href="http://xahlee.org/emacs/emacs_adv_tips.html">Emacs Advanced Tips</a></li>
+<li><a href="http://xahlee.org/emacs/keyboard_shortcuts.html">Emacs: How to Define Keyboard Shortcuts</a></li>
+</ul>
+</div>
+
+
+<div id="disqus_thread"><div style="display: none;" id="dsq-content-stub">There was a problem loading Disqus. For more information, please visit <a href="http://status.disqus.com/">status.disqus.com</a>.</div><div class="clearfix" style="display: block;" id="dsq-content">      <div id="dsq-global-toolbar" class="dsq-clearfix">        <ul class="dsq-global-toolbar-right dsq-clearfix">                            <li class="dsq-community-box">                <a href="http://xahlee.org/emacs/community.show" class="dsq-toolbar-item dsq-tt" title="Expand Community Box"><span class="dsq-toolbar-icon"></span></a>            </li>                            <li class="dsq-global-toolbar-dropdown-container">                    <div id="dsq-toolbar-dropdown">    <a href="#" onclick="return false" class="dsq-toolbar-logo dsq-toolbar-item dsq-clearfix"><span class="dsq-toolbar-icon">Disqus</span></a>    <div id="dsq-toolbar-dropdown-wrap" style="display: none;">      <ul class="dsq-clearfix">                    <li class="dsq-login-link"><a href="http://xahlee.org/emacs/auth.login"><span class="dsq-toolbar-icon"></span><span class="dsq-toolbar-label">Login</span></a></li>                    <li class="dsq-about-link"><a href="http://disqus.com/" target="_top"><span class="dsq-toolbar-icon"></span><span class="dsq-toolbar-label">About Disqus</span></a></li>      </ul>    </div>  </div>            </li>        </ul>            </div>    <div id="dsq-like-tooltip">      <div id="dsq-share-step-1" class="dsq-share-step">        <h3>Glad you liked it. Would you like to share?</h3>        <p class="dsq-tooltip-checkbox"><input id="dsq-share-thread-facebook" value="Facebook" type="checkbox"><label for="dsq-share-thread-facebook"><span class="dsq-facebook">Facebook</span></label></p>        <p class="dsq-tooltip-checkbox"><input id="dsq-share-thread-twitter" value="Twitter" type="checkbox"><label for="dsq-share-thread-twitter"><span class="dsq-twitter">Twitter</span></label></p>        <ul id="dsq-tooltip-actions">                        <li><a href="http://xahlee.org/emacs/thread.share" class="dsq-primary-action">Share</a></li>                    <li><a href="http://xahlee.org/emacs/thread.share.cancel" class="dsq-secondary-action">No thanks</a></li>        </ul>      </div>      <div id="dsq-share-step-2" class="dsq-share-step" style="display: none ! important;">        <p>Sharing this page …</p>      </div>      <div id="dsq-share-step-3" class="dsq-share-step" style="display: none ! important;">        <p>Thanks! <a href="http://xahlee.org/emacs/thread.share.cancel" class="dsq-tooltip-decline">Close</a></p>      </div>    </div>                    <div id="dsq-new-post" class="dsq-post-area dsq-unauthenticated">          <h3>Add New Comment</h3>      <div style="clear: both;"></div>              <div id="dsq-form-area">      <div class="dsq-textarea">        <div style="height: auto;" class="dsq-textarea-wrapper" id="dsq-textarea-wrapper">            <!-- filled dynamically -->        <iframe style="position: relative; top: 0px; height: 58px;" src="index_4.html" id="easyXDM_DISQUS_net_default4533_provider" name="easyXDM_DISQUS_net_default4533_provider" frameborder="0" scrolling="no"></iframe></div>      </div>              <div id="dsq-media-preview" class="dsq-media-preview" style="display: none;">        </div>                  <div class="dsq-post-footer">              <div class="dsq-attach-media">            <div class="dsq-attach-media-container">                <span>Image</span>                <!-- filled dynamically -->            <iframe src="index_5.html" id="easyXDM_DISQUS_net_default4534_provider" name="easyXDM_DISQUS_net_default4534_provider" frameborder="0" scrolling="no"></iframe></div>        </div>                                    <button type="button" class="dsq-button" id="dsq-post-button" onclick="DISQUS.dtpl.actions.fire('comments.validate', null);">            <span>              Post as …            </span>          </button>                      </div>      <div style="clear: both;"></div>    </div>  </div>              <div id="dsq-comments-title">    <h3>                        Showing <span id="dsq-num-posts">0</span> comments                  </h3>  </div>  <div class="dsq-options">      <span class="dsq-item-sort">    Sort by    <select id="dsq-sort-select" onchange="DISQUS.dtpl.actions.fire('thread.sort', this.value);">            <option value="hot" selected="selected">Popular now</option>            <option value="best">Best rating</option>            <option value="newest">Newest first</option>            <option value="oldest">Oldest first</option>          </select>  </span>      <span class="dsq-subscribe-email">    <img src="email.png" alt="">&nbsp;    <span id="dsq-subscribe">            <a href="http://xahlee.org/emacs/thread.subscribe">Subscribe by email</a>          </span>    <span class="dsq-subscribe-rss">      <img src="bullet-feed.png" alt="">&nbsp;      <a href="http://xahlee.disqus.com/how_to_make_emacs_use_modern_user_interface/latest.rss">Subscribe by RSS</a>    </span>  </span>  </div>                  <ul id="dsq-comments">      </ul>        <div id="dsq-pagination" class="dsq-pagination">        </div>          </div><div>  </div></div><a href="http://disqus.com/" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+<iframe src="index_6.html" frameborder="0" width="100%"></iframe>
+
+
+
+<iframe src="index_7.html" style="position: absolute; top: -2000px; left: 0px;" id="easyXDM_DISQUS_net_default4532_provider" name="easyXDM_DISQUS_net_default4532_provider" frameborder="0"></iframe></body>
+</html>

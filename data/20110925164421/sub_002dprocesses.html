@@ -1,0 +1,278 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Sub-processes - GNU Emacs FAQ For MS Windows</title>
+
+<meta name="description" content="Answers to Frequently asked Questions about using Emacs on Microsoft Windows.">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="http://www.gnu.org/software/emacs/windows/index.html#Top">
+<link rel="prev" href="http://www.gnu.org/software/emacs/windows/Printing.html#Printing" title="Printing">
+<link rel="next" href="http://www.gnu.org/software/emacs/windows/Network-access.html#Network-access" title="Network access">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 2008, 2010-2011 Free Software Foundation, Inc.
+
+     This list of frequently asked questions about GNU Emacs on MS
+     Windows with answers (``FAQ'') may be translated into other
+     languages, transformed into other formats (e.g. Texinfo, Info,
+     WWW), and updated with new information.
+
+     The same conditions apply to any derivative of the FAQ as apply to
+     the FAQ itself.  Every copy of the FAQ must include this notice or
+     an approved translation, information on who is currently
+     maintaining the FAQ and how to contact them (including their
+     e-mail address), and information on where the latest version of
+     the FAQ is archived (including FTP information).
+
+     The FAQ may be copied and redistributed under these conditions,
+     except that the FAQ may not be embedded in a larger literary work
+     unless that work itself allows free copying and redistribution.
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+</head>
+<body>
+<div class="node">
+<a name="Sub-processes"></a>
+<a name="Sub_002dprocesses"></a>
+<p>
+Next:&nbsp;<a indepth="true" rel="next" accesskey="n" href="network-access.html#Network-access">Network access</a>,
+Previous:&nbsp;<a indepth="true" rel="previous" accesskey="p" href="printing.html#Printing">Printing</a>,
+Up:&nbsp;<a indepth="true" rel="up" accesskey="u" href="default_001.html#Top">Top</a>
+</p><hr>
+</div>
+
+<h2 class="chapter">7 Subprocesses</h2>
+
+<p><a name="index-subprocesses-209"></a>
+
+</p><h3 class="section">7.1 Quoting issues</h3>
+
+<p><a name="index-quoting-arguments-to-subprocesses-210"></a><a name="index-sub_002dprocesses_002c-quoting-arguments-to-211"></a><a name="index-cygwin_002c-quoting-arguments-212"></a>
+The quoting rules for native Windows shells and Cygwin shells have
+some subtle differences.  When Emacs spawns subprocesses, it tries to
+determine whether the process is a Cygwin program and changes its
+quoting mechanism appropriately.  See this
+<a href="http://www.gnu.org/software/emacs/windows/ntemacs/discuss/shell-quoting">previous discussion</a> for details.
+
+</p><h3 class="section">7.2 Programs reading input hang</h3>
+
+<p><a name="index-subprocesses_002c-hanging-when-reading-input-213"></a><a name="index-full_002dscreen-console-programs_002c-as-subprocesses-214"></a><a name="index-ftp_002c-client-hanging-215"></a><a name="index-ftp-216"></a>
+Programs that explicitly use a handle to the console (<samp><span class="file">CON</span></samp> or
+<samp><span class="file">CON:</span></samp>) instead of stdin and stdout cannot be used as
+subprocesses to Emacs, and they will also not work in shell-mode.  The
+default ftp client on Windows is an example of such a program - this
+ftp program is mostly fine for use with <code>ange-ftp</code> or
+<code>tramp</code>, but not for <kbd>M-x ftp</kbd> (see <a indepth="true" href="network-access.html#Network-access">How do I use FTP within Emacs</a>).  There is no convenient way for either Emacs
+or any shell used in <code>shell-mode</code> to redirect the input and
+output of such processes from the console to input and output pipes. 
+The only workaround is to use a different implementation of the
+program that does not use the console directly.  Microsoft's new
+
+</p><h3 class="section">7.3 Buffering in shells and subprocesses</h3>
+
+<p><a name="index-subprocesses_002c-buffering-output-217"></a><a name="index-output-not-displaying_002c-subprocesses-218"></a><a name="index-SQL-subprocess-hanging-219"></a><a name="index-cvs-hanging-when-login-needed-220"></a><a name="index-ssh_002c-password-prompt-not-appearing-when-using-with-cvs-221"></a><a name="index-sql_002dmode-222"></a><a name="index-shell_002dmode-223"></a><a name="index-setbuf_002c-using-in-subprocesses-to-prevent-buffering-224"></a><a name="index-setvbuf_002c-using-in-subprocesses-to-prevent-buffering-225"></a>
+You may notice that some programs, when run in a shell in
+<code>shell-mode</code>,
+have their output buffered (e.g., people have found this happening to
+them with <code>sql-mode</code>).  When the program has a lot of output, it
+overflows the buffering and gets printed to the shell buffer; however,
+if the program only outputs a small amount of text, it will remain
+buffered and won't appear in the shell buffer.  The same can happen
+in other subprocesses that themselves run other programs as
+subprocesses, for example when using <samp><span class="command">cvs</span></samp> from Emacs, which
+is itself configured to use <samp><span class="command">ssh</span></samp>, password prompts fail to
+appear when expected, and <samp><span class="command">cvs</span></samp> appears to hang.
+
+   </p><p>Although it may at first seem like the shell is buffering the output
+from the program, it is actually the program that is buffering
+output.  The C runtime typically decides how to buffer output based
+upon whether stdout is bound to a handle to a console window or
+not.  If bound to a console window, output is buffered line by line; if
+bound to a block device, such as a file, output is buffered block by
+block.
+
+   </p><p>In a shell buffer, stdout is a pipe handle and so is buffered in
+blocks.  If you would like the buffering behavior of your program to
+behave differently, the program itself is going to have to be changed;
+you can use <code>setbuf</code> and <code>setvbuf</code> to manipulate
+the buffering semantics.
+
+   </p><p>Some programs handle this by having an explicit flag to control their
+buffering behaviour, typically <samp><span class="option">-i</span></samp> for interactive.  Other
+programs manage to detect that they are running under Emacs, by
+using ‘<samp><span class="samp">getenv("emacs")</span></samp>’ internally.
+
+</p><h4 class="subsection">7.3.1 Perl script buffering</h4>
+
+<p><a name="index-perl_002c-avoiding-buffering-when-used-as-a-subprocess-of-Emacs-226"></a>
+A handy solution for Perl scripts to the above problem is to use:
+
+</p><pre class="example">     # Turn all buffering off.
+     select((select(STDOUT), $| = 1)[0]);
+     select((select(STDERR), $| = 1)[0]);
+     select((select(STDIN), $| = 1)[0]);
+</pre>
+   <h3 class="section">7.4 16-bit subprocesses accessing the floppy drive</h3>
+
+<p><a name="index-floppy-drive_002c-access-when-subprocesses-started-227"></a><a name="index-subprocess-starting-causes-floppy-drive-access-228"></a>
+If you are finding the 16 bit DOS subprocesses cause your A: drive to
+be accessed, hanging Emacs until the read times out if there is no
+floppy in the drive, check to see if your virus software is causing
+the problem.
+
+</p><h3 class="section">7.5 Killing subprocesses on Windows 95/98/Me</h3>
+
+<p><a name="index-subprocess_002c-killing-on-Windows-95_002f98_002fME-229"></a><a name="index-killing-subprocesses_002c-Windows-95_002f98_002fME-230"></a><a name="index-shutdown_002c-complaints-about-cmdproxy_002eexe-running-231"></a>
+Emacs cannot guarantee that a subprocess gets killed on Windows 95 and
+its descendants, and it is a difficult limitation to work around.  To
+avoid problems on these systems, you should let subprocesses run to
+completion including explicitly exiting shells before killing the
+associated buffer.
+
+   </p><p>If you find that while shutting down, Windows complains that there is
+a running <samp><span class="command">cmdproxy.exe</span></samp> even though you carefully exited all
+shells and none were showing in Task Manager before the shutdown, this
+could be due to buggy interaction with your virus scanner.
+
+</p><h3 class="section">7.6 Sending EOF to subprocesses</h3>
+
+<p><a name="index-EOF_002c-sending-to-subprocesses-232"></a><a name="index-shell-terminates-when-EOF-sent-to-subprocess-233"></a><a name="index-process_002dsend_002deof-234"></a>
+When an EOF is sent to a subprocess running in an interactive shell
+with <code>process-send-eof</code>, the shell terminates unexpectedly as
+if its input was closed.  This affects the use of <kbd>C-c C-d</kbd> in
+shell buffers.  See
+<a href="http://www.gnu.org/software/emacs/windows/ntemacs/todo/shell-ctrl-d">this discussion</a> for more details.
+
+</p><h3 class="section">7.7 How do I use a shell in Emacs?</h3>
+
+<p><a name="index-interactive-shell_002c-using-235"></a><a name="index-shell-within-emacs_002c-using-236"></a><a name="index-shell-237"></a><a name="index-shell_002dcommand-238"></a><a name="index-shell_002dfile_002dname-239"></a><a name="index-explicit_002dshell_002dfile_002dname-240"></a>
+You can start an interactive shell in Emacs by typing <kbd>M-x shell</kbd>. 
+Emacs uses the <samp><span class="env">SHELL</span></samp> environment variable to determine which
+program to use as the shell.  To instruct Emacs to use a non-default
+shell, you can either set this environment variable, or customize
+<code>explicit-shell-file-name</code>.  You can also customize
+<code>shell-file-name</code> to change the shell that will be used by
+subprocesses that are started with <code>shell-command</code> and
+related non-interactive shell commands.
+
+</p><h4 class="subsection">7.7.1 bash</h4>
+
+<p><a name="index-cygwin-bash-as-shell-within-Emacs-241"></a><a name="index-shell_002c-using-cygwin-bash-within-Emacs-242"></a><a name="index-bash_002c-using-cygwin-shell-within-Emacs-243"></a><a name="index-comint_002dscroll_002dshow_002dmaximum_002doutput-244"></a><a name="index-comint_002dcompletion_002daddsuffix-245"></a><a name="index-comint_002deol_002don_002dsend-246"></a><a name="index-w32_002dquote_002dprocess_002dargs-247"></a><a name="index-shell_002dmode_002dhook-248"></a>
+Cygwin bash is a popular shell for use with Emacs.  To use bash as the
+default shell in Emacs, you can place the following in your init file:
+
+</p><pre class="example">     (defun my-shell-setup ()
+       "For Cygwin bash under Emacs 20"
+       (setq comint-scroll-show-maximum-output 'this)
+       (make-variable-buffer-local 'comint-completion-addsuffix))
+       (setq comint-completion-addsuffix t)
+       ;; (setq comint-process-echoes t) ;; reported that this is no longer needed
+       (setq comint-eol-on-send t)
+       (setq w32-quote-process-args ?\")
+     
+     (setq shell-mode-hook 'my-shell-setup)
+</pre>
+   <p>If you find that you are having trouble with Emacs tracking drive
+changes with bash, see <a href="mailto:mike.fabian@it-mannesmann.de">Mike Fabian</a>'s
+<a href="http://www.gnu.org/software/emacs/windows/ntemacs/discuss/drive-tracking">note</a>.
+
+   </p><p>WARNING: Some versions of bash set and use the environment variable
+PID.  For some as yet unknown reason, if <samp><span class="env">PID</span></samp> is set and Emacs
+passes it on to bash subshells, bash dies (Emacs can inherit the
+<samp><span class="env">PID</span></samp> variable if it's started from a bash shell).  If you clear
+the <samp><span class="env">PID</span></samp> variable in your init file, you should be able to
+continue to use bash as your subshell:
+</p><pre class="example">         (setenv "PID" nil)
+</pre>
+   <h3 class="section">7.8 How do I use Cygwin style paths in Emacs?</h3>
+
+<p><a name="index-cygwin-paths_002c-using-within-Emacs-249"></a><a name="index-mount-points_002c-cygwin-250"></a><a name="index-cygwin-mount-points_002c-using-within-Emacs-251"></a>
+The package
+<a href="http://www.emacswiki.org/cgi-bin/wiki/cygwin-mount.el">cygwin-mount.el</a> teaches Emacs about Cygwin mount points.
+
+</p><h3 class="section">7.9 How do I make dired use my ls program?</h3>
+
+<p><a name="index-dired_002c-using-an-external-ls-program-252"></a><a name="index-dired_002c-interpreting-symlinks-the-same-way-as-cygwin-253"></a><a name="index-symlinks-in-dired_002c-interpreting-the-same-way-as-cygwin-254"></a><a name="index-cygwin-symlinks-in-dired-255"></a><a name="index-ls_002dlisp_002duse_002dinsert_002ddirectory_002dprogram-256"></a><a name="index-insert_002ddirectory_002dprogram-257"></a>
+Dired uses an internal lisp implementation of <samp><span class="command">ls</span></samp> by default
+on Windows.  For consistent display of symbolic links and other
+information with other programs (eg Cygwin) and performance reasons,
+you may want to use a Windows port of <samp><span class="command">ls</span></samp> instead.
+
+</p><pre class="example">     (setq ls-lisp-use-insert-directory-program t)      ;; use external ls
+     (setq insert-directory-program "c:/cygwin/bin/ls") ;; ls program name
+</pre>
+   <h3 class="section">7.10 How do I prevent shell commands from being echoed?</h3>
+
+<p><a name="index-echo_002c-suppressing-for-shell-input-258"></a><a name="index-shell-commands_002c-suppressing-echo-259"></a><a name="index-comint_002dprocess_002dechoes-260"></a><a name="index-comint_002dmode_002dhook-261"></a><a name="index-explicit_002dcmd_002eexe_002dargs-262"></a><a name="index-explicit_002dcmdproxy_002eexe_002dargs-263"></a><a name="index-explicit_002dbash_002eexe_002dargs-264"></a><a name="index-explicit_002dbash_002dargs-265"></a><a name="index-shell-specific-arguments-266"></a>
+Some shells echo the commands that you send to them, and the echoed
+commands appear in the output buffer.  In particular, the default
+shells, <samp><span class="command">command.com</span></samp> and <samp><span class="command">cmd.exe</span></samp>, have this behavior.
+
+   </p><p>To prevent echoed commands from being printed, you can place the
+following in your init file:
+
+</p><pre class="example">         (defun my-comint-init ()
+           (setq comint-process-echoes t))
+         (add-hook 'comint-mode-hook 'my-comint-init)
+</pre>
+   <p>If <code>shell-mode</code> still is not stripping echoed commands, then
+you'll have to explicitly tell the shell to not echo commands.  You can
+do this by setting the <code>explicit-</code><var>SHELL</var><code>-args</code> variable
+appropriately; where <var>SHELL</var> is the value of your <samp><span class="env">SHELL</span></samp>
+environment variable (do a <kbd>M-: (getenv "SHELL")</kbd> to see what it
+is currently set to).  Assuming that you are on NT and that your
+<samp><span class="env">SHELL</span></samp> environment variable is set to <samp><span class="command">cmd.exe</span></samp>,
+then placing the following in your init file will tell
+<samp><span class="command">cmd.exe</span></samp> to not echo commands:
+
+</p><pre class="example">         (setq explicit-cmd.exe-args '("/q"))
+</pre>
+   <p>The comint package will use the value of this variable as an argument
+to <samp><span class="command">cmd.exe</span></samp> every time it starts up a new shell; the
+<samp><span class="option">/q</span></samp> is the argument to <samp><span class="command">cmd.exe</span></samp> that stops the
+echoing (invoking ‘<samp><span class="samp">cmd /?</span></samp>’ in a shell will show you all of the
+command line arguments to <samp><span class="command">cmd.exe</span></samp>).
+
+   </p><p>Note that this variable is case sensitive; if the value of your
+<samp><span class="env">SHELL</span></samp> environment variable is <samp><span class="command">CMD.EXE</span></samp> instead, then
+this variable needs to be named <code>explicit-CMD.EXE-args</code> instead.
+
+</p><h3 class="section">7.11 How can I make shell completion use forward slashes?</h3>
+
+<p><a name="index-completion_002c-using-forward-slashes-in-shell-buffers-267"></a><a name="index-forward-slashes-for-completion-in-shell-buffers-268"></a><a name="index-comint_002dcompletion_002daddsuffix-269"></a>
+The character appended to directory names when completing in a shell
+buffer is controlled by the variable <code>comint-completion-addsuffix</code>. 
+See its documentation (with <kbd>C-h v</kbd>) for details.
+
+</p><h3 class="section">7.12 Why do I get incorrect DOS version messages?</h3>
+
+<p><a name="index-nmake_002c-Incorrect-DOS-version-messages-270"></a><a name="index-shell_002c-Incorrect-DOS-version-messages-271"></a><a name="index-COMSPEC_002c-effect-on-subprocesses-of-subprocesses-272"></a>
+This might happen if, for example, you invoke <samp><span class="command">nmake</span></samp> in a
+shell and it tries to create sub-shells.  The problem happens because
+when the shell is initially created, the first argument to the shell
+is not the directory in which the shell program resides.  When this
+happens, <samp><span class="command">command.com</span></samp> fabricates a value for its
+<samp><span class="env">COMSPEC</span></samp> environment variable that is incorrect.  Then, when
+other programs go to use <samp><span class="env">COMSPEC</span></samp> to find the shell, they are
+given the wrong value.
+
+   </p><p>The fix for this is to either prevent any arguments from being sent to
+the shell when it starts up (in which case <samp><span class="command">command.com</span></samp> will
+use a default, and correct, value for <samp><span class="env">COMSPEC</span></samp>), or to have the
+first argument be the directory in which the shell executable resides.
+
+</p><h3 class="section">7.13 Why is nothing happening when I enter shell commands?</h3>
+
+<p><a name="index-shell-commands-not-working-273"></a><a name="index-anti_002dvirus-software_002c-bad-interaction-with-274"></a><a name="index-virus-software_002c-bad-interaction-with-275"></a><a name="index-firewall_002c-bad-interaction-with-276"></a><a name="index-scan-all-files_002c-anti_002dvirus-option-causing-problems-277"></a><a name="index-auto-protect_002c-anti_002dvirus-option-causing-problems-278"></a><a name="index-shell_002c-interacting-badly-with-anti_002dvirus-279"></a>
+Some anti-virus software has been reported to cause problems with
+shells in the past.  Try turning off options such as “Scan all
+files”.  See <a indepth="true" href="installing-emacs.html#Installing-Emacs">What known problems are there with anti-virus software?</a>.
+
+<!--  -->
+   
+
+</p>
+
+</body></html>

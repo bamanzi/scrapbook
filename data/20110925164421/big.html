@@ -1,0 +1,2318 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>GNU Emacs FAQ For MS Windows</title>
+
+<meta name="description" content="Answers to Frequently asked Questions about using Emacs on Microsoft Windows.">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="top" href="http://www.gnu.org/software/emacs/windows/big.html#Top">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 2008, 2010-2011 Free Software Foundation, Inc.
+
+     This list of frequently asked questions about GNU Emacs on MS
+     Windows with answers (``FAQ'') may be translated into other
+     languages, transformed into other formats (e.g. Texinfo, Info,
+     WWW), and updated with new information.
+
+     The same conditions apply to any derivative of the FAQ as apply to
+     the FAQ itself.  Every copy of the FAQ must include this notice or
+     an approved translation, information on who is currently
+     maintaining the FAQ and how to contact them (including their
+     e-mail address), and information on where the latest version of
+     the FAQ is archived (including FTP information).
+
+     The FAQ may be copied and redistributed under these conditions,
+     except that the FAQ may not be embedded in a larger literary work
+     unless that work itself allows free copying and redistribution.
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+</head>
+<body>
+<h1 class="settitle">GNU Emacs FAQ For MS Windows</h1>
+<a name="Top"></a>
+
+<h2 class="unnumbered">GNU Emacs FAQ for MS Windows</h2>
+
+<p>This is the GNU Emacs FAQ for MS Windows, last updated on 12 March 2011.
+
+   </p><p>This FAQ is maintained by the developers and users of Emacs on MS Windows. 
+If you find any errors, or have any suggestions, please send them to
+<a href="mailto:help-emacs-windows@gnu.org">help-emacs-windows@gnu.org</a>.  Currently the FAQ maintainer is
+<a href="mailto:ramprasad@gnu.org">Ramprasad B</a>.
+
+   </p><p>This FAQ is available in two versions:
+     </p><ul>
+<li><a indepth="true" href="default_001.html">Split by section</a>
+</li><li><a indepth="true" href="big.html">Combined on one page</a>
+</li></ul>
+
+   <p>The latest version of GNU Emacs as of 12 March 2011 is version 23.3.
+
+<!-- Links to ftp.gnu.org are given as http links, since Windows ftp clients -->
+<!-- are notoriously bad at handling firewalls etc. -->
+   </p><div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a name="toc_Top" href="#Top">GNU Emacs FAQ for MS Windows</a>
+</li><li><a name="toc_Introduction" href="#Introduction">1 Introduction</a>
+<ul>
+<li><a href="#Introduction">1.1 Why support GNU Emacs on Windows?</a>
+</li><li><a href="#Introduction">1.2 Which versions of Windows are supported?</a>
+</li><li><a href="#Introduction">1.3 What other versions of Emacs run on Windows?</a>
+<ul>
+<li><a href="#Introduction">1.3.1 MSDOS and Windows 3.11</a>
+</li><li><a href="#Introduction">1.3.2 Meadow</a>
+</li><li><a href="#Introduction">1.3.3 EmacsW32</a>
+</li><li><a href="#Introduction">1.3.4 XEmacs</a>
+</li><li><a href="#Introduction">1.3.5 Other distributions</a>
+</li></ul>
+</li></ul>
+</li><li><a name="toc_Getting-Emacs" href="#Getting-Emacs">2 Getting Emacs</a>
+<ul>
+<li><a href="#Getting-Emacs">2.1 Where can I get pre-compiled versions?</a>
+</li><li><a href="#Getting-Emacs">2.2 Where can I get the source distribution?</a>
+</li><li><a href="#Getting-Emacs">2.3 Can I get the source from CVS?</a>
+</li><li><a href="#Getting-Emacs">2.4 How can I compile Emacs myself?</a>
+</li><li><a href="#Getting-Emacs">2.5 How do I use a debugger on Emacs?</a>
+<ul>
+<li><a href="#Getting-Emacs">2.5.1 GDB</a>
+</li><li><a href="#Getting-Emacs">2.5.2 Microsoft Developer Studio</a>
+</li></ul>
+</li></ul>
+</li><li><a name="toc_Installing-Emacs" href="#Installing-Emacs">3 Installing Emacs</a>
+<ul>
+<li><a href="#Installing-Emacs">3.1 How do I unpack the distributions?</a>
+</li><li><a href="#Installing-Emacs">3.2 How do I install Emacs after unpacking?</a>
+</li><li><a href="#Installing-Emacs">3.3 How do I get image support?</a>
+</li><li><a href="#Installing-Emacs">3.4 What is my init file?</a>
+</li><li><a href="#Installing-Emacs">3.5 Where do I put my init file?</a>
+<ul>
+<li><a href="#Installing-Emacs">3.5.1 Troubleshooting init file problems</a>
+</li></ul>
+</li><li><a href="#Installing-Emacs">3.6 How do I associate files with Emacs?</a>
+<ul>
+<li><a href="#Installing-Emacs">3.6.1 For use with Internet Explorer</a>
+</li></ul>
+</li><li><a href="#Installing-Emacs">3.7 How do I use find-file to open files that are on the Desktop?</a>
+</li><li><a href="#Installing-Emacs">3.8 How can I modify Windows to act more like X?</a>
+<ul>
+<li><a href="#Installing-Emacs">3.8.1 How do it make the active window follow the mouse?</a>
+</li><li><a href="#Installing-Emacs">3.8.2 How do I swap CapsLock and Control?</a>
+<ul>
+<li><a href="#Installing-Emacs">3.8.2.1 Windows NT/2000/XP/Vista?</a>
+</li><li><a href="#Installing-Emacs">3.8.2.2 Windows 95/98/ME</a>
+</li></ul>
+</li></ul>
+</li><li><a href="#Installing-Emacs">3.9 How can I modify Emacs to act more like a Windows app?</a>
+<ul>
+<li><a href="#Installing-Emacs">3.9.1 Highlighting the selection</a>
+</li><li><a href="#Installing-Emacs">3.9.2 Standard Windows key bindings</a>
+</li></ul>
+</li><li><a href="#Installing-Emacs">3.10 Window operations</a>
+</li><li><a href="#Installing-Emacs">3.11 How do I uninstall Emacs?</a>
+</li><li><a href="#Installing-Emacs">3.12 When I run Emacs nothing happens</a>
+</li><li><a href="#Installing-Emacs">3.13 Does Emacs contain a virus?</a>
+</li><li><a href="#Installing-Emacs">3.14 What known problems are there with anti-virus software?</a>
+</li></ul>
+</li><li><a name="toc_Display-Settings" href="#Display-Settings">4 Display Settings</a>
+<ul>
+<li><a href="#Display-Settings">4.1 Emacs in console mode goes beyond the window size</a>
+</li><li><a href="#Display-Settings">4.2 What do I do if I have problems with my mouse buttons?</a>
+</li><li><a href="#Display-Settings">4.3 How do I cut and paste text with NUL characters?</a>
+</li><li><a href="#Display-Settings">4.4 How can I fix garbled text yanked from the clipboard?</a>
+</li><li><a href="#Display-Settings">4.5 How do I change the sound of the Emacs beep?</a>
+</li></ul>
+</li><li><a name="toc_Fonts-and-text-translation" href="#Fonts-and-text-translation">5 Fonts and text translation</a>
+<ul>
+<li><a href="#Fonts-and-text-translation">5.1 Font names</a>
+</li><li><a href="#Fonts-and-text-translation">5.2 How can I get bold and italic fonts to work?</a>
+</li><li><a href="#Fonts-and-text-translation">5.3 Multilingual font support</a>
+<ul>
+<li><a href="#Fonts-and-text-translation">5.3.1 Is it possible to display all the supported languages?</a>
+</li><li><a href="#Fonts-and-text-translation">5.3.2 How do I get Emacs to display non-latin characters?</a>
+</li><li><a href="#Fonts-and-text-translation">5.3.3 Where can I find fonts for other languages?</a>
+</li><li><a href="#Fonts-and-text-translation">5.3.4 How do I use third party programs to display mulitbyte characters?</a>
+</li><li><a href="#Fonts-and-text-translation">5.3.5 Can I use a font with a name in my language?</a>
+</li></ul>
+</li><li><a href="#Fonts-and-text-translation">5.4 How do I use bdf fonts with Emacs?</a>
+</li><li><a href="#Fonts-and-text-translation">5.5 How can I have Emacs use a font menu like on X?</a>
+<ul>
+<li><a href="#Fonts-and-text-translation">5.5.1 How can I add my font to the font menu?</a>
+</li></ul>
+</li><li><a href="#Fonts-and-text-translation">5.6 How can I control CR/LF translation?</a>
+<ul>
+<li><a href="#Fonts-and-text-translation">5.6.1 Automatic CR/LF translation</a>
+</li><li><a href="#Fonts-and-text-translation">5.6.2 CR/LF translation by file extension</a>
+</li><li><a href="#Fonts-and-text-translation">5.6.3 CR/LF translation by file system</a>
+</li></ul>
+</li></ul>
+</li><li><a name="toc_Printing" href="#Printing">6 Printing</a>
+<ul>
+<li><a href="#Printing">6.1 How do I print from Emacs?</a>
+</li></ul>
+</li><li><a name="toc_Sub_002dprocesses" href="#Sub_002dprocesses">7 Subprocesses</a>
+<ul>
+<li><a href="#Sub_002dprocesses">7.1 Quoting issues</a>
+</li><li><a href="#Sub_002dprocesses">7.2 Programs reading input hang</a>
+</li><li><a href="#Sub_002dprocesses">7.3 Buffering in shells and subprocesses</a>
+<ul>
+<li><a href="#Sub_002dprocesses">7.3.1 Perl script buffering</a>
+</li></ul>
+</li><li><a href="#Sub_002dprocesses">7.4 16-bit subprocesses accessing the floppy drive</a>
+</li><li><a href="#Sub_002dprocesses">7.5 Killing subprocesses on Windows 95/98/Me</a>
+</li><li><a href="#Sub_002dprocesses">7.6 Sending EOF to subprocesses</a>
+</li><li><a href="#Sub_002dprocesses">7.7 How do I use a shell in Emacs?</a>
+<ul>
+<li><a href="#Sub_002dprocesses">7.7.1 bash</a>
+</li></ul>
+</li><li><a href="#Sub_002dprocesses">7.8 How do I use Cygwin style paths in Emacs?</a>
+</li><li><a href="#Sub_002dprocesses">7.9 How do I make dired use my ls program?</a>
+</li><li><a href="#Sub_002dprocesses">7.10 How do I prevent shell commands from being echoed?</a>
+</li><li><a href="#Sub_002dprocesses">7.11 How can I make shell completion use forward slashes?</a>
+</li><li><a href="#Sub_002dprocesses">7.12 Why do I get incorrect DOS version messages?</a>
+</li><li><a href="#Sub_002dprocesses">7.13 Why is nothing happening when I enter shell commands?</a>
+</li></ul>
+</li><li><a name="toc_Network-access" href="#Network-access">8 Network access</a>
+<ul>
+<li><a href="#Network-access">8.1 How do I use mail in Emacs?</a>
+<ul>
+<li><a href="#Network-access">8.1.1 Outgoing mail</a>
+</li><li><a href="#Network-access">8.1.2 Incoming mail with Rmail and POP3</a>
+</li><li><a href="#Network-access">8.1.3 Incoming mail with Gnus</a>
+</li><li><a href="#Network-access">8.1.4 Other incoming mail options</a>
+</li></ul>
+</li><li><a href="#Network-access">8.2 How do I open attachments in Gnus?</a>
+</li><li><a href="#Network-access">8.3 How do I use FTP within Emacs?</a>
+</li><li><a href="#Network-access">8.4 How do I use Tramp to work in Emacs via SSH?</a>
+</li><li><a href="#Network-access">8.5 How do I use telnet with Emacs?</a>
+</li></ul>
+</li><li><a name="toc_Text-and-Utility-modes" href="#Text-and-Utility-modes">9 Text and Utility modes</a>
+<ul>
+<li><a href="#Text-and-Utility-modes">9.1 How do I use TeX with Emacs?</a>
+<ul>
+<li><a href="#Text-and-Utility-modes">9.1.1 AUCTeX</a>
+</li></ul>
+</li><li><a href="#Text-and-Utility-modes">9.2 How do I perform spell checks?</a>
+</li><li><a href="#Text-and-Utility-modes">9.3 Emacs and encryption</a>
+</li><li><a href="#Text-and-Utility-modes">9.4 Why doesn't my wheel mouse work in Emacs?</a>
+</li><li><a href="#Text-and-Utility-modes">9.5 How do I use grep with Emacs?</a>
+<ul>
+<li><a href="#Text-and-Utility-modes">9.5.1 How do I do a recursive grep?</a>
+</li></ul>
+</li></ul>
+</li><li><a name="toc_Developing-with-Emacs" href="#Developing-with-Emacs">10 Developing with Emacs</a>
+<ul>
+<li><a href="#Developing-with-Emacs">10.1 How do I use Emacs with Microsoft Visual C++</a>
+<ul>
+<li><a href="#Developing-with-Emacs">10.1.1 Emacs as the text editor for DevStudio</a>
+</li><li><a href="#Developing-with-Emacs">10.1.2 Using MSVC command line tools from Emacs</a>
+<ul>
+<li><a href="#Developing-with-Emacs">10.1.2.1 VC++ Environment Variables</a>
+</li><li><a href="#Developing-with-Emacs">10.1.2.2 Setting the default compile command</a>
+</li><li><a href="#Developing-with-Emacs">10.1.2.3 Reverting Buffers</a>
+</li><li><a href="#Developing-with-Emacs">10.1.2.4 Edit with Emacs function for MSVC</a>
+</li></ul>
+</li></ul>
+</li><li><a href="#Developing-with-Emacs">10.2 Emacs and Borland C++ Builder</a>
+</li><li><a href="#Developing-with-Emacs">10.3 Is there a version of my VC software I can use with Emacs?</a>
+</li><li><a href="#Developing-with-Emacs">10.4 How do I use the Perl debugger with Emacs?</a>
+</li></ul>
+</li><li><a name="toc_Other-useful-ports" href="#Other-useful-ports">11 Other useful ports</a>
+<ul>
+<li><a href="#Other-useful-ports">11.1 Cygwin</a>
+</li><li><a href="#Other-useful-ports">11.2 MinGW and MSYS</a>
+</li><li><a href="#Other-useful-ports">11.3 UWIN</a>
+</li><li><a href="#Other-useful-ports">11.4 GnuWin32</a>
+</li><li><a href="#Other-useful-ports">11.5 GTK</a>
+</li><li><a href="#Other-useful-ports">11.6 How do I read man pages?</a>
+</li></ul>
+</li><li><a name="toc_Further-information" href="#Further-information">12 Further information</a>
+<ul>
+<li><a href="#Further-information">12.1 Where can I get more information about Emacs?</a>
+</li><li><a href="#Further-information">12.2 What mailing lists are there for discussing Emacs on Windows?</a>
+</li></ul>
+</li><li><a name="toc_Indexes" href="#Indexes">Indexes</a>
+<ul>
+<li><a href="#Indexes">Function and Variable Index</a>
+</li><li><a href="#Indexes">Concept Index</a>
+</li></ul>
+</li></ul>
+</div>
+
+<!--  -->
+<p><a name="Introduction"></a>
+
+</p><h2 class="chapter">1 Introduction</h2>
+
+<p><a name="index-scope-of-FAQ-1"></a>
+This FAQ covers questions that are specific to running GNU Emacs on Windows. 
+In this version of the FAQ, information that was out of date, covered in
+the manuals or not specific to Windows has been removed. 
+See <a href="#Further-information">Further information</a>.
+
+</p><h3 class="section">1.1 Why support GNU Emacs on Windows?</h3>
+
+<p><a name="index-Why-Windows-2"></a>
+It is not our goal to “help Windows users” by making text editing
+on Windows more convenient.  We aim to replace proprietary software,
+not to enhance it.  So why support GNU Emacs on Windows?
+
+   </p><p>We hope that the experience of using GNU Emacs on Windows will give
+programmers a taste of freedom, and that this will later inspire them
+to move to a free operating system such as GNU/Linux.  That is the
+main valid reason to support free applications on nonfree operating
+systems.
+
+</p><h3 class="section">1.2 Which versions of Windows are supported?</h3>
+
+<p><a name="index-Windows_002c-versions-3"></a><a name="index-supported-versions-of-Windows-4"></a>
+Emacs 23.3 is known to run on all versions of Windows from
+Windows 95 and Windows NT 4.0 through to Vista.  The Windows port is
+built using the Win32 API and supports most features of the X version,
+including variable width fonts, images and tooltips.
+
+</p><h3 class="section">1.3 What other versions of Emacs run on Windows?</h3>
+
+<p><a name="index-other-ports-of-Emacs-5"></a>
+
+</p><h4 class="subsection">1.3.1 MSDOS and Windows 3.11</h4>
+
+<p><a name="index-DOS-port-6"></a><a name="index-Windows-3_002e11-port-7"></a>
+<a href="mailto:eliz@gnu.org">Eli Zaretskii</a> maintains the port of GNU Emacs
+for DOS and 16 bit Windows.  When run on Windows 95, 98 and ME, it
+will support long file names, and uses the Windows clipboard on all
+versions of Windows.  The latest pre-compiled version at
+<a href="ftp://ftp.delorie.com/pub/djpp/current/v2gnu/">ftp.delorie.com</a>
+seems to be 20.5, but more recent versions can be built from source
+using DJGPP.
+
+</p><h4 class="subsection">1.3.2 Meadow</h4>
+
+<p><a name="index-Meadow-8"></a>
+<a href="mailto:hisashi.miyashita@xemacs.org">Hisashi Miyashita</a> created
+Meadow the early days of Emacs 20, when the Windows port was far behind in
+supporting the new multilingual functionality.  Meadow continues to be
+developed along with Emacs due to some extra functionality that it
+offers, particularly for Japanese users.  Information in English is
+available from the
+<a href="http://www.meadowy.org/meadow/pukiwiki-en/">Meadow Wiki</a>.
+
+</p><h4 class="subsection">1.3.3 EmacsW32</h4>
+
+<p><a name="index-EmacsW32-9"></a>
+<a href="mailto:lennart.borgman@gmail.com">Lennart Borgman</a> maintains some
+patches which he calls
+<a href="http://ourcomments.org/Emacs/EmacsW32.html">EmacsW32</a>.  His
+patches aim to provide closer integration with Windows, and make
+things easier for Windows refugees to begin the transition to Emacs. 
+Lennart is active in Emacs development, so some of his patches are
+likely to be included in future versions of Emacs.  In addition to
+the patches themselves, Lennart also offers installers for development
+versions of Emacs from CVS, both with and without his patches.
+
+</p><h4 class="subsection">1.3.4 XEmacs</h4>
+
+<p><a name="index-XEmacs-10"></a>
+XEmacs has also been ported to Windows.  See the
+<a href="http://www.xemacs.org/faq/xemacs-faq.html#SEC254">XEmacs FAQ</a>.
+
+</p><h4 class="subsection">1.3.5 Other distributions</h4>
+
+<p>There are a number of others who distribute Windows binaries of
+Emacs, either bundled with some extra lisp libraries for a particular
+purpose, or development code from CVS packaged as an installer.  Because
+these come and go (mostly during long development cycles without
+an official release), they are not listed here.
+
+<!--  -->
+</p><p><a name="Getting-Emacs"></a>
+
+</p><h2 class="chapter">2 Getting Emacs</h2>
+
+<!-- Backwards compatibility with the old FAQ, as many sites link -->
+<!-- directly here. We also need to link the output page to faq2.html -->
+<p><a name="where_002dprecompiled"></a>
+
+</p><h3 class="section">2.1 Where can I get pre-compiled versions?</h3>
+
+<p><a name="index-precompiled-binaries-11"></a><a name="index-where-to-get-Emacs-binaries-12"></a>
+Pre-compiled versions are distributed from
+<a href="http://ftp.gnu.org/gnu/emacs/windows/">ftp.gnu.org</a> and its
+mirrors<a rel="footnote" href="#fn-1" name="fnd-1"><sup>1</sup></a>.  Emacs binaries are distributed as zip files, digitally
+signed by the developer who built them.  Generally most users will
+want the file <samp><span class="file">emacs-23.3-bin-i386.zip</span></samp>, which
+contains everything you need to get started.  The file
+<samp><span class="file">emacs-23.3-barebin-i386.zip</span></samp> is provided for users
+who already have the source, but had second thoughts about compiling
+it themselves.
+
+</p><h3 class="section">2.2 Where can I get the source distribution?</h3>
+
+<p><a name="index-where-to-get-sources-13"></a><a name="index-Emacs-source-code-14"></a><a name="index-source-for-Emacs-15"></a>
+The latest source is always available from
+<a href="http://ftp.gnu.org/gnu/emacs/">ftp.gnu.org</a> and its mirrors. 
+It is distributed as a gzipped tar file, digitally signed by the maintainer
+who made the release.  For minor releases, xdeltas for patching the previous
+release are also available.
+
+</p><h3 class="section">2.3 Can I get the source from CVS?</h3>
+
+<p><a name="index-CVS_002c-getting-Emacs-16"></a><a name="index-latest-development-version-of-Emacs-17"></a><a name="index-Emacs-Development-18"></a>
+Yes you can.  See the instructions on
+<a href="http://savannah.gnu.org/projects/emacs">Savannah</a>, the GNU
+development site, for details.
+
+</p><h3 class="section">2.4 How can I compile Emacs myself?</h3>
+
+<p><a name="index-compiling-Emacs-19"></a>
+To compile Emacs on Windows, you will need the MingW or Cygwin port of
+GCC with MingW make, or a Microsoft C compiler with nmake and the
+single threaded C runtime library.  Recent versions of Microsoft
+Visual Studio no longer come with the single threaded C runtime
+library, which is required for certain POSIX compatibility, so MingW
+is usually the best choice.  Image support requires external
+libraries, the headers and import libraries for which will need to be
+installed where your compiler can find them.  You will also need ports
+of GNU <samp><span class="command">rm</span></samp> and <samp><span class="command">cp</span></samp>, as the Windows native
+equivalents are not consistent between versions.  GNU texinfo will be
+required to build the manuals.  See <a href="#Other-useful-ports">Other useful ports</a>.
+
+   </p><p>After unpacking the source, or checking out of CVS, be sure to read the
+instructions in <samp><span class="file">nt/README</span></samp> and <samp><span class="file">nt/INSTALL</span></samp>.
+
+</p><h3 class="section">2.5 How do I use a debugger on Emacs?</h3>
+
+<p><a name="index-debugging-Emacs-20"></a><a name="index-bugs-in-Emacs_002c-how-to-debug-21"></a><a name="index-Emacs-debugging-22"></a>
+By default, Emacs is compiled with debugging on, and optimizations enabled. 
+The optimizations may interfere with some types of debugging; the debugger
+may not show clearly where it is, or may not be able to inspect certain
+variables.  If this is the case, reconfigure with <samp><span class="option">--no-opt</span></samp>.
+
+   </p><p>The file <samp><span class="file">etc/DEBUG</span></samp> contains general debugging hints, as well as
+specific notes about debugging Emacs with both gdb and Microsoft debuggers.
+
+</p><h4 class="subsection">2.5.1 GDB</h4>
+
+<p><a name="index-GDB_002c-debugging-Emacs-with-23"></a><a name="index-debugging-Emacs-with-GDB-24"></a>
+GDB is the GNU debugger, which can be used to debug Emacs when it has
+been compiled with GCC.  The best results will be obtained if you
+start gdb from the <samp><span class="file">src</span></samp> directory as ‘<samp><span class="samp">gdb oo/i386/emacs.exe</span></samp>’. 
+This will load the init file <samp><span class="file">.gdbinit</span></samp> in that directory, to
+define some extra commands for working with lisp while debugging, and
+set up breakpoints to catch abnormal aborts.
+
+</p><h4 class="subsection">2.5.2 Microsoft Developer Studio</h4>
+
+<p><a name="index-MSVC_002b_002b_002c-debugging-Emacs-with-25"></a><a name="index-DevStudio_002c-debugging-Emacs-with-26"></a><a name="index-debugging-Emacs-with-MS-DevStudio-27"></a>
+MS DevStudio can be used to debug Emacs when it has been compiled with
+a Microsoft compiler.  To view lisp variables, you can call the
+function <code>debug_print</code> from the Quickwatch window.  Some
+<a href="http://www.gnu.org/software/emacs/windows/ntemacs/discuss/debug.txt">old tips</a> are probably still valid.
+
+<!--  -->
+</p><p><a name="Installing-Emacs"></a>
+
+</p><h2 class="chapter">3 Installing Emacs</h2>
+
+<h3 class="section">3.1 How do I unpack the distributions?</h3>
+
+<p><a name="index-unpacking-Emacs-distribution-28"></a><a name="index-extracting-Emacs-distribution-29"></a><a name="index-unzipping-Emacs-distribution-30"></a><a name="index-untarring-Emacs-distribution-31"></a><a name="index-zip-files_002c-how-to-unpack-Emacs-binaries-32"></a><a name="index-tar_002egz-files_002c-how-to-unpack-Emacs-sources-33"></a>
+The binary distributions are distributed as zip files, which are handled
+natively by Windows XP and later.  For earlier versions, there are many
+tools that can handle the zip format, from InfoZip's command line unzip
+tool, to 7zip's multi-format graphical archive explorer.  Although
+popular, WinZip has caused problems with line-ends in the past, and is not
+Free software, so we do not recommend it.
+
+   </p><p>Source distributions are distributed as gzipped tar files.  7zip and
+similar multi-format graphical tools can handle these, or you can get
+Windows ports of the command line gzip and tar tools from multiple sources. 
+See <a href="#Other-useful-ports">Other useful ports</a>.
+
+   </p><p>The command to unpack a source distribution from the command line is:
+</p><pre class="example">     tar xzf emacs-23.3.tar.gz
+</pre>
+   <p>If this does not work with the versions of tar and gzip that you have,
+you may need to try a two step process:
+</p><pre class="example">     gzip -dc emacs-23.3.tar.gz | tar xvf -
+</pre>
+   <p>You may see many messages from tar complaining about being unable to change
+the modification time on directories, and from gzip complaining about a
+broken pipe.  These messages are usually harmless, caused by incomplete ports
+that are not fully aware of the limitations of Windows.
+
+</p><h3 class="section">3.2 How do I install Emacs after unpacking?</h3>
+
+<p><a name="index-installing-Emacs-34"></a><a name="index-addpm-35"></a><a name="index-Start-Menu_002c-creating-icons-for-Emacs-36"></a>
+You can run Emacs without any extra steps, but if you want icons in your
+Start Menu, or for Emacs to detect the image libraries that are already
+installed on your system as part of GTK, then you should run the program
+<samp><span class="file">emacs-23.3\bin\addpm.exe</span></samp>.
+
+</p><h3 class="section">3.3 How do I get image support?</h3>
+
+<p><a name="index-images_002c-installing-libraries-for-37"></a><a name="index-jpeg_002c-installing-image-support-in-Emacs-38"></a><a name="index-png_002c-installing-image-support-in-Emacs-39"></a><a name="index-gif_002c-installing-image-support-in-Emacs-40"></a><a name="index-tiff_002c-installing-image-support-in-Emacs-41"></a><a name="index-xpm_002c-installing-image-support-in-Emacs-42"></a><a name="index-toolbar_002c-installing-color-icons-in-43"></a><a name="index-color-images_002c-installing-support-for-images-in-Emacs-44"></a><a name="index-monochrome-images_002c-getting-color-images-in-Emacs-45"></a><a name="index-black-and-white-images_002c-getting-color-images-in-Emacs-46"></a>
+Emacs has built in support for XBM and PBM/PGM/PPM images.  This is
+sufficient to see the monochrome splash screen and tool-bar icons. 
+Since 22.2, the official precompiled binaries for Windows have bundled
+libXpm, which is required to display the color versions of those images.
+
+   </p><p>Emacs is compiled to recognize JPEG, PNG, GIF and TIFF images also,
+but displaying these image types require external DLLs which are not
+bundled with Emacs.  See <a href="#Other-useful-ports">Other useful ports</a>.
+
+</p><h3 class="section">3.4 What is my init file?</h3>
+
+<p><a name="index-g_t_002eemacs-47"></a><a name="index-init-file-48"></a>
+When Emacs starts up, it attempts to load and execute the contents of
+a file commonly called <samp><span class="file">.emacs</span></samp> (though it may have other names,
+see <a href="#Installing-Emacs">Where do I put my init file?</a>) which contains any
+customizations you have made.  You can manually add lisp code to your
+.emacs, or you can use the Customization interface accessible from the
+<em>Options</em> menu.  If the file does not exist, Emacs will start
+with the default settings.
+
+</p><h3 class="section">3.5 Where do I put my init file?</h3>
+
+<p><a name="index-HOME-directory-49"></a><a name="index-g_t_002eemacs_002ed-50"></a><a name="index-g_t_005femacs-51"></a><a name="index-init_002eel-52"></a><a name="index-registry_002c-setting-the-HOME-directory-in-53"></a>
+On Windows, the .emacs file may be called _emacs for backward
+compatibility with DOS and FAT filesystems where filenames could not
+start with a dot.  Some users prefer to continue using such a name,
+because Explorer cannot create a file with a name starting with a dot,
+even though the filesystem and most other programs can handle it. 
+In Emacs 22 and later, the init file may also be called
+<samp><span class="file">.emacs.d/init.el</span></samp>.  Many of the other files that are created
+by lisp packages are now stored in the <samp><span class="file">.emacs.d</span></samp> directory too,
+so this keeps all your Emacs related files in one place.
+
+   </p><p>All the files mentioned above should go in your <samp><span class="env">HOME</span></samp> directory. 
+The <samp><span class="env">HOME</span></samp> directory is determined by following the steps below:
+
+     </p><ol start="1" type="1">
+<li>If the environment variable <samp><span class="env">HOME</span></samp> is set, use the directory it indicates. 
+</li><li>If the registry entry <code>HKCU\SOFTWARE\GNU\Emacs\HOME</code> is set, use the
+directory it indicates. 
+</li><li>If the registry entry <code>HKLM\SOFTWARE\GNU\Emacs\HOME</code> is set, use the
+directory it indicates.  Not recommended, as it results in users sharing
+the same HOME directory. 
+</li><li>If <samp><span class="file">C:\.emacs</span></samp> exists, then use <samp><span class="file">C:/</span></samp>.  This is for
+backward compatibility, as previous versions defaulted to <samp><span class="file">C:/</span></samp>
+if <samp><span class="env">HOME</span></samp> was not set. 
+</li><li>Use the user's AppData directory, usually a directory called
+<samp><span class="file">Application Data</span></samp> under the user's profile directory, the location
+of which varies according to Windows version and whether the computer is
+part of a domain.
+        </li></ol>
+
+   <p>Within Emacs, &lt;~&gt; at the beginning of a file name is expanded to your
+<samp><span class="env">HOME</span></samp> directory, so you can always find your .emacs file with
+<kbd>C-x C-f ~/.emacs</kbd>.
+
+</p><h4 class="subsection">3.5.1 Troubleshooting init file problems</h4>
+
+<p><a name="index-troubleshooting-init-problems-54"></a><a name="index-debugging-init-problems-55"></a><a name="index-checking-that-HOME-is-set-correctly-56"></a>
+If you've set <samp><span class="env">HOME</span></samp> to a directory using one of the above
+methods, and Emacs still doesn't load your init file, the first
+thing you should do is check to see what Emacs thinks <samp><span class="env">HOME</span></samp> is set
+to.  You can do this by evaluating the following expression in the
+<samp><span class="file">*scratch*</span></samp> buffer using <kbd>C-x C-e</kbd>:
+
+</p><pre class="example">     (insert (getenv "HOME"))
+</pre>
+   <p>Look carefully at what is printed and make sure the value is
+valid.  For example, if the value has trailing whitespace, Emacs won't
+be able to find the directory.  Also, be sure that the value isn't a
+relative drive letter (e.g., <samp><span class="file">d:</span></samp> without a backslash); if it is,
+then <samp><span class="env">HOME</span></samp> is going to be whatever the current directory on that
+drive is, which is likely not what you want to happen.
+
+</p><h3 class="section">3.6 How do I associate files with Emacs?</h3>
+
+<p><a name="index-Explorer_002c-associating-Emacs-with-files-in-57"></a><a name="index-emacsclient_002c-associating-files-with-58"></a><a name="index-file-associations-59"></a><a name="index-associating-files-with-Emacs-60"></a><a name="index-ALTERNATE_005fEDITOR-61"></a><a name="index-server_002dstart-62"></a>
+The recommended way to associate files is to associate them with
+<samp><span class="command">emacsclientw.exe</span></samp>.  In order for this to work when Emacs is
+not yet started, you will also need to set the environment variable
+<samp><span class="env">ALTERNATE_EDITOR</span></samp> to <samp><span class="command">runemacs.exe</span></samp>.  To open files
+in a running instance of Emacs, you will need to add the following
+to your init file:
+</p><pre class="example">     (server-start)
+</pre>
+   <h4 class="subsection">3.6.1 For use with Internet Explorer</h4>
+
+<p><a name="index-Internet-Explorer_002c-view-source-in-Emacs-63"></a><a name="index-mailto-urls_002c-associating-with-Emacs-64"></a><a name="index-news-urls_002c-associating-with-Emacs-65"></a><a name="index-URLs_002c-associating-mail-and-news-URLs-with-Emacs-66"></a>
+You can use Emacs as the editor for composing mail for
+&lt;<code>mailto:</code>&gt; links, reading usenet for &lt;<code>news:</code>&gt;
+links, and viewing source.  The following registry entries control
+this:
+
+     </p><ul>
+<li>Mail
+          <ul>
+<li><strong>Key:</strong> HKCR\mailto\shell\open\command\(Default)
+</li><li><strong>Value:</strong> emacsclientw -e "(message-mail (substring \"%1\" 7))"
+</li></ul>
+
+     </li><li>News
+          <ul>
+<li><strong>Key:</strong> HKCR\news\shell\open\command\(Default)
+</li><li><strong>Value:</strong> emacsclientw -e "(gnus-fetch-group (substring \"%1\" 5)"
+</li></ul>
+
+     </li><li>View Source
+          <ul>
+<li><strong>Key:</strong> HKCR\htmlfile\shell\edit\command\(Default)
+</li><li><strong>Value:</strong> emacsclientw "%1"
+</li></ul>
+
+   </li></ul>
+
+   <p>Thanks to <a href="mailto:jasonr@gnu.org">Jason Rumney</a>  and
+<a href="mailto:sigbjorn@cse.ogi.edu">Sigbjorn Finne</a>  for these tips.
+
+</p><h3 class="section">3.7 How do I use find-file to open files that are on the Desktop?</h3>
+
+<p><a name="index-Desktop_002c-finding-where-it-is-67"></a><a name="index-finding-the-Desktop-68"></a><a name="index-locating-files-on-the-Desktop-69"></a>
+The location of the Desktop varies between different versions of
+Windows, and in a corporate environment can be moved around by the
+network administrator.  On NT derivatives, you can use the value of
+the <samp><span class="env">USERPROFILE</span></samp> environment variable to find where the desktop
+might be:
+
+</p><pre class="example">     <kbd>C-x C-f $USERPROFILE/Desktop</kbd>
+</pre>
+   <p>If this doesn't work, then you probably have to forgo the keyboard
+just this once, and either drag a file onto the Emacs frame from the
+desktop, or use the file dialog (displayed when you use the toolbar or
+menu by default).  Once you have a file from the Desktop inside Emacs,
+<kbd>C-x C-f</kbd> will quickly reveal where your desktop is kept.
+
+</p><h3 class="section">3.8 How can I modify Windows to act more like X?</h3>
+
+<p><a name="index-X_002c-making-Windows-behave-like-70"></a>
+
+</p><h4 class="subsection">3.8.1 How do it make the active window follow the mouse?</h4>
+
+<p><a name="index-focus_002dfollows_002dmouse-71"></a><a name="index-point-to-focus-72"></a><a name="index-mouse-over-to-focus-73"></a>
+Customize the variables <code>focus-follows-mouse</code> and
+<code>mouse-autoselect-window</code>.  The former can be used to mislead
+Emacs into giving focus to other frames when the mouse is over them,
+even though Windows has a click to focus policy by default (there is
+software available to change that though).  The latter can be used to
+make Emacs use a focus-follow-mouse policy within its own frames.
+
+</p><h4 class="subsection">3.8.2 How do I swap CapsLock and Control?</h4>
+
+<p><a name="index-scan-codes_002c-modifying-74"></a><a name="index-key-layout_002c-customizing-75"></a><a name="index-caps_002dlock_002c-swapping-with-control-key-76"></a><a name="index-control-key_002c-swapping-with-caps_002dlock-77"></a><a name="index-windows-key_002c-use-as-alt-78"></a><a name="index-alt-key_002c-using-windows-keys-as-additional-79"></a>
+This cannot be done within Emacs, but you can modify the scan code
+mappings in the registry or define a new keyboard layout to swap the
+keys on a system wide basis.
+
+</p><h5 class="subsubsection">3.8.2.1 Windows NT/2000/XP/Vista?</h5>
+
+     <ul>
+<li>From <a href="mailto:cmcmahan@surefirev.com">Chris McMahon</a>: Download
+<a href="http://ftp.gnu.org/old-gnu/emacs/windows/docs/ntemacs/contrib/caps-as-ctrl.reg">caps-as-ctrl.reg</a> to make CapsLock a Control key (leaving your
+original control keys as they were), or
+<a href="http://ftp.gnu.org/old-gnu/emacs/windows/docs/ntemacs/contrib/caps-ctrl-swap.reg">caps-ctrl-swap.reg</a> to swap CapsLock and the left Control key.  Once
+you've downloaded them, double-click on the .reg files in Explorer or
+"run" them from a command prompt to have them update your registry. 
+</li><li><a href="mailto:cmcmahan@surefirev.com">Chris McMahon</a> gives explicit step-by-step
+<a href="http://ftp.gnu.org/old-gnu/emacs/windows/docs/ntemacs/contrib/caps-ctrl-registry2.txt">instructions</a> on modifying the registry. 
+</li><li><a href="mailto:holder@mordor.rsn.hp.com">Shane Holder</a> gives some
+<a href="http://ftp.gnu.org/old-gnu/emacs/windows/docs/ntemacs/contrib/caps-ctrl-registry.txt">background</a> on how "Scancode Map" is being used by the system. 
+</li><li><a href="mailto:ulfar@decode.is">Ulfar Erlingsson</a> has provided a registry file
+<a href="http://ftp.gnu.org/old-gnu/emacs/windows/docs/ntemacs/contrib/caps-and-win.reg">caps-and-win.reg</a> that sets the CapsLock key to be a Control key
+and the Windows key to be an Alt key. 
+</li></ul>
+
+<h5 class="subsubsection">3.8.2.2 Windows 95/98/ME</h5>
+
+<p>Microsoft has a tool called keyremap that is part of their Kernel Toys add ons
+for Windows 95.  The tool has also been confirmed to work on Windows 98.
+
+</p><h3 class="section">3.9 How can I modify Emacs to act more like a Windows app?</h3>
+
+<p><a name="index-Windows_002c-making-Emacs-act-more-like-80"></a><a name="index-UI_002c-making-Emacs-more-like-other-Windows-apps-81"></a>
+Many beginning users find Emacs difficult to use because its user
+interface is different in many ways.  Emacs predates most UI
+standards, and experienced Emacs users are used to the way things are,
+so changing the defaults is difficult.  Most of the “standard”
+behavior can be approximated in Emacs after some configuring though.
+
+</p><h4 class="subsection">3.9.1 Highlighting the selection</h4>
+
+<p><a name="index-transient_002dmark_002dmode-82"></a><a name="index-selection_002c-highlighting-83"></a><a name="index-region_002c-highlighting-84"></a><a name="index-highlighting-the-selected-region-85"></a><a name="index-marked-region_002c-highlighting-86"></a><a name="index-point-and-mark_002c-highlighting-the-region-between-87"></a><a name="index-delete_002dselection_002dmode-88"></a><a name="index-overwriting-the-selected-region-89"></a>
+Emacs has a concept of a mark and point that is similar to selections
+in other programs.  But the mark in Emacs is used for more than just
+defining the selected region, it lives on while you continue to edit
+and move around the buffer so it can also be a kind of bookmark.  The
+history of marks is saved so you can pop previous marks back to the
+top of the stack to go back to somewhere you were some time ago. 
+Because of this dual purpose, the region between mark and point is not
+highlighted by default unless you select a region by clicking and
+dragging the mouse.
+
+   </p><p>The minor mode <code>transient-mark-mode</code> changes the behavior of
+the mark in two ways.  First, it distinguishes between an active mark
+that has just been defined or reactivated, and an inactive mark.  When
+the mark is active, some commands that normally act on lines, words,
+buffers etc. will instead act on the region.  An inactive mark needs
+to be reactivated to operate on it, unless <code>mark-even-if-inactive</code>
+is set.  Secondly, <code>transient-mark-mode</code> also highlights the
+region when it is active, providing the same visual clue that you get
+in other programs.
+
+   </p><p>In addition to seeing the highlighting, new Emacs users often expect
+editing commands to replace the region when it is active.  This behavior
+can be obtained with <code>delete-selection-mode</code>, but see the following
+question also.
+
+</p><h4 class="subsection">3.9.2 Standard Windows key bindings</h4>
+
+<p><a name="index-cua_002dmode-90"></a><a name="index-CUA-keybindings-91"></a><a name="index-shift-key_002c-selecting-with-92"></a><a name="index-standard-Windows-keybindings-93"></a><a name="index-paste-with-C_002dv-94"></a><a name="index-cut-with-C_002dx-95"></a><a name="index-copy-with-C_002dc-96"></a><a name="index-C_002dc-to-copy-97"></a><a name="index-C_002dx-to-cut-98"></a><a name="index-C_002dv-to-paste-99"></a>
+The keybindings of Emacs predate modern GUIs, and the keys that were
+chosen by later GUIs for cut and copy were given important functions
+as extended keymaps in Emacs.  CUA mode attempts to let both bindings
+co-exist by defining C-x and C-c as <code>kill-region</code> and
+<code>copy-region-as-kill</code> when the region is active, and letting
+them have their normal Emacs bindings when the region is not active. 
+Many people find this to be an acceptable compromise.  CUA mode also
+defines a number of other keys (C-v, Shift selection), and can be turned
+on from the <em>Options</em> menu.
+
+</p><h3 class="section">3.10 Window operations</h3>
+
+<p><a name="index-maximize-frames-from-lisp-100"></a><a name="index-minimize-frames-from-lisp-101"></a><a name="index-WM_005fSYSCOMMAND_002c-sending-system-commands-from-lisp-102"></a><a name="index-system-menu_002c-simulating-from-lisp-103"></a>
+The function <code>w32-send-sys-command</code> can be used to simulate
+choosing commands from the system menu (in the top left corner of the
+Window) and a few other system wide functions.  It takes an integer
+argument, the value of which should be a valid <code>WM_SYSCOMMAND</code>
+message as documented in Microsoft's API documentation.
+
+</p><h3 class="section">3.11 How do I uninstall Emacs?</h3>
+
+<p><a name="index-uninstall-Emacs-104"></a><a name="index-remove-Emacs-105"></a><a name="index-clean-Emacs-registry-settings-106"></a><a name="index-registry_002c-cleaning-the-Emacs-settings-107"></a><a name="index-Start-Menu_002c-removing-Emacs-from-108"></a><a name="index-upgrading-Emacs-109"></a><a name="index-delete-Emacs-directory-110"></a>
+Emacs does not come with an uninstall program.  No files are installed
+outside of the Emacs base directory, so deleting that directory is
+sufficient to clean away the files.  If you ran <samp><span class="command">addpm</span></samp>,
+you'll need to delete the Start Menu group too.  The registry entries
+inserted by <samp><span class="command">addpm</span></samp> will not cause any problems if you leave
+them there, but for the sake of completeness, you can use <samp><span class="command">regedit</span></samp>
+to remove the keys under <code>HKEY_LOCAL_MACHINE</code> orx
+<code>HKEY_CURRENT_USER</code>: <code>SOFTWARE\GNU\Emacs</code>, and the key
+<code>HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\App Paths\emacs.exe</code> if it exists.
+
+</p><h3 class="section">3.12 When I run Emacs nothing happens</h3>
+
+<p><a name="index-troubleshooting-installation-problems-111"></a><a name="index-window-not-appearing_002c-Emacs-112"></a><a name="index-failure-to-run_002c-Emacs-113"></a><a name="index-g_t8_002e3-filenames_002c-problems-caused-114"></a>
+Emacs could have failed to run for a number of reasons.  The most
+common symptom is that, when Emacs is started, the cursor changes for
+a second but nothing happens.  If this happens to you, it is quite
+likely that the distribution was unpacked incorrectly.
+
+   </p><p>Check for the following to see if there was a problem during unpacking:
+     </p><ol start="1" type="1">
+<li>Be sure to disable the CR/LF translation or the executables will be
+unusable.  Older versions of WinZipNT would enable this translation by
+default.  If you are using WinZipNT, disable it. 
+</li><li>Check that filenames were not truncated to 8.3.  For example, there
+should be a file CONTRIBUTE in the top level directory; if this has
+been truncated to CONTRIBU or CONTRI~1, your distribution has been
+corrupted while unpacking and Emacs will not start.
+        </li></ol>
+
+   <p>If it is still not working, send mail to the list, describing what
+you've done, and what you are seeing. (The more information you send
+the more likely it is that you'll receive a helpful response..
+
+</p><h3 class="section">3.13 Does Emacs contain a virus?</h3>
+
+<p><a name="index-virus-reported-in-Emacs-115"></a><a name="index-anti_002dvirus-software-reporting-a-virus-in-Emacs-116"></a>
+There have been reports in the past that some virus scanners claim
+that the Emacs distribution has a virus.  This is extremely unlikely if
+you have downloaded Emacs from the GNU FTP site or one of its mirrors
+and the GPG signature for it is valid and listed in the GNU keyring,
+unless perhaps it is a new release made in the last few days, in which
+case you should exercise more caution and report the problem.  Past
+problems seem to have been caused by virus checkers running into a
+buffer size limit when unpacking large tar.gz files for scanning, and
+reporting the failure as an “unknown virus”.
+
+</p><h3 class="section">3.14 What known problems are there with anti-virus software?</h3>
+
+<p><a name="index-anti_002dvirus-software_002c-bad-interaction-with-117"></a><a name="index-virus-software_002c-bad-interaction-with-118"></a><a name="index-firewall_002c-bad-interaction-with-119"></a><a name="index-scan-all-files_002c-anti_002dvirus-option-causing-problems-120"></a><a name="index-auto-protect_002c-anti_002dvirus-option-causing-problems-121"></a><a name="index-shell_002c-interacting-badly-with-anti_002dvirus-122"></a><a name="index-subprocesses_002c-interacting-badly-with-anti_002dvirus-123"></a>
+Anti-virus and firewall software can block Emacs from starting subprocesses
+and opening network connections.  Most such products have an Advanced
+mode where they will prompt you rather than silently blocking.  In some cases
+the “scan all files” or “auto protect” option of anti-virus programs
+has caused failures running shell related commands within Emacs. 
+See <a href="#Sub_002dprocesses">Why is nothing happening when I enter shell commands?</a>.
+
+<!--  -->
+</p><p><a name="Display-Settings"></a>
+
+</p><h2 class="chapter">4 Display Settings</h2>
+
+<h3 class="section">4.1 Emacs in console mode goes beyond the window size</h3>
+
+<p><a name="index-console_002c-window-size-124"></a><a name="index-telnet_002c-display-size-problems-running-emacs-over-125"></a><a name="index-g_t_002dnw_002c-window-size-126"></a><a name="index-w32_002duse_002dfull_002dscreen_002dbuffer-127"></a>
+The variable <code>w32-use-full-screen-buffer</code> controls whether Emacs uses
+the window size or buffer size to determine the number of lines on screen. 
+Normally the window size is correct, but when running Emacs over some
+telnet servers, the buffer size needs to be used.  Emacs tries to guess
+the correct value at startup, but if it guesses wrong, you can customize
+that variable yourself.
+
+</p><h3 class="section">4.2 What do I do if I have problems with my mouse buttons?</h3>
+
+<p><a name="index-mouse-buttons_002c-problems-with-128"></a><a name="index-g_t2-button-mouse-129"></a><a name="index-two-button-mouse-130"></a><a name="index-third-mouse-button_002c-simulating-131"></a><a name="index-middle-mouse-button_002c-simulating-132"></a><a name="index-simulating-three-button-mouse-with-two-buttons-133"></a><a name="index-swap-right-and-middle-mouse-buttons-134"></a><a name="index-exchange-mouse_002d2-and-mouse_002d3-buttons-135"></a><a name="index-w32_002dmouse_002dbutton_002dtolerance-136"></a><a name="index-w32_002dnum_002dmouse_002dbuttons-137"></a><a name="index-w32_002dswap_002dmouse_002dbuttons-138"></a>
+Emacs assigns bindings assuming a three button mouse.  On Windows, if
+a two button mouse is detected, a hack is enabled which lets you
+simulate the third button by pressing both mouse buttons
+simultaneously.  <code>w32-mouse-button-tolerance</code> defines the timeout
+for what is considered “simultaneous”.  You can check how many
+buttons Emacs thinks your mouse has with <kbd>C-h v</kbd>
+<code>w32-num-mouse-buttons</code>.
+
+   </p><p>If you find yourself needing the mouse-3 bindings more often than mouse-2,
+you can swap the buttons with the following code in your init file:
+</p><pre class="example">     (setq w32-swap-mouse-buttons t)
+</pre>
+   <h3 class="section">4.3 How do I cut and paste text with NUL characters?</h3>
+
+<p><a name="index-clipboard_002c-NUL-characters-139"></a>
+If you attempt to cut and paste text with NUL characters embedded in it,
+then the text will be truncated at the first NUL character.  This is a
+limitation of the Windows clipboard, and does not affect killing and yanking
+from the kill-ring within Emacs.
+
+</p><h3 class="section">4.4 How can I fix garbled text yanked from the clipboard?</h3>
+
+<p><a name="index-clipboard_002c-corruption-of-140"></a><a name="index-garbage-on-the-clipboard-141"></a><a name="index-clipboard-encoding-142"></a><a name="index-encoding_002c-clipboard-143"></a><a name="index-set_002dselection_002dcoding_002dsystem-144"></a>
+You can try <code>set-selection-coding-system</code>, but generally such
+corruption is a thing of the past, as Emacs uses Unicode for the clipboard
+by default now.
+
+</p><h3 class="section">4.5 How do I change the sound of the Emacs beep?</h3>
+
+<p><a name="index-beep_002c-changing-the-sound-145"></a><a name="index-sound_002c-changing-the-beep-146"></a><a name="index-set_002dmessage_002dbeep-147"></a>
+You can use the function <code>set-message-beep</code> to change the sound
+that Emacs uses for its beep.  This affects both console and GUI frames. 
+The doc string contains a list of the system sounds you can use.
+
+<!--  -->
+</p><p><a name="Fonts-and-text-translation"></a>
+
+</p><h2 class="chapter">5 Fonts and text translation</h2>
+
+<h3 class="section">5.1 Font names</h3>
+
+<p><a name="index-XLFD-font-names-148"></a><a name="index-font-XLFD-name-format-149"></a><a name="index-fontconfig-font-names-in-Emacs-23-150"></a><a name="index-font-dialog_002c-using-to-find-font-names-151"></a><a name="index-w32_002dselect_002dfont-152"></a><a name="index-x_002dlist_002dfonts-153"></a>
+Fonts in Emacs 22 and earlier are named using the X Logical Font
+Description (XLFD) format.  Emacs on Windows ignores many of the
+fields, and populates them with * when listing fonts.  Former
+maintainer Andrew Innes wrote
+<a href="http://www.gnu.org/software/emacs/windows/ntemacs/discuss/x-font-details">this explanation</a> of what each field in the font string means and how
+Emacs treated them back in 19.34.  Since then, multilingual support and
+a redisplay overhaul to support variable width fonts have changed things
+slightly; more character sets are recognized (and the old pseudo character
+sets are deprecated), and the resolution fields are used to calculate the
+difference between point and pixel sizes, but normally you should leave
+these at the system default.  The foundry field is also populated with
+an indication of whether the font is outline (.TTF, .ATM) or raster (.FON)
+based when fonts are listed, which may let you differentiate between two
+fonts with the same name and different technologies.
+
+   </p><p>From Emacs 23, the preferred font name format will be moving to the simpler
+and more flexible fontconfig format.  XLFD names will continue to be
+supported for backward compatibility.
+
+</p><pre class="example">     XLFD: -*-Courier New-normal-r-*-*-13-*-*-*-c-*-iso8859-1
+     Fontconfig: Courier New-13
+</pre>
+   <p>To find the XFLD name for a font, you can execute the following in the
+<samp><span class="file">*scratch*</span></samp> buffer by pressing C-j at the end of the line:
+</p><pre class="example">     (w32-select-font nil t)
+</pre>
+   <p>To see a complete list of fonts, execute the following in the
+<samp><span class="file">*scratch*</span></samp> buffer by pressing C-x C-e at the end of the line:
+</p><pre class="example">     (insert (prin1-to-string (x-list-fonts "*")))
+</pre>
+   <p>The command line options and frame-parameters for changing the default font
+in Emacs are documented in the manual.  Fonts can also be used when defining
+faces, though family and size are generally specified individually there. 
+In addition, Emacs on Windows reads the registry to find X Resources.  This
+is also documented in the manual.
+
+</p><h3 class="section">5.2 How can I get bold and italic fonts to work?</h3>
+
+<p><a name="index-italic-fonts-154"></a><a name="index-synthesized-italic-and-bold-fonts-155"></a><a name="index-bold-fonts_002c-synthesized-156"></a><a name="index-set_002dface_002dfont-157"></a><a name="index-w32_002denable_002dsynthesized_002dfonts-158"></a>
+Emacs will only use the italic (and bold) versions of a font automatically
+if it has the same width as the normal version.  Many fonts have italic
+and bold versions that are slightly wider.  It will also only use real
+bold and italic fonts by default, where other applications may use
+synthesized variations that are derived from the normal font.  To enable
+more italic and bold fonts to be displayed, you can enable synthesized fonts
+and manually set the font for italic, bold and bold-italic as follows:
+
+</p><pre class="example">     (setq w32-enable-synthesized-fonts t)
+     (set-face-font 'italic "-*-Courier New-normal-i-*-*-11-*-*-*-c-*-iso8859-1")
+     (set-face-font 'bold-italic "-*-Courier New-bold-i-*-*-11-*-*-*-c-*-iso8859-1")
+</pre>
+   <h3 class="section">5.3 Multilingual font support</h3>
+
+<p><a name="index-multilingual-display_002c-fonts-159"></a><a name="index-MULE_002c-fonts-160"></a>
+
+</p><h4 class="subsection">5.3.1 Is it possible to display all the supported languages?</h4>
+
+<p><a name="index-HELLO-file_002c-displaying-all-161"></a><a name="index-language-support_002c-fonts-162"></a><a name="index-GNU-intlfonts_002c-for-displaying-all-languages-163"></a><a name="index-intlfonts_002c-for-displaying-all-languages-164"></a>
+To display all the languages that Emacs is capable of displaying, you will
+require the BDF fonts from the GNU intlfonts package. 
+See <a href="#Fonts-and-text-translation">How do I use bdf fonts with Emacs?</a>.
+
+   </p><p>For many languages, native truetype fonts are sufficient, and in Emacs
+23 the need for BDF fonts will disappear for almost all languages.  At
+the time of writing, some Arabic characters in the HELLO file still do
+not display with native fonts, because they are pre-composed characters
+from MULE character sets rather than standard Unicode Arabic, but all
+other characters are able to be displayed with appropriate truetype or
+opentype fonts.
+
+</p><h4 class="subsection">5.3.2 How do I get Emacs to display non-latin characters?</h4>
+
+<p><a name="index-fontsets_002c-defining-165"></a><a name="index-language-support_002c-forcing-Emacs-to-use-specific-fonts-166"></a><a name="index-MULE_002c-fontsets-167"></a><a name="index-multilingual-display_002c-fontsets-168"></a><a name="index-create_002dfontset_002dfrom_002dascii_002dfont-169"></a><a name="index-create_002dfontset_002dfrom_002dfontset_002dspec-170"></a>
+Recent versions of Emacs display a large range of characters out of
+the box, but if you are having problems with a particular character
+set which you know you have fonts for, you can try defining a
+new fontset with <code>create-fontset-from-ascii-font</code> or
+<code>create-fontset-from-fontset-spec</code>.
+
+   </p><p><a name="fontset_002dexample"></a>
+</p><pre class="example">     (create-fontset-from-fontset-spec
+      "-*-Courier New-normal-r-*-*-12-*-*-*-c-*-fontset-most,
+      latin-iso8859-2:-*-Courier New-normal-r-*-*-12-*-*-*-c-*-iso8859-2,
+      latin-iso8859-3:-*-Courier New-normal-r-*-*-12-*-*-*-c-*-iso8859-3,
+      latin-iso8859-4:-*-Courier New-normal-r-*-*-12-*-*-*-c-*-iso8859-4,
+      cyrillic-iso8859-5:-*-Courier New-normal-r-*-*-12-*-*-*-c-*-iso8859-5,
+      greek-iso8859-7:-*-Courier New-normal-r-*-*-12-*-*-*-c-*-iso8859-7,
+      latin-iso8859-9:-*-Courier New-normal-r-*-*-12-*-*-*-c-*-iso8859-9,
+      japanese-jisx0208:-*-MS Gothic-normal-r-*-*-12-*-*-*-c-*-jisx0208-sjis,
+      katakana-jisx0201:-*-MS Gothic-normal-r-*-*-12-*-*-*-c-*-jisx0208-sjis,
+      latin-jisx0201:-*-MS Gothic-normal-r-*-*-12-*-*-*-c-*-jisx0208-sjis,
+      japanese-jisx0208-1978:-*-MS Gothic-normal-r-*-*-12-*-*-*-c-*-jisx0208-sjis,
+      korean-ksc5601:-*-Gulim-normal-r-*-*-12-*-*-*-c-*-ksc5601-*,
+      chinese-gb2312:-*-MS Song-normal-r-*-*-12-*-*-*-c-*-gb2312-*,
+      chinese-big5-1:-*-MingLiU-normal-r-*-*-12-*-*-*-c-*-big5-*,
+      chinese-big5-2:-*-MingLiU-normal-r-*-*-12-*-*-*-c-*-big5-*" t)
+</pre>
+   <h4 class="subsection">5.3.3 Where can I find fonts for other languages?</h4>
+
+<p><a name="index-language-support_002c-finding-fonts-171"></a><a name="index-fonts_002c-where-to-find-172"></a><a name="index-MULE_002c-finding-fonts-173"></a><a name="index-multilingual-display_002c-finding-fonts-174"></a><a name="index-GNU-intlfonts_002c-where-to-get-175"></a><a name="index-intlfonts_002c-where-to-get-176"></a>
+In addition to the wide range of fonts that come with the language
+support packages of various components of Windows itself, GNU/Linux
+distributions these days come with a number of Free truetype fonts
+that cover a wide range of languages.  The GNU intlfonts source
+distribution contains BDF fonts covering all of the languages that can
+be displayed by Emacs 22, and can be downloaded from
+<a href="http://ftp.gnu.org/gnu/intlfonts">ftp.gnu.org</a>.
+
+</p><h4 class="subsection">5.3.4 How do I use third party programs to display mulitbyte characters?</h4>
+
+<p><a name="index-multilingual-display_002c-third-party-programs-on-Windows-9x_002fME-177"></a><a name="index-language-support_002c-third-party-programs-on-Windows-9x_002fME-178"></a><a name="index-w32_002denable_002dunicode_002doutput-179"></a>
+You probably only need to do this on the non-Unicode versions of Windows
+(95, 98 and ME), and even then, various Windows and Internet Explorer
+updates have made third party software unnecessary in most cases. 
+If you are having trouble displaying text, try defining a fontset
+with the font for the languages that the third party software handles
+set to what that software expects (which may not be an appropriate font
+for that language, but the third party software is intercepting it
+and using a different font behind the scenes). 
+See <a href="#fontset_002dexample">How do I get Emacs to display non-latin characters?</a>.
+
+   </p><p>In addition to defining a fontset with the expected font, you may also need
+to disable unicode output with:
+</p><pre class="example">     (setq w32-enable-unicode-output nil)
+</pre>
+   <h4 class="subsection">5.3.5 Can I use a font with a name in my language?</h4>
+
+<p><a name="index-fonts_002c-localized-font-names-180"></a><a name="index-locale_002dcoding_002dsystem-181"></a>
+Normally Emacs should initialize <code>locale-coding-system</code> appropriately
+based on your locale, which will let Emacs use font names in your local
+language successfully.
+
+</p><h3 class="section">5.4 How do I use bdf fonts with Emacs?</h3>
+
+<p><a name="index-BDF-fonts_002c-using-182"></a><a name="index-GNU-intlfonts_002c-using-183"></a><a name="index-intlfonts_002c-using-184"></a><a name="index-w32_002dbdf_002dfilename_002dalist-185"></a><a name="index-bdf_002ddirectory_002dalist-186"></a><a name="index-font_002dencoding_002dalist-187"></a><a name="index-w32_002dfind_002dbdf_002dfonts-188"></a><a name="index-set_002dframe_002dfont-189"></a>
+To use bdf fonts with Emacs, you need to tell Emacs where the fonts
+are located, create fontsets for them, and then use them.  We'll use
+the 16 dot international fonts from <a href="http://ftp.gnu.org/gnu/intlfonts">ftp.gnu.org/gnu/intlfonts</a> as an
+example put together by <a href="mailto:jasonr@gnu.org">Jason Rumney</a>
+
+   </p><p>Download <samp><span class="file">16dots.tar.gz</span></samp> and unpack it; I'll assume that they are in
+<samp><span class="file">c:\intlfonts</span></samp>.  Then set <code>w32-bdf-filename-alist</code> to the list of
+fonts returned by using <code>w32-find-bdf-fonts</code> to enumerate all of
+the font files.  It is a good idea to set the variable
+<code>bdf-directory-list</code> at the same time so <code>ps-print</code> knows where
+to find the fonts:
+</p><pre class="example">     (setq bdf-directory-list
+           '("c:/intlfonts/Asian" "c:/intlfonts/Chinese"
+             "c:/intlfonts/Chinese-X" "c:/intlfonts/Ethiopic"
+     	"c:/intlfonts/European" "c:/intlfonts/Japanese"
+             "c:/intlfonts/Japanese-X" "c:/intlfonts/Korean-X"
+     	"c:/intlfonts/Misc/"))
+     
+     (setq w32-bdf-filename-alist (w32-find-bdf-fonts bdf-directory-list))
+</pre>
+   <p>Then create fontsets for the BDF fonts:
+
+</p><pre class="example">     (create-fontset-from-fontset-spec
+      "-*-fixed-medium-r-normal-*-16-*-*-*-c-*-fontset-bdf,
+     japanese-jisx0208:-*-*-medium-r-normal-*-16-*-*-*-c-*-jisx0208.1983-*,
+     katakana-jisx0201:-*-*-medium-r-normal-*-16-*-*-*-c-*-jisx0201*-*,
+     latin-jisx0201:-*-*-medium-r-normal-*-16-*-*-*-c-*-jisx0201*-*,
+     japanese-jisx0208-1978:-*-*-medium-r-normal-*-16-*-*-*-c-*-jisx0208.1978-*,
+     thai-tis620:-misc-fixed-medium-r-normal--16-160-72-72-m-80-tis620.2529-1,
+     lao:-misc-fixed-medium-r-normal--16-160-72-72-m-80-MuleLao-1,
+     tibetan-1-column:-TibMdXA-fixed-medium-r-normal--16-160-72-72-m-80-MuleTibetan-1,
+     ethiopic:-Admas-Ethiomx16f-Medium-R-Normal--16-150-100-100-M-160-Ethiopic-Unicode,
+     tibetan:-TibMdXA-fixed-medium-r-normal--16-160-72-72-m-160-MuleTibetan-0")
+</pre>
+   <p>Many of the international bdf fonts from gnu.org are type 0, and therefore
+need to be added to font-encoding-alist:
+
+</p><pre class="example">     ;; Need to add some fonts to font-encoding-alist since the bdf fonts
+     ;; are type 0 not the default type 1.
+     (setq font-encoding-alist
+           (append '(("MuleTibetan-0" (tibetan . 0))
+                     ("GB2312"        (chinese-gb2312 . 0))
+                     ("JISX0208"      (japanese-jisx0208 . 0))
+                     ("JISX0212"      (japanese-jisx0212 . 0))
+                     ("VISCII"        (vietnamese-viscii-lower . 0))
+                     ("KSC5601"       (korean-ksc5601 . 0))
+                     ("MuleArabic-0"  (arabic-digit . 0))
+                     ("MuleArabic-1"  (arabic-1-column . 0))
+                     ("MuleArabic-2"  (arabic-2-column . 0))) font-encoding-alist))
+</pre>
+   <p>You can now use the Emacs font menu (see <a href="#Fonts-and-text-translation">How can I have Emacs use a font menu like on X?</a>) to
+select the <em>bdf: 16-dot medium</em> fontset, or you can select it by
+setting the default font:
+
+</p><pre class="example">         (set-frame-font "fontset-bdf")
+</pre>
+   <p>Try loading the file <samp><span class="file">etc/HELLO</span></samp>, and you should be able to see the
+various international fonts displayed (except for Hindi, which is not
+included in the 16-dot font distribution).
+
+</p><h3 class="section">5.5 How can I have Emacs use a font menu like on X?</h3>
+
+<p><a name="index-fonts_002c-displaying-a-menu-190"></a><a name="index-fontsets_002c-displaying-a-menu-191"></a><a name="index-font-dialog_002c-using-a-menu-instead-192"></a><a name="index-w32_002duse_002dw32_002dfont_002ddialog-193"></a>
+Place the following in your init file:
+
+</p><pre class="example">     (setq w32-use-w32-font-dialog nil)
+</pre>
+   <h4 class="subsection">5.5.1 How can I add my font to the font menu?</h4>
+
+<p><a name="index-font-menu_002c-adding-fonts-194"></a><a name="index-w32_002dfixed_002dfont_002dalist-195"></a>
+If you have set w32-use-w32-font-dialog to nil, you can add fonts to
+the font menu by changing `w32-fixed-font-alist'.  For example:
+
+</p><pre class="example">     (setq w32-fixed-font-alist
+        (append w32-fixed-font-alist
+           '(("Monotype.com"
+              ("8" "-*-Monotype.com-normal-r-*-*-11-*-*-*-c-iso8859-1")
+              ("9" "-*-Monotype.com-normal-r-*-*-12-*-*-*-c-iso8859-1")
+              ("10" "-*-Monotype.com-normal-r-*-*-13-*-*-*-c-iso8859-1")
+              ("11" "-*-Monotype.com-normal-r-*-*-15-*-*-*-c-iso8859-1")))))
+</pre>
+   <h3 class="section">5.6 How can I control CR/LF translation?</h3>
+
+<p><a name="index-DOS-line-ends-196"></a><a name="index-Unix-line-ends-197"></a><a name="index-Mac-line-ends-198"></a>
+There are a number of methods by which you can control automatic CR/LF
+translation in Emacs, a situation that reflects the fact that the
+default support was not very robust in the past.  For a discussion of
+this issue, take a look at
+<a href="http://www.gnu.org/software/emacs/windows/ntemacs/todo/translate">this collection of email messages</a> on the topic.
+
+</p><h4 class="subsection">5.6.1 Automatic CR/LF translation</h4>
+
+<p><a name="index-line-ends_002c-automatic-detection-199"></a>
+For existing files, Emacs scans the file to determine the line ending
+convention as part of the same scan it does to determine the file
+encoding.  Embedded Ctrl-M (ASCII 13) characters and inconsistent line
+ends can confuse the automatic scanning, and Emacs will present the
+file in Unix (LF) mode with the Ctrl-M characters displayed as ‘<samp><span class="samp">^M</span></samp>’. 
+It does this to be safe, as no data loss will occur if the file is really
+binary and the Ctrl-M characters are significant.
+
+</p><h4 class="subsection">5.6.2 CR/LF translation by file extension</h4>
+
+<p><a name="index-line-ends_002c-determining-by-filename-200"></a><a name="index-binary-files_002c-determining-by-file-name-201"></a><a name="index-file_002dname_002dbuffer_002dfile_002dtype_002dalist-202"></a>
+The variable <code>file-name-buffer-file-type-alist</code> holds a list of
+filename patterns and their associated type; binary or text.  Files marked
+as binary will not have line-end detection performed on them, and instead
+will always be displayed as is.  With auto-detection in recent versions of
+Emacs, this is seldom useful for existing files, but can still be used
+to influence the choice of line ends for newly created files.
+
+</p><h4 class="subsection">5.6.3 CR/LF translation by file system</h4>
+
+<p><a name="index-line-ends_002c-determining-by-filesystem-203"></a><a name="index-binary-files_002c-determining-by-filesystem-204"></a><a name="index-untranslated_002dfilesystem_002dlist-205"></a><a name="index-add_002duntranslated_002dfilesystem-206"></a><a name="index-remove_002duntranslated_002dfilesystem-207"></a>
+The variable <code>untranslated-filesystem-list</code> defines whole
+directory trees that should not have CR/LF autodetection performed on
+them.  The list can be manipulated with the functions
+<code>add-untranslated-filesystem</code> and
+<code>remove-untranslated-filesystem</code>.  With auto-detection in
+recent versions of Emacs, this is seldom useful for existing files,
+but can still be used to influence the choice of line ends for newly
+created files.
+
+<!--  -->
+</p><p><a name="Printing"></a>
+
+</p><h2 class="chapter">6 Printing</h2>
+
+<p><a name="index-printing-208"></a>
+
+</p><h3 class="section">6.1 How do I print from Emacs?</h3>
+
+<p>A lot of effort has gone into making it easier to print from Emacs on
+Windows and DOS, but this has still been insufficient to keep up with
+changes in printing technology from text and postscript based printers
+connected via ports that can be accessed directly, to graphical
+printers that are only accessible via USB.  The changes do however
+make old information on the subject redundant, so you need to make
+sure any instructions you are following are up to date.  For that
+reason, the old information from this FAQ has been removed, and you
+are advised to check the
+<a href="http://www.emacswiki.org/cgi-bin/wiki/PrintingFromEmacs">Emacs Wiki</a> for more up to date information.
+
+<!--  -->
+</p><p><a name="Sub-processes"></a>
+<a name="Sub_002dprocesses"></a>
+
+</p><h2 class="chapter">7 Subprocesses</h2>
+
+<p><a name="index-subprocesses-209"></a>
+
+</p><h3 class="section">7.1 Quoting issues</h3>
+
+<p><a name="index-quoting-arguments-to-subprocesses-210"></a><a name="index-sub_002dprocesses_002c-quoting-arguments-to-211"></a><a name="index-cygwin_002c-quoting-arguments-212"></a>
+The quoting rules for native Windows shells and Cygwin shells have
+some subtle differences.  When Emacs spawns subprocesses, it tries to
+determine whether the process is a Cygwin program and changes its
+quoting mechanism appropriately.  See this
+<a href="http://www.gnu.org/software/emacs/windows/ntemacs/discuss/shell-quoting">previous discussion</a> for details.
+
+</p><h3 class="section">7.2 Programs reading input hang</h3>
+
+<p><a name="index-subprocesses_002c-hanging-when-reading-input-213"></a><a name="index-full_002dscreen-console-programs_002c-as-subprocesses-214"></a><a name="index-ftp_002c-client-hanging-215"></a><a name="index-ftp-216"></a>
+Programs that explicitly use a handle to the console (<samp><span class="file">CON</span></samp> or
+<samp><span class="file">CON:</span></samp>) instead of stdin and stdout cannot be used as
+subprocesses to Emacs, and they will also not work in shell-mode.  The
+default ftp client on Windows is an example of such a program - this
+ftp program is mostly fine for use with <code>ange-ftp</code> or
+<code>tramp</code>, but not for <kbd>M-x ftp</kbd> (see <a href="#Network-access">How do I use FTP within Emacs</a>).  There is no convenient way for either Emacs
+or any shell used in <code>shell-mode</code> to redirect the input and
+output of such processes from the console to input and output pipes. 
+The only workaround is to use a different implementation of the
+program that does not use the console directly.  Microsoft's new
+
+</p><h3 class="section">7.3 Buffering in shells and subprocesses</h3>
+
+<p><a name="index-subprocesses_002c-buffering-output-217"></a><a name="index-output-not-displaying_002c-subprocesses-218"></a><a name="index-SQL-subprocess-hanging-219"></a><a name="index-cvs-hanging-when-login-needed-220"></a><a name="index-ssh_002c-password-prompt-not-appearing-when-using-with-cvs-221"></a><a name="index-sql_002dmode-222"></a><a name="index-shell_002dmode-223"></a><a name="index-setbuf_002c-using-in-subprocesses-to-prevent-buffering-224"></a><a name="index-setvbuf_002c-using-in-subprocesses-to-prevent-buffering-225"></a>
+You may notice that some programs, when run in a shell in
+<code>shell-mode</code>,
+have their output buffered (e.g., people have found this happening to
+them with <code>sql-mode</code>).  When the program has a lot of output, it
+overflows the buffering and gets printed to the shell buffer; however,
+if the program only outputs a small amount of text, it will remain
+buffered and won't appear in the shell buffer.  The same can happen
+in other subprocesses that themselves run other programs as
+subprocesses, for example when using <samp><span class="command">cvs</span></samp> from Emacs, which
+is itself configured to use <samp><span class="command">ssh</span></samp>, password prompts fail to
+appear when expected, and <samp><span class="command">cvs</span></samp> appears to hang.
+
+   </p><p>Although it may at first seem like the shell is buffering the output
+from the program, it is actually the program that is buffering
+output.  The C runtime typically decides how to buffer output based
+upon whether stdout is bound to a handle to a console window or
+not.  If bound to a console window, output is buffered line by line; if
+bound to a block device, such as a file, output is buffered block by
+block.
+
+   </p><p>In a shell buffer, stdout is a pipe handle and so is buffered in
+blocks.  If you would like the buffering behavior of your program to
+behave differently, the program itself is going to have to be changed;
+you can use <code>setbuf</code> and <code>setvbuf</code> to manipulate
+the buffering semantics.
+
+   </p><p>Some programs handle this by having an explicit flag to control their
+buffering behaviour, typically <samp><span class="option">-i</span></samp> for interactive.  Other
+programs manage to detect that they are running under Emacs, by
+using ‘<samp><span class="samp">getenv("emacs")</span></samp>’ internally.
+
+</p><h4 class="subsection">7.3.1 Perl script buffering</h4>
+
+<p><a name="index-perl_002c-avoiding-buffering-when-used-as-a-subprocess-of-Emacs-226"></a>
+A handy solution for Perl scripts to the above problem is to use:
+
+</p><pre class="example">     # Turn all buffering off.
+     select((select(STDOUT), $| = 1)[0]);
+     select((select(STDERR), $| = 1)[0]);
+     select((select(STDIN), $| = 1)[0]);
+</pre>
+   <h3 class="section">7.4 16-bit subprocesses accessing the floppy drive</h3>
+
+<p><a name="index-floppy-drive_002c-access-when-subprocesses-started-227"></a><a name="index-subprocess-starting-causes-floppy-drive-access-228"></a>
+If you are finding the 16 bit DOS subprocesses cause your A: drive to
+be accessed, hanging Emacs until the read times out if there is no
+floppy in the drive, check to see if your virus software is causing
+the problem.
+
+</p><h3 class="section">7.5 Killing subprocesses on Windows 95/98/Me</h3>
+
+<p><a name="index-subprocess_002c-killing-on-Windows-95_002f98_002fME-229"></a><a name="index-killing-subprocesses_002c-Windows-95_002f98_002fME-230"></a><a name="index-shutdown_002c-complaints-about-cmdproxy_002eexe-running-231"></a>
+Emacs cannot guarantee that a subprocess gets killed on Windows 95 and
+its descendants, and it is a difficult limitation to work around.  To
+avoid problems on these systems, you should let subprocesses run to
+completion including explicitly exiting shells before killing the
+associated buffer.
+
+   </p><p>If you find that while shutting down, Windows complains that there is
+a running <samp><span class="command">cmdproxy.exe</span></samp> even though you carefully exited all
+shells and none were showing in Task Manager before the shutdown, this
+could be due to buggy interaction with your virus scanner.
+
+</p><h3 class="section">7.6 Sending EOF to subprocesses</h3>
+
+<p><a name="index-EOF_002c-sending-to-subprocesses-232"></a><a name="index-shell-terminates-when-EOF-sent-to-subprocess-233"></a><a name="index-process_002dsend_002deof-234"></a>
+When an EOF is sent to a subprocess running in an interactive shell
+with <code>process-send-eof</code>, the shell terminates unexpectedly as
+if its input was closed.  This affects the use of <kbd>C-c C-d</kbd> in
+shell buffers.  See
+<a href="http://www.gnu.org/software/emacs/windows/ntemacs/todo/shell-ctrl-d">this discussion</a> for more details.
+
+</p><h3 class="section">7.7 How do I use a shell in Emacs?</h3>
+
+<p><a name="index-interactive-shell_002c-using-235"></a><a name="index-shell-within-emacs_002c-using-236"></a><a name="index-shell-237"></a><a name="index-shell_002dcommand-238"></a><a name="index-shell_002dfile_002dname-239"></a><a name="index-explicit_002dshell_002dfile_002dname-240"></a>
+You can start an interactive shell in Emacs by typing <kbd>M-x shell</kbd>. 
+Emacs uses the <samp><span class="env">SHELL</span></samp> environment variable to determine which
+program to use as the shell.  To instruct Emacs to use a non-default
+shell, you can either set this environment variable, or customize
+<code>explicit-shell-file-name</code>.  You can also customize
+<code>shell-file-name</code> to change the shell that will be used by
+subprocesses that are started with <code>shell-command</code> and
+related non-interactive shell commands.
+
+</p><h4 class="subsection">7.7.1 bash</h4>
+
+<p><a name="index-cygwin-bash-as-shell-within-Emacs-241"></a><a name="index-shell_002c-using-cygwin-bash-within-Emacs-242"></a><a name="index-bash_002c-using-cygwin-shell-within-Emacs-243"></a><a name="index-comint_002dscroll_002dshow_002dmaximum_002doutput-244"></a><a name="index-comint_002dcompletion_002daddsuffix-245"></a><a name="index-comint_002deol_002don_002dsend-246"></a><a name="index-w32_002dquote_002dprocess_002dargs-247"></a><a name="index-shell_002dmode_002dhook-248"></a>
+Cygwin bash is a popular shell for use with Emacs.  To use bash as the
+default shell in Emacs, you can place the following in your init file:
+
+</p><pre class="example">     (defun my-shell-setup ()
+       "For Cygwin bash under Emacs 20"
+       (setq comint-scroll-show-maximum-output 'this)
+       (make-variable-buffer-local 'comint-completion-addsuffix))
+       (setq comint-completion-addsuffix t)
+       ;; (setq comint-process-echoes t) ;; reported that this is no longer needed
+       (setq comint-eol-on-send t)
+       (setq w32-quote-process-args ?\")
+     
+     (setq shell-mode-hook 'my-shell-setup)
+</pre>
+   <p>If you find that you are having trouble with Emacs tracking drive
+changes with bash, see <a href="mailto:mike.fabian@it-mannesmann.de">Mike Fabian</a>'s
+<a href="http://www.gnu.org/software/emacs/windows/ntemacs/discuss/drive-tracking">note</a>.
+
+   </p><p>WARNING: Some versions of bash set and use the environment variable
+PID.  For some as yet unknown reason, if <samp><span class="env">PID</span></samp> is set and Emacs
+passes it on to bash subshells, bash dies (Emacs can inherit the
+<samp><span class="env">PID</span></samp> variable if it's started from a bash shell).  If you clear
+the <samp><span class="env">PID</span></samp> variable in your init file, you should be able to
+continue to use bash as your subshell:
+</p><pre class="example">         (setenv "PID" nil)
+</pre>
+   <h3 class="section">7.8 How do I use Cygwin style paths in Emacs?</h3>
+
+<p><a name="index-cygwin-paths_002c-using-within-Emacs-249"></a><a name="index-mount-points_002c-cygwin-250"></a><a name="index-cygwin-mount-points_002c-using-within-Emacs-251"></a>
+The package
+<a href="http://www.emacswiki.org/cgi-bin/wiki/cygwin-mount.el">cygwin-mount.el</a> teaches Emacs about Cygwin mount points.
+
+</p><h3 class="section">7.9 How do I make dired use my ls program?</h3>
+
+<p><a name="index-dired_002c-using-an-external-ls-program-252"></a><a name="index-dired_002c-interpreting-symlinks-the-same-way-as-cygwin-253"></a><a name="index-symlinks-in-dired_002c-interpreting-the-same-way-as-cygwin-254"></a><a name="index-cygwin-symlinks-in-dired-255"></a><a name="index-ls_002dlisp_002duse_002dinsert_002ddirectory_002dprogram-256"></a><a name="index-insert_002ddirectory_002dprogram-257"></a>
+Dired uses an internal lisp implementation of <samp><span class="command">ls</span></samp> by default
+on Windows.  For consistent display of symbolic links and other
+information with other programs (eg Cygwin) and performance reasons,
+you may want to use a Windows port of <samp><span class="command">ls</span></samp> instead.
+
+</p><pre class="example">     (setq ls-lisp-use-insert-directory-program t)      ;; use external ls
+     (setq insert-directory-program "c:/cygwin/bin/ls") ;; ls program name
+</pre>
+   <h3 class="section">7.10 How do I prevent shell commands from being echoed?</h3>
+
+<p><a name="index-echo_002c-suppressing-for-shell-input-258"></a><a name="index-shell-commands_002c-suppressing-echo-259"></a><a name="index-comint_002dprocess_002dechoes-260"></a><a name="index-comint_002dmode_002dhook-261"></a><a name="index-explicit_002dcmd_002eexe_002dargs-262"></a><a name="index-explicit_002dcmdproxy_002eexe_002dargs-263"></a><a name="index-explicit_002dbash_002eexe_002dargs-264"></a><a name="index-explicit_002dbash_002dargs-265"></a><a name="index-shell-specific-arguments-266"></a>
+Some shells echo the commands that you send to them, and the echoed
+commands appear in the output buffer.  In particular, the default
+shells, <samp><span class="command">command.com</span></samp> and <samp><span class="command">cmd.exe</span></samp>, have this behavior.
+
+   </p><p>To prevent echoed commands from being printed, you can place the
+following in your init file:
+
+</p><pre class="example">         (defun my-comint-init ()
+           (setq comint-process-echoes t))
+         (add-hook 'comint-mode-hook 'my-comint-init)
+</pre>
+   <p>If <code>shell-mode</code> still is not stripping echoed commands, then
+you'll have to explicitly tell the shell to not echo commands.  You can
+do this by setting the <code>explicit-</code><var>SHELL</var><code>-args</code> variable
+appropriately; where <var>SHELL</var> is the value of your <samp><span class="env">SHELL</span></samp>
+environment variable (do a <kbd>M-: (getenv "SHELL")</kbd> to see what it
+is currently set to).  Assuming that you are on NT and that your
+<samp><span class="env">SHELL</span></samp> environment variable is set to <samp><span class="command">cmd.exe</span></samp>,
+then placing the following in your init file will tell
+<samp><span class="command">cmd.exe</span></samp> to not echo commands:
+
+</p><pre class="example">         (setq explicit-cmd.exe-args '("/q"))
+</pre>
+   <p>The comint package will use the value of this variable as an argument
+to <samp><span class="command">cmd.exe</span></samp> every time it starts up a new shell; the
+<samp><span class="option">/q</span></samp> is the argument to <samp><span class="command">cmd.exe</span></samp> that stops the
+echoing (invoking ‘<samp><span class="samp">cmd /?</span></samp>’ in a shell will show you all of the
+command line arguments to <samp><span class="command">cmd.exe</span></samp>).
+
+   </p><p>Note that this variable is case sensitive; if the value of your
+<samp><span class="env">SHELL</span></samp> environment variable is <samp><span class="command">CMD.EXE</span></samp> instead, then
+this variable needs to be named <code>explicit-CMD.EXE-args</code> instead.
+
+</p><h3 class="section">7.11 How can I make shell completion use forward slashes?</h3>
+
+<p><a name="index-completion_002c-using-forward-slashes-in-shell-buffers-267"></a><a name="index-forward-slashes-for-completion-in-shell-buffers-268"></a><a name="index-comint_002dcompletion_002daddsuffix-269"></a>
+The character appended to directory names when completing in a shell
+buffer is controlled by the variable <code>comint-completion-addsuffix</code>. 
+See its documentation (with <kbd>C-h v</kbd>) for details.
+
+</p><h3 class="section">7.12 Why do I get incorrect DOS version messages?</h3>
+
+<p><a name="index-nmake_002c-Incorrect-DOS-version-messages-270"></a><a name="index-shell_002c-Incorrect-DOS-version-messages-271"></a><a name="index-COMSPEC_002c-effect-on-subprocesses-of-subprocesses-272"></a>
+This might happen if, for example, you invoke <samp><span class="command">nmake</span></samp> in a
+shell and it tries to create sub-shells.  The problem happens because
+when the shell is initially created, the first argument to the shell
+is not the directory in which the shell program resides.  When this
+happens, <samp><span class="command">command.com</span></samp> fabricates a value for its
+<samp><span class="env">COMSPEC</span></samp> environment variable that is incorrect.  Then, when
+other programs go to use <samp><span class="env">COMSPEC</span></samp> to find the shell, they are
+given the wrong value.
+
+   </p><p>The fix for this is to either prevent any arguments from being sent to
+the shell when it starts up (in which case <samp><span class="command">command.com</span></samp> will
+use a default, and correct, value for <samp><span class="env">COMSPEC</span></samp>), or to have the
+first argument be the directory in which the shell executable resides.
+
+</p><h3 class="section">7.13 Why is nothing happening when I enter shell commands?</h3>
+
+<p><a name="index-shell-commands-not-working-273"></a><a name="index-anti_002dvirus-software_002c-bad-interaction-with-274"></a><a name="index-virus-software_002c-bad-interaction-with-275"></a><a name="index-firewall_002c-bad-interaction-with-276"></a><a name="index-scan-all-files_002c-anti_002dvirus-option-causing-problems-277"></a><a name="index-auto-protect_002c-anti_002dvirus-option-causing-problems-278"></a><a name="index-shell_002c-interacting-badly-with-anti_002dvirus-279"></a>
+Some anti-virus software has been reported to cause problems with
+shells in the past.  Try turning off options such as “Scan all
+files”.  See <a href="#Installing-Emacs">What known problems are there with anti-virus software?</a>.
+
+<!--  -->
+</p><p><a name="Network-access"></a>
+
+</p><h2 class="chapter">8 Network access</h2>
+
+<h3 class="section">8.1 How do I use mail in Emacs?</h3>
+
+<p>Emacs comes with several options for reading and writing mail.  These
+are documented in the manual, and the choice of which method to use
+depends on personal taste.  There are some issues specific to Windows
+however, related to the fact that Windows machines do not have the
+mail infrastructure that is commonly installed on other platforms, so
+mail will not work without some configuration.
+
+</p><h4 class="subsection">8.1.1 Outgoing mail</h4>
+
+<p><a name="index-mail_002c-outgoing-280"></a><a name="index-smtp-server-281"></a><a name="index-user_002dfull_002dname-282"></a><a name="index-user_002dmail_002daddress-283"></a><a name="index-smtpmail_002ddefault_002dsmtp_002dserver-284"></a><a name="index-smtpmail_002dsmtp_002dserver-285"></a><a name="index-send_002dmail_002dcommand-286"></a><a name="index-message_002dsend_002dmail_002dfunction-287"></a><a name="index-smtpmail_002dsend_002dit-288"></a><a name="index-smtpmail_002ddebug_002dinfo-289"></a>
+For outgoing mail, you will need to use <samp><span class="file">smtpmail.el</span></samp> which
+allows Emacs to talk directly to SMTP mail servers.  This is included
+with Emacs, and can be set up as follows:
+
+</p><pre class="example">     (setq user-full-name "<var>Your full name</var>")
+     (setq user-mail-address "<var>Your@email.address</var>")
+     (setq smtpmail-default-smtp-server "<var>domain.name.of.your.smtp.server</var>")
+     
+     (setq send-mail-command 'smtpmail-send-it) ; For mail-mode (Rmail)
+     (setq message-send-mail-function 'smtpmail-send-it) ; For message-mode (Gnus)
+</pre>
+   <p>Note that if you want to change the name of the SMTP server after
+smtpmail is loaded, then you'll need to change
+<code>smtpmail-smtp-server</code>.
+
+   </p><p>If you are experiencing problems with sending large messages, check
+the value of the variable <code>smtpmail-debug-info</code>. If it is non-nil, you
+should set it to <code>nil</code>:
+
+</p><h4 class="subsection">8.1.2 Incoming mail with Rmail and POP3</h4>
+
+<p><a name="index-mail_002c-incoming-with-rmail-290"></a><a name="index-pop3_002c-using-rmail-291"></a><a name="index-rmail_002c-mail-client-292"></a><a name="index-movemail_002c-using-pop3-293"></a><a name="index-MAILHOST-294"></a><a name="index-rmail_002dprimary_002dinbox_002dlist-295"></a><a name="index-rmail_002dpop_002dpassword_002drequired-296"></a>
+For incoming mail using the Rmail package and a POP3 server, you will
+need the following configuration:
+
+</p><pre class="example">     (setenv "MAILHOST" "<var>domain.name.of.your.pop3.server</var>")
+     (setq rmail-primary-inbox-list '("po:<var>your logon id</var>"))
+     (setq rmail-pop-password-required t)
+</pre>
+   <h4 class="subsection">8.1.3 Incoming mail with Gnus</h4>
+
+<p><a name="index-mail_002c-incoming-with-Gnus-297"></a><a name="index-pop3_002c-using-Gnus-298"></a><a name="index-imap_002c-using-Gnus-299"></a><a name="index-gnus_002c-mail-and-news-client-300"></a>
+Although Gnus started life as a Usenet news reader, it also makes a
+good mail reader, particularly if you subscribe to a lot of mailing
+lists, or you want to use IMAP rather than POP3, which is not
+supported by Rmail.  Because of the varied ways of setting up Gnus,
+it is best that you read the Gnus manual, and seek help on
+<a href="news:gnu.emacs.gnus">news:gnu.emacs.gnus</a> if needed.
+
+</p><h4 class="subsection">8.1.4 Other incoming mail options</h4>
+
+<p><a name="index-mail_002c-other-options-301"></a><a name="index-wanderlust_002c-mail-and-news-client-302"></a><a name="index-vm_002c-mail-client-303"></a><a name="index-mh_002de_002c-mail-client-304"></a>
+Other options for reading mail in Emacs include VM, MH-E and
+Wanderlust.  All of these require lisp or executable code that does
+not come with Emacs, so you should seek help where you obtained the
+packages from if you want to use them.
+
+</p><h3 class="section">8.2 How do I open attachments in Gnus?</h3>
+
+<p><a name="index-gnus_002c-attachments-305"></a><a name="index-attachments_002c-in-gnus-306"></a><a name="index-mail_002c-attachments-in-gnus-307"></a><a name="index-g_t_002emailcap-308"></a><a name="index-MIME_002c-configuration-for-Gnus-309"></a>
+In your <samp><span class="env">HOME</span></samp> directory create a file called <samp><span class="file">.mailcap</span></samp>,
+with contents like the following:
+</p><pre class="example">     application/zip "C:/Program Files/7-Zip/7zFM.exe"
+     video/* "C:/Program Files/VideoLAN/VLC/vlc.exe"
+</pre>
+   <p><strong>Warning:</strong> Associating MIME types with <samp><span class="command">start</span></samp> or other
+generic Windows commands to open arbitrary files might seem like a
+good idea, but it leaves your system as open to attack as Outlook
+Express was at its worst.  Especially dangerous is associating
+application/* or */* in this way.
+
+</p><h3 class="section">8.3 How do I use FTP within Emacs?</h3>
+
+<p><a name="index-ftp_002c-using-within-Emacs-310"></a><a name="index-ange_002dftp-311"></a><a name="index-tramp_002c-ftp-312"></a><a name="index-remote-hosts-via-ftp-313"></a><a name="index-ange_002dftp_002dftp_002dprogram_002dname-314"></a>
+Windows built in FTP client can be used with ange-ftp.  Ange-ftp is
+the Emacs package that provides FTP connectivity to tramp, a
+multi-protocol remote file access package for Emacs that is enabled by
+default.
+
+   </p><p>The Windows FTP client does have problems with some firewalls, due to
+lack of passive mode support, so you may want to try an alternative
+ftp client instead.  Make sure that the client you are trying is in
+your <samp><span class="env">PATH</span></samp> before the default Windows client, or rename the
+default Windows client to avoid it getting in the way.  Alternatively
+you can customize <code>ange-ftp-ftp-program-name</code> to the full path to
+the version you are trying.  See <a href="#Other-useful-ports">Other useful ports</a>.
+
+</p><h3 class="section">8.4 How do I use Tramp to work in Emacs via SSH?</h3>
+
+<p><a name="index-tramp_002c-ssh-315"></a><a name="index-ssh_002c-accessing-remote-hosts-within-Emacs-316"></a><a name="index-remote-hosts-via-ssh-317"></a><a name="index-openssh-318"></a><a name="index-PuTTY-319"></a><a name="index-plink-320"></a><a name="index-tramp_002ddefault_002dmethod-321"></a><a name="index-tramp_002ddefault_002dmethod_002dalist-322"></a>
+Tramp can use a number of protocols to connect to remote machines to
+read files and even run commands on those files remotely.  A popular
+one is ssh.  As well as Cygwin versions of openssh, you can use
+PuTTY's command line plink program as the ssh client.  The relevant
+methods to use in <code>tramp-default-method</code> or
+<code>tramp-default-method-alist</code> for these options are:
+     </p><ul>
+<li>openssh
+          <ul>
+<li><code>scp</code> Uses scp for copying, ssh for shell operations. 
+</li><li><code>scp1</code> scp with forced SSH protocol version 1
+</li><li><code>scp2</code> scp with forced SSH protocol version 2
+</li><li><code>ssh</code> Uses ssh with encoding on stdin/stdout for file transfer. 
+</li><li><code>ssh1</code> ssh with forced SSH protocol version 1
+</li><li><code>ssh2</code> ssh with forced SSH protocol version 2
+</li></ul>
+
+     </li><li>PuTTY
+          <ul>
+<li><code>pscp</code> Uses pscp for copying, plink for shell operations. 
+</li><li><code>pscp1</code> pscp, with forced SSH protocol version 1
+</li><li><code>pscp2</code> pscp, with forced SSH protocol version 2
+</li><li><code>plink</code> Uses plink with encoding on stdin/stdout for file transfer. 
+</li><li><code>plink1</code> plink with forced SSH protocol version 1
+</li><li><code>plink2</code> plink with forced SSH protocol version 2
+</li></ul>
+     </li></ul>
+
+<h3 class="section">8.5 How do I use telnet with Emacs?</h3>
+
+<p><a name="index-telnet_002c-in-Emacs-323"></a><a name="index-telnet-324"></a><a name="index-telnet-client_002c-that-works-with-Emacs-325"></a>
+To use telnet-mode on Windows, you need a telnet client that uses
+stdin and stdout for input and output.  The default Windows client is
+a Windows application, and will not work as a subprocess.  Several
+options exist, but information that was formerly in this FAQ is out of
+date now, so no concrete pointers are available.
+
+<!--  -->
+</p><p><a name="Text-and-Utility-modes"></a>
+
+</p><h2 class="chapter">9 Text and Utility modes</h2>
+
+<h3 class="section">9.1 How do I use TeX with Emacs?</h3>
+
+<p><a name="index-tex-326"></a><a name="index-typesetting-327"></a>
+You will need an implementation of TeX for Windows. 
+A number of implementations are listed on the
+<a href="http://www.tug.org/interest.html#free">TeX Users Group</a> website.
+
+</p><h4 class="subsection">9.1.1 AUCTeX</h4>
+
+<p><a name="index-auctex_002c-precompiled-for-Windows-328"></a><a name="index-latex-329"></a><a name="index-preview_002dlatex-330"></a>
+AUCTeX is an Emacs package for writing LaTeX files, which also
+includes preview-latex, an Emacs mode for previewing the formatted
+contents of LaTeX documents.  Pre-compiled versions for Windows are
+available from
+<a href="http://www.gnu.org/software/auctex/download-for-windows.html">the AUCTeX site</a>.
+
+</p><h3 class="section">9.2 How do I perform spell checks?</h3>
+
+<p><a name="index-spell-checking-331"></a><a name="index-ispell-332"></a><a name="index-aspell-333"></a><a name="index-flyspell-334"></a><a name="index-ispell_002dprogram_002dname-335"></a><a name="index-flyspell_002dmode-336"></a>
+Emacs has support for spell checking on demand (<code>ispell</code>) and as
+your type (<code>flyspell</code>).  Both packages depend on a copy of
+<samp><span class="command">ispell</span></samp> 3.2 or a compatible spell-checking program. 
+GNU Aspell is a popular choice these days, Windows installers are
+available from the <a href="http://aspell.net/win32/">official site</a>.
+
+   </p><p>Once installed, you will need to configure <code>ispell-program-name</code>
+to tell ispell and flyspell to use <samp><span class="command">aspell</span></samp> as a replacement for
+ispell.  You can include the full path to the <samp><span class="file">aspell</span></samp> binary, which
+means you do not need to add its installation directory to the <samp><span class="env">PATH</span></samp>.
+
+</p><h3 class="section">9.3 Emacs and encryption</h3>
+
+<p><a name="index-encryption-337"></a><a name="index-gpg_002c-Windows-binaries-338"></a><a name="index-pgp-encryption_002c-with-GNU-Privacy-Guard-339"></a><a name="index-signatures-on-Emacs-distribution_002c-checking-340"></a><a name="index-Emacs-distribution_002c-checking-digital-signatures-341"></a>
+GNU Privacy Guard is a Free replacement for PGP, with Windows binaries
+available.  See <a href="http://www.gnupg.org/">http://www.gnupg.org/</a>.
+
+</p><h3 class="section">9.4 Why doesn't my wheel mouse work in Emacs?</h3>
+
+<p><a name="index-mouse-wheel-342"></a><a name="index-wheel-mouse-343"></a><a name="index-middle-button_002c-on-wheel-mouse-344"></a><a name="index-scrolling_002c-with-mouse-wheel-345"></a>
+Some wheel mice ship with default settings that do not send the
+standard wheel events to programs, but instead try to simulate scroll
+bar events.  Usually this is configurable from the hardware specific
+pages on the mouse control panel.  The middle button is often mapped
+in the same settings to have some functionality other than sending
+middle mouse button events.  In some cases, uninstalling the
+manufacturer's drivers and telling Windows to use the generic USB or
+PS/2 drivers is the only way to make the mouse work properly.
+
+</p><h3 class="section">9.5 How do I use grep with Emacs?</h3>
+
+<p><a name="index-searching-through-files-with-grep-346"></a><a name="index-grep-347"></a><a name="index-findstr-348"></a><a name="index-grep-349"></a>
+The best way to use <kbd>M-x grep</kbd> with Emacs is to download a port of
+GNU <samp><span class="command">grep</span></samp>. See <a href="#Other-useful-ports">Other useful ports</a>.
+
+   </p><p>If you want a quick solution without installing extra tools, a poor
+substitute that works for simple text searches is to specify the built
+in Windows command <samp><span class="command">findstr</span></samp> as the command to run at the
+<kbd>M-x grep</kbd> prompt.  Normally you will want to use the <samp><span class="option">/n</span></samp>
+argument to <samp><span class="command">findstr</span></samp>.
+
+</p><h4 class="subsection">9.5.1 How do I do a recursive grep?</h4>
+
+<p><a name="index-recursive-searching-with-grep-350"></a><a name="index-grep_002c-recursive-through-subdirectories-351"></a><a name="index-findstr_002c-recursive-352"></a><a name="index-find_002c-using-with-grep-353"></a><a name="index-find_002c-the-POSIX-command-354"></a><a name="index-rgrep-355"></a><a name="index-grep_002dfind-356"></a><a name="index-find_002dgrep_002ddired-357"></a><a name="index-find_002dprogram-358"></a><a name="index-grep_002dfind_002dcommand-359"></a>
+The Emacs commands <code>rgrep</code>, <code>grep-find</code>
+and <code>find-grep-dired</code> are all different interfaces for
+grepping recursively into subdirectories.  By default, they use the
+command <samp><span class="command">find</span></samp> to determine which files to work on, and either
+run <samp><span class="command">grep</span></samp> directly from find, or use <samp><span class="command">xargs</span></samp> to batch
+up files and reduce the number of invocations of <samp><span class="command">grep</span></samp>.
+
+   </p><p>Windows also comes with a <samp><span class="command">find</span></samp> command, but it is not in any
+way compatible with the POSIX <samp><span class="command">find</span></samp> that Emacs tries to use. 
+Emacs expects a <samp><span class="command">find</span></samp> compatible with GNU findutils. 
+See <a href="#Other-useful-ports">Other useful ports</a>.  After you have installed it, you will need
+to make sure that Emacs finds this version, not the standard Windows
+<samp><span class="command">find</span></samp> command.  You can do this by either renaming the
+Windows command, changing your <samp><span class="env">PATH</span></samp> to ensure that the directory
+containing the findutils <samp><span class="file">bin</span></samp> directory comes before the Windows
+system directory, or set the variable <code>find-program</code> to the full
+path to the findutils <samp><span class="command">find</span></samp> command.
+
+   </p><p>An alternative if you have a recent version of grep is to customize
+<code>grep-find-command</code> to use ‘<samp><span class="samp">grep -r</span></samp>’ instead of both find
+and grep.  Another alternative if you don't need the full capabilities
+of grep is to use ‘<samp><span class="samp">findstr /n /r</span></samp>’.
+
+<!--  -->
+</p><p><a name="Developing-with-Emacs"></a>
+
+</p><h2 class="chapter">10 Developing with Emacs</h2>
+
+<h3 class="section">10.1 How do I use Emacs with Microsoft Visual C++</h3>
+
+<p>There are two ways you can use Emacs in conjunction with MSVC.  You
+can use Emacs as the editor, and do everything else in the DevStudio
+IDE.  Or you can use Emacs as an IDE, calling the MSVC command line
+tools to build your project.
+
+</p><h4 class="subsection">10.1.1 Emacs as the text editor for DevStudio</h4>
+
+<p><a name="index-DevStudio_002c-using-Emacs-as-editor-in-360"></a><a name="index-MSVC_002b_002b_002c-using-Emacs-as-editor-with-361"></a><a name="index-Visual-Studio_002c-using-Emacs-as-editor-in-362"></a><a name="index-VisEmacs_002c-add-in-for-MS-Developer-Studio-363"></a>
+Christopher Payne wrote a Visual Studio add-in that makes Emacs the
+default text editor, this has now been taken over by
+<a href="mailto:paquette@mediaone.net">Jeff Paquette</a>. 
+See the following two URLS for details:
+     </p><ul>
+<li><a href="http://sourceforge.net/projects/visemacs/">http://sourceforge.net/projects/visemacs/</a> for the latest version. 
+</li><li><a href="http://www.smathers.net/VisEmacs.htm">http://www.smathers.net/VisEmacs.htm</a> for notes on usage. 
+</li></ul>
+
+<h4 class="subsection">10.1.2 Using MSVC command line tools from Emacs</h4>
+
+<p><a name="index-MSVC_002b_002b_002c-compiling-within-Emacs-364"></a><a name="index-compile-365"></a>
+This is an app note on how to use Microsoft Visual C++ with Emacs. The
+experiments done below were done with Emacs 19.34.1 on Windows 95,
+using Visual C++ 4.0 Standard Edition. Your mileage may vary.
+
+   </p><p>This writeup assumes minimal knowledge of Emacs hacking on the part of
+the reader.
+
+</p><h5 class="subsubsection">10.1.2.1 VC++ Environment Variables</h5>
+
+<p><a name="index-vcvars32_002ebat-366"></a><a name="index-MSVC_002b_002b_002c-environment-variables-367"></a>
+There is a batch file in your VC++ installation's bin directory called
+<samp><span class="file">vcvars32.bat</span></samp>, which sets up the environment variables needed to
+run the VC++ command line tools.  Arrange for those same environment
+variables to be set in your Emacs session.  You can do this on Windows
+9x by calling the <samp><span class="file">vcvars32.bat</span></samp> script from <samp><span class="file">autoexec.bat</span></samp>. 
+On other versions of Windows you can set the environment variables
+globally using the System control panel.
+
+   </p><p>For all versions of Windows you can alternatively set the variables
+just inside Emacs by using <code>setenv</code> calls in your init file. 
+See <a href="#Installing-Emacs">Where do I put my init file?</a>.
+
+   </p><p>You should now be able to compile from Emacs. Load a source file from
+a VC++ project. Type <kbd>M-x compile</kbd>. Replace the proposed command line
+with:
+</p><pre class="example">     nmake -f <var>ProjectName</var>.mak
+</pre>
+   <p>You will find that this defaults to a debug build. You can change it
+to a release build with:
+</p><pre class="example">     nmake -f <var>ProjectName</var>.mak CFG="<var>ProjectName</var> - Win32 Release"
+</pre>
+   <h5 class="subsubsection">10.1.2.2 Setting the default compile command</h5>
+
+<p><a name="index-compile_002c-setting-default-command-368"></a><a name="index-nmake_002c-as-default-compile-command-369"></a><a name="index-compile_002dcommand-370"></a>
+Now set the default value for the compile command line.  Add the
+following to your init file:
+
+</p><pre class="example">     ;; Set up for Visual C++ compiling
+     (setq compile-command "nmake -f ")
+</pre>
+   <p>If you work on the same project long term, you can add the project
+makefile to the string.
+
+   </p><p><a href="mailto:sasdjb@unx.sas.com">David Biesack</a> suggests that perhaps it's
+easy to write a <samp><span class="file">Makefile</span></samp> in the project directory which does
+
+</p><pre class="example">     PROJECT=MyProject
+     all: debug
+     debug: FORCE
+             nmake /f $(PROJECT).mak CFG="$(PROJECT) - Win32 Debug"
+     release: FORCE
+             nmake /f $(PROJECT).mak CFG="$(PROJECT) - Win32 Release"
+     FORCE:
+</pre>
+   <p>and then you can simply change compile-command to <samp><span class="command">nmake</span></samp>.
+
+   </p><p><a href="mailto:deupreec@interagp.com">Caleb T. Deupree</a> reports that on VC++
+5.0 and up, "You can also set an option in Options/Build to export a
+makefile every time the project is saved, which you can then use to
+compile with ‘<samp><span class="samp">nmake -f project.mak</span></samp>’."  VC++ 4.0 builds the make file
+every time, and there is no option.
+
+</p><h5 class="subsubsection">10.1.2.3 Reverting Buffers</h5>
+
+<p><a name="index-DevStudio_002c-keeping-source-in-sync-371"></a><a name="index-Visual-Studio_002c-keeping-source-in-sync-372"></a><a name="index-MSVC_002b_002b_002c-keeping-source-in-sync-373"></a><a name="index-auto_002drevert_002dmode-374"></a><a name="index-global_002dauto_002drevert_002dmode-375"></a>
+It is recommended that you use <code>auto-revert-mode</code> in buffers
+that you have open in both Emacs and MSVC++ at the same time.  Then if
+you mistakenly edit the file in MSVC++, Emacs will pick up your
+changes immediately, rather than after you have written lots more code
+and attempt to save.
+
+</p><h5 class="subsubsection">10.1.2.4 Edit with Emacs function for MSVC</h5>
+
+<p><a name="index-DevStudio_002c-load-in-Emacs-command-376"></a><a name="index-Visual-Studio_002c-load-in-Emacs-command-377"></a><a name="index-MSVC_002b_002b_002c-load-in-Emacs-command-378"></a><a name="index-emacsclient_002c-calling-from-Visual-Studio-379"></a>
+You can also set up VC++ to import a file into Emacs for you, all
+ready for editing.  In VC++, go to the <code>Tools</code> pull-down menu, and
+click on <code>Customize...</code>.  In the <code>Tools</code> tab, click on
+<code>Add</code>.  Use <code>Browse</code> to locate the
+<samp><span class="file">emacsclientw.exe</span></samp> file in your Emacs bin directory, and
+select it.  For arguments, use <samp><span class="option">+$(CurLine)</span></samp>
+<samp><span class="option">"$(FilePath)"</span></samp> and for the directory use the <code>$(WkspDir)</code>
+(the quotes around FilePath handle paths with spaces in them). Set the
+Menu Text to say "Em&amp;acs". The <samp><span class="option">+$(CurLine)</span></samp> will set point in
+Emacs to the same line as the cursor position in VC++. The ampersand
+in the word <code>Em&amp;acs</code> allows you to select emacs from the keyboard. (E
+is already used for the OLE control test container.)
+
+   </p><p>You should now be able to go to any source file in your project. Then,
+use the pull-down menu <code>Tools-&gt;Emacs</code>. The active file in your
+VC++ IDE should now be front and center in Emacs, all ready to edit as
+you wish. If you use keystrokes to work the menus, try <kbd>Alt-T A</kbd> to
+move the file into Emacs. Binding this tool to a keystroke will be
+left as an exercise for the student.
+
+   </p><p>If you have the option of saving files before running tools, make sure
+this option is set. (I don't see it on VC++ 4.0.)
+
+</p><h3 class="section">10.2 Emacs and Borland C++ Builder</h3>
+
+<p><a name="index-Borland-C_002b_002b_002c-integration-with-Emacs-380"></a>
+<a href="mailto:jdarnold@buddydog.org">Jonathan Arnold</a> has written an
+<a href="http://www.buddydog.org/C++Builder/c++builder.html">EmacsEdit “expert”</a> for interfacing C++ Builder and Emacs.
+
+</p><h3 class="section">10.3 Is there a version of my VC software I can use with Emacs?</h3>
+
+<p><a name="index-version-control_002c-integration-with-Emacs-381"></a><a name="index-revision-control_002c-integration-with-Emacs-382"></a><a name="index-source-control_002c--integration-with-Emacs-383"></a><a name="index-cvs_002c-version-control-integration-with-Emacs-384"></a><a name="index-rcs_002c-version-control-integration-with-Emacs-385"></a><a name="index-svn_002c-version-control-integration-with-Emacs-386"></a><a name="index-git_002c-version-control-integration-with-Emacs-387"></a><a name="index-bzr_002c-version-control-integration-with-Emacs-388"></a><a name="index-arch_002c-version-control-integration-with-Emacs-389"></a><a name="index-mercurial_002c-version-control-integration-with-Emacs-390"></a><a name="index-hg_002c-version-control-integration-with-Emacs-391"></a><a name="index-monotone_002c-version-control-integration-with-Emacs-392"></a><a name="index-mcvs_002c-version-control-integration-with-Emacs-393"></a>
+If you are using a graphical revision control tool already, check if
+it comes with command-line tools.  Many such GUI tools are just
+wrappers for the same command line tools that Emacs requires for its
+VC integration.  Most of the supported VC systems have well supported
+Free native Windows binaries.  For those that don't Cygwin may be an option. 
+See <a href="#Other-useful-ports">Other useful ports</a>.
+
+</p><h3 class="section">10.4 How do I use the Perl debugger with Emacs?</h3>
+
+<p><a name="index-perl_002c-debugging-within-Emacs-394"></a><a name="index-perldb_002c-using-with-Emacs-395"></a>
+From <a href="mailto:jay@rgrs.com">Jay Rogers</a>
+
+   </p><p>Some versions of the perl debugger itself need to be patched to work
+with emacs. They are perl versions 5.001 and less, and version
+5.004_01. To fix, locate and change the code similar to the following
+code in lib/perl5db.pl
+</p><pre class="example">             if (-e "/dev/tty") {
+                 $console = "/dev/tty";
+                 $rcfile=".perldb";
+             }
+             elsif (-e "con") {
+                 $console = "";                 &lt;---- change "con" to ""
+                 $rcfile="perldb.ini";
+             }
+             else {
+                 $console = "sys\$command";
+                 $rcfile="perldb.ini";
+             }
+</pre>
+   <p><a href="mailto:soup@ampersand.com">Doug Campbell</a> also has some
+<a href="http://www.gnu.org/software/emacs/windows/ntemacs/discuss/perldb">suggestions</a> for improving the interaction of perldb and Emacs.
+
+<!--  -->
+</p><p><a name="Other-useful-ports"></a>
+
+</p><h2 class="chapter">11 Other useful ports</h2>
+
+<p><a name="index-useful-tools-396"></a><a name="index-subprocesses_002c-useful-tools-397"></a>
+
+</p><h3 class="section">11.1 Cygwin</h3>
+
+<p><a name="index-cygwin-environment-398"></a><a name="index-cygwin_002c-library-conflicts-399"></a><a name="index-library-conflicts-with-cygwin-400"></a><a name="index-interoperability-with-cygwin-401"></a><a name="index-subprocesses_002c-cygwin-tools-402"></a><a name="index-exec_002dpath-403"></a>
+<a href="http://www.cygwin.com/">http://www.cygwin.com/</a>.
+
+   </p><p>Cygwin is a popular complete POSIX emulation environment for Windows. 
+Most of its tools can be used with Emacs, and it covers a wide range
+of ported software.  The main shell used by Cygwin is GNU
+<samp><span class="command">bash</span></samp>, but other shells are also available.  Some Cygwin
+tools may not interoperate well with Emacs or other native Windows
+tools, due to the total immersion aspect of Cygwin, including its
+non-native filesystem mapping.
+
+   </p><p>If you choose to use Cygwin, then its tools will probably be all that
+you need, but you will need to get image libraries from elsewhere, as
+the Cygwin ones are not compatible with non-Cygwin software.  In fact,
+if Cygwin is on your PATH when you run Emacs, and Emacs does not find
+other versions of the image libraries first, then the Cygwin ones can
+cause problems.  Cygwin developers recommend that you do not put
+Cygwin on your system <samp><span class="env">PATH</span></samp> for this reason.  Instead you can
+make the Cygwin tools available within Emacs by setting <code>exec-path</code>
+in your init file.
+
+</p><h3 class="section">11.2 MinGW and MSYS</h3>
+
+<p><a name="index-mingw-tools-404"></a><a name="index-msys-environment-405"></a><a name="index-subprocesses_002c-mingw-and-msys-406"></a>
+<a href="http://www.mingw.org/">http://www.mingw.org/</a>
+
+   </p><p>MinGW is a set of development tools that produce native Windows
+executables, not dependent on Cygwin's POSIX emulation DLLs.
+
+   </p><p>MSYS is a POSIX shell and minimal set of tools that are commonly used in
+configure scripts.  Like Cygwin, this environment uses a non-native
+filesystem mapping to appear more POSIX like to the scripts that it
+runs.  This is intended to complement the MinGW tools to make it easier
+to port software to Windows.
+
+</p><h3 class="section">11.3 UWIN</h3>
+
+<p><a name="index-uwin-environment-407"></a><a name="index-subprocesses_002c-uwin-408"></a>
+<a href="http://www.research.att.com/sw/tools/uwin/">http://www.research.att.com/sw/tools/uwin/</a>
+
+   </p><p>UWIN is another POSIX emulation environment, like Cygwin and MSYS,
+that provides a large number of ported tools.  The shell used by UWIN
+is <samp><span class="command">ksh</span></samp>, the Korn shell.
+
+</p><h3 class="section">11.4 GnuWin32</h3>
+
+<p><a name="index-gnuwin32-tools-409"></a><a name="index-subprocesses_002c-gnuwin32-410"></a><a name="index-image-libraries_002c-gnuwin32-411"></a><a name="index-image-libraries_002c-development-412"></a>
+<a href="http://gnuwin32.sourceforge.net/">http://gnuwin32.sourceforge.net/</a>
+
+   </p><p>GnuWin32 provides precompiled native Windows ports of a wide selection
+of Free software and libraries.  Tools available here that are useful
+for Emacs include:
+
+     </p><ul>
+<li>Arc - used by <code>archive-mode</code> to edit .arc files. 
+</li><li>Bzip2 - used by Emacs to automatically decompress .bz2 files. 
+</li><li>CompFace - used by <code>gnus</code> to display XFace headers in messages. 
+</li><li>CoreUtils - GNU file, shell and text utilities (also in MSYS)
+</li><li>DiffUtils - for <code>ediff</code> and producing patches
+</li><li>FindUtils - for <code>grep-find</code> and other file searches. 
+</li><li>GifLib - library to support GIF images. 
+</li><li>Grep - for searching through files with <code>grep</code>. 
+</li><li>Gzip - used by Emacs to automatically decompress .gz files. 
+</li><li>Jpeg - library to support JPEG images (also in GTK). 
+</li><li>Lha - used by <code>archive-mode</code> to edit .lzh files. 
+</li><li>LibPng - library to support PNG images (also in GTK). 
+</li><li>LibTiff - library to support TIFF images (also in GTK). 
+</li><li>Make - used by <code>compile</code> for building projects (also in MinGW)
+</li><li>OpenSSL - used by <code>gnus</code> to talk to servers over SSL. 
+</li><li>Patch - used by <code>ediff-patch-file</code> and others to apply patches. 
+</li><li>Tar - used by <code>tar-mode</code> to edit tar files. 
+</li><li>TexInfo - used to build Emacs' manuals. 
+</li><li>Unzip - used by <code>archive-mode</code> for extracting zip files. 
+</li><li>Xpm - library to support XPM images (bundled with Emacs binaries)
+</li><li>Zip - used by <code>archive-mode</code> for editing zip files. 
+</li><li>Zlib - required by LibPng (also in GTK). 
+</li></ul>
+
+<h3 class="section">11.5 GTK</h3>
+
+<p><a name="index-GTK-image-libraries-413"></a><a name="index-image-libraries_002c-GTK-414"></a><a name="index-addpm_002c-using-GTK-image-libraries-415"></a>
+GTK is a potential source for some of the image libraries that Emacs
+requires.  GTK is installed along with other ports of GUI software,
+such as the GIMP image editor, and Pidgin instant messenger client. 
+If GTK is installed when you run <samp><span class="command">addpm</span></samp>, Emacs will use the
+image libraries that it provides, even if they are not on the
+<samp><span class="env">PATH</span></samp>.  GTK ships with JPEG, PNG and TIFF support.
+
+</p><h3 class="section">11.6 How do I read man pages?</h3>
+
+<p><a name="index-man-pages-416"></a><a name="index-woman-417"></a><a name="index-man-418"></a>
+Man pages for Emacs and other ported programs that you have can be
+read using Emacs' built-in manual reader <code>woman</code>.  This
+requires no external programs, but if you do have a port of
+<samp><span class="command">man</span></samp>, there is also an Emacs wrapper <code>man</code> that
+which may be slightly faster.
+
+<!--  -->
+</p><p><a name="Further-information"></a>
+
+</p><h2 class="chapter">12 Further information</h2>
+
+<h3 class="section">12.1 Where can I get more information about Emacs?</h3>
+
+<p><a name="index-other-sources-of-information-419"></a><a name="index-faqs_002c-general-420"></a><a name="index-faqs_002c-old-421"></a><a name="index-help_002c-manuals-and-other-sources-422"></a><a name="index-manuals-423"></a><a name="index-wiki-424"></a>
+If you have general questions about Emacs, the best places to start
+looking are the Emacs manual and the standard Emacs FAQ. If you
+already have Emacs, you can browse the manual using Info by typing
+<kbd>C-h i m Emacs &lt;RET&gt;</kbd>, and you can view the FAQ by typing
+<kbd>C-h F</kbd>.  Or you can browse both of them online:
+
+     </p><ul>
+<li>The general Emacs website : <a href="http://www.gnu.org/software/emacs/">http://www.gnu.org/software/emacs/</a>
+</li><li>The Emacs FAQ <a href="http://www.gnu.org/software/emacs/emacs-faq.html">[HTML]</a>
+</li><li>Emacs Manuals <a href="http://www.gnu.org/software/emacs/manual/">[GNU Site many formats]</a>
+</li><li>Intro to Elisp manual <a href="http://www.gnu.org/software/emacs/emacs-lisp-intro/">[GNU site many formats]</a>
+</li><li>Emacs Wiki <a href="http://www.emacswiki.org/">[Site Map]</a>
+</li><li>The old version of this FAQ
+<a href="http://www.gnu.org/software/emacs/windows/old/">[OLD HTML]</a>
+</li></ul>
+
+<h3 class="section">12.2 What mailing lists are there for discussing Emacs on Windows?</h3>
+
+<p><a name="index-mailing-lists-425"></a><a name="index-help_002c-mailing-lists-426"></a>
+The official mailing list for Windows specific help and discussion is
+<a href="mailto:help-emacs-windows@gnu.org">help-emacs-windows@gnu.org</a>.  It's a majordomo administered
+list, so, if you would like to subscribe to the mailing list, send a
+message to <a href="mailto:help-emacs-windows-request@gnu.org">help-emacs-windows-request@gnu.org</a> with the word
+<strong>subscribe</strong> in the body of the message.
+
+   </p><p>To unsubscribe from the list, send a message to
+<a href="mailto:help-emacs-windows-request@gnu.org">help-emacs-windows-request@gnu.org</a> with the word
+<strong>unsubscribe</strong> in the body of the message. Please do not send
+the unsubscribe message to the list itself, but to the request alias
+instead. Sending the message to the list does not unsubscribe you from
+it, and it tends to be annoying to people on the list.
+
+   </p><p>The mailing list has a web based interface, and an archive of the list..
+
+     </p><ul>
+<li><a href="http://mail.gnu.org/mailman/listinfo/help-emacs-windows">http://mail.gnu.org/mailman/listinfo/help-emacs-windows</a>
+    This is the account maintainance page, which will allow you to subscribe, or unsubscribe yourself from the mailing list. 
+</li><li><a href="http://mail.gnu.org/pipermail/help-emacs-windows/">http://mail.gnu.org/pipermail/help-emacs-windows/</a>
+    This is an online archive of all the messages which have been sent
+    to the mailing list. 
+</li></ul>
+
+<!--  -->
+<p><a name="Indexes"></a>
+
+</p><h2 class="unnumbered">Indexes</h2>
+
+<h3 class="unnumberedsec">Function and Variable Index</h3>
+
+<ul class="index-fn" compact="compact">
+<li><a href="#index-add_002duntranslated_002dfilesystem-206"><code>add-untranslated-filesystem</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-ange_002dftp_002dftp_002dprogram_002dname-314"><code>ange-ftp-ftp-program-name</code></a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-auto_002drevert_002dmode-374"><code>auto-revert-mode</code></a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-bdf_002ddirectory_002dalist-186"><code>bdf-directory-alist</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-comint_002dcompletion_002daddsuffix-245"><code>comint-completion-addsuffix</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-comint_002deol_002don_002dsend-246"><code>comint-eol-on-send</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-comint_002dmode_002dhook-261"><code>comint-mode-hook</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-comint_002dprocess_002dechoes-260"><code>comint-process-echoes</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-comint_002dscroll_002dshow_002dmaximum_002doutput-244"><code>comint-scroll-show-maximum-output</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-compile-365"><code>compile</code></a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-compile_002dcommand-370"><code>compile-command</code></a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-create_002dfontset_002dfrom_002dascii_002dfont-169"><code>create-fontset-from-ascii-font</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-create_002dfontset_002dfrom_002dfontset_002dspec-170"><code>create-fontset-from-fontset-spec</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-cua_002dmode-90"><code>cua-mode</code></a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-exec_002dpath-403"><code>exec-path</code></a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-explicit_002dbash_002dargs-265"><code>explicit-bash-args</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-explicit_002dbash_002eexe_002dargs-264"><code>explicit-bash.exe-args</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-explicit_002dcmd_002eexe_002dargs-262"><code>explicit-cmd.exe-args</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-explicit_002dcmdproxy_002eexe_002dargs-263"><code>explicit-cmdproxy.exe-args</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-explicit_002dshell_002dfile_002dname-240"><code>explicit-shell-file-name</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-file_002dname_002dbuffer_002dfile_002dtype_002dalist-202"><code>file-name-buffer-file-type-alist</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-find_002dgrep_002ddired-357"><code>find-grep-dired</code></a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-find_002dprogram-358"><code>find-program</code></a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-flyspell_002dmode-336"><code>flyspell-mode</code></a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-focus_002dfollows_002dmouse-71"><code>focus-follows-mouse</code></a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-font_002dencoding_002dalist-187"><code>font-encoding-alist</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-ftp-216"><code>ftp</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-global_002dauto_002drevert_002dmode-375"><code>global-auto-revert-mode</code></a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-grep-349"><code>grep</code></a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-grep_002dfind-356"><code>grep-find</code></a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-grep_002dfind_002dcommand-359"><code>grep-find-command</code></a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-insert_002ddirectory_002dprogram-257"><code>insert-directory-program</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-ispell_002dprogram_002dname-335"><code>ispell-program-name</code></a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-locale_002dcoding_002dsystem-181"><code>locale-coding-system</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-ls_002dlisp_002duse_002dinsert_002ddirectory_002dprogram-256"><code>ls-lisp-use-insert-directory-program</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-man-418"><code>man</code></a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-message_002dsend_002dmail_002dfunction-287"><code>message-send-mail-function</code></a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-process_002dsend_002deof-234"><code>process-send-eof</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-remove_002duntranslated_002dfilesystem-207"><code>remove-untranslated-filesystem</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-rgrep-355"><code>rgrep</code></a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-rmail_002dpop_002dpassword_002drequired-296"><code>rmail-pop-password-required</code></a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-rmail_002dprimary_002dinbox_002dlist-295"><code>rmail-primary-inbox-list</code></a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-send_002dmail_002dcommand-286"><code>send-mail-command</code></a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-server_002dstart-62"><code>server-start</code></a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-set_002dface_002dfont-157"><code>set-face-font</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-set_002dframe_002dfont-189"><code>set-frame-font</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-set_002dmessage_002dbeep-147"><code>set-message-beep</code></a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-set_002dselection_002dcoding_002dsystem-144"><code>set-selection-coding-system</code></a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-shell-237"><code>shell</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-shell_002dcommand-238"><code>shell-command</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-shell_002dfile_002dname-239"><code>shell-file-name</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-shell_002dmode-223"><code>shell-mode</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-shell_002dmode_002dhook-248"><code>shell-mode-hook</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-smtpmail_002ddebug_002dinfo-289"><code>smtpmail-debug-info</code></a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-smtpmail_002ddefault_002dsmtp_002dserver-284"><code>smtpmail-default-smtp-server</code></a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-smtpmail_002dsend_002dit-288"><code>smtpmail-send-it</code></a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-smtpmail_002dsmtp_002dserver-285"><code>smtpmail-smtp-server</code></a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-sql_002dmode-222"><code>sql-mode</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-telnet-324"><code>telnet</code></a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-tramp_002ddefault_002dmethod-321"><code>tramp-default-method</code></a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-tramp_002ddefault_002dmethod_002dalist-322"><code>tramp-default-method-alist</code></a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-untranslated_002dfilesystem_002dlist-205"><code>untranslated-filesystem-list</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-user_002dfull_002dname-282"><code>user-full-name</code></a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-user_002dmail_002daddress-283"><code>user-mail-address</code></a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-w32_002dbdf_002dfilename_002dalist-185"><code>w32-bdf-filename-alist</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-w32_002denable_002dsynthesized_002dfonts-158"><code>w32-enable-synthesized-fonts</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-w32_002denable_002dunicode_002doutput-179"><code>w32-enable-unicode-output</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-w32_002dfind_002dbdf_002dfonts-188"><code>w32-find-bdf-fonts</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-w32_002dfixed_002dfont_002dalist-195"><code>w32-fixed-font-alist</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-w32_002dmouse_002dbutton_002dtolerance-136"><code>w32-mouse-button-tolerance</code></a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-w32_002dnum_002dmouse_002dbuttons-137"><code>w32-num-mouse-buttons</code></a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-w32_002dquote_002dprocess_002dargs-247"><code>w32-quote-process-args</code></a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-w32_002dselect_002dfont-152"><code>w32-select-font</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-w32_002dswap_002dmouse_002dbuttons-138"><code>w32-swap-mouse-buttons</code></a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-w32_002duse_002dfull_002dscreen_002dbuffer-127"><code>w32-use-full-screen-buffer</code></a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-w32_002duse_002dw32_002dfont_002ddialog-193"><code>w32-use-w32-font-dialog</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-woman-417"><code>woman</code></a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-x_002dlist_002dfonts-153"><code>x-list-fonts</code></a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+   </ul><h3 class="unnumberedsec">Concept Index</h3>
+
+
+
+<ul class="index-cp" compact="compact">
+<li><a href="#index-g_t_002dnw_002c-window-size-126">-nw, window size</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-g_t_002eemacs-47">.emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-g_t_002eemacs_002ed-50">.emacs.d</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-g_t_002emailcap-308">.mailcap</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-g_t2-button-mouse-129">2 button mouse</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-g_t8_002e3-filenames_002c-problems-caused-114">8.3 filenames, problems caused</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-g_t_005femacs-51">_emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-addpm-35"><code>addpm</code></a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-addpm_002c-using-GTK-image-libraries-415">addpm, using GTK image libraries</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-alt-key_002c-using-windows-keys-as-additional-79">alt key, using windows keys as additional</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-ALTERNATE_005fEDITOR-61">ALTERNATE_EDITOR</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-ange_002dftp-311">ange-ftp</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-anti_002dvirus-software-reporting-a-virus-in-Emacs-116">anti-virus software reporting a virus in Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-anti_002dvirus-software_002c-bad-interaction-with-274">anti-virus software, bad interaction with</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-anti_002dvirus-software_002c-bad-interaction-with-117">anti-virus software, bad interaction with</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-arch_002c-version-control-integration-with-Emacs-389">arch, version control integration with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-aspell-333">aspell</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-associating-files-with-Emacs-60">associating files with Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-attachments_002c-in-gnus-306">attachments, in gnus</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-auctex_002c-precompiled-for-Windows-328">auctex, precompiled for Windows</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-auto-protect_002c-anti_002dvirus-option-causing-problems-278">auto protect, anti-virus option causing problems</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-auto-protect_002c-anti_002dvirus-option-causing-problems-121">auto protect, anti-virus option causing problems</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-bash_002c-using-cygwin-shell-within-Emacs-243">bash, using cygwin shell within Emacs</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-BDF-fonts_002c-using-182">BDF fonts, using</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-beep_002c-changing-the-sound-145">beep, changing the sound</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-binary-files_002c-determining-by-file-name-201">binary files, determining by file name</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-binary-files_002c-determining-by-filesystem-204">binary files, determining by filesystem</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-black-and-white-images_002c-getting-color-images-in-Emacs-46">black and white images, getting color images in Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-bold-fonts_002c-synthesized-156">bold fonts, synthesized</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-Borland-C_002b_002b_002c-integration-with-Emacs-380">Borland C++, integration with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-bugs-in-Emacs_002c-how-to-debug-21">bugs in Emacs, how to debug</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-bzr_002c-version-control-integration-with-Emacs-388">bzr, version control integration with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-C_002dc-to-copy-97">C-c to copy</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-C_002dv-to-paste-99">C-v to paste</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-C_002dx-to-cut-98">C-x to cut</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-caps_002dlock_002c-swapping-with-control-key-76">caps-lock, swapping with control key</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-checking-that-HOME-is-set-correctly-56">checking that HOME is set correctly</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-clean-Emacs-registry-settings-106">clean Emacs registry settings</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-clipboard-encoding-142">clipboard encoding</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-clipboard_002c-corruption-of-140">clipboard, corruption of</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-clipboard_002c-NUL-characters-139">clipboard, NUL characters</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-color-images_002c-installing-support-for-images-in-Emacs-44">color images, installing support for images in Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-compile_002c-setting-default-command-368">compile, setting default command</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-compiling-Emacs-19">compiling Emacs</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-completion_002c-using-forward-slashes-in-shell-buffers-267">completion, using forward slashes in shell buffers</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-COMSPEC_002c-effect-on-subprocesses-of-subprocesses-272">COMSPEC, effect on subprocesses of subprocesses</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-console_002c-window-size-124">console, window size</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-control-key_002c-swapping-with-caps_002dlock-77">control key, swapping with caps-lock</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-copy-with-C_002dc-96">copy with C-c</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-CUA-keybindings-91">CUA keybindings</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-cut-with-C_002dx-95">cut with C-x</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-cvs-hanging-when-login-needed-220">cvs hanging when login needed</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-CVS_002c-getting-Emacs-16">CVS, getting Emacs</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-cvs_002c-version-control-integration-with-Emacs-384">cvs, version control integration with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-cygwin-bash-as-shell-within-Emacs-241">cygwin bash as shell within Emacs</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-cygwin-environment-398">cygwin environment</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-cygwin-mount-points_002c-using-within-Emacs-251">cygwin mount points, using within Emacs</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-cygwin-paths_002c-using-within-Emacs-249">cygwin paths, using within Emacs</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-cygwin-symlinks-in-dired-255">cygwin symlinks in dired</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-cygwin_002c-library-conflicts-399">cygwin, library conflicts</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-cygwin_002c-quoting-arguments-212">cygwin, quoting arguments</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-debugging-Emacs-20">debugging Emacs</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-debugging-Emacs-with-GDB-24">debugging Emacs with GDB</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-debugging-Emacs-with-MS-DevStudio-27">debugging Emacs with MS DevStudio</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-debugging-init-problems-55">debugging init problems</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-delete-Emacs-directory-110">delete Emacs directory</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-delete_002dselection_002dmode-88">delete-selection-mode</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-Desktop_002c-finding-where-it-is-67">Desktop, finding where it is</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-DevStudio_002c-debugging-Emacs-with-26">DevStudio, debugging Emacs with</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-DevStudio_002c-keeping-source-in-sync-371">DevStudio, keeping source in sync</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-DevStudio_002c-load-in-Emacs-command-376">DevStudio, load in Emacs command</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-DevStudio_002c-using-Emacs-as-editor-in-360">DevStudio, using Emacs as editor in</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-dired_002c-interpreting-symlinks-the-same-way-as-cygwin-253">dired, interpreting symlinks the same way as cygwin</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-dired_002c-using-an-external-ls-program-252">dired, using an external ls program</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-DOS-line-ends-196">DOS line ends</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-DOS-port-6">DOS port</a>: <a href="#Introduction">Introduction</a></li>
+<li><a href="#index-echo_002c-suppressing-for-shell-input-258">echo, suppressing for shell input</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-Emacs-debugging-22">Emacs debugging</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-Emacs-Development-18">Emacs Development</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-Emacs-distribution_002c-checking-digital-signatures-341">Emacs distribution, checking digital signatures</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-Emacs-source-code-14">Emacs source code</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-emacsclient_002c-associating-files-with-58">emacsclient, associating files with</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-emacsclient_002c-calling-from-Visual-Studio-379">emacsclient, calling from Visual Studio</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-EmacsW32-9"><code>EmacsW32</code></a>: <a href="#Introduction">Introduction</a></li>
+<li><a href="#index-encoding_002c-clipboard-143">encoding, clipboard</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-encryption-337">encryption</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-EOF_002c-sending-to-subprocesses-232">EOF, sending to subprocesses</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-exchange-mouse_002d2-and-mouse_002d3-buttons-135">exchange mouse-2 and mouse-3 buttons</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-Explorer_002c-associating-Emacs-with-files-in-57">Explorer, associating Emacs with files in</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-extracting-Emacs-distribution-29">extracting Emacs distribution</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-failure-to-run_002c-Emacs-113">failure to run, Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-faqs_002c-general-420">faqs, general</a>: <a href="#Further-information">Further information</a></li>
+<li><a href="#index-faqs_002c-old-421">faqs, old</a>: <a href="#Further-information">Further information</a></li>
+<li><a href="#index-file-associations-59">file associations</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-find_002c-the-POSIX-command-354">find, the POSIX command</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-find_002c-using-with-grep-353">find, using with grep</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-finding-the-Desktop-68">finding the Desktop</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-findstr-348">findstr</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-findstr_002c-recursive-352">findstr, recursive</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-firewall_002c-bad-interaction-with-276">firewall, bad interaction with</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-firewall_002c-bad-interaction-with-119">firewall, bad interaction with</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-floppy-drive_002c-access-when-subprocesses-started-227">floppy drive, access when subprocesses started</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-flyspell-334">flyspell</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-font-dialog_002c-using-a-menu-instead-192">font dialog, using a menu instead</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-font-dialog_002c-using-to-find-font-names-151">font dialog, using to find font names</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-font-menu_002c-adding-fonts-194">font menu, adding fonts</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-font-XLFD-name-format-149">font XLFD name format</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-fontconfig-font-names-in-Emacs-23-150">fontconfig font names in Emacs 23</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-fonts_002c-displaying-a-menu-190">fonts, displaying a menu</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-fonts_002c-localized-font-names-180">fonts, localized font names</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-fonts_002c-where-to-find-172">fonts, where to find</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-fontsets_002c-defining-165">fontsets, defining</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-fontsets_002c-displaying-a-menu-191">fontsets, displaying a menu</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-forward-slashes-for-completion-in-shell-buffers-268">forward slashes for completion in shell buffers</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-ftp_002c-client-hanging-215">ftp, client hanging</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-ftp_002c-using-within-Emacs-310">ftp, using within Emacs</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-full_002dscreen-console-programs_002c-as-subprocesses-214">full-screen console programs, as subprocesses</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-garbage-on-the-clipboard-141">garbage on the clipboard</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-GDB_002c-debugging-Emacs-with-23">GDB, debugging Emacs with</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-gif_002c-installing-image-support-in-Emacs-40">gif, installing image support in Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-git_002c-version-control-integration-with-Emacs-387">git, version control integration with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-GNU-intlfonts_002c-for-displaying-all-languages-163">GNU intlfonts, for displaying all languages</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-GNU-intlfonts_002c-using-183">GNU intlfonts, using</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-GNU-intlfonts_002c-where-to-get-175">GNU intlfonts, where to get</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-gnus_002c-attachments-305">gnus, attachments</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-gnus_002c-mail-and-news-client-300">gnus, mail and news client</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-gnuwin32-tools-409">gnuwin32 tools</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-gpg_002c-Windows-binaries-338">gpg, Windows binaries</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-grep-347">grep</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-grep_002c-recursive-through-subdirectories-351">grep, recursive through subdirectories</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-GTK-image-libraries-413">GTK image libraries</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-HELLO-file_002c-displaying-all-161">HELLO file, displaying all</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-help_002c-mailing-lists-426">help, mailing lists</a>: <a href="#Further-information">Further information</a></li>
+<li><a href="#index-help_002c-manuals-and-other-sources-422">help, manuals and other sources</a>: <a href="#Further-information">Further information</a></li>
+<li><a href="#index-hg_002c-version-control-integration-with-Emacs-391">hg, version control integration with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-highlighting-the-selected-region-85">highlighting the selected region</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-HOME-directory-49">HOME directory</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-image-libraries_002c-development-412">image libraries, development</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-image-libraries_002c-gnuwin32-411">image libraries, gnuwin32</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-image-libraries_002c-GTK-414">image libraries, GTK</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-images_002c-installing-libraries-for-37">images, installing libraries for</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-imap_002c-using-Gnus-299">imap, using Gnus</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-init-file-48">init file</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-init_002eel-52">init.el</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-installing-Emacs-34">installing Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-interactive-shell_002c-using-235">interactive shell, using</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-Internet-Explorer_002c-view-source-in-Emacs-63">Internet Explorer, view source in Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-interoperability-with-cygwin-401">interoperability with cygwin</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-intlfonts_002c-for-displaying-all-languages-164">intlfonts, for displaying all languages</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-intlfonts_002c-using-184">intlfonts, using</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-intlfonts_002c-where-to-get-176">intlfonts, where to get</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-ispell-332">ispell</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-italic-fonts-154">italic fonts</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-jpeg_002c-installing-image-support-in-Emacs-38">jpeg, installing image support in Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-key-layout_002c-customizing-75">key layout, customizing</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-killing-subprocesses_002c-Windows-95_002f98_002fME-230">killing subprocesses, Windows 95/98/ME</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-language-support_002c-finding-fonts-171">language support, finding fonts</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-language-support_002c-fonts-162">language support, fonts</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-language-support_002c-forcing-Emacs-to-use-specific-fonts-166">language support, forcing Emacs to use specific fonts</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-language-support_002c-third-party-programs-on-Windows-9x_002fME-178">language support, third party programs on Windows 9x/ME</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-latest-development-version-of-Emacs-17">latest development version of Emacs</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-latex-329">latex</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-library-conflicts-with-cygwin-400">library conflicts with cygwin</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-line-ends_002c-automatic-detection-199">line ends, automatic detection</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-line-ends_002c-determining-by-filename-200">line ends, determining by filename</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-line-ends_002c-determining-by-filesystem-203">line ends, determining by filesystem</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-locating-files-on-the-Desktop-69">locating files on the Desktop</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-Mac-line-ends-198">Mac line ends</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-mail_002c-attachments-in-gnus-307">mail, attachments in gnus</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-mail_002c-incoming-with-Gnus-297">mail, incoming with Gnus</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-mail_002c-incoming-with-rmail-290">mail, incoming with rmail</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-mail_002c-other-options-301">mail, other options</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-mail_002c-outgoing-280">mail, outgoing</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-MAILHOST-294">MAILHOST</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-mailing-lists-425">mailing lists</a>: <a href="#Further-information">Further information</a></li>
+<li><a href="#index-mailto-urls_002c-associating-with-Emacs-64">mailto urls, associating with Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-man-pages-416">man pages</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-manuals-423">manuals</a>: <a href="#Further-information">Further information</a></li>
+<li><a href="#index-marked-region_002c-highlighting-86">marked region, highlighting</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-maximize-frames-from-lisp-100">maximize frames from lisp</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-mcvs_002c-version-control-integration-with-Emacs-393">mcvs, version control integration with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-Meadow-8"><code>Meadow</code></a>: <a href="#Introduction">Introduction</a></li>
+<li><a href="#index-mercurial_002c-version-control-integration-with-Emacs-390">mercurial, version control integration with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-mh_002de_002c-mail-client-304">mh-e, mail client</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-middle-button_002c-on-wheel-mouse-344">middle button, on wheel mouse</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-middle-mouse-button_002c-simulating-132">middle mouse button, simulating</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-MIME_002c-configuration-for-Gnus-309">MIME, configuration for Gnus</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-mingw-tools-404">mingw tools</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-minimize-frames-from-lisp-101">minimize frames from lisp</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-monochrome-images_002c-getting-color-images-in-Emacs-45">monochrome images, getting color images in Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-monotone_002c-version-control-integration-with-Emacs-392">monotone, version control integration with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-mount-points_002c-cygwin-250">mount points, cygwin</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-mouse-buttons_002c-problems-with-128">mouse buttons, problems with</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-mouse-over-to-focus-73">mouse over to focus</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-mouse-wheel-342">mouse wheel</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-movemail_002c-using-pop3-293">movemail, using pop3</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-MSVC_002b_002b_002c-compiling-within-Emacs-364">MSVC++, compiling within Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-MSVC_002b_002b_002c-debugging-Emacs-with-25">MSVC++, debugging Emacs with</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-MSVC_002b_002b_002c-environment-variables-367">MSVC++, environment variables</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-MSVC_002b_002b_002c-keeping-source-in-sync-373">MSVC++, keeping source in sync</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-MSVC_002b_002b_002c-load-in-Emacs-command-378">MSVC++, load in Emacs command</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-MSVC_002b_002b_002c-using-Emacs-as-editor-with-361">MSVC++, using Emacs as editor with</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-msys-environment-405">msys environment</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-MULE_002c-finding-fonts-173">MULE, finding fonts</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-MULE_002c-fonts-160">MULE, fonts</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-MULE_002c-fontsets-167">MULE, fontsets</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-multilingual-display_002c-finding-fonts-174">multilingual display, finding fonts</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-multilingual-display_002c-fonts-159">multilingual display, fonts</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-multilingual-display_002c-fontsets-168">multilingual display, fontsets</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-multilingual-display_002c-third-party-programs-on-Windows-9x_002fME-177">multilingual display, third party programs on Windows 9x/ME</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-news-urls_002c-associating-with-Emacs-65">news urls, associating with Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-nmake_002c-as-default-compile-command-369">nmake, as default compile command</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-nmake_002c-Incorrect-DOS-version-messages-270">nmake, Incorrect DOS version messages</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-openssh-318">openssh</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-other-ports-of-Emacs-5">other ports of Emacs</a>: <a href="#Introduction">Introduction</a></li>
+<li><a href="#index-other-sources-of-information-419">other sources of information</a>: <a href="#Further-information">Further information</a></li>
+<li><a href="#index-output-not-displaying_002c-subprocesses-218">output not displaying, subprocesses</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-overwriting-the-selected-region-89">overwriting the selected region</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-paste-with-C_002dv-94">paste with C-v</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-perl_002c-avoiding-buffering-when-used-as-a-subprocess-of-Emacs-226">perl, avoiding buffering when used as a subprocess of Emacs</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-perl_002c-debugging-within-Emacs-394">perl, debugging within Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-perldb_002c-using-with-Emacs-395">perldb, using with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-pgp-encryption_002c-with-GNU-Privacy-Guard-339">pgp encryption, with GNU Privacy Guard</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-plink-320">plink</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-png_002c-installing-image-support-in-Emacs-39">png, installing image support in Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-point-and-mark_002c-highlighting-the-region-between-87">point and mark, highlighting the region between</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-point-to-focus-72">point to focus</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-pop3_002c-using-Gnus-298">pop3, using Gnus</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-pop3_002c-using-rmail-291">pop3, using rmail</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-precompiled-binaries-11">precompiled binaries</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-preview_002dlatex-330">preview-latex</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-printing-208">printing</a>: <a href="#Printing">Printing</a></li>
+<li><a href="#index-PuTTY-319">PuTTY</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-quoting-arguments-to-subprocesses-210">quoting arguments to subprocesses</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-rcs_002c-version-control-integration-with-Emacs-385">rcs, version control integration with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-recursive-searching-with-grep-350">recursive searching with grep</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-region_002c-highlighting-84">region, highlighting</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-registry_002c-cleaning-the-Emacs-settings-107">registry, cleaning the Emacs settings</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-registry_002c-setting-the-HOME-directory-in-53">registry, setting the HOME directory in</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-remote-hosts-via-ftp-313">remote hosts via ftp</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-remote-hosts-via-ssh-317">remote hosts via ssh</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-remove-Emacs-105">remove Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-revision-control_002c-integration-with-Emacs-382">revision control, integration with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-rmail_002c-mail-client-292">rmail, mail client</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-scan-all-files_002c-anti_002dvirus-option-causing-problems-277">scan all files, anti-virus option causing problems</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-scan-all-files_002c-anti_002dvirus-option-causing-problems-120">scan all files, anti-virus option causing problems</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-scan-codes_002c-modifying-74">scan codes, modifying</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-scope-of-FAQ-1">scope of FAQ</a>: <a href="#Introduction">Introduction</a></li>
+<li><a href="#index-scrolling_002c-with-mouse-wheel-345">scrolling, with mouse wheel</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-searching-through-files-with-grep-346">searching through files with grep</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-selection_002c-highlighting-83">selection, highlighting</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-setbuf_002c-using-in-subprocesses-to-prevent-buffering-224">setbuf, using in subprocesses to prevent buffering</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-setvbuf_002c-using-in-subprocesses-to-prevent-buffering-225">setvbuf, using in subprocesses to prevent buffering</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-shell-commands-not-working-273">shell commands not working</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-shell-commands_002c-suppressing-echo-259">shell commands, suppressing echo</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-shell-specific-arguments-266">shell specific arguments</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-shell-terminates-when-EOF-sent-to-subprocess-233">shell terminates when EOF sent to subprocess</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-shell-within-emacs_002c-using-236">shell within emacs, using</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-shell_002c-Incorrect-DOS-version-messages-271">shell, Incorrect DOS version messages</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-shell_002c-interacting-badly-with-anti_002dvirus-279">shell, interacting badly with anti-virus</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-shell_002c-interacting-badly-with-anti_002dvirus-122">shell, interacting badly with anti-virus</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-shell_002c-using-cygwin-bash-within-Emacs-242">shell, using cygwin bash within Emacs</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-shift-key_002c-selecting-with-92">shift key, selecting with</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-shutdown_002c-complaints-about-cmdproxy_002eexe-running-231">shutdown, complaints about cmdproxy.exe running</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-signatures-on-Emacs-distribution_002c-checking-340">signatures on Emacs distribution, checking</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-simulating-three-button-mouse-with-two-buttons-133">simulating three button mouse with two buttons</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-smtp-server-281">smtp server</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-sound_002c-changing-the-beep-146">sound, changing the beep</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-source-control_002c--integration-with-Emacs-383">source control,  integration with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-source-for-Emacs-15">source for Emacs</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-spell-checking-331">spell checking</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-SQL-subprocess-hanging-219">SQL subprocess hanging</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-ssh_002c-accessing-remote-hosts-within-Emacs-316">ssh, accessing remote hosts within Emacs</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-ssh_002c-password-prompt-not-appearing-when-using-with-cvs-221">ssh, password prompt not appearing when using with cvs</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-standard-Windows-keybindings-93">standard Windows keybindings</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-Start-Menu_002c-creating-icons-for-Emacs-36">Start Menu, creating icons for Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-Start-Menu_002c-removing-Emacs-from-108">Start Menu, removing Emacs from</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-sub_002dprocesses_002c-quoting-arguments-to-211">sub-processes, quoting arguments to</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-subprocess-starting-causes-floppy-drive-access-228">subprocess starting causes floppy drive access</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-subprocess_002c-killing-on-Windows-95_002f98_002fME-229">subprocess, killing on Windows 95/98/ME</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-subprocesses-209">subprocesses</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-subprocesses_002c-buffering-output-217">subprocesses, buffering output</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-subprocesses_002c-cygwin-tools-402">subprocesses, cygwin tools</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-subprocesses_002c-gnuwin32-410">subprocesses, gnuwin32</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-subprocesses_002c-hanging-when-reading-input-213">subprocesses, hanging when reading input</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-subprocesses_002c-interacting-badly-with-anti_002dvirus-123">subprocesses, interacting badly with anti-virus</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-subprocesses_002c-mingw-and-msys-406">subprocesses, mingw and msys</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-subprocesses_002c-useful-tools-397">subprocesses, useful tools</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-subprocesses_002c-uwin-408">subprocesses, uwin</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-supported-versions-of-Windows-4">supported versions of Windows</a>: <a href="#Introduction">Introduction</a></li>
+<li><a href="#index-svn_002c-version-control-integration-with-Emacs-386">svn, version control integration with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-swap-right-and-middle-mouse-buttons-134">swap right and middle mouse buttons</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-symlinks-in-dired_002c-interpreting-the-same-way-as-cygwin-254">symlinks in dired, interpreting the same way as cygwin</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-synthesized-italic-and-bold-fonts-155">synthesized italic and bold fonts</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-system-menu_002c-simulating-from-lisp-103">system menu, simulating from lisp</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-tar_002egz-files_002c-how-to-unpack-Emacs-sources-33">tar.gz files, how to unpack Emacs sources</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-telnet-client_002c-that-works-with-Emacs-325">telnet client, that works with Emacs</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-telnet_002c-display-size-problems-running-emacs-over-125">telnet, display size problems running emacs over</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-telnet_002c-in-Emacs-323">telnet, in Emacs</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-tex-326">tex</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-third-mouse-button_002c-simulating-131">third mouse button, simulating</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-tiff_002c-installing-image-support-in-Emacs-41">tiff, installing image support in Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-toolbar_002c-installing-color-icons-in-43">toolbar, installing color icons in</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-tramp_002c-ftp-312">tramp, ftp</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-tramp_002c-ssh-315">tramp, ssh</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-transient_002dmark_002dmode-82">transient-mark-mode</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-troubleshooting-init-problems-54">troubleshooting init problems</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-troubleshooting-installation-problems-111">troubleshooting installation problems</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-two-button-mouse-130">two button mouse</a>: <a href="#Display-Settings">Display Settings</a></li>
+<li><a href="#index-typesetting-327">typesetting</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-UI_002c-making-Emacs-more-like-other-Windows-apps-81">UI, making Emacs more like other Windows apps</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-uninstall-Emacs-104">uninstall Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-Unix-line-ends-197">Unix line ends</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-unpacking-Emacs-distribution-28">unpacking Emacs distribution</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-untarring-Emacs-distribution-31">untarring Emacs distribution</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-unzipping-Emacs-distribution-30">unzipping Emacs distribution</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-upgrading-Emacs-109">upgrading Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-URLs_002c-associating-mail-and-news-URLs-with-Emacs-66">URLs, associating mail and news URLs with Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-useful-tools-396">useful tools</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-uwin-environment-407">uwin environment</a>: <a href="#Other-useful-ports">Other useful ports</a></li>
+<li><a href="#index-vcvars32_002ebat-366">vcvars32.bat</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-version-control_002c-integration-with-Emacs-381">version control, integration with Emacs</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-virus-reported-in-Emacs-115">virus reported in Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-virus-software_002c-bad-interaction-with-275">virus software, bad interaction with</a>: <a href="#Sub_002dprocesses">Sub-processes</a></li>
+<li><a href="#index-virus-software_002c-bad-interaction-with-118">virus software, bad interaction with</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-VisEmacs_002c-add-in-for-MS-Developer-Studio-363">VisEmacs, add in for MS Developer Studio</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-Visual-Studio_002c-keeping-source-in-sync-372">Visual Studio, keeping source in sync</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-Visual-Studio_002c-load-in-Emacs-command-377">Visual Studio, load in Emacs command</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-Visual-Studio_002c-using-Emacs-as-editor-in-362">Visual Studio, using Emacs as editor in</a>: <a href="#Developing-with-Emacs">Developing with Emacs</a></li>
+<li><a href="#index-vm_002c-mail-client-303">vm, mail client</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-wanderlust_002c-mail-and-news-client-302">wanderlust, mail and news client</a>: <a href="#Network-access">Network access</a></li>
+<li><a href="#index-wheel-mouse-343">wheel mouse</a>: <a href="#Text-and-Utility-modes">Text and Utility modes</a></li>
+<li><a href="#index-where-to-get-Emacs-binaries-12">where to get Emacs binaries</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-where-to-get-sources-13">where to get sources</a>: <a href="#Getting-Emacs">Getting Emacs</a></li>
+<li><a href="#index-Why-Windows-2">Why Windows</a>: <a href="#Introduction">Introduction</a></li>
+<li><a href="#index-wiki-424">wiki</a>: <a href="#Further-information">Further information</a></li>
+<li><a href="#index-window-not-appearing_002c-Emacs-112">window not appearing, Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-Windows-3_002e11-port-7">Windows 3.11 port</a>: <a href="#Introduction">Introduction</a></li>
+<li><a href="#index-windows-key_002c-use-as-alt-78">windows key, use as alt</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-Windows_002c-making-Emacs-act-more-like-80">Windows, making Emacs act more like</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-Windows_002c-versions-3">Windows, versions</a>: <a href="#Introduction">Introduction</a></li>
+<li><a href="#index-WM_005fSYSCOMMAND_002c-sending-system-commands-from-lisp-102">WM_SYSCOMMAND, sending system commands from lisp</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-X_002c-making-Windows-behave-like-70">X, making Windows behave like</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-XEmacs-10"><code>XEmacs</code></a>: <a href="#Introduction">Introduction</a></li>
+<li><a href="#index-XLFD-font-names-148">XLFD font names</a>: <a href="#Fonts-and-text-translation">Fonts and text translation</a></li>
+<li><a href="#index-xpm_002c-installing-image-support-in-Emacs-42">xpm, installing image support in Emacs</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+<li><a href="#index-zip-files_002c-how-to-unpack-Emacs-binaries-32">zip files, how to unpack Emacs binaries</a>: <a href="#Installing-Emacs">Installing Emacs</a></li>
+   </ul><div class="footnote">
+<hr>
+<a name="texinfo-footnotes-in-document"></a><h4>Footnotes</h4><p class="footnote"><small>[<a name="fn-1" href="#fnd-1">1</a>]</small> <a href="http://www.gnu.org/order/ftp.html">GNU FTP mirrors</a></p>
+
+   <hr></div>
+
+
+
+
+
+
+</body></html>

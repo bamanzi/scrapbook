@@ -1,0 +1,606 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" dir="ltr" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		
+		<meta name="keywords" content="Lazarus For Delphi Users,Anchor Docking,Code Conversion Guide,Compile With Delphi,Free Pascal,LCL Unicode Support,Lazarus For Delphi Users/de,Lazarus For Delphi Users/es,Lazarus For Delphi Users/fr,Lazarus For Delphi Users/ja,Lazarus For Delphi Users/pt">
+<link rel="shortcut icon" href="favicon.ico">
+<link rel="search" type="application/opensearchdescription+xml" href="http://wiki.lazarus.freepascal.org/opensearch_desc.php" title="Lazarus-ccr (English)">
+<link title="Creative Commons" type="application/rdf+xml" href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=creativecommons" rel="meta">
+<link rel="copyright" href="http://sourceforge.net/">
+		<title>Lazarus For Delphi Users - Lazarus wiki</title>
+		
+		
+		
+ 		
+		
+ 		<link href="http://wiki.lazarus.freepascal.org/skins/css/fp-navl.css" rel="alternate stylesheet" type="text/css" title="Nav-Left">
+		<!--[if lt IE 5.5000]><style type="text/css">@import "/skins/monobook/IE50Fixes.css?42b";</style><![endif]-->
+		<!--[if IE 5.5000]><style type="text/css">@import "/skins/monobook/IE55Fixes.css?42b";</style><![endif]-->
+		<!--[if IE 6]><style type="text/css">@import "/skins/monobook/IE60Fixes.css?42b";</style><![endif]-->
+		<!--[if IE 7]><style type="text/css">@import "/skins/monobook/IE70Fixes.css?42b";</style><![endif]-->
+		<!--[if lt IE 7]><script type="text/javascript" src="/skins/common/IEFixes.js?42b"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+		
+		
+                
+		
+		
+               
+		<!-- Head Scripts -->
+			
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ns-0 ltr page-Lazarus_For_Delphi_Users">
+<div id="header">
+ <div id="menu">
+  <a href="http://www.lazarus.freepascal.org/">Home</a>
+  <a href="http://www.lazarus.freepascal.org/modules.php?op=modload&amp;name=News&amp;file=index">News</a>
+  <a href="http://sourceforge.net/project/showfiles.php?group_id=89339">Download</a>
+  <a href="http://wiki.lazarus.freepascal.org/">Wiki</a>
+  <a href="http://forum.lazarus.freepascal.org/index.php?action=forum">Forums</a>
+  <a href="http://lazarus-ccr.sourceforge.net/docs/lcl/index.html">Documentation</a>
+  <a href="http://bugs.freepascal.org/set_project.php?project_id=1">Bug tracker</a>
+ </div>
+ <div class="spacer"></div>
+ <img src="lazlogo.gif" alt="Lazarus Logo">
+ <div id="welcome">
+  <a href="http://wiki.lazarus.freepascal.org/index.php?title=Special:Userlogin&amp;returnto=Lazarus_For_Delphi_Users">Log in / create account</a>
+ </div>
+ <h1>lazarus wiki</h1>
+ <h2>Open source GUI RAD IDE for Free Pascal</h2>
+</div>
+<div id="content">
+ <div id="sidebar">
+  <h1>Views</h1>
+   <div class="submenu">
+    <a class="selected" href="http://wiki.lazarus.freepascal.org/Lazarus_For_Delphi_Users">Article</a>
+    <a class="new" href="http://wiki.lazarus.freepascal.org/index.php?title=Talk:Lazarus_For_Delphi_Users&amp;action=edit">Discussion</a>
+    <a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit">Edit</a>
+    <a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=history">History</a>
+   </div>
+  <h1>Navigation</h1>
+   <div class="submenu">
+    <a href="http://wiki.lazarus.freepascal.org/Main_Page">Main Page</a>
+    <a href="http://wiki.lazarus.freepascal.org/Lazarus_Documentation">Documentation</a>
+    <a href="http://wiki.lazarus.freepascal.org/Lazarus_Faq">FAQ</a>
+    <a href="http://wiki.lazarus.freepascal.org/Components_and_Code_examples">Downloads</a>
+    <a href="http://wiki.lazarus.freepascal.org/Glossary">Glossary</a>
+    <a href="http://wiki.lazarus.freepascal.org/Special:Allpages">Index</a>
+    <a href="http://wiki.lazarus.freepascal.org/Special:Recentchanges">Recent changes</a>
+    <a href="http://wiki.lazarus.freepascal.org/Special:Random">Random page</a>
+    <a href="http://wiki.lazarus.freepascal.org/Help:Contents">Help</a>
+    </div>
+  <h1>Toolbox</h1>
+   <div class="submenu">
+     <a href="http://wiki.lazarus.freepascal.org/Special:Whatlinkshere/Lazarus_For_Delphi_Users">What links here</a>
+      <a href="http://wiki.lazarus.freepascal.org/Special:Recentchangeslinked/Lazarus_For_Delphi_Users">Related changes</a>
+     <a href="http://wiki.lazarus.freepascal.org/Special:Upload">Upload file</a>
+     <a href="http://wiki.lazarus.freepascal.org/Special:Specialpages">Special pages</a>
+     <a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;printable=yes">Printable version</a>
+    <a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;oldid=49231">Permanent link</a>
+   </div>
+  <h1><label for="searchInput">Wiki Search</label></h1>
+   <form action="http://wiki.lazarus.freepascal.org/Special:Search" id="searchform"><div>
+   <input id="searchInput" name="search" accesskey="f" value="" type="text">
+	<input name="go" class="searchButton" id="searchGoButton" value="Go" type="submit">&nbsp;
+	<input name="fulltext" class="searchButton" value="Search" type="submit">
+     </div></form>
+ </div>
+ <a name="top" id="top"></a>
+ <div id="mainbar">
+  <h1 class="firstHeading">Lazarus For Delphi Users</h1>
+  <div id="bodyContent">
+   <h3 id="siteSub">From Lazarus-ccr</h3>
+   <div id="contentSub"></div>
+   <div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>
+   <!-- start content -->
+<!-- Bad Behavior 2.0.11 run time: 2.892 ms --><p><small>
+<a href="http://wiki.lazarus.freepascal.org/Lazarus_For_Delphi_Users/de" title="Lazarus For Delphi Users/de"><b>Deutsch (de)</b></a> 
+<strong class="selflink"><b>English (en)</b></strong>
+<a href="http://wiki.lazarus.freepascal.org/Lazarus_For_Delphi_Users/es" title="Lazarus For Delphi Users/es"><b>Español (es)</b></a>
+<a href="http://wiki.lazarus.freepascal.org/Lazarus_For_Delphi_Users/fr" title="Lazarus For Delphi Users/fr"><b>Français (fr)</b></a>
+<a href="http://wiki.lazarus.freepascal.org/Lazarus_For_Delphi_Users/ja" title="Lazarus For Delphi Users/ja"><b>Japanese (ja)</b></a>
+<a href="http://wiki.lazarus.freepascal.org/Lazarus_For_Delphi_Users/pt" title="Lazarus For Delphi Users/pt"><b>Português (pt)</b></a>
+<a href="http://wiki.lazarus.freepascal.org/Lazarus_For_Delphi_Users/sk" title="Lazarus For Delphi Users/sk"><b>Slovensky (sk)</b></a>
+</small>
+</p><p>This writeup is for people who are interested in Lazarus and already know Delphi. It describes the differences between the two.
+</p>
+<table id="toc" class="toc" summary="Contents"><tbody><tr><td><div id="toctitle"><h2>Contents</h2> <span class="toctoggle">[<a href="javascript:toggleToc()" class="internal" id="togglelink">hide</a>]</span></div>
+<ul>
+<li class="toclevel-1"><a href="#Delphi_-.3E_Lazarus"><span class="tocnumber">1</span> <span class="toctext">Delphi -&gt; Lazarus</span></a>
+<ul>
+<li class="toclevel-2"><a href="#The_biggest_differences"><span class="tocnumber">1.1</span> <span class="toctext">The biggest differences</span></a></li>
+<li class="toclevel-2"><a href="#The_first_thing_to_do_when_converting_a_Delphi_project"><span class="tocnumber">1.2</span> <span class="toctext">The first thing to do when converting a Delphi project</span></a></li>
+<li class="toclevel-2"><a href="#Unicode_support"><span class="tocnumber">1.3</span> <span class="toctext">Unicode support</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#Delphi_IDE_-.3E_Lazarus_IDE"><span class="tocnumber">2</span> <span class="toctext">Delphi IDE -&gt; Lazarus IDE</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Projects"><span class="tocnumber">2.1</span> <span class="toctext">Projects</span></a></li>
+<li class="toclevel-2"><a href="#Source_Editor"><span class="tocnumber">2.2</span> <span class="toctext">Source Editor</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Example_for_Local_Variable_Completion"><span class="tocnumber">2.2.1</span> <span class="toctext">Example for Local Variable Completion</span></a></li>
+<li class="toclevel-3"><a href="#Example_for_Event_Assignment_Completion"><span class="tocnumber">2.2.2</span> <span class="toctext">Example for Event Assignment Completion</span></a></li>
+<li class="toclevel-3"><a href="#Example_for_Procedure_Call_Completion"><span class="tocnumber">2.2.3</span> <span class="toctext">Example for Procedure Call Completion</span></a></li>
+<li class="toclevel-3"><a href="#.22Word_Completion.22_Ctrl.2BW"><span class="tocnumber">2.2.4</span> <span class="toctext">"Word Completion" Ctrl+W</span></a></li>
+<li class="toclevel-3"><a href="#Supports_Include_files"><span class="tocnumber">2.2.5</span> <span class="toctext">Supports Include files</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#Designer"><span class="tocnumber">2.3</span> <span class="toctext">Designer</span></a>
+<ul>
+<li class="toclevel-3"><a href="#Object_Inspector"><span class="tocnumber">2.3.1</span> <span class="toctext">Object Inspector</span></a></li>
+<li class="toclevel-3"><a href="#Packages"><span class="tocnumber">2.3.2</span> <span class="toctext">Packages</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#VCL_-.3E_LCL"><span class="tocnumber">2.4</span> <span class="toctext">VCL -&gt; LCL</span></a>
+<ul>
+<li class="toclevel-3"><a href="#TControl.Font.2FTControl.ParentFont"><span class="tocnumber">2.4.1</span> <span class="toctext">TControl.Font/TControl.ParentFont</span></a></li>
+<li class="toclevel-3"><a href="#Control_Dragging.2FDocking"><span class="tocnumber">2.4.2</span> <span class="toctext">Control Dragging/Docking</span></a></li>
+<li class="toclevel-3"><a href="#TEdit.2FTCustomEdit"><span class="tocnumber">2.4.3</span> <span class="toctext">TEdit/TCustomEdit</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a href="#.28optional.29_TSplitter_-.3E_TPairSplitter"><span class="tocnumber">2.5</span> <span class="toctext">(optional) TSplitter -&gt; TPairSplitter</span></a></li>
+<li class="toclevel-2"><a href="#TCustomTreeView.2FTTreeView"><span class="tocnumber">2.6</span> <span class="toctext">TCustomTreeView/TTreeView</span></a></li>
+<li class="toclevel-2"><a href="#Messages_.2F_Events"><span class="tocnumber">2.7</span> <span class="toctext">Messages / Events</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#See_Also"><span class="tocnumber">3</span> <span class="toctext">See Also</span></a></li>
+</ul>
+</td></tr></tbody></table>
+<a name="Delphi_-.3E_Lazarus"></a><h2><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=1" title="Edit section: Delphi -&gt; Lazarus">edit</a>]</span> <span class="mw-headline"> Delphi -&gt; Lazarus </span></h2>
+<p>Lazarus is an Rapid Application Development (RAD) tool like Delphi. That means it comes with a visual component library and an IDE. The Lazarus component library (LCL) is very similar to Delphi's VCL. Most units, classes and properties have the same name and functionality. This makes porting easy. But Lazarus is *not* an 'open source Delphi clone'. So don't expect 100% compatibility.
+</p>
+<a name="The_biggest_differences"></a><h3><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=2" title="Edit section: The biggest differences">edit</a>]</span> <span class="mw-headline"> The biggest differences </span></h3>
+<p>Lazarus is completely open source, is written platform independent and uses the mighty <a href="http://wiki.lazarus.freepascal.org/Free_Pascal" title="Free Pascal">Free Pascal</a> compiler (FPC). FPC runs on more than 15 platforms. But not all packages and libs are ported, so Lazarus currently runs on Linux (i386, x86_64), FreeBSD (i386), Mac OS X (powerpc, i386) and Windows (i386, x86_64).
+</p><p><b> Lazarus is not complete  and nor, for that matter, is this text. We are always searching for new developers, packagers, porters, documentation writers, ... . </b>
+</p>
+<a name="The_first_thing_to_do_when_converting_a_Delphi_project"></a><h3><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=3" title="Edit section: The first thing to do when converting a Delphi project">edit</a>]</span> <span class="mw-headline"> The first thing to do when converting a Delphi project </span></h3>
+<p>Having opened Lazarus, you should go to to <b>Tools</b> and then <b>Convert Delphi Project to Lazarus Project</b>.  This won't do everything for you, but nonetheless will take you a good deal of the way. Note that the Lazarus IDE's conversion tools are generally one-way conversions. If you need to retain Delphi compatibility so you can compile your project with both Delphi and Lazarus, consider converting your files with the <a href="http://wiki.lazarus.freepascal.org/XDev_Toolkit" class="external text" title="http://wiki.lazarus.freepascal.org/XDev_Toolkit" rel="nofollow">XDev Toolkit</a> instead.
+</p>
+<a name="Unicode_support"></a><h3><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=4" title="Edit section: Unicode support">edit</a>]</span> <span class="mw-headline"> Unicode support </span></h3>
+<p>Versions of Delphi up to Delphi 2007 didn't support Unicode, but used Windows ANSI encoding. Delphi supports Unicode by using UTF-16 encoded strings from the 2009 version.
+</p><p>Lazarus on the other hand started its Unicode support earlier and uses UTF-8 encoded strings. For more information see <a href="http://wiki.lazarus.freepascal.org/LCL_Unicode_Support" title="LCL Unicode Support">LCL Unicode Support</a>.
+</p>
+<a name="Delphi_IDE_-.3E_Lazarus_IDE"></a><h2><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=5" title="Edit section: Delphi IDE -&gt; Lazarus IDE">edit</a>]</span> <span class="mw-headline"> Delphi IDE -&gt; Lazarus IDE </span></h2>
+<a name="Projects"></a><h3><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=6" title="Edit section: Projects">edit</a>]</span> <span class="mw-headline"> Projects </span></h3>
+<p>The main file of a Delphi application is the .dpr file. The main file of a Lazarus project is the .lpi file (Lazarus Project Information). A .dpr file is the program main source and the Delphi IDE stores some information about the compiler switches and units. A Lazarus application also has a .lpr file, which is also the main source file. But all other information is stored in the .lpi file. So, the important file is the .lpi file.
+</p><p>For example:
+</p><p>Delphi stores the paths of the units in the .dpr file. For instance: unit1 in 'path/Unit1.pas'. These 'in' paths are Delphi specific and are not read by the Lazarus IDE. Don't use them. Use instead the compiler options unit paths.
+</p><p>Delphi stores compiler options in the .dpr file. For instance {$APPTYPE CONSOLE}. These are ignored by the Lazarus IDE. Don't use them. Use instead the compiler options.
+</p><p><br>
+One important rule: There is <i>always</i> a project. 
+The only way to "close" a project is to exit lazarus or open another project. This is because a lazarus project is also a "session". This means, the current editor settings are also stored in the .lpi file and are restored when you reopen the project. For example: You are debugging an application, set a lot of breakpoints and bookmarks. You can save the project at any time, close lazarus or open another project. When you reopen the project, even on another computer, all your breakpoints, bookmarks, open files, cursor positions, jump history, ... are restored.
+</p>
+<a name="Source_Editor"></a><h3><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=7" title="Edit section: Source Editor">edit</a>]</span> <span class="mw-headline"> Source Editor </span></h3>
+<p>Nearly all keys and short cuts can be defined in environment-&gt;editor options-&gt;key mappings
+</p><p>The Lazarus IDE has a lot of tools for sources. Many of them look and work very similar to Delphi. But there is one important difference: Lazarus does not use the compiler to get code information. It parses the sources directly. This has a lot of important advantages:
+</p><p>The source editor works with "comments". For Delphi the comments in the source are just space between code. No code feature works there and when new code is auto inserted, your comments will travel. Under Lazarus you can do a find declaration even on code in comments. Although this is not completely reliable, it often works. And when new code is inserted, the IDE uses some heuristics to keep comment and code together. For example: It will not split the line "c: char; // comment".
+</p><p>Delphi's "Code Completion" (Ctrl+Space) is called "Identifier Completion" under Lazarus. The Lazarus term "Code Completion" is a feature, combining "Automatic Class Completion" (same as under Delphi), "Local Variable Completion" and "Event Assignment Completion". All of them are invoked by Ctrl+Shift+C and the IDE determines by the cursor position, what is meant.
+</p>
+<a name="Example_for_Local_Variable_Completion"></a><h4><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=8" title="Edit section: Example for Local Variable Completion">edit</a>]</span> <span class="mw-headline"> Example for Local Variable Completion </span></h4>
+<p>Assume you just created a new method and wrote the statement "i:=3;"
+</p><pre class="code"><span class="kw1">procedure</span> TForm1.<span class="me1">DoSomething</span>;
+<span class="kw1">begin</span>
+  i&nbsp;:= <span class="nu0">3</span>;
+<span class="kw1">end</span>;</pre>
+<p>Position the cursor over the identifier "i" and press <span class="keyboard-key" style="border: 0.2em outset rgb(206, 203, 199); background: none repeat scroll 0% 0% rgb(240, 236, 232); padding: 0.1em 0.4em; font-size: 0.8em; white-space: nowrap;">Ctrl</span>+<span class="keyboard-key" style="border: 0.2em outset rgb(206, 203, 199); background: none repeat scroll 0% 0% rgb(240, 236, 232); padding: 0.1em 0.4em; font-size: 0.8em; white-space: nowrap;"><span class="Unicode">⇧</span> Shift</span>+<span class="keyboard-key" style="border: 0.2em outset rgb(206, 203, 199); background: none repeat scroll 0% 0% rgb(240, 236, 232); padding: 0.1em 0.4em; font-size: 0.8em; white-space: nowrap;">C</span> to get:
+</p><p></p><pre class="code"><span class="kw1">procedure</span> TForm1.<span class="me1">DoSomething</span>;
+<span class="kw1">var</span> i: <span class="kw4">Integer</span>;
+<span class="kw1">begin</span>
+  i&nbsp;:= <span class="nu0">3</span>;
+<span class="kw1">end</span>;</pre>
+<a name="Example_for_Event_Assignment_Completion"></a><h4><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=9" title="Edit section: Example for Event Assignment Completion">edit</a>]</span> <span class="mw-headline"> Example for Event Assignment Completion </span></h4>
+<p>A nice feature of the object inspector is to auto create methods. You can get the source editor to create the events too.<br>
+For example:
+</p><p></p><pre class="code">Button1.<span class="me1">OnClick</span>:=</pre>
+<p>Position the cursor behind the assign operator ":=" and press <span class="keyboard-key" style="border: 0.2em outset rgb(206, 203, 199); background: none repeat scroll 0% 0% rgb(240, 236, 232); padding: 0.1em 0.4em; font-size: 0.8em; white-space: nowrap;">Ctrl</span>+<span class="keyboard-key" style="border: 0.2em outset rgb(206, 203, 199); background: none repeat scroll 0% 0% rgb(240, 236, 232); padding: 0.1em 0.4em; font-size: 0.8em; white-space: nowrap;"><span class="Unicode">⇧</span> Shift</span>+<span class="keyboard-key" style="border: 0.2em outset rgb(206, 203, 199); background: none repeat scroll 0% 0% rgb(240, 236, 232); padding: 0.1em 0.4em; font-size: 0.8em; white-space: nowrap;">C</span>.
+</p>
+<a name="Example_for_Procedure_Call_Completion"></a><h4><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=10" title="Edit section: Example for Procedure Call Completion">edit</a>]</span> <span class="mw-headline"> Example for Procedure Call Completion </span></h4>
+<p>Assume you just wrote the statement "DoSomething(Width);"
+</p><pre class="code"><span class="kw1">procedure</span> SomeProcedure;
+<span class="kw1">var</span>
+  Width: <span class="kw4">integer</span>;
+<span class="kw1">begin</span>
+  Width:=<span class="nu0">3</span>;
+  DoSomething<span class="br0">(</span>Width<span class="br0">)</span>;
+<span class="kw1">end</span>;</pre>
+<p>Position the cursor over the identifier "DoSomething" and press <span class="keyboard-key" style="border: 0.2em outset rgb(206, 203, 199); background: none repeat scroll 0% 0% rgb(240, 236, 232); padding: 0.1em 0.4em; font-size: 0.8em; white-space: nowrap;">Ctrl</span>+<span class="keyboard-key" style="border: 0.2em outset rgb(206, 203, 199); background: none repeat scroll 0% 0% rgb(240, 236, 232); padding: 0.1em 0.4em; font-size: 0.8em; white-space: nowrap;"><span class="Unicode">⇧</span> Shift</span>+<span class="keyboard-key" style="border: 0.2em outset rgb(206, 203, 199); background: none repeat scroll 0% 0% rgb(240, 236, 232); padding: 0.1em 0.4em; font-size: 0.8em; white-space: nowrap;">C</span> to get:
+</p><p></p><pre class="code"><span class="kw1">procedure</span> DoSomething<span class="br0">(</span>aWidth: <span class="kw4">LongInt</span><span class="br0">)</span>;
+<span class="kw1">begin</span>
+&nbsp;
+<span class="kw1">end</span>;
+&nbsp;
+<span class="kw1">procedure</span> SomeProcedure;
+<span class="kw1">var</span>
+  Width: <span class="kw4">integer</span>;
+<span class="kw1">begin</span>
+  Width:=<span class="nu0">3</span>;
+  DoSomething<span class="br0">(</span>Width<span class="br0">)</span>;
+<span class="kw1">end</span>;</pre>
+<a name=".22Word_Completion.22_Ctrl.2BW"></a><h4><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=11" title="Edit section: &quot;Word Completion&quot; Ctrl+W">edit</a>]</span> <span class="mw-headline"> "Word Completion" Ctrl+W </span></h4>
+<p>It works similar to the "Identifier Completion", but it does not work on pascal identifiers, but on all words. It lets you choose of all words in all open files beginning with the same letters.
+</p>
+<a name="Supports_Include_files"></a><h4><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=12" title="Edit section: Supports Include files">edit</a>]</span> <span class="mw-headline"> Supports Include files </span></h4>
+<p>Delphi didn't support them, and so you probably haven't created many include files yet. But include files have a big advantage: They make it possible writing platform (in)dependent code without messing your code with IFDEFs.
+For example: Method jumping, Class Completion, find declaration, .. all work with include files.
+</p><p>There are many options for the code features.
+</p>
+<a name="Designer"></a><h3><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=13" title="Edit section: Designer">edit</a>]</span> <span class="mw-headline"> Designer </span></h3>
+<p>- Guidelines
+</p>
+<a name="Object_Inspector"></a><h4><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=14" title="Edit section: Object Inspector">edit</a>]</span> <span class="mw-headline"> Object Inspector </span></h4>
+<p>In the Delphi and Lazarus IDE's the Object Inspector is used to edit component properties and assign events etc. The following are a few minor differences to note in use &nbsp;:
+</p>
+<ol><li> Starting in Delphi 5 there is an Object Treeview which can be used to navigate and select objects according to hierarchy in addition to the traditional drop down list in the Object Inspector. In Lazarus this is part of the Object Inspector and is used in place of the default drop-down, you can select to use/not use it from the right click menu with "Show Component Tree"
+</li><li> In Delphi double clicking on a blank event will auto create one and open the Source Editor to that position, in Lazarus there is a button to the right of the selected drop-down which performs this action instead.
+</li><li> In Delphi you must manually delete the name of an event in the edit to remove the attatchement, in Lazarus you can drop down and select "(None)".
+</li><li> Similarly to Events, double clicking regular properties such as boolean will not change the value, you must select it from a drop down. And to open those with an assigned editor form, you must click the '...' button to the right of the edit/drop-down
+</li></ol>
+<a name="Packages"></a><h4><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=15" title="Edit section: Packages">edit</a>]</span> <span class="mw-headline"> Packages </span></h4>
+<p>Can Lazarus install and use Delphi Packages?
+</p><p>No, because they require Delphi compiler magic.
+</p><p>Do we need ones specially made for lazarus?
+</p><p>Yes.
+Create a new package, save it in the package source directory (normally same
+directory of the .dpk file), add the LCL as required package and finally add
+the .pas files. 
+You can install it, or use it in your projects now. 
+There are some differences between Lazarus and Delphi packages, so please
+read 
+</p><p>- see docs/Packages.txt in the lazarus sources.
+</p>
+<a name="VCL_-.3E_LCL"></a><h3><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=16" title="Edit section: VCL -&amp;gt; LCL">edit</a>]</span> <span class="mw-headline"> VCL -&gt; LCL </span></h3>
+<p>While the VCL and the LCL both serve much of the same purpose - of an Object Oriented Component Hierarchy especially geared toward rapid application development, they are not identical. For instance while the VCL provides many non-visual components, the LCL tries to only provide visual, while most non-visual components (such as db access) are provided by the FCL, included with <a href="http://wiki.lazarus.freepascal.org/Free_Pascal" title="Free Pascal">Free Pascal</a> .
+</p><p>Additionally many controls may not exist in the LCL that are in the VCL, or vice versa, or even when controls do exist in both, they are not clones, and changes must be made in applications, components and controls if porting.
+</p><p>The following is an attempt to provide fairly complete descriptions of major differences or incompatiblities between the two for the Delphi user. It covers differences primarily with the VCL of D4 especially, though at times D5, D6, or D7 as well; and with the current LCL, as is in CVS. As such it may not always be accurate to the version of Delphi you are used to, or completely match the current LCL you have. If you see inacuracies between the following and the LCL as in CVS, or your Delphi feel free to append and modify so as to keep this as comprehensive as possible for all people.
+</p>
+<a name="TControl.Font.2FTControl.ParentFont"></a><h4><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=17" title="Edit section: TControl.Font/TControl.ParentFont">edit</a>]</span> <span class="mw-headline"> TControl.Font/TControl.ParentFont </span></h4>
+<p>In the VCL it is quite common and normal to use a specific font name and font properties such as bold and italics for controls, and expect this value to always be followed. Further is provided the TControl.ParentFont property which ensures that a control will always follow its parent's font. Again the implicit assumption being that these values will always be followed, even regardless of Windows Apearance Settings. 
+</p><p>This is not always true in the LCL, nor can it be. The LCL being cross-platform/cross-interface in nature prefers to take a balanced aproach, and instead will always try to use native Desktop/Toolkit Apearance or Theme settings on any widgets. For example if using a GTK interface, and the gtk theme supplies a specific font for buttons, then LCL buttons will always try to use this font. 
+</p><p>This means that most LCL controls do not have the same level of design control that is often expected in the VCL, rather only those custom controls which are Canvas drawn instead of interface allocated can consistantly be modified in this manner regardless of the Interface used.
+</p>
+<a name="Control_Dragging.2FDocking"></a><h4><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=18" title="Edit section: Control Dragging/Docking">edit</a>]</span> <span class="mw-headline"> Control Dragging/Docking </span></h4>
+<p>In the VCL most (Win)Controls implement methods and callback functions for handling dragging and docking of controls, eg. dragging a control from one panel, and docking it onto another panel at run time. 
+</p><p>This functionality is currently unimplemented/unfinished in the LCL, though it is currently in the initial stages of planning, and should eventually support some level of compatibility for this type of behavior, if not in the exact same manner. 
+</p><p>This currently means that no Control will inherit/use the following TControl functions, procedures, properties, or events  -
+</p><pre class="code"><span class="kw1">Protected</span>
+  <span class="kw1">function</span> GetDockEdge<span class="br0">(</span>MousePos: TPoint<span class="br0">)</span>: TAlign;
+  <span class="kw1">function</span> GetDragImages: TDragImageList;
+  <span class="kw1">function</span> GetFloating: <span class="kw4">Boolean</span>;
+  <span class="kw1">function</span> GetFloatingDockSiteClass: TWinControlClass;
+  <span class="kw1">procedure</span> DoEndDrag<span class="br0">(</span>Target:<span class="kw4">TObject</span><span class="br0">)</span>; X, Y: <span class="kw4">Integer</span><span class="br0">)</span>;
+  <span class="kw1">procedure</span> DockTrackNoTarget<span class="br0">(</span>Source: TDragDockObject; X, Y: <span class="kw4">Integer</span><span class="br0">)</span>;
+  <span class="kw1">procedure</span> DoEndDock<span class="br0">(</span>Target: <span class="kw4">TObject</span>; X, Y: <span class="kw4">Integer</span><span class="br0">)</span>;
+  <span class="kw1">procedure</span> DoDock<span class="br0">(</span>NewDockSite: TWinControl; <span class="kw1">var</span> ARect: TRect<span class="br0">)</span>;
+  <span class="kw1">procedure</span> DoStartDock<span class="br0">(</span><span class="kw1">var</span> DragObject: TDragObject<span class="br0">)</span>;
+  <span class="kw1">procedure</span> DragCanceled;
+  <span class="kw1">procedure</span> DragOver<span class="br0">(</span>Source: <span class="kw4">TObject</span>; X, Y: <span class="kw4">Integer</span>; State: TDragState;
+                    <span class="kw1">var</span> Accept: <span class="kw4">Boolean</span><span class="br0">)</span>;
+  <span class="kw1">procedure</span> DoEndDrag<span class="br0">(</span>Target: <span class="kw4">TObject</span>; X, Y: <span class="kw4">Integer</span><span class="br0">)</span>;
+  <span class="kw1">procedure</span> DoStartDrag<span class="br0">(</span><span class="kw1">var</span> DragObject: TDragObject<span class="br0">)</span>;
+  <span class="kw1">procedure</span> DrawDragDockImage<span class="br0">(</span>DragDockObject: TDragDockObject<span class="br0">)</span>;
+  <span class="kw1">procedure</span> EraseDragDockImage<span class="br0">(</span>DragDockObject: TDragDockObject<span class="br0">)</span>;
+  <span class="kw1">procedure</span> PositionDockRect<span class="br0">(</span>DragDockObject: TDragDockObject<span class="br0">)</span>;
+  <span class="kw1">procedure</span> SetDragMode<span class="br0">(</span>Value: TDragMode<span class="br0">)</span>;
+  <span class="kw1">property</span> DragKind: TDragKind;
+  <span class="kw1">property</span> DragCursor: TCursor;
+  <span class="kw1">property</span> DragMode: TDragMode;
+  <span class="kw1">property</span> OnDragDrop: TDragDropEvent;
+  <span class="kw1">property</span> OnDragOver: TDragOverEvent;
+  <span class="kw1">property</span> OnEndDock: TEndDragEvent;
+  <span class="kw1">property</span> OnEndDrag: TEndDragEvent;
+  <span class="kw1">property</span> OnStartDock: TStartDockEvent;
+  <span class="kw1">property</span> OnStartDrag: TStartDragEvent;
+<span class="kw1">public</span>
+  <span class="kw1">function</span> Dragging: <span class="kw4">Boolean</span>;
+  <span class="kw1">function</span> ManualDock<span class="br0">(</span>NewDockSite: TWinControl; DropControl: TControl;
+                     ControlSide: TAlign<span class="br0">)</span>: <span class="kw4">Boolean</span>;
+  <span class="kw1">function</span> ManualFloat<span class="br0">(</span>ScreenPos: TRect<span class="br0">)</span>: <span class="kw4">Boolean</span>;
+  <span class="kw1">function</span> ReplaceDockedControl<span class="br0">(</span>Control: TControl; NewDockSite: TWinControl;
+                      DropControl: TControl; ControlSide: TAlign<span class="br0">)</span>: <span class="kw4">Boolean</span>;
+  <span class="kw1">procedure</span> BeginDrag<span class="br0">(</span>Immediate: <span class="kw4">Boolean</span>; Threshold: <span class="kw4">Integer</span><span class="br0">)</span>;
+  <span class="kw1">procedure</span> Dock<span class="br0">(</span>NewDockSite: TWinControl; ARect: TRect<span class="br0">)</span>;
+  <span class="kw1">procedure</span> DragDrop<span class="br0">(</span>Source: <span class="kw4">TObject</span>; X, Y: <span class="kw4">Integer</span><span class="br0">)</span>;
+  <span class="kw1">procedure</span> EndDrag<span class="br0">(</span>Drop: <span class="kw4">Boolean</span><span class="br0">)</span>;
+  <span class="kw1">property</span> DockOrientation: TDockOrientation;
+  <span class="kw1">property</span> Floating: <span class="kw4">Boolean</span>;
+  <span class="kw1">property</span> FloatingDockSiteClass: TWinControlClass;
+  <span class="kw1">property</span> HostDockSite: TWinControl;
+  <span class="kw1">property</span> LRDockWidth: <span class="kw4">Integer</span>;
+  <span class="kw1">property</span> TBDockHeight: <span class="kw4">Integer</span>;
+  <span class="kw1">property</span> UndockHeight: <span class="kw4">Integer</span>;
+  <span class="kw1">property</span> UndockWidth: <span class="kw4">Integer</span>;</pre>
+<p>that the following classes do not exist/are unusable -
+</p><p></p><pre class="code">TDragImageList = <span class="kw1">class</span><span class="br0">(</span>TCustomImageList<span class="br0">)</span>
+TDockZone = <span class="kw1">class</span>
+TDockTree = <span class="kw1">class</span><span class="br0">(</span>TInterfacedObject, IDockManager<span class="br0">)</span>
+TDragObject = <span class="kw1">class</span><span class="br0">(</span><span class="kw4">TObject</span><span class="br0">)</span>
+TBaseDragControlObject = <span class="kw1">class</span><span class="br0">(</span>TDragObject<span class="br0">)</span>
+TDragControlObject = <span class="kw1">class</span><span class="br0">(</span>TBaseDragControlObject<span class="br0">)</span>
+TDragDockObject = <span class="kw1">class</span><span class="br0">(</span>TBaseDragControlObject<span class="br0">)</span></pre>
+<p>and that the following functions are also unusable/incompatible -
+</p><p></p><pre class="code"><span class="kw1">function</span> FindDragTarget<span class="br0">(</span><span class="kw1">const</span> <span class="kw3">Pos</span>: TPoint;
+                         AllowDisabled: <span class="kw4">Boolean</span><span class="br0">)</span>&nbsp;: TControl;
+<span class="kw1">procedure</span> CancelDrag;
+<span class="kw1">function</span> IsDragObject<span class="br0">(</span>sender: <span class="kw4">TObject</span><span class="br0">)</span>: <span class="kw4">Boolean</span>;</pre>
+<p>The start of docking manager is described here: <a href="http://wiki.lazarus.freepascal.org/Anchor_Docking" title="Anchor Docking">Anchor Docking</a>
+</p>
+<a name="TEdit.2FTCustomEdit"></a><h4><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=19" title="Edit section: TEdit/TCustomEdit">edit</a>]</span> <span class="mw-headline"> TEdit/TCustomEdit </span></h4>
+<p>The Edit controls, while functioning essentialy the same in the LCL as the VCL, do have some issues to be aware of in converting -
+</p>
+<ol><li> Due to restrictions in the Interfaces, TEdit.PasswordChar does not work in all interfaces yet(though in time it may), instead TCustomEdit.EchoMode emPassword should be used in the event text needs to be hidden.
+</li><li> On Drag/Dock Events are not yet implemented. For more information please see earlier section on <a href="#Control_Dragging.2FDocking" title=""> Control Dragging/Docking</a>.
+</li><li> Font Properties are usually ignored for interface consistancy, for detailed explanation as too why please see <a href="#TControl.Font.2FTControl.ParentFont" title=""> TControl.Font/TControl.ParentFont</a>
+</li></ol>
+<a name=".28optional.29_TSplitter_-.3E_TPairSplitter"></a><h3><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=20" title="Edit section: (optional) TSplitter -&amp;gt; TPairSplitter">edit</a>]</span> <span class="mw-headline"> (optional) TSplitter -&gt; TPairSplitter </span></h3>
+<p><b>Please Improve Me</b>
+</p><p>There is now a TSplitter control in the LCL, so no need to convert it.
+</p><p>Nevertheless, if you want, here it is explained:
+</p><p>The following is loosely based on questions by <a href="http://wiki.lazarus.freepascal.org/User:Vincent" title="User:Vincent"> Vincent Snijders</a> on the mailing list, and responses by <a href="http://lazarus-ccr.sourceforge.net/index.php?wiki=AndrewJohnson" class="external text" title="http://lazarus-ccr.sourceforge.net/index.php?wiki=AndrewJohnson" rel="nofollow">Andrew Johnson</a>:
+</p><p>In the VCL, "Splitting" controls, that is a handle which can be dragged between two components to give one more or less space then the other, is accomplished by a TSplitter. This is often seen, for instance in the Delphi IDE between the docked Code Explorer and Source Viewer. 
+</p><p>The LCL provides its own Control called a TPairSplitter, which serves the same type of purpose, however it is not compatible, so "repairing" broken VCL code or  Delphi DFM's will be necessary in the event of porting code, even though much is shared in common between the two.
+</p>
+<dl><dt>So what exactly are the differences?
+</dt></dl>
+<p>Well the biggest differences are a VCL TSplitter has no children, instead it is placed between two controls aligned properly, and allows resizing between them at runtime, regardless its own size. It must have two controls aligned on each side to do anything. A simple example would be form with a Left Aligned Panel, a left aligned Splitter, and a second client aligned panel. On run time you could then realign the size given each panel by dragging on the handle provided by this Splitter control.
+</p><p>On the LCL hand however,  a TPairSplitter is a special kind of control, with two panels, and it can only be usefull if the controls to split are on these panels, but it will still perform a split between those panel whether or not anything is on them. So following the prior example, you would have a form with a TPairSplitter aligned client, and a panel aligned client on its left side, and a panel aligned client on its right side.
+</p><p>The other important difference is that in the VCl, since the TSplitter is its own TControl, then the position is kept relative to the other controls on resize, so for instance a client panel will grow while the other panels will not, thus the split position is relative to the alignment of the split controls,
+</p><p>In the LCL since the side panels are separate then the TPairSplitter has a Position property which is absolute relative to top or left. so on resize the actual position does not change according to contents, so a callback must be set to ensure the ratio is kept on resize if this is important.
+</p><p>For example if the Right side of a vertical split needs to have alClient like behaviour, you need to add a form resize callback which does something like&nbsp;:
+</p>
+<pre>PairSplitter.Position&nbsp;:= PairSplitter.Width - PairSplitter.Position; 
+</pre>
+<dl><dt>So how can I convert existing code using TSplitter to the TPairSplitter?
+</dt></dl>
+<p>If the splitter and controls are created within an actual function(like form oncreate), conversion shouldn't be too difficult, primarily reorganize the code to create the controls in order of new hierarchy and set the parents of the child controls to split to the left/top and right/bottom portions of the PairSplitter. An example  of the changes being - 
+</p>
+<table class="code">
+
+<tbody><tr>
+<td class="header"> <b>VCL</b> </td><td class="header"> <b>LCL</b>
+</td></tr>
+<tr class="code">
+<td class="code">
+<p></p><pre class="code"><span class="kw1">var</span> 
+  BottomPanel: TPanel;
+  VerticalSplitter: TSplitter;
+  LeftPanel: TPanel;
+  HorizontalSplitter: TSplitter;
+  MainPanel: TPanel;
+&nbsp;
+<span class="kw1">begin</span>
+  BottomPanel:= TPanel.<span class="me1">Create</span><span class="br0">(</span><span class="kw2">Self</span><span class="br0">)</span>;
+  <span class="kw1">with</span> <span class="br0">(</span>BottomPanel<span class="br0">)</span> <span class="kw1">do</span>
+  <span class="kw1">begin</span>
+    Parent:= <span class="kw2">Self</span>;
+    Height:= <span class="nu0">75</span>;
+    Align:= alBottom;
+  <span class="kw1">end</span>;
+&nbsp;
+  VerticalSplitter:= TSplitter.<span class="me1">Create</span><span class="br0">(</span><span class="kw2">Self</span><span class="br0">)</span>;
+  <span class="kw1">with</span> <span class="br0">(</span>VerticalSplitter<span class="br0">)</span> <span class="kw1">do</span>
+  <span class="kw1">begin</span>
+    Parent:= <span class="kw2">Self</span>;
+    Align:= alBottom;
+  <span class="kw1">end</span>;
+&nbsp;
+  HorizontalSplitter:= TSplitter.<span class="me1">Create</span><span class="br0">(</span><span class="kw2">Self</span><span class="br0">)</span>;
+  <span class="kw1">with</span> <span class="br0">(</span>HorizontalSplitter<span class="br0">)</span> <span class="kw1">do</span>
+  <span class="kw1">begin</span>
+    Parent:= <span class="kw2">Self</span>;
+    align:= alLeft;
+  <span class="kw1">end</span>;
+&nbsp;
+  LeftPanel:= TPanel.<span class="me1">Create</span><span class="br0">(</span><span class="kw2">Self</span><span class="br0">)</span>;
+  <span class="kw1">with</span> <span class="br0">(</span>LeftPanel<span class="br0">)</span> <span class="kw1">do</span>
+  <span class="kw1">begin</span>
+    Parent:= <span class="kw2">Self</span>;
+    Width:= <span class="nu0">125</span>;
+    Align:= alLeft;
+  <span class="kw1">end</span>;
+&nbsp;
+  MainPanel:= TPanel.<span class="me1">Create</span><span class="br0">(</span><span class="kw2">Self</span><span class="br0">)</span>;
+  <span class="kw1">with</span> <span class="br0">(</span>MainPanel<span class="br0">)</span> <span class="kw1">do</span>
+  <span class="kw1">begin</span>
+    Parent:= <span class="kw2">Self</span>;
+    Align:= alClient;
+    Caption:= <span class="st0">'Hello'</span>;
+  <span class="kw1">end</span>;
+<span class="kw1">end</span>;</pre>
+</td><td class="code">
+<p></p><pre class="code"><span class="kw1">var</span>
+  BottomPanel: TPanel;
+  VerticalSplitter: TPairSplitter;
+  LeftPanel: TPanel;
+  HorizontalSplitter: TPairSplitter;
+  MainPanel: TPanel;
+&nbsp;
+<span class="kw1">begin</span>
+  VerticalSplitter:= TPairSplitter.<span class="me1">Create</span><span class="br0">(</span><span class="kw2">Self</span><span class="br0">)</span>;
+  <span class="kw1">with</span> <span class="br0">(</span>VerticalSplitter<span class="br0">)</span> <span class="kw1">do</span>
+  <span class="kw1">begin</span>
+    Parent:= <span class="kw2">Self</span>;
+    Align:= alClient;
+    Width:= <span class="kw2">Self</span>.<span class="me1">Width</span>;
+    Height:= <span class="kw2">Self</span>.<span class="me1">Height</span>;
+    SplitterType:= pstVertical;
+    Position:= Height - <span class="nu0">75</span>;
+    Sides<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me1">Width</span>:= Width;
+    Sides<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>.<span class="me1">Height</span>:= Position;
+  <span class="kw1">end</span>;
+&nbsp;
+  HorizontalSplitter:= TPairSplitter.<span class="me1">Create</span><span class="br0">(</span><span class="kw2">Self</span><span class="br0">)</span>;
+  <span class="kw1">with</span> <span class="br0">(</span>HorizontalSplitter<span class="br0">)</span> <span class="kw1">do</span>
+  <span class="kw1">begin</span>
+    Parent:= VerticalSplitter.<span class="me1">Sides</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>;
+    Width:= <span class="kw2">Self</span>.<span class="me1">Width</span>;
+    Height:= VerticalSplitter.<span class="me1">Position</span>;
+    align:= alClient;
+    SplitterType:= pstHorizontal;
+    Position:= <span class="nu0">125</span>;
+  <span class="kw1">end</span>;
+&nbsp;
+  LeftPanel:= TPanel.<span class="me1">Create</span><span class="br0">(</span><span class="kw2">Self</span><span class="br0">)</span>;
+  <span class="kw1">with</span> <span class="br0">(</span>LeftPanel<span class="br0">)</span> <span class="kw1">do</span>
+  <span class="kw1">begin</span>
+    Parent:= HorizontalSplitter.<span class="me1">Sides</span><span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span>;
+    Align:= alClient;
+  <span class="kw1">end</span>;
+&nbsp;
+  MainPanel:= TPanel.<span class="me1">Create</span><span class="br0">(</span><span class="kw2">Self</span><span class="br0">)</span>;
+  <span class="kw1">with</span> <span class="br0">(</span>MainPanel<span class="br0">)</span> <span class="kw1">do</span>
+  <span class="kw1">begin</span>
+    Parent:= HorizontalSplitter.<span class="me1">Sides</span><span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span>;
+    Align:= alClient;
+    Caption:= <span class="st0">'Hello'</span>;
+  <span class="kw1">end</span>;
+&nbsp;
+  BottomPanel:= TPanel.<span class="me1">Create</span><span class="br0">(</span><span class="kw2">Self</span><span class="br0">)</span>;
+  <span class="kw1">with</span> <span class="br0">(</span>BottomPanel<span class="br0">)</span> <span class="kw1">do</span>
+  <span class="kw1">begin</span>
+    Parent:= VerticalSplitter.<span class="me1">Sides</span><span class="br0">[</span><span class="nu0">1</span><span class="br0">]</span>;
+    Align:= alClient;
+  <span class="kw1">end</span>;
+<span class="kw1">end</span>;</pre>
+</td></tr></tbody></table>
+<p>So as you can see, farely consistant with most control hierarchy. And if you are familiar with DFM's, the changes needed for DFM-&gt;LFM conversion should be farely obvious from the above, as they are the same sort of changes in Parent/Owner etc.
+</p><p>So the above example would be something like -
+</p>
+<table class="code">
+
+<tbody><tr>
+<td class="header"> <b>Delphi DFM</b> <div style="font-weight: normal;"><b>(extraneous values removed)</b>
+</div></td><td class="header"> <b>Lazarus LFM</b> <div style="font-weight: normal;"><b>(most width, height, etc. removed)</b>
+</div></td></tr>
+<tr class="code">
+<td class="code">
+<p></p><pre class="code"><span class="kw1">object</span> VerticalSplitter: TSplitter
+  Height = <span class="nu0">3</span>
+  Cursor = crVSplit
+  Align = alBottom
+<span class="kw1">end</span>
+<span class="kw1">object</span> HorizontalSplitter: TSplitter
+  Width = <span class="nu0">3</span>
+  Align = alLeft
+<span class="kw1">end</span>
+<span class="kw1">object</span> BottomPanel: TPanel
+  Height = <span class="nu0">75</span>
+  Align = alBottom
+<span class="kw1">end</span>
+<span class="kw1">object</span> LeftPanel: TPanel
+  Width = <span class="nu0">125</span>
+  Align = alLeft
+<span class="kw1">end</span>
+<span class="kw1">object</span> MainPanel: TPanel
+  Align = alClient
+<span class="kw1">end</span></pre>
+</td><td class="code">
+<p></p><pre class="code"><span class="kw1">object</span> VerticalSplitter: TPairSplitter
+  Align = alClient
+  SplitterType = pstVertical
+  Position = <span class="nu0">225</span>
+  Height = <span class="nu0">300</span>
+  Width = <span class="nu0">400</span>
+  <span class="kw1">object</span> Pairsplitterside1: TPairSplitterIde
+    <span class="kw1">object</span> HorizontalSplitter: TPairSplitter
+      Align = alClient
+      Position = <span class="nu0">125</span>
+      <span class="kw1">object</span> Pairsplitterside3: TPairSplitterIde
+        Width = <span class="nu0">125</span>
+        <span class="kw1">object</span> LeftPanel: TPanel
+          Align = alClient
+          Width = <span class="nu0">125</span>
+        <span class="kw1">end</span>
+      <span class="kw1">end</span>
+      <span class="kw1">object</span> Pairsplitterside4: TPairSplitterIde
+        <span class="kw1">object</span> MainPanel: TPanel
+          Align = alClient
+        <span class="kw1">end</span>
+      <span class="kw1">end</span>
+    <span class="kw1">end</span>
+  <span class="kw1">end</span>
+  <span class="kw1">object</span> Pairsplitterside2: TPairSplitterIde
+    <span class="kw1">object</span> BottomPanel: TPanel
+      Align = alClient
+      Height = <span class="nu0">75</span>
+    <span class="kw1">end</span>
+  <span class="kw1">end</span>
+<span class="kw1">end</span></pre>
+</td></tr></tbody></table>
+<a name="TCustomTreeView.2FTTreeView"></a><h3><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=21" title="Edit section: TCustomTreeView/TTreeView">edit</a>]</span> <span class="mw-headline"> TCustomTreeView/TTreeView </span></h3>
+<p>Both VCL and the LCL provide a TCustomTreeView/TTreeView component, used for tree structured lists of data with multiple nodes and advanced selection and Image lists, and while actual features are comparable, not all properties are entirely compatible. Primary differences are as follows -
+</p><p><b>Incomplete list, also update to include TCustomTreeView Mark functions and protected methods </b>
+</p>
+<ol><li>  The LCL provides a TCustomTreeView.Options, a set of options which can be set on the control to change its behaviour and apearance. These options are&nbsp;:
+<ul><li> tvoAllowMultiselect - enables multi node select mode, equivalent to enabling TCustomTreeView.MultiSelect in the D6 VCL
+</li><li> tvoAutoExpand - Auto Expand nodes, equivalent to enabling TCustomTreeView.AutoExpand
+</li><li> tvoAutoInsertMark - Update the Drag preview on mouse move.
+</li><li> tvoAutoItemHeight - Adjust the item heights automatically.
+</li><li> tvoHideSelection - Do not mark the selected item.
+</li><li> tvoHotTrack  - use Hot Tracking, equivalent to enabling TCustomTreeview.HotTrack
+</li><li> tvoKeepCollapsedNodes - When shrinking/folding nodes, keep the child nodes
+</li><li> tvoReadOnly - make Treeview read only, equivalent to enabling TCustomTreeview.ReadOnly
+</li><li> tvoRightClickSelect - allow using Mouse Right Clicks to select nodes, equivalent to enabling TCustomTreeView.RightClickSelect
+</li><li> tvoRowSelect  - allow selecting rows, equivalent to enabling TCustomTreeView.RowSelect
+</li><li> tvoShowButtons  - show buttons, equivalent to enabling TCustomTreeView.ShowButtons
+</li><li> tvoShowLines - show node lines, equivalent to enabling TCustomTreeView.ShowLines
+</li><li> tvoShowRoot  - show root note, equivalent to enabling TCustomTreeView.ShowRoot
+</li><li> tvoShowSeparators  - show seperators
+</li><li> tvoToolTips - show tooltips for individual nodes
+</li></ul>
+</li><li> The LCL provides additional properties:
+<ul><li> TCustomTreeView.OnSelectionChange event
+</li><li> TCustomTreeView.DefaultItems, for the default number of Items
+</li><li> TCustomTreeView.ExpandSignType to determine sign used on expandable/collapsible nodes
+</li></ul>
+</li><li> While most On Drag/Dock Events are available in the LCL they do not work. For more information please see earlier section on Control Dragging/Docking.
+</li></ol>
+<a name="Messages_.2F_Events"></a><h3><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=22" title="Edit section: Messages / Events">edit</a>]</span> <span class="mw-headline"> Messages / Events </span></h3>
+<p>The order and frequency of messages and events (OnShow, OnActivate, OnEnter, ...) differ from the VCL and depend on the widgetset.
+The LCL provides a subset of WinAPI like messages to make porting of Delphi components easier, but almost all LCL messages work a little bit different than the VCL/WinAPI counterpart. The biggest part of Delphi code using WinAPI messages uses them, because the VCL lacks a feature or for speed reasons. Such things will seldom work the same under the LCL, so they must be checked manually. That's why LCL messages are called for example LM_SIZE instead of WM_SIZE (unit lmessages).
+</p><p><b>Note on handling of custom messages!</b>
+As of version 0.9.26 (December 2008), way of handling custom WinApi messages (e.g. WM_HOTKEY, WM_SYSCOMMAND) differs from the way of handling these messages in Delphi. At the moment you cannot handle them via <b>message</b> directive or via overriding of <i>WndProc</i> method of the form. The only way to handle them in the form is to hook Windows <i>windowproc</i> by yourself. Read more here: <a href="http://wiki.lazarus.freepascal.org/Win32/64_Interface#Processing_non-user_messages_in_your_window" title="Win32/64 Interface"> Processing non-user messages in your window</a>
+</p><p><br>
+</p>
+<a name="See_Also"></a><h2><span class="editsection">[<a href="http://wiki.lazarus.freepascal.org/index.php?title=Lazarus_For_Delphi_Users&amp;action=edit&amp;section=23" title="Edit section: See Also">edit</a>]</span> <span class="mw-headline">See Also</span></h2>
+<ul><li> <a href="http://wiki.lazarus.freepascal.org/Code_Conversion_Guide" title="Code Conversion Guide"> Code Conversion Guide (from Delphi &amp; Kylix)</a>
+</li><li> <a href="http://wiki.lazarus.freepascal.org/Compile_With_Delphi" title="Compile With Delphi">Compile With Delphi</a></li></ul></div>
+
+</div>
+<!-- 
+Pre-expand include size: 107856 bytes
+Post-expand include size: 24450 bytes
+Template argument size: 2970 bytes
+Maximum: 2097152 bytes
+-->
+
+<!-- Saved in parser cache with key lazaruswiki:pcache:idhash:755-0!1!0!!en!2 and timestamp 20110925024406 -->
+<div class="printfooter">
+Retrieved from "<a href="http://wiki.lazarus.freepascal.org/Lazarus_For_Delphi_Users">http://wiki.lazarus.freepascal.org/Lazarus_For_Delphi_Users</a>"</div>
+   <div id="catlinks"><p class="catlinks"><a href="http://wiki.lazarus.freepascal.org/Special:Categories" title="Special:Categories">Category</a>: <span dir="ltr"><a href="http://wiki.lazarus.freepascal.org/Category:Tutorials" title="Category:Tutorials">Tutorials</a></span></p></div>
+   <!-- end content -->
+  </div>
+ 
+
+<div id="footer">
+ <div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki"></a></div>
+ <div id="f-copyrightico"><a href="http://sourceforge.net/"><img src="sflogo.php" alt=""></a></div>
+<ul id="f-list">
+				<li id="lastmod"> This page was last modified 02:41, 5 April 2011.</li>
+				<li id="viewcount"><!-- Bad Behavior 2.0.11 run time: 12.529 ms --><p>This page has been accessed 61,833 times.
+</p></li>
+				<li id="copyright">Content is available under <a href="http://sourceforge.net/" class="external " title="http://sourceforge.net" rel="nofollow"></a>.</li>
+				<li id="privacy"><a href="http://wiki.lazarus.freepascal.org/Lazarus-ccr:Privacy_policy" title="Lazarus-ccr:Privacy policy">Privacy policy</a></li>
+				<li id="about"><a href="http://wiki.lazarus.freepascal.org/Lazarus-ccr:About" title="Lazarus-ccr:About">About Lazarus-ccr</a></li>
+				<li id="disclaimer"><a href="http://wiki.lazarus.freepascal.org/Lazarus-ccr:General_disclaimer" title="Lazarus-ccr:General disclaimer">Disclaimers</a></li>
+			</ul>
+		</div>
+		
+	
+		
+
+<!-- Served by scenergyng.dfmk.hu in 0.242 secs. -->
+</body>
+</html>

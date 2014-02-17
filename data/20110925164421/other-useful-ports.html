@@ -1,0 +1,153 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Other useful ports - GNU Emacs FAQ For MS Windows</title>
+
+<meta name="description" content="Answers to Frequently asked Questions about using Emacs on Microsoft Windows.">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="http://www.gnu.org/software/emacs/windows/index.html#Top">
+<link rel="prev" href="http://www.gnu.org/software/emacs/windows/Developing-with-Emacs.html#Developing-with-Emacs" title="Developing with Emacs">
+<link rel="next" href="http://www.gnu.org/software/emacs/windows/Further-information.html#Further-information" title="Further information">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 2008, 2010-2011 Free Software Foundation, Inc.
+
+     This list of frequently asked questions about GNU Emacs on MS
+     Windows with answers (``FAQ'') may be translated into other
+     languages, transformed into other formats (e.g. Texinfo, Info,
+     WWW), and updated with new information.
+
+     The same conditions apply to any derivative of the FAQ as apply to
+     the FAQ itself.  Every copy of the FAQ must include this notice or
+     an approved translation, information on who is currently
+     maintaining the FAQ and how to contact them (including their
+     e-mail address), and information on where the latest version of
+     the FAQ is archived (including FTP information).
+
+     The FAQ may be copied and redistributed under these conditions,
+     except that the FAQ may not be embedded in a larger literary work
+     unless that work itself allows free copying and redistribution.
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+</head>
+<body>
+<div class="node">
+<a name="Other-useful-ports"></a>
+<p>
+Next:&nbsp;<a indepth="true" rel="next" accesskey="n" href="further-information.html#Further-information">Further information</a>,
+Previous:&nbsp;<a indepth="true" rel="previous" accesskey="p" href="developing-with-emacs.html#Developing-with-Emacs">Developing with Emacs</a>,
+Up:&nbsp;<a indepth="true" rel="up" accesskey="u" href="default_001.html#Top">Top</a>
+</p><hr>
+</div>
+
+<h2 class="chapter">11 Other useful ports</h2>
+
+<p><a name="index-useful-tools-396"></a><a name="index-subprocesses_002c-useful-tools-397"></a>
+
+</p><h3 class="section">11.1 Cygwin</h3>
+
+<p><a name="index-cygwin-environment-398"></a><a name="index-cygwin_002c-library-conflicts-399"></a><a name="index-library-conflicts-with-cygwin-400"></a><a name="index-interoperability-with-cygwin-401"></a><a name="index-subprocesses_002c-cygwin-tools-402"></a><a name="index-exec_002dpath-403"></a>
+<a href="http://www.cygwin.com/">http://www.cygwin.com/</a>.
+
+   </p><p>Cygwin is a popular complete POSIX emulation environment for Windows. 
+Most of its tools can be used with Emacs, and it covers a wide range
+of ported software.  The main shell used by Cygwin is GNU
+<samp><span class="command">bash</span></samp>, but other shells are also available.  Some Cygwin
+tools may not interoperate well with Emacs or other native Windows
+tools, due to the total immersion aspect of Cygwin, including its
+non-native filesystem mapping.
+
+   </p><p>If you choose to use Cygwin, then its tools will probably be all that
+you need, but you will need to get image libraries from elsewhere, as
+the Cygwin ones are not compatible with non-Cygwin software.  In fact,
+if Cygwin is on your PATH when you run Emacs, and Emacs does not find
+other versions of the image libraries first, then the Cygwin ones can
+cause problems.  Cygwin developers recommend that you do not put
+Cygwin on your system <samp><span class="env">PATH</span></samp> for this reason.  Instead you can
+make the Cygwin tools available within Emacs by setting <code>exec-path</code>
+in your init file.
+
+</p><h3 class="section">11.2 MinGW and MSYS</h3>
+
+<p><a name="index-mingw-tools-404"></a><a name="index-msys-environment-405"></a><a name="index-subprocesses_002c-mingw-and-msys-406"></a>
+<a href="http://www.mingw.org/">http://www.mingw.org/</a>
+
+   </p><p>MinGW is a set of development tools that produce native Windows
+executables, not dependent on Cygwin's POSIX emulation DLLs.
+
+   </p><p>MSYS is a POSIX shell and minimal set of tools that are commonly used in
+configure scripts.  Like Cygwin, this environment uses a non-native
+filesystem mapping to appear more POSIX like to the scripts that it
+runs.  This is intended to complement the MinGW tools to make it easier
+to port software to Windows.
+
+</p><h3 class="section">11.3 UWIN</h3>
+
+<p><a name="index-uwin-environment-407"></a><a name="index-subprocesses_002c-uwin-408"></a>
+<a href="http://www.research.att.com/sw/tools/uwin/">http://www.research.att.com/sw/tools/uwin/</a>
+
+   </p><p>UWIN is another POSIX emulation environment, like Cygwin and MSYS,
+that provides a large number of ported tools.  The shell used by UWIN
+is <samp><span class="command">ksh</span></samp>, the Korn shell.
+
+</p><h3 class="section">11.4 GnuWin32</h3>
+
+<p><a name="index-gnuwin32-tools-409"></a><a name="index-subprocesses_002c-gnuwin32-410"></a><a name="index-image-libraries_002c-gnuwin32-411"></a><a name="index-image-libraries_002c-development-412"></a>
+<a href="http://gnuwin32.sourceforge.net/">http://gnuwin32.sourceforge.net/</a>
+
+   </p><p>GnuWin32 provides precompiled native Windows ports of a wide selection
+of Free software and libraries.  Tools available here that are useful
+for Emacs include:
+
+     </p><ul>
+<li>Arc - used by <code>archive-mode</code> to edit .arc files. 
+</li><li>Bzip2 - used by Emacs to automatically decompress .bz2 files. 
+</li><li>CompFace - used by <code>gnus</code> to display XFace headers in messages. 
+</li><li>CoreUtils - GNU file, shell and text utilities (also in MSYS)
+</li><li>DiffUtils - for <code>ediff</code> and producing patches
+</li><li>FindUtils - for <code>grep-find</code> and other file searches. 
+</li><li>GifLib - library to support GIF images. 
+</li><li>Grep - for searching through files with <code>grep</code>. 
+</li><li>Gzip - used by Emacs to automatically decompress .gz files. 
+</li><li>Jpeg - library to support JPEG images (also in GTK). 
+</li><li>Lha - used by <code>archive-mode</code> to edit .lzh files. 
+</li><li>LibPng - library to support PNG images (also in GTK). 
+</li><li>LibTiff - library to support TIFF images (also in GTK). 
+</li><li>Make - used by <code>compile</code> for building projects (also in MinGW)
+</li><li>OpenSSL - used by <code>gnus</code> to talk to servers over SSL. 
+</li><li>Patch - used by <code>ediff-patch-file</code> and others to apply patches. 
+</li><li>Tar - used by <code>tar-mode</code> to edit tar files. 
+</li><li>TexInfo - used to build Emacs' manuals. 
+</li><li>Unzip - used by <code>archive-mode</code> for extracting zip files. 
+</li><li>Xpm - library to support XPM images (bundled with Emacs binaries)
+</li><li>Zip - used by <code>archive-mode</code> for editing zip files. 
+</li><li>Zlib - required by LibPng (also in GTK). 
+</li></ul>
+
+<h3 class="section">11.5 GTK</h3>
+
+<p><a name="index-GTK-image-libraries-413"></a><a name="index-image-libraries_002c-GTK-414"></a><a name="index-addpm_002c-using-GTK-image-libraries-415"></a>
+GTK is a potential source for some of the image libraries that Emacs
+requires.  GTK is installed along with other ports of GUI software,
+such as the GIMP image editor, and Pidgin instant messenger client. 
+If GTK is installed when you run <samp><span class="command">addpm</span></samp>, Emacs will use the
+image libraries that it provides, even if they are not on the
+<samp><span class="env">PATH</span></samp>.  GTK ships with JPEG, PNG and TIFF support.
+
+</p><h3 class="section">11.6 How do I read man pages?</h3>
+
+<p><a name="index-man-pages-416"></a><a name="index-woman-417"></a><a name="index-man-418"></a>
+Man pages for Emacs and other ported programs that you have can be
+read using Emacs' built-in manual reader <code>woman</code>.  This
+requires no external programs, but if you do have a port of
+<samp><span class="command">man</span></samp>, there is also an Emacs wrapper <code>man</code> that
+which may be slightly faster.
+
+<!--  -->
+   
+
+</p>
+
+</body></html>

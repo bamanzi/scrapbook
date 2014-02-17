@@ -1,0 +1,275 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>GNU Emacs FAQ For MS Windows</title>
+
+<meta name="description" content="Answers to Frequently asked Questions about using Emacs on Microsoft Windows.">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="http://www.gnu.org/software/emacs/windows/index.html#Top">
+<link rel="up" href="http://www.gnu.org/software/emacs/index.html#dir" title="(dir)">
+<link rel="next" href="http://www.gnu.org/software/emacs/windows/Introduction.html#Introduction" title="Introduction">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 2008, 2010-2011 Free Software Foundation, Inc.
+
+     This list of frequently asked questions about GNU Emacs on MS
+     Windows with answers (``FAQ'') may be translated into other
+     languages, transformed into other formats (e.g. Texinfo, Info,
+     WWW), and updated with new information.
+
+     The same conditions apply to any derivative of the FAQ as apply to
+     the FAQ itself.  Every copy of the FAQ must include this notice or
+     an approved translation, information on who is currently
+     maintaining the FAQ and how to contact them (including their
+     e-mail address), and information on where the latest version of
+     the FAQ is archived (including FTP information).
+
+     The FAQ may be copied and redistributed under these conditions,
+     except that the FAQ may not be embedded in a larger literary work
+     unless that work itself allows free copying and redistribution.
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+</head>
+<body>
+<h1 class="settitle">GNU Emacs FAQ For MS Windows</h1>
+<div class="node">
+<a name="Top"></a>
+<p>
+Next:&nbsp;<a indepth="true" rel="next" accesskey="n" href="introduction.html#Introduction">Introduction</a>,
+Up:&nbsp;<a indepth="true" rel="up" accesskey="u" href="default.html#dir">(dir)</a>
+</p><hr>
+</div>
+
+<h2 class="unnumbered">GNU Emacs FAQ for MS Windows</h2>
+
+<p>This is the GNU Emacs FAQ for MS Windows, last updated on 12 March 2011.
+
+   </p><p>This FAQ is maintained by the developers and users of Emacs on MS Windows. 
+If you find any errors, or have any suggestions, please send them to
+<a href="mailto:help-emacs-windows@gnu.org">help-emacs-windows@gnu.org</a>.  Currently the FAQ maintainer is
+<a href="mailto:ramprasad@gnu.org">Ramprasad B</a>.
+
+   </p><p>This FAQ is available in two versions:
+     </p><ul>
+<li><a indepth="true" href="default_001.html">Split by section</a>
+</li><li><a indepth="true" href="big.html">Combined on one page</a>
+</li></ul>
+
+   <p>The latest version of GNU Emacs as of 12 March 2011 is version 23.3.
+
+<!-- Links to ftp.gnu.org are given as http links, since Windows ftp clients -->
+<!-- are notoriously bad at handling firewalls etc. -->
+</p><div class="contents">
+<h2>Table of Contents</h2>
+<ul>
+<li><a indepth="true" name="toc_Top" href="default_001.html#Top">GNU Emacs FAQ for MS Windows</a>
+</li><li><a indepth="true" name="toc_Introduction" href="introduction.html#Introduction">1 Introduction</a>
+<ul>
+<li><a indepth="true" href="introduction.html#Introduction">1.1 Why support GNU Emacs on Windows?</a>
+</li><li><a indepth="true" href="introduction.html#Introduction">1.2 Which versions of Windows are supported?</a>
+</li><li><a indepth="true" href="introduction.html#Introduction">1.3 What other versions of Emacs run on Windows?</a>
+<ul>
+<li><a indepth="true" href="introduction.html#Introduction">1.3.1 MSDOS and Windows 3.11</a>
+</li><li><a indepth="true" href="introduction.html#Introduction">1.3.2 Meadow</a>
+</li><li><a indepth="true" href="introduction.html#Introduction">1.3.3 EmacsW32</a>
+</li><li><a indepth="true" href="introduction.html#Introduction">1.3.4 XEmacs</a>
+</li><li><a indepth="true" href="introduction.html#Introduction">1.3.5 Other distributions</a>
+</li></ul>
+</li></ul>
+</li><li><a indepth="true" name="toc_Getting-Emacs" href="getting-emacs.html#Getting-Emacs">2 Getting Emacs</a>
+<ul>
+<li><a indepth="true" href="getting-emacs.html#Getting-Emacs">2.1 Where can I get pre-compiled versions?</a>
+</li><li><a indepth="true" href="getting-emacs.html#Getting-Emacs">2.2 Where can I get the source distribution?</a>
+</li><li><a indepth="true" href="getting-emacs.html#Getting-Emacs">2.3 Can I get the source from CVS?</a>
+</li><li><a indepth="true" href="getting-emacs.html#Getting-Emacs">2.4 How can I compile Emacs myself?</a>
+</li><li><a indepth="true" href="getting-emacs.html#Getting-Emacs">2.5 How do I use a debugger on Emacs?</a>
+<ul>
+<li><a indepth="true" href="getting-emacs.html#Getting-Emacs">2.5.1 GDB</a>
+</li><li><a indepth="true" href="getting-emacs.html#Getting-Emacs">2.5.2 Microsoft Developer Studio</a>
+</li></ul>
+</li></ul>
+</li><li><a indepth="true" name="toc_Installing-Emacs" href="installing-emacs.html#Installing-Emacs">3 Installing Emacs</a>
+<ul>
+<li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.1 How do I unpack the distributions?</a>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.2 How do I install Emacs after unpacking?</a>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.3 How do I get image support?</a>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.4 What is my init file?</a>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.5 Where do I put my init file?</a>
+<ul>
+<li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.5.1 Troubleshooting init file problems</a>
+</li></ul>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.6 How do I associate files with Emacs?</a>
+<ul>
+<li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.6.1 For use with Internet Explorer</a>
+</li></ul>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.7 How do I use find-file to open files that are on the Desktop?</a>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.8 How can I modify Windows to act more like X?</a>
+<ul>
+<li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.8.1 How do it make the active window follow the mouse?</a>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.8.2 How do I swap CapsLock and Control?</a>
+<ul>
+<li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.8.2.1 Windows NT/2000/XP/Vista?</a>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.8.2.2 Windows 95/98/ME</a>
+</li></ul>
+</li></ul>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.9 How can I modify Emacs to act more like a Windows app?</a>
+<ul>
+<li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.9.1 Highlighting the selection</a>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.9.2 Standard Windows key bindings</a>
+</li></ul>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.10 Window operations</a>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.11 How do I uninstall Emacs?</a>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.12 When I run Emacs nothing happens</a>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.13 Does Emacs contain a virus?</a>
+</li><li><a indepth="true" href="installing-emacs.html#Installing-Emacs">3.14 What known problems are there with anti-virus software?</a>
+</li></ul>
+</li><li><a indepth="true" name="toc_Display-Settings" href="display-settings.html#Display-Settings">4 Display Settings</a>
+<ul>
+<li><a indepth="true" href="display-settings.html#Display-Settings">4.1 Emacs in console mode goes beyond the window size</a>
+</li><li><a indepth="true" href="display-settings.html#Display-Settings">4.2 What do I do if I have problems with my mouse buttons?</a>
+</li><li><a indepth="true" href="display-settings.html#Display-Settings">4.3 How do I cut and paste text with NUL characters?</a>
+</li><li><a indepth="true" href="display-settings.html#Display-Settings">4.4 How can I fix garbled text yanked from the clipboard?</a>
+</li><li><a indepth="true" href="display-settings.html#Display-Settings">4.5 How do I change the sound of the Emacs beep?</a>
+</li></ul>
+</li><li><a indepth="true" name="toc_Fonts-and-text-translation" href="fonts-and-text-translation.html#Fonts-and-text-translation">5 Fonts and text translation</a>
+<ul>
+<li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.1 Font names</a>
+</li><li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.2 How can I get bold and italic fonts to work?</a>
+</li><li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.3 Multilingual font support</a>
+<ul>
+<li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.3.1 Is it possible to display all the supported languages?</a>
+</li><li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.3.2 How do I get Emacs to display non-latin characters?</a>
+</li><li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.3.3 Where can I find fonts for other languages?</a>
+</li><li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.3.4 How do I use third party programs to display mulitbyte characters?</a>
+</li><li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.3.5 Can I use a font with a name in my language?</a>
+</li></ul>
+</li><li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.4 How do I use bdf fonts with Emacs?</a>
+</li><li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.5 How can I have Emacs use a font menu like on X?</a>
+<ul>
+<li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.5.1 How can I add my font to the font menu?</a>
+</li></ul>
+</li><li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.6 How can I control CR/LF translation?</a>
+<ul>
+<li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.6.1 Automatic CR/LF translation</a>
+</li><li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.6.2 CR/LF translation by file extension</a>
+</li><li><a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">5.6.3 CR/LF translation by file system</a>
+</li></ul>
+</li></ul>
+</li><li><a indepth="true" name="toc_Printing" href="printing.html#Printing">6 Printing</a>
+<ul>
+<li><a indepth="true" href="printing.html#Printing">6.1 How do I print from Emacs?</a>
+</li></ul>
+</li><li><a indepth="true" name="toc_Sub_002dprocesses" href="sub_002dprocesses.html#Sub_002dprocesses">7 Subprocesses</a>
+<ul>
+<li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.1 Quoting issues</a>
+</li><li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.2 Programs reading input hang</a>
+</li><li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.3 Buffering in shells and subprocesses</a>
+<ul>
+<li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.3.1 Perl script buffering</a>
+</li></ul>
+</li><li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.4 16-bit subprocesses accessing the floppy drive</a>
+</li><li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.5 Killing subprocesses on Windows 95/98/Me</a>
+</li><li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.6 Sending EOF to subprocesses</a>
+</li><li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.7 How do I use a shell in Emacs?</a>
+<ul>
+<li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.7.1 bash</a>
+</li></ul>
+</li><li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.8 How do I use Cygwin style paths in Emacs?</a>
+</li><li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.9 How do I make dired use my ls program?</a>
+</li><li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.10 How do I prevent shell commands from being echoed?</a>
+</li><li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.11 How can I make shell completion use forward slashes?</a>
+</li><li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.12 Why do I get incorrect DOS version messages?</a>
+</li><li><a indepth="true" href="sub_002dprocesses.html#Sub_002dprocesses">7.13 Why is nothing happening when I enter shell commands?</a>
+</li></ul>
+</li><li><a indepth="true" name="toc_Network-access" href="network-access.html#Network-access">8 Network access</a>
+<ul>
+<li><a indepth="true" href="network-access.html#Network-access">8.1 How do I use mail in Emacs?</a>
+<ul>
+<li><a indepth="true" href="network-access.html#Network-access">8.1.1 Outgoing mail</a>
+</li><li><a indepth="true" href="network-access.html#Network-access">8.1.2 Incoming mail with Rmail and POP3</a>
+</li><li><a indepth="true" href="network-access.html#Network-access">8.1.3 Incoming mail with Gnus</a>
+</li><li><a indepth="true" href="network-access.html#Network-access">8.1.4 Other incoming mail options</a>
+</li></ul>
+</li><li><a indepth="true" href="network-access.html#Network-access">8.2 How do I open attachments in Gnus?</a>
+</li><li><a indepth="true" href="network-access.html#Network-access">8.3 How do I use FTP within Emacs?</a>
+</li><li><a indepth="true" href="network-access.html#Network-access">8.4 How do I use Tramp to work in Emacs via SSH?</a>
+</li><li><a indepth="true" href="network-access.html#Network-access">8.5 How do I use telnet with Emacs?</a>
+</li></ul>
+</li><li><a indepth="true" name="toc_Text-and-Utility-modes" href="text-and-utility-modes.html#Text-and-Utility-modes">9 Text and Utility modes</a>
+<ul>
+<li><a indepth="true" href="text-and-utility-modes.html#Text-and-Utility-modes">9.1 How do I use TeX with Emacs?</a>
+<ul>
+<li><a indepth="true" href="text-and-utility-modes.html#Text-and-Utility-modes">9.1.1 AUCTeX</a>
+</li></ul>
+</li><li><a indepth="true" href="text-and-utility-modes.html#Text-and-Utility-modes">9.2 How do I perform spell checks?</a>
+</li><li><a indepth="true" href="text-and-utility-modes.html#Text-and-Utility-modes">9.3 Emacs and encryption</a>
+</li><li><a indepth="true" href="text-and-utility-modes.html#Text-and-Utility-modes">9.4 Why doesn't my wheel mouse work in Emacs?</a>
+</li><li><a indepth="true" href="text-and-utility-modes.html#Text-and-Utility-modes">9.5 How do I use grep with Emacs?</a>
+<ul>
+<li><a indepth="true" href="text-and-utility-modes.html#Text-and-Utility-modes">9.5.1 How do I do a recursive grep?</a>
+</li></ul>
+</li></ul>
+</li><li><a indepth="true" name="toc_Developing-with-Emacs" href="developing-with-emacs.html#Developing-with-Emacs">10 Developing with Emacs</a>
+<ul>
+<li><a indepth="true" href="developing-with-emacs.html#Developing-with-Emacs">10.1 How do I use Emacs with Microsoft Visual C++</a>
+<ul>
+<li><a indepth="true" href="developing-with-emacs.html#Developing-with-Emacs">10.1.1 Emacs as the text editor for DevStudio</a>
+</li><li><a indepth="true" href="developing-with-emacs.html#Developing-with-Emacs">10.1.2 Using MSVC command line tools from Emacs</a>
+<ul>
+<li><a indepth="true" href="developing-with-emacs.html#Developing-with-Emacs">10.1.2.1 VC++ Environment Variables</a>
+</li><li><a indepth="true" href="developing-with-emacs.html#Developing-with-Emacs">10.1.2.2 Setting the default compile command</a>
+</li><li><a indepth="true" href="developing-with-emacs.html#Developing-with-Emacs">10.1.2.3 Reverting Buffers</a>
+</li><li><a indepth="true" href="developing-with-emacs.html#Developing-with-Emacs">10.1.2.4 Edit with Emacs function for MSVC</a>
+</li></ul>
+</li></ul>
+</li><li><a indepth="true" href="developing-with-emacs.html#Developing-with-Emacs">10.2 Emacs and Borland C++ Builder</a>
+</li><li><a indepth="true" href="developing-with-emacs.html#Developing-with-Emacs">10.3 Is there a version of my VC software I can use with Emacs?</a>
+</li><li><a indepth="true" href="developing-with-emacs.html#Developing-with-Emacs">10.4 How do I use the Perl debugger with Emacs?</a>
+</li></ul>
+</li><li><a indepth="true" name="toc_Other-useful-ports" href="other-useful-ports.html#Other-useful-ports">11 Other useful ports</a>
+<ul>
+<li><a indepth="true" href="other-useful-ports.html#Other-useful-ports">11.1 Cygwin</a>
+</li><li><a indepth="true" href="other-useful-ports.html#Other-useful-ports">11.2 MinGW and MSYS</a>
+</li><li><a indepth="true" href="other-useful-ports.html#Other-useful-ports">11.3 UWIN</a>
+</li><li><a indepth="true" href="other-useful-ports.html#Other-useful-ports">11.4 GnuWin32</a>
+</li><li><a indepth="true" href="other-useful-ports.html#Other-useful-ports">11.5 GTK</a>
+</li><li><a indepth="true" href="other-useful-ports.html#Other-useful-ports">11.6 How do I read man pages?</a>
+</li></ul>
+</li><li><a indepth="true" name="toc_Further-information" href="further-information.html#Further-information">12 Further information</a>
+<ul>
+<li><a indepth="true" href="further-information.html#Further-information">12.1 Where can I get more information about Emacs?</a>
+</li><li><a indepth="true" href="further-information.html#Further-information">12.2 What mailing lists are there for discussing Emacs on Windows?</a>
+</li></ul>
+</li><li><a indepth="true" name="toc_Indexes" href="indexes.html#Indexes">Indexes</a>
+<ul>
+<li><a indepth="true" href="indexes.html#Indexes">Function and Variable Index</a>
+</li><li><a indepth="true" href="indexes.html#Indexes">Concept Index</a>
+</li></ul>
+</li></ul>
+</div>
+
+<ul class="menu">
+<li><a indepth="true" accesskey="1" href="introduction.html#Introduction">Introduction</a>
+</li><li><a indepth="true" accesskey="2" href="getting-emacs.html#Getting-Emacs">Getting Emacs</a>
+</li><li><a indepth="true" accesskey="3" href="installing-emacs.html#Installing-Emacs">Installing Emacs</a>
+</li><li><a indepth="true" accesskey="4" href="display-settings.html#Display-Settings">Display Settings</a>
+</li><li><a indepth="true" accesskey="5" href="fonts-and-text-translation.html#Fonts-and-text-translation">Fonts and text translation</a>
+</li><li><a indepth="true" accesskey="6" href="printing.html#Printing">Printing</a>
+</li><li><a indepth="true" accesskey="7" href="sub_002dprocesses.html#Sub_002dprocesses">Sub-processes</a>
+</li><li><a indepth="true" accesskey="8" href="network-access.html#Network-access">Network access</a>
+</li><li><a indepth="true" accesskey="9" href="text-and-utility-modes.html#Text-and-Utility-modes">Text and Utility modes</a>
+</li><li><a indepth="true" href="developing-with-emacs.html#Developing-with-Emacs">Developing with Emacs</a>
+</li><li><a indepth="true" href="other-useful-ports.html#Other-useful-ports">Other useful ports</a>
+</li><li><a indepth="true" href="further-information.html#Further-information">Further information</a>
+</li><li><a indepth="true" href="indexes.html#Indexes">Indexes</a>
+</li></ul>
+
+<!--  -->
+   
+
+
+
+
+</body></html>

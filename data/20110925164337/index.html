@@ -1,0 +1,525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+  <link rel="SHORTCUT ICON" href="favicon.ico">
+  <title>
+  Best of Vim Tips 中文版 -
+  Vim.cn | Google 网上论坛
+  </title>
+  <meta name="save" content="history">
+
+
+
+
+
+  
+
+
+  
+  
+
+
+  <link rel="alternate" type="application/rss+xml" title="RSS" href="http://groups.google.com/group/vim-cn/feed/rss_v2_0_msgs.xml">
+  <link rel="alternate" type="application/atom+xml" title="Atom" href="http://groups.google.com/group/vim-cn/feed/atom_v1_0_msgs.xml">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body onresize="" topmargin="0" leftmargin="0" marginheight="0" marginwidth="0" bgcolor="white">
+<div class="clear">
+<table class="wdth100  overflow-hide" style="table-layout: fixed;" cellpadding="0" cellspacing="0">
+<tbody>
+<tr valign="top">
+<td class=" overflow-hide" style="border-bottom: 1px solid rgb(119, 153, 221); border-right: 1px solid rgb(119, 153, 221);">
+<!--DOCUMENT_FRAGMENT-->
+<div class="maincontheaderbox"><div class="secttlbarwrap"><div class="secttlbar">
+  <div class="lf secttl">
+  <span id="thread_subject_site">
+  Best of Vim Tips 中文版
+  </span>
+  </div>
+  <div class="rf secmsg frtxt padt2">
+  <a class="uitl" id="showoptions_lnk2" href="http://groups.google.com/group/Vim-cn/browse_thread/thread/5c25728e3eecbece?pli=1#" onclick="TH_ToggleOptionsPane(); return false;">选项</a>
+  </div>
+  <div class="hght0 clear" style="font-size: 0pt;"></div>
+  </div>
+  <div class="secttlbaroptpane hide" id="TH_optionsPane_optpane">
+  
+  <div>
+  <form name="f" action="http://groups.google.com/group/vim-cn/manage_thread" method="POST">
+  <input name="_done" value="/group/Vim-cn/browse_thread/thread/5c25728e3eecbece?pli=1" type="hidden">
+  <input name="tid" value="5c25728e3eecbece" type="hidden">
+  <table width="100%" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+  <td colspan="2">
+  <div class="hide" id="err_too_many_sticky"> <font color="#cc0000">当前，该论坛中首先显示的主题过多。要让该主题首先显示，请取消其他主题的这一选项。</font> </div>
+  </td></tr>
+  <tr>
+  <td colspan="2">
+  <div class="hide" id="err_general"> <font color="#cc0000">处理您的请求时出错。请重试。</font> </div>
+  </td></tr>
+  <tr valign="top">
+  <td class="padb4" width="70%">
+  <div>
+  <div class="fontsize2 padb4">
+  <b>标准视图</b> &nbsp;
+  <a class="on" href="http://groups.google.com/group/vim-cn/browse_frm/thread/5c25728e3eecbece?tvc=1">树状视图</a>
+  </div>
+  <div class="padb4">
+  <a class="fontsize2"><b>可变宽文字</b></a> &nbsp; <a class="on fixed_width" href="http://groups.google.com/group/Vim-cn/browse_thread/thread/5c25728e3eecbece?pli=1&amp;fwc=1">固定文本</a>
+  </div>
+  <div>
+  <span class="fontsize2"><div id="thread_threadsub_site"><table cellpadding="0" cellspacing="0"><tbody><tr><td style="" width="18"><a id="threadsubvim-cn@5c25728e3eecbece" name="threadsubvim-cn@5c25728e3eecbece" value="0" target="_parent" href="http://groups.google.com/group/vim-cn/watch_topic?WebToken=25276557beb80c6de5363063a2bd48a2&amp;tid=5c25728e3eecbece&amp;oldstate=0" onclick="return toggleStar('25276557beb80c6de5363063a2bd48a2', 'vim-cn', '5c25728e3eecbece', 2);"><img class="stimg" title="点击信封图标接收电子邮件更新" id="threadsubvim-cn@5c25728e3eecbece_img" name="threadsubvim-cn@5c25728e3eecbece_img" src="threadsub_n.gif" height="11" width="14" align="absmiddle" border="0"></a></td><td><a id="threadsubvim-cn@5c25728e3eecbece" name="threadsubvim-cn@5c25728e3eecbece" value="0" target="_parent" href="http://groups.google.com/group/vim-cn/watch_topic?WebToken=25276557beb80c6de5363063a2bd48a2&amp;tid=5c25728e3eecbece&amp;oldstate=0&amp;email=1" onclick="return toggleStar('25276557beb80c6de5363063a2bd48a2', 'vim-cn', '5c25728e3eecbece', 2);"><span id="threadsubvim-cn@5c25728e3eecbece_lnk2" name="threadsubvim-cn@5c25728e3eecbece_lnk2">通过电子邮件向我发送更新</span><span id="threadsubvim-cn@5c25728e3eecbece_lnk0" name="threadsubvim-cn@5c25728e3eecbece_lnk0" style="display: none;">取消电子邮件更新</span></a></td></tr></tbody></table></div></span>
+  </div>
+  </div>
+  </td>
+  <td nowrap="nowrap">
+  <div id="thread_manage_options_site">
+  <div>
+  </div>
+  <div>
+  </div>
+  <div>
+  </div>
+  </div>
+  </td>
+  </tr>
+  </tbody></table>
+  </form>
+  </div>
+  </div>
+  <div class="" id="TH_optionsPane_botcorner">
+  <div><table width="100%" cellpadding="0" cellspacing="0"><tbody><tr><td><div style="background: url('roundedcorners') repeat scroll 0px 4px transparent; width: 4px; height: 4px;"></div></td><td height="4" width="100%" bgcolor="#7799dd"><img alt="" height="1" width="1"></td><td><div style="background: url('roundedcorners') repeat scroll -4px 4px transparent; width: 4px; height: 4px;"></div></td></tr></tbody></table></div>
+  </div>
+  </div>
+</div>
+<div class="maincontbox">
+  <table border="0" cellpadding="0" cellspacing="0">
+  <tbody><tr>
+  <td class="thread_star" id="thread_watch_site" width="17"><a class="st" id="watchvim-cn@5c25728e3eecbece" name="watchvim-cn@5c25728e3eecbece" value="0" target="_parent" href="http://groups.google.com/group/vim-cn/watch_topic?WebToken=25276557beb80c6de5363063a2bd48a2&amp;tid=5c25728e3eecbece&amp;oldstate=0" onclick="return toggleStar('25276557beb80c6de5363063a2bd48a2', 'vim-cn', '5c25728e3eecbece', 1);"><img class="stimg" title="点击星标查看主题" id="watchvim-cn@5c25728e3eecbece_img" name="watchvim-cn@5c25728e3eecbece_img" src="watched_n.gif" height="15" width="15" align="absmiddle" border="0"></a></td>
+  <td><div class="fontsize2" id="thread_threadsub_site2"><div class="padl4 hide" id="ts_navinfo"><a id="threadsubvim-cn@5c25728e3eecbece" name="threadsubvim-cn@5c25728e3eecbece" value="0" target="_parent" href="http://groups.google.com/group/vim-cn/watch_topic?WebToken=25276557beb80c6de5363063a2bd48a2&amp;tid=5c25728e3eecbece&amp;oldstate=0" onclick="return toggleStar('25276557beb80c6de5363063a2bd48a2', 'vim-cn', '5c25728e3eecbece', 2);"><img class="stimg" title="点击信封图标接收电子邮件更新" id="threadsubvim-cn@5c25728e3eecbece_img" name="threadsubvim-cn@5c25728e3eecbece_img" src="threadsub_n.gif" height="11" width="14" align="absmiddle" border="0"></a></div></div></td>
+  <td><div class="fontsize2" id="sticky_icon_site"><div class="padl4 " id="sticky_icon"><img src="pushpin.gif" alt="标记" height="12" width="13"></div></div></td>
+  <td width="5">&nbsp;</td>
+  <td width="100%" align="left">
+  <span id="thread_page_msg_site" class="uit">共 2 个帖子<span class="noscripthide">&nbsp;-&nbsp;<a name="expand_all_msgs_link" id="expand_all_msgs_link" href="http://groups.google.com/group/Vim-cn/browse_thread/thread/5c25728e3eecbece?pli=1#" class="grltl">全部折叠</a></span>
+  <span class="hide">&nbsp;-&nbsp;
+  <a href="http://groups.google.com/group/Vim-cn/browse_thread/thread/5c25728e3eecbece?pli=1#" class="grltl" id="translateAll">
+  将所有内容翻译成<span id="translateAllLangSpan"></span>
+  </a>
+  <a href="http://groups.google.com/group/Vim-cn/browse_thread/thread/5c25728e3eecbece?pli=1#" class="grltl hide" id="translateRevertAll">
+  翻译内容（查看所有原文内容）
+  </a></span>
+  <span id="thrsp5c25728e3eecbece" class="noscripthide">&nbsp;-&nbsp;
+  <div style="display: inline;"><a target="_parent" class="grltl" href="javascript:void(0);" onclick="return reportThreadSpam('vim-cn', '5c25728e3eecbece', '25276557beb80c6de5363063a2bd48a2', true)">举报此讨论为垃圾内容</a></div>
+  <div class="grlt" style="display: none;">正在举报此讨论</div>
+  <div class="grlt" style="display: none;">已举报此帖</div>
+  </span>
+  </span>
+  </td>
+  <td align="right"><nobr id="thread_page_links_site">
+  </nobr></td>
+  </tr>
+  </tbody></table>
+  
+<div id="msgs">
+  <div style="margin-left: -3px; margin-right: -1px;">
+  <input name="persist_msg_render" id="persist_msg_render" style="" type="hidden">
+  <iframe src="index_0.html" name="post_res" id="post_res" style="position: absolute; visibility: hidden; width: 1px; height: 1px;"></iframe>
+  <img class="hide" id="chrn" style="position: absolute; z-index: 2; display: none;" src="chevron_left_blue.gif" height="11" width="9">
+  
+  
+  <div class="hide" id="upw">您要发布帖子的论坛是一个<a href="http://www.google.com/googlegroups/about.html#usenet" target="_top">新闻组论坛</a>。如果在此论坛发帖，互联网上的所有人都可以看到您的电子邮件地址。</div>
+  <div class="hide" id="arw">您的回复帖子尚未发送。</div>
+  <div class="hide" id="psw">发帖成功</div>
+  
+  <span class="hide" id="SM_msg_cb2">
+  <div id="cb2_cwrn" class="cpb2 hide">
+  <table class="ctb" width="100%" cellpadding="0" cellspacing="0"><tbody>
+  <tr class="cf cb2">
+  <td colspan="2">
+  <div class="cd">
+  <button type="button" tabindex="1" style="padding: 0pt 1em;" id="dc">取消</button>
+  </div>
+  </td>
+  </tr>
+  <tr>
+  <td colspan="2">
+  <div class="ci cb2 cd">
+  <div class="phd">
+  <div><table width="100%" cellpadding="0" cellspacing="0"><tbody><tr><td><div style="background: url('roundedcorners_002.dat') repeat scroll 0px 0px transparent; width: 6px; height: 6px;"></div></td><td height="6" width="100%" bgcolor="#ffd4a2"><img alt="" height="1" width="1"></td><td><div style="background: url('roundedcorners_002.dat') repeat scroll -6px 0px transparent; width: 6px; height: 6px;"></div></td></tr></tbody></table></div>
+  <div class="ph" style="position: relative; margin: -2px 0px; background-color: rgb(255, 212, 162);">
+  <div id="wrn_cnt"></div>
+  </div>
+  <div><table width="100%" cellpadding="0" cellspacing="0"><tbody><tr><td><div style="background: url('roundedcorners_002.dat') repeat scroll 0px 6px transparent; width: 6px; height: 6px;"></div></td><td height="6" width="100%" bgcolor="#ffd4a2"><img alt="" height="1" width="1"></td><td><div style="background: url('roundedcorners_002.dat') repeat scroll -6px 6px transparent; width: 6px; height: 6px;"></div></td></tr></tbody></table></div>
+  </div>
+  </div>
+  </td>
+  </tr>
+  <tr class="cf cb2"><td colspan="2" height="5"></td></tr>
+  </tbody></table>
+  </div>
+  <div id="cb2" class="cpb2 hide;">
+  <form action="http://groups.google.com/group/vim-cn/post?Action.BackgroundPost=1" class="cf cb2" accept-charset="utf-8" target="post_res" method="post" onsubmit="return false" id="form">
+  <input name="WebToken" id="wtok" value="25276557beb80c6de5363063a2bd48a2" type="hidden">
+  <input name="orig_charset" value="UTF-8" type="hidden">
+  <input name="no_subj_override" id="no_subj_or" value="0" type="hidden">
+  <input name="no_body_override" id="no_body_or" value="0" type="hidden">
+  <input name="quickreply" value="1" type="hidden">
+  <div class="wdth100">
+  <table class="ctb wdth100" cellpadding="0" cellspacing="0"><tbody>
+  <tr>
+  <td colspan="2">
+  <div class="cd" id="cbar">
+  <button type="button" tabindex="1" style="padding: 0pt 2em;" id="send"><b>发送</b></button> &nbsp;<button type="button" tabindex="1" style="padding: 0pt 1em;" id="dc">放弃</button>
+  </div>
+  </td>
+  </tr>
+  <tr class="padt5">
+  <td colspan="2">
+  <div class="ci cb2">
+  <div class="cd">
+  <div class="phd hide" id="wrn">
+  <div><table width="100%" cellpadding="0" cellspacing="0"><tbody><tr><td><div style="background: url('roundedcorners_002.dat') repeat scroll 0px 0px transparent; width: 6px; height: 6px;"></div></td><td height="6" width="100%" bgcolor="#ffd4a2"><img alt="" height="1" width="1"></td><td><div style="background: url('roundedcorners_002.dat') repeat scroll -6px 0px transparent; width: 6px; height: 6px;"></div></td></tr></tbody></table></div>
+  <div class="ph" style="position: relative; margin: -2px 0px; background-color: rgb(255, 212, 162);">
+  <div id="wrn_cnt"></div>
+  </div>
+  <div><table width="100%" cellpadding="0" cellspacing="0"><tbody><tr><td><div style="background: url('roundedcorners_002.dat') repeat scroll 0px 6px transparent; width: 6px; height: 6px;"></div></td><td height="6" width="100%" bgcolor="#ffd4a2"><img alt="" height="1" width="1"></td><td><div style="background: url('roundedcorners_002.dat') repeat scroll -6px 6px transparent; width: 6px; height: 6px;"></div></td></tr></tbody></table></div>
+  </div>
+  <table cellpadding="0" cellspacing="2"><tbody>
+  <tr id="from" valign="top" align="right">
+  <td class="mchc" nowrap="nowrap"><b>发件人:</b></td>
+  <td class="mchc" colspan="2" width="100%">
+  <div class="mrgl2 algnl wdth100">
+  <span id="ro"></span>
+  <select id="rw" name="from"></select>
+  </div>
+  </td>
+  </tr>
+  <tr id="to" valign="top" align="right">
+  <td class="mchc" nowrap="nowrap"><b><span id="name">收件人</span>:</b></td>
+  <td class="mchc" colspan="2" width="100%">
+  <div class="mrgl2 algnl wdth100" id="ro"></div>
+  <textarea class="wdth100" spellcheck="false" tabindex="1" rows="2" wrap="soft" name="to" id="rw"></textarea>
+  </td>
+  </tr>
+  <tr class="hide" id="cc" valign="top" align="right">
+  <td class="mchc" nowrap="nowrap"><b>抄送:</b></td>
+  <td class="mchc" colspan="2" width="100%">
+  <textarea class="wdth100" spellcheck="false" tabindex="1" rows="2" wrap="soft" name="cc" id="rw"></textarea>
+  </td>
+  </tr>
+  <tr class="hide" id="flw_to" valign="top" align="right">
+  <td class="mchc" nowrap="nowrap"><nobr><b>跟帖发送至：</b></nobr></td>
+  <td class="mchc" colspan="2" width="100%">
+  <textarea class="wdth100" spellcheck="false" tabindex="1" rows="2" wrap="soft" name="followup_to" id="rw"></textarea>
+  </td>
+  </tr>
+  <tr>
+  <td></td>
+  <td id="row_mod" width="100%">
+  <table width="100%" cellpadding="0" cellspacing="0"><tbody>
+  <tr>
+  <td class="mchc">
+  <span class="lk" id="mod_cc">添加抄送</span><span id="mod_sep_cc_flw"> | </span><span class="lk" id="mod_flw_to">添加跟帖</span><span id="mod_sep_flw_subj"> | </span><span class="lk" id="mod_subj">修改主题</span></td>
+  <td align="right"></td>
+  </tr>
+  </tbody></table>
+  </td>
+  </tr>
+  <tr class="hide" id="subj" valign="top" align="right">
+  <td class="mchc" nowrap="nowrap"><b>主题:</b></td>
+  <td class="mchc" colspan="2" width="100%">
+  <input class="wdth100" spellcheck="true" tabindex="1" name="subject" size="60" id="rw" value="" maxlength="247">
+  </td>
+  </tr>
+  </tbody></table>
+  </div>
+  </div>
+  </td>
+  </tr>
+  <tr>
+  <td class="ci cb2" colspan="2">
+  <div class="sm"></div>
+  <table class="wdth100">
+  <tbody><tr><td width="3px"><img alt="" height="1" width="3"></td><td>
+  <textarea style="width: 100%; padding: 5px; position: relative;" tabindex="1" id="cmp_body" rows="15" name="body" wrap="soft"></textarea>
+  </td><td width="10px"><img alt="" height="1" width="10"></td></tr>
+  </tbody></table>
+  </td>
+  </tr>
+  <tr id="cap_bx" class="padt5 hide">
+  <td colspan="2">
+  <div class="ci cb2">
+  <div class="cd">
+  <input id="ct" name="ctoken" value="" type="hidden">
+  <table cellpadding="0" cellspacing="2"><tbody>
+  <tr valign="top" align="left">
+  <td class="mchc" nowrap="nowrap"><b>验证：</b></td>
+  <td class="mchc" colspan="2" width="100%">
+  <div class="mrgl5"></div>
+  出于验证的需要，请键入您在下图中看到的字符或点击辅助功能图标后所听到的数字。
+  <img class="ciq" id="iq" src="dot_clear.gif" height="70" width="200">
+  <input tabindex="1" title="键入您看到的字符或听到的数字" size="30" name="answer" id="ans" value="" type="text">
+  <img id="aq" src="accessibility.gif" alt="听清并键入您听到的数字" border="0">
+  </td>
+  </tr>
+  </tbody></table>
+  </div>
+  </div>
+  </td></tr><tr id="cmp_rsz" style="cursor: move;">
+  <td colspan="2">
+  <div class="cd padb0">
+  <button type="button" tabindex="1" style="padding: 0pt 2em;" id="send2"><b>发送</b></button> &nbsp;<button type="button" tabindex="1" style="padding: 0pt 1em;" id="dc2">放弃</button>
+  </div>
+  </td>
+  </tr>
+  <tr height="2">
+  <td class="bl"></td>
+  <td class="br"></td>
+  </tr>
+  </tbody></table></div></form>
+  </div>
+  </span>
+  <table border="0" cellpadding="0" cellspacing="0"><tbody><tr>
+  <td><img src="dot_clear.gif" height="1" width="1"></td>
+  <td width="100%">
+  <div class="msg wdth100" id="msg_f72fba0645955101" style="margin: 0pt -1px;">
+  <input id="hdn_reply_to_subj" value="Best of Vim Tips 中文版" type="hidden">
+  <input id="hdn_date" value="2006年5月9日, 下午9时29分" type="hidden">
+  <input id="hdn_author" value="tocer &lt;tocer.d...@gmail.com&gt;" type="hidden">
+  <input id="hdn_group_name" value="Vim.cn" type="hidden">
+  <div id="hdr">
+  <table id="top" class="h msg_meta" cellpadding="0" cellspacing="0"><tbody>
+  <tr id="sep">
+  <td rowspan="2" id="l" class="ctl"></td>
+  <td colspan="4" id="m" class="ctop" height="4px"></td>
+  <td rowspan="2" id="r" class="ctr"></td>
+  </tr>
+  <tr>
+  <td><span class="fontsize2 author">
+  <span style="color: rgb(0, 104, 28);">tocer</span>
+  &nbsp;
+  </span></td>
+  <td width="100%">
+  <table class="rc" cellpadding="0" cellspacing="0"><tbody>
+  <tr><td><span class="fontsize0 " id="prof"><a target="_top" href="http://groups.google.com/groups/profile?enc_user=XQpq_BQAAABpf_7DKrE9v4wii2oo_JL0OPANdqfI6prRsqjc7uCt1A">
+  查看个人资料
+  </a>
+  &nbsp;
+  </span><div id="body_sum" style="color: rgb(102, 102, 102);" class="fontsize2 hide"></div></td></tr>
+  </tbody></table>
+  </td>
+  <td nowrap="nowrap" align="right">
+  <span style="background-color: white;">
+  <span class="fontsize2" color="#555555">
+  <nobr>
+  <img name="s6_f72fba0645955101_img" id="s6_f72fba0645955101_img" src="clear_bg_yellow_star_on.gif" height="13" width="14"><img name="s7_f72fba0645955101_img" id="s7_f72fba0645955101_img" src="clear_bg_yellow_star_on.gif" height="13" width="14"><img name="s8_f72fba0645955101_img" id="s8_f72fba0645955101_img" src="clear_bg_yellow_star_on.gif" height="13" width="14"><img name="s9_f72fba0645955101_img" id="s9_f72fba0645955101_img" src="clear_bg_yellow_star_on.gif" height="13" width="14"><img name="s10_f72fba0645955101_img" id="s10_f72fba0645955101_img" src="clear_bg_yellow_star_on.gif" height="13" width="14"></nobr>
+（11 位用户） </span>
+  <span class="fontsize0">&nbsp;<span class="noscripthide scripthide script12inline lk " id="oh_l">更多选项</span></span>
+  <span class="fontsize2">
+  2006年5月9日, 下午9时29分
+  </span>
+  </span>
+  </td>
+  </tr>
+  </tbody></table>
+  <div class="scripthide cb" id="oh">
+  <div class="exh">
+  <div class="fontsize2">
+  <div style="padding-left: 20px; text-indent: -16px;">发件人：<b>tocer &lt;tocer.d<a target="_parent" href="http://groups.google.com/groups/unlock?_done=/group/Vim-cn/browse_thread/thread/5c25728e3eecbece%3Fpli%3D1&amp;msg=f72fba0645955101">...</a>@gmail.com&gt;</b></div>
+  <div style="padding-left: 20px; text-indent: -16px;">日期：<b>Wed, 10 May 2006 09:29:31 +0800</b></div>
+  <div style="padding-left: 20px; text-indent: -16px;">当地时间：<b>2006年5月9日(星期二) 下午9时29分</b></div>
+  <div style="padding-left: 20px; text-indent: -16px;">主题：<b>Best of Vim Tips 中文版</b></div>
+  </div>
+  <div class="fontsize1 padall4">
+  <a target="_top" id="ra" class="l" href="http://groups.google.com/group/vim-cn/post?inreplyto=f72fba0645955101&amp;reply_to=author&amp;_done=%2Fgroup%2FVim-cn%2Fbrowse_thread%2Fthread%2F5c25728e3eecbece%3Fpli%3D1%26&amp;">回复作者</a>
+  |
+  <a target="_top" id="f" class="l" href="http://groups.google.com/group/vim-cn/post?inreplyto=f72fba0645955101&amp;forward=1&amp;_done=%2Fgroup%2FVim-cn%2Fbrowse_thread%2Fthread%2F5c25728e3eecbece%3Fpli%3D1%26&amp;">转发</a>
+  |
+  <a target="_top" class="l" href="http://groups.google.com/group/vim-cn/msg/f72fba0645955101?dmode=print">打印</a> | <a target="_top" class="l" href="http://groups.google.com/group/vim-cn/msg/f72fba0645955101">单个帖子</a>
+  | <a target="_top" class="l" href="http://groups.google.com/group/vim-cn/msg/f72fba0645955101?dmode=source">显示原始帖</a>
+  | <a target="_top" class="l" href="http://groups.google.com/groups/abuse?group=vim-cn&amp;type=message&amp;url=http%3A%2F%2Fgroups.google.com%2Fgroup%2Fvim-cn%2Fmsg%2Ff72fba0645955101&amp;_done=%2Fgroup%2FVim-cn%2Fbrowse_thread%2Fthread%2F5c25728e3eecbece%3Fpli%3D1%26&amp;">举报此帖</a> | <a target="_top" href="http://groups.google.com/groups/search?enc_author=XQpq_BQAAABpf_7DKrE9v4wii2oo_JL0OPANdqfI6prRsqjc7uCt1A&amp;scoring=d">查找此作者的帖子</a>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div id="body" class="mb cb fontsize2 ">
+  <div id="inbdy">
+  <a name="msg_f72fba0645955101"></a>这是篇每个 Vim 用户都应该阅读的文章，原文在这里 <br> <a target="_top" rel="nofollow" href="http://www.google.com/url?sa=D&amp;q=http://www.rayninfo.co.uk/vimtips.html&amp;usg=AFQjCNFpMXjdRGlciBiW-s21Y7eFhhvTSQ">http://www.rayninfo.co.uk/vimtips.html</a> <br> <p>这篇文章很早被翻译过，好像是一个清华的哥们翻译的。我再原来的基础上又整理 <br> 和新增了些内容--这是两年前做的，后来没有再更新。有兴趣的人可以继续更新。 <br> </p><p>__BEGIN__ <br> ---------------------------------------------------------------------------<wbr>--- <br> # searching 查找 <br> /joe/e &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: cursor set to End of match <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 把光标定位在匹配单词最后一个字母处 <br> /joe/e+1 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: cursor set to End of match plus 1 <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 把光标定位在匹配单词最后一个字母的下一个字母处 <br> /joe/s-2 &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: cursor set to Start of match minus 2 <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 把光标定位在匹配单词第一个字母往前数两个字母的位置 <br> /^joe.*fred.*bill/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: normal <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 标准的正则表达式 <br> /^[A-J]\+/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: search for lines beginning with one or more A-J <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 查找以一个或多个 A-J 中的字母开头的行 <br> /begin\_.*end &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : search over possible multiple lines <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 查找在 begin 和 end 两个单词之间尽可能多的行 <br> /fred\_s*joe/i &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: any whitespace including newline <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 查找在 fred 和 joe 两个单词之间任意多的空格，包括新行 <br> /fred\|joe &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: Search for FRED OR JOE <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 查找 fred 或 joe <br> /\([^0-9]\|^\)%.*% &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: Search for absence of a digit or beginning of line <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 查找 <br> /.*fred\&amp;.*joe &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: Search for FRED AND JOE in any ORDER! <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 查找同时包含 FRED 和 JOE 的行，不分前后顺序 <br> /\&lt;fred\&gt;/i &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: search for fred but not alfred or frederick <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 查找 fred, 而不是 alfred 或者 frederick，也就是全字匹配 <br> /\&lt;\d\d\d\d\&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: Search for exactly 4 digit numbers <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 查找4个数字的全字匹配 <br> /\D\d\d\d\d\D &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : Search for exactly 4 digit numbers <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 查找4个数字的全字匹配 <br> /\&lt;\d\{4}\&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: same thing <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 同上 <br> </p><p># finding empty lines 查找空行 <br> /^\n\{3} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: find 3 empty lines <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 查找 3 行空行 <br> # Specify what you are NOT searching for (vowels) <br> # 指定不要查找什么 <br> /\c\v([^aeiou]&amp;\a){4} &nbsp; &nbsp; &nbsp; : search for 4 consecutive consanants <br> </p><p># using rexexp memory in a search <br> # 在查找中使用正则表达式存储 <br> /\(fred\).*\(joe\).*\2.*\1 <br> </p><p># Repeating the Regexp (rather than what the Regexp finds) <br> # 重复正则表达式 <br> /^\([^,]*,\)\{8} <br> </p><p># visual searching <br> # 可视模式下的查找 <br> :vmap // y/&lt;C-R&gt;"&lt;CR&gt; &nbsp; &nbsp; &nbsp; : search for visually highlighted text <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;查找被高亮显示的文本 <br> :vmap &lt;silent&gt; // &nbsp; &nbsp;y/&lt;C-R&gt;=escape(@", '\\/.*$^~[]')&lt;CR&gt;&lt;CR&gt; : with spec chars <br> </p><p># searching over multiple lines \_ means including newline <br> # 查找多行。\_ 表示包括新行 <br> /&lt;!--\_p\{-}--&gt; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: search for multiple line comments <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;查找多行注释 <br> /fred\_s*joe/i &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: any whitespace including newline <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;查找在 fred 和 joe 两个单词之间任意多的空 <br> 格，包括新行 <br> /bugs\(\_.\)*bunny &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: bugs followed by bunny anywhere in file <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;bugs 后任意位置含有 bunny 单词的多个行 <br> :h \_ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : help <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;帮助 <br> </p><p># search for declaration of subroutine/function under cursor <br> # 查找光标下子程序/函数的声明 <br> :nmap gx yiw/^\(sub\&lt;bar&gt;function\)\s\+&lt;C-R&gt;"&lt;CR&gt; <br> </p><p># multiple file search <br> # 在多个文件中查找 <br> :bufdo /searchstr <br> :argdo /searchstr <br> </p><p># How to search for a URL without backslashing <br> # 如何不使用反斜线查找 URL <br> ?<a target="_top" rel="nofollow" href="http://www.google.com/url?sa=D&amp;q=http://www.vim.org/&amp;usg=AFQjCNH3NNpypTgK9ERnt4w4TxwDJVWIDA">http://www.vim.org/</a> &nbsp; &nbsp; &nbsp; &nbsp;: search BACKWARDS!!! clever huh! <br> ---------------------------------------- <br> # substitution <br> # 替换 <br> :%s/fred/joe/igc &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: general substitute command <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;普通替换命令 <br> :%s/\r//g &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : Delete DOS returns ^M <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;删除 DOS 回车符 ^M <br> </p><p># Is your Text File jumbled onto one line? use following <br> # 你的文本文件是否乱七八糟的排成一行？使用如下命令 <br> :%s/\r/\r/g &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : Turn DOS returns ^M into real returns <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;转换 DOS 回车符 ^M 为真正的回车符 <br> :%s= &nbsp;*$== &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: delete end of line blanks <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;删除行尾空格 <br> :%s= \+$== &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: Same thing <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;同上 <br> :%s#\s*\r\?$## &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: Clean both trailing spaces AND DOS returns <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;删除行尾空格和 DOS 回车符 <br> :%s#\s*\r*$## &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : same thing <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;删除行尾空格和 DOS 回车符 <br> </p><p># deleting empty lines <br> # 删除空行 <br> :%s/^\n\{3}// &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : delete blocks of 3 empty lines <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;删除三行空行 <br> :%s/^\n\+/\r/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : compressing empty lines <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 压缩多行空行为一行 <br> </p><p># IF YOU ONLY WANT TO KNOW ONE THING <br> # 如果你只想明白一件事情 <br> :'a,'bg/fred/s/dick/joe/igc : VERY USEFUL <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;非常有用 <br> </p><p># duplicating columns <br> # 复制列 <br> :%s= [^ ]\+$=&amp;&amp;= &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: duplicate end column <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;复制最后一列 <br> :%s= \f\+$=&amp;&amp;= &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: same thing <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;同上 <br> :%s= \S\+$=&amp;&amp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : usually the same <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;同上 <br> # memory <br> # 记忆，或叫引用 <br> :s/\(.*\):\(.*\)/\2 : \1/ &nbsp; : reverse fields separated by : <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;反转以 : 分隔的字段 <br> :%s/^\(.*\)\n\1/\1$/ &nbsp; &nbsp; &nbsp; &nbsp;: delete duplicate lines <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;删除重复的行 <br> </p><p># non-greedy matching \{-} <br> # 非贪婪匹配 \{-} <br> :%s/^.\{-}pdf/new.pdf/ &nbsp; &nbsp; &nbsp;: delete to 1st pdf only <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;只删除到第一个 pdf <br> </p><p># use of optional atom \? <br> :%s#\&lt;[zy]\?tbl_[a-z_]\+\&gt;#\L&amp;#gc : lowercase with optional leading characters <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 不懂 <br> </p><p># over possibly many lines <br> # 匹配尽可能多的行 <br> :%s/&lt;!--\_.\{-}--&gt;// &nbsp; &nbsp; &nbsp; &nbsp;: delete possibly multi-line comments <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 删除尽可能多的注释 <br> :help /\{-} &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : help non-greedy <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;非贪婪匹配的帮助 <br> </p><p># substitute using a register <br> # 使用寄存器替换 <br> :s/fred/&lt;c-r&gt;a/g &nbsp; &nbsp; &nbsp; &nbsp; : sub "fred" with contents of register "a" <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;用"a"寄存器里的内容替换"fred" <br> :s/fred/\=@a/g &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: better alternative as register not displayed <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;更好的方法，不用显示寄存器内容 <br> </p><p># multiple commands on one line <br> # 写在一行里的复杂命令 <br> :%s/\f\+\.gif\&gt;/\r&amp;\r/g | v/\.gif$/d | %s/gif/jpg/ <br> </p><p># ORing <br> :%s/suck\|buck/loopy/gc &nbsp; &nbsp; : ORing (must break pipe) <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;不懂 <br> # Calling a VIM function <br> # 调用 Vim 函数 <br> :s/__date__/\=strftime("%c")/ : insert datestring <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 插入日期 <br> </p><p># Working with Columns sub any str1 in col3 <br> # 处理列，替换所有在第三列中的 str1 <br> :%s:\(\(\w\+\s\+\)\{2}\)str1:\1str2: <br> </p><p># Swapping first &amp; last column (4 columns) <br> # 交换第一列和最后一列 (共4列) <br> :%s:\(\w\+\)\(.*\s\+\)\(\w\+\)$:\3\2\1: <br> </p><p># filter all form elements into paste register <br> # 把所有的form元素（就是html里面的form啦）放到register里 <br> :redir @*|sil exec 'g#&lt;\(input\|select\|textarea\|/\=form\)\&gt;#p'|redir END <br> :nmap ,z :redir @*&lt;Bar&gt;sil exec <br> 'g@&lt;\(input\&lt;Bar&gt;select\&lt;Bar&gt;textarea\&lt;Bar&gt;/\=form\)\&gt;@p'&lt;Bar&gt;redir END&lt;CR&gt; <br> </p><p># increment numbers by 6 on certain lines only <br> # 不懂 <br> :g/loc\|function/s/\d/\=submatch(0)+6/ <br> </p><p># better <br> # 更好的方法 <br> :%s#txtdev\zs\d#\=submatch(0)+1#g <br> :h /\zs <br> </p><p># increment only numbers gg\d\d &nbsp;by 6 (another way) <br> # 不懂 <br> :%s/\(gg\)\@&lt;=\d\+/\=submatch(0)+6/ <br> :h zero-width <br> </p><p># find replacement text, put in memory, then use \zs to simplify substitute <br> # 查找需替换的文本，保存，然后使用 \zs 命令简单替换 <br> :%s/"\([^.]\+\).*\zsxx/\1/ <br> </p><p># Pull word under cursor into LHS of a substitute <br> # 不懂 <br> :nmap &lt;leader&gt;z :%s#\&lt;&lt;c-r&gt;=expand("&lt;cword&gt;")&lt;cr&gt;\&gt;# <br> </p><p># Pull Visually Highlighted text into LHS of a substitute <br> # 不懂 <br> :vmap &lt;leader&gt;z :&lt;C-U&gt;%s/\&lt;&lt;c-r&gt;*\&gt;/ <br> </p><p>---------------------------------------- <br> </p><p># all following performing similar task, substitute within substitution <br> # Multiple single character substitution in a portion of line only <br> </p><p>:%s,\(all/.*\)\@&lt;=/,_,g &nbsp; &nbsp; : replace all / with _ AFTER "all/" <br> </p><p># Same thing <br> :s#all/\zs.*#\=substitute(submatch(0), '/', '_', 'g')# <br> </p><p># Substitute by splitting line, then re-joining <br> :s#all/#&amp;^M#|s#/#_#g|-j! <br> </p><p># Substitute inside substitute <br> :%s/.*/\='cp '.submatch(0).' all/'.substitute(submatch(0),'/','_','g')/ <br> ---------------------------------------- <br> # global command display (see tip 227) <br> # 全局命令显示（参见 tip 227) <br> :g/fred.*joe.*dick/ &nbsp; &nbsp; &nbsp; &nbsp; : display all lines fred,joe &amp; dick <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 显示所有包含fred,joe 和 dick 的行 <br> :g/\&lt;fred\&gt;/ &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : display all lines fred but not freddy <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;显示所有全字匹配 fred 的行 <br> :g/&lt;pattern&gt;/z#.5 &nbsp; &nbsp; &nbsp; &nbsp;: display with context <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;显示上下文 <br> :g/&lt;pattern&gt;/z#.5|echo "==========" &nbsp;: display beautifully <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;显示得很漂亮 <br> :g/^\s*$/d &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: delete all blank lines <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;删除所有的空行 <br> :g!/^dd/d &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : delete lines not containing string <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;删除所有行首不是 dd 的行 <br> :v/^dd/d &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: delete lines not containing string <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; 同上 <br> :g/fred/,/joe/d &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; : not line based (very powerfull) <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;并不基于行(非常强大) <br> :g/{/ ,/}/- s/\n\+/\r/g &nbsp; &nbsp; : Delete empty lines but only between {...} <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;删除在 {...} 只见的空行 <br> :v/./.,/./-1join &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;: compress empty <br>
+  ...</p><p> <a href="http://groups.google.com/group/vim-cn/msg/f72fba0645955101?" target="_top"><b>阅读更多 »</b></a>
+  </p></div>
+  <br style="font-size: 8px;" clear="all">
+  </div>
+  <div id="cb" class="">
+  <div class="cg cb2">
+  <div class="cg cb2">
+  <div class="cg cb2"><span class="fontsize1">&nbsp;
+  <span class="lc" id="ra">&nbsp;&nbsp;<a target="_top" href="http://groups.google.com/group/vim-cn/post?inreplyto=f72fba0645955101&amp;reply_to=author&amp;_done=%2Fgroup%2FVim-cn%2Fbrowse_thread%2Fthread%2F5c25728e3eecbece%3Fpli%3D1%26&amp;">回复作者</a>&nbsp;&nbsp;</span>
+  <span class="lc" id="f">&nbsp;&nbsp; <a target="_top" href="http://groups.google.com/group/vim-cn/post?inreplyto=f72fba0645955101&amp;forward=1&amp;_done=%2Fgroup%2FVim-cn%2Fbrowse_thread%2Fthread%2F5c25728e3eecbece%3Fpli%3D1%26&amp;">转发</a>&nbsp;&nbsp;</span>
+  </span>
+  <span id="spf72fba0645955101" class="fontsize1">&nbsp;&nbsp;&nbsp;&nbsp;
+  <div style="display: inline;" name="spam_report"><a target="_parent" class="grltl" href="javascript:void(0)" onclick="return reportMessageSpam('vim-cn', 'f72fba0645955101', '25276557beb80c6de5363063a2bd48a2');">举报垃圾内容</a></div>
+  <div style="display: none;" class="grdk" name="spam_progress">正在举报垃圾内容</div>
+  <div style="display: none;" class="grdk" name="spam_reported">已举报此帖</div>
+  </span>
+  </div>
+  </div>
+  </div>
+  </div>
+  <span id="dl_msg_cb2"></span>
+  <div id="ftr_sep" class="" style="">
+  <table height="8" cellpadding="0" cellspacing="0"><tbody>
+  <tr>
+  <td class="cbl" id="lc"></td>
+  <td class="cbot"></td>
+  <td class="cbr"></td>
+  </tr>
+  </tbody></table>
+  </div>
+  <div class="mrgb8 " id="msg_sep"></div>
+  <div class="mrgb2 hide" id="pok" style="margin-top: -5px; position: relative;">
+  <table align="center"><tbody><tr><td>
+  <div><table width="100%" cellpadding="0" cellspacing="0"><tbody><tr><td><div style="background: url('roundedcorners_003.dat') repeat scroll 0px 0px transparent; width: 2px; height: 2px;"></div></td><td height="2" width="100%" bgcolor="#fad163"><img alt="" height="1" width="1"></td><td><div style="background: url('roundedcorners_003.dat') repeat scroll -2px 0px transparent; width: 2px; height: 2px;"></div></td></tr></tbody></table></div>
+  <div class="pokh" style="background-color: rgb(250, 209, 99);">
+  <div id="pok_cnt"></div>
+  </div>
+  <div><table width="100%" cellpadding="0" cellspacing="0"><tbody><tr><td><div style="background: url('roundedcorners_003.dat') repeat scroll 0px 2px transparent; width: 2px; height: 2px;"></div></td><td height="2" width="100%" bgcolor="#fad163"><img alt="" height="1" width="1"></td><td><div style="background: url('roundedcorners_003.dat') repeat scroll -2px 2px transparent; width: 2px; height: 2px;"></div></td></tr></tbody></table></div>
+  </td></tr></tbody></table>
+  </div>
+  </div>
+  <div class="hide" id="peml">您需要先<a target="_top" href="https://www.google.com/accounts/ServiceLogin?passive=true&amp;hl=zh-CN&amp;service=groups2&amp;continue=http%3A%2F%2Fgroups.google.com%2Fgroup%2FVim-cn%2Fbrowse_thread%2Fthread%2F5c25728e3eecbece%3Fpli%3D1&amp;cd=US&amp;ssip=g3">登录</a>才能发帖。</div>
+  <div class="hide" id="pemj">要发帖，您需要先<a href="http://groups.google.com/group/vim-cn/subscribe" target="_top">加入此论坛</a>。</div>
+  <div class="hide" id="peus">请先在<a target="_top" href="http://groups.google.com/group/vim-cn/subscribe?reason=post_renew&amp;_done=%2Fgroup%2FVim-cn%2Fbrowse_thread%2Fthread%2F5c25728e3eecbece%3Fpli%3D1%26&amp;">订阅设置</a>页上更新您的昵称，然后再进行发帖。</div>
+  <div class="hide" id="pep">您没有发帖的权限。</div>
+  
+</td></tr></tbody></table>
+  </div>
+  <a name="abd0f399e3053520" id="anchor_abd0f399e3053520"></a>
+  <div style="margin-left: -3px; margin-right: -1px;">
+  <table border="0" cellpadding="0" cellspacing="0"><tbody><tr>
+  <td><img src="dot_clear.gif" height="1" width="1"></td>
+  <td width="100%">
+  <div class="msg wdth100" id="msg_abd0f399e3053520" style="margin: 0pt -1px;">
+  <input id="hdn_reply_to_subj" value="Best of Vim Tips 中文版" type="hidden">
+  <input id="hdn_date" value="2006年5月10日, 上午12时46分" type="hidden">
+  <input id="hdn_author" value="&quot;Scorpio Auding&quot; &lt;aud...@gmail.com&gt;" type="hidden">
+  <input id="hdn_group_name" value="Vim.cn" type="hidden">
+  <div id="hdr">
+  <table id="top" class="h msg_meta" cellpadding="0" cellspacing="0"><tbody>
+  <tr id="sep">
+  <td rowspan="2" id="l" class="ctl"></td>
+  <td colspan="4" id="m" class="ctop" height="4px"></td>
+  <td rowspan="2" id="r" class="ctr"></td>
+  </tr>
+  <tr>
+  <td><span class="fontsize2 author">
+  <span style="color: rgb(121, 6, 25);">Scorpio Auding</span>
+  &nbsp;
+  </span></td>
+  <td width="100%">
+  <table class="rc" cellpadding="0" cellspacing="0"><tbody>
+  <tr><td><span class="fontsize0 " id="prof"><a target="_top" href="http://groups.google.com/groups/profile?enc_user=iRtrBhAAAABXYTHlNaJ-P4TBLxTCZEHZ">
+  查看个人资料
+  </a>
+  &nbsp;
+  </span><div id="body_sum" style="color: rgb(102, 102, 102);" class="fontsize2 hide"></div></td></tr>
+  </tbody></table>
+  </td>
+  <td nowrap="nowrap" align="right">
+  <span style="background-color: white;">
+  <span class="fontsize2" color="#555555">
+  <nobr>
+  <img name="s6_abd0f399e3053520_img" id="s6_abd0f399e3053520_img" src="clear_bg_yellow_star_on.gif" height="13" width="14"><img name="s7_abd0f399e3053520_img" id="s7_abd0f399e3053520_img" src="clear_bg_yellow_star_on.gif" height="13" width="14"><img name="s8_abd0f399e3053520_img" id="s8_abd0f399e3053520_img" src="clear_bg_yellow_star_on.gif" height="13" width="14"><img name="s9_abd0f399e3053520_img" id="s9_abd0f399e3053520_img" src="clear_bg_yellow_star_on.gif" height="13" width="14"><img name="s10_abd0f399e3053520_img" id="s10_abd0f399e3053520_img" src="clear_bg_star_off.gif" height="13" width="14"></nobr>
+（2 位用户） </span>
+  <span class="fontsize0">&nbsp;<span class="noscripthide scripthide script12inline lk " id="oh_l">更多选项</span></span>
+  <span class="fontsize2">
+  2006年5月10日, 上午12时46分
+  </span>
+  </span>
+  </td>
+  </tr>
+  </tbody></table>
+  <div class="scripthide cb" id="oh">
+  <div class="exh">
+  <div class="fontsize2">
+  <div style="padding-left: 20px; text-indent: -16px;">发件人：<b>"Scorpio Auding" &lt;aud<a target="_parent" href="http://groups.google.com/groups/unlock?_done=/group/Vim-cn/browse_thread/thread/5c25728e3eecbece%3Fpli%3D1&amp;msg=abd0f399e3053520">...</a>@gmail.com&gt;</b></div>
+  <div style="padding-left: 20px; text-indent: -16px;">日期：<b>Wed, 10 May 2006 12:46:19 +0800</b></div>
+  <div style="padding-left: 20px; text-indent: -16px;">当地时间：<b>2006年5月10日(星期三) 上午12时46分</b></div>
+  <div style="padding-left: 20px; text-indent: -16px;">主题：<b>Re: [Vim-cn:15] Best of Vim Tips 中文版</b></div>
+  </div>
+  <div class="fontsize1 padall4">
+  <a target="_top" id="ra" class="l" href="http://groups.google.com/group/vim-cn/post?inreplyto=abd0f399e3053520&amp;reply_to=author&amp;_done=%2Fgroup%2FVim-cn%2Fbrowse_thread%2Fthread%2F5c25728e3eecbece%3Fpli%3D1%26&amp;">回复作者</a>
+  |
+  <a target="_top" id="f" class="l" href="http://groups.google.com/group/vim-cn/post?inreplyto=abd0f399e3053520&amp;forward=1&amp;_done=%2Fgroup%2FVim-cn%2Fbrowse_thread%2Fthread%2F5c25728e3eecbece%3Fpli%3D1%26&amp;">转发</a>
+  |
+  <a target="_top" class="l" href="http://groups.google.com/group/vim-cn/msg/abd0f399e3053520?dmode=print">打印</a> | <a target="_top" class="l" href="http://groups.google.com/group/vim-cn/msg/abd0f399e3053520">单个帖子</a>
+  | <a target="_top" class="l" href="http://groups.google.com/group/vim-cn/msg/abd0f399e3053520?dmode=source">显示原始帖</a>
+  | <a target="_top" class="l" href="http://groups.google.com/groups/abuse?group=vim-cn&amp;type=message&amp;url=http%3A%2F%2Fgroups.google.com%2Fgroup%2Fvim-cn%2Fmsg%2Fabd0f399e3053520&amp;_done=%2Fgroup%2FVim-cn%2Fbrowse_thread%2Fthread%2F5c25728e3eecbece%3Fpli%3D1%26&amp;">举报此帖</a> | <a target="_top" href="http://groups.google.com/groups/search?enc_author=iRtrBhAAAABXYTHlNaJ-P4TBLxTCZEHZ&amp;scoring=d">查找此作者的帖子</a>
+  </div>
+  </div>
+  </div>
+  </div>
+  <div id="body" class="mb cb fontsize2 ">
+  <div id="inbdy">
+  <p>
+  <a name="msg_abd0f399e3053520"></a>非常有用処，多謝。 <br>
+  </p></div>
+  <br style="font-size: 8px;" clear="all">
+  </div>
+  <div id="cb" class="">
+  <div class="cg cb2">
+  <div class="cg cb2">
+  <div class="cg cb2"><span class="fontsize1">&nbsp;
+  <span class="lc" id="ra">&nbsp;&nbsp;<a target="_top" href="http://groups.google.com/group/vim-cn/post?inreplyto=abd0f399e3053520&amp;reply_to=author&amp;_done=%2Fgroup%2FVim-cn%2Fbrowse_thread%2Fthread%2F5c25728e3eecbece%3Fpli%3D1%26&amp;">回复作者</a>&nbsp;&nbsp;</span>
+  <span class="lc" id="f">&nbsp;&nbsp; <a target="_top" href="http://groups.google.com/group/vim-cn/post?inreplyto=abd0f399e3053520&amp;forward=1&amp;_done=%2Fgroup%2FVim-cn%2Fbrowse_thread%2Fthread%2F5c25728e3eecbece%3Fpli%3D1%26&amp;">转发</a>&nbsp;&nbsp;</span>
+  </span>
+  <span id="spabd0f399e3053520" class="fontsize1">&nbsp;&nbsp;&nbsp;&nbsp;
+  <div style="display: inline;" name="spam_report"><a target="_parent" class="grltl" href="javascript:void(0)" onclick="return reportMessageSpam('vim-cn', 'abd0f399e3053520', '25276557beb80c6de5363063a2bd48a2');">举报垃圾内容</a></div>
+  <div style="display: none;" class="grdk" name="spam_progress">正在举报垃圾内容</div>
+  <div style="display: none;" class="grdk" name="spam_reported">已举报此帖</div>
+  </span>
+  </div>
+  </div>
+  </div>
+  </div>
+  <span id="dl_msg_cb2"></span>
+  <div id="ftr_sep" class="" style="">
+  <table height="8" cellpadding="0" cellspacing="0"><tbody>
+  <tr>
+  <td class="cbl" id="lc"></td>
+  <td class="cbot"></td>
+  <td class="cbr"></td>
+  </tr>
+  </tbody></table>
+  </div>
+  <div class="mrgb8 " id="msg_sep"></div>
+  <div class="mrgb2 hide" id="pok" style="margin-top: -5px; position: relative;">
+  <table align="center"><tbody><tr><td>
+  <div><table width="100%" cellpadding="0" cellspacing="0"><tbody><tr><td><div style="background: url('roundedcorners_003.dat') repeat scroll 0px 0px transparent; width: 2px; height: 2px;"></div></td><td height="2" width="100%" bgcolor="#fad163"><img alt="" height="1" width="1"></td><td><div style="background: url('roundedcorners_003.dat') repeat scroll -2px 0px transparent; width: 2px; height: 2px;"></div></td></tr></tbody></table></div>
+  <div class="pokh" style="background-color: rgb(250, 209, 99);">
+  <div id="pok_cnt"></div>
+  </div>
+  <div><table width="100%" cellpadding="0" cellspacing="0"><tbody><tr><td><div style="background: url('roundedcorners_003.dat') repeat scroll 0px 2px transparent; width: 2px; height: 2px;"></div></td><td height="2" width="100%" bgcolor="#fad163"><img alt="" height="1" width="1"></td><td><div style="background: url('roundedcorners_003.dat') repeat scroll -2px 2px transparent; width: 2px; height: 2px;"></div></td></tr></tbody></table></div>
+  </td></tr></tbody></table>
+  </div>
+  </div>
+  <div class="hide" id="peml">您需要先<a target="_top" href="https://www.google.com/accounts/ServiceLogin?passive=true&amp;hl=zh-CN&amp;service=groups2&amp;continue=http%3A%2F%2Fgroups.google.com%2Fgroup%2FVim-cn%2Fbrowse_thread%2Fthread%2F5c25728e3eecbece%3Fpli%3D1&amp;cd=US&amp;ssip=g3">登录</a>才能发帖。</div>
+  <div class="hide" id="pemj">要发帖，您需要先<a href="http://groups.google.com/group/vim-cn/subscribe" target="_top">加入此论坛</a>。</div>
+  <div class="hide" id="peus">请先在<a target="_top" href="http://groups.google.com/group/vim-cn/subscribe?reason=post_renew&amp;_done=%2Fgroup%2FVim-cn%2Fbrowse_thread%2Fthread%2F5c25728e3eecbece%3Fpli%3D1%26&amp;">订阅设置</a>页上更新您的昵称，然后再进行发帖。</div>
+  <div class="hide" id="pep">您没有发帖的权限。</div>
+  
+</td></tr></tbody></table>
+  </div>
+<table cellpadding="2" cellspacing="0">
+  <tbody><tr>
+  <td style="padding: 0px 2px;" class="uit" width="100%"> 帖子结尾 </td></tr></tbody></table></div></div>
+<!--/DOCUMENT_FRAGMENT-->
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</body>
+</html>

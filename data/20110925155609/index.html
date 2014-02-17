@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+  <title>Ten Essential Emacs tips</title>
+  
+  
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+
+<div class="content">
+  <h1 style="margin-bottom: 0pt;"><a href="http://web.psung.name/">Phil Sung</a> :
+    <a href="http://web.psung.name/emacstips/">Emacs resources</a> :
+    Ten Essential Emacs tips</h1>
+  <p style="margin-top: 0pt;">13 Jun 2008 (revised 13 Oct 2009)</p>
+
+  <p>These are some of the Emacs features I use the most on a day to day basis
+    (plus a few tricks). For more like this, also
+    see <a href="http://www.gnu.org/s/emacs/tour/">Guided Tour of
+    Emacs</a>.</p>
+
+  <p><b>1. Documentation at your fingertips.</b> It is difficult to learn more
+    (and difficult to <em>want</em> to learn more, even) about Emacs until you
+    know how to get to documentation easily. There are a few tiers of useful
+    commands here, the most useful of which are: <tt>C-h C-h</tt> (help about
+    help; essential!), <tt>C-h k</tt>, <tt>C-h f</tt> and <tt>C-h v</tt> (show
+    the purpose of a key, function or variable, respectively;
+    indispensable), <tt>C-h r</tt> (read the Emacs manual, within Emacs).</p>
+  <p>In no other program I've used has the completeness of documentation
+    approached that of Emacs. And using the documentation commands to find what
+    you need is both faster and more direct than using Google.</p>
+  <p><a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Help.html">More
+      information about help</a>.</p>
+
+  <p><b>2. Keyboard macros.</b> I have already used keyboard macros in the
+    course of writing this article, and I'm only on #2. In most editors, macros
+    are only useful for the simplest and most mundane of tasks because you can
+    hardly do anything useful using the keyboard alone. Emacs is different
+    because it has such a large toolbox of high-level commands (for starters,
+    commands for moving around in and manipulating characters, words, lines,
+    sentences, functions, paragraphs, pages, and entire files).</p>
+  <p>In Emacs, if you know how to perform some task on the keyboard, then it
+    takes just a couple of extra keystrokes to repeat it as many times as you
+    like— no programming needed! To record a macro, press <tt>F3</tt>, do
+    whatever it is you want to be recorded, and press <tt>F4</tt>. Then
+    press <tt>F4 F4 F4 ...</tt> to replay as many times as you like. (In
+    contrast, when you need to learn a completely new scripting language to
+    automate some task— say, Visual Basic, for Office— and then
+    figure out how to do your original task <em>in that language</em>, that can
+    be a huge demotivator.)</p>
+  <p>Emacs macros have two killer features: (1) Once you've defined a macro you
+    can say, "please repeat this macro until it would cause Emacs to start
+    beeping". If your macro does some sort of transformation on a single
+    line <em>and</em> moves to the next line, then <tt>M-0 F4</tt> causes Emacs
+    to do that transformation on all lines until it has reached the last line.
+    Awesome. (2) Counters let you insert a different number every time a macro
+    is run. Useful for, among other things, making consecutively (or
+    non-consecutively!) numbered lists.</p>
+  <p><a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Keyboard-Macros.html">More
+      information about macros</a>.</p>
+
+  <p><b>3. Rectangle editing.</b> Even though XML is supposed to be the new hot
+    thing, people still do a lot with columnar data. It's pretty much
+    everywhere in a typical Unix, for starters. The Emacs rectangle commands
+    let you manipulate, copy and move rectangles of text; you specify the
+    rectangles by putting mark at one corner and point at the opposite corner.
+    You can also "insert" rectangles by adding the same text in the same
+    position on a bunch of consecutive lines.</p>
+  <p><a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Rectangles.html">More
+      information about rectangles</a>.</p>
+
+  <p><b>4. The mark ring.</b> You should never have to scroll around randomly
+    in a buffer to find "that place you were just looking at". Whenever you
+    take a diversion (e.g. by searching, or pressing <tt>M-&lt;</tt>
+    or <tt>M-&gt;</tt>), Emacs uses the <em>mark</em> to save your previous
+    position, kind of like sticking your finger behind one page of a book while
+    you go to glance at another page. You can return to the mark with <tt>C-x
+    C-x</tt>. However, Emacs saves up to 16 previous values of the mark, and
+    you can jump to previous ones with <tt>C-u C-SPC</tt>. This makes mark and
+    the mark ring a valuable navigation tool. You can use it somewhat
+    mindlessly: if you ever find yourself asking "where was I just now?" you
+    can often just press <tt>C-u C-SPC</tt> until you find yourself back in the
+    right place.</p>
+  <p>(You can also set the mark explicitly yourself with <tt>C-SPC</tt>, but I
+    almost never need to do that for navigation purposes, only for marking
+    regions.)</p>
+  <p><a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Mark-Ring.html">More
+      information about the mark ring</a>.</p>
+
+  <p><b>5. Ediff.</b> Ediff is an easy way to compare two versions of a file.
+    The most common way I activate it is with <tt>M-x ediff-buffers</tt>. Emacs
+    highlights the differing regions in the buffers and pops up a new window in
+    which you can enter additional commands. For example, <tt>n</tt>
+    and <tt>p</tt> move among differing regions in the buffers. For each
+    region, you can copy the first (or second) buffer's version to the other
+    buffer with <tt>a</tt> and <tt>b</tt>, respectively. You can even edit
+    either buffer while Ediff is active. Then you can switch back to the Ediff
+    window and press <tt>!</tt> to recompute the diff. Being able to view the
+    differences between two files interactively— while editing those
+    files— can be really useful.</p>
+  <p><a href="http://www.gnu.org/software/emacs/manual/html_node/ediff/index.html">More
+      information about ediff</a>.</p>
+
+  <p><b>6. Tramp.</b> Ever start up another shell so you could run Emacs to
+    edit a file? (e.g. a root shell, or a shell on a remote host) Well, Tramp
+    has greatly reduced the number of situations where this is necessary. It
+    allows you to edit "remote" files as if they were local to your machine,
+    taking care of opening up shells, retrieving and writing data for you, etc.
+    You simply specify remote files using a special syntax in <tt>C-x C-f</tt>
+    (and near anywhere else Emacs asks you for a filename),
+    e.g.: <tt>/ssh:phil@remotehost:records/pizza-toppings.txt</tt>. I say
+    "'remote'" in quotes above because Tramp is general enough that you can
+    also use it to edit local files— as another user—
+    via <tt>su</tt> or <tt>sudo</tt> e.g.: <tt>/sudo::/etc/hosts</tt>.</p>
+  <p><a href="http://www.gnu.org/software/emacs/manual/html_node/tramp/index.html">More
+      information about Tramp</a>.</p>
+
+  <p><b>7. Compilation-mode and friends.</b> One common theme in Emacs is that
+    it gives you a lot of the raw power of tools you already know how to
+    use— your compiler, <tt>grep</tt>, etc. — and then it augments
+    them with super-powers. For example, when you run <tt>make</tt>
+    using <tt>M-x compile</tt>, Emacs displays the compiler output in a new
+    window. Should any compile errors appear, Emacs highlights them and notes
+    their line numbers. Pressing <tt>C-x `</tt> (<tt>M-x next-error</tt>) will
+    jump directly to the line in your source code which caused the first error;
+    press <tt>C-x `</tt> repeatedly to jump to successive errors. (You can also
+    click on the entries in the compilation output buffer.) You can go forwards
+    and backwards through the list of errors using <tt>M-g n</tt> and <tt>M-g
+    p</tt> (<tt>next-error</tt> and <tt>previous-error</tt> respectively).</p>
+  <p>This facility is general enough that you can use the same keys to jump to
+    line numbers that appear in the output of <tt>M-x grep</tt> or <tt>M-x
+    occur</tt>. In short, there is really no reason for you to have to
+    explicitly note filenames and line numbers in program output, because Emacs
+    can jump directly to them for you.</p>
+  <p><a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Compilation-Mode.html">More
+      information about "compilation mode"</a>.</p>
+
+  <p><b>8. VC.</b> I use Git for all my personal projects, and occasionally CVS
+    and SVN for projects that I interact with. Emacs provides a package called
+    VC which lets me perform many version control operations from within Emacs.
+    It provides a layer of uniformity: the commands are all the same regardless
+    of what version control system I am using for any particular project. This
+    is great because it means that when <tt>bzr</tt> or <tt>hg</tt> or whatever
+    comes into vogue, I can get quite a bit of work done before I have to
+    learn <em>yet another VCS</em>.</p>
+  <p>Typical workflow for me: open a file. Make and test some changes. <tt>C-x
+      v =</tt> to show a diff. If I like it, <tt>C-x v v</tt> to prepare a
+    commit. Emacs pops up a new window in which to type a commit
+    message. <tt>C-c C-c</tt> there to make the commit.</p>
+  <p>VC includes many other useful features, like showing annotated versions of
+    files, showing change logs for particular files, and helping you review
+    historical versions and diffs.</p>
+  <p><a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Version-Control.html">More
+      information about VC</a>.</p>
+
+  <p><b>9. Emacs server and multi-TTY support.</b> Multi-TTY support, available
+    in Emacs 23+, makes opening new Emacs frames painless and fast. You might
+    use this when you open a file from the shell, or when you run an external
+    program that invokes <tt>$EDITOR</tt>. (However, so much functionality is
+    available directly from within Emacs that it makes many external programs
+    superfluous.)</p>
+  <p>To use multi-TTY, run <tt>M-x server-start</tt> in a running instance of
+    Emacs. The set your <tt>$EDITOR</tt> to <tt>emacsclient -t</tt>. When a
+    program invokes the editor, <tt>emacsclient</tt> contacts your existing
+    instance of Emacs which opens up a new frame on the TTY you were using. It
+    looks as if you had just run <tt>emacs</tt>, except that you can access all
+    the state of your other instance: all your buffers, kill ring entries, etc.
+    are there. And it starts up pretty much instantly. When you are done,
+    press <tt>C-x #</tt> to finish and close that frame.</p>
+  <p>I use <tt>emacsclient</tt> to invoke Emacs in all sorts of other places.
+    For example, instead of reading man pages using <tt>man</tt>, I read them
+    in Emacs. Here's a snippet of my <tt>.bashrc</tt>:</p>
+  <p></p><pre>pps_man() {
+    /usr/bin/emacsclient -t -e "(woman \"$1\")"
+}
+alias man=pps_man</pre><p></p>
+
+  <p><b>10. global-set-key.</b> Everyone has a different set of commonly used
+    commands. Whatever features of Emacs you use the most, bind them to keys to
+    save yourself time. For example, to bind <tt>C-c s</tt> to <tt>shell</tt>
+    globally:</p>
+  <p><code>(global-set-key "\C-cs" 'shell)</code></p>
+  <p>Users may bind <tt>C-c [any letter]</tt> for their own use, and all major
+    and minor modes are supposed to respect that.</p>
+  <p>More information
+    about <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Key-Bindings.html">key
+      bindings</a>
+    and <a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Key-Binding-Conventions.html">key
+    binding conventions</a>.</p>
+
+</div>
+
+
+</body>
+</html>

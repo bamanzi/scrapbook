@@ -1,0 +1,212 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Developing with Emacs - GNU Emacs FAQ For MS Windows</title>
+
+<meta name="description" content="Answers to Frequently asked Questions about using Emacs on Microsoft Windows.">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="http://www.gnu.org/software/emacs/windows/index.html#Top">
+<link rel="prev" href="http://www.gnu.org/software/emacs/windows/Text-and-Utility-modes.html#Text-and-Utility-modes" title="Text and Utility modes">
+<link rel="next" href="http://www.gnu.org/software/emacs/windows/Other-useful-ports.html#Other-useful-ports" title="Other useful ports">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 2008, 2010-2011 Free Software Foundation, Inc.
+
+     This list of frequently asked questions about GNU Emacs on MS
+     Windows with answers (``FAQ'') may be translated into other
+     languages, transformed into other formats (e.g. Texinfo, Info,
+     WWW), and updated with new information.
+
+     The same conditions apply to any derivative of the FAQ as apply to
+     the FAQ itself.  Every copy of the FAQ must include this notice or
+     an approved translation, information on who is currently
+     maintaining the FAQ and how to contact them (including their
+     e-mail address), and information on where the latest version of
+     the FAQ is archived (including FTP information).
+
+     The FAQ may be copied and redistributed under these conditions,
+     except that the FAQ may not be embedded in a larger literary work
+     unless that work itself allows free copying and redistribution.
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+</head>
+<body>
+<div class="node">
+<a name="Developing-with-Emacs"></a>
+<p>
+Next:&nbsp;<a indepth="true" rel="next" accesskey="n" href="other-useful-ports.html#Other-useful-ports">Other useful ports</a>,
+Previous:&nbsp;<a indepth="true" rel="previous" accesskey="p" href="text-and-utility-modes.html#Text-and-Utility-modes">Text and Utility modes</a>,
+Up:&nbsp;<a indepth="true" rel="up" accesskey="u" href="default_001.html#Top">Top</a>
+</p><hr>
+</div>
+
+<h2 class="chapter">10 Developing with Emacs</h2>
+
+<h3 class="section">10.1 How do I use Emacs with Microsoft Visual C++</h3>
+
+<p>There are two ways you can use Emacs in conjunction with MSVC.  You
+can use Emacs as the editor, and do everything else in the DevStudio
+IDE.  Or you can use Emacs as an IDE, calling the MSVC command line
+tools to build your project.
+
+</p><h4 class="subsection">10.1.1 Emacs as the text editor for DevStudio</h4>
+
+<p><a name="index-DevStudio_002c-using-Emacs-as-editor-in-360"></a><a name="index-MSVC_002b_002b_002c-using-Emacs-as-editor-with-361"></a><a name="index-Visual-Studio_002c-using-Emacs-as-editor-in-362"></a><a name="index-VisEmacs_002c-add-in-for-MS-Developer-Studio-363"></a>
+Christopher Payne wrote a Visual Studio add-in that makes Emacs the
+default text editor, this has now been taken over by
+<a href="mailto:paquette@mediaone.net">Jeff Paquette</a>. 
+See the following two URLS for details:
+     </p><ul>
+<li><a href="http://sourceforge.net/projects/visemacs/">http://sourceforge.net/projects/visemacs/</a> for the latest version. 
+</li><li><a href="http://www.smathers.net/VisEmacs.htm">http://www.smathers.net/VisEmacs.htm</a> for notes on usage. 
+</li></ul>
+
+<h4 class="subsection">10.1.2 Using MSVC command line tools from Emacs</h4>
+
+<p><a name="index-MSVC_002b_002b_002c-compiling-within-Emacs-364"></a><a name="index-compile-365"></a>
+This is an app note on how to use Microsoft Visual C++ with Emacs. The
+experiments done below were done with Emacs 19.34.1 on Windows 95,
+using Visual C++ 4.0 Standard Edition. Your mileage may vary.
+
+   </p><p>This writeup assumes minimal knowledge of Emacs hacking on the part of
+the reader.
+
+</p><h5 class="subsubsection">10.1.2.1 VC++ Environment Variables</h5>
+
+<p><a name="index-vcvars32_002ebat-366"></a><a name="index-MSVC_002b_002b_002c-environment-variables-367"></a>
+There is a batch file in your VC++ installation's bin directory called
+<samp><span class="file">vcvars32.bat</span></samp>, which sets up the environment variables needed to
+run the VC++ command line tools.  Arrange for those same environment
+variables to be set in your Emacs session.  You can do this on Windows
+9x by calling the <samp><span class="file">vcvars32.bat</span></samp> script from <samp><span class="file">autoexec.bat</span></samp>. 
+On other versions of Windows you can set the environment variables
+globally using the System control panel.
+
+   </p><p>For all versions of Windows you can alternatively set the variables
+just inside Emacs by using <code>setenv</code> calls in your init file. 
+See <a indepth="true" href="installing-emacs.html#Installing-Emacs">Where do I put my init file?</a>.
+
+   </p><p>You should now be able to compile from Emacs. Load a source file from
+a VC++ project. Type <kbd>M-x compile</kbd>. Replace the proposed command line
+with:
+</p><pre class="example">     nmake -f <var>ProjectName</var>.mak
+</pre>
+   <p>You will find that this defaults to a debug build. You can change it
+to a release build with:
+</p><pre class="example">     nmake -f <var>ProjectName</var>.mak CFG="<var>ProjectName</var> - Win32 Release"
+</pre>
+   <h5 class="subsubsection">10.1.2.2 Setting the default compile command</h5>
+
+<p><a name="index-compile_002c-setting-default-command-368"></a><a name="index-nmake_002c-as-default-compile-command-369"></a><a name="index-compile_002dcommand-370"></a>
+Now set the default value for the compile command line.  Add the
+following to your init file:
+
+</p><pre class="example">     ;; Set up for Visual C++ compiling
+     (setq compile-command "nmake -f ")
+</pre>
+   <p>If you work on the same project long term, you can add the project
+makefile to the string.
+
+   </p><p><a href="mailto:sasdjb@unx.sas.com">David Biesack</a> suggests that perhaps it's
+easy to write a <samp><span class="file">Makefile</span></samp> in the project directory which does
+
+</p><pre class="example">     PROJECT=MyProject
+     all: debug
+     debug: FORCE
+             nmake /f $(PROJECT).mak CFG="$(PROJECT) - Win32 Debug"
+     release: FORCE
+             nmake /f $(PROJECT).mak CFG="$(PROJECT) - Win32 Release"
+     FORCE:
+</pre>
+   <p>and then you can simply change compile-command to <samp><span class="command">nmake</span></samp>.
+
+   </p><p><a href="mailto:deupreec@interagp.com">Caleb T. Deupree</a> reports that on VC++
+5.0 and up, "You can also set an option in Options/Build to export a
+makefile every time the project is saved, which you can then use to
+compile with ‘<samp><span class="samp">nmake -f project.mak</span></samp>’."  VC++ 4.0 builds the make file
+every time, and there is no option.
+
+</p><h5 class="subsubsection">10.1.2.3 Reverting Buffers</h5>
+
+<p><a name="index-DevStudio_002c-keeping-source-in-sync-371"></a><a name="index-Visual-Studio_002c-keeping-source-in-sync-372"></a><a name="index-MSVC_002b_002b_002c-keeping-source-in-sync-373"></a><a name="index-auto_002drevert_002dmode-374"></a><a name="index-global_002dauto_002drevert_002dmode-375"></a>
+It is recommended that you use <code>auto-revert-mode</code> in buffers
+that you have open in both Emacs and MSVC++ at the same time.  Then if
+you mistakenly edit the file in MSVC++, Emacs will pick up your
+changes immediately, rather than after you have written lots more code
+and attempt to save.
+
+</p><h5 class="subsubsection">10.1.2.4 Edit with Emacs function for MSVC</h5>
+
+<p><a name="index-DevStudio_002c-load-in-Emacs-command-376"></a><a name="index-Visual-Studio_002c-load-in-Emacs-command-377"></a><a name="index-MSVC_002b_002b_002c-load-in-Emacs-command-378"></a><a name="index-emacsclient_002c-calling-from-Visual-Studio-379"></a>
+You can also set up VC++ to import a file into Emacs for you, all
+ready for editing.  In VC++, go to the <code>Tools</code> pull-down menu, and
+click on <code>Customize...</code>.  In the <code>Tools</code> tab, click on
+<code>Add</code>.  Use <code>Browse</code> to locate the
+<samp><span class="file">emacsclientw.exe</span></samp> file in your Emacs bin directory, and
+select it.  For arguments, use <samp><span class="option">+$(CurLine)</span></samp>
+<samp><span class="option">"$(FilePath)"</span></samp> and for the directory use the <code>$(WkspDir)</code>
+(the quotes around FilePath handle paths with spaces in them). Set the
+Menu Text to say "Em&amp;acs". The <samp><span class="option">+$(CurLine)</span></samp> will set point in
+Emacs to the same line as the cursor position in VC++. The ampersand
+in the word <code>Em&amp;acs</code> allows you to select emacs from the keyboard. (E
+is already used for the OLE control test container.)
+
+   </p><p>You should now be able to go to any source file in your project. Then,
+use the pull-down menu <code>Tools-&gt;Emacs</code>. The active file in your
+VC++ IDE should now be front and center in Emacs, all ready to edit as
+you wish. If you use keystrokes to work the menus, try <kbd>Alt-T A</kbd> to
+move the file into Emacs. Binding this tool to a keystroke will be
+left as an exercise for the student.
+
+   </p><p>If you have the option of saving files before running tools, make sure
+this option is set. (I don't see it on VC++ 4.0.)
+
+</p><h3 class="section">10.2 Emacs and Borland C++ Builder</h3>
+
+<p><a name="index-Borland-C_002b_002b_002c-integration-with-Emacs-380"></a>
+<a href="mailto:jdarnold@buddydog.org">Jonathan Arnold</a> has written an
+<a href="http://www.buddydog.org/C++Builder/c++builder.html">EmacsEdit “expert”</a> for interfacing C++ Builder and Emacs.
+
+</p><h3 class="section">10.3 Is there a version of my VC software I can use with Emacs?</h3>
+
+<p><a name="index-version-control_002c-integration-with-Emacs-381"></a><a name="index-revision-control_002c-integration-with-Emacs-382"></a><a name="index-source-control_002c--integration-with-Emacs-383"></a><a name="index-cvs_002c-version-control-integration-with-Emacs-384"></a><a name="index-rcs_002c-version-control-integration-with-Emacs-385"></a><a name="index-svn_002c-version-control-integration-with-Emacs-386"></a><a name="index-git_002c-version-control-integration-with-Emacs-387"></a><a name="index-bzr_002c-version-control-integration-with-Emacs-388"></a><a name="index-arch_002c-version-control-integration-with-Emacs-389"></a><a name="index-mercurial_002c-version-control-integration-with-Emacs-390"></a><a name="index-hg_002c-version-control-integration-with-Emacs-391"></a><a name="index-monotone_002c-version-control-integration-with-Emacs-392"></a><a name="index-mcvs_002c-version-control-integration-with-Emacs-393"></a>
+If you are using a graphical revision control tool already, check if
+it comes with command-line tools.  Many such GUI tools are just
+wrappers for the same command line tools that Emacs requires for its
+VC integration.  Most of the supported VC systems have well supported
+Free native Windows binaries.  For those that don't Cygwin may be an option. 
+See <a indepth="true" href="other-useful-ports.html#Other-useful-ports">Other useful ports</a>.
+
+</p><h3 class="section">10.4 How do I use the Perl debugger with Emacs?</h3>
+
+<p><a name="index-perl_002c-debugging-within-Emacs-394"></a><a name="index-perldb_002c-using-with-Emacs-395"></a>
+From <a href="mailto:jay@rgrs.com">Jay Rogers</a>
+
+   </p><p>Some versions of the perl debugger itself need to be patched to work
+with emacs. They are perl versions 5.001 and less, and version
+5.004_01. To fix, locate and change the code similar to the following
+code in lib/perl5db.pl
+</p><pre class="example">             if (-e "/dev/tty") {
+                 $console = "/dev/tty";
+                 $rcfile=".perldb";
+             }
+             elsif (-e "con") {
+                 $console = "";                 &lt;---- change "con" to ""
+                 $rcfile="perldb.ini";
+             }
+             else {
+                 $console = "sys\$command";
+                 $rcfile="perldb.ini";
+             }
+</pre>
+   <p><a href="mailto:soup@ampersand.com">Doug Campbell</a> also has some
+<a href="http://www.gnu.org/software/emacs/windows/ntemacs/discuss/perldb">suggestions</a> for improving the interaction of perldb and Emacs.
+
+<!--  -->
+   
+
+</p>
+
+</body></html>

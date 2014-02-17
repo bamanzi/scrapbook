@@ -1,0 +1,313 @@
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Fonts and text translation - GNU Emacs FAQ For MS Windows</title>
+
+<meta name="description" content="Answers to Frequently asked Questions about using Emacs on Microsoft Windows.">
+<meta name="generator" content="makeinfo 4.13">
+<link title="Top" rel="start" href="http://www.gnu.org/software/emacs/windows/index.html#Top">
+<link rel="prev" href="http://www.gnu.org/software/emacs/windows/Display-Settings.html#Display-Settings" title="Display Settings">
+<link rel="next" href="http://www.gnu.org/software/emacs/windows/Printing.html#Printing" title="Printing">
+<link href="http://www.gnu.org/software/texinfo/" rel="generator-home" title="Texinfo Homepage">
+<!--
+Copyright (C) 2008, 2010-2011 Free Software Foundation, Inc.
+
+     This list of frequently asked questions about GNU Emacs on MS
+     Windows with answers (``FAQ'') may be translated into other
+     languages, transformed into other formats (e.g. Texinfo, Info,
+     WWW), and updated with new information.
+
+     The same conditions apply to any derivative of the FAQ as apply to
+     the FAQ itself.  Every copy of the FAQ must include this notice or
+     an approved translation, information on who is currently
+     maintaining the FAQ and how to contact them (including their
+     e-mail address), and information on where the latest version of
+     the FAQ is archived (including FTP information).
+
+     The FAQ may be copied and redistributed under these conditions,
+     except that the FAQ may not be embedded in a larger literary work
+     unless that work itself allows free copying and redistribution.
+   -->
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+</head>
+<body>
+<div class="node">
+<a name="Fonts-and-text-translation"></a>
+<p>
+Next:&nbsp;<a indepth="true" rel="next" accesskey="n" href="printing.html#Printing">Printing</a>,
+Previous:&nbsp;<a indepth="true" rel="previous" accesskey="p" href="display-settings.html#Display-Settings">Display Settings</a>,
+Up:&nbsp;<a indepth="true" rel="up" accesskey="u" href="default_001.html#Top">Top</a>
+</p><hr>
+</div>
+
+<h2 class="chapter">5 Fonts and text translation</h2>
+
+<h3 class="section">5.1 Font names</h3>
+
+<p><a name="index-XLFD-font-names-148"></a><a name="index-font-XLFD-name-format-149"></a><a name="index-fontconfig-font-names-in-Emacs-23-150"></a><a name="index-font-dialog_002c-using-to-find-font-names-151"></a><a name="index-w32_002dselect_002dfont-152"></a><a name="index-x_002dlist_002dfonts-153"></a>
+Fonts in Emacs 22 and earlier are named using the X Logical Font
+Description (XLFD) format.  Emacs on Windows ignores many of the
+fields, and populates them with * when listing fonts.  Former
+maintainer Andrew Innes wrote
+<a href="http://www.gnu.org/software/emacs/windows/ntemacs/discuss/x-font-details">this explanation</a> of what each field in the font string means and how
+Emacs treated them back in 19.34.  Since then, multilingual support and
+a redisplay overhaul to support variable width fonts have changed things
+slightly; more character sets are recognized (and the old pseudo character
+sets are deprecated), and the resolution fields are used to calculate the
+difference between point and pixel sizes, but normally you should leave
+these at the system default.  The foundry field is also populated with
+an indication of whether the font is outline (.TTF, .ATM) or raster (.FON)
+based when fonts are listed, which may let you differentiate between two
+fonts with the same name and different technologies.
+
+   </p><p>From Emacs 23, the preferred font name format will be moving to the simpler
+and more flexible fontconfig format.  XLFD names will continue to be
+supported for backward compatibility.
+
+</p><pre class="example">     XLFD: -*-Courier New-normal-r-*-*-13-*-*-*-c-*-iso8859-1
+     Fontconfig: Courier New-13
+</pre>
+   <p>To find the XFLD name for a font, you can execute the following in the
+<samp><span class="file">*scratch*</span></samp> buffer by pressing C-j at the end of the line:
+</p><pre class="example">     (w32-select-font nil t)
+</pre>
+   <p>To see a complete list of fonts, execute the following in the
+<samp><span class="file">*scratch*</span></samp> buffer by pressing C-x C-e at the end of the line:
+</p><pre class="example">     (insert (prin1-to-string (x-list-fonts "*")))
+</pre>
+   <p>The command line options and frame-parameters for changing the default font
+in Emacs are documented in the manual.  Fonts can also be used when defining
+faces, though family and size are generally specified individually there. 
+In addition, Emacs on Windows reads the registry to find X Resources.  This
+is also documented in the manual.
+
+</p><h3 class="section">5.2 How can I get bold and italic fonts to work?</h3>
+
+<p><a name="index-italic-fonts-154"></a><a name="index-synthesized-italic-and-bold-fonts-155"></a><a name="index-bold-fonts_002c-synthesized-156"></a><a name="index-set_002dface_002dfont-157"></a><a name="index-w32_002denable_002dsynthesized_002dfonts-158"></a>
+Emacs will only use the italic (and bold) versions of a font automatically
+if it has the same width as the normal version.  Many fonts have italic
+and bold versions that are slightly wider.  It will also only use real
+bold and italic fonts by default, where other applications may use
+synthesized variations that are derived from the normal font.  To enable
+more italic and bold fonts to be displayed, you can enable synthesized fonts
+and manually set the font for italic, bold and bold-italic as follows:
+
+</p><pre class="example">     (setq w32-enable-synthesized-fonts t)
+     (set-face-font 'italic "-*-Courier New-normal-i-*-*-11-*-*-*-c-*-iso8859-1")
+     (set-face-font 'bold-italic "-*-Courier New-bold-i-*-*-11-*-*-*-c-*-iso8859-1")
+</pre>
+   <h3 class="section">5.3 Multilingual font support</h3>
+
+<p><a name="index-multilingual-display_002c-fonts-159"></a><a name="index-MULE_002c-fonts-160"></a>
+
+</p><h4 class="subsection">5.3.1 Is it possible to display all the supported languages?</h4>
+
+<p><a name="index-HELLO-file_002c-displaying-all-161"></a><a name="index-language-support_002c-fonts-162"></a><a name="index-GNU-intlfonts_002c-for-displaying-all-languages-163"></a><a name="index-intlfonts_002c-for-displaying-all-languages-164"></a>
+To display all the languages that Emacs is capable of displaying, you will
+require the BDF fonts from the GNU intlfonts package. 
+See <a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">How do I use bdf fonts with Emacs?</a>.
+
+   </p><p>For many languages, native truetype fonts are sufficient, and in Emacs
+23 the need for BDF fonts will disappear for almost all languages.  At
+the time of writing, some Arabic characters in the HELLO file still do
+not display with native fonts, because they are pre-composed characters
+from MULE character sets rather than standard Unicode Arabic, but all
+other characters are able to be displayed with appropriate truetype or
+opentype fonts.
+
+</p><h4 class="subsection">5.3.2 How do I get Emacs to display non-latin characters?</h4>
+
+<p><a name="index-fontsets_002c-defining-165"></a><a name="index-language-support_002c-forcing-Emacs-to-use-specific-fonts-166"></a><a name="index-MULE_002c-fontsets-167"></a><a name="index-multilingual-display_002c-fontsets-168"></a><a name="index-create_002dfontset_002dfrom_002dascii_002dfont-169"></a><a name="index-create_002dfontset_002dfrom_002dfontset_002dspec-170"></a>
+Recent versions of Emacs display a large range of characters out of
+the box, but if you are having problems with a particular character
+set which you know you have fonts for, you can try defining a
+new fontset with <code>create-fontset-from-ascii-font</code> or
+<code>create-fontset-from-fontset-spec</code>.
+
+   </p><p><a name="fontset_002dexample"></a>
+</p><pre class="example">     (create-fontset-from-fontset-spec
+      "-*-Courier New-normal-r-*-*-12-*-*-*-c-*-fontset-most,
+      latin-iso8859-2:-*-Courier New-normal-r-*-*-12-*-*-*-c-*-iso8859-2,
+      latin-iso8859-3:-*-Courier New-normal-r-*-*-12-*-*-*-c-*-iso8859-3,
+      latin-iso8859-4:-*-Courier New-normal-r-*-*-12-*-*-*-c-*-iso8859-4,
+      cyrillic-iso8859-5:-*-Courier New-normal-r-*-*-12-*-*-*-c-*-iso8859-5,
+      greek-iso8859-7:-*-Courier New-normal-r-*-*-12-*-*-*-c-*-iso8859-7,
+      latin-iso8859-9:-*-Courier New-normal-r-*-*-12-*-*-*-c-*-iso8859-9,
+      japanese-jisx0208:-*-MS Gothic-normal-r-*-*-12-*-*-*-c-*-jisx0208-sjis,
+      katakana-jisx0201:-*-MS Gothic-normal-r-*-*-12-*-*-*-c-*-jisx0208-sjis,
+      latin-jisx0201:-*-MS Gothic-normal-r-*-*-12-*-*-*-c-*-jisx0208-sjis,
+      japanese-jisx0208-1978:-*-MS Gothic-normal-r-*-*-12-*-*-*-c-*-jisx0208-sjis,
+      korean-ksc5601:-*-Gulim-normal-r-*-*-12-*-*-*-c-*-ksc5601-*,
+      chinese-gb2312:-*-MS Song-normal-r-*-*-12-*-*-*-c-*-gb2312-*,
+      chinese-big5-1:-*-MingLiU-normal-r-*-*-12-*-*-*-c-*-big5-*,
+      chinese-big5-2:-*-MingLiU-normal-r-*-*-12-*-*-*-c-*-big5-*" t)
+</pre>
+   <h4 class="subsection">5.3.3 Where can I find fonts for other languages?</h4>
+
+<p><a name="index-language-support_002c-finding-fonts-171"></a><a name="index-fonts_002c-where-to-find-172"></a><a name="index-MULE_002c-finding-fonts-173"></a><a name="index-multilingual-display_002c-finding-fonts-174"></a><a name="index-GNU-intlfonts_002c-where-to-get-175"></a><a name="index-intlfonts_002c-where-to-get-176"></a>
+In addition to the wide range of fonts that come with the language
+support packages of various components of Windows itself, GNU/Linux
+distributions these days come with a number of Free truetype fonts
+that cover a wide range of languages.  The GNU intlfonts source
+distribution contains BDF fonts covering all of the languages that can
+be displayed by Emacs 22, and can be downloaded from
+<a href="http://ftp.gnu.org/gnu/intlfonts">ftp.gnu.org</a>.
+
+</p><h4 class="subsection">5.3.4 How do I use third party programs to display mulitbyte characters?</h4>
+
+<p><a name="index-multilingual-display_002c-third-party-programs-on-Windows-9x_002fME-177"></a><a name="index-language-support_002c-third-party-programs-on-Windows-9x_002fME-178"></a><a name="index-w32_002denable_002dunicode_002doutput-179"></a>
+You probably only need to do this on the non-Unicode versions of Windows
+(95, 98 and ME), and even then, various Windows and Internet Explorer
+updates have made third party software unnecessary in most cases. 
+If you are having trouble displaying text, try defining a fontset
+with the font for the languages that the third party software handles
+set to what that software expects (which may not be an appropriate font
+for that language, but the third party software is intercepting it
+and using a different font behind the scenes). 
+See <a href="http://www.gnu.org/software/emacs/windows/fontset_002dexample.html#fontset_002dexample">How do I get Emacs to display non-latin characters?</a>.
+
+   </p><p>In addition to defining a fontset with the expected font, you may also need
+to disable unicode output with:
+</p><pre class="example">     (setq w32-enable-unicode-output nil)
+</pre>
+   <h4 class="subsection">5.3.5 Can I use a font with a name in my language?</h4>
+
+<p><a name="index-fonts_002c-localized-font-names-180"></a><a name="index-locale_002dcoding_002dsystem-181"></a>
+Normally Emacs should initialize <code>locale-coding-system</code> appropriately
+based on your locale, which will let Emacs use font names in your local
+language successfully.
+
+</p><h3 class="section">5.4 How do I use bdf fonts with Emacs?</h3>
+
+<p><a name="index-BDF-fonts_002c-using-182"></a><a name="index-GNU-intlfonts_002c-using-183"></a><a name="index-intlfonts_002c-using-184"></a><a name="index-w32_002dbdf_002dfilename_002dalist-185"></a><a name="index-bdf_002ddirectory_002dalist-186"></a><a name="index-font_002dencoding_002dalist-187"></a><a name="index-w32_002dfind_002dbdf_002dfonts-188"></a><a name="index-set_002dframe_002dfont-189"></a>
+To use bdf fonts with Emacs, you need to tell Emacs where the fonts
+are located, create fontsets for them, and then use them.  We'll use
+the 16 dot international fonts from <a href="http://ftp.gnu.org/gnu/intlfonts">ftp.gnu.org/gnu/intlfonts</a> as an
+example put together by <a href="mailto:jasonr@gnu.org">Jason Rumney</a>
+
+   </p><p>Download <samp><span class="file">16dots.tar.gz</span></samp> and unpack it; I'll assume that they are in
+<samp><span class="file">c:\intlfonts</span></samp>.  Then set <code>w32-bdf-filename-alist</code> to the list of
+fonts returned by using <code>w32-find-bdf-fonts</code> to enumerate all of
+the font files.  It is a good idea to set the variable
+<code>bdf-directory-list</code> at the same time so <code>ps-print</code> knows where
+to find the fonts:
+</p><pre class="example">     (setq bdf-directory-list
+           '("c:/intlfonts/Asian" "c:/intlfonts/Chinese"
+             "c:/intlfonts/Chinese-X" "c:/intlfonts/Ethiopic"
+     	"c:/intlfonts/European" "c:/intlfonts/Japanese"
+             "c:/intlfonts/Japanese-X" "c:/intlfonts/Korean-X"
+     	"c:/intlfonts/Misc/"))
+     
+     (setq w32-bdf-filename-alist (w32-find-bdf-fonts bdf-directory-list))
+</pre>
+   <p>Then create fontsets for the BDF fonts:
+
+</p><pre class="example">     (create-fontset-from-fontset-spec
+      "-*-fixed-medium-r-normal-*-16-*-*-*-c-*-fontset-bdf,
+     japanese-jisx0208:-*-*-medium-r-normal-*-16-*-*-*-c-*-jisx0208.1983-*,
+     katakana-jisx0201:-*-*-medium-r-normal-*-16-*-*-*-c-*-jisx0201*-*,
+     latin-jisx0201:-*-*-medium-r-normal-*-16-*-*-*-c-*-jisx0201*-*,
+     japanese-jisx0208-1978:-*-*-medium-r-normal-*-16-*-*-*-c-*-jisx0208.1978-*,
+     thai-tis620:-misc-fixed-medium-r-normal--16-160-72-72-m-80-tis620.2529-1,
+     lao:-misc-fixed-medium-r-normal--16-160-72-72-m-80-MuleLao-1,
+     tibetan-1-column:-TibMdXA-fixed-medium-r-normal--16-160-72-72-m-80-MuleTibetan-1,
+     ethiopic:-Admas-Ethiomx16f-Medium-R-Normal--16-150-100-100-M-160-Ethiopic-Unicode,
+     tibetan:-TibMdXA-fixed-medium-r-normal--16-160-72-72-m-160-MuleTibetan-0")
+</pre>
+   <p>Many of the international bdf fonts from gnu.org are type 0, and therefore
+need to be added to font-encoding-alist:
+
+</p><pre class="example">     ;; Need to add some fonts to font-encoding-alist since the bdf fonts
+     ;; are type 0 not the default type 1.
+     (setq font-encoding-alist
+           (append '(("MuleTibetan-0" (tibetan . 0))
+                     ("GB2312"        (chinese-gb2312 . 0))
+                     ("JISX0208"      (japanese-jisx0208 . 0))
+                     ("JISX0212"      (japanese-jisx0212 . 0))
+                     ("VISCII"        (vietnamese-viscii-lower . 0))
+                     ("KSC5601"       (korean-ksc5601 . 0))
+                     ("MuleArabic-0"  (arabic-digit . 0))
+                     ("MuleArabic-1"  (arabic-1-column . 0))
+                     ("MuleArabic-2"  (arabic-2-column . 0))) font-encoding-alist))
+</pre>
+   <p>You can now use the Emacs font menu (see <a indepth="true" href="fonts-and-text-translation.html#Fonts-and-text-translation">How can I have Emacs use a font menu like on X?</a>) to
+select the <em>bdf: 16-dot medium</em> fontset, or you can select it by
+setting the default font:
+
+</p><pre class="example">         (set-frame-font "fontset-bdf")
+</pre>
+   <p>Try loading the file <samp><span class="file">etc/HELLO</span></samp>, and you should be able to see the
+various international fonts displayed (except for Hindi, which is not
+included in the 16-dot font distribution).
+
+</p><h3 class="section">5.5 How can I have Emacs use a font menu like on X?</h3>
+
+<p><a name="index-fonts_002c-displaying-a-menu-190"></a><a name="index-fontsets_002c-displaying-a-menu-191"></a><a name="index-font-dialog_002c-using-a-menu-instead-192"></a><a name="index-w32_002duse_002dw32_002dfont_002ddialog-193"></a>
+Place the following in your init file:
+
+</p><pre class="example">     (setq w32-use-w32-font-dialog nil)
+</pre>
+   <h4 class="subsection">5.5.1 How can I add my font to the font menu?</h4>
+
+<p><a name="index-font-menu_002c-adding-fonts-194"></a><a name="index-w32_002dfixed_002dfont_002dalist-195"></a>
+If you have set w32-use-w32-font-dialog to nil, you can add fonts to
+the font menu by changing `w32-fixed-font-alist'.  For example:
+
+</p><pre class="example">     (setq w32-fixed-font-alist
+        (append w32-fixed-font-alist
+           '(("Monotype.com"
+              ("8" "-*-Monotype.com-normal-r-*-*-11-*-*-*-c-iso8859-1")
+              ("9" "-*-Monotype.com-normal-r-*-*-12-*-*-*-c-iso8859-1")
+              ("10" "-*-Monotype.com-normal-r-*-*-13-*-*-*-c-iso8859-1")
+              ("11" "-*-Monotype.com-normal-r-*-*-15-*-*-*-c-iso8859-1")))))
+</pre>
+   <h3 class="section">5.6 How can I control CR/LF translation?</h3>
+
+<p><a name="index-DOS-line-ends-196"></a><a name="index-Unix-line-ends-197"></a><a name="index-Mac-line-ends-198"></a>
+There are a number of methods by which you can control automatic CR/LF
+translation in Emacs, a situation that reflects the fact that the
+default support was not very robust in the past.  For a discussion of
+this issue, take a look at
+<a href="http://www.gnu.org/software/emacs/windows/ntemacs/todo/translate">this collection of email messages</a> on the topic.
+
+</p><h4 class="subsection">5.6.1 Automatic CR/LF translation</h4>
+
+<p><a name="index-line-ends_002c-automatic-detection-199"></a>
+For existing files, Emacs scans the file to determine the line ending
+convention as part of the same scan it does to determine the file
+encoding.  Embedded Ctrl-M (ASCII 13) characters and inconsistent line
+ends can confuse the automatic scanning, and Emacs will present the
+file in Unix (LF) mode with the Ctrl-M characters displayed as ‘<samp><span class="samp">^M</span></samp>’. 
+It does this to be safe, as no data loss will occur if the file is really
+binary and the Ctrl-M characters are significant.
+
+</p><h4 class="subsection">5.6.2 CR/LF translation by file extension</h4>
+
+<p><a name="index-line-ends_002c-determining-by-filename-200"></a><a name="index-binary-files_002c-determining-by-file-name-201"></a><a name="index-file_002dname_002dbuffer_002dfile_002dtype_002dalist-202"></a>
+The variable <code>file-name-buffer-file-type-alist</code> holds a list of
+filename patterns and their associated type; binary or text.  Files marked
+as binary will not have line-end detection performed on them, and instead
+will always be displayed as is.  With auto-detection in recent versions of
+Emacs, this is seldom useful for existing files, but can still be used
+to influence the choice of line ends for newly created files.
+
+</p><h4 class="subsection">5.6.3 CR/LF translation by file system</h4>
+
+<p><a name="index-line-ends_002c-determining-by-filesystem-203"></a><a name="index-binary-files_002c-determining-by-filesystem-204"></a><a name="index-untranslated_002dfilesystem_002dlist-205"></a><a name="index-add_002duntranslated_002dfilesystem-206"></a><a name="index-remove_002duntranslated_002dfilesystem-207"></a>
+The variable <code>untranslated-filesystem-list</code> defines whole
+directory trees that should not have CR/LF autodetection performed on
+them.  The list can be manipulated with the functions
+<code>add-untranslated-filesystem</code> and
+<code>remove-untranslated-filesystem</code>.  With auto-detection in
+recent versions of Emacs, this is seldom useful for existing files,
+but can still be used to influence the choice of line ends for newly
+created files.
+
+<!--  -->
+   
+
+</p>
+
+</body></html>
