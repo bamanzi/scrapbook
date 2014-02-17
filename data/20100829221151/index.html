@@ -1,0 +1,487 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+
+
+<title>  Linux 包管理速查表 — LinuxTOY</title>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"><!-- leave this for stats -->
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/linuxtoy">
+<link rel="pingback" href="http://linuxtoy.org/xmlrpc.php">
+
+    <link rel="canonical" href="http://linuxtoy.org/archives/linux-package-management-cheatsheet.html">
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://linuxtoy.org/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://linuxtoy.org/wp-includes/wlwmanifest.xml"> 
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body id="sp">
+<div id="page">
+    <div id="header">
+    <h1><a href="http://linuxtoy.org/">LinuxTOY</a></h1>
+    
+        <form action="http://linuxtoy.org/index.php" method="get" onsubmit="location.href='http://linuxtoy.org/search/' + encodeURIComponent(this.s.value).replace(/%20/g, '+'); return false;">
+
+    <ul id="hnav">
+    <li class="current_page_item"><a href="http://linuxtoy.org/">Home</a></li>
+    <li class="page_item page-item-82"><a href="http://linuxtoy.org/archives" title="Archives">Archives</a></li>
+<li class="page_item page-item-2303"><a href="http://linuxtoy.org/download" title="Download">Download</a></li>
+<li class="page_item page-item-55"><a href="http://linuxtoy.org/faq" title="FAQs">FAQs</a></li>
+<li class="page_item page-item-44"><a href="http://linuxtoy.org/contact" title="Contact">Contact</a></li>
+    <li class="page_item"><a href="http://wiki.linuxtoy.org/" title="LinuxtoyWiki">Wiki</a></li>
+        <li><a href="http://linuxtoy.org/wp-login.php">Log in</a></li>
+    <li id="search"><input gtbfieldid="1" size="30" id="s" name="s" value="Search" onfocus="if (this.value == 'Search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search';}" type="text"></li>
+    </ul>
+    </form>
+
+    <p class="position">Home » Linux 包管理速查表</p>
+    </div><!--#header-->
+    <div class="navposts">
+    <p class="prev">« <a href="http://linuxtoy.org/archives/pidgin-mouse-gestures.html">Pidgin 中的鼠标手势</a></p>    <p class="next"><a href="http://linuxtoy.org/archives/deluge-100.html">Deluge 1.0.0 可作为守护程序运行</a> »</p>    </div>
+
+<div id="main">
+<!-- google_ad_section_start -->
+
+<div id="side-r">
+<div class="tab">LinuxTOY 是一个致力于提供 Linux 相关资讯的专题站点。如果您发现了好用好玩的 Linux 东东并愿意发扬自由、分享的精神，可以点击顶部导航 Contact 按钮进行投稿。</div>
+<div class="tab">
+	<ul>
+	<li class="coins"><a href="http://linuxtoy.org/faq/donate" title="捐助本站">捐助本站</a></li>
+	<li class="feed"><a href="http://feeds.feedburner.com/linuxtoy" title="Subscribe in a reader">Subscribe in a reader</a> (<a href="http://linuxtoy.org/feed/">original feed</a>)</li>
+	<li class="email"><a href="http://www.feedburner.com/fb/a/emailverifySubmit?feedId=384812" title="Subscribe by Email">Subscribe by Email</a></li>
+	<li class="twitter"><a href="https://twitter.com/Linuxtoy" title="Follow us on Twitter">Follow us on Twitter</a></li>
+	<li class="identica"><a href="http://identi.ca/linuxtoy" title="Follow us on Identi.ca">Follow us on Identi.ca</a></li>
+	</ul></div>
+<div class="tab">
+    <ul>
+<li class="tla"> <a href="http://www.opencrypt.com/">PHP Membership Software</a> </li>
+<li class="tla"> <a href="http://www.dooyoo.co.uk/image-photo-editing/">Image Software and tests</a> </li>
+<li class="tla"> <a href="http://www.motoroladroidaccessories.com/">Motorola Droid Accessories</a> </li>
+<li class="tla"> <a href="http://www.filekabin.com/">Free Software downloads</a> and reviews</li>
+<li class="tla"> <a href="http://www.patentfish.com/linux">Linux patents</a> </li>
+    <li class="tla"><a href="http://union.dangdang.com/transfer/transfer.aspx?from=P-276918&amp;backurl=http://book.dangdang.com/01.54.htm" title="计算机图书">Computer Books</a></li>
+    </ul></div>
+    <h2>Popular entries</h2>
+    <ul>
+    <li><a href="http://linuxtoy.org/archives/the-perfect-linux-desktop-arch-linux-2007-08-2-1.html">Archlinux 安装指南</a></li>
+    <li><a href="http://linuxtoy.org/archives/unix-linux-command-cheat-sheet.html">Unix/Linux 命令速查表</a></li>
+    <li><a href="http://linuxtoy.org/archives/efficient-editing-with-vim.html">高效率编辑器 Vim</a></li>
+    <li><a href="http://linuxtoy.org/archives/wget-tips.html">Wget 使用技巧</a></li>
+    <li><a href="http://linuxtoy.org/archives/playing-around-with-mplayer.html">玩转 MPlayer</a></li>
+    <li><a href="http://linuxtoy.org/archives/awesome.html">平铺式窗口管理器 Awesome</a></li>
+    <li><a href="http://linuxtoy.org/archives/3_free_antivirus_under_linux.html">三款 Linux 下的免费桌面级杀毒软件</a></li>
+    <li><a href="http://linuxtoy.org/archives/openbox-getting-started-guide.html">窗口管理器 Openbox 入门指南</a></li>
+    <li><a href="http://linuxtoy.org/archives/minimalist-install-of-ubuntu.html">最小化安装 Ubuntu</a></li>
+    <li><a href="http://linuxtoy.org/archives/5-desktop-environment-for-linux.html">五个你可能不知道的 Linux 桌面环境</a></li>
+    <li><a href="http://linuxtoy.org/archives/the-7-deadly-linux-commands.html">7 个致命的 Linux 命令</a></li>
+    <li><a href="http://linuxtoy.org/archives/lightweight-desktop-compare.html">很轻很强大：轻量级桌面环境比较</a></li>
+    <li><a href="http://linuxtoy.org/archives/gnome-shell-intro.html">GNOME Shell 介绍</a></li>
+    <li><a href="http://linuxtoy.org/archives/zsh.html">终极 Shell——Zsh</a></li>
+    <li><a href="http://linuxtoy.org/archives/6-of-the-best-free-linux-cad-software.html">6 款高品质的免费 Linux CAD 应用程序</a></li>
+    <li><a href="http://linuxtoy.org/archives/25-linux-twitterers.html">25+ 个值得跟随的 Linux 相关 Twitter 帐号</a></li>
+    <li><a href="http://linuxtoy.org/archives/3-standalone-flash-player-under-linux.html">Linux 下的三款 Flash 独立播放器</a></li>
+    <li><a href="http://linuxtoy.org/archives/game_emulator_for_linux.html">Linux 下的几个游戏模拟器</a></li>
+    <li><a href="http://linuxtoy.org/archives/musca.html">平铺式窗口管理器 Musca 初体验</a></li>
+    <li><a href="http://linuxtoy.org/archives/history-command-usage-examples.html">History（历史）命令用法 15 例</a></li>
+    <li><a href="http://linuxtoy.org/archives/fluxbox_config.html">Fluxbox 配置</a></li>
+    <li><a href="http://linuxtoy.org/archives/the-best-tips-and-tricks-for-bash.html">bash 使用技巧</a></li>
+    <li><a href="http://linuxtoy.org/archives/10-oreilly-books.html">10 本 O'Reilly 出版的免费好书</a></li>
+    </ul>
+</div><!--side-r-->
+
+
+<div id="story">
+    <div class="post" id="post-2407">
+        <h2>Linux 包管理速查表</h2>
+    <p class="postmeta">2008-09-22 <a href="http://linuxtoy.org/archives/author/admin/" title="Posts by Toy">Toy</a> Posted in <a href="http://linuxtoy.org/category/tips" title="View all posts in Tips" rel="category tag">Tips</a><span class="rss" title="comment RSS of this post"><a href="http://linuxtoy.org/archives/linux-package-management-cheatsheet.html/feed">RSS</a></span></p>
+        <div class="entry">
+        <div style="float: right; padding-left: 5px;">
+</div>
+	<p>使用 Linux 系统总是免不了要接触包管理工具。比如，Debian/Ubuntu 的 apt、openSUSE 的 zypp、Fedora 的 yum、Mandriva 的 urpmi、Slackware 的 slackpkg、Archlinux 的 pacman、Gentoo 的 emerge、Foresight 的 conary、Pardus 的 pisi，等等。DistroWatch 针对上述包管理器的主要用法进行了总结，对各位 Linux 用户来说具有很好的参考作用。这个总结还是有一点不足，有空给大家整理一个更全面的版本。<span id="more-2407"></span></p>
+
+<table>
+                         <tbody><tr>
+                           <th>任务</th>
+                           <th>apt<br>Debian, Ubuntu</th>
+                           <th>zypp<br>openSUSE</th>
+                           <th>yum<br>Fedora, CentOS</th>
+                         </tr>
+                         <tr>
+                           <td>安装包</td>
+                           <td>apt-get install &lt;pkg&gt;</td>
+                           <td>zypper install &lt;pkg&gt;</td>
+                           <td>yum install &lt;pkg&gt;</td>
+                         </tr>
+                         <tr>
+                           <td>移除包</td>
+                           <td>apt-get remove &lt;pkg&gt;</td>
+                           <td>zypper remove &lt;pkg&gt;</td>
+                           <td>yum erase &lt;pkg&gt;</td>
+                         </tr>
+                         <tr>
+                           <td>更新包列表</td>
+                           <td>apt-get update</td>
+                           <td>zypper refresh</td>
+                           <td>yum check-update</td>
+                         </tr>
+                         <tr>
+                           <td>更新系统</td>
+                           <td>apt-get upgrade</td>
+                           <td>zypper update</td>
+                           <td>yum update</td>
+                         </tr>
+                         <tr>
+                           <td>列出源</td>
+                           <td>cat /etc/apt/sources.list</td>
+                           <td>zypper repos</td>
+                           <td>yum repolist</td>
+                         </tr>
+                         <tr>
+                           <td>添加源</td>
+                           <td>(edit /etc/apt/sources.list)</td>
+                           <td>zypper addrepo &lt;path&gt; &lt;name&gt;</td>
+                           <td>(add &lt;repo&gt; to /etc/yum.repos.d/)</td>
+                         </tr>
+                         <tr>
+                           <td>移除源</td>
+                           <td>(edit /etc/apt/sources.list)</td>
+                           <td>zypper removerepo &lt;name&gt;</td>
+                           <td>(remove &lt;repo&gt; from /etc/yum.repos.d/)</td>
+                         </tr>
+                         <tr>
+                           <td>搜索包</td>
+                           <td>apt-cache search &lt;pkg&gt;</td>
+                           <td>zypper search &lt;pkg&gt;</td>
+                           <td>yum search &lt;pkg&gt;</td>
+                         </tr>
+                         <tr>
+                           <td>列出已安装的包</td>
+                           <td>dpkg -l</td>
+                           <td>rpm -qa</td>
+                           <td>rpm -qa</td>
+                         </tr>
+                         <tr>
+                           <th>任务</th>
+                           <th>urpmi<br>Mandriva</th>
+                           <th>slackpkg<br>Slackware</th>
+                           <th>pacman<br>Arch</th>
+                         </tr>
+                         <tr>
+                           <td>安装包</td>
+                           <td>urpmi &lt;pkg&gt;</td>
+                           <td>slackpkg install &lt;pkg&gt;</td>
+                           <td>pacman -S &lt;pkg&gt;</td>
+                         </tr>
+                         <tr>
+                           <td>移除包</td>
+                           <td>urpme &lt;pkg&gt;</td>
+                           <td>slackpkg remove &lt;pkg&gt;</td>
+                           <td>pacman -R &lt;pkg&gt;</td>
+                         </tr>
+                         <tr>
+                           <td>更新包列表</td>
+                           <td>urpmi.update -a</td>
+                           <td>slackpkg update</td>
+                           <td>pacman -Sy</td>
+                         </tr>
+                         <tr>
+                           <td>更新系统</td>
+                           <td>urpmi --auto-select</td>
+                           <td>slackpkg upgrade-all</td>
+                           <td>pacman -Su</td>
+                         </tr>
+                         <tr>
+                           <td>列出源</td>
+                           <td>urpmq --list-media</td>
+                           <td>cat /etc/slackpkg/mirrors</td>
+                           <td>cat /etc/pacman.conf</td>
+                         </tr>
+                         <tr>
+                           <td>添加源</td>
+                           <td>urpmi.addmedia &lt;name&gt; &lt;path&gt;</td>
+                           <td>(edit /etc/slackpkg/mirrors)</td>
+                           <td>(edit /etc/pacman.conf)</td>
+                         </tr>
+                         <tr>
+                           <td>移除源</td>
+                           <td>urpmi.removemedia &lt;media&gt;</td>
+                           <td>(edit /etc/slackpkg/mirrors)</td>
+                           <td>(edit /etc/pacman.conf)</td>
+                         </tr>
+                         <tr>
+                           <td>搜索包</td>
+<td>urpmf &lt;pkg&gt;</td>
+                           <td>--</td>
+                           <td>pacman -Qs &lt;pkg&gt;</td>
+                         </tr>
+                         <tr>
+                           <td>列出已安装的包</td>
+                           <td>rpm -qa</td>
+                           <td>ls /var/log/packages/</td>
+                           <td>pacman -Qii</td>
+                         </tr>
+                         <tr>
+                           <th>任务</th>
+                           <th>conary<br>rPath, Foresight</th>
+                           <th>pisi<br>Pardus</th>
+                           <th>emerge <br>Gentoo</th>
+                         </tr>
+                         <tr>
+                           <td>安装包</td>
+                           <td>conary update &lt;pkg&gt;</td>
+                           <td>pisi install &lt;pkg&gt;</td>
+                           <td>emerge &lt;pkg&gt;</td>
+                         </tr>
+                         <tr>
+                           <td>移除包</td>
+                           <td>conary erase &lt;pkg&gt;</td>
+                           <td>pisi remove &lt;pkg&gt;</td>
+                           <td>emerge -C  &lt;pkg&gt;</td>
+                         </tr>
+                         <tr>
+                           <td>更新包列表</td>
+                           <td>&nbsp;</td>
+<td>pisi update-repo</td>
+                           <td>emerge --sync | layman -S [for added repositories]</td>
+                         </tr>
+                         <tr>
+                           <td>更新系统</td>
+                           <td>conary updateall</td>
+                           <td>pisi upgrade</td>
+<td>emerge -NuDa world</td>
+                         </tr>
+                         <tr>
+                           <td>列出源</td>
+                           <td>&nbsp;</td>
+                           <td>pisi list-repo</td>
+<td>layman -L</td>
+                         </tr>
+                         <tr>
+                           <td>添加源</td>
+                           <td>&nbsp;</td>
+                           <td>pisi add-repo &lt;name&gt; &lt;path&gt;</td>
+<td>layman -a</td>
+                         </tr>
+                         <tr>
+                           <td>移除源</td>
+                           <td>&nbsp;</td>
+                           <td>pisi remove-repo &lt;name&gt;</td>
+<td>layman -d </td>
+                         </tr>
+                         <tr>
+                           <td>搜索包</td>
+                           <td>conary query &lt;pkg&gt;</td>
+                           <td>pisi search &lt;pkg&gt;</td>
+<td>emerge --search</td>
+                         </tr>
+                         <tr>
+                           <td>列出已安装的包</td>
+                           <td>conary query</td>
+                           <td>pisi list-installed</td>
+<td>cat /var/lib/portage | more</td>
+                         </tr>
+                        </tbody></table>
+
+<p><strong>参考</strong></p>
+
+<ul>
+    <li><a href="http://linuxtoy.org/archives/apt_reference.html">Apt 使用参考</a></li>
+    <li><a href="http://linuxtoy.org/archives/dpkg_reference.html">Dpkg 常用指令操作快速参考</a></li>
+    <li><a href="http://linuxtoy.org/archives/the-perfect-linux-desktop-arch-linux-2007-08-2-5.html">Pacman ── Arch Linux 的包管理工具</a></li>
+</ul>
+
+<p>[via <a href="http://distrowatch.com/weekly.php?issue=20080922">DistroWatch</a>]</p>
+        <!-- google_ad_section_end -->		
+	<p><strong>Read More:</strong></p>
+	<ul class="entrylist"><li><a href="http://linuxtoy.org/archives/dpkg_reference.html" rel="bookmark" title="Permanent Link: Dpkg 常用指令操作快速参考">Dpkg 常用指令操作快速参考</a></li><li><a href="http://linuxtoy.org/archives/apt_reference.html" rel="bookmark" title="Permanent Link: Apt 使用参考">Apt 使用参考</a></li><li><a href="http://linuxtoy.org/archives/debian-package.html" rel="bookmark" title="Permanent Link: Debian 问题...">Debian 问题...</a></li><li><a href="http://linuxtoy.org/archives/vdrift.html" rel="bookmark" title="Permanent Link: VDrift：极速飙车">VDrift：极速飙车</a></li><li><a href="http://linuxtoy.org/archives/skype-for-linux-13050-beta.html" rel="bookmark" title="Permanent Link: Skype for Linux 1.3.0.50 BETA">Skype for Linux 1.3.0.50 BETA</a></li><li><a href="http://linuxtoy.org/archives/puppet-sample.html" rel="bookmark" title="Permanent Link: puppet：建立一个 pdns-recursor 的实例">puppet：建立一个 pdns-recursor 的实例</a></li><li><a href="http://linuxtoy.org/archives/linux-unix-cheat-sheets.html" rel="bookmark" title="Permanent Link: Linux/Unix 速查表 (Cheat sheet) 集锦">Linux/Unix 速查表 (Cheat sheet) 集锦</a></li><li><a href="http://linuxtoy.org/archives/full-circle-18.html" rel="bookmark" title="Permanent Link: Full Circle中文版第1期补遗，英文版18期">Full Circle中文版第1期补遗，英文版18期</a></li></ul>
+	</div><!--.entry-->
+    <p class="postmeta">Tags: <a href="http://linuxtoy.org/tag/cheat-sheet" rel="tag">Cheat Sheet</a></p>    </div><!--.post-->
+
+
+<h3 id="comments">20 Comments</h3>
+
+<ol class="commentlist">
+    	<li class="oddbox" id="comment-92629">
+		<span class="count">1</span>
+    <cite>Zer4tul</cite>
+    <small>Commented <a href="#comment-92629"> @ 2008-09-22 19:34</a><img style="cursor: pointer;" onclick='yus_replyTo("92629", "Zer4tul")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>没有portage……伤心了……</p>    		</li>
+		<li class="box" id="comment-92630">
+		<span class="count">2</span>
+    <cite><a href="http://blog.laneast.cn/" rel="external nofollow">LanEast</a></cite>
+    <small>Commented <a href="#comment-92630"> @ 2008-09-22 19:40</a><img style="cursor: pointer;" onclick='yus_replyTo("92630", "LanEast")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>slackware的列出已安装的包是"cat /var/log/packages/"? 是"ls"吧?</p>    		</li>
+		<li class="oddbox" id="comment-92631">
+		<span class="count">3</span>
+    <cite><a href="http://moligaloo.is-programmer.com/" rel="external nofollow">Moligaloo</a></cite>
+    <small>Commented <a href="#comment-92631"> @ 2008-09-22 20:26</a><img style="cursor: pointer;" onclick='yus_replyTo("92631", "Moligaloo")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>上个表和下个表不要挤在一起,中间还是要有点分隔</p>    		</li>
+		<li class="box" id="comment-92632">
+		<span class="count">4</span>
+    <cite>食古不化</cite>
+    <small>Commented <a href="#comment-92632"> @ 2008-09-22 21:06</a><img style="cursor: pointer;" onclick='yus_replyTo("92632", "食古不化")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>竟然没有emerge</p>    		</li>
+		<li class="oddbox" id="comment-92633">
+		<span class="count">5</span>
+    <cite>imouse</cite>
+    <small>Commented <a href="#comment-92633"> @ 2008-09-22 21:16</a><img style="cursor: pointer;" onclick='yus_replyTo("92633", "imouse")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>是啊，是啊，建议添加上</p>    		</li>
+		<li class="posterbox" id="comment-92634">
+		<span class="count">6</span>
+    <cite><a href="http://xd.linuxtoy.org/" rel="external nofollow">Toy</a></cite>
+    <small>Commented <a href="#comment-92634"> @ 2008-09-22 21:55</a><img style="cursor: pointer;" onclick='yus_replyTo("92634", "Toy")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>@LanEast: 谢谢，已更正。</p>
+
+<p>@食古不化: 已补上。</p>    		</li>
+		<li class="oddbox" id="comment-92636">
+		<span class="count">7</span>
+    <cite><a href="http://www.sanfanling.cn/" rel="external nofollow">三翻领</a></cite>
+    <small>Commented <a href="#comment-92636"> @ 2008-09-22 22:55</a><img style="cursor: pointer;" onclick='yus_replyTo("92636", "三翻领")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>现在基本都不会emerge --search，而是eix</p>    		</li>
+		<li class="box" id="comment-92639">
+		<span class="count">8</span>
+    <cite>yu</cite>
+    <small>Commented <a href="#comment-92639"> @ 2008-09-23 7:46</a><img style="cursor: pointer;" onclick='yus_replyTo("92639", "yu")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>来自distrowatch</p>    		</li>
+		<li class="oddbox" id="comment-92640">
+		<span class="count">9</span>
+    <cite>xiws</cite>
+    <small>Commented <a href="#comment-92640"> @ 2008-09-23 8:50</a><img style="cursor: pointer;" onclick='yus_replyTo("92640", "xiws")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>差点以为没有arch了。。</p>    		</li>
+		<li class="box" id="comment-92641">
+		<span class="count">10</span>
+    <cite><a href="http://www.makemusic-asia.com.cn/" rel="external nofollow">walkerxk</a></cite>
+    <small>Commented <a href="#comment-92641"> @ 2008-09-23 9:04</a><img style="cursor: pointer;" onclick='yus_replyTo("92641", "walkerxk")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>cat /etc/apt/sources.list不够的吧，我大部分源都分类放在/etc/apt/sources.list.d下面。还有如果要清除配置文件的话应该用apt-get purge等于apt-get remove --purge，不过前者在早期的版本中没有。
+还有更新系统最好用apt-get dist-upgrade。</p>    		</li>
+		<li class="oddbox" id="comment-92642">
+		<span class="count">11</span>
+    <cite>Eric Zhang</cite>
+    <small>Commented <a href="#comment-92642"> @ 2008-09-23 9:05</a><img style="cursor: pointer;" onclick='yus_replyTo("92642", "Eric Zhang")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>这个很有用，谢谢Toy，排版再改进一下，在我的firefox下看的不舒服</p>    		</li>
+		<li class="box" id="comment-92645">
+		<span class="count">12</span>
+    <cite><a href="http://bamanzi3.blogspot.com/" rel="external nofollow">bamanzi</a></cite>
+    <small>Commented <a href="#comment-92645"> @ 2008-09-23 10:56</a><img style="cursor: pointer;" onclick='yus_replyTo("92645", "bamanzi")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>Mandriva在国内有更新源么？不能只有光盘镜像</p>    		</li>
+		<li class="oddbox" id="comment-92649">
+		<span class="count">13</span>
+    <cite><a href="http://tailog.com/" rel="external nofollow">Centeur</a></cite>
+    <small>Commented <a href="#comment-92649"> @ 2008-09-23 12:02</a><img style="cursor: pointer;" onclick='yus_replyTo("92649", "Centeur")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>Archlinux 的 pacman、Gentoo 的 emerge</p>    		</li>
+		<li class="box" id="comment-92651">
+		<span class="count">14</span>
+    <cite>Arak</cite>
+    <small>Commented <a href="#comment-92651"> @ 2008-09-23 12:54</a><img style="cursor: pointer;" onclick='yus_replyTo("92651", "Arak")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>不错，有时候临时用别的系统时可以有个对照</p>    		</li>
+		<li class="oddbox" id="comment-92652">
+		<span class="count">15</span>
+    <cite><a href="http://muzuiget.blog.ubuntu.org.cn/" rel="external nofollow">muzuiget</a></cite>
+    <small>Commented <a href="#comment-92652"> @ 2008-09-23 13:07</a><img style="cursor: pointer;" onclick='yus_replyTo("92652", "muzuiget")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>对我非常有用，赞啊。</p>    		</li>
+		<li class="box" id="comment-92653">
+		<span class="count">16</span>
+    <cite>bbbush</cite>
+    <small>Commented <a href="#comment-92653"> @ 2008-09-23 13:09</a><img style="cursor: pointer;" onclick='yus_replyTo("92653", "bbbush")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>缺 smart 和 package-kit 命令行，不过 pk-... 什么的命令实在不好记。把 dbus 消息列出来？...</p>    		</li>
+		<li class="oddbox" id="comment-92662">
+		<span class="count">17</span>
+    <cite><a href="http://bamanzi3.blogspot.com/" rel="external nofollow">bamanzi</a></cite>
+    <small>Commented <a href="#comment-92662"> @ 2008-09-23 16:28</a><img style="cursor: pointer;" onclick='yus_replyTo("92662", "bamanzi")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>虽然有了这些，但作为一个习惯了debian的用户，有一个头疼的问题是，我不知道怎样去找到类似Debian里面testing或者unstable的源（要求里面的软件是比较快地更新的，而不是期望整个distribution下个版本在半年或者一年之后发行我才能用上某个软件的新版本)。比如, fedora和mandriva的源是怎样的? 甚至ubuntu的源是怎样我也不清楚。</p>    		</li>
+		<li class="box" id="comment-92694">
+		<span class="count">18</span>
+    <cite>Frank Deng</cite>
+    <small>Commented <a href="#comment-92694"> @ 2008-09-24 12:01</a><img style="cursor: pointer;" onclick='yus_replyTo("92694", "Frank Deng")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>再加上 
+搜索某个文件属于哪个包，redhat - rpm -qf, debian, dpkg -S
+搜索某个命令或者文件属于哪个包（在没有安装这个包的情况下）
+搜索某个包依赖于哪些包</p>    		</li>
+		<li class="oddbox" id="comment-92791">
+		<span class="count">19</span>
+    <cite><a href="http://blog.luliban.com/" rel="external nofollow">wyt</a></cite>
+    <small>Commented <a href="#comment-92791"> @ 2008-09-25 11:13</a><img style="cursor: pointer;" onclick='yus_replyTo("92791", "wyt")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>Gentoo列出已安装的包应该是cat /var/lib/portage/world 或者 eix -I</p>    		</li>
+		<li class="box" id="comment-92884">
+		<span class="count">20</span>
+    <cite>yymailb</cite>
+    <small>Commented <a href="#comment-92884"> @ 2008-09-26 22:49</a><img style="cursor: pointer;" onclick='yus_replyTo("92884", "yymailb")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>pacman -Qs 
+应该是
+pacman -Ss </p>    		</li>
+	</ol>
+
+
+<div id="respond">
+    
+    <form action="http://linuxtoy.org/wp-comments-post.php" method="post" id="commentform">
+
+        <p class="cf_info"><input gtbfieldid="2" name="author" id="author" value="" size="30" tabindex="1" type="text"><label for="author">Name (required)</label></p>
+    <p class="cf_info"><input gtbfieldid="3" name="email" id="email" value="" size="30" tabindex="2" type="text"><label for="email">Mail (will not be published) (required)</label></p>
+    <p class="cf_info"><input gtbfieldid="4" name="url" id="url" value="" size="30" tabindex="3" type="text"><label for="url">Website</label></p>
+    
+    <p class="cf_info"><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+    <p class="aright cf_info"><input name="submit" id="submit" tabindex="5" value="Submit" type="submit">
+    <input name="comment_post_ID" value="2407" type="hidden"></p>
+        
+
+
+
+	<p style="clear: both;" class="subscribe-to-comments">
+	<input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" type="checkbox">
+	<label for="subscribe">Notify me of followup comments via e-mail</label>
+	</p>
+
+
+
+</form>
+</div><!--#respond-->
+</div><!--#story-->
+</div><!--#main-->
+    <div class="navposts">
+    <p class="prev">« <a href="http://linuxtoy.org/archives/pidgin-mouse-gestures.html">Pidgin 中的鼠标手势</a></p>    <p class="next"><a href="http://linuxtoy.org/archives/deluge-100.html">Deluge 1.0.0 可作为守护程序运行</a> »</p>    </div>
+<div id="footer">
+    <p><a href="http://creativecommons.org/licenses/by-nc-sa/2.5/cn/">(cc)</a> LinuxTOY, Designed by <a href="http://yx.takeback.net/" title="Dark's blog">Dark</a>. Be Valid <a href="http://validator.w3.org/check/referer">Xhtml 1.1</a>. A better web experience in Firefox. 34 queries in 0.976s. <span class="rss"><a href="http://feeds.feedburner.com/linuxtoy" title="订阅整站 RSS">RSS</a></span> (Entries).</p>
+    
+		
+    
+    
+</div>
+</div><!--#page-->
+
+<!-- SyntaxHighlighter Stuff -->
+
+
+
+<!-- Dynamic Page Served (once) in 0.976 seconds -->
+<!-- Cached page served by WP-Super-Cache -->
+<div id="mbl_div_id_2s29et301" style="display: none; z-index: 99; position: absolute;"></div></body>
+</html>

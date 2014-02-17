@@ -1,0 +1,860 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="http://www.facebook.com/2008/fbml" xml:lang="en" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+	
+		
+                <!-- Skin = Monaco.php -->
+		<meta name="description" content="Here is a necessarily cryptic list of the Best Vim Tips. There is an updated version and a printer friendly version.">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta name="generator" content="MediaWiki 1.15.5">
+		<meta name="keywords" content="Vim Tips Wiki,vim,Best Vim Tips,Tutorial,VimTip1611,VimTip30,VimTip304,VimTip306,VimTip605,VimTip882,Vimrc,DG12,JohnBeckett">
+		<link rel="canonical" href="http://vim.wikia.com/wiki/Best_Vim_Tips">
+		<link rel="alternate" type="application/x-wiki" title="Edit this page" href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit">
+		<link rel="edit" title="Edit this page" href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit">
+		<link rel="apple-touch-icon" href="http://images.wikia.com/vim/images/b/bc/Wiki.png">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="search" type="application/opensearchdescription+xml" href="http://vim.wikia.com/opensearch_desc.php" title="Vim Tips Wiki (en)">
+		<link rel="copyright" href="http://community.wikia.com/wiki/Wikia:Licensing">
+		<link rel="alternate" type="application/rss+xml" title="Vim Tips Wiki RSS feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=rss">
+		<link rel="alternate" type="application/atom+xml" title="Vim Tips Wiki Atom feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=atom">
+		<!--[if lt IE 7]><script type="text/javascript">var wgShowIE6PhaseOutMessage = true;</script><![endif]-->
+		
+		<title>Best Vim Tips - Vim Tips Wiki</title>
+		
+
+<!-- GetCoreCSS -->
+<!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=24417&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IElt7" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=24417&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IEeq7" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=24417&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IEeq8" /><![endif]-->
+<!--[if !IE]>--><!--<![endif]-->
+<!-- GetExtensionsCSS -->
+<!-- GetThemeCSS -->
+<!-- GetSiteCSS -->
+<!-- GetUserCSS -->	
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Best_Vim_Tips TOCimprovements loggedout color2 wikiaSkinMonaco action_view" id="body">
+	<form action="http://vim.wikia.com/wiki/Best_Vim_Tips" method="post" name="userajaxloginform" id="userajaxloginformhide" style="display: none;">
+			<input value="" gtbfieldid="1" name="wpName" id="wpName1Ajax" tabindex="101" size="20" type="text">
+			<input name="wpPassword" id="wpPassword1Ajax" tabindex="102" size="20" type="password">
+			<input name="wpRemember" id="wpRemember1Ajax" tabindex="104" value="1" type="checkbox">
+		</form>
+	<!-- HEADER -->
+		<div id="wikia_header" class="reset color2">
+			<div class="monaco_shrinkwrap">
+			<div id="wikiaBranding">
+			<div id="wikia_logo"><a rel="nofollow" href="http://www.wikia.com/Wikia">Wikia</a></div>						<button id="headerButtonHub" class="header-button color1">Technology<img src="blank.gif"></button>
+
+			</div>
+<div id="requestWikiData"><a rel="nofollow" href="http://www.wikia.com/Special:CreateWiki" id="request_wiki" class="wikia-button">Create a new wiki</a>&nbsp;<span id="request_wiki_ad"></span></div>			<div id="userData">
+<span id="fbconnect"><a href="#" class="fb_button fb_button_small"><span class="fb_button_text">Connect</span></a></span>				<span id="userLogin">
+					<a rel="nofollow" class="ajaxLogin" id="login" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=Best_Vim_Tips&amp;type=login">Log in</a>
+				</span>
+
+					<a rel="nofollow" class="wikia-button ajaxRegister" id="register" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=Best_Vim_Tips&amp;type=signup">Create an account</a>
+
+		</div>
+		</div>
+	</div>
+
+	<div class="monaco_shrinkwrap"><div id="background_accent1"></div></div>
+	<div style="position: relative;"><div id="background_accent2"></div></div>
+
+		<div id="background_strip" class="reset">
+			<div class="monaco_shrinkwrap">
+
+			<div id="accent_graphic1"></div>
+			<div id="accent_graphic2"></div>
+			<div id="wiki_logo" style="background-image: url(wiki.png);"><a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" accesskey="z">Vim Tips Wiki</a></div>
+			<!--[if lt IE 7]>
+			<style type="text/css">
+				#wiki_logo {
+					background-image: none !important;
+					filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://images.wikia.com/vim/images/b/bc/Wiki.png', sizingMethod='image');
+				}
+			</style>
+			<![endif]-->
+			</div>
+		</div>
+		<!-- /HEADER -->
+
+		<!-- PAGE -->
+
+	<div class="monaco_shrinkwrap" id="monaco_shrinkwrap_main">
+		<div id="wikia_page">
+					<div id="page_bar" class="reset color1 clearfix">
+				<ul id="page_controls">
+		  							  <li id="control_edit" class=""><img src="blank.gif" class="sprite edit"><a rel="nofollow" id="ca-edit" href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit" title="You can edit this page. Please use the preview button before saving. [e]" accesskey="e">Edit this page</a></li>
+		  							  <li id="control_history" class=""><img src="blank.gif" class="sprite history"><a rel="nofollow" id="ca-history" href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=history" title="Past versions of this page [h]" accesskey="h">History</a></li>
+		  							  <li id="control_watch" class=""><img src="blank.gif" class="sprite watch"><a rel="nofollow" id="ca-watch" href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=watch" title="Follow this page [w]" accesskey="w">Follow</a></li>
+		  							  <li id="control_share_feature" class=""><img src="blank.gif" class="sprite share"><a rel="nofollow" id="ca-share_feature" href="#">Share this article</a></li>
+		  						  </ul>
+						  <ul id="page_tabs">
+		  							  <li class="selected"><a href="http://vim.wikia.com/wiki/Best_Vim_Tips" id="ca-nstab-main" title="View the content page [c]" accesskey="c" class="selected">Article</a></li>
+		  							  <li class=""><a href="http://vim.wikia.com/wiki/Talk:Best_Vim_Tips" id="ca-talk" title="Discussion about the content page [t]" accesskey="t" class="">Discussion</a></li>
+		  				</ul>
+			</div>
+		        	<!-- #### BEGIN AdEngine::AdEngine::getSetupHtml ####-->
+<!-- #### END AdEngine::AdEngine::getSetupHtml ####-->
+					<!-- ARTICLE -->
+
+			<div id="article">
+				<a name="top" id="top"></a>
+								<h1 class="firstHeading">Best Vim Tips<span class="editsection-upper noprint"><a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit" title="Best Vim Tips" onclick='WET.byStr("articleAction/topedit")' rel="nofollow" id="te-editsection-noprompt" class="wikia-button">edit this page</a></span></h1>				<div id="bodyContent">
+					<h3 id="siteSub">From Vim Tips Wiki</h3>
+					<div id="contentSub"></div>
+																				<!-- #### BEGIN AdEngine::AdEngine::getSetupHtml ####-->
+<!-- #### END AdEngine::AdEngine::getSetupHtml ####-->
+<div id="TOP_LEADERBOARD" class="noprint"><div id="Liftium_728x90_1_php"><iframe src="index_1.html" id="TOP_LEADERBOARD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none ;" target="_blank" scrolling="no" frameborder="0" height="90" width="728"></iframe></div></div>					
+					<!-- start content -->
+					
+				<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"></div></div>
+				
+<div><b><a href="http://vim.wikia.com/wiki/Best_Vim_Tips" class="text" title="http://vim.wikia.com/wiki/Best_Vim_Tips">Tip 305</a></b> <a href="http://vim.wikia.com/wiki/VimTip304" title="VimTip304" class="mw-redirect"><small>Previous</small></a> <a href="http://vim.wikia.com/wiki/VimTip306" title="VimTip306" class="mw-redirect"><small>Next</small></a>
+<p><b>created</b>&nbsp;2002 · <b>complexity</b>&nbsp;intermediate · <b>author</b>&nbsp;zzapper · <b>version</b>&nbsp;7.0
+</p>
+<hr>
+</div>
+<p>Here is a necessarily cryptic list of the Best Vim Tips. There is an <a class="external" title="http://www.rayninfo.co.uk/vimtips.html" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Best_Vim_Tips&amp;u=http%3A%2F%2Fwww.rayninfo.co.uk%2Fvimtips.html">updated version</a> and a <a href="http://vim.wikia.com/wiki/Best_Vim_Tips?printable=yes" class="text" title="http://vim.wikia.com/wiki/Best_Vim_Tips?printable=yes">printer friendly version</a>.
+</p>
+<table id="toc" class="toc" summary="Contents"><tbody><tr><td><div id="toctitle"><h2>Contents</h2> <span class="toctoggle">[<a href="javascript:toggleToc()" rel="nofollow" class="internal" id="togglelink">show</a>]</span></div>
+<ul>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Basic_use"><span class="tocnumber">1</span> <span class="toctext">Basic use</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Still_basic"><span class="tocnumber">2</span> <span class="toctext">Still basic</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Really_useful"><span class="tocnumber">3</span> <span class="toctext">Really useful</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Make_it_easy_to_update.2Freload_vimrc"><span class="tocnumber">4</span> <span class="toctext">Make it easy to update/reload vimrc</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Visual_mode_mappings"><span class="tocnumber">5</span> <span class="toctext">Visual mode mappings</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Exploring"><span class="tocnumber">6</span> <span class="toctext">Exploring</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Great"><span class="tocnumber">7</span> <span class="toctext">Great</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Easter_eggs"><span class="tocnumber">8</span> <span class="toctext">Easter eggs</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Markers_and_moving_about"><span class="tocnumber">9</span> <span class="toctext">Markers and moving about</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Abbreviations_and_maps"><span class="tocnumber">10</span> <span class="toctext">Abbreviations and maps</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#For_use_in_maps"><span class="tocnumber">11</span> <span class="toctext">For use in maps</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#List_registers"><span class="tocnumber">12</span> <span class="toctext">List registers</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Execute_command_from_buffer_contents"><span class="tocnumber">13</span> <span class="toctext">Execute command from buffer contents</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Get_output_from_shell_commands"><span class="tocnumber">14</span> <span class="toctext">Get output from shell commands</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Multiple_files"><span class="tocnumber">15</span> <span class="toctext">Multiple files</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Recording"><span class="tocnumber">16</span> <span class="toctext">Recording</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#vimrc_essentials"><span class="tocnumber">17</span> <span class="toctext">vimrc essentials</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Launching_programs_under_Windows"><span class="tocnumber">18</span> <span class="toctext">Launching programs under Windows</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#FTP_from_Vim"><span class="tocnumber">19</span> <span class="toctext">FTP from Vim</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Appending_to_registers"><span class="tocnumber">20</span> <span class="toctext">Appending to registers</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Conventional_shifting"><span class="tocnumber">21</span> <span class="toctext">Conventional shifting</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Searching"><span class="tocnumber">22</span> <span class="toctext">Searching</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Substitution"><span class="tocnumber">23</span> <span class="toctext">Substitution</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Global_command"><span class="tocnumber">24</span> <span class="toctext">Global command</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Paste_register_.2A"><span class="tocnumber">25</span> <span class="toctext">Paste register *</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Formatting_text"><span class="tocnumber">26</span> <span class="toctext">Formatting text</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Operate_command_over_multiple_files"><span class="tocnumber">27</span> <span class="toctext">Operate command over multiple files</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Command_line_tricks"><span class="tocnumber">28</span> <span class="toctext">Command line tricks</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Preview_in_web_browser"><span class="tocnumber">29</span> <span class="toctext">Preview in web browser</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Comments"><span class="tocnumber">30</span> <span class="toctext">Comments</span></a>
+<ul>
+<li class="toclevel-2"><a rel="nofollow" href="#Vim_traps"><span class="tocnumber">30.1</span> <span class="toctext">Vim traps</span></a></li>
+<li class="toclevel-2"><a rel="nofollow" href="#More_tips"><span class="tocnumber">30.2</span> <span class="toctext">More tips</span></a>
+<ul>
+<li class="toclevel-3"><a rel="nofollow" href="#To_number_the_lines_in_the_file"><span class="tocnumber">30.2.1</span> <span class="toctext">To number the lines in the file</span></a></li>
+<li class="toclevel-3"><a rel="nofollow" href="#If_you_want_to_delete_multiple_adjacent_duplicate_lines"><span class="tocnumber">30.2.2</span> <span class="toctext">If you want to delete multiple adjacent duplicate lines</span></a></li>
+</ul>
+</li>
+<li class="toclevel-2"><a rel="nofollow" href="#More.2C_unformatted_tips"><span class="tocnumber">30.3</span> <span class="toctext">More, unformatted tips</span></a></li>
+</ul>
+</li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Comments_2"><span class="tocnumber">31</span> <span class="toctext">Comments</span></a></li>
+</ul>
+</td></tr></tbody></table>
+<a rel="nofollow" name="Basic_use" id="Basic_use"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=1" title="Edit section: Basic use" rel="nofollow">edit</a>]</span> <span class="mw-headline">Basic use</span></h3>
+<pre>&lt;Esc&gt; is the escape key or use &lt;ctrl&gt;]  sometimes written as  &lt;C-]&gt;
+
+vimtutor   &nbsp;: starts vim editing a copy of a tutorial file -- very good.
+i          &nbsp;: insert mode. Next keys typed are inserted into the file.
+&lt;Esc&gt;      &nbsp;: Escape from insert mode so you can navigate and use edit commands (stop selecting)
+h j k l    &nbsp;: move cursor ( h: ←  j: ↓  k: ↑  l: → )
+A          &nbsp;: Append at end of line
+u          &nbsp;: undo last command, again and again
+x          &nbsp;: delete character under cursor
+dw         &nbsp;: delete everything right from the cursor to the start of next word (and put it into the default register)
+dd         &nbsp;: delete line (and put it into the default register)
+p          &nbsp;: paste the default register
+
+/myname    &nbsp;: search forward for myname
+
+:wq        &nbsp;: write and quit
+:w filename&nbsp;: write a copy of the file you are editing as filename
+:q!        &nbsp;: quit without saving even if changes were made!
+:help      &nbsp;: display help
+&lt;Tab&gt;      &nbsp;: use tab completion to scroll through commands that start with what you typed
+</pre>
+<a rel="nofollow" name="Still_basic" id="Still_basic"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=2" title="Edit section: Still basic" rel="nofollow">edit</a>]</span> <span class="mw-headline">Still basic</span></h3>
+<pre>COPY PASTE  (for CUTting lines use dd as described above)
+v          &nbsp;: visual mode -- use to select text with cursor movement or mouse
+y          &nbsp;: use to yank (copy) what was selected
+&lt;Esc&gt;      &nbsp;: esc gets you back to the main mode
+
+^ w e $    &nbsp;: bigger movements: beginning of line, word, end of word, end of line
+
+Modes:
+ normal, insert and visual, there are others too
+ &lt;Esc&gt;    takes you back to normal
+
+Enter a number before a command to repeat it, examples:
+   10w     &nbsp;: skip forward 10 words
+   10dd    &nbsp;: delete 10 lines
+
+Commands are case sensitive:
+   c       &nbsp;: starts a change command
+   C       &nbsp;: change to end of line (same as c$)
+   ce      &nbsp;: change to end of word (a complete change command)
+</pre>
+<a rel="nofollow" name="Really_useful" id="Really_useful"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=3" title="Edit section: Really useful" rel="nofollow">edit</a>]</span> <span class="mw-headline">Really useful</span></h3>
+<pre>www.vim.org  &nbsp;: Visit frequently
+comp.editors &nbsp;: Vim dominated newsgroup
+* # g* g#    &nbsp;: find word under cursor (forwards/backwards)
+%            &nbsp;: match brackets {}[]()
+matchit.vim  &nbsp;:&nbsp;% now matches tags &lt;tr&gt;&lt;td&gt;&lt;script&gt; etc
+&lt;C-N&gt; &lt;C-P&gt;  &nbsp;: word completion in insert mode
+&lt;C-X&gt;&lt;C-L&gt;   &nbsp;: Line complete SUPER USEFUL
+/&lt;C-R&gt;&lt;C-W&gt;  &nbsp;: Pull &lt;cword&gt; onto search/command line
+:set ignorecase&nbsp;: you nearly always want this
+:set smartcase &nbsp;: case-sensitive if search contains an uppercase character
+:syntax on   &nbsp;: colour syntax in Perl,HTML,PHP etc
+:h slash&lt;C-D&gt;&nbsp;: type control-D and get a list all help topics containing slash
+    (plus use TAB for Help completion)
+</pre>
+<a rel="nofollow" name="Make_it_easy_to_update.2Freload_vimrc" id="Make_it_easy_to_update.2Freload_vimrc"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=4" title="Edit section: Make it easy to update/reload vimrc" rel="nofollow">edit</a>]</span> <span class="mw-headline">Make it easy to update/reload <a href="http://vim.wikia.com/wiki/Vimrc" title="Vimrc" class="mw-redirect">vimrc</a></span></h3>
+<pre>:nmap &lt;Leader&gt;s&nbsp;:source $MYVIMRC
+:nmap &lt;Leader&gt;v&nbsp;:e $MYVIMRC
+    (&lt;Leader&gt; is \ by default, so those commands can be invoked by doing \v and \s)
+</pre>
+<a rel="nofollow" name="Visual_mode_mappings" id="Visual_mode_mappings"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=5" title="Edit section: Visual mode mappings" rel="nofollow">edit</a>]</span> <span class="mw-headline">Visual mode mappings</span></h3>
+<pre>:vmap sb "zdi&lt;b&gt;&lt;C-R&gt;z&lt;/b&gt;&lt;Esc&gt;&nbsp;: wrap &lt;b&gt;&lt;/b&gt; around visually selected text
+:vmap st "zdi&lt;?= &lt;C-R&gt;z&nbsp;?&gt;&lt;Esc&gt;&nbsp;: wrap &lt;?=&nbsp;?&gt; around visually selected text
+</pre>
+<a rel="nofollow" name="Exploring" id="Exploring"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=6" title="Edit section: Exploring" rel="nofollow">edit</a>]</span> <span class="mw-headline">Exploring</span></h3>
+<pre>:Ex    &nbsp;: file explorer note capital Ex
+\be    &nbsp;: show buffer explorer (requires plugin)
+:ls    &nbsp;: list of buffers(eg following)
+:cd .. &nbsp;: move to parent directory
+</pre>
+<a rel="nofollow" name="Great" id="Great"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=7" title="Edit section: Great" rel="nofollow">edit</a>]</span> <span class="mw-headline">Great</span></h3>
+<pre>guu    &nbsp;: lowercase line
+gUU    &nbsp;: uppercase line
+~      &nbsp;: invert case (upper-&gt;lower; lower-&gt;upper) of current character
+gf     &nbsp;: open file name under cursor (SUPER)
+ga     &nbsp;: display hex, ascii value of character under cursor
+g8     &nbsp;: display hex value of utf-8 character under cursor
+ggg?G  &nbsp;: rot13 whole file
+xp     &nbsp;: swap next two characters around
+CTRL-A,CTRL-X&nbsp;: increment, decrement next number on same line as the cursor
+CTRL-R=5*5   &nbsp;: insert 25 into text
+=            &nbsp;: (re)indent the text on the current line or on the area selected (SUPER)
+</pre>
+<p>If you use Ctrl-V for paste, you will probably need to <a href="http://vim.wikia.com/wiki/VimTip30" title="VimTip30" class="mw-redirect">unmap CTRL-A</a> first.
+</p>
+<a rel="nofollow" name="Easter_eggs" id="Easter_eggs"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=8" title="Edit section: Easter eggs" rel="nofollow">edit</a>]</span> <span class="mw-headline">Easter eggs</span></h3>
+<ul><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=42" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Best_Vim_Tips&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3D42">:help&nbsp;42</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=holy-grail" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Best_Vim_Tips&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dholy-grail">:help&nbsp;holy-grail</a>
+</li><li>:help!
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=map-modes" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Best_Vim_Tips&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dmap-modes">:help&nbsp;map-modes</a> (see comment below the table about&nbsp;:nunmap)
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=UserGettingBored" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Best_Vim_Tips&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3DUserGettingBored">:help&nbsp;UserGettingBored</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=spoon" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Best_Vim_Tips&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dspoon">:help&nbsp;spoon</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=showmatch" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Best_Vim_Tips&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dshowmatch">:help&nbsp;showmatch</a> (read the note)
+</li><li><tt>:Ni!</tt>
+</li></ul>
+<p><br>
+</p>
+<a rel="nofollow" name="Markers_and_moving_about" id="Markers_and_moving_about"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=9" title="Edit section: Markers and moving about" rel="nofollow">edit</a>]</span> <span class="mw-headline">Markers and moving about</span></h3>
+<pre>'.      &nbsp;: jump to last modification line (SUPER)
+`.      &nbsp;: jump to exact spot in last modification line
+&lt;C-O&gt;   &nbsp;: retrace your movements in file (backward)
+&lt;C-I&gt;   &nbsp;: retrace your movements in file (forward)
+:ju(mps)&nbsp;: list of your movements {{help|jump-motions}}
+:history&nbsp;: list of all your commands
+</pre>
+<a rel="nofollow" name="Abbreviations_and_maps" id="Abbreviations_and_maps"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=10" title="Edit section: Abbreviations and maps" rel="nofollow">edit</a>]</span> <span class="mw-headline">Abbreviations and maps</span></h3>
+<pre>:map &lt;F7&gt; &nbsp;:'a,'bw file            " Write the lines from mark a to mark b to 'file'
+:map &lt;F8&gt; &nbsp;:.w file&lt;CR&gt;            " Write the current line to 'file'
+:map &lt;F9&gt; &nbsp;:r file                 " Read text from 'file' and insert it below the current line
+:map &lt;F10&gt;&nbsp;:w&lt;CR&gt;:!php&nbsp;%&lt;CR&gt;       " Write the file and run it through php
+:ab php                            " list abbreviations beginning with php
+:map \                             " list maps beginning with \
+</pre>
+<a rel="nofollow" name="For_use_in_maps" id="For_use_in_maps"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=11" title="Edit section: For use in maps" rel="nofollow">edit</a>]</span> <span class="mw-headline">For use in maps</span></h3>
+<pre>&lt;CR&gt;    &nbsp;: carriage Return for maps
+&lt;Esc&gt;   &nbsp;: Escape
+&lt;Leader&gt;&nbsp;: normally \
+&lt;Bar&gt;   &nbsp;: | pipe
+</pre>
+<a rel="nofollow" name="List_registers" id="List_registers"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=12" title="Edit section: List registers" rel="nofollow">edit</a>]</span> <span class="mw-headline">List registers</span></h3>
+<pre>:reg    &nbsp;: display contents of all registers
+"1p     &nbsp;: paste from register 1
+</pre>
+<a rel="nofollow" name="Execute_command_from_buffer_contents" id="Execute_command_from_buffer_contents"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=13" title="Edit section: Execute command from buffer contents" rel="nofollow">edit</a>]</span> <span class="mw-headline">Execute command from buffer contents</span></h3>
+<pre>"ayy@a  &nbsp;: execute the Vim command in the current line
+yy@"    &nbsp;: same
+</pre>
+<a rel="nofollow" name="Get_output_from_shell_commands" id="Get_output_from_shell_commands"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=14" title="Edit section: Get output from shell commands" rel="nofollow">edit</a>]</span> <span class="mw-headline">Get output from shell commands</span></h3>
+<p>These use external programs – <tt>ls, grep, date, sort, …</tt>  (see <a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Asort" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Best_Vim_Tips&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3D%253Asort">:help&nbsp;:sort</a> to learn how to use Vim's built-in sort).
+</p>
+<pre>:r!ls                &nbsp;: reads in output of ls (use dir on Windows)
+:r&nbsp;!grep "^ebay" file.txt &nbsp;: read output of grep
+:20,25&nbsp;!rot13       &nbsp;: rot13 lines 20 to 25
+:r!date             &nbsp;: insert date (use  date /T on Windows)
+:.!sh               &nbsp;: execute contents of current line in buffer and capture the output
+
+ Sorting with external sort
+:%!sort -u          &nbsp;: contents of the current file is sorted and only unique lines are kept
+:'v,'w!sort         &nbsp;: sort from line marked v thru lines marked w
+:g/^$/;,/^$/-1!sort &nbsp;: sort each block (note the crucial&nbsp;;)
+
+!1} sort            &nbsp;: sorts paragraph; this is issued from normal mode!)
+
+ Entering&nbsp;!! in normal mode is translated to &nbsp;:.!
+ Appending a command sends the current line to the command replacing it with command's result
+!!date             &nbsp;: Replace current line with date
+!!which command    &nbsp;: Replace current line with the absolute path to command
+!!tr -d AEIO       &nbsp;: translate current line deleting As, Es, Is, and Os from the current line
+
+ You can also use&nbsp;! on a visual selection. Select an area with one of the visualmode
+ commands, and then type&nbsp;!command to pipe the whole selection through command.
+This is equivalent to&nbsp;:'&lt;,'&gt;!command.
+For example, after selecting multiple lines with visualmode:
+!sort             &nbsp;: sort selected lines
+!grep word        &nbsp;: keep only lines containing 'word' in the selected range.
+</pre>
+<a rel="nofollow" name="Multiple_files" id="Multiple_files"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=15" title="Edit section: Multiple files" rel="nofollow">edit</a>]</span> <span class="mw-headline">Multiple files</span></h3>
+<pre>:wn          &nbsp;: write file and move to next (SUPER)
+:bd          &nbsp;: remove file from buffer list (SUPER)
+:sav php.html&nbsp;: Save current file as php.html and "move" to php.html
+:sp fred.txt &nbsp;: open fred.txt into a split
+:e!          &nbsp;: return to unmodified file
+:w /some/path/%:r  &nbsp;: save file in another directory, but with the same name
+:e #         &nbsp;: edit alternative file
+:args        &nbsp;: display argument list
+:n           &nbsp;: next file in argument list
+:prev        &nbsp;: previous file in argument list
+:rew         &nbsp;: rewind to first file in argument list
+:ls          &nbsp;: display buffer list
+:bn          &nbsp;: next buffer
+:bp          &nbsp;: previous buffer
+:brew        &nbsp;: rewind to first buffer in buffer list
+:tabe        &nbsp;: open new tab page (Ctrl-PgUp, Ctrl-PgDown for next/previous tab)
+:tabm n      &nbsp;: move tab to position n (0=leftmost position)
+</pre>
+<a rel="nofollow" name="Recording" id="Recording"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=16" title="Edit section: Recording" rel="nofollow">edit</a>]</span> <span class="mw-headline">Recording</span></h3>
+<pre>qa           &nbsp;: record keystrokes to register a
+your commands
+q            &nbsp;: quit recording
+@a           &nbsp;: execute commands again
+@@           &nbsp;: repeat
+# editing a register/recording
+"ap
+&lt;you can now see register contents, edit as required&gt;
+"add
+@a
+:%normal @a #execute the macro recorded in register a on all lines of the current file.
+#or, with a visually selected set of lines:
+:normal @a
+</pre>
+<a rel="nofollow" name="vimrc_essentials" id="vimrc_essentials"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=17" title="Edit section: vimrc essentials" rel="nofollow">edit</a>]</span> <span class="mw-headline">vimrc essentials</span></h3>
+<pre>:set incsearch&nbsp;: jumps to search word as you type (annoying but excellent)
+:set wildignore=*.o,*.obj,*.bak,*.exe
+:syntax on&nbsp;: display syntactical elements by color based on filetype ( extension )
+</pre>
+<a rel="nofollow" name="Launching_programs_under_Windows" id="Launching_programs_under_Windows"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=18" title="Edit section: Launching programs under Windows" rel="nofollow">edit</a>]</span> <span class="mw-headline">Launching programs under Windows</span></h3>
+<p>There are a number of options to run applications on the Windows platform.
+</p><p>This causes Windows to launch the program associated with the file extension. It also restores the paste buffer to its original value:
+</p>
+<pre>" This command will execute the file, for example, if this is an
+" HTML file, it will run:
+"     start c:\absolute\filename.html
+nnoremap &lt;silent&gt; &lt;C-F6&gt;&nbsp;:let old_reg=@"&lt;CR&gt;:let @"=substitute(expand("%:p"), "/", "\\", "g")&lt;CR&gt;:silent!!cmd /cstart &lt;C-R&gt;&lt;C-R&gt;"&lt;CR&gt;&lt;CR&gt;:let @"=old_reg&lt;CR&gt;
+</pre>
+<p>You can also use Windows rundll32.exe for some options:
+</p>
+<pre>" vmap &lt;silent&gt; &lt;C-F5&gt;&nbsp;:&lt;C-U&gt;let old_reg=@"&lt;CR&gt;gvy:silent!!start rundll32.exe url.dll,FileProtocolHandler &lt;C-R&gt;&lt;C-R&gt;"&lt;CR&gt;&lt;CR&gt;:let @"=old_reg&lt;CR&gt;
+</pre>
+<p>Or, for example, you can launch Internet Explorer directly:
+</p>
+<pre>:nmap &lt;Leader&gt;f&nbsp;:update&lt;CR&gt;:silent&nbsp;!start c:\progra~1\intern~1\iexplore.exe file://%:p&lt;CR&gt;
+:nmap &lt;Leader&gt;i&nbsp;:update&lt;CR&gt;:!start c:\progra~1\intern~1\iexplore.exe &lt;cWORD&gt;&lt;CR&gt;
+</pre>
+<a rel="nofollow" name="FTP_from_Vim" id="FTP_from_Vim"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=19" title="Edit section: FTP from Vim" rel="nofollow">edit</a>]</span> <span class="mw-headline">FTP from Vim</span></h3>
+<pre>cmap &lt;Leader&gt;r&nbsp;:Nread ftp://209.51.134.122/public_html/index.html
+cmap &lt;Leader&gt;w&nbsp;:Nwrite ftp://209.51.134.122/public_html/index.html
+gvim ftp://209.51.134.122/public_html/index.html
+: For ascii file transfers add the following line to your .vimrc
+let g:netrw_ftpmode="ascii"
+</pre>
+<a rel="nofollow" name="Appending_to_registers" id="Appending_to_registers"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=20" title="Edit section: Appending to registers" rel="nofollow">edit</a>]</span> <span class="mw-headline">Appending to registers</span></h3>
+<pre># yank 5 lines into "a" then add a further 5
+"a5yy
+10j
+"A5yy
+[I&nbsp;: show lines matching word under cursor &lt;cword&gt;
+</pre>
+<a rel="nofollow" name="Conventional_shifting" id="Conventional_shifting"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=21" title="Edit section: Conventional shifting" rel="nofollow">edit</a>]</span> <span class="mw-headline">Conventional shifting</span></h3>
+<pre>:'a,'b&gt;&gt;
+# visual shifting (builtin-repeat)
+:vnoremap &lt; &lt;gv
+:vnoremap &gt; &gt;gv
+</pre>
+<a rel="nofollow" name="Searching" id="Searching"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=22" title="Edit section: Searching" rel="nofollow">edit</a>]</span> <span class="mw-headline">Searching</span></h3>
+<pre>/^fred.*joe.*bill &nbsp;: line beginning with fred, followed by joe then bill
+/^[A-J]           &nbsp;: line beginning A-J
+/^[A-J][a-z]\+\s  &nbsp;: line beginning A-J then one or more lowercase characters then space or tab
+/fred\_.\{-}joe   &nbsp;: fred then anything then joe (over multiple lines)
+/fred\_s\{-}joe   &nbsp;: fred then any whitespace (including newlines) then joe
+/fred\|joe        &nbsp;: fred OR joe
+</pre>
+<a rel="nofollow" name="Substitution" id="Substitution"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=23" title="Edit section: Substitution" rel="nofollow">edit</a>]</span> <span class="mw-headline">Substitution</span></h3>
+<pre>:%s/fred/joe/igc          &nbsp;: general substitute command
+:%s/\r//g                 &nbsp;: delete DOS Carriage Returns (^M)
+:'a,'bg/fred/s/dick/joe/gc&nbsp;: VERY USEFUL
+:s/\(.*\):\(.*\)/\2&nbsp;: \1/ &nbsp;: reverse fields separated by&nbsp;:
+# non-greedy matching \{-}
+:%s/^.\{-}pdf/new.pdf/    &nbsp;: to first pdf)
+:s/fred/&lt;c-r&gt;a/g          &nbsp;: substitute "fred" with contents of register "a"
+:%s/^\(.*\)\n\1/\1$/      &nbsp;: delete duplicate lines
+:help /\{-}
+# multiple commands
+:%s/\f\+\.gif\&gt;/\r&amp;\r/g | v/\.gif$/d |&nbsp;%s/gif/jpg/
+:%s/suck\|buck/loopy/gc      &nbsp;: ORing
+:s/__date__/\=strftime("%c")/&nbsp;: insert datestring
+
+</pre>
+<ul><li>Replace FIX delimiter for a 'caret':
+</li></ul>
+<p>'01' is the hex for the FIX protocol delimiter. You can move your cursor over a character and press 'ga' to see a character's hex value.
+</p>
+<pre>:%s/\%x01/^/g
+</pre>
+<a rel="nofollow" name="Global_command" id="Global_command"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=24" title="Edit section: Global command" rel="nofollow">edit</a>]</span> <span class="mw-headline">Global command</span></h3>
+<pre>:g/one\|two/    &nbsp;: list lines containing "one" or "two"
+:g/^\s*$/d      &nbsp;: delete all blank lines
+:g/green/d      &nbsp;: delete all lines containing "green"
+:v/green/d      &nbsp;: delete all lines not containing "green"
+:g/one/,/two/d  &nbsp;: not line based
+:v/./.,/./-1join&nbsp;: compress empty lines
+</pre>
+<p>Between lines with marks <tt>a</tt> and <tt>b</tt> (inclusive), append each line starting with "Error" to a file:
+</p>
+<pre>:'a,'b g/^Error/ .w &gt;&gt; errors.txt
+</pre>
+<p>Delete all lines containing "green" but not "red" or "pink". Command <tt>:g/^/</tt> matches every line; the current line is copied into variable <tt>x</tt>; if any part of <tt>x</tt> matches (case sensitive) "green" and not "red" and not "pink", the line is deleted. Replace <tt>#</tt> with <tt>?</tt> for case insensitive.
+</p>
+<pre>:g/^/let x=getline('.') | if x=~#'green' &amp;&amp; x!~#'red' &amp;&amp; x!~#'pink' | d | endif
+</pre>
+<a rel="nofollow" name="Paste_register_.2A" id="Paste_register_.2A"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=25" title="Edit section: Paste register *" rel="nofollow">edit</a>]</span> <span class="mw-headline">Paste register *</span></h3>
+<pre>:redir @*&nbsp;: redirect commands to paste
+:redir END
+"*yy     &nbsp;: yank to paste
+"*p      &nbsp;: insert paste buffer
+</pre>
+<a rel="nofollow" name="Formatting_text" id="Formatting_text"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=26" title="Edit section: Formatting text" rel="nofollow">edit</a>]</span> <span class="mw-headline">Formatting text</span></h3>
+<pre>gq&lt;CR&gt;
+gqap (a is motion p paragraph (visual mode))
+</pre>
+<a rel="nofollow" name="Operate_command_over_multiple_files" id="Operate_command_over_multiple_files"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=27" title="Edit section: Operate command over multiple files" rel="nofollow">edit</a>]</span> <span class="mw-headline">Operate command over multiple files</span></h3>
+<pre>:argdo&nbsp;%s/foo/bar/
+:bufdo&nbsp;%s/foo/bar/
+:windo&nbsp;%s/foo/bar/
+:tabdo&nbsp;%s/foo/bar/
+</pre>
+<a rel="nofollow" name="Command_line_tricks" id="Command_line_tricks"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=28" title="Edit section: Command line tricks" rel="nofollow">edit</a>]</span> <span class="mw-headline">Command line tricks</span></h3>
+<pre>gvim -h
+ls | gvim -  &nbsp;: edit a PIPE!
+# vg.ksh (shell script)
+# vi all files in directory containing keyword $1 and jump to $1
+gvim.exe -c "/$1" $(grep -isl "$1" *) &amp;
+</pre>
+<a rel="nofollow" name="Preview_in_web_browser" id="Preview_in_web_browser"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=29" title="Edit section: Preview in web browser" rel="nofollow">edit</a>]</span> <span class="mw-headline">Preview in web browser</span></h3>
+<pre>#add this to your .vimrc:
+command Preview&nbsp;:!firefox&nbsp;%&lt;CR&gt;
+#if you are using windows, you will need to adjust your PATH to include the path to your browser.
+</pre>
+<a rel="nofollow" name="Comments" id="Comments"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=30" title="Edit section: Comments" rel="nofollow">edit</a></span> <span class="mw-headline">Comments</span></h2><div style="float: left; margin-top: 10px; margin-bottom: 10px; margin-right: 20px; clear: left;" id="Liftium_300x250_0"><iframe id="Liftium_300x250_0_140" marginwidth="0" marginheight="0" src="index_2.html" scrolling="no" frameborder="0" height="250" width="300"></iframe></div>
+<p>The Buffer Explorer scripts mentioned above (<tt>\be</tt> <tt>\bs</tt>) rely on the popular script <a class="external" title="http://www.vim.org/scripts/script.php?script_id=42" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Best_Vim_Tips&amp;u=http%3A%2F%2Fwww.vim.org%2Fscripts%2Fscript.php%3Fscript_id%3D42">bufexplorer.vim</a>.
+</p><p>Have recently started to appreciate taglist.vim (the most popular Vim script) it really comes into it's own with very long programs containting lots of subroutines/functions as it shows which function/sub you're in etc <a class="external" title="http://www.vim.org/scripts/script.php?script_id=273" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Best_Vim_Tips&amp;u=http%3A%2F%2Fwww.vim.org%2Fscripts%2Fscript.php%3Fscript_id%3D273">script#273</a>.
+</p>
+<a rel="nofollow" name="Vim_traps" id="Vim_traps"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=31" title="Edit section: Vim traps" rel="nofollow">edit</a>]</span> <span class="mw-headline">Vim traps</span></h3>
+<p>In regular expressions you must backslash <tt>+</tt> (match 1 or more).
+</p>
+<pre>/fred\+/&nbsp;: matches fred/freddy but not free
+</pre>
+<p><tt>\v</tt> (very magic) reduces backslashing
+</p>
+<pre>/codes\(\n\|\s\)*where&nbsp;: normal regexp
+/\vcodes(\n|\s)*where &nbsp;: very magic
+</pre>
+<a rel="nofollow" name="More_tips" id="More_tips"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=32" title="Edit section: More tips" rel="nofollow">edit</a>]</span> <span class="mw-headline">More tips</span></h3>
+<p>Pulling objects onto command/search line (SUPER)
+</p>
+<pre>CTRL-R CTRL-W  &nbsp;: pull word under the cursor into a command line or search
+CTRL-R CTRL-A  &nbsp;: pull whole word including punctuation
+CTRL-R -       &nbsp;: pull small register
+CTRL-R [0-9a-z]&nbsp;: pull named registers
+CTRL-R&nbsp;%       &nbsp;: pull file name (also #)
+</pre>
+<p>Manipulating registers
+</p>
+<pre>map &lt;F11&gt; "qyy:let @q=@q."zzz"
+</pre>
+<p>Options
+</p>
+<pre>:verbose set history&nbsp;: show value of history, and where set
+</pre>
+<p>Run file through an external program (eg php)
+</p>
+<pre>map &lt;F9&gt;&nbsp;:w&lt;CR&gt;:!php&nbsp;%&lt;CR&gt;
+</pre>
+<p>Inserting Carriage Returns (TODO replace with \r)
+</p>
+<pre>:%s/nubian/&lt;C-V&gt;&lt;C-M&gt;&amp;/g&nbsp;: that's what you type
+:%s/nubian/&lt;C-Q&gt;&lt;C-M&gt;&amp;/g&nbsp;: for Win32
+:%s/nubian/^M&amp;/g        &nbsp;: what you'll see where ^M is ONE character
+</pre>
+<p>TODO move following to other CTRL-R tips
+</p>
+<pre>Retrieving last command line command for copy &amp; pasting into text
+&lt;c-r&gt;:
+Retrieving last Search Command for copy &amp; pasting into text
+&lt;c-r&gt;/
+</pre>
+<p>Searching over multiple lines: <tt>\_</tt> includes newline
+</p>
+<pre>/&lt;!--\_p\{-}--&gt;   &nbsp;: search for multiple line comments
+/fred\_s*joe/i    &nbsp;: any whitespace including newline
+/bugs\_.*bunny&nbsp;: bugs followed by bunny anywhere in file
+:h \_             &nbsp;: help
+</pre>
+<p>More completions
+</p>
+<pre>&lt;C-X&gt;&lt;C-F&gt;&nbsp;:insert name of a file in current directory
+</pre>
+<p>Help for help
+</p>
+<pre>:h visual&lt;C-D&gt;&lt;Tab&gt;&nbsp;: obtain list of all visual help topics
+                   &nbsp;: Then use tab to step through them
+:h ctrl&lt;C-D&gt;&nbsp;: list help of all control keys
+:h&nbsp;:r       &nbsp;: help for&nbsp;:ex command
+:h CTRL-R   &nbsp;: normal mode
+:h \r       &nbsp;: what's \r in a regexp
+:h i_CTRL-R &nbsp;: help for say &lt;C-R&gt; in insert mode
+:h c_CTRL-R &nbsp;: help for say &lt;C-R&gt; in command mode
+:h v_CTRL-V &nbsp;: visual mode
+:h 'ai      &nbsp;: help on setting option 'autoindent'
+</pre>
+<a rel="nofollow" name="To_number_the_lines_in_the_file" id="To_number_the_lines_in_the_file"></a><h4><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=33" title="Edit section: To number the lines in the file" rel="nofollow">edit</a>]</span> <span class="mw-headline">To number the lines in the file</span></h4>
+<p>Try one of these
+</p>
+<pre>:%! nl -ba
+:%!cat -n
+</pre>
+<p>To simply display how many lines are in the current buffer, type Ctrl-g (or <tt>g</tt> then Ctrl-g for more information).
+</p>
+<a rel="nofollow" name="If_you_want_to_delete_multiple_adjacent_duplicate_lines" id="If_you_want_to_delete_multiple_adjacent_duplicate_lines"></a><h4><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=34" title="Edit section: If you want to delete multiple adjacent duplicate lines" rel="nofollow">edit</a>]</span> <span class="mw-headline">If you want to delete multiple adjacent duplicate lines</span></h4>
+<pre>:%s/^\(.*\)\n\(\1\n\)*/\1\r/
+</pre>
+<a rel="nofollow" name="More.2C_unformatted_tips" id="More.2C_unformatted_tips"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=35" title="Edit section: More, unformatted tips" rel="nofollow">edit</a>]</span> <span class="mw-headline">More, unformatted tips</span></h3>
+<p>TODO Might delete some of these if covered in other tips.
+</p>
+<hr>
+<p>Instead of this:
+</p>
+<pre>:map &lt;F12&gt;&nbsp;:set number!&lt;CR&gt;
+</pre>
+<p>try this:
+</p>
+<pre>map &lt;F12&gt;&nbsp;:set number!&lt;Bar&gt;set number?&lt;CR&gt;
+</pre>
+<p>and possibly these:
+</p>
+<pre>map &lt;F11&gt;&nbsp;:set hls!&lt;Bar&gt;set hls?&lt;CR&gt;
+map &lt;F10&gt;&nbsp;:set paste!&lt;Bar&gt;set paste?&lt;CR&gt;
+map &lt;F9&gt; &nbsp;:set wrap!&lt;Bar&gt;set wrap?&lt;CR&gt;
+</pre>
+<p>to easily change (and display) the current state.
+</p>
+<hr>
+<p>If you do not want to remove Windows key mappings, keep the line
+</p>
+<pre>noremap &lt;C-kPlus&gt; &lt;C-A&gt;
+</pre>
+<p>in your vimrc. Then you can use Ctrl-NumPad+ to increment numbers as others do with Ctrl-A.
+</p>
+<hr>
+<p>Another very useful mapping:
+</p>
+<pre>noremap &lt;C-J&gt; gj
+noremap &lt;C-K&gt; gk
+</pre>
+<p>That's really useful when dealing with long lines. It lets you use Control-J and Control-K to move up and down screen lines instead of buffer lines with j and k. Control-J isn't really mapped to anything by default, it's like hitting enter, but Control-K is something to do with digraphs. However, noremap won't remove this ability in insert mode.
+</p><p>Alternatively, you could use:
+</p>
+<pre>noremap &lt;Up&gt; gk
+noremap &lt;Down&gt; gj
+</pre>
+<p>which would map the arrow keys to screen line movement instead of buffer line movement.
+</p>
+<hr>
+<p>To substitute any word (say FILE) by actual filename you can use
+</p>
+<pre>:%s/FILE/\=expand("%:t")
+</pre>
+<hr>
+<p>The mappings to wrap visual selections in text clobbers a buffer. I use:
+</p>
+<pre>vmap s( &lt;Esc&gt;`&gt;a)&lt;Esc&gt;`&lt;i(&lt;Esc&gt;&nbsp;: wrap a visual selection in ()
+</pre>
+<hr>
+<a rel="nofollow" name="Comments_2" id="Comments_2"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit&amp;section=36" title="Edit section: Comments" rel="nofollow">edit</a></span> <span class="mw-headline">Comments</span></h2>
+<p>What was the point of changing <tt>&lt;Esc&gt;</tt> into <tt>&lt;esc&gt;</tt> and <tt>&lt;Tab&gt;</tt> into <tt>&lt;tab&gt;</tt>? The capitalized form is what's used in Vim's help, and it's what should be used here. (<a href="http://vim.wikia.com/wiki/User:Spiiph" title="User:Spiiph">Spiiph</a> 03:34, December 6, 2009 (UTC))
+</p>
+<dl><dd>unfixed it. sorry. (perhaps this would have been better been placed in the discussion
+<dl><dd>Thanks for working on the tip. I might join in later. We put comments in plain view in the "Comments" section (so I removed the html comment) and we avoid the talk page (see the <a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Discussion_guidelines" title="Vim Tips Wiki:Discussion guidelines">discussion guidelines</a> for a little more). In due course we will delete these temporary comments, and what is on the talk page.
+</dd><dd>It's hard to know what to do with this tip. I think it should pretty well all be kept, but we should resist the temptation to expand it much (some better explanations are good). I'll think about how we might provide links to tips that expand some points, for example <a href="http://vim.wikia.com/wiki/Tutorial" title="Tutorial">Tutorial</a>. <a href="http://vim.wikia.com/wiki/User:JohnBeckett" title="User:JohnBeckett">JohnBeckett</a> 04:25, December 6, 2009 (UTC)
+</dd></dl>
+</dd></dl>
+<hr>
+<p>Commands are case sensitive:
+</p>
+<pre>  c       &nbsp;: starts a change command
+  C       &nbsp;: change to end of line (same as c$)
+  ce      &nbsp;: change to end of word (a complete change command)
+</pre>
+<p>Does ce belong as an example of case sensitive command?
+Would  better additional entry be
+</p>
+<pre>  a       &nbsp;: append after cursor
+  A       &nbsp;: Append at end of line
+</pre>
+<p><a href="http://vim.wikia.com/wiki/User:DG12" title="User:DG12">DG12</a> 13:48, December 6, 2009 (UTC)
+</p>
+<hr>
+<p>Help for help
+</p><p>Is it me or does this section have a mix of syntax for control characters?
+<a href="http://vim.wikia.com/wiki/User:DG12" title="User:DG12">DG12</a> 13:51, December 6, 2009 (UTC)
+</p>
+<hr>
+<p>My thoughts on comments by DG12 above and on my talk:
+</p>
+<ul><li>By "all be kept" above, I mean that the content is probably all good and should not be removed (although there's a lot of it, and when I take some time to look through it again I might change my mind).
+</li><li>Re the format of the tip: The current plain text with just a ':' separating command and text is a bit confusing in places, but the simplicity rather suits Vim. I have used cleartable in a couple of tips, and I might try it here. See <a href="http://vim.wikia.com/wiki/VimTip605" title="VimTip605" class="mw-redirect">VimTip605</a> for an example. Wikitable is also available, but it's rather overwhelming; see <a href="http://vim.wikia.com/wiki/VimTip1611" title="VimTip1611" class="mw-redirect">VimTip1611</a> for an example.
+</li><li>Re the style of the tip: The quirky comments are often not directly helpful but they worked well for me when I first read this tip (at vim.org) several years ago. For example "<tt>:set ignorecase&nbsp;: you nearly always want this</tt>" alerts readers that they should find out what the command means and consider using it. If every point were clarified, the tip would be far too long and hard to read. Currently the tip is useful because it provides a subjective overview of what people should look for in Vim.
+</li><li>Re the case sensitive point above: While a/A is a good example, it's not needed as an additional example. I think the <tt>ce</tt> is to show a complete change command. It might be a good idea to replace the c/C/ce with a/A which makes the point. Actually, even better might be j/J because the two actions are totally different.
+</li><li>The "Help for help" section is perhaps confusing, but it is exactly correct because it shows what a person should type. Like many of the items, it could be improved while resisting the tempation to add too many words.
+</li></ul>
+<p>Finally thanks for drawing attention to this page because the tip does need cleaning, and discussion and work will help. <a href="http://vim.wikia.com/wiki/User:JohnBeckett" title="User:JohnBeckett">JohnBeckett</a> 01:03, December 7, 2009 (UTC)
+</p>
+<hr>
+<ul><li>re Help for help: I was refering to:
+</li></ul>
+<pre>:h ctrl&lt;C-D&gt;&nbsp;: list help of all control keys
+:h CTRL-R   &nbsp;: normal mode
+</pre>
+<p>or maybe I am confused? (Be nice!)
+</p><p>I also think some people know the info so well what is unclear to someone reading the tip may not seem awkward at all.
+</p>
+<ul><li>re case sensitive example: I choose a/A because many (well some) of the uppercase form of the command are like BIG versions of the lowercase version w/W b/B h/H i/I ...
+</li></ul>
+<ul><li>re "quirky" comments: may mean something to look into but without a link its not much help.
+</li></ul>
+<ul><li>Then there is the length of this document which makes scrolling difficult!
+</li></ul>
+<p><a href="http://vim.wikia.com/wiki/User:DG12" title="User:DG12">DG12</a> 01:58, December 7, 2009 (UTC)
+</p>
+<dl><dd>It is impossible to learn everything about Vim in a short period. This tip is definitely quirky and subjective, however, many people (long before this wiki was created) have found the tip to be very helpful as a source of ideas rather than as a detailed manual. Perhaps the lead should make that clear, although it will be clear after reading for a minute or two. Yes, we should add links. The "help for help" should link to <a href="http://vim.wikia.com/wiki/VimTip882" title="VimTip882" class="mw-redirect">VimTip882</a> although that tip needs to be fixed! When I first read this page, I did not understand it either, but I referred to it many times while learning Vim.
+</dd><dd>The "help for help" stuff is correct, although unclear. The ":h ctrl&lt;C-D&gt;" item is saying to type <tt>:h&nbsp;ctrl</tt> then press Ctrl-D. The ":h CTRL-R" item is saying that the page of help will show you what Ctrl-R does in normal mode, whereas ":h i_CTRL-R" shows what Ctrl-R does in insert mode, etc. That should be explained at 882. <a href="http://vim.wikia.com/wiki/User:JohnBeckett" title="User:JohnBeckett">JohnBeckett</a> 04:18, December 7, 2009 (UTC)
+</dd></dl>
+<!-- 
+NewPP limit report
+Preprocessor node count: 372/1000000
+Post-expand include size: 1504/2097152 bytes
+Template argument size: 216/2097152 bytes
+Expensive parser function count: 0/100
+--><!-- Saved in parser cache with key vim:pcache:idhash:2317-0!1!0!!en!2 and timestamp 20100816220902 --><div class="printfooter">
+Retrieved from "<a href="http://vim.wikia.com/wiki/Best_Vim_Tips">http://vim.wikia.com/wiki/Best_Vim_Tips</a>"</div>
+<table style="margin-top: 1em; width: 100%; clear: both;"><tbody><tr><td style="text-align: center;"><div id="PREFOOTER_LEFT_BOXAD" class="noprint"></div></td><td style="text-align: center;"><div id="PREFOOTER_RIGHT_BOXAD" class="noprint"></div></td></tr>
+</tbody></table><div id="catlinks" class="catlinks"><div id="mw-normal-catlinks"><a href="http://vim.wikia.com/wiki/Special:Categories" title="Special:Categories" rel="nofollow">Category</a>: <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:VimTip" title="Category:VimTip">VimTip</a></span></div> <div id="csAddCategorySwitch" class="noprint" style="border: 1px solid rgb(187, 187, 187); padding: 0pt 5px; background: rgb(221, 221, 221) none repeat scroll 0% 0%; -moz-background-clip: border; -moz-background-origin: padding; -moz-background-inline-policy: continuous; position: relative; float: left; -moz-border-radius-topleft: 3px; -moz-border-radius-topright: 3px; -moz-border-radius-bottomright: 3px; -moz-border-radius-bottomleft: 3px; line-height: 16px;"><img src="blank.gif" class="sprite-small add"><a href="#" onfocus="this.blur();" style="color: rgb(0, 0, 0); font-size: 0.85em; text-decoration: none; display: inline-block;" rel="nofollow">Add category</a></div></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+
+				<!--google_ad_section_end-->
+				<!--contextual_targeting_end-->
+
+			</div>
+			<!-- /ARTICLE -->
+			
+			<!-- ARTICLE FOOTER -->
+			<div id="articleFooter" class="reset">
+				<table cellspacing="0">
+					<tbody><tr>
+						<td class="col1">
+							<ul class="actions" id="articleFooterActions">
+								<li><a rel="nofollow" id="fe_edit_icon" href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit"><img src="blank.gif" id="fe_edit_img" class="sprite edit" alt="Edit this page"></a> <div>Improve Vim Tips Wiki by <a id="fe_edit_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=edit">editing this page</a></div></li>
+								<li><a id="fe_user_icon" rel="nofollow" href="http://vim.wikia.com/wiki/User:Ysis"><img src="blank.gif" id="fe_user_img" class="sprite user" alt="View user page"></a> <div><a id="fe_user_link" rel="nofollow" href="http://vim.wikia.com/wiki/User:Ysis">Ysis</a> made an edit on August 3, 2010</div></li>
+							</ul>
+							<ul id="articleFooterActions3" class="actions clearfix">
+								<li id="fe_history"><a rel="nofollow" id="fe_history_icon" href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=history"><img src="blank.gif" id="fe_history_img" class="sprite history" alt="History"></a> <div><a id="fe_history_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;action=history">History</a></div></li>
+								<li id="fe_recent"><a rel="nofollow" id="fe_recent_icon" href="http://vim.wikia.com/wiki/Special:RecentChangesLinked/Best_Vim_Tips"><img src="blank.gif" id="fe_recent_img" class="sprite recent" alt="Related changes"></a> <div><a id="fe_recent_link" rel="nofollow" href="http://vim.wikia.com/wiki/Special:RecentChangesLinked/Best_Vim_Tips">Related changes</a></div></li></ul><ul id="articleFooterActions4" class="actions clearfix">
+								<li id="fe_permalink"><a rel="nofollow" id="fe_permalink_icon" href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;oldid=28026"><img src="blank.gif" id="fe_permalink_img" class="sprite move" alt="Permanent link"></a> <div><a id="fe_permalink_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Best_Vim_Tips&amp;oldid=28026">Permanent link</a></div></li>
+								<li id="fe_whatlinkshere"><a rel="nofollow" id="fe_whatlinkshere_icon" href="http://vim.wikia.com/wiki/Special:WhatLinksHere/Best_Vim_Tips"><img src="blank.gif" id="fe_whatlinkshere_img" class="sprite pagelink" alt="What links here"></a> <div><a id="fe_whatlinkshere_link" rel="nofollow" href="http://vim.wikia.com/wiki/Special:WhatLinksHere/Best_Vim_Tips">What links here</a></div></li></ul>						</td>
+						<td class="col2">
+							<ul class="actions" id="articleFooterActions2">
+								<li><a rel="nofollow" id="fe_random_icon" href="http://vim.wikia.com/wiki/Special:Random"><img src="blank.gif" id="fe_random_img" class="sprite random" alt="Random page"></a> <div><a rel="nofollow" id="fe_random_link" href="http://vim.wikia.com/wiki/Special:Random">View random page</a></div></li>
+								<li><img src="blank.gif" id="fe_report_img" class="sprite error" alt="Report a problem with this page"> <div><a style="cursor: pointer;" id="fe_report_link">Report a problem with this page</a></div></li>
+
+								<li><img src="blank.gif" id="fe_sharefeature_img" class="sprite share" alt="Share this article"> <div><a style="cursor: pointer;" id="fe_sharefeature_link">Share this article</a></div></li>
+							</ul>
+		<div class="clearfix" id="star-rating-row">
+		  <strong>Rate this article:</strong>
+		  		  <div id="star-rating-wrapper">
+		    <ul id="star-rating" class="star-rating" rel="20">
+			<li style="width: 91px;" id="current-rating" class="current-rating"><span>4.5741/5</span></li>
+			<li><a rel="nofollow" class="one-star" id="star1" title="1/5"><span>1</span></a></li>
+			<li><a rel="nofollow" class="two-stars" id="star2" title="2/5"><span>2</span></a></li>
+			<li><a rel="nofollow" class="three-stars" id="star3" title="3/5"><span>3</span></a></li>
+			<li><a rel="nofollow" class="four-stars" id="star4" title="4/5"><span>4</span></a></li>
+			<li><a rel="nofollow" class="five-stars" id="star5" title="5/5"><span>5</span></a></li>
+		    </ul>
+		    <span style="display: none;" id="unrateLink"><a rel="nofollow" id="unrate" href="#">Unrate it</a></span>
+		  </div>
+		</div>
+								</td>
+					</tr>
+				</tbody></table>
+			</div>
+			<!-- /ARTICLE FOOTER -->
+
+		</div>
+		<!-- /PAGE -->
+<!-- Begin Analytics -->
+<!-- Start for GA_Urchin, page_view -->
+
+
+<!-- Start for GA_Urchin, hub -->
+
+<!-- Start for GA_Urchin, onewiki -->
+<!-- No tracking for this wiki -->
+<!-- Start for GA_Urchin, pagetime -->
+
+<!-- End Analytics -->
+
+
+		
+		
+				
+		<div id="monaco_footer" class="reset">
+
+
+		<div id="spotlight_footer">
+		<table>
+		<tbody><tr>
+			<td>
+				<div id="FOOTER_SPOTLIGHT_LEFT" class="noprint"><div id="Wikia_200x75_4"><iframe src="index_3.html" id="FOOTER_SPOTLIGHT_LEFT_iframe" class="LazyLoadAd" noresize="true" marginheight="0" marginwidth="0" style="border: medium none ;" target="_blank" scrolling="no" frameborder="0" height="75" width="200"></iframe></div></div>			</td>
+			<td>
+				<div id="FOOTER_SPOTLIGHT_MIDDLE" class="noprint"><div id="Wikia_200x75_5"><iframe src="index_4.html" id="FOOTER_SPOTLIGHT_MIDDLE_iframe" class="LazyLoadAd" noresize="true" marginheight="0" marginwidth="0" style="border: medium none ;" target="_blank" scrolling="no" frameborder="0" height="75" width="200"></iframe></div></div>			</td>
+			<td>
+				<div id="FOOTER_SPOTLIGHT_RIGHT" class="noprint"><div id="Wikia_200x75_6"><iframe src="index_5.html" id="FOOTER_SPOTLIGHT_RIGHT_iframe" class="LazyLoadAd" noresize="true" marginheight="0" marginwidth="0" style="border: medium none ;" target="_blank" scrolling="no" frameborder="0" height="75" width="200"></iframe></div></div>			</td>
+		</tr>
+		</tbody></table>
+		</div>
+				  <table id="wikia_footer">
+	  			<tbody><tr>
+				<td colspan="2" id="wikia_corporate_footer">
+	  <a rel="nofollow" href="http://www.wikia.com/About_Us"><span>About</span></a> | <a rel="nofollow" href="http://www.wikia.com/Hiring">Jobs</a> | <a rel="nofollow" href="http://www.wikia.com/Terms_of_Use">Terms of Use</a> | <a rel="nofollow" href="http://www.wikia.com/Special:CreateWiki">Create a wiki</a> | <a rel="nofollow" href="http://www.wikia.com/Privacy_Policy">Privacy Policy</a> | <a rel="nofollow" href="http://community.wikia.com/wiki/Wikia:Licensing" title="w:Wikia:Licensing">CC-BY-SA</a> | <a rel="nofollow" href="http://community.wikia.com/wiki/Community_Guidelines">Community Guidelines</a> | <a rel="nofollow" href="http://vim.wikia.com/wiki/Special:Contact">Contact</a> | <a rel="nofollow" href="http://www.wikia.com/Advertising">Advertise</a> | <a rel="nofollow" href="http://www.wikia.com/Lifestyle">Lifestyle</a>				</td>
+			</tr>
+	  	  </tbody></table>
+					</div>
+		<!-- WIDGETS -->
+		<div id="widget_sidebar" class="reset widget_sidebar">
+
+			<!-- SEARCH/NAVIGATION -->
+			<div class="widget" id="navigation_widget">
+				<div id="search_box" class="color1">
+					<form action="http://vim.wikia.com/wiki/Special:Search" id="searchform">
+						<input id="search_field" name="search" value="Search this wiki" maxlength="200" onfocus="sf_focus(event);" alt="Search this wiki" autocomplete="off" title="Search this wiki [alt-shift-f]" accesskey="f" type="text">
+						<input name="go" value="1" type="hidden">
+						<input src="blank.gif" id="search-button" class="sprite search" type="image">
+					</form>
+				</div>
+<div id="navigation"><div id="menu-item_1" class="menu-item"><a id="a-menu-item_1" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" rel="nofollow">Home</a></div><div id="menu-item_2" class="menu-item"><a id="a-menu-item_2" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Community_Portal" rel="nofollow">Community portal</a></div><div id="menu-item_3" class="menu-item"><a id="a-menu-item_3" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Todo" rel="nofollow">To do</a></div><div id="menu-item_4" class="menu-item"><a id="a-menu-item_4" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" rel="nofollow">Top content<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="#" rel="nofollow">Editor's pick<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Best_Vim_Tips" rel="nofollow">Best Vim Tips</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Browsing_programs_with_tags" rel="nofollow">Browsing programs with tags</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_end-of-line_format_for_dos-mac-unix" rel="nofollow">Change end-of-line format for dos-mac-unix</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces" rel="nofollow">Converting tabs to spaces</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Cut/copy_and_paste_using_visual_selection" rel="nofollow">Cut/copy and paste using visual selection</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/File_no_longer_available_-_mark_buffer_modified" rel="nofollow">File no longer available - mark buffer modified</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div style="border: 0px none ;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/most_popular" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div class="menu-item"><a href="#" rel="nofollow">Most visited<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Best_Vim_Tips" rel="nofollow">Best Vim Tips</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace" rel="nofollow">Search and replace</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_end-of-line_format_for_dos-mac-unix" rel="nofollow">Change end-of-line format for dos-mac-unix</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Indenting_source_code" rel="nofollow">Indenting source code</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Open_vimrc_file" rel="nofollow">Open vimrc file</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_the_color_scheme" rel="nofollow">Change the color scheme</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces" rel="nofollow">Converting tabs to spaces</a></div><div style="border: 0px none ;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/most_visited" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div class="menu-item"><a href="#" rel="nofollow">Highest voted<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Automatically_position_the_cursor_when_editing_email_messages" rel="nofollow">Automatically position the cursor when editing email messages</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Highlight_some_whitespace_characters" rel="nofollow">Highlight some whitespace characters</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Copy_the_search_results_into_clipboard" rel="nofollow">Copy the search results into clipboard</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Calculator_and_code_evaluation_using_Perl" rel="nofollow">Calculator and code evaluation using Perl</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Using_TagList_for_ANT_build_files" rel="nofollow">Using TagList for ANT build files</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Completing_words_quickly_in_insert_mode" rel="nofollow">Completing words quickly in insert mode</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/How_to_turn_off_all_colors" rel="nofollow">How to turn off all colors</a></div><div style="border: 0px none ;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/highest_ratings" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div style="border: 0px none ;" class="menu-item"><a href="#" rel="nofollow">Newly changed<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Automatically_maximizing_gvim_in_KDE" rel="nofollow">Automatically maximizing gvim in KDE</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Record_a_recursive_macro" rel="nofollow">Record a recursive macro</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Start_with_a_wide_window_for_diff" rel="nofollow">Start with a wide window for diff</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Quickly_adding_and_deleting_empty_lines" rel="nofollow">Quickly adding and deleting empty lines</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Using_undo_branches" rel="nofollow">Using undo branches</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Insert_image_size_with_vim_%28when_coding_html%29" rel="nofollow">Insert image size with vim (when coding html)</a></div><div style="border: 0px none ;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/newly_changed" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div></div></div><div id="menu-item_9" class="menu-item"><a id="a-menu-item_9" href="http://vim.wikia.com/wiki/Category:Folding" rel="nofollow">Folding category<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Syntax_folding_of_Vim_scripts" rel="nofollow">Syntax folding of Vim scripts</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding" rel="nofollow">Folding</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Java/C/C%2B%2B_folding" rel="nofollow">Java/C/C++ folding</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding_with_Regular_Expression" rel="nofollow">Folding with Regular Expression</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Auto-fold_Perl_subs" rel="nofollow">Auto-fold Perl subs</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding_for_plain_text_files_based_on_indentation" rel="nofollow">Folding for plain text files based on indentation</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Outline_editing_of_Python_programs" rel="nofollow">Outline editing of Python programs</a></div><div style="border: 0px none ;" class="menu-item"><a href="http://vim.wikia.com/wiki/Category:Folding" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div id="menu-item_10" class="menu-item"><a id="a-menu-item_10" href="http://vim.wikia.com/wiki/Category:Searching" rel="nofollow">Searching category<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace" rel="nofollow">Search and replace</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Searching" rel="nofollow">Searching</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches" rel="nofollow">Highlight all search pattern matches</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection" rel="nofollow">Search and replace in a visual selection</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Power_of_g" rel="nofollow">Power of g</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Remove_unwanted_empty_lines" rel="nofollow">Remove unwanted empty lines</a></div><div style="border: 0px none ;" class="menu-item"><a href="http://vim.wikia.com/wiki/Category:Searching" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div></div><table id="link_box_table" cellspacing="0">		<tbody id="link_box_dynamic">
+			<tr>
+				<td colspan="2">
+					<ul>
+<li id="dynamic-links-write-article-row" class="link_box_dynamic_item"><a rel="nofollow" id="dynamic-links-write-article-icon" href="http://vim.wikia.com/wiki/toolbox/dynamic/CreatePage"><img src="blank.gif" id="dynamic-links-write-article-img" class="sprite edit" alt="Create a new page"></a> <a id="dynamic-links-write-article-link" rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/dynamic/CreatePage">Create a new page</a></li><li id="dynamic-links-add-image-row" class="link_box_dynamic_item"><a rel="nofollow" id="dynamic-links-add-image-icon" href="http://vim.wikia.com/wiki/toolbox/dynamic/Upload"><img src="blank.gif" id="dynamic-links-add-image-img" class="sprite photo" alt="Upload a new photo"></a> <a id="dynamic-links-add-image-link" rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/dynamic/Upload">Upload a new photo</a></li>					</ul>
+				</td>
+			</tr>
+		</tbody>
+		<tbody id="link_box" class="color2 linkbox_static">
+			<tr>
+				<td>
+					<ul>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/recentchanges">Recent changes</a></li>
+						<li><a rel="nofollow" href="http://community.wikia.com/wiki/Blog:Wikia_Staff_Blog" onclick="WET.byStr('toolbox/w_c_community_Blog_Wikia_Staff_Blog')">Staff blog</a></li>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/helppage">Help</a></li>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/randompage">Random page</a></li>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/specialpages">Special pages</a></li>
+						<li style="font-size: 1px; position: absolute; top: -10000px;"><a href="http://vim.wikia.com/wiki/Special:Recentchanges" accesskey="r" rel="nofollow">Recent changes</a><a href="http://vim.wikia.com/wiki/Special:Random" accesskey="x" rel="nofollow">Random page</a></li>
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+			</div>
+			<!-- /SEARCH/NAVIGATION -->
+
+			<!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_NAVBOX_1 --><div style="text-align: center; margin-bottom: 10px;"><div id="LEFT_SKYSCRAPER_1" class="noprint"><div id="Liftium_160x600_7_php"><iframe src="index_6.html" id="LEFT_SKYSCRAPER_1_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none ;" target="_blank" scrolling="no" frameborder="0" height="0" width="0"></iframe></div></div></div>
+
+			<div id="sidebar_1" class="sidebar">
+			<dl class="widget WidgetCommunity" id="widget_303"><dt class="color1 widget_title" id="widget_303_header"><span class="widgetToolbox"></span>Latest activity</dt><dd class="shadow widget_contents" id="widget_303_content"><div class="community_header accent">
+	<span class="article_count dark_text_1">1,597</span> articles on this wiki<br></div>
+<div class="community_body">
+		<ul class="activityfeed widgetfeed" id="widget_303-recently-edited">		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Using_undo_branches">Using undo branches</a></strong><br>			<cite><span class="timeago" title="2010-08-29T13:38:05Z">33 minutes ago</span> by <a href="http://vim.wikia.com/wiki/User:Chrisbra" rel="nofollow">Chrisbra</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Searching">Searching</a></strong><br>			<cite><span class="timeago" title="2010-08-29T08:46:57Z">5 hours ago</span> by <a href="http://vim.wikia.com/wiki/User:JohnBeckett" rel="nofollow">JohnBeckett</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Start_with_a_wide_window_for_diff">Start with a wide window for diff</a></strong><br>			<cite><span class="timeago" title="2010-08-29T08:33:59Z">6 hours ago</span> by <a href="http://vim.wikia.com/wiki/User:JohnBeckett" rel="nofollow">JohnBeckett</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim">Find in files within Vim</a></strong><br>			<cite><span class="timeago" title="2010-08-28T20:20:27Z">18 hours ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/76.193.48.9" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Automatically_maximizing_gvim_in_KDE">Automatically maximizing gvim in KDE</a></strong><br>			<cite><span class="timeago" title="2010-08-28T02:44:28Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/User:Galvao" rel="nofollow" class="new">Galvao</a></cite>		</li>	</ul></div>
+<div class="toolbar neutral">
+	<a id="community-widget-action-button" href="http://vim.wikia.com/wiki/Special:ActivityFeed" class="wikia-button forward" rel="nofollow">Activity feed</a>
+</div>
+
+</dd></dl><div style="margin-bottom: 10px;"><div id="LEFT_NAV_205x400" class="noprint"><div id="Wikia_205x400_8"><iframe src="index_7.html" id="LEFT_NAV_205x400_iframe" class="LazyLoadAd" noresize="true" marginheight="0" marginwidth="0" style="border: medium none ;" target="_blank" scrolling="no" frameborder="0" height="400" width="205"></iframe></div></div></div>
+			<!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_SLIMBOX_1 --><!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_NAVBOX_2 --><div style="text-align: center; margin-bottom: 10px;"><div id="LEFT_SKYSCRAPER_2" class="noprint"><div id="Liftium_160x600_9_php"><iframe src="index_10.html" id="LEFT_SKYSCRAPER_2_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none ;" target="_blank" scrolling="no" frameborder="0" height="600" width="160"></iframe></div></div></div>
+			</div>
+		</div>
+		<!-- /WIDGETS -->
+	<!--/div-->
+
+<!-- Null Ad. Reason: Slot is disabled, slotname=INVISIBLE_1 --><!-- #### BEGIN AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+
+
+
+
+
+
+
+<!-- #### END AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+<!-- Null Ad. Reason: Slot is disabled, slotname=INVISIBLE_2 --></div><!-- Start for Comscore, page_view -->
+
+<!-- Begin comScore Tag -->
+
+
+
+<!-- End comScore Tag -->
+<!-- Start for QuantServe, page_view -->
+
+
+<!-- Start for Exelate, page_view -->
+
+
+		
+<img src="__onedot" alt="" border="0" height="1" width="1">
+		<div id="positioned_elements" class="reset"></div>
+		<!-- Served by ap-s3 in 0.093 secs. cpu: 0.030 -->
+	</body>
+</html>

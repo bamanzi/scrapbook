@@ -1,0 +1,1675 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+            <title>Developer Zone - MongoDB</title>
+    
+        
+        
+        
+        
+        
+
+                        
+    
+    
+            
+<meta id="confluence-context-path" name="confluence-context-path" content="">
+<meta id="atlassian-token" name="atlassian-token" content="yhfQmnp0a3">
+<meta id="confluence-space-key" name="confluence-space-key" content="DOCS">
+
+
+
+    
+
+<!-- include system resources -->
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:master-styles/confluence.web.resources:master-styles.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.macros.profile:profile-macro-styles/confluence.macros.profile:profile-macro-styles.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:comments/confluence.web.resources:comments.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0.2/_/download/batch/com.atlassian.auiplugin:dialog/com.atlassian.auiplugin:dialog.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:userlink/confluence.web.resources:userlink.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+<!-- end system resources -->
+
+    
+
+    <meta name="confluence-request-time" content="1283348663531">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="confluence_16.png">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://www.mongodb.org/opensearch/osd.action" title="10gen Confluence">
+
+    
+        
+
+    
+        
+        
+    
+    <link rel="shortcut icon" href="favicon_001.ico">  
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head><body id="com-atlassian-confluence">
+    
+
+
+    
+
+        
+  
+    
+
+
+  <div id="top-right">
+    <div class="user-right">
+    <ul id="header-menu-bar" class="ajs-menu-bar">
+                    
+        
+            <li class="normal ajs-menu-item">
+        <a id="browse-menu-link" class="browse trigger ajs-menu-title" href="#"><span><span>Browse</span></span></a>         <div style="" class="ajs-drop-down hidden">
+                        <ul id="browse-menu-link-leading" class="section-leading first">
+                                        <li>
+    
+    <a id="space-pages-link" href="http://www.mongodb.org/pages/listpages.action?key=DOCS" class="">
+                   <span>Pages</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-blogposts-link" href="http://www.mongodb.org/pages/viewrecentblogposts.action?key=DOCS" class="">
+                   <span>News</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-labels-link" href="http://www.mongodb.org/labels/listlabels-heatmap.action?key=DOCS" class="">
+                   <span>Labels</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-attachments-link" href="http://www.mongodb.org/spaces/listattachmentsforspace.action?key=DOCS" class="">
+                   <span>Attachments</span>            </a>
+</li>
+                                        <li>
+    
+    <a href="http://www.mongodb.org/spaces/space-bookmarks.action?spaceKey=DOCS" class="">
+                   <span>Bookmarks</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-mail-link" href="http://www.mongodb.org/spaces/viewmailarchive.action?key=DOCS" class="">
+                   <span>Mail</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-advanced-link" href="http://www.mongodb.org/spaces/viewspacesummary.action?key=DOCS" class="">
+                   <span>Advanced</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+        
+                                                         <li class="ajs-menu-item normal">
+    
+    <a id="login-link" href="http://www.mongodb.org/login.action?os_destination=%2Fdisplay%2FDOCS%2FDeveloper%2BZone" class="user-item login-link">
+                   <span>Log In</span>            </a>
+</li>
+                            </ul>
+    </div>
+  </div>
+  
+
+      <div class="search-db">
+      <form id="quick-search" class="quick-search" method="get" action="http://www.mongodb.org/dosearchsite.action">
+                <fieldset>
+            <legend>Quick Search</legend>
+            <input value="Search" class="quick-search-query placeholded" id="quick-search-query" accesskey="q" autocomplete="off" name="queryString" size="25" type="text">
+            <input class="quick-search-submit" id="quick-search-submit" value="Search" type="submit">
+        </fieldset>
+        <fieldset class="hidden parameters">
+            <input class="quickSearchPlaceholder" id="quickSearchPlaceholder" value="Search" type="hidden">
+
+            <input id="quickNavEnabled" value="true" type="hidden">
+             <!-- Quick nav disabled. SettingsManager could not be found -->         </fieldset>
+    </form>
+      </div>  
+
+
+  <div id="header-db" class="spread">
+    <div class="split">
+    	<div id="logo">
+    		<div><a href="http://www.mongodb.org/"><img src="logo-mongodb.png" alt="mongoDB" height="90" width="217"></a></div>
+    	</div>
+    	<div id="nav">
+    	</div>
+    </div>
+  </div>
+
+  <div id="breadcrumbsback" class="spread">
+    <div class="split">
+
+    
+    <ol id="breadcrumbs">
+                                                
+            <li><span>
+                                                    <a href="http://www.mongodb.org/display/DOCS">MongoDB</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    <a indepth="true" href="home.html">Home</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    Developer Zone
+                        </span></li>
+                </ol>
+ 
+    </div>
+  </div>
+
+  <div id="main-db" class="spread">
+    <div class="split">
+    
+                <ul id="user-control-panel">
+                                
+            <li class="first"><a href="http://www.mongodb.org/login.action?os_destination=%2Fdisplay%2FDOCS%2FDeveloper%2BZone">Log In</a></li>
+
+                                                        </ul>
+        <div>
+    
+    <div id="navigation" class="content-navigation view">
+        <fieldset class="hidden parameters">
+            <input id="pageId" value="1048712" type="hidden">
+        </fieldset>
+        <ul class="ajs-menu-bar">
+                                
+            <li class="normal ajs-menu-item">
+        <a id="add-menu-link" class="add trigger ajs-menu-title" href="#"><span><span>Add</span></span></a>         <div style="" class="ajs-drop-down hidden">
+                        <ul id="add-menu-link-page" class="section-page first">
+                                        <li>
+    
+    <a id="add-comment-menu-link" href="http://www.mongodb.org/display/DOCS/Developer+Zone?showComments=true&amp;showCommentArea=true#addcomment" class="add-comment">
+                   <span>Comment</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+                    
+            <li class="normal ajs-menu-item">
+        <a id="action-menu-link" class="action trigger ajs-menu-title" href="#"><span><span>Tools</span></span></a>         <div style="margin: 0pt; right: 0pt; left: auto;" class="ajs-drop-down hidden">
+                        <ul id="action-menu-link-primary" class="section-primary first">
+                                        <li>
+    
+    <a id="view-attachments-link" href="http://www.mongodb.org/pages/viewpageattachments.action?pageId=1048712" class="action-view-attachments" accesskey="a">
+                   <span><u>A</u>ttachments (0)</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-view-history-link" href="http://www.mongodb.org/pages/viewpreviousversions.action?pageId=1048712" class="action-view-history">
+                   <span>Page History</span>            </a>
+</li>
+                            </ul>
+                        <ul id="action-menu-link-secondary" class="section-secondary">
+                                        <li>
+    
+    <a id="view-page-info-link" href="http://www.mongodb.org/pages/viewinfo.action?pageId=1048712" class="action-view-info" accesskey="i">
+                   <span><u>I</u>nfo</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-view-source-link" href="http://www.mongodb.org/pages/viewpagesrc.action?pageId=1048712" class="action-view-source popup-link">
+                   <span>View Wiki Markup</span>            </a>
+</li>
+                                        <li>
+    
+    <a href="http://www.mongodb.org/spaces/flyingpdf/pdfpageexport.action?pageId=1048712&amp;atl_token=yhfQmnp0a3" class="">
+                   <span>Export to PDF</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-export-word-link" href="http://www.mongodb.org/exportword?pageId=1048712" class="action-export-word">
+                   <span>Export to Word</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+            </ul>
+    </div>
+
+    </div>
+    <h1 id="title-heading" class="pagetitle">
+                            
+		<span id="title-text">
+					            <a indepth="true" href="index.html">Developer Zone</a>
+    				</span>
+    </h1>
+
+    <!--
+    Root decorator: this is a layer of abstraction that Confluence doesn't need. It will be removed eventually.
+-->
+
+
+
+
+    
+    
+
+    
+    
+        
+    
+    
+                    
+    
+
+
+
+        
+<div id="content" class="page view">
+            
+        
+                        
+                                
+    
+        
+                    
+        
+                
+
+ 
+<table cellpadding="5" cellspacing="2">
+<tbody><tr>
+<td class="pagecontent" align="left" valign="top" width="78%">
+<div class="wiki-content">
+<!-- wiki content -->
+            <ul>
+	<li><a indepth="true" href="tutorial.html" title="Tutorial">Tutorial</a></li>
+	<li><a indepth="true" href="mongo+-+the+interactive+shell.html" title="mongo - The Interactive Shell">Shell</a></li>
+	<li><a indepth="true" href="manual.html" title="Manual">Manual</a>
+	<ul>
+		<li><a indepth="true" href="databases.html" title="Databases">Databases</a></li>
+		<li><a indepth="true" href="collections.html" title="Collections">Collections</a></li>
+		<li><a indepth="true" href="indexes.html" title="Indexes">Indexes</a></li>
+		<li><a indepth="true" href="data+types+and+conventions.html" title="Data Types and Conventions">Data Types and Conventions</a></li>
+		<li><a indepth="true" href="gridfs.html" title="GridFS">GridFS</a></li>
+		<li><a indepth="true" href="inserting.html" title="Inserting">Inserting</a></li>
+		<li><a indepth="true" href="updating.html" title="Updating">Updating</a></li>
+		<li><a indepth="true" href="querying.html" title="Querying">Querying</a></li>
+		<li><a indepth="true" href="removing.html" title="Removing">Removing</a></li>
+		<li><a indepth="true" href="optimization.html" title="Optimization">Optimization</a></li>
+	</ul>
+	</li>
+	<li><a indepth="true" href="developer+faq.html" title="Developer FAQ">Developer FAQ</a></li>
+</ul>
+
+
+
+<p>If you have a comment or question about anything, please contact us through IRC (freenode.net#mongodb) or the <a href="http://groups.google.com/group/mongodb-user/">mailing list</a>, rather than leaving a comment at the bottom of a page.  It is easier for us to respond to you through those channels.</p>
+
+<h3><a name="DeveloperZone-Introduction"></a>Introduction</h3>
+
+<p>MongoDB is a collection-oriented, schema-free document database.</p>
+
+<p>By <em>collection-oriented</em>, we mean that data is grouped into sets that are called 'collections'.  Each collection has a unique name in the database, and can contain an unlimited number of documents.  Collections are analogous to tables in a RDBMS, except that they don't have any defined schema.</p>
+
+<p>By <em>schema-free</em>, we mean that the database doesn't need to know anything about the structure of the documents that you store in a collection.  In fact, you can store documents with different structure in the same collection if you so choose.</p>
+
+<p>By <em>document</em>, we mean that we store data that is a structured collection of key-value pairs, where keys are strings, and values are any of a rich set of data types, including arrays and documents.  We call this data format "<a indepth="true" href="bson.html" title="BSON">BSON</a>" for "Binary Serialized dOcument Notation."</p>
+
+
+<h3><a name="DeveloperZone-MongoDBOperationalOverview"></a>MongoDB Operational Overview</h3>
+
+<p>MongoDB is a server process that runs on Linux, Windows and OS X.  It can be run both as a 32 or 64-bit application.  We recommend running in 64-bit mode, since Mongo is limited to a total data size of about 2GB for all databases in 32-bit mode.</p>
+
+<p>The MongoDB process listens on port 27017 by default (note that this can be set at start time - please see <a indepth="true" href="command+line+parameters.html" title="Command Line Parameters">Command Line Parameters</a> for more information).</p>
+
+<p>Clients connect to the MongoDB process, optionally authenticate themselves if security is turned on, and perform a sequence of actions, such as inserts, queries and updates.</p>
+
+<p>MongoDB stores its data in files (default location is <tt>/data/db/</tt>), and uses memory mapped files for data management for efficiency.</p>
+
+<p>MongoDB can also be configured for <a indepth="true" href="master+slave.html" title="Master Slave">automatic data replication </a>, as well as <a indepth="true" href="replica+pairs.html" title="Replica Pairs">automatic fail-over </a>.</p>
+
+<p>For more information on MongoDB administration, please see <a indepth="true" href="mongo+administration+guide.html" title="Mongo Administration Guide">Mongo Administration Guide</a>.</p>
+
+<h3><a name="DeveloperZone-MongoDBFunctionality"></a>MongoDB Functionality</h3>
+
+<p>As a developer, MongoDB drivers offer a rich range of operations:</p>
+
+<ul>
+	<li>Queries: Search for documents based on either query objects or SQL-like "where predicates".  Queries can be sorted, have limited return sizes, can skip parts of the return document set, and can also return partial documents.</li>
+	<li>Inserts and Updates : Insert new documents, update existing documents.</li>
+	<li>Index Management : Create indexes on one or more keys in a document, including substructure, deleted indexes, etc</li>
+	<li>General commands : Any MongoDB operation can be managed via DB Commands over the regular socket.</li>
+</ul>
+</div>
+</td>
+<td class="noprint" align="left" valign="top" width="22%">
+<div class="spacetree">
+                                            
+    
+
+<div class="plugin_pagetree">
+
+        
+        
+    <ul class="plugin_pagetree_children_list plugin_pagetree_children_list_noleftspace">
+        <div id="children131081-0" class="plugin_pagetree_children">
+<ul class="plugin_pagetree_children_list" id="child_ul131081-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus590523-0" src="tree_plus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan590523-0">                 <img src="docs_16.gif" title="Quickstart" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="quickstart.html">Quickstart</a>
+        </span>            </div>
+
+        <div id="children590523-0" class="plugin_pagetree_children_container">
+                                                            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus132305-0" src="tree_plus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan132305-0">                 <img src="docs_16.gif" title="Downloads" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="downloads.html">Downloads</a>
+        </span>            </div>
+
+        <div id="children132305-0" class="plugin_pagetree_children_container">
+                                                            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus590729-0" src="tree_plus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan590729-0">                 <img src="docs_16.gif" title="Drivers" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="drivers.html">Drivers</a>
+        </span>            </div>
+
+        <div id="children590729-0" class="plugin_pagetree_children_container">
+                                                            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus1048712-0" src="tree_minus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span style="font-weight: bold;" class="plugin_pagetree_children_span" id="childrenspan1048712-0">                 <img src="docs_16.gif" title="Developer Zone" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="index.html">Developer Zone</a>
+        </span>            </div>
+
+        <div id="children1048712-0" class="plugin_pagetree_children_container">
+<ul class="plugin_pagetree_children_list" id="child_ul1048712-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475705-0">                 <img src="docs_16.gif" title="Tutorial" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="tutorial.html">Tutorial</a>
+        </span>            </div>
+
+        <div id="children1475705-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul1475705-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus1475637-0" src="tree_minus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475637-0">                 <img src="docs_16.gif" title="Manual" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="manual.html">Manual</a>
+        </span>            </div>
+
+        <div style="display: block;" id="children1475637-0" class="plugin_pagetree_children_container">
+<ul class="plugin_pagetree_children_list" id="child_ul1475637-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan5799941-0">                 <img src="docs_16.gif" title="Connections" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="connections.html">Connections</a>
+        </span>            </div>
+
+        <div id="children5799941-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul5799941-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus1475643-0" src="tree_minus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475643-0">                 <img src="docs_16.gif" title="Databases" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="databases.html">Databases</a>
+        </span>            </div>
+
+        <div id="children1475643-0" class="plugin_pagetree_children_container">
+<ul class="plugin_pagetree_children_list" id="child_ul1475643-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus131174-0" src="tree_minus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131174-0">                 <img src="docs_16.gif" title="Commands" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="commands.html">Commands</a>
+        </span>            </div>
+
+        <div id="children131174-0" class="plugin_pagetree_children_container">
+<ul class="plugin_pagetree_children_list" id="child_ul131174-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan3048069-0">                 <img src="docs_16.gif" title="Clone Database" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="clone+database.html">Clone Database</a>
+        </span>            </div>
+
+        <div id="children3048069-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul3048069-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan4554942-0">                 <img src="docs_16.gif" title="fsync Command" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="fsync+command.html">fsync Command</a>
+        </span>            </div>
+
+        <div id="children4554942-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul4554942-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan3048102-0">                 <img src="docs_16.gif" title="Index-Related Commands" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="index-related+commands.html">Index-Related Commands</a>
+        </span>            </div>
+
+        <div id="children3048102-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul3048102-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan3048088-0">                 <img src="docs_16.gif" title="Last Error Commands" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="last+error+commands.html">Last Error Commands</a>
+        </span>            </div>
+
+        <div id="children3048088-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul3048088-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan14647304-0">                 <img src="docs_16.gif" title="Windows Service" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="windows+service.html">Windows Service</a>
+        </span>            </div>
+
+        <div id="children14647304-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul14647304-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan133060-0">                 <img src="docs_16.gif" title="Viewing and Terminating Current Operation" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="viewing+and+terminating+current+operation.html">Viewing and Terminating Current Operation</a>
+        </span>            </div>
+
+        <div id="children133060-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul133060-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan133156-0">                 <img src="docs_16.gif" title="Validate Command" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="validate+command.html">Validate Command</a>
+        </span>            </div>
+
+        <div id="children133156-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul133156-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan132444-0">                 <img src="docs_16.gif" title="getLastError" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="getlasterror.html">getLastError</a>
+        </span>            </div>
+
+        <div id="children132444-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul132444-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan2097274-0">                 <img src="docs_16.gif" title="List of Database Commands" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="list+of+database+commands.html">List of Database Commands</a>
+        </span>            </div>
+
+        <div id="children2097274-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul2097274-0"></ul>
+            </div>
+    </li>
+    </ul>
+</div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131572-0">                 <img src="docs_16.gif" title="Mongo Metadata" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="mongo+metadata.html">Mongo Metadata</a>
+        </span>            </div>
+
+        <div id="children131572-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul131572-0"></ul>
+            </div>
+    </li>
+    </ul>
+</div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus1475640-0" src="tree_minus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475640-0">                 <img src="docs_16.gif" title="Collections" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="collections.html">Collections</a>
+        </span>            </div>
+
+        <div id="children1475640-0" class="plugin_pagetree_children_container">
+<ul class="plugin_pagetree_children_list" id="child_ul1475640-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131521-0">                 <img src="docs_16.gif" title="Capped Collections" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="capped+collections.html">Capped Collections</a>
+        </span>            </div>
+
+        <div id="children131521-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul131521-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1474810-0">                 <img src="docs_16.gif" title="Using a Large Number of Collections" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="using+a+large+number+of+collections.html">Using a Large Number of Collections</a>
+        </span>            </div>
+
+        <div id="children1474810-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul1474810-0"></ul>
+            </div>
+    </li>
+    </ul>
+</div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus1475647-0" src="tree_minus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475647-0">                 <img src="docs_16.gif" title="Data Types and Conventions" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="data+types+and+conventions.html">Data Types and Conventions</a>
+        </span>            </div>
+
+        <div id="children1475647-0" class="plugin_pagetree_children_container">
+<ul class="plugin_pagetree_children_list" id="child_ul1475647-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1048784-0">                 <img src="docs_16.gif" title="Internationalized Strings" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="internationalized+strings.html">Internationalized Strings</a>
+        </span>            </div>
+
+        <div id="children1048784-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul1048784-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131514-0">                 <img src="docs_16.gif" title="Object IDs" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="object+ids.html">Object IDs</a>
+        </span>            </div>
+
+        <div id="children131514-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul131514-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan590638-0">                 <img src="docs_16.gif" title="Database References" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="database+references.html">Database References</a>
+        </span>            </div>
+
+        <div id="children590638-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul590638-0"></ul>
+            </div>
+    </li>
+    </ul>
+</div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475652-0">                 <img src="docs_16.gif" title="GridFS" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="gridfs.html">GridFS</a>
+        </span>            </div>
+
+        <div id="children1475652-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul1475652-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus131518-0" src="tree_minus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131518-0">                 <img src="docs_16.gif" title="Indexes" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="indexes.html">Indexes</a>
+        </span>            </div>
+
+        <div id="children131518-0" class="plugin_pagetree_children_container">
+<ul class="plugin_pagetree_children_list" id="child_ul131518-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan13500418-0">                 <img src="docs_16.gif" title="Using Multikeys to Simulate a Large Number of Indexes" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="using+multikeys+to+simulate+a+large+number+of+indexes.html">Using Multikeys to Simulate a Large Number of Indexes</a>
+        </span>            </div>
+
+        <div id="children13500418-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul13500418-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan6914192-0">                 <img src="docs_16.gif" title="Geospatial Indexing" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="geospatial+indexing.html">Geospatial Indexing</a>
+        </span>            </div>
+
+        <div id="children6914192-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul6914192-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan5800131-0">                 <img src="docs_16.gif" title="Indexing as a Background Operation" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="indexing+as+a+background+operation.html">Indexing as a Background Operation</a>
+        </span>            </div>
+
+        <div id="children5800131-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul5800131-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131202-0">                 <img src="docs_16.gif" title="Multikeys" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="multikeys.html">Multikeys</a>
+        </span>            </div>
+
+        <div id="children131202-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul131202-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan7209509-0">                 <img src="docs_16.gif" title="Indexing Advice and FAQ" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="indexing+advice+and+faq.html">Indexing Advice and FAQ</a>
+        </span>            </div>
+
+        <div id="children7209509-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul7209509-0"></ul>
+            </div>
+    </li>
+    </ul>
+</div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus1475663-0" src="tree_minus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475663-0">                 <img src="docs_16.gif" title="Inserting" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="inserting.html">Inserting</a>
+        </span>            </div>
+
+        <div id="children1475663-0" class="plugin_pagetree_children_container">
+<ul class="plugin_pagetree_children_list" id="child_ul1475663-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1474585-0">                 <img src="docs_16.gif" title="Legal Key Names" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="legal+key+names.html">Legal Key Names</a>
+        </span>            </div>
+
+        <div id="children1474585-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul1474585-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131465-0">                 <img src="docs_16.gif" title="Schema Design" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="schema+design.html">Schema Design</a>
+        </span>            </div>
+
+        <div id="children131465-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul131465-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan4161847-0">                 <img src="docs_16.gif" title="Trees in MongoDB" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="trees+in+mongodb.html">Trees in MongoDB</a>
+        </span>            </div>
+
+        <div id="children4161847-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul4161847-0"></ul>
+            </div>
+    </li>
+    </ul>
+</div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus1475666-0" src="tree_minus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475666-0">                 <img src="docs_16.gif" title="Optimization" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="optimization.html">Optimization</a>
+        </span>            </div>
+
+        <div id="children1475666-0" class="plugin_pagetree_children_container">
+<ul class="plugin_pagetree_children_list" id="child_ul1475666-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1048682-0">                 <img src="docs_16.gif" title="Optimizing Storage of Small Objects" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="optimizing+storage+of+small+objects.html">Optimizing Storage of Small Objects</a>
+        </span>            </div>
+
+        <div id="children1048682-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul1048682-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475057-0">                 <img src="docs_16.gif" title="Query Optimizer" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="query+optimizer.html">Query Optimizer</a>
+        </span>            </div>
+
+        <div id="children1475057-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul1475057-0"></ul>
+            </div>
+    </li>
+    </ul>
+</div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus1475670-0" src="tree_minus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475670-0">                 <img src="docs_16.gif" title="Querying" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="querying.html">Querying</a>
+        </span>            </div>
+
+        <div id="children1475670-0" class="plugin_pagetree_children_container">
+<ul class="plugin_pagetree_children_list" id="child_ul1475670-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan16646157-0">                 <img src="docs_16.gif" title="Mongo Query Language" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="mongo+query+language.html">Mongo Query Language</a>
+        </span>            </div>
+
+        <div id="children16646157-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul16646157-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan16646192-0">                 <img src="docs_16.gif" title="Retrieving a Subset of Fields" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="retrieving+a+subset+of+fields.html">Retrieving a Subset of Fields</a>
+        </span>            </div>
+
+        <div id="children16646192-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul16646192-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131469-0">                 <img src="docs_16.gif" title="Advanced Queries" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="advanced+queries.html">Advanced Queries</a>
+        </span>            </div>
+
+        <div id="children131469-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul131469-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475079-0">                 <img src="docs_16.gif" title="Dot Notation (Reaching into Objects)" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="dot+notation+@28reaching+into+objects@29.html">Dot Notation (Reaching into Objects)</a>
+        </span>            </div>
+
+        <div id="children1475079-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul1475079-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131483-0">                 <img src="docs_16.gif" title="Full Text Search in Mongo" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="full+text+search+in+mongo.html">Full Text Search in Mongo</a>
+        </span>            </div>
+
+        <div id="children131483-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul131483-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1048669-0">                 <img src="docs_16.gif" title="min and max Query Specifiers" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="min+and+max+query+specifiers.html">min and max Query Specifiers</a>
+        </span>            </div>
+
+        <div id="children1048669-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul1048669-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan133311-0">                 <img src="docs_16.gif" title="OR operations in query expressions" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="or+operations+in+query+expressions.html">OR operations in query expressions</a>
+        </span>            </div>
+
+        <div id="children133311-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul133311-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus131541-0" src="tree_minus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131541-0">                 <img src="docs_16.gif" title="Queries and Cursors" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="queries+and+cursors.html">Queries and Cursors</a>
+        </span>            </div>
+
+        <div id="children131541-0" class="plugin_pagetree_children_container">
+<ul class="plugin_pagetree_children_list" id="child_ul131541-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan590139-0">                 <img src="docs_16.gif" title="Tailable Cursors" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="tailable+cursors.html">Tailable Cursors</a>
+        </span>            </div>
+
+        <div id="children590139-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul590139-0"></ul>
+            </div>
+    </li>
+    </ul>
+</div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131489-0">                 <img src="docs_16.gif" title="Server-side Code Execution" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="server-side+code+execution.html">Server-side Code Execution</a>
+        </span>            </div>
+
+        <div id="children131489-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul131489-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131551-0">                 <img src="docs_16.gif" title="Sorting and Natural Order" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="sorting+and+natural+order.html">Sorting and Natural Order</a>
+        </span>            </div>
+
+        <div id="children131551-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul131551-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131553-0">                 <img src="docs_16.gif" title="Aggregation" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="aggregation.html">Aggregation</a>
+        </span>            </div>
+
+        <div id="children131553-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul131553-0"></ul>
+            </div>
+    </li>
+    </ul>
+</div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475676-0">                 <img src="docs_16.gif" title="Removing" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="removing.html">Removing</a>
+        </span>            </div>
+
+        <div id="children1475676-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul1475676-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus1475679-0" src="tree_minus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475679-0">                 <img src="docs_16.gif" title="Updating" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="updating.html">Updating</a>
+        </span>            </div>
+
+        <div id="children1475679-0" class="plugin_pagetree_children_container">
+<ul class="plugin_pagetree_children_list" id="child_ul1475679-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan590824-0">                 <img src="docs_16.gif" title="Atomic Operations" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="atomic+operations.html">Atomic Operations</a>
+        </span>            </div>
+
+        <div id="children590824-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul590824-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan4816898-0">                 <img src="docs_16.gif" title="findandmodify Command" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="findandmodify+command.html">findandmodify Command</a>
+        </span>            </div>
+
+        <div id="children4816898-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul4816898-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131452-0">                 <img src="docs_16.gif" title="Updating Data in Mongo" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="updating+data+in+mongo.html">Updating Data in Mongo</a>
+        </span>            </div>
+
+        <div id="children131452-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul131452-0"></ul>
+            </div>
+    </li>
+    </ul>
+</div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan2752789-0">                 <img src="docs_16.gif" title="MapReduce" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="mapreduce.html">MapReduce</a>
+        </span>            </div>
+
+        <div id="children2752789-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul2752789-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan3047486-0">                 <img src="docs_16.gif" title="Data Processing Manual" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="data+processing+manual.html">Data Processing Manual</a>
+        </span>            </div>
+
+        <div id="children3047486-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul3047486-0"></ul>
+            </div>
+    </li>
+    </ul>
+</div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus131685-0" src="tree_minus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131685-0">                 <img src="docs_16.gif" title="mongo - The Interactive Shell" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="mongo+-+the+interactive+shell.html">mongo - The Interactive Shell</a>
+        </span>            </div>
+
+        <div id="children131685-0" class="plugin_pagetree_children_container">
+<ul class="plugin_pagetree_children_list" id="child_ul131685-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131134-0">                 <img src="docs_16.gif" title="Overview - The MongoDB Interactive Shell" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="overview+-+the+mongodb+interactive+shell.html">Overview - The MongoDB Interactive Shell</a>
+        </span>            </div>
+
+        <div id="children131134-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul131134-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan131651-0">                 <img src="docs_16.gif" title="dbshell Reference" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="dbshell+reference.html">dbshell Reference</a>
+        </span>            </div>
+
+        <div id="children131651-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul131651-0"></ul>
+            </div>
+    </li>
+    </ul>
+</div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus1475690-0" src="tree_minus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475690-0">                 <img src="docs_16.gif" title="Developer FAQ" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="developer+faq.html">Developer FAQ</a>
+        </span>            </div>
+
+        <div id="children1475690-0" class="plugin_pagetree_children_container">
+<ul class="plugin_pagetree_children_list" id="child_ul1475690-0">
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan7209106-0">                 <img src="docs_16.gif" title="Do I Have to Worry About SQL Injection" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="do+i+have+to+worry+about+sql+injection.html">Do I Have to Worry About SQL Injection</a>
+        </span>            </div>
+
+        <div id="children7209106-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul7209106-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan7209296-0">                 <img src="docs_16.gif" title="How does concurrency work" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="how+does+concurrency+work.html">How does concurrency work</a>
+        </span>            </div>
+
+        <div id="children7209296-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul7209296-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan8716963-0">                 <img src="docs_16.gif" title="SQL to Mongo Mapping Chart" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="sql+to+mongo+mapping+chart.html">SQL to Mongo Mapping Chart</a>
+        </span>            </div>
+
+        <div id="children8716963-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul8716963-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan3047986-0">                 <img src="docs_16.gif" title="What is the Compare Order for BSON Types" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="what+is+the+compare+order+for+bson+types.html">What is the Compare Order for BSON Types</a>
+        </span>            </div>
+
+        <div id="children3047986-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul3047986-0"></ul>
+            </div>
+    </li>
+    </ul>
+</div>
+    </li>
+    </ul>
+</div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus1048714-0" src="tree_plus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1048714-0">                 <img src="docs_16.gif" title="Admin Zone" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="admin+zone.html">Admin Zone</a>
+        </span>            </div>
+
+        <div id="children1048714-0" class="plugin_pagetree_children_container">
+                                                            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus1048716-0" src="tree_plus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1048716-0">                 <img src="docs_16.gif" title="Contributors" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="contributors.html">Contributors</a>
+        </span>            </div>
+
+        <div id="children1048716-0" class="plugin_pagetree_children_container">
+                                                            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus132286-0" src="tree_plus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan132286-0">                 <img src="docs_16.gif" title="Community" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="community.html">Community</a>
+        </span>            </div>
+
+        <div id="children132286-0" class="plugin_pagetree_children_container">
+                                                            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <a class="plugin_pagetree_childtoggle" href="#">
+                                    <img id="plusminus1048718-0" src="tree_plus.gif" border="0">
+                            </a>
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1048718-0">                 <img src="docs_16.gif" title="About" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="about.html">About</a>
+        </span>            </div>
+
+        <div id="children1048718-0" class="plugin_pagetree_children_container">
+                                                            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan15630348-0">                 <img src="docs_16.gif" title="Windows" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="windows.html">Windows</a>
+        </span>            </div>
+
+        <div id="children15630348-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul15630348-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan1475385-0">                 <img src="docs_16.gif" title="International Docs" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="international+docs.html">International Docs</a>
+        </span>            </div>
+
+        <div id="children1475385-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul1475385-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan8716967-0">                 <img src="docs_16.gif" title="Books" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="books.html">Books</a>
+        </span>            </div>
+
+        <div id="children8716967-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul8716967-0"></ul>
+            </div>
+    </li>
+            <li>
+    <div class="plugin_pagetree_childtoggle_container">
+                    <img src="tree_square.gif" border="0">
+            </div>
+    <div class="plugin_pagetree_children_content">
+                    <span class="plugin_pagetree_children_span" id="childrenspan132848-0">                 <img src="docs_16.gif" title="Doc Index" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="doc+index.html">Doc Index</a>
+        </span>            </div>
+
+        <div id="children132848-0" class="plugin_pagetree_children_container">
+                    <ul class="plugin_pagetree_children_list" id="child_ul132848-0"></ul>
+            </div>
+    </li>
+    </ul>
+</div>
+    </ul>
+
+    <fieldset class="hidden">
+        <input name="treeId" value="" type="hidden">
+        <input name="treeRequestId" value="/plugins/pagetree/naturalchildren.action?decorator=none&amp;excerpt=false&amp;sort=position&amp;reverse=false&amp;disableLinks=false" type="hidden">
+        <input name="treePageId" value="1048712" type="hidden">
+
+        <input name="noRoot" value="false" type="hidden">
+        <input name="rootPageId" value="131081" type="hidden">
+
+        <input name="rootPage" value="" type="hidden">
+        <input name="startDepth" value="0" type="hidden">
+        <input name="spaceKey" value="DOCS" type="hidden">
+
+        <input name="i18n-pagetree.loading" value="Loading..." type="hidden">
+        <input name="loginUrl" value="/login.action?os_destination=%2Fdisplay%2FDOCS%2FDeveloper%2BZone" type="hidden">
+
+                <fieldset class="hidden">
+                                                <input name="ancestorId" value="131081" type="hidden">
+                                    </fieldset>
+    </fieldset>
+</div>
+
+
+
+
+<p>
+</p><div style="border: 1px solid rgb(153, 153, 153); background-color: rgb(221, 221, 221); width: 160px;"><div style="padding-top: 8px;"><div style="margin-left: 10px; margin-bottom: 8px; color: rgb(49, 49, 49); font-weight: bold;">Community Job Board</div></div><div style="border: 1px solid rgb(153, 153, 153); padding: 10px 10px 2px 8px; overflow: hidden; background-color: rgb(255, 255, 255); color: rgb(102, 102, 102); margin-left: 10px; margin-right: 10px; font-family: Arial,Helvetica,Sans-serif; font-style: normal; font-variant: normal; font-weight: normal; font-size: 11px; font-size-adjust: none; font-stretch: normal; line-height: 16px;"><div style="margin-bottom: 5px;"><a href="http://jobs.mongodb.org/job/senior-support-qa-engineer-bay-area-ca-10gen-23c8137f72/?d=1&amp;source=jobroll" target="_top" style="border: medium none ; color: rgb(4, 100, 187); font-size: 11px; font-weight: bold; text-decoration: none;">Senior Support / QA Engineer </a><br>Bay Area, CA<br>10gen</div><div style="margin-bottom: 5px;"><a href="http://jobs.mongodb.org/job/staff-software-engineer-web-presentation-redwood-city-ca-shutterfly-com-bd8584a3cd/?d=1&amp;source=jobroll" target="_top" style="border: medium none ; color: rgb(4, 100, 187); font-size: 11px; font-weight: bold; text-decoration: none;">Staff Software Engineer - Web Present...</a><br>Redwood City, CA<br>Shutterfly.com</div><div style="margin-bottom: 5px;"><a href="http://jobs.mongodb.org/job/sr-software-developer-new-york-ny-selectable-media-1bdcdbb6c9/?d=1&amp;source=jobroll" target="_top" style="border: medium none ; color: rgb(4, 100, 187); font-size: 11px; font-weight: bold; text-decoration: none;">Sr Software Developer</a><br>New York, NY<br>Selectable Media</div><div style="margin-top: 10px; margin-bottom: 5px;"><a href="http://jobs.mongodb.org/" style="border: medium none ; text-transform: uppercase; color: rgb(4, 100, 187); font-size: 11px; font-weight: bold; text-decoration: none;">More Jobs &gt;</a><br><a href="http://jobs.mongodb.org/post" style="border: medium none ; text-transform: uppercase; color: rgb(4, 100, 187); font-size: 11px; font-weight: bold; text-decoration: none;">Post a Job &gt;</a></div></div><div style="padding-bottom: 4px; text-align: center; margin-top: 8px; cursor: pointer; display: block; visibility: visible;" onclick="window.location='http://www.jobthread.com/';"><div style="text-transform: uppercase; font-family: Arial,Helvetica; font-size: 9px; cursor: pointer;">Powered by JobThread</div><img src="logo_small.gif" style="border: medium none ; margin: 4px auto;"></div></div>		
+                        <!-- Developer Zone -->
+</div>
+</td>
+</tr>
+</tbody></table>
+       
+       <hr class="grey">
+       
+       <div class="page-metadata">
+    <ul>
+                <li class="page-metadata-modification-info">
+                    Added by <a class="username:kristina url fn" href="http://www.mongodb.org/display/%7Ekristina">Kristina Chodorow</a>, last edited by <a class="username:chx url fn" href="http://www.mongodb.org/display/%7Echx">Karoly Negyesi</a> on Apr 01, 2010
+                                        <span class="noprint">&nbsp;(<a href="http://www.mongodb.org/pages/diffpages.action?pageId=1048712&amp;originalId=8716965">view change</a>)</span>
+                            </li>
+                <li class="show-hide-comment-link">
+            <a id="show" class="inline-control-link" href="#" onclick="showComment(); return false;">show comment</a>
+            <a id="hide" class="inline-control-link" style="display: none;" href="#" onclick="hideComment(); return false;">hide comment</a>
+        </li>
+            </ul>
+      <div id="versionComment" class="noteMacro" style="padding: 5px; display: none;">
+      <strong>Comment:</strong>
+      added a missing )<br>
+  </div>
+
+    
+</div>                          
+                           
+       <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="http://www.mongodb.org/display/DOCS/Developer+Zone"
+    dc:identifier="http://www.mongodb.org/display/DOCS/Developer+Zone"
+    dc:title="Developer Zone"
+    trackback:ping="http://www.mongodb.org/rpc/trackback/1048712"/>
+</rdf:RDF>
+-->
+       
+           
+    
+    
+    
+
+
+<fieldset class="hidden parameters">
+    <legend>Labels parameters</legend>
+    <input id="editLabel" value="Edit" type="hidden">
+    <input id="addLabel" value="Add Labels" type="hidden">
+    <input id="domainName" value="http://www.mongodb.org" type="hidden">
+    <input id="pageId" value="1048712" type="hidden">
+    <input id="spaceKey" value="DOCS" type="hidden">
+</fieldset>
+
+<div id="labels-section" class="pageSection">
+    <div id="default-labels-header" class="section-header">
+        <h2 id="labels-section-title" class="section-title  hidden ">Labels</h2>
+            </div>
+
+    <div class="labels-editor">
+        <div id="labelsList">
+                    </div>
+
+        <span class="errorMessage error" id="errorSpan"></span>
+        <form method="GET" action="http://www.mongodb.org/display/DOCS/Developer+Zone" id="add-labels-form">
+            <div id="labelInputSpan" class="labels-input">
+                <div id="labelOperationErrorContainer" class="hidden">
+                    <span class="error"><span class="errorMessage" id="labelOperationErrorMessage"></span></span>
+                </div>
+
+                <div class="caption">Enter labels to add to this page:</div>
+
+                <input autocomplete="off" id="labelsString" name="labelsString" value="" size="40">
+                <input class="add-labels" value="Add" type="submit">
+                <input class="hide-labels-editor" value="Done" type="submit">
+                <div id="waitImageAndStatus">
+                    <img class="waiting" alt="Please wait" src="wait.gif">&nbsp;
+                    <span id="labelOperationStatus" class="smalltext"></span>
+                </div>
+                <div style="display: none;" class="auto_complete" id="labelsAutocompleteList"></div>
+                <div class="labels-tip">
+                    <div id="suggestedLabelsSpan"></div>
+                    Looking for a label? Just start typing.
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+       
+                   <div id="children-section" class="pageSection">
+        
+        <div class="section-header ">
+            <h2 id="children-section-title" class="section-title">
+                <a name="children">Children (4)</a>
+            </h2>
+            <span class="noprint">
+                &nbsp;
+                                    <a id="hide-children-link" class="grey" href="http://www.mongodb.org/display/DOCS/Developer+Zone?showChildren=false#children">Hide Children</a>
+                
+                &nbsp;|&nbsp; <a class="grey" href="http://www.mongodb.org/pages/listpages-dirview.action?key=DOCS&amp;openId=1048712#selectedPageInHierarchy">View in Hierarchy</a>
+                            </span>
+        </div>
+                    <div id="page-children" class="pageSectionBody">
+                                                     <img src="docs_16.gif" title="Tutorial" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="tutorial.html">Tutorial</a>
+                             <br>
+                                                     <img src="docs_16.gif" title="Manual" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="manual.html">Manual</a>
+                             <br>
+                                                     <img src="docs_16.gif" title="mongo - The Interactive Shell" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="mongo+-+the+interactive+shell.html">mongo - The Interactive Shell</a>
+                             <br>
+                                                     <img src="docs_16.gif" title="Developer FAQ" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="developer+faq.html">Developer FAQ</a>
+                             <br>
+                            </div>
+                </div>
+           
+           
+
+<!--
+    Root decorator: this is a layer of abstraction that Confluence doesn't need. It will be removed eventually.
+-->
+
+
+
+
+    
+        
+    
+    
+
+
+<fieldset class="parameters hidden">
+    <input id="deleteCommentConfirmMessage" value="Are you sure you want to remove the comment?" type="hidden">
+    <input id="collapseTooltip" value="Click to toggle the display of this comment." type="hidden">
+</fieldset>
+
+
+
+
+
+<div id="comments-section" class="pageSection">
+    
+            <div class="section-header">
+            <ul id="comment-top-links" class="global-comment-actions">
+                <li id="comments-expand-collapse">
+                    <a href="#" id="comments-collapse">Collapse All</a>
+                    <span id="collapse-wait" class="hidden">Collapsing…</span>
+                    <span id="expand-wait" class="hidden">Expanding…</span>
+                    <a href="#" class="hidden" id="comments-expand">Expand All</a>
+                </li>
+            </ul>
+        </div>
+            <!-- added by Kristina 1/7/10 -->
+<p>
+<b><a style="color: rgb(55, 95, 160);" href="http://groups.google.com/group/mongodb-user">PLEASE POST QUESTIONS IN  THE USER GROUPS FORUM</a>.</b> 
+Post non-question comments and helpful hints here.
+</p>
+            <!-- end -->
+<div id="disqus_thread"><div style="display: none;" id="dsq-content-stub">Loading comments...<div style="border: 1px solid rgb(153, 153, 153); margin: 10px 0pt; height: 15px; width: 300px; background-color: rgb(255, 255, 255);"><div style="height: 15px; width: 15px; background-color: rgb(212, 228, 255);">&nbsp;</div></div><div style="font-size: 8pt; display: block;" id="dsq-loading-problem"><a href="#">Problems loading Disqus?</a></div></div><div class="clearfix" style="display: block;" id="dsq-content">  <div id="dsq-global-toolbar" class="dsq-community-preview">  <table class="dsq-global-toolbar-container">    <tbody><tr>      <td class="dsq-global-toolbar-likes">                <div class="dsq-group">          <a href="http://www.mongodb.org/display/DOCS/thread.vote" id="dsq-like-thread-button" class="dsq-thread-like toolbar-item  dsq-tt" title="I like this page">Like</a>          <a href="http://www.mongodb.org/display/DOCS/thread.vote" id="dsq-dislike-thread-button" class="dsq-thread-dislike toolbar-item  dsq-tt" title="I don't like this page">Dislike</a>        </div>        <ul class="dsq-like-faces">                        <li class="dsq-like-activity">        </li>        </ul>                  </td>      <td>                    <a href="http://www.mongodb.org/display/DOCS/community.show" class="dsq-community-launcher toolbar-item dsq-tt" title="Expand Community Box">Community</a>                </td>            <td class="dsq-global-toolbar-dropdown-container">            <div id="dsq-toolbar-dropdown">    <a href="#" onclick="return false" class="dsq-toolbar-logo toolbar-item">Disqus</a>    <div id="dsq-toolbar-dropdown-wrap" style="display: none;">      <ul>                    <li><h4>Login options</h4></li>                <ul class="dsq-login-buttons">            <li class="dsq-login-button dsq-login-button-disqus">          <a href="http://www.mongodb.org/display/DOCS/auth.disqus"></a>      </li>            <li class="dsq-login-button dsq-login-button-facebook">          <a href="http://www.mongodb.org/display/DOCS/auth.facebook"></a>      </li>            <li class="dsq-login-button dsq-login-button-twitter">          <a href="http://www.mongodb.org/display/DOCS/auth.twitter"></a>      </li>            <li class="dsq-login-button dsq-login-button-openid">          <a href="http://www.mongodb.org/display/DOCS/auth.openid"></a>      </li>            <li class="dsq-login-button dsq-login-button-yahoo">          <a href="http://www.mongodb.org/display/DOCS/auth.yahoo"></a>      </li>            <li style="clear: both;"></li>    </ul>                    <li><a href="http://disqus.com/" target="_top">About Disqus</a></li>      </ul>    </div>  </div>      </td>    </tr>  </tbody></table></div>  <div id="dsq-like-tooltip" style="display: none;">    <div id="dsq-share-step-1" class="dsq-share-step">      <h2>Glad you liked it. Would you like to share?</h2>      <p class="dsq-tooltip-checkbox"><input id="dsq-share-thread-facebook" value="Facebook" type="checkbox"><label for="dsq-share-thread-facebook"><span class="dsq-facebook">Facebook</span></label></p>      <p class="dsq-tooltip-checkbox"><input id="dsq-share-thread-twitter" value="Twitter" type="checkbox"><label for="dsq-share-thread-twitter"><span class="dsq-twitter">Twitter</span></label></p>      <p class="dsq-submit-panel"><button disabled="disabled" onclick="DISQUS.dtpl.actions.fire('thread.share')" class="dsq-tooltip-disabled-button">Share</button> <a href="http://www.mongodb.org/display/DOCS/thread.share.cancel" class="dsq-tooltip-decline">No thanks</a></p>    </div>    <div id="dsq-share-step-2" class="dsq-share-step" style="display: none;">      <p><img src="dsq-loader.gif" style="margin: 0pt 15px 0pt 0pt; vertical-align: middle;">Sharing this page ...</p>    </div>    <div id="dsq-share-step-3" class="dsq-share-step" style="display: none;">      <p>Thanks! <a href="http://www.mongodb.org/display/DOCS/thread.share.cancel" class="dsq-tooltip-decline">Close</a></p>    </div>  </div>        <div id="dsq-new-post" class="dsq-post-area dsq-unauthenticated">          <h3>Add New Comment</h3>      <div style="clear: both;"></div>              <div id="dsq-form-area">      <div class="dsq-textarea">        <div class="dsq-textarea-wrapper" id="dsq-textarea-wrapper"><iframe style="border-style: none;" name="child_1283348680076" id="child_1283348680076" src="index_1.html" frameborder="0"></iframe></div>      </div>            <div class="dsq-post-footer">                          <button type="button" class="dsq-button" id="dsq-post-button" onclick="DISQUS.dtpl.actions.fire('comments.validate', null);">            <span>              Post as …            </span>          </button>                      </div>      <div style="clear: both;"></div>    </div>  </div>  <div id="dsq-comments-title">  <h3>          Showing <span id="dsq-num-posts">4</span> comments      </h3></div><div class="dsq-options">  <span class="dsq-item-sort">    Sort by    <select id="dsq-sort-select" onchange="DISQUS.dtpl.actions.fire('thread.sort', this.value);">            <option value="hot" selected="selected">Popular now</option>            <option value="best">Best rating</option>            <option value="newest">Newest first</option>            <option value="oldest">Oldest first</option>          </select>  </span>  <span class="dsq-subscribe-email">    <img src="email.png" alt="">&nbsp;    <span id="dsq-subscribe">            <a href="http://www.mongodb.org/display/DOCS/thread.subscribe">Subscribe by email</a>          </span>    <span class="dsq-subscribe-rss">      <img src="bullet-feed.png" alt="">&nbsp;      <a href="http://mongodb.disqus.com/developer_zone_mongodb_10gen_confluence/latest.rss">Subscribe by RSS</a>    </span>  </span></div>        <ul id="dsq-comments">              <div id="comment-60407993"></div><li id="dsq-comment-60407993" style="margin-left: 0px;" class="dsq-comment     dsq-even dsq-comment-is-parent">  <!-- placeholder for collapsed comment block (inserted dynamically later) -->  <div id="dsq-collapsed-comment-60407993" class="dsq-collapsed-comment"></div>  <div class="dsq-full-comment"> <!-- wraps header, body, footer -->    <div id="dsq-comment-header-60407993" class="dsq-comment-header">      <table>        <tbody><tr>          <td id="dsq-header-avatar-60407993" class="dsq-header-avatar">            <a id="dsq-avatar-60407993" class="dsq-avatar dsq-tt" title="Expand Tom's profile" href="http://disqus.com/guest/f914cd02166793195d9d950503f8f739/" onclick="return DISQUS.dtpl.actions.fire('profile.show', 60407993, null, false);">                            <img src="noavatar32.png" class="dsq-deferred-avatar" data-src="http://media.disqus.com/uploads/forums/30/2016/avatar32.jpg" alt="">                          </a>          </td>          <td class="dsq-comment-header-meta">            <div class="dsq-comment-header-meta-wrapper">              <cite id="dsq-cite-60407993" class="dsq-comment-cite">                                <span id="dsq-author-user-60407993">Tom</span>                              </cite>              <img src="moderator.png" class="dsq-moderator-star" title="Moderator" height="14" width="15">              <span class="dsq-comment-header-time">                <a href="http://www.mongodb.org/display/DOCS/comments.permalink" title="Permalink">2 months ago</a>              </span>              <a class="dsq-comment-hide-thread" href="http://www.mongodb.org/display/DOCS/comments.collapse" title="Collapse thread"></a>            </div>          </td>        </tr>      </tbody></table>    </div>    <div id="dsq-comment-body-60407993" class="dsq-comment-body">      <div class="dsq-comment-message" id="dsq-comment-message-60407993">            Hi there I am an American, working in Beijing right now. Both the Google user forums and the IRC channel are blocked, in case you weren't aware. I don't know if there's anything you can do about it... probably not a big deal for your business.<br><br>Anyhow, I had 2 requests for feature updates, as far as connecting to Mongo with Java<br><br>1. Currently, the QueryBuilder class has no support for $or. When do you expect the features of your newest edition to permeate to the Java (and other languages presumably) drivers?<br><br>2. It would be really helpful for me at least if there was a way to convert a JSONObject (<a href="http://www.json.org/java/" rel="nofollow">http://www.json.org/java/</a>) to a DBObject. Any plans to do this?            </div>          </div>        <div class="dsq-comment-footer" id="dsq-comment-footer-60407993">      <div class="dsq-comment-footer-left">                <a href="http://www.mongodb.org/display/DOCS/comments.report" id="dsq-post-report-60407993" class="dsq-post-report">Flag</a>              </div>      <div class="dsq-comment-footer-right">                            <span class="dsq-comment-buttons">                      <span id="dsq-like-60407993" class="dsq-like">                        <button type="button" class="dsq-button-small" onclick="DISQUS.dtpl.actions.fire('comments.like', this, 60407993);">Like</button>                      </span>                                        <span class="dsq-comment-footer-reply" id="dsq-comment-footer-reply-60407993" onclick="DISQUS.dtpl.actions.fire('comments.reply', 60407993, this);">            <button type="button" class="dsq-button-small">Reply</button>            <button type="button" class="dsq-comment-footer-reply-tab">Reply</button>            <span></span>          </span>                  </span>      </div>    </div>      </div> <!-- dsq-full-comment --></li><div id="dsq-append-post-60407993"></div>            <div id="comment-60770828"></div><li id="dsq-comment-60770828" style="margin-left: 30px;" class="dsq-comment  dsq-comment child dsq-depth-1 dsq-parent-is-60407993 special dsq-special dsq-moderator dsq-odd ">  <!-- placeholder for collapsed comment block (inserted dynamically later) -->  <div id="dsq-collapsed-comment-60770828" class="dsq-collapsed-comment"></div>  <div class="dsq-full-comment"> <!-- wraps header, body, footer -->    <div id="dsq-comment-header-60770828" class="dsq-comment-header">      <table>        <tbody><tr>          <td id="dsq-header-avatar-60770828" class="dsq-header-avatar">            <a id="dsq-avatar-60770828" class="dsq-avatar dsq-tt" title="Expand ehwizard's profile" href="http://disqus.com/ehwizard/" onclick="return DISQUS.dtpl.actions.fire('profile.show', 60770828, null, true);">                            <img src="noavatar32.png" class="dsq-deferred-avatar" data-src="http://media.disqus.com/uploads/forums/30/2016/avatar32.jpg" alt="">                          </a>          </td>          <td class="dsq-comment-header-meta">            <div class="dsq-comment-header-meta-wrapper">              <cite id="dsq-cite-60770828" class="dsq-comment-cite">                                <a id="dsq-author-user-60770828" href="http://www.mongodb.org/" target="_top" rel="nofollow">ehwizard</a>                              </cite>              <img src="moderator.png" class="dsq-moderator-star" title="Moderator" height="14" width="15">              <span class="dsq-comment-header-time">                <a href="http://www.mongodb.org/display/DOCS/comments.permalink" title="Permalink">1 month ago</a>              </span><a href="http://www.mongodb.org/display/DOCS/comments.showParent" title="Jump to comment" class="dsq-reply-link">in reply to&nbsp;Tom</a>              <a class="dsq-comment-hide-thread" href="http://www.mongodb.org/display/DOCS/comments.collapse" title="Collapse thread"></a>            </div>          </td>        </tr>      </tbody></table>    </div>    <div id="dsq-comment-body-60770828" class="dsq-comment-body">      <div class="dsq-comment-message" id="dsq-comment-message-60770828">            We are working on a solution for getting access to the groups in china.<br><br>1) just pushed $or support for QueryBuilder, though remember you can<br>always just build query objects yourself.  QueryBuilder is just a<br>helper<br><br>2) No plans for that - but a patch is welcome :)            </div>          </div>        <div class="dsq-comment-footer" id="dsq-comment-footer-60770828">      <div class="dsq-comment-footer-left">                <a href="http://www.mongodb.org/display/DOCS/comments.report" id="dsq-post-report-60770828" class="dsq-post-report">Flag</a>              </div>      <div class="dsq-comment-footer-right">                            <span class="dsq-comment-buttons">                      <span id="dsq-like-60770828" class="dsq-like">                        <button type="button" class="dsq-button-small" onclick="DISQUS.dtpl.actions.fire('comments.like', this, 60770828);">Like</button>                      </span>                                        <span class="dsq-comment-footer-reply" id="dsq-comment-footer-reply-60770828" onclick="DISQUS.dtpl.actions.fire('comments.reply', 60770828, this);">            <button type="button" class="dsq-button-small">Reply</button>            <button type="button" class="dsq-comment-footer-reply-tab">Reply</button>            <span></span>          </span>                  </span>      </div>    </div>      </div> <!-- dsq-full-comment --></li><div id="dsq-append-post-60770828"></div>            <div id="comment-51329437"></div><li id="dsq-comment-51329437" style="margin-left: 0px;" class="dsq-comment     dsq-even dsq-comment-is-parent">  <!-- placeholder for collapsed comment block (inserted dynamically later) -->  <div id="dsq-collapsed-comment-51329437" class="dsq-collapsed-comment"></div>  <div class="dsq-full-comment"> <!-- wraps header, body, footer -->    <div id="dsq-comment-header-51329437" class="dsq-comment-header">      <table>        <tbody><tr>          <td id="dsq-header-avatar-51329437" class="dsq-header-avatar">            <a id="dsq-avatar-51329437" class="dsq-avatar dsq-tt" title="Expand Gimi's profile" href="http://disqus.com/openid-24000/" onclick="return DISQUS.dtpl.actions.fire('profile.show', 51329437, null, false);">                            <img src="noavatar32.png" class="dsq-deferred-avatar" data-src="http://mediacdn.disqus.com/uploads/users/301/7457/avatar32.jpg?1281549413" alt="">                          </a>          </td>          <td class="dsq-comment-header-meta">            <div class="dsq-comment-header-meta-wrapper">              <cite id="dsq-cite-51329437" class="dsq-comment-cite">                                <a id="dsq-author-user-51329437" href="https://me.yahoo.com/a/ngcfGpl2wfQ6jNAfel9iVEPqYTfHynQ-#2d98b" target="_top" rel="nofollow">Gimi</a>                              </cite>              <img src="moderator.png" class="dsq-moderator-star" title="Moderator" height="14" width="15">              <span class="dsq-comment-header-time">                <a href="http://www.mongodb.org/display/DOCS/comments.permalink" title="Permalink">3 months ago</a>              </span>              <a class="dsq-comment-hide-thread" href="http://www.mongodb.org/display/DOCS/comments.collapse" title="Collapse thread"></a>            </div>          </td>        </tr>      </tbody></table>    </div>    <div id="dsq-comment-body-51329437" class="dsq-comment-body">      <div class="dsq-comment-message" id="dsq-comment-message-51329437">            It will be awesome if there are Command and Function references.            </div>          </div>        <div class="dsq-comment-footer" id="dsq-comment-footer-51329437">      <div class="dsq-comment-footer-left">                <a href="http://www.mongodb.org/display/DOCS/comments.report" id="dsq-post-report-51329437" class="dsq-post-report">Flag</a>              </div>      <div class="dsq-comment-footer-right">                            <span class="dsq-comment-buttons">                      <span id="dsq-like-51329437" class="dsq-like">                        <button type="button" class="dsq-button-small" onclick="DISQUS.dtpl.actions.fire('comments.like', this, 51329437);">Like</button>                      </span>                                        <span class="dsq-comment-footer-reply" id="dsq-comment-footer-reply-51329437" onclick="DISQUS.dtpl.actions.fire('comments.reply', 51329437, this);">            <button type="button" class="dsq-button-small">Reply</button>            <button type="button" class="dsq-comment-footer-reply-tab">Reply</button>            <span></span>          </span>                  </span>      </div>    </div>      </div> <!-- dsq-full-comment --></li><div id="dsq-append-post-51329437"></div>            <div id="comment-51369235"></div><li id="dsq-comment-51369235" style="margin-left: 30px;" class="dsq-comment  dsq-comment child dsq-depth-1 dsq-parent-is-51329437  dsq-moderator dsq-odd ">  <!-- placeholder for collapsed comment block (inserted dynamically later) -->  <div id="dsq-collapsed-comment-51369235" class="dsq-collapsed-comment"></div>  <div class="dsq-full-comment"> <!-- wraps header, body, footer -->    <div id="dsq-comment-header-51369235" class="dsq-comment-header">      <table>        <tbody><tr>          <td id="dsq-header-avatar-51369235" class="dsq-header-avatar">            <a id="dsq-avatar-51369235" class="dsq-avatar dsq-tt" title="Expand kristina1's profile" href="http://disqus.com/kristina1/" onclick="return DISQUS.dtpl.actions.fire('profile.show', 51369235, null, true);">                            <img src="noavatar32.png" class="dsq-deferred-avatar" data-src="http://mediacdn.disqus.com/uploads/users/85/1954/avatar32.jpg?1281549413" alt="">                          </a>          </td>          <td class="dsq-comment-header-meta">            <div class="dsq-comment-header-meta-wrapper">              <cite id="dsq-cite-51369235" class="dsq-comment-cite">                                <span id="dsq-author-user-51369235">kristina1</span>                              </cite>              <img src="moderator.png" class="dsq-moderator-star" title="Moderator" height="14" width="15">              <span class="dsq-comment-header-time">                <a href="http://www.mongodb.org/display/DOCS/comments.permalink" title="Permalink">3 months ago</a>              </span><a href="http://www.mongodb.org/display/DOCS/comments.showParent" title="Jump to comment" class="dsq-reply-link">in reply to&nbsp;Gimi</a>              <a class="dsq-comment-hide-thread" href="http://www.mongodb.org/display/DOCS/comments.collapse" title="Collapse thread"></a>            </div>          </td>        </tr>      </tbody></table>    </div>    <div id="dsq-comment-body-51369235" class="dsq-comment-body">      <div class="dsq-comment-message" id="dsq-comment-message-51369235">            There is <a indepth="true" href="list+of+database+commands.html" rel="nofollow">http://www.mongodb.org/display/DOCS/List+of+Dat...</a>, in 1.5+ you can use db.runCommand({listCommands:1}), and there's <a href="http://api.mongodb.org/js" rel="nofollow">http://api.mongodb.org/js</a>.            </div>          </div>        <div class="dsq-comment-footer" id="dsq-comment-footer-51369235">      <div class="dsq-comment-footer-left">                <a href="http://www.mongodb.org/display/DOCS/comments.report" id="dsq-post-report-51369235" class="dsq-post-report">Flag</a>              </div>      <div class="dsq-comment-footer-right">                            <span class="dsq-comment-buttons">                      <span id="dsq-like-51369235" class="dsq-like">                        <button type="button" class="dsq-button-small" onclick="DISQUS.dtpl.actions.fire('comments.like', this, 51369235);">Like</button>                      </span>                                        <span class="dsq-comment-footer-reply" id="dsq-comment-footer-reply-51369235" onclick="DISQUS.dtpl.actions.fire('comments.reply', 51369235, this);">            <button type="button" class="dsq-button-small">Reply</button>            <button type="button" class="dsq-comment-footer-reply-tab">Reply</button>            <span></span>          </span>                  </span>      </div>    </div>      </div> <!-- dsq-full-comment --></li><div id="dsq-append-post-51369235"></div>      </ul>    <div id="dsq-pagination" class="dsq-pagination">  </div></div></div><a href="http://disqus.com/" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+    
+    
+                </div>
+
+
+
+
+       
+                                    
+       </div>
+    <br class="clear">
+  </div>
+</div>
+
+<div class="sponsor">Copyright © <a class="smalltext" href="http://www.10gen.com/">10gen</a>, Inc. All Rights Reserved | Licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons</a></div>
+
+
+
+
+
+
+
+<div id="footer">
+                    <ul id="poweredby">
+        <li class="noprint">Powered by <a href="http://www.atlassian.com/software/confluence" class="smalltext">Atlassian Confluence</a> 3.0.0_01, the <a href="http://www.atlassian.com/software/confluence" class="smalltext">Enterprise Wiki</a>.</li>
+        <li class="print-only">Printed by Atlassian Confluence 3.0.0_01, the Enterprise Wiki.</li>
+        <li class="noprint"><a href="http://jira.atlassian.com/secure/BrowseProject.jspa?id=10470" class="smalltext">Bug/feature request</a> –</li>
+        <li class="noprint"><a href="http://www.atlassian.com/about/connected.jsp?s_kwcid=Confluence-stayintouch" class="smalltext">Atlassian news</a> –</li>
+        <li class="noprint"><a href="http://www.mongodb.org/administrators.action">Contact administrators</a></li>
+    </ul>
+</div>
+
+
+<div style="display: none;" id="current-user-status-holder" class="current-user-latest-status"></div><div style="display: none;" id="content-hover-shadow"><div class="tl"></div><div class="tr"></div><div class="l"></div><div class="r"></div><div class="bl"></div><div class="br"></div><div class="b"></div></div></body></html>

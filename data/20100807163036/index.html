@@ -1,0 +1,849 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" dir="ltr" xml:lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		
+                <!-- Skin = Monaco.php -->
+		<meta name="description" content="CSV files (comma-separated values) are often used to save tables of data in plain text. Following are some useful techniques for working with CSV files. You can:">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta name="generator" content="MediaWiki 1.15.5">
+		<meta name="keywords" content="Vim Tips Wiki,vim,Working with CSV files,Filetype.vim,VimTip1565,VimTip663,VimTip669,Vimrc,Working with CSV files">
+		<link rel="canonical" href="http://vim.wikia.com/wiki/Working_with_CSV_files">
+		<link rel="alternate" type="application/x-wiki" title="Edit this page" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit">
+		<link rel="edit" title="Edit this page" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit">
+		<link rel="apple-touch-icon" href="http://images.wikia.com/vim/images/b/bc/Wiki.png">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="search" type="application/opensearchdescription+xml" href="http://vim.wikia.com/opensearch_desc.php" title="Vim Tips Wiki (en)">
+		<link rel="copyright" href="http://community.wikia.com/wiki/Wikia:Licensing">
+		<link rel="alternate" type="application/rss+xml" title="Vim Tips Wiki RSS feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=rss">
+		<link rel="alternate" type="application/atom+xml" title="Vim Tips Wiki Atom feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=atom">
+		<!--[if lt IE 7]><script type="text/javascript">var wgShowIE6PhaseOutMessage = true;</script><![endif]-->
+		
+		<title>Working with CSV files - Vim Tips Wiki</title>
+		
+
+<!-- GetCoreCSS -->
+<!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IElt7" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IEeq7" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IEeq8" /><![endif]-->
+<!--[if !IE]>--><!--<![endif]-->
+<!-- GetExtensionsCSS -->
+<!-- GetThemeCSS -->
+<!-- GetSiteCSS -->
+<!-- GetUserCSS -->	
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Working_with_CSV_files TOCimprovements loggedout color2 wikiaSkinMonaco action_view" id="body">
+	<form action="http://vim.wikia.com/wiki/VimTip667" method="post" name="userajaxloginform" id="userajaxloginformhide" style="display: none;">
+			<input value="" name="wpName" id="wpName1Ajax" tabindex="101" size="20" type="text">
+			<input name="wpPassword" id="wpPassword1Ajax" tabindex="102" size="20" type="password">
+			<input name="wpRemember" id="wpRemember1Ajax" tabindex="104" value="1" type="checkbox">
+		</form>
+	<!-- HEADER -->
+		<div id="wikia_header" class="reset color2">
+			<div class="monaco_shrinkwrap">
+			<div id="wikiaBranding">
+			<div id="wikia_logo"><a rel="nofollow" href="http://www.wikia.com/Wikia">Wikia</a></div>						<button id="headerButtonHub" class="header-button color1">Technology<img src="blank.gif"></button>
+
+			</div>
+<div id="requestWikiData"><a rel="nofollow" href="http://www.wikia.com/Special:CreateWiki" id="request_wiki" class="wikia-button">Create a new wiki</a>&nbsp;<span id="request_wiki_ad"></span></div>			<div id="userData">
+<span id="fbconnect"><a href="#" class="fb_button fb_button_small"><span class="fb_button_text">Connect</span></a></span>				<span id="userLogin">
+					<a rel="nofollow" class="ajaxLogin" id="login" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=Working_with_CSV_files&amp;type=login">Log in</a>
+				</span>
+
+					<a rel="nofollow" class="wikia-button ajaxRegister" id="register" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=Working_with_CSV_files&amp;type=signup">Create an account</a>
+
+		</div>
+		</div>
+	</div>
+
+	<div class="monaco_shrinkwrap"><div id="background_accent1"></div></div>
+	<div style="position: relative;"><div id="background_accent2"></div></div>
+
+		<div id="background_strip" class="reset">
+			<div class="monaco_shrinkwrap">
+
+			<div id="accent_graphic1"></div>
+			<div id="accent_graphic2"></div>
+			<div id="wiki_logo" style="background-image: url(&quot;wiki.png&quot;);"><a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" accesskey="z">Vim Tips Wiki</a></div>
+			<!--[if lt IE 7]>
+			<style type="text/css">
+				#wiki_logo {
+					background-image: none !important;
+					filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://images.wikia.com/vim/images/b/bc/Wiki.png', sizingMethod='image');
+				}
+			</style>
+			<![endif]-->
+			</div>
+		</div>
+		<!-- /HEADER -->
+
+		<!-- PAGE -->
+
+	<div class="monaco_shrinkwrap" id="monaco_shrinkwrap_main">
+		<div id="wikia_page">
+					<div id="page_bar" class="reset color1 clearfix">
+				<ul id="page_controls">
+		  							  <li id="control_edit" class=""><img src="blank.gif" class="sprite edit"><a rel="nofollow" id="ca-edit" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit" title="You can edit this page. Please use the preview button before saving. [e]" accesskey="e">Edit this page</a></li>
+		  							  <li id="control_history" class=""><img src="blank.gif" class="sprite history"><a rel="nofollow" id="ca-history" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=history" title="Past versions of this page [h]" accesskey="h">History</a></li>
+		  							  <li id="control_watch" class=""><img src="blank.gif" class="sprite watch"><a rel="nofollow" id="ca-watch" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=watch" title="Follow this page [w]" accesskey="w">Follow</a></li>
+		  							  <li id="control_share_feature" class=""><img src="blank.gif" class="sprite share"><a rel="nofollow" id="ca-share_feature" href="#">Share this article</a></li>
+		  						  </ul>
+						  <ul id="page_tabs">
+		  							  <li class="selected"><a href="http://vim.wikia.com/wiki/Working_with_CSV_files" id="ca-nstab-main" title="View the content page [c]" accesskey="c" class="selected">Article</a></li>
+		  							  <li class=""><a href="http://vim.wikia.com/wiki/Talk:Working_with_CSV_files" id="ca-talk" title="Discussion about the content page [t]" accesskey="t" class="">Discussion</a></li>
+		  				</ul>
+			</div>
+		        	<!-- #### BEGIN AdEngine::AdEngine::getSetupHtml ####-->
+<!-- #### END AdEngine::AdEngine::getSetupHtml ####-->
+					<!-- ARTICLE -->
+
+			<div id="article">
+				<a name="top" id="top"></a>
+								<h1 class="firstHeading">Working with CSV files<span class="editsection-upper noprint"><a href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit" title="Working with CSV files" onclick='WET.byStr("articleAction/topedit")' rel="nofollow" id="te-editsection-noprompt" class="wikia-button">edit this page</a></span></h1>				<div id="bodyContent">
+					<h3 id="siteSub">From Vim Tips Wiki</h3>
+					<div id="contentSub">(Redirected from <a href="http://vim.wikia.com/index.php?title=VimTip667&amp;redirect=no" title="VimTip667" rel="nofollow">VimTip667</a>)</div>
+																				<!-- #### BEGIN AdEngine::AdEngine::getSetupHtml ####-->
+<!-- #### END AdEngine::AdEngine::getSetupHtml ####-->
+<div id="TOP_LEADERBOARD" class="noprint"><div id="Liftium_728x90_1_php"><iframe src="index_1.html" id="TOP_LEADERBOARD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="90" scrolling="no" width="728"></iframe></div></div>					
+					<!-- start content -->
+					
+				<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"></div></div>
+				
+<div><b><a href="http://vim.wikia.com/wiki/Working_with_CSV_files" class="text" title="http://vim.wikia.com/wiki/Working_with_CSV_files">Tip 667</a></b> <a href="http://vim.wikia.com/wiki/VimTip663" title="VimTip663" class="mw-redirect"><small>Previous</small></a> <a href="http://vim.wikia.com/wiki/VimTip669" title="VimTip669" class="mw-redirect"><small>Next</small></a>
+<p><b>created</b>&nbsp;2004 · <b>complexity</b>&nbsp;intermediate · <b>version</b>&nbsp;7.0
+</p>
+<hr>
+</div>
+<p>CSV files (comma-separated values) are often used to save tables of data in plain text. Following are some useful techniques for working with CSV files. You can:
+</p>
+<ul><li>Highlight all text in any column.
+</li><li>View fields (convert csv text to columns or separate lines).
+</li><li>Navigate using the <tt>HJKL</tt> keys to go left, down, up, right by cell (<tt>hjkl</tt> work as normal).
+</li><li>Search for text in a specific column.
+</li><li>Sort lines by column.
+</li><li>Delete a column.
+</li><li>Specify a delimiter other than comma.
+</li></ul>
+<table id="toc" class="toc" summary="Contents"><tbody><tr><td><div id="toctitle"><h2>Contents</h2> <span class="toctoggle">[<a href="javascript:toggleToc()" rel="nofollow" class="internal" id="togglelink">show</a>]</span></div>
+<ul>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Highlighting_a_column"><span class="tocnumber">1</span> <span class="toctext">Highlighting a column</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Highlighting_the_header_row"><span class="tocnumber">2</span> <span class="toctext">Highlighting the header row</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Viewing_csv_fields"><span class="tocnumber">3</span> <span class="toctext">Viewing csv fields</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Navigating_in_csv_text"><span class="tocnumber">4</span> <span class="toctext">Navigating in csv text</span></a>
+<ul>
+<li class="toclevel-2"><a rel="nofollow" href="#Features"><span class="tocnumber">4.1</span> <span class="toctext">Features</span></a></li>
+<li class="toclevel-2"><a rel="nofollow" href="#Usage"><span class="tocnumber">4.2</span> <span class="toctext">Usage</span></a></li>
+<li class="toclevel-2"><a rel="nofollow" href="#The_code"><span class="tocnumber">4.3</span> <span class="toctext">The code</span></a></li>
+<li class="toclevel-2"><a rel="nofollow" href="#Explanation_of_the_regular_expression"><span class="tocnumber">4.4</span> <span class="toctext">Explanation of the regular expression</span></a></li>
+</ul>
+</li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Working_with_Excel_xls_files"><span class="tocnumber">5</span> <span class="toctext">Working with Excel xls files</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Comments"><span class="tocnumber">6</span> <span class="toctext">Comments</span></a></li>
+</ul>
+</td></tr></tbody></table>
+<a rel="nofollow" name="Highlighting_a_column" id="Highlighting_a_column"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit&amp;section=1" title="Edit section: Highlighting a column" rel="nofollow">edit</a></span> <span class="mw-headline">Highlighting a column</span></h2><div style="float: left; margin-top: 10px; margin-bottom: 10px; margin-right: 20px; clear: left;" id="Liftium_300x250_2"><iframe id="Liftium_300x250_2_140" marginwidth="0" marginheight="0" src="index_2.html" frameborder="0" height="250" scrolling="no" width="300"></iframe></div>
+<p>It's easy to find a column in csv text if you source the following script. Enter a command like <tt>:Csv 23</tt> to highlight column 23.
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="vim source-vim" style="font-family: monospace;"><pre class="de1"><span class="co1">" Highlight a column in csv text.</span>
+<span class="co1">"&nbsp;:Csv 1    " highlight first column</span>
+<span class="co1">"&nbsp;:Csv 12   " highlight twelfth column</span>
+<span class="co1">"&nbsp;:Csv 0    " switch off highlight</span>
+<span class="kw1">function</span><span class="sy0">!</span> CSVH<span class="br0">(</span>colnr<span class="br0">)</span>
+  <span class="kw1">if</span> a<span class="sy0">:</span>colnr <span class="sy0">&gt;</span> 1
+    <span class="kw1">let</span> n = a<span class="sy0">:</span>colnr <span class="sy0">-</span> 1
+    <span class="kw1">execute</span> <span class="st0">'match Keyword /^<span class="es0">\(</span>[^,]*,<span class="es0">\)</span><span class="es0">\{</span>'</span><span class="sy0">.</span>n<span class="sy0">.</span><span class="st0">'}<span class="es0">\z</span>s[^,]*/'</span>
+    <span class="kw1">execute</span> <span class="st0">'normal! 0'</span><span class="sy0">.</span>n<span class="sy0">.</span><span class="st0">'f,'</span>
+  <span class="kw1">elseif</span> a<span class="sy0">:</span>colnr == 1
+    <span class="kw3">match</span> Keyword <span class="sy0">/^</span><span class="br0">[</span><span class="sy0">^</span>,<span class="br0">]</span><span class="sy0">*/</span>
+    normal<span class="sy0">!</span> 0
+  <span class="kw1">else</span>
+    <span class="kw3">match</span>
+  <span class="kw1">endif</span>
+endfunction
+<span class="kw2">command</span><span class="sy0">!</span> <span class="kw2">-nargs</span>=1 Csv <span class="sy0">:</span><span class="kw1">call</span> CSVH<span class="br0">(</span><span class="sy0">&lt;</span>args<span class="sy0">&gt;</span><span class="br0">)</span></pre></div></div>
+<a rel="nofollow" name="Highlighting_the_header_row" id="Highlighting_the_header_row"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit&amp;section=2" title="Edit section: Highlighting the header row" rel="nofollow">edit</a></span> <span class="mw-headline">Highlighting the header row</span></h2>
+<p>If the first row is a header row, you can highlight the header fields by putting the following lines in the file <tt>syntax/csv.vim</tt> (see <a href="http://vim.wikia.com/wiki/VimTip1565#Syntax_highlighting" title="VimTip1565" class="mw-redirect">syntax highlighting for <i>moin</i></a>). This requires csv file type detection (see <a href="#Usage" title=""><i>Usage</i> below</a>).
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="vim source-vim" style="font-family: monospace;"><pre class="de1">syntax <span class="kw3">match</span> csvHeading <span class="sy0">/</span>\<span class="sy0">%</span>1l\<span class="sy0">%</span><span class="br0">(</span>\<span class="sy0">%</span><span class="br0">(</span><span class="st0">"<span class="es0">\z</span>s<span class="es0">\%</span>([^"</span><span class="br0">]</span>\<span class="sy0">|</span><span class="st0">""</span>\<span class="br0">)</span><span class="sy0">*</span>\ze<span class="st0">"<span class="es0">\)</span><span class="es0">\|</span><span class="es0">\%</span>(<span class="es0">\z</span>s[^,"</span><span class="br0">]</span><span class="sy0">*</span>\ze\<span class="br0">)</span>\<span class="br0">)</span><span class="sy0">/</span>
+highlight def link csvHeading Type</pre></div></div>
+<a rel="nofollow" name="Viewing_csv_fields" id="Viewing_csv_fields"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit&amp;section=3" title="Edit section: Viewing csv fields" rel="nofollow">edit</a></span> <span class="mw-headline">Viewing csv fields</span></h2><div style="float: left; margin-top: 10px; margin-bottom: 10px; margin-right: 20px; clear: left;" id="Liftium_300x250_3"><iframe style="display: none;" id="Liftium_300x250_3_428" marginwidth="0" marginheight="0" src="index_3.html" frameborder="0" height="250" scrolling="no" width="300"></iframe><iframe id="Liftium_300x250_3_20" marginwidth="0" marginheight="0" src="index_4.html" frameborder="0" height="250" scrolling="no" width="300"></iframe></div>
+<p>The following commands can be entered to convert csv text to columns for easy viewing. Work on a temporary copy of your data because these commands will damage it!
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="vim source-vim" style="font-family: monospace;"><pre class="de1"><span class="co1">" Convert csv text to columns (press u to undo).</span>
+<span class="co1">" Warning: This deletes ',' and crops wide columns.</span>
+<span class="sy0">:</span><span class="kw1">let</span> width = 20
+<span class="sy0">:</span><span class="kw1">let</span> fill = <span class="kw3">repeat</span><span class="br0">(</span><span class="st0">' '</span>, width<span class="br0">)</span>
+<span class="sy0">:%</span>s<span class="sy0">/</span>\<span class="br0">(</span><span class="br0">[</span><span class="sy0">^</span>,<span class="br0">]</span><span class="sy0">*</span>\<span class="br0">)</span>,\=<span class="sy0">/</span>\=<span class="kw3">strpart</span><span class="br0">(</span><span class="kw3">submatch</span><span class="br0">(</span><span class="nu0">1</span><span class="br0">)</span><span class="sy0">.</span>fill, <span class="nu0">0</span>, width<span class="br0">)</span><span class="sy0">/</span>ge
+<span class="sy0">:%</span>s<span class="sy0">/</span>\s\<span class="sy0">+$//</span>ge</pre></div></div>
+<p>Alternatively, you can change each comma to a newline to put each field on its own line:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="vim source-vim" style="font-family: monospace;"><pre class="de1"><span class="co1">" Change CSV fields on current line to a list of separate items.</span>
+<span class="sy0">:</span>s<span class="sy0">/</span>,<span class="sy0">/</span>\r<span class="sy0">/</span>g
+&nbsp;
+<span class="co1">" Same, for all lines.</span>
+<span class="sy0">:%</span>s<span class="sy0">/</span>,<span class="sy0">/</span>\r<span class="sy0">/</span>g</pre></div></div>
+<p>In the replace text of a substitute, <tt>\r</tt> substitutes a newline.
+</p>
+<a rel="nofollow" name="Navigating_in_csv_text" id="Navigating_in_csv_text"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit&amp;section=4" title="Edit section: Navigating in csv text" rel="nofollow">edit</a></span> <span class="mw-headline">Navigating in csv text</span></h2>
+<p>The simple script given above does not provide easy navigation, and it assumes that commas are only used as delimiters. The following code has more features, and it is presented as a plugin due to its length.
+</p>
+<a rel="nofollow" name="Features" id="Features"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit&amp;section=5" title="Edit section: Features" rel="nofollow">edit</a>]</span> <span class="mw-headline">Features</span></h3>
+<ul><li>Fields are correctly highlighted, according to the <a href="http://tools.ietf.org/html/rfc4180" class="external text" title="http://tools.ietf.org/html/rfc4180" rel="nofollow">CSV specification</a>: quotes, commas inside quotes, quote inside quotes are all correctly processed.
+</li><li>It does not go beyond the last column (from a count of the columns in the first and last three lines).
+</li><li><tt>HJKL</tt> go left, down, up, right by "cell". Focus is set to the first character of the cell.
+</li><li><tt>0</tt> and <tt>$</tt> highlight the first and last cell. Focus is set to the first character of the cell.
+</li><li><tt>Ctrl-f</tt>, <tt>Ctrl-b</tt> page forward and back, while staying in the same column.
+</li><li><tt>\J</tt> is Join <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=J" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=J" rel="nofollow">:help&nbsp;J</a> and <tt>\K</tt> is Keyword <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=K" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=K" rel="nofollow">:help&nbsp;K</a> (assuming the default <tt>\</tt> local leader key <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=maplocalleader" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=maplocalleader" rel="nofollow">:help&nbsp;maplocalleader</a>).
+</li><li>The column number and heading (from the first line in the buffer) are displayed when moving around.
+</li><li>Search within column. The command <pre>:SC n=str</pre> will search for <tt>str</tt> in the n-th column. If "<tt>n=</tt>" is omitted, the search is within the currently highlighted column. For example: <pre>:SC 2=john  " search for john in the 2nd column only</pre><pre>:SC john    " search for john in the currently highlighted column</pre> Case sensitivity is the same as for <tt>/</tt> (toggle with <tt>:set ic! ic?</tt> see <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%27ignorecase%27" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%27ignorecase%27" rel="nofollow">:help&nbsp;'ignorecase'</a>). After the search, the <tt>@/</tt> variable is set. So, for example, after <tt>:SC 2=john</tt>, one can use <tt>g//d</tt> to delete all lines whose second field contains <i>john</i>.
+</li><li>Copy column. The command <pre>:CC n x</pre> will copy (yank) the n-th column to register x. If n is omitted, then the current highlighted column is copied. If x is omitted, the unnamed register is used. Examples:
+</li></ul>
+<pre>:CC              " copy current column to unnamed register
+:CC 12           " copy column 12 to unnamed register
+:CC a            " copy current column to register a
+:CC 12 a         " copy column 12 to register a
+</pre>
+<ul><li>Delete column. The command <pre>:DC n</pre> will delete the n-th column. If n is omitted, then the current highlighted column is deleted.
+</li><li>Specify a character to be used as the delimiter (',' is the default).
+</li></ul>
+<pre>:Delimiter       " show delimiter
+:Delimiter&nbsp;;     " set delimiter to ';'
+:Delimiter \t    " set delimiter to the tab character
+</pre>
+<ul><li>Change the default delimiter (you could put one of the following examples in your <a href="http://vim.wikia.com/wiki/Vimrc" title="Vimrc" class="mw-redirect">vimrc</a>):
+</li></ul>
+<pre>:let g:csv_delimiter = ";"
+:let g:csv_delimiter = "\t"
+</pre>
+<ul><li>Sort lines by column. This works like the <tt>:sort</tt> command except that the specified field is used for sorting, and the first line (heading) is not included. Some examples follow.
+</li></ul>
+<pre>:Sort            " sort by the current column
+:Sort 3          " sort by column 3
+:Sort! 3         " same, reverse order
+:5,12Sort! 3     " same, but sort only lines 5 to 12 inclusive
+:Sort n          " numeric sort by the current column
+:Sort 3 n        " same, by column 3
+:Sort 3 x        " same, hex numbers
+:Sort i u        " ignore case; omit duplicate lines (keep unique)
+:Sort iu         " same
+:Sort 3 iu       " same, by column 3
+
+" The n and x options use integers ("12.9" is 12, overflow is ignored).
+" Use the f option for floating point (:version must show +float).
+" Non-numbers sort before numbers.
+:Sort f          " sort using floats in current column
+:Sort 3 f        " same, by column 3
+:5,12Sort! 3 f   " reverse sort lines in range using column 3 floats
+</pre>
+<a rel="nofollow" name="Usage" id="Usage"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit&amp;section=6" title="Edit section: Usage" rel="nofollow">edit</a>]</span> <span class="mw-headline">Usage</span></h3>
+<p>Put a .csv rule in <a href="http://vim.wikia.com/wiki/Filetype.vim" title="Filetype.vim">filetype.vim</a>
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="vim source-vim" style="font-family: monospace;"><pre class="de1"><span class="kw2">autocmd</span> BufNewFile,BufRead <span class="sy0">*.</span>csv setf csv</pre></div></div>
+<p>Create file <tt>~/.vim/ftplugin/csv.vim</tt> (Unix) or <tt>$HOME/vimfiles/ftplugin/csv.vim</tt> (Windows) containing the script below.
+</p><p>Open a file (named <tt><i>anything</i>.csv</tt>) that contains fields separated by commas. Use <tt>H J K L 0 $</tt> to move from cell to cell.
+</p><p>If you open a <tt>*.csv</tt> file, the current column will be highlighted. Conversely, you may open a file with csv data, yet the file is not named <tt>*.csv</tt>, so highlighting will not occur.
+</p><p>You can switch highlighting off by setting the filetype option to nothing:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="vim source-vim" style="font-family: monospace;"><pre class="de1"><span class="sy0">:</span>set ft=</pre></div></div>
+<p>This command switches highlighting on:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="vim source-vim" style="font-family: monospace;"><pre class="de1"><span class="sy0">:</span>set ft=csv</pre></div></div>
+<a rel="nofollow" name="The_code" id="The_code"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit&amp;section=7" title="Edit section: The code" rel="nofollow">edit</a>]</span> <span class="mw-headline">The code</span></h3>
+<p>This is the ftplugin <tt>csv.vim</tt> script:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="vim source-vim" style="font-family: monospace;"><pre class="de1"><span class="co1">" Filetype plugin for editing CSV files.</span>
+<span class="co1">" Version 2010-02-21 from http://vim.wikia.com/wiki/csv</span>
+<span class="kw1">if</span> v<span class="sy0">:</span>version <span class="sy0">&lt;</span> 700 <span class="sy0">||</span> <span class="kw3">exists</span><span class="br0">(</span><span class="st0">'b:did_ftplugin'</span><span class="br0">)</span>
+  finish
+<span class="kw1">endif</span>
+<span class="kw1">let</span> b<span class="sy0">:</span>did_ftplugin = <span class="nu0">1</span>
+&nbsp;
+<span class="co1">" Return number of characters (not bytes) in string.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>CharLen<span class="br0">(</span>str<span class="br0">)</span>
+  <span class="kw1">return</span> <span class="kw3">strlen</span><span class="br0">(</span><span class="kw3">substitute</span><span class="br0">(</span>a<span class="sy0">:</span>str, <span class="st0">'.'</span>, <span class="st0">'x'</span>, <span class="st0">'g'</span><span class="br0">)</span><span class="br0">)</span>
+endfunction
+&nbsp;
+<span class="co1">" Display a warning message.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>Warn<span class="br0">(</span>msg<span class="br0">)</span>
+  <span class="kw1">echohl</span> WarningMsg
+  <span class="kw1">echo</span> a<span class="sy0">:</span>msg
+  <span class="kw1">echohl</span> NONE
+endfunction
+&nbsp;
+<span class="co1">" Set or show column delimiter.</span>
+<span class="co1">" Accept '\t' (2 characters: backslash, t) as the tab character.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>Delimiter<span class="br0">(</span>delim<span class="br0">)</span>
+  <span class="kw1">if</span> <span class="sy0">!</span><span class="kw3">empty</span><span class="br0">(</span>a<span class="sy0">:</span>delim<span class="br0">)</span>
+    <span class="kw1">let</span> want = a<span class="sy0">:</span>delim == <span class="st0">'<span class="es0">\t</span>'</span> <span class="sy0">?</span> <span class="st0">"<span class="es0">\t</span>"</span> <span class="sy0">:</span> a<span class="sy0">:</span>delim
+    <span class="kw1">if</span> s<span class="sy0">:</span>CharLen<span class="br0">(</span>want<span class="br0">)</span> <span class="sy0">!</span>= 1
+      <span class="kw1">call</span> s<span class="sy0">:</span>Warn<span class="br0">(</span><span class="st0">'Delimiter must be a single character'</span><span class="br0">)</span>
+      <span class="kw1">return</span>
+    <span class="kw1">endif</span>
+    <span class="kw1">let</span> b<span class="sy0">:</span>csv_delimiter = want
+  <span class="kw1">endif</span>
+  <span class="kw1">let</span> b<span class="sy0">:</span>changed_done = <span class="sy0">-</span>1
+  <span class="kw1">let</span> b<span class="sy0">:</span>csv_column = 1
+  silent <span class="kw1">call</span> s<span class="sy0">:</span>Highlight<span class="br0">(</span>b<span class="sy0">:</span>csv_column<span class="br0">)</span>
+  <span class="kw1">echo</span> <span class="kw3">printf</span><span class="br0">(</span><span class="st0">'Delimiter = "%s"'</span>, b<span class="sy0">:</span>csv_delimiter == <span class="st0">"<span class="es0">\t</span>"</span> <span class="sy0">?</span> <span class="st0">'<span class="es0">\t</span>'</span> <span class="sy0">:</span> <span class="kw3">strtrans</span><span class="br0">(</span>b<span class="sy0">:</span>csv_delimiter<span class="br0">)</span><span class="br0">)</span>
+endfunction
+<span class="kw2">command</span><span class="sy0">!</span> <span class="sy0">-</span>buffer <span class="kw2">-nargs</span>=<span class="sy0">?</span> Delimiter <span class="kw1">call</span> s<span class="sy0">:</span>Delimiter<span class="br0">(</span><span class="st0">'&lt;args&gt;'</span><span class="br0">)</span>
+&nbsp;
+<span class="co1">" Get string containing delimiter (default ',') specified for current buffer.</span>
+<span class="co1">" A command like ':let g:csv_delimiter = ";"' changes the default.</span>
+<span class="co1">" Script assumes 'magic' option is in effect, so some special processing</span>
+<span class="co1">" is needed for some delimiters like '~' and '*'.</span>
+<span class="co1">" An alternative would be to use '\V' in patterns, but that would be tricky</span>
+<span class="co1">" given that the "search" patterns are combined with user-entered patterns.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>GetStr<span class="br0">(</span>id<span class="br0">)</span>
+  <span class="kw1">if</span> <span class="sy0">!</span><span class="kw3">exists</span><span class="br0">(</span><span class="st0">'b:csv_delimiter'</span><span class="br0">)</span> <span class="sy0">||</span> <span class="kw3">empty</span><span class="br0">(</span>b<span class="sy0">:</span>csv_delimiter<span class="br0">)</span>
+    <span class="kw1">if</span> <span class="kw3">exists</span><span class="br0">(</span><span class="st0">'g:csv_delimiter'</span><span class="br0">)</span> <span class="sy0">&amp;&amp;</span> <span class="sy0">!</span><span class="kw3">empty</span><span class="br0">(</span>g<span class="sy0">:</span>csv_delimiter<span class="br0">)</span>
+      <span class="kw1">let</span> b<span class="sy0">:</span>csv_delimiter = g<span class="sy0">:</span>csv_delimiter
+    <span class="kw1">else</span>
+      <span class="kw1">let</span> b<span class="sy0">:</span>csv_delimiter = <span class="st0">','</span>
+    <span class="kw1">endif</span>
+  <span class="kw1">endif</span>
+  <span class="kw1">if</span> <span class="sy0">!</span><span class="kw3">exists</span><span class="br0">(</span><span class="st0">'b:csv_str'</span><span class="br0">)</span>
+    <span class="kw1">let</span> b<span class="sy0">:</span>csv_str = <span class="br0">{</span><span class="st0">'delim'</span><span class="sy0">:</span> <span class="st0">''</span><span class="br0">}</span>
+  <span class="kw1">endif</span>
+  <span class="kw1">if</span> b<span class="sy0">:</span>csv_str<span class="br0">[</span><span class="st0">'delim'</span><span class="br0">]</span> <span class="sy0">!</span>=# b<span class="sy0">:</span>csv_delimiter
+    <span class="st0">" Define strings using delimiter ',' then substitute if required.
+    let b:csv_str['delim'] = ','
+    let b:csv_str['numco'] = '<span class="es0">\%</span>(<span class="es0">\%</span>("</span>\<span class="sy0">%</span><span class="br0">(</span><span class="br0">[</span><span class="sy0">^</span><span class="st0">"]<span class="es0">\|</span>"</span><span class="st0">"<span class="es0">\)</span>*"</span>\<span class="br0">)</span>\<span class="sy0">|</span>\<span class="sy0">%</span><span class="br0">(</span><span class="br0">[</span><span class="sy0">^</span>,<span class="st0">"]*<span class="es0">\)</span><span class="es0">\)</span>'
+    let b:csv_str['expr1'] = '<span class="es0">\%</span>(<span class="es0">\%</span>("</span>\zs\<span class="sy0">%</span><span class="br0">(</span><span class="br0">[</span><span class="sy0">^</span><span class="st0">"]<span class="es0">\|</span>"</span><span class="st0">"<span class="es0">\)</span>*<span class="es0">\z</span>e"</span>\<span class="br0">)</span>\<span class="sy0">|</span>\<span class="sy0">%</span><span class="br0">(</span>\zs<span class="br0">[</span><span class="sy0">^</span>,<span class="st0">"]*<span class="es0">\z</span>e<span class="es0">\)</span><span class="es0">\)</span>'
+    let b:csv_str['expr2'] = '<span class="es0">\%</span>(<span class="es0">\%</span>(<span class="es0">\z</span>s"</span>\<span class="sy0">%</span><span class="br0">(</span><span class="br0">[</span><span class="sy0">^</span><span class="st0">"]<span class="es0">\|</span>"</span><span class="st0">"<span class="es0">\)</span>*"</span>,\<span class="sy0">?</span>\ze\<span class="br0">)</span>\<span class="sy0">|</span>\<span class="sy0">%</span><span class="br0">(</span>\zs<span class="br0">[</span><span class="sy0">^</span>,<span class="st0">"]*,<span class="es0">\?</span><span class="es0">\z</span>e<span class="es0">\)</span><span class="es0">\)</span>'
+    let b:csv_str['expr3'] = '^<span class="es0">\%</span>(<span class="es0">\%</span>(<span class="es0">\%</span>("</span>\<span class="sy0">%</span><span class="br0">(</span><span class="br0">[</span><span class="sy0">^</span><span class="st0">"]<span class="es0">\|</span>"</span><span class="st0">"<span class="es0">\)</span>*"</span>\<span class="br0">)</span>\<span class="sy0">|</span>\<span class="sy0">%</span><span class="br0">(</span><span class="br0">[</span><span class="sy0">^</span>,<span class="st0">"]*<span class="es0">\)</span><span class="es0">\)</span>,<span class="es0">\)</span><span class="es0">\{</span>'
+    let b:csv_str['delco'] = ',$'
+    let b:csv_str['sear1'] = '^<span class="es0">\%</span>(<span class="es0">\%</span>("</span>\<span class="sy0">%</span><span class="br0">(</span><span class="br0">[</span><span class="sy0">^</span>,<span class="br0">]</span>\<span class="sy0">|</span><span class="st0">""</span>\<span class="br0">)</span><span class="sy0">*</span>\zs<span class="st0">'
+    let b:csv_str['</span>sear2<span class="st0">'] = '</span>\ze\<span class="sy0">%</span><span class="br0">(</span><span class="br0">[</span><span class="sy0">^</span>,<span class="br0">]</span>\<span class="sy0">|</span><span class="st0">""</span>\<span class="br0">)</span><span class="sy0">*</span><span class="st0">"<span class="es0">\)</span><span class="es0">\|</span><span class="es0">\%</span>([^,"</span><span class="br0">]</span><span class="sy0">*</span>\zs<span class="st0">'
+    let b:csv_str['</span>sear3<span class="st0">'] = '</span>\ze<span class="br0">[</span><span class="sy0">^</span>,<span class="st0">"]*<span class="es0">\)</span><span class="es0">\)</span>'
+    let b:csv_str['sear4'] = '^<span class="es0">\%</span>(<span class="es0">\%</span>(<span class="es0">\%</span>("</span>\<span class="sy0">%</span><span class="br0">(</span><span class="br0">[</span><span class="sy0">^</span><span class="st0">"]<span class="es0">\|</span>"</span><span class="st0">"<span class="es0">\)</span>*"</span>\<span class="br0">)</span>\<span class="sy0">|</span>\<span class="sy0">%</span><span class="br0">(</span><span class="br0">[</span><span class="sy0">^</span>,<span class="st0">"]*<span class="es0">\)</span><span class="es0">\)</span>,<span class="es0">\)</span><span class="es0">\{</span>'
+    let b:csv_str['sear5'] = '}<span class="es0">\%</span>(<span class="es0">\%</span>("</span>\<span class="sy0">%</span><span class="br0">(</span><span class="br0">[</span><span class="sy0">^</span>,<span class="br0">]</span>\<span class="sy0">|</span><span class="st0">""</span>\<span class="br0">)</span><span class="sy0">*</span>\zs<span class="st0">'
+    if b:csv_delimiter&nbsp;!= '</span>,<span class="st0">'
+      let d1 = b:csv_delimiter  " d1 replaces '</span>,<span class="st0">' in '</span><span class="br0">[</span><span class="sy0">...</span><span class="br0">]</span><span class="st0">'
+      let d2 = d1               " d2 replaces '</span>,<span class="st0">' not in '</span><span class="br0">[</span><span class="sy0">...</span><span class="br0">]</span><span class="st0">'
+      if d1 == '</span><span class="sy0">&amp;</span><span class="st0">'
+        let d1 = '</span>\<span class="sy0">&amp;</span><span class="st0">'           " '</span><span class="sy0">&amp;</span><span class="st0">' after substitute()
+        let d2 = '</span>\<span class="sy0">&amp;</span><span class="st0">'           " '</span><span class="sy0">&amp;</span><span class="st0">'
+      elseif d1 == '</span><span class="br0">[</span><span class="st0">'
+        let d1 = '</span>\<span class="br0">[</span><span class="st0">'           " '</span><span class="br0">[</span><span class="st0">'
+        let d2 = '</span>\\<span class="br0">[</span><span class="st0">'          " '</span>\<span class="br0">[</span><span class="st0">'
+      elseif d1 == '</span>\<span class="st0">'
+        let d1 = '</span>\\<span class="st0">'           " '</span>\<span class="st0">'
+        let d2 = '</span>\\\\<span class="st0">'         " '</span>\\<span class="st0">'
+      elseif stridx('</span><span class="sy0">.*$^~</span><span class="st0">', d1) &gt;= 0
+        let d2 = '</span>\\<span class="st0">'.d1        " '</span>\<span class="st0">'.d1
+      endif
+      for key in keys(b:csv_str)
+        if key == '</span>delim<span class="st0">'
+          let b:csv_str[key] = b:csv_delimiter
+        else
+          let replace = substitute(b:csv_str[key], '</span>\<span class="br0">[</span><span class="br0">[</span><span class="sy0">^</span><span class="br0">]</span><span class="br0">]</span><span class="sy0">*</span>\zs,<span class="st0">', d1, '</span>g<span class="st0">')
+          let b:csv_str[key] = substitute(replace, '</span>,<span class="st0">', d2, '</span>g<span class="st0">')
+        endif
+      endfor
+    endif
+  endif
+  return b:csv_str[a:id]
+endfunction
+&nbsp;
+" Get the number of columns (maximum of number in first and last three
+" lines; at least one of them should contain typical csv data).
+function! s:GetNumCols()
+  let b:csv_max_col = 1
+  for l in [1, 2, 3, line('</span><span class="sy0">$</span><span class="st0">')-2, line('</span><span class="sy0">$</span><span class="st0">')-1, line('</span><span class="sy0">$</span><span class="st0">')]
+    " Determine number of columns by counting the (unescaped) delimiters.
+    " Note: The regexp may also return unbalanced ", so filter out anything
+    " which isn'</span>t a delimiter <span class="kw1">in</span> the second pass<span class="sy0">.</span>
+    <span class="kw1">let</span> c = s<span class="sy0">:</span>CharLen<span class="br0">(</span><span class="kw3">substitute</span><span class="br0">(</span><span class="kw3">substitute</span><span class="br0">(</span><span class="kw3">getline</span><span class="br0">(</span>l<span class="br0">)</span>, s<span class="sy0">:</span>GetStr<span class="br0">(</span><span class="st0">'numco'</span><span class="br0">)</span>, <span class="st0">''</span>, <span class="st0">'g'</span><span class="br0">)</span>, <span class="st0">'"'</span>, <span class="st0">''</span>, <span class="st0">'g'</span><span class="br0">)</span><span class="br0">)</span> <span class="sy0">+</span> 1
+    <span class="kw1">if</span> b<span class="sy0">:</span>csv_max_col <span class="sy0">&lt;</span> c
+      <span class="kw1">let</span> b<span class="sy0">:</span>csv_max_col = c
+    <span class="kw1">endif</span>
+  <span class="kw1">endfor</span>
+  <span class="kw1">if</span> b<span class="sy0">:</span>csv_max_col <span class="sy0">&lt;</span>= 1
+    <span class="kw1">let</span> b<span class="sy0">:</span>csv_max_col = 999
+    <span class="kw1">call</span> s<span class="sy0">:</span>Warn<span class="br0">(</span><span class="st0">'No delimiter-separated columns were detected'</span><span class="br0">)</span>
+  <span class="kw1">endif</span>
+  <span class="kw1">return</span> b<span class="sy0">:</span>csv_max_col
+endfunction
+&nbsp;
+<span class="co1">" Return regex to find the n-th column.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>GetExpr<span class="br0">(</span>colnr, <span class="sy0">...</span><span class="br0">)</span>
+  <span class="kw1">if</span> a<span class="sy0">:</span><span class="nu0">0</span> == <span class="nu0">0</span>  <span class="st0">" field only
+    let field = s:GetStr('expr1')
+  else  "</span> field with quotes <span class="br0">(</span><span class="kw1">if</span> present<span class="br0">)</span> and trailing delimiter <span class="br0">(</span><span class="kw1">if</span> present<span class="br0">)</span>
+    <span class="kw1">let</span> field = s<span class="sy0">:</span>GetStr<span class="br0">(</span><span class="st0">'expr2'</span><span class="br0">)</span>
+  <span class="kw1">endif</span>
+  <span class="kw1">if</span> a<span class="sy0">:</span>colnr <span class="sy0">&gt;</span> 1
+    <span class="kw1">return</span> s<span class="sy0">:</span>GetStr<span class="br0">(</span><span class="st0">'expr3'</span><span class="br0">)</span> <span class="sy0">.</span> <span class="br0">(</span>a<span class="sy0">:</span>colnr <span class="sy0">-</span> <span class="nu0">1</span><span class="br0">)</span> <span class="sy0">.</span> <span class="st0">'}'</span> <span class="sy0">.</span> field
+  <span class="kw1">else</span>
+    <span class="kw1">return</span> <span class="st0">'^'</span> <span class="sy0">.</span> field
+  <span class="kw1">endif</span>
+endfunction
+&nbsp;
+<span class="co1">" Extract and echo the column header on the status line.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>PrintColumnInfo<span class="br0">(</span>colnr<span class="br0">)</span>
+  <span class="kw1">let</span> colHeading = <span class="kw3">substitute</span><span class="br0">(</span><span class="kw3">matchstr</span><span class="br0">(</span><span class="kw3">getline</span><span class="br0">(</span><span class="nu0">1</span><span class="br0">)</span>, s<span class="sy0">:</span>GetExpr<span class="br0">(</span>a<span class="sy0">:</span>colnr<span class="br0">)</span><span class="br0">)</span>, <span class="st0">'^<span class="es0">\s</span>*<span class="es0">\(</span>.*<span class="es0">\)</span><span class="es0">\s</span>*$'</span>, <span class="st0">'<span class="es0">\1</span>'</span>, <span class="st0">''</span><span class="br0">)</span>
+  <span class="kw1">let</span> info = <span class="st0">'Column '</span> <span class="sy0">.</span> a<span class="sy0">:</span>colnr
+  <span class="kw1">if</span> <span class="kw3">empty</span><span class="br0">(</span>colHeading<span class="br0">)</span>
+    <span class="kw1">echo</span> info
+  <span class="kw1">else</span>
+    <span class="kw1">echon</span> info <span class="sy0">.</span> <span class="st0">': '</span>
+    <span class="kw1">echohl</span> Type
+    <span class="st0">" Limit length to avoid "</span>Hit ENTER<span class="st0">" prompt.
+    echon strpart(colHeading, 0, (&amp;columns / 2)) . (len(colHeading) &gt; (&amp;columns / 2)&nbsp;? '...'&nbsp;: '')
+    echohl NONE
+  endif
+endfunction
+&nbsp;
+"</span> Highlight n<span class="sy0">-</span><span class="kw1">th</span> column <span class="br0">(</span><span class="kw1">if</span> n <span class="sy0">&gt;</span> <span class="nu0">0</span><span class="br0">)</span><span class="sy0">.</span>
+<span class="co1">" Remove previous highlight match (ignore error if none).</span>
+<span class="co1">" matchadd() priority -1 means 'hlsearch' will override the match.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>Highlight<span class="br0">(</span>colnr<span class="br0">)</span>
+  silent<span class="sy0">!</span> <span class="kw1">call</span> <span class="kw3">matchdelete</span><span class="br0">(</span>b<span class="sy0">:</span>csv_match<span class="br0">)</span>
+  <span class="kw1">if</span> a<span class="sy0">:</span>colnr <span class="sy0">&gt;</span> 0
+    <span class="kw1">if</span> <span class="kw3">exists</span><span class="br0">(</span><span class="st0">'*matchadd'</span><span class="br0">)</span>
+      <span class="kw1">let</span> b<span class="sy0">:</span>csv_match = <span class="kw3">matchadd</span><span class="br0">(</span><span class="st0">'Keyword'</span>, s<span class="sy0">:</span>GetExpr<span class="br0">(</span>a<span class="sy0">:</span>colnr<span class="br0">)</span>, <span class="sy0">-</span>1<span class="br0">)</span>
+    <span class="kw1">else</span>
+      <span class="kw1">execute</span> <span class="st0">'2match Keyword /'</span> <span class="sy0">.</span> s<span class="sy0">:</span>GetExpr<span class="br0">(</span>a<span class="sy0">:</span>colnr<span class="br0">)</span> <span class="sy0">.</span> <span class="st0">'/'</span>
+    <span class="kw1">endif</span>
+    <span class="kw1">if</span> b<span class="sy0">:</span>changed_done <span class="sy0">!</span>= b<span class="sy0">:</span>changedtick
+      <span class="kw1">let</span> b<span class="sy0">:</span>changed_done = b<span class="sy0">:</span>changedtick
+      <span class="kw1">call</span> s<span class="sy0">:</span>GetNumCols<span class="br0">(</span><span class="br0">)</span>
+    <span class="kw1">endif</span>
+    <span class="kw1">call</span> s<span class="sy0">:</span>Focus_Column<span class="br0">(</span>a<span class="sy0">:</span>colnr<span class="br0">)</span>
+  <span class="kw1">endif</span>
+endfunction
+&nbsp;
+<span class="co1">" Focus the cursor on the n-th column of the current line.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>Focus_Column<span class="br0">(</span>colnr<span class="br0">)</span>
+  normal<span class="sy0">!</span> 0
+  <span class="kw1">call</span> <span class="kw3">search</span><span class="br0">(</span>s<span class="sy0">:</span>GetExpr<span class="br0">(</span>a<span class="sy0">:</span>colnr<span class="br0">)</span>, <span class="st0">''</span>, <span class="kw3">line</span><span class="br0">(</span><span class="st0">'.'</span><span class="br0">)</span><span class="br0">)</span>
+  <span class="kw1">call</span> s<span class="sy0">:</span>PrintColumnInfo<span class="br0">(</span>a<span class="sy0">:</span>colnr<span class="br0">)</span>
+endfunction
+&nbsp;
+<span class="co1">" Highlight next column.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>HighlightNextColumn<span class="br0">(</span><span class="br0">)</span>
+  <span class="kw1">if</span> b<span class="sy0">:</span>csv_column <span class="sy0">&lt;</span> b<span class="sy0">:</span>csv_max_col
+    <span class="kw1">let</span> b<span class="sy0">:</span>csv_column <span class="sy0">+</span>= 1
+  <span class="kw1">endif</span>
+  <span class="kw1">call</span> s<span class="sy0">:</span>Highlight<span class="br0">(</span>b<span class="sy0">:</span>csv_column<span class="br0">)</span>
+endfunction
+&nbsp;
+<span class="co1">" Highlight previous column.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>HighlightPrevColumn<span class="br0">(</span><span class="br0">)</span>
+  <span class="kw1">if</span> b<span class="sy0">:</span>csv_column <span class="sy0">&gt;</span> 1
+    <span class="kw1">let</span> b<span class="sy0">:</span>csv_column <span class="sy0">-</span>= 1
+  <span class="kw1">endif</span>
+  <span class="kw1">call</span> s<span class="sy0">:</span>Highlight<span class="br0">(</span>b<span class="sy0">:</span>csv_column<span class="br0">)</span>
+endfunction
+&nbsp;
+<span class="co1">" Wrapping would distort the column-based layout.</span>
+<span class="co1">" Lines must not be broken when typed.</span>
+setlocal nowrap textwidth=<span class="nu0">0</span>
+<span class="co1">" Undo the stuff we changed.</span>
+<span class="kw1">let</span> b<span class="sy0">:</span>undo_ftplugin = <span class="st0">"setlocal wrap&lt; textwidth&lt;"</span>
+    \ <span class="sy0">.</span> <span class="st0">"|if exists('*matchdelete')|call matchdelete(b:csv_match)|else|2match none|endif"</span>
+    \ <span class="sy0">.</span> <span class="st0">"|sil! exe 'nunmap &lt;buffer&gt; H'"</span>
+    \ <span class="sy0">.</span> <span class="st0">"|sil! exe 'nunmap &lt;buffer&gt; L'"</span>
+    \ <span class="sy0">.</span> <span class="st0">"|sil! exe 'nunmap &lt;buffer&gt; J'"</span>
+    \ <span class="sy0">.</span> <span class="st0">"|sil! exe 'nunmap &lt;buffer&gt; K'"</span>
+    \ <span class="sy0">.</span> <span class="st0">"|sil! exe 'nunmap &lt;buffer&gt; &lt;C-f&gt;'"</span>
+    \ <span class="sy0">.</span> <span class="st0">"|sil! exe 'nunmap &lt;buffer&gt; &lt;C-b&gt;'"</span>
+    \ <span class="sy0">.</span> <span class="st0">"|sil! exe 'nunmap &lt;buffer&gt; 0'"</span>
+    \ <span class="sy0">.</span> <span class="st0">"|sil! exe 'nunmap &lt;buffer&gt; $'"</span>
+    \ <span class="sy0">.</span> <span class="st0">"|sil exe 'augroup csv' . bufnr('')"</span>
+    \ <span class="sy0">.</span> <span class="st0">"|sil exe 'au!'"</span>
+    \ <span class="sy0">.</span> <span class="st0">"|sil exe 'augroup END'"</span>
+&nbsp;
+<span class="kw1">let</span> b<span class="sy0">:</span>changed_done = <span class="sy0">-</span><span class="nu0">1</span>
+<span class="co1">" Highlight the first column, but not if reloading or resetting filetype.</span>
+<span class="kw1">if</span> <span class="sy0">!</span><span class="kw3">exists</span><span class="br0">(</span><span class="st0">'b:csv_column'</span><span class="br0">)</span>
+  <span class="kw1">let</span> b<span class="sy0">:</span>csv_column = 1
+<span class="kw1">endif</span>
+<span class="co1">" Following highlights column and calls GetNumCols() if set filetype manually</span>
+<span class="co1">" (BufEnter will also do it if filetype is set during load).</span>
+silent <span class="kw1">call</span> s<span class="sy0">:</span>Highlight<span class="br0">(</span>b<span class="sy0">:</span>csv_column<span class="br0">)</span>
+&nbsp;
+<span class="co1">" Return Float value of field in line selected by regex, or the String field.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>GetValue<span class="br0">(</span><span class="kw3">line</span>, regex<span class="br0">)</span>
+  <span class="kw1">let</span> field = <span class="kw3">matchstr</span><span class="br0">(</span>a<span class="sy0">:</span><span class="kw3">line</span>, a<span class="sy0">:</span>regex<span class="br0">)</span>
+  <span class="kw1">let</span> val = <span class="kw3">str2float</span><span class="br0">(</span>field<span class="br0">)</span>
+  <span class="kw1">if</span> val == 0 <span class="sy0">&amp;&amp;</span> <span class="kw3">match</span><span class="br0">(</span>field, <span class="st0">'^0*<span class="es0">\.</span><span class="es0">\?</span>0*$'</span><span class="br0">)</span> <span class="sy0">&lt;</span> 0
+    <span class="kw1">return</span> field
+  <span class="kw1">endif</span>
+  <span class="kw1">return</span> val
+endfunction
+&nbsp;
+<span class="co1">" Compare lines based on the floating point values in the specified column.</span>
+<span class="co1">" This uses string compare 'ignorecase' option if neither field is a float.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>CompareLines<span class="br0">(</span>line1, line2<span class="br0">)</span>
+  <span class="kw1">let</span> val1 = s<span class="sy0">:</span>GetValue<span class="br0">(</span>a<span class="sy0">:</span>line1, b<span class="sy0">:</span>csv_sort_regex<span class="br0">)</span>
+  <span class="kw1">let</span> val2 = s<span class="sy0">:</span>GetValue<span class="br0">(</span>a<span class="sy0">:</span>line2, b<span class="sy0">:</span>csv_sort_regex<span class="br0">)</span>
+  <span class="kw1">if</span> <span class="kw3">type</span><span class="br0">(</span>val1<span class="br0">)</span> <span class="sy0">!</span>= <span class="kw3">type</span><span class="br0">(</span>val2<span class="br0">)</span>
+    <span class="kw1">let</span> val1 = <span class="kw3">type</span><span class="br0">(</span>val1<span class="br0">)</span>
+    <span class="kw1">let</span> val2 = <span class="kw3">type</span><span class="br0">(</span>val2<span class="br0">)</span>
+  <span class="kw1">endif</span>
+  <span class="kw1">let</span> ascending = val1 <span class="sy0">&gt;</span> val2 <span class="sy0">?</span> 1 <span class="sy0">:</span> val1 <span class="sy0">&lt;</span> val2 <span class="sy0">?</span> <span class="sy0">-</span>1 <span class="sy0">:</span> 0
+  <span class="kw1">return</span> b<span class="sy0">:</span>csv_sort_ascending <span class="sy0">?</span> ascending <span class="sy0">:</span> <span class="sy0">-</span>ascending
+endfunction
+&nbsp;
+<span class="co1">" Sort the n-th column, the highlighted one by default.</span>
+<span class="co1">" Column number is first optional arg; following are flags for&nbsp;:sort.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>SortColumn<span class="br0">(</span>bang, <span class="sy0">...</span><span class="br0">)</span> <span class="kw3">range</span>
+  <span class="kw1">let</span> colnr = b<span class="sy0">:</span>csv_column
+  <span class="kw1">let</span> args = <span class="kw3">copy</span><span class="br0">(</span>a<span class="sy0">:</span>000<span class="br0">)</span>
+  <span class="kw1">if</span> <span class="kw3">len</span><span class="br0">(</span>args<span class="br0">)</span> <span class="sy0">&gt;</span> <span class="nu0">0</span> <span class="sy0">&amp;&amp;</span> args<span class="br0">[</span><span class="nu0">0</span><span class="br0">]</span> =<span class="sy0">~</span> <span class="st0">'^<span class="es0">\d</span><span class="es0">\+</span>$'</span>
+    <span class="kw1">let</span> colnr = <span class="kw3">str2nr</span><span class="br0">(</span>args<span class="br0">[</span>0<span class="br0">]</span><span class="br0">)</span>
+    <span class="kw1">unlet</span> args<span class="br0">[</span>0<span class="br0">]</span>
+  <span class="kw1">endif</span>
+  <span class="kw1">if</span> colnr <span class="sy0">&lt;</span> 1 <span class="sy0">||</span> colnr <span class="sy0">&gt;</span> b<span class="sy0">:</span>csv_max_col
+    <span class="kw1">call</span> s<span class="sy0">:</span>Warn<span class="br0">(</span><span class="st0">'Column number out of range'</span><span class="br0">)</span>
+  <span class="kw1">endif</span>
+  <span class="kw1">let</span> first = a<span class="sy0">:</span>firstline == 1 <span class="sy0">?</span> 2 <span class="sy0">:</span> a<span class="sy0">:</span>firstline
+  <span class="kw1">let</span> flags = <span class="kw3">join</span><span class="br0">(</span>args<span class="br0">)</span>
+  <span class="kw1">if</span> flags == <span class="st0">'f'</span>
+    <span class="kw1">let</span> b<span class="sy0">:</span>csv_sort_ascending = <span class="kw3">empty</span><span class="br0">(</span>a<span class="sy0">:</span>bang<span class="br0">)</span>
+    <span class="kw1">let</span> b<span class="sy0">:</span>csv_sort_regex = s<span class="sy0">:</span>GetExpr<span class="br0">(</span>colnr<span class="br0">)</span>
+    <span class="kw1">call</span> <span class="kw3">setline</span><span class="br0">(</span>first, <span class="kw3">sort</span><span class="br0">(</span><span class="kw3">getline</span><span class="br0">(</span>first, a<span class="sy0">:</span>lastline<span class="br0">)</span>, <span class="kw1">function</span><span class="br0">(</span><span class="st0">'s:CompareLines'</span><span class="br0">)</span><span class="br0">)</span><span class="br0">)</span>
+  <span class="kw1">else</span>
+    <span class="kw1">let</span> cmd = first<span class="sy0">.</span><span class="st0">','</span><span class="sy0">.</span>a<span class="sy0">:</span>lastline<span class="sy0">.</span><span class="st0">'sort'</span><span class="sy0">.</span>a<span class="sy0">:</span>bang
+    <span class="kw1">execute</span> cmd <span class="st0">'r'</span><span class="sy0">.</span>flags <span class="st0">'/'</span><span class="sy0">.</span><span class="kw3">escape</span><span class="br0">(</span>s<span class="sy0">:</span>GetExpr<span class="br0">(</span>colnr<span class="br0">)</span>, <span class="st0">'/'</span><span class="br0">)</span><span class="sy0">.</span><span class="st0">'/'</span>
+  <span class="kw1">endif</span>
+endfunction
+<span class="kw2">command</span><span class="sy0">!</span> <span class="sy0">-</span>bang <span class="sy0">-</span>buffer <span class="kw2">-nargs</span>=<span class="sy0">*</span> <span class="sy0">-</span><span class="kw3">range</span>=<span class="sy0">%</span> Sort <span class="sy0">&lt;</span>line1<span class="sy0">&gt;</span>,<span class="sy0">&lt;</span>line2<span class="sy0">&gt;</span>call s<span class="sy0">:</span>SortColumn<span class="br0">(</span><span class="st0">'&lt;bang&gt;'</span>, <span class="sy0">&lt;</span>f<span class="sy0">-</span>args<span class="sy0">&gt;</span><span class="br0">)</span>
+&nbsp;
+<span class="co1">" Copy an entire column into a register.</span>
+<span class="co1">" Column number can be omitted (default is the current column).</span>
+<span class="co1">" Register is a-z, or A-Z (append), or omitted for the unnamed register.</span>
+<span class="co1">" Example: ':CC 12 b' copies column 12 into register b.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>CopyColumn<span class="br0">(</span>args<span class="br0">)</span>
+  <span class="kw1">let</span> l = <span class="kw3">matchlist</span><span class="br0">(</span>a<span class="sy0">:</span>args, <span class="st0">'^<span class="es0">\(</span><span class="es0">\d</span>*<span class="es0">\)</span><span class="es0">\s</span>*<span class="es0">\(</span><span class="es0">\a</span><span class="es0">\)</span><span class="es0">\?</span>$'</span><span class="br0">)</span>
+  <span class="kw1">if</span> <span class="kw3">len</span><span class="br0">(</span>l<span class="br0">)</span> <span class="sy0">&lt;</span> 3
+    <span class="kw1">call</span> s<span class="sy0">:</span>Warn<span class="br0">(</span><span class="st0">'Invalid arguments (need column_number register)'</span><span class="br0">)</span>
+    <span class="kw1">return</span>
+  <span class="kw1">endif</span>
+  <span class="kw1">let</span> <span class="kw3">col</span> = <span class="kw3">empty</span><span class="br0">(</span>l<span class="br0">[</span>1<span class="br0">]</span><span class="br0">)</span> <span class="sy0">?</span> b<span class="sy0">:</span>csv_column <span class="sy0">:</span> <span class="kw3">str2nr</span><span class="br0">(</span>l<span class="br0">[</span>1<span class="br0">]</span><span class="br0">)</span>
+  <span class="kw1">let</span> reg = <span class="kw3">empty</span><span class="br0">(</span>l<span class="br0">[</span><span class="nu0">2</span><span class="br0">]</span><span class="br0">)</span> <span class="sy0">?</span> <span class="st0">'@'</span> <span class="sy0">:</span> l<span class="br0">[</span>2<span class="br0">]</span>
+  <span class="kw1">if</span> <span class="kw3">col</span> <span class="sy0">&lt;</span> 1 <span class="sy0">||</span> <span class="kw3">col</span> <span class="sy0">&gt;</span> b<span class="sy0">:</span>csv_max_col
+    <span class="kw1">call</span> s<span class="sy0">:</span>Warn<span class="br0">(</span><span class="st0">'Column number out of range'</span><span class="br0">)</span>
+    <span class="kw1">return</span>
+  <span class="kw1">endif</span>
+  <span class="kw1">let</span> matchcol = s<span class="sy0">:</span>GetExpr<span class="br0">(</span><span class="kw3">col</span><span class="br0">)</span>
+  <span class="kw1">let</span> cells = <span class="br0">[</span><span class="br0">]</span>
+  <span class="kw1">for</span> lnum <span class="kw1">in</span> <span class="kw3">range</span><span class="br0">(</span>1, <span class="kw3">line</span><span class="br0">(</span><span class="st0">'$'</span><span class="br0">)</span><span class="br0">)</span>
+    <span class="kw1">call</span> <span class="kw3">add</span><span class="br0">(</span>cells, <span class="kw3">matchstr</span><span class="br0">(</span><span class="kw3">getline</span><span class="br0">(</span>lnum<span class="br0">)</span>, matchcol<span class="br0">)</span><span class="br0">)</span>
+  <span class="kw1">endfor</span>
+  <span class="kw1">execute</span> <span class="st0">'let @'</span><span class="sy0">.</span>reg<span class="sy0">.</span><span class="st0">' = join(cells, "<span class="es0">\n</span>")."<span class="es0">\n</span>"'</span>
+endfunction
+<span class="kw2">command</span><span class="sy0">!</span> <span class="sy0">-</span>buffer <span class="kw2">-nargs</span>=<span class="sy0">*</span> CC <span class="kw1">call</span> s<span class="sy0">:</span>CopyColumn<span class="br0">(</span><span class="st0">'&lt;args&gt;'</span><span class="br0">)</span>
+&nbsp;
+<span class="co1">" Delete the n-th column, the highlighted one by default.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>DeleteColumn<span class="br0">(</span>colnr<span class="br0">)</span>
+  <span class="kw1">if</span> <span class="kw3">empty</span><span class="br0">(</span>a<span class="sy0">:</span>colnr<span class="br0">)</span>
+    <span class="kw1">let</span> <span class="kw3">col</span> = b<span class="sy0">:</span>csv_column
+  <span class="kw1">else</span>
+    <span class="kw1">let</span> <span class="kw3">col</span> = <span class="kw3">str2nr</span><span class="br0">(</span>a<span class="sy0">:</span>colnr<span class="br0">)</span>
+  <span class="kw1">endif</span>
+  <span class="kw1">if</span> <span class="kw3">col</span> <span class="sy0">&lt;</span> 1 <span class="sy0">||</span> <span class="kw3">col</span> <span class="sy0">&gt;</span> b<span class="sy0">:</span>csv_max_col
+    <span class="kw1">call</span> s<span class="sy0">:</span>Warn<span class="br0">(</span><span class="st0">'Column number out of range'</span><span class="br0">)</span>
+  <span class="kw1">endif</span>
+  <span class="kw1">execute</span> <span class="st0">'%s/'</span><span class="sy0">.</span><span class="kw3">escape</span><span class="br0">(</span>s<span class="sy0">:</span>GetExpr<span class="br0">(</span><span class="kw3">col</span>, <span class="nu0">1</span><span class="br0">)</span>, <span class="st0">'/'</span><span class="br0">)</span><span class="sy0">.</span><span class="st0">'//'</span>
+  <span class="kw1">if</span> <span class="kw3">col</span> == b<span class="sy0">:</span>csv_max_col
+    <span class="kw1">execute</span> <span class="st0">'silent&nbsp;%s/'</span><span class="sy0">.</span><span class="kw3">escape</span><span class="br0">(</span>s<span class="sy0">:</span>GetStr<span class="br0">(</span><span class="st0">'delco'</span><span class="br0">)</span>, <span class="st0">'/'</span><span class="br0">)</span><span class="sy0">.</span><span class="st0">'//e'</span>
+  <span class="kw1">endif</span>
+  <span class="kw1">let</span> b<span class="sy0">:</span>csv_max_col <span class="sy0">-</span>= 1
+  <span class="kw1">if</span> b<span class="sy0">:</span>csv_column <span class="sy0">&gt;</span> b<span class="sy0">:</span>csv_max_col
+    <span class="kw1">call</span> s<span class="sy0">:</span>HighlightPrevColumn<span class="br0">(</span><span class="br0">)</span>
+  <span class="kw1">endif</span>
+endfunction
+<span class="kw2">command</span><span class="sy0">!</span> <span class="sy0">-</span>buffer <span class="kw2">-nargs</span>=<span class="sy0">?</span> DC <span class="kw1">call</span> s<span class="sy0">:</span>DeleteColumn<span class="br0">(</span><span class="st0">'&lt;args&gt;'</span><span class="br0">)</span>
+&nbsp;
+<span class="co1">" Search the n-th column. Argument in n=regex form where n is the column</span>
+<span class="co1">" number, and regex is the expression to use. If "n=" is omitted, then</span>
+<span class="co1">" use the current highlighted column.</span>
+<span class="kw1">function</span><span class="sy0">!</span> s<span class="sy0">:</span>SearchColumn<span class="br0">(</span>args<span class="br0">)</span>
+  <span class="kw1">let</span> <span class="br0">[</span>colstr, target<span class="br0">]</span> = <span class="kw3">matchlist</span><span class="br0">(</span>a<span class="sy0">:</span>args, <span class="st0">'<span class="es0">\%</span>(<span class="es0">\(</span>[1-9][0-9]*<span class="es0">\)</span>=<span class="es0">\)</span><span class="es0">\?</span><span class="es0">\(</span>.*<span class="es0">\)</span>'</span><span class="br0">)</span><span class="br0">[</span>1<span class="sy0">:</span>2<span class="br0">]</span>
+  <span class="kw1">if</span> <span class="kw3">empty</span><span class="br0">(</span>colstr<span class="br0">)</span>
+    <span class="kw1">let</span> <span class="kw3">col</span> = b<span class="sy0">:</span>csv_column
+  <span class="kw1">else</span>
+    <span class="kw1">let</span> <span class="kw3">col</span> = <span class="kw3">str2nr</span><span class="br0">(</span>colstr<span class="br0">)</span>
+  <span class="kw1">endif</span>
+  <span class="kw1">if</span> <span class="kw3">col</span> <span class="sy0">&lt;</span> 1 <span class="sy0">||</span> <span class="kw3">col</span> <span class="sy0">&gt;</span> b<span class="sy0">:</span>csv_max_col
+    <span class="kw1">call</span> s<span class="sy0">:</span>Warn<span class="br0">(</span><span class="st0">'Column number out of range'</span><span class="br0">)</span>
+  <span class="kw1">endif</span>
+  <span class="kw1">if</span> <span class="kw3">col</span> == 1
+    <span class="kw1">let</span> <span class="sy0">@/</span> = s<span class="sy0">:</span>GetStr<span class="br0">(</span><span class="st0">'sear1'</span><span class="br0">)</span><span class="sy0">.</span>target<span class="sy0">.</span>s<span class="sy0">:</span>GetStr<span class="br0">(</span><span class="st0">'sear2'</span><span class="br0">)</span><span class="sy0">.</span>target<span class="sy0">.</span>s<span class="sy0">:</span>GetStr<span class="br0">(</span><span class="st0">'sear3'</span><span class="br0">)</span>
+  <span class="kw1">else</span>
+    <span class="kw1">let</span> <span class="sy0">@/</span> = s<span class="sy0">:</span>GetStr<span class="br0">(</span><span class="st0">'sear4'</span><span class="br0">)</span><span class="sy0">.</span><span class="br0">(</span>col<span class="sy0">-</span><span class="nu0">1</span><span class="br0">)</span><span class="sy0">.</span>s<span class="sy0">:</span>GetStr<span class="br0">(</span><span class="st0">'sear5'</span><span class="br0">)</span><span class="sy0">.</span>target<span class="sy0">.</span>s<span class="sy0">:</span>GetStr<span class="br0">(</span><span class="st0">'sear2'</span><span class="br0">)</span><span class="sy0">.</span>target<span class="sy0">.</span>s<span class="sy0">:</span>GetStr<span class="br0">(</span><span class="st0">'sear3'</span><span class="br0">)</span>
+  <span class="kw1">endif</span>
+endfunction
+<span class="co1">" Use&nbsp;:SC n=string&lt;CR&gt; to search for string in the n-th column</span>
+<span class="kw2">command</span><span class="sy0">!</span> <span class="sy0">-</span>buffer <span class="kw2">-nargs</span>=1 SC <span class="kw1">execute</span> s<span class="sy0">:</span>SearchColumn<span class="br0">(</span><span class="st0">'&lt;args&gt;'</span><span class="br0">)</span><span class="sy0">|</span>normal<span class="sy0">!</span> n
+&nbsp;
+nnoremap <span class="sy0">&lt;</span>silent<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>buffer<span class="sy0">&gt;</span> H <span class="sy0">:</span><span class="kw1">call</span> <span class="sy0">&lt;</span>SID<span class="sy0">&gt;</span>HighlightPrevColumn<span class="br0">(</span><span class="br0">)</span><span class="sy0">&lt;</span>CR<span class="sy0">&gt;</span>
+nnoremap <span class="sy0">&lt;</span>silent<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>buffer<span class="sy0">&gt;</span> L <span class="sy0">:</span><span class="kw1">call</span> <span class="sy0">&lt;</span>SID<span class="sy0">&gt;</span>HighlightNextColumn<span class="br0">(</span><span class="br0">)</span><span class="sy0">&lt;</span>CR<span class="sy0">&gt;</span>
+nnoremap <span class="sy0">&lt;</span>silent<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>buffer<span class="sy0">&gt;</span> J <span class="sy0">&lt;</span>Down<span class="sy0">&gt;:</span><span class="kw1">call</span> <span class="sy0">&lt;</span>SID<span class="sy0">&gt;</span>Focus_Column<span class="br0">(</span>b<span class="sy0">:</span>csv_column<span class="br0">)</span><span class="sy0">&lt;</span>CR<span class="sy0">&gt;</span>
+nnoremap <span class="sy0">&lt;</span>silent<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>buffer<span class="sy0">&gt;</span> K <span class="sy0">&lt;</span>Up<span class="sy0">&gt;:</span><span class="kw1">call</span> <span class="sy0">&lt;</span>SID<span class="sy0">&gt;</span>Focus_Column<span class="br0">(</span>b<span class="sy0">:</span>csv_column<span class="br0">)</span><span class="sy0">&lt;</span>CR<span class="sy0">&gt;</span>
+nnoremap <span class="sy0">&lt;</span>silent<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>buffer<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>C<span class="sy0">-</span>f<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>PageDown<span class="sy0">&gt;:</span><span class="kw1">call</span> <span class="sy0">&lt;</span>SID<span class="sy0">&gt;</span>Focus_Column<span class="br0">(</span>b<span class="sy0">:</span>csv_column<span class="br0">)</span><span class="sy0">&lt;</span>CR<span class="sy0">&gt;</span>
+nnoremap <span class="sy0">&lt;</span>silent<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>buffer<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>C<span class="sy0">-</span>b<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>PageUp<span class="sy0">&gt;:</span><span class="kw1">call</span> <span class="sy0">&lt;</span>SID<span class="sy0">&gt;</span>Focus_Column<span class="br0">(</span>b<span class="sy0">:</span>csv_column<span class="br0">)</span><span class="sy0">&lt;</span>CR<span class="sy0">&gt;</span>
+nnoremap <span class="sy0">&lt;</span>silent<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>buffer<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>C<span class="sy0">-</span>d<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>C<span class="sy0">-</span>d<span class="sy0">&gt;:</span><span class="kw1">call</span> <span class="sy0">&lt;</span>SID<span class="sy0">&gt;</span>Focus_Column<span class="br0">(</span>b<span class="sy0">:</span>csv_column<span class="br0">)</span><span class="sy0">&lt;</span>CR<span class="sy0">&gt;</span>
+nnoremap <span class="sy0">&lt;</span>silent<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>buffer<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>C<span class="sy0">-</span>u<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>C<span class="sy0">-</span>u<span class="sy0">&gt;:</span><span class="kw1">call</span> <span class="sy0">&lt;</span>SID<span class="sy0">&gt;</span>Focus_Column<span class="br0">(</span>b<span class="sy0">:</span>csv_column<span class="br0">)</span><span class="sy0">&lt;</span>CR<span class="sy0">&gt;</span>
+nnoremap <span class="sy0">&lt;</span>silent<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>buffer<span class="sy0">&gt;</span> 0 <span class="sy0">:</span><span class="kw1">let</span> b<span class="sy0">:</span>csv_column=1<span class="sy0">&lt;</span>CR<span class="sy0">&gt;:</span><span class="kw1">call</span> <span class="sy0">&lt;</span>SID<span class="sy0">&gt;</span>Highlight<span class="br0">(</span>b<span class="sy0">:</span>csv_column<span class="br0">)</span><span class="sy0">&lt;</span>CR<span class="sy0">&gt;</span>
+nnoremap <span class="sy0">&lt;</span>silent<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>buffer<span class="sy0">&gt;</span> <span class="sy0">$</span> <span class="sy0">:</span><span class="kw1">let</span> b<span class="sy0">:</span>csv_column=b<span class="sy0">:</span>csv_max_col<span class="sy0">&lt;</span>CR<span class="sy0">&gt;:</span><span class="kw1">call</span> <span class="sy0">&lt;</span>SID<span class="sy0">&gt;</span>Highlight<span class="br0">(</span>b<span class="sy0">:</span>csv_column<span class="br0">)</span><span class="sy0">&lt;</span>CR<span class="sy0">&gt;</span>
+nnoremap <span class="sy0">&lt;</span>silent<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>buffer<span class="sy0">&gt;</span> gm <span class="sy0">:</span><span class="kw1">call</span> <span class="sy0">&lt;</span>SID<span class="sy0">&gt;</span>Focus_Column<span class="br0">(</span>b<span class="sy0">:</span>csv_column<span class="br0">)</span><span class="sy0">&lt;</span>CR<span class="sy0">&gt;</span>
+nnoremap <span class="sy0">&lt;</span>silent<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>buffer<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>LocalLeader<span class="sy0">&gt;</span>J J
+nnoremap <span class="sy0">&lt;</span>silent<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>buffer<span class="sy0">&gt;</span> <span class="sy0">&lt;</span>LocalLeader<span class="sy0">&gt;</span>K K
+&nbsp;
+<span class="co1">" The column highlighting is window-local, not buffer-local, so it can persist</span>
+<span class="co1">" even when the filetype is undone or the buffer changed.</span>
+<span class="kw1">execute</span> <span class="st0">'augroup csv'</span> <span class="sy0">.</span> <span class="kw3">bufnr</span><span class="br0">(</span><span class="st0">''</span><span class="br0">)</span>
+  <span class="kw2">autocmd</span><span class="sy0">!</span>
+  <span class="st0">" These events only highlight in the current window.
+  "</span> Note<span class="sy0">:</span> Highlighting gets slightly confused <span class="kw1">if</span> the same buffer is present <span class="kw1">in</span>
+  <span class="st0">" two split windows next to each other, because then the events aren't fired.
+  autocmd BufLeave &lt;buffer&gt; silent call s:Highlight(0)
+  autocmd BufEnter &lt;buffer&gt; silent call s:Highlight(b:csv_column)
+augroup END</span></pre></div></div>
+<a rel="nofollow" name="Explanation_of_the_regular_expression" id="Explanation_of_the_regular_expression"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit&amp;section=8" title="Edit section: Explanation of the regular expression" rel="nofollow">edit</a>]</span> <span class="mw-headline">Explanation of the regular expression</span></h3>
+<p>The above code is fairly easy to understand, except perhaps for the regular expressions. The following regex (inspired by <a href="http://regexlib.com/REDetails.aspx?regexp_id=1520" class="external text" title="http://regexlib.com/REDetails.aspx?regexp_id=1520" rel="nofollow">RegExLib 1520</a>) is used several times:
+</p>
+<pre>\%(\%("\zs\%([^"]\|""\)*\ze"\)\|\%(\zs[^,"]*\ze\)\)
+</pre>
+<p>It is explained as follows:
+</p>
+<pre>1.  \%(                 # unbackref'ed grouping for one CSV field
+2.     \%(              # first possibility of a field
+3.        "             # starts and ends with "
+4.        \zs           # beginning of matched string
+5.        \%(
+6.           [^"]\|""   # anything not ", or a "" (escaped quote)
+7.        \)*
+8.        \ze           # end of matched string
+9.        "
+10.    \)               # end first possibility of field
+11.   \|                # or
+12.    \%(              # second possibility
+13.       \zs
+14.       [^,"]*        # anything but " and comma
+15.       \ze
+16.    \)
+17. \)
+</pre>
+<a rel="nofollow" name="Working_with_Excel_xls_files" id="Working_with_Excel_xls_files"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit&amp;section=9" title="Edit section: Working with Excel xls files" rel="nofollow">edit</a></span> <span class="mw-headline">Working with Excel xls files</span></h2><div style="float: left; margin-top: 10px; margin-bottom: 10px; margin-right: 20px; clear: left;" id="Liftium_300x250_4"></div>
+<p>One can use the <a href="http://search.cpan.org/perldoc?xls2csv" class="external text" title="http://search.cpan.org/perldoc?xls2csv" rel="nofollow"><tt>xls2csv</tt> Perl script</a> to convert Excel files to CSV, and then view/edit with Vim. You may put the following code in your <a href="http://vim.wikia.com/wiki/Vimrc" title="Vimrc" class="mw-redirect">vimrc</a>:
+</p>
+<div dir="ltr" class="mw-geshi" style="text-align: left;"><div class="vim source-vim" style="font-family: monospace;"><pre class="de1"><span class="kw2">autocmd</span> BufReadPre <span class="sy0">*.</span>xls set ro <span class="sy0">|</span> setf csv
+<span class="kw2">autocmd</span> BufReadPost <span class="sy0">*.</span>xls silent<span class="sy0">!</span> <span class="sy0">%!</span>xls2csv <span class="sy0">-</span>q <span class="sy0">-</span>x <span class="st0">"%"</span> <span class="sy0">-</span>c <span class="sy0">-</span>
+<span class="kw2">autocmd</span> BufReadPost <span class="sy0">*.</span>xls redraw</pre></div></div>
+<p>It will view the XLS file in readonly mode as a CSV file by first converting on-the-fly.
+</p>
+<a rel="nofollow" name="Comments" id="Comments"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit&amp;section=10" title="Edit section: Comments" rel="nofollow">edit</a></span> <span class="mw-headline">Comments</span></h2>
+<p><b>Note</b>
+</p>
+<ul><li>Add any problem reports or quick comments below.
+</li><li>See the <a href="http://vim.wikia.com/wiki/Talk:Working_with_CSV_files" title="Talk:Working with CSV files">discussion page</a> for extended discussions and more information.
+</li><li>See <a href="http://vim.wikia.com/wiki/Talk:Working_with_CSV_files#Update_February_2010" title="Talk:Working with CSV files">update</a> for information on improved custom delimiters and a "copy column" command.
+</li></ul>
+<hr>
+<!-- 
+NewPP limit report
+Preprocessor node count: 184/1000000
+Post-expand include size: 1097/2097152 bytes
+Template argument size: 168/2097152 bytes
+Expensive parser function count: 0/100
+--><!-- Saved in parser cache with key vim:pcache:idhash:2936-0!1!0!!en!2 and timestamp 20100728222348 --><div class="printfooter">
+Retrieved from "<a href="http://vim.wikia.com/wiki/Working_with_CSV_files">http://vim.wikia.com/wiki/Working_with_CSV_files</a>"</div>
+<table style="margin-top: 1em; width: 100%; clear: both;"><tbody><tr><td style="text-align: center;"><div id="PREFOOTER_LEFT_BOXAD" class="noprint"><div id="Liftium_300x250_2_php"><iframe src="index_5.html" id="PREFOOTER_LEFT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div></td><td style="text-align: center;"><div id="PREFOOTER_RIGHT_BOXAD" class="noprint"><div id="Liftium_300x250_3_php"><iframe src="index_6.html" id="PREFOOTER_RIGHT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div></td></tr>
+</tbody></table><div id="catlinks" class="catlinks"><div id="mw-normal-catlinks"><a href="http://vim.wikia.com/wiki/Special:Categories" title="Special:Categories" rel="nofollow">Categories</a>: <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:VimTip" title="Category:VimTip">VimTip</a></span> | <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:Advanced_Regex" title="Category:Advanced Regex">Advanced Regex</a></span> | <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:LanguageSpecific" title="Category:LanguageSpecific">LanguageSpecific</a></span></div> <div id="csAddCategorySwitch" class="noprint" style="background: none repeat scroll 0% 0% rgb(221, 221, 221); position: relative; float: left; border: 1px solid rgb(187, 187, 187); -moz-border-radius: 3px 3px 3px 3px; padding: 0pt 5px; line-height: 16px;"><img src="blank.gif" class="sprite-small add"><a href="#" onfocus="this.blur();" style="color: rgb(0, 0, 0); font-size: 0.85em; text-decoration: none; display: inline-block;" rel="nofollow">Add category</a></div></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+
+				<!--google_ad_section_end-->
+				<!--contextual_targeting_end-->
+
+			</div>
+			<!-- /ARTICLE -->
+			
+			<!-- ARTICLE FOOTER -->
+			<div id="articleFooter" class="reset">
+				<table cellspacing="0">
+					<tbody><tr>
+						<td class="col1">
+							<ul class="actions" id="articleFooterActions">
+								<li><a rel="nofollow" id="fe_edit_icon" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit"><img src="blank.gif" id="fe_edit_img" class="sprite edit" alt="Edit this page"></a> <div>Improve Vim Tips Wiki by <a id="fe_edit_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=edit">editing this page</a></div></li>
+								<li><a id="fe_user_icon" rel="nofollow" href="http://vim.wikia.com/wiki/User:JohnBeckett"><img src="blank.gif" id="fe_user_img" class="sprite user" alt="View user page"></a> <div><a id="fe_user_link" rel="nofollow" href="http://vim.wikia.com/wiki/User:JohnBeckett">JohnBeckett</a> made an edit on July 28, 2010</div></li>
+							</ul>
+							<ul id="articleFooterActions3" class="actions clearfix">
+								<li id="fe_history"><a rel="nofollow" id="fe_history_icon" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=history"><img src="blank.gif" id="fe_history_img" class="sprite history" alt="History"></a> <div><a id="fe_history_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;action=history">History</a></div></li>
+								<li id="fe_recent"><a rel="nofollow" id="fe_recent_icon" href="http://vim.wikia.com/wiki/Special:RecentChangesLinked/Working_with_CSV_files"><img src="blank.gif" id="fe_recent_img" class="sprite recent" alt="Related changes"></a> <div><a id="fe_recent_link" rel="nofollow" href="http://vim.wikia.com/wiki/Special:RecentChangesLinked/Working_with_CSV_files">Related changes</a></div></li></ul><ul id="articleFooterActions4" class="actions clearfix">
+								<li id="fe_permalink"><a rel="nofollow" id="fe_permalink_icon" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;oldid=28008"><img src="blank.gif" id="fe_permalink_img" class="sprite move" alt="Permanent link"></a> <div><a id="fe_permalink_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Working_with_CSV_files&amp;oldid=28008">Permanent link</a></div></li>
+								<li id="fe_whatlinkshere"><a rel="nofollow" id="fe_whatlinkshere_icon" href="http://vim.wikia.com/wiki/Special:WhatLinksHere/Working_with_CSV_files"><img src="blank.gif" id="fe_whatlinkshere_img" class="sprite pagelink" alt="What links here"></a> <div><a id="fe_whatlinkshere_link" rel="nofollow" href="http://vim.wikia.com/wiki/Special:WhatLinksHere/Working_with_CSV_files">What links here</a></div></li></ul>						</td>
+						<td class="col2">
+							<ul class="actions" id="articleFooterActions2">
+								<li><a rel="nofollow" id="fe_random_icon" href="http://vim.wikia.com/wiki/Special:Random"><img src="blank.gif" id="fe_random_img" class="sprite random" alt="Random page"></a> <div><a rel="nofollow" id="fe_random_link" href="http://vim.wikia.com/wiki/Special:Random">View random page</a></div></li>
+								<li><img src="blank.gif" id="fe_report_img" class="sprite error" alt="Report a problem with this page"> <div><a style="cursor: pointer;" id="fe_report_link">Report a problem with this page</a></div></li>
+
+								<li><img src="blank.gif" id="fe_sharefeature_img" class="sprite share" alt="Share this article"> <div><a style="cursor: pointer;" id="fe_sharefeature_link">Share this article</a></div></li>
+							</ul>
+		<div class="clearfix" id="star-rating-row">
+		  <strong>Rate this article:</strong>
+		  		  <div id="star-rating-wrapper">
+		    <ul id="star-rating" class="star-rating" rel="20">
+			<li style="width: 89px;" id="current-rating" class="current-rating"><span>4.4444/5</span></li>
+			<li><a rel="nofollow" class="one-star" id="star1" title="1/5"><span>1</span></a></li>
+			<li><a rel="nofollow" class="two-stars" id="star2" title="2/5"><span>2</span></a></li>
+			<li><a rel="nofollow" class="three-stars" id="star3" title="3/5"><span>3</span></a></li>
+			<li><a rel="nofollow" class="four-stars" id="star4" title="4/5"><span>4</span></a></li>
+			<li><a rel="nofollow" class="five-stars" id="star5" title="5/5"><span>5</span></a></li>
+		    </ul>
+		    <span style="display: none;" id="unrateLink"><a rel="nofollow" id="unrate" href="#">Unrate it</a></span>
+		  </div>
+		</div>
+								</td>
+					</tr>
+				</tbody></table>
+			</div>
+			<!-- /ARTICLE FOOTER -->
+
+		</div>
+		<!-- /PAGE -->
+<!-- Begin Analytics -->
+<!-- Start for GA_Urchin, page_view -->
+
+
+<!-- Start for GA_Urchin, hub -->
+
+<!-- Start for GA_Urchin, onewiki -->
+<!-- No tracking for this wiki -->
+<!-- Start for GA_Urchin, pagetime -->
+
+<!-- End Analytics -->
+
+
+		
+		
+				
+		
+
+		<div id="monaco_footer" class="reset">
+
+
+		<div id="spotlight_footer">
+		<table>
+		<tbody><tr>
+			<td>
+				<!-- ## BEGIN AdProviderGAM::AdProviderGAM::getSetupHtml ## -->
+
+<!-- ## END AdProviderGAM::AdProviderGAM::getSetupHtml ## -->
+<!-- ## BEGIN AdProviderGAM::AdProviderGAM::getBatchCallHtml ## -->
+
+<!-- ## END AdProviderGAM::AdProviderGAM::getBatchCallHtml ## -->
+<div id="google_ads_div_FOOTER_SPOTLIGHT_LEFT"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_LEFT" name="google_ads_iframe_FOOTER_SPOTLIGHT_LEFT" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_7.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+			<td>
+				<div id="google_ads_div_FOOTER_SPOTLIGHT_MIDDLE"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_MIDDLE" name="google_ads_iframe_FOOTER_SPOTLIGHT_MIDDLE" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_8.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+			<td>
+				<div id="google_ads_div_FOOTER_SPOTLIGHT_RIGHT"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_RIGHT" name="google_ads_iframe_FOOTER_SPOTLIGHT_RIGHT" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_9.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+		</tr>
+		</tbody></table>
+		</div>
+				  <table id="wikia_footer">
+	  			<tbody><tr>
+				<td colspan="2" id="wikia_corporate_footer">
+	  <a rel="nofollow" href="http://www.wikia.com/About_Us"><span>About</span></a> | <a rel="nofollow" href="http://www.wikia.com/Hiring">Jobs</a> | <a rel="nofollow" href="http://www.wikia.com/Terms_of_Use">Terms of Use</a> | <a rel="nofollow" href="http://www.wikia.com/Special:CreateWiki">Create a wiki</a> | <a rel="nofollow" href="http://www.wikia.com/Privacy_Policy">Privacy Policy</a> | <a rel="nofollow" href="http://community.wikia.com/wiki/Wikia:Licensing" title="w:Wikia:Licensing">CC-BY-SA</a> | <a rel="nofollow" href="http://community.wikia.com/wiki/Community_Guidelines">Community Guidelines</a> | <a rel="nofollow" href="http://vim.wikia.com/wiki/Special:Contact">Contact</a> | <a rel="nofollow" href="http://www.wikia.com/Advertising">Advertise</a> | <a rel="nofollow" href="http://www.wikia.com/Lifestyle">Lifestyle</a>				</td>
+			</tr>
+	  	  </tbody></table>
+					</div>
+		<!-- WIDGETS -->
+		<div id="widget_sidebar" class="reset widget_sidebar">
+
+			<!-- SEARCH/NAVIGATION -->
+			<div class="widget" id="navigation_widget">
+				<div id="search_box" class="color1">
+					<form action="http://vim.wikia.com/wiki/Special:Search" id="searchform">
+						<input id="search_field" name="search" value="Search this wiki" maxlength="200" onfocus="sf_focus(event);" alt="Search this wiki" autocomplete="off" title="Search this wiki [alt-shift-f]" accesskey="f" type="text">
+						<input name="go" value="1" type="hidden">
+						<input src="blank.gif" id="search-button" class="sprite search" type="image">
+					</form>
+				</div>
+<div id="navigation"><div id="menu-item_1" class="menu-item"><a id="a-menu-item_1" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" rel="nofollow">Home</a></div><div id="menu-item_2" class="menu-item"><a id="a-menu-item_2" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Community_Portal" rel="nofollow">Community portal</a></div><div id="menu-item_3" class="menu-item"><a id="a-menu-item_3" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Todo" rel="nofollow">To do</a></div><div id="menu-item_4" class="menu-item"><a id="a-menu-item_4" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" rel="nofollow">Top content<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="#" rel="nofollow">Editor's pick<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Best_Vim_Tips" rel="nofollow">Best Vim Tips</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Browsing_programs_with_tags" rel="nofollow">Browsing programs with tags</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_end-of-line_format_for_dos-mac-unix" rel="nofollow">Change end-of-line format for dos-mac-unix</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces" rel="nofollow">Converting tabs to spaces</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Cut/copy_and_paste_using_visual_selection" rel="nofollow">Cut/copy and paste using visual selection</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/File_no_longer_available_-_mark_buffer_modified" rel="nofollow">File no longer available - mark buffer modified</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/most_popular" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div class="menu-item"><a href="#" rel="nofollow">Most visited<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Best_Vim_Tips" rel="nofollow">Best Vim Tips</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace" rel="nofollow">Search and replace</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_end-of-line_format_for_dos-mac-unix" rel="nofollow">Change end-of-line format for dos-mac-unix</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Indenting_source_code" rel="nofollow">Indenting source code</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Open_vimrc_file" rel="nofollow">Open vimrc file</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_the_color_scheme" rel="nofollow">Change the color scheme</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces" rel="nofollow">Converting tabs to spaces</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/most_visited" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div class="menu-item"><a href="#" rel="nofollow">Highest voted<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Add/change_file_extension_in_current_buffer" rel="nofollow">Add/change file extension in current buffer</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Manage_a_tasklist_of_to-do_code_snippets" rel="nofollow">Manage a tasklist of to-do code snippets</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Vim_Doclet" rel="nofollow">Vim Doclet</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Record_a_recursive_macro" rel="nofollow">Record a recursive macro</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Improved_Javascript_Indent_script_for_Vim" rel="nofollow">Improved Javascript Indent script for Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Scripting_-_Indirectly_Referencing_Variables" rel="nofollow">Scripting - Indirectly Referencing Variables</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/highest_ratings" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div style="border: 0px none;" class="menu-item"><a href="#" rel="nofollow">Newly changed<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Any_word_completion" rel="nofollow">Any word completion</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Copy,_cut_and_paste" rel="nofollow">Copy, cut and paste</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint" rel="nofollow">Format your xml document using xmllint</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Restoring_indent_after_typing_hash" rel="nofollow">Restoring indent after typing hash</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard" rel="nofollow">In line copy and paste to system clipboard</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/C%2B%2B_code_completion" rel="nofollow">C++ code completion</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Power_of_g" rel="nofollow">Power of g</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/newly_changed" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div></div></div><div id="menu-item_9" class="menu-item"><a id="a-menu-item_9" href="http://vim.wikia.com/wiki/Category:Folding" rel="nofollow">Folding category<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Syntax_folding_of_Vim_scripts" rel="nofollow">Syntax folding of Vim scripts</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding" rel="nofollow">Folding</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Java/C/C%2B%2B_folding" rel="nofollow">Java/C/C++ folding</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding_with_Regular_Expression" rel="nofollow">Folding with Regular Expression</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Auto-fold_Perl_subs" rel="nofollow">Auto-fold Perl subs</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding_for_plain_text_files_based_on_indentation" rel="nofollow">Folding for plain text files based on indentation</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Outline_editing_of_Python_programs" rel="nofollow">Outline editing of Python programs</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Category:Folding" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div id="menu-item_10" class="menu-item"><a id="a-menu-item_10" href="http://vim.wikia.com/wiki/Category:Searching" rel="nofollow">Searching category<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace" rel="nofollow">Search and replace</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Searching" rel="nofollow">Searching</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches" rel="nofollow">Highlight all search pattern matches</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection" rel="nofollow">Search and replace in a visual selection</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Power_of_g" rel="nofollow">Power of g</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Remove_unwanted_empty_lines" rel="nofollow">Remove unwanted empty lines</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Category:Searching" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div></div><table id="link_box_table" cellspacing="0">		<tbody id="link_box_dynamic">
+			<tr>
+				<td colspan="2">
+					<ul>
+<li id="dynamic-links-write-article-row" class="link_box_dynamic_item"><a rel="nofollow" id="dynamic-links-write-article-icon" href="http://vim.wikia.com/wiki/toolbox/dynamic/CreatePage"><img src="blank.gif" id="dynamic-links-write-article-img" class="sprite edit" alt="Create a new article"></a> <a id="dynamic-links-write-article-link" rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/dynamic/CreatePage">Create a new article</a></li><li id="dynamic-links-add-image-row" class="link_box_dynamic_item"><a rel="nofollow" id="dynamic-links-add-image-icon" href="http://vim.wikia.com/wiki/toolbox/dynamic/Upload"><img src="blank.gif" id="dynamic-links-add-image-img" class="sprite photo" alt="Upload a new image"></a> <a id="dynamic-links-add-image-link" rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/dynamic/Upload">Upload a new image</a></li>					</ul>
+				</td>
+			</tr>
+		</tbody>
+		<tbody id="link_box" class="color2 linkbox_static">
+			<tr>
+				<td>
+					<ul>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/recentchanges">Recent changes</a></li>
+						<li><a rel="nofollow" href="http://community.wikia.com/wiki/Blog:Wikia_Staff_Blog" onclick="WET.byStr('toolbox/w_c_community_Blog_Wikia_Staff_Blog')">Staff blog</a></li>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/helppage">Help</a></li>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/randompage">Random page</a></li>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/specialpages">Special pages</a></li>
+						<li style="font-size: 1px; position: absolute; top: -10000px;"><a href="http://vim.wikia.com/wiki/Special:Recentchanges" accesskey="r" rel="nofollow">Recent changes</a><a href="http://vim.wikia.com/wiki/Special:Random" accesskey="x" rel="nofollow">Random page</a></li>
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+			</div>
+			<!-- /SEARCH/NAVIGATION -->
+
+			<!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_NAVBOX_1 --><div style="text-align: center; margin-bottom: 10px;"><div id="LEFT_SKYSCRAPER_1" class="noprint"><div id="Liftium_160x600_4_php"><iframe src="index_10.html" id="LEFT_SKYSCRAPER_1_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none; display: none;" target="_blank" frameborder="0" height="600" scrolling="no" width="160"></iframe></div></div></div>
+
+			<div id="sidebar_1" class="sidebar">
+			<dl class="widget WidgetCommunity" id="widget_303"><dt class="color1 widget_title" id="widget_303_header"><span class="widgetToolbox"></span>Latest activity</dt><dd class="shadow widget_contents" id="widget_303_content"><div class="community_header accent">
+	<span class="article_count dark_text_1">1,593</span> articles on this wiki<br></div>
+<div class="community_body">
+		<ul class="activityfeed widgetfeed" id="widget_303-recently-edited">		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Copy,_cut_and_paste">Copy, cut and paste</a></strong><br>			<cite><span class="timeago" title="2010-08-06T15:40:31Z">17 hours ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/216.235.10.210" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint">Format your xml document using xmllint</a></strong><br>			<cite><span class="timeago" title="2010-08-06T13:01:46Z">19 hours ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/145.242.11.3" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Restoring_indent_after_typing_hash">Restoring indent after typing hash</a></strong><br>			<cite><span class="timeago" title="2010-08-06T07:49:30Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/User:JohnBeckett" rel="nofollow">JohnBeckett</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard">In line copy and paste to system clipboard</a></strong><br>			<cite><span class="timeago" title="2010-08-06T04:33:00Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/68.231.48.165" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/C%2B%2B_code_completion">C++ code completion</a></strong><br>			<cite><span class="timeago" title="2010-08-06T01:57:05Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/User:JohnBeckett" rel="nofollow">JohnBeckett</a></cite>		</li>	</ul></div>
+<div class="toolbar neutral">
+	<a id="community-widget-action-button" href="http://vim.wikia.com/wiki/Special:ActivityFeed" class="wikia-button forward" rel="nofollow">Activity feed</a>
+</div>
+
+</dd></dl><div style="margin-bottom: 10px;"><div id="google_ads_div_LEFT_NAV_205x400"><ins style="position: relative; width: 205px; height: 400px; border: medium none; display: inline-table;"><ins style="position: relative; width: 205px; height: 400px; border: medium none; display: block;"><iframe id="google_ads_iframe_LEFT_NAV_205x400" name="google_ads_iframe_LEFT_NAV_205x400" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_11.html" frameborder="0" height="400" scrolling="no" width="205"></iframe></ins></ins></div></div>
+			<!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_SLIMBOX_1 --><!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_NAVBOX_2 --><div style="text-align: center; margin-bottom: 10px;"><div id="LEFT_SKYSCRAPER_2" class="noprint"><div id="Liftium_160x600_5_php"><iframe src="index_13.html" id="LEFT_SKYSCRAPER_2_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="600" scrolling="no" width="160"></iframe></div></div></div>
+			</div>
+		</div>
+		<!-- /WIDGETS -->
+	<!--/div-->
+
+
+
+<div id="Liftium_0x0_0"><!-- Liftium No ad --></div>
+<!-- #### BEGIN AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+
+
+
+
+
+<!-- #### END AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+<div id="Liftium_0x0_1"><!-- Liftium No ad --></div>
+</div><!-- Start for Comscore, page_view -->
+
+<!-- Begin comScore Tag -->
+
+
+
+<!-- End comScore Tag -->
+<!-- Start for QuantServe, page_view -->
+
+
+<!-- Start for Exelate, page_view -->
+
+
+		
+<img src="__onedot" alt="" border="0" height="1" width="1">
+		<div id="positioned_elements" class="reset"></div>
+		<!-- Served by ap-s11 in 0.117 secs. cpu: 0.090 -->
+	
+
+</body>
+</html>

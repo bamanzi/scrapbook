@@ -1,0 +1,139 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>Cygwin FAQ</title>
+
+<title>Cygwin FAQ</title><meta name="generator" content="DocBook XSL Stylesheets V1.74.0"><link rel="home" href="http://www.cygwin.com/faq/faq-nochunks.html" title="Cygwin FAQ">
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body alink="#0000ff" bgcolor="white" link="#0000ff" text="black" vlink="#840084">
+<div class="article" lang="en">
+<div class="qandaset">
+<table summary="Q and A Set" border="0">
+<tbody>
+<!--DOCUMENT_FRAGMENT-->
+<tr class="question"><td align="left" valign="top"><p><b>4.35.</b></p></td><td align="left" valign="top"><p>Is there a Cygwin port of GNU Emacs?</p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>Yes.  Install the emacs package.  This provides everything you
+need in order to run GNU emacs in a terminal window.  If you also want
+to be able to use the X11
+(<a class="ulink" href="http://cygwin.com/xfree/" target="_top">http://cygwin.com/xfree/</a>)
+GUI, install the emacs-X11 package.  In either case, you run emacs by
+typing 'emacs' or '/usr/bin/emacs'.  If you run emacs in the cygwin
+console, be sure that your CYGWIN environment variable contains tty.
+See /usr/share/doc/Cygwin/emacs.README for further information.
+</p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq.using.xemacs"></a><p><b>4.36.</b></p></td><td align="left" valign="top"><p>Is there a Cygwin port of XEmacs?</p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>Yes.  It can be used in three different modes:</p><div class="itemizedlist"><ul type="disc"><li><p>X11 (<a class="ulink" href="http://cygwin.com/xfree/" target="_top">http://cygwin.com/xfree/</a>) GUI</p></li></ul></div><p>You have to <span class="emphasis"><em>set</em></span> the DISPLAY environment variable
+before starting xemacs.</p><pre class="screen">	bash$ DISPLAY=127.0.0.1:0 xemacs &amp;
+</pre><div class="itemizedlist"><ul type="disc"><li><p>Windows native GUI</p></li></ul></div><p>You have to <span class="emphasis"><em>unset</em></span> the DISPLAY environment variable
+before starting xemacs.</p><pre class="screen">	bash$ DISPLAY= xemacs &amp;
+</pre><div class="itemizedlist"><ul type="disc"><li><p>Console mode</p></li></ul></div><p>Start xemacs with -nw in a terminal (native or X11) window</p><pre class="screen">	bash$ xemacs -nw
+</pre><p>The current stable Cygwin version of XEmacs is 21.4.x. But there is also a
+Cygwin test release version (21.5.x) available for download via setup.exe.
+</p><p>To use all the standard packages with XEmacs you should download the following
+two packages:</p><div class="itemizedlist"><ul type="disc"><li><p>xemacs-sumo - XEmacs standard packages</p></li><li><p>xemacs-mule-sumo - XEmacs MULE (MUlti Lingual Emacs) packages</p></li></ul></div><p>An alternative <span class="emphasis"><em>native</em></span> distribution of XEmacs for
+Windows based systems can be downloaded from
+<a class="ulink" href="http://xemacs.org/Download/win32/index.html" target="_top">http://xemacs.org/Download/win32/index.html</a>.
+It uses an <span class="emphasis"><em>InnoSetup Kit</em></span> based installer.</p></td></tr><tr class="question"><td align="left" valign="top"><a name="faq.using.ntemacs"></a><p><b>4.37.</b></p></td><td align="left" valign="top"><p>What about NT Emacs?</p></td></tr><tr class="answer"><td align="left" valign="top"></td><td align="left" valign="top"><p>If you want GNU Emacs with a native Microsoft GUI interface,
+then you can either use XEmacs (see above), or native
+NT Emacs: see section
+<a class="ulink" href="http://www.gnu.org/software/emacs/windows/Getting-Emacs.html#Getting-Emacs" target="_top">Where can I get pre-compiled versions?</a> in NT Emacs FAQ.
+
+</p><p>NT Emacs uses the Windows command shell by default.  Since it is not a
+Cygwin application, it has no knowledge of Cygwin mounts.  With those
+points in mind, you need to add the following code to your ~/.emacs
+(or ~/_emacs) file in order to use Cygwin bash.  This is particularly useful
+for the JDEE package (<a class="ulink" href="http://jdee.sunsite.dk/" target="_top">http://jdee.sunsite.dk/</a>).  The following
+settings are for Emacs 21.1:
+</p><pre class="screen">
+	;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	;; Initial setup
+	;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+	;; This assumes that Cygwin is installed in C:\cygwin (the
+	;; default) and that C:\cygwin\bin is not already in your
+	;; Windows Path (it generally should not be).
+
+	(setq exec-path (cons "C:/cygwin/bin" exec-path))
+	(setenv "PATH" (concat "C:\\cygwin\\bin;" (getenv "PATH")))
+
+	;;   LOGNAME and USER are expected in many Emacs packages
+	;;   Check these environment variables.
+
+	(if (and (null (getenv "USER"))
+		 ;; Windows includes variable USERNAME, which is copied to
+		 ;; LOGNAME and USER respectively.
+		 (getenv "USERNAME"))
+	    (setenv "USER" (getenv "USERNAME")))
+
+	(if (and (getenv "LOGNAME")
+		 ;;  Bash shell defines only LOGNAME
+		 (null (getenv "USER")))
+	    (setenv "USER" (getenv "LOGNAME")))
+
+	(if (and (getenv "USER")
+		 (null (getenv "LOGNAME")))
+	    (setenv "LOGNAME" (getenv "USER")))
+
+	;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	;; (A) M-x shell: This change M-x shell permanently
+	;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+	;; Would call Windows command interpreter. Change it.
+
+	(setq shell-file-name "bash")
+	(setenv "SHELL" shell-file-name)
+	(setq explicit-shell-file-name shell-file-name)
+
+	;; Remove C-m (^M) characters that appear in output
+
+	(add-hook 'comint-output-filter-functions
+	          'comint-strip-ctrl-m)
+
+	;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	;; (B) *OR* call following function with M-x my-bash
+	;; The M-x shell would continue to run standard Windows shell
+	;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+	(defun my-bash (&amp;optional buffer)
+	  "Run Cygwin Bash shell in optional BUFFER; default *shell-bash*."
+	  (autoload 'comint-check-proc "comint")
+	  (interactive
+	   (let ((name "*shell-bash*"))
+	     (if current-prefix-arg
+		 (setq name (read-string
+			     (format "Cygwin shell buffer (default %s): " name)
+			     (not 'initial-input)
+			     (not 'history)
+			     name)))
+	     (list name)))
+	  (or buffer
+	      (setq buffer "*shell-bash*"))
+	  (if (comint-check-proc buffer)
+	      (pop-to-buffer buffer)
+	    (let* ((shell-file-name            "bash")
+		   (explicit-shell-file-name   shell-file-name)
+		   (explicit-sh-args           '("--login" "-i"))
+		   (explicit-bash-args         explicit-sh-args)
+		   (w32-quote-process-args     ?\"));; Use Cygwin quoting rules.
+	      (shell buffer)
+	      ;;  By default Emacs sends "\r\n", but bash wants plain "\n"
+	      (set-buffer-process-coding-system 'undecided-dos 'undecided-unix)
+	      ;; With TAB completion, add slash path separator, none to filenames
+	      (make-local-variable 'comint-completion-addsuffix)
+	      (setq comint-completion-addsuffix '("/" . ""))
+	      ;;  This variable is local to buffer
+	      (setq comint-prompt-regexp "^[ \n\t]*[$] ?"))))
+
+</pre><p>If you want NT Emacs to understand Cygwin paths, get
+cygwin-mount.el from <a class="ulink" href="http://www.emacswiki.org/elisp/index.html" target="_top">http://www.emacswiki.org/elisp/index.html</a>.
+</p><p>Note that all of this ``just works'' if you use the Cygwin port of
+Emacs or XEmacs from Cygwin Setup.
+</p></td></tr>
+<!--/DOCUMENT_FRAGMENT-->
+</tbody>
+</table>
+</div>
+</div>
+</body>
+</html>

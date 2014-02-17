@@ -1,0 +1,644 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+            <title>Developer FAQ - MongoDB</title>
+    
+        
+        
+        
+        
+        
+
+                        
+    
+    
+            
+<meta id="confluence-context-path" name="confluence-context-path" content="">
+<meta id="atlassian-token" name="atlassian-token" content="yhfQmnp0a3">
+<meta id="confluence-space-key" name="confluence-space-key" content="DOCS">
+
+
+
+    
+
+<!-- include system resources -->
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:master-styles/confluence.web.resources:master-styles.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.macros.profile:profile-macro-styles/confluence.macros.profile:profile-macro-styles.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:comments/confluence.web.resources:comments.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0.2/_/download/batch/com.atlassian.auiplugin:dialog/com.atlassian.auiplugin:dialog.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:userlink/confluence.web.resources:userlink.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+<!-- end system resources -->
+
+    
+
+    <meta name="confluence-request-time" content="1283349037149">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="confluence_16.png">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://www.mongodb.org/opensearch/osd.action" title="10gen Confluence">
+
+    
+        
+        
+    
+    <link rel="shortcut icon" href="favicon_001.ico">  
+
+<link rel="stylesheet" type="text/css" href="developer+faq.css" media="all">
+</head><body id="com-atlassian-confluence">
+    
+
+
+    
+
+        
+  
+    
+
+
+  <div id="top-right">
+    <div class="user-right">
+    <ul id="header-menu-bar" class="ajs-menu-bar">
+                    
+        
+            <li class="normal ajs-menu-item">
+        <a id="browse-menu-link" class="browse trigger ajs-menu-title" href="#"><span><span>Browse</span></span></a>         <div class="hidden ajs-drop-down">
+                        <ul id="browse-menu-link-leading" class="section-leading first">
+                                        <li>
+    
+    <a id="space-pages-link" href="http://www.mongodb.org/pages/listpages.action?key=DOCS" class="">
+                   <span>Pages</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-blogposts-link" href="http://www.mongodb.org/pages/viewrecentblogposts.action?key=DOCS" class="">
+                   <span>News</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-labels-link" href="http://www.mongodb.org/labels/listlabels-heatmap.action?key=DOCS" class="">
+                   <span>Labels</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-attachments-link" href="http://www.mongodb.org/spaces/listattachmentsforspace.action?key=DOCS" class="">
+                   <span>Attachments</span>            </a>
+</li>
+                                        <li>
+    
+    <a href="http://www.mongodb.org/spaces/space-bookmarks.action?spaceKey=DOCS" class="">
+                   <span>Bookmarks</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-mail-link" href="http://www.mongodb.org/spaces/viewmailarchive.action?key=DOCS" class="">
+                   <span>Mail</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-advanced-link" href="http://www.mongodb.org/spaces/viewspacesummary.action?key=DOCS" class="">
+                   <span>Advanced</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+        
+                                                         <li class="ajs-menu-item normal">
+    
+    <a id="login-link" href="http://www.mongodb.org/login.action?os_destination=%2Fdisplay%2FDOCS%2FDeveloper%2BFAQ" class="user-item login-link">
+                   <span>Log In</span>            </a>
+</li>
+                            </ul>
+    </div>
+  </div>
+  
+
+      <div class="search-db">
+      <form id="quick-search" class="quick-search" method="get" action="http://www.mongodb.org/dosearchsite.action">
+                <fieldset>
+            <legend>Quick Search</legend>
+            <input value="" class="quick-search-query" id="quick-search-query" accesskey="q" autocomplete="off" name="queryString" size="25" type="text">
+            <input class="quick-search-submit" id="quick-search-submit" value="Search" type="submit">
+        </fieldset>
+        <fieldset class="hidden parameters">
+            <input class="quickSearchPlaceholder" id="quickSearchPlaceholder" value="Search" type="hidden">
+
+            <input id="quickNavEnabled" value="true" type="hidden">
+             <!-- Quick nav disabled. SettingsManager could not be found -->         </fieldset>
+    </form>
+      </div>  
+
+
+  <div id="header-db" class="spread">
+    <div class="split">
+    	<div id="logo">
+    		<div><a href="http://www.mongodb.org/"><img src="logo-mongodb.png" alt="mongoDB" height="90" width="217"></a></div>
+    	</div>
+    	<div id="nav">
+    	</div>
+    </div>
+  </div>
+
+  <div id="breadcrumbsback" class="spread">
+    <div class="split">
+
+    
+    <ol id="breadcrumbs">
+                                                
+            <li><span>
+                                                    <a href="http://www.mongodb.org/display/DOCS">MongoDB</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    <a indepth="true" href="home.html">Home</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    <a indepth="true" href="index.html">Developer Zone</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    Developer FAQ
+                        </span></li>
+                </ol>
+ 
+    </div>
+  </div>
+
+  <div id="main-db" class="spread">
+    <div class="split">
+    
+                <ul id="user-control-panel">
+                                
+            <li class="first"><a href="http://www.mongodb.org/login.action?os_destination=%2Fdisplay%2FDOCS%2FDeveloper%2BFAQ">Log In</a></li>
+
+                                                        </ul>
+        <div>
+    
+    <div id="navigation" class="content-navigation view">
+        <fieldset class="hidden parameters">
+            <input id="pageId" value="1475690" type="hidden">
+        </fieldset>
+        <ul class="ajs-menu-bar">
+                                
+            <li class="normal ajs-menu-item">
+        <a id="add-menu-link" class="add trigger ajs-menu-title" href="#"><span><span>Add</span></span></a>         <div class="hidden ajs-drop-down">
+                        <ul id="add-menu-link-page" class="section-page first">
+                                        <li>
+    
+    <a id="add-comment-menu-link" href="http://www.mongodb.org/display/DOCS/Developer+FAQ?showComments=true&amp;showCommentArea=true#addcomment" class="add-comment">
+                   <span>Comment</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+                    
+            <li class="normal ajs-menu-item">
+        <a id="action-menu-link" class="action trigger ajs-menu-title" href="#"><span><span>Tools</span></span></a>         <div class="hidden ajs-drop-down">
+                        <ul id="action-menu-link-primary" class="section-primary first">
+                                        <li>
+    
+    <a id="view-attachments-link" href="http://www.mongodb.org/pages/viewpageattachments.action?pageId=1475690" class="action-view-attachments" accesskey="a">
+                   <span><u>A</u>ttachments (0)</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-view-history-link" href="http://www.mongodb.org/pages/viewpreviousversions.action?pageId=1475690" class="action-view-history">
+                   <span>Page History</span>            </a>
+</li>
+                            </ul>
+                        <ul id="action-menu-link-secondary" class="section-secondary">
+                                        <li>
+    
+    <a id="view-page-info-link" href="http://www.mongodb.org/pages/viewinfo.action?pageId=1475690" class="action-view-info" accesskey="i">
+                   <span><u>I</u>nfo</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-view-source-link" href="http://www.mongodb.org/pages/viewpagesrc.action?pageId=1475690" class="action-view-source popup-link">
+                   <span>View Wiki Markup</span>            </a>
+</li>
+                                        <li>
+    
+    <a href="http://www.mongodb.org/spaces/flyingpdf/pdfpageexport.action?pageId=1475690&amp;atl_token=yhfQmnp0a3" class="">
+                   <span>Export to PDF</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-export-word-link" href="http://www.mongodb.org/exportword?pageId=1475690" class="action-export-word">
+                   <span>Export to Word</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+            </ul>
+    </div>
+
+    </div>
+    <h1 id="title-heading" class="pagetitle">
+                            
+		<span id="title-text">
+					            <a indepth="true" href="developer+faq.html">Developer FAQ</a>
+    				</span>
+    </h1>
+
+    <!--
+    Root decorator: this is a layer of abstraction that Confluence doesn't need. It will be removed eventually.
+-->
+
+
+
+
+    
+    
+
+    
+    
+        
+    
+    
+                    
+    
+
+
+
+        
+<div id="content" class="page view">
+            
+        
+                        
+                                
+    
+        
+                    
+        
+                
+
+ 
+<table cellpadding="5" cellspacing="2">
+<tbody><tr>
+<td class="pagecontent" align="left" valign="top" width="78%">
+<div class="wiki-content">
+<!-- wiki content -->
+            <div>
+<ul>
+    <li><a href="#DeveloperFAQ-What%27sa%22namespace%22%3F">What's a "namespace"?</a></li>
+    <li><a href="#DeveloperFAQ-HowdoIcopyallobjectsfromonedatabasecollectiontoanother%3F">How do I copy all objects from one database collection to another?</a></li>
+    <li><a href="#DeveloperFAQ-Ifyouremoveanobjectattributeisitdeletedfromthestore%3F">If you remove an object attribute is it deleted from the store?</a></li>
+    <li><a href="#DeveloperFAQ-Arenullvaluesallowed%3F">Are null values allowed?</a></li>
+    <li><a href="#DeveloperFAQ-Doesanupdatefsynctodiskimmediately%3F">Does an update fsync to disk immediately?</a></li>
+    <li><a href="#DeveloperFAQ-HowdoIdotransactions%2Flocking%3F">How do I do transactions/locking?</a></li>
+    <li><a href="#DeveloperFAQ-HowdoIdoequivalentofSELECTcountandGROUPBY%3F">How do I do equivalent of SELECT count * and GROUP BY?</a></li>
+    <li><a href="#DeveloperFAQ-Whataresomany%22ConnectionAccepted%22messageslogged%3F">What are so many "Connection Accepted" messages logged?</a></li>
+    <li><a href="#DeveloperFAQ-WhatRAIDshouldIuse%3F">What RAID should I use?</a></li>
+    <li><a href="#DeveloperFAQ-CanIrunonAmazonEBS%3FAnyissues%3F">Can I run on Amazon EBS? Any issues?</a></li>
+    <li><a href="#DeveloperFAQ-Whyaremydatafilessolarge%3F">Why are my data files so large?</a></li>
+</ul></div>
+<ul><li><a indepth="true" href="do+i+have+to+worry+about+sql+injection.html" title="Do I Have to Worry About SQL Injection">Do I Have to Worry About SQL Injection</a></li><li><a indepth="true" href="how+does+concurrency+work.html" title="How does concurrency work">How does concurrency work</a></li><li><a indepth="true" href="sql+to+mongo+mapping+chart.html" title="SQL to Mongo Mapping Chart">SQL to Mongo Mapping Chart</a></li><li><a indepth="true" href="what+is+the+compare+order+for+bson+types.html" title="What is the Compare Order for BSON Types">What is the Compare Order for BSON Types</a></li></ul>
+<p>Also check out Markus Gattol's excellent FAQ on <a href="http://sunoano.name/ws/public_xhtml/mongodb.html">his website</a>.</p>
+
+<h5><a name="DeveloperFAQ-What'sa&quot;namespace&quot;?"></a>What's a "namespace"?</h5>
+
+<p>MongoDB stores <a indepth="true" href="bson.html" title="BSON">BSON</a> objects in <em>collections</em>.  The concatenation of the database name and the collection name (with a period in between) is called a <em>namespace</em>.</p>
+
+<p>For example, <tt>acme.users</tt> is a namespace, where <tt>acme</tt> is the database name, and <tt>users</tt> is the collection name.  Note that periods can occur in collection names, so a name such as <tt>acme.blog.posts</tt> is legal too (in that case <tt>blog.posts</tt> is the collection name.</p>
+
+<h5><a name="DeveloperFAQ-HowdoIcopyallobjectsfromonedatabasecollectiontoanother?"></a>How do I copy all objects from one database collection to another?</h5>
+
+<p>See below.  The code below may be ran server-side for high performance with the eval() method.</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.myoriginal.find().forEach( function(x){db.mycopy.save(x)} );
+</pre>
+</div></div>
+<h5><a name="DeveloperFAQ-Ifyouremoveanobjectattributeisitdeletedfromthestore?"></a>If you remove an object attribute is it deleted from the store?</h5>
+
+<p>Yes, you remove the attribute and then re-<tt>save()</tt> the object.</p>
+
+<h5><a name="DeveloperFAQ-Arenullvaluesallowed?"></a>Are null values allowed?</h5>
+
+<p>For members of an object, yes.  You cannot add null to a database collection though as null isn't an object.  You can add {}, though.</p>
+
+<h5><a name="DeveloperFAQ-Doesanupdatefsynctodiskimmediately?"></a>Does an update fsync to disk immediately?</h5>
+
+<p>No, writes to disk are lazy by default.  A write may hit disk a couple of seconds later.  For example, if the database receives a thousand increments to an object within one second, it will only be flushed to disk once.  (Note fsync options are available though both at the command line and via <a indepth="true" href="getlasterror.html" title="getLastError">getLastError</a>.)</p>
+
+<h5><a name="DeveloperFAQ-HowdoIdotransactions/locking?"></a>How do I do transactions/locking?</h5>
+
+<p>MongoDB does not use traditional locking or complex transactions with rollback, as it is designed to be lightweight and fast and predictable in its performance.&nbsp; It can be thought of as analogous to the MySQL MyISAM autocommit model.&nbsp; By keeping transaction support extremely simple, performance is enhanced, especially in a system that may run across many servers.</p>
+
+<p>The system provides alternative models for atomically making updates that are sufficient for many common use cases.&nbsp; See the wiki page <a indepth="true" href="atomic+operations.html" title="Atomic Operations">Atomics Operations</a> for detailed information.</p>
+
+<h5><a name="DeveloperFAQ-HowdoIdoequivalentofSELECTcountandGROUPBY?"></a>How do I do equivalent of SELECT count * and GROUP BY?</h5>
+
+<p>See <a indepth="true" href="aggregation.html" title="Aggregation">aggregation</a>.</p>
+
+<h5><a name="DeveloperFAQ-Whataresomany&quot;ConnectionAccepted&quot;messageslogged?"></a>What are so many "Connection Accepted" messages logged?</h5>
+
+<p>If you see a tremendous number of connection accepted messages in the mongod log, that means clients are repeatedly connecting and disconnected.&nbsp; This works, but is inefficient.</p>
+
+<p>With CGI this is normal.&nbsp; If you find the speed acceptable for your purposes, run mongod with --quiet to suppress these messages in the log. If you need better performance, which to a solution where connections are pooled -- such as an Apache module.</p>
+
+<h5><a name="DeveloperFAQ-WhatRAIDshouldIuse?"></a>What RAID should I use?</h5>
+
+<p>We recommend not using RAID-5, but rather, RAID-10 or the like.  Both will work of course.</p>
+
+<h5><a name="DeveloperFAQ-CanIrunonAmazonEBS?Anyissues?"></a>Can I run on Amazon EBS?  Any issues?</h5>
+
+<p>Works fine in our experience; more information <a href="http://www.mongodb.org/display/DOCS/Amazon+EC2" title="Amazon EC2">here</a>.</p>
+
+<h5><a name="DeveloperFAQ-Whyaremydatafilessolarge?"></a>Why are my data files so large?</h5>
+
+<p>MongoDB does aggressive preallocation of reserved space to avoid file system fragmentation.  This is configurable.  <a href="http://www.mongodb.org/display/DOCS/Excessive+Disk+Space" title="Excessive Disk Space">More info here.</a></p>
+</div>
+</td>
+<td class="noprint" align="left" valign="top" width="22%">
+<div class="spacetree">
+                                            
+    
+
+<div class="plugin_pagetree">
+
+        
+        
+    <ul class="plugin_pagetree_children_list plugin_pagetree_children_list_noleftspace">
+        <div class="plugin_pagetree_children">
+        </div>
+    </ul>
+
+    <fieldset class="hidden">
+        <input name="treeId" value="" type="hidden">
+        <input name="treeRequestId" value="/plugins/pagetree/naturalchildren.action?decorator=none&amp;excerpt=false&amp;sort=position&amp;reverse=false&amp;disableLinks=false" type="hidden">
+        <input name="treePageId" value="1475690" type="hidden">
+
+        <input name="noRoot" value="false" type="hidden">
+        <input name="rootPageId" value="131081" type="hidden">
+
+        <input name="rootPage" value="" type="hidden">
+        <input name="startDepth" value="0" type="hidden">
+        <input name="spaceKey" value="DOCS" type="hidden">
+
+        <input name="i18n-pagetree.loading" value="Loading..." type="hidden">
+        <input name="loginUrl" value="/login.action?os_destination=%2Fdisplay%2FDOCS%2FDeveloper%2BFAQ" type="hidden">
+
+                <fieldset class="hidden">
+                                                <input name="ancestorId" value="1048712" type="hidden">
+                                    <input name="ancestorId" value="131081" type="hidden">
+                                    </fieldset>
+    </fieldset>
+</div>
+
+
+
+
+<p>
+</p>
+                        <!-- Developer FAQ -->
+</div>
+</td>
+</tr>
+</tbody></table>
+       
+       <hr class="grey">
+       
+       <div class="page-metadata">
+    <ul>
+                <li class="page-metadata-modification-info">
+                    Added by <a class="username:kristina url fn" href="http://www.mongodb.org/display/%7Ekristina">Kristina Chodorow</a>, last edited by <a class="username:dwight url fn" href="http://www.mongodb.org/display/%7Edwight">Dwight Merriman</a> on Aug 06, 2010
+                                        <span class="noprint">&nbsp;(<a href="http://www.mongodb.org/pages/diffpages.action?pageId=1475690&amp;originalId=17596666">view change</a>)</span>
+                            </li>
+            </ul>
+      <div id="versionComment" class="noteMacro" style="padding: 5px; display: none;">
+      <strong>Comment:</strong>
+      <br>
+  </div>
+
+    
+</div>                          
+                           
+       <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="http://www.mongodb.org/display/DOCS/Developer+FAQ"
+    dc:identifier="http://www.mongodb.org/display/DOCS/Developer+FAQ"
+    dc:title="Developer FAQ"
+    trackback:ping="http://www.mongodb.org/rpc/trackback/1475690"/>
+</rdf:RDF>
+-->
+       
+           
+    
+    
+    
+
+
+<fieldset class="hidden parameters">
+    <legend>Labels parameters</legend>
+    <input id="editLabel" value="Edit" type="hidden">
+    <input id="addLabel" value="Add Labels" type="hidden">
+    <input id="domainName" value="http://www.mongodb.org" type="hidden">
+    <input id="pageId" value="1475690" type="hidden">
+    <input id="spaceKey" value="DOCS" type="hidden">
+</fieldset>
+
+<div id="labels-section" class="pageSection">
+    <div id="default-labels-header" class="section-header">
+        <h2 id="labels-section-title" class="section-title  hidden ">Labels</h2>
+            </div>
+
+    <div class="labels-editor">
+        <div id="labelsList">
+                    </div>
+
+        <span class="errorMessage error" id="errorSpan"></span>
+        <form method="GET" action="http://www.mongodb.org/display/DOCS/Developer+FAQ" id="add-labels-form">
+            <div id="labelInputSpan" class="labels-input">
+                <div id="labelOperationErrorContainer" class="hidden">
+                    <span class="error"><span class="errorMessage" id="labelOperationErrorMessage"></span></span>
+                </div>
+
+                <div class="caption">Enter labels to add to this page:</div>
+
+                <input autocomplete="off" id="labelsString" name="labelsString" value="" size="40">
+                <input class="add-labels" value="Add" type="submit">
+                <input class="hide-labels-editor" value="Done" type="submit">
+                <div id="waitImageAndStatus">
+                    <img class="waiting" alt="Please wait" src="wait.gif">&nbsp;
+                    <span id="labelOperationStatus" class="smalltext"></span>
+                </div>
+                <div class="auto_complete" id="labelsAutocompleteList"></div>
+                <div class="labels-tip">
+                    <div id="suggestedLabelsSpan"></div>
+                    Looking for a label? Just start typing.
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+       
+                   <div id="children-section" class="pageSection">
+        
+        <div class="section-header ">
+            <h2 id="children-section-title" class="section-title">
+                <a name="children">Children (4)</a>
+            </h2>
+            <span class="noprint">
+                &nbsp;
+                                    <a id="hide-children-link" class="grey" href="http://www.mongodb.org/display/DOCS/Developer+FAQ?showChildren=false#children">Hide Children</a>
+                
+                &nbsp;|&nbsp; <a class="grey" href="http://www.mongodb.org/pages/listpages-dirview.action?key=DOCS&amp;openId=1475690#selectedPageInHierarchy">View in Hierarchy</a>
+                            </span>
+        </div>
+                    <div id="page-children" class="pageSectionBody">
+                                                     <img src="docs_16.gif" title="Do I Have to Worry About SQL Injection" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="do+i+have+to+worry+about+sql+injection.html">Do I Have to Worry About SQL Injection</a>
+                             <br>
+                                                     <img src="docs_16.gif" title="How does concurrency work" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="how+does+concurrency+work.html">How does concurrency work</a>
+                             <br>
+                                                     <img src="docs_16.gif" title="SQL to Mongo Mapping Chart" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="sql+to+mongo+mapping+chart.html">SQL to Mongo Mapping Chart</a>
+                             <br>
+                                                     <img src="docs_16.gif" title="What is the Compare Order for BSON Types" align="absmiddle" border="0" height="16" width="16">
+                         <a indepth="true" href="what+is+the+compare+order+for+bson+types.html">What is the Compare Order for BSON Types</a>
+                             <br>
+                            </div>
+                </div>
+           
+           
+
+<!--
+    Root decorator: this is a layer of abstraction that Confluence doesn't need. It will be removed eventually.
+-->
+
+
+
+
+    
+        
+    
+    
+
+
+<fieldset class="parameters hidden">
+    <input id="deleteCommentConfirmMessage" value="Are you sure you want to remove the comment?" type="hidden">
+    <input id="collapseTooltip" value="Click to toggle the display of this comment." type="hidden">
+</fieldset>
+
+
+
+
+
+<div id="comments-section" class="pageSection">
+    
+            <div class="section-header">
+            <ul id="comment-top-links" class="global-comment-actions">
+                <li id="comments-expand-collapse">
+                    <a href="#" id="comments-collapse">Collapse All</a>
+                    <span id="collapse-wait" class="hidden">Collapsing…</span>
+                    <span id="expand-wait" class="hidden">Expanding…</span>
+                    <a href="#" class="hidden" id="comments-expand">Expand All</a>
+                </li>
+            </ul>
+        </div>
+            <!-- added by Kristina 1/7/10 -->
+<p>
+<b><a style="color: rgb(55, 95, 160);" href="http://groups.google.com/group/mongodb-user">PLEASE POST QUESTIONS IN  THE USER GROUPS FORUM</a>.</b> 
+Post non-question comments and helpful hints here.
+</p>
+            <!-- end -->
+<div id="disqus_thread"></div><a href="http://disqus.com/" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+    
+    
+                </div>
+
+
+
+
+       
+                                    
+       </div>
+    <br class="clear">
+  </div>
+</div>
+
+<div class="sponsor">Copyright © <a class="smalltext" href="http://www.10gen.com/">10gen</a>, Inc. All Rights Reserved | Licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons</a></div>
+
+
+
+
+
+
+
+<div id="footer">
+                    <ul id="poweredby">
+        <li class="noprint">Powered by <a href="http://www.atlassian.com/software/confluence" class="smalltext">Atlassian Confluence</a> 3.0.0_01, the <a href="http://www.atlassian.com/software/confluence" class="smalltext">Enterprise Wiki</a>.</li>
+        <li class="print-only">Printed by Atlassian Confluence 3.0.0_01, the Enterprise Wiki.</li>
+        <li class="noprint"><a href="http://jira.atlassian.com/secure/BrowseProject.jspa?id=10470" class="smalltext">Bug/feature request</a> –</li>
+        <li class="noprint"><a href="http://www.atlassian.com/about/connected.jsp?s_kwcid=Confluence-stayintouch" class="smalltext">Atlassian news</a> –</li>
+        <li class="noprint"><a href="http://www.mongodb.org/administrators.action">Contact administrators</a></li>
+    </ul>
+</div>
+
+
+</body></html>

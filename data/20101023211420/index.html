@@ -1,0 +1,478 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+    <title>10 Tips for Powerful Emacs on Windows</title>
+
+    
+	<meta name="description" content="Attention in software development">
+		
+	
+	
+  	<link rel="alternate" type="application/rss+xml" href="http://gregorygrubbs.com/feed/" title="Gregory Grubbs Posts RSS feed">
+	<link rel="alternate" type="application/rss+xml" href="http://gregorygrubbs.com/comments/feed/" title="Gregory Grubbs Comments RSS feed">
+	<link rel="pingback" href="http://gregorygrubbs.com/xmlrpc.php">
+	
+<link rel="alternate" type="application/rss+xml" title="Gregory Grubbs » 10 Tips for Powerful Emacs on Windows Comments Feed" href="http://gregorygrubbs.com/emacs/10-tips-emacs-windows/feed/">
+
+
+
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://gregorygrubbs.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://gregorygrubbs.com/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="Gregory Grubbs" href="http://gregorygrubbs.com/">
+<link rel="start" title="How to upgrade Wordpress SAFELY using Subversion and Rsync" href="http://gregorygrubbs.com/wordpress/upgrading-wordpress-safely-using-subversion-and-rsync/">
+<link rel="prev" title="Snippets with Emacs Lisp Power" href="http://gregorygrubbs.com/wordpress/snippets-with-emacs-lisp-power/">
+<link rel="next" title="Tips on Android Development Using Emacs" href="http://gregorygrubbs.com/development/tips-on-android-development-using-emacs/">
+
+
+			
+			
+		
+
+<link id="MediaRSS" rel="alternate" type="application/rss+xml" title="NextGEN Gallery RSS Feed" href="http://gregorygrubbs.com/wp-content/plugins/nextgen-gallery/xml/media-rss.php">
+
+<meta name="NextGEN" content="1.3.5">
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="wordpress y2010 m10 d23 h07 single postid-439 s-y2010 s-m05 s-d23 s-h12 s-category-emacs s-tag-emacs s-tag-emacs-lisp s-tag-microsoft-windows s-tag-software-download-links s-tag-system-software s-tag-windows-xp s-author-gortsleigh">
+
+<div id="wrapper" class="hfeed">
+
+    <div id="header">
+    	<div id="branding">
+    		<div id="blog-title"><span><a href="http://gregorygrubbs.com/" title="Gregory Grubbs" rel="home">Gregory Grubbs</a></span></div>
+    			
+    		<div id="blog-description">Attention in software development</div>
+    		    	</div><!--  #branding -->
+                     
+    	<div id="access">
+    		<div class="skip-link"><a href="#content" title="Skip navigation to the content">Skip to content</a></div>
+            <div id="menu"><ul><li class="page_item page-item-3"><a href="http://gregorygrubbs.com/about-2/" title="About">About</a></li></ul></div>
+        </div><!-- #access -->
+    </div><!-- #header-->
+    
+   
+    <div id="main">
+    
+	<div id="container">
+		<div id="content">
+
+			<div id="nav-above" class="navigation">
+				<div class="nav-previous"><a href="http://gregorygrubbs.com/wordpress/snippets-with-emacs-lisp-power/"><span class="meta-nav">«</span> Snippets with Emacs Lisp Power</a></div>
+				<div class="nav-next"><a href="http://gregorygrubbs.com/development/tips-on-android-development-using-emacs/">Tips on Android Development Using Emacs <span class="meta-nav">»</span></a></div>
+			</div>
+
+<div id="single-top" class="aside">
+<ul class="xoxo">
+</ul>
+</div><!-- #single-top .aside -->
+
+			<div id="post-439" class="hentry p1 post publish author-gregory-grubbs category-emacs tag-emacs tag-emacs-lisp tag-microsoft-windows tag-software-download-links tag-system-software tag-windows-xp y2010 m05 d23 h12">
+    			<h1 class="entry-title">10 Tips for Powerful Emacs on Windows</h1>
+<div class="entry-meta"><span class="author vcard">By <a class="url fn n" href="http://gregorygrubbs.com/author/gortsleigh/" title="View all posts by Gregory Grubbs">Gregory Grubbs</a></span><span class="meta-sep"> | </span><span class="entry-date"><abbr class="published" title="2010-05-23T12:24:14-0600">May 23, 2010</abbr></span></div><!-- .entry-meta -->
+				<div class="entry-content">
+<p><a title="Ladybug Liftoff" href="http://flickr.com/photos/23084352@N00/403926829"><img src="403926829_cc213ee88b.jpg" alt=""></a></p>
+<p>I avoided using Microsoft Windows for almost 15 years, but with my<br>
+new job at a Microsoft-enthralled development shop, those idyllic<br>
+days have come to an abrupt end.  Because in the past I could always<br>
+use my trusty Linux and OS X machines, I never did push past the<br>
+hurdles of using Emacs on Windows.  My utter reliance on Org-mode,<br>
+TRAMP, and Ediff (to name a few) made it essential to get Emacs<br>
+working on Windows if at all possible.</p>
+<p>Now I am using Emacs on Windows XP and Windows 7 on a daily basis,<br>
+and am quite happy with the results.  It was not easy to get to the<br>
+point of full functionality, so I wanted to share the magic that<br>
+makes it all work.<br>
+<span id="more-439"></span></p>
+<p>I have decided against using the Cygwin Emacs package for several reasons:</p>
+<ul>
+<li>Running a windowed/multi-frame/pretty version requires running<br>
+Cygwin-X, which is quite a lot of overhead just to run Emacs. I<br>
+have had a few interface and display problems lately with Cygwin-X<br>
+also.</li>
+<li>Cool-though-seldom-used features that work in the native port do<br>
+not work in the Cygwin port: Window opacity control, for example</li>
+<li>Using the native port means I can always be running the latest<br>
+released version from gnu.org</li>
+<li>The native port just runs faster</li>
+</ul>
+<p>On the other hand, Cygwin does play a crucial role in making the<br>
+native Emacs port work properly.  I have tried and hated using PuTTY<br>
+and Plink, and various one-off ports of standard Unix commands.<br>
+Using Cygwin and its package management makes all this<br>
+much simpler and more reliable.</p>
+<p>So all the hints given here use the “official” Emacs for Windows<br>
+(sometimes referred to as NTEmacs), as well as Cygwin (with no<br>
+dependency on Cygwin-X).</p>
+<p>I really hope this helps some poor beleaguered Linux/OS X Emacs user<br>
+make the giant backwards leap. With these tips and little helpers like<br>
+<a href="http://www.launchy.net/">Launchy</a>, you won’t even have to<br>
+acknowledge that you’re running Windows!</p>
+<h2>Software download links</h2>
+<p>Here’s where you will find all the software referenced in the tips:</p>
+<ul>
+<li><a href="http://ftp.gnu.org/pub/gnu/emacs/windows/">Emacs for Windows</a></li>
+<li><a href="http://www.cygwin.com/">Cygwin</a></li>
+<li><a href="http://gnuwin32.sourceforge.net/">GnuWin32</a> for image libraries</li>
+<li><a href="ftp://ftp.franken.de/pub/win32/develop/gnuwin32/cygwin/porters/Humblet_Pierre_A/V1.1/ispell-3.2.06-cygwin-1.3-bin.tar.gz">ISpell package</a></li>
+<li><a href="http://files.emacsblog.org/ryan/elisp/maxframe.el">Maxframe.el</a></li>
+<li><a href="http://mirror.cs.wisc.edu/pub/mirrors/ghost/ghostgum/gsv49w32.exe">GSView</a></li>
+</ul>
+<h2>Tip #1: General Usage</h2>
+<ul>
+<li>Execute runemacs.exe or emacsclientw.exe.  On your Linux and OS X<br>
+systems, the binary names or emacs and emacsclient: just use the<br>
+windows-specific wrappers included in the standard port when on MS Windows.</li>
+<li>Add Cygwin /bin to exec-path.
+
+<div class="wp_syntax"><div class="code"><pre class="lisp" style="font-family: monospace;">      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">if</span> <span style="color: rgb(102, 204, 102);">(</span>file-directory-p <span style="color: rgb(255, 0, 0);">"c:/cygwin/bin"</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span>add-to-<span style="color: rgb(177, 177, 0);">list</span> 'exec-path <span style="color: rgb(255, 0, 0);">"c:/cygwin/bin"</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span></pre></div></div>
+
+</li>
+</ul>
+<h2>Tip #2: Make TRAMP work nicely — and without PuTTY</h2>
+<p>There are people using PuTTY and Plink.exe to get this working, but<br>
+I like using good old OpenSSH much better: no translation required<br>
+for the keys I use, and I have it installed anyway in Cygwin.</p>
+<ul>
+<li>Install Cygwin, including the OpenSSH package</li>
+<li>In your Emacs init, set shell to bash
+
+<div class="wp_syntax"><div class="code"><pre class="lisp" style="font-family: monospace;">      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> shell-file-<span style="color: rgb(177, 177, 0);">name</span> <span style="color: rgb(255, 0, 0);">"bash"</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> explicit-shell-file-<span style="color: rgb(177, 177, 0);">name</span> shell-file-<span style="color: rgb(177, 177, 0);">name</span><span style="color: rgb(102, 204, 102);">)</span></pre></div></div>
+
+</li>
+<li>In Emacs init, set tramp-default-method to “sshx” or “scpx”
+
+<div class="wp_syntax"><div class="code"><pre class="lisp" style="font-family: monospace;">      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">cond</span>  <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">eq</span> window-system 'w32<span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> tramp-default-method <span style="color: rgb(255, 0, 0);">"scpx"</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span>t
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> tramp-default-method <span style="color: rgb(255, 0, 0);">"scpc"</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span></pre></div></div>
+
+</li>
+<li>Test: Try <code>M-x shell</code>, then visit a TRAMP site such as <code>/user@site:</code> and try <code>M-x shell</code> from there!</li>
+</ul>
+<h2>Tip #3: Use SVN and GIT without tears</h2>
+<p>Version control should work out of the box — but SSH problems can<br>
+interfere sometimes.  So once you get TRAMP working properly, you<br>
+should have no problems with VC.</p>
+<ul>
+<li>Install subversion and git from Cygwin</li>
+<li>Use built-in vc-dir, or psvn.el and magit.el</li>
+</ul>
+<h2>Tip #4: Display images in buffers, including doc-view</h2>
+<p>You may have noticed that your Windows Emacs has no ability to<br>
+display images.  This is simply due to the fact that the port is<br>
+not distributed with the libraries necessary to display them.</p>
+<p>The solution is to visit the GnuWin32 link above, download the<br>
+packages relevant to the types of images you want to display<br>
+(including zlib1 for compressed images), and copy the DLLs into the<br>
+bin directory of your Emacs installation (e.g, C:\Program<br>
+Files\emacs23-2\bin).</p>
+<p>Images will only be displayed after restarting Emacs.</p>
+<p>Here’s a list of DLLs that I now have in my installation:</p>
+<ul>
+<li>jpeg62.dll</li>
+<li>libXpm.dll</li>
+<li>libjpeg-62.dll</li>
+<li>libpng-bcc.lib</li>
+<li>libpng.dll.a</li>
+<li>libpng.la</li>
+<li>libpng.lib</li>
+<li>libpng12-0.dll</li>
+<li>libpng12.def</li>
+<li>libpng12.dll</li>
+<li>libpng12.dll.a</li>
+<li>libpng12.la</li>
+<li>libtiff3.dll</li>
+<li>zlib1.dll (for compression, not images)</li>
+</ul>
+<h2>Tip #5: Use W3M</h2>
+<p>The W3M web browser works fine once you install the w3m binary –<br>
+and once the image display step above is working, you will be able<br>
+to display images in the W3M buffers as well.</p>
+<ul>
+<li>Install w3m from Cygwin</li>
+<li>Test image display by hitting <code>T</code> (w3m-toggle-inline-images)</li>
+<li>Example screenshot:<br>
+<a rel="attachment wp-att-450" href="http://gregorygrubbs.com/emacs/10-tips-emacs-windows/attachment/emacs_pacman_google/"><img class="alignnone size-medium wp-image-450" title="W3M Browser in Emacs" src="emacs_pacman_google-300x127.jpg" alt="W3M Browser in Emacs" height="127" width="300"></a></li>
+</ul>
+<h2>Tip #6: Bring back Ediff and Smerge</h2>
+<p>Ediff is yet another thing which doesn’t work as it should.  You<br>
+will get an error complaining about Dos-style versus Unix-style<br>
+paths.  Fixing it is a simple matter of setting an environment variable.</p>
+<ul>
+<li>Assure you have Cygwin’s diff package installed</li>
+<li>Set the Windows environment variable nodosfilewarning=1</li>
+<li>Restart Emacs, and verify that the environment variable is set by executing <code>M-x shell</code>, then typing <code>env | grep dos</code>, for example</li>
+<li><strong>Always, prior to running ediff</strong>, execute <code>M-x shell</code></li>
+</ul>
+<h2>Tip #7: Spell using ISpell or Aspell</h2>
+<p>Fortunately very easy to get working by following <a href="http://bria.nwood.org/node/49">Brian Wood’s directions</a> using the ISpell package for Cygwin linked above.</p>
+<p><strong>Note added later:</strong> </p>
+<p>Aspell is even easier to use: just install aspell and the correct language(s) in Cygwin, then use the following in your emacs init:</p>
+
+<div class="wp_syntax"><div class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(102, 204, 102);">(</span>setq-default ispell-program-<span style="color: rgb(177, 177, 0);">name</span> <span style="color: rgb(255, 0, 0);">"aspell"</span><span style="color: rgb(102, 204, 102);">)</span></pre></div></div>
+
+<h2>Tip #8: Maximized frame works using maxframe.el</h2>
+<p>Those of us who practice Distraction-Free Emacsing, or DFE, will<br>
+lament the inability to maximize the frame as we can do on other<br>
+systems (ie, a true maximized windows, with no OS window<br>
+decoration).  The solution is provided by maxfame.el, linked above.</p>
+<p>After loading maxframe.el, use <code>M-x maximize-frame</code> and <code>M-x restore-frame</code></p>
+<h2>Tip #9: Print on PostScript printers</h2>
+<p>And finally, printing.  Even this just didn’t work out of the box<br>
+for me.  The solution was to use a nice little utility called<br>
+GSPrint from the GSView package linked above.</p>
+<ul>
+<li>Install Ghostscript in Cygwin</li>
+<li>Install GSView
+
+<div class="wp_syntax"><div class="code"><pre class="lisp" style="font-family: monospace;">      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">when</span> <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">and</span> <span style="color: rgb(102, 204, 102);">(</span>string<span style="color: rgb(102, 204, 102);">=</span> <span style="color: rgb(102, 204, 102);">(</span>window-system<span style="color: rgb(102, 204, 102);">)</span> <span style="color: rgb(255, 0, 0);">"w32"</span><span style="color: rgb(102, 204, 102);">)</span> <span style="color: rgb(102, 204, 102);">(</span>file-exists-p <span style="color: rgb(255, 0, 0);">"c:/Program Files/Ghostgum/gsview/gsprint.exe"</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">progn</span>
+      <span style="color: rgb(128, 128, 128); font-style: italic;">;;  Windows printer</span>
+      <span style="color: rgb(102, 204, 102);">(</span>setq-default ps-lpr-command <span style="color: rgb(102, 204, 102);">(</span>expand-file-<span style="color: rgb(177, 177, 0);">name</span> <span style="color: rgb(255, 0, 0);">"c:/Program Files/Ghostgum/gsview/gsprint.exe"</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span>setq-default ps-printer-<span style="color: rgb(177, 177, 0);">name</span> t<span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span>setq-default ps-printer-name-option <span style="color: rgb(177, 177, 0);">nil</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> ps-lpr-switches '<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(255, 0, 0);">"-query"</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span> <span style="color: rgb(128, 128, 128); font-style: italic;">; show printer dialog</span>
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> ps-right-header '<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(255, 0, 0);">"/pagenumberstring load"</span> ps-time-stamp-mon-dd-yyyy<span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">if</span> <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">eq</span> window-system 'x<span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> ps-lpr-command <span style="color: rgb(255, 0, 0);">"gtklp"</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span></pre></div></div>
+
+</li>
+</ul>
+<h2>Tip #10: Some things Just Work™: Nifty Emacs 23 features that work “out of the box”</h2>
+<p>Bonus tip — some things work already, no fiddling required!</p>
+<h3>Select any font you want</h3>
+<ul>
+<li>M-x menu-set-font (choose something lovely like Consolas or Inconsolata … or Comic Sans MS)</li>
+<li>Example font selection, cross-OS
+
+<div class="wp_syntax"><div class="code"><pre class="lisp" style="font-family: monospace;">      <span style="color: rgb(128, 128, 128); font-style: italic;">;;* Font selection</span>
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">cond</span> <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">or</span> <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">eq</span> window-system 'mac<span style="color: rgb(102, 204, 102);">)</span> <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">eq</span> window-system 'ns<span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span>set-face-font 'default '<span style="color: rgb(255, 0, 0);">"-apple-inconsolata-medium-r-normal--16-0-72-72-m-0-iso10646-1"</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">eq</span> window-system 'w32<span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span>set-face-font 'default '<span style="color: rgb(255, 0, 0);">"-outline-Inconsolata-normal-normal-normal-mono-16-*-*-*-c-*-iso8859-1"</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">and</span> <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">eq</span> window-system 'x<span style="color: rgb(102, 204, 102);">)</span> <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">eq</span> emacs-major-version <span style="color: rgb(204, 102, 204);">23</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span>set-face-font 'default '<span style="color: rgb(255, 0, 0);">"-unknown-Inconsolata-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1"</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span>add-to-<span style="color: rgb(177, 177, 0);">list</span> 'default-frame-alist '<span style="color: rgb(102, 204, 102);">(</span>font <span style="color: rgb(102, 204, 102);">.</span> <span style="color: rgb(255, 0, 0);">"-unknown-Inconsolata-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1"</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">eq</span> window-system 'x<span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span>set-face-font 'default '<span style="color: rgb(255, 0, 0);">"10x20"</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+&nbsp;
+      <span style="color: rgb(102, 204, 102);">(</span>add-hook 'before-make-frame-hook
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">lambda</span> <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span>set-frame-font <span style="color: rgb(255, 0, 0);">"-unknown-Inconsolata-normal-normal-normal-*-16-*-*-*-m-0-iso10646-1"</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span></pre></div></div>
+
+</li>
+<li><code>M-x grep</code>, <code>M-x grep-find</code>, <code>M-x rgrep</code> and friends (as long as<br>
+you have the <code>grep</code> and <code>find</code> commands installed!)</li>
+<li><code>M-x tetris</code>, <code>M-x doctor</code>, <code>M-x yow</code>, <code>M-x butterfly</code></li>
+</ul>
+<h3>Frame transparency</h3>
+<ul>
+<li>Transparent windows are not my favorite thing, as they tend to<br>
+hamper DFE (see above).  But there are occasions, like copying text from a<br>
+web page into an Emacs buffer, where it can come in quite handy.
+
+<div class="wp_syntax"><div class="code"><pre class="lisp" style="font-family: monospace;">      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">defun</span> set-transparency <span style="color: rgb(102, 204, 102);">(</span>alpha-level<span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span>interactive <span style="color: rgb(255, 0, 0);">"p"</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span>message <span style="color: rgb(102, 204, 102);">(</span>format <span style="color: rgb(255, 0, 0);">"Alpha level passed in: %s"</span> alpha-level<span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">let</span> <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(102, 204, 102);">(</span>alpha-level <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">if</span> <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(102, 204, 102);">&amp;</span>lt<span style="color: rgb(128, 128, 128); font-style: italic;">; alpha-level 2)</span>
+				<span style="color: rgb(102, 204, 102);">(</span>read-number <span style="color: rgb(255, 0, 0);">"Opacity percentage: "</span> <span style="color: rgb(204, 102, 204);">85</span><span style="color: rgb(102, 204, 102);">)</span>
+				alpha-level<span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+				<span style="color: rgb(102, 204, 102);">(</span>myalpha <span style="color: rgb(102, 204, 102);">(</span>frame-parameter <span style="color: rgb(177, 177, 0);">nil</span> 'alpha<span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+				<span style="color: rgb(102, 204, 102);">(</span>set-frame-parameter <span style="color: rgb(177, 177, 0);">nil</span> 'alpha alpha-level<span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+				<span style="color: rgb(102, 204, 102);">(</span>message <span style="color: rgb(102, 204, 102);">(</span>format <span style="color: rgb(255, 0, 0);">"Alpha level is %d"</span> <span style="color: rgb(102, 204, 102);">(</span>frame-parameter <span style="color: rgb(177, 177, 0);">nil</span> 'alpha<span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span></pre></div></div>
+
+</li>
+</ul>
+
+									</div>
+				<div class="entry-utility"><span class="cat-links">This entry was posted in <a href="http://gregorygrubbs.com/category/emacs/" title="View all posts in emacs" rel="category tag">emacs</a></span><span class="tag-links">  and tagged <a href="http://gregorygrubbs.com/tag/emacs/" rel="tag">emacs</a>, <a href="http://gregorygrubbs.com/tag/emacs-lisp/" rel="tag">Emacs Lisp</a>, <a href="http://gregorygrubbs.com/tag/microsoft-windows/" rel="tag">Microsoft Windows</a>, <a href="http://gregorygrubbs.com/tag/software-download-links/" rel="tag">Software download links</a>, <a href="http://gregorygrubbs.com/tag/system-software/" rel="tag">System software</a>, <a href="http://gregorygrubbs.com/tag/windows-xp/" rel="tag">Windows XP</a></span>. Bookmark the <a href="http://gregorygrubbs.com/emacs/10-tips-emacs-windows/" title="Permalink to 10 Tips for Powerful Emacs on Windows">permalink</a>. <a class="comment-link" href="#respond" title="Post a comment">Post a comment</a> or leave a trackback: <a class="trackback-link" href="http://gregorygrubbs.com/emacs/10-tips-emacs-windows/trackback/" title="Trackback URL for your post" rel="trackback">Trackback URL</a>.</div><!-- .entry-utility -->
+			</div><!-- .post -->
+			
+<div id="single-insert" class="aside">
+<ul class="xoxo">
+</ul>
+</div><!-- #single-insert .aside -->
+
+			<div id="nav-below" class="navigation">
+				<div class="nav-previous"><a href="http://gregorygrubbs.com/wordpress/snippets-with-emacs-lisp-power/"><span class="meta-nav">«</span> Snippets with Emacs Lisp Power</a></div>
+				<div class="nav-next"><a href="http://gregorygrubbs.com/development/tips-on-android-development-using-emacs/">Tips on Android Development Using Emacs <span class="meta-nav">»</span></a></div>
+			</div>
+
+			<div id="comments">
+
+
+				<div id="comments-list" class="comments">
+					<h3><span>5</span> Comments</h3>
+
+					<ol>
+						<li id="comment-369" class="comment c0 c-y2010 c-m05 c-d23 c-h14 alt">
+							<div class="comment-author vcard"><img alt="" src="5169643ca8b2879e9663585316c0a290" class="photo avatar avatar-32 photo" height="32" width="32"> <span class="fn n"><a href="http://top-frog.com/" rel="external nofollow" class="url url">Shawn</a></span></div>
+							<div class="comment-meta">Posted May 23, 2010 at 2:03 pm <span class="meta-sep">|</span> <a href="#comment-369" title="Permalink to this comment">Permalink</a></div>
+							<p>You give up on Ubuntu?</p>
+						</li>
+						<li id="comment-371" class="comment c1 byuser comment-author-gortsleigh bypostauthor c-y2010 c-m05 c-d23 c-h16">
+							<div class="comment-author vcard"><img alt="" src="dc5e6da88c7e4cb9604b8c695ae330bd" class="photo avatar avatar-32 photo" height="32" width="32"> <span class="fn n"><a href="http://gregorygrubbs.com/" rel="external nofollow" class="url url">Gregory Grubbs</a></span></div>
+							<div class="comment-meta">Posted May 23, 2010 at 4:51 pm <span class="meta-sep">|</span> <a href="#comment-371" title="Permalink to this comment">Permalink</a></div>
+							<p>I never gave up on Ubuntu … I am currently Lucid and will soon be Magnanimous (or whatever).  But I must use MSWindows now on a daily basis.</p>
+<p>We should have lunch soon and catch up eh.</p>
+						</li>
+						<li id="comment-373" class="comment c2 c-y2010 c-m05 c-d23 c-h22 alt">
+							<div class="comment-author vcard"><img alt="" src="939148c8a91fc8609a7d21a3c10f479c" class="photo avatar avatar-32 photo" height="32" width="32"> <span class="fn n"><a href="http://silent11.com/" rel="external nofollow" class="url url">Will</a></span></div>
+							<div class="comment-meta">Posted May 23, 2010 at 10:09 pm <span class="meta-sep">|</span> <a href="#comment-373" title="Permalink to this comment">Permalink</a></div>
+							<p>I too prefer linux/os x as well, but I’m forced to use XP at work too.. the 2 apps I have come to love in my Windows work/development environment (aside from emacs) are 1) XKeymacs and 2) executor</p>
+<p><a href="http://www.cam.hi-ho.ne.jp/oishi/indexen.html" rel="nofollow">http://www.cam.hi-ho.ne.jp/oishi/indexen.html</a></p>
+<p><a href="http://executor.dk/" rel="nofollow">http://executor.dk/</a></p>
+						</li>
+						<li id="comment-405" class="comment c3 c-y2010 c-m08 c-d17 c-h16">
+							<div class="comment-author vcard"><img alt="" src="a9896df797a23a8f027aca4448690103" class="photo avatar avatar-32 photo" height="32" width="32"> <span class="fn n"><a href="http://blog.arithm.com/" rel="external nofollow" class="url url">Evan</a></span></div>
+							<div class="comment-meta">Posted August 17, 2010 at 4:30 pm <span class="meta-sep">|</span> <a href="#comment-405" title="Permalink to this comment">Permalink</a></div>
+							<p>Great tips, but I can’t seem to get aspell to work.  Just setting (setq-default ispell-program-name “aspell”) causes emacs to whine thusly:  (file-error “Searching for program” “no such file or directory” “spell”)</p>
+<p>Any ideas?</p>
+						</li>
+						<li id="comment-410" class="comment c4 byuser comment-author-gortsleigh bypostauthor c-y2010 c-m09 c-d07 c-h19 alt">
+							<div class="comment-author vcard"><img alt="" src="dc5e6da88c7e4cb9604b8c695ae330bd" class="photo avatar avatar-32 photo" height="32" width="32"> <span class="fn n"><a href="http://gregorygrubbs.com/" rel="external nofollow" class="url url">Gregory Grubbs</a></span></div>
+							<div class="comment-meta">Posted September 7, 2010 at 7:27 pm <span class="meta-sep">|</span> <a href="#comment-410" title="Permalink to this comment">Permalink</a></div>
+							<p>Evan:  Did you set default-ispell-program-name:<br>
+(setq-default ispell-program-name “aspell”)</p>
+<p>If so, is aspell.exe in your path (check by doing M-x shell RET aspell RET)</p>
+<p>Or, if you don’t want to put it into the PATH, you can add its directory to exec-path</p>
+<p>Hope this helps!</p>
+						</li>
+
+					</ol>
+				</div><!-- #comments-list .comments -->
+
+				<div id="respond">
+					<h3>Post a Comment</h3>
+
+					<div class="formcontainer">	
+						<form id="commentform" action="http://gregorygrubbs.com/wp-comments-post.php" method="post">
+
+
+							<p id="comment-notes">Your email is <em>never</em> published nor shared. Required fields are marked <span class="required">*</span></p>
+
+                            <div id="form-section-author" class="form-section">
+    							<div class="form-label"><label for="author">Name</label> <span class="required">*</span></div>
+    							<div class="form-input"><input id="author" name="author" value="" size="30" maxlength="20" tabindex="3" type="text"></div>
+                            </div><!-- #form-section-author .form-section -->
+
+                            <div id="form-section-email" class="form-section">
+    							<div class="form-label"><label for="email">Email</label> <span class="required">*</span></div>
+    							<div class="form-input"><input id="email" name="email" value="" size="30" maxlength="50" tabindex="4" type="text"></div>
+                            </div><!-- #form-section-email .form-section -->
+
+                            <div id="form-section-url" class="form-section">
+    							<div class="form-label"><label for="url">Website</label></div>
+    							<div class="form-input"><input id="url" name="url" value="" size="30" maxlength="50" tabindex="5" type="text"></div>
+                            </div><!-- #form-section-url .form-section -->
+
+
+                            <div id="form-section-comment" class="form-section">
+    							<div class="form-label"><label for="comment">Comment</label></div>
+    							<div class="form-textarea"><textarea id="comment" name="comment" cols="45" rows="8" tabindex="6"></textarea></div>
+                            </div><!-- #form-section-comment .form-section -->
+
+
+							<div class="form-submit"><input id="submit" name="submit" value="Post Comment" tabindex="7" type="submit"><input name="comment_post_ID" value="439" type="hidden"></div>
+
+							
+						</form><!-- #commentform -->
+						
+						
+					</div><!-- .formcontainer -->
+
+				</div><!-- #respond -->
+
+			</div><!-- #comments -->
+
+<div id="single-bottom" class="aside">
+<ul class="xoxo">
+</ul>
+</div><!-- #single-bottom .aside -->
+
+		</div><!-- #content -->
+	</div><!-- #container -->
+
+	<div id="primary" class="aside main-aside">
+		<ul class="xoxo">
+		</ul>
+	</div><!-- #primary .aside -->
+
+	<div id="secondary" class="aside main-aside">
+		<ul class="xoxo">
+<li id="categories-3" class="widgetcontainer widget_categories"><h3 class="widgettitle">Subjects</h3>
+		<ul>
+	<li class="cat-item cat-item-68"><a href="http://gregorygrubbs.com/category/development/android/" title="View all posts filed under Android">Android</a> (1)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://gregorygrubbs.com/category/development/" title="View all posts filed under Development">Development</a> (10)
+</li>
+	<li class="cat-item cat-item-46"><a href="http://gregorygrubbs.com/category/emacs/" title="View all posts filed under emacs">emacs</a> (6)
+</li>
+	<li class="cat-item cat-item-43"><a href="http://gregorygrubbs.com/category/general-interest/" title="View all posts filed under General Interest">General Interest</a> (1)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://gregorygrubbs.com/category/wordpress/" title="View all posts filed under wordpress">wordpress</a> (7)
+</li>
+	<li class="cat-item cat-item-31"><a href="http://gregorygrubbs.com/category/wordpress/wordpress-mu-wordpress/" title="View all posts filed under wordpress-mu">wordpress-mu</a> (2)
+</li>
+		</ul>
+</li><li id="twitter-tools" class="widgetcontainer aktt_widget"><h3 class="widgettitle">@gregoryg</h3>
+<div class="aktt_tweets">
+	<ul>
+		<li>OH: What? No, I don't have a narcotics problem... I said I really like CODING <a href="http://twitter.com/gregoryg/statuses/24406444692" class="aktt_tweet_time">2010-09-13</a></li>
+		<li>New post: Tips on Android Development Using Emacs <a href="http://is.gd/f74mn" rel="nofollow">http://is.gd/f74mn</a> <a href="http://twitter.com/gregoryg/statuses/24288038133" class="aktt_tweet_time">2010-09-12</a></li>
+		<li>May this tweet inspire the next iPhone switcher: my Samsung Captivate is amazing, and Android just rocks. <a href="http://twitter.com/gregoryg/statuses/23070173638" class="aktt_tweet_time">2010-09-05</a></li>
+		<li class="aktt_more_updates"><a href="http://twitter.com/gregoryg">More updates...</a></li>
+</ul>	<p id="aktt_tweet_posted_msg">Posting tweet...</p></div></li>		</ul>
+	</div><!-- #secondary .aside -->
+    </div><!-- #main -->
+    
+    
+
+	<div id="footer">
+                <div id="subsidiary">
+    
+        <div id="first" class="aside sub-aside">
+<ul class="xoxo">
+</ul>
+</div><!-- #first .aside -->
+                
+    
+        <div id="second" class="aside sub-aside">
+<ul class="xoxo">
+</ul>
+</div><!-- #second .aside -->
+       
+   
+        <div id="third" class="aside sub-aside">
+<ul class="xoxo">
+</ul>
+</div><!-- #third .aside -->
+        
+        
+    </div><!-- #subsidiary -->
+                    <div id="siteinfo">        
+    		<span id="generator-link"><a href="http://wordpress.org/" title="WordPress" rel="generator">WP</a></span><span class="meta-sep"></span><span id="designer-link"> atop <a href="http://themeshaper.com/thematic-for-wordpress" title="Thematic Theme Framework" rel="designer">Thematic</a>.</span>		</div><!-- #siteinfo -->
+	</div><!-- #footer -->
+
+</div><!-- #wrapper .hfeed -->
+
+
+
+
+</body>
+</html>

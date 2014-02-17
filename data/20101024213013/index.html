@@ -1,0 +1,416 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+
+
+<title>  wget 使用技巧 — LinuxTOY</title>
+
+
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"><!-- leave this for stats -->
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://feeds.feedburner.com/linuxtoy">
+<link rel="pingback" href="http://linuxtoy.org/xmlrpc.php">
+
+    <link rel="canonical" href="http://linuxtoy.org/archives/wget-tips.html">
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://linuxtoy.org/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://linuxtoy.org/wp-includes/wlwmanifest.xml"> 
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body id="sp">
+<div id="page">
+    <div id="header">
+    <h1><a href="http://linuxtoy.org/">LinuxTOY</a></h1>
+    
+        <form action="http://linuxtoy.org/index.php" method="get" onsubmit="location.href='http://linuxtoy.org/search/' + encodeURIComponent(this.s.value).replace(/%20/g, '+'); return false;">
+
+    <ul id="hnav">
+    <li class="current_page_item"><a href="http://linuxtoy.org/">Home</a></li>
+    <li class="page_item page-item-82"><a href="http://linuxtoy.org/archives" title="Archives">Archives</a></li>
+<li class="page_item page-item-2303"><a href="http://linuxtoy.org/download" title="Download">Download</a></li>
+<li class="page_item page-item-55"><a href="http://linuxtoy.org/faq" title="FAQs">FAQs</a></li>
+<li class="page_item page-item-44"><a href="http://linuxtoy.org/contact" title="Contact">Contact</a></li>
+    <li class="page_item"><a href="http://wiki.linuxtoy.org/" title="LinuxtoyWiki">Wiki</a></li>
+        <li><a href="http://linuxtoy.org/wp-login.php">Log in</a></li>
+    <li id="search"><input size="30" id="s" name="s" value="Search" onfocus="if (this.value == 'Search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search';}" type="text"></li>
+    </ul>
+    </form>
+
+    <p class="position">Home » wget 使用技巧</p>
+    </div><!--#header-->
+    <div class="navposts">
+    <p class="prev">« <a href="http://linuxtoy.org/archives/songbird-03-rc1-released.html">Songbird 0.3 RC1 发布</a></p>    <p class="next"><a href="http://linuxtoy.org/archives/clearplastic.html">Clearplastic</a> »</p>    </div>
+
+<div id="main">
+<!-- google_ad_section_start -->
+
+<div id="side-r">
+<div class="tab">LinuxTOY 是一个致力于提供 Linux 相关资讯的专题站点。如果您发现了好用好玩的 Linux 东东并愿意发扬自由、分享的精神，可以点击顶部导航 Contact 按钮进行投稿。</div>
+<div class="tab">
+	<ul>
+	<li class="coins"><a href="http://linuxtoy.org/faq/donate" title="捐助本站">捐助本站</a></li>
+	<li class="feed"><a href="http://feeds.feedburner.com/linuxtoy" title="Subscribe in a reader">Subscribe in a reader</a> (<a href="http://linuxtoy.org/feed/">original feed</a>)</li>
+	<li class="email"><a href="http://www.feedburner.com/fb/a/emailverifySubmit?feedId=384812" title="Subscribe by Email">Subscribe by Email</a></li>
+	<li class="twitter"><a href="https://twitter.com/Linuxtoy" title="Follow us on Twitter">Follow us on Twitter</a></li>
+	<li class="identica"><a href="http://identi.ca/linuxtoy" title="Follow us on Identi.ca">Follow us on Identi.ca</a></li>
+	</ul></div>
+<div class="tab">
+    <ul>
+<li class="tla"> <a href="http://www.opencrypt.com/">PHP Membership Software</a> </li>
+<li class="tla"> <a href="http://www.dooyoo.co.uk/image-photo-editing/">Image Software and tests</a> </li>
+<li class="tla"> <a href="http://www.motoroladroidaccessories.com/">Motorola Droid Accessories</a> </li>
+    <li class="tla"><a href="http://union.dangdang.com/transfer/transfer.aspx?from=P-276918&amp;backurl=http://book.dangdang.com/01.54.htm" title="计算机图书">Computer Books</a></li>
+    </ul></div>
+    <h2>Popular entries</h2>
+    <ul>
+    <li><a href="http://linuxtoy.org/archives/the-perfect-linux-desktop-arch-linux-2007-08-2-1.html">Archlinux 安装指南</a></li>
+    <li><a href="http://linuxtoy.org/archives/unix-linux-command-cheat-sheet.html">Unix/Linux 命令速查表</a></li>
+    <li><a href="http://linuxtoy.org/archives/efficient-editing-with-vim.html">高效率编辑器 Vim</a></li>
+    <li><a href="http://linuxtoy.org/archives/wget-tips.html">Wget 使用技巧</a></li>
+    <li><a href="http://linuxtoy.org/archives/playing-around-with-mplayer.html">玩转 MPlayer</a></li>
+    <li><a href="http://linuxtoy.org/archives/awesome.html">平铺式窗口管理器 Awesome</a></li>
+    <li><a href="http://linuxtoy.org/archives/3_free_antivirus_under_linux.html">三款 Linux 下的免费桌面级杀毒软件</a></li>
+    <li><a href="http://linuxtoy.org/archives/openbox-getting-started-guide.html">窗口管理器 Openbox 入门指南</a></li>
+    <li><a href="http://linuxtoy.org/archives/minimalist-install-of-ubuntu.html">最小化安装 Ubuntu</a></li>
+    <li><a href="http://linuxtoy.org/archives/5-desktop-environment-for-linux.html">五个你可能不知道的 Linux 桌面环境</a></li>
+    <li><a href="http://linuxtoy.org/archives/the-7-deadly-linux-commands.html">7 个致命的 Linux 命令</a></li>
+    <li><a href="http://linuxtoy.org/archives/lightweight-desktop-compare.html">很轻很强大：轻量级桌面环境比较</a></li>
+    <li><a href="http://linuxtoy.org/archives/gnome-shell-intro.html">GNOME Shell 介绍</a></li>
+    <li><a href="http://linuxtoy.org/archives/zsh.html">终极 Shell——Zsh</a></li>
+    <li><a href="http://linuxtoy.org/archives/6-of-the-best-free-linux-cad-software.html">6 款高品质的免费 Linux CAD 应用程序</a></li>
+    <li><a href="http://linuxtoy.org/archives/25-linux-twitterers.html">25+ 个值得跟随的 Linux 相关 Twitter 帐号</a></li>
+    <li><a href="http://linuxtoy.org/archives/3-standalone-flash-player-under-linux.html">Linux 下的三款 Flash 独立播放器</a></li>
+    <li><a href="http://linuxtoy.org/archives/game_emulator_for_linux.html">Linux 下的几个游戏模拟器</a></li>
+    <li><a href="http://linuxtoy.org/archives/musca.html">平铺式窗口管理器 Musca 初体验</a></li>
+    <li><a href="http://linuxtoy.org/archives/history-command-usage-examples.html">History（历史）命令用法 15 例</a></li>
+    <li><a href="http://linuxtoy.org/archives/fluxbox_config.html">Fluxbox 配置</a></li>
+    <li><a href="http://linuxtoy.org/archives/the-best-tips-and-tricks-for-bash.html">bash 使用技巧</a></li>
+    <li><a href="http://linuxtoy.org/archives/10-oreilly-books.html">10 本 O'Reilly 出版的免费好书</a></li>
+    </ul>
+</div><!--side-r-->
+
+
+<div id="story">
+    <div class="post" id="post-1503">
+        <h2>wget 使用技巧</h2>
+    <p class="postmeta">2007-10-14 <a href="http://linuxtoy.org/archives/author/admin/" title="Posts by Toy">Toy</a> Posted in <a href="http://linuxtoy.org/category/tips" title="View all posts in Tips" rel="category tag">Tips</a><span class="rss" title="comment RSS of this post"><a href="http://linuxtoy.org/archives/wget-tips.html/feed">RSS</a></span><span class="rss"><a href="http://linuxtoy.org/archives/wget-tips.html/trackback" title="copy this URI and ping to this post from ur own site">Trackback</a></span></p>
+        <div class="entry">
+        <div style="float: right; padding-left: 5px;">
+<ins style="display: inline-table; border: medium none; height: 250px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 300px;"><ins id="google_ads_frame1_anchor" style="display: block; border: medium none; height: 250px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 300px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="index_1.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" scrolling="no" frameborder="0" height="250" width="300"></iframe></ins></ins></div>
+	<p><a href="http://www.gnu.org/software/wget/">wget</a> 是一个命令行的下载工具。对于我们这些 Linux 用户来说，几乎每天都在使用它。下面为大家介绍几个有用的 wget 小技巧，可以让你更加高效而灵活的使用 wget。<span id="more-1503"></span></p>
+
+<ul>
+<li><code>$ wget -r -np -nd http://example.com/packages/</code></li>
+</ul>
+
+<p>这条命令可以下载 http://example.com 网站上 packages 目录中的所有文件。其中，<code>-np</code> 的作用是不遍历父目录，<code>-nd</code> 表示不在本机重新创建目录结构。</p>
+
+<ul>
+<li><code>$ wget -r -np -nd --accept=iso http://example.com/centos-5/i386/</code></li>
+</ul>
+
+<p>与上一条命令相似，但多加了一个 <code>--accept=iso</code> 选项，这指示 wget 仅下载 i386 目录中所有扩展名为 iso 的文件。你也可以指定多个扩展名，只需用逗号分隔即可。</p>
+
+<ul>
+<li><code>$ wget -i filename.txt</code></li>
+</ul>
+
+<p>此命令常用于批量下载的情形，把所有需要下载文件的地址放到 filename.txt 中，然后 wget 就会自动为你下载所有文件了。</p>
+
+<ul>
+<li><code>$ wget -c http://example.com/really-big-file.iso</code></li>
+</ul>
+
+<p>这里所指定的 <code>-c</code> 选项的作用为断点续传。</p>
+
+<ul>
+<li><code>$ wget -m -k (-H) http://www.example.com/</code></li>
+</ul>
+
+<p>该命令可用来镜像一个网站，wget 将对链接进行转换。如果网站中的图像是放在另外的站点，那么可以使用 <code>-H</code> 选项。</p>
+
+<p>[<a href="http://www.tipotheday.com/2007/10/11/wget-some-quick-tips/">via</a>]</p>
+        <!-- google_ad_section_end -->		
+	<p><strong>Read More:</strong></p>
+	<ul class="entrylist"><li><a href="http://linuxtoy.org/archives/kde-4-tips-you-should-know.html" rel="bookmark" title="Permanent Link: [译]关于KDE4您必须知道的小技巧">[译]关于KDE4您必须知道的小技巧</a></li><li><a href="http://linuxtoy.org/archives/the-best-tips-and-tricks-for-bash.html" rel="bookmark" title="Permanent Link: Bash 使用技巧大补贴">Bash 使用技巧大补贴</a></li><li><a href="http://linuxtoy.org/archives/baidu-mp3-download-script.html" rel="bookmark" title="Permanent Link: 复活百度 MP3 下载机器人脚本">复活百度 MP3 下载机器人脚本</a></li><li><a href="http://linuxtoy.org/archives/virtualbox-3010-released.html" rel="bookmark" title="Permanent Link: VirtualBox 3.0.10 发布">VirtualBox 3.0.10 发布</a></li><li><a href="http://linuxtoy.org/archives/paste-code.html" rel="bookmark" title="Permanent Link: 直接 Paste 代码到网络上的好东东">直接 Paste 代码到网络上的好东东</a></li><li><a href="http://linuxtoy.org/archives/using-urxvt-with-awesome.html" rel="bookmark" title="Permanent Link: Using Urxvt with Awesome">Using Urxvt with Awesome</a></li><li><a href="http://linuxtoy.org/archives/vlc-resources.html" rel="bookmark" title="Permanent Link: VLC 相关教程三则">VLC 相关教程三则</a></li><li><a href="http://linuxtoy.org/archives/ailurus-10-05.html" rel="bookmark" title="Permanent Link: 小熊猫 Ailurus 10.05 发布">小熊猫 Ailurus 10.05 发布</a></li></ul>
+	</div><!--.entry-->
+        </div><!--.post-->
+
+
+<h3 id="comments">35 Comments</h3>
+
+<ol class="commentlist">
+    	<li class="oddbox" id="comment-49349">
+		<span class="count">1</span>
+    <cite>wyg1258</cite>
+    <small>Commented <a href="#comment-49349"> @ 2007-10-14 10:15</a><img style="cursor: pointer;" onclick='yus_replyTo("49349", "wyg1258")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>很实用的介绍</p>    		</li>
+		<li class="box" id="comment-49348">
+		<span class="count">2</span>
+    <cite>Anderson</cite>
+    <small>Commented <a href="#comment-49348"> @ 2007-10-14 10:15</a><img style="cursor: pointer;" onclick='yus_replyTo("49348", "Anderson")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>网络状况不好的时候用wget就对了,非常非常稳定</p>    		</li>
+		<li class="oddbox" id="comment-49366">
+		<span class="count">3</span>
+    <cite><a href="http://blog.csdn.net/yxf" rel="external nofollow">stlxv</a></cite>
+    <small>Commented <a href="#comment-49366"> @ 2007-10-14 11:04</a><img style="cursor: pointer;" onclick='yus_replyTo("49366", "stlxv")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>“对于我们这些 Linux 用户来说，几乎每天都在使用它。”</p>
+
+<p>像我这种，是几乎从来不用它.......</p>    		</li>
+		<li class="box" id="comment-49369">
+		<span class="count">4</span>
+    <cite><a href="http://www.bioinfoserv.org/" rel="external nofollow">biowee</a></cite>
+    <small>Commented <a href="#comment-49369"> @ 2007-10-14 11:09</a><img style="cursor: pointer;" onclick='yus_replyTo("49369", "biowee")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>不错！如果使用图形界面的，有gwget可以使用。</p>    		</li>
+		<li class="oddbox" id="comment-49372">
+		<span class="count">5</span>
+    <cite><a href="http://ejake.net/" rel="external nofollow">Jake</a></cite>
+    <small>Commented <a href="#comment-49372"> @ 2007-10-14 11:31</a><img style="cursor: pointer;" onclick='yus_replyTo("49372", "Jake")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>非常有用。谢谢。</p>    		</li>
+		<li class="box" id="comment-49387">
+		<span class="count">6</span>
+    <cite>lh</cite>
+    <small>Commented <a href="#comment-49387"> @ 2007-10-14 15:28</a><img style="cursor: pointer;" onclick='yus_replyTo("49387", "lh")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>如果ie下载有wget这样的功能就好了。再win下下载是越下越慢。linux下没有这样的情况</p>    		</li>
+		<li class="oddbox" id="comment-49391">
+		<span class="count">7</span>
+    <cite><a href="http://www.mumonitor.com/" rel="external nofollow">mumonitor</a></cite>
+    <small>Commented <a href="#comment-49391"> @ 2007-10-14 15:43</a><img style="cursor: pointer;" onclick='yus_replyTo("49391", "mumonitor")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>3，4一直用，其他的学习了，多谢！</p>    		</li>
+		<li class="box" id="comment-49394">
+		<span class="count">8</span>
+    <cite>zissan</cite>
+    <small>Commented <a href="#comment-49394"> @ 2007-10-14 16:16</a><img style="cursor: pointer;" onclick='yus_replyTo("49394", "zissan")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>看来我和stlxv属于另类了 :-)</p>    		</li>
+		<li class="oddbox" id="comment-49397">
+		<span class="count">9</span>
+    <cite><a href="http://zhoushuqun.com/" rel="external nofollow">Sutra</a></cite>
+    <small>Commented <a href="#comment-49397"> @ 2007-10-14 16:40</a><img style="cursor: pointer;" onclick='yus_replyTo("49397", "Sutra")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>To lh：
+Win 下也有wget for windows 的呀。</p>    		</li>
+		<li class="box" id="comment-49398">
+		<span class="count">10</span>
+    <cite><a href="http://czdj2000.yo2.cn/" rel="external nofollow">ding</a></cite>
+    <small>Commented <a href="#comment-49398"> @ 2007-10-14 17:00</a><img style="cursor: pointer;" onclick='yus_replyTo("49398", "ding")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>学习 收藏了！</p>    		</li>
+		<li class="oddbox" id="comment-49416">
+		<span class="count">11</span>
+    <cite><a href="http://chuangyiji.com/2007/10/14/linux-wget-usage/" rel="external nofollow">wget 使用技巧 at 创意纪</a></cite>
+    <small>Pingbacked <a href="#comment-49416"> @ 2007-10-14 20:10</a><img style="cursor: pointer;" onclick='yus_replyTo("49416", "wget 使用技巧 at 创意纪")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>[...] $ wget -m -k (-H) <a href="http://www.example.com/" rel="nofollow">http://www.example.com/</a>该命令可用来镜像一个网站，wget 将对链接进行转换。如果网站中的图像是放在另外的站点，那么可以使用 -H 选项。    转载自这里。 Related Posts开源搜索引擎Nutch全攻略 [...]</p>    		</li>
+		<li class="box" id="comment-49487">
+		<span class="count">12</span>
+    <cite>John</cite>
+    <small>Commented <a href="#comment-49487"> @ 2007-10-15 9:22</a><img style="cursor: pointer;" onclick='yus_replyTo("49487", "John")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>wget 也有windows下的版本。我一直在用，非常好用。</p>    		</li>
+		<li class="oddbox" id="comment-49497">
+		<span class="count">13</span>
+    <cite><a href="http://www.sinoutopia.org/" rel="external nofollow">sbilly</a></cite>
+    <small>Commented <a href="#comment-49497"> @ 2007-10-15 10:16</a><img style="cursor: pointer;" onclick='yus_replyTo("49497", "sbilly")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>我也一直用 wget 呵呵～
+Linux/Solaris/Windows ...</p>    		</li>
+		<li class="box" id="comment-49510">
+		<span class="count">14</span>
+    <cite><a href="http://www.mocw.cn/?p=151" rel="external nofollow">My Open Course Ware » wget 使用技巧</a></cite>
+    <small>Pingbacked <a href="#comment-49510"> @ 2007-10-15 11:09</a><img style="cursor: pointer;" onclick='yus_replyTo("49510", "My Open Course Ware » wget 使用技巧")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>[...] Linux下很有用的下载工具wget的使用方法。虽然直接man可以得到，但是人家整理出来并翻译了，吸收消化还是很不错的。转载自LinuxTOY，原文在这里： [...]</p>    		</li>
+		<li class="oddbox" id="comment-49531">
+		<span class="count">15</span>
+    <cite><a href="http://ihome.ust.hk/blogs/home/josephwu/" rel="external nofollow">NightOwl</a></cite>
+    <small>Commented <a href="#comment-49531"> @ 2007-10-15 14:46</a><img style="cursor: pointer;" onclick='yus_replyTo("49531", "NightOwl")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>对于上面的朋友说的在windows下不能用wget的问题，有一个比较好的解决方案。Ming Bai(http://mbbill.googlepages.com/)推荐了一个 unxutils 的windows工具包。里面包括了静态编译好的很多unix/Linux下面的工具(当然包括wget)。这个包的好处是体积非常小，而且不依赖任何动态连接库。感兴趣的朋友可以在如下地址下载到：http://unxutils.sourceforge.net/</p>    		</li>
+		<li class="box" id="comment-49565">
+		<span class="count">16</span>
+    <cite>sendney</cite>
+    <small>Commented <a href="#comment-49565"> @ 2007-10-15 22:31</a><img style="cursor: pointer;" onclick='yus_replyTo("49565", "sendney")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>wget支持多线程下载吗？？？</p>    		</li>
+		<li class="oddbox" id="comment-49739">
+		<span class="count">17</span>
+    <cite><a href="http://groups.google.com/group/fzlug" rel="external nofollow">宏奋</a></cite>
+    <small>Commented <a href="#comment-49739"> @ 2007-10-17 1:04</a><img style="cursor: pointer;" onclick='yus_replyTo("49739", "宏奋")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>to sendney:</p>
+
+<p>wget不支持多线程下载, 要想用多线程方式,推荐用axel,请google:)</p>    		</li>
+		<li class="box" id="comment-49792">
+		<span class="count">18</span>
+    <cite><a href="http://islet8.cn/blog/" rel="external nofollow">islet8</a></cite>
+    <small>Commented <a href="#comment-49792"> @ 2007-10-17 9:25</a><img style="cursor: pointer;" onclick='yus_replyTo("49792", "islet8")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>@sendney：据说多线程下载是中国特色，本身对服务器来说弊大于利
+wget的单线程模式仍然很快啊，不信你试试，我现在主要都用gwget，像d4x、multiget都不用了</p>    		</li>
+		<li class="oddbox" id="comment-49938">
+		<span class="count">19</span>
+    <cite><a href="http://zhangsoft.wordpress.com/2007/10/17/links-for-2007-10-17/" rel="external nofollow">links for 2007-10-17 « /tmp</a></cite>
+    <small>Pingbacked <a href="#comment-49938"> @ 2007-10-18 0:18</a><img style="cursor: pointer;" onclick='yus_replyTo("49938", "links for 2007-10-17 « /tmp")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>[...] wget 使用技巧 - LinuxTOY (tags: linux wget) [...]</p>    		</li>
+		<li class="box" id="comment-50066">
+		<span class="count">20</span>
+    <cite>linuxl</cite>
+    <small>Commented <a href="#comment-50066"> @ 2007-10-18 16:38</a><img style="cursor: pointer;" onclick='yus_replyTo("50066", "linuxl")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>linux的镜像一般都挺快，单线程足够了~</p>    		</li>
+		<li class="oddbox" id="comment-50357">
+		<span class="count">21</span>
+    <cite><a href="http://blog.zheli.info/2007/10/links-for-2007-10-19.html" rel="external nofollow">links for 2007-10-19 at Systems Thoughts</a></cite>
+    <small>Pingbacked <a href="#comment-50357"> @ 2007-10-20 7:21</a><img style="cursor: pointer;" onclick='yus_replyTo("50357", "links for 2007-10-19 at Systems Thoughts")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>[...] wget 使用技巧 - LinuxTOY (tags: linux tip wget)       Leave a Reply [...]</p>    		</li>
+		<li class="box" id="comment-53119">
+		<span class="count">22</span>
+    <cite><a href="http://blog.fouland.com/use-wget/" rel="external nofollow">use wget at Spritewood</a></cite>
+    <small>Pingbacked <a href="#comment-53119"> @ 2007-10-30 15:25</a><img style="cursor: pointer;" onclick='yus_replyTo("53119", "use wget at Spritewood")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>[...] <a href="http://linuxtoy.org/archives/wget-tips.html" rel="nofollow">http://linuxtoy.org/archives/wget-tips.html</a> [...]</p>    		</li>
+		<li class="oddbox" id="comment-60550">
+		<span class="count">23</span>
+    <cite><a href="http://czdj2000.yo2.cn/articles/wget-e4bdbfe794a8e68a80e5b7a7.html" rel="external nofollow">wget 使用技巧 | 人生得意须尽欢</a></cite>
+    <small>Pingbacked <a href="#comment-60550"> @ 2007-11-29 17:24</a><img style="cursor: pointer;" onclick='yus_replyTo("60550", "wget 使用技巧 | 人生得意须尽欢")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>[...] → 转载时务必以超链接形式标明文章原始出处及作者信息。 → 本文网址：http://linuxtoy.org/archives/wget-tips.html [...]</p>    		</li>
+		<li class="box" id="comment-74593">
+		<span class="count">24</span>
+    <cite><a href="http://www.turen007.com/dig/archives/43" rel="external nofollow">Vayn技术网摘 » wget 使用技巧</a></cite>
+    <small>Pingbacked <a href="#comment-74593"> @ 2008-02-09 4:04</a><img style="cursor: pointer;" onclick='yus_replyTo("74593", "Vayn技术网摘 » wget 使用技巧")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>[...] [本文转载自LinuxToy:http://linuxtoy.org/archives/wget-tips.html][via] [...]</p>    		</li>
+		<li class="oddbox" id="comment-78040">
+		<span class="count">25</span>
+    <cite><a href="http://pd82.vicp.net/wordpress/?p=216" rel="external nofollow">peter’s blog » Blog Archive » 服务器</a></cite>
+    <small>Pingbacked <a href="#comment-78040"> @ 2008-02-24 16:37</a><img style="cursor: pointer;" onclick='yus_replyTo("78040", "peter’s blog » Blog Archive » 服务器")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>[...] 源文档 &lt;http://linuxtoy.org/archives/wget-tips.html&gt; [...]</p>    		</li>
+		<li class="box" id="comment-87806">
+		<span class="count">26</span>
+    <cite><a href="http://blog.fouland.com/2007/10/use-wget/" rel="external nofollow">SpriteWood » Blog Archive » use wget</a></cite>
+    <small>Pingbacked <a href="#comment-87806"> @ 2008-06-23 13:25</a><img style="cursor: pointer;" onclick='yus_replyTo("87806", "SpriteWood » Blog Archive » use wget")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>[...] <a href="http://linuxtoy.org/archives/wget-tips.html" rel="nofollow">http://linuxtoy.org/archives/wget-tips.html</a> Tags: wget      This entry was posted on Tuesday, October 30th, 2007 at 3:22 pm and is filed under linux. You can follow any responses to this entry through the RSS 2.0 feed. You can leave a response, or trackback from your own site. [...]</p>    		</li>
+		<li class="oddbox" id="comment-91549">
+		<span class="count">27</span>
+    <cite><a href="http://ha.fouland.com/use-wget" rel="external nofollow">use wget - SpriteWood</a></cite>
+    <small>Pingbacked <a href="#comment-91549"> @ 2008-08-27 12:22</a><img style="cursor: pointer;" onclick='yus_replyTo("91549", "use wget - SpriteWood")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>[...] <a href="http://linuxtoy.org/archives/wget-tips.html" rel="nofollow">http://linuxtoy.org/archives/wget-tips.html</a>   Tagged: linux and wget     Feed for this Entry [...]</p>    		</li>
+		<li class="box" id="comment-92371">
+		<span class="count">28</span>
+    <cite><a href="http://pengjiayou.com/blog/wget-use-skills-daquan" rel="external nofollow">wget 使用技巧大全 | 嘉佑年轻时代</a></cite>
+    <small>Pingbacked <a href="#comment-92371"> @ 2008-09-15 0:38</a><img style="cursor: pointer;" onclick='yus_replyTo("92371", "wget 使用技巧大全 | 嘉佑年轻时代")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>[...] Linux发行版 都自带 wget ，那么有多少人像我一样都不会使用呢？除了 linuxtoy.org 上面介绍的小技巧之外，我在网上找了一些 wget [...]</p>    		</li>
+		<li class="oddbox" id="comment-92971">
+		<span class="count">29</span>
+    <cite><a href="http://beta.moxida.com/archives/6009.html" rel="external nofollow">wget 使用技巧大全 - Moxida网摘</a></cite>
+    <small>Pingbacked <a href="#comment-92971"> @ 2008-09-29 6:54</a><img style="cursor: pointer;" onclick='yus_replyTo("92971", "wget 使用技巧大全 - Moxida网摘")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>[...] Linux发行版 都自带 wget ，那么有多少人像我一样都不会使用呢？除了 linuxtoy.org 上面介绍的小技巧之外，我在网上找了一些 wget [...]</p>    		</li>
+		<li class="box" id="comment-107847">
+		<span class="count">30</span>
+    <cite><a href="http://www.weibin.org/" rel="external nofollow">bill</a></cite>
+    <small>Commented <a href="#comment-107847"> @ 2009-03-26 8:56</a><img style="cursor: pointer;" onclick='yus_replyTo("107847", "bill")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>补充点：
+国内有很多下载地址是加了跳转的 ,不能直接wget的，可以在网址上加单引号''这样就可以了</p>    		</li>
+		<li class="oddbox" id="comment-119254">
+		<span class="count">31</span>
+    <cite><a href="http://www.rickyzhu.com/" rel="external nofollow">ricky</a></cite>
+    <small>Commented <a href="#comment-119254"> @ 2009-07-16 10:55</a><img style="cursor: pointer;" onclick='yus_replyTo("119254", "ricky")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>if the site need login, how to deal with?</p>
+
+<p>thanks,</p>    		</li>
+		<li class="box" id="comment-123115">
+		<span class="count">32</span>
+    <cite>Jim</cite>
+    <small>Commented <a href="#comment-123115"> @ 2009-09-03 14:37</a><img style="cursor: pointer;" onclick='yus_replyTo("123115", "Jim")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>我用kget，感觉也不错</p>    		</li>
+		<li class="oddbox" id="comment-140906">
+		<span class="count">33</span>
+    <cite>fcicq</cite>
+    <small>Commented <a href="#comment-140906"> @ 2010-02-19 16:45</a><img style="cursor: pointer;" onclick='yus_replyTo("140906", "fcicq")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>多线程抓站肯定用 pavuk.</p>    		</li>
+		<li class="box" id="comment-141732">
+		<span class="count">34</span>
+    <cite><a href="http://www.honestonline.cn/" rel="external nofollow">笔记本电池</a></cite>
+    <small>Commented <a href="#comment-141732"> @ 2010-02-24 22:30</a><img style="cursor: pointer;" onclick='yus_replyTo("141732", "笔记本电池")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>谢谢，wget -q这个又是什么意思？</p>    		</li>
+		<li class="oddbox" id="comment-166141">
+		<span class="count">35</span>
+    <cite>L_kernel</cite>
+    <small>Commented <a href="#comment-166141"> @ 2010-08-01 0:48</a><img style="cursor: pointer;" onclick='yus_replyTo("166141", "L_kernel")' title="Reply to this comment" alt="Reply to this comment" src="reply.gif">
+</small>
+    <p>如何配置使用代理？</p>    		</li>
+	</ol>
+
+
+<div id="respond">
+    
+    <form action="http://linuxtoy.org/wp-comments-post.php" method="post" id="commentform">
+
+        <p class="cf_info"><input name="author" id="author" value="" size="30" tabindex="1" type="text"><label for="author">Name (required)</label></p>
+    <p class="cf_info"><input name="email" id="email" value="" size="30" tabindex="2" type="text"><label for="email">Mail (will not be published) (required)</label></p>
+    <p class="cf_info"><input name="url" id="url" value="" size="30" tabindex="3" type="text"><label for="url">Website</label></p>
+    
+    <p class="cf_info"><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+    <p class="aright cf_info"><input name="submit" id="submit" tabindex="5" value="Submit" type="submit">
+    <input name="comment_post_ID" value="1503" type="hidden"></p>
+        
+
+
+
+	<p style="clear: both;" class="subscribe-to-comments">
+	<input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" type="checkbox">
+	<label for="subscribe">Notify me of followup comments via e-mail</label>
+	</p>
+
+
+
+</form>
+</div><!--#respond-->
+</div><!--#story-->
+</div><!--#main-->
+    <div class="navposts">
+    <p class="prev">« <a href="http://linuxtoy.org/archives/songbird-03-rc1-released.html">Songbird 0.3 RC1 发布</a></p>    <p class="next"><a href="http://linuxtoy.org/archives/clearplastic.html">Clearplastic</a> »</p>    </div>
+<div id="footer">
+    <p><a href="http://creativecommons.org/licenses/by-nc-sa/2.5/cn/">(cc)</a> LinuxTOY, Designed by <a href="http://yx.takeback.net/" title="Dark's blog">Dark</a>. Be Valid <a href="http://validator.w3.org/check/referer">Xhtml 1.1</a>. A better web experience in Firefox. 34 queries in 1.107s. <span class="rss"><a href="http://feeds.feedburner.com/linuxtoy" title="订阅整站 RSS">RSS</a></span> (Entries).</p>
+    
+		
+    
+    
+</div>
+</div><!--#page-->
+
+<!-- SyntaxHighlighter Stuff -->
+
+
+
+<!-- Dynamic Page Served (once) in 1.107 seconds -->
+<!-- Cached page served by WP-Super-Cache -->
+<div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; opacity: 0.9;"></div><div id="mbl_div_id_2s29et301" style="display: none; z-index: 99; position: absolute;"></div></body>
+</html>

@@ -1,0 +1,750 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+            <title>Geospatial Indexing - MongoDB</title>
+    
+        
+        
+        
+        
+        
+
+                        
+    
+    
+            
+<meta id="confluence-context-path" name="confluence-context-path" content="">
+<meta id="atlassian-token" name="atlassian-token" content="yhfQmnp0a3">
+<meta id="confluence-space-key" name="confluence-space-key" content="DOCS">
+
+
+
+    
+
+<!-- include system resources -->
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:master-styles/confluence.web.resources:master-styles.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.macros.profile:profile-macro-styles/confluence.macros.profile:profile-macro-styles.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:comments/confluence.web.resources:comments.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0.2/_/download/batch/com.atlassian.auiplugin:dialog/com.atlassian.auiplugin:dialog.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:userlink/confluence.web.resources:userlink.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+<!-- end system resources -->
+
+    
+
+    <meta name="confluence-request-time" content="1283349191801">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="confluence_16.png">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://www.mongodb.org/opensearch/osd.action" title="10gen Confluence">
+
+    
+        
+        
+    
+    <link rel="shortcut icon" href="favicon_001.ico">  
+
+<link rel="stylesheet" type="text/css" href="geospatial+indexing.css" media="all">
+</head><body id="com-atlassian-confluence">
+    
+
+
+    
+
+        
+  
+    
+
+
+  <div id="top-right">
+    <div class="user-right">
+    <ul id="header-menu-bar" class="ajs-menu-bar">
+                    
+        
+            <li class="normal ajs-menu-item">
+        <a id="browse-menu-link" class="browse trigger ajs-menu-title" href="#"><span><span>Browse</span></span></a>         <div class="hidden ajs-drop-down">
+                        <ul id="browse-menu-link-leading" class="section-leading first">
+                                        <li>
+    
+    <a id="space-pages-link" href="http://www.mongodb.org/pages/listpages.action?key=DOCS" class="">
+                   <span>Pages</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-blogposts-link" href="http://www.mongodb.org/pages/viewrecentblogposts.action?key=DOCS" class="">
+                   <span>News</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-labels-link" href="http://www.mongodb.org/labels/listlabels-heatmap.action?key=DOCS" class="">
+                   <span>Labels</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-attachments-link" href="http://www.mongodb.org/spaces/listattachmentsforspace.action?key=DOCS" class="">
+                   <span>Attachments</span>            </a>
+</li>
+                                        <li>
+    
+    <a href="http://www.mongodb.org/spaces/space-bookmarks.action?spaceKey=DOCS" class="">
+                   <span>Bookmarks</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-mail-link" href="http://www.mongodb.org/spaces/viewmailarchive.action?key=DOCS" class="">
+                   <span>Mail</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-advanced-link" href="http://www.mongodb.org/spaces/viewspacesummary.action?key=DOCS" class="">
+                   <span>Advanced</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+        
+                                                         <li class="ajs-menu-item normal">
+    
+    <a id="login-link" href="http://www.mongodb.org/login.action?os_destination=%2Fdisplay%2FDOCS%2FGeospatial%2BIndexing" class="user-item login-link">
+                   <span>Log In</span>            </a>
+</li>
+                            </ul>
+    </div>
+  </div>
+  
+
+      <div class="search-db">
+      <form id="quick-search" class="quick-search" method="get" action="http://www.mongodb.org/dosearchsite.action">
+                <fieldset>
+            <legend>Quick Search</legend>
+            <input value="" class="quick-search-query" id="quick-search-query" accesskey="q" autocomplete="off" name="queryString" size="25" type="text">
+            <input class="quick-search-submit" id="quick-search-submit" value="Search" type="submit">
+        </fieldset>
+        <fieldset class="hidden parameters">
+            <input class="quickSearchPlaceholder" id="quickSearchPlaceholder" value="Search" type="hidden">
+
+            <input id="quickNavEnabled" value="true" type="hidden">
+             <!-- Quick nav disabled. SettingsManager could not be found -->         </fieldset>
+    </form>
+      </div>  
+
+
+  <div id="header-db" class="spread">
+    <div class="split">
+    	<div id="logo">
+    		<div><a href="http://www.mongodb.org/"><img src="logo-mongodb.png" alt="mongoDB" height="90" width="217"></a></div>
+    	</div>
+    	<div id="nav">
+    	</div>
+    </div>
+  </div>
+
+  <div id="breadcrumbsback" class="spread">
+    <div class="split">
+
+    
+    <ol id="breadcrumbs">
+                                                
+            <li><span>
+                                                    <a href="http://www.mongodb.org/display/DOCS">MongoDB</a>
+                        </span></li>
+                                                                    <li id="ellipsis" title="    …
+                    Home
+        …"><span><strong>…</strong></span></li>
+                                                
+            <li class="hidden-crumb"><span>
+                                                    <a indepth="true" href="home.html">Home</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    <a indepth="true" href="index.html">Developer Zone</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    <a indepth="true" href="manual.html">Manual</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    <a indepth="true" href="indexes.html">Indexes</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    Geospatial Indexing
+                        </span></li>
+                </ol>
+ 
+    </div>
+  </div>
+
+  <div id="main-db" class="spread">
+    <div class="split">
+    
+                <ul id="user-control-panel">
+                                
+            <li class="first"><a href="http://www.mongodb.org/login.action?os_destination=%2Fdisplay%2FDOCS%2FGeospatial%2BIndexing">Log In</a></li>
+
+                                                        </ul>
+        <div>
+    
+    <div id="navigation" class="content-navigation view">
+        <fieldset class="hidden parameters">
+            <input id="pageId" value="6914192" type="hidden">
+        </fieldset>
+        <ul class="ajs-menu-bar">
+                                
+            <li class="normal ajs-menu-item">
+        <a id="add-menu-link" class="add trigger ajs-menu-title" href="#"><span><span>Add</span></span></a>         <div class="hidden ajs-drop-down">
+                        <ul id="add-menu-link-page" class="section-page first">
+                                        <li>
+    
+    <a id="add-comment-menu-link" href="http://www.mongodb.org/display/DOCS/Geospatial+Indexing?showComments=true&amp;showCommentArea=true#addcomment" class="add-comment">
+                   <span>Comment</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+                    
+            <li class="normal ajs-menu-item">
+        <a id="action-menu-link" class="action trigger ajs-menu-title" href="#"><span><span>Tools</span></span></a>         <div class="hidden ajs-drop-down">
+                        <ul id="action-menu-link-primary" class="section-primary first">
+                                        <li>
+    
+    <a id="view-attachments-link" href="http://www.mongodb.org/pages/viewpageattachments.action?pageId=6914192" class="action-view-attachments" accesskey="a">
+                   <span><u>A</u>ttachments (0)</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-view-history-link" href="http://www.mongodb.org/pages/viewpreviousversions.action?pageId=6914192" class="action-view-history">
+                   <span>Page History</span>            </a>
+</li>
+                            </ul>
+                        <ul id="action-menu-link-secondary" class="section-secondary">
+                                        <li>
+    
+    <a id="view-page-info-link" href="http://www.mongodb.org/pages/viewinfo.action?pageId=6914192" class="action-view-info" accesskey="i">
+                   <span><u>I</u>nfo</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-view-source-link" href="http://www.mongodb.org/pages/viewpagesrc.action?pageId=6914192" class="action-view-source popup-link">
+                   <span>View Wiki Markup</span>            </a>
+</li>
+                                        <li>
+    
+    <a href="http://www.mongodb.org/spaces/flyingpdf/pdfpageexport.action?pageId=6914192&amp;atl_token=yhfQmnp0a3" class="">
+                   <span>Export to PDF</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-export-word-link" href="http://www.mongodb.org/exportword?pageId=6914192" class="action-export-word">
+                   <span>Export to Word</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+            </ul>
+    </div>
+
+    </div>
+    <h1 id="title-heading" class="pagetitle">
+                            
+		<span id="title-text">
+					            <a indepth="true" href="geospatial+indexing.html">Geospatial Indexing</a>
+    				</span>
+    </h1>
+
+    <!--
+    Root decorator: this is a layer of abstraction that Confluence doesn't need. It will be removed eventually.
+-->
+
+
+
+
+    
+    
+
+    
+    
+        
+    
+    
+                    
+    
+
+
+
+        
+<div id="content" class="page view">
+            
+        
+                        
+                                
+    
+        
+                    
+        
+                
+
+ 
+<table cellpadding="5" cellspacing="2">
+<tbody><tr>
+<td class="pagecontent" align="left" valign="top" width="78%">
+<div class="wiki-content">
+<!-- wiki content -->
+            <div>
+<ul>
+    <li><a href="#GeospatialIndexing-CreatingtheIndex">Creating the Index</a></li>
+    <li><a href="#GeospatialIndexing-Querying">Querying</a></li>
+    <li><a href="#GeospatialIndexing-CompoundIndexes">Compound Indexes</a></li>
+    <li><a href="#GeospatialIndexing-geoNearCommand">geoNear Command</a></li>
+    <li><a href="#GeospatialIndexing-BoundsQueries">Bounds Queries</a></li>
+    <li><a href="#GeospatialIndexing-TheEarthisRoundbutMapsareFlat">The Earth is Round but Maps are Flat</a></li>
+<ul>
+    <li><a href="#GeospatialIndexing-NewSphericalModel">New Spherical Model</a></li>
+</ul>
+    <li><a href="#GeospatialIndexing-ShardedEnvironments">Sharded Environments</a></li>
+    <li><a href="#GeospatialIndexing-Implementation">Implementation</a></li>
+</ul></div>
+<p><iframe id="docframe-geo" src="geospatial+indexing_1.html" margin="0" padding="0" scrolling="no" frameborder="0" height="17" width="500"></iframe><a name="geo" margin="0" padding="0"></a>
+</p>
+
+<div class="panelMacro"><table class="noteMacro"><colgroup><col width="24"><col></colgroup><tbody><tr><td valign="top"><img src="warning.gif" alt="" align="absmiddle" border="0" height="16" width="16"></td><td>v1.3.3+</td></tr></tbody></table></div>
+<p>MongoDB supports two-dimensional geospatial indexes.  It is designed with location-based queries in mind, such as "find me the closest N items to my location."  It can also efficiently filter on additional criteria, such as "find me the closest N museums to my location."</p>
+
+<p>In order to use the index, you need to have a field in your object that is either a sub-object or array where the first 2 elements are x,y coordinates (or y,x - just be consistent; it might be advisible to use order-preserving dictionaries/hashes in your client code, to ensure consistency).  Some examples:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">{ loc : [ 50 , 30 ] }
+{ loc : { x : 50 , y : 30 } }
+{ loc : { foo : 50 , y : 30 } }
+{ loc : { lat : 40.739037, <span class="code-object">long</span>: 73.992964 } }
+</pre>
+</div></div>
+
+<h3><a name="GeospatialIndexing-CreatingtheIndex"></a>Creating the Index</h3>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.places.ensureIndex( { loc : <span class="code-quote">"2d"</span> } )
+</pre>
+</div></div>
+<p>By default, the index assumes you are indexing latitude/longitude and is thus configured for a [-180..180] value range.</p>
+
+<p>If you are indexing something else, you can specify some options:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.places.ensureIndex( { loc : <span class="code-quote">"2d"</span> } , { min : -500 , max : 500 } )
+</pre>
+</div></div>
+<p>that will scale the index to store values between -500 and 500.&nbsp; Currently geo indexing is limited to indexing squares with no "wrapping" at the outer boundaries.  You cannot insert values on the boundaries, for example, using the code above, the point <tt>(-500, -500)</tt> could not to be inserted.</p>
+
+<div class="panelMacro"><table class="noteMacro"><colgroup><col width="24"><col></colgroup><tbody><tr><td valign="top"><img src="warning.gif" alt="" align="absmiddle" border="0" height="16" width="16"></td><td>you can only have 1 geo2d index per collection right now</td></tr></tbody></table></div>
+
+<h3><a name="GeospatialIndexing-Querying"></a>Querying</h3>
+
+<p>The index can be used for exact matches:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.places.find( { loc : [50,50] } )</pre>
+</div></div>
+<p>Of course, that is not very interesting.  More important is a query to find points near another point, but not necessarily matching exactly:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.places.find( { loc : { $near : [50,50] } } )</pre>
+</div></div>
+<p>The above query finds the closest points to (50,50) and returns them sorted by distance (there is no need for an additional sort parameter).  Use limit() to specify a maximum number of points to return (a default limit of 100 applies if unspecified):</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.places.find( { loc : { $near : [50,50] } } ).limit(20)</pre>
+</div></div>
+
+<h3><a name="GeospatialIndexing-CompoundIndexes"></a>Compound Indexes</h3>
+
+<p>MongoDB geospatial indexes optionally support specification of secondary key values.&nbsp; If you are commonly going to be querying on both a location and other attributes at the same time, add the other attributes to the index.&nbsp; The other attributes are annotated within the index to make filtering faster.&nbsp; For example:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.places.ensureIndex( { location : <span class="code-quote">"2d"</span> , category : 1 } );
+db.places.find( { location : { $near : [50,50] }, category : 'coffee' } );
+</pre>
+</div></div>
+
+<h3><a name="GeospatialIndexing-geoNearCommand"></a>geoNear Command</h3>
+
+<p>While the find() syntax above is typically preferred, MongoDB also has a geoNear command which performs a similar function.&nbsp; The geoNear command has the added benefit of returning the distance of each item from the specified point in the results, as well as some diagnostics for troubleshooting.</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">&gt; db.runCommand( { geoNear : <span class="code-quote">"places"</span> , near : [50,50], num : 10 } );
+&gt; db.runCommand({geoNear:<span class="code-quote">"asdf"</span>, near:[50,50]})
+{
+        <span class="code-quote">"ns"</span> : <span class="code-quote">"test.places"</span>,
+        <span class="code-quote">"near"</span> : <span class="code-quote">"1100110000001111110000001111110000001111110000001111"</span>,
+        <span class="code-quote">"results"</span> : [
+                {
+                        <span class="code-quote">"dis"</span> : 69.29646421910687,
+                        <span class="code-quote">"obj"</span> : {
+                                <span class="code-quote">"_id"</span> : ObjectId(<span class="code-quote">"4b8bd6b93b83c574d8760280"</span>),
+                                <span class="code-quote">"y"</span> : [
+                                        1,
+                                        1
+                                ],
+                                <span class="code-quote">"category"</span> : <span class="code-quote">"Coffee"</span>
+                        }
+                },
+                {
+                        <span class="code-quote">"dis"</span> : 69.29646421910687,
+                        <span class="code-quote">"obj"</span> : {
+                                <span class="code-quote">"_id"</span> : ObjectId(<span class="code-quote">"4b8bd6b03b83c574d876027f"</span>),
+                                <span class="code-quote">"y"</span> : [
+                                        1,
+                                        1
+                                ]
+                        }
+                }
+        ],
+        <span class="code-quote">"stats"</span> : {
+                <span class="code-quote">"time"</span> : 0,
+                <span class="code-quote">"btreelocs"</span> : 1,
+                <span class="code-quote">"btreelocs"</span> : 1,
+                <span class="code-quote">"nscanned"</span> : 2,
+                <span class="code-quote">"nscanned"</span> : 2,
+                <span class="code-quote">"objectsLoaded"</span> : 2,
+                <span class="code-quote">"objectsLoaded"</span> : 2,
+                <span class="code-quote">"avgDistance"</span> : 69.29646421910687
+        },
+        <span class="code-quote">"ok"</span> : 1
+}
+</pre>
+</div></div>
+<p>The above command will return the 10 closest items to&nbsp; (50,50).&nbsp; (The <tt>loc</tt> field is automatically determined by checking for a 2d index on the collection.)</p>
+
+<p>If you want to add an additional filter, you can do so:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">&gt; db.runCommand( { geoNear : <span class="code-quote">"places"</span> , near : [ 50 , 50 ], num : 10,
+... query : { type : <span class="code-quote">"museum"</span> } } );
+</pre>
+</div></div>
+<p><tt>query</tt> can be any regular mongo query.</p>
+
+<h3><a name="GeospatialIndexing-BoundsQueries"></a>Bounds Queries</h3>
+
+<div class="panelMacro"><table class="noteMacro"><colgroup><col width="24"><col></colgroup><tbody><tr><td valign="top"><img src="warning.gif" alt="" align="absmiddle" border="0" height="16" width="16"></td><td>v1.3.4</td></tr></tbody></table></div>
+
+<p><tt>$within</tt> can be used instead of <tt>$near</tt> to find items within a shape.  At the moment, <tt>$box</tt> (rectangles) and <tt>$center</tt> (circles) are supported.</p>
+
+<p>To query for all points within a rectangle, you must specify the lower-left and upper-right corners:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">&gt; box = [[40, 40], [60, 60]]
+&gt; db.places.find({<span class="code-quote">"loc"</span> : {<span class="code-quote">"$within"</span> : {<span class="code-quote">"$box"</span> : box}}})
+</pre>
+</div></div>
+
+<p>A circle is specified by a center point and radius:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">&gt; center = [50, 50]
+&gt; radius = 10
+&gt; db.places.find({<span class="code-quote">"loc"</span> : {<span class="code-quote">"$within"</span> : {<span class="code-quote">"$center"</span> : [center, radius]}}})
+</pre>
+</div></div>
+
+<h3><a name="GeospatialIndexing-TheEarthisRoundbutMapsareFlat"></a>The Earth is Round but Maps are Flat</h3>
+
+<p>The current implementation assumes an idealized model of a flat earth, meaning that an arcdegree of latitude (y) and longitude (x) represent the same distance everywhere. This is only true at the equator where they are both about equal to 69 miles or 111km. However, at the 10gen offices at <a href="http://maps.google.com/maps?q=17+w+18th+st+nyc">{ x : -74 , y : 40.74 }</a> one arcdegree of longitude is about 52 miles or 83 km (latitude is unchanged). This means that something 1 mile to the north would seem closer than something 1 mile to the east.</p>
+
+<h4><a name="GeospatialIndexing-NewSphericalModel"></a>New Spherical Model</h4>
+
+<p>In 1.7.0 we added support for correctly using spherical distances by adding "Sphere" to the name of the query. So far, only $centerSphere queries are supported but support for $nearSphere is planned. There are a few caveats that you must be aware of when using spherical distances:</p>
+
+<ol>
+	<li>The code assumes that you are using <a href="http://en.wikipedia.org/wiki/Decimal_degrees">decimal degrees</a> in (X,Y) / (longitude, latitude) order. This is the same order used for the <a href="http://geojson.org/geojson-spec.html#id2">GeoJSON spec</a>.</li>
+	<li>All distances use <a href="http://en.wikipedia.org/wiki/Radians">radians</a>. This allows you to easily multiply by the <a href="http://en.wikipedia.org/wiki/Earth_radius">radius of the earth</a> (about 6371 km or 3959 miles) to get the distance in your choice of units. Conversely, divide by the radius of the earth when doing queries.</li>
+	<li>We don't currently handle wrapping at the poles or at the transition from -180° to +180° longitude, however we detect when a search would wrap and raise an error.</li>
+</ol>
+
+
+
+<h3><a name="GeospatialIndexing-ShardedEnvironments"></a>Sharded Environments</h3>
+
+<p>Support for geospatial in sharded collections is coming; please watch this ticket: <a href="http://jira.mongodb.org/browse/SHARDING-83">http://jira.mongodb.org/browse/SHARDING-83</a>.</p>
+
+<p>In the meantime sharded clusters can use geospatial indexes for unsharded collections within the cluster.</p>
+
+<h3><a name="GeospatialIndexing-Implementation"></a>Implementation</h3>
+
+<p>The current implementation encodes geographic hash codes atop standard MongoDB b-trees.  Results of $near queries are exact.  The problem with geohashing is that prefix lookups don't give you exact results, especially around bit flip areas.  MongoDB solves this by doing a grid by grid search after the initial prefix scan.  This guarantees performance remains very high while providing correct results.</p>
+</div>
+</td>
+<td class="noprint" align="left" valign="top" width="22%">
+<div class="spacetree">
+                                            
+    
+
+<div class="plugin_pagetree">
+
+        
+        
+    <ul class="plugin_pagetree_children_list plugin_pagetree_children_list_noleftspace">
+        <div class="plugin_pagetree_children">
+        </div>
+    </ul>
+
+    <fieldset class="hidden">
+        <input name="treeId" value="" type="hidden">
+        <input name="treeRequestId" value="/plugins/pagetree/naturalchildren.action?decorator=none&amp;excerpt=false&amp;sort=position&amp;reverse=false&amp;disableLinks=false" type="hidden">
+        <input name="treePageId" value="6914192" type="hidden">
+
+        <input name="noRoot" value="false" type="hidden">
+        <input name="rootPageId" value="131081" type="hidden">
+
+        <input name="rootPage" value="" type="hidden">
+        <input name="startDepth" value="0" type="hidden">
+        <input name="spaceKey" value="DOCS" type="hidden">
+
+        <input name="i18n-pagetree.loading" value="Loading..." type="hidden">
+        <input name="loginUrl" value="/login.action?os_destination=%2Fdisplay%2FDOCS%2FGeospatial%2BIndexing" type="hidden">
+
+                <fieldset class="hidden">
+                                                <input name="ancestorId" value="131518" type="hidden">
+                                    <input name="ancestorId" value="1475637" type="hidden">
+                                    <input name="ancestorId" value="1048712" type="hidden">
+                                    <input name="ancestorId" value="131081" type="hidden">
+                                    </fieldset>
+    </fieldset>
+</div>
+
+
+
+
+<p>
+</p>
+                        <!-- Geospatial Indexing -->
+</div>
+</td>
+</tr>
+</tbody></table>
+       
+       <hr class="grey">
+       
+       <div class="page-metadata">
+    <ul>
+                <li class="page-metadata-modification-info">
+                    Added by <a class="username:eliot url fn" href="http://www.mongodb.org/display/%7Eeliot">Eliot Horowitz</a>, last edited by <a class="username:kyle url fn" href="http://www.mongodb.org/display/%7Ekyle">Kyle Banker</a> on Aug 30, 2010
+                                        <span class="noprint">&nbsp;(<a href="http://www.mongodb.org/pages/diffpages.action?pageId=6914192&amp;originalId=17597148">view change</a>)</span>
+                            </li>
+            </ul>
+      <div id="versionComment" class="noteMacro" style="padding: 5px; display: none;">
+      <strong>Comment:</strong>
+      <br>
+  </div>
+
+    
+</div>                          
+                           
+       <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="http://www.mongodb.org/display/DOCS/Geospatial+Indexing"
+    dc:identifier="http://www.mongodb.org/display/DOCS/Geospatial+Indexing"
+    dc:title="Geospatial Indexing"
+    trackback:ping="http://www.mongodb.org/rpc/trackback/6914192"/>
+</rdf:RDF>
+-->
+       
+           
+    
+    
+    
+
+
+<fieldset class="hidden parameters">
+    <legend>Labels parameters</legend>
+    <input id="editLabel" value="Edit" type="hidden">
+    <input id="addLabel" value="Add Labels" type="hidden">
+    <input id="domainName" value="http://www.mongodb.org" type="hidden">
+    <input id="pageId" value="6914192" type="hidden">
+    <input id="spaceKey" value="DOCS" type="hidden">
+</fieldset>
+
+<div id="labels-section" class="pageSection">
+    <div id="default-labels-header" class="section-header">
+        <h2 id="labels-section-title" class="section-title ">Labels</h2>
+            </div>
+
+    <div class="labels-editor">
+        <div id="labelsList">
+            <div id="label-7340043" class="confluence-label">
+    <a class="label" rel="nofollow" href="http://www.mongodb.org/label/DOCS/geo">geo</a>    <span class="remove-label-caption">geo</span>
+    <a class="remove-label" href="#">Delete</a>
+</div>
+<div id="label-7340044" class="confluence-label">
+    <a class="label" rel="nofollow" href="http://www.mongodb.org/label/DOCS/gis">gis</a>    <span class="remove-label-caption">gis</span>
+    <a class="remove-label" href="#">Delete</a>
+</div>
+        </div>
+
+        <span class="errorMessage error" id="errorSpan"></span>
+        <form method="GET" action="http://www.mongodb.org/display/DOCS/Geospatial+Indexing" id="add-labels-form">
+            <div id="labelInputSpan" class="labels-input">
+                <div id="labelOperationErrorContainer" class="hidden">
+                    <span class="error"><span class="errorMessage" id="labelOperationErrorMessage"></span></span>
+                </div>
+
+                <div class="caption">Enter labels to add to this page:</div>
+
+                <input autocomplete="off" id="labelsString" name="labelsString" value="" size="40">
+                <input class="add-labels" value="Add" type="submit">
+                <input class="hide-labels-editor" value="Done" type="submit">
+                <div id="waitImageAndStatus">
+                    <img class="waiting" alt="Please wait" src="wait.gif">&nbsp;
+                    <span id="labelOperationStatus" class="smalltext"></span>
+                </div>
+                <div class="auto_complete" id="labelsAutocompleteList"></div>
+                <div class="labels-tip">
+                    <div id="suggestedLabelsSpan"></div>
+                    Looking for a label? Just start typing.
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+       
+                  
+           
+
+<!--
+    Root decorator: this is a layer of abstraction that Confluence doesn't need. It will be removed eventually.
+-->
+
+
+
+
+    
+        
+    
+    
+
+
+<fieldset class="parameters hidden">
+    <input id="deleteCommentConfirmMessage" value="Are you sure you want to remove the comment?" type="hidden">
+    <input id="collapseTooltip" value="Click to toggle the display of this comment." type="hidden">
+</fieldset>
+
+
+
+
+
+<div id="comments-section" class="pageSection">
+    
+            <div class="section-header">
+            <ul id="comment-top-links" class="global-comment-actions">
+                <li id="comments-expand-collapse">
+                    <a href="#" id="comments-collapse">Collapse All</a>
+                    <span id="collapse-wait" class="hidden">Collapsing…</span>
+                    <span id="expand-wait" class="hidden">Expanding…</span>
+                    <a href="#" class="hidden" id="comments-expand">Expand All</a>
+                </li>
+            </ul>
+        </div>
+            <!-- added by Kristina 1/7/10 -->
+<p>
+<b><a style="color: rgb(55, 95, 160);" href="http://groups.google.com/group/mongodb-user">PLEASE POST QUESTIONS IN  THE USER GROUPS FORUM</a>.</b> 
+Post non-question comments and helpful hints here.
+</p>
+            <!-- end -->
+<div id="disqus_thread"></div><a href="http://disqus.com/" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+    
+    
+                </div>
+
+
+
+
+       
+                                    
+       </div>
+    <br class="clear">
+  </div>
+</div>
+
+<div class="sponsor">Copyright © <a class="smalltext" href="http://www.10gen.com/">10gen</a>, Inc. All Rights Reserved | Licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons</a></div>
+
+
+
+
+
+
+
+<div id="footer">
+                    <ul id="poweredby">
+        <li class="noprint">Powered by <a href="http://www.atlassian.com/software/confluence" class="smalltext">Atlassian Confluence</a> 3.0.0_01, the <a href="http://www.atlassian.com/software/confluence" class="smalltext">Enterprise Wiki</a>.</li>
+        <li class="print-only">Printed by Atlassian Confluence 3.0.0_01, the Enterprise Wiki.</li>
+        <li class="noprint"><a href="http://jira.atlassian.com/secure/BrowseProject.jspa?id=10470" class="smalltext">Bug/feature request</a> –</li>
+        <li class="noprint"><a href="http://www.atlassian.com/about/connected.jsp?s_kwcid=Confluence-stayintouch" class="smalltext">Atlassian news</a> –</li>
+        <li class="noprint"><a href="http://www.mongodb.org/administrators.action">Contact administrators</a></li>
+    </ul>
+</div>
+
+
+</body></html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" dir="ltr" xml:lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		
+                <!-- Skin = Monaco.php -->
+		<meta name="description" content="Under Windows, Vim provides two commands for running external programs: ! and !start. The first suspends Vim, runs the program, waits for a keypress, then returns to Vim. The second runs the program without suspending Vim or waiting for a keypress.">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta name="generator" content="MediaWiki 1.15.5">
+		<meta name="keywords" content="Vim Tips Wiki,vim,Execute external programs asynchronously under Windows,Find in files within Vim,VimTip1548,VimTip1550,VimTip16,VimTip986,Fritzophrenic,JohnBeckett,Merge guidelines,New tips/200803">
+		<link rel="canonical" href="http://vim.wikia.com/wiki/Execute_external_programs_asynchronously_under_Windows">
+		<link rel="alternate" type="application/x-wiki" title="Edit this page" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=edit">
+		<link rel="edit" title="Edit this page" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=edit">
+		<link rel="apple-touch-icon" href="http://images.wikia.com/vim/images/b/bc/Wiki.png">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="search" type="application/opensearchdescription+xml" href="http://vim.wikia.com/opensearch_desc.php" title="Vim Tips Wiki (en)">
+		<link rel="copyright" href="http://community.wikia.com/wiki/Wikia:Licensing">
+		<link rel="alternate" type="application/rss+xml" title="Vim Tips Wiki RSS feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=rss">
+		<link rel="alternate" type="application/atom+xml" title="Vim Tips Wiki Atom feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=atom">
+		<!--[if lt IE 7]><script type="text/javascript">var wgShowIE6PhaseOutMessage = true;</script><![endif]-->
+		
+		<title>Execute external programs asynchronously under Windows - Vim Tips Wiki</title>
+		
+
+<!-- GetCoreCSS -->
+<!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IElt7" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IEeq7" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IEeq8" /><![endif]-->
+<!--[if !IE]>--><!--<![endif]-->
+<!-- GetExtensionsCSS -->
+<!-- GetThemeCSS -->
+<!-- GetSiteCSS -->
+<!-- GetUserCSS -->	
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Execute_external_programs_asynchronously_under_Windows TOCimprovements loggedout color2 wikiaSkinMonaco action_view" id="body">
+	<form action="http://vim.wikia.com/wiki/VimTip1549" method="post" name="userajaxloginform" id="userajaxloginformhide" style="display: none;">
+			<input value="" name="wpName" id="wpName1Ajax" tabindex="101" size="20" type="text">
+			<input name="wpPassword" id="wpPassword1Ajax" tabindex="102" size="20" type="password">
+			<input name="wpRemember" id="wpRemember1Ajax" tabindex="104" value="1" type="checkbox">
+		</form>
+	<!-- HEADER -->
+		<div id="wikia_header" class="reset color2">
+			<div class="monaco_shrinkwrap">
+			<div id="wikiaBranding">
+			<div id="wikia_logo"><a rel="nofollow" href="http://www.wikia.com/Wikia">Wikia</a></div>						<button id="headerButtonHub" class="header-button color1">Technology<img src="blank.gif"></button>
+
+			</div>
+<div id="requestWikiData"><a rel="nofollow" href="http://www.wikia.com/Special:CreateWiki" id="request_wiki" class="wikia-button">Create a new wiki</a>&nbsp;<span id="request_wiki_ad"></span></div>			<div id="userData">
+<span id="fbconnect"><a href="#" class="fb_button fb_button_small"><span class="fb_button_text">Connect</span></a></span>				<span id="userLogin">
+					<a rel="nofollow" class="ajaxLogin" id="login" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=Execute_external_programs_asynchronously_under_Windows&amp;type=login">Log in</a>
+				</span>
+
+					<a rel="nofollow" class="wikia-button ajaxRegister" id="register" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=Execute_external_programs_asynchronously_under_Windows&amp;type=signup">Create an account</a>
+
+		</div>
+		</div>
+	</div>
+
+	<div class="monaco_shrinkwrap"><div id="background_accent1"></div></div>
+	<div style="position: relative;"><div id="background_accent2"></div></div>
+
+		<div id="background_strip" class="reset">
+			<div class="monaco_shrinkwrap">
+
+			<div id="accent_graphic1"></div>
+			<div id="accent_graphic2"></div>
+			<div id="wiki_logo" style="background-image: url(&quot;wiki.png&quot;);"><a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" accesskey="z">Vim Tips Wiki</a></div>
+			<!--[if lt IE 7]>
+			<style type="text/css">
+				#wiki_logo {
+					background-image: none !important;
+					filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://images.wikia.com/vim/images/b/bc/Wiki.png', sizingMethod='image');
+				}
+			</style>
+			<![endif]-->
+			</div>
+		</div>
+		<!-- /HEADER -->
+
+		<!-- PAGE -->
+
+	<div class="monaco_shrinkwrap" id="monaco_shrinkwrap_main">
+		<div id="wikia_page">
+					<div id="page_bar" class="reset color1 clearfix">
+				<ul id="page_controls">
+		  							  <li id="control_edit" class=""><img src="blank.gif" class="sprite edit"><a rel="nofollow" id="ca-edit" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=edit" title="You can edit this page. Please use the preview button before saving. [e]" accesskey="e">Edit this page</a></li>
+		  							  <li id="control_history" class=""><img src="blank.gif" class="sprite history"><a rel="nofollow" id="ca-history" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=history" title="Past versions of this page [h]" accesskey="h">History</a></li>
+		  							  <li id="control_watch" class=""><img src="blank.gif" class="sprite watch"><a rel="nofollow" id="ca-watch" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=watch" title="Follow this page [w]" accesskey="w">Follow</a></li>
+		  							  <li id="control_share_feature" class=""><img src="blank.gif" class="sprite share"><a rel="nofollow" id="ca-share_feature" href="#">Share this article</a></li>
+		  						  </ul>
+						  <ul id="page_tabs">
+		  							  <li class="selected"><a href="http://vim.wikia.com/wiki/Execute_external_programs_asynchronously_under_Windows" id="ca-nstab-main" title="View the content page [c]" accesskey="c" class="selected">Article</a></li>
+		  							  <li class="new"><a href="http://vim.wikia.com/index.php?title=Talk:Execute_external_programs_asynchronously_under_Windows&amp;action=edit&amp;redlink=1" id="ca-talk" title="Discussion about the content page [t]" accesskey="t" class="new">Discussion</a></li>
+		  				</ul>
+			</div>
+		        	<!-- #### BEGIN AdEngine::AdEngine::getSetupHtml ####-->
+<!-- #### END AdEngine::AdEngine::getSetupHtml ####-->
+					<!-- ARTICLE -->
+
+			<div id="article">
+				<a name="top" id="top"></a>
+								<h1 class="firstHeading">Execute external programs asynchronously under Windows<span class="editsection-upper noprint"><a href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=edit" title="Execute external programs asynchronously under Windows" onclick='WET.byStr("articleAction/topedit")' rel="nofollow" id="te-editsection-noprompt" class="wikia-button">edit this page</a></span></h1>				<div id="bodyContent">
+					<h3 id="siteSub">From Vim Tips Wiki</h3>
+					<div id="contentSub">(Redirected from <a href="http://vim.wikia.com/index.php?title=VimTip1549&amp;redirect=no" title="VimTip1549" rel="nofollow">VimTip1549</a>)</div>
+																				<!-- #### BEGIN AdEngine::AdEngine::getSetupHtml ####-->
+<!-- #### END AdEngine::AdEngine::getSetupHtml ####-->
+<div id="TOP_LEADERBOARD" class="noprint"><div id="Liftium_728x90_1_php"><iframe src="index_1.html" id="TOP_LEADERBOARD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="90" scrolling="no" width="728"></iframe></div></div>					
+					<!-- start content -->
+					
+				<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"></div></div>
+				
+<div id="News" style="background-color: rgb(204, 255, 204); margin: 0pt 350px 0pt 1em; padding: 0pt 10px; border: 1px solid rgb(0, 0, 0);">
+<p><big><b>Duplicate tip</b></big>
+</p><p>This tip is very similar to the following:
+</p>
+<ul><li><a href="http://vim.wikia.com/wiki/VimTip986" title="VimTip986" class="mw-redirect">VimTip986</a>
+</li></ul>
+<p>These tips need to be merged – see the <a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Merge_guidelines" title="Vim Tips Wiki:Merge guidelines">merge guidelines</a>.
+</p>
+</div>
+<div><b><a href="http://vim.wikia.com/wiki/Execute_external_programs_asynchronously_under_Windows" class="text" title="http://vim.wikia.com/wiki/Execute_external_programs_asynchronously_under_Windows">Tip 1549</a></b> <a href="http://vim.wikia.com/wiki/VimTip1548" title="VimTip1548" class="mw-redirect"><small>Previous</small></a> <a href="http://vim.wikia.com/wiki/VimTip1550" title="VimTip1550" class="mw-redirect"><small>Next</small></a>
+<p><b><a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:New_tips/200803#Execute_external_programs_asynchronously_under_Windows" title="Vim Tips Wiki:New tips/200803">created</a></b>&nbsp;March 20, 2008 · <b>complexity</b>&nbsp;basic · <b>author</b>&nbsp;Don Reba · <b>version</b>&nbsp;7.0
+</p>
+<hr>
+</div>
+<p>Under Windows, Vim provides two commands for running external programs: <tt>!</tt> and <tt>!start</tt>. The first suspends Vim, runs the program, waits for a keypress, then returns to Vim. The second runs the program without suspending Vim or waiting for a keypress.
+</p><p>The first method has the drawback of not letting you work while the program is running, but with the second you do not see the result of the program's execution. Here is how to get the best of both worlds:
+</p>
+<pre>:!start cmd /c "my app.exe" &amp; pause
+</pre>
+<p>The following is an alternative that will leave the command window open until you close it manually:
+</p>
+<pre>:!start cmd /k "my app.exe"
+</pre>
+<p>Using this knowledge, the following mapping allows you to press F5 to run the compiled program corresponding to the current source file:
+</p>
+<pre>:nnoremap &lt;silent&gt; &lt;F5&gt;&nbsp;:!start cmd /c "%:p:r:s,$,.exe," &amp; pause&lt;CR&gt;
+</pre>
+<a rel="nofollow" name="Explanation" id="Explanation"></a><h4><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=edit&amp;section=1" title="Edit section: Explanation" rel="nofollow">edit</a>]</span> <span class="mw-headline">Explanation</span></h4>
+<p>Under Windows, if the command begins with "<tt>!start </tt>", Vim creates a process to run the program without invoking a shell, so the "Hit any key to close this window..." message does not appear. <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3A%21start" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3A%21start" rel="nofollow">:help&nbsp;:!start</a> <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=win32-vimrun" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=win32-vimrun" rel="nofollow">:help&nbsp;win32-vimrun</a>
+</p><p>This tip assumes that <tt>cmd.exe</tt> is your shell (Windows command prompt <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%27shell%27" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%27shell%27" rel="nofollow">:help&nbsp;'shell'</a>), and that you are running a console program (not GUI). Most console programs (and batch scripts) will not pause at the end of the output, so just calling the command by itself with <tt>:!start</tt> is not helpful because you will not see the output. Vim's <tt>:!start</tt> command starts a single process and additional shell commands like <tt>pause</tt> cannot be fed to that process. The mapping works around these issues by invoking the shell directly and telling it to run a command like <tt>"my app.exe" &amp; pause</tt>. The cmd shell will execute <tt>"my app.exe"</tt> (the quotes are required if the path contains a space), and will then execute <tt>pause</tt> (if <tt>&amp;&amp;</tt> is used instead of <tt>&amp;</tt>, the <tt>pause</tt> will only be executed if <tt>"my app.exe"</tt> returns errorlevel 0).
+</p><p>The expression <tt>%:p:r:s,$,.exe,</tt> is replaced with the current file name (<tt>%</tt>) modified to include the full path (<tt>:p</tt>), without the extension (<tt>:r</tt>), and with the end of the string (<tt>$</tt>) replaced with <tt>.exe</tt>. The comma (<tt>,</tt>) is a delimiter for the substitute (<tt>:s</tt>). <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=filename-modifiers" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=filename-modifiers" rel="nofollow">:help&nbsp;filename-modifiers</a>
+</p><p>The alternate method works in the same way, but uses the <tt>/k</tt> cmd.exe switch, which executes a command and leaves the window open, as opposed to the <tt>/c</tt> switch, which runs a command and exits.
+</p><p>GUI applications do not need to use this method. For example, if you enter a command like <tt>:!calc</tt> (to run calc.exe for the Windows calculator), Vim will open a shell window, then launch a new <tt>calc</tt> window from that shell. When <tt>calc</tt> is closed, the prompt <tt>Hit any key to close this window...</tt> appears, and Vim is frozen until a key is pressed. But Calculator is a GUI program so it runs in a new process, in a new window. So, if you want to asynchronously run a GUI program like Calculator, you can simply enter:
+</p>
+<pre>:!start calc
+</pre>
+<a rel="nofollow" name=".21start_vs._Windows_start_command" id=".21start_vs._Windows_start_command"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=edit&amp;section=2" title="Edit section:&nbsp;!start vs. Windows start command" rel="nofollow">edit</a></span> <span class="mw-headline">!start vs. Windows start command</span></h2><div style="float: left; margin-top: 10px; margin-bottom: 10px; margin-right: 20px; clear: left;" id="Liftium_300x250_2"><iframe id="Liftium_300x250_2_140" marginwidth="0" marginheight="0" src="index_2.html" frameborder="0" height="250" scrolling="no" width="300"></iframe></div>
+<p>The following mapping launches the currently edited file with the external application that is associated with it, using the file type's default handler. This is like entering the filename in the <i>Start &gt; Run...</i> dialog, or double-clicking in Windows Explorer. For example, <tt>example.html</tt> will be opened in your default browser.
+</p>
+<pre>:nmap &lt;Leader&gt;x&nbsp;:silent&nbsp;! start "1" "%:p"&lt;CR&gt;
+</pre>
+<a rel="nofollow" name="Explanation_2" id="Explanation_2"></a><h4><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=edit&amp;section=3" title="Edit section: Explanation" rel="nofollow">edit</a>]</span> <span class="mw-headline">Explanation</span></h4>
+<p>In the Vim command, ':silent' avoids the Hit-Enter prompt, ':p' makes this launch independent from the CWD, the surrounding "" make it handle spaces. The Windows <tt>start</tt> command opens the passed file in a separate window, so that Vim doesn't block; the Windows shell locates the application that is associated with the type of file. The "1" is the optional "title" argument to 'start'; without this dummy, 'start' will take the passed file as the title, because it is enclosed in double quotes.
+</p>
+<a rel="nofollow" name="Getting_results_back_into_Vim" id="Getting_results_back_into_Vim"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=edit&amp;section=4" title="Edit section: Getting results back into Vim" rel="nofollow">edit</a></span> <span class="mw-headline">Getting results back into Vim</span></h2>
+<p>In many cases, you may want to run a process in a shell, but then do something with the results in Vim. Normally you could just do this with the <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=system%28%29" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=system%28%29" rel="nofollow">system()</a> function or by reading in the output with <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Ar%21" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Ar%21" rel="nofollow">:r!</a>. But, if you want to do this while continuing to use Vim, you can use the methods from above to launch the process asynchonously, and then use Vim's <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=clientserver" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=clientserver" rel="nofollow">clientserver</a> features to send the results back into Vim. For example, here is a simple "hello world" sort of command, that will just echo what is passed into it, but do so by first sending it through an asynchronous shell.
+</p>
+<pre>command! -nargs=+ AsyncHello call SendAsyncText(&lt;q-args&gt;)
+
+function! SendAsyncText(hello_text)
+  let temp_file = tempname()
+  exec 'silent&nbsp;!start cmd /c "echo '.a:hello_text.' &gt; '.temp_file
+        \ ' &amp; vim --servername '.v:servername.' --remote-expr "GetAsyncText('."'".temp_file."')\"".
+        \ ' &amp; pause"'
+endfunction
+
+function! GetAsyncText(temp_file_name)
+  echomsg readfile(a:temp_file_name)[0]
+  call delete(a:temp_file_name)
+endfunction
+</pre>
+<a rel="nofollow" name="Explanation_3" id="Explanation_3"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=edit&amp;section=5" title="Edit section: Explanation" rel="nofollow">edit</a>]</span> <span class="mw-headline">Explanation</span></h3>
+<p>This command and associated functions work by invoking an asynchronous external process that <i>writes to a temporary file</i> that is then passed back to Vim. If you passed the text, "hello Vim" into AsyncHello, and the current Vim server is named GVIM3, the command that is actually executed in the shell window is:
+</p>
+<pre>  echo hello Vim &gt; some_temporary_file_name &amp; vim --servername GVIM3 --remote-expr "GetAsyncText('some_temporary_file_name')" &amp; pause
+</pre>
+<p>Note how our use of use of <tt>--servername v:servername</tt> ensures that the results will be sent back to the correct Vim. We use <tt>--remote-expr</tt> to make it easy to write and invoke a function to process the results of the command in any way we desire. In our case it is a simple <tt>readfile</tt> call, but it could be pretty much anything, including use of a command like <tt>cgetfile</tt> to <a href="#Extended_example:_asynchronous_grep" title="">run an asynchronous search</a>, for example. The basic idea is the same, however: call a shell command that writes to a known file name before invoking a Vim function on the results.
+</p><p>You may have realized that the <tt>pause</tt> is unnecessary in this case, but it serves to demonstrate the fact that the newly spawned window is opened in the foreground. If your goal is to continue working in Vim, sending the new console window to the background would be useful. In most versions of Windows, this can be done using <tt>:!start /min</tt> instead of just <tt>:!start</tt> in the command.
+</p><p>One final thing to note is the final call to the <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=delete%28%29" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=delete%28%29" rel="nofollow">delete()</a> function in our processing function. This is important, otherwise every time we invoke our command, we will leave behind the temporary file.
+</p><p><br>
+</p>
+<a rel="nofollow" name="Extended_example:_asynchronous_grep" id="Extended_example:_asynchronous_grep"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=edit&amp;section=6" title="Edit section: Extended example: asynchronous grep" rel="nofollow">edit</a>]</span> <span class="mw-headline">Extended example: asynchronous grep</span></h3>
+<p>Here is an extended example of getting the asynchronous process to communicate back to Vim. The following will perform a grep (well, a findstr) asynchronously on Windows. This example uses all the same ideas in our "hello world" example, to do something that is actually useful. Something extra to note in this function is the use of <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=escape%28%29" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=escape%28%29" rel="nofollow">escape()</a> to make sure the user can pass in a search pattern containing a '!' character. According to <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3A%21" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3A%21" rel="nofollow">:help&nbsp;:!</a>, any such characters in a shell command will be expanded to the previously used shell command unless escaped with a backslash. Note that if your search does not need to be asynchronous, it is easy to <a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" title="Find in files within Vim">grep from within Vim</a> without any tricks like this.
+</p>
+<pre>if has('win32')
+  " basic async search
+  command! -bar -complete=file -nargs=+ GrepAsync call AsyncGrep('',&lt;f-args&gt;)
+  " same, but recursive
+  command! -bar -complete=file -nargs=+ RGrepAsync call AsyncGrep('/S',&lt;f-args&gt;)
+
+  function! AsyncGrep(flags, pattern, ...)
+    " find a place to store the results to allow Vim to read them in
+    let grep_temp_file = tempname()
+
+    " get the file list into a format findstr can read, or search all files if
+    " no file list was passed in
+    if a:0 &gt; 0
+      let grep_file_list = substitute(join(a:000, '" "'),'/','\','g')
+    else
+      let grep_file_list = '*'
+    endif
+
+    " Need to escape '!' characters according to&nbsp;:help&nbsp;:!
+    let flags = escape(a:flags, '!')
+    let pattern = escape(a:pattern, '!')
+    let grep_file_list = escape(grep_file_list, '!')
+
+    call writefile(['Grep results for "'.pattern.'" in "'.grep_file_list.'"'], grep_temp_file)
+
+    " execute the search in a new process and redirect to a temporary file, then
+    " send the result file back to this Vim instance
+    exec 'silent&nbsp;!start /min cmd /c "echo Searching for "'.pattern.'" in "'.grep_file_list.'", do not close this window... &amp; '.
+          \ 'findstr /R /N '.flags.' "'.pattern.'" "'.grep_file_list.'" &gt;&gt; "'.grep_temp_file.'" &amp; '.
+          \ 'vim --servername '.v:servername.' --remote-expr "ParseAsyncGrep('."'".grep_temp_file."')".'""'
+  endfunction
+
+  function! ParseAsyncGrep(tempfile)
+    " set up the errorformat so Vim can parse the output
+    let oldefm = &amp;errorformat
+    let &amp;errorformat = &amp;grepformat
+
+    " parse the results into the quickfix window, but don't jump to the first
+    " search hit
+    exec 'cgetfile '.a:tempfile
+
+    " restore the previous state
+    let &amp;errorformat = oldefm
+    call delete(a:tempfile)
+
+    " the echomsg is mostly debug, but could be used instead of the botright
+    " copen to alert the user without interfering
+    echomsg "got grep results file ".a:tempfile
+
+    " open the quickfix window but don't interfere with the user; jump back to
+    " the current window after opening the quickfix window
+    botright copen
+    wincmd p
+    redraw
+  endfunction
+endif
+</pre>
+<p><br>
+</p>
+<a rel="nofollow" name="See_also" id="See_also"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=edit&amp;section=7" title="Edit section: See also" rel="nofollow">edit</a></span> <span class="mw-headline">See also</span></h2>
+<ul><li><a href="http://vim.wikia.com/wiki/VimTip16" title="VimTip16" class="mw-redirect">Avoiding the "Hit ENTER to continue" prompts</a>
+</li><li>Marc Weber's python-based <a href="http://github.com/MarcWeber/vim-addon-background-cmd" class="external text" title="http://github.com/MarcWeber/vim-addon-background-cmd" rel="nofollow">background-cmd plugin</a> on github to accomplish this on any system
+</li></ul>
+<a rel="nofollow" name="Comments" id="Comments"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=edit&amp;section=8" title="Edit section: Comments" rel="nofollow">edit</a></span> <span class="mw-headline">Comments</span></h2>
+<p><span style="color: rgb(0, 0, 0); background-color: rgb(240, 240, 240);"><i><b>&nbsp;TO DO&nbsp;</b></i></span><br>
+</p>
+<ul><li>Ask on vim_use for some async execution techniques for Unix-based systems because <a href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3A%21start" class="external text" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3A%21start" rel="nofollow">:help&nbsp;:!start</a> indicates that <tt>:!start</tt> is for Windows only.
+</li></ul>
+<hr>
+<p>I replaced the first of the following commands with the second:
+</p>
+<pre>:nnoremap &lt;silent&gt; &lt;buffer&gt; &lt;F5&gt;&nbsp;:!start cmd /c "%&lt;.exe" &amp;&amp; pause&lt;CR&gt;
+:nnoremap &lt;silent&gt; &lt;F5&gt;&nbsp;:!start cmd /c "%:p:r:s,$,.exe," &amp; pause&lt;CR&gt;
+</pre>
+<p>Explanation:
+</p>
+<ul><li>I removed the <tt>&lt;buffer&gt;</tt> since you would need to apply the mapping to every appropriate buffer which is too hard, particularly for someone trying a simple tip.
+</li><li>The "<tt>%&lt;.exe</tt>" does not work as hoped: the "<tt>.exe</tt>" does nothing (and "<tt>%&lt;</tt>" is deprecated). Also, it does not include the path (editing <tt>/my/prog/sample.c</tt> would execute <tt>sample</tt>).
+</li><li>While it's not really necessary to append ".exe", the weird ':s,$,.exe,' expression does it correctly without requiring an <tt>&lt;expr&gt;</tt> mapping.
+</li><li>Using '&amp;&amp;', the cmd shell executes 'pause' only if the first program returns "success" (errorlevel 0). Using '&amp;', 'pause' is always executed (documented as <i>after</i> the first program).
+</li></ul>
+<dl><dd><dl><dd>I actually didn't know the distinction. This is pretty much what every script in this tip was intended to do, so I have made the change there, too and will update my own config. Thanks! --<a href="http://vim.wikia.com/wiki/User:Fritzophrenic" title="User:Fritzophrenic">Fritzophrenic</a> 15:57, January 31, 2010 (UTC)
+</dd></dl>
+</dd></dl>
+<p>This is just a temp comment to explain my thinking. <a href="http://vim.wikia.com/wiki/User:JohnBeckett" title="User:JohnBeckett">JohnBeckett</a> 03:43, January 31, 2010 (UTC)
+</p><!-- 
+NewPP limit report
+Preprocessor node count: 291/1000000
+Post-expand include size: 2524/2097152 bytes
+Template argument size: 299/2097152 bytes
+Expensive parser function count: 0/100
+--><!-- Saved in parser cache with key vim:pcache:idhash:5757-0!1!0!!en!2 and timestamp 20100726135138 --><div class="printfooter">
+Retrieved from "<a href="http://vim.wikia.com/wiki/Execute_external_programs_asynchronously_under_Windows">http://vim.wikia.com/wiki/Execute_external_programs_asynchronously_under_Windows</a>"</div>
+<table style="margin-top: 1em; width: 100%; clear: both;"><tbody><tr><td style="text-align: center;"><div id="PREFOOTER_LEFT_BOXAD" class="noprint"><div id="Liftium_300x250_2_php"><iframe src="index_3.html" id="PREFOOTER_LEFT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div></td><td style="text-align: center;"><div id="PREFOOTER_RIGHT_BOXAD" class="noprint"><div id="Liftium_300x250_3_php"><iframe src="index_4.html" id="PREFOOTER_RIGHT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div></td></tr>
+</tbody></table><div id="catlinks" class="catlinks"><div id="mw-normal-catlinks"><a href="http://vim.wikia.com/wiki/Special:Categories" title="Special:Categories" rel="nofollow">Categories</a>: <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:Duplicate" title="Category:Duplicate">Duplicate</a></span> | <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:VimTip" title="Category:VimTip">VimTip</a></span> | <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:Usage" title="Category:Usage">Usage</a></span> | <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:Windows" title="Category:Windows">Windows</a></span> | <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:Todo" title="Category:Todo">Todo</a></span></div> <div id="csAddCategorySwitch" class="noprint" style="background: none repeat scroll 0% 0% rgb(221, 221, 221); position: relative; float: left; border: 1px solid rgb(187, 187, 187); -moz-border-radius: 3px 3px 3px 3px; padding: 0pt 5px; line-height: 16px;"><img src="blank.gif" class="sprite-small add"><a href="#" onfocus="this.blur();" style="color: rgb(0, 0, 0); font-size: 0.85em; text-decoration: none; display: inline-block;" rel="nofollow">Add category</a></div></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+
+				<!--google_ad_section_end-->
+				<!--contextual_targeting_end-->
+
+			</div>
+			<!-- /ARTICLE -->
+			
+			<!-- ARTICLE FOOTER -->
+			<div id="articleFooter" class="reset">
+				<table cellspacing="0">
+					<tbody><tr>
+						<td class="col1">
+							<ul class="actions" id="articleFooterActions">
+								<li><a rel="nofollow" id="fe_edit_icon" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=edit"><img src="blank.gif" id="fe_edit_img" class="sprite edit" alt="Edit this page"></a> <div>Improve Vim Tips Wiki by <a id="fe_edit_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=edit">editing this page</a></div></li>
+								<li><a id="fe_user_icon" rel="nofollow" href="http://vim.wikia.com/wiki/User:Fritzophrenic"><img src="blank.gif" id="fe_user_img" class="sprite user" alt="View user page"></a> <div><a id="fe_user_link" rel="nofollow" href="http://vim.wikia.com/wiki/User:Fritzophrenic">Fritzophrenic</a> made an edit on July 25, 2010</div></li>
+							</ul>
+							<ul id="articleFooterActions3" class="actions clearfix">
+								<li id="fe_history"><a rel="nofollow" id="fe_history_icon" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=history"><img src="blank.gif" id="fe_history_img" class="sprite history" alt="History"></a> <div><a id="fe_history_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;action=history">History</a></div></li>
+								<li id="fe_recent"><a rel="nofollow" id="fe_recent_icon" href="http://vim.wikia.com/wiki/Special:RecentChangesLinked/Execute_external_programs_asynchronously_under_Windows"><img src="blank.gif" id="fe_recent_img" class="sprite recent" alt="Related changes"></a> <div><a id="fe_recent_link" rel="nofollow" href="http://vim.wikia.com/wiki/Special:RecentChangesLinked/Execute_external_programs_asynchronously_under_Windows">Related changes</a></div></li></ul><ul id="articleFooterActions4" class="actions clearfix">
+								<li id="fe_permalink"><a rel="nofollow" id="fe_permalink_icon" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;oldid=27986"><img src="blank.gif" id="fe_permalink_img" class="sprite move" alt="Permanent link"></a> <div><a id="fe_permalink_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Execute_external_programs_asynchronously_under_Windows&amp;oldid=27986">Permanent link</a></div></li>
+								<li id="fe_whatlinkshere"><a rel="nofollow" id="fe_whatlinkshere_icon" href="http://vim.wikia.com/wiki/Special:WhatLinksHere/Execute_external_programs_asynchronously_under_Windows"><img src="blank.gif" id="fe_whatlinkshere_img" class="sprite pagelink" alt="What links here"></a> <div><a id="fe_whatlinkshere_link" rel="nofollow" href="http://vim.wikia.com/wiki/Special:WhatLinksHere/Execute_external_programs_asynchronously_under_Windows">What links here</a></div></li></ul>						</td>
+						<td class="col2">
+							<ul class="actions" id="articleFooterActions2">
+								<li><a rel="nofollow" id="fe_random_icon" href="http://vim.wikia.com/wiki/Special:Random"><img src="blank.gif" id="fe_random_img" class="sprite random" alt="Random page"></a> <div><a rel="nofollow" id="fe_random_link" href="http://vim.wikia.com/wiki/Special:Random">View random page</a></div></li>
+								<li><img src="blank.gif" id="fe_report_img" class="sprite error" alt="Report a problem with this page"> <div><a style="cursor: pointer;" id="fe_report_link">Report a problem with this page</a></div></li>
+
+								<li><img src="blank.gif" id="fe_sharefeature_img" class="sprite share" alt="Share this article"> <div><a style="cursor: pointer;" id="fe_sharefeature_link">Share this article</a></div></li>
+							</ul>
+		<div class="clearfix" id="star-rating-row">
+		  <strong>Rate this article:</strong>
+		  		  <div id="star-rating-wrapper">
+		    <ul id="star-rating" class="star-rating" rel="20">
+			<li style="width: 70px;" id="current-rating" class="current-rating"><span>3.5000/5</span></li>
+			<li><a rel="nofollow" class="one-star" id="star1" title="1/5"><span>1</span></a></li>
+			<li><a rel="nofollow" class="two-stars" id="star2" title="2/5"><span>2</span></a></li>
+			<li><a rel="nofollow" class="three-stars" id="star3" title="3/5"><span>3</span></a></li>
+			<li><a rel="nofollow" class="four-stars" id="star4" title="4/5"><span>4</span></a></li>
+			<li><a rel="nofollow" class="five-stars" id="star5" title="5/5"><span>5</span></a></li>
+		    </ul>
+		    <span style="display: none;" id="unrateLink"><a rel="nofollow" id="unrate" href="#">Unrate it</a></span>
+		  </div>
+		</div>
+								</td>
+					</tr>
+				</tbody></table>
+			</div>
+			<!-- /ARTICLE FOOTER -->
+
+		</div>
+		<!-- /PAGE -->
+<!-- Begin Analytics -->
+<!-- Start for GA_Urchin, page_view -->
+
+
+<!-- Start for GA_Urchin, hub -->
+
+<!-- Start for GA_Urchin, onewiki -->
+<!-- No tracking for this wiki -->
+<!-- Start for GA_Urchin, pagetime -->
+
+<!-- End Analytics -->
+
+
+		
+		
+				
+		
+		<div id="monaco_footer" class="reset">
+
+
+		<div id="spotlight_footer">
+		<table>
+		<tbody><tr>
+			<td>
+				<!-- ## BEGIN AdProviderGAM::AdProviderGAM::getSetupHtml ## -->
+
+<!-- ## END AdProviderGAM::AdProviderGAM::getSetupHtml ## -->
+<!-- ## BEGIN AdProviderGAM::AdProviderGAM::getBatchCallHtml ## -->
+
+<!-- ## END AdProviderGAM::AdProviderGAM::getBatchCallHtml ## -->
+<div id="google_ads_div_FOOTER_SPOTLIGHT_LEFT"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_LEFT" name="google_ads_iframe_FOOTER_SPOTLIGHT_LEFT" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_5.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+			<td>
+				<div id="google_ads_div_FOOTER_SPOTLIGHT_MIDDLE"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_MIDDLE" name="google_ads_iframe_FOOTER_SPOTLIGHT_MIDDLE" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_6.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+			<td>
+				<div id="google_ads_div_FOOTER_SPOTLIGHT_RIGHT"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_RIGHT" name="google_ads_iframe_FOOTER_SPOTLIGHT_RIGHT" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_7.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+		</tr>
+		</tbody></table>
+		</div>
+				  <table id="wikia_footer">
+	  			<tbody><tr>
+				<td colspan="2" id="wikia_corporate_footer">
+	  <a rel="nofollow" href="http://www.wikia.com/About_Us"><span>About</span></a> | <a rel="nofollow" href="http://www.wikia.com/Hiring">Jobs</a> | <a rel="nofollow" href="http://www.wikia.com/Terms_of_Use">Terms of Use</a> | <a rel="nofollow" href="http://www.wikia.com/Special:CreateWiki">Create a wiki</a> | <a rel="nofollow" href="http://www.wikia.com/Privacy_Policy">Privacy Policy</a> | <a rel="nofollow" href="http://community.wikia.com/wiki/Wikia:Licensing" title="w:Wikia:Licensing">CC-BY-SA</a> | <a rel="nofollow" href="http://community.wikia.com/wiki/Community_Guidelines">Community Guidelines</a> | <a rel="nofollow" href="http://vim.wikia.com/wiki/Special:Contact">Contact</a> | <a rel="nofollow" href="http://www.wikia.com/Advertising">Advertise</a> | <a rel="nofollow" href="http://www.wikia.com/Lifestyle">Lifestyle</a>				</td>
+			</tr>
+	  	  </tbody></table>
+					</div>
+		<!-- WIDGETS -->
+		<div id="widget_sidebar" class="reset widget_sidebar">
+
+			<!-- SEARCH/NAVIGATION -->
+			<div class="widget" id="navigation_widget">
+				<div id="search_box" class="color1">
+					<form action="http://vim.wikia.com/wiki/Special:Search" id="searchform">
+						<input id="search_field" name="search" value="Search this wiki" maxlength="200" onfocus="sf_focus(event);" alt="Search this wiki" autocomplete="off" title="Search this wiki [alt-shift-f]" accesskey="f" type="text">
+						<input name="go" value="1" type="hidden">
+						<input src="blank.gif" id="search-button" class="sprite search" type="image">
+					</form>
+				</div>
+<div id="navigation"><div id="menu-item_1" class="menu-item"><a id="a-menu-item_1" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" rel="nofollow">Home</a></div><div id="menu-item_2" class="menu-item"><a id="a-menu-item_2" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Community_Portal" rel="nofollow">Community portal</a></div><div id="menu-item_3" class="menu-item"><a id="a-menu-item_3" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Todo" rel="nofollow">To do</a></div><div id="menu-item_4" class="menu-item"><a id="a-menu-item_4" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" rel="nofollow">Top content<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="#" rel="nofollow">Editor's pick<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Best_Vim_Tips" rel="nofollow">Best Vim Tips</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Browsing_programs_with_tags" rel="nofollow">Browsing programs with tags</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_end-of-line_format_for_dos-mac-unix" rel="nofollow">Change end-of-line format for dos-mac-unix</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces" rel="nofollow">Converting tabs to spaces</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Cut/copy_and_paste_using_visual_selection" rel="nofollow">Cut/copy and paste using visual selection</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/File_no_longer_available_-_mark_buffer_modified" rel="nofollow">File no longer available - mark buffer modified</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/most_popular" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div class="menu-item"><a href="#" rel="nofollow">Most visited<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Best_Vim_Tips" rel="nofollow">Best Vim Tips</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace" rel="nofollow">Search and replace</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_end-of-line_format_for_dos-mac-unix" rel="nofollow">Change end-of-line format for dos-mac-unix</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Indenting_source_code" rel="nofollow">Indenting source code</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Open_vimrc_file" rel="nofollow">Open vimrc file</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_the_color_scheme" rel="nofollow">Change the color scheme</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces" rel="nofollow">Converting tabs to spaces</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/most_visited" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div class="menu-item"><a href="#" rel="nofollow">Highest voted<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Add/change_file_extension_in_current_buffer" rel="nofollow">Add/change file extension in current buffer</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Manage_a_tasklist_of_to-do_code_snippets" rel="nofollow">Manage a tasklist of to-do code snippets</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Vim_Doclet" rel="nofollow">Vim Doclet</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Record_a_recursive_macro" rel="nofollow">Record a recursive macro</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Improved_Javascript_Indent_script_for_Vim" rel="nofollow">Improved Javascript Indent script for Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Scripting_-_Indirectly_Referencing_Variables" rel="nofollow">Scripting - Indirectly Referencing Variables</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/highest_ratings" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div style="border: 0px none;" class="menu-item"><a href="#" rel="nofollow">Newly changed<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Any_word_completion" rel="nofollow">Any word completion</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Copy,_cut_and_paste" rel="nofollow">Copy, cut and paste</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint" rel="nofollow">Format your xml document using xmllint</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Restoring_indent_after_typing_hash" rel="nofollow">Restoring indent after typing hash</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard" rel="nofollow">In line copy and paste to system clipboard</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/C%2B%2B_code_completion" rel="nofollow">C++ code completion</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Power_of_g" rel="nofollow">Power of g</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/newly_changed" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div></div></div><div id="menu-item_9" class="menu-item"><a id="a-menu-item_9" href="http://vim.wikia.com/wiki/Category:Folding" rel="nofollow">Folding category<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Syntax_folding_of_Vim_scripts" rel="nofollow">Syntax folding of Vim scripts</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding" rel="nofollow">Folding</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Java/C/C%2B%2B_folding" rel="nofollow">Java/C/C++ folding</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding_with_Regular_Expression" rel="nofollow">Folding with Regular Expression</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Auto-fold_Perl_subs" rel="nofollow">Auto-fold Perl subs</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding_for_plain_text_files_based_on_indentation" rel="nofollow">Folding for plain text files based on indentation</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Outline_editing_of_Python_programs" rel="nofollow">Outline editing of Python programs</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Category:Folding" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div id="menu-item_10" class="menu-item"><a id="a-menu-item_10" href="http://vim.wikia.com/wiki/Category:Searching" rel="nofollow">Searching category<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace" rel="nofollow">Search and replace</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Searching" rel="nofollow">Searching</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches" rel="nofollow">Highlight all search pattern matches</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection" rel="nofollow">Search and replace in a visual selection</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Power_of_g" rel="nofollow">Power of g</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Remove_unwanted_empty_lines" rel="nofollow">Remove unwanted empty lines</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Category:Searching" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div></div><table id="link_box_table" cellspacing="0">		<tbody id="link_box_dynamic">
+			<tr>
+				<td colspan="2">
+					<ul>
+<li id="dynamic-links-write-article-row" class="link_box_dynamic_item"><a rel="nofollow" id="dynamic-links-write-article-icon" href="http://vim.wikia.com/wiki/toolbox/dynamic/CreatePage"><img src="blank.gif" id="dynamic-links-write-article-img" class="sprite edit" alt="Create a new article"></a> <a id="dynamic-links-write-article-link" rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/dynamic/CreatePage">Create a new article</a></li><li id="dynamic-links-add-image-row" class="link_box_dynamic_item"><a rel="nofollow" id="dynamic-links-add-image-icon" href="http://vim.wikia.com/wiki/toolbox/dynamic/Upload"><img src="blank.gif" id="dynamic-links-add-image-img" class="sprite photo" alt="Upload a new image"></a> <a id="dynamic-links-add-image-link" rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/dynamic/Upload">Upload a new image</a></li>					</ul>
+				</td>
+			</tr>
+		</tbody>
+		<tbody id="link_box" class="color2 linkbox_static">
+			<tr>
+				<td>
+					<ul>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/recentchanges">Recent changes</a></li>
+						<li><a rel="nofollow" href="http://community.wikia.com/wiki/Blog:Wikia_Staff_Blog" onclick="WET.byStr('toolbox/w_c_community_Blog_Wikia_Staff_Blog')">Staff blog</a></li>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/helppage">Help</a></li>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/randompage">Random page</a></li>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/specialpages">Special pages</a></li>
+						<li style="font-size: 1px; position: absolute; top: -10000px;"><a href="http://vim.wikia.com/wiki/Special:Recentchanges" accesskey="r" rel="nofollow">Recent changes</a><a href="http://vim.wikia.com/wiki/Special:Random" accesskey="x" rel="nofollow">Random page</a></li>
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+			</div>
+			<!-- /SEARCH/NAVIGATION -->
+
+			<!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_NAVBOX_1 --><div style="text-align: center; margin-bottom: 10px;"><div id="LEFT_SKYSCRAPER_1" class="noprint"><div id="Liftium_160x600_4_php"><iframe src="index_8.html" id="LEFT_SKYSCRAPER_1_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none; display: none;" target="_blank" frameborder="0" height="600" scrolling="no" width="160"></iframe></div></div></div>
+
+			<div id="sidebar_1" class="sidebar">
+			<dl class="widget WidgetCommunity" id="widget_303"><dt class="color1 widget_title" id="widget_303_header"><span class="widgetToolbox"></span>Latest activity</dt><dd class="shadow widget_contents" id="widget_303_content"><div class="community_header accent">
+	<span class="article_count dark_text_1">1,593</span> articles on this wiki<br></div>
+<div class="community_body">
+		<ul class="activityfeed widgetfeed" id="widget_303-recently-edited">		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Copy,_cut_and_paste">Copy, cut and paste</a></strong><br>			<cite><span class="timeago" title="2010-08-06T15:40:31Z">17 hours ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/216.235.10.210" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint">Format your xml document using xmllint</a></strong><br>			<cite><span class="timeago" title="2010-08-06T13:01:46Z">19 hours ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/145.242.11.3" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Restoring_indent_after_typing_hash">Restoring indent after typing hash</a></strong><br>			<cite><span class="timeago" title="2010-08-06T07:49:30Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/User:JohnBeckett" rel="nofollow">JohnBeckett</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard">In line copy and paste to system clipboard</a></strong><br>			<cite><span class="timeago" title="2010-08-06T04:33:00Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/68.231.48.165" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/C%2B%2B_code_completion">C++ code completion</a></strong><br>			<cite><span class="timeago" title="2010-08-06T01:57:05Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/User:JohnBeckett" rel="nofollow">JohnBeckett</a></cite>		</li>	</ul></div>
+<div class="toolbar neutral">
+	<a id="community-widget-action-button" href="http://vim.wikia.com/wiki/Special:ActivityFeed" class="wikia-button forward" rel="nofollow">Activity feed</a>
+</div>
+
+</dd></dl><div style="margin-bottom: 10px;"><div id="google_ads_div_LEFT_NAV_205x400"><ins style="position: relative; width: 205px; height: 400px; border: medium none; display: inline-table;"><ins style="position: relative; width: 205px; height: 400px; border: medium none; display: block;"><iframe id="google_ads_iframe_LEFT_NAV_205x400" name="google_ads_iframe_LEFT_NAV_205x400" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_9.html" frameborder="0" height="400" scrolling="no" width="205"></iframe></ins></ins></div></div>
+			<!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_SLIMBOX_1 --><!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_NAVBOX_2 --><div style="text-align: center; margin-bottom: 10px;"><div id="LEFT_SKYSCRAPER_2" class="noprint"><div id="Liftium_160x600_5_php"><iframe src="index_10.html" id="LEFT_SKYSCRAPER_2_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="600" scrolling="no" width="160"></iframe></div></div></div>
+			</div>
+		</div>
+		<!-- /WIDGETS -->
+	<!--/div-->
+
+
+
+<div id="Liftium_0x0_0"><!-- Liftium No ad --></div>
+<!-- #### BEGIN AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+
+
+
+
+
+<!-- #### END AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+<div id="Liftium_0x0_1"><!-- Liftium No ad --></div>
+</div><!-- Start for Comscore, page_view -->
+
+<!-- Begin comScore Tag -->
+
+
+
+<!-- End comScore Tag -->
+<!-- Start for QuantServe, page_view -->
+
+
+<!-- Start for Exelate, page_view -->
+
+
+		
+<img src="__onedot" alt="" border="0" height="1" width="1">
+		<div id="positioned_elements" class="reset"></div>
+		<!-- Served by ap-s8 in 0.204 secs. cpu: 0.050 -->
+	
+
+</body>
+</html>

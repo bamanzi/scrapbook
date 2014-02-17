@@ -1,0 +1,1063 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+            <title>Advanced Queries - MongoDB</title>
+    
+        
+        
+        
+        
+        
+
+                        
+    
+    
+            
+<meta id="confluence-context-path" name="confluence-context-path" content="">
+<meta id="atlassian-token" name="atlassian-token" content="yhfQmnp0a3">
+<meta id="confluence-space-key" name="confluence-space-key" content="DOCS">
+
+
+
+    
+
+<!-- include system resources -->
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:master-styles/confluence.web.resources:master-styles.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.macros.profile:profile-macro-styles/confluence.macros.profile:profile-macro-styles.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:comments/confluence.web.resources:comments.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0.2/_/download/batch/com.atlassian.auiplugin:dialog/com.atlassian.auiplugin:dialog.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:userlink/confluence.web.resources:userlink.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+<!-- end system resources -->
+
+    
+
+    <meta name="confluence-request-time" content="1283349256590">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="confluence_16.png">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://www.mongodb.org/opensearch/osd.action" title="10gen Confluence">
+
+    
+        
+        
+    
+    <link rel="shortcut icon" href="favicon_001.ico">  
+
+<link rel="stylesheet" type="text/css" href="advanced+queries.css" media="all">
+</head><body id="com-atlassian-confluence">
+    
+
+
+    
+
+        
+  
+    
+
+
+  <div id="top-right">
+    <div class="user-right">
+    <ul id="header-menu-bar" class="ajs-menu-bar">
+                    
+        
+            <li class="normal ajs-menu-item">
+        <a id="browse-menu-link" class="browse trigger ajs-menu-title" href="#"><span><span>Browse</span></span></a>         <div class="hidden ajs-drop-down">
+                        <ul id="browse-menu-link-leading" class="section-leading first">
+                                        <li>
+    
+    <a id="space-pages-link" href="http://www.mongodb.org/pages/listpages.action?key=DOCS" class="">
+                   <span>Pages</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-blogposts-link" href="http://www.mongodb.org/pages/viewrecentblogposts.action?key=DOCS" class="">
+                   <span>News</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-labels-link" href="http://www.mongodb.org/labels/listlabels-heatmap.action?key=DOCS" class="">
+                   <span>Labels</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-attachments-link" href="http://www.mongodb.org/spaces/listattachmentsforspace.action?key=DOCS" class="">
+                   <span>Attachments</span>            </a>
+</li>
+                                        <li>
+    
+    <a href="http://www.mongodb.org/spaces/space-bookmarks.action?spaceKey=DOCS" class="">
+                   <span>Bookmarks</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-mail-link" href="http://www.mongodb.org/spaces/viewmailarchive.action?key=DOCS" class="">
+                   <span>Mail</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-advanced-link" href="http://www.mongodb.org/spaces/viewspacesummary.action?key=DOCS" class="">
+                   <span>Advanced</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+        
+                                                         <li class="ajs-menu-item normal">
+    
+    <a id="login-link" href="http://www.mongodb.org/login.action?os_destination=%2Fdisplay%2FDOCS%2FAdvanced%2BQueries" class="user-item login-link">
+                   <span>Log In</span>            </a>
+</li>
+                            </ul>
+    </div>
+  </div>
+  
+
+      <div class="search-db">
+      <form id="quick-search" class="quick-search" method="get" action="http://www.mongodb.org/dosearchsite.action">
+                <fieldset>
+            <legend>Quick Search</legend>
+            <input value="" class="quick-search-query" id="quick-search-query" accesskey="q" autocomplete="off" name="queryString" size="25" type="text">
+            <input class="quick-search-submit" id="quick-search-submit" value="Search" type="submit">
+        </fieldset>
+        <fieldset class="hidden parameters">
+            <input class="quickSearchPlaceholder" id="quickSearchPlaceholder" value="Search" type="hidden">
+
+            <input id="quickNavEnabled" value="true" type="hidden">
+             <!-- Quick nav disabled. SettingsManager could not be found -->         </fieldset>
+    </form>
+      </div>  
+
+
+  <div id="header-db" class="spread">
+    <div class="split">
+    	<div id="logo">
+    		<div><a href="http://www.mongodb.org/"><img src="logo-mongodb.png" alt="mongoDB" height="90" width="217"></a></div>
+    	</div>
+    	<div id="nav">
+    	</div>
+    </div>
+  </div>
+
+  <div id="breadcrumbsback" class="spread">
+    <div class="split">
+
+    
+    <ol id="breadcrumbs">
+                                                
+            <li><span>
+                                                    <a href="http://www.mongodb.org/display/DOCS">MongoDB</a>
+                        </span></li>
+                                                                    <li id="ellipsis" title="    …
+                    Home
+        …"><span><strong>…</strong></span></li>
+                                                
+            <li class="hidden-crumb"><span>
+                                                    <a indepth="true" href="home.html">Home</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    <a indepth="true" href="index.html">Developer Zone</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    <a indepth="true" href="manual.html">Manual</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    <a indepth="true" href="querying.html">Querying</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    Advanced Queries
+                        </span></li>
+                </ol>
+ 
+    </div>
+  </div>
+
+  <div id="main-db" class="spread">
+    <div class="split">
+    
+                <ul id="user-control-panel">
+                                
+            <li class="first"><a href="http://www.mongodb.org/login.action?os_destination=%2Fdisplay%2FDOCS%2FAdvanced%2BQueries">Log In</a></li>
+
+                                                        </ul>
+        <div>
+    
+    <div id="navigation" class="content-navigation view">
+        <fieldset class="hidden parameters">
+            <input id="pageId" value="131469" type="hidden">
+        </fieldset>
+        <ul class="ajs-menu-bar">
+                                
+            <li class="normal ajs-menu-item">
+        <a id="add-menu-link" class="add trigger ajs-menu-title" href="#"><span><span>Add</span></span></a>         <div class="hidden ajs-drop-down">
+                        <ul id="add-menu-link-page" class="section-page first">
+                                        <li>
+    
+    <a id="add-comment-menu-link" href="http://www.mongodb.org/display/DOCS/Advanced+Queries?showComments=true&amp;showCommentArea=true#addcomment" class="add-comment">
+                   <span>Comment</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+                    
+            <li class="normal ajs-menu-item">
+        <a id="action-menu-link" class="action trigger ajs-menu-title" href="#"><span><span>Tools</span></span></a>         <div class="hidden ajs-drop-down">
+                        <ul id="action-menu-link-primary" class="section-primary first">
+                                        <li>
+    
+    <a id="view-attachments-link" href="http://www.mongodb.org/pages/viewpageattachments.action?pageId=131469" class="action-view-attachments" accesskey="a">
+                   <span><u>A</u>ttachments (0)</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-view-history-link" href="http://www.mongodb.org/pages/viewpreviousversions.action?pageId=131469" class="action-view-history">
+                   <span>Page History</span>            </a>
+</li>
+                            </ul>
+                        <ul id="action-menu-link-secondary" class="section-secondary">
+                                        <li>
+    
+    <a id="view-page-info-link" href="http://www.mongodb.org/pages/viewinfo.action?pageId=131469" class="action-view-info" accesskey="i">
+                   <span><u>I</u>nfo</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-view-source-link" href="http://www.mongodb.org/pages/viewpagesrc.action?pageId=131469" class="action-view-source popup-link">
+                   <span>View Wiki Markup</span>            </a>
+</li>
+                                        <li>
+    
+    <a href="http://www.mongodb.org/spaces/flyingpdf/pdfpageexport.action?pageId=131469&amp;atl_token=yhfQmnp0a3" class="">
+                   <span>Export to PDF</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-export-word-link" href="http://www.mongodb.org/exportword?pageId=131469" class="action-export-word">
+                   <span>Export to Word</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+            </ul>
+    </div>
+
+    </div>
+    <h1 id="title-heading" class="pagetitle">
+                            
+		<span id="title-text">
+					            <a indepth="true" href="advanced+queries.html">Advanced Queries</a>
+    				</span>
+    </h1>
+
+    <!--
+    Root decorator: this is a layer of abstraction that Confluence doesn't need. It will be removed eventually.
+-->
+
+
+
+
+    
+    
+
+    
+    
+        
+    
+    
+                    
+    
+
+
+
+        
+<div id="content" class="page view">
+            
+        
+                        
+                                
+    
+        
+                    
+        
+                
+
+ 
+<table cellpadding="5" cellspacing="2">
+<tbody><tr>
+<td class="pagecontent" align="left" valign="top" width="78%">
+<div class="wiki-content">
+<!-- wiki content -->
+            <div>
+<ul>
+    <li><a href="#AdvancedQueries-Introduction">Introduction</a></li>
+    <li><a href="#AdvancedQueries-RetrievingaSubsetofFields">Retrieving a Subset of Fields</a></li>
+<ul>
+    <li><a href="#AdvancedQueries-%24sliceoperator">$slice operator</a></li>
+</ul>
+    <li><a href="#AdvancedQueries-ConditionalOperators%3A%3C%2C%3C%3D%2C%3E%2C%3E%3D">Conditional Operators : &lt;, &lt;=, &gt;, &gt;=</a></li>
+    <li><a href="#AdvancedQueries-ConditionalOperator%3A%24ne">Conditional Operator : $ne</a></li>
+    <li><a href="#AdvancedQueries-ConditionalOperator%3A%24in">Conditional Operator : $in</a></li>
+    <li><a href="#AdvancedQueries-ConditionalOperator%3A%24nin">Conditional Operator : $nin</a></li>
+    <li><a href="#AdvancedQueries-ConditionalOperator%3A%24mod">Conditional Operator : $mod</a></li>
+    <li><a href="#AdvancedQueries-ConditionalOperator%3A%24all">Conditional Operator: $all</a></li>
+    <li><a href="#AdvancedQueries-ConditionalOperator%3A%24size">Conditional Operator : $size</a></li>
+    <li><a href="#AdvancedQueries-ConditionalOperator%3A%7B%7B%24exists%7D%7D">Conditional Operator: <tt>$exists</tt></a></li>
+    <li><a href="#AdvancedQueries-ConditionalOperator%3A%7B%7B%24type%7D%7D">Conditional Operator: <tt>$type</tt></a></li>
+    <li><a href="#AdvancedQueries-%24or">$or</a></li>
+    <li><a href="#AdvancedQueries-RegularExpressions">Regular Expressions</a></li>
+    <li><a href="#AdvancedQueries-ValueinanArray">Value in an Array</a></li>
+    <li><a href="#AdvancedQueries-ConditionalOperator%3A%24elemMatch">Conditional Operator: $elemMatch</a></li>
+    <li><a href="#AdvancedQueries-ValueinanEmbeddedObject">Value in an Embedded Object</a></li>
+    <li><a href="#AdvancedQueries-Metaoperator%3A%24not">Meta operator: $not</a></li>
+    <li><a href="#AdvancedQueries-JavascriptExpressionsand%7B%7B%24where%7D%7D">Javascript Expressions and <tt>$where</tt></a></li>
+    <li><a href="#AdvancedQueries-%7B%7Bsort%28%29%7D%7D"> <tt>sort()</tt></a></li>
+    <li><a href="#AdvancedQueries-%7B%7Blimit%28%29%7D%7D"> <tt>limit()</tt></a></li>
+    <li><a href="#AdvancedQueries-%7B%7Bskip%28%29%7D%7D"> <tt>skip()</tt></a></li>
+    <li><a href="#AdvancedQueries-%7B%7Bsnapshot%28%29%7D%7D"> <tt>snapshot()</tt></a></li>
+    <li><a href="#AdvancedQueries-%7B%7Bcount%28%29%7D%7D"> <tt>count()</tt></a></li>
+    <li><a href="#AdvancedQueries-%7B%7Bgroup%28%29%7D%7D"> <tt>group()</tt></a></li>
+    <li><a href="#AdvancedQueries-Specialoperators">Special operators</a></li>
+    <li><a href="#AdvancedQueries-SeeAlso">See Also</a></li>
+</ul></div>
+<h3><a name="AdvancedQueries-Introduction"></a>Introduction</h3>
+
+<p>MongoDB offers a rich query environment with lots of features.  This page lists some of those features.</p>
+
+<p>Queries in MongoDB are represented as JSON-style objects, very much like the documents we actually store in the database.&nbsp; For example:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"><span class="code-comment">// i.e., select * from things where x=3 and y=<span class="code-quote">"foo"</span>
+</span>db.things.find( { x : 3, y : <span class="code-quote">"foo"</span> } );
+</pre>
+</div></div>
+<p>Note that any of the operators on this page can be combined in the same query document. For example, to find all document where j is not equal to 3 and k is greater than 10, you'd query like so:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.things.find({j: {$ne: 3}, k: {$gt: 10} });
+</pre>
+</div></div>
+<h3><a name="AdvancedQueries-RetrievingaSubsetofFields"></a>Retrieving a Subset of Fields</h3>
+
+<p>By default on a find operation, the entire document/object is returned.  However we may also request that only certain fields are returned.  Note that the _id field is always returned automatically.</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"><span class="code-comment">// select z from things where x=3
+</span>db.things.find( { x : 3 }, { z : 1 } );
+</pre>
+</div></div>
+<p>You can also remove specific fields that you know will be large:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java"><span class="code-comment">// get all posts about mongodb without comments
+</span>db.posts.find( { tags : 'mongodb' }, { comments : 0 } );
+</pre>
+</div></div>
+<h5><a name="AdvancedQueries-$sliceoperator"></a>$slice operator</h5>
+
+<div class="panelMacro"><table class="noteMacro"><colgroup><col width="24"><col></colgroup><tbody><tr><td valign="top"><img src="warning.gif" alt="" align="absmiddle" border="0" height="16" width="16"></td><td><b>New in MongoDB 1.5.1</b><br></td></tr></tbody></table></div>
+<p>You can use the $slice operator to retrieve a subset of elements in an array.</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.posts.find({}, {comments:{$slice: 5}}) <span class="code-comment">// first 5 comments
+</span>db.posts.find({}, {comments:{$slice: -5}}) <span class="code-comment">// last 5 comments
+</span>db.posts.find({}, {comments:{$slice: [20, 10]}}) <span class="code-comment">// skip 20, limit 10
+</span>db.posts.find({}, {comments:{$slice: [-20, 10]}}) <span class="code-comment">// 20 from end, limit 10</span>
+</pre>
+</div></div>
+<p>More examples at <a href="http://github.com/mongodb/mongo/tree/master/jstests/slice1.js">example slice1</a></p>
+<h3><a name="AdvancedQueries-ConditionalOperators:&lt;,&lt;=,&gt;,&gt;="></a>Conditional Operators : &lt;, &lt;=, &gt;, &gt;=</h3>
+
+<p>Use these special forms for greater than and less than comparisons in queries, since they have to be represented in the query document:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.collection.find({ <span class="code-quote">"field"</span> : { $gt: value } } );   <span class="code-comment">// greater than  : field &gt; value
+</span>db.collection.find({ <span class="code-quote">"field"</span> : { $lt: value } } );   <span class="code-comment">// less than  :  field &lt; value
+</span>db.collection.find({ <span class="code-quote">"field"</span> : { $gte: value } } );  <span class="code-comment">// greater than or equal to : field &gt;= value
+</span>db.collection.find({ <span class="code-quote">"field"</span> : { $lte: value } } );  <span class="code-comment">// less than or equal to : field &lt;= value</span>
+</pre>
+</div></div>
+<p>For example:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.things.find({j : {$lt: 3}});
+db.things.find({j : {$gte: 4}});
+</pre>
+</div></div>
+<p>You can also combine these operators to specify ranges:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.collection.find({ <span class="code-quote">"field"</span> : { $gt: value1, $lt: value2 } } );    <span class="code-comment">// value1 &lt; field &lt; value</span>
+</pre>
+</div></div>
+<h3><a name="AdvancedQueries-ConditionalOperator:$ne"></a>Conditional Operator : $ne</h3>
+
+<p>Use $ne for "not equals".</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.things.find( { x : { $ne : 3 } } );
+</pre>
+</div></div>
+<h3><a name="AdvancedQueries-ConditionalOperator:$in"></a>Conditional Operator : $in</h3>
+
+<p>The <tt>$in</tt> operator is analogous to the SQL <tt>IN</tt> modifier, allowing you to specify an array of possible matches.</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.collection.find( { <span class="code-quote">"field"</span> : { $in : array } } );
+</pre>
+</div></div>
+<p>Let's consider a couple of examples.   From our <em>things</em> collection, we could choose to get a subset of documents based upon the value of the 'j' key:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.things.find({j:{$in: [2,4,6]}});
+</pre>
+</div></div>
+<p>Suppose the collection <tt>updates</tt> is a list of social network style news items; we want to see the 10 most recent updates from our friends.  We might invoke:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.updates.ensureIndex( { ts : 1 } ); <span class="code-comment">// ts == timestamp
+</span><span class="code-keyword">var</span> myFriends = myUserObject.friends; <span class="code-comment">// let's assume <span class="code-keyword">this</span> gives us an array of DBRef's of my friends
+</span><span class="code-keyword">var</span> latestUpdatesForMe = db.updates.find( { user : { $in : myFriends } } ).sort( { ts : -1 } ).limit(10);
+</pre>
+</div></div>
+<h3><a name="AdvancedQueries-ConditionalOperator:$nin"></a>Conditional Operator : $nin</h3>
+
+<p>The <tt>$nin</tt> operator is similar to <tt>$in</tt> except that it selects objects for which the specified field does not have any value in the specified array.  For example</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.things.find({j:{$nin: [2,4,6]}});
+</pre>
+</div></div>
+<p>would match {<tt>j:1,b:2</tt>} but not {<tt>j:2,c:9</tt>}.</p>
+
+<h3><a name="AdvancedQueries-ConditionalOperator:$mod"></a>Conditional Operator : $mod</h3>
+
+<p>The <tt>$mod</tt> operator allows you to do fast modulo queries to replace a common case for where clauses. For example, the following $where query:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.things.find( <span class="code-quote">"<span class="code-keyword">this</span>.a % 10 == 1"</span>)
+</pre>
+</div></div>
+<p>can be replaced by:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.things.find( { a : { $mod : [ 10 , 1 ] } } )
+</pre>
+</div></div>
+<h3><a name="AdvancedQueries-ConditionalOperator:$all"></a>Conditional Operator: $all</h3>
+
+<p>The <tt>$all</tt> operator is similar to <tt>$in</tt>, but instead of matching any value in the specified array all values in the array must be matched.  For example, the object</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">{ a: [ 1, 2, 3 ] }</pre>
+</div></div>
+<p>would be matched by</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.things.find( { a: { $all: [ 2, 3 ] } } );</pre>
+</div></div>
+<p>but not</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.things.find( { a: { $all: [ 2, 3, 4 ] } } );</pre>
+</div></div>
+<p>An array can have more elements than those specified by the <tt>$all</tt> criteria. <tt>$all</tt> specifies a minimum set of elements that must be matched.</p>
+
+<h3><a name="AdvancedQueries-ConditionalOperator:$size"></a>Conditional Operator : $size</h3>
+
+<p>The <tt>$size</tt> operator matches any array with the specified number of elements.  The following example would match the object {<tt>a:["foo"]</tt>}, since that array has just one element:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.things.find( { a : { $size: 1 } } );
+</pre>
+</div></div>
+<p>You cannot use <tt>$size</tt> to find a range of sizes (for example: arrays with more than 1 element).  If you need to query for a range, create an extra <tt>size</tt> field that you increment when you add elements.</p>
+
+<h3><a name="AdvancedQueries-ConditionalOperator:{{$exists}}"></a>Conditional Operator: <tt>$exists</tt></h3>
+
+<p>Check for existence (or lack thereof) of a field.</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.things.find( { a : { $exists : <span class="code-keyword">true</span> } } ); <span class="code-comment">// <span class="code-keyword">return</span> object <span class="code-keyword">if</span> a is present
+</span>db.things.find( { a : { $exists : <span class="code-keyword">false</span> } } ); <span class="code-comment">// <span class="code-keyword">return</span> <span class="code-keyword">if</span> a is missing</span>
+</pre>
+</div></div>
+<div class="panelMacro"><table class="warningMacro"><colgroup><col width="24"><col></colgroup><tbody><tr><td valign="top"><img src="forbidden.gif" alt="" align="absmiddle" border="0" height="16" width="16"></td><td> Currently $exists is not able to use an index. Indexes on other fields are still used. </td></tr></tbody></table></div>
+<h3><a name="AdvancedQueries-ConditionalOperator:{{$type}}"></a>Conditional Operator: <tt>$type</tt></h3>
+
+<p>The <tt>$type</tt> operator matches values based on their <a href="http://bsonspec.org/">BSON</a> type.</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.things.find( { a : { $type : 2 } } ); <span class="code-comment">// matches <span class="code-keyword">if</span> a is a string
+</span>db.things.find( { a : { $type : 16 } } ); <span class="code-comment">// matches <span class="code-keyword">if</span> a is an <span class="code-object">int</span></span>
+</pre>
+</div></div>
+<p>Possible types are:</p>
+
+<div class="table-wrap">
+<table class="confluenceTable"><tbody>
+<tr>
+<th class="confluenceTh"> Type Name </th>
+<th class="confluenceTh"> Type Number </th>
+</tr>
+<tr>
+<td class="confluenceTd"> Double </td>
+<td class="confluenceTd"> 1 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> String </td>
+<td class="confluenceTd"> 2 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> Object </td>
+<td class="confluenceTd"> 3 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> Array </td>
+<td class="confluenceTd"> 4 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> Binary data </td>
+<td class="confluenceTd"> 5 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> Object id </td>
+<td class="confluenceTd"> 7 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> Boolean </td>
+<td class="confluenceTd"> 8 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> Date </td>
+<td class="confluenceTd"> 9 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> Null </td>
+<td class="confluenceTd"> 10 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> Regular expression </td>
+<td class="confluenceTd"> 11 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> JavaScript code </td>
+<td class="confluenceTd"> 13 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> Symbol </td>
+<td class="confluenceTd"> 14 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> JavaScript code with scope </td>
+<td class="confluenceTd"> 15 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> 32-bit integer </td>
+<td class="confluenceTd"> 16 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> Timestamp </td>
+<td class="confluenceTd"> 17 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> 64-bit integer </td>
+<td class="confluenceTd"> 18 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> Min key </td>
+<td class="confluenceTd"> 255 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> Max key </td>
+<td class="confluenceTd"> 127 </td>
+</tr>
+</tbody></table>
+</div>
+
+
+<p>For more information on types and BSON in general, see <a href="http://www.bsonspec.org/">http://www.bsonspec.org</a>.</p>
+
+<h3><a name="AdvancedQueries-$or"></a>$or</h3>
+
+<p>The <tt>$or</tt> operator lets you use a boolean or expression to do queries.  You give $or a list of expressions, any of which can satisfy the query.</p>
+
+<div class="panelMacro"><table class="noteMacro"><colgroup><col width="24"><col></colgroup><tbody><tr><td valign="top"><img src="warning.gif" alt="" align="absmiddle" border="0" height="16" width="16"></td><td><b>New in MongoDB 1.5.3</b><br></td></tr></tbody></table></div>
+<p>Simple:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.foo.find( { $or : [ { a : 1 } , { b : 2 } ] } )
+</pre>
+</div></div>
+<p>With another field</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.foo.find( { name : <span class="code-quote">"bob"</span> , $or : [ { a : 1 } , { b : 2 } ] } )
+</pre>
+</div></div>
+
+<p>The <tt>$or</tt> operator retrieves matches for each or clause individually and eliminates duplicates when returning results. A number of <tt>$or</tt> optimizations are planned for 1.8. See <a href="http://groups.google.com/group/mongodb-user/browse_thread/thread/e5f73b489e52cc13#">this thread</a> for details.</p>
+
+<h3><a name="AdvancedQueries-RegularExpressions"></a>Regular Expressions</h3>
+
+<p>You may use regexes in database query expressions:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.customers.find( { name : /acme.*corp/i } );
+</pre>
+</div></div>
+<p>For simple prefix queries (also called rooted regexps) like <tt>/^prefix/</tt>, the database will use an index when available and appropriate (much like most SQL databases that use indexes for a <tt>LIKE 'prefix%'</tt> expression). This only works if you don't have <tt>i</tt> (case-insensitivity) in the flags.</p>
+
+<div class="panelMacro"><table class="noteMacro"><colgroup><col width="24"><col></colgroup><tbody><tr><td valign="top"><img src="warning.gif" alt="" align="absmiddle" border="0" height="16" width="16"></td><td>While <tt>/^a/</tt>, <tt>/^a.*/</tt>, and <tt>/^a.*$/</tt> are equivalent and will all use an index in the same way, the later two require scanning the whole string so they will be slower. The first format can stop scanning after the prefix is matched.</td></tr></tbody></table></div>
+<p>MongoDB uses <a href="http://www.pcre.org/pcre.txt">PCRE</a> for regular expressions.  Valid flags are:</p>
+
+<ul>
+	<li><tt>i</tt> - Case insensitive.  Letters in the pattern match both upper  and  lower<br>
+case  letters.</li>
+	<li><tt>m</tt> - Multiline. By default, Mongo treats the subject string as consisting  of  a  single line  of characters (even if it actually contains newlines). The "start of line" metacharacter (^) matches only at the  start  of  the  string, while  the  "end  of line" metacharacter ($) matches only at the end of the string, or before a terminating newline.<br>
+When <tt>m</tt> it  is set, the "start of line" and "end of line" constructs match immediately following or immediately  before  internal newlines  in  the  subject string, respectively, as well as at the very start and end. If there are no newlines in a subject string, or no occurrences of ^ or $  in  a  pattern, setting <tt>m</tt> has no effect.</li>
+	<li><tt>x</tt> - Extended.  If set, whitespace  data characters in the pattern are totally ignored except when escaped or inside a character class. Whitespace does not include the VT character (code 11). In addition, characters between an unescaped # outside a character class and the next newline,  inclusive,  are  also  ignored.<br>
+This  option  makes  it possible to include comments inside complicated patterns.  Note, however, that this applies only  to  data  characters. Whitespace   characters  may  never  appear  within  special  character sequences in a pattern, for  example  within  the  sequence <tt>(?(</tt> which introduces a conditional subpattern.</li>
+</ul>
+
+
+<h3><a name="AdvancedQueries-ValueinanArray"></a>Value in an Array</h3>
+
+<p>To look for  the value "red" in an array field <tt>colors</tt>:</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.things.find( { colors : <span class="code-quote">"red"</span> } );
+</pre>
+</div></div>
+<p>That is, when "colors" is inspected, if it is an array, each value in the array is checked.&nbsp; This technique <a indepth="true" href="dot+notation+@28reaching+into+objects@29.html" title="Dot Notation (Reaching into Objects)">may be mixed</a> with the embedded object technique below.</p>
+
+<h3><a name="AdvancedQueries-ConditionalOperator:$elemMatch"></a>Conditional Operator: $elemMatch</h3>
+
+<p>Version 1.3.1 and higher.</p>
+
+<p>Use $elemMatch to check if an element in an array matches the specified match expression.</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">&gt; t.find( { x : { $elemMatch : { a : 1, b : { $gt : 1 } } } } )&nbsp;
+{ <span class="code-quote">"_id"</span> : ObjectId(<span class="code-quote">"4b5783300334000000000aa9"</span>),
+  <span class="code-quote">"x"</span> : [ { <span class="code-quote">"a"</span> : 1, <span class="code-quote">"b"</span> : 3 }, 7, { <span class="code-quote">"b"</span> : 99 }, { <span class="code-quote">"a"</span> : 11 } ]
+}
+</pre>
+</div></div>
+<p>Note that a single array element must match all the criteria specified; thus, the following query is semantically different in that each criteria can match a different element in the x array:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">&gt; t.find( { <span class="code-quote">"x.a"</span> : 1, <span class="code-quote">"x.b"</span> : { $gt : 1 } } )
+</pre>
+</div></div>
+<p>See the <a indepth="true" href="dot+notation+@28reaching+into+objects@29.html" title="Dot Notation (Reaching into Objects)">dot notation</a> page for more.</p>
+
+<h3><a name="AdvancedQueries-ValueinanEmbeddedObject"></a>Value in an Embedded Object</h3>
+
+<p>For example, to look <tt>author.name=="joe"</tt> in a postings collection with embedded author objects:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.postings.find( { <span class="code-quote">"author.name"</span> : <span class="code-quote">"joe"</span> } );
+</pre>
+</div></div>
+<p>See the <a indepth="true" href="dot+notation+@28reaching+into+objects@29.html" title="Dot Notation (Reaching into Objects)">dot notation</a> page for more.</p>
+
+<h3><a name="AdvancedQueries-Metaoperator:$not"></a>Meta operator: $not</h3>
+
+<p>Version 1.3.3 and higher.</p>
+
+<p>The $not meta operator can be used to negate the check performed by a standard operator.  For example:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.customers.find( { name : { $not : /acme.*corp/i } } );
+</pre>
+</div></div>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.things.find( { a : { $not : { $mod : [ 10 , 1 ] } } } );
+</pre>
+</div></div>
+<h3><a name="AdvancedQueries-JavascriptExpressionsand{{$where}}"></a>Javascript Expressions and <tt>$where</tt></h3>
+
+<p>In addition to the structured query syntax shown so far, you may specify query expressions as Javascript.  To do so, pass a string containing a Javascript expression to <tt>find()</tt>, or assign such a string to the query object member <tt>$where</tt>.  The database will evaluate this expression for each object scanned.  When the result is true, the object is returned in the query results.</p>
+
+<p>For example, the following statements all do the same thing:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.myCollection.find( { a : { $gt: 3 } } );
+db.myCollection.find( { $where: <span class="code-quote">"<span class="code-keyword">this</span>.a &gt; 3"</span> } );
+db.myCollection.find(<span class="code-quote">"<span class="code-keyword">this</span>.a &gt; 3"</span>);
+f = function() { <span class="code-keyword">return</span> <span class="code-keyword">this</span>.a &gt; 3; } db.myCollection.find(f);
+</pre>
+</div></div>
+<p>Javascript executes more slowly than the native operators listed on this page, but is very flexible.  See the <a href="http://www.mongodb.org/display/DOCS/Server-Side+Processing" title="Server-Side Processing">server-side processing</a> page for more information.</p>
+
+<h3><a name="AdvancedQueries-{{sort()}}"></a><tt>sort()</tt></h3>
+
+<p><tt>sort()</tt> is analogous to the ORDER BY statement in SQL - it requests that items be returned in a particular order.  We pass <tt>sort()</tt> a key pattern which indicates the desired order for the result.</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.myCollection.find().sort( { ts : -1 } ); <span class="code-comment">// sort by ts, descending order</span>
+</pre>
+</div></div>
+<p><tt>sort()</tt> may be combined with the <tt>limit()</tt> function.  In fact, if you do not have a relevant index for the specified key pattern, <tt>limit()</tt> is recommended as there is a limit on the size of sorted results when an index is not used. Without a <tt>limit()</tt>, or index, a full in-memory sort must be done but by using a <tt>limit()</tt> it reduces the memory and increases the speed of the operation by using an optimized sorting algorithm.</p>
+
+<h3><a name="AdvancedQueries-{{limit()}}"></a><tt>limit()</tt></h3>
+
+<p><tt>limit()</tt> is analogous to the LIMIT statement in MySQL: it specifies a maximum number of results to return.  For best performance, use <tt>limit()</tt> whenever possible.  Otherwise, the database may return more objects than are required for processing.</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.students.find().limit(10).forEach( function(student) { print(student.name + <span class="code-quote">"&lt;p&gt;"</span>); } );
+</pre>
+</div></div>
+<div class="panelMacro"><table class="noteMacro"><colgroup><col width="24"><col></colgroup><tbody><tr><td valign="top"><img src="warning.gif" alt="" align="absmiddle" border="0" height="16" width="16"></td><td>In the shell (and most drivers), a limit of <tt>0</tt> is equivalent to setting no limit at all.</td></tr></tbody></table></div>
+<h3><a name="AdvancedQueries-{{skip()}}"></a><tt>skip()</tt></h3>
+
+<p>The <tt>skip()</tt> expression allows one to specify at which object the database should begin returning results.  This is often useful for implementing "paging".  Here's an example of how it might be used in a JavaScript application:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">function printStudents(pageNumber, nPerPage) {
+   print(<span class="code-quote">"Page: "</span> + pageNumber);
+   db.students.find().skip((pageNumber-1)*nPerPage).limit(nPerPage).forEach( function(student) { print(student.name + <span class="code-quote">"&lt;p&gt;"</span>); } );
+}
+</pre>
+</div></div>
+<h3><a name="AdvancedQueries-{{snapshot()}}"></a><tt>snapshot()</tt></h3>
+
+<p>Indicates use of snapshot mode for the query.  Snapshot mode assures no duplicates are returned, or objects missed, which were present at both the start and end of the query's execution (even if the object were updated). If an object is new during the query, or deleted during the query, it may or may not be returned, even with snapshot mode.</p>
+
+<p>Note that short query responses (less than 1MB) are always effectively snapshotted.</p>
+
+<p>Currently, snapshot mode may not be used with sorting or explicit hints.</p>
+
+<h3><a name="AdvancedQueries-{{count()}}"></a><tt>count()</tt></h3>
+
+<p>The <tt>count()</tt> method returns the number of objects matching the query specified.  It is specially optimized to perform the count in the MongoDB server, rather than on the client side for speed and efficiency:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">nstudents = db.students.find({'address.state' : 'CA'}).count();
+</pre>
+</div></div>
+<p>Note that you can achieve the same result with the following, but the following is slow and inefficient as it requires all documents to be put into memory on the client, and then counted.  Don't do this:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">nstudents = db.students.find({'address.state' : 'CA'}).toArray().length; <span class="code-comment">// VERY BAD: slow and uses excess memory</span>
+</pre>
+</div></div>
+<p>On a query using skip() and limit(), count ignores these parameters by default.&nbsp; Use count(true) to have it consider the skip and limit values in the calculation.</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">n = db.students.find().skip(20).limit(10).count(<span class="code-keyword">true</span>);
+</pre>
+</div></div>
+<h3><a name="AdvancedQueries-{{group()}}"></a><tt>group()</tt></h3>
+
+<p>The <tt>group()</tt> method is analogous to GROUP BY in SQL. <tt>group()</tt> is more flexible, actually, allowing the specification of arbitrary reduction operations.  See the <a indepth="true" href="aggregation.html" title="Aggregation">Aggregation</a> section of the <a href="http://www.mongodb.org/display/DOCS/Mongo+Developers%27+Guide" title="Mongo Developers' Guide">Mongo Developers' Guide</a> for more information.</p>
+
+<h3><a name="AdvancedQueries-Specialoperators"></a>Special operators</h3>
+
+<p>only return the index key</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.foo.find()._addSpecial(<span class="code-quote">"$returnKey"</span> , <span class="code-keyword">true</span> )
+</pre>
+</div></div>
+<p>limit the number of items to scan</p>
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">t.find()._addSpecial( <span class="code-quote">"$maxScan"</span> , 50 )
+</pre>
+</div></div>
+<h3><a name="AdvancedQueries-SeeAlso"></a>See Also</h3>
+
+<p>* <a indepth="true" href="optimization.html" title="Optimization">Optimizing Queries</a> (including explain() and hint())</p>
+</div>
+</td>
+<td class="noprint" align="left" valign="top" width="22%">
+<div class="spacetree">
+                                            
+    
+
+<div class="plugin_pagetree">
+
+        
+        
+    <ul class="plugin_pagetree_children_list plugin_pagetree_children_list_noleftspace">
+        <div class="plugin_pagetree_children">
+        </div>
+    </ul>
+
+    <fieldset class="hidden">
+        <input name="treeId" value="" type="hidden">
+        <input name="treeRequestId" value="/plugins/pagetree/naturalchildren.action?decorator=none&amp;excerpt=false&amp;sort=position&amp;reverse=false&amp;disableLinks=false" type="hidden">
+        <input name="treePageId" value="131469" type="hidden">
+
+        <input name="noRoot" value="false" type="hidden">
+        <input name="rootPageId" value="131081" type="hidden">
+
+        <input name="rootPage" value="" type="hidden">
+        <input name="startDepth" value="0" type="hidden">
+        <input name="spaceKey" value="DOCS" type="hidden">
+
+        <input name="i18n-pagetree.loading" value="Loading..." type="hidden">
+        <input name="loginUrl" value="/login.action?os_destination=%2Fdisplay%2FDOCS%2FAdvanced%2BQueries" type="hidden">
+
+                <fieldset class="hidden">
+                                                <input name="ancestorId" value="1475670" type="hidden">
+                                    <input name="ancestorId" value="1475637" type="hidden">
+                                    <input name="ancestorId" value="1048712" type="hidden">
+                                    <input name="ancestorId" value="131081" type="hidden">
+                                    </fieldset>
+    </fieldset>
+</div>
+
+
+
+
+<p>
+</p>
+                        <!-- Advanced Queries -->
+</div>
+</td>
+</tr>
+</tbody></table>
+       
+       <hr class="grey">
+       
+       <div class="page-metadata">
+    <ul>
+                <li class="page-metadata-modification-info">
+                    Added by <a class="username:rian url fn" href="http://www.mongodb.org/display/%7Erian">Rian Murphy</a>, last edited by <a class="username:kristina url fn" href="http://www.mongodb.org/display/%7Ekristina">Kristina Chodorow</a> on Aug 21, 2010
+                                        <span class="noprint">&nbsp;(<a href="http://www.mongodb.org/pages/diffpages.action?pageId=131469&amp;originalId=17596946">view change</a>)</span>
+                            </li>
+            </ul>
+      <div id="versionComment" class="noteMacro" style="padding: 5px; display: none;">
+      <strong>Comment:</strong>
+      <br>
+  </div>
+
+    
+</div>                          
+                           
+       <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="http://www.mongodb.org/display/DOCS/Advanced+Queries"
+    dc:identifier="http://www.mongodb.org/display/DOCS/Advanced+Queries"
+    dc:title="Advanced Queries"
+    trackback:ping="http://www.mongodb.org/rpc/trackback/131469"/>
+</rdf:RDF>
+-->
+       
+           
+    
+    
+    
+
+
+<fieldset class="hidden parameters">
+    <legend>Labels parameters</legend>
+    <input id="editLabel" value="Edit" type="hidden">
+    <input id="addLabel" value="Add Labels" type="hidden">
+    <input id="domainName" value="http://www.mongodb.org" type="hidden">
+    <input id="pageId" value="131469" type="hidden">
+    <input id="spaceKey" value="DOCS" type="hidden">
+</fieldset>
+
+<div id="labels-section" class="pageSection">
+    <div id="default-labels-header" class="section-header">
+        <h2 id="labels-section-title" class="section-title ">Labels</h2>
+            </div>
+
+    <div class="labels-editor">
+        <div id="labelsList">
+            <div id="label-7340048" class="confluence-label">
+    <a class="label" rel="nofollow" href="http://www.mongodb.org/label/DOCS/count">count</a>    <span class="remove-label-caption">count</span>
+    <a class="remove-label" href="#">Delete</a>
+</div>
+<div id="label-7340049" class="confluence-label">
+    <a class="label" rel="nofollow" href="http://www.mongodb.org/label/DOCS/skip">skip</a>    <span class="remove-label-caption">skip</span>
+    <a class="remove-label" href="#">Delete</a>
+</div>
+<div id="label-7340050" class="confluence-label">
+    <a class="label" rel="nofollow" href="http://www.mongodb.org/label/DOCS/limit">limit</a>    <span class="remove-label-caption">limit</span>
+    <a class="remove-label" href="#">Delete</a>
+</div>
+<div id="label-7340051" class="confluence-label">
+    <a class="label" rel="nofollow" href="http://www.mongodb.org/label/DOCS/find">find</a>    <span class="remove-label-caption">find</span>
+    <a class="remove-label" href="#">Delete</a>
+</div>
+<div id="label-7340052" class="confluence-label">
+    <a class="label" rel="nofollow" href="http://www.mongodb.org/label/DOCS/query">query</a>    <span class="remove-label-caption">query</span>
+    <a class="remove-label" href="#">Delete</a>
+</div>
+<div id="label-7340053" class="confluence-label">
+    <a class="label" rel="nofollow" href="http://www.mongodb.org/label/DOCS/sort">sort</a>    <span class="remove-label-caption">sort</span>
+    <a class="remove-label" href="#">Delete</a>
+</div>
+<div id="label-7340054" class="confluence-label">
+    <a class="label" rel="nofollow" href="http://www.mongodb.org/label/DOCS/order">order</a>    <span class="remove-label-caption">order</span>
+    <a class="remove-label" href="#">Delete</a>
+</div>
+<div id="label-7340055" class="confluence-label">
+    <a class="label" rel="nofollow" href="http://www.mongodb.org/label/DOCS/like">like</a>    <span class="remove-label-caption">like</span>
+    <a class="remove-label" href="#">Delete</a>
+</div>
+        </div>
+
+        <span class="errorMessage error" id="errorSpan"></span>
+        <form method="GET" action="http://www.mongodb.org/display/DOCS/Advanced+Queries" id="add-labels-form">
+            <div id="labelInputSpan" class="labels-input">
+                <div id="labelOperationErrorContainer" class="hidden">
+                    <span class="error"><span class="errorMessage" id="labelOperationErrorMessage"></span></span>
+                </div>
+
+                <div class="caption">Enter labels to add to this page:</div>
+
+                <input autocomplete="off" id="labelsString" name="labelsString" value="" size="40">
+                <input class="add-labels" value="Add" type="submit">
+                <input class="hide-labels-editor" value="Done" type="submit">
+                <div id="waitImageAndStatus">
+                    <img class="waiting" alt="Please wait" src="wait.gif">&nbsp;
+                    <span id="labelOperationStatus" class="smalltext"></span>
+                </div>
+                <div class="auto_complete" id="labelsAutocompleteList"></div>
+                <div class="labels-tip">
+                    <div id="suggestedLabelsSpan"></div>
+                    Looking for a label? Just start typing.
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+       
+                  
+           
+
+<!--
+    Root decorator: this is a layer of abstraction that Confluence doesn't need. It will be removed eventually.
+-->
+
+
+
+
+    
+        
+    
+    
+
+
+<fieldset class="parameters hidden">
+    <input id="deleteCommentConfirmMessage" value="Are you sure you want to remove the comment?" type="hidden">
+    <input id="collapseTooltip" value="Click to toggle the display of this comment." type="hidden">
+</fieldset>
+
+
+
+
+
+<div id="comments-section" class="pageSection">
+    
+            <div class="section-header">
+            <ul id="comment-top-links" class="global-comment-actions">
+                <li id="comments-expand-collapse">
+                    <a href="#" id="comments-collapse">Collapse All</a>
+                    <span id="collapse-wait" class="hidden">Collapsing…</span>
+                    <span id="expand-wait" class="hidden">Expanding…</span>
+                    <a href="#" class="hidden" id="comments-expand">Expand All</a>
+                </li>
+            </ul>
+        </div>
+            <!-- added by Kristina 1/7/10 -->
+<p>
+<b><a style="color: rgb(55, 95, 160);" href="http://groups.google.com/group/mongodb-user">PLEASE POST QUESTIONS IN  THE USER GROUPS FORUM</a>.</b> 
+Post non-question comments and helpful hints here.
+</p>
+            <!-- end -->
+<div id="disqus_thread"></div><a href="http://disqus.com/" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+    
+    
+                </div>
+
+
+
+
+       
+                                    
+       </div>
+    <br class="clear">
+  </div>
+</div>
+
+<div class="sponsor">Copyright © <a class="smalltext" href="http://www.10gen.com/">10gen</a>, Inc. All Rights Reserved | Licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons</a></div>
+
+
+
+
+
+
+
+<div id="footer">
+                    <ul id="poweredby">
+        <li class="noprint">Powered by <a href="http://www.atlassian.com/software/confluence" class="smalltext">Atlassian Confluence</a> 3.0.0_01, the <a href="http://www.atlassian.com/software/confluence" class="smalltext">Enterprise Wiki</a>.</li>
+        <li class="print-only">Printed by Atlassian Confluence 3.0.0_01, the Enterprise Wiki.</li>
+        <li class="noprint"><a href="http://jira.atlassian.com/secure/BrowseProject.jspa?id=10470" class="smalltext">Bug/feature request</a> –</li>
+        <li class="noprint"><a href="http://www.atlassian.com/about/connected.jsp?s_kwcid=Confluence-stayintouch" class="smalltext">Atlassian news</a> –</li>
+        <li class="noprint"><a href="http://www.mongodb.org/administrators.action">Contact administrators</a></li>
+    </ul>
+</div>
+
+
+</body></html>

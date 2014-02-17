@@ -1,0 +1,589 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" dir="ltr" xml:lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		
+                <!-- Skin = Monaco.php -->
+		<meta name="description" content="This is a tutorial showing how to create your own syntax files in Vim. This provides syntax highlighting to show the different elements of files that you use. In this tutorial, all file names matching a particular extension will use the highlighting rules defined with the syntax commands shown below.">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta name="generator" content="MediaWiki 1.15.5">
+		<meta name="keywords" content="Vim Tips Wiki,vim,Creating your own syntax files,Filetype.vim,Syntax folding of Vim scripts,VimTip1560,VimTip1562,Clearmoments/celssc,Clearmoments/celstarcat,JohnBeckett,New tips/200804">
+		<link rel="canonical" href="http://vim.wikia.com/wiki/Creating_your_own_syntax_files">
+		<link rel="alternate" type="application/x-wiki" title="Edit this page" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit">
+		<link rel="edit" title="Edit this page" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit">
+		<link rel="apple-touch-icon" href="http://images.wikia.com/vim/images/b/bc/Wiki.png">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="search" type="application/opensearchdescription+xml" href="http://vim.wikia.com/opensearch_desc.php" title="Vim Tips Wiki (en)">
+		<link rel="copyright" href="http://community.wikia.com/wiki/Wikia:Licensing">
+		<link rel="alternate" type="application/rss+xml" title="Vim Tips Wiki RSS feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=rss">
+		<link rel="alternate" type="application/atom+xml" title="Vim Tips Wiki Atom feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=atom">
+		<!--[if lt IE 7]><script type="text/javascript">var wgShowIE6PhaseOutMessage = true;</script><![endif]-->
+		
+		<title>Creating your own syntax files - Vim Tips Wiki</title>
+		
+
+<!-- GetCoreCSS -->
+<!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IElt7" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IEeq7" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IEeq8" /><![endif]-->
+<!--[if !IE]>--><!--<![endif]-->
+<!-- GetExtensionsCSS -->
+<!-- GetThemeCSS -->
+<!-- GetSiteCSS -->
+<!-- GetUserCSS -->	
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Creating_your_own_syntax_files TOCimprovements loggedout color2 wikiaSkinMonaco action_view" id="body">
+	<form action="http://vim.wikia.com/wiki/VimTip1561" method="post" name="userajaxloginform" id="userajaxloginformhide" style="display: none;">
+			<input value="" name="wpName" id="wpName1Ajax" tabindex="101" size="20" type="text">
+			<input name="wpPassword" id="wpPassword1Ajax" tabindex="102" size="20" type="password">
+			<input name="wpRemember" id="wpRemember1Ajax" tabindex="104" value="1" type="checkbox">
+		</form>
+	<!-- HEADER -->
+		<div id="wikia_header" class="reset color2">
+			<div class="monaco_shrinkwrap">
+			<div id="wikiaBranding">
+			<div id="wikia_logo"><a rel="nofollow" href="http://www.wikia.com/Wikia">Wikia</a></div>						<button id="headerButtonHub" class="header-button color1">Technology<img src="blank.gif"></button>
+
+			</div>
+<div id="requestWikiData"><a rel="nofollow" href="http://www.wikia.com/Special:CreateWiki" id="request_wiki" class="wikia-button">Create a new wiki</a>&nbsp;<span id="request_wiki_ad"></span></div>			<div id="userData">
+<span id="fbconnect"><a href="#" class="fb_button fb_button_small"><span class="fb_button_text">Connect</span></a></span>				<span id="userLogin">
+					<a rel="nofollow" class="ajaxLogin" id="login" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=Creating_your_own_syntax_files&amp;type=login">Log in</a>
+				</span>
+
+					<a rel="nofollow" class="wikia-button ajaxRegister" id="register" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=Creating_your_own_syntax_files&amp;type=signup">Create an account</a>
+
+		</div>
+		</div>
+	</div>
+
+	<div class="monaco_shrinkwrap"><div id="background_accent1"></div></div>
+	<div style="position: relative;"><div id="background_accent2"></div></div>
+
+		<div id="background_strip" class="reset">
+			<div class="monaco_shrinkwrap">
+
+			<div id="accent_graphic1"></div>
+			<div id="accent_graphic2"></div>
+			<div id="wiki_logo" style="background-image: url(&quot;wiki.png&quot;);"><a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" accesskey="z">Vim Tips Wiki</a></div>
+			<!--[if lt IE 7]>
+			<style type="text/css">
+				#wiki_logo {
+					background-image: none !important;
+					filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://images.wikia.com/vim/images/b/bc/Wiki.png', sizingMethod='image');
+				}
+			</style>
+			<![endif]-->
+			</div>
+		</div>
+		<!-- /HEADER -->
+
+		<!-- PAGE -->
+
+	<div class="monaco_shrinkwrap" id="monaco_shrinkwrap_main">
+		<div id="wikia_page">
+					<div id="page_bar" class="reset color1 clearfix">
+				<ul id="page_controls">
+		  							  <li id="control_edit" class=""><img src="blank.gif" class="sprite edit"><a rel="nofollow" id="ca-edit" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit" title="You can edit this page. Please use the preview button before saving. [e]" accesskey="e">Edit this page</a></li>
+		  							  <li id="control_history" class=""><img src="blank.gif" class="sprite history"><a rel="nofollow" id="ca-history" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=history" title="Past versions of this page [h]" accesskey="h">History</a></li>
+		  							  <li id="control_watch" class=""><img src="blank.gif" class="sprite watch"><a rel="nofollow" id="ca-watch" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=watch" title="Follow this page [w]" accesskey="w">Follow</a></li>
+		  							  <li id="control_share_feature" class=""><img src="blank.gif" class="sprite share"><a rel="nofollow" id="ca-share_feature" href="#">Share this article</a></li>
+		  						  </ul>
+						  <ul id="page_tabs">
+		  							  <li class="selected"><a href="http://vim.wikia.com/wiki/Creating_your_own_syntax_files" id="ca-nstab-main" title="View the content page [c]" accesskey="c" class="selected">Article</a></li>
+		  							  <li class="new"><a href="http://vim.wikia.com/index.php?title=Talk:Creating_your_own_syntax_files&amp;action=edit&amp;redlink=1" id="ca-talk" title="Discussion about the content page [t]" accesskey="t" class="new">Discussion</a></li>
+		  				</ul>
+			</div>
+		        	<!-- #### BEGIN AdEngine::AdEngine::getSetupHtml ####-->
+<!-- #### END AdEngine::AdEngine::getSetupHtml ####-->
+					<!-- ARTICLE -->
+
+			<div id="article">
+				<a name="top" id="top"></a>
+								<h1 class="firstHeading">Creating your own syntax files<span class="editsection-upper noprint"><a href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit" title="Creating your own syntax files" onclick='WET.byStr("articleAction/topedit")' rel="nofollow" id="te-editsection-noprompt" class="wikia-button">edit this page</a></span></h1>				<div id="bodyContent">
+					<h3 id="siteSub">From Vim Tips Wiki</h3>
+					<div id="contentSub">(Redirected from <a href="http://vim.wikia.com/index.php?title=VimTip1561&amp;redirect=no" title="VimTip1561" rel="nofollow">VimTip1561</a>)</div>
+																				<!-- #### BEGIN AdEngine::AdEngine::getSetupHtml ####-->
+<!-- #### END AdEngine::AdEngine::getSetupHtml ####-->
+<div id="TOP_LEADERBOARD" class="noprint"><div id="Liftium_728x90_1_php"><iframe src="index_1.html" id="TOP_LEADERBOARD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="90" scrolling="no" width="728"></iframe></div></div>					
+					<!-- start content -->
+					
+				<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"></div></div>
+				
+<div><b><a href="http://vim.wikia.com/wiki/Creating_your_own_syntax_files" class="text" title="http://vim.wikia.com/wiki/Creating_your_own_syntax_files">Tip 1561</a></b> <a href="http://vim.wikia.com/wiki/VimTip1560" title="VimTip1560" class="mw-redirect"><small>Previous</small></a> <a href="http://vim.wikia.com/wiki/VimTip1562" title="VimTip1562" class="mw-redirect"><small>Next</small></a>
+<p><b><a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:New_tips/200804#Creating_your_own_syntax_files" title="Vim Tips Wiki:New tips/200804">created</a></b>&nbsp;April 29, 2008 · <b>complexity</b>&nbsp;intermediate · <b>author</b>&nbsp;Clearmoments · <b>version</b>&nbsp;7.0
+</p>
+<hr>
+</div>
+<p>This is a tutorial showing how to create your own syntax files in Vim. This provides syntax highlighting to show the different elements of files that you use. In this tutorial, all file names matching a particular extension will use the highlighting rules defined with the syntax commands shown below.
+</p>
+<table id="toc" class="toc" summary="Contents"><tbody><tr><td><div id="toctitle"><h2>Contents</h2> <span class="toctoggle">[<a href="javascript:toggleToc()" rel="nofollow" class="internal" id="togglelink">show</a>]</span></div>
+<ul>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Example:_Celestia_star_catalogs"><span class="tocnumber">1</span> <span class="toctext">Example: Celestia star catalogs</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Syntax_files"><span class="tocnumber">2</span> <span class="toctext">Syntax files</span></a>
+<ul>
+<li class="toclevel-2"><a rel="nofollow" href="#Build_a_syntax_file"><span class="tocnumber">2.1</span> <span class="toctext">Build a syntax file</span></a></li>
+<li class="toclevel-2"><a rel="nofollow" href="#Keyword.2C_match_and_region_elements"><span class="tocnumber">2.2</span> <span class="toctext">Keyword, match and region elements</span></a>
+<ul>
+<li class="toclevel-3"><a rel="nofollow" href="#Keywords"><span class="tocnumber">2.2.1</span> <span class="toctext">Keywords</span></a></li>
+<li class="toclevel-3"><a rel="nofollow" href="#Matches_.28and_addendum_to_keywords.29"><span class="tocnumber">2.2.2</span> <span class="toctext">Matches (and addendum to keywords)</span></a></li>
+<li class="toclevel-3"><a rel="nofollow" href="#Regions"><span class="tocnumber">2.2.3</span> <span class="toctext">Regions</span></a></li>
+<li class="toclevel-3"><a rel="nofollow" href="#Bringing_it_together"><span class="tocnumber">2.2.4</span> <span class="toctext">Bringing it together</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Telling_Vim_how_to_highlight_.2B_final_touches"><span class="tocnumber">3</span> <span class="toctext">Telling Vim how to highlight + final touches</span></a>
+<ul>
+<li class="toclevel-2"><a rel="nofollow" href="#Install_the_syntax_file"><span class="tocnumber">3.1</span> <span class="toctext">Install the syntax file</span></a></li>
+<li class="toclevel-2"><a rel="nofollow" href="#Setup_your_filetype.vim_file"><span class="tocnumber">3.2</span> <span class="toctext">Setup your filetype.vim file</span></a></li>
+</ul>
+</li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#See_also"><span class="tocnumber">4</span> <span class="toctext">See also</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Comments"><span class="tocnumber">5</span> <span class="toctext">Comments</span></a>
+<ul>
+<li class="toclevel-2"><a rel="nofollow" href="#Directories"><span class="tocnumber">5.1</span> <span class="toctext">Directories</span></a></li>
+</ul>
+</li>
+</ul>
+</td></tr></tbody></table>
+<a rel="nofollow" name="Example:_Celestia_star_catalogs" id="Example:_Celestia_star_catalogs"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit&amp;section=1" title="Edit section: Example: Celestia star catalogs" rel="nofollow">edit</a></span> <span class="mw-headline">Example: Celestia star catalogs</span></h2><div style="float: left; margin-top: 10px; margin-bottom: 10px; margin-right: 20px; clear: left;" id="Liftium_300x250_2"><iframe id="Liftium_300x250_2_140" marginwidth="0" marginheight="0" src="index_2.html" frameborder="0" height="250" scrolling="no" width="300"></iframe></div>
+<p>This tutorial creates a syntax file for Celestia star catalogs. <a class="external" title="http://www.shatters.net/celestia/" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Creating_your_own_syntax_files&amp;u=http%3A%2F%2Fwww.shatters.net%2Fcelestia%2F">Celestia</a> is a great program for anyone who likes astronomy and space. All we need to know for this tutorial is that a star catalog lists a star name with its positional information, distance and attributes (color, radius, mass, brightness). Here is an example entry in a star catalog file (<tt>.stc</tt>):
+</p>
+<pre>600000 "My Star"
+{
+  RA 24.406489
+  Dec -9.404052
+  SpectralType "Q"
+  Mass 1.09
+  AbsMag 1.29
+  Distance 124.729260
+}
+</pre>
+<p>The entry consists of a number, a string, and a <tt>{...}</tt> block, with some keywords within that block ("RA", "Dec", etc). Comments are prefixed with "#" like in shell scripts or conf files. There can be multiple entries like this with a number (the HIP number), the string, and the block containing the attributes. Celestia gets more complicated than this because you can have multiple stars going around a barycenter, but we will only cover stars.
+</p>
+<a rel="nofollow" name="Syntax_files" id="Syntax_files"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit&amp;section=2" title="Edit section: Syntax files" rel="nofollow">edit</a></span> <span class="mw-headline">Syntax files</span></h2>
+<a rel="nofollow" name="Build_a_syntax_file" id="Build_a_syntax_file"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit&amp;section=3" title="Edit section: Build a syntax file" rel="nofollow">edit</a>]</span> <span class="mw-headline">Build a syntax file</span></h3>
+<p>First, create a new file named <tt>cel.vim</tt> with the following contents:
+</p>
+<pre>" Vim syntax file
+" Language: Celestia Star Catalogs
+" Maintainer: Kevin Lauder
+" Latest Revision: 26 April 2008
+
+if exists("b:current_syntax")
+  finish
+endif
+</pre>
+<p>Vim comments start with a quote. Following the convention of the built-in syntax files, we start with a comment flower box. The test <tt>if&nbsp;exists("b:current_syntax") ...</tt> checks whether an earlier file has defined a syntax already. If so, the script exits with <tt>finish</tt>.
+</p>
+<a rel="nofollow" name="Keyword.2C_match_and_region_elements" id="Keyword.2C_match_and_region_elements"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit&amp;section=4" title="Edit section: Keyword, match and region elements" rel="nofollow">edit</a>]</span> <span class="mw-headline">Keyword, match and region elements</span></h3>
+<p>There are three major syntax elements, and commands to describe those elements. In order to syntax highlight, we must be able to describe what to highlight. Here is an example of what they look like:
+</p>
+<pre>" Keywords
+syn keyword syntaxElementKeyword keyword1 keyword2 nextgroup=syntaxElement2
+
+" Matches
+syn match syntaxElementMatch 'regexp' contains=syntaxElement1 nextgroup=syntaxElement2 skipwhite
+
+" Regions
+syn region syntaxElementRegion start='x' end='y'
+</pre>
+<a rel="nofollow" name="Keywords" id="Keywords"></a><h4><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit&amp;section=5" title="Edit section: Keywords" rel="nofollow">edit</a>]</span> <span class="mw-headline">Keywords</span></h4>
+<p>Keywords are simple. Take for example the programming language BASIC. In BASIC there are several keywords like PRINT, OPEN and IF. To have Vim recognize them, you can use a definition:
+</p>
+<pre>syn keyword basicLanguageKeywords PRINT OPEN IF
+</pre>
+<p>For now we are not going to worry about <tt>nextgroup=</tt>.
+</p><p>Vim will now recognize the keywords PRINT, OPEN and IF as syntax elements of type <tt>basicLanguageKeywords</tt>. You can add more on the same line, or add another line with the same type (<tt>basicLanguageKeywords</tt>). For example, to add the keywords DO, WHILE and WEND, you could add to the previous line like this:
+</p>
+<pre>syn keyword basicLanguageKeywords PRINT OPEN IF DO WHILE WEND
+</pre>
+<p>or, add another line, like this:
+</p>
+<pre>syn keyword basicLanguageKeywords PRINT OPEN IF
+syn keyword basicLanguageKeywords DO WHILE WEND
+</pre>
+<p>We will apply this procedure to our star catalog entry from above:
+</p>
+<pre>600000 "My Star"
+{
+  RA 24.406489
+  Dec -9.404052
+  SpectralType "Q"
+  Mass 1.09
+  AbsMag 1.29
+  Distance 124.729260
+}
+</pre>
+<p>We can group the following keywords as part of a syntax element called <tt>celBlockCmd</tt> by adding the following to our syntax file.
+</p>
+<pre>syn keyword celBlockCmd RA Dec SpectralType Mass Distance AbsMag
+</pre>
+<p>Vim will now recognize these keywords which may be sufficient for your purpose. However, what if we want to match the text following the keywords, like those numbers and string values?
+</p>
+<a rel="nofollow" name="Matches_.28and_addendum_to_keywords.29" id="Matches_.28and_addendum_to_keywords.29"></a><h4><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit&amp;section=6" title="Edit section: Matches (and addendum to keywords)" rel="nofollow">edit</a>]</span> <span class="mw-headline">Matches (and addendum to keywords)</span></h4>
+<p>All this keyword stuff logically leads to matches. Take the above example once again. After the keywords ("RA", "Dec", "AbsMag" etc) there are numbers. We want Vim to know that following a certain keyword there is going to be some set of characters, perhaps defined as a regular expression.
+</p><p>This is where matches come in; along with an additional caveat to using keywords, the <tt>nextgroup</tt> and <tt>skipwhite</tt> arguments as seen above.
+</p>
+<pre>syn match celNumber '\d\+'
+syn keyword celBlockCmd RA Dec Mass Distance AbsMag nextgroup=celNumber skipwhite
+</pre>
+<p>Now as you can see the match was given a regular expression <tt>\d\+</tt> meaning to match one or more (<tt>\+</tt>) digits 0-9 (<tt>\d</tt>). The keyword syntax element <tt>celBlockCmd</tt> has been modified slightly because following the <tt>SpectralType</tt> keyword is not a number but a string. Hence it has been excluded from the list of keywords for now. Later we will address that problem by creating another regular expression to match strings and apply it to that keyword.
+</p><p>Notice the <tt>nextgroup</tt> argument. We are telling the editor to expect a <tt>celNumber</tt> after the keyword. So that is the first pattern the editor will attempt to match after finding one of those keywords.
+</p><p>The <tt>skipwhite</tt> argument simply tells the editor to expect some whitespace (spaces or tabs) between the keyword and the number.
+</p><p>One problem is that the above pattern (<tt>\d\+</tt>) will only match numbers like 1234, 93, and 0. It will not match numbers like 3.1416 or -1. To fix that, we need a more advanced regular expression borrowed from one of the existing Vim syntax files and slightly modified for our needs.
+</p>
+<pre>" Integer with - + or nothing in front
+syn match celNumber '\d\+'
+syn match celNumber '[-+]\d\+'
+
+" Floating point number with decimal no E or e (+,-)
+syn match celNumber '\d\+\.\d*'
+syn match celNumber '[-+]\d\+\.\d*'
+
+" Floating point like number with E and no decimal point (+,-)
+syn match celNumber '[-+]\=\d[[:digit:]]*[eE][\-+]\=\d\+'
+syn match celNumber '\d[[:digit:]]*[eE][\-+]\=\d\+'
+
+" Floating point like number with E and decimal point (+,-)
+syn match celNumber '[-+]\=\d[[:digit:]]*\.\d*[eE][\-+]\=\d\+'
+syn match celNumber '\d[[:digit:]]*\.\d*[eE][\-+]\=\d\+'
+</pre>
+<p>We can keep creating more lines like <tt>syn match celNumber <i>pattern</i></tt> to match all those patterns as one syntax element type (in this case <tt>celNumber</tt>).
+</p>
+<a rel="nofollow" name="Regions" id="Regions"></a><h4><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit&amp;section=7" title="Edit section: Regions" rel="nofollow">edit</a>]</span> <span class="mw-headline">Regions</span></h4>
+<p>Looking at the star catalog entry again shows another challenge:
+</p>
+<pre>600000 "My Star"
+{
+  RA 24.406489
+  Dec -9.404052
+  SpectralType "Q"
+  Mass 1.09
+  AbsMag 1.29
+  Distance 124.729260
+}
+</pre>
+<p>The first number is outside the brackets, and it's not really a number, it's an <a class="external" title="http://www.rssd.esa.int/index.php?project=HIPPARCOS" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Creating_your_own_syntax_files&amp;u=http%3A%2F%2Fwww.rssd.esa.int%2Findex.php%3Fproject%3DHIPPARCOS">HIP catalog entry</a> (more like a star's ID number rather than a value with physical meaning like mass or distance). The real numbers are the arguments to the keywords (like "RA" and "Dec"). It would be nice if we could have the editor match those differently than regular numbers. But, since <tt>celNumber</tt>s and HIPs consist of the digits 0-9 they conflict with one another. How can we fix that discrepancy?
+</p><p>Note that numbers with values exist only within brackets. Outside of the brackets it is an ID number rather than a value. We have to add another argument to the keyword and match definition blocks, and introduce another type of syntax element: a region.
+</p><p>First, we let the editor know that the keywords only exist within brackets. Second, we specify that <tt>celNumber</tt> syntax elements only exist within brackets. This is the concept of a region.
+</p>
+<pre>syn region celDescBlock start="{" end="}" fold transparent
+</pre>
+<p>The <tt>fold</tt> argument means that Vim can increase the fold count inside brackets so you can press Ctrl-F9 to expand and contract the code. The <tt>transparent</tt> is the important keyword here. It tells the editor to continue to apply matches and keywords to what is inside the region. Otherwise the region would not be colorized properly.
+</p><p>We must add another additional argument to finish off everything.
+</p>
+<pre>syn region celDescBlock start="{" end="}" fold transparent contains=celNumber,celBlockCmd
+</pre>
+<p>The <tt>contains</tt> argument tells the editor which syntax elements this region will contain. In this case keywords and numbers. But we have strings too, right? So let's implement the required syntax elements since we know all about keywords, matches and regions now. In addition we pickup another argument along the way, <tt>contained</tt>.
+</p><p>Let's define comments as a syntax element and see how <tt>contained</tt> works.
+</p>
+<pre>syn keyword celTodo contained TODO FIXME XXX NOTE
+syn match celComment "#.*$" contains=celTodo
+</pre>
+<p>Comments start with a "#" and run until the end of line. So that's a simple regular expression <tt>'#.*$'</tt>. Starts with a "#" and match all characters until the end of a line.
+</p><p><tt>contained</tt> tells the editor that the keyword is only valid when contained by another syntax element, in this case a <tt>celTodo</tt> is only treated as a separate syntax element when contained by <tt>celComment</tt>.
+</p>
+<a rel="nofollow" name="Bringing_it_together" id="Bringing_it_together"></a><h4><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit&amp;section=8" title="Edit section: Bringing it together" rel="nofollow">edit</a>]</span> <span class="mw-headline">Bringing it together</span></h4>
+<pre>syn keyword celTodo contained TODO FIXME XXX NOTE
+syn match celComment "#.*$" contains=celTodo
+
+"----------------------------------------------------------------
+" Celestia Star Catalog Numbers
+"----------------------------------------------------------------
+
+" Regular int like number with - + or nothing in front
+syn match celNumber '\d\+' contained display
+syn match celNumber '[-+]\d\+' contained display
+
+" Floating point number with decimal no E or e (+,-)
+syn match celNumber '\d\+\.\d*' contained display
+syn match celNumber '[-+]\d\+\.\d*' contained display
+
+" Floating point like number with E and no decimal point (+,-)
+syn match celNumber '[-+]\=\d[[:digit:]]*[eE][\-+]\=\d\+' contained display
+syn match celNumber '\d[[:digit:]]*[eE][\-+]\=\d\+' contained display
+
+" Floating point like number with E and decimal point (+,-)
+syn match celNumber '[-+]\=\d[[:digit:]]*\.\d*[eE][\-+]\=\d\+' contained display
+syn match celNumber '\d[[:digit:]]*\.\d*[eE][\-+]\=\d\+' contained display
+
+syn region celString start='"' end='"' contained
+syn region celDesc start='"' end='"'
+
+syn match celHip '\d\{1,6}' nextgroup=celString
+syn region celDescBlock start="{" end="}" fold transparent contains=ALLBUT,celHip,celDesc
+
+syn keyword celBlockCmd RA Dec Distance AbsMag nextgroup=celNumber
+syn keyword celBlockCmd SpectralType nextgroup=celString
+</pre>
+<a rel="nofollow" name="Telling_Vim_how_to_highlight_.2B_final_touches" id="Telling_Vim_how_to_highlight_.2B_final_touches"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit&amp;section=9" title="Edit section: Telling Vim how to highlight + final touches" rel="nofollow">edit</a></span> <span class="mw-headline">Telling Vim how to highlight + final touches</span></h2><div style="float: right; margin-top: 10px; margin-bottom: 10px; margin-left: 10px; clear: right;" id="Liftium_300x250_3"><iframe style="display: none;" id="Liftium_300x250_3_428" marginwidth="0" marginheight="0" src="index_3.html" frameborder="0" height="250" scrolling="no" width="300"></iframe><iframe id="Liftium_300x250_3_20" marginwidth="0" marginheight="0" src="index_4.html" frameborder="0" height="250" scrolling="no" width="300"></iframe></div>
+<p>We can now take the syntax elements and use the <tt>hi def link</tt> command to tell Vim how to highlight them.
+</p><p>Set the <tt>b:current_syntax</tt> variable to a name, for example, "cel". That name can be used to modify the Un/Commentify (F6/Shift-F6) script in Cream, for example to block comment-out lines with the new file type.
+</p>
+<pre>let b:current_syntax = "cel"
+
+hi def link celTodo        Todo
+hi def link celComment     Comment
+hi def link celBlockCmd    Statement
+hi def link celHip         Type
+hi def link celString      Constant
+hi def link celDesc        PreProc
+hi def link celNumber      Constant
+</pre>
+<p>The <tt>hi def link</tt> command has different types of highlighting options that we need not consider. The ones used here are:
+</p>
+<ul><li><tt>Todo</tt>: used for the todo comments (ones that have "TODO: something" in them)
+</li><li><tt>Comment</tt>: indicates a code comment
+</li><li><tt>Statement</tt>: a code statement like a for loop
+</li><li><tt>Type</tt>: a user defined type generally
+</li><li><tt>PreProc</tt>: a pre-processor statement like <tt>#include &lt;stdio.h&gt;</tt> in C
+</li><li><tt>Constant</tt>: like a string or number in code
+</li></ul>
+<p>These of course are guidelines. In this example, there are no statements or pre-processor commands, however <tt>celBlockCmd</tt> has been set to use <tt>Statement</tt> highlighting, and <tt>celHip</tt> will use <tt>Type</tt> highlighting.
+</p><p>You can view more options in Vim with <a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=syntax" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Creating_your_own_syntax_files&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dsyntax">:help&nbsp;syntax</a>
+</p>
+<a rel="nofollow" name="Install_the_syntax_file" id="Install_the_syntax_file"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit&amp;section=10" title="Edit section: Install the syntax file" rel="nofollow">edit</a>]</span> <span class="mw-headline">Install the syntax file</span></h3>
+<p>Save the file, then install it by copying the file to <tt>~/.vim/syntax/cel.vim</tt> on Unix-based systems, or to <tt>$HOME/vimfiles/syntax/cel.vim</tt> on Windows systems.
+</p><p>You may need to create the <tt>.vim</tt> (or <tt>vimfiles</tt>) directory, and you may need to create the <tt>syntax</tt> subdirectory. In Vim, your home directory is specified with <tt>~</tt> on Unix systems, and <tt>$HOME</tt> on Windows systems. You can see what directories to use by entering commands like the following in Vim:
+</p>
+<pre>:echo expand('~')
+:echo expand('~/.vim/syntax/cel.vim')
+:echo $HOME
+:echo expand('$HOME/vimfiles/syntax/cel.vim')
+</pre>
+<p>Using the directory specified above means the syntax file will be available to you, but not to other users. If you want the syntax file to be available to all users, do not save the file under your home directory; instead, copy the file under your Vim system directory. The default for both Unix and Windows is that system-wide syntax files are placed in the <tt>$VIM/vimfiles/syntax</tt> directory (which you may need to create). You can see the full path name of the required file by entering the following in Vim:
+</p>
+<pre>:echo expand('$VIM/vimfiles/syntax/cel.vim')
+</pre>
+<p>Another procedure to show the base directories which can be used is to enter either of the following commands in Vim (the first displays the value of the <tt>'runtimepath'</tt> option, and the second inserts that value into the current buffer):
+</p>
+<pre>:set runtimepath?
+:put =&amp;runtimepath
+</pre>
+<p>By default, the first item in <tt>runtimepath</tt> is the base directory for your personal Vim files, and the second item is the base directory for system-wide Vim files. Place the <tt>syntax</tt> subdirectory under either of these directories; doing that means your syntax file will not be overwritten when you next upgrade Vim. Do not use a directory containing the files distributed with Vim because that will be overwritten during an upgrade (in particular, do not use the <tt>$VIMRUNTIME</tt> directory).
+</p>
+<a rel="nofollow" name="Setup_your_filetype.vim_file" id="Setup_your_filetype.vim_file"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit&amp;section=11" title="Edit section: Setup your filetype.vim file" rel="nofollow">edit</a>]</span> <span class="mw-headline">Setup your filetype.vim file</span></h3>
+<p>Now we have to make sure Vim knows how to interpret your file. Add filetype detection to <a href="http://vim.wikia.com/wiki/Filetype.vim" title="Filetype.vim">filetype.vim</a>: in this case the Vim script is named <tt>cel.vim</tt> so we use the filetype "cel".
+</p>
+<pre>au BufRead,BufNewFile *.stc setfiletype cel
+</pre>
+<a rel="nofollow" name="See_also" id="See_also"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit&amp;section=12" title="Edit section: See also" rel="nofollow">edit</a></span> <span class="mw-headline">See also</span></h2>
+<ul><li><a href="http://vim.wikia.com/wiki/Syntax_folding_of_Vim_scripts" title="Syntax folding of Vim scripts">Syntax folding of Vim scripts</a> for an example of adding to an existing syntax instead of creating your own as this tip demonstrates.
+</li><li><a href="http://vim.wikia.com/wiki/User:Clearmoments/celstarcat" title="User:Clearmoments/celstarcat">celstarcat.vim</a> an actual stc syntax file
+</li><li><a href="http://vim.wikia.com/wiki/User:Clearmoments/celssc" title="User:Clearmoments/celssc">celssc.vim</a> an actual ssc syntax file
+</li></ul>
+<a rel="nofollow" name="Comments" id="Comments"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit&amp;section=13" title="Edit section: Comments" rel="nofollow">edit</a></span> <span class="mw-headline">Comments</span></h2>
+<p><span style="color: rgb(0, 0, 0); background-color: rgb(240, 240, 240);"><i><b>&nbsp;TO DO&nbsp;</b></i></span><br>
+</p>
+<ul><li>Is Ctrl-F9 something to do with Cream?
+</li><li>The "Setup your filetype.vim file" section needs a bit more explanation since the linked tip is rather waffly and possibly incorrect (it refers to <tt>%USERPROFILE%</tt> on Windows).
+</li></ul>
+<a rel="nofollow" name="Directories" id="Directories"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit&amp;section=14" title="Edit section: Directories" rel="nofollow">edit</a>]</span> <span class="mw-headline">Directories</span></h3>
+<p>I have removed the following advice for MacVim on Mac OS (but will keep this for a while as an explanation):
+</p>
+<dl><dd>For MacVim, put the syntax file in directory <tt>/Applications/MacVim.app/Contents/Resources/vim/runtime/syntax</tt>
+</dd><dd>To get there, right click MacVim in the Applications directory and "Show Package Contents".
+</dd></dl>
+<p>While I have no knowledge of MacVim, I have found confirmation that the above is the directory containing Vim's syntax files (i.e. those distributed with Vim). It is always a mistake to make changes in a distribution directory because updating Vim may (and one day will) cause your changes to be lost. <a href="http://vim.wikia.com/wiki/User:JohnBeckett" title="User:JohnBeckett">JohnBeckett</a> 08:55, June 6, 2010 (UTC)
+</p><!-- 
+NewPP limit report
+Preprocessor node count: 158/1000000
+Post-expand include size: 1093/2097152 bytes
+Template argument size: 140/2097152 bytes
+Expensive parser function count: 0/100
+--><!-- Saved in parser cache with key vim:pcache:idhash:5831-0!1!0!!en!2 and timestamp 20100728085550 --><div class="printfooter">
+Retrieved from "<a href="http://vim.wikia.com/wiki/Creating_your_own_syntax_files">http://vim.wikia.com/wiki/Creating_your_own_syntax_files</a>"</div>
+<table style="margin-top: 1em; width: 100%; clear: both;"><tbody><tr><td style="text-align: center;"><div id="PREFOOTER_LEFT_BOXAD" class="noprint"><div id="Liftium_300x250_2_php"><iframe src="index_5.html" id="PREFOOTER_LEFT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div></td><td style="text-align: center;"><div id="PREFOOTER_RIGHT_BOXAD" class="noprint"><div id="Liftium_300x250_3_php"><iframe src="index_6.html" id="PREFOOTER_RIGHT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div></td></tr>
+</tbody></table><div id="catlinks" class="catlinks"><div id="mw-normal-catlinks"><a href="http://vim.wikia.com/wiki/Special:Categories" title="Special:Categories" rel="nofollow">Categories</a>: <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:VimTip" title="Category:VimTip">VimTip</a></span> | <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:Filetype" title="Category:Filetype">Filetype</a></span> | <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:Syntax" title="Category:Syntax">Syntax</a></span> | <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:Todo" title="Category:Todo">Todo</a></span></div> <div id="csAddCategorySwitch" class="noprint" style="background: none repeat scroll 0% 0% rgb(221, 221, 221); position: relative; float: left; border: 1px solid rgb(187, 187, 187); -moz-border-radius: 3px 3px 3px 3px; padding: 0pt 5px; line-height: 16px;"><img src="blank.gif" class="sprite-small add"><a href="#" onfocus="this.blur();" style="color: rgb(0, 0, 0); font-size: 0.85em; text-decoration: none; display: inline-block;" rel="nofollow">Add category</a></div></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+
+				<!--google_ad_section_end-->
+				<!--contextual_targeting_end-->
+
+			</div>
+			<!-- /ARTICLE -->
+			
+			<!-- ARTICLE FOOTER -->
+			<div id="articleFooter" class="reset">
+				<table cellspacing="0">
+					<tbody><tr>
+						<td class="col1">
+							<ul class="actions" id="articleFooterActions">
+								<li><a rel="nofollow" id="fe_edit_icon" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit"><img src="blank.gif" id="fe_edit_img" class="sprite edit" alt="Edit this page"></a> <div>Improve Vim Tips Wiki by <a id="fe_edit_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=edit">editing this page</a></div></li>
+								<li><a id="fe_user_icon" rel="nofollow" href="http://vim.wikia.com/wiki/User:JohnBeckett"><img src="blank.gif" id="fe_user_img" class="sprite user" alt="View user page"></a> <div><a id="fe_user_link" rel="nofollow" href="http://vim.wikia.com/wiki/User:JohnBeckett">JohnBeckett</a> made an edit on June 6, 2010</div></li>
+							</ul>
+							<ul id="articleFooterActions3" class="actions clearfix">
+								<li id="fe_history"><a rel="nofollow" id="fe_history_icon" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=history"><img src="blank.gif" id="fe_history_img" class="sprite history" alt="History"></a> <div><a id="fe_history_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;action=history">History</a></div></li>
+								<li id="fe_recent"><a rel="nofollow" id="fe_recent_icon" href="http://vim.wikia.com/wiki/Special:RecentChangesLinked/Creating_your_own_syntax_files"><img src="blank.gif" id="fe_recent_img" class="sprite recent" alt="Related changes"></a> <div><a id="fe_recent_link" rel="nofollow" href="http://vim.wikia.com/wiki/Special:RecentChangesLinked/Creating_your_own_syntax_files">Related changes</a></div></li></ul><ul id="articleFooterActions4" class="actions clearfix">
+								<li id="fe_permalink"><a rel="nofollow" id="fe_permalink_icon" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;oldid=27582"><img src="blank.gif" id="fe_permalink_img" class="sprite move" alt="Permanent link"></a> <div><a id="fe_permalink_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Creating_your_own_syntax_files&amp;oldid=27582">Permanent link</a></div></li>
+								<li id="fe_whatlinkshere"><a rel="nofollow" id="fe_whatlinkshere_icon" href="http://vim.wikia.com/wiki/Special:WhatLinksHere/Creating_your_own_syntax_files"><img src="blank.gif" id="fe_whatlinkshere_img" class="sprite pagelink" alt="What links here"></a> <div><a id="fe_whatlinkshere_link" rel="nofollow" href="http://vim.wikia.com/wiki/Special:WhatLinksHere/Creating_your_own_syntax_files">What links here</a></div></li></ul>						</td>
+						<td class="col2">
+							<ul class="actions" id="articleFooterActions2">
+								<li><a rel="nofollow" id="fe_random_icon" href="http://vim.wikia.com/wiki/Special:Random"><img src="blank.gif" id="fe_random_img" class="sprite random" alt="Random page"></a> <div><a rel="nofollow" id="fe_random_link" href="http://vim.wikia.com/wiki/Special:Random">View random page</a></div></li>
+								<li><img src="blank.gif" id="fe_report_img" class="sprite error" alt="Report a problem with this page"> <div><a style="cursor: pointer;" id="fe_report_link">Report a problem with this page</a></div></li>
+
+								<li><img src="blank.gif" id="fe_sharefeature_img" class="sprite share" alt="Share this article"> <div><a style="cursor: pointer;" id="fe_sharefeature_link">Share this article</a></div></li>
+							</ul>
+		<div class="clearfix" id="star-rating-row">
+		  <strong>Rate this article:</strong>
+		  		  <div id="star-rating-wrapper">
+		    <ul id="star-rating" class="star-rating" rel="20">
+			<li style="width: 100px;" id="current-rating" class="current-rating"><span>5.0000/5</span></li>
+			<li><a rel="nofollow" class="one-star" id="star1" title="1/5"><span>1</span></a></li>
+			<li><a rel="nofollow" class="two-stars" id="star2" title="2/5"><span>2</span></a></li>
+			<li><a rel="nofollow" class="three-stars" id="star3" title="3/5"><span>3</span></a></li>
+			<li><a rel="nofollow" class="four-stars" id="star4" title="4/5"><span>4</span></a></li>
+			<li><a rel="nofollow" class="five-stars" id="star5" title="5/5"><span>5</span></a></li>
+		    </ul>
+		    <span style="display: none;" id="unrateLink"><a rel="nofollow" id="unrate" href="#">Unrate it</a></span>
+		  </div>
+		</div>
+								</td>
+					</tr>
+				</tbody></table>
+			</div>
+			<!-- /ARTICLE FOOTER -->
+
+		</div>
+		<!-- /PAGE -->
+<!-- Begin Analytics -->
+<!-- Start for GA_Urchin, page_view -->
+
+
+<!-- Start for GA_Urchin, hub -->
+
+<!-- Start for GA_Urchin, onewiki -->
+<!-- No tracking for this wiki -->
+<!-- Start for GA_Urchin, pagetime -->
+
+<!-- End Analytics -->
+
+
+		
+		
+				
+		
+		<div id="monaco_footer" class="reset">
+
+
+		<div id="spotlight_footer">
+		<table>
+		<tbody><tr>
+			<td>
+				<!-- ## BEGIN AdProviderGAM::AdProviderGAM::getSetupHtml ## -->
+
+<!-- ## END AdProviderGAM::AdProviderGAM::getSetupHtml ## -->
+<!-- ## BEGIN AdProviderGAM::AdProviderGAM::getBatchCallHtml ## -->
+
+<!-- ## END AdProviderGAM::AdProviderGAM::getBatchCallHtml ## -->
+<div id="google_ads_div_FOOTER_SPOTLIGHT_LEFT"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_LEFT" name="google_ads_iframe_FOOTER_SPOTLIGHT_LEFT" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_7.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+			<td>
+				<div id="google_ads_div_FOOTER_SPOTLIGHT_MIDDLE"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_MIDDLE" name="google_ads_iframe_FOOTER_SPOTLIGHT_MIDDLE" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_8.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+			<td>
+				<div id="google_ads_div_FOOTER_SPOTLIGHT_RIGHT"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_RIGHT" name="google_ads_iframe_FOOTER_SPOTLIGHT_RIGHT" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_9.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+		</tr>
+		</tbody></table>
+		</div>
+				  <table id="wikia_footer">
+	  			<tbody><tr>
+				<td colspan="2" id="wikia_corporate_footer">
+	  <a rel="nofollow" href="http://www.wikia.com/About_Us"><span>About</span></a> | <a rel="nofollow" href="http://www.wikia.com/Hiring">Jobs</a> | <a rel="nofollow" href="http://www.wikia.com/Terms_of_Use">Terms of Use</a> | <a rel="nofollow" href="http://www.wikia.com/Special:CreateWiki">Create a wiki</a> | <a rel="nofollow" href="http://www.wikia.com/Privacy_Policy">Privacy Policy</a> | <a rel="nofollow" href="http://community.wikia.com/wiki/Wikia:Licensing" title="w:Wikia:Licensing">CC-BY-SA</a> | <a rel="nofollow" href="http://community.wikia.com/wiki/Community_Guidelines">Community Guidelines</a> | <a rel="nofollow" href="http://vim.wikia.com/wiki/Special:Contact">Contact</a> | <a rel="nofollow" href="http://www.wikia.com/Advertising">Advertise</a> | <a rel="nofollow" href="http://www.wikia.com/Lifestyle">Lifestyle</a>				</td>
+			</tr>
+	  	  </tbody></table>
+					</div>
+		<!-- WIDGETS -->
+		<div id="widget_sidebar" class="reset widget_sidebar">
+
+			<!-- SEARCH/NAVIGATION -->
+			<div class="widget" id="navigation_widget">
+				<div id="search_box" class="color1">
+					<form action="http://vim.wikia.com/wiki/Special:Search" id="searchform">
+						<input id="search_field" name="search" value="Search this wiki" maxlength="200" onfocus="sf_focus(event);" alt="Search this wiki" autocomplete="off" title="Search this wiki [alt-shift-f]" accesskey="f" type="text">
+						<input name="go" value="1" type="hidden">
+						<input src="blank.gif" id="search-button" class="sprite search" type="image">
+					</form>
+				</div>
+<div id="navigation"><div id="menu-item_1" class="menu-item"><a id="a-menu-item_1" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" rel="nofollow">Home</a></div><div id="menu-item_2" class="menu-item"><a id="a-menu-item_2" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Community_Portal" rel="nofollow">Community portal</a></div><div id="menu-item_3" class="menu-item"><a id="a-menu-item_3" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Todo" rel="nofollow">To do</a></div><div id="menu-item_4" class="menu-item"><a id="a-menu-item_4" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" rel="nofollow">Top content<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="#" rel="nofollow">Editor's pick<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Best_Vim_Tips" rel="nofollow">Best Vim Tips</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Browsing_programs_with_tags" rel="nofollow">Browsing programs with tags</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_end-of-line_format_for_dos-mac-unix" rel="nofollow">Change end-of-line format for dos-mac-unix</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces" rel="nofollow">Converting tabs to spaces</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Cut/copy_and_paste_using_visual_selection" rel="nofollow">Cut/copy and paste using visual selection</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/File_no_longer_available_-_mark_buffer_modified" rel="nofollow">File no longer available - mark buffer modified</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/most_popular" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div class="menu-item"><a href="#" rel="nofollow">Most visited<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Best_Vim_Tips" rel="nofollow">Best Vim Tips</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace" rel="nofollow">Search and replace</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_end-of-line_format_for_dos-mac-unix" rel="nofollow">Change end-of-line format for dos-mac-unix</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Indenting_source_code" rel="nofollow">Indenting source code</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Open_vimrc_file" rel="nofollow">Open vimrc file</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_the_color_scheme" rel="nofollow">Change the color scheme</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces" rel="nofollow">Converting tabs to spaces</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/most_visited" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div class="menu-item"><a href="#" rel="nofollow">Highest voted<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Add/change_file_extension_in_current_buffer" rel="nofollow">Add/change file extension in current buffer</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Manage_a_tasklist_of_to-do_code_snippets" rel="nofollow">Manage a tasklist of to-do code snippets</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Vim_Doclet" rel="nofollow">Vim Doclet</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Record_a_recursive_macro" rel="nofollow">Record a recursive macro</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Improved_Javascript_Indent_script_for_Vim" rel="nofollow">Improved Javascript Indent script for Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Scripting_-_Indirectly_Referencing_Variables" rel="nofollow">Scripting - Indirectly Referencing Variables</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/highest_ratings" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div style="border: 0px none;" class="menu-item"><a href="#" rel="nofollow">Newly changed<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Any_word_completion" rel="nofollow">Any word completion</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Copy,_cut_and_paste" rel="nofollow">Copy, cut and paste</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint" rel="nofollow">Format your xml document using xmllint</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Restoring_indent_after_typing_hash" rel="nofollow">Restoring indent after typing hash</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard" rel="nofollow">In line copy and paste to system clipboard</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/C%2B%2B_code_completion" rel="nofollow">C++ code completion</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Power_of_g" rel="nofollow">Power of g</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/newly_changed" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div></div></div><div id="menu-item_9" class="menu-item"><a id="a-menu-item_9" href="http://vim.wikia.com/wiki/Category:Folding" rel="nofollow">Folding category<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Syntax_folding_of_Vim_scripts" rel="nofollow">Syntax folding of Vim scripts</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding" rel="nofollow">Folding</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Java/C/C%2B%2B_folding" rel="nofollow">Java/C/C++ folding</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding_with_Regular_Expression" rel="nofollow">Folding with Regular Expression</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Auto-fold_Perl_subs" rel="nofollow">Auto-fold Perl subs</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding_for_plain_text_files_based_on_indentation" rel="nofollow">Folding for plain text files based on indentation</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Outline_editing_of_Python_programs" rel="nofollow">Outline editing of Python programs</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Category:Folding" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div id="menu-item_10" class="menu-item"><a id="a-menu-item_10" href="http://vim.wikia.com/wiki/Category:Searching" rel="nofollow">Searching category<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace" rel="nofollow">Search and replace</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Searching" rel="nofollow">Searching</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches" rel="nofollow">Highlight all search pattern matches</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection" rel="nofollow">Search and replace in a visual selection</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Power_of_g" rel="nofollow">Power of g</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Remove_unwanted_empty_lines" rel="nofollow">Remove unwanted empty lines</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Category:Searching" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div></div><table id="link_box_table" cellspacing="0">		<tbody id="link_box_dynamic">
+			<tr>
+				<td colspan="2">
+					<ul>
+<li id="dynamic-links-write-article-row" class="link_box_dynamic_item"><a rel="nofollow" id="dynamic-links-write-article-icon" href="http://vim.wikia.com/wiki/toolbox/dynamic/CreatePage"><img src="blank.gif" id="dynamic-links-write-article-img" class="sprite edit" alt="Create a new article"></a> <a id="dynamic-links-write-article-link" rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/dynamic/CreatePage">Create a new article</a></li><li id="dynamic-links-add-image-row" class="link_box_dynamic_item"><a rel="nofollow" id="dynamic-links-add-image-icon" href="http://vim.wikia.com/wiki/toolbox/dynamic/Upload"><img src="blank.gif" id="dynamic-links-add-image-img" class="sprite photo" alt="Upload a new image"></a> <a id="dynamic-links-add-image-link" rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/dynamic/Upload">Upload a new image</a></li>					</ul>
+				</td>
+			</tr>
+		</tbody>
+		<tbody id="link_box" class="color2 linkbox_static">
+			<tr>
+				<td>
+					<ul>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/recentchanges">Recent changes</a></li>
+						<li><a rel="nofollow" href="http://community.wikia.com/wiki/Blog:Wikia_Staff_Blog" onclick="WET.byStr('toolbox/w_c_community_Blog_Wikia_Staff_Blog')">Staff blog</a></li>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/helppage">Help</a></li>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/randompage">Random page</a></li>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/specialpages">Special pages</a></li>
+						<li style="font-size: 1px; position: absolute; top: -10000px;"><a href="http://vim.wikia.com/wiki/Special:Recentchanges" accesskey="r" rel="nofollow">Recent changes</a><a href="http://vim.wikia.com/wiki/Special:Random" accesskey="x" rel="nofollow">Random page</a></li>
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+			</div>
+			<!-- /SEARCH/NAVIGATION -->
+
+			<!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_NAVBOX_1 --><div style="text-align: center; margin-bottom: 10px;"><div id="LEFT_SKYSCRAPER_1" class="noprint"><div id="Liftium_160x600_4_php"><iframe src="index_10.html" id="LEFT_SKYSCRAPER_1_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none; display: none;" target="_blank" frameborder="0" height="600" scrolling="no" width="160"></iframe></div></div></div>
+
+			<div id="sidebar_1" class="sidebar">
+			<dl class="widget WidgetCommunity" id="widget_303"><dt class="color1 widget_title" id="widget_303_header"><span class="widgetToolbox"></span>Latest activity</dt><dd class="shadow widget_contents" id="widget_303_content"><div class="community_header accent">
+	<span class="article_count dark_text_1">1,593</span> articles on this wiki<br></div>
+<div class="community_body">
+		<ul class="activityfeed widgetfeed" id="widget_303-recently-edited">		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Copy,_cut_and_paste">Copy, cut and paste</a></strong><br>			<cite><span class="timeago" title="2010-08-06T15:40:31Z">17 hours ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/216.235.10.210" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint">Format your xml document using xmllint</a></strong><br>			<cite><span class="timeago" title="2010-08-06T13:01:46Z">19 hours ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/145.242.11.3" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Restoring_indent_after_typing_hash">Restoring indent after typing hash</a></strong><br>			<cite><span class="timeago" title="2010-08-06T07:49:30Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/User:JohnBeckett" rel="nofollow">JohnBeckett</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard">In line copy and paste to system clipboard</a></strong><br>			<cite><span class="timeago" title="2010-08-06T04:33:00Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/68.231.48.165" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/C%2B%2B_code_completion">C++ code completion</a></strong><br>			<cite><span class="timeago" title="2010-08-06T01:57:05Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/User:JohnBeckett" rel="nofollow">JohnBeckett</a></cite>		</li>	</ul></div>
+<div class="toolbar neutral">
+	<a id="community-widget-action-button" href="http://vim.wikia.com/wiki/Special:ActivityFeed" class="wikia-button forward" rel="nofollow">Activity feed</a>
+</div>
+
+</dd></dl><div style="margin-bottom: 10px;"><div id="google_ads_div_LEFT_NAV_205x400"><ins style="position: relative; width: 205px; height: 400px; border: medium none; display: inline-table;"><ins style="position: relative; width: 205px; height: 400px; border: medium none; display: block;"><iframe id="google_ads_iframe_LEFT_NAV_205x400" name="google_ads_iframe_LEFT_NAV_205x400" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_11.html" frameborder="0" height="400" scrolling="no" width="205"></iframe></ins></ins></div></div>
+			<!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_SLIMBOX_1 --><!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_NAVBOX_2 --><div style="text-align: center; margin-bottom: 10px;"><div id="LEFT_SKYSCRAPER_2" class="noprint"><div id="Liftium_160x600_5_php"><iframe src="index_13.html" id="LEFT_SKYSCRAPER_2_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="600" scrolling="no" width="160"></iframe></div></div></div>
+			</div>
+		</div>
+		<!-- /WIDGETS -->
+	<!--/div-->
+
+
+
+<div id="Liftium_0x0_0"><!-- Liftium No ad --></div>
+<!-- #### BEGIN AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+
+
+
+
+
+<!-- #### END AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+<div id="Liftium_0x0_1"><!-- Liftium No ad --></div>
+</div><!-- Start for Comscore, page_view -->
+
+<!-- Begin comScore Tag -->
+
+
+
+<!-- End comScore Tag -->
+<!-- Start for QuantServe, page_view -->
+
+
+<!-- Start for Exelate, page_view -->
+
+
+		
+<img src="__onedot" alt="" border="0" height="1" width="1">
+		<div id="positioned_elements" class="reset"></div>
+		<!-- Served by ap-s14 in 0.414 secs. cpu: 0.060 -->
+	
+
+</body>
+</html>

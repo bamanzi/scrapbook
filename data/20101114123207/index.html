@@ -1,0 +1,1147 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+
+
+
+
+
+<title>I am LAZY bones ? : 《SED单行脚本快速参考》的 awk 实现</title>
+<meta name="generator" content="WordPress 3.0.1">
+
+
+<!--link rel="alternate" type="application/atom+xml" title="Atom" href="http://luy.li/feed/atom/" /-->
+<!--link rel="alternate" type="text/xml" title="RSS .92" href="http://luy.li/feed/rss/" /-->
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://luy.li/feed/">
+<link rel="pingback" href="http://luy.li/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="I am LAZY bones ? » 《SED单行脚本快速参考》的 awk 实现 评论 feed" href="http://luy.li/2009/12/07/sed_awk/feed/">
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://luy.li/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://luy.li/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="I am LAZY bones ?" href="http://luy.li/">
+<link rel="start" title="第一篇“文章”" href="http://luy.li/2006/05/18/%e7%ac%ac%e4%b8%80%e7%af%87%e2%80%9c%e6%96%87%e7%ab%a0%e2%80%9d/">
+<link rel="prev" title="python程序打包工具 ── cx_Freeze" href="http://luy.li/2009/12/04/cx_freeze/">
+<link rel="next" title="记录你的终端操作 ── script" href="http://luy.li/2009/12/09/script/">
+<meta name="generator" content="WordPress 3.0.1">
+<link rel="shortlink" href="http://luy.li/?p=1216">
+
+<!-- All in One SEO Pack 1.6.12.2 by Michael Torbert of Semper Fi Web Design[-1,-1] -->
+<meta name="keywords" content="awk,sed,cli软件,精华">
+<link rel="canonical" href="http://luy.li/2009/12/07/sed_awk/">
+<!-- /all in one seo pack -->
+
+
+
+
+	
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div id="wrap">
+	<div style="width: 100%;">
+	<span style="margin: 0px 0pt 0pt 5px; letter-spacing: 0.1em; font: 42px bonesapa,Agency FB,Sans-Serif,Trebuchet MS,Arial;">
+		<a title="返回首页" href="http://luy.li/">I am LAZY bones ?</a>
+	</span>
+	<span style="margin: 10px; letter-spacing: 0.1em; font: 16px bonesapa,Agency FB,Sans-Serif,Trebuchet MS,Arial;">
+		<a title="写新文章" href="http://luy.li/wp-admin/post-new.php">all linux</a>
+	</span>
+	</div>
+
+<div class="contentout">
+	<div id="content">
+				
+  	
+		<div class="navigation">
+			<div class="alignleft">« <a href="http://luy.li/2009/12/04/cx_freeze/" rel="prev">python程序打包工具 ── cx_Freeze</a></div>
+			<div class="alignright"><a href="http://luy.li/2009/12/09/script/" rel="next">记录你的终端操作 ── script</a> »</div>
+		</div>
+	
+		<div class="post" id="post-1216">
+			<h1><a href="http://luy.li/2009/12/07/sed_awk/" rel="bookmark" title="永久链接: 《SED单行脚本快速参考》的 awk 实现">《SED单行脚本快速参考》的 awk 实现</a></h1>
+	
+			<div class="entry">
+				<p>sed和awk都是linux下常用的流编辑器，他们各有各的特色，本文并不是要做什么对比，而是权当好玩，把<a href="http://sed.sourceforge.net/sed1line_zh-CN.html">《SED单行脚本快速参考》</a>这文章，用awk做了一遍~<br>
+至于孰好孰坏，那真是很难评论了。一般来说，sed的命令会更短小一些，同时也更难读懂；而awk稍微长点，但是if、while这样的，逻辑性比较强，更加像“程序”。到底喜欢用哪个，就让各位看官自己决定吧！<br>
+PS： 貌似这个配色，单行的代码多了以后，拖动的时候会有点眼花的感觉，将就下吧，呵呵。</p>
+<p>文本间隔：<br>
+——–</p>
+<p> # 在每一行后面增加一空行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> G</pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{printf("%s\n\n",$0)}'</span></pre></div></div>
+
+<p> # 将原来的所有空行删除并在每一行后面增加一空行。<br>
+ # 这样在输出的文本中每一行后面将有且只有一空行。</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/^$/d;G'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'!/^$/{printf("%s\n\n",$0)}'</span></pre></div></div>
+
+<p> # 在每一行后面增加两行空行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'G;G'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{printf("%s\n\n\n",$0)}'</span></pre></div></div>
+
+<p> # 将第一个脚本所产生的所有空行删除（即删除所有偶数行）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'n;d'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{f=!f;if(f)print $0}'</span></pre></div></div>
+
+<p> # 在匹配式样“regex”的行之前插入一空行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/regex/{x;p;x;}'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(/regex/)printf("\n%s\n",$0);else print $0}'</span></pre></div></div>
+
+<p> # 在匹配式样“regex”的行之后插入一空行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/regex/G'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(/regex/)printf("%s\n\n",$0);else print $0}'</span></pre></div></div>
+
+<p> # 在匹配式样“regex”的行之前和之后各插入一空行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/regex/{x;p;x;G;}'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(/regex/)printf("\n%s\n\n",$0);else print $0}'</span></pre></div></div>
+
+<p>编号：<br>
+——–</p>
+<p> # 为文件中的每一行进行编号（简单的左对齐方式）。这里使用了“制表符”<br>
+ # （tab，见本文末尾关于’\t’的用法的描述）而不是空格来对齐边缘。</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> = filename <span style="color: rgb(0, 0, 0); font-weight: bold;">|</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'N;s/\n/\t/'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{i++;printf("%d\t%s\n",i,$0)}'</span></pre></div></div>
+
+<p> # 对文件中的所有行编号（行号在左，文字右端对齐）。</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> = filename <span style="color: rgb(0, 0, 0); font-weight: bold;">|</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'N; s/^/     /; s/ *\(.\{6,\}\)\n/\1  /'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{i++;printf("%6d  %s\n",i,$0)}'</span></pre></div></div>
+
+<p> # 对文件中的所有行编号，但只显示非空白行的行号。</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/./='</span> filename <span style="color: rgb(0, 0, 0); font-weight: bold;">|</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/./N; s/\n/ /'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{i++;if(!/^$/)printf("%d %s\n",i,$0);else print}'</span></pre></div></div>
+
+<p> # 计算行数 （模拟 “wc -l”）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'$='</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{i++}END{print i}'</span></pre></div></div>
+
+<p>文本转换和替代：<br>
+——–</p>
+<p> # Unix环境：转换DOS的新行符（CR/LF）为Unix格式。</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/.$//'</span>                     <span style="color: rgb(102, 102, 102); font-style: italic;"># 假设所有行以CR/LF结束</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/^M$//'</span>                    <span style="color: rgb(102, 102, 102); font-style: italic;"># 在bash/tcsh中，将按Ctrl-M改为按Ctrl-V</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/\x0D$//'</span>                  <span style="color: rgb(102, 102, 102); font-style: italic;"># ssed、gsed 3.02.80，及更高版本</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{sub(/\x0D$/,"");print $0}'</span></pre></div></div>
+
+<p> # Unix环境：转换Unix的新行符（LF）为DOS格式。</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">"s/$/<span style="color: rgb(120, 0, 120);">`echo -e \\\r`</span>/"</span>        <span style="color: rgb(102, 102, 102); font-style: italic;"># 在ksh下所使用的命令</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/$'</span><span style="color: rgb(255, 0, 0);">"/<span style="color: rgb(120, 0, 120);">`echo \\\r`</span>/"</span>         <span style="color: rgb(102, 102, 102); font-style: italic;"># 在bash下所使用的命令</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">"s/$/<span style="color: rgb(120, 0, 120);">`echo \\\r`</span>/"</span>           <span style="color: rgb(102, 102, 102); font-style: italic;"># 在zsh下所使用的命令</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/$/\r/'</span>                    <span style="color: rgb(102, 102, 102); font-style: italic;"># gsed 3.02.80 及更高版本</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{printf("%s\r\n",$0)}'</span></pre></div></div>
+
+<p> # DOS环境：转换Unix新行符（LF）为DOS格式。</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">"s/$//"</span>                      <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法 1</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> p                         <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法 2</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;">DOS环境的略过</pre></div></div>
+
+<p> # DOS环境：转换DOS新行符（CR/LF）为Unix格式。<br>
+ # 下面的脚本只对UnxUtils sed 4.0.7 及更高版本有效。要识别UnxUtils版本的<br>
+ #  sed可以通过其特有的“–text”选项。你可以使用帮助选项（“–help”）看<br>
+ # 其中有无一个“–text”项以此来判断所使用的是否是UnxUtils版本。其它DOS<br>
+ # 版本的的sed则无法进行这一转换。但可以用“tr”来实现这一转换。</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">"s/<span style="color: rgb(0, 0, 153); font-weight: bold;">\r</span>//"</span> infile <span style="color: rgb(0, 0, 0); font-weight: bold;">&gt;</span>outfile     <span style="color: rgb(102, 102, 102); font-style: italic;"># UnxUtils sed v4.0.7 或更高版本</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">tr</span> <span style="color: rgb(102, 0, 51);">-d</span> \r <span style="color: rgb(0, 0, 0); font-weight: bold;">&lt;</span>infile <span style="color: rgb(0, 0, 0); font-weight: bold;">&gt;</span>outfile        <span style="color: rgb(102, 102, 102); font-style: italic;"># GNU tr 1.22 或更高版本</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;">DOS环境的略过</pre></div></div>
+
+<p> # 将每一行前导的“空白字符”（空格，制表符）删除<br>
+ # 使之左对齐</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/^[ \t]*//'</span>                <span style="color: rgb(102, 102, 102); font-style: italic;"># 见本文末尾关于'\t'用法的描述</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{sub(/^[ \t]+/,"");print $0}'</span></pre></div></div>
+
+<p> # 将每一行拖尾的“空白字符”（空格，制表符）删除</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/[ \t]*$//'</span>                <span style="color: rgb(102, 102, 102); font-style: italic;"># 见本文末尾关于'\t'用法的描述</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{sub(/[ \t]+$/,"");print $0}'</span></pre></div></div>
+
+<p> # 将每一行中的前导和拖尾的空白字符删除</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/^[ \t]*//;s/[ \t]*$//'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{sub(/^[ \t]+/,"");sub(/[ \t]+$/,"");print $0}'</span></pre></div></div>
+
+<p> # 在每一行开头处插入5个空格（使全文向右移动5个字符的位置）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/^/     /'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{printf("     %s\n",$0)}'</span></pre></div></div>
+
+<p> # 以79个字符为宽度，将所有文本右对齐<br>
+ # 78个字符外加最后的一个空格</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> :a <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'s/^.\{1,78\}$/ &amp;/;ta'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{printf("%79s\n",$0)}'</span></pre></div></div>
+
+<p> # 以79个字符为宽度，使所有文本居中。在方法1中，为了让文本居中每一行的前<br>
+ # 头和后头都填充了空格。 在方法2中，在居中文本的过程中只在文本的前面填充<br>
+ # 空格，并且最终这些空格将有一半会被删除。此外每一行的后头并未填充空格。</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span>  <span style="color: rgb(102, 0, 51);">-e</span> :a <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'s/^.\{1,77\}$/ &amp; /;ta'</span>                     <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法1</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span>  <span style="color: rgb(102, 0, 51);">-e</span> :a <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'s/^.\{1,77\}$/ &amp;/;ta'</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'s/\( *\)\1/\1/'</span>  <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法2</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{for(i=0;i&lt;39-length($0)/2;i++)printf(" ");printf("%s\n",$0)}'</span>  <span style="color: rgb(102, 102, 102); font-style: italic;">#相当于上面的方法二</span></pre></div></div>
+
+<p> # 在每一行中查找字串“foo”，并将找到的“foo”替换为“bar”</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/foo/bar/'</span>                 <span style="color: rgb(102, 102, 102); font-style: italic;"># 只替换每一行中的第一个“foo”字串</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/foo/bar/4'</span>                <span style="color: rgb(102, 102, 102); font-style: italic;"># 只替换每一行中的第四个“foo”字串</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/foo/bar/g'</span>                <span style="color: rgb(102, 102, 102); font-style: italic;"># 将每一行中的所有“foo”都换成“bar”</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/\(.*\)foo\(.*foo\)/\1bar\2/'</span> <span style="color: rgb(102, 102, 102); font-style: italic;"># 替换倒数第二个“foo”</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/\(.*\)foo/\1bar/'</span>            <span style="color: rgb(102, 102, 102); font-style: italic;"># 替换最后一个“foo”</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{gsub(/foo/,"bar");print $0}'</span>   <span style="color: rgb(102, 102, 102); font-style: italic;"># 将每一行中的所有“foo”都换成“bar”</span></pre></div></div>
+
+<p> # 只在行中出现字串“baz”的情况下将“foo”替换成“bar”</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/baz/s/foo/bar/g'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(/baz/)gsub(/foo/,"bar");print $0}'</span></pre></div></div>
+
+<p> # 将“foo”替换成“bar”，并且只在行中未出现字串“baz”的情况下替换</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/baz/!s/foo/bar/g'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(/baz$/)gsub(/foo/,"bar");print $0}'</span></pre></div></div>
+
+<p> # 不管是“scarlet”“ruby”还是“puce”，一律换成“red”</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/scarlet/red/g;s/ruby/red/g;s/puce/red/g'</span>  <span style="color: rgb(102, 102, 102); font-style: italic;">#对多数的sed都有效</span>
+gsed <span style="color: rgb(255, 0, 0);">'s/scarlet\|ruby\|puce/red/g'</span>               <span style="color: rgb(102, 102, 102); font-style: italic;"># 只对GNU sed有效</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{gsub(/scarlet|ruby|puce/,"red");print $0}'</span></pre></div></div>
+
+<p> # 倒置所有行，第一行成为最后一行，依次类推（模拟“tac”）。<br>
+ # 由于某些原因，使用下面命令时HHsed v1.5会将文件中的空行删除</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'1!G;h;$!d'</span>               <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法1</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'1!G;h;$p'</span>             <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法2</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{A[i++]=$0}END{for(j=i-1;j&gt;=0;j--)print A[j]}'</span></pre></div></div>
+
+<p> # 将行中的字符逆序排列，第一个字成为最后一字，……（模拟“rev”）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/\n/!G;s/\(.\)\(.*\n\)/&amp;\2\1/;//D;s/.//'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{for(i=length($0);i&gt;0;i--)printf("%s",substr($0,i,1));printf("\n")}'</span></pre></div></div>
+
+<p> # 将每两行连接成一行（类似“paste”）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'$!N;s/\n/ /'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{f=!f;if(f)printf("%s",$0);else printf(" %s\n",$0)}'</span></pre></div></div>
+
+<p> # 如果当前行以反斜杠“\”结束，则将下一行并到当前行末尾<br>
+ # 并去掉原来行尾的反斜杠</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> :a <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'/\\$/N; s/\\\n//; ta'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(/\\$/)printf("%s",substr($0,0,length($0)-1));else printf("%s\n",$0)}'</span></pre></div></div>
+
+<p> # 如果当前行以等号开头，将当前行并到上一行末尾<br>
+ # 并以单个空格代替原来行头的“=”</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> :a <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'$!N;s/\n=/ /;ta'</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'P;D'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(/^=/)printf(" %s",substr($0,2));else printf("%s%s",a,$0);a="\n"}END{printf("\n")}'</span></pre></div></div>
+
+<p> # 为数字字串增加逗号分隔符号，将“1234567”改为“1,234,567”</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;">gsed <span style="color: rgb(255, 0, 0);">':a;s/\B[0-9]\{3\}\&gt;/,&amp;/;ta'</span>                     <span style="color: rgb(102, 102, 102); font-style: italic;"># GNU sed</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> :a <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'s/\(.*[0-9]\)\([0-9]\{3\}\)/\1,\2/;ta'</span>  <span style="color: rgb(102, 102, 102); font-style: italic;"># 其他sed</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(102, 102, 102); font-style: italic;">#awk的正则没有后向匹配和引用，搞的比较狼狈，呵呵。</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{while(match($0,/[0-9][0-9][0-9][0-9]+/)){$0=sprintf("%s,%s",substr($0,0,RSTART+RLENGTH-4),substr($0,RSTART+RLENGTH-3))}print $0}'</span></pre></div></div>
+
+<p> # 为带有小数点和负号的数值增加逗号分隔符（GNU sed）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;">gsed <span style="color: rgb(102, 0, 51);">-r</span> <span style="color: rgb(255, 0, 0);">':a;s/(^|[^0-9.])([0-9]+)([0-9]{3})/\1\2,\3/g;ta'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(102, 102, 102); font-style: italic;">#和上例差不多</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{while(match($0,/[^\.0-9][0-9][0-9][0-9][0-9]+/)){$0=sprintf("%s,%s",substr($0,0,RSTART+RLENGTH-4),substr($0,RSTART+RLENGTH-3))}print $0}'</span></pre></div></div>
+
+<p> # 在每5行后增加一空白行 （在第5，10，15，20，等行后增加一空白行）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;">gsed <span style="color: rgb(255, 0, 0);">'0~5G'</span>                      <span style="color: rgb(102, 102, 102); font-style: italic;"># 只对GNU sed有效</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'n;n;n;n;G;'</span>                 <span style="color: rgb(102, 102, 102); font-style: italic;"># 其他sed</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{print $0;i++;if(i==5){printf("\n");i=0}}'</span></pre></div></div>
+
+<p>选择性地显示特定行：<br>
+——–</p>
+<p> # 显示文件中的前10行 （模拟“head”的行为）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> 10q</pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{print;if(NR==10)exit}'</span></pre></div></div>
+
+<p> # 显示文件中的第一行 （模拟“head -1”命令）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> q</pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{print;exit}'</span></pre></div></div>
+
+<p> # 显示文件中的最后10行 （模拟“tail”）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> :a <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'$q;N;11,$D;ba'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(102, 102, 102); font-style: italic;">#用awk干这个有点亏，得全文缓存，对于大文件肯定很慢</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{A[NR]=$0}END{for(i=NR-9;i&lt;=NR;i++)print A[i]}'</span></pre></div></div>
+
+<p> # 显示文件中的最后2行（模拟“tail -2”命令）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'$!N;$!D'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{A[NR]=$0}END{for(i=NR-1;i&lt;=NR;i++)print A[i]}'</span></pre></div></div>
+
+<p> # 显示文件中的最后一行（模拟“tail -1”）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'$!d'</span>                        <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法1</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'$p'</span>                      <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法2</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(102, 102, 102); font-style: italic;">#这个比较好办，只存最后一行了。</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{A=$0}END{print A}'</span></pre></div></div>
+
+<p> # 显示文件中的倒数第二行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'$!{h;d;}'</span> <span style="color: rgb(102, 0, 51);">-e</span> x              <span style="color: rgb(102, 102, 102); font-style: italic;"># 当文件中只有一行时，输出空行</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'1{$q;}'</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'$!{h;d;}'</span> <span style="color: rgb(102, 0, 51);">-e</span> x  <span style="color: rgb(102, 102, 102); font-style: italic;"># 当文件中只有一行时，显示该行</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'1{$d;}'</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'$!{h;d;}'</span> <span style="color: rgb(102, 0, 51);">-e</span> x  <span style="color: rgb(102, 102, 102); font-style: italic;"># 当文件中只有一行时，不输出</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(102, 102, 102); font-style: italic;">#存两行呗（当文件中只有一行时，输出空行）</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{B=A;A=$0}END{print B}'</span></pre></div></div>
+
+<p> # 只显示匹配正则表达式的行（模拟“grep”）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'/regexp/p'</span>               <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法1</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/regexp/!d'</span>                 <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法2</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'/regexp/{print}'</span></pre></div></div>
+
+<p> # 只显示“不”匹配正则表达式的行（模拟“grep -v”）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'/regexp/!p'</span>              <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法1，与前面的命令相对应</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/regexp/d'</span>                  <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法2，类似的语法</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'!/regexp/{print}'</span></pre></div></div>
+
+<p> # 查找“regexp”并将匹配行的上一行显示出来，但并不显示匹配行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'/regexp/{g;1!p;};h'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'/regexp/{print A}{A=$0}'</span></pre></div></div>
+
+<p> # 查找“regexp”并将匹配行的下一行显示出来，但并不显示匹配行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'/regexp/{n;p;}'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(A)print;A=0}/regexp/{A=1}'</span></pre></div></div>
+
+<p> # 显示包含“regexp”的行及其前后行，并在第一行之前加上“regexp”所在行的行号 （类似“grep -A1 -B1”）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'/regexp/{=;x;1!p;g;$!N;p;D;}'</span> <span style="color: rgb(102, 0, 51);">-e</span> h</pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(F)print;F=0}/regexp/{print NR;print b;print;F=1}{b=$0}'</span></pre></div></div>
+
+<p> # 显示包含“AAA”、“BBB”和“CCC”的行（任意次序）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/AAA/!d; /BBB/!d; /CCC/!d'</span>   <span style="color: rgb(102, 102, 102); font-style: italic;"># 字串的次序不影响结果</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(match($0,/AAA/) &amp;&amp; match($0,/BBB/) &amp;&amp; match($0,/CCC/))print}'</span></pre></div></div>
+
+<p> # 显示包含“AAA”、“BBB”和“CCC”的行（固定次序）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/AAA.*BBB.*CCC/!d'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(match($0,/AAA.*BBB.*CCC/))print}'</span></pre></div></div>
+
+<p> # 显示包含“AAA”“BBB”或“CCC”的行 （模拟“egrep”）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'/AAA/b'</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'/BBB/b'</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'/CCC/b'</span> <span style="color: rgb(102, 0, 51);">-e</span> d    <span style="color: rgb(102, 102, 102); font-style: italic;"># 多数sed</span>
+gsed <span style="color: rgb(255, 0, 0);">'/AAA\|BBB\|CCC/!d'</span>                        <span style="color: rgb(102, 102, 102); font-style: italic;"># 对GNU sed有效</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'/AAA/{print;next}/BBB/{print;next}/CCC/{print}'</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'/AAA|BBB|CCC/{print}'</span></pre></div></div>
+
+<p> # 显示包含“AAA”的段落 （段落间以空行分隔）<br>
+ # HHsed v1.5 必须在“x;”后加入“G;”，接下来的3个脚本都是这样</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'/./{H;$!d;}'</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'x;/AAA/!d;'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'BEGIN{RS=""}/AAA/{print}'</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(102, 0, 51);">-vRS</span>= <span style="color: rgb(255, 0, 0);">'/AAA/{print}'</span></pre></div></div>
+
+<p> # 显示包含“AAA”“BBB”和“CCC”三个字串的段落 （任意次序）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'/./{H;$!d;}'</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'x;/AAA/!d;/BBB/!d;/CCC/!d'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(102, 0, 51);">-vRS</span>= <span style="color: rgb(255, 0, 0);">'{if(match($0,/AAA/) &amp;&amp; match($0,/BBB/) &amp;&amp; match($0,/CCC/))print}'</span></pre></div></div>
+
+<p> # 显示包含“AAA”、“BBB”、“CCC”三者中任一字串的段落 （任意次序）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'/./{H;$!d;}'</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'x;/AAA/b'</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'/BBB/b'</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'/CCC/b'</span> <span style="color: rgb(102, 0, 51);">-e</span> d
+gsed <span style="color: rgb(255, 0, 0);">'/./{H;$!d;};x;/AAA\|BBB\|CCC/b;d'</span>         <span style="color: rgb(102, 102, 102); font-style: italic;"># 只对GNU sed有效</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(102, 0, 51);">-vRS</span>= <span style="color: rgb(255, 0, 0);">'/AAA|BBB|CCC/{print "";print}'</span></pre></div></div>
+
+<p> # 显示包含65个或以上字符的行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'/^.\{65\}/p'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">cat</span> ll.txt <span style="color: rgb(0, 0, 0); font-weight: bold;">|</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(length($0)&gt;=65)print}'</span></pre></div></div>
+
+<p> # 显示包含65个以下字符的行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'/^.\{65\}/!p'</span>            <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法1，与上面的脚本相对应</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/^.\{65\}/d'</span>                <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法2，更简便一点的方法</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(length($0)&lt;=65)print}'</span></pre></div></div>
+
+<p> # 显示部分文本——从包含正则表达式的行开始到最后一行结束</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'/regexp/,$p'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'/regexp/{F=1}{if(F)print}'</span></pre></div></div>
+
+<p> # 显示部分文本——指定行号范围（从第8至第12行，含8和12行）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'8,12p'</span>                   <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法1</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'8,12!d'</span>                     <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法2</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(NR&gt;=8 &amp;&amp; NR&lt;12)print}'</span></pre></div></div>
+
+<p> # 显示第52行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'52p'</span>                     <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法1</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'52!d'</span>                       <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法2</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'52q;d'</span>                      <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法3, 处理大文件时更有效率</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(NR==52){print;exit}}'</span></pre></div></div>
+
+<p> # 从第3行开始，每7行显示一次</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;">gsed <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'3~7p'</span>                   <span style="color: rgb(102, 102, 102); font-style: italic;"># 只对GNU sed有效</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'3,${p;n;n;n;n;n;n;}'</span>     <span style="color: rgb(102, 102, 102); font-style: italic;"># 其他sed</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(NR==3)F=1}{if(F){i++;if(i%7==1)print}}'</span></pre></div></div>
+
+<p> # 显示两个正则表达式之间的文本（包含）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'/Iowa/,/Montana/p'</span>       <span style="color: rgb(102, 102, 102); font-style: italic;"># 区分大小写方式</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'/Iowa/{F=1}{if(F)print}/Montana/{F=0}'</span></pre></div></div>
+
+<p>选择性地删除特定行：<br>
+——–</p>
+<p> # 显示通篇文档，除了两个正则表达式之间的内容</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/Iowa/,/Montana/d'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'/Iowa/{F=1}{if(!F)print}/Montana/{F=0}'</span></pre></div></div>
+
+<p> # 删除文件中相邻的重复行（模拟“uniq”）<br>
+ # 只保留重复行中的第一行，其他行删除</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'$!N; /^\(.*\)\n\1$/!P; D'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if($0!=B)print;B=$0}'</span></pre></div></div>
+
+<p> # 删除文件中的重复行，不管有无相邻。注意hold space所能支持的缓存大小，或者使用GNU sed。</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'G; s/\n/&amp;&amp;/; /^\([ -~]*\n\).*\n\1/d; s/\n//; h; P'</span>  <span style="color: rgb(102, 102, 102); font-style: italic;">#bones7456注：我这里此命令并不能正常工作</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(!($0 in B))print;B[$0]=1}'</span></pre></div></div>
+
+<p> # 删除除重复行外的所有行（模拟“uniq -d”）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'$!N; s/^\(.*\)\n\1$/\1/; t; D'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if($0==B &amp;&amp; $0!=l){print;l=$0}B=$0}'</span></pre></div></div>
+
+<p> # 删除文件中开头的10行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'1,10d'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(NR&gt;10)print}'</span></pre></div></div>
+
+<p> # 删除文件中的最后一行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'$d'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(102, 102, 102); font-style: italic;">#awk在过程中并不知道文件一共有几行，所以只能通篇缓存，大文件可能不适合，下面两个也一样</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{B[NR]=$0}END{for(i=0;i&lt;=NR-1;i++)print B[i]}'</span></pre></div></div>
+
+<p> # 删除文件中的最后两行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'N;$!P;$!D;$d'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{B[NR]=$0}END{for(i=0;i&lt;=NR-2;i++)print B[i]}'</span></pre></div></div>
+
+<p> # 删除文件中的最后10行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> :a <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'$d;N;2,10ba'</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'P;D'</span>   <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法1</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(102, 0, 51);">-e</span> :a <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'1,10!{P;N;D;};N;ba'</span>  <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法2</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{B[NR]=$0}END{for(i=0;i&lt;=NR-10;i++)print B[i]}'</span></pre></div></div>
+
+<p> # 删除8的倍数行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;">gsed <span style="color: rgb(255, 0, 0);">'0~8d'</span>                           <span style="color: rgb(102, 102, 102); font-style: italic;"># 只对GNU sed有效</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'n;n;n;n;n;n;n;d;'</span>                <span style="color: rgb(102, 102, 102); font-style: italic;"># 其他sed</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(NR%8!=0)print}'</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">|</span><span style="color: rgb(194, 12, 185); font-weight: bold;">head</span></pre></div></div>
+
+<p> # 删除匹配式样的行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/pattern/d'</span>                      <span style="color: rgb(102, 102, 102); font-style: italic;"># 删除含pattern的行。当然pattern可以换成任何有效的正则表达式</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(!match($0,/pattern/))print}'</span></pre></div></div>
+
+<p> # 删除文件中的所有空行（与“grep ‘.’ ”效果相同）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/^$/d'</span>                           <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法1</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/./!d'</span>                           <span style="color: rgb(102, 102, 102); font-style: italic;"># 方法2</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(!match($0,/^$/))print}'</span></pre></div></div>
+
+<p> # 只保留多个相邻空行的第一行。并且删除文件顶部和尾部的空行。<br>
+ # （模拟“cat -s”）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/./,/^$/!d'</span>        <span style="color: rgb(102, 102, 102); font-style: italic;">#方法1，删除文件顶部的空行，允许尾部保留一空行</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/^$/N;/\n$/D'</span>      <span style="color: rgb(102, 102, 102); font-style: italic;">#方法2，允许顶部保留一空行，尾部不留空行</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(!match($0,/^$/)){print;F=1}else{if(F)print;F=0}}'</span>  <span style="color: rgb(102, 102, 102); font-style: italic;">#同上面的方法2</span></pre></div></div>
+
+<p> # 只保留多个相邻空行的前两行。</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/^$/N;/\n$/N;//D'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(!match($0,/^$/)){print;F=0}else{if(F&lt;2)print;F++}}'</span></pre></div></div>
+
+<p> # 删除文件顶部的所有空行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/./,$!d'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(F || !match($0,/^$/)){print;F=1}}'</span></pre></div></div>
+
+<p> # 删除文件尾部的所有空行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> :a <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'/^\n*$/{$d;N;ba'</span> <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'}'</span>  <span style="color: rgb(102, 102, 102); font-style: italic;"># 对所有sed有效</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> :a <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'/^\n*$/N;/\n$/ba'</span>        <span style="color: rgb(102, 102, 102); font-style: italic;"># 同上，但只对 gsed 3.02.*有效</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'/^.+$/{for(i=l;i&lt;NR-1;i++)print "";print;l=NR}'</span></pre></div></div>
+
+<p> # 删除每个段落的最后一行</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-n</span> <span style="color: rgb(255, 0, 0);">'/^$/{p;h;};/./{x;/./p;}'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(102, 102, 102); font-style: italic;">#很长，很ugly，应该有更好的办法</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(102, 0, 51);">-vRS</span>= <span style="color: rgb(255, 0, 0);">'{B=$0;l=0;f=1;while(match(B,/\n/)&gt;0){print substr(B,l,RSTART-l-f);l=RSTART;sub(/\n/,"",B);f=0};print ""}'</span></pre></div></div>
+
+<p>特殊应用：<br>
+——–</p>
+<p> # 移除手册页（man page）中的nroff标记。在Unix System V或bash shell下使<br>
+ # 用’echo’命令时可能需要加上 -e 选项。</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">"s/.<span style="color: rgb(120, 0, 120);">`echo \\\b`</span>//g"</span>    <span style="color: rgb(102, 102, 102); font-style: italic;"># 外层的双括号是必须的（Unix环境）</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/.^H//g'</span>             <span style="color: rgb(102, 102, 102); font-style: italic;"># 在bash或tcsh中, 按 Ctrl-V 再按 Ctrl-H</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/.\x08//g'</span>           <span style="color: rgb(102, 102, 102); font-style: italic;"># sed 1.5，GNU sed，ssed所使用的十六进制的表示方法</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{gsub(/.\x08/,"",$0);print}'</span></pre></div></div>
+
+<p> # 提取新闻组或 e-mail 的邮件头</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/^$/q'</span>                <span style="color: rgb(102, 102, 102); font-style: italic;"># 删除第一行空行后的所有内容</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{print}/^$/{exit}'</span></pre></div></div>
+
+<p> # 提取新闻组或 e-mail 的正文部分</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'1,/^$/d'</span>              <span style="color: rgb(102, 102, 102); font-style: italic;"># 删除第一行空行之前的所有内容</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{if(F)print}/^$/{F=1}'</span></pre></div></div>
+
+<p> # 从邮件头提取“Subject”（标题栏字段），并移除开头的“Subject:”字样</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/^Subject: */!d; s///;q'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'/^Subject:.*/{print substr($0,10)}/^$/{exit}'</span></pre></div></div>
+
+<p> # 从邮件头获得回复地址</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/^Reply-To:/q; /^From:/h; /./d;g;q'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(102, 102, 102); font-style: italic;">#好像是输出第一个Reply-To:开头的行？From是干啥用的？不清楚规则。。</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'/^Reply-To:.*/{print;exit}/^$/{exit}'</span></pre></div></div>
+
+<p> # 获取邮件地址。在上一个脚本所产生的那一行邮件头的基础上进一步的将非电邮地址的部分剃除。（见上一脚本）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/ *(.*)//; s/&gt;.*//; s/.*[:&lt;] *//'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(102, 102, 102); font-style: italic;">#取尖括号里的东西吧？</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(102, 0, 51);">-F</span><span style="color: rgb(255, 0, 0);">'[&lt;&gt;]+'</span> <span style="color: rgb(255, 0, 0);">'{print $2}'</span></pre></div></div>
+
+<p> # 在每一行开头加上一个尖括号和空格（引用信息）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/^/&gt; /'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{print "&gt; " $0}'</span></pre></div></div>
+
+<p> # 将每一行开头处的尖括号和空格删除（解除引用）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'s/^&gt; //'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'/^&gt; /{print substr($0,3)}'</span></pre></div></div>
+
+<p> # 移除大部分的HTML标签（包括跨行标签）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(102, 0, 51);">-e</span> :a <span style="color: rgb(102, 0, 51);">-e</span> <span style="color: rgb(255, 0, 0);">'s/&lt;[^&gt;]*&gt;//g;/&lt;/N;//ba'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{gsub(/&lt;[^&gt;]*&gt;/,"",$0);print}'</span></pre></div></div>
+
+<p> # 将分成多卷的uuencode文件解码。移除文件头信息，只保留uuencode编码部分。<br>
+ # 文件必须以特定顺序传给sed。下面第一种版本的脚本可以直接在命令行下输入；<br>
+ # 第二种版本则可以放入一个带执行权限的shell脚本中。（由Rahul Dhesi的一<br>
+ # 个脚本修改而来。）</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/^end/,/^begin/d'</span> file1 file2 ... fileX <span style="color: rgb(0, 0, 0); font-weight: bold;">|</span> uudecode   <span style="color: rgb(102, 102, 102); font-style: italic;"># vers. 1</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/^end/,/^begin/d'</span> <span style="color: rgb(255, 0, 0);">"$@"</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">|</span> uudecode                    <span style="color: rgb(102, 102, 102); font-style: italic;"># vers. 2</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(102, 102, 102); font-style: italic;">#我不想装个uudecode验证，大致写个吧</span>
+<span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'/^end/{F=0}{if(F)print}/^begin/{F=1}'</span> file1 file2 ... fileX</pre></div></div>
+
+<p> # 将文件中的段落以字母顺序排序。段落间以（一行或多行）空行分隔。GNU sed使用<br>
+ # 字元“\v”来表示垂直制表符，这里用它来作为换行符的占位符——当然你也可以<br>
+ # 用其他未在文件中使用的字符来代替它。</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'/./{H;d;};x;s/\n/={NL}=/g'</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">file</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">|</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">sort</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">|</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'1s/={NL}=//;s/={NL}=/\n/g'</span>
+gsed <span style="color: rgb(255, 0, 0);">'/./{H;d};x;y/\n/\v/'</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">file</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">|</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">sort</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">|</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">'1s/\v//;y/\v/\n/'</span></pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(102, 0, 51);">-vRS</span>= <span style="color: rgb(255, 0, 0);">'{gsub(/\n/,"\v",$0);print}'</span> ll.txt <span style="color: rgb(0, 0, 0); font-weight: bold;">|</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">sort</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">|</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">awk</span> <span style="color: rgb(255, 0, 0);">'{gsub(/\v/,"\n",$0);print;print ""}'</span></pre></div></div>
+
+<p> # 分别压缩每个.TXT文件，压缩后删除原来的文件并将压缩后的.ZIP文件<br>
+ # 命名为与原来相同的名字（只是扩展名不同）。（DOS环境：“dir /b”<br>
+ # 显示不带路径的文件名）。</p>
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(122, 8, 116); font-weight: bold;">echo</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">@</span><span style="color: rgb(122, 8, 116); font-weight: bold;">echo</span> off <span style="color: rgb(0, 0, 0); font-weight: bold;">&gt;</span>zipup.bat
+<span style="color: rgb(194, 12, 185); font-weight: bold;">dir</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">/</span>b <span style="color: rgb(0, 0, 0); font-weight: bold;">*</span>.txt <span style="color: rgb(0, 0, 0); font-weight: bold;">|</span> <span style="color: rgb(194, 12, 185); font-weight: bold;">sed</span> <span style="color: rgb(255, 0, 0);">"s/^\(.*\)\.TXT/pkzip -mo \1 \1.TXT/"</span> <span style="color: rgb(0, 0, 0); font-weight: bold;">&gt;&gt;</span>zipup.bat</pre></div></div>
+
+
+<div class="wp_syntax"><div class="code"><pre class="bash" style="font-family: monospace;">DOS环境再次略过，而且我觉得这里用<span style="color: rgb(194, 12, 185); font-weight: bold;">bash</span>的参数 <span style="color: rgb(128, 0, 0);">${i%.TXT}</span>.zip 替换更帅。</pre></div></div>
+
+<p>下面的一些SED说明略过，需要的朋友自行查看原文。</p>
+	
+					
+				<p class="postmetadatasingle">
+					</p><h3>最后修改时间: 2009年12月08日 11:59</h3>
+						<small>本文章发表于：
+						2009年12月07日 21:10						| 所属分类：<a href="http://luy.li/category/cli/" title="查看 CLI软件 的全部文章" rel="category tag">CLI软件</a>, <a href="http://luy.li/category/best/" title="查看 精华 的全部文章" rel="category tag">精华</a>.
+						| 您可以<a href="http://luy.li/2009/12/07/sed_awk/feed/">在此</a>订阅本文章的所有评论. | 
+						
+													您也可以<a href="#respond">发表评论</a>, 或从您的网站<a href="http://luy.li/2009/12/07/sed_awk/trackback/" rel="trackback">trackback</a>.
+						
+												
+					</small>
+				
+	
+			</div>
+		</div>
+		
+	
+<!-- You can start editing here. -->
+
+	<h3 id="comments">12 个评论 关于： “《SED单行脚本快速参考》的 awk 实现”</h3> 
+
+	<ol class="commentlist">   <li class="comment even thread-even depth-1" id="comment-8658">
+     <div id="div-comment-8658">
+      <p>
+         
+         <cite class="fn"><a href="http://huntxu.blogs.mu/" rel="external nofollow" class="url">huntxu</a></cite> <span class="says">在 2009年12月07日 21:13 说：</span>【 <a rel="nofollow" class="comment-reply-link" href="http://luy.li/2009/12/07/sed_awk/?replytocom=8658#respond" onclick='return addComment.moveForm("div-comment-8658", "8658", "respond", "1216")'>回复</a> 】 
+      </p>
+            <p>这次该抢到沙发了吧…</p>
+     </div>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-8659">
+     <div id="div-comment-8659">
+      <p>
+         
+         <cite class="fn"><a href="http://www.kissuki.com/" rel="external nofollow" class="url">Iven</a></cite> <span class="says">在 2009年12月07日 22:49 说：</span>【 <a rel="nofollow" class="comment-reply-link" href="http://luy.li/2009/12/07/sed_awk/?replytocom=8659#respond" onclick='return addComment.moveForm("div-comment-8659", "8659", "respond", "1216")'>回复</a> 】 
+      </p>
+            <p>都没有学过啊…… sed 的正则貌似比 python 的复杂一些……</p>
+     </div>
+</li>
+   <li class="comment even thread-even depth-1" id="comment-8661">
+     <div id="div-comment-8661">
+      <p>
+         
+         <cite class="fn"><a href="http://cecewang1984.appspot.com/" rel="external nofollow" class="url">cece</a></cite> <span class="says">在 2009年12月08日 08:30 说：</span>【 <a rel="nofollow" class="comment-reply-link" href="http://luy.li/2009/12/07/sed_awk/?replytocom=8661#respond" onclick='return addComment.moveForm("div-comment-8661", "8661", "respond", "1216")'>回复</a> 】 
+      </p>
+            <p>好多</p>
+     </div>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-8662">
+     <div id="div-comment-8662">
+      <p>
+         
+         <cite class="fn">Leos</cite> <span class="says">在 2009年12月08日 08:54 说：</span>【 <a rel="nofollow" class="comment-reply-link" href="http://luy.li/2009/12/07/sed_awk/?replytocom=8662#respond" onclick='return addComment.moveForm("div-comment-8662", "8662", "respond", "1216")'>回复</a> 】 
+      </p>
+            <p>Mark ^^^^^^</p>
+     </div>
+</li>
+   <li class="comment even thread-even depth-1" id="comment-8663">
+     <div id="div-comment-8663">
+      <p>
+         
+         <cite class="fn"><a href="http://hi.baidu.com/volansw" rel="external nofollow" class="url">volans</a></cite> <span class="says">在 2009年12月08日 10:00 说：</span>【 <a rel="nofollow" class="comment-reply-link" href="http://luy.li/2009/12/07/sed_awk/?replytocom=8663#respond" onclick='return addComment.moveForm("div-comment-8663", "8663", "respond", "1216")'>回复</a> 】 
+      </p>
+            <p>个人偏向喜欢awk。也由衷的觉得awk比较强大一点儿。</p>
+     </div>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-8664">
+     <div id="div-comment-8664">
+      <p>
+         
+         <cite class="fn"><a href="http://wdicc.com/" rel="external nofollow" class="url">wd</a></cite> <span class="says">在 2009年12月08日 10:13 说：</span>【 <a rel="nofollow" class="comment-reply-link" href="http://luy.li/2009/12/07/sed_awk/?replytocom=8664#respond" onclick='return addComment.moveForm("div-comment-8664", "8664", "respond", "1216")'>回复</a> 】 
+      </p>
+            <p>你还真闲的无聊</p>
+     </div>
+</li>
+   <li class="pingback even thread-even depth-1" id="comment-8667">
+     <div id="div-comment-8667">
+      <p class="ping-comment">
+         
+         <cite class="fn"><a href="http://blog.9yong.com/?p=489" rel="external nofollow" class="url">Laurence’s Blog » 转：《SED 单行脚本快速参考》的 awk 实现</a></cite> <span class="says">在 2009年12月08日 13:53 说：</span>【 <a rel="nofollow" class="comment-reply-link" href="http://luy.li/2009/12/07/sed_awk/?replytocom=8667#respond" onclick='return addComment.moveForm("div-comment-8667", "8667", "respond", "1216")'>回复</a> 】 
+      </p>
+            <p>[...] Source. Thanks bones7456. [...]</p>
+     </div>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-8671">
+     <div id="div-comment-8671">
+      <p>
+         
+         <cite class="fn"><a href="http://maclpashideout.blogspot.com/" rel="external nofollow" class="url">MeaCulpa</a></cite> <span class="says">在 2009年12月09日 09:21 说：</span>【 <a rel="nofollow" class="comment-reply-link" href="http://luy.li/2009/12/07/sed_awk/?replytocom=8671#respond" onclick='return addComment.moveForm("div-comment-8671", "8671", "respond", "1216")'>回复</a> 】 
+      </p>
+            <p>配色的确是比较…</p>
+     </div>
+</li>
+   <li class="comment even thread-even depth-1" id="comment-8672">
+     <div id="div-comment-8672">
+      <p>
+         
+         <cite class="fn"><a href="http://2hei.net/" rel="external nofollow" class="url">2hei</a></cite> <span class="says">在 2009年12月09日 16:50 说：</span>【 <a rel="nofollow" class="comment-reply-link" href="http://luy.li/2009/12/07/sed_awk/?replytocom=8672#respond" onclick='return addComment.moveForm("div-comment-8672", "8672", "respond", "1216")'>回复</a> 】 
+      </p>
+            <p>同道中人啊！</p>
+     </div>
+</li>
+   <li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-9314">
+     <div id="div-comment-9314">
+      <p class="ping-comment">
+         
+         <cite class="fn"><a href="http://eastnux.cz.cc/?p=6" rel="external nofollow" class="url">《SED 单行脚本快速参考》的 awk 实现 » Eastnux</a></cite> <span class="says">在 2010年02月02日 23:08 说：</span>【 <a rel="nofollow" class="comment-reply-link" href="http://luy.li/2009/12/07/sed_awk/?replytocom=9314#respond" onclick='return addComment.moveForm("div-comment-9314", "9314", "respond", "1216")'>回复</a> 】 
+      </p>
+            <p>[...] 替换更帅。 下面的一些 SED 说明略过，需要的朋友自行查看原文。 {&nbsp;Source. Thanks bones7456. [...]</p>
+     </div>
+</li>
+   <li class="pingback even thread-even depth-1" id="comment-10186">
+     <div id="div-comment-10186">
+      <p class="ping-comment">
+         
+         <cite class="fn"><a href="http://www.dutor.net/index.php/2010/05/sed-samples/" rel="external nofollow" class="url">sed单行命令快速参考 – 时间正在流逝</a></cite> <span class="says">在 2010年05月14日 22:16 说：</span>【 <a rel="nofollow" class="comment-reply-link" href="http://luy.li/2009/12/07/sed_awk/?replytocom=10186#respond" onclick='return addComment.moveForm("div-comment-10186", "10186", "respond", "1216")'>回复</a> 】 
+      </p>
+            <p>[...] 　　sed是Linux环境下的一个文本流、行编辑器，十分强大，这里贴一些常用的单行脚本，脚本最初来源于此，基本未做改动。另外一个强大的文本处理工具就是awk，对于这两个工具，个人觉得，根据个人选择其一就够用了，我自己就喜欢sed多一点。Bones在这里用awk对下面的各个sed命令行做了相应的替代。 　　推荐一本关于sed和awk的书《sed &amp; awk》，作者Dale Dougberty, Arnold Robbins。中文版在网上已经买不到了，china-pub倒是有，不过是原版的一般人承受不起那个价位。幸好这本书的作者提供免费的电子版，在网上应该可以搜的到。 [...]</p>
+     </div>
+</li>
+   <li class="comment odd alt thread-odd thread-alt depth-1" id="comment-10497">
+     <div id="div-comment-10497">
+      <p>
+         
+         <cite class="fn"><a href="http://hi.baidu.com/vzomik" rel="external nofollow" class="url">vzomik</a></cite> <span class="says">在 2010年05月26日 13:57 说：</span>【 <a rel="nofollow" class="comment-reply-link" href="http://luy.li/2009/12/07/sed_awk/?replytocom=10497#respond" onclick='return addComment.moveForm("div-comment-10497", "10497", "respond", "1216")'>回复</a> 】 
+      </p>
+            <p>怎么找什么都能找到这里。。。历害历害。。。<br>
+今天，看了《SED 单行脚本快速参考》<br>
+想再看看 ask 的，结果在 linuxtoy 看到了你的文章。。。</p>
+     </div>
+</li>
+</ol>
+
+<div class="navigation">
+<div class="alignleft"></div>
+<div class="alignright"></div>
+</div>
+
+
+
+
+<div id="respond">
+<h3>发表评论</h3>
+<form action="http://luy.li/wp-comments-post.php" method="post" id="commentform">
+<input name="comment_post_ID" value="1216" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+
+<p><label for="author"><small>姓名 (必须):</small></label><br><input gtbfieldid="1" name="author" id="author" value="" size="40" tabindex="1" type="text"></p>
+<p><label for="email"><small>邮件地址 (不会公开) (必须):</small></label><br><input gtbfieldid="2" name="email" id="email" value="" size="40" tabindex="2" type="text"></p>
+<p><label for="url"><small>个人主页:</small></label><br><input gtbfieldid="3" name="url" id="url" value="" size="40" tabindex="3" type="text"></p>
+
+
+<p><textarea name="comment" id="comment" cols="37" rows="10" tabindex="4"></textarea></p>
+
+<p><span id="cancel-comment-reply"><small><a rel="nofollow" id="cancel-comment-reply-link" href="http://luy.li/2009/12/07/sed_awk/#respond" style="display: none;">取消</a></small></span>
+<input name="submit" id="submit" tabindex="5" value="提交" type="submit">
+</p>
+<p><input name="comment_mail_notify" id="comment_mail_notify" value="comment_mail_notify" checked="checked" style="width: auto;" type="checkbox"><label for="comment_mail_notify">有人回复时邮件通知我</label></p>
+</form></div>
+
+
+	
+		
+	</div>
+	<div id="footer">
+	<p>
+		<span style="font-family: bonesapa,Agency FB,Sans-Serif,Trebuchet MS,Arial;">I am LAZY bones ?</span> 由 
+		<a href="http://wordpress.org/">WordPress</a> 和 <a href="http://luy.li/">bones7456</a> 主题提供支持. <a href="feed://http//luy.li/feed/">订阅文章</a>
+		| <a href="feed://http//luy.li/comments/feed/">订阅评论</a>.<br>
+		为了达到最佳浏览效果，请使用firefox等非IE内核浏览器和1024*768以上的分辨率。
+		<a href="http://luy.li/about/beian/">美ICP备98753210号</a>
+		<!-- 16 queries. 2.207 seconds. -->
+	</p>
+</div>
+</div>
+		</div>
+
+<div id="sidebar">
+
+<ul>
+	<li>
+		<h2><a href="javascript:void(0);" onclick="hide_sidebar()" title="点击隐藏侧栏">导航</a></h2>
+			<ul>
+				<li><a title="Home" href="http://luy.li/">Home</a></li>
+				<li class="page_item page-item-114"><a href="http://luy.li/about/" title="关于我">关于我</a></li>
+<li class="page_item page-item-171"><a href="http://luy.li/messages/" title="给我留言">给我留言</a></li>
+<li class="page_item page-item-218"><a href="http://luy.li/sitemap/" title="网站地图">网站地图</a></li>
+			</ul>
+	</li>
+	<li id="calendar-2" class="widget widget_calendar"><h2 class="widgettitle">我的文章</h2>
+<div id="calendar_wrap"><table id="wp-calendar" summary="日历">
+	<caption>2009 十二月</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="星期日">日</th>
+		<th scope="col" title="星期一">一</th>
+		<th scope="col" title="星期二">二</th>
+		<th scope="col" title="星期三">三</th>
+		<th scope="col" title="星期四">四</th>
+		<th scope="col" title="星期五">五</th>
+		<th scope="col" title="星期六">六</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="http://luy.li/2009/11/" title="查看 2009 十一月 的文章">« 十一</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next"><a href="http://luy.li/2010/01/" title="查看 2010 一月 的文章">一 »</a></td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="2" class="pad">&nbsp;</td><td>1</td><td><a href="http://luy.li/2009/12/02/" title="LinuxDeepin的ISO镜像和试用笔记">2</a></td><td>3</td><td><a href="http://luy.li/2009/12/04/" title="python程序打包工具 ── cx_Freeze">4</a></td><td>5</td>
+	</tr>
+	<tr>
+		<td>6</td><td><a href="http://luy.li/2009/12/07/" title="《SED单行脚本快速参考》的 awk 实现">7</a></td><td>8</td><td><a href="http://luy.li/2009/12/09/" title="记录你的终端操作 ── script">9</a></td><td>10</td><td><a href="http://luy.li/2009/12/11/" title="监视文件系统的一举一动 ── inotifywait">11</a></td><td>12</td>
+	</tr>
+	<tr>
+		<td><a href="http://luy.li/2009/12/13/" title="关于网上银行">13</a></td><td>14</td><td><a href="http://luy.li/2009/12/15/" title="简单的WP备份脚本">15</a></td><td>16</td><td>17</td><td>18</td><td>19</td>
+	</tr>
+	<tr>
+		<td>20</td><td>21</td><td>22</td><td><a href="http://luy.li/2009/12/23/" title="python代码风格检查工具──pylint">23</a></td><td>24</td><td>25</td><td>26</td>
+	</tr>
+	<tr>
+		<td><a href="http://luy.li/2009/12/27/" title="grub故障一例">27</a></td><td>28</td><td><a href="http://luy.li/2009/12/29/" title="开源的命令行OCR软件──tesseract">29</a></td><td><a href="http://luy.li/2009/12/30/" title="nginx 对某些 User_Agent 进行限速的方法">30</a></td><td>31</td>
+		<td class="pad" colspan="2">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></li>
+<li id="search-2" class="widget widget_search"><form role="search" method="get" id="searchform" action="http://luy.li/">
+	<div><label class="screen-reader-text" for="s">搜索：</label>
+	<input gtbfieldid="4" value="" name="s" id="s" type="text">
+	<input id="searchsubmit" value="搜索" type="submit">
+	</div>
+	</form></li>
+<li id="recent-comments-2" class="widget widget_recent_comments"><h2 class="widgettitle">最新评论</h2>
+<ul id="recentcomments"><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments">zcjl 在 <a href="http://luy.li/2010/09/05/mynet/#comment-12428">关于我的网络</a> 上的评论</li><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments"><a href="http://luy.li/" rel="external nofollow" class="url">bones7456</a> 在 <a href="http://luy.li/2010/09/05/mynet/#comment-12423">关于我的网络</a> 上的评论</li><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments"><a href="http://ptubuntu.com/" rel="external nofollow" class="url">ptubuntu</a> 在 <a href="http://luy.li/2010/10/24/truncate/#comment-12410">其实，文件也可以truncate</a> 上的评论</li><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments">zcjl 在 <a href="http://luy.li/2010/09/05/mynet/#comment-12392">关于我的网络</a> 上的评论</li><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments"><a href="http://runcoderen.wordpress.com/" rel="external nofollow" class="url">runcoderen</a> 在 <a href="http://luy.li/2010/10/24/truncate/#comment-12378">其实，文件也可以truncate</a> 上的评论</li><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments"><a href="http://hgye.blogspot.com/" rel="external nofollow" class="url">hgye</a> 在 <a href="http://luy.li/messages/#comment-12368">给我留言</a> 上的评论</li><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments"><a href="http://kofj.net/" rel="external nofollow" class="url">凡尘飞扬</a> 在 <a href="http://luy.li/2009/02/05/icecast/#comment-12351">linux下架设个人电台的方法</a> 上的评论</li><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments"><a href="http://kofj.net/" rel="external nofollow" class="url">凡尘飞扬</a> 在 <a href="http://luy.li/2010/06/26/cryptsetup/#comment-12350">cryptsetup – 分区加密工具</a> 上的评论</li><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments">lds 在 <a href="http://luy.li/messages/#comment-12337">给我留言</a> 上的评论</li><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments"><a href="http://ihipop.info/?p=1777.html" rel="external nofollow" class="url">ihipop</a> 在 <a href="http://luy.li/2010/09/17/python_traversal_dict/#comment-12301">python编程细节──遍历dict的两种方法比较</a> 上的评论</li><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments"><a href="http://luy.li/" rel="external nofollow" class="url">bones7456</a> 在 <a href="http://luy.li/2009/09/18/script_of_ubuntu_mirror/#comment-12295">架设ubuntu源时的两个脚本</a> 上的评论</li><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments">lds 在 <a href="http://luy.li/2009/09/18/script_of_ubuntu_mirror/#comment-12291">架设ubuntu源时的两个脚本</a> 上的评论</li><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments"><a href="http://luy.li/" rel="external nofollow" class="url">bones7456</a> 在 <a href="http://luy.li/2010/10/24/truncate/#comment-12288">其实，文件也可以truncate</a> 上的评论</li><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments"><a href="http://luy.li/" rel="external nofollow" class="url">bones7456</a> 在 <a href="http://luy.li/2009/09/18/script_of_ubuntu_mirror/#comment-12287">架设ubuntu源时的两个脚本</a> 上的评论</li><li style="height: 18px; overflow: hidden; background-color: rgb(32, 32, 32);" class="recentcomments">lds 在 <a href="http://luy.li/2009/09/18/script_of_ubuntu_mirror/#comment-12281">架设ubuntu源时的两个脚本</a> 上的评论</li></ul></li>
+<li id="text-3" class="widget widget_text"><h2 class="widgettitle">谷歌相关链接</h2>
+			<div class="textwidget"><div id="relatedlinks_container_div"></div>
+</div>
+		</li>
+<li id="categories-272252761" class="widget widget_categories"><h2 class="widgettitle">分类目录</h2>
+		<ul>
+	<li class="cat-item cat-item-3"><a href="http://luy.li/category/cli/" title="查看 CLI软件 下的所有文章">CLI软件</a> (92)
+</li>
+	<li class="cat-item cat-item-17"><a href="http://luy.li/category/e-file/" title="查看 e-file 下的所有文章">e-file</a> (5)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://luy.li/category/gentoo/" title="查看 gentoo 下的所有文章">gentoo</a> (48)
+</li>
+	<li class="cat-item cat-item-19"><a href="http://luy.li/category/gmbox/" title="查看 gmbox 下的所有文章">gmbox</a> (10)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://luy.li/category/gui/" title="查看 GUI软件 下的所有文章">GUI软件</a> (64)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://luy.li/category/ipod/" title="查看 iPod 下的所有文章">iPod</a> (4)
+</li>
+	<li class="cat-item cat-item-18"><a href="http://luy.li/category/lrcdis/" title="查看 lrcdis 下的所有文章">lrcdis</a> (7)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://luy.li/category/other/" title="查看 其他 下的所有文章">其他</a> (19)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://luy.li/category/memoire/" title="查看 备忘 下的所有文章">备忘</a> (77)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://luy.li/category/fault_analyze/" title="查看 故障分析 下的所有文章">故障分析</a> (49)
+</li>
+	<li class="cat-item cat-item-21"><a href="http://luy.li/category/etl/" title="查看 数据平台 下的所有文章">数据平台</a> (2)
+</li>
+	<li class="cat-item cat-item-10"><a href="http://luy.li/category/journal/" title="查看 流水帐 下的所有文章">流水帐</a> (165)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://luy.li/category/games/" title="查看 游戏 下的所有文章">游戏</a> (6)
+</li>
+	<li class="cat-item cat-item-20"><a href="http://luy.li/category/environmental_protection/" title="我们每个人都应该更关注环保">环保</a> (1)
+</li>
+	<li class="cat-item cat-item-12"><a href="http://luy.li/category/best/" title="查看 精华 下的所有文章">精华</a> (41)
+</li>
+	<li class="cat-item cat-item-13"><a href="http://luy.li/category/experience/" title="查看 经验技巧 下的所有文章">经验技巧</a> (84)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://luy.li/category/programme/" title="查看 编程相关 下的所有文章">编程相关</a> (45)
+</li>
+	<li class="cat-item cat-item-15"><a href="http://luy.li/category/sites/" title="查看 网站收集 下的所有文章">网站收集</a> (46)
+</li>
+	<li class="cat-item cat-item-16"><a href="http://luy.li/category/interest/" title="查看 趣味 下的所有文章">趣味</a> (21)
+</li>
+		</ul>
+</li>
+<li id="text-2" class="widget widget_text"><h2 class="widgettitle">鸣谢</h2>
+			<div class="textwidget">本站由<a href="http://imtx.cn/">TX</a>提供服务器及带宽<br>特此鸣谢!
+<span style="display: none;"><a href="http://www.cnzz.com/stat/website.php?web_id=1215787" target="_top" title="站长统计">站长统计</a><img src="stat.htm" border="0" height="0" width="0"><a href="http://exp.jiankongbao.com/load.php?host_id=1754" target="_top"><img src="loadtrace_logo4.gif" style="border: 0pt none;"></a></span></div>
+		</li>
+<li id="linkcat-2" class="widget widget_links"><h2 class="widgettitle">Blogroll</h2>
+
+	<ul class="xoxo blogroll">
+<li><a href="http://blog.youxu.info/" title="徐宥的博客">4G spaces</a></li>
+<li><a href="http://www.imalbert.info/">Albert748</a></li>
+<li><a href="http://brhum.org/">Brhum</a></li>
+<li><a href="http://www.imchao.net/" title="简，是一种境界">imChao</a></li>
+<li><a href="http://www.kissuki.com/" title="K.I.S.S. – 简单哲学">Iven</a></li>
+<li><a href="http://www.lerosua.org/" title="lerosua 的blog">lerosua</a></li>
+<li><a href="http://obmem.com/" title="这家伙的simplecd很NB">Observer专栏杂记</a></li>
+<li><a href="http://www.oceanboo.com/" title="OceanBoo’s Blog">oceanboo</a></li>
+<li><a href="http://oldherl.appspot.com/" title="oldherl的blog">oldherl</a></li>
+<li><a href="http://pluskid.lifegoo.com/" title="pluskid">pluskid</a></li>
+<li><a href="http://www.ptubuntu.com/">PT Ubuntu Blog</a></li>
+<li><a href="http://imtx.me/" title="TualatriX">TualatriX</a></li>
+<li><a href="http://www.vpsee.com/" title="vpsee">vpsee</a></li>
+<li><a href="http://joolix.com/" title="脚本控，KDE控，化学怪蜀黍">xiooli</a></li>
+<li><a href="http://yegle.net/">一阁Blog</a></li>
+<li><a href="http://qixinglu.com/" title="muzuiget的独立博客">七星庐</a></li>
+<li><a href="http://lfeng.me/" title="一个跟我一样叫骨头的家伙…" target="_top">另一个骨头</a></li>
+<li><a href="http://www.kanasshop.com/">喀纳斯自由软件专卖店</a></li>
+<li><a href="http://shellex.info/">壳壳猫</a></li>
+<li><a href="http://lee.youxu.info/blog/" title="Shuge Lee">无限零一</a></li>
+<li><a href="http://shellexy.info/" title="Shellexy">花花</a></li>
+<li><a href="http://coolshell.cn/" title="享受编程和技术所带来的快乐">酷壳</a></li>
+
+	</ul>
+</li>
+
+<li id="meta-2" class="widget widget_meta"><h2 class="widgettitle">功能</h2>
+			<ul>
+			<li><a href="http://luy.li/wp-login.php?action=register">注册</a></li>			<li><a href="http://luy.li/wp-login.php">登录</a></li>
+			<li><a href="http://luy.li/feed/" title="使用 RSS 2.0 同步此内容">文章 <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://luy.li/comments/feed/" title="RSS 上的最近评论"><abbr title="Really Simple Syndication">RSS</abbr> 评论</a></li>
+			<li><a href="http://wordpress.org/" title="基于 WordPress，优美的个人信息发布平台。">WordPress.org</a></li>
+						</ul>
+</li>
+<li id="archives-2" class="widget widget_archive"><h2 class="widgettitle">历史存档</h2>
+		<select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;"> <option value="">选择月份</option> 	<option value="http://luy.li/2010/10/"> 2010 年 十月 &nbsp;(3)</option>
+	<option value="http://luy.li/2010/09/"> 2010 年 九月 &nbsp;(4)</option>
+	<option value="http://luy.li/2010/08/"> 2010 年 八月 &nbsp;(4)</option>
+	<option value="http://luy.li/2010/07/"> 2010 年 七月 &nbsp;(4)</option>
+	<option value="http://luy.li/2010/06/"> 2010 年 六月 &nbsp;(8)</option>
+	<option value="http://luy.li/2010/05/"> 2010 年 五月 &nbsp;(9)</option>
+	<option value="http://luy.li/2010/04/"> 2010 年 四月 &nbsp;(7)</option>
+	<option value="http://luy.li/2010/03/"> 2010 年 三月 &nbsp;(8)</option>
+	<option value="http://luy.li/2010/02/"> 2010 年 二月 &nbsp;(10)</option>
+	<option value="http://luy.li/2010/01/"> 2010 年 一月 &nbsp;(7)</option>
+	<option value="http://luy.li/2009/12/"> 2009 年 十二月 &nbsp;(11)</option>
+	<option value="http://luy.li/2009/11/"> 2009 年 十一月 &nbsp;(9)</option>
+	<option value="http://luy.li/2009/10/"> 2009 年 十月 &nbsp;(12)</option>
+	<option value="http://luy.li/2009/09/"> 2009 年 九月 &nbsp;(17)</option>
+	<option value="http://luy.li/2009/08/"> 2009 年 八月 &nbsp;(9)</option>
+	<option value="http://luy.li/2009/07/"> 2009 年 七月 &nbsp;(14)</option>
+	<option value="http://luy.li/2009/06/"> 2009 年 六月 &nbsp;(15)</option>
+	<option value="http://luy.li/2009/05/"> 2009 年 五月 &nbsp;(13)</option>
+	<option value="http://luy.li/2009/04/"> 2009 年 四月 &nbsp;(9)</option>
+	<option value="http://luy.li/2009/03/"> 2009 年 三月 &nbsp;(15)</option>
+	<option value="http://luy.li/2009/02/"> 2009 年 二月 &nbsp;(9)</option>
+	<option value="http://luy.li/2009/01/"> 2009 年 一月 &nbsp;(12)</option>
+	<option value="http://luy.li/2008/12/"> 2008 年 十二月 &nbsp;(12)</option>
+	<option value="http://luy.li/2008/11/"> 2008 年 十一月 &nbsp;(12)</option>
+	<option value="http://luy.li/2008/10/"> 2008 年 十月 &nbsp;(14)</option>
+	<option value="http://luy.li/2008/09/"> 2008 年 九月 &nbsp;(14)</option>
+	<option value="http://luy.li/2008/08/"> 2008 年 八月 &nbsp;(12)</option>
+	<option value="http://luy.li/2008/07/"> 2008 年 七月 &nbsp;(14)</option>
+	<option value="http://luy.li/2008/06/"> 2008 年 六月 &nbsp;(13)</option>
+	<option value="http://luy.li/2008/05/"> 2008 年 五月 &nbsp;(17)</option>
+	<option value="http://luy.li/2008/04/"> 2008 年 四月 &nbsp;(10)</option>
+	<option value="http://luy.li/2008/03/"> 2008 年 三月 &nbsp;(12)</option>
+	<option value="http://luy.li/2008/02/"> 2008 年 二月 &nbsp;(14)</option>
+	<option value="http://luy.li/2008/01/"> 2008 年 一月 &nbsp;(19)</option>
+	<option value="http://luy.li/2007/12/"> 2007 年 十二月 &nbsp;(19)</option>
+	<option value="http://luy.li/2007/11/"> 2007 年 十一月 &nbsp;(17)</option>
+	<option value="http://luy.li/2007/10/"> 2007 年 十月 &nbsp;(19)</option>
+	<option value="http://luy.li/2007/09/"> 2007 年 九月 &nbsp;(19)</option>
+	<option value="http://luy.li/2007/08/"> 2007 年 八月 &nbsp;(22)</option>
+	<option value="http://luy.li/2007/07/"> 2007 年 七月 &nbsp;(21)</option>
+	<option value="http://luy.li/2007/06/"> 2007 年 六月 &nbsp;(18)</option>
+	<option value="http://luy.li/2007/05/"> 2007 年 五月 &nbsp;(14)</option>
+	<option value="http://luy.li/2007/04/"> 2007 年 四月 &nbsp;(7)</option>
+	<option value="http://luy.li/2007/03/"> 2007 年 三月 &nbsp;(4)</option>
+	<option value="http://luy.li/2007/02/"> 2007 年 二月 &nbsp;(6)</option>
+	<option value="http://luy.li/2007/01/"> 2007 年 一月 &nbsp;(1)</option>
+	<option value="http://luy.li/2006/12/"> 2006 年 十二月 &nbsp;(4)</option>
+	<option value="http://luy.li/2006/11/"> 2006 年 十一月 &nbsp;(2)</option>
+	<option value="http://luy.li/2006/10/"> 2006 年 十月 &nbsp;(4)</option>
+	<option value="http://luy.li/2006/09/"> 2006 年 九月 &nbsp;(6)</option>
+	<option value="http://luy.li/2006/08/"> 2006 年 八月 &nbsp;(3)</option>
+	<option value="http://luy.li/2006/07/"> 2006 年 七月 &nbsp;(1)</option>
+	<option value="http://luy.li/2006/06/"> 2006 年 六月 &nbsp;(5)</option>
+	<option value="http://luy.li/2006/05/"> 2006 年 五月 &nbsp;(5)</option>
+ </select>
+</li>
+	
+</ul>
+
+</div>
+<div class="blank"></div>
+<div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; opacity: 0.9;"></div><img src="10k.jpg" style="display: none; height: 0pt; width: 0pt;"><img src="10k_001.jpg" style="display: none; height: 0pt; width: 0pt;"><img src="10k_002.jpg" style="display: none; height: 0pt; width: 0pt;"><img src="10k_003.jpg" style="display: none; height: 0pt; width: 0pt;"><img src="loadtime.php" style="display: none; height: 0pt; width: 0pt;"></body>
+</html>

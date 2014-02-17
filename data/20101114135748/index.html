@@ -1,0 +1,895 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+<meta name="description" content="Vim插件管理工具pathogen -- article related to 开发者, 首页, and 程序.">
+<title>Solidot | Vim插件管理工具pathogen</title>
+
+
+<link rel="alternate" type="application/rss+xml" title="Solidot RSS 2.0" href="http://feeds.feedburner.com/solidot">
+
+
+
+
+
+
+<!-- start template: ID 311, header;misc;default -->
+
+<link rel="top" title="奇客的资讯，重要的东西" href="http://solidot.org/">
+<link rel="search" title="Search Solidot" href="http://developers.solidot.org/search.pl">
+<link rel="parent" title="首页" href="http://solidot.org/">
+<link rel="prev" title="OpenOffice.org 3.3 Beta发布" href="http://developers.solidot.org/article.pl?sid=10/08/11/0251258">
+<link rel="next" title="软件实证天线的信号问题" href="http://developers.solidot.org/article.pl?sid=10/08/11/034228">
+<link rel="author" href="http://developers.solidot.org/search.pl?op=stories&amp;author=791">
+<link rel="alternate" title="Print Article" href="http://developers.solidot.org/print.pl?sid=10/08/11/0258258">
+<link rel="alternate" title="Solidot RSS" href="http://developers.solidot.org/developers.rss" type="application/rss+xml"> 
+  
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+
+<div id="jump">
+	<a href="#main-articles">文章</a>
+	<br>
+	<a href="#blocks">Slash Boxes</a>
+	<br>
+	<a href="#acomments">评论</a>
+</div>
+
+<div id="frame"> 
+ 
+ 	<div id="topnav">
+		<div id="logo">
+			<h1>
+				<a href="http://solidot.org/">Solidot</a>
+			</h1>
+                        <div id="index-textlink"></div>
+                       
+		</div>
+		
+		<ul id="index-adbanner">
+			<!-- start template: ID 379, setrectop_img;misc;default -->
+
+<li>
+	<a href="http://solidot.org/search.pl?tid=58"><img src="topiccommunications.gif" alt="通讯" title="通讯" height="62" width="96"></a>
+</li>
+
+<!-- end template: ID 379, setrectop_img;misc;default -->
+
+
+
+<!-- start template: ID 379, setrectop_img;misc;default -->
+
+<li>
+	<a href="http://solidot.org/search.pl?tid=56"><img src="topicgamesclassic.gif" alt="经典游戏" title="经典游戏" height="43" width="55"></a>
+</li>
+
+<!-- end template: ID 379, setrectop_img;misc;default -->
+
+
+
+<!-- start template: ID 379, setrectop_img;misc;default -->
+
+<li>
+	<a href="http://solidot.org/search.pl?tid=17"><img src="topicinternet.gif" alt="互联网" title="互联网" height="73" width="70"></a>
+</li>
+
+<!-- end template: ID 379, setrectop_img;misc;default -->
+
+
+
+<!-- start template: ID 379, setrectop_img;misc;default -->
+
+<li>
+	<a href="http://solidot.org/search.pl?tid=102"><img src="topicspace.gif" alt="太空" title="太空" height="59" width="73"></a>
+</li>
+
+<!-- end template: ID 379, setrectop_img;misc;default -->
+
+
+
+<!-- start template: ID 379, setrectop_img;misc;default -->
+
+<li>
+	<a href="http://solidot.org/search.pl?tid=32"><img src="topicms.gif" alt="微软" title="微软" height="55" width="75"></a>
+</li>
+
+<!-- end template: ID 379, setrectop_img;misc;default -->
+		</ul>
+
+		
+		</div>
+		<!--
+		<div id="slogan">
+		<h2>
+			奇客的资讯，重要的东西
+		</h2>
+		</div>
+		-->
+		<div id="links">
+			
+				
+
+<!-- start template: ID 374, sidebox;misc;default -->
+
+<div class="block">
+	<div class="title" id="sitebox-title">
+		<h4>
+			分类
+		</h4>
+	</div>
+	<div class="content" id="sitebox-content">
+		<ul>
+<li><a href="http://solidot.org/">首页</a></li>
+<li><a href="http://it.solidot.org/">IT</a></li>
+<li><a href="http://linux.solidot.org/">Linux</a></li>
+<li><a href="http://opensource.solidot.org/">开源</a></li>
+<li><a href="http://books.solidot.org/">书籍</a></li>
+<li><a href="http://developers.solidot.org/">开发者</a></li>
+<li><a href="http://apple.solidot.org/">苹果</a></li>
+<li><a href="http://games.solidot.org/">游戏</a></li>
+<li><a href="http://hardware.solidot.org/">硬件</a></li>
+<li><a href="http://software.solidot.org/">软件</a></li>
+<li><a href="http://interviews.solidot.org/">采访</a></li>
+<li><a href="http://internet.solidot.org/">互联网</a></li>
+<li><a href="http://ask.solidot.org/">询问Solidot</a></li>
+<li><a href="http://science.solidot.org/">科学</a></li>
+<li><a href="http://society.solidot.org/">社会</a></li>
+<li><a href="http://idle.solidot.org/">Idle</a></li>
+</ul>
+	</div>
+        </div>
+
+<!-- end template: ID 374, sidebox;misc;default -->
+
+ 
+				<!-- start template: ID 374, sidebox;misc;default -->
+
+<div class="block">
+	<div class="title" id="stories-title">
+		<h4>
+			文章
+		</h4>
+	</div>
+
+  <div class="content" id="navigation-content">
+   <ul>
+    <li><a href="http://solidot.org/submit.pl">提交文章</a></li> 
+	<li><a href="http://solidot.org/search.pl">往日文章</a></li>
+	<li><a href="http://solidot.org/pollBooth.pl">过去的投票</a></li> 
+	<li><a href="http://solidot.org/hof.shtml">名人堂</a></li>
+    <li><a href="http://solidot.org/topics.pl">主题</a></li> 
+	<li><a href="http://developers.solidot.org/bookmark.pl">书签</a></li>
+   </ul>
+  </div>
+</div>
+
+<!-- end template: ID 374, sidebox;misc;default --> 
+
+				
+
+<!-- start template: ID 374, sidebox;misc;default -->
+
+<div class="block">
+	<div class="title" id="navigation-title">
+		<h4>
+			导航
+		</h4>
+	</div>
+	<div class="content" id="navigation-content">
+		<ul>	
+	<li>
+		<a href="http://developers.solidot.org/faq/">常见问题</a>
+	</li>
+	<li>
+		<a href="http://developers.solidot.org/authors.pl">编辑介绍</a>
+	</li>
+	<li>
+		<a href="http://developers.solidot.org/about.shtml">关于</a>
+	</li> 
+	<li>
+        <a href="http://mail.solidot.org/" target="_top">邮箱</a> 
+    </li>
+	<li>
+		<a href="http://developers.solidot.org/comments.pl">讨论</a>
+	</li>
+	<li>
+		<a href="http://developers.solidot.org/journal.pl">日志</a>
+	</li>
+	<li>
+		<a href="http://developers.solidot.org/messages.pl">消息</a>
+	</li>  
+  		
+		<li>
+			<a href="http://developers.solidot.org/my/">注册/登录</a>
+		</li>
+		
+	</ul>
+	</div>
+        </div>
+
+<!-- end template: ID 374, sidebox;misc;default -->
+
+ 
+				<!-- start template: ID 374, sidebox;misc;default -->
+
+<div class="block">
+	<div class="title" id="aboutbox-title">
+		<h4>
+			关于
+		</h4>
+	</div>
+	<div class="content" id="aboutbox-content">
+
+		<ul>
+<li><a href="http://slash.solidot.org/" target="_top" title="Slash 开源项目中文版">Slash 中文版</a></li> 
+<li><a href="http://lists.solidot.org/" target="_top">邮件列表</a></li>
+<li><a href="http://solidot.org/supporters.shtml" title="Solidot 支持者">支持者</a></li>
+<li><a href="http://solidot.org/prettypictures.shtml" title="Solidot 图标图片">图标</a></li> 
+<li><a href="http://home.solidot.org/old/" target="_top">老站</a></li>
+<li><a href="http://feeds.feedburner.com/solidot" title="订阅 Solidot RSS" target="_top">RSS</a></li>
+<li>RSS读者<br>
+<a href="http://feeds.feedburner.com/solidot" title="Solidot RSS 订阅者" target="_top"><img src="solidot" alt="Solidot RSS 读者" border="0"></a>
+</li>
+</ul>
+	</div>
+</div>
+
+
+<div class="block">
+	<div class="title" id="linkbox-title">
+		<h4>
+			链接
+		</h4>
+	</div>
+	<div class="content" id="linkbox-content">
+
+		<ul>
+<li><a href="http://www.hostgood.net/" target="_top" title="国外虚拟主机目录"><img src="hostgood.gif" border="0"></a></li>   
+<li><a href="http://www.buzzc.com/" target="_top" title="Buzzc.com - 汇集最新网络热门信息"><img src="buzzc-88x31.gif" border="0"></a></li>
+<li><a href="http://www.mangbar.com/" target="_top"><img src="mangbar88x31.gif" border="0"></a></li>
+<li><a href="http://www.zdnet.com.cn/" target="_top" title="至顶网">至顶网</a></li> 
+<li><a href="http://gezhi.org/" target="_top">格致</a></li>
+<li><a href="http://www.5dig.net/" target="_top">我挖网</a></li>
+<li><a href="http://zishuo.com/" target="_top">子说</a></li>
+<li><a href="http://digitalnomadsproject.org/" target="_top">数字游牧</a></li>
+<li><a href="https://desaigongyuan.appspot.com/" target="_top">德赛公园</a></li> 
+ <li><a href="http://jandan.net/" title="煎蛋 | 地球上没有新鲜事" target="_top">煎蛋</a></li>
+<li><a href="http://www.appinn.com/" target="_top">小众软件</a></li> 
+<li><a href="http://www.ifanr.com/" target="_top">爱范儿</a></li> 
+<li><a href="http://www.google.org.cn/" target="_top">谷奥</a></li> 
+<li><a href="http://www.kenengba.com/" target="_top">可能吧 </a></li> 
+<li><a href="http://riku.me/" target="_top">关注新网络</a></li> 
+<li><a href="http://songshuhui.net/" target="_top">科学松鼠会 </a></li> 
+<li><a href="http://wo.zdnet.com.cn/" target="_top">探客网 </a></li> 
+ <br>
+<li><a href="http://solidot.org/service/index.html">加入链接</a></li> 
+</ul>
+	</div>
+</div>
+
+<!-- end template: ID 374, sidebox;misc;default -->
+			
+		</div>
+		<div id="contents">
+			
+			
+			<div id="article">
+
+<!-- end template: ID 311, header;misc;default -->
+
+
+
+<!-- start template: ID 285, display;article;default -->
+
+<div id="slashboxes">
+
+<!-- start template: ID 374, sidebox;misc;default -->
+
+<div class="block">
+	<div class="title" id="userlogin-title">
+		<h4>
+			Solidot 登录
+		</h4>
+	</div>
+	<div class="content" id="userlogin-content">
+		
+			<form action="http://solidot.org/login.pl" method="post">
+<fieldset>
+	<legend>登录</legend>
+	<label>
+		用户名
+	</label>
+	<input gtbfieldid="1" name="unickname" size="20" value="" type="text">
+	<label>
+		密码
+	</label>
+	<input name="returnto" value="//developers.solidot.org/article.pl?sid=10/08/11/0258258" type="hidden">
+	<input name="op" value="userlogin" type="hidden">
+	<input name="upasswd" size="20" type="password">
+	<label class="checkbox">
+		<input name="login_temp" value="yes" type="checkbox">
+		公共终端
+	</label>
+	<input name="userlogin" value="登录" class="button" type="submit">
+	</fieldset>
+</form>
+<p>
+	[ <b>
+		<a href="http://solidot.org/login.pl?op=newuserform">
+			创建一个新帐号
+		</a>
+	</b> ]
+</p>
+		
+	</div>
+        </div>
+
+<!-- end template: ID 374, sidebox;misc;default -->
+
+<div class="block">
+	<div class="title" id="related-title">
+		<h4>
+			相关链接
+		</h4>
+	</div>
+	<div class="content" id="related-content">
+		<ul>
+<li><a href="http://www.linux.com/">Linux</a></li>
+<li><a href="http://blog.danmarner.com/">DaNmarner</a></li>
+<li><a href="http://news.ycombinator.com/item?id=1590713">帖子</a></li>
+<li><a href="http://www.vim.org/scripts/script.php?script_id=2332">pathogen</a></li>
+<li><a href="http://www.vim.org/scripts/download_script.php?src_id=12116">http://www.vim.org/scripts/dow nload_script.php?src _id=12116</a></li>
+<li><a href="http://github.com/scrooloose/nerdtree.git">http://github.com/scrooloose/n erdtree.git</a></li>
+<li><a href="http://blog.danmarner.com/me/entry/vim-pathogen/">http://blog.danmarner.com/me/e ntry/vim-pathogen/</a></li>
+<li><a href="http://solidot.org/search.pl?tid=5">More 程序 stories</a></li>
+	
+		<li><a href="http://solidot.org/search.pl?tid=11">More 开发者 stories</a></li>
+	
+		<li><a href="http://solidot.org/search.pl?tid=1">More 首页 stories</a></li>
+	
+	<li><a href="http://solidot.org/search.pl?op=stories&amp;author=791">Also by matrix</a></li>
+</ul>
+	</div>
+        </div>
+
+
+</div>
+<a name="main-articles"></a>
+<div id="articles" class="aduserbox">
+
+
+<!-- start template: ID 283, dispStory;misc;default -->
+
+<div class="article">
+
+
+<div class="generaltitle">
+	<div class="title">
+		<h3>
+			Vim插件管理工具pathogen
+			
+		</h3>
+	</div>
+</div>
+	<div class="details">
+		
+		<a href="http://developers.solidot.org/article.pl?sid=10/08/11/0258258&amp;from=rss">matrix</a>  发表于 2010年8月11日 11时16分 星期三
+		 
+			&nbsp;&nbsp;<a href="http://developers.solidot.org/print.pl?sid=10/08/11/0258258"><img src="print.gif" alt="Printer-friendly" height="11" width="15"></a>
+		
+		
+			&nbsp;&nbsp;<a href="http://developers.solidot.org/email.pl?sid=10/08/11/0258258"><img src="email.gif" alt="Email story" height="14" width="20"></a>
+		<br>
+		<strong>来自<b>emacs</b>部门</strong>
+	</div>
+	<div class="body">
+		 
+		<div class="topic">
+			
+			
+				<a href="http://developers.solidot.org/search.pl?tid=5">
+					<img src="topicprogramming.gif" alt="程序" title="程序" height="48" width="80">
+				</a>
+			
+			
+				
+				
+				
+				
+					
+			
+				
+				
+				
+					
+			
+		</div>
+		<div class="intro">
+			<a href="http://blog.danmarner.com/">DaNmarner</a> 写道 "在 Hacker News 最近关于 Vim 插件的 <a href="http://news.ycombinator.com/item?id=1590713">帖子</a> 回复中了解到一个叫做 <a href="http://www.vim.org/scripts/script.php?script_id=2332">pathogen</a> 的 Vim 脚本，其作用是改善 Vim 管理插件的方式。试用过后发现 pathogen 果然强大。是以撰文分享。
+		</div>
+
+
+
+
+
+
+	
+		<div class="full">
+			<b>问题剖析</b>
+<br> <br>可扩展性是优秀软件的重要特点之一，而 Vim 从 Unix 系统一路传成下来更是将可扩展性发挥到了极致。
+相信多数 Vim 的经验用户除了自己经精心维护的 <tt>.vimrc</tt> 配置文件之外更是有一个用起来得心应手的插件宝库，从而让 Vim 满足自己五花八门的使用需求。
+<br> <br>Vim 大行其道，除了优秀插件众多之外的另一个因素是插件机制的简便易用。
+安装插件的方法无外乎一下载二解压，或者下载以后用运行 Vim 里的安装命令。
+没有特殊指定，插件都是装载 <tt>~/.vim</tt> 目录之下。
+通过复制，symlink 甚至版本控制工具把这个目录备份一下，日后更是能在不同机器上瞬间找到熟悉的编辑环境。
+<br> <br>可是时间一久，这个 <tt>~/.vim</tt> 目录难免变得越来越臃肿，各类插件横七竖八的散落在那一个个 <tt>autoload</tt>，<tt>ftplugin</tt>, <tt>indent</tt>，<tt>syntax</tt>,<tt>doc</tt> 等目录里面不说，很多插件还我行我素的自己创建一堆私有目录，占山为王。
+等到你想删除或更新某某插件的时候，要么得去重新下载插件的压缩包，找到它的五脏六腑都安插在了什么位置，要么只能凭着瞎猜法门一个目录一个目录的去找来。
+<br> <br> <b>解决之道</b>
+<br> <br> <strong> pathogen </strong> 让每个插件占有一个单独的目录，解决插件文件分散的问题。
+安装了 pathogen 以后只要在 <tt>~/.vim</tt> （注：MS Windows 下貌似是 <tt>~\vimfiles</tt>，下同）里建立一个 <tt>bundle</tt> 目录，然后把所有插件一一放在 <tt>~/.vim/bundle/插件名</tt> 下面，就可以使用。
+插件的安装过程与没有 pathogen 时类似，但从安装结束开始，一切的插件管理过程都能得到简化。
+<br> <br>试用过某个插件以后需要删除？安装在 <tt>bundle</tt> 目录里最后把插件的目录一删了之就行了。
+<br> <br>想保持使用某个插件的最新版本？直接从插件的仓库 checkout 一份代码到 <tt>bundle</tt> 目录，或者别的地方再 symlink 一下就行了。
+<br> <br>想了解一下这个插件的实现方法？有了 pathogen 去那里找插件脚本再也不是问题了。
+<br> <br> <b>实战演练</b>
+<br> <br>pathogen 只有一个单独的脚本，所谓安装就是把它放在你的 <tt>~/.vim/autoload</tt> 目录。
+<br> <br>如果你有一个类 Unix 环境（Linux, Mac OS X），只需要下面这一条命令：
+<blockquote>
+<div>  <tt>wget -O ~/.vim/autoload/pathogen.vim <a href="http://www.vim.org/scripts/download_script.php?src_id=12116">http://www.vim.org/scripts/download_script.php?src _id=12116</a> </tt> </div>
+</blockquote>
+要启用它，还要在 <tt>.vimrc</tt> 文件里, <tt>filetype plugin indent on</tt> 之前的任何地方，加入下面这句：
+<blockquote>
+<div> <tt>call pathogen#runtime_append_all_bundles()</tt> </div>
+</blockquote>
+这样就搞定了，把常用的插件都重装在 <tt>~/.vim/bundle</tt> 里面吧！
+<a href="http://blog.danmarner.com/">DaNmarner</a> 个人喜欢直接把插件从仓库里 checkout 出来，以后直接通过版本控制来更新 Vim 插件。
+以 NERDTree 这个插件为例，安装起来是这样的：
+<blockquote>
+<div> <tt>git clone <a href="http://github.com/scrooloose/nerdtree.git">http://github.com/scrooloose/nerdtree.git</a> path/to/code/nerdtree</tt>
+<tt>ln -s path/to/code/nerdtree ~/.vim/bundle/nerdtree</tt> </div>
+</blockquote>
+更新到最新版本：
+<blockquote>
+<div> <tt>cd path/to/code/nerdtree &amp;&amp; git pull origin</tt> </div>
+</blockquote>
+删除该插件：
+<blockquote>
+<div> <tt>rm -rf ~/.vim/bundle/nerdtree</tt> </div>
+</blockquote>
+怎么样，有了 pathogen ，管理 Vim 插件是不是简单了很多？
+<br> <br>本文作者为 <a href="http://blog.danmarner.com/">DaNmarner</a>，原文发表于 <a href="http://blog.danmarner.com/me/entry/vim-pathogen/">http://blog.danmarner.com/me/entry/vim-pathogen/</a> ，转载请保留原文出处与链接。"
+		</div>
+	
+	</div>
+</div>
+
+<!-- end template: ID 283, dispStory;misc;default -->
+
+
+
+<div class="prev-next">
+
+
+
+ <br>«&nbsp; <a href="http://software.solidot.org/article.pl?sid=10/08/11/0251258">OpenOffice.org 3.3 Beta发布</a>
+  | <a href="http://it.solidot.org/article.pl?sid=10/08/11/034228">软件实证天线的信号问题</a> &nbsp;» 
+
+
+
+
+</div>
+
+
+
+
+
+
+
+</div>
+
+<!-- end template: ID 285, display;article;default -->
+
+
+
+<!-- start template: ID 365, printCommNoArchive;misc;default -->
+
+<a name="comments"></a>
+<div class="commentwrap">
+<div class="commentBox">
+			
+
+		
+			
+				This discussion has been archived.
+			
+			No new comments can be posted.
+		
+	
+</div>
+</div>
+
+<!-- end template: ID 365, printCommNoArchive;misc;default -->
+
+
+
+<!-- start template: ID 366, printCommentsMain;misc;default -->
+
+<a name="acomments"></a>
+
+<div class="commentwrap">
+
+
+<div class="commentBox">
+
+	<a href="http://developers.solidot.org/article.pl?sid=10/08/11/0258258">Vim插件管理工具pathogen</a>
+
+
+	|
+
+
+	<a href="http://developers.solidot.org/users.pl">登录/创建一个账号</a>
+
+
+		| <a href="http://developers.solidot.org/comments.pl?sid=20785&amp;op=&amp;threshold=1&amp;commentsort=0&amp;mode=thread&amp;pid=0">顶部</a>
+
+
+
+
+	| <b>8</b> 条评论
+
+
+
+
+
+
+		| <a href="http://developers.solidot.org/search.pl?op=comments&amp;sid=20785">搜索讨论</a>
+	</div>
+	<div class="commentBoxForm" id="commentControlBox">
+		<form action="http://developers.solidot.org/comments.pl">
+		<fieldset>
+		<legend>显示选项</legend>
+	
+		门槛: 
+
+<!-- start template: ID 376, select;misc;default -->
+
+<select gtbfieldid="2" id="threshold" name="threshold">
+	<option value="-1">-1: 8 条评论</option>
+	<option value="0">0: 8 条评论</option>
+	<option value="1" selected="selected">1: 7 条评论</option>
+	<option value="2">2: 0 条评论</option>
+	<option value="3">3: 0 条评论</option>
+	<option value="4">4: 0 条评论</option>
+	<option value="5">5: 0 条评论</option>
+</select>
+
+<!-- end template: ID 376, select;misc;default -->
+
+
+
+<!-- start template: ID 376, select;misc;default -->
+
+<select gtbfieldid="3" id="mode" name="mode">
+	<option value="flat">平铺</option>
+	<option value="nested">嵌套平铺</option>
+	<option value="nocomment">无评论</option>
+	<option value="thread" selected="selected">嵌套线形</option>
+</select>
+
+<!-- end template: ID 376, select;misc;default -->
+
+
+
+<!-- start template: ID 376, select;misc;default -->
+
+<select gtbfieldid="4" id="commentsort" name="commentsort">
+	<option value="0" selected="selected">最早的在前</option>
+	<option value="1">最新的在前</option>
+	<option value="3">最高分的在前</option>
+	<option value="4">最早的在前(忽视嵌套)</option>
+	<option value="5">最新的在前(忽视嵌套)</option>
+</select>
+
+<!-- end template: ID 376, select;misc;default -->
+
+
+
+
+	
+		<input name="op" value="Change" class="button" type="submit">
+
+	
+		<input name="sid" value="20785" type="hidden">
+		
+		
+		
+		
+
+	
+		</fieldset>
+		</form>
+	<div class="commentBox">
+		<small>
+		<b>声明:</b>
+		下面的评论属于其发表者所有，不代表本站的观点和立场，我们不负责他们说什么。
+		</small>
+	</div>
+	</div>
+</div>
+
+<!-- end template: ID 366, printCommentsMain;misc;default -->
+
+
+
+<!-- start template: ID 364, printCommComments;misc;default -->
+
+<!-- start template: ID 323, linkCommentPages;misc;default -->
+
+
+
+<!-- end template: ID 323, linkCommentPages;misc;default -->
+
+
+	
+	
+	
+		<ul id="commentlisting">
+			<li id="tree_80583" class="comment">
+<div id="comment_status_80583" class="commentstatus"></div>
+<div id="comment_80583">
+	<div class="commentTop">
+		<div class="title">
+			
+			<h4><a name="80583">为什么还要使用这种侏罗纪时代的工</a></h4>
+			<span class="score">(得分:1)</span>
+		</div>
+		<div class="details">
+			<a href="http://solidot.org/%7Exuby/">xuby (14670)</a>
+			
+			
+			<span class="otherdetails">
+			
+			发表于 2010年8月11日 11时30分 星期三
+			 (<a href="http://developers.solidot.org/comments.pl?sid=20785&amp;cid=80583">#80583</a>)
+			<small>
+			
+				
+			</small>
+			</span>
+		</div>
+	</div>
+	<div class="commentBody">
+		<div id="comment_body_80583">rt。</div>
+		
+		<div id="comment_sig_80583" class="sig">--<br>我期待，我将是中国绵绵不绝的文字狱的最后一个受害者。---Liu XB</div>
+		
+	
+	</div>
+	
+</div><ul><li><a href="http://developers.solidot.org/comments.pl?sid=20785&amp;op=&amp;threshold=1&amp;commentsort=0&amp;mode=thread&amp;pid=80583#80587">Re:为什么还要使用这种侏罗纪时代的</a>
+
+
+	
+		
+		
+			by MagicYoung
+		
+	
+
+	
+		(得分:1)
+	
+
+	
+		2010年8月11日 12时03分 星期三</li><li><a href="http://developers.solidot.org/comments.pl?sid=20785&amp;op=&amp;threshold=1&amp;commentsort=0&amp;mode=thread&amp;pid=80583#80590">Re:为什么还要使用这种侏罗纪时代的</a>
+
+
+	
+		
+		
+			by c-aries
+		
+	
+
+	
+		(得分:1)
+	
+
+	
+		2010年8月11日 12时49分 星期三<ul><li><a href="http://developers.solidot.org/comments.pl?sid=20785&amp;op=&amp;threshold=1&amp;commentsort=0&amp;mode=thread&amp;pid=80590#80595">Re:为什么还要使用这种侏罗纪时代的</a>
+
+
+	
+		
+		
+			by middleware
+		
+	
+
+	
+		(得分:1)
+	
+
+	
+		2010年8月11日 13时19分 星期三</li></ul></li><li><a href="http://developers.solidot.org/comments.pl?sid=20785&amp;op=&amp;threshold=1&amp;commentsort=0&amp;mode=thread&amp;pid=80583#80609">Re:为什么还要使用这种侏罗纪时代的</a>
+
+
+	
+		
+		
+			by oldrev
+		
+	
+
+	
+		(得分:1)
+	
+
+	
+		2010年8月11日 16时18分 星期三</li><li><a href="http://developers.solidot.org/comments.pl?sid=20785&amp;op=&amp;threshold=1&amp;commentsort=0&amp;mode=thread&amp;pid=80583#80621">Re:为什么还要使用这种侏罗纪时代的</a>
+
+
+	
+		
+		
+			by kyt30
+		
+	
+
+	
+		(得分:1)
+	
+
+	
+		2010年8月11日 19时58分 星期三</li></ul></li><li id="tree_80596" class="comment">
+<div id="comment_status_80596" class="commentstatus"></div>
+<div id="comment_80596">
+	<div class="commentTop">
+		<div class="title">
+			
+			<h4><a name="80596">Re:因为好用</a></h4>
+			<span class="score">(得分:1)</span>
+		</div>
+		<div class="details">
+			<a href="http://solidot.org/%7Efailsafe/">failsafe (1230)</a>
+			
+			
+			<span class="otherdetails">
+			
+			发表于 2010年8月11日 13时44分 星期三
+			 (<a href="http://developers.solidot.org/comments.pl?sid=20785&amp;cid=80596">#80596</a>)
+			<small>
+			
+				
+			</small>
+			</span>
+		</div>
+	</div>
+	<div class="commentBody">
+		<div id="comment_body_80596">我这个被windows调教出来的小网虫，总是不自觉的将手移到鼠标上，然后再悻悻的移回去</div>
+		
+	
+	</div>
+	<div class="commentSub">
+
+		[ 
+
+		
+
+		<a href="http://developers.solidot.org/comments.pl?sid=20785&amp;op=&amp;threshold=1&amp;commentsort=0&amp;mode=thread&amp;cid=80593">上层</a>
+		
+		
+
+		
+
+		
+
+		
+		]
+		</div>
+</div></li><li><b>还有 <a href="http://developers.solidot.org/comments.pl?sid=20785&amp;op=&amp;threshold=-1&amp;commentsort=0&amp;mode=thread&amp;pid=0">1 reply</a> 在你当前的门槛设置之下。</b></li>
+			<li id="roothiddens" class="hide"></li>
+		</ul>
+	
+	
+	
+	
+
+<!-- start template: ID 323, linkCommentPages;misc;default -->
+
+
+
+<!-- end template: ID 323, linkCommentPages;misc;default -->
+
+<!-- end template: ID 364, printCommComments;misc;default -->
+
+
+
+<!-- start template: ID 301, footer;misc;default -->
+
+</div>	
+		</div>
+		<div id="footer">
+			
+			<em>宗教上最深的误解——认为坏人没有宗教。——尼采</em>
+			
+			<div class="search">
+				<form method="get" action="http://www.google.com/search">
+				 <fieldset>
+					<legend>Google Search</legend>
+					<input gtbfieldid="5" name="query" value="" size="20" type="text">
+					<input name="as_sitesearch" value="solidot.org" type="hidden">
+
+					<input value="Google Solidot" type="submit">
+				 </fieldset>
+			  </form>
+			</div>
+ 
+ 			<div class="copyright">
+				
+			</div>
+			<div class="btmnav">
+				<ul>
+					<li class="begin">
+						<a href="http://developers.solidot.org/">首页</a>
+					</li>
+                                        <li>
+                                               <a href="http://www.zdnet.com.cn/">至顶网</a>
+                                        </li>
+					<li>
+						<a href="http://developers.solidot.org/submit.pl">提交文章</a>
+					</li>
+					<li>
+						<a href="http://developers.solidot.org/search.pl">往日文章</a>
+					</li>
+					<li>
+						<a href="http://developers.solidot.org/pollBooth.pl">过去的投票</a>
+					</li>
+					<li>
+						<a href="http://developers.solidot.org/faq/">常见问题</a>
+					</li>
+					<li>
+						<a href="http://developers.solidot.org/authors.pl">编辑介绍</a>
+					</li>
+          <li>
+						<a href="http://developers.solidot.org/privacy.html">隐私政策</a>
+					</li>
+          <li>
+						<a href="http://developers.solidot.org/terms.html">使用条款</a>
+					</li> 
+					<li>
+             <a href="http://mail.solidot.org/" target="_top">邮箱</a> 
+          </li>
+          <li>
+						<a href="http://developers.solidot.org/contact.html">联系</a>
+					</li> 
+					<li>
+           <!-- <a href="//developers.solidot.org/service/ad.html">广告</a>-->
+          </li>
+ 					<li>
+						<a href="http://feeds.feedburner.com/solidot">RSS</a>
+					</li>
+				</ul>
+ 			</div>
+      <div id="copyinfo">
+         <p>本站提到的所有注册商标属于他们各自的所有人所有，评论属于其发表者所有，其余内容版权属于 Solidot.org(2009-2012) 所有 。</p>
+         <p><a href="http://www.slashcode.com/" title="Slash 开源项目" target="_top"><img src="slash.gif" alt="slashcode" border="0"></a>  <a href="http://www.cpan.org/" title="Perl" target="_top"><img src="perl.gif" alt="perl" border="0"></a>  <a href="http://apache.org/" title="Apache 服务器" target="_top"><img src="apache.gif" alt="apache" border="0"></a>  <a href="http://www.mysql.com/" title="MySQL" target="_top"><img src="mysql.gif" alt="mysql" border="0"></a> </p>
+         <p><a href="http://solidot.org/" title="Solidot.org"><img src="solidot-s.gif" border="0"></a></p>
+         <p>京ICP证<a target="_top" href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001021500016">010391</a>号<a href="http://www.hd315.gov.cn/beian/view.asp?bianhao=010202001021500016"><img src="gs.gif" style="margin-right: 8px;"></a></p>    
+        </div>
+  		</div>
+		
+	</div> 
+
+
+<img src="pvhit0001.gif" border="0" height="1" width="1"><iframe src="index_1.html" scrolling="no" height="0" width="0"></iframe><iframe src="index_2.html" scrolling="no" height="0" width="0"></iframe>
+ <div style="display: none;"><a href="http://www.cnzz.com/stat/website.php?web_id=1864685" target="_top" title="站长统计">站长统计</a><img src="stat.htm" border="0" height="0" width="0"></div><!-- end template: ID 301, footer;misc;default -->
+
+<div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; opacity: 0.9;"></div></body>
+</html>

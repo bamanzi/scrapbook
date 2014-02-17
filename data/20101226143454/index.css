@@ -1,0 +1,123 @@
+/* ::::: http://xahlee.org/lang.css ::::: */
+
+/* ::::: http://xahlee.org/lbasic.css ::::: */
+
+a:visited, a:link { text-decoration: none; }
+a:link:hover, a:visited:hover { text-decoration: underline; background-color: pink; }
+body { font-family: "Arial Unicode MS","DejaVu Sans",sans-serif; }
+h1, h2, h3, h4, h5, h6 { font-family: serif; }
+h2 { margin-left: 1%; }
+h3 { margin-left: 3%; color: rgb(178, 34, 34); }
+h4 { margin-left: 4%; }
+p { line-height: 140%; width: 70ex; }
+li { margin-top: 0.8ex; }
+img { margin-bottom: 1px; margin-right: 1px; }
+kbd { border: 1px solid rgb(194, 194, 194); background-color: rgb(240, 240, 240); padding-left: 0.3ex; padding-right: 0.3ex; font-family: monospace; }
+div.nav { display: table; border: thin solid rgb(178, 34, 34); padding: 2px; margin-left: 1ex; margin-right: 1ex; }
+div.nav:before { content: "∑ "; font-family: "Times New Roman",serif; font-size: 3ex; color: rgb(178, 34, 34); }
+div.ftr { background-color: rgb(255, 248, 220); text-align: center; clear: both; }
+div.ftr div { display: inline; margin: 1ex; }
+div.ftr div.x50 { background: url('webfeed.png') no-repeat scroll left bottom transparent; padding-left: 34px; padding-top: 34px; }
+div.ftr div.x60 form { display: inline; }
+div.ftr div.x60 img { border: medium none; }
+div.sig {  }
+div.sig:before { content: "∑ "; font-family: "Times New Roman",serif; font-size: 4em; color: rgb(178, 34, 34); }
+div.dstp, div.cpr { display: inline; font-size: small; }
+div.dstp:before { content: "Page created: "; }
+div.rltd { display: table; background-color: rgb(240, 240, 240); padding: 0.5ex; margin: 2ex 0pt 0pt; line-height: 100%; }
+div.rltd:before { content: "You might like: "; }
+table.nrm { border: 1px solid black; border-collapse: collapse; margin: 0.5ex; }
+table.nrm th, table.nrm td { border: 1px solid gray; padding: 0.5ex; }
+table.nrm th { background-color: rgb(215, 228, 242); }
+div.dnt0c7af { text-align: center; float: right; width: 350px; }
+p.q { line-height: 125%; width: 60ex; font-size: larger; background: none repeat scroll 0% 0% rgb(255, 245, 238); padding: 2px; }
+p.q:before { font-size: x-large; font-family: serif; content: "Q: "; }
+div.a { line-height: 125%; margin-left: 5ex; }
+div.a > p:first-child:before { content: "A: "; }
+div.twt, div.blgcmt { display: table; float: right; }
+a[href^="http://en.wikipedia.org/"]:after { content: "w"; font-size: 50%; }
+div.amzo { float: right; padding: 0.5ex; margin: 0.5ex; }
+div.amz728x90 {  }
+pre.ahk, pre.bash, pre.bashshell, pre.basic, pre.bbcode, pre.c, pre.cl, pre.clojure, pre.cmd, pre.code, pre.css, pre.elisp, pre.erlang, pre.haskell, pre.html, pre.java, pre.javascript, pre.js, pre.lsl, pre.math, pre.mma, pre.ocaml, pre.perl, pre.php, pre.povray, pre.powershell, pre.python, pre.ruby, pre.scala, pre.scheme, pre.vbs, pre.visualbasic, pre.xml, pre.html6 { background-color: rgb(240, 255, 240); padding: 1ex; width: 120ex; border: thin solid; white-space: pre-wrap; }
+pre.code { border-color: rgb(190, 190, 190); }
+pre.cmd { border-color: rgb(139, 137, 112); }
+pre.elisp { border-color: rgb(176, 48, 96); }
+pre span.comment-delimiter { color: rgb(178, 34, 34); }
+pre span.comment { color: rgb(178, 34, 34); }
+pre span.keyword { color: rgb(160, 32, 240); }
+pre span.string { color: rgb(139, 34, 82); }
+/* ::::: http://xahlee.disqus.com/styles.css ::::: */
+
+/* ::::: http://mediacdn.disqus.com/1293147696/styles/dtpl/defaults.css ::::: */
+
+.dsq-popup h1, h2, h3, h4 { position: static; }
+button::-moz-focus-inner { border: 0pt none; }
+button.dsq-button, button.dsq-button-small { color: inherit; border: 1px solid rgb(153, 153, 153); margin: 0pt; font-family: Arial,Helvetica,Calibri,sans-serif; overflow: visible; background: url('button-large.png') repeat-x scroll left bottom transparent; }
+button.dsq-button { padding: 6px 8px; font-size: 12px; font-weight: bold; -moz-border-radius: 4px 4px 4px 4px; }
+button.dsq-button:hover, button.dsq-button-small:hover { cursor: pointer; }
+button.dsq-button:active, button.dsq-button.dsq-toggled { background: -moz-linear-gradient(center top , rgb(102, 102, 102), rgb(153, 153, 153)) repeat scroll 0% 0% transparent; color: rgb(255, 255, 255); border: 1px solid rgb(85, 85, 85); text-shadow: 0pt 1px 0pt rgb(102, 102, 102); }
+/* ::::: http://mediacdn.disqus.com/1293147696/styles/embed/thread.css? ::::: */
+
+#disqus_thread { margin-bottom: 10px; }
+.dsq-brlink { font-size: 10px; }
+.logo-disqus { font-family: Arial,sans-serif; text-transform: uppercase; font-size: 9px; font-weight: bold; }
+#dsq-content iframe, .dsq-popup iframe { border: 0pt none; overflow-y: auto; overflow-x: hidden; width: 100%; background-color: transparent; }
+#dsq-content #dsq-form-area iframe { overflow: hidden; }
+#dsq-content #dsq-global-toolbar { margin: 1em 0pt; }
+#dsq-content #dsq-global-toolbar table { width: 100%; }
+#dsq-content #dsq-global-toolbar table td { vertical-align: top; }
+#dsq-content .dsq-global-toolbar-likes { width: 100%; overflow: hidden; }
+#dsq-content .dsq-global-toolbar-likes a { float: left; }
+#dsq-content #dsq-global-toolbar .toolbar-item { -moz-border-radius: 3px 3px 3px 3px; margin: 0pt 3px 0pt 0pt; text-indent: -9999em; height: 22px; display: block; border: 1px solid rgba(0, 0, 0, 0.2); }
+#dsq-content #dsq-toolbar-dropdown { position: relative; }
+#dsq-content #dsq-toolbar-dropdown #dsq-toolbar-dropdown-wrap { position: absolute; right: 0pt; top: 27px; width: 90px; color: rgb(255, 255, 255); background: url('toolbar-dropdown.png') repeat scroll 0% 0% transparent; -moz-border-radius: 3px 0pt 3px 3px; padding: 6px; border-right: 1px solid rgba(0, 0, 0, 0.2); border-width: medium 1px 1px; border-style: none solid solid; border-color: -moz-use-text-color rgba(0, 0, 0, 0.2) rgba(0, 0, 0, 0.2); }
+#dsq-content #dsq-toolbar-dropdown:hover #dsq-toolbar-dropdown-wrap { display: block ! important; }
+#dsq-content #dsq-toolbar-dropdown #dsq-toolbar-dropdown-wrap a { color: rgb(238, 238, 238) ! important; }
+#dsq-content #dsq-toolbar-dropdown #dsq-toolbar-dropdown-wrap a:hover { color: rgb(255, 255, 255) ! important; }
+#dsq-content #dsq-toolbar-dropdown #dsq-toolbar-dropdown-wrap ul li h4 { margin: 0pt 0pt 8px; padding: 0pt; }
+#dsq-content #dsq-toolbar-dropdown .dsq-login-buttons { margin: 0pt; padding: 0pt; }
+#dsq-content #dsq-toolbar-dropdown .dsq-login-buttons li { margin: 0pt 0pt 3px; padding: 0pt; }
+#dsq-content #dsq-global-toolbar.dsq-community-preview .dsq-toolbar-logo { width: 73px; background: url('toolbar-sprite.png') repeat scroll -123px 0pt transparent; margin: 0pt 0pt 3px; }
+#dsq-global-toolbar.dsq-community-preview #dsq-toolbar-dropdown:hover .dsq-toolbar-logo { background: url('toolbar-sprite.png') repeat scroll -123px -22px transparent; -moz-border-radius: 3px 3px 0pt 0pt; height: 26px; margin: 0pt; border-bottom: 0pt none; }
+#dsq-content #dsq-global-toolbar .dsq-thread-like { width: 54px; background: url('toolbar-sprite.png') repeat scroll 0% 0% transparent; }
+#dsq-content #dsq-global-toolbar #dsq-like-thread-button:hover { background: url('toolbar-sprite.png') repeat scroll 0pt -22px transparent ! important; }
+#dsq-content #dsq-global-toolbar .dsq-thread-dislike { width: 23px; background: url('toolbar-sprite.png') repeat scroll -54px 0pt transparent; margin: 0pt 0.75em 0pt 0pt; }
+#dsq-content #dsq-global-toolbar #dsq-dislike-thread-button:hover { background: url('toolbar-sprite.png') repeat scroll -54px -22px transparent; }
+#dsq-content #dsq-global-toolbar .dsq-community-launcher { width: 23px; background: url('toolbar-sprite.png') repeat scroll -77px 0pt transparent; }
+#dsq-content #dsq-global-toolbar .dsq-community-launcher:hover { width: 23px; background: url('toolbar-sprite.png') repeat scroll -77px -22px transparent; }
+#dsq-content #dsq-global-toolbar a.dsq-community-launcher:active { background: url('toolbar-sprite.png') repeat scroll -77px -22px transparent; }
+#dsq-content .dsq-global-toolbar-likes .dsq-group { float: left; margin: 0pt 0pt 5px; }
+#dsq-content .dsq-like-faces { overflow: hidden; float: left; }
+#dsq-content .dsq-like-faces li { float: left; margin: 0pt 5px 5px 0pt; }
+#dsq-content .dsq-like-activity { padding: 3px 0pt 0pt; white-space: nowrap; }
+/* ::::: http://mediacdn.disqus.com/1293147696/build/themes/narcissus.css?1293244915& ::::: */
+
+#dsq-content ul, #dsq-content li, #dsq-content ol, #dsq-content cite, #dsq-content div, #dsq-content table, #dsq-content td, #dsq-content th, #dsq-content p, #dsq-content a, #dsq-content img, #dsq-content caption { border: 0pt none; padding: 0pt; margin: 0pt; float: none; text-indent: 0pt; background: none repeat scroll 0% 0% transparent; font-style: normal; text-align: left; }
+a:focus { outline: 0pt none; }
+#dsq-content h3 { float: none; }
+#dsq-content ul, #dsq-content li, #dsq-content ol, #dsq-content cite, #dsq-content a, #dsq-content img, #dsq-content select { display: inline; width: auto; max-width: none; }
+#dsq-content div, #dsq-content p, #dsq-content h3 { display: block; }
+#dsq-content input { background: none repeat scroll 0% 0% transparent; }
+#dsq-content img { max-width: none; }
+#dsq-content li, #dsq-content ul, #dsq-content ol { list-style-type: none; list-style-image: none; background: none repeat scroll 0% 0% transparent; display: block; }
+#dsq-content li:before { content: ""; }
+#dsq-content table { border-collapse: separate; border-spacing: 0pt; }
+#dsq-content { font-size: 12px; line-height: 1.5; }
+#dsq-content iframe { border: 0pt none; background: none repeat scroll 0% 0% transparent; width: 100%; height: 90px; }
+#dsq-content .dsq-options { clear: left; margin-bottom: 1em; }
+#dsq-content .dsq-options span { margin-right: 10px; }
+#dsq-content .dsq-login-buttons { padding: 1em 0pt 0pt; margin-bottom: 1em; }
+#dsq-content .dsq-login-button { float: left; display: block; margin-right: 3px; background: url('login-all.png') repeat scroll 0% 0% transparent; padding: 0pt ! important; }
+#dsq-content .dsq-login-button a { display: block; width: 89px; height: 21px; padding: 0pt ! important; margin: 0pt; }
+#dsq-content .dsq-login-button-disqus { background-position: 0px 50%; }
+#dsq-comments-title { clear: left; }
+#dsq-content .dsq-textarea .dsq-textarea-wrapper, #dsq-content .dsq-input-wrapper { border: 1px solid rgb(153, 153, 153); -moz-border-radius: 3px 3px 3px 3px; background: url('inputshadow.gif') no-repeat scroll left top rgb(255, 255, 255); padding: 3px 5px; margin: 3px 0pt; }
+#dsq-content .dsq-textarea .dsq-textarea-wrapper { padding: 5px; overflow: hidden; }
+#dsq-content .dsq-textarea textarea, #dsq-content input { font-size: 12px; font-family: Arial,Helvetica,sans-serif; padding: 0pt; }
+#dsq-content .dsq-textarea textarea:focus, #dsq-content input:focus { outline: 0pt none; }
+#dsq-content .dsq-subscribe-email img, #dsq-content .dsq-subscribe-rs img { width: 12px; height: 12px; vertical-align: middle; }
+#dsq-content .dsq-post-footer { position: relative; margin: 8px 0pt 10px; }
+#dsq-content .dsq-post-footer .dsq-button { float: right; margin-left: 3px; }
+#dsq-content .dsq-comment-footer-reply-tab::-moz-focus-inner { border: medium none; }
+#dsq-content #dsq-comments { margin-bottom: 10px; }
+#dsq-content .dsq-pagination { text-align: center; padding: 1em; margin: 1em 0pt; }

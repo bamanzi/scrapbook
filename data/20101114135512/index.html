@@ -1,0 +1,205 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<title> EMACS 对 vi:永无止境的圣战_Open Source 开源_cnBeta.COM</title>
+
+<meta http-equiv="expires" content="0">
+<meta name="resource-type" content="document">
+<meta name="distribution" content="global">
+<meta name="author" content="cnBeta">
+<meta name="generator" content="jianglb.com">
+<meta name="copyright" content="Copyright (c) 2008 cnBeta. All Rights Reserved.">
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<meta name="robots" content="index, follow">
+<meta name="revisit-after" content="1 days">
+<meta name="rating" content="general">
+<meta name="keywords" content="Open Source 开源, EMACS 对 vi:永无止境的圣战,cnBeta.com">
+<meta name="description" content="翻译的不好，有些句子不知道如何译的我就直接留的英文原文，大家见谅。Greg Menke发出了第一个置顶帖。使用vi？那该多么麻烦呀？他把自己的步骤贴了出来：
+1．获得一条任意品种的鱼，长度大于12英寸就行
+2．冰冻一晚上
+3．把它放到电脑前，运行vi
+4．抓住鱼的尾巴不停的往你头上砸，直到你决定用EMACS。因为鱼鳞在你周围飞溅并且你的头开始痛.">
+
+
+
+
+
+
+
+
+
+<link rel="shortcut icon" href="favicon.ico" type="image/vnd.microsoft.icon">
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.cnbeta.com/backend.php">
+<link rel="alternate" type="application/atom+xml" title="ATOM 1.0" href="http://www.cnbeta.com/backend.php?atom">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div id="wrapper">
+<div id="main">
+<div id="content">
+<div id="contentWrapper">
+<div id="newsBox">
+<div id="news">
+<!--DOCUMENT_FRAGMENT-->
+<h3 id="news_title">EMACS 对 vi:永无止境的圣战</h3>
+		<p id="news_font">  </p>
+        <p id="news_author"><span>ugmbbc发布于 2009-04-24 14:14:49|9689
+ 次阅读 字体：<a href="javascript:fontZoomB();">大</a>  <a href="javascript:fontZoomA();">小</a>  <a href="http://m.cnbeta.com/print.php?sid=82688" target="_top">打印预览</a> <a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?url=http%3A%2F%2Fwww.cnbeta.com%2Farticles%2F82688.htm" target="_top" style="color: rgb(0, 0, 0); text-decoration: none; font-size: 12px; font-weight: normal;"><img src="ico_qzone.gif" title="分享到QQ空间" target="_blank" align="absmiddle"></a> <a href="javascript:void((function(s,d,e,r,l,p,t,z,c){var%20f='http://v.t.sina.com.cn/share/share.php?appkey=696316965',u=z||d.location,p=['url=',e(u),'&amp;title=',e(t||d.title),'&amp;source=',e(r),'&amp;sourceUrl=',e(l),'&amp;content=',c||'gb2312','&amp;pic=',e(p||'')].join('');function%20a(){if(!window.open([f,p].join(''),'mb',['toolbar=0,status=0,resizable=1,width=440,height=430,left=',(s.width-440)/2,',top=',(s.height-430)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent,'cnBeta.com','http://www.cnbeta.com','','EMACS%20%E5%AF%B9%20vi:%E6%B0%B8%E6%97%A0%E6%AD%A2%E5%A2%83%E7%9A%84%E5%9C%A3%E6%88%98%20%E7%BF%BB%E8%AF%91%E7%9A%84%E4%B8%8D%E5%A5%BD%EF%BC%8C%E6%9C%89%E4%BA%9B%E5%8F%A5%E5%AD%90%E4%B8%8D%E7%9F%A5%E9%81%93%E5%A6%82%E4%BD%95%E8%AF%91%E7%9A%84%E6%88%91%E5%B0%B1%E7%9B%B4%E6%8E%A5%E7%95%99%E7%9A%84%E8%8B%B1%E6%96%87%E5%8E%9F%E6%96%87%EF%BC%8C%E5%A4%A7%E5%AE%B6%E8%A7%81%E8%B0%85%E3%80%82Greg%20Menke%E5%8F%91%E5%87%BA%E4%BA%86%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%BD%AE%E9%A1%B6%E5%B8%96%E3%80%82%E4%BD%BF%E7%94%A8vi%EF%BC%9F%E9%82%A3%E8%AF%A5%E5%A4%9A%E4%B9%88%E9%BA%BB%E7%83%A6%E5%91%80%EF%BC%9F%E4%BB%96%E6%8A%8A%E8%87%AA%E5%B7%B1%E7%9A%84%E6%AD%A5%E9%AA%A4%E8%B4%B4%E4%BA%86%E5%87%BA%E6%9D%A5%EF%BC%9A1%EF%BC%8E%E8%8E%B7%E5%BE%97%E4%B8%80%E6%9D%A1%E4%BB%BB%E6%84%8F%E5%93%81%E7%A7%8D%E7%9A%84%E9%B1%BC%EF%BC%8C%E9%95%BF%E5%BA%A6%E5%A4%A7%E4%BA%8E...%20','http://www.cnbeta.com/articles/82688.htm','gb2312'));"><img alt="分享至新浪微博" src="tsina.gif" align="absMiddle" border="0"></a>  <a href="http://cang.baidu.com/do/add?it="><img alt="添加到百度搜藏" src="fav1.jpg" align="absMiddle" border="0"></a> <a href="http://www.kaixin001.com/%7Erepaste/repaste.php?&amp;rurl="><img src="kaixin001.gif" alt="转贴到开心网" align="absMiddle" border="0"></a> <a href="javascript:void((function(s,d,e){if(/xiaonei\.com/.test(d.location))return;var%20f='http://share.xiaonei.com/share/buttonshare.do?link=',u=d.location,l=d.title,p=[e(u),'&amp;title=',e(l)].join('');function%20a(){if(!window.open([f,p].join(''),'xnshare',['toolbar=0,status=0,resizable=1,width=626,height=436,left=',(s.width-626)/2,',top=',(s.height-436)/2].join('')))u.href=[f,p].join('');};if(/Firefox/.test(navigator.userAgent))setTimeout(a,0);else%20a();})(screen,document,encodeURIComponent));"><img src="renren.gif" alt="分享到校内人人网" align="absMiddle" border="0"></a> <a href="http://www.google.com/bookmarks/mark?op=edit&amp;output=popup&amp;bkmk="><img src="google.gif" alt="添加到Google书签" align="absMiddle" border="0"></a></span></p>
+        
+         <div id="news_content"><a href="http://www.cnbeta.com/topics/283.htm"><img src="opensource2.png" alt="Open Source 开源" name="sign" id="sign" align="right"></a>
+        <p><b>感谢匿名人士的投递</b><br>
+翻译的不好，有些句子不知道如何译的我就直接留的英文原文，大家见谅。Greg Menke发出了第一个置顶帖。使用vi？那该多么麻烦呀？他把自己的步骤贴了出来：<br>
+1．获得一条任意品种的鱼，长度大于12英寸就行<br>
+2．冰冻一晚上<br>
+3．把它放到电脑前，运行vi<br>
+4．抓住鱼的尾巴不停的往你头上砸，直到你决定用EMACS。因为鱼鳞在你周围飞溅并且你的头开始痛.</p>
+		<p>Menke，当然，他是在暗示，顽固的不仅是vi，vi的用户更甚，他们顽固到拒绝承认他们虐待自己，就像拿冰冻的鱼砸自己的头一样。<br>
+<br>
+没过多久，vi的拥护者们开始回击，其中一个建议Menke把这一行加到他的步骤中去：在第1步之前键入emacs，这样在第4步结束时emacs才可能加载完成。<br>
+<br>
+<strong>他是在说EMACS编辑器慢吗？</strong><br>
+<br>
+就 好像疲乏的军队在短期休战中拒绝放弃战争一样，vi和EMACS用户在Linux，SAGE和其他计算机连接着的虚拟社团中冷战不断。幸运的时候，冷战会 暂时消失几个月。但是一旦一方流露出些微的轻视，战火会重新燃遍整个新闻组和邮件列表。出于他们的社区文化，任何一个阵营中如果有人认为他们用的是世界上 最好的编辑器而使用其它编辑器(尤其是对立阵营)的人都是傻瓜，那么给予他足够的嘲讽，他会意识到自己是错的。<br>
+<br>
+现在，关于Unix上哪款编辑器才是上帝的杰作的分歧并没有严重到给世界带来麻烦，像可口对百事是一场没有结果的战争，仅仅是小范围内的激进分子们在高呼“加油！”。<br>
+<br>
+“就 我所知，EMACS和vi的人口比例大致是50/50，”作为一个长期在开源和黑客社区中扮演各种角色的人类学家，Eric Raymond在邮件中这样说道，“Pico，joe，MicroEmacs以及其他编辑器，在整个时期的统计上来看，已经消亡了。” Raymond can personally date the vi/EMACS split back to 1985 and stipulates that, in all likelihood, it went on long before that.<br>
+<br>
+早在1991年，Raymond就在Jargon File(<a href="http://www.tuxedo.org/jargon/">http://www.tuxedo.org/jargon/</a>)中记录了vi和EMACS之间的圣战，perhaps the ultimate collection of hacker terminology.<br>
+<br>
+当被问起时，许多对两者都熟悉的人会说它们的区别在速度和功能性，vi的用户指出他们能快速的在文档中移动和修改，而EMACS的拥护者则吹嘘他们无穷的定制性。Vi用户嘲弄EMACS有太多不必要的装饰；EMACS用户则嘲弄vi难于入门而且功能有限。<br>
+<br>
+所以，最好的编辑器之争在技术上等价于"tastes great/less filling?",是的，有几分。不过，所有的宗教或者战争给我们的教训是：你挖的越深，流出来的越黑。<br>
+<br>
+当然，争论也不是完全没有意义的，我们的电脑世界就是由这些编辑器从最初的一无所有而建立起来的。这些对最终用户透明的编辑器，有着如此忠诚的拥护者，无非也是体现了人们想用最理想的方式来做事的朴素愿望。<br>
+<strong><br>
+Vi: 被时光遗忘的编辑器？</strong><br>
+<br>
+第一眼看上去，从外表上，vi就是那种被遗忘的。它不是那种你一打开终端就要用的东西(对这种想法，你最好去用EMACS)。即使是VIM，这个vi用户最近使用的新版本，也会让人惊讶(或者说被挫败)于不知道如何下手。<br>
+<br>
+即使是VI Lovers的站长也承认，学习曲线太陡峭了。“Vi 在你知道25个以上命令之前不会让你变快，”阿姆斯特丹本地人Thomer Gil这样写道，他现在任职于麻省理工学院计算机系。<br>
+<br>
+Gil因为使用VIM，被他的同事们比作“野人挥舞着斧和棍”。<br>
+<br>
+在vi 的所有的“缺点”中，最显著的一点是仅仅想往屏幕上随便输入一点什么该如何开始。Vi有两个模式：其一是插入模式，这时你可以键入文本，你可以敲 insert键进入这个模式。还有一个是命令模式，这个模式下你不能键入文本，只能输入命令，你可以从插入模式敲esc键进入命令模式。<br>
+<br>
+想象一下用户第一次使用vi，意外地敲了esc键，除了发现他不能再输入文本外，还发现程序随着他的击键做出各种古怪的举动。<br>
+<br>
+Jargon File 中冷冷地指出vi的这个特性“无休止的困惑着新手，因为它要么在想输入文本时当成命令，要么相反，而且默认情况下不提示用户当前处在哪一个模式。”<br>
+“多模式让人们觉得怪诞。”Gil承认。<br>
+<br>
+Vi 由Bill Joy于1976年写成，融合了两种更原始的编辑工具：ed和ex。Vi代表着“visual interface，”which in 1976 was in quite the bleeding edge in computing, according to a Joy interview in Linux Magazine。<br>
+<br>
+“我尝试使它能通过300波特率的调制解调器使用，这也是为什么存在这么些古怪命令的原因了。它恰好能通过调制解调器使用，而且是全屏的，”Joy说“所以这款编辑器被优化成当屏幕显示极慢时也能用。”<br>
+<br>
+在那次采访中，Joy对比了EMACS的开发环境，认为EMACS是专为光纤连接的系统和巨大的PDP-10而设计的。<br>
+<br>
+“所以他们可以有许多有趣的命令，如屏幕上闪着微光等等，而此时，我坐在伯克利州二战遗留下来的屋子里，利用调制解调器和终端，这些仅仅只够光标从屏幕底部消失，”Joy说，也许听起来有一点嫉妒。“人们并不知道vi被设计用于一个再也不存在的世界。”<br>
+<br>
+然而，在80年代早期网络与处理器飞速发展的时候，这个vi理应消失的时代，vi却空前繁荣起来。VI Pages列出了近30种vi的克隆体，从elvis和VIM到很少听过的如WinVi和vigor。<br>
+<br>
+Tim O'Reilly，O'Reilly 出版公司的策划在公司的Ask Tim栏目表明公司卖出了两倍于EMACS的vi的图书。更甚，任何时候O'Reilly在一些大会上发起的vi 对 EMACS 的彩弹球游戏中，vi总是有两倍于EMACS的志愿者数目。<br>
+<br>
+他们追求的是什么呢? John Arundel恰如其分的描述：“观看一个vi高手对文件做复杂编辑时，当他手指在键盘上飞舞，文字像刷屏一般，你会认为他具有超人的力量。”<br>
+<br>
+Gil在他的网站上发布了这种技巧的一些例子。“vi的关键在于组合特定的动作（删除、复制到缓冲区、变成大写等等）和移动（到第25行，到文档末、到下一处foo，到这一行的第二个x，等等）。”<br>
+<br>
+“Huh？”我发邮件给他。<br>
+<br>
+Gil发回了一个例子：“如果，举例来说，一个文档包含了这样一行：'a b c d e f g' 光标在b处，这时我可以键入'd/f'。”<br>
+<br>
+第一个d表示删除，/ 表示搜索，所以这个命令表示从b删除到f。<br>
+<br>
+“使用这些没什么特殊要求...删除单词、句子，回到先前的地方，Oh，不，再跳回去，撤销我刚做的，重做一次，”Gil 这样写道。<br>
+<br>
+Gil 保证你在EMACS中也能做同样的事，然后，它需要记忆笨拙“Ctrl-X Ctrl-c Alt-F4 的键组合”。<br>
+<br>
+Gil展示的另一个窍门是VI用户如何在文件中移动。“笨拙的方式是使用箭头键；这有许多其他方式，更高级的方式来移动。”Gil写道。vi提供的高级方式包括跳转到上一次或上几次光标所在处，跳转到特定单词的下一处，跳转到下一个句子或章节。<br>
+<br>
+即使双模式的特性对用户来说变得透明。大约一年前，我和Jon Lasser一起探讨他最近出版的一本书--Think Unix。（他告诉我这本书的手稿是完全用vi写成的）。最后我们谈起vi，我开始抱怨vi的两种模式。<br>
+<br>
+Lasser解释说他没看出使用vi和使用字处理器如StarOffice或者Microsoft Word有什么不一样的地方。总的来说，当你把手移动到屏幕区以外，你就无法输入文本。你实际上就是从插入模式转到了命令模式。“它们完全是一样的东西。”他这么解释。<br>
+<br>
+就像O'Reilly所写的那样：“像UNIX上的许多东西一样，它仅仅是看上去很难。”<br>
+<br>
+<strong>EMACS极尽奢华？</strong><br>
+<br>
+当vi最忠诚的O'Reilly在Ask Tim中写道他最初从EMACS转到vi仅仅因为他的EMACS配置文件损坏了。这是vi用户针对EMACS的无数攻击之一。<br>
+<br>
+EMACS和vi质朴而有限的命令形成鲜明的对比，因为它几乎有着无限的自定义性。人们让它是什么它就是什么，然而这种力量对用户而言不见得就是最好的。<br>
+<br>
+像Emacs-Beginner-HOWTO上所说的，EMACS可以是一个文本编辑器，邮件客户端，新闻阅读器，字处理器，脚本编辑器以及编程语言的集成开发环境。<br>
+<br>
+能做到这个的关键在与EMACS提供的多模式，每个模式有唯一的命令集。想要查看邮件？进入邮件模式就好了。想要写C++程序，用C++模式吧。要创作Web页？html-helper模式正好合适。<br>
+<br>
+掌握所有这些之后，你也可以自定义EMACS甚至是添加新的功能，通常这都是通过修改Lisp代码来完成的。<br>
+<br>
+vi用户认为EMACS的专横跋扈之处在于，它本该是一个单纯的文本编辑器，不应该为得到用户而什么都做。一个正在流行的笑话是EMACS是一个捆绑了文本编辑器的操作系统。<br>
+<br>
+“EMACS实际上在刚开始是一个标准的工程，”Guy Steele在邮件中说。他是EMACS最初的作者之一，另一个作者是Richard Stallman，后来建立了自由软件基金会的那位。<br>
+<br>
+据Steele 回忆，Stallman当时维护着一个PDP-10上早期的编辑器——TECO，意思是“Text Editor and COrrector”。尽管固定的击键会执行编辑命令，Stallman创造了一种用户可编程的表格“这样每一个击键所对应的动作都在表格中查询得知，” 按照Steele的说法。“一个选择是执行用户指定的TECO宏。”<br>
+<br>
+使用这种宏功能，用户把自己的一套宏通过编程绑定到各种击键序列上去，但是这样当程序员们在一些程序上合作时就存在问题了，因为他们发现他们之间很少有共同的击键序列。<br>
+<br>
+“因为文本（程序）编辑的技巧，用户间的交流开始支离破碎，”Steele写道。所以Steele连同David Moon和Stallman一起，开始了一个整合所有的想法到一个统一的命令集的工程。<br>
+<br>
+“我在纸上做了一个原型，仔细揣摩了那些各种各样宏包的作者和用户，”Steele在邮件中说。<br>
+<br>
+“我记得很清楚，”Dan Weinerb回忆说。他是EMACS的alpha版测试者之一。“这家伙在他的剪贴板上展示全部的键绑定，这是他仔细的从每个人那里收集在一起的统一的、标准的键绑定。”<br>
+<br>
+几个月之后，Steele忙着完成他的博士论文，工作交给了Stallman。And the rest is history。<br>
+<br>
+从一开始加入的灵活性给予了EMACS优势，铁杆用户这样说。<br>
+<br>
+“我 觉得EMACS就像是编辑器中的瑞士军刀，”Debra Cameron在邮件中说，他是Learning GNU Emacs的合著者之一，Cameron Consulting的老板。“它是一个完备的工作环境，一个微观世界。如果你想让它做些什么，很可能你会发现（在一番寻找后）它已经做到了。如果还没 有，你可以自己扩展它来做到你想做的。”<br>
+<br>
+<strong>我们就不能和平相处吗？<br>
+</strong><br>
+该怎么比较EMACS和vi呢？<br>
+<br>
+“我见过许多熟练的vi用户展示了一些漂亮的技巧，但是我仍然认为vi只是一个编辑器，尽管出于某些原因它是一款出色的编辑器，”Cameron在邮件中说。“[它]总是，总是用相同的方式工作。从这方面说，它像麦当劳；不管你去哪一家，总是很精确的保持一致。”<br>
+<br>
+“你想要一款编辑器它能被任意修改来满足你的需要和怪癖同时还能做很多很多事，或者你仅仅只是想很快的在任何机器上编辑文件？”她这样问。“对于那些总要从一台机器上移到另一台的人们，这种一致性确实是一个优势。”<br>
+<br>
+换句话说，EMACS等于灵活性，而vi等于一致性。<br>
+<br>
+这就是事情变得黑暗的地方。<br>
+<br>
+“EMACS当然比vi要复杂的多，但是我不相信它在任何有用的地方能做的更强，但是vi是设计为UNIX系统的一部分并且能和其他系统相互协作，”Jon Lasser反驳。<br>
+<br>
+请 注意，对Lasser来说，“有用”的意思是指vi允许你从其他进程通过UNIX管道读取文档，“就像使用其他UNIX程序一样”他解释。所以，这个神秘 的击键序列“&lt;esc&gt; :r !ls&lt;enter&gt;”在vi中输入之后（注意，在命令模式）把“ls”的输出——当前目录的文件列表——读入到vi的缓冲区。其他UNIX 程序的管道也会同样的工作。<br>
+<br>
+为了在vi中自动编辑大量文件，Lasser说这就是为什么我们有“sed，awk，以及其他UNIX文本处理工具。<br>
+<br>
+“文本处理是UNIX设计的一部分，而vi设计为这个系统的一部分，”Lasser写道。<br>
+<br>
+也许EMACS和vi的核心问题完全不是一致性对灵活性。毕竟，所有的编辑器都提供灵活性，vi也是，它通过UNIX自身，然而EMACS的灵活性是构筑于系统层次之上的。<br>
+<br>
+而 且，基于这样的事实——灵活性的唯一要点在于使工作变得快些。如果你想要直接而无装饰的文本处理，你可以选择Pico，它仅仅提供一个空白的屏幕，而且不 会有任何使新手混乱的特性，而像vi或EMACS都会。但是vi和EMACS两者的共同点都在于提供一些高级的方式，来减少键盘上的手指速度和编程者大脑 速度的差异。<br>
+<br>
+换句话说，是否这些编辑器提供着相同的东西，但是要求用户用不同的方式思考呢？Vi需要耐性去学习它古怪的操作方式，然后一旦 你精通它们，你在任何UNIX系统上都获得了行动自由。EMACS赋予你疯狂的自由来自定义你认为合适的装备，然后如果你不小心，你会变成你自己配置的囚 徒。<br>
+<br>
+在所有优秀的程序员在提升自身效率的旅途上，偶尔，vi和EMACS用户在路口上相遇，他们本来自不同的方向。他们一相遇，通常就彼此扔石头砸对方。<br>
+<br>
+这些都很好。<br>
+<br>
+“我 不认为在功能上有很大的差异。这两个编辑器都能把事情做得很好，and it just comes down to what people learn first,”Gil写道。“一旦大多数人会EMACS，他们将教其他人EMACS。从而，大多数人使用EMACS，等等。”<br>
+<br>
+然后争执又将继续……<br>
+<br>
+<a href="http://blog.csdn.net/oyd/archive/2007/02/16/1511128.aspx">EMACS 对 vi：永无止境的圣战</a></p></div>
+<!--/DOCUMENT_FRAGMENT-->
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</body>
+</html>

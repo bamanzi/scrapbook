@@ -1,0 +1,561 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://wagagate.appspot.com/ErujZz3Zzzz/http/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en-US" xmlns="http://wagagate.appspot.com/ErujZz3Zzzz/http/1999/xhtml" dir="ltr">
+<head profile="http://wagagate.appspot.com/ErujZjpsj/http/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+<title>How to View and Extract Files from rpm, deb, depot and msi Packages</title>
+<meta name="robots" content="noodp, noydir">
+
+
+<!--[if lte IE 8]><link rel="stylesheet" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/wp-content/themes/thesis_17/lib/css/ie.css?072510-42046" type="text/css" media="screen, projection" /><![endif]-->
+
+<link rel="canonical" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/04/view-and-extract-packages/">
+<link rel="alternate" type="application/rss+xml" title="The Geek Stuff RSS Feed" href="http://wagagate.appspot.com/gIihhgsurab/http/TheGeekStuff">
+<link rel="pingback" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/xmlrpc.php">
+<link href="favicon.ico" rel="icon" type="image/x-icon">
+<link rel="alternate" type="application/rss+xml" title="The Geek Stuff » How to View and Extract Files from rpm, deb, depot and msi Packages Comments Feed" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/04/view-and-extract-packages/feed/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Inotify Example: Introduction to Inotify with a C Program Example" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/04/inotify-c-program-example/">
+<link rel="next" title="Bash Shell Functions Tutorial with 6 Practical Examples" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/04/unix-bash-function-examples/">
+<link rel="shortlink" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/?p=4063">
+
+<!-- all in one seo pack 1.5.7 [287,361] -->
+<meta name="description" content="Question: How do I view or extract the files that are bundled inside the packages of various operating system. For example, I would like to know how to view">
+<meta name="keywords" content="ar command,cpio command,dpkg command,lessmsi command,msiexec.exe command,rpm command,rpm2cpio command,swcopy command,swlist command,tar command">
+<link rel="canonical" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/04/view-and-extract-packages/">
+<!-- /all in one seo pack -->
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="custom"><div id="_atssh" style="visibility: hidden; height: 1px; width: 1px; position: absolute; z-index: 100000;"><iframe src="index_1.html" style="height: 1px; width: 1px; position: absolute; z-index: 100000; border: 0pt none; left: 0pt; top: 0pt;" id="_atssh353"></iframe></div>
+<div id="container">
+<div id="page">
+	<div id="header">
+<p id="logo"><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/"><img src="thegeekstuff.gif" alt="The Geek Stuff"></a></p><div id="header_ad"><div id="header_ad1">
+
+<ins style="display: inline-table; border: medium none; height: 90px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 728px;"><ins id="google_ads_frame1_anchor" style="display: block; border: medium none; height: 90px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 728px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="index_2.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" scrolling="no" frameborder="0" height="90" width="728"></iframe></ins></ins>
+</div></div>
+	</div>
+<ul class="menu">
+<li class="tab tab-home"><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/">Home</a></li>
+<li class="tab tab-1"><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/about/" title="">About</a></li>
+<li class="tab tab-2"><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/linux-101-hacks-free-ebook/" title="Free eBook: Linux 101 Hacks">Free eBook</a></li>
+<li class="tab tab-3"><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/archives-2/" title="Archives">Archives</a></li>
+<li class="tab tab-4"><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/best-of-the-blog/" title="Best of the Blog">Best of the Blog</a></li>
+<li class="tab tab-5"><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/contact/" title="Contact">Contact</a></li>
+</ul>
+<div id="top-ad-menu">
+&nbsp;
+
+<ins style="display: inline-table; border: medium none; height: 15px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 728px;"><ins id="google_ads_frame2_anchor" style="display: block; border: medium none; height: 15px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 728px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame2" marginheight="0" marginwidth="0" name="google_ads_frame" src="index_3.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" scrolling="no" frameborder="0" height="15" width="728"></iframe></ins></ins>
+</div>
+	<div id="content_box">
+		<div id="content" class="hfeed">
+
+			<div class="post-4063 post type-post hentry category-linux tag-ar-command tag-cpio-command tag-dpkg-command tag-lessmsi-command tag-msiexec-exe-command tag-rpm-command tag-rpm2cpio-command tag-swcopy-command tag-swlist-command tag-tar-command post_box top" id="post-4063">
+				<div class="headline_area">
+					<h1 class="entry-title">How to View and Extract Files from rpm, deb, depot and msi Packages</h1>
+					<p class="headline_meta">by <span class="author vcard fn">Sasikala</span> on <abbr class="published" title="2010-04-19">April 19, 2010</abbr></p>
+				</div>
+				<div class="format_text entry-content">
+<p><img src="view-exract-packages-300x257.png" alt="" title="View rpm, deb, depost and msi files" class="alignright size-medium wp-image-4173" height="257" width="300"><strong>Question:</strong> How do I view or extract the files that are bundled inside the packages of various operating system. For example, I would like to know how to view (and extract) the content of a <strong>rpm, or deb, or depot, or msi file</strong>. </p>
+<p><strong>Answer:</strong> You can use tools like <strong>rpm, rpm2cpio, ar, dpkg, tar, swlist, swcopy, lessmsi</strong> as explained below.<br>
+<span id="more-4063"></span></p>
+<h2>1. RPM package in Redhat / CentOS / Fedora </h2>
+<h3>Listing the files from a RPM package using rpm -qlp</h3>
+<p>RPM stands for Red Hat package manager. The following example shows how to view the files available in a RPM package without extracting or installing the rpm package.</p>
+<pre>$ rpm -qlp ovpc-2.1.10.rpm
+/usr/src/ovpc/-5.10.0
+/usr/src/ovpc/ovpc-2.1.10/examples
+/usr/src/ovpc/ovpc-2.1.10/examples/bin
+/usr/src/ovpc/ovpc-2.1.10/examples/lib
+/usr/src/ovpc/ovpc-2.1.10/examples/test
+.
+.
+.
+/usr/src/ovpc/ovpc-2.1.10/pcs
+</pre>
+<p>Explanation of the command: rpm -qlp ovpc-2.1.10.rpm</p>
+<ul>
+<li> rpm — command
+</li><li> q — query the rpm file
+</li><li> l — list the files in the package
+</li><li> p — specify the package name
+</li></ul>
+<h3>Extracting the files from a RPM package using rpm2cpio and cpio</h3>
+<p>RPM is a sort of a cpio archive. First, convert the rpm to cpio archive using rpm2cpio command. Next, use cpio command to extract the files from the archive as shown below.</p>
+<pre>$ rpm2cpio ovpc-2.1.10.rpm | cpio  -idmv
+./usr/src/ovpc/-5.10.0
+./usr/src/ovpc/ovpc-2.1.10/examples
+./usr/src/ovpc/ovpc-2.1.10/examples/bin
+./usr/src/ovpc/ovpc-2.1.10/examples/lib
+./usr/src/ovpc/ovpc-2.1.10/examples/test
+.
+.
+.
+./usr/src/ovpc/ovpc-2.1.10/pcs
+
+$ ls .
+usr
+</pre>
+<h2>2. Deb package in Debian</h2>
+<p>deb is the extension of Debian software package format. *.deb is also used in other distributions that are based on Debian. (for example: Ubuntu uses *.deb)</p>
+<h3>Listing the files from a debian package using dpkg -c</h3>
+<p>dpkg is the package manager for debian. So using dpkg command you can list and extract the packages, as shown below.</p>
+    <center>
+      <div style="margin-left: 2px; margin-top: 10px; margin-bottom: 10px;">
+
+        <!-- AD BLOCK -->
+		
+
+<ins style="display: inline-table; border: medium none; height: 280px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 336px;"><ins id="google_ads_frame3_anchor" style="display: block; border: medium none; height: 280px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 336px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame3" marginheight="0" marginwidth="0" name="google_ads_frame" src="index_4.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" scrolling="no" frameborder="0" height="280" width="336"></iframe></ins></ins>
+
+        <!-- END AD BLOCK -->
+
+	  </div>
+    </center>
+
+
+<p>To view the content of *.deb file: </p>
+<pre>$ dpkg -c ovpc_1.06.94-3_i386.deb
+dr-xr-xr-x root/root         0 2010-02-25 10:54 ./
+dr-xr-xr-x root/root         0 2010-02-25 10:54 ./ovpc/
+dr-xr-xr-x root/root         0 2010-02-25 10:54 ./ovpc/pkg/
+dr-xr-xr-x root/root         0 2010-02-25 10:54 ./ovpc/pkg/lib/
+dr-xr-xr-x root/root         0 2010-02-25 10:48 ./ovpc/pkg/lib/header/
+-r-xr-xr-x root/root       130 2009-10-29 17:06 ./ovpc/pkg/lib/header/libov.so
+.
+.
+.
+
+-r-xr-xr-x root/root       131 2009-10-29 17:06 ./ovpc/pkg/etc/conf
+dr-xr-xr-x root/root         0 2010-02-25 10:54 ./ovpc/pkg/etc/conf/log.conf
+</pre>
+<h3>Extracting the files from a debian package using dpkg -x</h3>
+<p>Use dpkg -x to extract the files from a deb package as shown below.</p>
+<pre>$ dpkg -x  ovpc_1.06.94-3_i386.deb /tmp/ov
+$ ls /tmp/ov
+ovpc
+</pre>
+<p>DEB files are ar archives, which always contains the three files — debian-binary, control.tar.gz, and data.tar.gz. We can use ar command and tar command to extract and view the files from the deb package, as shown below.</p>
+<p>First, extract the content of *.deb archive file using ar command.</p>
+<pre>$ ar -vx ovpc_1.06.94-3_i386.deb
+x - debian-binary
+x - control.tar.gz
+x - data.tar.gz
+$
+</pre>
+<p>Next, extract the content of data.tar.gz file as shown below.</p>
+<pre>$ tar -xvzf data.tar.gz
+./
+./ovpc/
+./ovpc/pkg/
+./ovpc/pkg/lib/
+./ovpc/pkg/lib/header/
+./ovpc/pkg/lib/header/libov.so
+.
+.
+./ovpc/pkg/etc/conf
+./ovpc/pkg/etc/conf/log.con
+</pre>
+<h2>3. Depot package in HP-UX</h2>
+<h3>Listing the files from a depot package using tar and swlist</h3>
+<p>DEPOT file is a HP-UX Software Distributor Catalog Depot file. HP-UX depots are just a tar file, with some additional information as shown below.</p>
+<pre>$ tar -tf ovcsw_3672.depot
+OcswServer/MGR/etc/
+OcswServer/MGR/etc/opt/
+OcswServer/MGR/etc/opt/OV/
+OcswServer/MGR/etc/opt/OV/share/
+OcswServer/MGR/etc/opt/OV/share/conf/
+OcswServer/MGR/etc/opt/OV/share/conf/OpC/
+OcswServer/MGR/etc/opt/OV/share/conf/OpC/opcctrlovw/
+</pre>
+<p>swlist is a HP-UX command which is used to display the information about the software. View the content of the depot package as shown below using swlist command.</p>
+<pre>$ swlist -l file -s /root/ovcsw_3672.depot
+# Initializing...
+# Contacting target "osgsw"...
+#
+# Target:  osgsw:/root/ovcsw_3672.depot
+#
+
+# OcswServer			8.50.000       Ocsw  Server product
+# OcswServer.MGR     		9.00.140       Ocs Server Ovw
+  /etc
+  /etc/opt
+  /etc/opt/OV
+  /etc/opt/OV/share
+  /etc/opt/OV/share/conf
+  /etc/opt/OV/share/conf/OpC
+</pre>
+<h3>Extracting the files from a depot package using swcopy</h3>
+<p>Swcopy command copies or merges software_selections from a software source to one or more software depot target_selections. Using uncompress option in swcopy, you can extract the files from a depot software package.</p>
+<pre>$ swcopy -x uncompress_files=true -x enforce_dependencies=false -s /root/ovcsw_3672.depot \* @ /root/extracted/
+$ ls /root/extracted
+MGR	catalog	 osmsw.log
+$
+</pre>
+<p>Since depot files tar files, you can extract using normal tar extraction as shown below.</p>
+<pre>$ tar -xvf filename
+</pre>
+<h2>4. MSI in Windows</h2>
+<p>Microsoft installer is an engine for the installation, maintenance, and removal of software on windows systems.</p>
+<h3>Listing the files from a MSI package using lessmsi</h3>
+<p>The utility called <a href="http://wagagate.appspot.com/gIfrgh/http/p/lessmsi/">lessmsi.exe</a> is used to view the files from the msi packages with out installing. The same utility is also used to extract the msi package. Select the msi which you want to view the content. lessmsi will list the files available in msi.</p>
+<h3>Extracting the files from a MSI package using msiexec</h3>
+<p>Windows Installer Tool (Msiexec.exe) is used to extract the files from the MSI package. It can open a MSI package in “Administrator” installation mode, where it can extract the files without performing the install as shown below.</p>
+<pre>C:\&gt;msiexec /a ovcsw_3672.msi /qb TARGETDIR="C:\ovcsw"
+</pre>
+<div class="social-bar">
+<ul>
+<li class="social-bar-share">
+<!-- AddThis Button BEGIN -->
+
+<a class="addthis_button" href="http://wagagate.appspot.com/EfrpZdggwklvZzzz/http/bookmark.php?v=250&amp;pub=xa-4ac6c0d77fc11b75" rel="nofollow">
+Bookmark/Share this Article
+</a>
+
+<!-- AddThis Button END -->
+</li>
+<li class="social-bar-comment">
+<a href="#respond">Leave a Comment</a>
+</li>
+</ul>
+</div>
+
+<p align="center">
+</p>
+<h3>If you enjoyed this article, you might also like..</h3>
+<table>
+<tbody><tr>
+<td valign="top">
+<ol>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/03/15-practical-unix-grep-command-examples/">Get a Grip on the Grep! – 15 Practical Grep Command Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/03/15-practical-linux-find-command-examples/">Mommy, I found it! – 15 Practical Linux Find Command Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2008/08/turbocharge-putty-with-12-powerful-add-ons-software-for-geeks-3/">Turbocharge PuTTY with 12 Powerful Add-Ons</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/08/gtd-getting-things-done/">How To Be Productive and Get Things Done Using GTD</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/06/top-5-best-linux-os-distributions/">Top 5 Best Linux OS Distributions</a></li>
+</ol>
+</td>
+<td>
+&nbsp;&nbsp;
+</td>
+<td>
+
+<ins style="display: inline-table; border: medium none; height: 250px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 300px;"><ins id="google_ads_frame4_anchor" style="display: block; border: medium none; height: 250px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 300px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame4" marginheight="0" marginwidth="0" name="google_ads_frame" src="index_5.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" scrolling="no" frameborder="0" height="250" width="300"></iframe></ins></ins>
+</td>
+</tr>
+</tbody></table>
+<br>
+<center>
+<table cellspacing="15">
+<tbody><tr>
+<td>
+<a rel="nofollow" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/nagios-core-ebook/"><img title="Nagios Core 3 Book" src="nagios-core-175.png" alt="Nagios Core 3 Book"></a>
+</td>
+<td>
+<a rel="nofollow" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/vim-101-hacks-ebook/"><img title="Vim 101 Hacks Book" src="vim-101-hacks-175.png" alt="Vim 101 Hacks Book"></a>
+</td>
+<td>
+<a rel="nofollow" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/linux-101-hacks-free-ebook/"><img title="Linux 101 Hacks Book" src="linux-101-hacks175-free.png" alt="Linux 101 Hacks Book"></a>
+</td>
+</tr>
+</tbody></table>
+</center>
+<br>
+<div id="tgs-tags">
+Tags: <a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/tag/ar-command/" rel="tag">ar command</a>, <a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/tag/cpio-command/" rel="tag">cpio command</a>, <a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/tag/dpkg-command/" rel="tag">dpkg command</a>, <a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/tag/lessmsi-command/" rel="tag">lessmsi command</a>, <a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/tag/msiexec-exe-command/" rel="tag">msiexec.exe command</a>, <a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/tag/rpm-command/" rel="tag">rpm command</a>, <a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/tag/rpm2cpio-command/" rel="tag">rpm2cpio command</a>, <a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/tag/swcopy-command/" rel="tag">swcopy command</a>, <a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/tag/swlist-command/" rel="tag">swlist command</a>, <a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/tag/tar-command/" rel="tag">tar command</a></div>
+				</div>
+			</div>
+
+			<div id="comments">
+				<div id="comments_intro" class="comments_intro">
+					<p><span class="bracket">{</span> <span>6</span> comments… read them below or <a href="#respond" rel="nofollow">add one</a> <span class="bracket">}</span></p>
+				</div>
+
+				<dl id="comment_list">
+					<dt class="comment even thread-even depth-1" id="comment-43539">
+<span class="avatar"></span>
+<span class="comment_num"><a href="#comment-43539" title="Permalink to this comment" rel="nofollow">1</a></span>
+<span class="comment_author">pupu</span>
+<span class="comment_time">April 19, 2010 at 2:37 am</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-43539">
+<p>Nice summary, thanks. When I want to take a look at a content of rpm, I usually use Midnight Commander (mc). It knows how to open rpm files; they look like directories and mc allows you to not only to browse cpio archives, but also pre/postinstall scripts, changelogs etc.</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-43540">
+<span class="avatar"><a href="http://wagagate.appspot.com/EehZn1ndZzzz/http/desidia/" rel="nofollow"></a></span>
+<span class="comment_num"><a href="#comment-43540" title="Permalink to this comment" rel="nofollow">2</a></span>
+<span class="comment_author"><a href="http://wagagate.appspot.com/EehZn1ndZzzz/http/desidia/" rel="external nofollow" class="url">Desidia</a></span>
+<span class="comment_time">April 19, 2010 at 2:46 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-43540">
+<p>Hello,</p>
+<p>Good compilation. Maybe usefull when you’re on a system where you don’t have your favorite tools, but, IMHO,  the easiest way to access these things is Midnight Commander (at least for rpm’s, deb’s and tgz).</p>
+<p>Regards,</p>
+</div>
+					</dd>
+					<dt class="comment even thread-even depth-1" id="comment-43618">
+<span class="avatar"></span>
+<span class="comment_num"><a href="#comment-43618" title="Permalink to this comment" rel="nofollow">3</a></span>
+<span class="comment_author">Ganesh Iyer</span>
+<span class="comment_time">April 19, 2010 at 10:53 pm</span>
+
+					</dt>
+					<dd class="comment even thread-even depth-1">
+<div class="format_text" id="comment-body-43618">
+<p>You can use 7zip to uncompress an MSI Package.</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-43775">
+<span class="avatar"></span>
+<span class="comment_num"><a href="#comment-43775" title="Permalink to this comment" rel="nofollow">4</a></span>
+<span class="comment_author">Jeffrey</span>
+<span class="comment_time">April 21, 2010 at 2:49 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-43775">
+<p>Is there a way of just extracting a particular file from an RPM ? (on Red hat linux)<br>
+I have not found a way for this yet.<br>
+rpm2cpio  | cpio  -idmv<br>
+will actually extract all the files from the RPM and place it in the current working directory.</p>
+</div>
+					</dd>
+					<dt class="comment byuser comment-author-sasikala bypostauthor even thread-even depth-1" id="comment-43860">
+<span class="avatar"></span>
+<span class="comment_num"><a href="#comment-43860" title="Permalink to this comment" rel="nofollow">5</a></span>
+<span class="comment_author">Sasikala</span>
+<span class="comment_time">April 22, 2010 at 1:15 am</span>
+
+					</dt>
+					<dd class="comment byuser comment-author-sasikala bypostauthor even thread-even depth-1">
+<div class="format_text" id="comment-body-43860">
+<p>@Jeffrey,<br>
+To extract a single file from rpm, </p>
+<p>rpm2cpio rpmname | cpio -ivd ./absolute path of the file in a RPM</p>
+<p>Example:<br>
+RPM is /tmp/set-ex-5.10.0-1.i486.rpm which has a file called /usr/src/examples/set-5.10.0/ex/newconfig.set</p>
+<p>Now go to /tmp directory and execute the following command,</p>
+<p>rpm2cpio set-ex-5.10.0-1.i486.rpm | cpio -ivd ./usr/src/examples/set-5.10.0/ex/newconfig.set</p>
+<p>File newconfig.set is available in /tmp/usr/src/examples/set-5.10.0/ex/newconfig.set.</p>
+</div>
+					</dd>
+					<dt class="comment odd alt thread-odd thread-alt depth-1" id="comment-44630">
+<span class="avatar"><a href="http://wagagate.appspot.com/EfrpZeorjvsrwZsbwkrq-fdwdolq/http/" rel="nofollow"></a></span>
+<span class="comment_num"><a href="#comment-44630" title="Permalink to this comment" rel="nofollow">6</a></span>
+<span class="comment_author"><a href="http://wagagate.appspot.com/EfrpZeorjvsrwZsbwkrq-fdwdolq/http/" rel="external nofollow" class="url">Catalin</a></span>
+<span class="comment_time">April 27, 2010 at 5:28 am</span>
+
+					</dt>
+					<dd class="comment odd alt thread-odd thread-alt depth-1">
+<div class="format_text" id="comment-body-44630">
+<p>What is diff between rpm and deb packages ?<br>
+How i make deb and rpm packages if i have make a software ?</p>
+</div>
+					</dd>
+				</dl>
+				<div id="respond">
+					<div id="respond_intro">
+						<p>Leave a Comment</p>
+					</div>
+					<form action="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/wp-comments-post.php" method="post" id="commentform">
+						<p><input gtbfieldid="3" class="text_input" name="author" id="author" value="" tabindex="1" type="text"><label for="author">Name</label></p>
+						<p><input gtbfieldid="4" class="text_input" name="email" id="email" value="" tabindex="2" type="text"><label for="email">E-mail</label></p>
+						<p><input gtbfieldid="5" class="text_input" name="url" id="url" value="" tabindex="3" type="text"><label for="url">Website</label></p>
+						<p class="comment_box">
+							<textarea name="comment" id="comment" tabindex="4" cols="40" rows="8"></textarea>
+						</p>
+
+
+	<p style="clear: both;" class="subscribe-to-comments">
+	<input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" type="checkbox">
+	<label for="subscribe">Notify me of followup comments via e-mail</label>
+	</p>
+
+
+						<p class="remove_bottom_margin">
+							<input name="submit" class="form_submit" id="submit" tabindex="5" value="Submit" type="submit">
+<input name="comment_post_ID" value="4063" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+					</form>
+				</div>
+			</div>
+					<div class="prev_next post_nav">
+						<p class="previous">Previous post: <a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/04/inotify-c-program-example/" rel="prev">Inotify Example: Introduction to Inotify with a C Program Example</a></p>
+						<p>Next post: <a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/04/unix-bash-function-examples/" rel="next">Bash Shell Functions Tutorial with 6 Practical Examples</a></p>
+					</div>
+		</div>
+
+		<div id="sidebars">
+			<div id="sidebar_1" class="sidebar">
+				<ul class="sidebar_list">
+<li class="widget widget_text" id="text-3">			<div class="textwidget"><div class="fancy-widget">
+ <form action="http://wagagate.appspot.com/gIihhgexuqhu/http/fb/a/mailverify" method="post" target="popupwindow" onsubmit="window.open('http://wagagate.appspot.com/gIihhgexuqhu/http/fb/a/mailverify?uri=thegeekstuff', 'popupwindow', 'scrollbars=yes,width=550,height=520');return true">
+        <p>Sign up for our free email newsletter
+			<input gtbfieldid="6" style="background-color: rgb(255, 254, 238);" value="you@address.com" name="email" onclick="if (this.value=='you@address.com') {this.value=''};" onblur="if (this.value=='') {this.value='you@address.com';}" type="text">
+			<input value="thegeekstuff" name="uri" type="hidden">
+			<input name="loc" value="en_US" type="hidden">
+            &nbsp;&nbsp;&nbsp; <input style="border-color: rgb(204, 204, 204) rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204); border-style: double; border-width: 3px; font-weight: bold; overflow: visible;" value="Sign Up" type="submit">
+         </p>
+    </form>
+
+<p>
+<a title="RSS Feed" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/feed" rel="nofollow"><img src="thegeekstuff" style="border: 0pt none;" alt="" height="26" width="88"></a> &nbsp; &nbsp; <img src="feed14.png"> <a title="Subscribe via RSS" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/feed" rel="nofollow">RSS</a> <img src="twitter16.png">   <a title="Follow us on Twitter" href="http://wagagate.appspot.com/t/http/thegeekstuff" rel="nofollow">Twitter</a>   <img src="facebook16.png">   <a title="Become a fan" href="http://wagagate.appspot.com/fIzzz/http/thegeekstuff" rel="nofollow">Facebook</a> 
+</p>
+</div>
+<br>
+<form action="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/the-geek-stuff-search-powered-by-google" id="cse-search-box">
+  <div>
+    <input name="cx" value="005666763606120661560:zkmegbt_djm" type="hidden">
+    <input name="cof" value="FORID:10" type="hidden">
+    <input name="ie" value="UTF-8" type="hidden">
+    <input value="" gtbfieldid="7" style="border: 1px solid rgb(126, 157, 185); padding: 2px; background: url(&quot;google_custom_search_watermark.gif&quot;) no-repeat scroll left center rgb(255, 255, 255);" name="q" size="30" type="text">
+    <input style="border-color: rgb(204, 204, 204) rgb(153, 153, 153) rgb(153, 153, 153) rgb(204, 204, 204); border-style: double; border-width: 1px; overflow: visible;" name="sa" value="Search" type="submit">
+  </div>
+<input value="wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/04/view-and-extract-packages/" name="siteurl" type="hidden"></form>
+
+
+
+</div>
+		</li><li class="widget widget_text" id="text-12">			<div class="textwidget"><div id="adssidebar1"><div id="load-adssidebar1">
+<!-- begin ad tag (tile=2) -->
+<a target="_top" href="http://ad.doubleclick.net/click;h=v8/3a52/0/0/%2a/r;223108362;1-0;0;38965565;4307-300/250;37882257/37900075/1;u=,idgt-1962647_1289710563,11b1f6d59685b4c,none,idgt.printers_l-idgt.printers_m-cm.cm_aa_gn1;%7Eaopt=2/1/a1/0;%7Esscs=%3fhttp://www.idgtechpanel.com/index.php?P=690"><img src="idg_game.300x250.gif" alt="Click here to find out more!" border="0"></a>
+<!-- End ad tag -->
+</div></div></div>
+		</li><li class="widget widget_text" id="text-4"><h3>EBOOKS</h3>			<div class="textwidget"><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/vim-101-hacks-ebook/"><img title="Vim 101 Hacks Book" src="vim-101-hacks-300x115.png" alt="Vim 101 Hacks Book"></a>
+<br>
+<br>
+<br>
+<a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/nagios-core-ebook/"><img title="Nagios Core 3 Book" src="nagios-core-300x115.png" alt="Nagios Core 3 Book"></a>
+</div>
+		</li><li class="widget widget_text" id="text-15">			<div class="textwidget"><div id="adssidebar2"><div id="load-adssidebar2">
+<!-- begin ad tag (tile=3) -->
+<a target="_top" href="http://ad.doubleclick.net/click;h=v8/3a52/0/0/%2a/n;44306;0-0;0;38965644;4307-300/250;0/0/0;u=,idgt-18838816_1289710565,11b1f6d59685b4c,none,idgt.printers_l-idgt.printers_m-cm.cm_aa_gn1;%7Eaopt=2/1/a1/0;%7Esscs=%3f"><img src="817-grey.gif" alt="Click here to find out more!" border="0"></a>
+<!-- End ad tag -->
+</div></div></div>
+		</li><li class="widget widget_text" id="text-17"><h3>POPULAR POSTS</h3>			<div class="textwidget"><ul>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/01/12-amazing-and-essential-linux-books-to-enrich-your-brain-and-library/">12 Amazing and Essential Linux Books To Enrich Your Brain and Library</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/08/gtd-getting-things-done/">How To Be Productive and Get Things Done Using GTD</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/03/30-things-to-do-when-you-are-bored-and-have-a-computer/">30 Things To Do When you are Bored and have a Computer</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/09/linux-file-system-structure/">Linux Directory Structure (File System Structure) Explained with Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/06/15-practical-crontab-examples/">Linux Crontab: 15 Awesome Cron Job Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/03/15-practical-unix-grep-command-examples/">Get a Grip on the Grep! – 15 Practical Grep Command Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/07/linux-ls-command-examples/">Unix LS Command: 15 Practical Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2008/08/15-examples-to-master-linux-command-line-history/">15 Examples To Master Linux Command Line History</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/08/bug-tracking-system/">Top 10 Open Source Bug Tracking System</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/01/vi-and-vim-macro-tutorial-how-to-record-and-play/">Vi and Vim Macro Tutorial: How To Record and Play</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/03/15-practical-linux-find-command-examples/">Mommy, I found it! -- 15 Practical Linux Find Command Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/07/best-gmail-tips-and-tricks/">15 Awesome Gmail Tips and Tricks</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/06/expertise-in-google-search/">15 Awesome Google Search Tips and Tricks</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/08/raid-levels-tutorial/">RAID 0, RAID 1, RAID 5, RAID 10 Explained with Diagrams</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/01/15-practical-unix-linux-top-command-examples/">Can You Top This? 15 Practical Linux Top Command Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/09/top-5-best-network-monitoring-tools/">Top 5 Best System Monitoring Tools</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/06/top-5-best-linux-os-distributions/">Top 5 Best Linux OS Distributions</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2008/06/how-to-monitor-remote-linux-host-using-nagios-30/">How To Monitor Remote Linux Host using Nagios 3.0</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/01/awk-introduction-tutorial-7-awk-print-examples/">Awk Introduction Tutorial – 7 Awk Print Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/09/rsync-command-examples/">How to Backup Linux? 15 rsync Command Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/09/the-ultimate-wget-download-guide-with-15-awesome-examples/">The Ultimate Wget Download Guide With 15 Awesome Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/07/top-5-best-linux-text-editors/">Top 5 Best Linux Text Editors</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/08/tcpdump-command-examples/">Packet Analyzer: 15 TCPDUMP Command Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/06/bash-array-tutorial/">The Ultimate Bash Array Tutorial with 15 Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2008/11/3-steps-to-perform-ssh-login-without-password-using-ssh-keygen-ssh-copy-id/">3 Steps to Perform SSH Login Without Password Using ssh-keygen &amp; ssh-copy-id</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2009/10/unix-sed-tutorial-advanced-sed-substitution-examples/">Unix Sed Tutorial: Advanced Sed Substitution Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/03/netstat-command-examples/">UNIX / Linux: 10 Netstat Command Examples</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2008/06/the-ultimate-guide-for-creating-strong-passwords/">The Ultimate Guide for Creating Strong Passwords</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2008/08/6-steps-to-secure-your-home-wireless-network/">6 Steps to Secure Your Home Wireless Network</a></li>
+<li><a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2008/08/turbocharge-putty-with-12-powerful-add-ons-software-for-geeks-3/">Turbocharge PuTTY with 12 Powerful Add-Ons</a></li>
+</ul></div>
+		</li><li class="widget widget_text" id="text-16">			<div class="textwidget"><div id="adssidebar3"><div id="load-adssidebar3">
+<!-- begin ad tag (tile=3) -->
+<a target="_top" href="http://ad.doubleclick.net/click;h=v8/3a52/0/0/%2a/o;223108323;1-0;0;38965644;2321-160/600;37882349/37900167/1;u=,idgt-5976545_1289710569,11b1f6d59685b4c,none,idgt.printers_l-idgt.printers_m-cm.cm_aa_gn1;%7Eaopt=2/1/a1/0;%7Esscs=%3fhttp://www.idgtechpanel.com/index.php?P=690"><img src="idg_game.160x600.gif" alt="Click here to find out more!" border="0"></a>
+<!-- End ad tag -->
+</div></div>
+</div>
+		</li>				</ul>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+<div class="col_footer1">
+	<ul class="sidebar_list">
+<li id="text-7" class="widget widget_text"><h3>About The Geek Stuff</h3>			<div class="textwidget"><br>
+<img class="float" title="Ramesh Natarajan" src="ramesh-small.gif" alt="Linux 101 Hacks Book">
+My name is <strong>Ramesh Natarajan</strong>. I will be posting instruction guides, how-to, troubleshooting tips and tricks on Linux, database, hardware, security and web. My focus is to write articles that will either teach you or help you resolve a problem. Read more about <a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/about/">Ramesh Natarajan</a> and the blog.</div>
+		</li>
+<li id="text-8" class="widget widget_text"><h3>Support Us</h3>			<div class="textwidget"><br>
+Support this blog by purchasing one of my ebooks.
+<br><br>
+<a rel="nofollow" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/nagios-core-ebook/">Nagios Core 3 eBook:</a> Monitor Everything, Be Proactive, and Sleep Well.
+<br><br>
+<a rel="nofollow" href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/vim-101-hacks-ebook/">Vim 101 Hacks eBook:</a> Practical Examples for Becoming Fast and Productive in the Vim Editor.
+</div>
+		</li>
+<li id="text-9" class="widget widget_text"><h3>Contact Us</h3>			<div class="textwidget"><br>
+<strong>Email Me :</strong>
+Use this <a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/contact" rel="nofollow">Contact Form</a> to get in touch me with your comments, questions or suggestions about this site. You can also simply drop me a line to say hello!.
+<br><br>
+<a title="Follow us on Twitter" href="http://wagagate.appspot.com/t/http/thegeekstuff" rel="nofollow">Follow us on Twitter</a>
+<br><br>
+<a href="http://www.facebook.com/thegeekstuff" rel="nofollow">Become a fan on Facebook</a>&nbsp;&nbsp;</div>
+		</li>
+	</ul>
+</div>
+
+<div class="cb"></div>
+	<p>Copyright © 2008–2010 Ramesh Natarajan. All rights reserved  | 
+<a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/copyright">Terms of Service</a> | 
+<a href="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/advertise" title="Advertise on TheGeekStuff">Advertise</a> </p>	</div>
+<center>
+<div id="footer-ad"><div id="adsfooter"><div id="load-adsfooter">
+<!-- begin ad tag (tile=6) -->
+<a target="_top" href="http://ad.doubleclick.net/click;h=v8/3a52/0/0/%2a/z;223108361;0-0;0;38965644;3454-728/90;37882281/37900099/1;u=,idgt-24221783_1289710570,11b1f6d59685b4c,none,idgt.printers_l-idgt.printers_m-cm.cm_aa_gn1;%7Eaopt=2/1/a1/0;%7Esscs=%3fhttp://www.idgtechpanel.com/index.php?P=690"><img src="idg_gadgets.728x90.gif" alt="Click here to find out more!" border="0"></a>
+<!-- End ad tag -->
+</div></div></div>
+</center>
+</div>
+</div>
+<!--[if lte IE 8]>
+<div id="ie_clear"></div>
+<![endif]-->
+
+
+
+<div style="display: none;">
+
+</div>
+
+
+<div style="display: none;">
+
+</div>
+
+
+<div style="display: none;">
+
+</div>
+
+
+<div style="display: none;">
+
+</div>
+
+
+
+
+
+
+<div style="height: 66px;" id="_rpx_dummy"><form method="post" action="http://wagagate.appspot.com/_rpx_get_proxy_url" id="_rpx_form"><input name="url" id="_rpx_input" type="hidden"></form></div><div id="_rpx_banner"><span class="_rpx_warning_icon" id="_rpx_warning"></span><input value="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/04/view-and-extract-packages/" name="q" id="_rpx_location"><li>author <a href="http://wagagate.appspot.com/t/http/guilin1981">@guilin1981</a></li><li><a href="http://code.google.com/p/gae-rproxy/issues/entry">报告问题</a></li><li><a href="http://code.google.com/p/gae-rproxy/wiki/FAQ">FAQ</a></li></div><!-- Dynamic page generated in 0.435 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2010-11-13 22:55:32 -->
+<!-- super cache --><div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; opacity: 0.9;"></div><div style="z-index: 1000000;" id="at20mc"><div id="at16lb" onclick="return _atw.clb()"></div><div id="at16pcc"><div style="display: none;" id="at16p"><a name="atpro"></a><a name="atclb"></a><a name="atopp"></a><a name="atcle"></a><a name="atcef"></a><div id="at16pib"><div id="at16pi"><div id="at16pp" style="display: none;"></div><div id="at16pm"><div id="at16pt"><h4><span id="at16ptc">添加到收藏夾 / 分享</span></h4><span id="at16_brand"></span><a id="at16ptx" href="#" onclick="return _atw.clb()">X</a></div><div id="at16pc"><div id="at_feed" style="display: none;"><span style="display: block;">從這些基於WEB的Feed閱讀器之中選擇</span><br><div onclick="return addthis_sendto('aol');"><a class="fbtn at_baa aol">AOL</a></div><div class="at_litem" onclick="return addthis_sendto('bloglines');"><a class="fbtn at_baa bloglines">Bloglines</a></div><div onclick="return addthis_sendto('google');"><a class="fbtn at_baa google">Google Reader</a></div><div class="at_litem" onclick="return addthis_sendto('mymsn');"><a class="fbtn at_baa mymsn">My MSN</a></div><div onclick="return addthis_sendto('netvibes');"><a class="fbtn at_baa netvibes">Netvibes</a></div><div class="at_litem" onclick="return addthis_sendto('newsisfree');"><a class="fbtn at_baa newsisfree">Newsisfree</a></div><div onclick="return addthis_sendto('pageflakes');"><a class="fbtn at_baa pageflakes">Pageflakes</a></div><div class="at_litem" onclick="return addthis_sendto('yahoo');"><a class="fbtn at_baa yahoo">Yahoo</a></div></div><div style="display: none;" id="at_share"><div style="display: none; visibility: hidden;" id="at16psf"><input value="" id="at16filt" name="at16filt" tabindex="1" size="30" maxlength="50" onkeyup="_atw.filt(this.value,_atw.list);_atw.uus()" style="padding: 3px 0pt 0pt;" type="text"></div><div id="at16ps"><div id="at16nms" style="display: none;">沒有匹配的服務商.</div><div id="ati_dotnetshoutout" class="at_item" onclick="return addthis_sendto('dotnetshoutout');"><span class="at15t at15t_dotnetshoutout">.netShoutout</span></div><div id="ati_100zakladok" class="at_item" onclick="return addthis_sendto('100zakladok');"><span class="at15t at15t_100zakladok">100zakladok</span></div><div id="ati_2tag" class="at_item" onclick="return addthis_sendto('2tag');"><span class="at15t at15t_2tag">2 Tag</span></div><div id="ati_2linkme" class="at_item" onclick="return addthis_sendto('2linkme');"><span class="at15t at15t_2linkme">2linkme</span></div><div id="ati_a1webmarks" class="at_item" onclick="return addthis_sendto('a1webmarks');"><span class="at15t at15t_a1webmarks">A1‑Webmarks</span></div><div id="ati_addio" class="at_item" onclick="return addthis_sendto('addio');"><span class="at15t at15t_addio">Add.io</span></div><div id="ati_adifni" class="at_item" onclick="return addthis_sendto('adifni');"><span class="at15t at15t_adifni">Adifni</span></div><div id="ati_aerosocial" class="at_item" onclick="return addthis_sendto('aerosocial');"><span class="at15t at15t_aerosocial">Aero</span></div><div id="ati_allmyfaves" class="at_item" onclick="return addthis_sendto('allmyfaves');"><span class="at15t at15t_allmyfaves">All My Faves</span></div><div id="ati_amazonwishlist" class="at_item" onclick="return addthis_sendto('amazonwishlist');"><span class="at15t at15t_amazonwishlist">Amazon</span></div><div id="ati_amenme" class="at_item" onclick="return addthis_sendto('amenme');"><span class="at15t at15t_amenme">Amen Me!</span></div><div id="ati_aolmail" class="at_item" onclick="return addthis_sendto('aolmail');"><span class="at15t at15t_aolmail">AOL Mail</span></div><div id="ati_arto" class="at_item" onclick="return addthis_sendto('arto');"><span class="at15t at15t_arto">Arto</span></div><div id="ati_aviary" class="at_item" onclick="return addthis_sendto('aviary');"><span class="at15t at15t_aviary">Aviary&nbsp;Capture</span></div><div id="ati_baang" class="at_item" onclick="return addthis_sendto('baang');"><span class="at15t at15t_baang">Baang</span></div><div id="ati_baidu" class="at_item" onclick="return addthis_sendto('baidu');"><span class="at15t at15t_baidu">Baidu</span></div><div id="ati_bebo" class="at_item" onclick="return addthis_sendto('bebo');"><span class="at15t at15t_bebo">Bebo</span></div><div id="ati_bentio" class="at_item" onclick="return addthis_sendto('bentio');"><span class="at15t at15t_bentio">Bentio</span></div><div id="ati_biggerpockets" class="at_item" onclick="return addthis_sendto('biggerpockets');"><span class="at15t at15t_biggerpockets">BiggerPockets</span></div><div id="ati_bitly" class="at_item" onclick="return addthis_sendto('bitly');"><span class="at15t at15t_bitly">Bit.ly</span></div><div id="ati_bizsugar" class="at_item" onclick="return addthis_sendto('bizsugar');"><span class="at15t at15t_bizsugar">BizSugar</span></div><div id="ati_bleetbox" class="at_item" onclick="return addthis_sendto('bleetbox');"><span class="at15t at15t_bleetbox">Bleetbox</span></div><div id="ati_blinklist" class="at_item" onclick="return addthis_sendto('blinklist');"><span class="at15t at15t_blinklist">Blinklist</span></div><div id="ati_blip" class="at_item" onclick="return addthis_sendto('blip');"><span class="at15t at15t_blip">Blip</span></div><div id="ati_blogger" class="at_item" onclick="return addthis_sendto('blogger');"><span class="at15t at15t_blogger">Blogger</span></div><div id="ati_bloggy" class="at_item" onclick="return addthis_sendto('bloggy');"><span class="at15t at15t_bloggy">Bloggy</span></div><div id="ati_blogmarks" class="at_item" onclick="return addthis_sendto('blogmarks');"><span class="at15t at15t_blogmarks">Blogmarks</span></div><div id="ati_blogtrottr" class="at_item" onclick="return addthis_sendto('blogtrottr');"><span class="at15t at15t_blogtrottr">Blogtrottr</span></div><div id="ati_blurpalicious" class="at_item" onclick="return addthis_sendto('blurpalicious');"><span class="at15t at15t_blurpalicious">Blurpalicious</span></div><div id="ati_boardlite" class="at_item" onclick="return addthis_sendto('boardlite');"><span class="at15t at15t_boardlite">Boardlite</span></div><div id="ati_bobrdobr" class="at_item" onclick="return addthis_sendto('bobrdobr');"><span class="at15t at15t_bobrdobr">Bobrdobr</span></div><div id="ati_bonzobox" class="at_item" onclick="return addthis_sendto('bonzobox');"><span class="at15t at15t_bonzobox">BonzoBox</span></div><div id="ati_bookmarkedbyus" class="at_item" onclick="return addthis_sendto('bookmarkedbyus');"><span class="at15t at15t_bookmarkedbyus">Bookmarked</span></div><div id="ati_socialbookmarkingnet" class="at_item" onclick="return addthis_sendto('socialbookmarkingnet');"><span class="at15t at15t_socialbookmarkingnet">BookmarkingNet</span></div><div id="ati_bookmarkycz" class="at_item" onclick="return addthis_sendto('bookmarkycz');"><span class="at15t at15t_bookmarkycz">Bookmarky.cz</span></div><div id="ati_bookmerkende" class="at_item" onclick="return addthis_sendto('bookmerkende');"><span class="at15t at15t_bookmerkende">Bookmerken</span></div><div id="ati_bordom" class="at_item" onclick="return addthis_sendto('bordom');"><span class="at15t at15t_bordom">Bordom</span></div><div id="ati_box" class="at_item" onclick="return addthis_sendto('box');"><span class="at15t at15t_box">Box.net</span></div><div id="ati_brainify" class="at_item" onclick="return addthis_sendto('brainify');"><span class="at15t at15t_brainify">Brainify</span></div><div id="ati_bryderi" class="at_item" onclick="return addthis_sendto('bryderi');"><span class="at15t at15t_bryderi">Bryderi.se</span></div><div id="ati_buddymarks" class="at_item" onclick="return addthis_sendto('buddymarks');"><span class="at15t at15t_buddymarks">BuddyMarks</span></div><div id="ati_buzzzy" class="at_item" onclick="return addthis_sendto('buzzzy');"><span class="at15t at15t_buzzzy">Buzzzy</span></div><div id="ati_camyoo" class="at_item" onclick="return addthis_sendto('camyoo');"><span class="at15t at15t_camyoo">Camyoo</span></div><div id="ati_care2" class="at_item" onclick="return addthis_sendto('care2');"><span class="at15t at15t_care2">Care2</span></div><div id="ati_chiq" class="at_item" onclick="return addthis_sendto('chiq');"><span class="at15t at15t_chiq">Chiq</span></div><div id="ati_cirip" class="at_item" onclick="return addthis_sendto('cirip');"><span class="at15t at15t_cirip">Cirip</span></div><div id="ati_citeulike" class="at_item" onclick="return addthis_sendto('citeulike');"><span class="at15t at15t_citeulike">CiteULike</span></div><div id="ati_classicalplace" class="at_item" onclick="return addthis_sendto('classicalplace');"><span class="at15t at15t_classicalplace">ClassicalPlace</span></div><div id="ati_clickazoo" class="at_item" onclick="return addthis_sendto('clickazoo');"><span class="at15t at15t_clickazoo">Clickazoo</span></div><div id="ati_clply" class="at_item" onclick="return addthis_sendto('clply');"><span class="at15t at15t_clply">clp.ly</span></div><div id="ati_cndig" class="at_item" onclick="return addthis_sendto('cndig');"><span class="at15t at15t_cndig">Cndig</span></div><div id="ati_colivia" class="at_item" onclick="return addthis_sendto('colivia');"><span class="at15t at15t_colivia">Colivia.de</span></div><div id="ati_technerd" class="at_item" onclick="return addthis_sendto('technerd');"><span class="at15t at15t_technerd">Communicate</span></div><div id="ati_connotea" class="at_item" onclick="return addthis_sendto('connotea');"><span class="at15t at15t_connotea">Connotea</span></div><div id="ati_cosmiq" class="at_item" onclick="return addthis_sendto('cosmiq');"><span class="at15t at15t_cosmiq">COSMiQ</span></div><div id="ati_delicious" class="at_item" onclick="return addthis_sendto('delicious');"><span class="at15t at15t_delicious">Delicious</span></div><div id="ati_designbump" class="at_item" onclick="return addthis_sendto('designbump');"><span class="at15t at15t_designbump">DesignBump</span></div><div id="ati_designmoo" class="at_item" onclick="return addthis_sendto('designmoo');"><span class="at15t at15t_designmoo">Designmoo</span></div><div id="ati_digaculturanet" class="at_item" onclick="return addthis_sendto('digaculturanet');"><span class="at15t at15t_digaculturanet">DigaCultura</span></div><div id="ati_digg" class="at_item" onclick="return addthis_sendto('digg');"><span class="at15t at15t_digg">Digg</span></div><div id="ati_diggita" class="at_item" onclick="return addthis_sendto('diggita');"><span class="at15t at15t_diggita">Diggita</span></div><div id="ati_diglog" class="at_item" onclick="return addthis_sendto('diglog');"><span class="at15t at15t_diglog">Diglog</span></div><div id="ati_digo" class="at_item" onclick="return addthis_sendto('digo');"><span class="at15t at15t_digo">Digo</span></div><div id="ati_digthiswebhost" class="at_item" onclick="return addthis_sendto('digthiswebhost');"><span class="at15t at15t_digthiswebhost">DigThisHost</span></div><div id="ati_digzign" class="at_item" onclick="return addthis_sendto('digzign');"><span class="at15t at15t_digzign">Digzign</span></div><div id="ati_diigo" class="at_item" onclick="return addthis_sendto('diigo');"><span class="at15t at15t_diigo">Diigo</span></div><div id="ati_dipdive" class="at_item" onclick="return addthis_sendto('dipdive');"><span class="at15t at15t_dipdive">Dipdive</span></div><div id="ati_domelhor" class="at_item" onclick="return addthis_sendto('domelhor');"><span class="at15t at15t_domelhor">DoMelhor</span></div><div id="ati_dosti" class="at_item" onclick="return addthis_sendto('dosti');"><span class="at15t at15t_dosti">Dosti</span></div><div id="ati_dotnetkicks" class="at_item" onclick="return addthis_sendto('dotnetkicks');"><span class="at15t at15t_dotnetkicks">DotNetKicks</span></div><div id="ati_woscc" class="at_item" onclick="return addthis_sendto('woscc');"><span class="at15t at15t_woscc">DotShare</span></div><div id="ati_douban" class="at_item" onclick="return addthis_sendto('douban');"><span class="at15t at15t_douban">Douban</span></div><div id="ati_drimio" class="at_item" onclick="return addthis_sendto('drimio');"><span class="at15t at15t_drimio">Drimio</span></div><div id="ati_dropjack" class="at_item" onclick="return addthis_sendto('dropjack');"><span class="at15t at15t_dropjack">Dropjack</span></div><div id="ati_dwellicious" class="at_item" onclick="return addthis_sendto('dwellicious');"><span class="at15t at15t_dwellicious">Dwellicious</span></div><div id="ati_dzone" class="at_item" onclick="return addthis_sendto('dzone');"><span class="at15t at15t_dzone">Dzone</span></div><div id="ati_edelight" class="at_item" onclick="return addthis_sendto('edelight');"><span class="at15t at15t_edelight">Edelight</span></div><div id="ati_ekudos" class="at_item" onclick="return addthis_sendto('ekudos');"><span class="at15t at15t_ekudos">eKudos</span></div><div id="ati_elefantapl" class="at_item" onclick="return addthis_sendto('elefantapl');"><span class="at15t at15t_elefantapl">elefanta.pl</span></div><div id="ati_embarkons" class="at_item" onclick="return addthis_sendto('embarkons');"><span class="at15t at15t_embarkons">Embarkons</span></div><div id="ati_eucliquei" class="at_item" onclick="return addthis_sendto('eucliquei');"><span class="at15t at15t_eucliquei">euCliquei</span></div><div id="ati_evernote" class="at_item" onclick="return addthis_sendto('evernote');"><span class="at15t at15t_evernote">Evernote</span></div><div id="ati_extraplay" class="at_item" onclick="return addthis_sendto('extraplay');"><span class="at15t at15t_extraplay">extraplay</span></div><div id="ati_ezyspot" class="at_item" onclick="return addthis_sendto('ezyspot');"><span class="at15t at15t_ezyspot">EzySpot</span></div><div id="ati_fabulously40" class="at_item" onclick="return addthis_sendto('fabulously40');"><span class="at15t at15t_fabulously40">Fabulously40</span></div><div id="ati_facebook" class="at_item" onclick="return addthis_sendto('facebook');"><span class="at15t at15t_facebook">Facebook</span></div><div id="ati_fark" class="at_item" onclick="return addthis_sendto('fark');"><span class="at15t at15t_fark">Fark</span></div><div id="ati_farkinda" class="at_item" onclick="return addthis_sendto('farkinda');"><span class="at15t at15t_farkinda">Farkinda</span></div><div id="ati_favable" class="at_item" onclick="return addthis_sendto('favable');"><span class="at15t at15t_favable">FAVable</span></div><div id="ati_faves" class="at_item" onclick="return addthis_sendto('faves');"><span class="at15t at15t_faves">Faves</span></div><div id="ati_favlogde" class="at_item" onclick="return addthis_sendto('favlogde');"><span class="at15t at15t_favlogde">favlog</span></div><div id="ati_favoritende" class="at_item" onclick="return addthis_sendto('favoritende');"><span class="at15t at15t_favoritende">Favoriten</span></div><div id="ati_favoritus" class="at_item" onclick="return addthis_sendto('favoritus');"><span class="at15t at15t_favoritus">Favoritus</span></div><div id="ati_flaker" class="at_item" onclick="return addthis_sendto('flaker');"><span class="at15t at15t_flaker">Flaker</span></div><div id="ati_flosspro" class="at_item" onclick="return addthis_sendto('flosspro');"><span class="at15t at15t_flosspro">Floss.pro</span></div><div id="ati_folkd" class="at_item" onclick="return addthis_sendto('folkd');"><span class="at15t at15t_folkd">Folkd</span></div><div id="ati_followtags" class="at_item" onclick="return addthis_sendto('followtags');"><span class="at15t at15t_followtags">FollowTags</span></div><div id="ati_forceindya" class="at_item" onclick="return addthis_sendto('forceindya');"><span class="at15t at15t_forceindya">forceindya</span></div><div id="ati_thefreedictionary" class="at_item" onclick="return addthis_sendto('thefreedictionary');"><span class="at15t at15t_thefreedictionary">FreeDictionary</span></div><div id="ati_fresqui" class="at_item" onclick="return addthis_sendto('fresqui');"><span class="at15t at15t_fresqui">Fresqui</span></div><div id="ati_friendfeed" class="at_item" onclick="return addthis_sendto('friendfeed');"><span class="at15t at15t_friendfeed">FriendFeed</span></div><div id="ati_friendster" class="at_item" onclick="return addthis_sendto('friendster');"><span class="at15t at15t_friendster">Friendster</span></div><div id="ati_funp" class="at_item" onclick="return addthis_sendto('funp');"><span class="at15t at15t_funp">funP</span></div><div id="ati_fwisp" class="at_item" onclick="return addthis_sendto('fwisp');"><span class="at15t at15t_fwisp">fwisp</span></div><div id="ati_gabbr" class="at_item" onclick="return addthis_sendto('gabbr');"><span class="at15t at15t_gabbr">Gabbr</span></div><div id="ati_gacetilla" class="at_item" onclick="return addthis_sendto('gacetilla');"><span class="at15t at15t_gacetilla">Gacetilla</span></div><div id="ati_gamekicker" class="at_item" onclick="return addthis_sendto('gamekicker');"><span class="at15t at15t_gamekicker">Gamekicker</span></div><div id="ati_givealink" class="at_item" onclick="return addthis_sendto('givealink');"><span class="at15t at15t_givealink">GiveALink</span></div><div id="ati_globalgrind" class="at_item" onclick="return addthis_sendto('globalgrind');"><span class="at15t at15t_globalgrind">GlobalGrind</span></div><div id="ati_gmail" class="at_item" onclick="return addthis_sendto('gmail');"><span class="at15t at15t_gmail">Gmail</span></div><div id="ati_goodnoows" class="at_item" onclick="return addthis_sendto('goodnoows');"><span class="at15t at15t_goodnoows">Good Noows</span></div><div id="ati_google" class="at_item" onclick="return addthis_sendto('google');"><span class="at15t at15t_google">Google</span></div><div id="ati_googlebuzz" class="at_item" onclick="return addthis_sendto('googlebuzz');"><span class="at15t at15t_googlebuzz">Google Buzz</span></div><div id="ati_googlereader" class="at_item" onclick="return addthis_sendto('googlereader');"><span class="at15t at15t_googlereader">Google&nbsp;Reader</span></div><div id="ati_gravee" class="at_item" onclick="return addthis_sendto('gravee');"><span class="at15t at15t_gravee">Gravee</span></div><div id="ati_greaterdebater" class="at_item" onclick="return addthis_sendto('greaterdebater');"><span class="at15t at15t_greaterdebater">GreaterDebater</span></div><div id="ati_grono" class="at_item" onclick="return addthis_sendto('grono');"><span class="at15t at15t_grono">Grono.net</span></div><div id="ati_grumper" class="at_item" onclick="return addthis_sendto('grumper');"><span class="at15t at15t_grumper">Grumper</span></div><div id="ati_habergentr" class="at_item" onclick="return addthis_sendto('habergentr');"><span class="at15t at15t_habergentr">Haber.gen.tr</span></div><div id="ati_hackernews" class="at_item" onclick="return addthis_sendto('hackernews');"><span class="at15t at15t_hackernews">Hacker News</span></div><div id="ati_hadashhot" class="at_item" onclick="return addthis_sendto('hadashhot');"><span class="at15t at15t_hadashhot">Hadash Hot</span></div><div id="ati_hatena" class="at_item" onclick="return addthis_sendto('hatena');"><span class="at15t at15t_hatena">Hatena</span></div><div id="ati_hazarkor" class="at_item" onclick="return addthis_sendto('hazarkor');"><span class="at15t at15t_hazarkor">Hazarkor</span></div><div id="ati_gluvsnap" class="at_item" onclick="return addthis_sendto('gluvsnap');"><span class="at15t at15t_gluvsnap">Healthimize</span></div><div id="ati_hedgehogs" class="at_item" onclick="return addthis_sendto('hedgehogs');"><span class="at15t at15t_hedgehogs">Hedgehogs</span></div><div id="ati_hellotxt" class="at_item" onclick="return addthis_sendto('hellotxt');"><span class="at15t at15t_hellotxt">HelloTxt</span></div><div id="ati_hipstr" class="at_item" onclick="return addthis_sendto('hipstr');"><span class="at15t at15t_hipstr">Hipstr</span></div><div id="ati_hitmarks" class="at_item" onclick="return addthis_sendto('hitmarks');"><span class="at15t at15t_hitmarks">Hitmarks</span></div><div id="ati_hotbookmark" class="at_item" onclick="return addthis_sendto('hotbookmark');"><span class="at15t at15t_hotbookmark">Hot Bookmark</span></div><div id="ati_hotklix" class="at_item" onclick="return addthis_sendto('hotklix');"><span class="at15t at15t_hotklix">Hotklix</span></div><div id="ati_hotmail" class="at_item" onclick="return addthis_sendto('hotmail');"><span class="at15t at15t_hotmail">Hotmail</span></div><div id="ati_w3validator" class="at_item" onclick="return addthis_sendto('w3validator');"><span class="at15t at15t_w3validator">HTML&nbsp;Validator</span></div><div id="ati_hyves" class="at_item" onclick="return addthis_sendto('hyves');"><span class="at15t at15t_hyves">Hyves</span></div><div id="ati_idearef" class="at_item" onclick="return addthis_sendto('idearef');"><span class="at15t at15t_idearef">ideaREF!</span></div><div id="ati_identica" class="at_item" onclick="return addthis_sendto('identica');"><span class="at15t at15t_identica">Identi.ca</span></div><div id="ati_ihavegot" class="at_item" onclick="return addthis_sendto('ihavegot');"><span class="at15t at15t_ihavegot">ihavegot</span></div><div id="ati_informazione" class="at_item" onclick="return addthis_sendto('informazione');"><span class="at15t at15t_informazione">Informazione</span></div><div id="ati_instapaper" class="at_item" onclick="return addthis_sendto('instapaper');"><span class="at15t at15t_instapaper">Instapaper</span></div><div id="ati_iorbix" class="at_item" onclick="return addthis_sendto('iorbix');"><span class="at15t at15t_iorbix">iOrbix</span></div><div id="ati_isociety" class="at_item" onclick="return addthis_sendto('isociety');"><span class="at15t at15t_isociety">iSociety</span></div><div id="ati_iwiw" class="at_item" onclick="return addthis_sendto('iwiw');"><span class="at15t at15t_iwiw">iWiW</span></div><div id="ati_jamespot" class="at_item" onclick="return addthis_sendto('jamespot');"><span class="at15t at15t_jamespot">Jamespot</span></div><div id="ati_jisko" class="at_item" onclick="return addthis_sendto('jisko');"><span class="at15t at15t_jisko">Jisko</span></div><div id="ati_joliprint" class="at_item" onclick="return addthis_sendto('joliprint');"><span class="at15t at15t_joliprint">JoliPrint</span></div><div id="ati_jumptags" class="at_item" onclick="return addthis_sendto('jumptags');"><span class="at15t at15t_jumptags">Jumptags</span></div><div id="ati_kaboodle" class="at_item" onclick="return addthis_sendto('kaboodle');"><span class="at15t at15t_kaboodle">Kaboodle</span></div><div id="ati_kaevur" class="at_item" onclick="return addthis_sendto('kaevur');"><span class="at15t at15t_kaevur">Kaevur</span></div><div id="ati_kipup" class="at_item" onclick="return addthis_sendto('kipup');"><span class="at15t at15t_kipup">Kipup</span></div><div id="ati_kirtsy" class="at_item" onclick="return addthis_sendto('kirtsy');"><span class="at15t at15t_kirtsy">KiRTSY</span></div><div id="ati_kledy" class="at_item" onclick="return addthis_sendto('kledy');"><span class="at15t at15t_kledy">Kledy</span></div><div id="ati_kommenting" class="at_item" onclick="return addthis_sendto('kommenting');"><span class="at15t at15t_kommenting">Kommenting</span></div><div id="ati_latafaneracat" class="at_item" onclick="return addthis_sendto('latafaneracat');"><span class="at15t at15t_latafaneracat">La tafanera</span></div><div id="ati_laaikit" class="at_item" onclick="return addthis_sendto('laaikit');"><span class="at15t at15t_laaikit">Laaikit</span></div><div id="ati_ladenzeile" class="at_item" onclick="return addthis_sendto('ladenzeile');"><span class="at15t at15t_ladenzeile">Ladenzeile</span></div><div id="ati_librerio" class="at_item" onclick="return addthis_sendto('librerio');"><span class="at15t at15t_librerio">Librerio</span></div><div id="ati_aim" class="at_item" onclick="return addthis_sendto('aim');"><span class="at15t at15t_aim">Lifestream</span></div><div id="ati_linkninja" class="at_item" onclick="return addthis_sendto('linkninja');"><span class="at15t at15t_linkninja">Link Ninja</span></div><div id="ati_linkagogo" class="at_item" onclick="return addthis_sendto('linkagogo');"><span class="at15t at15t_linkagogo">Link-a-Gogo</span></div><div id="ati_linkedin" class="at_item" onclick="return addthis_sendto('linkedin');"><span class="at15t at15t_linkedin">LinkedIn</span></div><div id="ati_linksgutter" class="at_item" onclick="return addthis_sendto('linksgutter');"><span class="at15t at15t_linksgutter">Links Gutter</span></div><div id="ati_linkshares" class="at_item" onclick="return addthis_sendto('linkshares');"><span class="at15t at15t_linkshares">LinkShares</span></div><div id="ati_linkuj" class="at_item" onclick="return addthis_sendto('linkuj');"><span class="at15t at15t_linkuj">Linkuj.cz</span></div><div id="ati_livefavoris" class="at_item" onclick="return addthis_sendto('livefavoris');"><span class="at15t at15t_livefavoris">Livefavoris</span></div><div id="ati_livejournal" class="at_item" onclick="return addthis_sendto('livejournal');"><span class="at15t at15t_livejournal">LiveJournal</span></div><div id="ati_lockerblogger" class="at_item" onclick="return addthis_sendto('lockerblogger');"><span class="at15t at15t_lockerblogger">LockerBlogger</span></div><div id="ati_logger24" class="at_item" onclick="return addthis_sendto('logger24');"><span class="at15t at15t_logger24">Logger24</span></div><div id="ati_lynki" class="at_item" onclick="return addthis_sendto('lynki');"><span class="at15t at15t_lynki">Lynki</span></div><div id="ati_markme" class="at_item" onclick="return addthis_sendto('markme');"><span class="at15t at15t_markme">Markme</span></div><div id="ati_mashbord" class="at_item" onclick="return addthis_sendto('mashbord');"><span class="at15t at15t_mashbord">Mashbord</span></div><div id="ati_mawindo" class="at_item" onclick="return addthis_sendto('mawindo');"><span class="at15t at15t_mawindo">Mawindo</span></div><div id="ati_meccho" class="at_item" onclick="return addthis_sendto('meccho');"><span class="at15t at15t_meccho">Meccho</span></div><div id="ati_meinvz" class="at_item" onclick="return addthis_sendto('meinvz');"><span class="at15t at15t_meinvz">meinVZ</span></div><div id="ati_mekusharim" class="at_item" onclick="return addthis_sendto('mekusharim');"><span class="at15t at15t_mekusharim">Mekusharim</span></div><div id="ati_memori" class="at_item" onclick="return addthis_sendto('memori');"><span class="at15t at15t_memori">Memori.ru</span></div><div id="ati_meneame" class="at_item" onclick="return addthis_sendto('meneame');"><span class="at15t at15t_meneame">Menéame</span></div><div id="ati_live" class="at_item" onclick="return addthis_sendto('live');"><span class="at15t at15t_live">Messenger</span></div><div id="ati_mindbodygreen" class="at_item" onclick="return addthis_sendto('mindbodygreen');"><span class="at15t at15t_mindbodygreen">Mindbodygreen</span></div><div id="ati_misterwong" class="at_item" onclick="return addthis_sendto('misterwong');"><span class="at15t at15t_misterwong">Mister Wong</span></div><div id="ati_mixx" class="at_item" onclick="return addthis_sendto('mixx');"><span class="at15t at15t_mixx">Mixx</span></div><div id="ati_moemesto" class="at_item" onclick="return addthis_sendto('moemesto');"><span class="at15t at15t_moemesto">Moemesto.ru</span></div><div id="ati_mototagz" class="at_item" onclick="return addthis_sendto('mototagz');"><span class="at15t at15t_mototagz">mototagz</span></div><div id="ati_mrcnetworkit" class="at_item" onclick="return addthis_sendto('mrcnetworkit');"><span class="at15t at15t_mrcnetworkit">mRcNEtwORK</span></div><div id="ati_multiply" class="at_item" onclick="return addthis_sendto('multiply');"><span class="at15t at15t_multiply">Multiply</span></div><div id="ati_myaol" class="at_item" onclick="return addthis_sendto('myaol');"><span class="at15t at15t_myaol">myAOL</span></div><div id="ati_mylinkvault" class="at_item" onclick="return addthis_sendto('mylinkvault');"><span class="at15t at15t_mylinkvault">Mylinkvault</span></div><div id="ati_myspace" class="at_item" onclick="return addthis_sendto('myspace');"><span class="at15t at15t_myspace">MySpace</span></div><div id="ati_n4g" class="at_item" onclick="return addthis_sendto('n4g');"><span class="at15t at15t_n4g">N4G</span></div><div id="ati_netlog" class="at_item" onclick="return addthis_sendto('netlog');"><span class="at15t at15t_netlog">NetLog</span></div><div id="ati_netvibes" class="at_item" onclick="return addthis_sendto('netvibes');"><span class="at15t at15t_netvibes">Netvibes</span></div><div id="ati_netvouz" class="at_item" onclick="return addthis_sendto('netvouz');"><span class="at15t at15t_netvouz">Netvouz</span></div><div id="ati_newstrust" class="at_item" onclick="return addthis_sendto('newstrust');"><span class="at15t at15t_newstrust">NewsTrust</span></div><div id="ati_newsvine" class="at_item" onclick="return addthis_sendto('newsvine');"><span class="at15t at15t_newsvine">Newsvine</span></div><div id="ati_nujij" class="at_item" onclick="return addthis_sendto('nujij');"><span class="at15t at15t_nujij">Nujij</span></div><div id="ati_oknotizie" class="at_item" onclick="return addthis_sendto('oknotizie');"><span class="at15t at15t_oknotizie">OKNOtizie</span></div><div id="ati_oneview" class="at_item" onclick="return addthis_sendto('oneview');"><span class="at15t at15t_oneview">Oneview</span></div><div id="ati_orkut" class="at_item" onclick="return addthis_sendto('orkut');"><span class="at15t at15t_orkut">Orkut</span></div><div id="ati_osmosus" class="at_item" onclick="return addthis_sendto('osmosus');"><span class="at15t at15t_osmosus">Osmosus</span></div><div id="ati_oyyla" class="at_item" onclick="return addthis_sendto('oyyla');"><span class="at15t at15t_oyyla">Oyyla</span></div><div id="ati_packg" class="at_item" onclick="return addthis_sendto('packg');"><span class="at15t at15t_packg">Packg</span></div><div id="ati_pafnetde" class="at_item" onclick="return addthis_sendto('pafnetde');"><span class="at15t at15t_pafnetde">Pafnet</span></div><div id="ati_pdfonline" class="at_item" onclick="return addthis_sendto('pdfonline');"><span class="at15t at15t_pdfonline">PDF Online</span></div><div id="ati_pdfmyurl" class="at_item" onclick="return addthis_sendto('pdfmyurl');"><span class="at15t at15t_pdfmyurl">PDFmyURL</span></div><div id="ati_phonefavs" class="at_item" onclick="return addthis_sendto('phonefavs');"><span class="at15t at15t_phonefavs">PhoneFavs</span></div><div id="ati_pimpthisblog" class="at_item" onclick="return addthis_sendto('pimpthisblog');"><span class="at15t at15t_pimpthisblog">PimpThisBlog</span></div><div id="ati_pingfm" class="at_item" onclick="return addthis_sendto('pingfm');"><span class="at15t at15t_pingfm">Ping.fm</span></div><div id="ati_planypus" class="at_item" onclick="return addthis_sendto('planypus');"><span class="at15t at15t_planypus">Planypus</span></div><div id="ati_plaxo" class="at_item" onclick="return addthis_sendto('plaxo');"><span class="at15t at15t_plaxo">Plaxo</span></div><div id="ati_plurk" class="at_item" onclick="return addthis_sendto('plurk');"><span class="at15t at15t_plurk">Plurk</span></div><div id="ati_pochvalcz" class="at_item" onclick="return addthis_sendto('pochvalcz');"><span class="at15t at15t_pochvalcz">Pochval</span></div><div id="ati_popedition" class="at_item" onclick="return addthis_sendto('popedition');"><span class="at15t at15t_popedition">PopEdition</span></div><div id="ati_posteezy" class="at_item" onclick="return addthis_sendto('posteezy');"><span class="at15t at15t_posteezy">Posteezy</span></div><div id="ati_posterous" class="at_item" onclick="return addthis_sendto('posterous');"><span class="at15t at15t_posterous">Posterous</span></div><div id="ati_pratiba" class="at_item" onclick="return addthis_sendto('pratiba');"><span class="at15t at15t_pratiba">Prati.ba</span></div><div id="ati_printfriendly" class="at_item" onclick="return addthis_sendto('printfriendly');"><span class="at15t at15t_printfriendly">PrintFriendly</span></div><div id="ati_pusha" class="at_item" onclick="return addthis_sendto('pusha');"><span class="at15t at15t_pusha">Pusha</span></div><div id="ati_qrfin" class="at_item" onclick="return addthis_sendto('qrfin');"><span class="at15t at15t_qrfin">QRF.in</span></div><div id="ati_quantcast" class="at_item" onclick="return addthis_sendto('quantcast');"><span class="at15t at15t_quantcast">Quantcast</span></div><div id="ati_qzone" class="at_item" onclick="return addthis_sendto('qzone');"><span class="at15t at15t_qzone">Qzone</span></div><div id="ati_readitlater" class="at_item" onclick="return addthis_sendto('readitlater');"><span class="at15t at15t_readitlater">Read It Later</span></div><div id="ati_receeveit" class="at_item" onclick="return addthis_sendto('receeveit');"><span class="at15t at15t_receeveit">receeve.it</span></div><div id="ati_reddit" class="at_item" onclick="return addthis_sendto('reddit');"><span class="at15t at15t_reddit">Reddit</span></div><div id="ati_rediff" class="at_item" onclick="return addthis_sendto('rediff');"><span class="at15t at15t_rediff">Rediff MyPage</span></div><div id="ati_redkum" class="at_item" onclick="return addthis_sendto('redkum');"><span class="at15t at15t_redkum">RedKum</span></div><div id="ati_scoopat" class="at_item" onclick="return addthis_sendto('scoopat');"><span class="at15t at15t_scoopat">Scoop.at</span></div><div id="ati_segnalo" class="at_item" onclick="return addthis_sendto('segnalo');"><span class="at15t at15t_segnalo">Segnalo</span></div><div id="ati_sekoman" class="at_item" onclick="return addthis_sendto('sekoman');"><span class="at15t at15t_sekoman">Sekoman</span></div><div id="ati_shaveh" class="at_item" onclick="return addthis_sendto('shaveh');"><span class="at15t at15t_shaveh">Shaveh</span></div><div id="ati_shetoldme" class="at_item" onclick="return addthis_sendto('shetoldme');"><span class="at15t at15t_shetoldme">She Told Me</span></div><div id="ati_simpy" class="at_item" onclick="return addthis_sendto('simpy');"><span class="at15t at15t_simpy">Simpy</span></div><div id="ati_sinaweibo" class="at_item" onclick="return addthis_sendto('sinaweibo');"><span class="at15t at15t_sinaweibo">Sina Weibo</span></div><div id="ati_slashdot" class="at_item" onclick="return addthis_sendto('slashdot');"><span class="at15t at15t_slashdot">Slashdot</span></div><div id="ati_smiru" class="at_item" onclick="return addthis_sendto('smiru');"><span class="at15t at15t_smiru">SMI</span></div><div id="ati_sodahead" class="at_item" onclick="return addthis_sendto('sodahead');"><span class="at15t at15t_sodahead">SodaHead</span></div><div id="ati_sonico" class="at_item" onclick="return addthis_sendto('sonico');"><span class="at15t at15t_sonico">Sonico</span></div><div id="ati_speedtile" class="at_item" onclick="return addthis_sendto('speedtile');"><span class="at15t at15t_speedtile">Speedtile</span></div><div id="ati_sphinn" class="at_item" onclick="return addthis_sendto('sphinn');"><span class="at15t at15t_sphinn">Sphinn</span></div><div id="ati_spokentoyou" class="at_item" onclick="return addthis_sendto('spokentoyou');"><span class="at15t at15t_spokentoyou">Spoken To You</span></div><div id="ati_sportpost" class="at_item" onclick="return addthis_sendto('sportpost');"><span class="at15t at15t_sportpost">sportpost</span></div><div id="ati_springpad" class="at_item" onclick="return addthis_sendto('springpad');"><span class="at15t at15t_springpad">springpad</span></div><div id="ati_spruzer" class="at_item" onclick="return addthis_sendto('spruzer');"><span class="at15t at15t_spruzer">Spruzer</span></div><div id="ati_squidoo" class="at_item" onclick="return addthis_sendto('squidoo');"><span class="at15t at15t_squidoo">Squidoo</span></div><div id="ati_startaid" class="at_item" onclick="return addthis_sendto('startaid');"><span class="at15t at15t_startaid">Startaid</span></div><div id="ati_startlap" class="at_item" onclick="return addthis_sendto('startlap');"><span class="at15t at15t_startlap">Startlap</span></div><div id="ati_storyfollower" class="at_item" onclick="return addthis_sendto('storyfollower');"><span class="at15t at15t_storyfollower">StoryFollower</span></div><div id="ati_studivz" class="at_item" onclick="return addthis_sendto('studivz');"><span class="at15t at15t_studivz">studiVZ</span></div><div id="ati_stuffpit" class="at_item" onclick="return addthis_sendto('stuffpit');"><span class="at15t at15t_stuffpit">Stuffpit</span></div><div id="ati_stumbleupon" class="at_item" onclick="return addthis_sendto('stumbleupon');"><span class="at15t at15t_stumbleupon">StumbleUpon</span></div><div id="ati_stumpedia" class="at_item" onclick="return addthis_sendto('stumpedia');"><span class="at15t at15t_stumpedia">Stumpedia</span></div><div id="ati_stylehive" class="at_item" onclick="return addthis_sendto('stylehive');"><span class="at15t at15t_stylehive">Stylehive</span></div><div id="ati_surfpeoplenet" class="at_item" onclick="return addthis_sendto('surfpeoplenet');"><span class="at15t at15t_surfpeoplenet">Surfpeople</span></div><div id="ati_svejo" class="at_item" onclick="return addthis_sendto('svejo');"><span class="at15t at15t_svejo">Svejo</span></div><div id="ati_symbaloo" class="at_item" onclick="return addthis_sendto('symbaloo');"><span class="at15t at15t_symbaloo">Symbaloo</span></div><div id="ati_tagmarksde" class="at_item" onclick="return addthis_sendto('tagmarksde');"><span class="at15t at15t_tagmarksde">TagMarks.de</span></div><div id="ati_tagvn" class="at_item" onclick="return addthis_sendto('tagvn');"><span class="at15t at15t_tagvn">Tagvn</span></div><div id="ati_tagza" class="at_item" onclick="return addthis_sendto('tagza');"><span class="at15t at15t_tagza">Tagza</span></div><div id="ati_tarpipe" class="at_item" onclick="return addthis_sendto('tarpipe');"><span class="at15t at15t_tarpipe">Tarpipe</span></div><div id="ati_tellmypolitician" class="at_item" onclick="return addthis_sendto('tellmypolitician');"><span class="at15t at15t_tellmypolitician">TellMyPolitician</span></div><div id="ati_thewebblend" class="at_item" onclick="return addthis_sendto('thewebblend');"><span class="at15t at15t_thewebblend">The Web Blend</span></div><div id="ati_thinkfinity" class="at_item" onclick="return addthis_sendto('thinkfinity');"><span class="at15t at15t_thinkfinity">Thinkfinity</span></div><div id="ati_thisnext" class="at_item" onclick="return addthis_sendto('thisnext');"><span class="at15t at15t_thisnext">ThisNext</span></div><div id="ati_throwpile" class="at_item" onclick="return addthis_sendto('throwpile');"><span class="at15t at15t_throwpile">Throwpile</span></div><div id="ati_tipd" class="at_item" onclick="return addthis_sendto('tipd');"><span class="at15t at15t_tipd">Tip'd</span></div><div id="ati_topsitelernet" class="at_item" onclick="return addthis_sendto('topsitelernet');"><span class="at15t at15t_topsitelernet">TopSiteler</span></div><div id="ati_transferr" class="at_item" onclick="return addthis_sendto('transferr');"><span class="at15t at15t_transferr">Transferr</span></div><div id="ati_googletranslate" class="at_item" onclick="return addthis_sendto('googletranslate');"><span class="at15t at15t_googletranslate">Translate</span></div><div id="ati_tulinq" class="at_item" onclick="return addthis_sendto('tulinq');"><span class="at15t at15t_tulinq">Tulinq</span></div><div id="ati_tumblr" class="at_item" onclick="return addthis_sendto('tumblr');"><span class="at15t at15t_tumblr">Tumblr</span></div><div id="ati_tusul" class="at_item" onclick="return addthis_sendto('tusul');"><span class="at15t at15t_tusul">Tusul</span></div><div id="ati_tvinx" class="at_item" onclick="return addthis_sendto('tvinx');"><span class="at15t at15t_tvinx">Tvinx</span></div><div id="ati_tweetmeme" class="at_item" onclick="return addthis_sendto('tweetmeme');"><span class="at15t at15t_tweetmeme">TweetMeme</span></div><div id="ati_twitter" class="at_item" onclick="return addthis_sendto('twitter');"><span class="at15t at15t_twitter">Twitter</span></div><div id="ati_twitthis" class="at_item" onclick="return addthis_sendto('twitthis');"><span class="at15t at15t_twitthis">TwitThis</span></div><div id="ati_typepad" class="at_item" onclick="return addthis_sendto('typepad');"><span class="at15t at15t_typepad">Typepad</span></div><div id="ati_urlaubswerkde" class="at_item" onclick="return addthis_sendto('urlaubswerkde');"><span class="at15t at15t_urlaubswerkde">Urlaubswerk</span></div><div id="ati_viadeo" class="at_item" onclick="return addthis_sendto('viadeo');"><span class="at15t at15t_viadeo">Viadeo</span></div><div id="ati_virb" class="at_item" onclick="return addthis_sendto('virb');"><span class="at15t at15t_virb">Virb</span></div><div id="ati_visitezmonsite" class="at_item" onclick="return addthis_sendto('visitezmonsite');"><span class="at15t at15t_visitezmonsite">VisitezMonSite</span></div><div id="ati_vk" class="at_item" onclick="return addthis_sendto('vk');"><span class="at15t at15t_vk">VKontakte</span></div><div id="ati_vybralisme" class="at_item" onclick="return addthis_sendto('vybralisme');"><span class="at15t at15t_vybralisme">VybraliSME</span></div><div id="ati_vyoom" class="at_item" onclick="return addthis_sendto('vyoom');"><span class="at15t at15t_vyoom">Vyoom</span></div><div id="ati_webnews" class="at_item" onclick="return addthis_sendto('webnews');"><span class="at15t at15t_webnews">Webnews</span></div><div id="ati_domaintoolswhois" class="at_item" onclick="return addthis_sendto('domaintoolswhois');"><span class="at15t at15t_domaintoolswhois">Whois&nbsp;Lookup</span></div><div id="ati_windycitizen" class="at_item" onclick="return addthis_sendto('windycitizen');"><span class="at15t at15t_windycitizen">Windy&nbsp;Citizen</span></div><div id="ati_wirefan" class="at_item" onclick="return addthis_sendto('wirefan');"><span class="at15t at15t_wirefan">WireFan</span></div><div id="ati_wordpress" class="at_item" onclick="return addthis_sendto('wordpress');"><span class="at15t at15t_wordpress">WordPress</span></div><div id="ati_worio" class="at_item" onclick="return addthis_sendto('worio');"><span class="at15t at15t_worio">Worio</span></div><div id="ati_wykop" class="at_item" onclick="return addthis_sendto('wykop');"><span class="at15t at15t_wykop">Wykop</span></div><div id="ati_xanga" class="at_item" onclick="return addthis_sendto('xanga');"><span class="at15t at15t_xanga">Xanga</span></div><div id="ati_yahoobkm" class="at_item" onclick="return addthis_sendto('yahoobkm');"><span class="at15t at15t_yahoobkm">Y! Bookmarks</span></div><div id="ati_buzz" class="at_item" onclick="return addthis_sendto('buzz');"><span class="at15t at15t_buzz">Y! Buzz</span></div><div id="ati_yahoomail" class="at_item" onclick="return addthis_sendto('yahoomail');"><span class="at15t at15t_yahoomail">Y! Mail</span></div><div id="ati_yammer" class="at_item" onclick="return addthis_sendto('yammer');"><span class="at15t at15t_yammer">Yammer</span></div><div id="ati_yardbarker" class="at_item" onclick="return addthis_sendto('yardbarker');"><span class="at15t at15t_yardbarker">Yardbarker</span></div><div id="ati_yigg" class="at_item" onclick="return addthis_sendto('yigg');"><span class="at15t at15t_yigg">Yigg</span></div><div id="ati_yoolink" class="at_item" onclick="return addthis_sendto('yoolink');"><span class="at15t at15t_yoolink">Yoolink</span></div><div id="ati_yorumcuyum" class="at_item" onclick="return addthis_sendto('yorumcuyum');"><span class="at15t at15t_yorumcuyum">Yorumcuyum</span></div><div id="ati_youblr" class="at_item" onclick="return addthis_sendto('youblr');"><span class="at15t at15t_youblr">Youblr</span></div><div id="ati_youbookmarks" class="at_item" onclick="return addthis_sendto('youbookmarks');"><span class="at15t at15t_youbookmarks">Youbookmarks</span></div><div id="ati_youmob" class="at_item" onclick="return addthis_sendto('youmob');"><span class="at15t at15t_youmob">YouMob</span></div><div id="ati_zakladoknet" class="at_item" onclick="return addthis_sendto('zakladoknet');"><span class="at15t at15t_zakladoknet">Zakladok.net</span></div><div id="ati_zanatic" class="at_item" onclick="return addthis_sendto('zanatic');"><span class="at15t at15t_zanatic">Zanatic</span></div><div id="ati_zooloo" class="at_item" onclick="return addthis_sendto('zooloo');"><span class="at15t at15t_zooloo">ZooLoo</span></div><div id="ati_print" class="at_item" onclick="return addthis_sendto('print');"><span class="at15t at15t_print">打印</span></div><div id="ati_favorites" class="at_item" onclick="return addthis_sendto('favorites');"><span class="at15t at15t_favorites">收藏夾</span></div><div id="ati_email" class="at_item" onclick="return addthis_sendto('email');"><span class="at15t at15t_email">電子郵件</span></div></div><div style="clear: both;"></div></div><div id="at_complete" style="display: none;"><button onclick="_atw.clb()">完成</button></div><div id="at_success" style="display: none;">消息已發送! <a href="#" onclick="_atw.get('at16filt').value='';_atw.filt('',_atw.list);_atw.sag();return false">再次分享.</a></div><div id="at_sending" style="display: none;"><div class="at16c"><img src="redloading.gif" height="16" width="16"><br>Sending message...</div></div><div id="at_error" style="display: none;" class="at_error"></div><div id="at_promo" style="display: none;"></div><div id="at_email" style="display: none; visibility: hidden;"><form action="http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/04/view-and-extract-packages/" onsubmit="addthis_send();return false;"><label for="at_to">收件人:  <span>(電子郵箱地址)</span></label><textarea id="at_to" cols="30" rows="4" onkeypress="if (window._atab) _atab.htkd(this, event)" onkeyup="_atw.filt(this.value.replace(/[;\n]/g,',').replace(/ /g,'').split(',').pop(), _atw.data.contacts.all, 'at16eatdr', '_ataddr', null, 'a')" tabindex="2" onfocus="_atw.rse();"></textarea><div id="at16eatdr" style="display: none;"></div><label for="at_from">發件人:  <span>(電子郵箱地址)</span></label><input value="" id="at_from" name="at_from" tabindex="3" size="30" onfocus="_atw.rse();" type="text"><label for="at_msg">備註:  <span>(可選)</span></label><textarea id="at_msg" style="" cols="30" rows="4" tabindex="4" onkeyup="return _atw.lml(this,250);" onfocus="_atw.rse();"></textarea><div id="ateml"><small>255個字節限制.</small></div><div><input id="at16sub" class="atbtn" tabindex="5" value="發送" onclick="return addthis_send();" type="submit"><input class="atbtn atrse" tabindex="6" value="取消" onclick="return _atw.cef()" type="reset"></div></form><div id="at16meo"><span>更多:</span><a class="at15t at15t_gmail" tabindex="7" href="#" onclick="_ate.as('gmail'); return false" alt="Gmail"></a><a class="at15t at15t_yahoomail" tabindex="8" href="#" onclick="_ate.as('yahoomail'); return false" alt="Y! Mail"></a><a class="at15t at15t_hotmail" tabindex="9" href="#" onclick="_ate.as('hotmail'); return false" alt="Hotmail"></a><a class="at15t at15t_aolmail" tabindex="10" href="#" onclick="_ate.as('aolmail'); return false" alt="AOL Mail"></a></div></div></div><div id="at16pf"><a class="at_baa" id="at-logo" href="http://www.addthis.com/?utm_source=mm&amp;utm_medium=img&amp;utm_content=ATLogo_orig&amp;utm_campaign=AT_main" title="AddThis" target="_top">AddThis</a></div></div></div></div></div></div><div id="at15s" style="z-index: 1000000; position: absolute; visibility: visible; top: 5953px; left: 25px;"><div id="at15s_inner"><div id="at15s_head"><span id="at15ptc">添加到收藏夾 / 分享</span><span class="at15s_brandx" id="at15s_brand"></span><a id="at15sptx" href="#" onclick="return _atw.clb()">X</a></div><div id="at_pspromo" style="display: none; visibility: hidden;"><div style="position: absolute; display: block; border: 0pt none;">    <div id="at_testpromo" style="display: block;"><div class="at-promo-single" align="center">    <h4>請分享Firefox與AddThis容易。</h4>    <div align="center"><a onclick="_ate.track.cev('adck','');" target="_top" href="http://www.addthis.com/landing?to=ffext&amp;utm_source=ps&amp;utm_medium=img&amp;utm_content=ATFF&amp;utm_campaign=ATSPF4_DL"><img src="btn_ff_dl120.jpg" alt="下載" border="0" height="44" width="120"></a><br><a target="_top" href="http://www.addthis.com/pages/toolbar-preferences" style="padding-top: 10px; font-size: 10px;">不分享此内容</a></div></div>    </div></div></div><div id="at_hover" style="display: block;"><div id="atic_favorites" class="at_item  at_col0" onclick="return addthis_sendto('favorites');"><span class="at15t at15t_favorites">收藏夾</span></div><div id="atic_email" class="at_item  at_col1" onclick="return addthis_sendto('email');"><span class="at15t at15t_email">電子郵件</span></div><div id="atic_delicious" class="at_item  at_col0" onclick="return addthis_sendto('delicious');"><span class="at15t at15t_delicious">Delicious</span></div><div id="atic_reddit" class="at_item  at_col1" onclick="return addthis_sendto('reddit');"><span class="at15t at15t_reddit">Reddit</span></div><div id="atic_stumbleupon" class="at_item  at_col0" onclick="return addthis_sendto('stumbleupon');"><span class="at15t at15t_stumbleupon">StumbleUpon</span></div><div id="atic_facebook" class="at_item  at_col1" onclick="return addthis_sendto('facebook');"><span class="at15t at15t_facebook">Facebook</span></div><div id="atic_twitter" class="at_item  at_col0" onclick="return addthis_sendto('twitter');"><span class="at15t at15t_twitter">Twitter</span></div><div id="atic_google" class="at_item  at_col1" onclick="return addthis_sendto('google');"><span class="at15t at15t_google">Google</span></div><div id="atic_digg" class="at_item  at_col0" onclick="return addthis_sendto('digg');"><span class="at15t at15t_digg">Digg</span></div><div id="atic_myspace" class="at_item  at_col1" onclick="return addthis_sendto('myspace');"><span class="at15t at15t_myspace">MySpace</span></div><div id="atic_more" class="at_item  at_col0" onclick="return addthis_sendto('more');"><span class="at15t at15t_more">更多...</span></div><div style="clear: both;"></div></div><div id="at16pf"><a class="at_baa" id="at-logo" href="http://www.addthis.com/?utm_source=hm&amp;utm_medium=img&amp;utm_content=ATLogo_orig&amp;utm_campaign=AT_main" title="AddThis" target="_top">AddThis</a></div></div></div></div></body>
+</html>

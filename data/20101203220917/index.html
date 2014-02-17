@@ -1,0 +1,465 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head profile="http://gtmick.com/photo/index.php?q=aHR0cDovL2dtcGcub3JnL3hmbi8xMQ%3D%3D">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+<title>emacs, indent/unindent region as a block using the tab key « Nachopp’s Blog</title>
+
+<link rel="pingback" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3htbHJwYy5waHA%3D">
+<meta name="google-site-verification" content="vJI_T9PRaEpxMKZ813-AEITCLeYKL-TNSGXPUAGyKhs">
+<link rel="alternate" type="application/rss+xml" title="Nachopp's Blog » Feed" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL2ZlZWQv">
+<link rel="alternate" type="application/rss+xml" title="Nachopp's Blog » Comments Feed" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL2NvbW1lbnRzL2ZlZWQv">
+<link rel="alternate" type="application/rss+xml" title="Nachopp's Blog » emacs, indent/unindent region as a block using the tab&nbsp;key Comments Feed" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkvZmVlZC8%3D">
+
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3htbHJwYy5waHA%2FcnNk">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3dwLWluY2x1ZGVzL3dsd21hbmlmZXN0LnhtbA%3D%3D"> 
+<link rel="index" title="Nachopp’s Blog" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLw%3D%3D">
+<link rel="prev" title="customizing emacs, deactivate automatic&nbsp;indentation" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvY3VzdG9taXppbmctZW1hY3MtZGVhY3RpdmF0ZS1hdXRvbWF0aWMtaW5kZW50YXRpb24v">
+<link rel="next" title="sed, delete all within regex&nbsp;range" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMjYvc2VkLWRlbGV0ZS1hbGwtd2l0aGluZy1yZWdleC1yYW5nZS8%3D">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkv">
+<link rel="shortlink" href="http://gtmick.com/photo/index.php?q=aHR0cDovL3dwLm1lL3B3NWxnLTFj">
+<link rel="shortcut icon" type="image/x-icon" href="index.php" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="index.php" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon" href="http://gtmick.com/photo/index.php?q=aHR0cDovL3MwLndwLmNvbS93cC1jb250ZW50L3RoZW1lcy9oNC9pL3dlYmNsaXAucG5nP209MTI1NjMyNTM2NWc%3D">
+	
+	<link rel="openid.server" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLz9vcGVuaWRzZXJ2ZXI9MQ%3D%3D">
+<link rel="openid.delegate" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLw%3D%3D">
+<link rel="search" type="application/opensearchdescription+xml" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL29zZC54bWw%3D" title="Nachopp's Blog">
+<link rel="search" type="application/opensearchdescription+xml" href="http://gtmick.com/photo/index.php?q=aHR0cDovL3dvcmRwcmVzcy5jb20vb3BlbnNlYXJjaC54bWw%3D" title="WordPress.com">
+<meta name="application-name" content="Nachopp's Blog"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="rants about emacs, gnu tools, web programming and stuff like that"><meta name="msapplication-task" content="name=Subscribe;action-uri=http://ignaciopp.wordpress.com/feed/;icon-uri=http://s1.wp.com/i/favicon-stacked.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico">
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="wordpress y2010 m12 d03 h02 single s-y2009 s-m06 s-d17 s-h03 s-category-emacs-programming s-category-gnu s-category-programming s-category-unix s-author-nachopp">
+
+<div id="wrapper">
+
+	<div id="header">
+		<div id="innerheader">
+			<h1 id="blog-title"><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLw%3D%3D" title="Nachopp’s Blog">Nachopp’s Blog</a></h1>
+			<div id="blog-description">rants about emacs, gnu tools, web programming and stuff like that</div>
+		</div>
+	</div><!--  #header -->
+
+	
+	<div id="globalnav"><ul id="menu"><li class="page_item page-item-2"><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL2Fib3V0Lw%3D%3D" title="About Ignacio Paz&nbsp;Posse">About Ignacio Paz&nbsp;Posse</a></li></ul></div>
+	<div id="container">
+		<div id="content" class="hfeed">
+
+
+			<div id="nav-above" class="navigation">
+				<div class="nav-previous">« <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvY3VzdG9taXppbmctZW1hY3MtZGVhY3RpdmF0ZS1hdXRvbWF0aWMtaW5kZW50YXRpb24v" rel="prev">customizing emacs, deactivate automatic&nbsp;indentation</a></div>
+				<div class="nav-next"><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMjYvc2VkLWRlbGV0ZS1hbGwtd2l0aGluZy1yZWdleC1yYW5nZS8%3D" rel="next">sed, delete all within regex&nbsp;range</a> »</div>
+			</div>
+
+			<div id="post-74" class="post-74 post type-post status-publish format-default hentry category-emacs-programming category-gnu category-programming category-unix tag-dot-emacs tag-emacs tag-indentation tag-text-editing tag-tipstricks p1 publish author-ignacio y2009 m06 d17 h03">
+				<div class="entry-meta">
+					<h2 class="entry-title"><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkv" title="Permanent link to emacs, indent/unindent region as a block using the tab&nbsp;key" rel="bookmark">emacs, indent/unindent region as a block using the tab&nbsp;key</a></h2>
+					<ul>
+						<li class="entry-date"><abbr class="published" title="2009-06-17T15:22:57+0000">June 17, 2009 – 3:22 pm</abbr></li>
+						<li class="entry-category">Posted in <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2VuLndvcmRwcmVzcy5jb20vdGFnL2VtYWNzLXByb2dyYW1taW5nLw%3D%3D" title="View all posts in emacs" rel="category tag">emacs</a>, <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2VuLndvcmRwcmVzcy5jb20vdGFnL2dudS8%3D" title="View all posts in gnu" rel="category tag">gnu</a>, <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2VuLndvcmRwcmVzcy5jb20vdGFnL3Byb2dyYW1taW5nLw%3D%3D" title="View all posts in programming" rel="category tag">programming</a>, <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2VuLndvcmRwcmVzcy5jb20vdGFnL3VuaXgv" title="View all posts in unix" rel="category tag">unix</a></li>
+						<li class="entry-tags">Tagged <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2VuLndvcmRwcmVzcy5jb20vdGFnL2RvdC1lbWFjcy8%3D" rel="tag">dot-emacs</a>, <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2VuLndvcmRwcmVzcy5jb20vdGFnL2VtYWNzLw%3D%3D" rel="tag">emacs</a>, <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2VuLndvcmRwcmVzcy5jb20vdGFnL2luZGVudGF0aW9uLw%3D%3D" rel="tag">indentation</a>, <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2VuLndvcmRwcmVzcy5jb20vdGFnL3RleHQtZWRpdGluZy8%3D" rel="tag">text-editing</a>, <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2VuLndvcmRwcmVzcy5jb20vdGFnL3RpcHN0cmlja3Mv" rel="tag">tips&amp;tricks</a></li>
+					</ul>
+				</div>
+				<div class="entry-content">
+<p>This was once the most important portion of elisp code I had put into my dot emacs.&nbsp; Thanks to it I began to conciliate with the editor which I sort of resisted at first,&nbsp;by finding it foreign to my habits and liking. I was accustomed to the way Dreamveaver handled the indenting of selected text in blocks, so getting emacs to behave in such familiar and practical style was critical to ease the experience of using it in a daily basis -as I needed&nbsp; a couple of years ago when entering a new position.</p>
+<p>Pretty soon I saw why emacs was so superior in regard of its extensibility: with basic elisp knowledge, the help of this <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2dyb3Vwcy5nb29nbGUuY29tL2dyb3VwL2dudS5lbWFjcy5oZWxwL2Jyb3dzZV90aHJlYWQvdGhyZWFkLzJlY2RjNDU0NmI1MjlkY2YvOGZiZTg1OGEzNDY2ODdiZiUyMzhmYmU4NThhMzQ2Njg3YmY%3D">discussion </a>and a few lines of code tweaked I was able to get indent/unindent function the way I wanted. Now to select text as a block, I not longer needed to set the mark and point exactly from the beginning to the end of a line or group of lines. The code conveniently extended the highlighted area&nbsp;via the tab key, turning the sub-selection into a block containing all the text of&nbsp;the line(s) involved.</p>
+<p>Besides, the selection was configured so to not disappear unless you click outside it, that is, while keeping&nbsp; pressed the tab (or Shift-tab) key(s) you could get the text to shift continuously right (or left).</p>
+<p>Having bound the tab key with the indentation functions required a few adjustment to make it context-sensitive. Here is how the tab key behaves after the changes:</p>
+<ul>
+<li> First, to insert a real tab space,&nbsp;(when the cursor is before a word), you need to use <strong>Ctrl -q-tab</strong>.</li>
+<li>If the text point is, at least, a space away from the end of a word, a standard tab-space is inserted.</li>
+<li> If the text point is exactly at the end of a word, the tab uses the <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL3d3dy5lbWFjc3dpa2kub3JnL2NnaS1iaW4vd2lraS9IaXBwaWVFeHBhbmQ%3D">hippie-expand</a> function to auto-complete the word. If Shift+tab are used instead, words are deleted backward one at a time up to the beginning of the line.</li>
+<li> When editing in org-mode an exception was set to respect its visibility cycling function (<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL29yZ21vZGUub3JnLw%3D%3D">org-mode</a> cleverly uses the tab key to rotate the current state of tree and sub-trees).</li>
+</ul>
+<p>Finally, Mac and PC users would probably appreciate the added function that makes <strong>Shift + click</strong> to end a selection of text, which is the default way on both platforms (I grabbed it <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL3d3dy5tYWlsLWFyY2hpdmUuY29tL2NhcmJvbi1lbWFjc0Bnb29nbGVncm91cHMuY29tL21zZzAwMzU0Lmh0bWw%3D">here</a>, from Dave Peck).</p>
+<p>So, as you can see, the whole point of the code below is to ease the manual indentation of code. Not being comfortable with the automatic indentation in emacs,  I like to avoid it at times, or for certain modes. Check the associated <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvY3VzdG9taXppbmctZW1hY3MtZGVhY3RpdmF0ZS1hdXRvbWF0aWMtaW5kZW50YXRpb24v">hack </a> posted on how to deactivate it.</p>
+<p>Please, have a look at the elisp lines. Remember that you could copy and paste all into the scratch buffer and do “<strong>M-x evaluate-buffer</strong>” to get them immediately working.</p>
+<pre style="overflow: auto; color: rgb(245, 245, 245); font-size: 8pt; background: none repeat scroll 0% 0% rgb(33, 33, 33); border-style: solid; border-color: rgb(66, 66, 66); border-width: 1px 1px 0pt; padding: 4px;"><span style="color: rgb(135, 172, 214);">;; turn on transient mark mode
+;;(that is, we highlight the selected text)
+</span>(transient-mark-mode t)
+
+(setq my-tab-width 2)
+
+(<span style="color: rgb(255, 215, 0); font-weight: bold;">defun</span> <span style="color: rgb(127, 255, 0); font-weight: bold;">indent-block</span>()
+  (shift-region my-tab-width)
+  (setq deactivate-mark nil))
+
+(<span style="color: rgb(255, 215, 0); font-weight: bold;">defun</span> <span style="color: rgb(127, 255, 0); font-weight: bold;">unindent-block</span>()
+  (shift-region (- my-tab-width))
+  (setq deactivate-mark nil))
+
+(<span style="color: rgb(255, 215, 0); font-weight: bold;">defun</span> <span style="color: rgb(127, 255, 0); font-weight: bold;">shift-region</span>(numcols)
+<span style="color: rgb(245, 168, 24);">" my trick to expand the region to the beginning and end of the area selected
+ much in the handy way I liked in the Dreamweaver editor."</span>
+  (<span style="color: rgb(255, 215, 0); font-weight: bold;">if</span> (&lt; (point)(mark))
+    (<span style="color: rgb(255, 215, 0); font-weight: bold;">if</span> (not(bolp))    (<span style="color: rgb(255, 215, 0); font-weight: bold;">progn</span> (beginning-of-line)(exchange-point-and-mark) (end-of-line)))
+    (<span style="color: rgb(255, 215, 0); font-weight: bold;">progn</span> (end-of-line)(exchange-point-and-mark)(beginning-of-line)))
+  (setq region-start (region-beginning))
+  (setq region-finish (region-end))
+  (<span style="color: rgb(255, 215, 0); font-weight: bold;">save-excursion</span>
+    (<span style="color: rgb(255, 215, 0); font-weight: bold;">if</span> (&lt; (point) (mark)) (exchange-point-and-mark))
+    (<span style="color: rgb(255, 215, 0); font-weight: bold;">let</span> ((save-mark (mark)))
+      (indent-rigidly region-start region-finish numcols))))
+
+(<span style="color: rgb(255, 215, 0); font-weight: bold;">defun</span> <span style="color: rgb(127, 255, 0); font-weight: bold;">indent-or-complete</span> ()
+  <span style="color: rgb(245, 168, 24);">"Indent region selected as a block; if no selection present either indent according to mode,
+or expand the word preceding point. "</span>
+  (interactive)
+  (<span style="color: rgb(255, 215, 0); font-weight: bold;">if</span>  mark-active
+      (indent-block)
+    (<span style="color: rgb(255, 215, 0); font-weight: bold;">if</span> (looking-at <span style="color: rgb(245, 168, 24);">"\\&gt;"</span>)
+  (hippie-expand nil)
+      (insert <span style="color: rgb(245, 168, 24);">"\t"</span>))))
+
+(<span style="color: rgb(255, 215, 0); font-weight: bold;">defun</span> <span style="color: rgb(127, 255, 0); font-weight: bold;">my-unindent</span>()
+  <span style="color: rgb(245, 168, 24);">"Unindent line, or block if it's a region selected.
+When pressing Shift+tab, erase words backward (one at a time) up to the beginning of line.
+Now it correctly stops at the beginning of the line when the pointer is at the first char of an indented line. Before the command would (unconveniently)  kill all the white spaces, as well as the last word of the previous line."</span>
+
+  (interactive)
+  (<span style="color: rgb(255, 215, 0); font-weight: bold;">if</span> mark-active
+      (unindent-block)
+    (<span style="color: rgb(255, 215, 0); font-weight: bold;">progn</span>
+      (<span style="color: rgb(255, 215, 0); font-weight: bold;">unless</span>(bolp)
+        (<span style="color: rgb(255, 215, 0); font-weight: bold;">if</span> (looking-back <span style="color: rgb(245, 168, 24);">"^[ \t]*"</span>)
+            (<span style="color: rgb(255, 215, 0); font-weight: bold;">progn</span>
+              <span style="color: rgb(135, 172, 214);">;;"a" holds how many spaces are there to the beginning of the line
+</span>              (<span style="color: rgb(255, 215, 0); font-weight: bold;">let</span> ((a (length(buffer-substring-no-properties (point-at-bol) (point)))))
+                (<span style="color: rgb(255, 215, 0); font-weight: bold;">progn</span>
+                  <span style="color: rgb(135, 172, 214);">;; delete backwards progressively in my-tab-width steps, but without going further of the beginning of line.
+</span>                  (<span style="color: rgb(255, 215, 0); font-weight: bold;">if</span> (&gt; a my-tab-width)
+                      (delete-backward-char my-tab-width)
+                    (backward-delete-char a)))))
+          <span style="color: rgb(135, 172, 214);">;; delete tab and spaces first, if at least 2 exist, before removing words
+</span>          (<span style="color: rgb(255, 215, 0); font-weight: bold;">progn</span>
+            (<span style="color: rgb(255, 215, 0); font-weight: bold;">if</span>(looking-back <span style="color: rgb(245, 168, 24);">"[ \t]\\{2,\\}"</span>)
+                (delete-horizontal-space)
+              (backward-kill-word 1))))))))
+
+(add-hook 'find-file-hooks (function (<span style="color: rgb(255, 215, 0); font-weight: bold;">lambda</span> ()
+ (<span style="color: rgb(255, 215, 0); font-weight: bold;">unless</span> (eq major-mode 'org-mode)
+(local-set-key (kbd <span style="color: rgb(245, 168, 24);">"&lt;tab&gt;"</span>) 'indent-or-complete)))))
+
+(<span style="color: rgb(255, 215, 0); font-weight: bold;">if</span> (not (eq  major-mode 'org-mode))
+    (<span style="color: rgb(255, 215, 0); font-weight: bold;">progn</span>
+      (define-key global-map <span style="color: rgb(245, 168, 24);">"\t"</span> 'indent-or-complete) <span style="color: rgb(135, 172, 214);">;; with this you have to force tab (C-q-tab) to insert a tab after a word
+</span>      (define-key global-map [S-tab] 'my-unindent)
+      (define-key global-map [C-S-tab] 'my-unindent)))
+
+<span style="color: rgb(135, 172, 214);">;; mac and pc users would like selecting text this way
+</span>(<span style="color: rgb(255, 215, 0); font-weight: bold;">defun</span> <span style="color: rgb(127, 255, 0); font-weight: bold;">dave-shift-mouse-select</span> (event)
+ "Set the mark and then move point to the position clicked on with
+ the mouse. This should be bound to a mouse click event type."
+ (interactive "e")
+ (mouse-minibuffer-check event)
+ (<span style="color: rgb(255, 215, 0); font-weight: bold;">if</span> mark-active (exchange-point-and-mark))
+ (set-mark-command nil)
+ <span style="color: rgb(135, 172, 214);">;; Use event-end in case called from mouse-drag-region.
+</span> <span style="color: rgb(135, 172, 214);">;; If EVENT is a click, event-end and event-start give same value.
+</span> (posn-set-point (event-end event)))
+
+<span style="color: rgb(135, 172, 214);">;; be aware that this overrides the function for picking a font. you can still call the command
+;; directly from the minibufer doing: "M-x mouse-set-font"
+</span>(define-key global-map [S-down-mouse-1] 'dave-shift-mouse-select)
+
+<span style="color: rgb(135, 172, 214);">;; to use in into emacs for  unix I  needed this instead
+; define-key global-map [S-mouse-1] 'dave-shift-mouse-select)
+</span>
+<span style="color: rgb(135, 172, 214);">;; ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; this final line is only necessary to escape the *scratch* fundamental-mode
+;; and let this demonstration work
+</span>(text-mode)
+</pre>
+<p><strong>NOTE:</strong><br>
+I revised the code and modified some things. Especially the function ‘my-unindent” in order to add some sophistication on how the shifting backwards now occurs. The main improvement is that deleting backwards will never lead to jumping to the previous line (and removing words from there) . Here’s how the movement to left is done when pressing Shift + tab:</p>
+<ul>
+<li> killing word by word, if the insertion point is at the right of any text.</li>
+<li> stepping back, in increments (set by the variable my-tab-width), <strong>BUT ALWAYS</strong> stopping at the beginning of the line when the cursor is at the left of any indented text.</li>
+</ul>
+<p>You can see how much simpler the function looked before I decided to better it:</p>
+<pre style="color: rgb(245, 245, 245); overflow: auto; font-size: 8pt; background: none repeat scroll 0% 0% rgb(33, 33, 33); border-style: solid; border-color: rgb(66, 66, 66); border-width: 1px 1px 0pt; padding: 4px;">(<span style="color: rgb(255, 215, 0); font-weight: bold;">defun</span> <span style="color: rgb(127, 255, 0); font-weight: bold;">my-unindent</span>()
+  <span style="color: rgb(245, 168, 24);">"Unindent line, or block if it's a region selected"</span>
+  (interactive)
+  (<span style="color: rgb(255, 215, 0); font-weight: bold;">if</span> mark-active
+      (unindent-block)
+    (<span style="color: rgb(255, 215, 0); font-weight: bold;">if</span>(not(bolp))(delete-backward-char 2 ))))</pre>
+<div style="margin-top: 1em;" class="possibly-related"><hr><p><strong>Possibly related posts: (automatically generated)</strong></p><ul><li><a rel="related" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGFiLWtleS8%3D" style="font-weight: bold;">emacs, indent/unindent region as a block using tab key</a></li><li><a rel="related" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDgvMjcvZW1hY3MtZmx1c2gtbGluZXMv" style="font-weight: bold;">emacs flush lines</a></li><li><a rel="related nofollow" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2NvbXB1c2F2dnkud29yZHByZXNzLmNvbS8yMDA5LzA4LzA4L2FsaWduaW5nLXRleHQtd2l0aC1wbGVhZGluZy1saW5lLW51bWJlcnMtd29yZC1hbGwtcmVjZW50LXZlcnNpb25zLw%3D%3D">Aligning text with pleading line numbers (Word, all recent versions)</a></li></ul></div>
+<!--adcode-->
+<div style="padding-top: 5px; text-align: left;" class="adcode" align="center">
+
+<div style="margin-top: 15px;"><a href="http://www.google.com/url?ct=abg&amp;q=https://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://gtmick.com/photo/index.php%253Fq%253DaHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkv%26hl%3Den%26client%3Dca-pub-3443918307802676%26adU%3Dwww.expressvpn.com%26adT%3DBest%2BVPN%2Bfor%2BAsia%26adU%3Dwww.thawte.com%26adT%3Dthawte%2BSSL%2Bcertificates%26adU%3Dwww.vpngates.com%26adT%3DOpen%2BBlocked%2BWebsites%26adU%3Dwww.in67.com%26adT%3D%25E8%25A6%2581%25E4%25B8%258AFaceBook%25E9%25A9%25AC%25E4%25B8%258A%25E7%2594%25A8OVPN%26gl%3DCN&amp;usg=AFQjCNHCcTB9ksqVQs8-OtCA-Xtb5G2xuw" style="border-bottom: medium none; text-decoration: none;">Ads by Google</a><br><div style="display: block; width: 100%; padding-bottom: 5px; font-weight: normal;"><a href="s-p:%20Go%20to%20www.expressvpn.com" onclick="advert_cookie(); window.location='http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BODcUd_n4TNueONK26QaficXpBMSR9ZACwuPwsxLAjbcB8KIEEAEYASCk7p8GKAQ4AFCfxf1-YJ2h34HYBaAB4vnl7AOyAQpndG1pY2suY29tugEKMzM2eDI4MF9qc8gBAdoBqAFodHRwOi8vZ3RtaWNrLmNvbS9waG90by9pbmRleC5waHA_cT1hSFIwY0RvdkwybG5ibUZqYVc5d2NDNTNiM0prY0hKbGMzTXVZMjl0THpJd01Ea3ZNRFl2TVRjdlpXMWhZM010YVc1a1pXNTBkVzVwYm1SbGJuUXRjbVZuYVc5dUxXRnpMV0V0WW14dlkyc3RkWE5wYm1jdGRHaGxMWFJoWWkxclpYa3aAAgGoAwH1AwAAIMQ&amp;num=1&amp;sig=AGiWqtw3_pRWzeBmlzevPIqYsIxm-CqtyQ&amp;client=ca-pub-3443918307802676&amp;adurl=http://expressvpn.com/%3FrefID%3D101'; return false;"><span class="gad-head" style="font-size: 1.2em;">Best VPN for Asia</span></a><br><span class="gad-text" style="font-weight: normal;">Surf securely to any foreign site. Fast, optimized for Asia. $12.95/mo</span><br><a href="s-p:%20Go%20to%20www.expressvpn.com" onclick="advert_cookie(); window.location='http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BODcUd_n4TNueONK26QaficXpBMSR9ZACwuPwsxLAjbcB8KIEEAEYASCk7p8GKAQ4AFCfxf1-YJ2h34HYBaAB4vnl7AOyAQpndG1pY2suY29tugEKMzM2eDI4MF9qc8gBAdoBqAFodHRwOi8vZ3RtaWNrLmNvbS9waG90by9pbmRleC5waHA_cT1hSFIwY0RvdkwybG5ibUZqYVc5d2NDNTNiM0prY0hKbGMzTXVZMjl0THpJd01Ea3ZNRFl2TVRjdlpXMWhZM010YVc1a1pXNTBkVzVwYm1SbGJuUXRjbVZuYVc5dUxXRnpMV0V0WW14dlkyc3RkWE5wYm1jdGRHaGxMWFJoWWkxclpYa3aAAgGoAwH1AwAAIMQ&amp;num=1&amp;sig=AGiWqtw3_pRWzeBmlzevPIqYsIxm-CqtyQ&amp;client=ca-pub-3443918307802676&amp;adurl=http://expressvpn.com/%3FrefID%3D101'; return false;"><span class="gad-url" style="font-weight: normal;">www.expressvpn.com</span></a></div><div style="display: block; width: 100%; padding-bottom: 5px; font-weight: normal;"><a href="s-p:%20Go%20to%20www.thawte.com" onclick="advert_cookie(); window.location='http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BdBj0d_n4TNueONK26QaficXpBMKXl5MB-IjWxQ_AjbcBsNsGEAIYAiCk7p8GKAQ4AFDDwvWL_f____8BYJ2h34HYBaABjqu2_gOyAQpndG1pY2suY29tugEKMzM2eDI4MF9qc8gBAdoBqAFodHRwOi8vZ3RtaWNrLmNvbS9waG90by9pbmRleC5waHA_cT1hSFIwY0RvdkwybG5ibUZqYVc5d2NDNTNiM0prY0hKbGMzTXVZMjl0THpJd01Ea3ZNRFl2TVRjdlpXMWhZM010YVc1a1pXNTBkVzVwYm1SbGJuUXRjbVZuYVc5dUxXRnpMV0V0WW14dlkyc3RkWE5wYm1jdGRHaGxMWFJoWWkxclpYa3aAAgHIArLEtBaoAwH1AwAAIMQ&amp;num=2&amp;sig=AGiWqtzWoJ0tzvMen6-IMYRtQksCS6nvPw&amp;client=ca-pub-3443918307802676&amp;adurl=http://www.thawte.com/products/index.html%3Fsl%3Dt88940283050000007'; return false;"><span class="gad-head" style="font-size: 1.2em;">thawte SSL certificates</span></a><br><span class="gad-text" style="font-weight: normal;">Choose from a complete range of certificates with the strongest SSL</span><br><a href="s-p:%20Go%20to%20www.thawte.com" onclick="advert_cookie(); window.location='http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BdBj0d_n4TNueONK26QaficXpBMKXl5MB-IjWxQ_AjbcBsNsGEAIYAiCk7p8GKAQ4AFDDwvWL_f____8BYJ2h34HYBaABjqu2_gOyAQpndG1pY2suY29tugEKMzM2eDI4MF9qc8gBAdoBqAFodHRwOi8vZ3RtaWNrLmNvbS9waG90by9pbmRleC5waHA_cT1hSFIwY0RvdkwybG5ibUZqYVc5d2NDNTNiM0prY0hKbGMzTXVZMjl0THpJd01Ea3ZNRFl2TVRjdlpXMWhZM010YVc1a1pXNTBkVzVwYm1SbGJuUXRjbVZuYVc5dUxXRnpMV0V0WW14dlkyc3RkWE5wYm1jdGRHaGxMWFJoWWkxclpYa3aAAgHIArLEtBaoAwH1AwAAIMQ&amp;num=2&amp;sig=AGiWqtzWoJ0tzvMen6-IMYRtQksCS6nvPw&amp;client=ca-pub-3443918307802676&amp;adurl=http://www.thawte.com/products/index.html%3Fsl%3Dt88940283050000007'; return false;"><span class="gad-url" style="font-weight: normal;">www.thawte.com</span></a></div><div style="display: block; width: 100%; padding-bottom: 5px; font-weight: normal;"><a href="s-p:%20Go%20to%20www.vpngates.com" onclick="advert_cookie(); window.location='http://googleads.g.doubleclick.net/aclk?sa=L&amp;ai=Bwrf0d_n4TNueONK26QaficXpBMzUqNwBrOHu9RPAjbcBsOoBEAMYAyCk7p8GKAQ4AFD6yLKG-v____8BYJ2h34HYBbIBCmd0bWljay5jb226AQozMzZ4MjgwX2pzyAEB2gGoAWh0dHA6Ly9ndG1pY2suY29tL3Bob3RvL2luZGV4LnBocD9xPWFIUjBjRG92TDJsbmJtRmphVzl3Y0M1M2IzSmtjSEpsYzNNdVkyOXRMekl3TURrdk1EWXZNVGN2WlcxaFkzTXRhVzVrWlc1MGRXNXBibVJsYm5RdGNtVm5hVzl1TFdGekxXRXRZbXh2WTJzdGRYTnBibWN0ZEdobExYUmhZaTFyWlhrdqgDAfUDAAAgxA&amp;num=3&amp;sig=AGiWqtxOdxj_mjzccUu9Xh4mArU_hpAHhw&amp;client=ca-pub-3443918307802676&amp;adurl=https://www.vpngates.com%3Fad%3Dcngc'; return false;"><span class="gad-head" style="font-size: 1.2em;">Open Blocked Websites</span></a><br><span class="gad-text" style="font-weight: normal;">Access Facebook, Youtube, Twitter Watch US &amp; UK TV through VPN Proxy!</span><br><a href="s-p:%20Go%20to%20www.vpngates.com" onclick="advert_cookie(); window.location='http://googleads.g.doubleclick.net/aclk?sa=L&amp;ai=Bwrf0d_n4TNueONK26QaficXpBMzUqNwBrOHu9RPAjbcBsOoBEAMYAyCk7p8GKAQ4AFD6yLKG-v____8BYJ2h34HYBbIBCmd0bWljay5jb226AQozMzZ4MjgwX2pzyAEB2gGoAWh0dHA6Ly9ndG1pY2suY29tL3Bob3RvL2luZGV4LnBocD9xPWFIUjBjRG92TDJsbmJtRmphVzl3Y0M1M2IzSmtjSEpsYzNNdVkyOXRMekl3TURrdk1EWXZNVGN2WlcxaFkzTXRhVzVrWlc1MGRXNXBibVJsYm5RdGNtVm5hVzl1TFdGekxXRXRZbXh2WTJzdGRYTnBibWN0ZEdobExYUmhZaTFyWlhrdqgDAfUDAAAgxA&amp;num=3&amp;sig=AGiWqtxOdxj_mjzccUu9Xh4mArU_hpAHhw&amp;client=ca-pub-3443918307802676&amp;adurl=https://www.vpngates.com%3Fad%3Dcngc'; return false;"><span class="gad-url" style="font-weight: normal;">www.vpngates.com</span></a></div><div style="display: block; width: 100%; padding-bottom: 5px; font-weight: normal;"><a href="s-p:%20Go%20to%20www.in67.com" onclick="advert_cookie(); window.location='http://googleads.g.doubleclick.net/aclk?sa=L&amp;ai=BqHz6d_n4TNueONK26QaficXpBJHL7OEBoei3vBjAjbcBoI0GEAQYBCCk7p8GKAQ4AFCf2sWcBmCdod-B2AWyAQpndG1pY2suY29tugEKMzM2eDI4MF9qc8gBAdoBqAFodHRwOi8vZ3RtaWNrLmNvbS9waG90by9pbmRleC5waHA_cT1hSFIwY0RvdkwybG5ibUZqYVc5d2NDNTNiM0prY0hKbGMzTXVZMjl0THpJd01Ea3ZNRFl2TVRjdlpXMWhZM010YVc1a1pXNTBkVzVwYm1SbGJuUXRjbVZuYVc5dUxXRnpMV0V0WW14dlkyc3RkWE5wYm1jdGRHaGxMWFJoWWkxclpYa3aAAgGpAqSJBjxsJoQ-yAKR980VqAMB9QMAACDE&amp;num=4&amp;sig=AGiWqtzIMnrluhJ0APRP4796A6gU1r-UIg&amp;client=ca-pub-3443918307802676&amp;adurl=http://www.in67.com/media6/'; return false;"><span class="gad-head" style="font-size: 1.2em;">要上FaceBook马上用OVPN</span></a><br><span class="gad-text" style="font-weight: normal;">免费体验YouTube,Twitter尽情浏览！ 我在墙外等你,世界触手可及</span><br><a href="s-p:%20Go%20to%20www.in67.com" onclick="advert_cookie(); window.location='http://googleads.g.doubleclick.net/aclk?sa=L&amp;ai=BqHz6d_n4TNueONK26QaficXpBJHL7OEBoei3vBjAjbcBoI0GEAQYBCCk7p8GKAQ4AFCf2sWcBmCdod-B2AWyAQpndG1pY2suY29tugEKMzM2eDI4MF9qc8gBAdoBqAFodHRwOi8vZ3RtaWNrLmNvbS9waG90by9pbmRleC5waHA_cT1hSFIwY0RvdkwybG5ibUZqYVc5d2NDNTNiM0prY0hKbGMzTXVZMjl0THpJd01Ea3ZNRFl2TVRjdlpXMWhZM010YVc1a1pXNTBkVzVwYm1SbGJuUXRjbVZuYVc5dUxXRnpMV0V0WW14dlkyc3RkWE5wYm1jdGRHaGxMWFJoWWkxclpYa3aAAgGpAqSJBjxsJoQ-yAKR980VqAMB9QMAACDE&amp;num=4&amp;sig=AGiWqtzIMnrluhJ0APRP4796A6gU1r-UIg&amp;client=ca-pub-3443918307802676&amp;adurl=http://www.in67.com/media6/'; return false;"><span class="gad-url" style="font-weight: normal;">www.in67.com</span></a></div><br clear="all"></div>
+</div>
+<div style="clear: both;"><br></div>
+<!--/adcode-->
+
+
+				</div>
+			</div><!-- .post -->
+
+			<div id="nav-below" class="navigation">
+				<div class="nav-previous">« <a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvY3VzdG9taXppbmctZW1hY3MtZGVhY3RpdmF0ZS1hdXRvbWF0aWMtaW5kZW50YXRpb24v" rel="prev">customizing emacs, deactivate automatic&nbsp;indentation</a></div>
+				<div class="nav-next"><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMjYvc2VkLWRlbGV0ZS1hbGwtd2l0aGluZy1yZWdleC1yYW5nZS8%3D" rel="next">sed, delete all within regex&nbsp;range</a> »</div>
+			</div>
+
+<div id="wpl-likebox"><div id="wpl-button"><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkvP2xpa2U9MSZhbXA7X3dwbm9uY2U9NjE2NTk2MWRhMA%3D%3D" title="I like this post" class="like needs-login"><span>Like</span></a></div><div id="wpl-count">Be the first to like this post.</div></div><div class="comments">
+
+
+
+
+
+	<h3 class="comment-header" id="numcomments">8 Comments</h3>
+	<ol id="comments" class="commentlist">
+	<li id="comment-18" class="comment even thread-even depth-1 comment c0 c-y2009 c-m06 c-d17 c-h04 alt">
+	<div id="div-comment-18">
+	<ul class="comment-meta">
+		<li class="comment-author vcard">
+		<div class="comment-avatar"><img alt="" src="index_001.php" class="avatar avatar-16" height="16" width="16"></div>
+		<span class="fn"><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2F0b21pemVkLm9yZy8%3D" rel="external nofollow" class="url">Ian Eure</a></span></li>
+		<li>Posted June 17, 2009 at 4:13 pm</li> <li><a href="#comment-18" title="Permalink to this comment">Permalink</a></li> <li> <a class="comment-reply-link" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkvP3JlcGx5dG9jb209MTgjcmVzcG9uZA%3D%3D##respond" onclick='return addComment.moveForm("div-comment-18", "18", "respond", "74")'>Reply</a></li>
+	</ul>
+	<div class="comment-content">
+				<p>You might consider refactoring your code to use indent-rigidly, which is capable of shifting regions right and left.</p>
+	</div>
+	</div>
+<ul class="children">
+<li id="comment-22" class="comment byuser comment-author-nachopp bypostauthor odd alt depth-2 comment c1 byuser commentauthor-nachopp bypostauthor c-y2009 c-m06 c-d22 c-h06">
+	<div id="div-comment-22">
+	<ul class="comment-meta">
+		<li class="comment-author vcard">
+		<div class="comment-avatar"><img alt="" src="index_002.php" class="avatar avatar-16" height="16" width="16"></div>
+		<span class="fn">nachopp</span></li>
+		<li>Posted June 22, 2009 at 6:46 pm</li> <li><a href="#comment-22" title="Permalink to this comment">Permalink</a></li> <li> <a class="comment-reply-link" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkvP3JlcGx5dG9jb209MjIjcmVzcG9uZA%3D%3D##respond" onclick='return addComment.moveForm("div-comment-22", "22", "respond", "74")'>Reply</a></li>
+	</ul>
+	<div class="comment-content">
+				<p>Thank you for stopping by, Ian.<br>
+The code actually uses indent-rigidly for doing the shifting of columns. In what other way do you mean that function could be used?<br>
+The code certainly could be improved. For example you could see than I didn’t know how to pass the negative variable my-tab-width as a negative argument to the function shift-region. (I had to define the same value again, which I know is lame for something so trivial, any clue on that one?)</p>
+	</div>
+	</div>
+</li>
+</ul>
+</li>
+<li id="comment-23" class="comment byuser comment-author-nachopp bypostauthor even thread-odd thread-alt depth-1 comment c2 byuser commentauthor-nachopp bypostauthor c-y2009 c-m06 c-d23 c-h01 alt">
+	<div id="div-comment-23">
+	<ul class="comment-meta">
+		<li class="comment-author vcard">
+		<div class="comment-avatar"><img alt="" src="index_002.php" class="avatar avatar-16" height="16" width="16"></div>
+		<span class="fn">nachopp</span></li>
+		<li>Posted June 23, 2009 at 1:52 pm</li> <li><a href="#comment-23" title="Permalink to this comment">Permalink</a></li> <li> <a class="comment-reply-link" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkvP3JlcGx5dG9jb209MjMjcmVzcG9uZA%3D%3D##respond" onclick='return addComment.moveForm("div-comment-23", "23", "respond", "74")'>Reply</a></li>
+	</ul>
+	<div class="comment-content">
+				<p>Oh, sorry, never mind about the negative argument!. It took me a minute to figure that parenthesis should be put around them. I conveniently updated the code:<br>
+<code>(shift-region (- my-tab-width))</code> so the shifting, to both right and left, will depend on the variable my-tab-width, which a user could change anytime with eval-expression doing <strong>M-: RET (setq my-tab-width NUM) RET</strong></p>
+	</div>
+	</div>
+</li>
+<li id="comment-88" class="comment odd alt thread-even depth-1 comment c3 c-y2009 c-m11 c-d17 c-h02">
+	<div id="div-comment-88">
+	<ul class="comment-meta">
+		<li class="comment-author vcard">
+		<div class="comment-avatar"><img alt="" src="index_003.php" class="avatar avatar-16" height="16" width="16"></div>
+		<span class="fn"><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL21ldGFkdWNrLmNvbQ%3D%3D" rel="external nofollow" class="url">Pedro Teixeira</a></span></li>
+		<li>Posted November 17, 2009 at 2:45 pm</li> <li><a href="#comment-88" title="Permalink to this comment">Permalink</a></li> <li> <a class="comment-reply-link" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkvP3JlcGx5dG9jb209ODgjcmVzcG9uZA%3D%3D##respond" onclick='return addComment.moveForm("div-comment-88", "88", "respond", "74")'>Reply</a></li>
+	</ul>
+	<div class="comment-content">
+				<p>Thanks for this, you made my RoR editing much more pleasant!</p>
+	</div>
+	</div>
+</li>
+<li id="comment-129" class="comment even thread-odd thread-alt depth-1 comment c4 c-y2010 c-m05 c-d12 c-h01 alt">
+	<div id="div-comment-129">
+	<ul class="comment-meta">
+		<li class="comment-author vcard">
+		<div class="comment-avatar"><img alt="" src="index_004.php" class="avatar avatar-16" height="16" width="16"></div>
+		<span class="fn"><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2Zsb2F0c29sdXRpb25zLmNvbQ%3D%3D" rel="external nofollow" class="url">Aidan McQuay</a></span></li>
+		<li>Posted May 12, 2010 at 1:14 pm</li> <li><a href="#comment-129" title="Permalink to this comment">Permalink</a></li> <li> <a class="comment-reply-link" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkvP3JlcGx5dG9jb209MTI5I3Jlc3BvbmQ%3D##respond" onclick='return addComment.moveForm("div-comment-129", "129", "respond", "74")'>Reply</a></li>
+	</ul>
+	<div class="comment-content">
+				<p>This looks great, NTemacs on windows it does not work for me though, it says it’s indenting, but nothing happens.  Any ideas?</p>
+	</div>
+	</div>
+<ul class="children">
+<li id="comment-130" class="comment byuser comment-author-nachopp bypostauthor odd alt depth-2 comment c5 byuser commentauthor-nachopp bypostauthor c-y2010 c-m05 c-d12 c-h04">
+	<div id="div-comment-130">
+	<ul class="comment-meta">
+		<li class="comment-author vcard">
+		<div class="comment-avatar"><img alt="" src="index_002.php" class="avatar avatar-16" height="16" width="16"></div>
+		<span class="fn">ignacio</span></li>
+		<li>Posted May 12, 2010 at 4:38 pm</li> <li><a href="#comment-130" title="Permalink to this comment">Permalink</a></li> <li> <a class="comment-reply-link" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkvP3JlcGx5dG9jb209MTMwI3Jlc3BvbmQ%3D##respond" onclick='return addComment.moveForm("div-comment-130", "130", "respond", "74")'>Reply</a></li>
+	</ul>
+	<div class="comment-content">
+				<p>Hi Aidan,<br>
+I used this code in emacs 22.1 and emacs 23 on Windows and Unix platforms but I don’t have NTemacs installed to check your problem now.<br>
+Does “shift-region” work? Try selecting text and use the command eval-expression to see if that moves the text at least, something like,  “M-:” and then: “(shift-region 4)”</p>
+	</div>
+	</div>
+<ul class="children">
+<li id="comment-131" class="comment even depth-3 comment c6 c-y2010 c-m05 c-d14 c-h01 alt">
+	<div id="div-comment-131">
+	<ul class="comment-meta">
+		<li class="comment-author vcard">
+		<div class="comment-avatar"><img alt="" src="index_004.php" class="avatar avatar-16" height="16" width="16"></div>
+		<span class="fn"><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2Zsb2F0c29sdXRpb25zLmNvbQ%3D%3D" rel="external nofollow" class="url">Aidan McQuay</a></span></li>
+		<li>Posted May 14, 2010 at 1:35 pm</li> <li><a href="#comment-131" title="Permalink to this comment">Permalink</a></li> <li> </li>
+	</ul>
+	<div class="comment-content">
+				<p>Hey Ignacio!</p>
+<p>Thanks for the advice I got it working, turns out there was just a couple bad characters when I pasted it in the first time.</p>
+<p>Thanks a bunch for the great library!</p>
+	</div>
+	</div>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li id="comment-132" class="comment byuser comment-author-nachopp bypostauthor odd alt thread-even depth-1 comment c7 byuser commentauthor-nachopp bypostauthor c-y2010 c-m05 c-d14 c-h04">
+	<div id="div-comment-132">
+	<ul class="comment-meta">
+		<li class="comment-author vcard">
+		<div class="comment-avatar"><img alt="" src="index_002.php" class="avatar avatar-16" height="16" width="16"></div>
+		<span class="fn">ignacio</span></li>
+		<li>Posted May 14, 2010 at 4:49 pm</li> <li><a href="#comment-132" title="Permalink to this comment">Permalink</a></li> <li> <a class="comment-reply-link" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkvP3JlcGx5dG9jb209MTMyI3Jlc3BvbmQ%3D##respond" onclick='return addComment.moveForm("div-comment-132", "132", "respond", "74")'>Reply</a></li>
+	</ul>
+	<div class="comment-content">
+				<p>You’re welcome, I am glad you like it!</p>
+	</div>
+	</div>
+</li>
+	</ol>
+	
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+	<br>
+	
+
+
+
+
+<!-- formcontainer around #commentform -->
+
+
+									<div id="respond">
+				<h3 id="reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkvI3Jlc3BvbmQ%3D##respond" style="display: none;">Cancel reply</a></small></h3>
+									<form action="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3dwLWNvbW1lbnRzLXBvc3QucGhw" method="post" id="commentform">
+																			<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name</label> <span class="required">*</span><input id="author" name="author" value="" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-email"><label for="email">Email</label> <span class="required">*</span><input id="email" name="email" value="" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" value="" size="30" type="text"></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;pre&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" id="submit" value="Post Comment" type="submit">
+							<input name="comment_post_ID" value="74" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						
+<input name="genseq" value="1291385199" type="hidden">
+<p><input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" tabindex="6" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe">Notify me of follow-up comments via email.</label></p><p><input name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;" tabindex="7" type="checkbox"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog">Send me site updates</label></p><input name="sub-type" value="comment-form-text3" type="hidden">					</form>
+							</div><!-- #respond -->
+						
+
+</div>
+
+		</div><!-- #content .hfeed -->
+	</div><!-- #container -->
+
+<div id="sidebar" class="clearfix">
+	<div id="innerbar">
+		<div id="primary" class="sidebar">
+			<ul>
+		<li id="wp_tag_cloud" class="widget wp_widget_tag_cloud"><h3 class="widgettitle">Tags</h3>
+<div style="overflow: hidden;"><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9hd2sv" class="tag-link-37292" title="5 topics" style="font-size: 13.6949pt;">awk</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9iYXNoLw%3D%3D" class="tag-link-2674" title="5 topics" style="font-size: 13.6949pt;">bash</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9jYXQv" class="tag-link-5308" title="1 topic" style="font-size: 8pt;">cat</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9jbGlwYm9hcmQv" class="tag-link-312429" title="1 topic" style="font-size: 8pt;">clipboard</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9jdXQv" class="tag-link-113993" title="1 topic" style="font-size: 8pt;">cut</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9jeWd3aW4v" class="tag-link-24433" title="2 topics" style="font-size: 10.1356pt;">cygwin</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9kZXNpZ24v" class="tag-link-148" title="1 topic" style="font-size: 8pt;">design</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9kb3QtZW1hY3Mv" class="tag-link-11092355" title="3 topics" style="font-size: 11.5593pt;">dot-emacs</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9lZGl0b3Iv" class="tag-link-32974" title="2 topics" style="font-size: 10.1356pt;">editor</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9lbGlzcC8%3D" class="tag-link-36281" title="3 topics" style="font-size: 11.5593pt;">elisp</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9lbWFjcy8%3D" class="tag-link-11362" title="22 topics" style="font-size: 20.5763pt;">emacs</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9mbG9hdGluZy1wb2ludC8%3D" class="tag-link-1909999" title="1 topic" style="font-size: 8pt;">floating-point</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9nbnUv" class="tag-link-52113" title="5 topics" style="font-size: 13.6949pt;">gnu</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9pbmRlbnRhdGlvbi8%3D" class="tag-link-949686" title="1 topic" style="font-size: 8pt;">indentation</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9pbmRlbnRpbmcv" class="tag-link-9579411" title="1 topic" style="font-size: 8pt;">indenting</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9pbnNwaXJhdGlvbi8%3D" class="tag-link-107" title="1 topic" style="font-size: 8pt;">inspiration</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9rZXlib2FyZC1tYWNyby8%3D" class="tag-link-32792697" title="1 topic" style="font-size: 8pt;">keyboard macro</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9vbmVsaW5lci8%3D" class="tag-link-529748" title="5 topics" style="font-size: 13.6949pt;">oneliner</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9vcmctbW9kZS8%3D" class="tag-link-2835776" title="1 topic" style="font-size: 8pt;">org-mode</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9wZXJsLw%3D%3D" class="tag-link-5226" title="2 topics" style="font-size: 10.1356pt;">perl</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9waHAv" class="tag-link-458" title="1 topic" style="font-size: 8pt;">php</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9wcm9ncmFtbWluZy8%3D" class="tag-link-196" title="1 topic" style="font-size: 8pt;">programming</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9yYW5nZS8%3D" class="tag-link-165792" title="1 topic" style="font-size: 8pt;">range</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9yZWdleC8%3D" class="tag-link-54025" title="1 topic" style="font-size: 8pt;">regex</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9yZWdleC1yYW5nZS8%3D" class="tag-link-20686449" title="1 topic" style="font-size: 8pt;">regex range</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9zZWQv" class="tag-link-37293" title="6 topics" style="font-size: 14.5254pt;">sed</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9zaGVsbC8%3D" class="tag-link-43912" title="3 topics" style="font-size: 11.5593pt;">shell</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy9zdm4v" class="tag-link-164684" title="3 topics" style="font-size: 11.5593pt;">svn</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy90ZXh0LWVkaXRpbmcv" class="tag-link-284212" title="6 topics" style="font-size: 14.5254pt;">text-editing</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy90aXBzdHJpY2tzLw%3D%3D" class="tag-link-22124" title="29 topics" style="font-size: 22pt;">tips&amp;tricks</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy91bml4Lw%3D%3D" class="tag-link-9203" title="7 topics" style="font-size: 15.1186pt;">unix</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy92aW0v" class="tag-link-18060" title="1 topic" style="font-size: 8pt;">vi(m)</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy93ZWItcHJvZ3JhbW1lcnMtdmlldy8%3D" class="tag-link-20055551" title="1 topic" style="font-size: 8pt;">web programmers' view</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy93b3JkcHJlc3Mv" class="tag-link-33" title="1 topic" style="font-size: 8pt;">wordpress</a>
+<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tL3RhZy94YXJncy8%3D" class="tag-link-391503" title="3 topics" style="font-size: 11.5593pt;">xargs</a></div></li>
+		<li id="top-posts" class="widget widget_stats_topposts">			<h3 class="widgettitle">Top Posts</h3>
+			<ul><li><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMTAvMTIvMDIvZW1hY3MtaG93LXRvLXBhc3RlLXRleHQtaW4tdGhlLXNlYXJjaC1taW5pYnVmZmVyLw%3D%3D">emacs, how to paste text in the search minibuffer</a></li><li><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkv">emacs, indent/unindent region as a block using the tab key</a></li><li><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMTAvMDkvMTYvcmUtaW5kZW50aW5nLXdlYnBhZ2UtbWFya3VwLXdpdGgtZW1hY3Mv">re-indent html, javacript and css markup using emacs</a></li><li><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDUvMjMvZW1hY3MtbmF2aWdhdGUtYmFjay10by10aGUtcG9zaXRpb25zLXlvdS12aXNpdGVkLWluLXRoZS1idWZmZXItZmlsZS8%3D">emacs, navigate back to the positions you visited in the buffer file</a></li><li><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMTAvMTEvMjkvYmVpbmctcmViZWxpb3VzLXZpbS1pbi1lbWFjcy13aXRoLXZpcGVyLW1vZGUv">being rebelious, vi(m) in emacs with viper-mode</a></li><li><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMTAvMDcvMjcvZ2V0dGluZy1yaWQtb2YtZGVhZC1rZXktaW4td2luZG93cy8%3D">getting rid of dead key in windows</a></li><li><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDcvMDkvcm9vc3RlcnMtY3Jvdy1zZXR0aW5nLXVwLWFuLWFsYXJtLWNsb2NrLWluLWVtYWNzLw%3D%3D">rooster's crow,  setting up an alarm clock in emacs</a></li><li><a href="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMTAvMDQvMTIvY2hlY2tib3hlcy1pbi1lbWFjcy1vcmctbW9kZS8%3D">checkboxes in emacs org-mode</a></li></ul>		</li>
+<li id="text-3" class="widget widget_text">			<div class="textwidget"></div>
+		</li>
+			</ul>
+		</div><!-- #primary .sidebar -->
+
+		<div id="secondary" class="sidebar">
+			<ul>
+				<li id="search" class="widget widget_sandbox_search">
+			<h3 class="widgettitle"><label for="s">Search</label></h3>
+			<form id="searchform" method="get" action="http://gtmick.com/photo/index.php?q=aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29tLzIwMDkvMDYvMTcvZW1hY3MtaW5kZW50dW5pbmRlbnQtcmVnaW9uLWFzLWEtYmxvY2stdXNpbmctdGhlLXRhYi1rZXkv"><input name="____pgfa" value="aHR0cDovL2lnbmFjaW9wcC53b3JkcHJlc3MuY29t" type="hidden">
+				<div>
+					<input id="s" name="s" value="" size="10" type="text">
+					<input id="searchsubmit" name="searchsubmit" value="Find »" type="submit">
+				</div>
+			</form>
+		</li>
+
+			</ul>
+		</div><!-- #secondary .sidebar -->
+	</div>
+</div>	<div id="footer">
+		<a href="http://gtmick.com/photo/index.php?q=aHR0cDovL3dvcmRwcmVzcy5jb20v" rel="generator">Blog at WordPress.com</a>. Theme: ChaosTheory.	</div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+	
+
+
+
+
+	
+	<div style="display: none;">
+	<div class="grofile-hash-map-f2890b0dfbb8e2ef1640d26c104218b1">
+	</div>
+	<div class="grofile-hash-map-e910a7a47cd252713530179690cb5869">
+	</div>
+	<div class="grofile-hash-map-50c758737b034075682a7f1e4fddab44">
+	</div>
+	<div class="grofile-hash-map-7f169e9df26f98838d51b550f5246096">
+	</div>
+	</div>
+
+
+<img id="wpstats" src="g.gif" alt=""><img id="wpstats2" src="g_001.gif" alt="" style="display: none;"><img id="wpstats" src="g_002.gif" alt="" style="display: none;">
+
+<div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; opacity: 0.9;"></div></body>
+</html>

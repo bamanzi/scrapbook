@@ -1,0 +1,488 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+
+<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7">
+<title>ELPA: Emacs Lisp Package Archive « Free Mind</title>
+<link rel="shortcut icon" href="new-favicon.ico"><link rel="canonical" href="http://blog.pluskid.org/?p=206"><link rel="alternate" type="application/rss+xml" title="Free Mind RSS Feed" href="http://blog.pluskid.org/?feed=rss2">
+<link rel="alternate" type="application/atom+xml" title="Free Mind Atom Feed" href="http://blog.pluskid.org/?feed=atom">
+<link rel="pingback" href="http://blog.pluskid.org/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="Free Mind » ELPA: Emacs Lisp Package Archive Comments Feed" href="http://blog.pluskid.org/?feed=rss2&amp;p=206">
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.pluskid.org/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.pluskid.org/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="Free Mind" href="http://blog.pluskid.org/">
+<link rel="start" title="漫谈 Clustering (1): k-means" href="http://blog.pluskid.org/?p=17">
+<link rel="prev" title="V8 Javascript 引擎设计理念" href="http://blog.pluskid.org/?p=186">
+<link rel="next" title="训练数据对分类器性能的影响" href="http://blog.pluskid.org/?p=223">
+<link rel="canonical" href="http://blog.pluskid.org/?p=206">
+
+
+
+
+<!--[if IE 6]>
+<script type="text/javascript" src="http://blog.pluskid.org/wp-content/themes/atahualpa346/js/DD_roundies.js"></script>
+<script type="text/javascript">DD_roundies.addRule('a.posts-icon, a.comments-icon, a.email-icon, img.logo');</script>
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-206"><div style="display: none;" id="MathJax_Message"></div>
+<div id="wrapper">
+<div id="container">
+<table id="layout" border="0" cellpadding="0" cellspacing="0">
+<colgroup>
+<col class="colone"><col class="coltwo">
+<col class="colthree"></colgroup> 
+	<tbody><tr>
+
+		<!-- Header -->
+		<td id="header" colspan="3">
+
+		<div id="menu1"><ul id="rmenu2" class="clearfix rMenu-hor rMenu">
+<li class="page_item"><a href="http://blog.pluskid.org/" title="Free Mind">Home</a></li>
+<li class="page_item page-item-82"><a href="http://blog.pluskid.org/?page_id=82">About</a></li>
+<li class="page_item page-item-77"><a href="http://blog.pluskid.org/?page_id=77">Archives</a>
+<ul class="children">
+	<li class="page_item page-item-78"><a href="http://blog.pluskid.org/?page_id=78">漫谈 Clustering 系列</a></li>
+	<li class="page_item page-item-353"><a href="http://blog.pluskid.org/?page_id=353">漫谈 Language Model 系列</a></li>
+	<li class="page_item page-item-683"><a href="http://blog.pluskid.org/?page_id=683">支持向量机系列</a></li>
+</ul>
+</li>
+<li class="page_item page-item-126"><a href="http://blog.pluskid.org/?page_id=126">Links</a></li>
+</ul></div>
+ <table id="logoarea" border="0" cellpadding="0" cellspacing="0" width="100%"><tbody><tr><td rowspan="2" class="logoarea-logo" valign="middle"><a href="http://blog.pluskid.org/"><img class="logo" src="logo.png" alt="Free Mind"></a></td><td rowspan="2" class="logoarea-title" valign="middle"><h2 class="blogtitle"><a href="http://blog.pluskid.org/">Free Mind</a></h2><p class="tagline">We are drowning in information and starving for knowledge.</p></td><td class="feed-icons" align="right" valign="middle"><div class="clearfix rss-box"><a class="comments-icon" href="http://blog.pluskid.org/?feed=comments-rss2" title="Subscribe to the COMMENTS feed">Comments</a><a class="posts-icon" href="http://blog.pluskid.org/?feed=rss2" title="Subscribe to the POSTS feed">Posts</a></div></td></tr><tr><td class="search-box" align="right" valign="bottom"><div class="searchbox">
+				<form method="get" class="searchform" action="http://blog.pluskid.org/">
+				<div class="searchbox-form">
+					<input class="text inputblur" onfocus="this.value=''" value="Type + Enter to Search" onblur="this.value='Type + Enter to Search'" name="s" type="text"></div>
+				</form>
+			</div>
+			</td></tr></tbody></table> <div class="horbar1">&nbsp;</div> <div id="imagecontainer" class="header-image-container" style="background: url(&quot;th3numb3rsl0st.jpg&quot;) no-repeat scroll center top transparent;"><div class="opacityleft">&nbsp;</div><div class="opacityright">&nbsp;</div></div> <div class="horbar2">&nbsp;</div>
+		</td>
+		<!-- / Header -->
+
+	</tr>
+
+	<!-- Main Body -->	
+	<tr id="bodyrow">
+
+				<!-- Left Sidebar -->
+		<td id="left">
+
+			<div id="categories-396297181" class="widget widget_categories"><div class="widget-title"><h3>Categories</h3></div>		<ul>
+	<li class="cat-item cat-item-16"><a href="http://blog.pluskid.org/?cat=16" title="View all posts filed under Bugs">Bugs</a> (9)
+</li>
+	<li class="cat-item cat-item-21"><a href="http://blog.pluskid.org/?cat=21" title="View all posts filed under Develop">Develop</a> (13)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://blog.pluskid.org/?cat=3" title="View all posts filed under Life">Life</a> (23)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://blog.pluskid.org/?cat=4" title="View all posts filed under Machine Learning">Machine Learning</a> (22)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://blog.pluskid.org/?cat=5" title="View all posts filed under Tool">Tool</a> (25)
+</li>
+		</ul>
+</div><div id="calendar-2" class="widget widget_calendar"><div class="widget-title"><h3>Calendar</h3></div><div id="calendar_wrap"><table id="wp-calendar" summary="Calendar">
+	<caption>December 2010</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="Monday">M</th>
+		<th scope="col" title="Tuesday">T</th>
+		<th scope="col" title="Wednesday">W</th>
+		<th scope="col" title="Thursday">T</th>
+		<th scope="col" title="Friday">F</th>
+		<th scope="col" title="Saturday">S</th>
+		<th scope="col" title="Sunday">S</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="http://blog.pluskid.org/?m=201011" title="View posts for November 2010">« Nov</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next" class="pad">&nbsp;</td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="2" class="pad">&nbsp;</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td>
+	</tr>
+	<tr>
+		<td>6</td><td>7</td><td>8</td><td>9</td><td>10</td><td>11</td><td>12</td>
+	</tr>
+	<tr>
+		<td>13</td><td>14</td><td>15</td><td>16</td><td>17</td><td>18</td><td>19</td>
+	</tr>
+	<tr>
+		<td>20</td><td>21</td><td>22</td><td><a href="http://blog.pluskid.org/?m=20101223" title="巨大的 Matlab 存储数据">23</a></td><td>24</td><td><a href="http://blog.pluskid.org/?m=20101225" title="GRE 和机器学习">25</a></td><td id="today">26</td>
+	</tr>
+	<tr>
+		<td>27</td><td>28</td><td>29</td><td>30</td><td>31</td>
+		<td class="pad" colspan="2">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></div><div id="tag_cloud-2" class="widget widget_tag_cloud"><div class="widget-title"><h3>Tags</h3></div><div><a href="http://blog.pluskid.org/?tag=active-learning" class="tag-link-25" title="1 topic" style="font-size: 8pt;">Active Learning</a>
+<a href="http://blog.pluskid.org/?tag=autohotkey" class="tag-link-37" title="1 topic" style="font-size: 8pt;">AutoHotkey</a>
+<a href="http://blog.pluskid.org/?tag=book" class="tag-link-26" title="2 topics" style="font-size: 10.8pt;">Book</a>
+<a href="http://blog.pluskid.org/?tag=bug" class="tag-link-17" title="5 topics" style="font-size: 15.4667pt;">Bug</a>
+<a href="http://blog.pluskid.org/?tag=clustering" class="tag-link-6" title="7 topics" style="font-size: 17.3333pt;">Clustering</a>
+<a href="http://blog.pluskid.org/?tag=computer-vision" class="tag-link-41" title="2 topics" style="font-size: 10.8pt;">Computer Vision</a>
+<a href="http://blog.pluskid.org/?tag=drawing" class="tag-link-7" title="2 topics" style="font-size: 10.8pt;">Drawing</a>
+<a href="http://blog.pluskid.org/?tag=emacs" class="tag-link-24" title="3 topics" style="font-size: 12.6667pt;">Emacs</a>
+<a href="http://blog.pluskid.org/?tag=erlang" class="tag-link-36" title="1 topic" style="font-size: 8pt;">Erlang</a>
+<a href="http://blog.pluskid.org/?tag=fun" class="tag-link-18" title="15 topics" style="font-size: 22pt;">Fun</a>
+<a href="http://blog.pluskid.org/?tag=game" class="tag-link-27" title="1 topic" style="font-size: 8pt;">Game</a>
+<a href="http://blog.pluskid.org/?tag=google" class="tag-link-8" title="3 topics" style="font-size: 12.6667pt;">Google</a>
+<a href="http://blog.pluskid.org/?tag=greasemonkey" class="tag-link-39" title="1 topic" style="font-size: 8pt;">GreaseMonkey</a>
+<a href="http://blog.pluskid.org/?tag=information-retrieval" class="tag-link-34" title="1 topic" style="font-size: 8pt;">Information Retrieval</a>
+<a href="http://blog.pluskid.org/?tag=javascript" class="tag-link-22" title="1 topic" style="font-size: 8pt;">Javascript</a>
+<a href="http://blog.pluskid.org/?tag=kernel" class="tag-link-49" title="1 topic" style="font-size: 8pt;">Kernel</a>
+<a href="http://blog.pluskid.org/?tag=language-model" class="tag-link-33" title="2 topics" style="font-size: 10.8pt;">Language Model</a>
+<a href="http://blog.pluskid.org/?tag=latex" class="tag-link-29" title="3 topics" style="font-size: 12.6667pt;">LaTeX</a>
+<a href="http://blog.pluskid.org/?tag=learning-theory" class="tag-link-50" title="1 topic" style="font-size: 8pt;">Learning Theory</a>
+<a href="http://blog.pluskid.org/?tag=life" class="tag-link-3" title="13 topics" style="font-size: 21.2222pt;">Life</a>
+<a href="http://blog.pluskid.org/?tag=linux" class="tag-link-30" title="6 topics" style="font-size: 16.5556pt;">Linux</a>
+<a href="http://blog.pluskid.org/?tag=manifold" class="tag-link-44" title="2 topics" style="font-size: 10.8pt;">Manifold</a>
+<a href="http://blog.pluskid.org/?tag=math" class="tag-link-40" title="1 topic" style="font-size: 8pt;">Math</a>
+<a href="http://blog.pluskid.org/?tag=matlab" class="tag-link-9" title="6 topics" style="font-size: 16.5556pt;">Matlab</a>
+<a href="http://blog.pluskid.org/?tag=mstc" class="tag-link-10" title="8 topics" style="font-size: 18.1111pt;">MSTC</a>
+<a href="http://blog.pluskid.org/?tag=network" class="tag-link-35" title="3 topics" style="font-size: 12.6667pt;">Network</a>
+<a href="http://blog.pluskid.org/?tag=open-source" class="tag-link-11" title="9 topics" style="font-size: 18.8889pt;">Open Source</a>
+<a href="http://blog.pluskid.org/?tag=optimization" class="tag-link-46" title="4 topics" style="font-size: 14.2222pt;">Optimization</a>
+<a href="http://blog.pluskid.org/?tag=photo" class="tag-link-32" title="2 topics" style="font-size: 10.8pt;">Photo</a>
+<a href="http://blog.pluskid.org/?tag=python" class="tag-link-12" title="12 topics" style="font-size: 20.6pt;">Python</a>
+<a href="http://blog.pluskid.org/?tag=research" class="tag-link-45" title="1 topic" style="font-size: 8pt;">Research</a>
+<a href="http://blog.pluskid.org/?tag=ruby" class="tag-link-19" title="5 topics" style="font-size: 15.4667pt;">Ruby</a>
+<a href="http://blog.pluskid.org/?tag=statistics" class="tag-link-42" title="1 topic" style="font-size: 8pt;">Statistics</a>
+<a href="http://blog.pluskid.org/?tag=supervised-learning" class="tag-link-47" title="5 topics" style="font-size: 15.4667pt;">Supervised Learning</a>
+<a href="http://blog.pluskid.org/?tag=support-vector-machine" class="tag-link-48" title="6 topics" style="font-size: 16.5556pt;">Support Vector Machine</a>
+<a href="http://blog.pluskid.org/?tag=thinkpad" class="tag-link-31" title="2 topics" style="font-size: 10.8pt;">Thinkpad</a>
+<a href="http://blog.pluskid.org/?tag=thought" class="tag-link-43" title="2 topics" style="font-size: 10.8pt;">Thought</a>
+<a href="http://blog.pluskid.org/?tag=tip" class="tag-link-28" title="8 topics" style="font-size: 18.1111pt;">Tip</a>
+<a href="http://blog.pluskid.org/?tag=tool" class="tag-link-5" title="10 topics" style="font-size: 19.5111pt;">Tool</a>
+<a href="http://blog.pluskid.org/?tag=translate" class="tag-link-23" title="1 topic" style="font-size: 8pt;">Translate</a>
+<a href="http://blog.pluskid.org/?tag=unsupervised-learning" class="tag-link-13" title="8 topics" style="font-size: 18.1111pt;">Unsupervised Learning</a>
+<a href="http://blog.pluskid.org/?tag=vim" class="tag-link-14" title="1 topic" style="font-size: 8pt;">Vim</a>
+<a href="http://blog.pluskid.org/?tag=wordpress" class="tag-link-20" title="2 topics" style="font-size: 10.8pt;">Wordpress</a>
+<a href="http://blog.pluskid.org/?tag=yasnippet" class="tag-link-15" title="3 topics" style="font-size: 12.6667pt;">YASnippet</a>
+<a href="http://blog.pluskid.org/?tag=zju" class="tag-link-38" title="3 topics" style="font-size: 12.6667pt;">zju</a></div>
+</div>
+		</td>
+		<!-- / Left Sidebar -->
+		
+				
+
+		<!-- Main Column -->
+		<td id="middle">
+
+	
+
+		
+		 
+
+		<div class="navigation-top">
+		<div class="older">« <a href="http://blog.pluskid.org/?p=223" rel="next">训练数据对分类器性能的影响</a> &nbsp;</div><div class="newer">&nbsp; <a href="http://blog.pluskid.org/?p=186" rel="prev">V8 Javascript 引擎设计理念</a> »</div><div class="clearboth"></div></div>
+<div class="post-206 post type-post hentry category-tool tag-emacs tag-yasnippet" id="post-206">
+
+
+<div class="post-headline">		<h1>ELPA: Emacs Lisp Package Archive</h1>
+		</div>
+<div class="post-byline"><img src="user.gif" alt=""> by pluskid, on 2009-02-10, in <a href="http://blog.pluskid.org/?cat=5" title="View all posts in Tool" rel="category">Tool</a>&nbsp;&nbsp;&nbsp;&nbsp;<img src="comment.gif" alt=""> <a href="http://blog.pluskid.org/?p=206#comments" class="comments-link" title="Comment on ELPA: Emacs Lisp Package Archive">6 comments</a></div>
+<div class="post-bodycopy clearfix"><p><img src="emacs.png" alt="Emacs" title="Emacs" class="alignright size-full" height="164" width="164">TeX 有 <a href="http://www.ctan.org/">CTAN</a>，Perl 有 <a href="http://www.cpan.org/">CPAN</a>，Python 有 <a href="http://pypi.python.org/pypi">PyPI</a> 和 easy_install （虽然好像至今还不支持自动 uninstall），Ruby 有 <a href="http://rubyforge.org/">RubyForge</a> 和 gem ，诸如 Eclipse 、NetBeans、Firefox 这样的大型软件都有方便的插件/扩展查找和自动安装的功能，更别说各大流行的 Linux 发行版所带的那些包管理器了。然而号称具有无穷可扩展性的超强编辑器：GNU Emacs ，虽然确实具有无数的扩展，但是这些扩展往往各式各样、散落各地，并且正是由于这无穷的扩展性，让各个扩展的安装定制方式千奇百怪，很难统一在一起。我想这也是 Emacs 长久以来一直没有统一的扩展管理的原因之一吧。</p>
+<p>不过一直被人们说成不“Modern”的 Emacs 近年来也确实有发愤图强，添加了 GTK 界面的支持，新的编码系统，对 XFT 的支持等等。而 <a href="http://www.emacswiki.org/">EmacsWiki</a> 的兴起也终于让大部分的 Emacs 相关的信息有了一个统一的汇集地，大部分的扩展都可以在上面找到相关的下载和安装指南。不过这离自动管理还有一定的距离。不过，再后来，我们终于有了 <a href="http://tromey.com/elpa/">ELPA (Emacs Lisp Package Archive)</a> 。</p>
+<p><span id="more-206"></span>ELPA 是一个集中存放 Emacs Lisp Package 的地方，它同时还提供了一个工具可以自动查找、安装和卸载在 ELPA 中注册的 Package 。实际上，正像前面说的那样，Emacs 的扩展 Package 可以说是各式各样，仅仅要把它们搜集到一起就已经很不容易了，更别说提供全自动的安装和卸载功能了。但是最难的还是要有人去做这个事情吧。一旦有人发起了，建立了一个平台，后面的工作主要由各个扩展的作者将自己的代码按照 ELPA 的规范定制一下并添加到 ELPA 中去。这也是我在这里宣传 ELPA 的原因，让更多人知道这个平台，让它逐渐丰富完善起来。</p>
+<p>实际上，现在的 ELPA 中已经包含了诸如 <a href="http://www.gnu.org/software/emms/">emms</a> 、<a href="http://mwolson.org/projects/EmacsMuse.html">Muse</a> 以及 <a href="http://www.emacswiki.org/cgi-bin/wiki/NxmlMode">nxml</a> 等 80 多个扩展。当然，这个数目实在是不多，不过也正是如此，才需要大家去加以完善。现在 ELPA 提供的功能也比较简单。打开 Emacs ，到它的<a href="http://tromey.com/elpa/install.html">主页</a>上，把那段代码复制到 Emacs 中 <code>eval</code> 一下就算 ELPA 安装好了。</p>
+<p>之后 <code>M-x pakcage-list-packages</code> 就可以查看所有的 Package 列表了，操作方式和 <a href="http://lifegoo.pluskid.org/wiki/EmacsAsFileManger.html#sec2">dired</a> 类似，按 <code>i</code> 标记为安装，<code>d</code> 标记为卸载，<code>u</code> 取消标记，<code>x</code> 是执行。在这里安装的扩展，下次重启 Emacs 的时候就会有了。如果检查 <code>~/.emacs</code> 的话，会发现它添加了这样一段：</p>
+
+<div class="wp_syntax"><div class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(128, 128, 128); font-style: italic;">;;; This was installed by package-install.el.</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">;;; This provides support for the package system and</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">;;; interfacing with ELPA, the package archive.</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">;;; Move this code earlier if you want to reference</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">;;; packages in your .emacs.</span>
+<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">when</span>
+    <span style="color: rgb(102, 204, 102);">(</span>load
+     <span style="color: rgb(102, 204, 102);">(</span>expand-file-<span style="color: rgb(177, 177, 0);">name</span> <span style="color: rgb(255, 0, 0);">"~/.emacs.d/elpa/package.el"</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+  <span style="color: rgb(102, 204, 102);">(</span>package-initialize<span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span></pre></div></div>
+
+<p>ELPA 会在 <code>package-initialize</code> 中加载安装的扩展，如果要在扩展加载之前或者之后做一些定制的话，写到那段代码之前或之后就可以了。这也是 ELPA 有待完善的地方，并不能方便地直接对扩展做一些简单的定制。其实 Emacs 本身已经提供了很强大的“不用写 elisp 代码”的定制方式，就是 <code>customize-</code> 开头的那一堆函数，如下图所示：</p>
+<p><img src="emacs-customize.png" alt="emacs-customize" title="emacs-customize" class="aligncenter size-full wp-image-211" height="312" width="519"></p>
+<p>不过可惜的是有不少扩展的作者（比如我 <img src="tongue.png" alt=":p" class="wp-smiley"> ）都偷懒没有提供支持。不过总的来说，ELPA 也算是一个好的开始，希望它能发展壮大，让以后的 Emacser 们能更方便地安装和管理各种扩展。所以，如果你是某个 Emacs 扩展的作者或者维护人员，抽个空把你的扩展加到 ELPA 的索引中去吧。它的<a href="http://tromey.com/elpa/upload.html">文档</a>页面关于添加的扩展要符合什么样的约定写得不是特别清楚，可以直接看 <a href="http://tromey.com/elpa/package.el">package.el</a> 前面的注释。</p>
+<p>下面我大致总结一下单文件的扩展需要遵循的一些约定：首先，文件的开始和结束要按照 Elisp 的规范标记出来，并且头部要包含必要的 header 信息，拿 yasnippet.el 来做个例子，整个文件的结构大致上是这个样子：</p>
+
+<div class="wp_syntax"><div class="code"><pre class="text" style="font-family: monospace;">;;; yasnippet.el --- Yet another snippet extension for Emacs.
+&nbsp;
+;; Copyright 2008 pluskid
+&nbsp;
+;; Author: pluskid &lt;pluskid@gmail.com&gt;
+;; Created: 02 Mar 2008
+;; Version: 0.5.9
+;; Keywords: snippet, textmate
+;; URL: http://code.google.com/p/yasnippet/
+;; EmacsWiki: YaSnippetMode
+&nbsp;
+;; &lt;&lt;licence here snipped&gt;&gt;
+&nbsp;
+;;; Commentary:
+&nbsp;
+;; &lt;&lt;usages here snipped&gt;&gt;
+&nbsp;
+;;; Code:
+&nbsp;
+;; &lt;&lt;codes here snipped&gt;&gt;
+&nbsp;
+;;; yasnippet.el ends here</pre></div></div>
+
+<p>其次通常扩展并不会在 Emacs 启动的时候一股脑加载进来，最常见的扩展通常是各种 major mode ，比如 <code>css-mode</code> ，它在 Emacs 启动的时候会做两件事：</p>
+<ul>
+<li>让 Emacs 知道有 <code>css-mode</code> 这个函数的存在。</li>
+<li>把 <code>css-mode</code> 加入到 <code>auto-mode-alist</code> 中，这样在打开 css 文件的时候能自动调用 <code>css-mode</code>。</li>
+</ul>
+<p>第一件事情由 <code>autoload</code> 来完成，你只要在代码中定义要实现 autoload 的函数之前写上这样的注释：</p>
+
+<div class="wp_syntax"><div class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(128, 128, 128); font-style: italic;">;;;###autoload</span>
+<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">defun</span> css-mode <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(102, 204, 102);">)</span></pre></div></div>
+
+<p>ELPA 就会自动为其生成相应的 autoload 代码，而为了完成第二件事情，我们用类似的 magic comment 来告知 ELPA ：</p>
+
+<div class="wp_syntax"><div class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(128, 128, 128); font-style: italic;">;;;###autoload(add-to-list 'auto-mode-alist '("\\.css\\'" . css-mode))</span></pre></div></div>
+
+<p>这样，ELPA 为为其生成相应的 autoload 文件，包含下面的内容：</p>
+
+<div class="wp_syntax"><div class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(102, 204, 102);">(</span>add-to-<span style="color: rgb(177, 177, 0);">list</span> 'auto-mode-alist '<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(255, 0, 0);">"<span style="color: rgb(0, 0, 153); font-weight: bold;">\\</span>.css<span style="color: rgb(0, 0, 153); font-weight: bold;">\\</span>'"</span> <span style="color: rgb(102, 204, 102);">.</span> css-mode<span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+&nbsp;
+<span style="color: rgb(102, 204, 102);">(</span>autoload 'css-mode <span style="color: rgb(255, 0, 0);">"css-mode"</span> <span style="color: rgb(255, 0, 0);">"<span style="color: rgb(0, 0, 153); font-weight: bold;">\</span>
+Major mode for editing CSS source code.
+&nbsp;
+Key bindings:
+&nbsp;
+<span style="color: rgb(0, 0, 153); font-weight: bold;">\\</span>{css-mode-map}
+&nbsp;
+<span style="color: rgb(0, 0, 153); font-weight: bold;">\(</span>fn)"</span> t <span style="color: rgb(177, 177, 0);">nil</span><span style="color: rgb(102, 204, 102);">)</span></pre></div></div>
+
+<p>在 Emacs 启动的时候实际上只有这个文件被加载了，<code>css-mode</code> 被添加到 <code>auto-mode-alist</code> 中，但是如果你没有打开过 css 文件的话，<code>css-mode</code> 的实际的代码是不会被加载的。当第一次打开 <code>css-mode</code> 的时候，Emacs 注意到这是一个 autoload 函数，就会去加载相应的文件，得到函数的完整定义，这实际上是一个 lazy loading 的过程。</p>
+<p>另外，如果你需要在本地测试自己的扩展是否和 ELPA 兼容的话，只要用 ELPA 的 <code>package-install-file</code> 命令即可。</p>
+<p>实际上之前 ELPA 的作者曾经和我联系过把 <a href="http://code.google.com/p/yasnippet/">YASnippet</a> 加入到其中的问题，不过之前我实在是特别忙，而且也没有把 autoload 搞得太明白，就一直拖了很久，现在又有人提出来，我终于动工添加了支持。<code>yasnippet.el</code> 虽然是一个单独的文件，但是仅有这个东西实际上没什么用处（因为没有任何预定义的 snippet），但是如果要提供 tar ball 的话，好像改动会比较复杂一点，所以我决定把 <code>yasnippet-bundle.el</code> 加入到 ELPA 中。YASnippet 默认情况下是全局打开的，不存在 lazy-loading 的问题，所以除了一些规范性的修改之外，我直接在 bundle 中加入了下面这一句 comment ：</p>
+
+<div class="wp_syntax"><div class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(128, 128, 128); font-style: italic;">;;;###autoload(require 'yasnippet-bundle)</span></pre></div></div>
+
+<p>就可以了，因为 YASnippet 本身就是做得（对于不需要定制的用户来说）尽量全自动的。目前正在和 ELPA 的作者交涉，不出什么意外的话，下一个版本的 yasnippet-bundle 就可以直接通过 ELPA 进行安装了。当然如果要使用 tarball 的话，还是要自己去下载安装的，虽然其实也不是很麻烦。 <img src="tongue.png" alt=":p" class="wp-smiley"> </p>
+</div>
+
+<div class="post-footer">Tags: <a href="http://blog.pluskid.org/?tag=emacs" rel="tag">Emacs</a>, <a href="http://blog.pluskid.org/?tag=yasnippet" rel="tag">YASnippet</a> </div>
+</div><!-- / Post -->						
+	
+	
+
+
+	<a name="comments"></a><!-- named anchor for skip links -->
+	<h3 id="comments">6 comments to ELPA: Emacs Lisp Package Archive</h3>
+
+	
+	<!-- Comment List -->
+	<ul class="commentlist">
+		
+			<li class="comment even thread-even depth-1 clearfix" id="comment-52">
+		<div id="div-comment-52" class="clearfix comment-container">
+		<div class="comment-author vcard">
+		<img alt="" src="844ac4a47bcd045726debd5a79253cd6" class="avatar avatar-55 photo" height="55" width="55">		<span class="authorname"><a href="http://www.cnliufeng.com/" rel="external nofollow" class="url">liufeng</a></span>
+		</div>
+				<div class="comment-meta commentmetadata">
+		<a href="http://blog.pluskid.org/?p=206&amp;cpage=1#comment-52">
+		February 13th, 2009 at 5:52 am</a>
+        <span class="comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="http://blog.pluskid.org/?p=206&amp;replytocom=52#respond" onclick='return addComment.moveForm("comment-52", "52", "respond", "206")'> · Reply</a></span>		 		</div>
+		<p>应该很有前途，问题就是emacs发展了这么多年了，工作量应该不会小。<br>
+Gentoo的portage安装emacs插件时也用了类似的方法。</p>
+		</div>
+</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1 clearfix" id="comment-53">
+		<div id="div-comment-53" class="clearfix comment-container">
+		<div class="comment-author vcard">
+		<img alt="" src="844ac4a47bcd045726debd5a79253cd6" class="avatar avatar-55 photo" height="55" width="55">		<span class="authorname"><a href="http://www.cnliufeng.com/" rel="external nofollow" class="url">liufeng</a></span>
+		</div>
+				<div class="comment-meta commentmetadata">
+		<a href="http://blog.pluskid.org/?p=206&amp;cpage=1#comment-53">
+		February 13th, 2009 at 6:42 am</a>
+        <span class="comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="http://blog.pluskid.org/?p=206&amp;replytocom=53#respond" onclick='return addComment.moveForm("comment-53", "53", "respond", "206")'> · Reply</a></span>		 		</div>
+		<p>1 elpa看来更新很快，我刚才安装的版本中yasnippet已经出现在列表里了。<br>
+2 还是因为这么多年emacs的包管理比较混乱，目前elpa检测不到我已经安装了的一些包。当然可能和我用的CarbonEmacs有关系。CarbonEmacs里是给Mac用户提供的一个很方便的版本，里面集成了大量的包。但也不是所有的都检测不到，erc就可以检测到，同样是CarbonEmacs一起打包的muse就检测不到，令人费解。</p>
+		</div>
+</li>
+		<li class="comment even thread-even depth-1 clearfix" id="comment-250">
+		<div id="div-comment-250" class="clearfix comment-container">
+		<div class="comment-author vcard">
+		<img alt="" src="85bf9b8d0e715f2d7817270cb4bc68cb" class="avatar avatar-55 photo" height="55" width="55">		<span class="authorname">fwk</span>
+		</div>
+				<div class="comment-meta commentmetadata">
+		<a href="http://blog.pluskid.org/?p=206&amp;cpage=1#comment-250">
+		May 22nd, 2009 at 5:16 pm</a>
+        <span class="comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="http://blog.pluskid.org/?p=206&amp;replytocom=250#respond" onclick='return addComment.moveForm("comment-250", "250", "respond", "206")'> · Reply</a></span>		 		</div>
+		<p>从google找yasnippet找到这里，呵呵。<br>
+想问一下yasnippet的作者，因为c语言和c++语言的indent style有多种，yasnippet是否可以根据不同的indent style进行适当的indent?</p>
+<p>如果能，应该进行怎样的配置？</p>
+		</div>
+</li>
+		<li class="comment odd alt thread-odd thread-alt depth-1 clearfix" id="comment-251">
+		<div id="div-comment-251" class="clearfix comment-container">
+		<div class="comment-author vcard">
+		<img alt="" src="85bf9b8d0e715f2d7817270cb4bc68cb" class="avatar avatar-55 photo" height="55" width="55">		<span class="authorname">fwk</span>
+		</div>
+				<div class="comment-meta commentmetadata">
+		<a href="http://blog.pluskid.org/?p=206&amp;cpage=1#comment-251">
+		May 22nd, 2009 at 5:18 pm</a>
+        <span class="comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="http://blog.pluskid.org/?p=206&amp;replytocom=251#respond" onclick='return addComment.moveForm("comment-251", "251", "respond", "206")'> · Reply</a></span>		 		</div>
+		<p>因为现在对elisp还不熟悉，所以懒得rtfsc了…</p>
+		</div>
+</li>
+		<li class="comment byuser comment-author-pluskid bypostauthor even thread-even depth-1 clearfix" id="comment-252">
+		<div id="div-comment-252" class="clearfix comment-container bypostauthor">
+		<div class="comment-author vcard">
+		<img alt="" src="b02979bc1549a16515c880ce836c3023" class="avatar avatar-55 photo" height="55" width="55">		<span class="authorname"><a href="http://blog.pluskid.org/" rel="external nofollow" class="url">pluskid</a></span>
+		</div>
+				<div class="comment-meta commentmetadata">
+		<a href="http://blog.pluskid.org/?p=206&amp;cpage=1#comment-252">
+		May 22nd, 2009 at 7:52 pm</a>
+        <span class="comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="http://blog.pluskid.org/?p=206&amp;replytocom=252#respond" onclick='return addComment.moveForm("comment-252", "252", "respond", "206")'> · Reply</a></span>		 		</div>
+		<p><a href="#comment-251" rel="nofollow">@fwk</a><br>
+呵呵，rtfm 也可以的，见 <a href="http://yasnippet.googlecode.com/svn/trunk/doc/define_snippet.html#indenting" rel="nofollow">Define Snippet#Indenting</a> 。简单地说就是加入 <code>$&gt;</code> 的地方会自动缩进，不过这东西在有些 mode 下面会有问题，但是许多时候都工作挺正常的。 <img src="happy.png" alt=":)" class="wp-smiley"> </p>
+		</div>
+</li>
+		<li class="pingback odd alt thread-odd thread-alt depth-1 clearfix" id="comment-1605">
+		<div id="div-comment-1605" class="clearfix comment-container">
+		<div class="comment-author vcard">
+				<span class="authorname"><a href="http://costplus.ixiezi.com/2010/03/14/%e5%b8%b8%e7%94%a8%e7%bd%91%e7%ab%99/" rel="external nofollow" class="url">木木 » Blog Archive » 常用网站</a></span>
+		</div>
+				<div class="comment-meta commentmetadata">
+		<a href="http://blog.pluskid.org/?p=206&amp;cpage=1#comment-1605">
+		March 14th, 2010 at 1:51 am</a>
+        <span class="comment-reply-link"><a rel="nofollow" class="comment-reply-link" href="http://blog.pluskid.org/?p=206&amp;replytocom=1605#respond" onclick='return addComment.moveForm("comment-1605", "1605", "respond", "206")'> · Reply</a></span>		 		</div>
+		<p>[...] Free Mind » ELPA: Emacs Lisp Package Archive [...]</p>
+		</div>
+</li>
+	
+	</ul>
+	<!-- / Comment List -->
+
+	
+
+
+
+			
+		<!-- Comment Form -->
+		<div id="respond">
+		
+		<a name="commentform"></a><!-- named anchor for skip links -->
+		<h3 class="reply">Leave a Reply</h3>
+	
+		<div id="cancel-comment-reply">
+		<a rel="nofollow" id="cancel-comment-reply-link" href="http://blog.pluskid.org/?p=206#respond" style="display: none;">Cancel</a>		</div>
+	
+		<form action="http://blog.pluskid.org/wp-comments-post.php" method="post" id="commentform">
+
+				
+			<p>
+			<input class="text author" name="author" id="author" value="" size="30" tabindex="1" type="text">&nbsp;
+			<label for="author"> <strong>
+            Name </strong>(required)</label>
+			</p>
+
+			<p>
+			<input class="text email" name="email" id="email" value="" size="30" tabindex="2" type="text">&nbsp;
+			<label for="email"> <strong>
+            Mail</strong> (will not be published) (required)</label>
+			</p>
+
+			<p>
+			<input class="text url" name="url" id="url" value="" size="30" tabindex="3" type="text">&nbsp;
+			<label for="url">
+            Website</label>
+			</p>
+			
+			
+						<p class="thesetags clearfix">
+                You can use <a class="xhtmltags" href="#" onclick="return false;">these HTML tags</a></p>
+				<div class="xhtml-tags"><p><code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang="" line="" escaped=""&gt;                 </code></p></div>
+
+			
+		<!-- Comment Textarea -->
+		<div style="display: block;" id="secureimgdiv">
+				<p><label for="securitycode">Anti-spam word: (Required)</label><span style="color: rgb(255, 0, 0);">*</span><br>
+				<small>To prove you're a person (not a spam script), type the security word shown in the picture.</small><br>
+				<input value="" name="securitycode" id="securitycode" size="30" tabindex="4" type="text">
+				<input id="cas_match" name="matchthis" value="68957" type="hidden">
+				<img id="cas_image" src="custom_anti_spam.php" alt="Anti-spam image" style="border: 1px solid black; vertical-align: top; height: 50px; width: 260px;"></p>
+			</div><p><textarea name="comment" id="comment" rows="10" cols="10" tabindex="4"></textarea></p>
+					
+			
+		
+		<!-- Submit -->
+		<p><input name="submit" class="button" id="submit" tabindex="5" value="Submit Comment" type="submit">
+		<input name="comment_post_ID" value="206" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p>
+		
+		</form>
+		</div><!-- / respond -->
+		<!-- / Comment Form -->
+
+		
+
+		
+			
+
+
+
+</td>
+<!-- / Main Column -->
+
+
+<!-- Right Sidebar -->
+<td id="right">
+
+	<div id="get-recent-comments" class="widget widget_get_recent_comments"><div class="widget-title"><h3>Comments</h3></div><div id="get_recent_comments_wrap"><ul>	<li><a href="http://blog.pluskid.org/?p=622#comment-4857" title="GRE 和机器学习, December 25, 2010">pluskid</a>: 我是明年才申请。GRE 成绩不用太纠结啦，应该不是特别重要的因素！ :)</li>
+	<li><a href="http://blog.pluskid.org/?p=632#comment-4856" title="支持向量机: Maximum Margin Classifier, September 8, 2010">ran</a>: 请问，本文第一张图片，就是有个帅哥举牌子的那张图，有什么说道啊？</li>
+	<li><a href="http://blog.pluskid.org/?p=352#comment-4855" title="漫谈 Language Model (1): 原理篇, August 1, 2009">hyde</a>: 深入浅出，楼主水平不错。</li>
+	<li><a href="http://blog.pluskid.org/?p=622#comment-4854" title="GRE 和机器学习, December 25, 2010">ran</a>: 我也gre来着，可惜考的很烂 我也机器学习来着，可惜也不怎地 你也是今年申请么？行情怎么样？</li>
+	<li><a href="http://blog.pluskid.org/?p=622#comment-4852" title="GRE 和机器学习, December 25, 2010">pluskid</a>: 原来是这样子的，我好像没有见过那个画面啊，也许是被后期 fix 了，这就是盗版的好处啊，哈哈哈 ps: 那个验证码是自己提供一个词典，原来手工填了一些比较简单的词像 foobar 、Emacs 之类的，后来好像被人枚举爆破了，一堆垃圾评论，于是换了一下，一时找不到其他词典，遂顺手拿了背单词的时候摘录下来的部分生词表……您真是火眼金睛啊！</li>
+	<li><a href="http://blog.pluskid.org/?p=622#comment-4851" title="GRE 和机器学习, December 25, 2010">moonykily</a>: 棒棒泥购美病你都不知道啊，还号称打过空轨…… http://baike.baidu.com/view/1174109.html ps 你的验证码太有GRE的味道了……</li>
+	<li><a href="http://blog.pluskid.org/?p=622#comment-4850" title="GRE 和机器学习, December 25, 2010">pluskid</a>: 嗯，据说是那个日文游戏直接翻译过来的，翻译得很烂，结果反而成了佳传，估计跟咱们的什么“梨花体”啊各种体差不多，“棒棒泥购美病”不知道是什么…… 这里把用 Bayes 来调侃，也许是说 Bayes 派的那套东西的结论全都可以通过他的理论得到，但是他又不需要像 Bayes 那样需要去假设一个先验。老爷爷也很 geek 啊。</li>
+	<li><a href="http://blog.pluskid.org/?p=622#comment-4849" title="GRE 和机器学习, December 25, 2010">moonykily</a>: 考证了一下，出处应该是这里吧：http://en.wikipedia.org/wiki/All_your_base_are_belong_to_us 看上去像是个翻译问题，有点儿像棒棒泥购美病……</li>
+</ul></div></div><div id="meta-2" class="widget widget_meta"><div class="widget-title"><h3>Meta</h3></div>			<ul>
+						<li><a href="http://blog.pluskid.org/wp-login.php">Log in</a></li>
+			<li><a href="http://blog.pluskid.org/?feed=rss2" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://blog.pluskid.org/?feed=comments-rss2" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.org</a></li>
+						</ul>
+</div><div id="text-4" class="widget widget_text"><div class="widget-title"><h3>License</h3></div>			<div class="textwidget"><div style="float: left; margin-right: 15px;"><a href="http://creativecommons.org/licenses/by-nc-sa/3.0/" style="color: transparent;"><img src="88x31.png"></a></div>Except where otherwise noted, content on this site is licensed under a <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons Attribution 3.0 License</a>.</div>
+		</div>
+</td>
+<!-- / Right Sidebar -->
+
+</tr>
+<!-- / Main Body -->
+<tr>
+
+<!-- Footer -->
+<td id="footer" colspan="3">
+
+    <p>
+    Copyright © 2010 <a href="http://blog.pluskid.org/">Free Mind</a> - All Rights Reserved<br>Powered by <a href="http://wordpress.org/">WordPress</a> &amp; the <a href="http://wordpress.bytesforall.com/" title="Customizable WordPress themes">Atahualpa Theme</a> by <a href="http://www.bytesforall.com/" title="BFA Webdesign">BytesForAll</a>. Discuss on our <a href="http://forum.bytesforall.com/" title="Atahualpa &amp; WordPress">WP Forum</a>    </p>
+    
+    
+    	
+<!-- Smilies package, Adium For Wordpress, courtesy of 0xCAFE (http://www.0xCAFE.ca) -->
+
+</td>
+<!-- / Footer -->
+
+</tr>
+</tbody></table><!-- / layout -->
+</div><!-- / container -->
+</div><!-- / wrapper -->
+
+<div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; opacity: 0.9;"></div></body>
+</html>

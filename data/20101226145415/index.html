@@ -1,0 +1,174 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="keywords" content="emacs, emacs tips">
+
+<title>Fun With Emacs</title>
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+
+<div class="nav">▲ <a href="http://xahlee.org/emacs/emacs.html">Emacs Tutorial</a>.</div>
+
+<h1>Fun With Emacs</h1>
+<div class="amzo"><div role="button" tabindex="0" title="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&amp;MarketPlace=US&amp;ID=V20070822%2FUS%2Fxahhome-20%2F8009%2F38563c63-d564-466b-b245-ef8a99b5a550&amp;Operation=GetDisplayTemplate" style="background: url(&quot;undefined&quot;) no-repeat scroll center center transparent ! important; min-width: 32px ! important; min-height: 32px ! important; width: 160px; height: 400px; border: 1px solid rgb(223, 223, 223); cursor: pointer; overflow: hidden; display: inline-block; visibility: visible ! important; -moz-box-sizing: border-box;" bgactive="url(chrome://flashblock/content/flashplay.png) no-repeat center" bginactive="url(chrome://flashblock/content/flash.png) no-repeat center"></div> </div>
+
+<div class="twt"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="xah_lee">Tweet</a></div><p>Xah Lee, 2006-01, 2009-08-21</p>
+
+<p>You probably heard that emacs can do lots of things, such as running shell, as a file manager, do ftp/sftp, read and send email, read newsgroup forums, and even as a web browser, and lots of other things other than text editing. But you are rather new and don't know how. This page lists some of fun things with simple instructions you can do right away with emacs.</p>
+
+<div class="img">
+<img src="emacs_learning_curves.png" alt="emacs learning curve" height="400" width="600">
+<p class="cpt">A comic on emacs's learning curve.
+(Original source appears to be Steve Rowe's blog. “A friend of mine put this together” <a class="sorc" href="http://blogs.msdn.com/steverowe/archive/2004/11/17/code-editor-learning-curves.aspx" title="accessed:2009-12-07">Source</a>)
+</p>
+</div>
+
+<h2>Split Windows</h2>
+
+<div class="img">
+<img class="bdr" src="emacs_split.png" alt="wildly split emacs screen" height="838" width="985">
+<p class="cpt">Wildly split emacs screen. From top to bottom: calendar, unicode, shell, hex editing mode, HTML mode, file management, calculator.</p>
+</div>
+
+<p>You can split your window into two or more panes, vertically or horizontally. Type 【<kbd>Alt</kbd>+<kbd>x</kbd> split-window-vertically】 to split into two panes, one on top of the other.  To unsplit, type 【<kbd>Alt</kbd>+<kbd>x</kbd> delete-other-windows】. To split into side-by-side panes, type 【<kbd>Alt</kbd>+<kbd>x</kbd> split-window-horizontally】.</p>
+
+<p>Spliting Window is available under the menu “File▸Split Window”.</p>
+
+<h2>View Calendar</h2>
+
+<p>To run calendar in emacs, pull the menu “Tools▸Calendar”, or type 【<kbd>Alt</kbd>+<kbd>x</kbd> calendar】.</p>
+
+<div class="img">
+<img class="bdr" src="emacs_calendar.png" alt="emacs calendar" height="189" width="688">
+<p class="cpt">A screenshots of emacs's calendar feature.</p>
+</div>
+
+<h2>Calculator</h2>
+
+<p>To run a calculator in emacs, type 【<kbd>Alt</kbd>+<kbd>x</kbd> calc】.</p>
+
+<div class="img">
+<img src="emacs_calculator.png" alt="emacs calculator" height="312" width="616">
+<p class="cpt">Calc mode in emacs.</p>
+</div>
+
+<p>To quit calculator, type <kbd>q</kbd>.</p>
+
+<p>To compute 「1+2」, type 【<kbd>1</kbd> <kbd>Enter</kbd> <kbd>2</kbd> <kbd>+</kbd>】. Or, you can type the expression directly by starting with a sinle quote, like this: 【<kbd>'</kbd> <kbd>1</kbd> <kbd>+</kbd> <kbd>2</kbd> <kbd>Enter</kbd>】.</p>
+
+<p>Calculator can also be started by going to the menu “Tools▸Programmable Calculator”.</p>
+
+<h3>Converting Numbers to Binary, Octal, Hexadecimal forms.</h3>
+
+<p>To convert the decimal 10 to binary representation in calc, type 【10 <kbd>Enter</kbd> d2】. The d2 will display all numbers in the window in the binary form. The numbers will have a “2#” prefix to indicate that they are in base 2. To display them back in decimal form, type “d0”. To show numbers in octal or hexadecimal form, type “d8” or “d6”.</p>
+
+<p>To convert a binary number 1010 to decimal, type 【2#1010 <kbd>Enter</kbd>】 to enter the number then type “d0” to show all numbers in decimal form. Similarly, to enter a number in octal form, precede it with “8#” and hexadecimal numbers are prefixed with “16#”.</p>
+
+<h3>unit conversion</h3>
+
+<p>To find out what is 40 F° in C°, type 【40 <kbd>Enter</kbd> ut dF <kbd>Enter</kbd> dC <kbd>Enter</kbd>】.</p>
+
+<h2>Directory Navigation and Managing Files</h2>
+
+<div class="img">
+<img class="bdr" src="emacs_dired.png" alt="" height="462" width="648">
+<p class="cpt">A Screenshot of emacs's feature of directory navigation.</p>
+</div>
+
+<p>Emacs is a excellent tool for file management, such as viewing directory, creating files, copying files, moving files, creating directory, deleting files or directory. Once you become familiar with it, you almost never go back to shell or your operating system's file viewer for these tasks.</p>
+
+<p>To start, pull the menu “File▸Dired”, then, give a dir path.</p>
+
+<p>For a full tutorial, see:
+<a href="http://xahlee.org/emacs/file_management.html">File Management with Emacs (dired tutorial)</a>.</p>
+
+<h2>FTP (or file transfer)</h2>
+
+<p>You can also transfer files between different machines connected by a network. The way to do this in emacs is consistent with the way it does directory navigation.</p>
+
+<p>Type 【<kbd>Alt</kbd>+<kbd>x</kbd> dired】 and type a directory you want to work with. In this directory, suppose myfile.html is the one you want to upload across the network to the machine on
+“example.org” in the directory 〔/public_html〕. Suppose your login name for that machine is “mary”. </p>
+
+<p>Here's what you do. Type 【<kbd>Alt</kbd>+<kbd>x</kbd> dired】 then choose a source dir. Then move your cursor to the file you want to copy. Type “C” (for copy), then emacs will prompt you for a directory to copy to. Type “/ftp:mary@example.org:/public_html”. You'll be asked for password, then it'll be copied over.</p>
+
+<p>Once you logged in the ftp server, you can actually edit and save files on the remote server, bypassing all the upload/download pain.</p>
+
+<p>Emacs also allows you to do sftp or ftp over ssh.</p>
+
+<p><span class="ref"><a href="http://xahlee.org/emacs_manual/Remote-Files.html">(info "(emacs) Remote Files")</a></span></p>
+
+<h2>Colors</h2>
+
+<p>To view the many colors and their hexadecimal values in RGB model, type 【<kbd>Alt</kbd>+<kbd>x</kbd> list-colors-display】. This is very useful when you work in HTML.</p>
+
+<div class="img">
+<img class="bdr" src="emacs_colors.png" alt="emacs showing colors" height="823" width="657">
+</div>
+
+<h2>Command Line Interface (aka Shell)</h2>
+
+<p>To use emacs as the OS's command line interface (in Mac OS X, Linux, or Windows), type 【<kbd>Alt</kbd>+<kbd>x</kbd> shell】. Now, you can use emacs just as a shell. The advantage is that, you can have the entire shell's screen output history in your window, and you can copy and paste any part you like, just as if it is a normal text file. Normally in a shell, you can visit past command by pressing the up arrow. But now up arrow moves you cursor to the line above. To show the previous commands you used, press 【<kbd>Ctrl</kbd>+<kbd>↑</kbd>】.</p>
+
+<p>See: <a href="http://xahlee.org/emacs/emacs_unix.html">Emacs Shell Tutorial (bash, cmd.exe, PowerShell)</a>.</p>
+
+<h2>LISP in Emacs</h2>
+
+<p>Sometime you hear that emacs has the artificial intelligence language LISP built in. That's right. Here's how you can run a short example.</p>
+
+<p>In emacs, open a file, any file. In the file, type “(+ 1 2) ”, then, select the whole text, then type 【<kbd>Alt</kbd>+<kbd>x</kbd> eval-region】. You will see the result “3”. CONGRADULATIONS, you've just evaluated a lisp program!</p>
+
+<p>See: <a href="http://xahlee.org/emacs/elisp_basics.html">Emacs Lisp Basics</a>.</p>
+
+<h2>Internet Relay Chat (IRC)</h2>
+
+<p>If you don't know already, IRC is
+<a href="http://en.wikipedia.org/wiki/Internet_Relay_Chat">Internet Relay Chat</a>.
+IRC is a public instant messaging forum that allows a groups of people to discuss things together. Typically, irc topics are about programing languages (perl, bash, php, html, ocaml, ...) or tools (emacs, ubuntu, git ...).</p>
+
+<p>Yes, you can run IRC in emacs if you are running emacs version 22 or later. To see what version of emacs you have, type “emacs --version” in the command line prompt. Or, inside emacs, type 【<kbd>Alt</kbd>+<kbd>x</kbd> version】.</p>
+
+<p>To start irc, type 【<kbd>Alt</kbd>+<kbd>x</kbd> irc】. Then, you'll be prompted to enter the server name and port and user name, and channel you want to join. For example, use the following:</p>
+
+<pre>IRC Server: irc.freenode.net
+IRC Port: 6667
+IRC Nick: imrandomjack
+Channels: #emacs
+</pre>
+
+<p>then you'll be connected to the #emacs discussion room in the irc.freenode.net server.</p>
+
+<h2>O My GOD, Too Many Commands</h2>
+
+<div class="fll"><img src="sink.png" alt="emacs icon" height="48" width="48"></div>
+
+<p>Yeah, that's emacs. Some say, it's a operating system. Others say, it's a overflowing kitchen sink.</p>
+
+<p>Life is filled with endless meaningful things to learn, if it is gonna be a fulfilling life.</p>
+
+<div class="amz728x90"><iframe src="index_1.html" marginwidth="0" marginheight="0" border="0" style="border: medium none;" frameborder="0" height="90" scrolling="no" width="728"></iframe></div>
+
+<div class="rltd">
+<ul>
+<li><a href="http://xahlee.org/emacs/emacs_n_unicode.html">Emacs and Unicode Tips</a></li>
+<li><a href="http://xahlee.org/emacs/emacs_html.html">Emacs and HTML Tips</a></li>
+<li><a href="http://xahlee.org/emacs/emacs_unix.html">Emacs Shell Tutorial (bash, cmd.exe, PowerShell)</a></li>
+</ul>
+</div>
+
+<div class="dnt0c7af">Was this page useful? If so, please do donate $3, thank you <a href="http://xahlee.org/thanks.html">donors!</a><form action="https://www.paypal.com/cgi-bin/webscr" method="post"><div><input name="cmd" value="_s-xclick" type="hidden"><input name="hosted_button_id" value="8127788" type="hidden"><input src="btn_donatecc_lg.gif" name="submit" type="image"><img alt="" src="pixel.gif" height="1" width="1"></div></form></div>
+
+<div id="disqus_thread"><div style="display: none;" id="dsq-content-stub"><img alt="DISQUS" src="data:image/png;base64,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" height="17" width="71"><img alt="..." src="data:image/gif;base64,R0lGODlhEAALAPQAAP///z2LqeLt8dvp7u7090GNqz2LqV+fuJ/F1IW2ycrf51aatHWswaXJ14i4ys3h6FmctUCMqniuw+vz9eHs8fb5+meku+Tu8vT4+cfd5bbT3tbm7PH2+AAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCwAAACwAAAAAEAALAAAFLSAgjmRpnqSgCuLKAq5AEIM4zDVw03ve27ifDgfkEYe04kDIDC5zrtYKRa2WQgAh+QQJCwAAACwAAAAAEAALAAAFJGBhGAVgnqhpHIeRvsDawqns0qeN5+y967tYLyicBYE7EYkYAgAh+QQJCwAAACwAAAAAEAALAAAFNiAgjothLOOIJAkiGgxjpGKiKMkbz7SN6zIawJcDwIK9W/HISxGBzdHTuBNOmcJVCyoUlk7CEAAh+QQJCwAAACwAAAAAEAALAAAFNSAgjqQIRRFUAo3jNGIkSdHqPI8Tz3V55zuaDacDyIQ+YrBH+hWPzJFzOQQaeavWi7oqnVIhACH5BAkLAAAALAAAAAAQAAsAAAUyICCOZGme1rJY5kRRk7hI0mJSVUXJtF3iOl7tltsBZsNfUegjAY3I5sgFY55KqdX1GgIAIfkECQsAAAAsAAAAABAACwAABTcgII5kaZ4kcV2EqLJipmnZhWGXaOOitm2aXQ4g7P2Ct2ER4AMul00kj5g0Al8tADY2y6C+4FIIACH5BAkLAAAALAAAAAAQAAsAAAUvICCOZGme5ERRk6iy7qpyHCVStA3gNa/7txxwlwv2isSacYUc+l4tADQGQ1mvpBAAIfkECQsAAAAsAAAAABAACwAABS8gII5kaZ7kRFGTqLLuqnIcJVK0DeA1r/u3HHCXC/aKxJpxhRz6Xi0ANAZDWa+kEAA7AAAAAAAAAAAA" style="margin: 0pt 0pt 3px 5px;" height="11" width="16"></div><div class="clearfix" style="display: block;" id="dsq-content">    <div id="dsq-global-toolbar" class="dsq-community-preview">    <table class="dsq-global-toolbar-container">      <tbody><tr>        <td class="dsq-global-toolbar-likes">                    <div class="dsq-group">            <a href="http://xahlee.org/emacs/thread.vote" id="dsq-like-thread-button" class="dsq-thread-like toolbar-item  dsq-tt" title="I like this page">Like</a>            <a href="http://xahlee.org/emacs/thread.vote" id="dsq-dislike-thread-button" class="dsq-thread-dislike toolbar-item  dsq-tt" title="I don't like this page">Dislike</a>          </div>          <ul class="dsq-like-faces">                  <li class="dsq-like-activity">        3 people liked this.    </li>          </ul>                  </td>        <td>                        <a href="http://xahlee.org/emacs/community.show" class="dsq-community-launcher toolbar-item dsq-tt" title="Expand Community Box"> Community</a>                    </td>                <td class="dsq-global-toolbar-dropdown-container">              <div id="dsq-toolbar-dropdown">    <a href="#" onclick="return false" class="dsq-toolbar-logo toolbar-item">Disqus</a>    <div id="dsq-toolbar-dropdown-wrap" style="display: none;">      <ul>                    <li><h4>Login options</h4></li>              <ul class="dsq-login-buttons">                            <li class="dsq-login-button dsq-login-button-disqus">            <a href="http://xahlee.org/emacs/auth.disqus"></a>          </li>                                                              <li style="clear: both;"></li>  </ul>                    <li><a href="http://disqus.com/" target="_top">About Disqus</a></li>      </ul>    </div>  </div>        </td>      </tr>    </tbody></table>  </div>  <div id="dsq-like-tooltip" style="display: none; width: 375px;">    <div id="dsq-share-step-1" class="dsq-share-step">      <h3>Glad you liked it. Would you like to share?</h3>      <p class="dsq-tooltip-checkbox"><input id="dsq-share-thread-facebook" value="Facebook" type="checkbox"><label for="dsq-share-thread-facebook"><span class="dsq-facebook">Facebook</span></label></p>      <p class="dsq-tooltip-checkbox"><input id="dsq-share-thread-twitter" value="Twitter" type="checkbox"><label for="dsq-share-thread-twitter"><span class="dsq-twitter">Twitter</span></label></p>      <ul id="dsq-tooltip-actions">        <li><a href="http://xahlee.org/emacs/thread.share" class="dsq-primary-action">Share</a></li>        <li><a href="http://xahlee.org/emacs/thread.share.cancel" class="dsq-secondary-action">No thanks</a></li>      </ul>    </div>    <div id="dsq-share-step-2" class="dsq-share-step" style="display: none;">      <p><img src="dsq-loader-dark.gif" style="vertical-align: middle; margin: 0pt 15px 0pt 0pt;">Sharing this page ...</p>    </div>    <div id="dsq-share-step-3" class="dsq-share-step" style="display: none;">      <p>Thanks! <a href="http://xahlee.org/emacs/thread.share.cancel" class="dsq-tooltip-decline">Close</a></p>    </div>  </div>                        <div id="dsq-new-post" class="dsq-post-area dsq-unauthenticated">          <h3>Add New Comment</h3>      <div style="clear: both;"></div>              <div id="dsq-form-area">      <div class="dsq-textarea">        <div class="dsq-textarea-wrapper" id="dsq-textarea-wrapper"><iframe style="height: 108px;" src="index_2.html" id="easyXDM_default6600_provider" name="easyXDM_default6600_provider" frameborder="0" scrolling="no"></iframe></div>      </div>            <div class="dsq-post-footer">                            <button type="button" class="dsq-button" id="dsq-post-button" onclick="DISQUS.dtpl.actions.fire('comments.validate', null);">            <span>              Post as …            </span>          </button>                      </div>      <div style="clear: both;"></div>    </div>  </div>              <div id="dsq-comments-title">    <h3>              Showing <span id="dsq-num-posts">0</span> comments          </h3>  </div>  <div class="dsq-options">      <span class="dsq-item-sort">    Sort by    <select id="dsq-sort-select" onchange="DISQUS.dtpl.actions.fire('thread.sort', this.value);">            <option value="hot" selected="selected">Popular now</option>            <option value="best">Best rating</option>            <option value="newest">Newest first</option>            <option value="oldest">Oldest first</option>          </select>  </span>      <span class="dsq-subscribe-email">    <img src="email.png" alt="">&nbsp;    <span id="dsq-subscribe">            <a href="http://xahlee.org/emacs/thread.subscribe">Subscribe by email</a>          </span>    <span class="dsq-subscribe-rss">      <img src="bullet-feed.png" alt="">&nbsp;      <a href="http://xahlee.disqus.com/fun_with_emacs/latest.rss">Subscribe by RSS</a>    </span>  </span>  </div>                  <ul id="dsq-comments">      </ul>          <div id="dsq-pagination" class="dsq-pagination">    </div>          </div><div>  </div></div><a href="http://disqus.com/" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+<div class="ftr"><div class="sig"></div><div class="x10"><a href="http://xahlee.org/">Home</a></div><div class="x20"><a href="http://xahlee.org/terms.html">Terms of Use</a></div><div class="x30"><a href="http://xahlee.org/about.html">About</a></div><div class="x40"><a href="http://xahlee.org/ads.html">Advertise</a></div><div class="x50"><a href="http://xahlee.org/subscribe.html">Subscribe</a></div><div class="x60"><form method="get" action="http://www.google.com/custom"><div><a href="http://www.google.com/"><img src="small-logo.png" alt="Google"></a><input name="domains" value="xahlee.org" type="hidden"><input name="q" size="31" maxlength="255" value="Search XahLee.org here" onclick="javascript:select();" type="text"><input name="sa" value="Search" type="submit"><input name="sitesearch" value="xahlee.org" type="hidden"><input name="forid" value="1" type="hidden"><input name="ie" value="UTF-8" type="hidden"><input name="oe" value="UTF-8" type="hidden"><input name="cof" value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;FORID:1;" type="hidden"><input name="hl" value="en" type="hidden"></div></form></div></div>
+
+
+<div class="dstp">2005-10</div>
+<div class="cpr">© 2005 by Xah Lee.</div>
+
+
+<div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; opacity: 0.9;"></div><iframe src="index_3.html" style="display: none;"></iframe></body>
+</html>

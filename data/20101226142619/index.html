@@ -1,0 +1,780 @@
+<!DOCTYPE HTML>
+<html lang="en" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	
+	<meta name="viewport" content="width=1200">
+	<meta name="description" content="Here is an easy way to select the text you just pasted. For example, you may want to paste some text, then select it for indenting, or formatting, or performing a substitution.">
+		<meta name="generator" content="MediaWiki 1.15.5">
+		<meta name="keywords" content="Vim Tips Wiki,vim,Selecting your pasted text,Search and replace in a visual selection,Shifting blocks visually,Using marks,VimTip758,VimTip760,Vimrc">
+		<link rel="canonical" href="http://vim.wikia.com/wiki/Selecting_your_pasted_text">
+		<link rel="alternate" type="application/x-wiki" title="Edit" href="http://vim.wikia.com/index.php?title=Selecting_your_pasted_text&amp;action=edit">
+		<link rel="edit" title="Edit" href="http://vim.wikia.com/index.php?title=Selecting_your_pasted_text&amp;action=edit">
+		<link rel="apple-touch-icon" href="http://images.wikia.com/vim/images/b/bc/Wiki.png">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="search" type="application/opensearchdescription+xml" href="http://vim.wikia.com/opensearch_desc.php" title="Vim Tips Wiki (en)">
+		<link rel="copyright" href="http://community.wikia.com/wiki/Wikia:Licensing">
+		<link rel="alternate" type="application/rss+xml" title="Vim Tips Wiki RSS feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=rss">
+		<link rel="alternate" type="application/atom+xml" title="Vim Tips Wiki Atom feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=atom">
+
+	<title>Selecting your pasted text - Vim Tips Wiki</title>
+	<!-- SASS-generated CSS file -->
+	
+	
+	<!-- CSS injected by extensions -->
+		
+<!-- GetSiteCSS -->	
+	
+
+	<!-- Small Header A/B Test -->
+	
+
+	<!-- Make IE recognize HTML5 tags. -->
+	<!--[if IE]>
+		<script>/*@cc_on'abbr article aside audio canvas details figcaption figure footer header hgroup mark menu meter nav output progress section summary time video'.replace(/\w+/g,function(n){document.createElement(n)})@*/</script>
+	<![endif]-->
+
+	<!-- Used for page load time tracking -->
+	
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Selecting_your_pasted_text TOCimprovements skin-oasis">
+<h1>Wikia</h1>
+<div class="skiplinkcontainer">
+<a class="skiplink" rel="nofollow" href="#WikiaArticle">Skip to Content</a>
+<a class="skiplink wikinav" rel="nofollow" href="#WikiHeader">Skip to Wiki Navigation</a>
+<a class="skiplink sitenav" rel="nofollow" href="#GlobalNavigation">Skip to Site Navigation</a>
+</div>
+<form action="http://vim.wikia.com/wiki/VimTip759" method="post" name="userajaxloginform" id="userajaxloginformhide" style="display: none;">
+			<input value="" name="wpName" id="wpName1Ajax" tabindex="101" size="20" type="text">
+			<input name="wpPassword" id="wpPassword1Ajax" tabindex="102" size="20" type="password">
+			<input name="wpRemember" id="wpRemember1Ajax" tabindex="104" value="1" type="checkbox">
+		</form>
+
+<!-- BEGIN SLOTNAME: INVISIBLE_TOP -->
+<!-- Null Ad. Reason: Slot is disabled, slotname=INVISIBLE_TOP --><!-- END SLOTNAME: INVISIBLE_TOP -->
+<header id="WikiaHeader" class="WikiaHeader">
+	<nav>
+		<h1>Wikia Navigation</h1>
+		<ul>
+			<li class="WikiaLogo">
+				<a href="http://www.wikia.com/go/" rel="nofollow"><img src="blank.gif" class="sprite logo" alt="Wikia" height="23" width="91"></a>
+			</li>
+			<li>
+				<a href="http://www.wikia.com/Special:CreateWiki" class="wikia-button">Start a wiki</a>
+			</li>
+			<li>
+				<ul id="GlobalNavigation" class="GlobalNavigation">
+					<li>
+						<a href="http://www.wikia.com/Entertainment">Entertainment <img src="blank.gif" class="chevron" height="0" width="0"></a>
+						<ul class="subnav">
+							<li id="SPOTLIGHT_GLOBALNAV_1" class="SPOTLIGHT_GLOBALNAV"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=491__zoneid=20__cb=6daf120a5b__oadest=http%3A%2F%2Fharrypotter.wikia.com%2Fwiki%2FWizarding_World_Giveaway" target="_top"><img src="4b0f5464881b22032fe4123590a6b88c.jpg" alt="" title="" border="0" height="123" width="255"></a><div id="beacon_6daf120a5b" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+							<li>
+								<a href="http://www.wikia.com/TV">What's on TV</a>
+								<ul class="catnav">
+									<li><a href="http://bones.wikia.com/wiki/Bones_Wiki">Bones</a></li>
+									<li><a href="http://madmen.wikia.com/wiki/Mad_Men_Wiki">Mad Men</a></li>
+									<li><a href="http://ncis.wikia.com/wiki/NCIS_Database">NCIS</a></li>
+									<li><a href="http://boardwalkempire.wikia.com/wiki/Boardwalk_Empire_Wiki">Boardwalk Empire</a></li>
+									<li><a href="http://www.wikia.com/TV">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/Movie">Movies</a>
+								<ul class="catnav">
+									<li><a href="http://tron.wikia.com/wiki/Tron_Wiki">TRON: Legacy</a></li>
+									<li><a href="http://harrypotter.wikia.com/wiki/Main_Page">Harry Potter</a></li>
+									<li><a href="http://narnia.wikia.com/wiki/The_Chronicles_of_Narnia_Wiki">Narnia</a></li>
+									<li><a href="http://smurfs.wikia.com/wiki/Smurfs_Wiki">The Smurfs Movie</a></li>
+									<li><a href="http://www.wikia.com/Movie">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/Anime">Anime</a>
+								<ul class="catnav">
+									<li><a href="http://dragonball.wikia.com/wiki/Main_Page">Dragon Ball Wiki</a></li>
+									<li><a href="http://bleach.wikia.com/wiki/Main_Page">Bleach Wiki</a></li>
+									<li><a href="http://naruto.wikia.com/wiki/Narutopedia">Narutopedia</a></li>
+									<li><a href="http://winx.wikia.com/wiki/Winx_Club_Wiki">Winx Club Wiki</a></li>
+									<li><a href="http://www.wikia.com/Anime">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://entertainment.wikia.com/wiki/">Staff Picks</a>
+								<ul class="catnav">
+									<li><a href="http://residentevil.wikia.com/Resident_Evil_Wiki">Resident Evil Wiki</a></li>
+									<li><a href="http://www.millenniumtrilogy.wikia.com/wiki/Millenium_Trilogy_Wiki">Millennium Trilogy</a></li>
+									<li><a href="http://truegrit.wikia.com/wiki/True_Grit_Wiki">True Grit</a></li>
+									<li><a href="http://sonsofanarchy.wikia.com/wiki/Sons_of_Anarchy">Sons of Anarchy</a></li>
+									<li><a href="http://www.wikia.com/Entertainment">More...</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="http://www.wikia.com/Gaming">Gaming <img src="blank.gif" class="chevron" height="0" width="0"></a>
+						<ul class="subnav">
+							<li id="SPOTLIGHT_GLOBALNAV_2" class="SPOTLIGHT_GLOBALNAV"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=492__zoneid=21__cb=bac00c695b__oadest=http%3A%2F%2Fassassinscreed.wikia.com%2Fwiki%2FAssassin%2527s_Creed_Wiki" target="_top"><img src="c4ed90308921f1e9077c7e3e21336b59.jpg" alt="" title="" border="0" height="123" width="255"></a><div id="beacon_bac00c695b" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_001.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+							<li>
+								<a href="http://www.wikia.com/Xbox_360_Games">Xbox 360 Games</a>
+								<ul class="catnav">
+									<li><a href="http://halo.wikia.com/wiki/Main_Page">Halo: Reach</a></li>
+									<li><a href="http://fable.wikia.com/wiki/Main_Page">Fable 3</a></li>
+									<li><a href="http://dragonage.wikia.com/wiki/Dragon_Age_Wiki">Dragon Age 2</a></li>
+									<li><a href="http://callofduty.wikia.com/wiki/Call_of_Duty_Wiki">CoD: Black Ops</a></li>
+									<li><a href="http://www.wikia.com/Xbox_360_Games">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/PS3_Games">PS3 Games</a>
+								<ul class="catnav">
+									<li><a href="http://fallout.wikia.com/wiki/Fallout_Wiki">Fallout: New Vegas</a></li>
+									<li><a href="http://reddead.wikia.com/wiki/Red_Dead_Wiki">Red Dead Redemption</a></li>
+									<li><a href="http://masseffect.wikia.com/wiki/Mass_Effect_Wiki">Mass Effect 3</a></li>
+									<li><a href="http://assassinscreed.wikia.com/wiki/Assassin%27s_Creed_Wiki">AC: Brotherhood</a></li>
+									<li><a href="http://www.wikia.com/PS3_Games">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/PC_Games">PC Games</a>
+								<ul class="catnav">
+									<li><a href="http://diablo.wikia.com/wiki/Diablo_Wiki">Diablo 3</a></li>
+									<li><a href="http://swtor.wikia.com/wiki/Star_Wars%3A_The_Old_Republic_Wiki">SW: The Old Republic</a></li>
+									<li><a href="http://runescape.wikia.com/wiki/RuneScape_Wiki">RuneScape</a></li>
+									<li><a href="http://www.wowwiki.com/Portal%3AMain">WoW: Cataclysm</a></li>
+									<li><a href="http://www.wikia.com/PC_Games">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/Wii_games">Wii Games</a>
+								<ul class="catnav">
+									<li><a href="http://zelda.wikia.com/wiki/Zeldapedia">Zelda: Skyward Sword</a></li>
+									<li><a href="http://donkeykong.wikia.com/wiki/Donkey_Kong_Country_Returns">DK Country Returns</a></li>
+									<li><a href="http://sonic.wikia.com/wiki/Sonic_News_Network">Sonic Colors</a></li>
+									<li><a href="http://kirby.wikia.com/wiki/Kirby_Wiki">Kirby's Epic Yarn</a></li>
+									<li><a href="http://www.wikia.com/Wii_games">More...</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="http://www.wikia.com/Lifestyle">Lifestyle <img src="blank.gif" class="chevron" height="0" width="0"></a>
+						<ul class="subnav">
+							<li id="SPOTLIGHT_GLOBALNAV_3" class="SPOTLIGHT_GLOBALNAV"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=689__zoneid=22__cb=ad77debea6__oadest=http%3A%2F%2Fcoffee.wikia.com%2Fwiki%2FMain_Page" target="_top"><img src="827ada0d19b9f1d479ad8564c9f4179c.jpg" alt="" title="" border="0" height="123" width="255"></a><div id="beacon_ad77debea6" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_002.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+							<li>
+								<a href="http://www.wikia.com/Recipes">Food &amp; Drink</a>
+								<ul class="catnav">
+									<li><a href="http://bakingrecipes.wikia.com/wiki/Baking_Recipes_Wiki">Baking Recipes</a></li>
+									<li><a href="http://familyrecipes.wikia.com/wiki/Family_Recipes_Wiki">Family Recipes</a></li>
+									<li><a href="http://japaneserecipes.wikia.com/wiki/Japanese_Recipes_Wiki">Japanese Recipes</a></li>
+									<li><a href="http://coffee.wikia.com/wiki/Main_Page">Coffee</a></li>
+									<li><a href="http://www.wikia.com/Recipes">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/Lifestyle">DIY</a>
+								<ul class="catnav">
+									<li><a href="http://how-to.wikia.com/wiki/How_To">How-To</a></li>
+									<li><a href="http://toastmasters.wikia.com/wiki/Toastmasters_Wiki">Toastmasters</a></li>
+									<li><a href="http://vintagepatterns.wikia.com/wiki/Main_Page">Vintage Patterns</a></li>
+									<li><a href="http://chdk.wikia.com/wiki/CHDK">Canon Hacking</a></li>
+									<li><a href="http://www.wikia.com/Lifestyle">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/Lifestyle">Travel</a>
+								<ul class="catnav">
+									<li><a href="http://travel.wikia.com/wiki/Wikia_Travel">Travel Wiki</a></li>
+									<li><a href="http://lasvegas.wikia.com/wiki/Main_Page">Las Vegas</a></li>
+									<li><a href="http://india.wikia.com/wiki/Main_Page">India</a></li>
+									<li><a href="http://reststops.wikia.com/wiki/Main_Page">Rest Stops</a></li>
+									<li><a href="http://www.wikia.com/Lifestyle">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/Lifestyle">Featured</a>
+								<ul class="catnav">
+									<li><a href="http://calendars.wikia.com/wiki/Main_Page">Calendars</a></li>
+									<li><a href="http://familypedia.wikia.com/wiki/Family_History_and_Genealogy_Wiki">Genealogy</a></li>
+									<li><a href="http://logos.wikia.com/wiki/Logopedia">Logos</a></li>
+									<li><a href="http://icehockey.wikia.com/wiki/The_Face_Off">Ice Hockey</a></li>
+									<li><a href="http://www.wikia.com/Lifestyle">More...</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<ul id="AccountNavigation" class="AccountNavigation">
+	<li class="nohover"><span id="fbconnect"><a href="#" class="fb_button fb_button_small"><span class="fb_button_text">Connect</span></a></span></li>
+	<li><a data-id="login" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=Selecting_your_pasted_text&amp;type=login" class="ajaxLogin">Log in</a></li>
+	<li><a data-id="register" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=Selecting_your_pasted_text&amp;type=signup" class="ajaxRegister">Sign up</a></li>
+</ul>
+	<img src="blank.gif" class="banner-corner-left" height="0" width="0">
+	<img src="blank.gif" class="banner-corner-right" height="0" width="0">
+</header>
+
+<section id="WikiaPage" class="WikiaPage">
+
+
+	
+	<!-- BEGIN SLOTNAME: TOP_LEADERBOARD -->
+<div id="TOP_LEADERBOARD" class="wikia-ad noprint"><div style="margin-left: auto;" id="Liftium_728x90_1_php"><iframe src="index_1.html" id="TOP_LEADERBOARD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="90" scrolling="no" width="728"></iframe></div></div><!-- END SLOTNAME: TOP_LEADERBOARD -->
+	
+
+	<header id="WikiHeader" class="WikiHeader">
+	<h1 class="wordmark medium text">
+		<a accesskey="z" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki">
+							Vim Tips Wiki					</a>
+	</h1>
+	<nav>
+		<h1>Vim Tips Wiki Navigation</h1>
+		<ul>
+
+			<li>
+				<a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Community_Portal">
+					Community portal				</a>
+			</li>
+			<li>
+				<a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Todo">
+					To do				</a>
+			</li>
+			<li>
+				<a href="#">
+					Recently updated&nbsp;<img src="blank.gif" class="chevron" height="0" width="0">				</a>
+				<ul class="subnav">
+					<li>
+						<a href="http://vim.wikia.com/wiki/Use_glimpse_from_within_Vim">Use glimpse from within Vim</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Detect_window_creation">Detect window creation</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Indenting_source_code">Indenting source code</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line">Open a web-browser with the URL in the current line</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Easier_buffer_switching">Easier buffer switching</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Convert_between_hex_and_decimal">Convert between hex and decimal</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Changing_case_with_regular_expressions">Changing case with regular expressions</a>
+					</li>
+
+				</ul>
+			</li>
+			<li>
+				<a href="http://vim.wikia.com/wiki/Category:VimTip">
+					Popular tips&nbsp;<img src="blank.gif" class="chevron" height="0" width="0">				</a>
+				<ul class="subnav">
+					<li>
+						<a href="http://vim.wikia.com/wiki/Best_Vim_Tips">Best Vim Tips</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Search_and_replace">Search and replace</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/File_format">File format</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Indenting_source_code">Indenting source code</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Open_vimrc_file">Open vimrc file</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Change_the_color_scheme">Change the color scheme</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces">Converting tabs to spaces</a>
+					</li>
+
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<div class="buttons">
+		<a href="http://vim.wikia.com/wiki/Special:Random" title="Special:Random" accesskey="x" class="wikia-button secondary" data-id="randompage"><img src="blank.gif" class="sprite random" height="0" width="0">Random Page</a>		<a href="http://vim.wikia.com/wiki/Special:WikiActivity" title="Special:WikiActivity" accesskey="g" class="wikia-button secondary" data-id="wikiactivity"><img src="blank.gif" class="sprite activity" height="0" width="0">Wiki Activity</a>	</div>
+	<div style="position: absolute; top: -1000px;">
+		<a href="http://vim.wikia.com/wiki/Special:Watchlist" title="Special:Watchlist" accesskey="l">Watchlist</a>		<a href="http://vim.wikia.com/wiki/Special:RecentChanges" title="Special:RecentChanges" accesskey="r">Recent changes</a>	</div>
+	<img class="shadow-mask" src="blank.gif" height="0" width="0">
+</header>
+	<article id="WikiaMainContent" class="WikiaMainContent">
+		<header id="WikiaPageHeader" class="WikiaPageHeader">
+	
+	<ul class="commentslikes">
+	<li class="comments">
+		<span class="commentsbubble">0</span>
+		<a href="http://vim.wikia.com/wiki/Talk:Selecting_your_pasted_text" data-id="comment" title="Be the first to discuss this page" accesskey="t">Talk</a>
+	</li>
+	<li class="likes">
+		<fb:like class=" fb_edge_widget_with_comment fb_iframe_widget" layout="button_count" width="50" colorscheme="light" ref="content_page" href="http://vim.wikia.com/wiki/Selecting_your_pasted_text"><span><iframe src="index_2.html" class="fb_ltr" style="border: medium none; overflow: hidden; height: 21px; width: 90px;" name="fbd080d4fcb26c" id="fdebd57018f67" scrolling="no"></iframe></span></fb:like>
+	</li>
+</ul>
+
+	<h1>Selecting your pasted text</h1>
+
+			<a accesskey="e" href="http://vim.wikia.com/index.php?title=Selecting_your_pasted_text&amp;action=edit" class="wikia-button" data-id="edit"><img alt="" class="sprite edit-pencil" src="blank.gif" height="16" width="22"> Edit</a>
+	<h2>Redirected from <a href="http://vim.wikia.com/index.php?title=VimTip759&amp;redirect=no" title="VimTip759" rel="nofollow">VimTip759</a></h2>
+	<details>
+		<span class="categories">Read more: <a href="http://vim.wikia.com/wiki/Category:VimTip" title="Category:VimTip">VimTip</a></span>
+		<ul class="history">
+			<li>
+					<img src="20px-avatar.jpg" class="avatar" height="20" width="20">
+Edited <time class="timeago" pubdate="" datetime="2010-08-04T10:02:35Z"> </time> by <a href="http://vim.wikia.com/wiki/User:JohnBeckett">JohnBeckett</a>				<img src="blank.gif" class="chevron" height="0" width="0">
+			</li>
+			<li>
+	<img src="20px-avatar.jpg" class="avatar" height="20" width="20">
+	Edited <time class="timeago" datetime="2010-08-04T01:18:19Z"> </time> by <a href="http://vim.wikia.com/wiki/User:JohnBeckett">JohnBeckett</a></li>
+<li>
+	<img src="20px-avatar_001.jpg" class="avatar" height="20" width="20">
+	Edited <time class="timeago" datetime="2007-05-31T14:19:45Z"> </time> by <a href="http://vim.wikia.com/wiki/Special:Contributions/127.0.0.1">A Wikia contributor</a></li>
+<li class="view-all">
+				<a accesskey="h" href="http://vim.wikia.com/index.php?title=Selecting_your_pasted_text&amp;action=history">View full history</a>
+			</li>
+		</ul>
+	</details>
+</header>
+		<div id="WikiaArticle" class="WikiaArticle">
+			<div class="home-top-right-ads">
+						</div>
+
+
+			
+			
+					<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"><div><iframe src="index_3.html" class="FB_UI_Hidden" style="border: medium none; overflow: hidden;" name="f885dbd34420e8" id="f9570d0d60b12c" scrolling="no"></iframe></div></div></div>
+					
+<div><b><a href="http://vim.wikia.com/wiki/Selecting_your_pasted_text" class="text" title="http://vim.wikia.com/wiki/Selecting_your_pasted_text">Tip 759</a></b> <a href="http://vim.wikia.com/wiki/VimTip758" title="VimTip758" class="mw-redirect"><small>Previous</small></a> <a href="http://vim.wikia.com/wiki/VimTip760" title="VimTip760" class="mw-redirect"><small>Next</small></a>
+<p><b>created</b>&nbsp;2004 · <b>complexity</b>&nbsp;basic · <b>version</b>&nbsp;6.0
+</p>
+<hr>
+</div>
+<p>Here is an easy way to select the text you just pasted. For example, you may want to paste some text, then select it for <a href="http://vim.wikia.com/wiki/Shifting_blocks_visually" title="Shifting blocks visually">indenting</a>, or formatting, or performing a <a href="http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection" title="Search and replace in a visual selection">substitution</a>.
+</p><p>A simple procedure would be to press <tt>`[</tt> to jump to the start of the text you last changed. For example, you may use <tt>ciw</tt> to change inner word, or <tt>p</tt> to paste, then scroll elsewhere. Typing <tt>`[</tt> would jump to the start of the word you just changed, or to the start of the text you just pasted (see <a href="http://vim.wikia.com/wiki/Using_marks" title="Using marks">marks</a>).
+</p><p>To select the last changed text (or the text that was just pasted), use a mapping like this in your <a href="http://vim.wikia.com/wiki/Vimrc" title="Vimrc" class="mw-redirect">vimrc</a>:
+</p>
+<pre>nnoremap gp `[v`]
+</pre>
+<p>After pasting, type <tt>gp</tt> to select the pasted text in visual mode. This is similar to the standard <tt>gv</tt> which you can type to select the last visually-selected text.
+</p><p>Following is a more elaborate alternative:
+</p>
+<pre>nnoremap &lt;expr&gt; gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+</pre>
+<p>With this alternative, typing <tt>gp</tt> will select the last changed (or pasted) text, and the visual mode will be the same as was last used. For example, you may press <tt>v</tt> to start character-wise visual selection, then move the cursor and press <tt>y</tt> to yank (copy) the selected text. Elsewhere, you may press <tt>p</tt> to paste the text. In that case typing <tt>gp</tt> would select the pasted text character-wise.
+</p><p>Repeating this example, but using <tt>V</tt> would use line-wise visual selection (whole lines would be selected). Similarly, using Ctrl-V (or Ctrl-Q if you use Ctrl-V for pasting) would use block-wise visual selection.
+</p><p>The mapping uses "<tt>&lt;expr&gt;</tt>" which means that when you type <tt>gp</tt>, the mapping is evaluated as an expression, then the result is used. The dot operator (<tt>.</tt>) is used to concatenate three strings. The first string (without quotes) is <tt>`[</tt> and the third string is <tt>`]</tt>. The second string is the first character (<a class="external" rel="nofollow" ref="/index.php?title=Special:Outbound&amp;f=Selecting_your_pasted_text&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dstrpart%2528%2529" href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=strpart%28%29">:help&nbsp;strpart()</a>) of the result from calling <tt>getregtype()</tt> which is the "type" of the last register used in a normal mode command. The type is 'v', 'V', or Ctrl-V depending on whether the text in the register resulted, respectively, from a character, a line, or a block operation. (<a class="external" rel="nofollow" ref="/index.php?title=Special:Outbound&amp;f=Selecting_your_pasted_text&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dgetregtype%2528%2529" href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=getregtype%28%29">:help&nbsp;getregtype()</a>)
+</p><p>For example, if you type <tt>yiw</tt> to copy a word, the function <tt>getregtype()</tt> will return <tt>v</tt>, and the result of the mapping expression will be <tt>`[v`]</tt> (the same as the first mapping given above). However, if you type <tt>3Y</tt> to copy three lines, the result will be <tt>`[V`]</tt> (linewise).
+</p>
+<a rel="nofollow" name="References" id="References"></a><h2><span class="mw-headline">References</span><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Selecting_your_pasted_text&amp;action=edit&amp;section=1" title="Edit section: References" rel="nofollow">edit</a>]</span></h2>
+<ul><li><a class="external" rel="nofollow" ref="/index.php?title=Special:Outbound&amp;f=Selecting_your_pasted_text&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3D%253Amap-expression" href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Amap-expression">:help&nbsp;:map-expression</a>
+</li></ul>
+<a rel="nofollow" name="Comments" id="Comments"></a><h2><span class="mw-headline">Comments</span><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Selecting_your_pasted_text&amp;action=edit&amp;section=2" title="Edit section: Comments" rel="nofollow">edit</a>]</span></h2>
+<!-- 
+NewPP limit report
+Preprocessor node count: 105/1000000
+Post-expand include size: 943/2097152 bytes
+Template argument size: 110/2097152 bytes
+Expensive parser function count: 0/100
+--><!-- Saved in parser cache with key vim:pcache:idhash:3099-0!1!0!!en!2 and timestamp 20101212152932 -->	<nav class="RelatedPagesModule">
+		<h2>Read more</h2>
+		<ul>
+					<li>
+								<div class="articleSnippet"><p>Here are some pointers to the Vim documentation on syntax highlighting. I want *.foo files to be hig</p></div>
+								<a href="http://vim.wikia.com/wiki/Changing_the_default_syntax_highlighting" class="more">Changing the default syntax highlighting</a>
+			</li>
+					<li>
+								<div class="articleSnippet"><p>If you'd like to apply a substitute, or even any Ex command, to a text region you've selected using</p></div>
+								<a href="http://vim.wikia.com/wiki/Applying_substitutes_to_a_visual_block" class="more">Applying substitutes to a visual block</a>
+			</li>
+					<li>
+								<div class="articleSnippet"><p>It can be convenient to scroll down or up by one line, while not changing the cursor screen line. Yo</p></div>
+								<a href="http://vim.wikia.com/wiki/Combining_move_and_scroll" class="more">Combining move and scroll</a>
+			</li>
+				</ul>
+	</nav>
+<h2>External Sponsor Links</h2><div class="sponsormsg"><ul><li><a href="http://vim.wikia.com/wiki/Special:AdSS" rel="nofollow">Click here!</a>
+<p>Buy a sponsored link and description for your website on this page. Act quickly, the few sponsorship slots sell out fast!</p></li></ul></div><div class="printfooter">
+Retrieved from "<a href="http://vim.wikia.com/wiki/Selecting_your_pasted_text">http://vim.wikia.com/wiki/Selecting_your_pasted_text</a>"</div>
+
+		</div>
+
+		<nav id="WikiaArticleCategories" class="WikiaArticleCategories">
+	<h1>Related Categories</h1>
+	<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks"><a href="http://vim.wikia.com/wiki/Special:Categories" title="Special:Categories" rel="nofollow">Category</a>: <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:VimTip" title="Category:VimTip">VimTip</a></span></div> <div id="csAddCategorySwitch" class="noprint" style="background: none repeat scroll 0% 0% rgb(221, 221, 221); position: relative; float: left; border: 1px solid rgb(187, 187, 187); -moz-border-radius: 3px 3px 3px 3px; padding: 0pt 5px; line-height: 16px;"><img src="blank.gif" class="sprite-small add"><a href="#" onfocus="this.blur();" style="color: rgb(0, 0, 0); font-size: 0.85em; text-decoration: none; display: inline-block;" rel="nofollow">Add category</a></div></div></nav>
+		
+		<div id="WikiaArticleBottomAd" class="noprint">
+			<!-- BEGIN SLOTNAME: PREFOOTER_LEFT_BOXAD -->
+<div id="PREFOOTER_LEFT_BOXAD" class="wikia-ad noprint" style="display: none;"><div style="margin-left: auto;" id="Liftium_300x250_2_php"><iframe src="index_4.html" id="PREFOOTER_LEFT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div><!-- END SLOTNAME: PREFOOTER_LEFT_BOXAD -->
+			<!-- BEGIN SLOTNAME: PREFOOTER_RIGHT_BOXAD -->
+<div id="PREFOOTER_RIGHT_BOXAD" class="wikia-ad noprint" style="display: none;"><div style="margin-left: auto;" id="Liftium_300x250_3_php"><iframe src="index_6.html" id="PREFOOTER_RIGHT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div><!-- END SLOTNAME: PREFOOTER_RIGHT_BOXAD -->
+		</div>
+
+
+	</article><!-- WikiaMainContent -->
+
+<div id="WikiaRail" class="WikiaRail">
+
+	<form id="WikiaSearch" class="WikiaSearch" action="http://vim.wikia.com/wiki/index.php?title=Special:Search" method="get">
+	<input value="Search this wiki" class="placeholder" name="search" placeholder="Search this wiki" autocomplete="off" accesskey="f" type="text">
+	<input name="fulltext" value="0" type="hidden">
+	<input type="submit">
+	<button class="secondary"><img src="blank.gif" class="sprite search" height="17" width="21"></button>
+</form>
+<section class="WikiaPagesOnWikiModule module">
+	<h1>Pages on Vim Tips Wiki</h1>
+	<a href="http://vim.wikia.com/wiki/Special:CreatePage" title="Create a new page on this wiki" class="wikia-button createpage"><img src="blank.gif" class="sprite new" height="0" width="0">Create a Page</a>	<details class="tally">
+		<em>1,609</em><span class="fixedwidth">pages on this wiki</span>	</details>
+</section>
+<!-- BEGIN SLOTNAME: TOP_RIGHT_BOXAD -->
+<div id="TOP_RIGHT_BOXAD" class="wikia-ad noprint"><div style="margin-left: auto;" id="Liftium_300x250_4_php"><iframe src="index_7.html" id="TOP_RIGHT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div><!-- END SLOTNAME: TOP_RIGHT_BOXAD -->
+<section class="WikiaActivityModule module ">
+	<h1 class="activity-heading">Recent Wiki Activity</h1>
+	<ul>
+		<li>
+			<img src="blank.gif" class="sprite edit" height="20" width="20">
+			<em><a href="http://vim.wikia.com/wiki/User:Fritzophrenic">Fritzophrenic</a> edited <a href="http://vim.wikia.com/wiki/Using_parameterized_snippet_inserts">Using parameterized snippet inserts</a></em>
+			<details>2 days ago</details>
+		</li>
+		<li>
+			<img src="blank.gif" class="sprite edit" height="20" width="20">
+			<em><a href="http://vim.wikia.com/wiki/User:Fritzophrenic">Fritzophrenic</a> edited <a href="http://vim.wikia.com/wiki/Using_Vim_with_the_Dvorak_keyboard_layout">Using Vim with the Dvorak keyboard layout</a></em>
+			<details>2 days ago</details>
+		</li>
+		<li>
+			<img src="blank.gif" class="sprite edit" height="20" width="20">
+			<em><a href="http://vim.wikia.com/wiki/User:Fritzophrenic">Fritzophrenic</a> edited <a href="http://vim.wikia.com/wiki/Change_cursor_movement_keys_for_Dvorak_layout">Change cursor movement keys for Dvorak layout</a></em>
+			<details>2 days ago</details>
+		</li>
+		<li>
+			<img src="blank.gif" class="sprite edit" height="20" width="20">
+			<em><a href="http://vim.wikia.com/wiki/User:Fritzophrenic">Fritzophrenic</a> edited <a href="http://vim.wikia.com/wiki/Spelling_suggestions_anywhere,_even_in_console_mode">Spelling suggestions anywhere, even in console mode</a></em>
+			<details>2 days ago</details>
+		</li>
+	</ul>
+
+			<a href="http://vim.wikia.com/wiki/Special:WikiActivity" title="Special:WikiActivity" class="more">See more &gt;</a>	</section>
+<section class="LatestPhotosModule module">	
+	<h1>Latest Photos</h1>
+	<a href="http://vim.wikia.com/wiki/Special:Upload" title="Add a Photo" class="wikia-button upphotoslogin"><img src="blank.gif" class="sprite photo" height="0" width="0">Add a Photo</a>	<details class="tally counter">
+		<em>47</em><span class="fixedwidth">photos on this wiki</span>	</details>
+
+			<a href="#" class="previous"><img src="blank.gif" class="latest-images-left" height="0" width="0"></a>
+		<a href="#" class="next"><img src="blank.gif" class="latest-images-right" height="0" width="0"></a>
+	<div class="carousel-container">
+		<div>
+			<ul class="carousel">
+			<li class="thumbs first-image"><a class="image" ref="File:Install error.png " href="http://vim.wikia.com/wiki/File:Install_error.png">
+			<img class="thumbimage" src="82px-134@2c549@2c0@2c414-install_error.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Frznchckn" title="User:Frznchckn">Frznchckn</a><br>
+			November 22<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Script:3188" title="Script:3188" class="wikia-gallery-item-posted">Script:3188</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Gundo screenshot.png " href="http://vim.wikia.com/wiki/File:Gundo_screenshot.png">
+			<img class="thumbimage" src="82px-142@2c1141@2c0@2c998-gundo_screenshot.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Fritzophrenic" title="User:Fritzophrenic">Fritzophrenic</a><br>
+			October 20<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Using_undo_branches" title="Using undo branches" class="wikia-gallery-item-posted">Using undo branches</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Screen shot.png " href="http://vim.wikia.com/wiki/File:Screen_shot.png">
+			<img class="thumbimage" src="82px-427@2c853@2c0@2c425-screen_shot.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Vinhtiensinh" title="User:Vinhtiensinh">Vinhtiensinh</a><br>
+			October 6<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Script:3268" title="Script:3268" class="wikia-gallery-item-posted">Script:3268</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Biogoo 1.6.1 screenshot.png " href="http://vim.wikia.com/wiki/File:Biogoo_1.6.1_screenshot.png">
+			<img class="thumbimage" data-src="http://images3.wikia.nocookie.net/__cb31674/vim/images/thumb/2/2e/Biogoo_1.6.1_screenshot.png/82px-14%2C904%2C0%2C889-Biogoo_1.6.1_screenshot.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Bdesham" title="User:Bdesham">Bdesham</a><br>
+			August 16<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/File:Biogoo_1.6.1_screenshot.png" title="File:Biogoo 1.6.1 screenshot.png" class="wikia-gallery-item-posted">File:Biogoo 1.6.1 screenshot.png</a>,&nbsp;<a href="http://vim.wikia.com/wiki/File:Biogoo_1.6.1_screenshot.png#filelinks" class="wikia-gallery-item-more">more...</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:DelimitMate.png " href="http://vim.wikia.com/wiki/File:DelimitMate.png">
+			<img class="thumbimage" data-src="http://images2.wikia.nocookie.net/__cb31674/vim/images/thumb/d/d7/DelimitMate.png/82px-117%2C972%2C0%2C854-DelimitMate.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Rusmaslov" title="User:Rusmaslov">Rusmaslov</a><br>
+			June 24<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Script:2754" title="Script:2754" class="wikia-gallery-item-posted">Script:2754</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Ninja The Last Thing You See.jpg " href="http://vim.wikia.com/wiki/File:Ninja_The_Last_Thing_You_See.jpg">
+			<img class="thumbimage" data-src="http://images3.wikia.nocookie.net/__cb31674/vim/images/thumb/2/23/Ninja_The_Last_Thing_You_See.jpg/82px-172%2C856%2C0%2C683-Ninja_The_Last_Thing_You_See.jpg">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:GGShinobi" title="User:GGShinobi">GGShinobi</a><br>
+			May 17<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/User:GGShinobi" title="User:GGShinobi" class="wikia-gallery-item-posted">User:GGShinobi</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Undo tree.vim.png " href="http://vim.wikia.com/wiki/File:Undo_tree.vim.png">
+			<img class="thumbimage" data-src="http://images2.wikia.nocookie.net/__cb31674/vim/images/thumb/2/2e/Undo_tree.vim.png/82px-59%2C646%2C0%2C586-Undo_tree.vim.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Chrisbra" title="User:Chrisbra">Chrisbra</a><br>
+			May 11<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Using_undo_branches" title="Using undo branches" class="wikia-gallery-item-posted">Using undo branches</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Vimgdb screen.png " href="http://vim.wikia.com/wiki/File:Vimgdb_screen.png">
+			<img class="thumbimage" data-src="http://images1.wikia.nocookie.net/__cb31674/vim/images/thumb/8/88/Vimgdb_screen.png/82px-0%2C846%2C0%2C846-Vimgdb_screen.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Mseeralan" title="User:Mseeralan">Mseeralan</a><br>
+			April 3<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Script:3039" title="Script:3039" class="wikia-gallery-item-posted">Script:3039</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Lastpos.png " href="http://vim.wikia.com/wiki/File:Lastpos.png">
+			<img class="thumbimage" data-src="http://images1.wikia.nocookie.net/__cb31674/vim/images/thumb/8/86/Lastpos.png/82px-74%2C334%2C0%2C259-Lastpos.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Anwo" title="User:Anwo">Anwo</a><br>
+			March 28<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Last_position_jump_improved_for_Easy_Vim" title="Last position jump improved for Easy Vim" class="wikia-gallery-item-posted">Last position jump improved for Easy Vim</a>,&nbsp;<a href="http://vim.wikia.com/wiki/File:Lastpos.png#filelinks" class="wikia-gallery-item-more">more...</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Cec mathexample.jpg " href="http://vim.wikia.com/wiki/File:Cec_mathexample.jpg">
+			<img class="thumbimage" data-src="http://images3.wikia.nocookie.net/__cb31674/vim/images/thumb/b/b1/Cec_mathexample.jpg/82px-330%2C749%2C0%2C418-Cec_mathexample.jpg">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Cec" title="User:Cec">Cec</a><br>
+			March 23<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Script:2723" title="Script:2723" class="wikia-gallery-item-posted">Script:2723</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Gvcolors.jpg " href="http://vim.wikia.com/wiki/File:Gvcolors.jpg">
+			<img class="thumbimage" data-src="http://images2.wikia.nocookie.net/__cb31674/vim/images/thumb/a/a4/Gvcolors.jpg/82px-52%2C599%2C0%2C546-Gvcolors.jpg">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Cec" title="User:Cec">Cec</a><br>
+			March 23<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Script:877" title="Script:877" class="wikia-gallery-item-posted">Script:877</a>				</span>
+		</li>
+				<li class="see-all last-image">
+			<a href="http://vim.wikia.com/wiki/Special:NewFiles" title="Special:NewFiles">See all photos</a>			<img data-src="http://images.wikia.com/common/__cb31672/skins/oasis/images/empty_gallery.png">
+		</li>
+	
+			</ul>
+		</div>
+	</div>
+	<a href="http://vim.wikia.com/wiki/Special:NewFiles" title="Special:NewFiles" class="more">See more &gt;</a>
+
+</section>
+<section id="WikiaSpotlightsModule" class="module">
+	<header>
+		<h1>More from<img src="blank.gif" class="sprite logo" height="15" width="61"></h1>
+		<img src="blank.gif" class="banner-corner-left" height="0" width="0">
+		<img src="blank.gif" class="banner-corner-right chevron" height="0" width="0">
+	</header>
+	<ul id="SPOTLIGHT_RAIL" class="LazyLoadAd SPOTLIGHT_RAIL">
+						<li class="WikiaSpotlight item-1" id="SPOTLIGHT_RAIL_1"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1317__zoneid=17__cb=45c7aaa89b__oadest=http%3A%2F%2Femoticon.wikia.com%2Fwiki%2FEmoticon_wiki" class="highlight" target="_top"><img src="emoticon2.jpg" height="95" width="95"></a>
+<em>Emoticon Wiki</em>
+<p>Add your favorite emoticon and keep on smilin'! </p>
+<a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1317__zoneid=17__cb=45c7aaa89b__oadest=http%3A%2F%2Femoticon.wikia.com%2Fwiki%2FEmoticon_wiki" class="seemore" target="_top">See more...</a><div id="beacon_45c7aaa89b" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_003.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+				<li class="WikiaSpotlight item-2" id="SPOTLIGHT_RAIL_2"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1323__zoneid=18__cb=b5ac4e431c__oadest=http%3A%2F%2Fdepression.wikia.com%2Fwiki%2FDepression_Wiki" class="highlight" target="_top"><img src="depression.jpg" height="95" width="95"></a>
+<em>Depression Wiki</em>
+<p>The Depression Wiki offers tips on keeping away holiday stress. </p>
+<a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1323__zoneid=18__cb=b5ac4e431c__oadest=http%3A%2F%2Fdepression.wikia.com%2Fwiki%2FDepression_Wiki" class="seemore" target="_top">See more...</a><div id="beacon_b5ac4e431c" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_004.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+				<li class="WikiaSpotlight item-3" id="SPOTLIGHT_RAIL_3"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1320__zoneid=19__cb=b2984acdb2__oadest=http%3A%2F%2Ffamilyrecipes.wikia.com%2Fwiki%2FFamily_Recipes_Wiki" class="highlight" target="_top"><img src="familyrecipes.jpg" height="95" width="95"></a>
+<em>Family Recipes Wiki</em>
+<p>Start a new tradition at your next holiday get together - make a recipe from the Family Recipes Wiki. </p>
+<a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1320__zoneid=19__cb=b2984acdb2__oadest=http%3A%2F%2Ffamilyrecipes.wikia.com%2Fwiki%2FFamily_Recipes_Wiki" class="seemore" target="_top">See more...</a><div id="beacon_b2984acdb2" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_005.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+			</ul>
+	<a id="WikiaRandomWiki" href="http://community.wikia.com/wiki/Special:RandomWiki/2827" class="wikia-button">Random Wiki</a>
+</section>
+
+<!-- BEGIN SLOTNAME: LEFT_SKYSCRAPER_2 -->
+<div id="LEFT_SKYSCRAPER_2" class="wikia-ad noprint" style="display: none;"><div style="margin-left: auto;" id="Liftium_160x600_5_php"><iframe src="index_8.html" id="LEFT_SKYSCRAPER_2_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="600" scrolling="no" width="160"></iframe></div></div><!-- END SLOTNAME: LEFT_SKYSCRAPER_2 -->
+<!-- BEGIN SLOTNAME: LEFT_SKYSCRAPER_3 -->
+<div id="LEFT_SKYSCRAPER_3" class="wikia-ad noprint" style="display: none;"><div style="margin-left: auto;" id="Liftium_160x600_6_php"><iframe src="index_9.html" id="LEFT_SKYSCRAPER_3_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="600" scrolling="no" width="160"></iframe></div></div><!-- END SLOTNAME: LEFT_SKYSCRAPER_3 -->
+
+</div>
+
+	<footer id="WikiaFooter" class="WikiaFooter">
+
+	<div style="width: 982px;" class="toolbar float small">
+		 
+		<ul class="tools">
+
+			<li>
+				<a href="http://vim.wikia.com/index.php?title=Selecting_your_pasted_text&amp;action=watch"><img src="blank.gif" class="sprite follow" height="15" width="15"></a>
+				<a accesskey="w" href="http://vim.wikia.com/index.php?title=Selecting_your_pasted_text&amp;action=watch" id="ca-watch">Follow</a>
+			</li>
+			<li id="ca-share_feature">
+				<img src="blank.gif" class="sprite share" height="15" width="15">
+				<a href="#" id="control_share_feature">Share</a>
+			</li>
+
+		</ul>
+		<img src="blank.gif" class="banner-corner-left" height="0" width="0">
+		<img src="blank.gif" class="banner-corner-right" height="0" width="0">
+	</div>
+
+	<section>
+	<header>
+		<h1>Around Wikia's network</h1>
+		<a id="WikiaRandomWiki" href="http://community.wikia.com/wiki/Special:RandomWiki/2827" class="wikia-button">Random Wiki</a>
+	</header>
+	<ul id="SPOTLIGHT_FOOTER" class="LazyLoadAd SPOTLIGHT_FOOTER">
+						<li class="WikiaSpotlight item-1" id="SPOTLIGHT_FOOTER_1"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1300__zoneid=14__cb=4c39ca0b31__oadest=http%3A%2F%2Ffamilyrecipes.wikia.com%2Fwiki%2FFamily_Recipes_Wiki" target="_top"><img src="0ef1c94f94ada3cb552797be7fd75dba.jpg" alt="" title="" border="0" height="123" width="255"></a><div id="beacon_4c39ca0b31" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_006.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+				<li class="WikiaSpotlight item-2" id="SPOTLIGHT_FOOTER_2"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1258__zoneid=15__cb=27352d10a7__oadest=http%3A%2F%2Frecipes.wikia.com%2Fwiki%2FRecipes_Wiki" target="_top"><img src="1289e5f1d65774db934d1a2255d24f81.jpg" alt="" title="" border="0" height="123" width="255"></a><div id="beacon_27352d10a7" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_007.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+				<li class="WikiaSpotlight item-3" id="SPOTLIGHT_FOOTER_3"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1297__zoneid=16__cb=38a168d640__oadest=http%3A%2F%2Femoticon.wikia.com%2Fwiki%2FEmoticon_wiki" target="_top"><img src="4c96ba01d39f528592f4e62a8dbc5a6d.jpg" alt="" title="" border="0" height="123" width="255"></a><div id="beacon_38a168d640" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_008.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+			</ul>
+</section>
+	
+</footer>
+	<footer class="CorporateFooter">
+	<nav>
+		<h1>Wikia Inc Navigation</h1>
+		<div class="WikiaHubBranding">
+			<div class="wordmark">
+				<img src="blank.gif" class="sprite logo">
+			</div>
+						<div class="hub"><a href="http://www.wikia.com/Lifestyle">Lifestyle</a></div>
+					</div>
+		<ul>
+			<li>
+							<a href="http://www.wikia.com/About_Us"><span>About Us</span></a>
+						</li>
+				<li>
+							<a href="http://www.wikia.com/Hiring">Careers</a>
+						</li>
+				<li>
+							<a href="http://www.wikia.com/Advertising">Advertise</a>
+						</li>
+				<li>
+							<a href="http://vim.wikia.com/wiki/Special:Contact">Contact</a>
+						</li>
+				<li>
+							<a href="http://www.wikia.com/Terms_of_Use">Terms of Use</a>
+						</li>
+				<li>
+							<a href="http://www.wikia.com/Privacy_Policy">Privacy Policy</a>
+						</li>
+				<li>
+			<a href="http://community.wikia.com/wiki/Wikia:Licensing" title="w:Wikia:Licensing">CC-BY-SA</a>			</li>
+				<li>
+							<a href="http://www.wikia.com/Special:CreateWiki">Create a wiki</a>
+						</li>
+			</ul>
+	</nav>
+</footer>
+
+</section><!--WikiaPage-->
+
+<!-- comScore -->
+<!-- Start for Comscore, page_view -->
+
+<!-- Begin comScore Tag -->
+
+
+
+<!-- End comScore Tag -->
+
+<!-- googleAnalytics -->
+<!-- Start for GA_Urchin, page_view -->
+
+
+<!-- Start for GA_Urchin, onewiki -->
+<!-- No tracking for this wiki -->
+<!-- Start for GA_Urchin, pagetime -->
+
+<!-- Start for GA_Urchin, browser-height -->
+<!-- Unsupported event for AnalyticsProviderGA_Urchin -->
+<!-- Start for GA_Urchin, varnish-stat -->
+
+<!-- Start for GA_Urchin, noads -->
+
+<!-- Start for GA_Urchin, abtest -->
+
+
+
+
+
+	
+
+	<!-- Combined JS files (StaticChute) and head scripts -->
+	
+
+<!-- BEGIN SLOTNAME: INVISIBLE_1 -->
+
+
+<div id="Liftium_0x0_0"><!-- Liftium No ad --></div>
+<!-- END SLOTNAME: INVISIBLE_1 -->
+<!-- BEGIN SLOTNAME: INVISIBLE_2 -->
+<div id="Liftium_0x0_1"><!-- Liftium No ad --></div>
+<!-- END SLOTNAME: INVISIBLE_2 -->
+<!-- #### BEGIN AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- #### END AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+
+<!-- quantServe -->
+<!-- Start for QuantServe, page_view -->
+
+
+
+
+<!-- BottomScripts -->
+
+		
+<img src="__onedot" alt="" border="0" height="1" width="1">
+<!-- end Bottomscripts -->
+
+<!-- printable CSS -->
+		
+<!-- Served by ap-s24 in 0.419 secs. cpu: 0.270 -->
+<!-- Ad slots to be called within AdModule on this page: TOP_LEADERBOARD, TOP_RIGHT_BOXAD, TEST_TOP_RIGHT_BOXAD, INVISIBLE_1, INVISIBLE_2, LEFT_SKYSCRAPER_2, LEFT_SKYSCRAPER_3, PREFOOTER_LEFT_BOXAD, PREFOOTER_RIGHT_BOXAD, INVISIBLE_TOP -->
+<div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; opacity: 0.9;"></div></body>
+</html>

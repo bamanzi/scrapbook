@@ -1,0 +1,284 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>Emacs and Microsoft Windows Tips</title>
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+
+<div class="nav">▲ <a href="http://xahlee.org/emacs/emacs.html">Emacs Tutorial</a>.</div>
+
+<h1>Emacs and Microsoft Windows Tips</h1>
+<div class="amzo"><div role="button" tabindex="0" title="http://ws.amazon.com/widgets/q?ServiceVersion=20070822&amp;MarketPlace=US&amp;ID=V20070822%2FUS%2Fxahhome-20%2F8009%2F38563c63-d564-466b-b245-ef8a99b5a550&amp;Operation=GetDisplayTemplate" style="background: url(&quot;undefined&quot;) no-repeat scroll center center transparent ! important; min-width: 32px ! important; min-height: 32px ! important; width: 160px; height: 400px; border: 1px solid rgb(223, 223, 223); cursor: pointer; overflow: hidden; display: inline-block; visibility: visible ! important; -moz-box-sizing: border-box;" bgactive="url(chrome://flashblock/content/flashplay.png) no-repeat center" bginactive="url(chrome://flashblock/content/flash.png) no-repeat center"></div> </div>
+
+<div class="twt"><a href="http://twitter.com/share" class="twitter-share-button" data-count="none" data-via="xah_lee">Tweet</a></div><p>Xah Lee, 2009-06-10, ..., 2010-05-28</p>
+
+<p>This page provides some tips about using Emacs with Microsoft
+Windows OS. The info on this page is tested on Windows Vista, but
+should work in Windows XP and Windows 7.</p>
+
+<p>On Windows, i recommend
+<a href="http://ergoemacs.org/">ErgoEmacs</a>.
+It is a emacs distribution by me and 
+<a href="http://www.davidcapello.com.ar/">David Capello</a>.
+With ErgoEmacs, we try to make the Windows Emacs experience smooth.
+(this opinion is obviously biased).</p>
+
+<p>The following tips applies to those using plain GNU Emacs for Windows.</p>
+
+<p class="q">Where to download a ready-to-use emacs for Windows?</p>
+<div class="a">
+<p>See: <a href="http://xahlee.org/emacs/which_emacs.html">Which Emacs to Download for Windows and Mac?</a>.</p>
+</div>
+
+<p class="q">Where to get language modes for Visual Basic, Javascript, batch file, PowerShell?</p>
+<div class="a">
+
+<p>If your emacs distro does not have these modes, here's where to get them:</p>
+
+<ul>
+<li><a href="http://xahlee.org/visual_basic/emacs_visualbasic_mode.html">Emacs Visual Basic Mode</a></li>
+<li><a href="http://xahlee.org/powershell/emacs_powershell_mode.html">Emacs PowerShell Modes</a></li>
+<li>js2-mode by Steve Yegge. Features a complete JavaScript parser, with syntax validation on the fly. This package is suitable for working for files that are complete JavaScript. <a href="http://code.google.com/p/js2-mode/">http://code.google.com/p/js2-mode/</a>.</li>
+<li>espresso-mode. A more standard mode for JavaScript. <a href="http://www.nongnu.org/espresso/">nongnu.org espresso</a> (part of emacs 23.2; renamed to js-mode.)</li>
+</ul>
+
+<p>There are several packages for cmd.exe batch file, written by different people. You may want to try them in the order listed here:</p>
+
+<ul>
+<li><a class="sorc" href="http://www.emacswiki.org/emacs/dos.el" title="accessed:2010-05-28">emacswiki dos.el</a>, by Arni Magnusson. 2003-2010.</li>
+<li><a class="sorc" href="http://www.emacswiki.org/emacs/batch-mode.el" title="accessed:2010-05-28">emacswiki batch-mode.el</a>, by Agnar Renolen. 2002.</li>
+<li><a class="sorc" href="http://sourceforge.net/projects/dosbat/files/" title="accessed:2010-05-28">sourceforge.net dosbat</a>, by Glen Peterson. 2003.</li>
+<li><a class="sorc" href="http://ftp.gnu.org/old-gnu/emacs/windows/contrib/bat-mode.el" title="accessed:2010-05-28">ftp.gnu.org bat-mode.el</a>, by Peter Breton. 1996.</li>
+</ul>
+
+<p>See also: <a href="http://xahlee.org/emacs/emacs_installing_packages.html">How To Install Emacs Packages</a>.</p>
+
+</div>
+
+<p class="q">Where is emacs's init file? the “.emacs”?</p>
+<div class="a">
+<p>That depends on whether if you have the HOME environment variable setup. If not, look at:</p>
+
+<pre class="code">on Windows Vista and Windows 7
+C:\Users\xah\AppData\Roaming\
+
+on Windows XP
+C:\Users\xah\Application Data\
+</pre>
+
+<p>If you don't know how to set env var, see: <a href="http://xahlee.org/mswin/env_var.html">Windows Environment Variables</a>.
+</p></div>
+
+<p class="q">What's emacs's init file name?</p>
+<div class="a">
+<p>By default, it is 〔$HOME/.emacs〕 or 〔$HOME/.emacs.d/init.el〕.</p>
+</div>
+
+<p class="q">How to find out if my emacs's init is loaded?</p>
+<div class="a">
+<p>Type some garbage in your init file, then restart emacs. If emacs starts with error, then you know it's loaded.</p>
+
+<p>Or, you can put the following code:</p>
+<pre class="elisp"><span class="comment-delimiter">; </span><span class="comment">change background color to light yellow
+</span>(set-background-color <span class="string">"cornsilk"</span>)
+</pre>
+</div>
+
+<p class="q">When i type 【<kbd>Ctrl</kbd>+<kbd>SPACE</kbd>】, Windows switches me to other language input. What to do?</p>
+<div class="a">
+<p>You can disable the Windows shortcut that switches you among input methods of different languages.
+Here's the exact instruction for Windows Vista. Other Windows version should be similiar.</p>
+
+<p>
+Go to “Start▸Control Panel”. Choose Classic View on the left. Then, double click on the “Regional and Language Options” icon, then go to “Keyboards and Languages” tab, click on “Change Keyboards...”. Then, go to “Advanced Key Settings” tab, then, it should list Key sequences on the right column. Select a input choice that has shortcut key, then click the button “Change Key Sequence”.
+</p>
+</div>
+
+<p class="q">When i type 【<kbd>Ctrl</kbd>+<kbd>Alt</kbd>+<kbd>s</kbd>】, HP System info came up. How to disable that?</p>
+<div class="a">
+<p>See: <a href="http://xahlee.org/mswin/disable_hp_support_info_key.html">Disable Ctrl+Alt+S of HP Support Information</a>.</p>
+
+<p>If you have other key combo that mysteriously launchs some other program, basically, you want to find out the shortcut file that launches it, then open the shortcut file, press 【<kbd>Alt</kbd>+<kbd>Enter</kbd>】 to open its Properties, then in Shortcut tab, change the shoctuct key field there.</p>
+</div>
+
+<p class="q">How to run bash shell or PowerShell inside emacs?</p>
+<div class="a">
+<p>By default, the command named “shell” will run the interface to “cmd.exe”.</p>
+
+<p><a href="http://ergoemacs.org/">ErgoEmacs</a> has several shells bundled. You can find them in the menu “Tools▸Shell”. You can also call them by name.</p>
+
+<table class="nrm">
+<tbody><tr><th>Emacs Command Name</th><th>Purpose</th></tr>
+<tr><td>shell</td><td>Run Windows cmd.exe</td></tr>
+<tr><td>powershell</td><td>Run PowerShell</td></tr>
+<tr><td>msys-shell</td><td>Run Bash (from MSYS)</td></tr>
+<tr><td>cmd-shell</td><td>Run Windows's cmd.exe shell</td></tr>
+<tr><td>eshell</td><td>Run a bash-like shell written in emacs lisp</td></tr>
+</tbody></table>
+
+<p>See also: <a href="http://xahlee.org/powershell/index.html">PowerShell Tutorial</a>.</p>
+
+</div>
+
+<p class="q">FTP in GNU Emacs for Windows does not seem work?</p>
+<div class="a">
+<p>If you are using <a href="http://ergoemacs.org/">ErgoEmacs</a> or Lennart's EmacsW32, it should work out of the box.</p>
+
+<p>GNU Emacs for Windows's ftp facilities are broken out of the
+box. The problem is due to some incompatibility of emacs ftp interface with
+Windows's bundled FTP program at 〔C:/Windows/system32/ftp.exe〕.</p>
+
+<p>To find out what ftp program emacs is trying to interface, put this code:
+「(executable-find "ftp")」 in a empty buffer, select it, type 【<kbd>Alt</kbd>+<kbd>x</kbd> eval-region】.</p>
+</div>
+
+<h2>Environment Variables</h2>
+
+<p>When emacs launches, it inherits Windows's env vars. So, you can
+  set your Windows's env var and emacs will have it.</p>
+
+<p>If you don't know how to set env var, see: <a href="http://xahlee.org/mswin/env_var.html">Windows Environment Variables</a>.
+For how to do it with PowerShell, see:
+<a href="http://xahlee.org/powershell/environment_variables.html">Using PowerShell to Manage Environment Variables</a>.</p>
+
+<p>Two env var important to emacs are HOME and PATH.</p>
+
+<h3>Setting Your Home Dir</h3>
+
+<p>Normally, you should set a HOME env var. Here's how you do it in cmd.exe:</p>
+
+<pre class="cmd"><span class="comment">REM example of setting HOME env var</span>
+setx HOME <span class="string">"C:\Users\mary"</span>
+</pre>
+
+<p>Note: case does not matter in env var names, nor cmd.exe's command names.</p>
+
+<p>Once you have HOME env var set, emacs will save its customization file “.emacs” at your home dir.</p>
+
+<p>If you do not have a env var named HOME, then emacs may save the “.emacs” file at 〔C:\Users\mary\AppData\Roaming\〕.</p>
+
+<p>If you are using cygwin, and emacs within cygwin, then the init file will be at 〔~/〕.</p>
+
+<h3>Setting Environment Variable Within Emacs</h3>
+
+<p>You can also set environment variables within emacs without actually setting them in the OS. To do so, use this sample code:</p>
+
+<pre class="elisp"><span class="comment-delimiter">; </span><span class="comment">show env var named path
+</span>(getenv <span class="string">"PATH"</span>)
+
+<span class="comment-delimiter">; </span><span class="comment">example of setting env var named “path”
+</span><span class="comment-delimiter">; </span><span class="comment">by appending a new path to existing path
+</span>(setenv <span class="string">"PATH"</span>
+  (concat
+   <span class="string">"C:\\cygwin\\usr\\local\\bin"</span> <span class="string">";"</span>
+   <span class="string">"C:\\cygwin\\usr\\bin"</span> <span class="string">";"</span>
+   <span class="string">"C:\\cygwin\\bin"</span> <span class="string">";"</span>
+   (getenv <span class="string">"PATH"</span>)
+  )
+)
+</pre>
+
+<p>In some situations, it's better to set some env var inside emacs
+for emacs only.  This way, you are free to have a different env var
+value in your cmd.exe or cygwin shell, independent of emacs.</p>
+
+<h3>exec-path</h3>
+
+<p>Emacs has a variable named “exec-path”. Its value is a list of dir
+paths. Emacs uses “exec-path” to find executable binary programs.  For
+example, when spell checking, emacs will try to find ispell or aspell
+in exec-path. When you press 【<kbd>Z</kbd>】 to compress file in dired, emacs will
+try to find gzip or gunzip in exec-path. When you type
+【<kbd>Alt</kbd>+<kbd>x</kbd> diff】 or 【<kbd>Alt</kbd>+<kbd>x</kbd>
+grep】or 【<kbd>Alt</kbd>+<kbd>x</kbd> shell】, emacs
+will try to find the program in exec-path too.</p>
+
+<p>If emacs complains that it cannot find ispell or ftp or gzip etc, the problem is probably with your exec-path.</p>
+
+<p>Emac's “exec-path” variable and and the value of the  env var “PATH” in emacs, have slightly
+different purposes. 
+
+When you are running a shell in emacs, emacs uses
+the env var PATH to find programs, similar to when you are using a
+shell in a terminal. The exec-path is used by emacs itself to find
+programs it needs for its features, such as spell checking, file
+compression, compiling, grep, diff, etc.</p>
+
+<p>By default, emacs inherits the PATH env var from the OS, and copies
+its value to emacs variable exec-path too. So that, the output of
+「(getenv "PATH")」 and the value of “exec-path” variable, are
+equivalent.</p>
+
+<p>But if you did set the PATH env var within emacs (e.g. by 「(setenv "PATH" ...)」), you probably also want to adjust your exec-path. Here's a example of setting exec-path:</p>
+
+<pre class="elisp">(<span class="keyword">when</span> (string-equal system-type <span class="string">"windows-nt"</span>)
+  (setq exec-path
+'(
+<span class="string">"C:/Program Files (x86)/Emacs/emacs/bin/"</span>
+<span class="string">"C:/Program Files (x86)/Emacs/EmacsW32/gnuwin32/bin/"</span>
+<span class="string">"C:/Windows/system32/"</span>
+<span class="string">"C:/Windows/"</span>
+<span class="string">"C:/Windows/System32/Wbem/"</span>
+<span class="string">"C:/Windows/system32/WindowsPowerShell/v1.0/"</span>
+)
+ ))
+</pre>
+
+<p>For detail about env var and exec-path, see: <a href="http://xahlee.org/emacs/emacs_env_var_paths.html">Difference between Emacs's 「(setenv PATH ...)」 and 「(setq exec-path ...)」</a>.</p>
+
+<h2>Using Cygwin</h2>
+
+<p>Some of emacs's features require unix utilities. For example, spell
+checking requires “aspell”, image thumbnail preview requires
+<a href="http://xahlee.org/img/imagemagic.html">ImageMagick</a>, checking difference between files require “diff”,
+listing files with particular suffix requires unix “find” (used by
+find-dired).</p>
+
+<p><a href="http://ergoemacs.org/">ErgoEmacs</a> has the complete set of unix utility bundled. They are in the dir
+〔C:\Program Files (x86)\ErgoEmacs\msys\bin〕.</p>
+
+<p>If you came from a unix background, and is not using ErgoEmacs, you may want to install unix shell and utilities such as “diff”, “find”, “grep” etc. There are 2 good solutions: <a href="http://en.wikipedia.org/wiki/Cygwin">Cygwin</a> and
+<a href="http://en.wikipedia.org/wiki/MinGW">MinGW</a>.</p>
+
+<p>
+Cygwin is a complete unix solution. After installing Cygwin core, 
+you'll have bash and
+<a href="http://xahlee.org/UnixResource_dir/unix_shell_text_processing.html">grep, cat, awk, sort, uniq</a> etc.
+You can also install any extra unix packages, for example: <a href="http://xahlee.org/emacs/emergency_vi.html">vi</a>, <a href="http://xahlee.org/UnixResource_dir/svn.html">svn</a>, <a href="http://xahlee.org/UnixResource_dir/unix_tips.html">rsync, unison, wget, curl</a>,
+git, gcc, X11, or entire KDE or Gnome.</p>
+
+<p>MinGW is a minimal system derived from Cygwin. It is designed for
+compiling unix software on Windows. It includes the suite
+of shell utils, and gcc environment.</p>
+
+<p>See also: <a href="http://xahlee.org/mswin/installing_cygwin.html">Installing Cygwin Tutorial</a>.</p>
+
+
+<div class="amz728x90"><iframe src="index_1.html" marginwidth="0" marginheight="0" border="0" style="border: medium none;" frameborder="0" height="90" scrolling="no" width="728"></iframe></div>
+
+<div class="rltd">
+<ul>
+<li><a href="http://xahlee.org/emacs/find_replace_inter.html">Interactively Find and Replace String Patterns on Multiple Files</a></li>
+<li><a href="http://xahlee.org/emacs/rename_file_pattern.html">Emacs: Rename Files Interactively by Pattern (regex; wdired)</a></li>
+<li><a href="http://xahlee.org/emacs/file_management.html">File Management with Emacs (dired tutorial)</a></li>
+</ul>
+</div>
+
+<div class="dnt0c7af">Was this page useful? If so, please do donate $3, thank you <a href="http://xahlee.org/thanks.html">donors!</a><form action="https://www.paypal.com/cgi-bin/webscr" method="post"><div><input name="cmd" value="_s-xclick" type="hidden"><input name="hosted_button_id" value="8127788" type="hidden"><input src="btn_donatecc_lg.gif" name="submit" type="image"><img alt="" src="pixel.gif" height="1" width="1"></div></form></div>
+
+<div id="disqus_thread"><div style="display: none;" id="dsq-content-stub"><img alt="DISQUS" src="data:image/png;base64,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" height="17" width="71"><img alt="..." src="data:image/gif;base64,R0lGODlhEAALAPQAAP///z2LqeLt8dvp7u7090GNqz2LqV+fuJ/F1IW2ycrf51aatHWswaXJ14i4ys3h6FmctUCMqniuw+vz9eHs8fb5+meku+Tu8vT4+cfd5bbT3tbm7PH2+AAAAAAAAAAAACH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCwAAACwAAAAAEAALAAAFLSAgjmRpnqSgCuLKAq5AEIM4zDVw03ve27ifDgfkEYe04kDIDC5zrtYKRa2WQgAh+QQJCwAAACwAAAAAEAALAAAFJGBhGAVgnqhpHIeRvsDawqns0qeN5+y967tYLyicBYE7EYkYAgAh+QQJCwAAACwAAAAAEAALAAAFNiAgjothLOOIJAkiGgxjpGKiKMkbz7SN6zIawJcDwIK9W/HISxGBzdHTuBNOmcJVCyoUlk7CEAAh+QQJCwAAACwAAAAAEAALAAAFNSAgjqQIRRFUAo3jNGIkSdHqPI8Tz3V55zuaDacDyIQ+YrBH+hWPzJFzOQQaeavWi7oqnVIhACH5BAkLAAAALAAAAAAQAAsAAAUyICCOZGme1rJY5kRRk7hI0mJSVUXJtF3iOl7tltsBZsNfUegjAY3I5sgFY55KqdX1GgIAIfkECQsAAAAsAAAAABAACwAABTcgII5kaZ4kcV2EqLJipmnZhWGXaOOitm2aXQ4g7P2Ct2ER4AMul00kj5g0Al8tADY2y6C+4FIIACH5BAkLAAAALAAAAAAQAAsAAAUvICCOZGme5ERRk6iy7qpyHCVStA3gNa/7txxwlwv2isSacYUc+l4tADQGQ1mvpBAAIfkECQsAAAAsAAAAABAACwAABS8gII5kaZ7kRFGTqLLuqnIcJVK0DeA1r/u3HHCXC/aKxJpxhRz6Xi0ANAZDWa+kEAA7AAAAAAAAAAAA" style="margin: 0pt 0pt 3px 5px;" height="11" width="16"></div><div class="clearfix" style="display: block;" id="dsq-content">    <div id="dsq-global-toolbar" class="dsq-community-preview">    <table class="dsq-global-toolbar-container">      <tbody><tr>        <td class="dsq-global-toolbar-likes">                    <div class="dsq-group">            <a href="http://xahlee.org/emacs/thread.vote" id="dsq-like-thread-button" class="dsq-thread-like toolbar-item  dsq-tt" title="I like this page">Like</a>            <a href="http://xahlee.org/emacs/thread.vote" id="dsq-dislike-thread-button" class="dsq-thread-dislike toolbar-item  dsq-tt" title="I don't like this page">Dislike</a>          </div>          <ul class="dsq-like-faces">                  <li class="dsq-like-activity">    </li>          </ul>                  </td>        <td>                        <a href="http://xahlee.org/emacs/community.show" class="dsq-community-launcher toolbar-item dsq-tt" title="Expand Community Box"> Community</a>                    </td>                <td class="dsq-global-toolbar-dropdown-container">              <div id="dsq-toolbar-dropdown">    <a href="#" onclick="return false" class="dsq-toolbar-logo toolbar-item">Disqus</a>    <div id="dsq-toolbar-dropdown-wrap" style="display: none;">      <ul>                    <li><h4>Login options</h4></li>              <ul class="dsq-login-buttons">                            <li class="dsq-login-button dsq-login-button-disqus">            <a href="http://xahlee.org/emacs/auth.disqus"></a>          </li>                                                              <li style="clear: both;"></li>  </ul>                    <li><a href="http://disqus.com/" target="_top">About Disqus</a></li>      </ul>    </div>  </div>        </td>      </tr>    </tbody></table>  </div>  <div id="dsq-like-tooltip" style="display: none; width: 375px;">    <div id="dsq-share-step-1" class="dsq-share-step">      <h3>Glad you liked it. Would you like to share?</h3>      <p class="dsq-tooltip-checkbox"><input id="dsq-share-thread-facebook" value="Facebook" type="checkbox"><label for="dsq-share-thread-facebook"><span class="dsq-facebook">Facebook</span></label></p>      <p class="dsq-tooltip-checkbox"><input id="dsq-share-thread-twitter" value="Twitter" type="checkbox"><label for="dsq-share-thread-twitter"><span class="dsq-twitter">Twitter</span></label></p>      <ul id="dsq-tooltip-actions">        <li><a href="http://xahlee.org/emacs/thread.share" class="dsq-primary-action">Share</a></li>        <li><a href="http://xahlee.org/emacs/thread.share.cancel" class="dsq-secondary-action">No thanks</a></li>      </ul>    </div>    <div id="dsq-share-step-2" class="dsq-share-step" style="display: none;">      <p><img src="dsq-loader-dark.gif" style="vertical-align: middle; margin: 0pt 15px 0pt 0pt;">Sharing this page ...</p>    </div>    <div id="dsq-share-step-3" class="dsq-share-step" style="display: none;">      <p>Thanks! <a href="http://xahlee.org/emacs/thread.share.cancel" class="dsq-tooltip-decline">Close</a></p>    </div>  </div>                        <div id="dsq-new-post" class="dsq-post-area dsq-unauthenticated">          <h3>Add New Comment</h3>      <div style="clear: both;"></div>              <div id="dsq-form-area">      <div class="dsq-textarea">        <div class="dsq-textarea-wrapper" id="dsq-textarea-wrapper"><iframe style="height: 108px;" src="index_2.html" id="easyXDM_default4700_provider" name="easyXDM_default4700_provider" frameborder="0" scrolling="no"></iframe></div>      </div>            <div class="dsq-post-footer">                            <button type="button" class="dsq-button" id="dsq-post-button" onclick="DISQUS.dtpl.actions.fire('comments.validate', null);">            <span>              Post as …            </span>          </button>                      </div>      <div style="clear: both;"></div>    </div>  </div>              <div id="dsq-comments-title">    <h3>              Showing <span id="dsq-num-posts">0</span> comments          </h3>  </div>  <div class="dsq-options">      <span class="dsq-item-sort">    Sort by    <select id="dsq-sort-select" onchange="DISQUS.dtpl.actions.fire('thread.sort', this.value);">            <option value="hot" selected="selected">Popular now</option>            <option value="best">Best rating</option>            <option value="newest">Newest first</option>            <option value="oldest">Oldest first</option>          </select>  </span>      <span class="dsq-subscribe-email">    <img src="email.png" alt="">&nbsp;    <span id="dsq-subscribe">            <a href="http://xahlee.org/emacs/thread.subscribe">Subscribe by email</a>          </span>    <span class="dsq-subscribe-rss">      <img src="bullet-feed.png" alt="">&nbsp;      <a href="http://xahlee.disqus.com/emacs_and_microsoft_windows_tips/latest.rss">Subscribe by RSS</a>    </span>  </span>  </div>                  <ul id="dsq-comments">      </ul>          <div id="dsq-pagination" class="dsq-pagination">    </div>          </div><div>  </div></div><a href="http://disqus.com/" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+<div class="ftr"><div class="sig"></div><div class="x10"><a href="http://xahlee.org/">Home</a></div><div class="x20"><a href="http://xahlee.org/terms.html">Terms of Use</a></div><div class="x30"><a href="http://xahlee.org/about.html">About</a></div><div class="x40"><a href="http://xahlee.org/ads.html">Advertise</a></div><div class="x50"><a href="http://xahlee.org/subscribe.html">Subscribe</a></div><div class="x60"><form method="get" action="http://www.google.com/custom"><div><a href="http://www.google.com/"><img src="small-logo.png" alt="Google"></a><input name="domains" value="xahlee.org" type="hidden"><input name="q" size="31" maxlength="255" value="Search XahLee.org here" onclick="javascript:select();" type="text"><input name="sa" value="Search" type="submit"><input name="sitesearch" value="xahlee.org" type="hidden"><input name="forid" value="1" type="hidden"><input name="ie" value="UTF-8" type="hidden"><input name="oe" value="UTF-8" type="hidden"><input name="cof" value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;FORID:1;" type="hidden"><input name="hl" value="en" type="hidden"></div></form></div></div>
+
+
+<div class="dstp">2006-07</div>
+<div class="cpr">© 2006 by Xah Lee.</div>
+
+
+<div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; opacity: 0.9;"></div><iframe src="index_3.html" style="display: none;"></iframe></body>
+</html>

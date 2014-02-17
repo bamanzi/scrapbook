@@ -1,0 +1,1096 @@
+<!DOCTYPE HTML>
+<html lang="en" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	
+	<meta name="viewport" content="width=1200">
+	<meta name="description" content="Vim recognizes three file formats (unix, dos, mac) that determine what line ending characters (line terminators) are removed from each line when a file is read, or are added to each line when a file is written. A file format problem can display ^M characters, or can prevent scripts from running correctly. This tip explains how to avoid problems, and how to convert from one file format to another. Use of the 'fileformat' and 'fileformats' options is also explained. See below if all you want to know is how to remove ^M characters, or how to fix the line endings in the file you are working on.">
+		<meta name="generator" content="MediaWiki 1.15.5">
+		<meta name="keywords" content="Vim Tips Wiki,vim,File format,Automatically reload files with mixed line-endings in DOS fileformat,VimTip1584,VimTip1586,VimTip736,Vimrc,New tips/200802">
+		<link rel="canonical" href="http://vim.wikia.com/wiki/File_format">
+		<link rel="alternate" type="application/x-wiki" title="Edit" href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit">
+		<link rel="edit" title="Edit" href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit">
+		<link rel="apple-touch-icon" href="http://images.wikia.com/vim/images/b/bc/Wiki.png">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="search" type="application/opensearchdescription+xml" href="http://vim.wikia.com/opensearch_desc.php" title="Vim Tips Wiki (en)">
+		<link rel="copyright" href="http://community.wikia.com/wiki/Wikia:Licensing">
+		<link rel="alternate" type="application/rss+xml" title="Vim Tips Wiki RSS feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=rss">
+		<link rel="alternate" type="application/atom+xml" title="Vim Tips Wiki Atom feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=atom">
+
+	<title>File format - Vim Tips Wiki</title>
+	<!-- SASS-generated CSS file -->
+	
+	
+	<!-- CSS injected by extensions -->
+		
+<!-- GetSiteCSS -->	
+	
+
+	<!-- Small Header A/B Test -->
+	
+
+	<!-- Make IE recognize HTML5 tags. -->
+	<!--[if IE]>
+		<script>/*@cc_on'abbr article aside audio canvas details figcaption figure footer header hgroup mark menu meter nav output progress section summary time video'.replace(/\w+/g,function(n){document.createElement(n)})@*/</script>
+	<![endif]-->
+
+	<!-- Used for page load time tracking -->
+	
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr ns-0 ns-subject page-File_format TOCimprovements skin-oasis">
+<h1>Wikia</h1>
+<div class="skiplinkcontainer">
+<a class="skiplink" rel="nofollow" href="#WikiaArticle">Skip to Content</a>
+<a class="skiplink wikinav" rel="nofollow" href="#WikiHeader">Skip to Wiki Navigation</a>
+<a class="skiplink sitenav" rel="nofollow" href="#GlobalNavigation">Skip to Site Navigation</a>
+</div>
+<form action="http://vim.wikia.com/wiki/VimTip1585" method="post" name="userajaxloginform" id="userajaxloginformhide" style="display: none;">
+			<input value="" name="wpName" id="wpName1Ajax" tabindex="101" size="20" type="text">
+			<input name="wpPassword" id="wpPassword1Ajax" tabindex="102" size="20" type="password">
+			<input name="wpRemember" id="wpRemember1Ajax" tabindex="104" value="1" type="checkbox">
+		</form>
+
+<!-- BEGIN SLOTNAME: INVISIBLE_TOP -->
+<!-- Null Ad. Reason: Slot is disabled, slotname=INVISIBLE_TOP --><!-- END SLOTNAME: INVISIBLE_TOP -->
+<header id="WikiaHeader" class="WikiaHeader">
+	<nav>
+		<h1>Wikia Navigation</h1>
+		<ul>
+			<li class="WikiaLogo">
+				<a href="http://www.wikia.com/go/" rel="nofollow"><img src="blank.gif" class="sprite logo" alt="Wikia" height="23" width="91"></a>
+			</li>
+			<li>
+				<a href="http://www.wikia.com/Special:CreateWiki" class="wikia-button">Start a wiki</a>
+			</li>
+			<li>
+				<ul id="GlobalNavigation" class="GlobalNavigation">
+					<li>
+						<a href="http://www.wikia.com/Entertainment">Entertainment <img src="blank.gif" class="chevron" height="0" width="0"></a>
+						<ul class="subnav">
+							<li id="SPOTLIGHT_GLOBALNAV_1" class="SPOTLIGHT_GLOBALNAV"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=491__zoneid=20__cb=ed7dabadf9__oadest=http%3A%2F%2Fharrypotter.wikia.com%2Fwiki%2FWizarding_World_Giveaway" target="_top"><img src="4b0f5464881b22032fe4123590a6b88c.jpg" alt="" title="" border="0" height="123" width="255"></a><div id="beacon_ed7dabadf9" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+							<li>
+								<a href="http://www.wikia.com/TV">What's on TV</a>
+								<ul class="catnav">
+									<li><a href="http://bones.wikia.com/wiki/Bones_Wiki">Bones</a></li>
+									<li><a href="http://madmen.wikia.com/wiki/Mad_Men_Wiki">Mad Men</a></li>
+									<li><a href="http://ncis.wikia.com/wiki/NCIS_Database">NCIS</a></li>
+									<li><a href="http://boardwalkempire.wikia.com/wiki/Boardwalk_Empire_Wiki">Boardwalk Empire</a></li>
+									<li><a href="http://www.wikia.com/TV">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/Movie">Movies</a>
+								<ul class="catnav">
+									<li><a href="http://tron.wikia.com/wiki/Tron_Wiki">TRON: Legacy</a></li>
+									<li><a href="http://harrypotter.wikia.com/wiki/Main_Page">Harry Potter</a></li>
+									<li><a href="http://narnia.wikia.com/wiki/The_Chronicles_of_Narnia_Wiki">Narnia</a></li>
+									<li><a href="http://smurfs.wikia.com/wiki/Smurfs_Wiki">The Smurfs Movie</a></li>
+									<li><a href="http://www.wikia.com/Movie">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/Anime">Anime</a>
+								<ul class="catnav">
+									<li><a href="http://dragonball.wikia.com/wiki/Main_Page">Dragon Ball Wiki</a></li>
+									<li><a href="http://bleach.wikia.com/wiki/Main_Page">Bleach Wiki</a></li>
+									<li><a href="http://naruto.wikia.com/wiki/Narutopedia">Narutopedia</a></li>
+									<li><a href="http://winx.wikia.com/wiki/Winx_Club_Wiki">Winx Club Wiki</a></li>
+									<li><a href="http://www.wikia.com/Anime">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://entertainment.wikia.com/wiki/">Staff Picks</a>
+								<ul class="catnav">
+									<li><a href="http://residentevil.wikia.com/Resident_Evil_Wiki">Resident Evil Wiki</a></li>
+									<li><a href="http://www.millenniumtrilogy.wikia.com/wiki/Millenium_Trilogy_Wiki">Millennium Trilogy</a></li>
+									<li><a href="http://truegrit.wikia.com/wiki/True_Grit_Wiki">True Grit</a></li>
+									<li><a href="http://sonsofanarchy.wikia.com/wiki/Sons_of_Anarchy">Sons of Anarchy</a></li>
+									<li><a href="http://www.wikia.com/Entertainment">More...</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="http://www.wikia.com/Gaming">Gaming <img src="blank.gif" class="chevron" height="0" width="0"></a>
+						<ul class="subnav">
+							<li id="SPOTLIGHT_GLOBALNAV_2" class="SPOTLIGHT_GLOBALNAV"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=492__zoneid=21__cb=deaf1d40e2__oadest=http%3A%2F%2Fassassinscreed.wikia.com%2Fwiki%2FAssassin%2527s_Creed_Wiki" target="_top"><img src="c4ed90308921f1e9077c7e3e21336b59.jpg" alt="" title="" border="0" height="123" width="255"></a><div id="beacon_deaf1d40e2" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_001.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+							<li>
+								<a href="http://www.wikia.com/Xbox_360_Games">Xbox 360 Games</a>
+								<ul class="catnav">
+									<li><a href="http://halo.wikia.com/wiki/Main_Page">Halo: Reach</a></li>
+									<li><a href="http://fable.wikia.com/wiki/Main_Page">Fable 3</a></li>
+									<li><a href="http://dragonage.wikia.com/wiki/Dragon_Age_Wiki">Dragon Age 2</a></li>
+									<li><a href="http://callofduty.wikia.com/wiki/Call_of_Duty_Wiki">CoD: Black Ops</a></li>
+									<li><a href="http://www.wikia.com/Xbox_360_Games">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/PS3_Games">PS3 Games</a>
+								<ul class="catnav">
+									<li><a href="http://fallout.wikia.com/wiki/Fallout_Wiki">Fallout: New Vegas</a></li>
+									<li><a href="http://reddead.wikia.com/wiki/Red_Dead_Wiki">Red Dead Redemption</a></li>
+									<li><a href="http://masseffect.wikia.com/wiki/Mass_Effect_Wiki">Mass Effect 3</a></li>
+									<li><a href="http://assassinscreed.wikia.com/wiki/Assassin%27s_Creed_Wiki">AC: Brotherhood</a></li>
+									<li><a href="http://www.wikia.com/PS3_Games">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/PC_Games">PC Games</a>
+								<ul class="catnav">
+									<li><a href="http://diablo.wikia.com/wiki/Diablo_Wiki">Diablo 3</a></li>
+									<li><a href="http://swtor.wikia.com/wiki/Star_Wars%3A_The_Old_Republic_Wiki">SW: The Old Republic</a></li>
+									<li><a href="http://runescape.wikia.com/wiki/RuneScape_Wiki">RuneScape</a></li>
+									<li><a href="http://www.wowwiki.com/Portal%3AMain">WoW: Cataclysm</a></li>
+									<li><a href="http://www.wikia.com/PC_Games">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/Wii_games">Wii Games</a>
+								<ul class="catnav">
+									<li><a href="http://zelda.wikia.com/wiki/Zeldapedia">Zelda: Skyward Sword</a></li>
+									<li><a href="http://donkeykong.wikia.com/wiki/Donkey_Kong_Country_Returns">DK Country Returns</a></li>
+									<li><a href="http://sonic.wikia.com/wiki/Sonic_News_Network">Sonic Colors</a></li>
+									<li><a href="http://kirby.wikia.com/wiki/Kirby_Wiki">Kirby's Epic Yarn</a></li>
+									<li><a href="http://www.wikia.com/Wii_games">More...</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="http://www.wikia.com/Lifestyle">Lifestyle <img src="blank.gif" class="chevron" height="0" width="0"></a>
+						<ul class="subnav">
+							<li id="SPOTLIGHT_GLOBALNAV_3" class="SPOTLIGHT_GLOBALNAV"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=689__zoneid=22__cb=80ef30a6d4__oadest=http%3A%2F%2Fcoffee.wikia.com%2Fwiki%2FMain_Page" target="_top"><img src="827ada0d19b9f1d479ad8564c9f4179c.jpg" alt="" title="" border="0" height="123" width="255"></a><div id="beacon_80ef30a6d4" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_002.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+							<li>
+								<a href="http://www.wikia.com/Recipes">Food &amp; Drink</a>
+								<ul class="catnav">
+									<li><a href="http://bakingrecipes.wikia.com/wiki/Baking_Recipes_Wiki">Baking Recipes</a></li>
+									<li><a href="http://familyrecipes.wikia.com/wiki/Family_Recipes_Wiki">Family Recipes</a></li>
+									<li><a href="http://japaneserecipes.wikia.com/wiki/Japanese_Recipes_Wiki">Japanese Recipes</a></li>
+									<li><a href="http://coffee.wikia.com/wiki/Main_Page">Coffee</a></li>
+									<li><a href="http://www.wikia.com/Recipes">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/Lifestyle">DIY</a>
+								<ul class="catnav">
+									<li><a href="http://how-to.wikia.com/wiki/How_To">How-To</a></li>
+									<li><a href="http://toastmasters.wikia.com/wiki/Toastmasters_Wiki">Toastmasters</a></li>
+									<li><a href="http://vintagepatterns.wikia.com/wiki/Main_Page">Vintage Patterns</a></li>
+									<li><a href="http://chdk.wikia.com/wiki/CHDK">Canon Hacking</a></li>
+									<li><a href="http://www.wikia.com/Lifestyle">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/Lifestyle">Travel</a>
+								<ul class="catnav">
+									<li><a href="http://travel.wikia.com/wiki/Wikia_Travel">Travel Wiki</a></li>
+									<li><a href="http://lasvegas.wikia.com/wiki/Main_Page">Las Vegas</a></li>
+									<li><a href="http://india.wikia.com/wiki/Main_Page">India</a></li>
+									<li><a href="http://reststops.wikia.com/wiki/Main_Page">Rest Stops</a></li>
+									<li><a href="http://www.wikia.com/Lifestyle">More...</a></li>
+								</ul>
+							</li>
+							<li>
+								<a href="http://www.wikia.com/Lifestyle">Featured</a>
+								<ul class="catnav">
+									<li><a href="http://calendars.wikia.com/wiki/Main_Page">Calendars</a></li>
+									<li><a href="http://familypedia.wikia.com/wiki/Family_History_and_Genealogy_Wiki">Genealogy</a></li>
+									<li><a href="http://logos.wikia.com/wiki/Logopedia">Logos</a></li>
+									<li><a href="http://icehockey.wikia.com/wiki/The_Face_Off">Ice Hockey</a></li>
+									<li><a href="http://www.wikia.com/Lifestyle">More...</a></li>
+								</ul>
+							</li>
+						</ul>
+					</li>
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<ul id="AccountNavigation" class="AccountNavigation">
+	<li class="nohover"><span id="fbconnect"><a href="#" class="fb_button fb_button_small"><span class="fb_button_text">Connect</span></a></span></li>
+	<li><a data-id="login" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=File_format&amp;type=login" class="ajaxLogin">Log in</a></li>
+	<li><a data-id="register" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=File_format&amp;type=signup" class="ajaxRegister">Sign up</a></li>
+</ul>
+	<img src="blank.gif" class="banner-corner-left" height="0" width="0">
+	<img src="blank.gif" class="banner-corner-right" height="0" width="0">
+</header>
+
+<section id="WikiaPage" class="WikiaPage">
+
+
+	
+	<!-- BEGIN SLOTNAME: TOP_LEADERBOARD -->
+<div id="TOP_LEADERBOARD" class="wikia-ad noprint"><div id="Liftium_728x90_1_php"><iframe src="index_1.html" id="TOP_LEADERBOARD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="90" scrolling="no" width="728"></iframe></div></div><!-- END SLOTNAME: TOP_LEADERBOARD -->
+	
+
+	<header id="WikiHeader" class="WikiHeader">
+	<h1 class="wordmark medium text">
+		<a accesskey="z" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki">
+							Vim Tips Wiki					</a>
+	</h1>
+	<nav>
+		<h1>Vim Tips Wiki Navigation</h1>
+		<ul>
+
+			<li>
+				<a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Community_Portal">
+					Community portal				</a>
+			</li>
+			<li>
+				<a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Todo">
+					To do				</a>
+			</li>
+			<li>
+				<a href="#">
+					Recently updated&nbsp;<img src="blank.gif" class="chevron" height="0" width="0">				</a>
+				<ul style="display: none;" class="subnav">
+					<li>
+						<a href="http://vim.wikia.com/wiki/Use_glimpse_from_within_Vim">Use glimpse from within Vim</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Detect_window_creation">Detect window creation</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Indenting_source_code">Indenting source code</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Open_a_web-browser_with_the_URL_in_the_current_line">Open a web-browser with the URL in the current line</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Easier_buffer_switching">Easier buffer switching</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Convert_between_hex_and_decimal">Convert between hex and decimal</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Changing_case_with_regular_expressions">Changing case with regular expressions</a>
+					</li>
+
+				</ul>
+			</li>
+			<li>
+				<a href="http://vim.wikia.com/wiki/Category:VimTip">
+					Popular tips&nbsp;<img src="blank.gif" class="chevron" height="0" width="0">				</a>
+				<ul style="display: none;" class="subnav">
+					<li>
+						<a href="http://vim.wikia.com/wiki/Best_Vim_Tips">Best Vim Tips</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Search_and_replace">Search and replace</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/File_format">File format</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Indenting_source_code">Indenting source code</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Open_vimrc_file">Open vimrc file</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Change_the_color_scheme">Change the color scheme</a>
+					</li>
+					<li>
+						<a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces">Converting tabs to spaces</a>
+					</li>
+
+				</ul>
+			</li>
+		</ul>
+	</nav>
+	<div class="buttons">
+		<a href="http://vim.wikia.com/wiki/Special:Random" title="Special:Random" accesskey="x" class="wikia-button secondary" data-id="randompage"><img src="blank.gif" class="sprite random" height="0" width="0">Random Page</a>		<a href="http://vim.wikia.com/wiki/Special:WikiActivity" title="Special:WikiActivity" accesskey="g" class="wikia-button secondary" data-id="wikiactivity"><img src="blank.gif" class="sprite activity" height="0" width="0">Wiki Activity</a>	</div>
+	<div style="position: absolute; top: -1000px;">
+		<a href="http://vim.wikia.com/wiki/Special:Watchlist" title="Special:Watchlist" accesskey="l">Watchlist</a>		<a href="http://vim.wikia.com/wiki/Special:RecentChanges" title="Special:RecentChanges" accesskey="r">Recent changes</a>	</div>
+	<img class="shadow-mask" src="blank.gif" height="0" width="0">
+</header>
+	<article id="WikiaMainContent" class="WikiaMainContent">
+		<header id="WikiaPageHeader" class="WikiaPageHeader">
+	
+	<ul class="commentslikes">
+	<li class="comments">
+		<span class="commentsbubble">0</span>
+		<a href="http://vim.wikia.com/wiki/Talk:File_format" data-id="comment" title="Be the first to discuss this page" accesskey="t">Talk</a>
+	</li>
+	<li class="likes">
+		<fb:like class=" fb_edge_widget_with_comment fb_iframe_widget" layout="button_count" width="50" colorscheme="light" ref="content_page" href="http://vim.wikia.com/wiki/File_format"><span><iframe src="index_4.html" class="fb_ltr" style="border: medium none; overflow: hidden; height: 21px; width: 90px;" name="f24eccd170a796e" id="f182f05cd17048" scrolling="no"></iframe></span></fb:like>
+	</li>
+</ul>
+
+	<h1>File format</h1>
+
+			<a accesskey="e" href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit" class="wikia-button" data-id="edit"><img alt="" class="sprite edit-pencil" src="blank.gif" height="16" width="22"> Edit</a>
+	<h2>Redirected from <a href="http://vim.wikia.com/index.php?title=VimTip1585&amp;redirect=no" title="VimTip1585" rel="nofollow">VimTip1585</a></h2>
+	<details>
+		<span class="categories">Read more: <a href="http://vim.wikia.com/wiki/Category:VimTip" title="Category:VimTip">VimTip</a></span>
+		<ul class="history">
+			<li>
+					<img src="20px-avatar.jpg" class="avatar" height="20" width="20">
+Edited <time class="timeago" pubdate="" datetime="2010-12-07T23:37:46Z"> </time> by <a href="http://vim.wikia.com/wiki/Special:Contributions/131.247.244.180">A Wikia contributor</a>				<img src="blank.gif" class="chevron" height="0" width="0">
+			</li>
+			<li class="view-all">
+				<a accesskey="h" href="http://vim.wikia.com/index.php?title=File_format&amp;action=history">View full history</a>
+			</li>
+		</ul>
+	</details>
+</header>
+		<div id="WikiaArticle" class="WikiaArticle">
+			<div class="home-top-right-ads">
+						</div>
+
+
+			
+			
+					<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"><div><iframe src="index_6.html" class="FB_UI_Hidden" style="border: medium none; overflow: hidden;" name="f54ae9e25508ce" id="f28011dfca08dde" scrolling="no"></iframe></div></div></div>
+					
+<div><b><a href="http://vim.wikia.com/wiki/File_format" class="text" title="http://vim.wikia.com/wiki/File_format">Tip 1585</a></b> <a href="http://vim.wikia.com/wiki/VimTip1584" title="VimTip1584" class="mw-redirect"><small>Previous</small></a> <a href="http://vim.wikia.com/wiki/VimTip1586" title="VimTip1586" class="mw-redirect"><small>Next</small></a>
+<p><b><a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:New_tips/200802#File_format" title="Vim Tips Wiki:New tips/200802">created</a></b>&nbsp;2008 · <b>complexity</b>&nbsp;basic · <b>version</b>&nbsp;7.0
+</p>
+<hr>
+</div>
+<table id="toc" class="toc" summary="Contents"><tbody><tr><td><div id="toctitle"><h2>Contents</h2> <span class="toctoggle">[<a href="javascript:toggleToc()" rel="nofollow" class="internal" id="togglelink">show</a>]</span></div>
+<ul>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#File_format_options"><span class="tocnumber">1</span> <span class="toctext">File format options</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#File_format_detection"><span class="tocnumber">2</span> <span class="toctext">File format detection</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Converting_the_current_file"><span class="tocnumber">3</span> <span class="toctext">Converting the current file</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Converting_clean_files"><span class="tocnumber">4</span> <span class="toctext">Converting clean files</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Converting_mixed_files"><span class="tocnumber">5</span> <span class="toctext">Converting mixed files</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Removing_unwanted_CR_or_LF_characters"><span class="tocnumber">6</span> <span class="toctext">Removing unwanted CR or LF characters</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Terminator_after_last_line"><span class="tocnumber">7</span> <span class="toctext">Terminator after last line</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#How_file_format_conversion_works"><span class="tocnumber">8</span> <span class="toctext">How file format conversion works</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Results_of_incorrect_file_format_detection"><span class="tocnumber">9</span> <span class="toctext">Results of incorrect file format detection</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Vim_script_problems"><span class="tocnumber">10</span> <span class="toctext">Vim script problems</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Pitfalls"><span class="tocnumber">11</span> <span class="toctext">Pitfalls</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Other_approaches"><span class="tocnumber">12</span> <span class="toctext">Other approaches</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Tools"><span class="tocnumber">13</span> <span class="toctext">Tools</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#See_also"><span class="tocnumber">14</span> <span class="toctext">See also</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Comments"><span class="tocnumber">15</span> <span class="toctext">Comments</span></a></li>
+</ul>
+</td></tr></tbody></table>
+<p><br>
+Vim recognizes three file formats (unix, dos, mac) that determine what line ending characters (line terminators) are removed from each line when a file is read, or are added to each line when a file is written. A file format problem can display <tt>^M</tt> characters, or can prevent scripts from running correctly. This tip explains how to avoid problems, and how to convert from one file format to another. Use of the <tt>'fileformat'</tt> and <tt>'fileformats'</tt> options is also explained. See <a href="#Converting_the_current_file" title="">below</a> if all you want to know is how to remove ^M characters, or how to fix the line endings in the file you are working on.
+</p><p>The line terminator expected for each file format is:
+</p>
+<table class="cleartable">
+<tbody><tr>
+<td>unix </td><td> LF only (each line ends with an LF character).
+</td></tr>
+<tr>
+<td>dos </td><td> CRLF (each line ends with two characters, CR then LF).
+</td></tr>
+<tr>
+<td>mac </td><td> CR only (each line ends with a CR character).
+</td></tr></tbody></table>
+<p>CR is <i>carriage return</i> (return cursor to left margin), which is Ctrl-M or ^M or hex 0D.
+</p><p>LF is <i>linefeed</i> (move cursor down), which is Ctrl-J or ^J or hex 0A. Sometimes, LF is written as NL (newline).
+</p><p>Mac OS version 9 and earlier use mac line endings, while Mac OS X and later use unix line endings.
+</p>
+<a rel="nofollow" name="File_format_options" id="File_format_options"></a><h2><span class="mw-headline">File format options</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=1"><img src="blank.gif" class="sprite edit-pencil" alt="Edit File format options section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=1">Edit</a></span></h2>
+<p>The <tt>'fileformat'</tt> option is local to each buffer. It is set by Vim when a file is read, or can be specified in a command telling Vim how to read a file. In addition, the <tt>'fileformat'</tt> option can be changed to specify the line endings that will be added to each line when the buffer is written to a file.
+</p><p>The <tt>'fileformats'</tt> option is global and specifies which file formats will be tried when Vim reads a file (unless otherwise specified, Vim attempts to automatically detect which file format should be used to read a file). The first file format in <tt>'fileformats'</tt> is also used as the default for a new buffer.
+</p><p>The following command displays the <tt>fileformat</tt> option (abbreviated as <tt>ff</tt>) for the current buffer, and the <tt>fileformats</tt> global option (abbreviated as <tt>ffs</tt>) which determines how Vim reads and writes files: <a class="external exitstitial" rel="nofollow" href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%27ff%27">:help&nbsp;'ff'</a> <a class="external exitstitial" rel="nofollow" href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%27ffs%27">:help&nbsp;'ffs'</a>
+</p>
+<pre>:set ff? ffs?
+</pre>
+<p>This command also shows where each option was last set:
+</p>
+<pre>:verbose set ff? ffs?
+</pre>
+<p>The <tt>fileformats</tt> option is often not explicitly set (the defaults are usually adequate). However, the above command may indicate that the option was set in your <a href="http://vim.wikia.com/wiki/Vimrc" title="Vimrc" class="mw-redirect">vimrc</a> because that file probably contains <tt style="white-space: nowrap;">set nocompatible</tt> which sets many options.
+</p>
+<a rel="nofollow" name="File_format_detection" id="File_format_detection"></a><h2><span class="mw-headline">File format detection</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=2"><img src="blank.gif" class="sprite edit-pencil" alt="Edit File format detection section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=2">Edit</a></span></h2>
+<p>The <tt>'fileformats'</tt> option (<tt>'ffs'</tt>) has these defaults:
+</p>
+<table class="cleartable">
+<tbody><tr>
+<td><tt>ffs=unix,dos</tt> </td><td> Unix based systems
+</td></tr>
+<tr>
+<td><tt>ffs=dos,unix</tt> </td><td> Windows and DOS systems
+</td></tr>
+<tr>
+<td><tt>ffs=mac,unix,dos</tt> </td><td> Mac OS 9 systems
+</td></tr></tbody></table>
+<p>When a file is read, the order of the items specified in <tt>'ffs'</tt> has no effect (for example, <tt>ffs=unix,dos</tt> has the same effect as <tt>ffs=dos,unix</tt> when reading). The order is only important when a new buffer is created (if not empty, the first item in <tt>'ffs'</tt> is used as the file format for a new buffer; this determines which line endings will be added when the buffer is saved).
+</p><p>Suppose your system has <tt>ffs=dos,unix</tt> and you open an existing file. Vim will look for both dos and unix line endings, but Vim has a built-in preference for the unix format.
+</p>
+<ul><li>If all lines in the file end with CRLF, the dos file format will be applied, meaning that each CRLF is removed when reading the lines into a buffer, and the buffer <tt>'ff'</tt> option will be dos.
+</li><li>If one or more lines end with LF only, the unix file format will be applied, meaning that each LF is removed (but each CR will be present in the buffer, and will display as <tt>^M</tt>), and the buffer <tt>'ff'</tt> option will be unix.
+</li></ul>
+<a rel="nofollow" name="Converting_the_current_file" id="Converting_the_current_file"></a><h2><span class="mw-headline">Converting the current file</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=3"><img src="blank.gif" class="sprite edit-pencil" alt="Edit Converting the current file section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=3">Edit</a></span></h2>
+<p>A common problem is that you open a file and see <tt>^M</tt> at the end of many lines. Entering <tt style="white-space: nowrap;">:set ff?</tt> will probably show that the file was read as unix: the problem is that some lines actually end with CRLF. To fix this, you need to tell Vim to read the file again using dos file format. When reading as dos, all CRLF line endings, and all LF-only line endings, are removed. Then you need to change the file format for the buffer and save the file. The following procedures will easily handle this situation, but they only work reliably on reasonably recent versions of Vim (7.2.40 or higher).
+</p>
+<dl><dt>Convert from dos/unix to unix
+</dt></dl>
+<p>To convert the current file from any mixture of CRLF/LF-only line endings, so all lines end with LF only:
+</p>
+<table class="cleartable">
+<tbody><tr>
+<td><tt>:update</tt> </td><td> Save any changes.
+</td></tr>
+<tr>
+<td><tt>:e ++ff=dos</tt> </td><td> Edit file again, using dos file format (<tt>'fileformats'</tt> is ignored).<sup id="cite_ref-broken_0-0" class="reference"><a href="#cite_note-broken-0" title="">[A 1]</a></sup>
+</td></tr>
+<tr>
+<td><tt>:setlocal ff=unix</tt> </td><td> This buffer will use LF-only line endings when written.<sup id="cite_ref-1" class="reference"><a href="#cite_note-1" title="">[A 2]</a></sup>
+</td></tr>
+<tr>
+<td><tt>:w</tt> </td><td> Write buffer using unix (LF-only) line endings.
+</td></tr></tbody></table>
+<p>In the above, replacing <tt style="white-space: nowrap;">:set ff=unix</tt> with <tt style="white-space: nowrap;">:set ff=mac</tt> would write the file with mac (CR-only) line endings. Or, if it was a mac file to start with, you would use <tt style="white-space: nowrap;">:e ++ff=mac</tt> to read the file correctly, so you could convert the line endings to unix or dos.
+</p>
+<dl><dt>Convert from dos/unix to dos
+</dt></dl>
+<p>To convert the current file from any mixture of CRLF/LF-only line endings, so all lines end with CRLF only:
+</p>
+<table class="cleartable">
+<tbody><tr>
+<td><tt>:update</tt> </td><td> Save any changes.
+</td></tr>
+<tr>
+<td><tt>:e ++ff=dos</tt> </td><td> Edit file again, using dos file format (<tt>'fileformats'</tt> is ignored).<sup id="cite_ref-broken_0-1" class="reference"><a href="#cite_note-broken-0" title="">[A 1]</a></sup>
+</td></tr>
+<tr>
+<td><tt>:w</tt> </td><td> Write buffer using dos (CRLF) line endings.
+</td></tr></tbody></table>
+<dl><dt>Notes A
+</dt></dl>
+<ol class="references"><li id="cite_note-broken-0">^ <a href="#cite_ref-broken_0-0" title=""><sup>a</sup></a> <a href="#cite_ref-broken_0-1" title=""><sup>b</sup></a> The <tt>:e</tt> command reads the current file again, using the <tt>++ff=dos</tt> option so the read will omit all CRLF and LF-only line terminators (dos file format). Each <tt>^M</tt> at the end of a line should disappear. Some older versions of Vim do not perform this step correctly and the <tt>^M</tt> endings are not removed; upgrade Vim to fix. <a class="external exitstitial" rel="nofollow" href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Ae">:help&nbsp;:e</a></li>
+<li id="cite_note-1"><a href="#cite_ref-1" title="">^</a> Use <tt>:setlocal</tt> (or <tt>:setl</tt>) to avoid changing the global default.</li></ol>
+<a rel="nofollow" name="Converting_clean_files" id="Converting_clean_files"></a><h2><span class="mw-headline">Converting clean files</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=4"><img src="blank.gif" class="sprite edit-pencil" alt="Edit Converting clean files section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=4">Edit</a></span></h2>
+<p>When working with "clean" files (where every line has the same line ending), Vim's default settings provide reliable file format detection, and conversion is easy.
+</p><p>Suppose you have a collection of files where some are dos (every line ends with CRLF), and others are unix (every line ends with LF only). To convert all the dos files to unix (while not modifying the unix files):<sup id="cite_ref-failmix_2-0" class="reference"><a href="#cite_note-failmix-2" title="">[B 1]</a></sup>
+</p>
+<table class="cleartable">
+<tbody><tr>
+<td><tt>:args *.c *.h</tt> </td><td> Specify the files to convert.<sup id="cite_ref-3" class="reference"><a href="#cite_note-3" title="">[B 2]</a></sup>
+</td></tr>
+<tr>
+<td><tt>:argdo set ff=unix|update</tt> </td><td> For each argument, set unix file format for the buffer, and save the file if needed.<sup id="cite_ref-4" class="reference"><a href="#cite_note-4" title="">[B 3]</a></sup>
+</td></tr></tbody></table>
+<p>Suppose you have a collection of files where some are dos (every line ends with CRLF), and others are unix (every line ends with LF only). To convert all the unix files to dos (while not modifying the dos files):<sup id="cite_ref-failmix_2-1" class="reference"><a href="#cite_note-failmix-2" title="">[B 1]</a></sup>
+</p>
+<table class="cleartable">
+<tbody><tr>
+<td><tt>:args *.c *.h</tt> </td><td> Specify the files to convert.
+</td></tr>
+<tr>
+<td><tt>:argdo set ff=dos|update</tt> </td><td> For each argument, set dos file format for the buffer, and save the file if needed.
+</td></tr></tbody></table>
+<p>If you have opened several files where some are dos and some are unix, you can convert the dos files to unix:<sup id="cite_ref-failmix_2-2" class="reference"><a href="#cite_note-failmix-2" title="">[B 1]</a></sup>
+</p>
+<table class="cleartable">
+<tbody><tr>
+<td><tt>:bufdo! set ff=unix|w</tt> </td><td> For each buffer, set unix file format, and write the file.
+</td></tr></tbody></table>
+<p>If you have opened several files where some are dos and some are unix, you can convert the unix files to dos:<sup id="cite_ref-failmix_2-3" class="reference"><a href="#cite_note-failmix-2" title="">[B 1]</a></sup>
+</p>
+<table class="cleartable">
+<tbody><tr>
+<td><tt>:bufdo! set ff=dos|w</tt> </td><td> For each buffer, set dos file format, and write the file.
+</td></tr></tbody></table>
+<dl><dt>Notes B
+</dt></dl>
+<ol class="references"><li id="cite_note-failmix-2">^ <a href="#cite_ref-failmix_2-0" title=""><sup>a</sup></a> <a href="#cite_ref-failmix_2-1" title=""><sup>b</sup></a> <a href="#cite_ref-failmix_2-2" title=""><sup>c</sup></a> <a href="#cite_ref-failmix_2-3" title=""><sup>d</sup></a> This procedure will fail if a file has a mixture of dos and unix line endings because such files are detected as unix, and the CR characters are retained in the buffer.</li>
+<li id="cite_note-3"><a href="#cite_ref-3" title="">^</a> This example processes all <tt>*.c</tt> and <tt>*.h</tt> files in the current directory by setting the argument list to the wanted names. <a class="external exitstitial" rel="nofollow" href="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Aargs">:help&nbsp;:args</a></li>
+<li id="cite_note-4"><a href="#cite_ref-4" title="">^</a> The <tt>:argdo</tt> command operates on each file in the argument list. For each file, it sets the buffer to use unix file format. That sets the modified flag for buffers that were detected as dos. The <tt>:update</tt> command writes the buffer if its modified flag is set.</li></ol>
+<a rel="nofollow" name="Converting_mixed_files" id="Converting_mixed_files"></a><h2><span class="mw-headline">Converting mixed files</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=5"><img src="blank.gif" class="sprite edit-pencil" alt="Edit Converting mixed files section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=5">Edit</a></span></h2>
+<p>When working with "mixed" files (where some lines have one kind of terminator, while other lines have a different terminator), reliable conversion requires more effort. Some methods do not work reliably with older Vim 7.2 versions. The procedures here should work in Vim 7.2 and later.
+</p>
+<dl><dt>Convert from dos/unix to unix
+</dt></dl>
+<p>To convert from any mixture of CRLF endings and LF-only endings, to LF-only endings:<sup id="cite_ref-defect_5-0" class="reference"><a href="#cite_note-defect-5" title="">[C 1]</a></sup>
+</p>
+<table class="cleartable">
+<tbody><tr>
+<td><tt>:set hidden</tt> </td><td> Allow modified buffers to be hidden.
+</td></tr>
+<tr>
+<td><tt>:set ffs=dos</tt> </td><td> Assume dos line endings (CRLF or LF-only) when reading files.
+</td></tr>
+<tr>
+<td><tt>:args *.c *.h</tt> </td><td> Specify the files to convert.
+</td></tr>
+<tr>
+<td><tt>:argdo set ff=unix|w</tt> </td><td> For each argument, set unix file format for the buffer, and write the file.<sup id="cite_ref-6" class="reference"><a href="#cite_note-6" title="">[C 2]</a></sup>
+</td></tr></tbody></table>
+<dl><dt>Convert from dos/unix to dos
+</dt></dl>
+<p>To convert from any mixture of CRLF endings and LF-only endings, to CRLF endings:<sup id="cite_ref-defect_5-1" class="reference"><a href="#cite_note-defect-5" title="">[C 1]</a></sup>
+</p>
+<table class="cleartable">
+<tbody><tr>
+<td><tt>:set ffs=dos</tt> </td><td> Assume dos line endings (CRLF or LF-only) when reading files.
+</td></tr>
+<tr>
+<td><tt>:args *.c *.h</tt> </td><td> Specify the files to convert.
+</td></tr>
+<tr>
+<td><tt>:argdo w</tt> </td><td> Write each file with CRLF line endings.
+</td></tr></tbody></table>
+<dl><dt>Notes C
+</dt></dl>
+<ol class="references"><li id="cite_note-defect-5">^ <a href="#cite_ref-defect_5-0" title=""><sup>a</sup></a> <a href="#cite_ref-defect_5-1" title=""><sup>b</sup></a> A defect with this procedure is that all files are modified, even if no change was required. That is, a file is written even if it originally had all lines in the wanted format.</li>
+<li id="cite_note-6"><a href="#cite_ref-6" title="">^</a> The <tt>:argdo</tt> command operates on each file in the argument list. For each file, it sets the buffer to use unix file format, and writes the file (even if the file has not been marked as modified). An alternative would be to use <tt style="white-space: nowrap;">:argdo w ++ff=unix</tt> which will write each file as unix, with the potential problem that the buffer will still be marked as using dos format (so if you later make a change and save it, the file will be written in dos format).</li></ol>
+<a rel="nofollow" name="Removing_unwanted_CR_or_LF_characters" id="Removing_unwanted_CR_or_LF_characters"></a><h2><span class="mw-headline">Removing unwanted CR or LF characters</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=6"><img src="blank.gif" class="sprite edit-pencil" alt="Edit Removing unwanted CR or LF characters section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=6">Edit</a></span></h2>
+<p>First ensure you have read the file with the appropriate file format. For example, use <tt style="white-space: nowrap;">:e ++ff=dos</tt> to remove all CRLF and LF-only line terminators, or use <tt style="white-space: nowrap;">:e ++ff=mac</tt> if the file uses CR as a line terminator,.
+</p><p>After reading with the correct file format, the buffer may still contain unwanted CR characters. You can search for these with <tt>/\r</tt> (slash starts a search; backslash <tt>r</tt> represents CR when searching; press Enter to search).
+</p><p>To delete <tt>^M</tt> at line endings, and replace it with a space everywhere else (the <tt>c</tt> flag will prompt to confirm that you want each replacement, and the <tt>e</tt> flag prevents an error message if the string is not found):
+</p>
+<pre>:%s/\r\+$//e
+:%s/\r/ /gce
+</pre>
+<p>To process, say, all <tt>*.txt</tt> files in the current directory:
+</p>
+<pre>vim *.txt
+:set hidden
+:bufdo&nbsp;%s/\r\+$//e
+:bufdo&nbsp;%s/\r/ /ge
+:xa
+</pre>
+<p>To delete every <tt>^M</tt>, regardless of where they occur in a line (this is not a good idea if two lines were separated only by a CR because the command joins the lines together):
+</p>
+<pre>:%s/\r//g
+</pre>
+<p>To replace every CR with LF (when searching, <tt>\r</tt> matches CR, but when replacing, <tt>\r</tt> inserts LF; this is not a good idea if LF occurs at the end of a line, because an extra blank line will be created):
+</p>
+<pre>:%s/\r/\r/g
+</pre>
+<p>If a file uses CR line terminators, it should be read as mac (using <tt style="white-space: nowrap;">:e ++ff=mac</tt>). After doing that, you may see unwanted ^J (LF) characters. In a mac buffer, all CR characters will have been removed because CR is the line terminator, and searching for <tt>\r</tt> will find unwanted LF characters. Use these commands to remove ^J from the start of all lines, and to replace all other ^J with a line break:
+</p>
+<pre>%s/^\r//e
+%s/\r/\r/ge
+</pre>
+<a rel="nofollow" name="Terminator_after_last_line" id="Terminator_after_last_line"></a><h2><span class="mw-headline">Terminator after last line</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=7"><img src="blank.gif" class="sprite edit-pencil" alt="Edit Terminator after last line section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=7">Edit</a></span></h2>
+<p>Every line in a text file should have a terminator (for example, a dos file should end with CRLF). When reading a file, Vim accepts the last line as a normal line, even if it has no terminator. Normally, Vim writes a terminator after every line, including the last. For rare occasions, it is possible to save a file with no terminator after the last line:
+</p>
+<pre>:set noendofline binary
+:w
+</pre>
+<p>Some obsolete dos files use Ctrl-Z as an end-of-file character. When reading a dos file, Vim accepts any Ctrl-Z bytes within the file as normal characters (these will appear in the buffer as ^Z), however if Ctrl-Z is the last byte in the file, it is omitted.
+</p>
+<a rel="nofollow" name="How_file_format_conversion_works" id="How_file_format_conversion_works"></a><h2><span class="mw-headline">How file format conversion works</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=8"><img src="blank.gif" class="sprite edit-pencil" alt="Edit How file format conversion works section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=8">Edit</a></span></h2>
+<p>Understanding the principles involved in converting file formats can help avoid mistakes.
+</p><p>Suppose you have some files that use a mixture of CRLF and LF-only line endings (all line terminators use CRLF, or all use LF-only, or there are some of each). These steps are required when converting each file:
+</p>
+<ul><li>Read the file as dos so any text ending with CRLF or LF-only is regarded as a line. These line endings (CRLF and LF) are removed and are not present in the buffer.
+</li><li>If you want to force all line endings to CRLF, write as dos. The <tt>:w</tt> command is required (not <tt>:update</tt> or <tt>:wa</tt> because these only write if the buffer has not been modified, and no modification has occurred).
+</li><li>If you want to force all line endings to LF-only, write as unix.
+</li><li>If you want to force all line endings to CR-only, write as mac.
+</li></ul>
+<p>If all lines in a file end with LF-only, the file can be converted to use CRLF endings by reading as unix and writing as dos. However, if some lines end with CRLF, reading a file as unix will keep each CR in the buffer, and writing the file using any format will write each CR to the file, as if it were a normal character. When writing, line endings are added, so any CR characters that were in the original file, will be written in addition to line endings.
+</p><p>An LF-only file can also be converted to CRLF by reading as dos and writing as dos.
+</p><p>When reading a file as dos, if a CR followed by LF is encountered (CRLF), those two bytes are removed, and the preceding text is regarded as a line. Similarly, if LF is encountered, it is removed, and the preceding text is regarded as a line. However, if a CR is encountered (without a following LF), the CR will be regarded as a normal character and will be copied into the buffer where it will be displayed as <tt>^M</tt> (Ctrl-M, the code for CR).
+</p>
+<a rel="nofollow" name="Results_of_incorrect_file_format_detection" id="Results_of_incorrect_file_format_detection"></a><h2><span class="mw-headline">Results of incorrect file format detection</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=9"><img src="blank.gif" class="sprite edit-pencil" alt="Edit Results of incorrect file format detection section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=9">Edit</a></span></h2>
+<p>Suppose a file contains two lines:
+</p>
+<pre>Line 1
+Line 2
+</pre>
+<p>When reading the file, if Vim does not correctly detect the file format, here is what you will see in the buffer (<tt>^J</tt> is Ctrl-J or LF; <tt>^M</tt> is Ctrl-M or CR).
+</p><p>File has unix line endings; file read with <tt>ff=dos</tt>:
+</p>
+<pre>Line 1
+Line 2
+</pre>
+<p>File has unix line endings; file read with <tt>ff=mac</tt>:
+</p>
+<pre>Line 1^JLine 2^J
+</pre>
+<p>File has dos line endings; file read with <tt>ff=unix</tt>:
+</p>
+<pre>Line 1^M
+Line 2^M
+</pre>
+<p>File has dos line endings; file read with <tt>ff=mac</tt>:
+</p>
+<pre>Line 1
+^JLine 2
+^J
+</pre>
+<p>File has mac line endings; file read with <tt>ff=unix</tt> or <tt>ff=dos</tt>:
+</p>
+<pre>Line 1^MLine 2^M
+</pre>
+<a rel="nofollow" name="Vim_script_problems" id="Vim_script_problems"></a><h2><span class="mw-headline">Vim script problems</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=10"><img src="blank.gif" class="sprite edit-pencil" alt="Edit Vim script problems section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=10">Edit</a></span></h2>
+<p>Under Unix, you may find that a Vim script does not work because you have downloaded a script that contains CR characters. Each CR displays as <tt>^M</tt> and will cause some scripts to fail.
+</p><p>If you put, say, <tt>script.vim</tt> in your plugin directory, you may not see any useful error messages about CR characters when using Vim. You can source the script after starting Vim (for example, <tt>:source ~/.vim/plugin/script.vim</tt>) to see if errors including <tt>^M</tt> are shown. To fix, you need to convert the file to unix format.
+</p>
+<a rel="nofollow" name="Pitfalls" id="Pitfalls"></a><h2><span class="mw-headline">Pitfalls</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=11"><img src="blank.gif" class="sprite edit-pencil" alt="Edit Pitfalls section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=11">Edit</a></span></h2>
+<p>Some suggestions for working with file formats suffer from pitfalls that are described here.
+</p><p>You are editing a file which you expect to be in unix format, yet you see many <tt>^M</tt> characters. The following attempt to convert the file to unix format does not work:
+</p>
+<table class="cleartable">
+<tbody><tr>
+<td><tt>:setlocal ff=unix</tt> </td><td> Set unix file format for current buffer.
+</td></tr>
+<tr>
+<td><tt>:w</tt> </td><td> Write buffer to file.
+</td></tr></tbody></table>
+<p>The file was probably already detected as unix format, so the&nbsp;:set ff=unix command will do nothing (the problem is that the file uses dos format, but Vim read it as unix because at least one line had an LF-only ending). Furthermore, each <tt>^M</tt> represents a CR character that is in the current buffer, and writing the buffer will write that CR to the file (not what you want).
+</p><p>You are editing a file which you expect to be in unix format, yet you see many <tt>^M</tt> characters. You perform the following to convert it to unix format, then perform further edits:
+</p>
+<table class="cleartable">
+<tbody><tr>
+<td><tt>:e ++ff=dos</tt> </td><td> Read file again in dos format, to accept both CRLF and LF-only line endings.
+</td></tr>
+<tr>
+<td><tt>:w ++ff=unix</tt> </td><td> Write buffer to file using LF-only line endings.
+</td></tr>
+<tr>
+<td>... </td><td> Do some edits.
+</td></tr>
+<tr>
+<td><tt>:w</tt> </td><td> Save the edits.
+</td></tr></tbody></table>
+<p>The first two steps above are correct, and the file will initially be written in unix format. However, the buffer is still marked as dos format, so the <tt>:w</tt> will overwrite the file using CRLF line endings. The <tt style="white-space: nowrap;">:e ++ff=dos</tt> command tells Vim to read the file again, forcing dos file format. Vim will remove CRLF and LF-only line endings, leaving only the text of each line in the buffer. However, if you are going to edit the file, you need to use these commands:
+</p>
+<table class="cleartable">
+<tbody><tr>
+<td><tt>:e ++ff=dos</tt> </td><td> Read file again in dos format.
+</td></tr>
+<tr>
+<td><tt>:setlocal ff=unix</tt> </td><td> Mark buffer so LF-only line endings will be used when buffer is written.
+</td></tr>
+<tr>
+<td>... </td><td> Do some edits.
+</td></tr>
+<tr>
+<td><tt>:w</tt> </td><td> Save the edits (will use LF-only line endings).
+</td></tr></tbody></table>
+<p>Here is a mistaken attempt to convert certain files from dos to unix format by starting Vim with commands to convert all <tt>*.c</tt> and <tt>*.h</tt> files in the current directory:
+</p>
+<table class="cleartable">
+<tbody><tr>
+<td><tt>vim +"argdo setlocal ff=unix" +wqa *.c *.h</tt>
+</td></tr></tbody></table>
+<p>This will work if <tt>'fileformats'</tt> includes dos and if the files have only CRLF line endings. However, if <tt>'fileformats'</tt> includes both dos and unix, and if a file has at least one LF-only line ending, that file will be detected as unix, and any CR in the file will be shown in the buffer as <tt>^M</tt>. The <tt style="white-space: nowrap;">:setlocal ff=unix</tt> will not flag a unix file as modified, so the <tt>+wqa</tt> command (same as <tt>:xa</tt>) will not save that file. If <tt>:w</tt> is used to write the buffer, nothing useful will be achieved because the CR characters will be written to the file.
+</p>
+<a rel="nofollow" name="Other_approaches" id="Other_approaches"></a><h2><span class="mw-headline">Other approaches</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=12"><img src="blank.gif" class="sprite edit-pencil" alt="Edit Other approaches section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=12">Edit</a></span></h2>
+<p>You may find a discussion of other techniques for handling line endings elsewhere. Some drawbacks of other procedures are mentioned here.
+</p><p>You can specify a file format for a particular file by inserting a modeline in that file. For example, in file <tt>my.c</tt>, you may put the following comment near the top or bottom of the file in an attempt to maintain dos line endings, regardless of what system is used to edit the file:
+</p>
+<pre>/* vim: set ff=dos: */
+</pre>
+<p>In general, using a modeline is useless in this context, although it may help <i>if</i> the file format is correctly detected when the file is read, because the next write will save the file in the preferred format specified in the modeline. However, the modeline does not avoid problems, and may make problems worse. For example, if file <tt>my.c</tt> has one or more lines that end with LF only, and the file is edited on a default Windows system, the file will be detected as having unix format, and the modeline will then change the format to dos, which will set the buffer modified flag. The buffer will display each CR as <tt>^M</tt>. If you now save the file, each line will be written with a CRLF ending. However, the <tt>^M</tt> characters that were visible in the buffer will be written to the file, so some lines will now end with CRCRLF (two CR characters).
+</p><p>Another unhelpful approach is to hide <tt>^M</tt> characters which occur at the end of a line by highlighting them with the Ignore highlight group:
+</p>
+<pre>:match Ignore /\r$/
+</pre>
+<p>While this may be helpful as a quick workaround when viewing a file, in general, it is a misguided approach because the characters are hidden, but present, which will inevitably cause trouble when editing. In addition, it is much better to correctly handle the problem rather than temporarily hide it.
+</p>
+<a rel="nofollow" name="Tools" id="Tools"></a><h2><span class="mw-headline">Tools</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=13"><img src="blank.gif" class="sprite edit-pencil" alt="Edit Tools section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=13">Edit</a></span></h2>
+<p>Several tools are available to convert files from one type of line ending to another. These need to be run at the command line, and are not related to Vim.
+</p><p>On Unix-based systems, the <tt>file</tt> utility can display what kind of line endings are present in a file. For example, <tt style="white-space: nowrap;">file *.c</tt> will report what line terminators (CRLF, CR, LF) are present in each <tt>*.c</tt> file. The <tt>dos2unix</tt> utility can convert from dos or mac format to unix, and the <tt>unix2dos</tt> utility can convert from unix to dos format, optionally while preserving file timestamps.
+</p><p>Many other conversion tools are available. For example, <a href="https://ccrma.stanford.edu/%7Ecraig/utility/flip/" class="external text" title="https://ccrma.stanford.edu/~craig/utility/flip/" rel="nofollow"><tt>flip</tt></a> can convert files between dos/mac/unix formats, and versions for each platform are available.
+</p>
+<a rel="nofollow" name="See_also" id="See_also"></a><h2><span class="mw-headline">See also</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=14"><img src="blank.gif" class="sprite edit-pencil" alt="Edit See also section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=14">Edit</a></span></h2>
+<ul><li><a href="http://vim.wikia.com/wiki/VimTip736" title="VimTip736" class="mw-redirect">Display file format in the status line</a> show an alert if a non-native file format is used
+</li><li><a href="http://vim.wikia.com/wiki/Automatically_reload_files_with_mixed_line-endings_in_DOS_fileformat" title="Automatically reload files with mixed line-endings in DOS fileformat">Automatically reload files with mixed line-endings in DOS fileformat</a> to load files in the correct format with no user intervention
+</li></ul>
+<a rel="nofollow" name="Comments" id="Comments"></a><h2><span class="mw-headline">Comments</span><span class="editsection"><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=15"><img src="blank.gif" class="sprite edit-pencil" alt="Edit Comments section"></a><a href="http://vim.wikia.com/index.php?title=File_format&amp;action=edit&amp;section=15">Edit</a></span></h2>
+<!-- 
+NewPP limit report
+Preprocessor node count: 392/1000000
+Post-expand include size: 1587/2097152 bytes
+Template argument size: 231/2097152 bytes
+Expensive parser function count: 0/100
+--><!-- Saved in parser cache with key vim:pcache:idhash:1807-0!1!0!!en!2 and timestamp 20101222035719 -->	<nav class="RelatedPagesModule">
+		<h2>Read more</h2>
+		<ul>
+					<li>
+								<div class="articleSnippet"><p>This script causes Vim to 'preserve' a missing end-of-line at the end of a text file when you save i</p></div>
+								<a href="http://vim.wikia.com/wiki/Preserve_missing_end-of-line_at_end_of_text_files" class="more">Preserve missing end-of-line at end of text files</a>
+			</li>
+					<li>
+								<div class="articleSnippet"><p>I like knowing when a file I open is detected as having a non-native file format. The way to provide</p></div>
+								<a href="http://vim.wikia.com/wiki/Non-native_fileformat_for_your_statusline" class="more">Non-native fileformat for your statusline</a>
+			</li>
+					<li>
+								<div class="articleSnippet"><p>If you frequently work with files which "some idiot" saved with mixed line-ending styles, so that Vi</p></div>
+								<a href="http://vim.wikia.com/wiki/Automatically_reload_files_with_mixed_line-endings_in_DOS_fileformat" class="more">Automatically reload files with mixed line-endings in DOS fileformat</a>
+			</li>
+				</ul>
+	</nav>
+<h2>External Sponsor Links</h2><div class="sponsormsg"><ul><li><a href="http://vim.wikia.com/wiki/Special:AdSS" rel="nofollow">Click here!</a>
+<p>Buy a sponsored link and description for your website on this page. Act quickly, the few sponsorship slots sell out fast!</p></li></ul></div><div class="printfooter">
+Retrieved from "<a href="http://vim.wikia.com/wiki/File_format">http://vim.wikia.com/wiki/File_format</a>"</div>
+
+		</div>
+
+		<nav id="WikiaArticleCategories" class="WikiaArticleCategories">
+	<h1>Related Categories</h1>
+	<div id="catlinks" class="catlinks"><div id="mw-normal-catlinks"><a href="http://vim.wikia.com/wiki/Special:Categories" title="Special:Categories" rel="nofollow">Categories</a>: <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:VimTip" title="Category:VimTip">VimTip</a></span> | <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:Fileformat" title="Category:Fileformat">Fileformat</a></span></div> <div id="csAddCategorySwitch" class="noprint" style="background: none repeat scroll 0% 0% rgb(221, 221, 221); position: relative; float: left; border: 1px solid rgb(187, 187, 187); -moz-border-radius: 3px 3px 3px 3px; padding: 0pt 5px; line-height: 16px;"><img src="blank.gif" class="sprite-small add"><a href="#" onfocus="this.blur();" style="color: rgb(0, 0, 0); font-size: 0.85em; text-decoration: none; display: inline-block;" rel="nofollow">Add category</a></div></div></nav>
+		
+		<div id="WikiaArticleBottomAd" class="noprint">
+			<!-- BEGIN SLOTNAME: PREFOOTER_LEFT_BOXAD -->
+<div id="PREFOOTER_LEFT_BOXAD" class="wikia-ad noprint" style="display: block;"><div id="Liftium_300x250_2_php"><iframe src="index_8.html" id="PREFOOTER_LEFT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none; display: none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe><iframe style="display: none;" id="Liftium_300x250_2_php_9" marginwidth="0" marginheight="0" src="index_10.html" frameborder="0" height="250" scrolling="no" width="300"></iframe><iframe id="Liftium_300x250_2_php_15" marginwidth="0" marginheight="0" src="index_12.html" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div><!-- END SLOTNAME: PREFOOTER_LEFT_BOXAD -->
+			<!-- BEGIN SLOTNAME: PREFOOTER_RIGHT_BOXAD -->
+<div id="PREFOOTER_RIGHT_BOXAD" class="wikia-ad noprint" style="display: block;"><div id="Liftium_300x250_3_php"><iframe src="index_13.html" id="PREFOOTER_RIGHT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none; display: none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe><iframe style="display: none;" id="Liftium_300x250_3_php_9" marginwidth="0" marginheight="0" src="index_14.html" frameborder="0" height="250" scrolling="no" width="300"></iframe><iframe id="Liftium_300x250_3_php_15" marginwidth="0" marginheight="0" src="index_15.html" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div><!-- END SLOTNAME: PREFOOTER_RIGHT_BOXAD -->
+		</div>
+
+
+	</article><!-- WikiaMainContent -->
+
+<div id="WikiaRail" class="WikiaRail">
+
+	<form id="WikiaSearch" class="WikiaSearch" action="http://vim.wikia.com/wiki/index.php?title=Special:Search" method="get">
+	<input value="Search this wiki" class="placeholder" name="search" placeholder="Search this wiki" autocomplete="off" accesskey="f" type="text">
+	<input name="fulltext" value="0" type="hidden">
+	<input type="submit">
+	<button class="secondary"><img src="blank.gif" class="sprite search" height="17" width="21"></button>
+</form>
+<section class="WikiaPagesOnWikiModule module">
+	<h1>Pages on Vim Tips Wiki</h1>
+	<a href="http://vim.wikia.com/wiki/Special:CreatePage" title="Create a new page on this wiki" class="wikia-button createpage"><img src="blank.gif" class="sprite new" height="0" width="0">Create a Page</a>	<details class="tally">
+		<em>1,609</em><span class="fixedwidth">pages on this wiki</span>	</details>
+</section>
+<!-- BEGIN SLOTNAME: TOP_RIGHT_BOXAD -->
+<div id="TOP_RIGHT_BOXAD" class="wikia-ad noprint"><div id="Liftium_300x250_4_php"><iframe src="index_16.html" id="TOP_RIGHT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div><!-- END SLOTNAME: TOP_RIGHT_BOXAD -->
+<section class="WikiaActivityModule module ">
+	<h1 class="activity-heading">Recent Wiki Activity</h1>
+	<ul>
+		<li>
+			<img src="blank.gif" class="sprite edit" height="20" width="20">
+			<em><a href="http://vim.wikia.com/wiki/User:Fritzophrenic">Fritzophrenic</a> edited <a href="http://vim.wikia.com/wiki/Using_parameterized_snippet_inserts">Using parameterized snippet inserts</a></em>
+			<details>1 day ago</details>
+		</li>
+		<li>
+			<img src="blank.gif" class="sprite edit" height="20" width="20">
+			<em><a href="http://vim.wikia.com/wiki/User:Fritzophrenic">Fritzophrenic</a> edited <a href="http://vim.wikia.com/wiki/Using_Vim_with_the_Dvorak_keyboard_layout">Using Vim with the Dvorak keyboard layout</a></em>
+			<details>1 day ago</details>
+		</li>
+		<li>
+			<img src="blank.gif" class="sprite edit" height="20" width="20">
+			<em><a href="http://vim.wikia.com/wiki/User:Fritzophrenic">Fritzophrenic</a> edited <a href="http://vim.wikia.com/wiki/Change_cursor_movement_keys_for_Dvorak_layout">Change cursor movement keys for Dvorak layout</a></em>
+			<details>1 day ago</details>
+		</li>
+		<li>
+			<img src="blank.gif" class="sprite edit" height="20" width="20">
+			<em><a href="http://vim.wikia.com/wiki/User:Fritzophrenic">Fritzophrenic</a> edited <a href="http://vim.wikia.com/wiki/Spelling_suggestions_anywhere,_even_in_console_mode">Spelling suggestions anywhere, even in console mode</a></em>
+			<details>1 day ago</details>
+		</li>
+	</ul>
+
+			<a href="http://vim.wikia.com/wiki/Special:WikiActivity" title="Special:WikiActivity" class="more">See more &gt;</a>	</section>
+<section class="LatestPhotosModule module">	
+	<h1>Latest Photos</h1>
+	<a href="http://vim.wikia.com/wiki/Special:Upload" title="Add a Photo" class="wikia-button upphotoslogin"><img src="blank.gif" class="sprite photo" height="0" width="0">Add a Photo</a>	<details class="tally counter">
+		<em>47</em><span class="fixedwidth">photos on this wiki</span>	</details>
+
+			<a href="#" class="previous"><img src="blank.gif" class="latest-images-left" height="0" width="0"></a>
+		<a href="#" class="next"><img src="blank.gif" class="latest-images-right" height="0" width="0"></a>
+	<div class="carousel-container">
+		<div>
+			<ul class="carousel">
+			<li class="thumbs first-image"><a class="image" ref="File:Install error.png " href="http://vim.wikia.com/wiki/File:Install_error.png">
+			<img class="thumbimage" src="82px-134@2c549@2c0@2c414-install_error.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Frznchckn" title="User:Frznchckn">Frznchckn</a><br>
+			November 22<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Script:3188" title="Script:3188" class="wikia-gallery-item-posted">Script:3188</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Gundo screenshot.png " href="http://vim.wikia.com/wiki/File:Gundo_screenshot.png">
+			<img class="thumbimage" src="82px-142@2c1141@2c0@2c998-gundo_screenshot.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Fritzophrenic" title="User:Fritzophrenic">Fritzophrenic</a><br>
+			October 20<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Using_undo_branches" title="Using undo branches" class="wikia-gallery-item-posted">Using undo branches</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Screen shot.png " href="http://vim.wikia.com/wiki/File:Screen_shot.png">
+			<img class="thumbimage" src="82px-427@2c853@2c0@2c425-screen_shot.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Vinhtiensinh" title="User:Vinhtiensinh">Vinhtiensinh</a><br>
+			October 6<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Script:3268" title="Script:3268" class="wikia-gallery-item-posted">Script:3268</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Biogoo 1.6.1 screenshot.png " href="http://vim.wikia.com/wiki/File:Biogoo_1.6.1_screenshot.png">
+			<img class="thumbimage" data-src="http://images3.wikia.nocookie.net/__cb31674/vim/images/thumb/2/2e/Biogoo_1.6.1_screenshot.png/82px-14%2C904%2C0%2C889-Biogoo_1.6.1_screenshot.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Bdesham" title="User:Bdesham">Bdesham</a><br>
+			August 16<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/File:Biogoo_1.6.1_screenshot.png" title="File:Biogoo 1.6.1 screenshot.png" class="wikia-gallery-item-posted">File:Biogoo 1.6.1 screenshot.png</a>,&nbsp;<a href="http://vim.wikia.com/wiki/File:Biogoo_1.6.1_screenshot.png#filelinks" class="wikia-gallery-item-more">more...</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:DelimitMate.png " href="http://vim.wikia.com/wiki/File:DelimitMate.png">
+			<img class="thumbimage" data-src="http://images2.wikia.nocookie.net/__cb31674/vim/images/thumb/d/d7/DelimitMate.png/82px-117%2C972%2C0%2C854-DelimitMate.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Rusmaslov" title="User:Rusmaslov">Rusmaslov</a><br>
+			June 24<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Script:2754" title="Script:2754" class="wikia-gallery-item-posted">Script:2754</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Ninja The Last Thing You See.jpg " href="http://vim.wikia.com/wiki/File:Ninja_The_Last_Thing_You_See.jpg">
+			<img class="thumbimage" data-src="http://images3.wikia.nocookie.net/__cb31674/vim/images/thumb/2/23/Ninja_The_Last_Thing_You_See.jpg/82px-172%2C856%2C0%2C683-Ninja_The_Last_Thing_You_See.jpg">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:GGShinobi" title="User:GGShinobi">GGShinobi</a><br>
+			May 17<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/User:GGShinobi" title="User:GGShinobi" class="wikia-gallery-item-posted">User:GGShinobi</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Undo tree.vim.png " href="http://vim.wikia.com/wiki/File:Undo_tree.vim.png">
+			<img class="thumbimage" data-src="http://images2.wikia.nocookie.net/__cb31674/vim/images/thumb/2/2e/Undo_tree.vim.png/82px-59%2C646%2C0%2C586-Undo_tree.vim.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Chrisbra" title="User:Chrisbra">Chrisbra</a><br>
+			May 11<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Using_undo_branches" title="Using undo branches" class="wikia-gallery-item-posted">Using undo branches</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Vimgdb screen.png " href="http://vim.wikia.com/wiki/File:Vimgdb_screen.png">
+			<img class="thumbimage" data-src="http://images1.wikia.nocookie.net/__cb31674/vim/images/thumb/8/88/Vimgdb_screen.png/82px-0%2C846%2C0%2C846-Vimgdb_screen.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Mseeralan" title="User:Mseeralan">Mseeralan</a><br>
+			April 3<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Script:3039" title="Script:3039" class="wikia-gallery-item-posted">Script:3039</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Lastpos.png " href="http://vim.wikia.com/wiki/File:Lastpos.png">
+			<img class="thumbimage" data-src="http://images1.wikia.nocookie.net/__cb31674/vim/images/thumb/8/86/Lastpos.png/82px-74%2C334%2C0%2C259-Lastpos.png">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Anwo" title="User:Anwo">Anwo</a><br>
+			March 28<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Last_position_jump_improved_for_Easy_Vim" title="Last position jump improved for Easy Vim" class="wikia-gallery-item-posted">Last position jump improved for Easy Vim</a>,&nbsp;<a href="http://vim.wikia.com/wiki/File:Lastpos.png#filelinks" class="wikia-gallery-item-more">more...</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Cec mathexample.jpg " href="http://vim.wikia.com/wiki/File:Cec_mathexample.jpg">
+			<img class="thumbimage" data-src="http://images3.wikia.nocookie.net/__cb31674/vim/images/thumb/b/b1/Cec_mathexample.jpg/82px-330%2C749%2C0%2C418-Cec_mathexample.jpg">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Cec" title="User:Cec">Cec</a><br>
+			March 23<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Script:2723" title="Script:2723" class="wikia-gallery-item-posted">Script:2723</a>				</span>
+		</li>
+			<li class="thumbs"><a class="image" ref="File:Gvcolors.jpg " href="http://vim.wikia.com/wiki/File:Gvcolors.jpg">
+			<img class="thumbimage" data-src="http://images2.wikia.nocookie.net/__cb31674/vim/images/thumb/a/a4/Gvcolors.jpg/82px-52%2C599%2C0%2C546-Gvcolors.jpg">
+		</a>
+
+		<span class="thumbcaption">
+			by <a href="http://vim.wikia.com/wiki/User:Cec" title="User:Cec">Cec</a><br>
+			March 23<br>
+
+						Posted in			<a href="http://vim.wikia.com/wiki/Script:877" title="Script:877" class="wikia-gallery-item-posted">Script:877</a>				</span>
+		</li>
+				<li class="see-all last-image">
+			<a href="http://vim.wikia.com/wiki/Special:NewFiles" title="Special:NewFiles">See all photos</a>			<img data-src="http://images.wikia.com/common/__cb31672/skins/oasis/images/empty_gallery.png">
+		</li>
+	
+			</ul>
+		</div>
+	</div>
+	<a href="http://vim.wikia.com/wiki/Special:NewFiles" title="Special:NewFiles" class="more">See more &gt;</a>
+
+</section>
+<section style="display: block;" id="WikiaSpotlightsModule" class="module">
+	<header>
+		<h1>More from<img src="blank.gif" class="sprite logo" height="15" width="61"></h1>
+		<img src="blank.gif" class="banner-corner-left" height="0" width="0">
+		<img src="blank.gif" class="banner-corner-right chevron" height="0" width="0">
+	</header>
+	<ul id="SPOTLIGHT_RAIL" class="LazyLoadAd SPOTLIGHT_RAIL">
+						<li class="WikiaSpotlight item-1" id="SPOTLIGHT_RAIL_1"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1282__zoneid=17__cb=1d3ac3dfa0__oadest=http%3A%2F%2Frecipes.wikia.com%2Fwiki%2FRecipes_Wiki" class="highlight" target="_top"><img src="recipes2.jpg" height="95" width="95"></a>
+<em>Recipes Wiki</em>
+<p>Brush up on your cooking skills at the Recipe wiki. </p>
+<a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1282__zoneid=17__cb=1d3ac3dfa0__oadest=http%3A%2F%2Frecipes.wikia.com%2Fwiki%2FRecipes_Wiki" class="seemore" target="_top">See more...</a><div id="beacon_1d3ac3dfa0" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_003.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+				<li class="WikiaSpotlight item-2" id="SPOTLIGHT_RAIL_2"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1316__zoneid=18__cb=ce29896c01__oadest=http%3A%2F%2Fcoffee.wikia.com%2Fwiki%2FMain_Page" class="highlight" target="_top"><img src="coffee6.jpg" height="95" width="95"></a>
+<em>Coffee Wiki</em>
+<p>Keep warm with a Cup of Joe on the Coffee wiki</p>
+<a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1316__zoneid=18__cb=ce29896c01__oadest=http%3A%2F%2Fcoffee.wikia.com%2Fwiki%2FMain_Page" class="seemore" target="_top">See more...</a><div id="beacon_ce29896c01" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_004.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+				<li class="WikiaSpotlight item-3" id="SPOTLIGHT_RAIL_3"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1323__zoneid=19__cb=90d2e59578__oadest=http%3A%2F%2Fdepression.wikia.com%2Fwiki%2FDepression_Wiki" class="highlight" target="_top"><img src="depression.jpg" height="95" width="95"></a>
+<em>Depression Wiki</em>
+<p>The Depression Wiki offers tips on keeping away holiday stress. </p>
+<a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1323__zoneid=19__cb=90d2e59578__oadest=http%3A%2F%2Fdepression.wikia.com%2Fwiki%2FDepression_Wiki" class="seemore" target="_top">See more...</a><div id="beacon_90d2e59578" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_005.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+			</ul>
+	<a id="WikiaRandomWiki" href="http://community.wikia.com/wiki/Special:RandomWiki/2827" class="wikia-button">Random Wiki</a>
+</section>
+
+<!-- BEGIN SLOTNAME: LEFT_SKYSCRAPER_2 -->
+<div id="LEFT_SKYSCRAPER_2" class="wikia-ad noprint" style="display: block;"><div id="Liftium_160x600_5_php"><iframe src="index_17.html" id="LEFT_SKYSCRAPER_2_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="600" scrolling="no" width="160"></iframe></div></div><!-- END SLOTNAME: LEFT_SKYSCRAPER_2 -->
+<!-- BEGIN SLOTNAME: LEFT_SKYSCRAPER_3 -->
+<div id="LEFT_SKYSCRAPER_3" class="wikia-ad noprint" style="display: block;"><div id="Liftium_160x600_6_php"><iframe src="index_20.html" id="LEFT_SKYSCRAPER_3_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="0" scrolling="no" width="0"></iframe></div></div><!-- END SLOTNAME: LEFT_SKYSCRAPER_3 -->
+
+</div>
+
+	<footer id="WikiaFooter" class="WikiaFooter">
+
+	<div style="width: 982px;" class="toolbar float small">
+		 
+		<ul class="tools">
+
+			<li>
+				<a href="http://vim.wikia.com/index.php?title=File_format&amp;action=watch"><img src="blank.gif" class="sprite follow" height="15" width="15"></a>
+				<a accesskey="w" href="http://vim.wikia.com/index.php?title=File_format&amp;action=watch" id="ca-watch">Follow</a>
+			</li>
+			<li id="ca-share_feature">
+				<img src="blank.gif" class="sprite share" height="15" width="15">
+				<a href="#" id="control_share_feature">Share</a>
+			</li>
+
+		</ul>
+		<img src="blank.gif" class="banner-corner-left" height="0" width="0">
+		<img src="blank.gif" class="banner-corner-right" height="0" width="0">
+	</div>
+
+	<section>
+	<header>
+		<h1>Around Wikia's network</h1>
+		<a id="WikiaRandomWiki" href="http://community.wikia.com/wiki/Special:RandomWiki/2827" class="wikia-button">Random Wiki</a>
+	</header>
+	<ul id="SPOTLIGHT_FOOTER" class="LazyLoadAd SPOTLIGHT_FOOTER">
+						<li class="WikiaSpotlight item-1" id="SPOTLIGHT_FOOTER_1"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1253__zoneid=14__cb=4d3b948806__oadest=http%3A%2F%2Fsofab.wikia.com%2Fwiki%2FSouthern_Food_and_Beverage_Wiki" target="_top"><img src="2272d63147e88ceb2257abc02a8bbd9b.jpg" alt="" title="" border="0" height="123" width="255"></a><div id="beacon_4d3b948806" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_006.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+				<li class="WikiaSpotlight item-2" id="SPOTLIGHT_FOOTER_2"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1301__zoneid=15__cb=663e4dde4a__oadest=http%3A%2F%2Ftravel.wikia.com%2Fwiki%2FWikia_Travel" target="_top"><img src="13707bdfa53ace12c46be2ac5a6482f8.jpg" alt="" title="" border="0" height="123" width="255"></a><div id="beacon_663e4dde4a" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_007.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+				<li class="WikiaSpotlight item-3" id="SPOTLIGHT_FOOTER_3"><a href="http://vim.wikia.com/__spotlights/ck.php?oaparams=2__bannerid=1299__zoneid=16__cb=e6a15631b0__oadest=http%3A%2F%2Fvintagepatterns.wikia.com%2Fwiki%2FMain_Page" target="_top"><img src="8927406e52e32f03ecf00c13f3e3386d.jpg" alt="" title="" border="0" height="123" width="255"></a><div id="beacon_e6a15631b0" style="position: absolute; left: 0px; top: 0px; visibility: hidden;"><img src="lg_008.php" alt="" style="width: 0px; height: 0px;" height="0" width="0"></div>
+</li>
+			</ul>
+</section>
+	
+</footer>
+	<footer class="CorporateFooter">
+	<nav>
+		<h1>Wikia Inc Navigation</h1>
+		<div class="WikiaHubBranding">
+			<div class="wordmark">
+				<img src="blank.gif" class="sprite logo">
+			</div>
+						<div class="hub"><a href="http://www.wikia.com/Lifestyle">Lifestyle</a></div>
+					</div>
+		<ul>
+			<li>
+							<a href="http://www.wikia.com/About_Us"><span>About Us</span></a>
+						</li>
+				<li>
+							<a href="http://www.wikia.com/Hiring">Careers</a>
+						</li>
+				<li>
+							<a href="http://www.wikia.com/Advertising">Advertise</a>
+						</li>
+				<li>
+							<a href="http://vim.wikia.com/wiki/Special:Contact">Contact</a>
+						</li>
+				<li>
+							<a href="http://www.wikia.com/Terms_of_Use">Terms of Use</a>
+						</li>
+				<li>
+							<a href="http://www.wikia.com/Privacy_Policy">Privacy Policy</a>
+						</li>
+				<li>
+			<a href="http://community.wikia.com/wiki/Wikia:Licensing" title="w:Wikia:Licensing">CC-BY-SA</a>			</li>
+				<li>
+							<a href="http://www.wikia.com/Special:CreateWiki">Create a wiki</a>
+						</li>
+			</ul>
+	</nav>
+</footer>
+
+</section><!--WikiaPage-->
+
+<!-- comScore -->
+<!-- Start for Comscore, page_view -->
+
+<!-- Begin comScore Tag -->
+
+
+
+<!-- End comScore Tag -->
+
+<!-- googleAnalytics -->
+<!-- Start for GA_Urchin, page_view -->
+
+
+<!-- Start for GA_Urchin, onewiki -->
+<!-- No tracking for this wiki -->
+<!-- Start for GA_Urchin, pagetime -->
+
+<!-- Start for GA_Urchin, browser-height -->
+<!-- Unsupported event for AnalyticsProviderGA_Urchin -->
+<!-- Start for GA_Urchin, varnish-stat -->
+
+<!-- Start for GA_Urchin, noads -->
+
+<!-- Start for GA_Urchin, abtest -->
+
+
+
+
+
+	
+
+	<!-- Combined JS files (StaticChute) and head scripts -->
+	
+
+<!-- BEGIN SLOTNAME: INVISIBLE_1 -->
+
+
+<div id="Liftium_0x0_0"><!-- Liftium No ad --></div>
+<!-- END SLOTNAME: INVISIBLE_1 -->
+<!-- BEGIN SLOTNAME: INVISIBLE_2 -->
+<div id="Liftium_0x0_1"><!-- Liftium No ad --></div>
+<!-- END SLOTNAME: INVISIBLE_2 -->
+<!-- #### BEGIN AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- #### END AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+
+<!-- quantServe -->
+<!-- Start for QuantServe, page_view -->
+
+
+
+
+<!-- BottomScripts -->
+
+		
+<img src="__onedot" alt="" border="0" height="1" width="1">
+<!-- end Bottomscripts -->
+
+<!-- printable CSS -->
+		
+<!-- Served by ap-s9 in 0.352 secs. cpu: 0.220 -->
+<!-- Ad slots to be called within AdModule on this page: TOP_LEADERBOARD, TOP_RIGHT_BOXAD, TEST_TOP_RIGHT_BOXAD, INVISIBLE_1, INVISIBLE_2, LEFT_SKYSCRAPER_2, LEFT_SKYSCRAPER_3, PREFOOTER_LEFT_BOXAD, PREFOOTER_RIGHT_BOXAD, INVISIBLE_TOP -->
+<div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; opacity: 0.9;"></div></body>
+</html>

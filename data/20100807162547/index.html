@@ -1,0 +1,779 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" dir="ltr" xml:lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		
+                <!-- Skin = Monaco.php -->
+		<meta name="description" content="Vim provides a simple way to highlight all occurrences matching your last search, but it doesn't provide an easy way to highlight more than one search. This tip provides a script to make it easy to highlight multiple words in different colors. In addition, you can search for the next highlighted word.">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta name="generator" content="MediaWiki 1.15.5">
+		<meta name="keywords" content="Vim Tips Wiki,vim,Highlight multiple words,CSV,VimTip14,VimTip1571,VimTip1573,VimTip24,VimTip634,Where to download Vim,Highlight multiple words,New tips/200806">
+		<link rel="canonical" href="http://vim.wikia.com/wiki/Highlight_multiple_words">
+		<link rel="alternate" type="application/x-wiki" title="Edit this page" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit">
+		<link rel="edit" title="Edit this page" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit">
+		<link rel="apple-touch-icon" href="http://images.wikia.com/vim/images/b/bc/Wiki.png">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="search" type="application/opensearchdescription+xml" href="http://vim.wikia.com/opensearch_desc.php" title="Vim Tips Wiki (en)">
+		<link rel="copyright" href="http://community.wikia.com/wiki/Wikia:Licensing">
+		<link rel="alternate" type="application/rss+xml" title="Vim Tips Wiki RSS feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=rss">
+		<link rel="alternate" type="application/atom+xml" title="Vim Tips Wiki Atom feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=atom">
+		<!--[if lt IE 7]><script type="text/javascript">var wgShowIE6PhaseOutMessage = true;</script><![endif]-->
+		
+		<title>Highlight multiple words - Vim Tips Wiki</title>
+		
+
+<!-- GetCoreCSS -->
+<!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IElt7" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IEeq7" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IEeq8" /><![endif]-->
+<!--[if !IE]>--><!--<![endif]-->
+<!-- GetExtensionsCSS -->
+<!-- GetThemeCSS -->
+<!-- GetSiteCSS -->
+<!-- GetUserCSS -->	
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Highlight_multiple_words TOCimprovements loggedout color2 wikiaSkinMonaco action_view" id="body">
+	<form action="http://vim.wikia.com/wiki/VimTip1572" method="post" name="userajaxloginform" id="userajaxloginformhide" style="display: none;">
+			<input value="" name="wpName" id="wpName1Ajax" tabindex="101" size="20" type="text">
+			<input name="wpPassword" id="wpPassword1Ajax" tabindex="102" size="20" type="password">
+			<input name="wpRemember" id="wpRemember1Ajax" tabindex="104" value="1" type="checkbox">
+		</form>
+	<!-- HEADER -->
+		<div id="wikia_header" class="reset color2">
+			<div class="monaco_shrinkwrap">
+			<div id="wikiaBranding">
+			<div id="wikia_logo"><a rel="nofollow" href="http://www.wikia.com/Wikia">Wikia</a></div>						<button id="headerButtonHub" class="header-button color1">Technology<img src="blank.gif"></button>
+
+			</div>
+<div id="requestWikiData"><a rel="nofollow" href="http://www.wikia.com/Special:CreateWiki" id="request_wiki" class="wikia-button">Create a new wiki</a>&nbsp;<span id="request_wiki_ad"></span></div>			<div id="userData">
+<span id="fbconnect"><a href="#" class="fb_button fb_button_small"><span class="fb_button_text">Connect</span></a></span>				<span id="userLogin">
+					<a rel="nofollow" class="ajaxLogin" id="login" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=Highlight_multiple_words&amp;type=login">Log in</a>
+				</span>
+
+					<a rel="nofollow" class="wikia-button ajaxRegister" id="register" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=Highlight_multiple_words&amp;type=signup">Create an account</a>
+
+		</div>
+		</div>
+	</div>
+
+	<div class="monaco_shrinkwrap"><div id="background_accent1"></div></div>
+	<div style="position: relative;"><div id="background_accent2"></div></div>
+
+		<div id="background_strip" class="reset">
+			<div class="monaco_shrinkwrap">
+
+			<div id="accent_graphic1"></div>
+			<div id="accent_graphic2"></div>
+			<div id="wiki_logo" style="background-image: url(&quot;wiki.png&quot;);"><a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" accesskey="z">Vim Tips Wiki</a></div>
+			<!--[if lt IE 7]>
+			<style type="text/css">
+				#wiki_logo {
+					background-image: none !important;
+					filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://images.wikia.com/vim/images/b/bc/Wiki.png', sizingMethod='image');
+				}
+			</style>
+			<![endif]-->
+			</div>
+		</div>
+		<!-- /HEADER -->
+
+		<!-- PAGE -->
+
+	<div class="monaco_shrinkwrap" id="monaco_shrinkwrap_main">
+		<div id="wikia_page">
+					<div id="page_bar" class="reset color1 clearfix">
+				<ul id="page_controls">
+		  							  <li id="control_edit" class=""><img src="blank.gif" class="sprite edit"><a rel="nofollow" id="ca-edit" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit" title="You can edit this page. Please use the preview button before saving. [e]" accesskey="e">Edit this page</a></li>
+		  							  <li id="control_history" class=""><img src="blank.gif" class="sprite history"><a rel="nofollow" id="ca-history" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=history" title="Past versions of this page [h]" accesskey="h">History</a></li>
+		  							  <li id="control_watch" class=""><img src="blank.gif" class="sprite watch"><a rel="nofollow" id="ca-watch" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=watch" title="Follow this page [w]" accesskey="w">Follow</a></li>
+		  							  <li id="control_share_feature" class=""><img src="blank.gif" class="sprite share"><a rel="nofollow" id="ca-share_feature" href="#">Share this article</a></li>
+		  						  </ul>
+						  <ul id="page_tabs">
+		  							  <li class="selected"><a href="http://vim.wikia.com/wiki/Highlight_multiple_words" id="ca-nstab-main" title="View the content page [c]" accesskey="c" class="selected">Article</a></li>
+		  							  <li class=""><a href="http://vim.wikia.com/wiki/Talk:Highlight_multiple_words" id="ca-talk" title="Discussion about the content page [t]" accesskey="t" class="">Discussion</a></li>
+		  				</ul>
+			</div>
+		        	<!-- #### BEGIN AdEngine::AdEngine::getSetupHtml ####-->
+<!-- #### END AdEngine::AdEngine::getSetupHtml ####-->
+					<!-- ARTICLE -->
+
+			<div id="article">
+				<a name="top" id="top"></a>
+								<h1 class="firstHeading">Highlight multiple words<span class="editsection-upper noprint"><a href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit" title="Highlight multiple words" onclick='WET.byStr("articleAction/topedit")' rel="nofollow" id="te-editsection-noprompt" class="wikia-button">edit this page</a></span></h1>				<div id="bodyContent">
+					<h3 id="siteSub">From Vim Tips Wiki</h3>
+					<div id="contentSub">(Redirected from <a href="http://vim.wikia.com/index.php?title=VimTip1572&amp;redirect=no" title="VimTip1572" rel="nofollow">VimTip1572</a>)</div>
+																				<!-- #### BEGIN AdEngine::AdEngine::getSetupHtml ####-->
+<!-- #### END AdEngine::AdEngine::getSetupHtml ####-->
+<div id="TOP_LEADERBOARD" class="noprint"><div id="Liftium_728x90_1_php"><iframe src="index_1.html" id="TOP_LEADERBOARD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="90" scrolling="no" width="728"></iframe></div></div>					
+					<!-- start content -->
+					
+				<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"></div></div>
+				
+<div><b><a href="http://vim.wikia.com/wiki/Highlight_multiple_words" class="text" title="http://vim.wikia.com/wiki/Highlight_multiple_words">Tip 1572</a></b> <a href="http://vim.wikia.com/wiki/VimTip1571" title="VimTip1571" class="mw-redirect"><small>Previous</small></a> <a href="http://vim.wikia.com/wiki/VimTip1573" title="VimTip1573" class="mw-redirect"><small>Next</small></a>
+<p><b><a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:New_tips/200806#Highlight_multiple_words" title="Vim Tips Wiki:New tips/200806">created</a></b>&nbsp;June 19, 2008 · <b>complexity</b>&nbsp;basic · <b>version</b>&nbsp;7.2
+</p>
+<hr>
+</div>
+<p>Vim provides a simple way to <a href="http://vim.wikia.com/wiki/VimTip14" title="VimTip14" class="mw-redirect">highlight all occurrences matching your last search</a>, but it doesn't provide an easy way to highlight more than one search. This tip provides a script to make it easy to highlight multiple words in different colors. In addition, you can search for the next highlighted word.
+</p>
+<table id="toc" class="toc" summary="Contents"><tbody><tr><td><div id="toctitle"><h2>Contents</h2> <span class="toctoggle">[<a href="javascript:toggleToc()" rel="nofollow" class="internal" id="togglelink">show</a>]</span></div>
+<ul>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Requirements"><span class="tocnumber">1</span> <span class="toctext">Requirements</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Usage"><span class="tocnumber">2</span> <span class="toctext">Usage</span></a>
+<ul>
+<li class="toclevel-2"><a rel="nofollow" href="#Searching"><span class="tocnumber">2.1</span> <span class="toctext">Searching</span></a></li>
+<li class="toclevel-2"><a rel="nofollow" href="#Highlight_command"><span class="tocnumber">2.2</span> <span class="toctext">Highlight command</span></a></li>
+<li class="toclevel-2"><a rel="nofollow" href="#Other_commands"><span class="tocnumber">2.3</span> <span class="toctext">Other commands</span></a></li>
+<li class="toclevel-2"><a rel="nofollow" href="#Example"><span class="tocnumber">2.4</span> <span class="toctext">Example</span></a></li>
+</ul>
+</li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Script"><span class="tocnumber">3</span> <span class="toctext">Script</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Defining_highlight_groups"><span class="tocnumber">4</span> <span class="toctext">Defining highlight groups</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#See_also"><span class="tocnumber">5</span> <span class="toctext">See also</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#References"><span class="tocnumber">6</span> <span class="toctext">References</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Comments"><span class="tocnumber">7</span> <span class="toctext">Comments</span></a></li>
+</ul>
+</td></tr></tbody></table>
+<a rel="nofollow" name="Requirements" id="Requirements"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit&amp;section=1" title="Edit section: Requirements" rel="nofollow">edit</a></span> <span class="mw-headline">Requirements</span></h2><div style="float: left; margin-top: 10px; margin-bottom: 10px; margin-right: 20px; clear: left;" id="Liftium_300x250_2"><iframe id="Liftium_300x250_2_140" marginwidth="0" marginheight="0" src="index_2.html" frameborder="0" height="250" scrolling="no" width="300"></iframe></div>
+<p>The script uses <tt>matchadd()</tt> which requires <a href="http://vim.wikia.com/wiki/Where_to_download_Vim" title="Where to download Vim">Vim 7.2</a> (actually version 7.1.040 or later). You will probably need gvim to display the colors specified in the script. In addition, the script assumes you have a numeric keypad and a system that allows you to map keys on that keypad (for example, the command <tt>:map&nbsp;&lt;k0&gt;&nbsp;:echo&nbsp;'Hello'&lt;CR&gt;</tt> would display <i>Hello</i> when you press <tt>0</tt> on the numeric keypad).
+</p><p>You need the script (<tt>highlights.vim</tt>) and the file that defines the highlight groups (<tt>highlights.csv</tt>); these are given below.
+</p>
+<a rel="nofollow" name="Usage" id="Usage"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit&amp;section=2" title="Edit section: Usage" rel="nofollow">edit</a></span> <span class="mw-headline">Usage</span></h2>
+<div class="floatright"><a href="http://vim.wikia.com/wiki/File:HighlightMultipleWords.png" class="image" title="Sample highlighting of words"><img alt="Sample highlighting of words" src="highlightmultiplewords.png" border="0" height="226" width="450"></a></div>
+<p>The script defines highlight groups named <tt>hl1</tt>, <tt>hl2</tt>, ... <tt>hl9</tt> (and more). Once enabled, pressing one of the keys <tt>1</tt>, <tt>2</tt>, ... <tt>9</tt> on the numeric keypad will highlight the word under the cursor with the colors defined in the corresponding highlight group (for example, press <tt>4</tt> on the keypad to highlight the current word with the <tt>hl4</tt> group).
+</p><p>Type <tt>\m</tt> (assuming the default backslash leader key) to toggle mapping of the keypad on/off. At startup, the numeric keypad operates normally because only <tt>\m</tt> is mapped.
+</p><p>After typing <tt>\m</tt> to enable the mappings, you could use the keypad to:
+</p>
+<ul><li>Press <tt>1</tt> to highlight the current visually selected text, or the current word (if nothing is selected). Highlight group <tt>hl1</tt> is used.
+</li><li>Press <tt>2</tt> for highlight <tt>hl2</tt>, <tt>3</tt> for highlight <tt>hl3</tt>, etc.
+</li><li>Press <tt>0</tt> to remove all highlights from the current visually selected text, or the current word.
+</li></ul>
+<p>For example, if you place the cursor on the word "rain" and press <tt>4</tt> on the keypad, all occurrences of "rain" will be highlighted (use <tt>:hi hl4</tt> to show the colors). No highlighting will occur in words like "rainbow".
+</p><p>Alternatively, place the cursor on "rain" and press <tt>viw</tt> to select the word, then <tt>4</tt>. All occurrences of the visually selected text will be highlighted, including the "rain" in "rainbow".
+</p><p>Each window has its own set of highlights: if you use <tt>:split</tt> to show two windows, you can have one set of highlights in the top window, and a different set in the other window.
+</p><p>With the mappings enabled, you could use the keypad to:
+</p>
+<ul><li>Press <tt>-</tt> to remove all highlights in the current window.
+</li><li>Press <tt>+</tt> to restore the highlighting when <tt>-</tt> was last used in the current window.
+</li><li>Press <tt>*</tt> to restore the highlighting when <tt>-</tt> was last used in any window.
+</li></ul>
+<p>For example, suppose you are displaying two windows and you want the same highlighting in each window. In the first window, apply the wanted highlighting. Then (using the numeric keypad keys):
+</p>
+<ul><li>Press <tt>-</tt> to remove all highlights in the first window.
+</li><li>Press <tt>+</tt> to restore them.
+</li><li>Switch to the other window and press <tt>*</tt> to apply the highlights from the first window.
+</li></ul>
+<a rel="nofollow" name="Searching" id="Searching"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit&amp;section=3" title="Edit section: Searching" rel="nofollow">edit</a>]</span> <span class="mw-headline">Searching</span></h3>
+<p>After using <tt>\m</tt> to enable mappings, you can search for the next or previous occurrence of highlighted text. Patterns highlighted with the <tt>:match</tt> or <tt>:2match</tt> commands are also found.
+</p><p>Type <tt>\f</tt> to find the next match, or <tt>\F</tt> to find backwards. This has no effect on search highlighting or history.
+</p><p>Alternatively, type <tt>\n</tt> or <tt>\N</tt> to search forwards or backwards. Now you can press the normal search keys <tt>n</tt> or <tt>N</tt> to find the next or previous occurrence.
+</p>
+<a rel="nofollow" name="Highlight_command" id="Highlight_command"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit&amp;section=4" title="Edit section: Highlight command" rel="nofollow">edit</a>]</span> <span class="mw-headline">Highlight command</span></h3>
+<p>The script defines a <tt>:Highlight <i>n</i> <i>pattern</i></tt> command where <i>n</i> is a number (1..99) and <i>pattern</i> is the text you want highlighted. Depending on your system, you may be able to use the abbreviation <tt>:Hi</tt> rather than <tt>:Highlight</tt>.
+</p><p>The following examples use different colors to highlight various patterns:
+</p>
+<pre>:Highlight 4 hello
+:Highlight 5 \&lt;hello\&gt;
+:Highlight 6 Hello World
+:Highlight 7 \c\&lt;th
+</pre>
+<p>The second example is the same as placing the cursor on "hello" then pressing <tt>5</tt> on the numeric keypad. The last example highlights <tt>th</tt> occurring at the beginning of a word, not case sensitive.
+</p><p>The following command will list all active highlights (group names and patterns):
+</p>
+<pre>:Highlight
+</pre>
+<a rel="nofollow" name="Other_commands" id="Other_commands"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit&amp;section=5" title="Edit section: Other commands" rel="nofollow">edit</a>]</span> <span class="mw-headline">Other commands</span></h3>
+<p>After using <tt>\m</tt> to enable the keypad mappings, you can press 1..9 on the keypad to highlight the visual selection (if any), or the current word. For example, pressing <tt>4</tt> on the keypad will highlight using the <tt>hl4</tt> group.
+</p><p>In addition, you can press a digit 1..9 on the main keyboard before pressing 1..9 on the keypad. For example, if you press <tt>2</tt> on the main keyboard before <tt>4</tt> on the keypad, the <tt>hl24</tt> highlight group will be used.
+</p><p>The <tt>:Hclear</tt> command can clear highlights. After typing <tt>:Hclear</tt>, you can enter an argument, or you can press Space then Tab for command completion (highlighted patterns). Examples:
+</p>
+<pre>" Remove highlight for visual selection (if any), or current word.
+:Hclear
+" Remove highlight 24.
+:Hclear 24
+" Remove all highlights for pattern '\c\&lt;th'.
+:Hclear \c\&lt;th
+" Remove all highlights.
+:Hclear *
+</pre>
+<p>The following command will create a scratch buffer showing all the defined highlights:
+</p>
+<pre>:Hsample
+</pre>
+<p>The following commands can be used to save or restore the current highlights:
+</p>
+<pre>:Hsave anyname
+:Hrestore anyname
+</pre>
+<p>Replace <tt>anyname</tt> with any name you would like to use. These commands use uppercase global variables (<tt>anyname</tt> is converted to uppercase), which Vim will save providing you have the <tt>!</tt> flag in the <tt>'viminfo'</tt> option (<tt>:set viminfo^=!</tt>).
+</p><p>After typing <tt>:Hsave</tt> or <tt>:Hrestore</tt>, you can press Space then Tab for command completion.
+</p>
+<a rel="nofollow" name="Example" id="Example"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit&amp;section=6" title="Edit section: Example" rel="nofollow">edit</a>]</span> <span class="mw-headline">Example</span></h3>
+<p>Copy this text into Vim to test word highlighting:
+</p>
+<pre>777  888  999   111 222 333 444 555 666 777 888 999
+444  555  666   999 111 222 333 444 555 666 777 888
+111  222  333   888 999 111 222 333 444 555 666 777
+111222 333444 555666 777888999 111222 333444 555666
+</pre>
+<p>Use <tt>:sp</tt> to split the window and view the above text in both windows. Use <tt>\m</tt> to enable mappings, then apply some matches in the top window. Switch to the bottom window and apply some different matches: each window maintains a separate list of highlight matches.
+</p><p>In the next step, you must use the <tt>-+*</tt> keys on the numeric keypad. While in the bottom window, press <tt>-</tt> to clear highlighting in that window. If wanted, press <tt>+</tt> to restore highlighting. In the top window, press <tt>*</tt> to apply the highlighting from the bottom window.
+</p>
+<a rel="nofollow" name="Script" id="Script"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit&amp;section=7" title="Edit section: Script" rel="nofollow">edit</a></span> <span class="mw-headline">Script</span></h2><div style="float: left; margin-top: 10px; margin-bottom: 10px; margin-right: 20px; clear: left;" id="Liftium_300x250_3"><iframe style="display: none;" id="Liftium_300x250_3_428" marginwidth="0" marginheight="0" src="index_3.html" frameborder="0" height="250" scrolling="no" width="300"></iframe><iframe id="Liftium_300x250_3_20" marginwidth="0" marginheight="0" src="index_4.html" frameborder="0" height="250" scrolling="no" width="300"></iframe></div>
+<p>Create file <tt>~/.vim/plugin/highlights.vim</tt> (Unix) or <tt>$HOME/vimfiles/plugin/highlights.vim</tt> (Windows) containing the script below, then restart Vim.
+</p>
+<pre>" Plugin to highlight multiple words in different colors.
+" Version 2008-11-19 from http://vim.wikia.com/wiki/VimTip1572
+" File highlights.csv (in same directory as script) defines the highlights.
+"
+" Type '\m' to toggle mapping of keypad on/off (assuming \ leader).
+" Type '\f' to find the next match; '\F' to find backwards.
+" Can also type '\n' or '\N' for search; then n or N will find next.
+" On the numeric keypad, press:
+"   1 to highlight visually selected text or current word
+"     using highlight group hl1 (defined below)
+"   2 for highlight hl2, 3 for highlight hl3, etc
+"     (can press 1 to 9 on keypad for highlights hl1 to hl9)
+"   0 to remove highlight from current word
+"   - to remove all highlights in current window
+"   + to restore highlights cleared with '-' in current window
+"   * to restore highlights (possibly from another window)
+" Can press 1 or 2 on main keyboard before keypad 1..9 for more highlights.
+" Commands:
+"   ':Highlight' list all highlights.
+"   ':Highlight [n [pattern]]' set highlight.
+"   ':Hsample' display all highlights in a scratch buffer.
+"   ':Hclear [hlnum|pattern|*]' clear highlights.
+"   ':Hsave x', ':Hrestore x' save/restore highlights (x any name).
+" Saving current highlights requires '!' in 'viminfo' option.
+if v:version &lt; 702 || exists('loaded_highlightmultiple') || &amp;cp
+  finish
+endif
+let loaded_highlightmultiple = 1
+
+" On first call, read file highlights.csv in same directory as script.
+" For example, line "5,white,blue,black,green" executes:
+" highlight hl5 ctermfg=white ctermbg=blue guifg=black guibg=green
+let s:data_file = expand('&lt;sfile&gt;:p:r').'.csv'
+let s:loaded_data = 0
+function! LoadHighlights()
+  if&nbsp;!s:loaded_data
+    if filereadable(s:data_file)
+      let names = ['hl', 'ctermfg=', 'ctermbg=', 'guifg=', 'guibg=']
+      for line in readfile(s:data_file)
+        let fields = split(line, ',', 1)
+        if len(fields) == 5 &amp;&amp; fields[0] =~ '^\d\+$'
+          let cmd = range(5)
+          call map(cmd, 'names[v:val].fields[v:val]')
+          call filter(cmd, 'v:val!~''=$''')
+          execute 'silent highlight '.join(cmd)
+        endif
+      endfor
+      let s:loaded_data = 1
+    endif
+    if&nbsp;!s:loaded_data
+      echo 'Error: Could not read highlight data from '.s:data_file
+    endif
+  endif
+endfunction
+
+" Return last visually selected text or '\&lt;cword\&gt;'.
+" what = 1 (selection), or 2 (cword), or 0 (guess if 1 or 2 is wanted).
+function! s:Pattern(what)
+  if a:what == 2 || (a:what == 0 &amp;&amp; histget(':', -1) =~# '^H')
+    let result = expand("&lt;cword&gt;")
+    if&nbsp;!empty(result)
+      let result = '\&lt;'.result.'\&gt;'
+    endif
+  else
+    let old_reg = getreg('"')
+    let old_regtype = getregtype('"')
+    normal! gvy
+    let result = substitute(escape(@@, '\.*$^~['), '\_s\+', '\\_s\\+', 'g')
+    normal! gV
+    call setreg('"', old_reg, old_regtype)
+  endif
+  return result
+endfunction
+
+" Remove any highlighting for hlnum then highlight pattern (if not empty).
+" If pat is numeric, use current word or visual selection and
+" increase hlnum by count*10 (if count [1..9] is given).
+function! s:DoHighlight(hlnum, pat, decade)
+  call LoadHighlights()
+  let hltotal = a:hlnum
+  if 0 &lt; a:decade &amp;&amp; a:decade &lt; 10
+    let hltotal += a:decade * 10
+  endif
+  if type(a:pat) == type(0)
+    let pattern = s:Pattern(a:pat)
+  else
+    let pattern = a:pat
+  endif
+  let id = hltotal + 100
+  silent! call matchdelete(id)
+  if&nbsp;!empty(pattern)
+    try
+      call matchadd('hl'.hltotal, pattern, -1, id)
+    catch /E28:/
+      echo 'Highlight hl'.hltotal.' is not defined'
+    endtry
+  endif
+endfunction
+
+" Remove all matches for pattern.
+function! s:UndoHighlight(pat)
+  if type(a:pat) == type(0)
+    let pattern = s:Pattern(a:pat)
+  else
+    let pattern = a:pat
+  endif
+  for m in getmatches()
+    if m.pattern ==# pattern
+      call matchdelete(m.id)
+    endif
+  endfor
+endfunction
+
+" Return pattern to search for next match, and do search.
+function! s:Search(backward)
+  let patterns = []
+  for m in getmatches()
+    call add(patterns, m.pattern)
+  endfor
+  if empty(patterns)
+    let pat = ''
+  else
+    let pat = join(patterns, '\|')
+    call search(pat, a:backward&nbsp;? 'b'&nbsp;: '')
+  endif
+  return pat
+endfunction
+
+" Enable or disable mappings and any current matches.
+function! s:MatchToggle()
+  if exists('g:match_maps') &amp;&amp; g:match_maps
+    let g:match_maps = 0
+    for i in range(0, 9)
+      execute 'unmap &lt;k'.i.'&gt;'
+    endfor
+    nunmap &lt;kMinus&gt;
+    nunmap &lt;kPlus&gt;
+    nunmap &lt;kMultiply&gt;
+    nunmap &lt;Leader&gt;f
+    nunmap &lt;Leader&gt;F
+    nunmap &lt;Leader&gt;n
+    nunmap &lt;Leader&gt;N
+  else
+    let g:match_maps = 1
+    for i in range(1, 9)
+      execute 'vnoremap &lt;silent&gt; &lt;k'.i.'&gt;&nbsp;:&lt;C-U&gt;call &lt;SID&gt;DoHighlight('.i.', 1, v:count)&lt;CR&gt;'
+      execute 'nnoremap &lt;silent&gt; &lt;k'.i.'&gt;&nbsp;:&lt;C-U&gt;call &lt;SID&gt;DoHighlight('.i.', 2, v:count)&lt;CR&gt;'
+    endfor
+    vnoremap &lt;silent&gt; &lt;k0&gt;&nbsp;:&lt;C-U&gt;call &lt;SID&gt;UndoHighlight(1)&lt;CR&gt;
+    nnoremap &lt;silent&gt; &lt;k0&gt;&nbsp;:&lt;C-U&gt;call &lt;SID&gt;UndoHighlight(2)&lt;CR&gt;
+    nnoremap &lt;silent&gt; &lt;kMinus&gt;&nbsp;:call &lt;SID&gt;WindowMatches(0)&lt;CR&gt;
+    nnoremap &lt;silent&gt; &lt;kPlus&gt;&nbsp;:call &lt;SID&gt;WindowMatches(1)&lt;CR&gt;
+    nnoremap &lt;silent&gt; &lt;kMultiply&gt;&nbsp;:call &lt;SID&gt;WindowMatches(2)&lt;CR&gt;
+    nnoremap &lt;silent&gt; &lt;Leader&gt;f&nbsp;:call &lt;SID&gt;Search(0)&lt;CR&gt;
+    nnoremap &lt;silent&gt; &lt;Leader&gt;F&nbsp;:call &lt;SID&gt;Search(1)&lt;CR&gt;
+    nnoremap &lt;silent&gt; &lt;Leader&gt;n&nbsp;:let @/=&lt;SID&gt;Search(0)&lt;CR&gt;
+    nnoremap &lt;silent&gt; &lt;Leader&gt;N&nbsp;:let @/=&lt;SID&gt;Search(1)&lt;CR&gt;
+  endif
+  call s:WindowMatches(g:match_maps)
+  echo 'Mappings for matching:' g:match_maps&nbsp;? 'ON'&nbsp;: 'off'
+endfunction
+nnoremap &lt;silent&gt; &lt;Leader&gt;m&nbsp;:call &lt;SID&gt;MatchToggle()&lt;CR&gt;
+
+" Remove and save current matches, or restore them.
+function! s:WindowMatches(action)
+  call LoadHighlights()
+  if a:action == 1
+    if exists('w:last_matches')
+      call setmatches(w:last_matches)
+    endif
+  elseif a:action == 2
+    if exists('g:last_matches')
+      call setmatches(g:last_matches)
+    else
+      call s:Hrestore('')
+    endif
+  else
+    let m = getmatches()
+    if&nbsp;!empty(m)
+      let w:last_matches = m
+      let g:last_matches = m
+      call s:Hsave('')
+      call clearmatches()
+    endif
+  endif
+endfunction
+
+" Return name of global variable to save value ('' if invalid).
+function! s:NameForSave(name)
+  if a:name =~# '^\w*$'
+    return 'HI_SAVE_'.toupper(a:name)
+  endif
+  echo 'Error: Invalid name "'.a:name.'"'
+  return ''
+endfunction
+
+" Return custom completion string (match patterns).
+function! s:MatchPatterns(A, L, P)
+  return join(sort(map(getmatches(), 'v:val.pattern')), "\n")
+endfunction
+
+" Return custom completion string (saved highlight names).
+function! s:SavedNames(A, L, P)
+  let l = filter(keys(g:), 'v:val =~# ''^HI_SAVE_\w''')
+  return tolower(join(sort(map(l, 'strpart(v:val, 8)')), "\n"))
+endfunction
+
+" Save current highlighting in a global variable.
+function! s:Hsave(name)
+  let sname = s:NameForSave(a:name)
+  if&nbsp;!empty(sname)
+    let l = getmatches()
+    call map(l, 'join([v:val.group, v:val.pattern, v:val.priority, v:val.id], "\t")')
+    let g:{sname} = join(l, "\n")
+  endif
+endfunction
+command! -nargs=? -complete=custom,s:SavedNames Hsave call &lt;SID&gt;Hsave('&lt;args&gt;')
+
+" Restore current highlighting from a global variable.
+function! s:Hrestore(name)
+  call LoadHighlights()
+  let sname = s:NameForSave(a:name)
+  if&nbsp;!empty(sname)
+    if exists('g:{sname}')
+      let matches = []
+      for l in split(g:{sname}, "\n")
+        let f = split(l, "\t", 1)
+        call add(matches, {'group':f[0], 'pattern':f[1], 'priority':f[2], 'id':f[3]})
+      endfor
+      call setmatches(matches)
+    else
+      echo 'No such global variable: '.sname
+    endif
+  endif
+endfunction
+command! -nargs=? -complete=custom,s:SavedNames Hrestore call &lt;SID&gt;Hrestore('&lt;args&gt;')
+
+" Clear a match, or clear all current matches. Example args:
+"   '14' = hl14, '*' = all, '' = visual selection or cword,
+"   'pattern' = all matches for pattern
+function! s:Hclear(pattern) range
+  if empty(a:pattern)
+    call s:UndoHighlight(0)
+  elseif a:pattern == '*'
+    call s:WindowMatches(0)
+  elseif a:pattern =~ '^[1-9][0-9]\?$'
+    call s:DoHighlight(str2nr(a:pattern), '', 0)
+  else
+    call s:UndoHighlight(a:pattern)
+  endif
+endfunction
+command! -nargs=* -complete=custom,s:MatchPatterns -range Hclear call &lt;SID&gt;Hclear('&lt;args&gt;')
+
+" Create a scratch buffer with sample text, and apply all highlighting.
+function! s:Hsample()
+  call LoadHighlights()
+  new
+  setlocal buftype=nofile bufhidden=hide noswapfile
+  let lines = []
+  let items = []
+  for hl in filter(range(1, 99), 'v:val&nbsp;% 10 &gt; 0')
+    if hlexists('hl'.hl)
+      let sample = printf('Sample%2d', hl)
+      call s:DoHighlight(hl, sample, 0)
+    else
+      let sample = '        '
+    endif
+    call add(items, sample)
+    if len(items) &gt;= 3
+      call insert(lines, substitute(join(items), '\s\+$', '', ''))
+      let items = []
+    endif
+  endfor
+  call append(0, filter(lines, 'len(v:val) &gt; 0'))
+  $d
+ &nbsp;%s/\d3$/&amp;\r/e
+endfunction
+command! Hsample call &lt;SID&gt;Hsample()
+
+" Set a match, or display all current matches. Example args:
+"   '14' = set hl14 for visual selection or cword,
+"   '14 pattern' = set hl14 for pattern, '' = display all
+function! s:Highlight(args) range
+  if empty(a:args)
+    echo 'Highlight groups and patterns:'
+    for m in getmatches()
+      echo m.group m.pattern
+    endfor
+    return
+  endif
+  let l = matchlist(a:args, '^\s*\([1-9][0-9]\?\)\%($\|\s\+\(.*\)\)')
+  if len(l) &gt;= 3
+    let hlnum = str2nr(l[1])
+    let pattern = l[2]
+    if empty(pattern)
+      let pattern = s:Pattern(0)
+    endif
+    call s:DoHighlight(hlnum, pattern, 0)
+    return
+  endif
+  echo 'Error: First argument must be highlight number 1..99'
+endfunction
+command! -nargs=* -range Highlight call &lt;SID&gt;Highlight('&lt;args&gt;')
+</pre>
+<a rel="nofollow" name="Defining_highlight_groups" id="Defining_highlight_groups"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit&amp;section=8" title="Edit section: Defining highlight groups" rel="nofollow">edit</a></span> <span class="mw-headline">Defining highlight groups</span></h2><div style="float: left; margin-top: 10px; margin-bottom: 10px; margin-right: 20px; clear: left;" id="Liftium_300x250_4"></div>
+<p>The script reads a <a href="http://vim.wikia.com/wiki/CSV" title="CSV" class="mw-redirect">CSV</a> file with the same directory/name as the script, but with <tt>.csv</tt> extension. Each line should consist of five comma-separated fields, where the first field is a number from 1 to 99 inclusive (any other lines are ignored).
+</p><p>For example, the line "<tt>5,white,blue,black,green</tt>" would define a highlight group named <tt>hl5</tt> which color terminals would display as white on blue, and gvim would display as black on green.
+</p><p>Create file <tt>~/.vim/plugin/highlights.csv</tt> (Unix) or <tt>$HOME/vimfiles/plugin/highlights.csv</tt> (Windows) containing the sample below, then restart Vim.
+</p>
+<pre>hlnum,ctermfg,ctermbg,guifg,guibg
+1,red,,red,
+2,green,,green,
+3,blue,,blue,
+4,black,magenta,black,IndianRed
+5,black,green,black,chartreuse
+6,black,cyan,black,DeepSkyBlue
+7,white,DarkRed,white,firebrick
+8,white,DarkGreen,white,DarkGreen
+9,white,DarkBlue,white,DarkSlateBlue
+11,,,black,thistle
+12,,,black,burlywood
+13,,,black,PowderBlue
+14,,,black,peru
+15,,,black,DarkSeaGreen
+16,,,black,SteelBlue
+17,,,black,DarkOrange
+18,,,black,DarkOliveGreen
+19,,,black,SlateGray
+21,,,red,grey20
+22,,,green,grey20
+23,,,CornflowerBlue,grey20
+24,,,red,grey40
+25,,,green,grey40
+26,,,blue,grey40
+27,,,red,grey70
+28,,,DarkGreen,grey70
+29,,,blue,grey70
+</pre>
+<a rel="nofollow" name="See_also" id="See_also"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit&amp;section=9" title="Edit section: See also" rel="nofollow">edit</a></span> <span class="mw-headline">See also</span></h2>
+<ul><li><a href="http://vim.wikia.com/wiki/Talk:Highlight_multiple_words" title="Talk:Highlight multiple words">Discussion page</a> for alternative methods
+</li><li><a href="http://vim.wikia.com/wiki/VimTip634" title="VimTip634" class="mw-redirect">View all named colors</a> to show the colors for the standard color names
+</li><li><a href="http://vim.wikia.com/wiki/VimTip24" title="VimTip24" class="mw-redirect">Highlighting information</a> want to fix this to list relevant tips
+</li><li><a class="external" title="http://www.vim.org/scripts/script.php?script_id=479" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Highlight_multiple_words&amp;u=http%3A%2F%2Fwww.vim.org%2Fscripts%2Fscript.php%3Fscript_id%3D479">MultipleSearch</a> highlight multiple searches, each with a different color
+</li><li><a class="external" title="http://www.vim.org/scripts/script.php?script_id=2666" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Highlight_multiple_words&amp;u=http%3A%2F%2Fwww.vim.org%2Fscripts%2Fscript.php%3Fscript_id%3D2666">Mark</a> highlight several words in different colors simultaneously (a continuation of the original <a class="external" title="http://www.vim.org/scripts/script.php?script_id=1238" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Highlight_multiple_words&amp;u=http%3A%2F%2Fwww.vim.org%2Fscripts%2Fscript.php%3Fscript_id%3D1238">Mark</a> plugin)
+</li></ul>
+<p><br>
+</p>
+<a rel="nofollow" name="References" id="References"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit&amp;section=10" title="Edit section: References" rel="nofollow">edit</a></span> <span class="mw-headline">References</span></h2>
+<ul><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=matchadd%28%29" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Highlight_multiple_words&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dmatchadd%2528%2529">:help&nbsp;matchadd()</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=matchdelete%28%29" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Highlight_multiple_words&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dmatchdelete%2528%2529">:help&nbsp;matchdelete()</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=clearmatches%28%29" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Highlight_multiple_words&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dclearmatches%2528%2529">:help&nbsp;clearmatches()</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=gui-colors" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Highlight_multiple_words&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dgui-colors">:help&nbsp;gui-colors</a>
+</li></ul>
+<a rel="nofollow" name="Comments" id="Comments"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit&amp;section=11" title="Edit section: Comments" rel="nofollow">edit</a></span> <span class="mw-headline">Comments</span></h2>
+<!-- 
+NewPP limit report
+Preprocessor node count: 183/1000000
+Post-expand include size: 1403/2097152 bytes
+Template argument size: 228/2097152 bytes
+Expensive parser function count: 0/100
+--><!-- Saved in parser cache with key vim:pcache:idhash:5914-0!1!0!!en!2 and timestamp 20100725175850 --><div class="printfooter">
+Retrieved from "<a href="http://vim.wikia.com/wiki/Highlight_multiple_words">http://vim.wikia.com/wiki/Highlight_multiple_words</a>"</div>
+<table style="margin-top: 1em; width: 100%; clear: both;"><tbody><tr><td style="text-align: center;"><div id="PREFOOTER_LEFT_BOXAD" class="noprint"><div id="Liftium_300x250_2_php"><iframe src="index_5.html" id="PREFOOTER_LEFT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div></td><td style="text-align: center;"><div id="PREFOOTER_RIGHT_BOXAD" class="noprint"><div id="Liftium_300x250_3_php"><iframe src="index_6.html" id="PREFOOTER_RIGHT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div></td></tr>
+</tbody></table><div id="catlinks" class="catlinks"><div id="mw-normal-catlinks"><a href="http://vim.wikia.com/wiki/Special:Categories" title="Special:Categories" rel="nofollow">Categories</a>: <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:VimTip" title="Category:VimTip">VimTip</a></span> | <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:Searching" title="Category:Searching">Searching</a></span></div> <div id="csAddCategorySwitch" class="noprint" style="background: none repeat scroll 0% 0% rgb(221, 221, 221); position: relative; float: left; border: 1px solid rgb(187, 187, 187); -moz-border-radius: 3px 3px 3px 3px; padding: 0pt 5px; line-height: 16px;"><img src="blank.gif" class="sprite-small add"><a href="#" onfocus="this.blur();" style="color: rgb(0, 0, 0); font-size: 0.85em; text-decoration: none; display: inline-block;" rel="nofollow">Add category</a></div></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+
+				<!--google_ad_section_end-->
+				<!--contextual_targeting_end-->
+
+			</div>
+			<!-- /ARTICLE -->
+			
+			<!-- ARTICLE FOOTER -->
+			<div id="articleFooter" class="reset">
+				<table cellspacing="0">
+					<tbody><tr>
+						<td class="col1">
+							<ul class="actions" id="articleFooterActions">
+								<li><a rel="nofollow" id="fe_edit_icon" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit"><img src="blank.gif" id="fe_edit_img" class="sprite edit" alt="Edit this page"></a> <div>Improve Vim Tips Wiki by <a id="fe_edit_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=edit">editing this page</a></div></li>
+								<li><a id="fe_user_icon" rel="nofollow" href="http://vim.wikia.com/wiki/User:Inkarkat"><img src="blank.gif" id="fe_user_img" class="sprite user" alt="View user page"></a> <div><a id="fe_user_link" rel="nofollow" href="http://vim.wikia.com/wiki/User:Inkarkat">Inkarkat</a> made an edit on July 6, 2009</div></li>
+							</ul>
+							<ul id="articleFooterActions3" class="actions clearfix">
+								<li id="fe_history"><a rel="nofollow" id="fe_history_icon" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=history"><img src="blank.gif" id="fe_history_img" class="sprite history" alt="History"></a> <div><a id="fe_history_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;action=history">History</a></div></li>
+								<li id="fe_recent"><a rel="nofollow" id="fe_recent_icon" href="http://vim.wikia.com/wiki/Special:RecentChangesLinked/Highlight_multiple_words"><img src="blank.gif" id="fe_recent_img" class="sprite recent" alt="Related changes"></a> <div><a id="fe_recent_link" rel="nofollow" href="http://vim.wikia.com/wiki/Special:RecentChangesLinked/Highlight_multiple_words">Related changes</a></div></li></ul><ul id="articleFooterActions4" class="actions clearfix">
+								<li id="fe_permalink"><a rel="nofollow" id="fe_permalink_icon" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;oldid=23776"><img src="blank.gif" id="fe_permalink_img" class="sprite move" alt="Permanent link"></a> <div><a id="fe_permalink_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Highlight_multiple_words&amp;oldid=23776">Permanent link</a></div></li>
+								<li id="fe_whatlinkshere"><a rel="nofollow" id="fe_whatlinkshere_icon" href="http://vim.wikia.com/wiki/Special:WhatLinksHere/Highlight_multiple_words"><img src="blank.gif" id="fe_whatlinkshere_img" class="sprite pagelink" alt="What links here"></a> <div><a id="fe_whatlinkshere_link" rel="nofollow" href="http://vim.wikia.com/wiki/Special:WhatLinksHere/Highlight_multiple_words">What links here</a></div></li></ul>						</td>
+						<td class="col2">
+							<ul class="actions" id="articleFooterActions2">
+								<li><a rel="nofollow" id="fe_random_icon" href="http://vim.wikia.com/wiki/Special:Random"><img src="blank.gif" id="fe_random_img" class="sprite random" alt="Random page"></a> <div><a rel="nofollow" id="fe_random_link" href="http://vim.wikia.com/wiki/Special:Random">View random page</a></div></li>
+								<li><img src="blank.gif" id="fe_report_img" class="sprite error" alt="Report a problem with this page"> <div><a style="cursor: pointer;" id="fe_report_link">Report a problem with this page</a></div></li>
+
+								<li><img src="blank.gif" id="fe_sharefeature_img" class="sprite share" alt="Share this article"> <div><a style="cursor: pointer;" id="fe_sharefeature_link">Share this article</a></div></li>
+							</ul>
+		<div class="clearfix" id="star-rating-row">
+		  <strong>Rate this article:</strong>
+		  		  <div id="star-rating-wrapper">
+		    <ul id="star-rating" class="star-rating" rel="20">
+			<li style="width: 90px;" id="current-rating" class="current-rating"><span>4.5000/5</span></li>
+			<li><a rel="nofollow" class="one-star" id="star1" title="1/5"><span>1</span></a></li>
+			<li><a rel="nofollow" class="two-stars" id="star2" title="2/5"><span>2</span></a></li>
+			<li><a rel="nofollow" class="three-stars" id="star3" title="3/5"><span>3</span></a></li>
+			<li><a rel="nofollow" class="four-stars" id="star4" title="4/5"><span>4</span></a></li>
+			<li><a rel="nofollow" class="five-stars" id="star5" title="5/5"><span>5</span></a></li>
+		    </ul>
+		    <span style="display: none;" id="unrateLink"><a rel="nofollow" id="unrate" href="#">Unrate it</a></span>
+		  </div>
+		</div>
+								</td>
+					</tr>
+				</tbody></table>
+			</div>
+			<!-- /ARTICLE FOOTER -->
+
+		</div>
+		<!-- /PAGE -->
+<!-- Begin Analytics -->
+<!-- Start for GA_Urchin, page_view -->
+
+
+<!-- Start for GA_Urchin, hub -->
+
+<!-- Start for GA_Urchin, onewiki -->
+<!-- No tracking for this wiki -->
+<!-- Start for GA_Urchin, pagetime -->
+
+<!-- End Analytics -->
+
+
+		
+		
+				
+		
+		<div id="monaco_footer" class="reset">
+
+
+		<div id="spotlight_footer">
+		<table>
+		<tbody><tr>
+			<td>
+				<!-- ## BEGIN AdProviderGAM::AdProviderGAM::getSetupHtml ## -->
+
+<!-- ## END AdProviderGAM::AdProviderGAM::getSetupHtml ## -->
+<!-- ## BEGIN AdProviderGAM::AdProviderGAM::getBatchCallHtml ## -->
+
+<!-- ## END AdProviderGAM::AdProviderGAM::getBatchCallHtml ## -->
+<div id="google_ads_div_FOOTER_SPOTLIGHT_LEFT"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_LEFT" name="google_ads_iframe_FOOTER_SPOTLIGHT_LEFT" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_7.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+			<td>
+				<div id="google_ads_div_FOOTER_SPOTLIGHT_MIDDLE"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_MIDDLE" name="google_ads_iframe_FOOTER_SPOTLIGHT_MIDDLE" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_8.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+			<td>
+				<div id="google_ads_div_FOOTER_SPOTLIGHT_RIGHT"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_RIGHT" name="google_ads_iframe_FOOTER_SPOTLIGHT_RIGHT" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_9.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+		</tr>
+		</tbody></table>
+		</div>
+				  <table id="wikia_footer">
+	  			<tbody><tr>
+				<td colspan="2" id="wikia_corporate_footer">
+	  <a rel="nofollow" href="http://www.wikia.com/About_Us"><span>About</span></a> | <a rel="nofollow" href="http://www.wikia.com/Hiring">Jobs</a> | <a rel="nofollow" href="http://www.wikia.com/Terms_of_Use">Terms of Use</a> | <a rel="nofollow" href="http://www.wikia.com/Special:CreateWiki">Create a wiki</a> | <a rel="nofollow" href="http://www.wikia.com/Privacy_Policy">Privacy Policy</a> | <a rel="nofollow" href="http://community.wikia.com/wiki/Wikia:Licensing" title="w:Wikia:Licensing">CC-BY-SA</a> | <a rel="nofollow" href="http://community.wikia.com/wiki/Community_Guidelines">Community Guidelines</a> | <a rel="nofollow" href="http://vim.wikia.com/wiki/Special:Contact">Contact</a> | <a rel="nofollow" href="http://www.wikia.com/Advertising">Advertise</a> | <a rel="nofollow" href="http://www.wikia.com/Lifestyle">Lifestyle</a>				</td>
+			</tr>
+	  	  </tbody></table>
+					</div>
+		<!-- WIDGETS -->
+		<div id="widget_sidebar" class="reset widget_sidebar">
+
+			<!-- SEARCH/NAVIGATION -->
+			<div class="widget" id="navigation_widget">
+				<div id="search_box" class="color1">
+					<form action="http://vim.wikia.com/wiki/Special:Search" id="searchform">
+						<input id="search_field" name="search" value="Search this wiki" maxlength="200" onfocus="sf_focus(event);" alt="Search this wiki" autocomplete="off" title="Search this wiki [alt-shift-f]" accesskey="f" type="text">
+						<input name="go" value="1" type="hidden">
+						<input src="blank.gif" id="search-button" class="sprite search" type="image">
+					</form>
+				</div>
+<div id="navigation"><div id="menu-item_1" class="menu-item"><a id="a-menu-item_1" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" rel="nofollow">Home</a></div><div id="menu-item_2" class="menu-item"><a id="a-menu-item_2" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Community_Portal" rel="nofollow">Community portal</a></div><div id="menu-item_3" class="menu-item"><a id="a-menu-item_3" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Todo" rel="nofollow">To do</a></div><div id="menu-item_4" class="menu-item"><a id="a-menu-item_4" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" rel="nofollow">Top content<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="#" rel="nofollow">Editor's pick<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Best_Vim_Tips" rel="nofollow">Best Vim Tips</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Browsing_programs_with_tags" rel="nofollow">Browsing programs with tags</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_end-of-line_format_for_dos-mac-unix" rel="nofollow">Change end-of-line format for dos-mac-unix</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces" rel="nofollow">Converting tabs to spaces</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Cut/copy_and_paste_using_visual_selection" rel="nofollow">Cut/copy and paste using visual selection</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/File_no_longer_available_-_mark_buffer_modified" rel="nofollow">File no longer available - mark buffer modified</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/most_popular" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div class="menu-item"><a href="#" rel="nofollow">Most visited<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Best_Vim_Tips" rel="nofollow">Best Vim Tips</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace" rel="nofollow">Search and replace</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_end-of-line_format_for_dos-mac-unix" rel="nofollow">Change end-of-line format for dos-mac-unix</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Indenting_source_code" rel="nofollow">Indenting source code</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Open_vimrc_file" rel="nofollow">Open vimrc file</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_the_color_scheme" rel="nofollow">Change the color scheme</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces" rel="nofollow">Converting tabs to spaces</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/most_visited" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div class="menu-item"><a href="#" rel="nofollow">Highest voted<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Add/change_file_extension_in_current_buffer" rel="nofollow">Add/change file extension in current buffer</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Manage_a_tasklist_of_to-do_code_snippets" rel="nofollow">Manage a tasklist of to-do code snippets</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Vim_Doclet" rel="nofollow">Vim Doclet</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Record_a_recursive_macro" rel="nofollow">Record a recursive macro</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Improved_Javascript_Indent_script_for_Vim" rel="nofollow">Improved Javascript Indent script for Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Scripting_-_Indirectly_Referencing_Variables" rel="nofollow">Scripting - Indirectly Referencing Variables</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/highest_ratings" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div style="border: 0px none;" class="menu-item"><a href="#" rel="nofollow">Newly changed<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Any_word_completion" rel="nofollow">Any word completion</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Copy,_cut_and_paste" rel="nofollow">Copy, cut and paste</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint" rel="nofollow">Format your xml document using xmllint</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Restoring_indent_after_typing_hash" rel="nofollow">Restoring indent after typing hash</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard" rel="nofollow">In line copy and paste to system clipboard</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/C%2B%2B_code_completion" rel="nofollow">C++ code completion</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Power_of_g" rel="nofollow">Power of g</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/newly_changed" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div></div></div><div id="menu-item_9" class="menu-item"><a id="a-menu-item_9" href="http://vim.wikia.com/wiki/Category:Folding" rel="nofollow">Folding category<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Syntax_folding_of_Vim_scripts" rel="nofollow">Syntax folding of Vim scripts</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding" rel="nofollow">Folding</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Java/C/C%2B%2B_folding" rel="nofollow">Java/C/C++ folding</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding_with_Regular_Expression" rel="nofollow">Folding with Regular Expression</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Auto-fold_Perl_subs" rel="nofollow">Auto-fold Perl subs</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding_for_plain_text_files_based_on_indentation" rel="nofollow">Folding for plain text files based on indentation</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Outline_editing_of_Python_programs" rel="nofollow">Outline editing of Python programs</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Category:Folding" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div id="menu-item_10" class="menu-item"><a id="a-menu-item_10" href="http://vim.wikia.com/wiki/Category:Searching" rel="nofollow">Searching category<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace" rel="nofollow">Search and replace</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Searching" rel="nofollow">Searching</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches" rel="nofollow">Highlight all search pattern matches</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection" rel="nofollow">Search and replace in a visual selection</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Power_of_g" rel="nofollow">Power of g</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Remove_unwanted_empty_lines" rel="nofollow">Remove unwanted empty lines</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Category:Searching" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div></div><table id="link_box_table" cellspacing="0">		<tbody id="link_box_dynamic">
+			<tr>
+				<td colspan="2">
+					<ul>
+<li id="dynamic-links-write-article-row" class="link_box_dynamic_item"><a rel="nofollow" id="dynamic-links-write-article-icon" href="http://vim.wikia.com/wiki/toolbox/dynamic/CreatePage"><img src="blank.gif" id="dynamic-links-write-article-img" class="sprite edit" alt="Create a new article"></a> <a id="dynamic-links-write-article-link" rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/dynamic/CreatePage">Create a new article</a></li><li id="dynamic-links-add-image-row" class="link_box_dynamic_item"><a rel="nofollow" id="dynamic-links-add-image-icon" href="http://vim.wikia.com/wiki/toolbox/dynamic/Upload"><img src="blank.gif" id="dynamic-links-add-image-img" class="sprite photo" alt="Upload a new image"></a> <a id="dynamic-links-add-image-link" rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/dynamic/Upload">Upload a new image</a></li>					</ul>
+				</td>
+			</tr>
+		</tbody>
+		<tbody id="link_box" class="color2 linkbox_static">
+			<tr>
+				<td>
+					<ul>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/recentchanges">Recent changes</a></li>
+						<li><a rel="nofollow" href="http://community.wikia.com/wiki/Blog:Wikia_Staff_Blog" onclick="WET.byStr('toolbox/w_c_community_Blog_Wikia_Staff_Blog')">Staff blog</a></li>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/helppage">Help</a></li>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/randompage">Random page</a></li>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/specialpages">Special pages</a></li>
+						<li style="font-size: 1px; position: absolute; top: -10000px;"><a href="http://vim.wikia.com/wiki/Special:Recentchanges" accesskey="r" rel="nofollow">Recent changes</a><a href="http://vim.wikia.com/wiki/Special:Random" accesskey="x" rel="nofollow">Random page</a></li>
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+			</div>
+			<!-- /SEARCH/NAVIGATION -->
+
+			<!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_NAVBOX_1 --><div style="text-align: center; margin-bottom: 10px;"><div id="LEFT_SKYSCRAPER_1" class="noprint"><div id="Liftium_160x600_4_php"><iframe src="index_10.html" id="LEFT_SKYSCRAPER_1_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none; display: none;" target="_blank" frameborder="0" height="600" scrolling="no" width="160"></iframe></div></div></div>
+
+			<div id="sidebar_1" class="sidebar">
+			<dl class="widget WidgetCommunity" id="widget_303"><dt class="color1 widget_title" id="widget_303_header"><span class="widgetToolbox"></span>Latest activity</dt><dd class="shadow widget_contents" id="widget_303_content"><div class="community_header accent">
+	<span class="article_count dark_text_1">1,593</span> articles on this wiki<br></div>
+<div class="community_body">
+		<ul class="activityfeed widgetfeed" id="widget_303-recently-edited">		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Copy,_cut_and_paste">Copy, cut and paste</a></strong><br>			<cite><span class="timeago" title="2010-08-06T15:40:31Z">17 hours ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/216.235.10.210" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint">Format your xml document using xmllint</a></strong><br>			<cite><span class="timeago" title="2010-08-06T13:01:46Z">19 hours ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/145.242.11.3" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Restoring_indent_after_typing_hash">Restoring indent after typing hash</a></strong><br>			<cite><span class="timeago" title="2010-08-06T07:49:30Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/User:JohnBeckett" rel="nofollow">JohnBeckett</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard">In line copy and paste to system clipboard</a></strong><br>			<cite><span class="timeago" title="2010-08-06T04:33:00Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/68.231.48.165" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/C%2B%2B_code_completion">C++ code completion</a></strong><br>			<cite><span class="timeago" title="2010-08-06T01:57:05Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/User:JohnBeckett" rel="nofollow">JohnBeckett</a></cite>		</li>	</ul></div>
+<div class="toolbar neutral">
+	<a id="community-widget-action-button" href="http://vim.wikia.com/wiki/Special:ActivityFeed" class="wikia-button forward" rel="nofollow">Activity feed</a>
+</div>
+
+</dd></dl><div style="margin-bottom: 10px;"><div id="google_ads_div_LEFT_NAV_205x400"><ins style="position: relative; width: 205px; height: 400px; border: medium none; display: inline-table;"><ins style="position: relative; width: 205px; height: 400px; border: medium none; display: block;"><iframe id="google_ads_iframe_LEFT_NAV_205x400" name="google_ads_iframe_LEFT_NAV_205x400" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_11.html" frameborder="0" height="400" scrolling="no" width="205"></iframe></ins></ins></div></div>
+			<!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_SLIMBOX_1 --><!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_NAVBOX_2 --><div style="text-align: center; margin-bottom: 10px;"><div id="LEFT_SKYSCRAPER_2" class="noprint"><div id="Liftium_160x600_5_php"><iframe src="index_14.html" id="LEFT_SKYSCRAPER_2_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="600" scrolling="no" width="160"></iframe></div></div></div>
+			</div>
+		</div>
+		<!-- /WIDGETS -->
+	<!--/div-->
+
+
+
+<div id="Liftium_0x0_0"><!-- Liftium No ad --></div>
+<!-- #### BEGIN AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+
+
+
+
+
+<!-- #### END AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+<div id="Liftium_0x0_1"><!-- Liftium No ad --></div>
+</div><!-- Start for Comscore, page_view -->
+
+<!-- Begin comScore Tag -->
+
+
+
+<!-- End comScore Tag -->
+<!-- Start for QuantServe, page_view -->
+
+
+<!-- Start for Exelate, page_view -->
+
+
+		
+<img src="__onedot" alt="" border="0" height="1" width="1">
+		<div id="positioned_elements" class="reset"></div>
+		<!-- Served by ap-s3 in 0.157 secs. cpu: 0.070 -->
+	
+
+</body>
+</html>

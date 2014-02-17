@@ -1,0 +1,576 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+	
+		
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta name="generator" content="MediaWiki 1.15.1">
+		<meta name="keywords" content="Sysresccd-manual-en How to install SystemRescueCd on an USB-stick,Download">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="search" type="application/opensearchdescription+xml" href="http://www.sysresccd.org/wiki/opensearch_desc.php" title="SystemRescueCd (en)">
+		<link rel="alternate" type="application/rss+xml" title="SystemRescueCd RSS Feed" href="http://www.sysresccd.org/wiki/index.php?title=Special:RecentChanges&amp;feed=rss">
+		<link rel="alternate" type="application/atom+xml" title="SystemRescueCd Atom Feed" href="http://www.sysresccd.org/wiki/index.php?title=Special:RecentChanges&amp;feed=atom">
+		<title>Sysresccd-manual-en How to install SystemRescueCd on an USB-stick - SystemRescueCd</title>
+		
+		
+		
+		<!--[if lt IE 5.5000]><link rel="stylesheet" href="/wiki/skins/monobook/IE50Fixes.css?207" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 5.5000]><link rel="stylesheet" href="/wiki/skins/monobook/IE55Fixes.css?207" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 6]><link rel="stylesheet" href="/wiki/skins/monobook/IE60Fixes.css?207" type="text/css" media="screen" /><![endif]-->
+		<!--[if IE 7]><link rel="stylesheet" href="/wiki/skins/monobook/IE70Fixes.css?207" type="text/css" media="screen" /><![endif]-->
+		
+		
+		
+		
+		<!--[if lt IE 7]><script type="text/javascript" src="/wiki/skins/common/IEFixes.js?207"></script>
+		<meta http-equiv="imagetoolbar" content="no" /><![endif]-->
+
+		
+
+		
+		<!-- Head Scripts -->
+		
+	<!-- GOOGLE ANALYTICS BEGIN -->
+
+
+
+<!-- GOOGLE ANALYTICS END -->
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick skin-monobook">
+	<div id="globalWrapper">
+
+        <div id="header-google">
+	        <center>
+			
+			<ins style="display: inline-table; border: medium none; height: 15px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 728px;"><ins id="google_ads_frame1_anchor" style="display: block; border: medium none; height: 15px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 728px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="index_1.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" frameborder="0" height="15" scrolling="no" width="728"></iframe></ins></ins>
+		</center>
+	</div>
+
+	<div id="column-content">
+	<div id="content">
+		<a name="top" id="top"></a>
+				<h1 id="firstHeading" class="firstHeading">Sysresccd-manual-en How to install SystemRescueCd on an USB-stick</h1>
+		<div id="bodyContent">
+			<h3 id="siteSub">From SystemRescueCd</h3>
+			<div id="contentSub"></div>
+									<div id="jump-to-nav">Jump to: <a href="#column-one">navigation</a>, <a href="#searchInput">search</a></div>			<!-- start content -->
+			
+			<!-- GOOGLE ADS BEGIN -->
+			<div style="width: 310px; float: right; clear: both; border: 0px none; padding: 0.5em; margin-right: 0pt;">
+				
+				<ins style="display: inline-table; border: medium none; height: 250px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 300px;"><ins id="google_ads_frame2_anchor" style="display: block; border: medium none; height: 250px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 300px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame2" marginheight="0" marginwidth="0" name="google_ads_frame" src="index_2.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" frameborder="0" height="250" scrolling="no" width="300"></iframe></ins></ins>			
+			</div>
+			<!-- GOOGLE ADS END -->
+			
+			<table id="toc" class="toc" summary="Contents"><tbody><tr><td><div id="toctitle"><h2>Contents</h2> <span class="toctoggle">[<a href="javascript:toggleToc()" class="internal" id="togglelink">hide</a>]</span></div>
+<ul>
+<li class="toclevel-1"><a href="#Introduction"><span class="tocnumber">1</span> <span class="toctext">Introduction</span></a></li>
+<li class="toclevel-1"><a href="#A.29_Recommended_USB_installation_method_from_Linux"><span class="tocnumber">2</span> <span class="toctext">A) Recommended USB installation method from Linux</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Overview"><span class="tocnumber">2.1</span> <span class="toctext">Overview</span></a></li>
+<li class="toclevel-2"><a href="#Mount_the_CD-ROM_ISO_image"><span class="tocnumber">2.2</span> <span class="toctext">Mount the CD-ROM ISO image</span></a></li>
+<li class="toclevel-2"><a href="#Plug_in_the_USB_stick"><span class="tocnumber">2.3</span> <span class="toctext">Plug in the USB stick</span></a></li>
+<li class="toclevel-2"><a href="#Execute_the_installer"><span class="tocnumber">2.4</span> <span class="toctext">Execute the installer</span></a></li>
+<li class="toclevel-2"><a href="#Unmount_the_ISO_image"><span class="tocnumber">2.5</span> <span class="toctext">Unmount the ISO image</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#B.29_Recommended_USB_installation_method_from_Windows"><span class="tocnumber">3</span> <span class="toctext">B) Recommended USB installation method from Windows</span></a></li>
+<li class="toclevel-1"><a href="#C.29_Alternative_USB_installation_method_from_the_CD-ROM"><span class="tocnumber">4</span> <span class="toctext">C) Alternative USB installation method from the CD-ROM</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Overview_2"><span class="tocnumber">4.1</span> <span class="toctext">Overview</span></a></li>
+<li class="toclevel-2"><a href="#Instructions_for_manual_installation"><span class="tocnumber">4.2</span> <span class="toctext">Instructions for manual installation</span></a></li>
+<li class="toclevel-2"><a href="#Example_of_manual_installation"><span class="tocnumber">4.3</span> <span class="toctext">Example of manual installation</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#D.29_Installation_from_Linux_using_an_ext3.2Fext4_filesystem"><span class="tocnumber">5</span> <span class="toctext">D) Installation from Linux using an ext3/ext4 filesystem</span></a></li>
+<li class="toclevel-1"><a href="#E.29_Manual_installation_from_Linux_using_cp_.28deprecated.29"><span class="tocnumber">6</span> <span class="toctext">E) Manual installation from Linux using cp (deprecated)</span></a>
+<ul>
+<li class="toclevel-2"><a href="#Step_1:_Find_the_device_name"><span class="tocnumber">6.1</span> <span class="toctext">Step 1: Find the device name</span></a></li>
+<li class="toclevel-2"><a href="#Step_2:_Reinitialization_of_the_stick"><span class="tocnumber">6.2</span> <span class="toctext">Step 2: Reinitialization of the stick</span></a></li>
+<li class="toclevel-2"><a href="#Step_3:_Copy_files_from_the_CD-ROM"><span class="tocnumber">6.3</span> <span class="toctext">Step 3: Copy files from the CD-ROM</span></a></li>
+<li class="toclevel-2"><a href="#Step_4:_Make_the_disk_bootable"><span class="tocnumber">6.4</span> <span class="toctext">Step 4: Make the disk bootable</span></a></li>
+</ul>
+</li>
+<li class="toclevel-1"><a href="#USB_keys_models_known_to_work"><span class="tocnumber">7</span> <span class="toctext">USB keys models known to work</span></a></li>
+</ul>
+</td></tr></tbody></table>
+<a name="Introduction" id="Introduction"></a><h2> <span class="mw-headline">Introduction</span></h2>
+<p>This chapter explains how to manually install SystemRescueCD on a USB stick. It allows you to use the system from a USB stick (mini hard disk) instead of using a CD-ROM. You need a recent SystemResuceCD, and a USB stick with enough space. You need at least 512 MB unless you have removed files from the official version. Your BIOS must be able to boot from USB hard disks, and the USB device must be defined before other devices in the boot devices order.
+</p><p>There are programs such as <a href="http://unetbootin.sourceforge.net/" class="external text" title="http://unetbootin.sourceforge.net/" rel="nofollow">unetbootin</a> or <a href="http://www.linuxliveusb.com/" class="external text" title="http://www.linuxliveusb.com" rel="nofollow">linuxliveusb</a> that provide graphical installation programs that can be used to install SystemRescueCD to a USB stick. Unfortunately unetbootin fails to install SystemRescueCD-1.5.x to a USB stick so you should not use it. There is now an official SystemRescueCD USB installer for Windows that you should use.
+</p><p>This page explains how to install SystemRescueCD on a USB stick. Many methods are possible. You should really follow one of the three recommended methods (sections A, B, C). The other methods are more complicated and are more likely to fail.
+</p><p>You may also be interested in making a <a href="http://www.sysresccd.org/news/2008/06/29/creating-a-backing-store-to-keep-your-modifications-in-sysresccd/" class="external text" title="http://www.sysresccd.org/news/2008/06/29/creating-a-backing-store-to-keep-your-modifications-in-sysresccd/" rel="nofollow">backing store</a> to keep your changes between reboots.
+</p>
+<a name="A.29_Recommended_USB_installation_method_from_Linux" id="A.29_Recommended_USB_installation_method_from_Linux"></a><h2> <span class="mw-headline">A) Recommended USB installation method from Linux</span></h2>
+<a name="Overview" id="Overview"></a><h3> <span class="mw-headline">Overview</span></h3>
+<p>If you are running Linux on your computer it's very easy to install SystemRescueCD on a USB stick. You just have to download the ISO image of <a href="http://www.sysresccd.org/Download" title="Download">SystemRescueCD-1.5.8</a> (or more recent), and then run a script which is at the root of the CD-ROM. You don't have to burn the ISO image to a disc to do that, you just need to have the ISO image available from a running Linux system. Formatting the USB stick will remove all its content, so make sure you don't need the data or make a backup first.
+</p>
+<ol><li><b>Download</b> the SystemRescueCD-1.5.8 (or more recent) ISO image from the <a href="http://www.sysresccd.org/Download" title="Download">Download page</a>
+</li><li><b>Mount the ISO image</b> using the <code>-o loop</code> and <code>-o exec</code> options of the mount command
+</li><li><b>Plug in your USB stick</b> and wait 5 seconds to allow enough time for the system to detect it
+</li><li><b>Unmount the USB stick</b> if auto-mount is enabled or if it was already mounted
+</li><li><b>Run <code>bash ./usb_inst.sh</code> in a shell</b> then select the correct USB device and press OK/Enter
+</li></ol>
+<a name="Mount_the_CD-ROM_ISO_image" id="Mount_the_CD-ROM_ISO_image"></a><h3> <span class="mw-headline">Mount the CD-ROM ISO image</span></h3>
+<p>You first have to mount the ISO image (or a media where you have burned it). You just need an empty directory on your system on which the ISO image can be mounted. We will use <code>/tmp/cdrom</code> in this example but you can use any directory such as <code>/mnt/cdrom</code>:
+</p>
+<pre>mkdir -p /tmp/cdrom
+mount -o loop,exec /path/to/systemrescuecd-x86-x.y.z.iso /tmp/cdrom
+</pre>
+<a name="Plug_in_the_USB_stick" id="Plug_in_the_USB_stick"></a><h3> <span class="mw-headline">Plug in the USB stick</span></h3>
+<p>Just make sure the USB stick has been plugged in, and wait a few seconds to be sure the device has been detected by the system.
+</p>
+<a name="Execute_the_installer" id="Execute_the_installer"></a><h3> <span class="mw-headline">Execute the installer</span></h3>
+<p>Now you just have to execute the installation script which is at the root of the CD-ROM. This script requires several commands to run but it won't be a problem. To be sure the script will always work, these commands are part of the CD-ROM:
+</p>
+<pre>cd /tmp/cdrom
+bash ./usb_inst.sh
+</pre>
+<p>This script will show you a list of USB sticks detected on your system. Only removable medias are in the list. This way it's not possible to destroy a persistent device by accident.
+</p>
+<a name="Unmount_the_ISO_image" id="Unmount_the_ISO_image"></a><h3> <span class="mw-headline">Unmount the ISO image</span></h3>
+<p>Now you can unmount the ISO image
+</p>
+<pre>cd ~
+umount /tmp/cdrom
+</pre>
+<a name="B.29_Recommended_USB_installation_method_from_Windows" id="B.29_Recommended_USB_installation_method_from_Windows"></a><h2> <span class="mw-headline">B) Recommended USB installation method from Windows</span></h2>
+<p>If you are running Windows on your computer you can download and execute a graphical installation program that will install SystemRescueCd on a removable device. You have to download the ISO image of SystemRescueCd-1.6.x since the installer needs it. It will extract all files from the ISO image to your USB stick and it will also install the boot loader on the USB device. The USB stick must contain a FAT32 filesystem, which is the case in general if you use your USB stick from computers running Windows. If it's not the case you can just format the USB device again from the Windows explorer (it will remove all files it contains). You have to run this program with the Windows administrator privileges since the installer has to run syslinux to make the removable device bootable.
+</p><p>The official SystemRescueCd USB installer for Windowsis quite a compact EXE program. It can be executed directly as it requires no installation on the hard disk.
+</p>
+<ol><li><b>Download</b> the most recent SystemRescueCd ISO image from the <a href="http://www.sysresccd.org/Download" title="Download">Download page</a>
+</li><li><b>Download</b> <a href="http://download.sysresccd.org/sysresccd-installer-1.1.2.exe" class="external text" title="http://download.sysresccd.org/sysresccd-installer-1.1.2.exe" rel="nofollow">SystemRescueCd USB installer for Windows</a>
+</li><li><b>Plug in your USB-stick</b> and wait 5 seconds to allow enough time for the system to detect it
+</li><li><b>Execute the installer</b> that you have just downloaded
+</li><li><b>Select the ISO image</b> that you have downloaded previously
+</li><li><b>Select the USB stick</b> in the removable device drop-down list
+</li><li><b>Click on the <code>Install</code> button</b> to run the installation
+</li></ol>
+<p>If you have problems with the SystemRescueCd USB installer for Windows you can try <a href="http://www.linuxliveusb.com/" class="external text" title="http://www.linuxliveusb.com" rel="nofollow">linuxliveusb-2.5</a> which provides the same sort of service, and that is known to work well with recent SystemRescueCd versions. Another alternative installation program is <a href="https://fedorahosted.org/releases/l/i/liveusb-creator/liveusb-creator-3.9.2-setup.exe" class="external text" title="https://fedorahosted.org/releases/l/i/liveusb-creator/liveusb-creator-3.9.2-setup.exe" rel="nofollow">the windows version of the liveusb-creator for Fedora Linux</a>
+</p>
+<a name="C.29_Alternative_USB_installation_method_from_the_CD-ROM" id="C.29_Alternative_USB_installation_method_from_the_CD-ROM"></a><h2> <span class="mw-headline">C) Alternative USB installation method from the CD-ROM</span></h2>
+<a name="Overview_2" id="Overview_2"></a><h3> <span class="mw-headline">Overview</span></h3>
+<p>If you boot the CD-ROM edition of SystemRescueCD (1.1.4 or more recent), you can use it to install SystemRescueCD onto a USB stick. If you have a Linux system on your computer you can also use the first method, which does not require booting from a CD-ROM at all. 
+</p><p>SystemRescueCD comes with a script to help you to detect the right USB device and to install SystemRescueCD onto it. Formatting the USB stick will remove all of its contents, so make sure you don't need that contents, or make a backup first.
+</p>
+<ol><li><b>Download</b> the most recent SystemRescueCD ISO image from the <a href="http://www.sysresccd.org/Download" title="Download">Download page</a>
+</li><li><b>Burn it onto a CD-ROM</b>. You can use software such as Nero or <a href="http://www.imgburn.com/" class="external text" title="http://www.imgburn.com/" rel="nofollow">ImgBurn</a> on Windows or cdrecord/wodim/k3b under Linux.
+</li><li><b>Boot from that CD-ROM</b> with the default boot options.
+</li><li><b>Plug in your USB stick</b> and wait 5 seconds to allow enough time for the system to detect it.
+</li><li><b>Type <code>sysresccd-usbstick dialog</code> in a shell</b> then select the correct USB device and press OK/Enter
+</li></ol>
+<a name="Instructions_for_manual_installation" id="Instructions_for_manual_installation"></a><h3> <span class="mw-headline">Instructions for manual installation</span></h3>
+<p>Instead of <code>sysresccd-usbstick dialog</code> you can also run the following commands by hand:
+</p>
+<ol><li>Run <b><code>sysresccd-usbstick listdev</code></b> to see which devices are seen as USB-sticks
+</li><li>Run <b><code>sysresccd-usbstick writembr xxx</code></b> where <code>xxx</code> is the name of the usb device
+</li><li>Run <b><code>sysresccd-usbstick format xxx</code></b> where <code>xxx</code> is the name of the partition on your device
+</li><li>Run <b><code>sysresccd-usbstick copyfiles xxx</code></b> where <code>xxx</code> is the name of the partition on your device
+</li><li>Run <b><code>sysresccd-usbstick syslinux xxx</code></b> where <code>xxx</code> is the name of the partition on your device
+</li></ol>
+<a name="Example_of_manual_installation" id="Example_of_manual_installation"></a><h3> <span class="mw-headline">Example of manual installation</span></h3>
+<pre>root@sysresccd&nbsp;% sysresccd-usbstick listdev
+Device [/dev/sdb] detected as [Kingston DataTraveler U3 ] is removable and size=957MB
+Device [/dev/sdb] is not mounted
+Device [/dev/sdb] has one partition: /dev/sdb1
+
+root@sysresccd&nbsp;% sysresccd-usbstick writembr /dev/sdb
+The device [/dev/sdb] seems to be big enough: 957 MB.
+--&gt; install-mbr /dev/sdb --force
+--&gt; parted -s /dev/sdb mklabel msdos
+--&gt; parted -s /dev/sdb mkpartfs primary fat32 0 100%
+--&gt; parted -s /dev/sdb set 1 boot on
+
+root@sysresccd&nbsp;% sysresccd-usbstick format /dev/sdb1
+The device [/dev/sdb1] seems to be big enough: 956 MB.
+mkfs.vfat 2.11 (12 Mar 2005)
+Partition /dev/sdb1 has been successfully formatted
+
+root@sysresccd&nbsp;% sysresccd-usbstick copyfiles /dev/sdb1
+The device [/dev/sdb1] seems to be big enough: 956 MB.
+/dev/sdb1 successfully mounted on /mnt/usbstick
+Free space on /mnt/usbstick is 956MB
+Files have been successfully copied to /dev/sdb1
+
+root@sysresccd&nbsp;% sysresccd-usbstick syslinux /dev/sdb1
+syslinux has successfully prepared /dev/sdb1
+</pre>
+<a name="D.29_Installation_from_Linux_using_an_ext3.2Fext4_filesystem" id="D.29_Installation_from_Linux_using_an_ext3.2Fext4_filesystem"></a><h2> <span class="mw-headline">D) Installation from Linux using an ext3/ext4 filesystem</span></h2>
+<p>If you are a Linux user, you may prefer having a Linux filesystem such as ext3/ext4 instead of vfat on your USB stick. It should work with any filesystem supported by GRUB such as ext3, reiserfs, ... In that case you can use GRUB (legacy - version 0.9x) instead of syslinux to boot. Thanks to Christian Hesse who suggested these instructions.
+</p>
+<ul><li>Format the USB stick from Linux using the normal mkfs tool that comes with your favorite filesystem
+</li></ul>
+<p>If you are using SystemRescueCD-1.2 or more recent, it's recommended that you use an ext4 filesystem with the journal turned off (this is possible with Linux &gt;= 2.6.29). USB sticks are Flash filesystems and this type of memory only supports a limited number of writes.  Journaling filesystems will make many writes at the same location (where the journal is stored). Therefore, to extend the lifespan of the memory we should limit the number of writes. Here is how to use ext4 with the journaling turned off:
+</p>
+<pre>mke2fs -t ext4 -O ^has_journal /dev/sdf1
+</pre>
+<p>You could also use ext2 but it does not support extents, and then it requires more accesses to read/write large files to the disk.
+</p>
+<ul><li>Mount this filesystem to /media/usbstick and copy the files from your SystemRescueCD into this directory. (cf normal instructions)
+</li><li>Copy GRUB staging files from an existing GRUB installation: <code>mkdir -p /media/usbstick/boot/grub&nbsp;; cp -a /boot/grub/*  /media/usbstick/boot/grub</code>
+</li><li>Run <code>grub-install  --root-directory=/media/usbstick/ /dev/sdf</code> (replace <code>/dev/sdf</code> with the name of your USB stick)
+</li><li>Create a menu.lst in <code>/media/usbstick/boot/grub/</code>. You have to replace <code>(hd0,1)</code> with the GRUB name of your USB partition.
+</li></ul>
+<pre>timeout 5
+color light-gray/black light-blue/black
+
+title SystemRescueCd std-32bit
+   kernel (hd0,1)/isolinux/rescuecd
+   initrd (hd0,1)/isolinux/initram.igz
+
+title SystemRescueCd std-64bit
+   kernel (hd0,1)/isolinux/rescue64
+   initrd (hd0,1)/isolinux/initram.igz
+
+title SystemRescueCd alt-32bit
+   kernel (hd0,1)/isolinux/altker32
+   initrd (hd0,1)/isolinux/initram.igz
+
+title SystemRescueCd alt-64bit
+   kernel (hd0,1)/isolinux/altker64
+   initrd (hd0,1)/isolinux/initram.igz
+
+title MemTest+
+    kernel (hd0,1)/isolinux/memtestp
+    initrd (hd0,1)/bootdisk/initrd.cgz
+
+title NT Password Editor
+    kernel (hd0,1)/ntpasswd/vmlinuz
+    initrd (hd0,1)/ntpasswd/initrd.cgz
+
+title Gag
+    kernel (hd0,1)/isolinux/memdisk
+    initrd (hd0,1)/bootdisk/gag.img
+
+title MHDD
+    kernel (hd0,1)/isolinux/memdisk
+    initrd (hd0,1)/bootdisk/mhdd.img
+
+title Hardware Detection Tool
+    kernel (hd0,1)/isolinux/memdisk
+    initrd (hd0,1)/bootdisk/hdt.img
+
+title Aida
+    kernel (hd0,1)/isolinux/memdisk
+    initrd (hd0,1)/bootdisk/aida.img
+
+title Ranish Partition Manager
+    kernel (hd0,1)/isolinux/memdisk
+    initrd (hd0,1)/bootdisk/ranish.img
+
+title FreeDOS
+    kernel (hd0,1)/isolinux/memdisk
+    initrd (hd0,1)/bootdisk/freedos.img
+</pre>
+<p>You should now be able to boot from this USB stick. You can also have a look at <a href="http://blog.realcomputerguy.com/2010/08/add-systemrescuecd-capability-to-your.html" class="external text" title="http://blog.realcomputerguy.com/2010/08/add-systemrescuecd-capability-to-your.html" rel="nofollow">another usb-installation tutorial based on ext4 and grub</a>.
+</p>
+<a name="E.29_Manual_installation_from_Linux_using_cp_.28deprecated.29" id="E.29_Manual_installation_from_Linux_using_cp_.28deprecated.29"></a><h2> <span class="mw-headline">E) Manual installation from Linux using cp (deprecated)</span></h2>
+<p>This method is a bit complicated so you should really consider using the automated installation script if you are running Linux. You can follow it anyway if you know what you are doing, or if you want to make extra customizations.
+</p>
+<a name="Step_1:_Find_the_device_name" id="Step_1:_Find_the_device_name"></a><h3> <span class="mw-headline">Step 1: Find the device name</span></h3>
+<p>You need the device of the USB stick. In most cases, Linux detects this device as an SCSI hard disk. In other words, it is detected as <code>/dev/sda1</code> (first partition of first SCSI device), or <code>/dev/sdb1</code> if you have another SCSI device. Since kernel 2.6.8 USB sticks may be seen as <code>/dev/uba</code>, <code>/dev/ubb</code>, ...
+</p><p>Here is how you can find the device name. First, start your computer under Linux with the USB stick unplugged. Then, load all USB modules (you may need to load other USB modules first). This command should not be required if the USB storage support is built-in in the kernel. If modprobe can't find this module, it might be normal.
+</p>
+<pre>modprobe usb-storage
+</pre>
+<p>Now, you have to plug in your USB stick, and have a look at the kernel messages. You may find the device name using either <code>dmesg | tail -n 50</code> or <code>fsarchiver probe</code>
+</p><p>Here is an example of a report from the kernel:
+</p>
+<pre>localhost kernel: usb 1-7: new high speed USB device using ehci_hcd and address 5
+localhost kernel: usb 1-7: New USB device found, idVendor=1516, idProduct=1213
+localhost kernel: usb 1-7: New USB device strings: Mfr=1, Product=2, SerialNumber=3
+localhost kernel: usb 1-7: Product: DISK 2.0
+localhost kernel: usb 1-7: Manufacturer: USB
+localhost kernel: usb 1-7: SerialNumber: 0018F3218E76A9C0D2CF846A
+localhost kernel: usb 1-7: configuration #1 chosen from 1 choice
+localhost kernel: scsi6&nbsp;: SCSI emulation for USB Mass Storage devices
+localhost kernel: scsi 6:0:0:0: Direct-Access     USB      DISK 2.0         1.00 PQ: 0 ANSI: 2
+localhost kernel: sd 6:0:0:0: Attached scsi generic sg6 type 0
+localhost kernel: sd 6:0:0:0: [sdf] 16035840 512-byte logical blocks: (8.21 GB/7.64 GiB)
+localhost kernel: sd 6:0:0:0: [sdf] Write Protect is off
+localhost kernel: sd 6:0:0:0: [sdf] Assuming drive cache: write through
+localhost kernel: sd 6:0:0:0: [sdf] Assuming drive cache: write through
+localhost kernel: sdf: sdf1
+localhost kernel: sd 6:0:0:0: [sdf] Assuming drive cache: write through
+localhost kernel: sd 6:0:0:0: [sdf] Attached SCSI removable disk
+</pre>
+<p>Here you can see that <code>fsarchiver probe</code> reports all devices and partitions found on your system:
+</p>
+<pre># fsarchiver probe
+[======DISK======] [=============NAME==============] [====SIZE====] [MAJ] [MIN]
+[sda             ] [ST3808110AS                    ] [    74.53 GB] [  8] [  0]
+[sdf             ] [DISK 2.0                       ] [     7.65 GB] [  8] [ 80]
+
+[=====DEVICE=====] [==FILESYS==] [======LABEL======] [====SIZE====] [MAJ] [MIN] 
+[sda1            ] [ext3       ] [boot             ] [   768.70 MB] [  8] [  1] 
+[sda2            ] [LVM2_member] [&lt;unknown&gt;        ] [    65.78 GB] [  8] [  2] 
+[sda3            ] [ext3       ] [spare            ] [     8.00 GB] [  8] [  3] 
+[sdf1            ] [ext4       ] [usb8gb           ] [     7.64 GB] [  8] [ 81] 
+</pre>
+<p>Then, you should try to mount the device:
+</p>
+<pre>mkdir /mnt/usbstick
+mount -t vfat /dev/sdf1 /mnt/usbstick
+</pre>
+<p>If there is not enough space left on the device (about 230 MB), you will have to erase the current files (all data will be lost):
+</p>
+<pre>rm -rf /mnt/usbstick/*
+</pre>
+<p>In the next sections we will assume your stick is <code>/dev/sdf</code>. It's very important that you use the right device name.
+</p>
+<a name="Step_2:_Reinitialization_of_the_stick" id="Step_2:_Reinitialization_of_the_stick"></a><h3> <span class="mw-headline">Step 2: Reinitialization of the stick</span></h3>
+<p>The following instructions may not be required, it depends on how your USB stick is configured. So you can try to skip this the first time. In case of problems getting the USB stick to boot, you should really try this. Confirm that you have a backup of the data that are on your stick before you do this. Thanks to <a href="http://www.sysresccd.org/forums/viewtopic.php?t=2340" class="external text" title="http://www.sysresccd.org/forums/viewtopic.php?t=2340" rel="nofollow">jadjay in the forums</a> for this addition to the instructions.
+We assume your device is <code>/dev/sdf</code> but you must replace it with the device name of your own USB stick. Be very sure that this is the correct device&nbsp;!
+</p><p>First, run <code>cfdisk</code> to check that the partition has the correct ID in the partition table of your USB stick. Select type <code>LBA FAT32</code> may be 0B or 0C, to make it bootable.
+</p>
+<pre>cfdisk /dev/sdf
+</pre>
+<p>Use mkfs.vfat to format the partition. All data will be erased, so make sure you don't need the data which it contains.
+</p>
+<pre>mkfs.vfat -F 32 -n SYSRESC /dev/sdf1
+</pre>
+<p>The following dd command will overwrite the first 404 bytes of the <a href="http://en.wikipedia.org/wiki/Master_boot_record" class="external text" title="http://en.wikipedia.org/wiki/Master_boot_record" rel="nofollow">MBR</a> of your stick. It will erase the previous boot instructions with the default ones to make sure that it will work. It does not change anything in the partition table since the partition table starts at offset 446 in the MBR.
+</p>
+<pre> dd if=/usr/share/syslinux/mbr.bin of=/dev/sdf
+</pre>
+<p>Synchronize to make sure that all the changes have been flushed to the disk.
+</p>
+<pre>sync
+</pre>
+<a name="Step_3:_Copy_files_from_the_CD-ROM" id="Step_3:_Copy_files_from_the_CD-ROM"></a><h3> <span class="mw-headline">Step 3: Copy files from the CD-ROM</span></h3>
+<p>Now, you have to copy the most important files. The SystemRescueCD disc must be mounted on /mnt/cdrom. You can mount the ISO file too, in order to avoid burning a CD-R. The stick is mounted on /mnt/usbstick. Be careful, according to <a href="http://www.sysresccd.org/forums/viewtopic.php?t=1932" class="external text" title="http://www.sysresccd.org/forums/viewtopic.php?t=1932" rel="nofollow">a user in the forums</a> the order matters:
+</p><p>You should check that you are using syslinux-3.74 or newer.
+</p>
+<pre>cp -af /mnt/cdrom/* /mnt/usbstick/
+rm -rf /mnt/usbstick/syslinux
+mv /mnt/usbstick/isolinux/isolinux.cfg /mnt/usbstick/isolinux/syslinux.cfg
+sed -i -e 's/scandelay=1/scandelay=5/g' /mnt/usbstick/isolinux/syslinux.cfg
+mv /mnt/usbstick/isolinux /mnt/usbstick/syslinux
+</pre>
+<a name="Step_4:_Make_the_disk_bootable" id="Step_4:_Make_the_disk_bootable"></a><h3> <span class="mw-headline">Step 4: Make the disk bootable</span></h3>
+<p>Now, you have to unmount the USB stick, and make it bootable with syslinux. Of course, you have to replace <code>/dev/sdf1</code> with the device name of your stick:
+</p>
+<pre>umount /mnt/usbstick
+syslinux /dev/sdf1
+sync
+</pre>
+<p>A user <a href="http://www.sysresccd.org/forums/viewtopic.php?t=1828" class="external text" title="http://www.sysresccd.org/forums/viewtopic.php?t=1828" rel="nofollow">reported</a> that <code>ms-sys -s /dev/sdX</code> helps in case of problems. So you may consider that if you initially have a problem.
+</p>
+<a name="USB_keys_models_known_to_work" id="USB_keys_models_known_to_work"></a><h2> <span class="mw-headline">USB keys models known to work</span></h2>
+<p>It's sometimes a pain to get syslinux to work on a USB key. Here are some models reported by users that are known to work well with syslinux, and on which you must be able to install SystemRescueCD:
+</p>
+<ul><li>Kingston DataTraveler 1GB
+</li><li>COSK'EY Silver (exists in 2GB or 4GB or 8GB).
+</li><li>PQI, U310, 1 Go
+</li><li>2GB Cruzer Titanium (SanDisk U3 Titanium 3.27 PQ: 0 ANSI: 2)
+</li></ul>
+
+<!-- 
+NewPP limit report
+Preprocessor node count: 44/1000000
+Post-expand include size: 0/2097152 bytes
+Template argument size: 0/2097152 bytes
+Expensive parser function count: 0/100
+-->
+
+<!-- Saved in parser cache with key sysresccd_mw-mw1_:pcache:idhash:1337-0!1!0!!en!2!edit=0 and timestamp 20101107082645 -->
+<div class="printfooter">
+Retrieved from "<a href="http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick">http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick</a>"</div>
+						<!-- end content -->
+						<div class="visualClear"></div>
+		</div>
+	</div>
+		</div>
+
+		<div id="column-google">
+			
+			<ins style="display: inline-table; border: medium none; height: 600px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 160px;"><ins id="google_ads_frame3_anchor" style="display: block; border: medium none; height: 600px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 160px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame3" marginheight="0" marginwidth="0" name="google_ads_frame" src="index_3.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" frameborder="0" height="600" scrolling="no" width="160"></iframe></ins></ins>	
+		</div>
+
+		<div id="column-one">
+	<div id="p-cactions" class="portlet">
+		<h5>Views</h5>
+		<div class="pBody">
+			<ul>
+				</ul>
+		</div>
+	</div>
+	<div class="portlet" id="p-personal">
+		<h5>Personal tools</h5>
+		<div class="pBody">
+			<ul>
+				<li id="pt-login"><a href="http://www.sysresccd.org/wiki/index.php?title=Special:UserLogin&amp;returnto=Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick" title="You are encouraged to log in; however, it is not mandatory [alt-shift-o]" accesskey="o">Log in</a></li>
+			</ul>
+		</div>
+	</div>
+		
+	<div class="generated-sidebar portlet" id="p-main_pages">
+		<h5>main pages</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-HOMEPAGE"><a href="http://www.sysresccd.org/">HOMEPAGE</a></li>
+				<li id="n-FORUMS"><a href="http://www.sysresccd.org/forums/">FORUMS</a></li>
+				<li id="n-NEWS"><a href="http://www.sysresccd.org/news/">NEWS</a></li>
+				<li id="n-DOCUMENTATION"><a href="http://www.sysresccd.org/Online-Manual-EN">DOCUMENTATION</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="generated-sidebar portlet" id="p-site_map">
+		<h5>site map</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-Home"><a href="http://www.sysresccd.org/Main_Page">Home</a></li>
+				<li id="n-Screenshots"><a href="http://www.sysresccd.org/Screenshots">Screenshots</a></li>
+				<li id="n-Download"><a href="http://www.sysresccd.org/Download">download</a></li>
+				<li id="n-USB-stick-install"><a href="http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick">USB-stick install</a></li>
+				<li id="n-Customization"><a href="http://www.sysresccd.org/Sysresccd-manual-en_How_to_personalize_SystemRescueCd">Customization</a></li>
+				<li id="n-ChangeLog"><a href="http://www.sysresccd.org/Changes-x86">ChangeLog</a></li>
+				<li id="n-System-tools"><a href="http://www.sysresccd.org/System-tools">System tools</a></li>
+				<li id="n-Package-list"><a href="http://www.sysresccd.org/Detailed-packages-list">Package-list</a></li>
+				<li id="n-Kernel"><a href="http://www.sysresccd.org/Kernel">Kernel</a></li>
+				<li id="n-Beta-x86"><a href="http://www.sysresccd.org/Beta-x86">Beta-x86</a></li>
+				<li id="n-Order-disc"><a href="http://www.sysresccd.org/Order-disc">Order disc</a></li>
+				<li id="n-FSArchiver"><a href="http://www.fsarchiver.org/">FSArchiver</a></li>
+				<li id="n-FAQ"><a href="http://www.sysresccd.org/FAQ">FAQ</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="generated-sidebar portlet" id="p-documentation">
+		<h5>documentation</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-Manual-in-English"><a href="http://www.sysresccd.org/Online-Manual-EN">Manual in English</a></li>
+				<li id="n-Manual-in-German"><a href="http://www.sysresccd.org/Online-Manual-DE">Manual in German</a></li>
+				<li id="n-Manual-in-French"><a href="http://www.sysresccd.org/Online-Manual-FR">Manual in French</a></li>
+				<li id="n-Manual-in-Spanish"><a href="http://www.sysresccd.org/Online-Manual-ES">Manual in Spanish</a></li>
+				<li id="n-Manual-in-Italian"><a href="http://www.sysresccd.org/Online-Manual-IT">Manual in Italian</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="generated-sidebar portlet" id="p-quick_start_guide">
+		<h5>quick start guide</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-Quick-start-.28EN.29"><a href="http://www.sysresccd.org/Quick-start-guide_EN">Quick start (EN)</a></li>
+				<li id="n-Schnellstart-.28DE.29"><a href="http://www.sysresccd.org/Quick-start-guide_DE">Schnellstart (DE)</a></li>
+				<li id="n-Guide-rapide-.28FR.29"><a href="http://www.sysresccd.org/Quick-start-guide_FR">Guide rapide (FR)</a></li>
+				<li id="n-Gu.C3.ADa-R.C3.A1pida-.28ES.29"><a href="http://www.sysresccd.org/Sysresccd-manual-es_Gu%C3%ADa_R%C3%A1pida">Guía Rápida (ES)</a></li>
+				<li id="n-Quick-start-.28IT.29"><a href="http://www.sysresccd.org/Quick-start-guide_IT">Quick start (IT)</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="generated-sidebar portlet" id="p-system_guides">
+		<h5>system guides</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-PARTITIONING"><a href="http://www.sysresccd.org/Sysresccd-Guide-EN-Partitioning">PARTITIONING</a></li>
+				<li id="n-LVM2-GUIDE"><a href="http://www.sysresccd.org/Sysresccd-Guide-EN-LVM2">LVM2 GUIDE</a></li>
+				<li id="n-NETWORKING"><a href="http://www.sysresccd.org/Sysresccd-Guide-EN-Networking">NETWORKING</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="generated-sidebar portlet" id="p-project">
+		<h5>project</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-Forums"><a href="http://www.sysresccd.org/forums/">Forums</a></li>
+				<li id="n-Project-page"><a href="http://sourceforge.net/projects/systemrescuecd/">Project page</a></li>
+				<li id="n-File-list"><a href="http://sourceforge.net/project/showfiles.php?group_id=85811">File list</a></li>
+				<li id="n-Mailing-list"><a href="https://lists.sourceforge.net/lists/listinfo/systemrescuecd-announce">Mailing list</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="generated-sidebar portlet" id="p-navigation">
+		<h5>Navigation</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-recentchanges"><a href="http://www.sysresccd.org/Special:RecentChanges" title="The list of recent changes in the wiki [alt-shift-r]" accesskey="r">Recent changes</a></li>
+				<li id="n-randompage"><a href="http://www.sysresccd.org/Special:Random" title="Load a random page [alt-shift-x]" accesskey="x">Random page</a></li>
+			</ul>
+		</div>
+	</div>
+	<div class="generated-sidebar portlet" id="p-sparc_.2F_ppc">
+		<h5>sparc / ppc</h5>
+		<div class="pBody">
+			<ul>
+				<li id="n-ChangeLog-ppc"><a href="http://www.sysresccd.org/Changes-ppc">ChangeLog-ppc</a></li>
+				<li id="n-ChangeLog-sparc"><a href="http://www.sysresccd.org/Changes-sparc">ChangeLog-sparc</a></li>
+				<li id="n-Package-list-sparc"><a href="http://www.sysresccd.org/Detailed-packages-list-sparc">Package-list-sparc</a></li>
+				<li id="n-Sparc-edition"><a href="http://www.sysresccd.org/SystemRescueCd_for_Sparc">Sparc edition</a></li>
+			</ul>
+		</div>
+	</div>
+	<div id="p-search" class="portlet">
+	<h5>search</h5>
+		<div class="pBody">
+			<!-- SiteSearch Google -->
+			<form method="get" action="http://www.google.com/custom" target="_top">
+			<table bgcolor="#ffffff" border="0">
+			<tbody><tr><td align="left" height="32" nowrap="nowrap" valign="top">
+			<a href="http://www.google.com/">
+			<img src="logo_25wht.gif" alt="Google" align="middle" border="0"></a>
+			<br>
+			<input name="domains" value="www.sysresccd.org" type="hidden">
+			<label for="sbi" style="display: none;">Enter your search terms</label>
+			<input name="q" size="12" maxlength="255" value="" id="sbi" type="text">
+			</td></tr>
+			<tr>
+			<td nowrap="nowrap">
+			<table>
+			<tbody><tr>
+			<td>
+			<input name="sitesearch" value="" checked="checked" id="ss0" type="radio">
+			<label for="ss0" title="Search the Web"><font color="#000000" size="-2">web</font></label></td>
+			<!-- </tr>
+			<tr> -->
+			<td>
+			<input name="sitesearch" value="www.sysresccd.org" id="ss1" type="radio">
+			<label for="ss1" title="Search www.sysresccd.org"><font color="#000000" size="-2">sysresccd</font></label></td>
+			</tr>
+			</tbody></table>
+			<label for="sbb" style="display: none;">Submit search form</label>
+			<input name="sa" value="Search" id="sbb" type="submit">
+			<input name="client" value="pub-3727807167318433" type="hidden">
+			<input name="forid" value="1" type="hidden">
+			<input name="ie" value="ISO-8859-1" type="hidden">
+			<input name="oe" value="ISO-8859-1" type="hidden">
+			<input name="safe" value="active" type="hidden">
+			<input name="cof" value="GALT:#9A2C06;GL:1;DIV:#33FFFF;VLC:D03500;AH:center;BGC:BBCCFF;LBGC:CCE5F9;ALC:440066;LC:440066;T:336699;GFNT:223472;GIMP:223472;FORID:1" type="hidden">
+			<input name="hl" value="en" type="hidden">
+			</td></tr></tbody></table>
+			</form>
+			<!-- SiteSearch Google -->
+		</div>
+	</div>
+	<div class="portlet" id="p-tb">
+		<h5>Toolbox</h5>
+		<div class="pBody">
+			<ul>
+				<li id="t-whatlinkshere"><a href="http://www.sysresccd.org/Special:WhatLinksHere/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick" title="List of all wiki pages that link here [alt-shift-j]" accesskey="j">What links here</a></li>
+				<li id="t-recentchangeslinked"><a href="http://www.sysresccd.org/Special:RecentChangesLinked/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick" title="Recent changes in pages linked from this page [alt-shift-k]" accesskey="k">Related changes</a></li>
+<li id="t-specialpages"><a href="http://www.sysresccd.org/Special:SpecialPages" title="List of all special pages [alt-shift-q]" accesskey="q">Special pages</a></li>
+				<li id="t-print"><a href="http://www.sysresccd.org/wiki/index.php?title=Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick&amp;printable=yes" rel="alternate" title="Printable version of this page [alt-shift-p]" accesskey="p">Printable version</a></li>				<li id="t-permalink"><a href="http://www.sysresccd.org/wiki/index.php?title=Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick&amp;oldid=6284" title="Permanent link to this revision of the page">Permanent link</a></li>			</ul>
+		</div>
+	</div>
+		</div><!-- end of the left (by default at least) column -->
+			<div class="visualClear"></div>
+			<div id="footer">
+				<div id="f-poweredbyico"><a href="http://www.mediawiki.org/"><img src="poweredby_mediawiki_88x31.png" alt="Powered by MediaWiki"></a></div>
+			<ul id="f-list">
+					<li id="lastmod"> This page was last modified on 21 September 2010, at 06:51.</li>
+					<li id="viewcount">This page has been accessed 847,936 times.</li>
+					<li id="privacy"><a href="http://www.sysresccd.org/SystemRescueCd:Privacy_policy" title="SystemRescueCd:Privacy policy">Privacy policy</a></li>
+					<li id="about"><a href="http://www.sysresccd.org/SystemRescueCd:About" title="SystemRescueCd:About">About SystemRescueCd</a></li>
+					<li id="disclaimer"><a href="http://www.sysresccd.org/SystemRescueCd:General_disclaimer" title="SystemRescueCd:General disclaimer">Disclaimers</a></li>
+			</ul>
+		</div>
+</div>
+
+		
+<!-- Served in 0.320 secs. --><div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; opacity: 0.9;"></div></body>
+</html>

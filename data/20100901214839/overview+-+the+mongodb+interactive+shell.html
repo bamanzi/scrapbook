@@ -1,0 +1,730 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+            <title>Overview - The MongoDB Interactive Shell - MongoDB</title>
+    
+        
+        
+        
+        
+        
+
+                        
+    
+    
+            
+<meta id="confluence-context-path" name="confluence-context-path" content="">
+<meta id="atlassian-token" name="atlassian-token" content="yhfQmnp0a3">
+<meta id="confluence-space-key" name="confluence-space-key" content="DOCS">
+
+
+
+    
+
+<!-- include system resources -->
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:master-styles/confluence.web.resources:master-styles.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.macros.profile:profile-macro-styles/confluence.macros.profile:profile-macro-styles.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:comments/confluence.web.resources:comments.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0.2/_/download/batch/com.atlassian.auiplugin:dialog/com.atlassian.auiplugin:dialog.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+
+
+<!--[if IE]>
+<link type="text/css" rel="stylesheet" href="/s/1627/3/1.0/_/download/batch/confluence.web.resources:userlink/confluence.web.resources:userlink.css?ieonly=true" media="all"/>
+<![endif]-->
+
+
+
+
+<!-- end system resources -->
+
+    
+
+    <meta name="confluence-request-time" content="1283349340886">
+
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="icon" type="image/png" href="confluence_16.png">
+
+<link rel="search" type="application/opensearchdescription+xml" href="http://www.mongodb.org/opensearch/osd.action" title="10gen Confluence">
+
+    
+        
+        
+    
+    <link rel="shortcut icon" href="favicon_001.ico">  
+
+<link rel="stylesheet" type="text/css" href="overview+-+the+mongodb+interactive+shell.css" media="all">
+</head><body id="com-atlassian-confluence">
+    
+
+
+    
+
+        
+  
+    
+
+
+  <div id="top-right">
+    <div class="user-right">
+    <ul id="header-menu-bar" class="ajs-menu-bar">
+                    
+        
+            <li class="normal ajs-menu-item">
+        <a id="browse-menu-link" class="browse trigger ajs-menu-title" href="#"><span><span>Browse</span></span></a>         <div class="hidden ajs-drop-down">
+                        <ul id="browse-menu-link-leading" class="section-leading first">
+                                        <li>
+    
+    <a id="space-pages-link" href="http://www.mongodb.org/pages/listpages.action?key=DOCS" class="">
+                   <span>Pages</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-blogposts-link" href="http://www.mongodb.org/pages/viewrecentblogposts.action?key=DOCS" class="">
+                   <span>News</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-labels-link" href="http://www.mongodb.org/labels/listlabels-heatmap.action?key=DOCS" class="">
+                   <span>Labels</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-attachments-link" href="http://www.mongodb.org/spaces/listattachmentsforspace.action?key=DOCS" class="">
+                   <span>Attachments</span>            </a>
+</li>
+                                        <li>
+    
+    <a href="http://www.mongodb.org/spaces/space-bookmarks.action?spaceKey=DOCS" class="">
+                   <span>Bookmarks</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-mail-link" href="http://www.mongodb.org/spaces/viewmailarchive.action?key=DOCS" class="">
+                   <span>Mail</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="space-advanced-link" href="http://www.mongodb.org/spaces/viewspacesummary.action?key=DOCS" class="">
+                   <span>Advanced</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+        
+                                                         <li class="ajs-menu-item normal">
+    
+    <a id="login-link" href="http://www.mongodb.org/login.action?os_destination=%2Fdisplay%2FDOCS%2FOverview%2B-%2BThe%2BMongoDB%2BInteractive%2BShell" class="user-item login-link">
+                   <span>Log In</span>            </a>
+</li>
+                            </ul>
+    </div>
+  </div>
+  
+
+      <div class="search-db">
+      <form id="quick-search" class="quick-search" method="get" action="http://www.mongodb.org/dosearchsite.action">
+                <fieldset>
+            <legend>Quick Search</legend>
+            <input value="" class="quick-search-query" id="quick-search-query" accesskey="q" autocomplete="off" name="queryString" size="25" type="text">
+            <input class="quick-search-submit" id="quick-search-submit" value="Search" type="submit">
+        </fieldset>
+        <fieldset class="hidden parameters">
+            <input class="quickSearchPlaceholder" id="quickSearchPlaceholder" value="Search" type="hidden">
+
+            <input id="quickNavEnabled" value="true" type="hidden">
+             <!-- Quick nav disabled. SettingsManager could not be found -->         </fieldset>
+    </form>
+      </div>  
+
+
+  <div id="header-db" class="spread">
+    <div class="split">
+    	<div id="logo">
+    		<div><a href="http://www.mongodb.org/"><img src="logo-mongodb.png" alt="mongoDB" height="90" width="217"></a></div>
+    	</div>
+    	<div id="nav">
+    	</div>
+    </div>
+  </div>
+
+  <div id="breadcrumbsback" class="spread">
+    <div class="split">
+
+    
+    <ol id="breadcrumbs">
+                                                
+            <li><span>
+                                                    <a href="http://www.mongodb.org/display/DOCS">MongoDB</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    <a indepth="true" href="home.html">Home</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    <a indepth="true" href="index.html">Developer Zone</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    <a indepth="true" href="mongo+-+the+interactive+shell.html">mongo - The Interactive Shell</a>
+                        </span></li>
+                                            
+            <li><span>
+                                                    Overview - The MongoDB Interactive Shell
+                        </span></li>
+                </ol>
+ 
+    </div>
+  </div>
+
+  <div id="main-db" class="spread">
+    <div class="split">
+    
+                <ul id="user-control-panel">
+                                
+            <li class="first"><a href="http://www.mongodb.org/login.action?os_destination=%2Fdisplay%2FDOCS%2FOverview%2B-%2BThe%2BMongoDB%2BInteractive%2BShell">Log In</a></li>
+
+                                                        </ul>
+        <div>
+    
+    <div id="navigation" class="content-navigation view">
+        <fieldset class="hidden parameters">
+            <input id="pageId" value="131134" type="hidden">
+        </fieldset>
+        <ul class="ajs-menu-bar">
+                                
+            <li class="normal ajs-menu-item">
+        <a id="add-menu-link" class="add trigger ajs-menu-title" href="#"><span><span>Add</span></span></a>         <div class="hidden ajs-drop-down">
+                        <ul id="add-menu-link-page" class="section-page first">
+                                        <li>
+    
+    <a id="add-comment-menu-link" href="http://www.mongodb.org/display/DOCS/Overview+-+The+MongoDB+Interactive+Shell?showComments=true&amp;showCommentArea=true#addcomment" class="add-comment">
+                   <span>Comment</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+                    
+            <li class="normal ajs-menu-item">
+        <a id="action-menu-link" class="action trigger ajs-menu-title" href="#"><span><span>Tools</span></span></a>         <div class="hidden ajs-drop-down">
+                        <ul id="action-menu-link-primary" class="section-primary first">
+                                        <li>
+    
+    <a id="view-attachments-link" href="http://www.mongodb.org/pages/viewpageattachments.action?pageId=131134" class="action-view-attachments" accesskey="a">
+                   <span><u>A</u>ttachments (0)</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-view-history-link" href="http://www.mongodb.org/pages/viewpreviousversions.action?pageId=131134" class="action-view-history">
+                   <span>Page History</span>            </a>
+</li>
+                            </ul>
+                        <ul id="action-menu-link-secondary" class="section-secondary">
+                                        <li>
+    
+    <a id="view-page-info-link" href="http://www.mongodb.org/pages/viewinfo.action?pageId=131134" class="action-view-info" accesskey="i">
+                   <span><u>I</u>nfo</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-view-source-link" href="http://www.mongodb.org/pages/viewpagesrc.action?pageId=131134" class="action-view-source popup-link">
+                   <span>View Wiki Markup</span>            </a>
+</li>
+                                        <li>
+    
+    <a href="http://www.mongodb.org/spaces/flyingpdf/pdfpageexport.action?pageId=131134&amp;atl_token=yhfQmnp0a3" class="">
+                   <span>Export to PDF</span>            </a>
+</li>
+                                        <li>
+    
+    <a id="action-export-word-link" href="http://www.mongodb.org/exportword?pageId=131134" class="action-export-word">
+                   <span>Export to Word</span>            </a>
+</li>
+                            </ul>
+                    </div>
+    </li>
+            </ul>
+    </div>
+
+    </div>
+    <h1 id="title-heading" class="pagetitle">
+                            
+		<span id="title-text">
+					            <a indepth="true" href="overview+-+the+mongodb+interactive+shell.html">Overview - The MongoDB Interactive Shell</a>
+    				</span>
+    </h1>
+
+    <!--
+    Root decorator: this is a layer of abstraction that Confluence doesn't need. It will be removed eventually.
+-->
+
+
+
+
+    
+    
+
+    
+    
+        
+    
+    
+                    
+    
+
+
+
+        
+<div id="content" class="page view">
+            
+        
+                        
+                                
+    
+        
+                    
+        
+                
+
+ 
+<table cellpadding="5" cellspacing="2">
+<tbody><tr>
+<td class="pagecontent" align="left" valign="top" width="78%">
+<div class="wiki-content">
+<!-- wiki content -->
+            <h3><a name="Overview-TheMongoDBInteractiveShell-StartingtheShell"></a>Starting the Shell</h3>
+
+<p>The interactive shell is included in the standard MongoDB distribution.  To start the shell, go into the root directory of the distribution and type</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">./bin/mongo
+</pre>
+</div></div>
+<p>It might be useful to add <tt><em>mongo_distribution_root</em>/bin</tt> to your <tt>PATH</tt> so you can just type <tt>mongo</tt> from anywhere.</p>
+
+<p>If you start with no parameters, it connects to a database named "test" running on your local machine on the default port (27017). You can see the db to which you are connecting by typing <tt>db</tt>:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">./mongo
+type <span class="code-quote">"help"</span> <span class="code-keyword">for</span> help
+&gt; db
+test
+</pre>
+</div></div>
+<p>You can pass <tt>mongo</tt> an optional argument specifying the address, port and even the database to initially connect to:</p>
+
+<div class="table-wrap">
+<table class="confluenceTable"><tbody>
+<tr>
+<td class="confluenceTd"> <tt>./mongo <em>foo</em></tt> </td>
+<td class="confluenceTd"> connects to the <tt><em>foo</em></tt> database on your local machine </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <tt>./mongo 192.168.13.7/<em>foo</em></tt> </td>
+<td class="confluenceTd"> connects to the <tt><em>foo</em></tt> database on 192.168.13.7 </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <tt>./mongo dbserver.mydomain.com/<em>foo</em></tt> </td>
+<td class="confluenceTd"> connects to the <tt><em>foo</em></tt> database on dbserver.mydomain.com </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <tt>./mongo 192.168.13.7:9999/<em>foo</em></tt> </td>
+<td class="confluenceTd"> connects to the <tt><em>foo</em></tt> database on 192.168.13.7 on port 9999 </td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h3><a name="Overview-TheMongoDBInteractiveShell-Connecting"></a>Connecting</h3>
+
+<p>If you have not connected via the command line, you can use the following commands:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">conn = <span class="code-keyword">new</span> Mongo(host);
+db = conn.getDB(dbname);
+db.auth(username,password);
+</pre>
+</div></div>
+<p>where <tt>host</tt> is a string that contains either the name or address of the machine you want to connect to (e.g. "192.168.13.7") or the machine and port (e.g. "192.168.13.7:9999").  Note that host in an optional argument, and can be omitted if you want to connect to the database instance running on your local machine.  (e.g. <tt>conn = new Mongo()</tt> )</p>
+
+<p>Alternatively you can use the <tt>connect</tt> helper method:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">&gt; db = connect(<span class="code-quote">"localhost:27020/mytestdb"</span>); <span class="code-comment">// example with a nonstandard port #</span>
+</pre>
+</div></div>
+<h3><a name="Overview-TheMongoDBInteractiveShell-BasicsCommands"></a>Basics Commands</h3>
+
+<p>The following are three basic commands that provide information about the available databases, and collections in a given database.</p>
+
+<div class="table-wrap">
+<table class="confluenceTable"><tbody>
+<tr>
+<td class="confluenceTd"> <tt>show dbs</tt> </td>
+<td class="confluenceTd"> displays all the databases on the server you are connected to </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <tt>use <em>db_name</em></tt> </td>
+<td class="confluenceTd"> switches to <tt><em>db_name</em></tt> on the same server </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <tt>show collections</tt> </td>
+<td class="confluenceTd"> displays a list of all the collections in the current database </td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h3><a name="Overview-TheMongoDBInteractiveShell-Querying"></a>Querying</h3>
+
+<p><tt>mongo</tt> uses a JavaScript API to interact with the database. Because <tt>mongo</tt> is also a complete JavaScript shell, <tt>db</tt> is the variable that is the current database connection.</p>
+
+<p>To query a collection, you simply specify the collection name as a property of the <tt>db</tt> object, and then call the <tt>find()</tt> method.  For example:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.foo.find();
+</pre>
+</div></div>
+<p>This will display the first 10 objects from the <tt><em>foo</em></tt> collection. Typing <tt><b><em>it</em></b></tt> after a find() will display the next 10 subsequent objects.</p>
+
+<div class="panelMacro"><table class="noteMacro"><colgroup><col width="24"><col></colgroup><tbody><tr><td valign="top"><img src="warning.gif" alt="" align="absmiddle" border="0" height="16" width="16"></td><td>By setting the shellBatchSize you can change this: <div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">DBQuery.shellBatchSize = #</pre>
+</div></div></td></tr></tbody></table></div>
+
+<h3><a name="Overview-TheMongoDBInteractiveShell-InsertingData"></a>Inserting Data</h3>
+
+<p>In order to insert data into the database, you can simply create a JavaScript object, and call the <tt>save()</tt> method.  For example, to save an object {<tt>name: "sara"</tt>} in a collection called <em>foo</em>, type:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">db.foo.save({ name : <span class="code-quote">"sara"</span>});
+</pre>
+</div></div>
+<p>Note that MongoDB will implicitly create any collection that doesn't already exist.</p>
+
+<h3><a name="Overview-TheMongoDBInteractiveShell-ModifyingData"></a>Modifying Data</h3>
+
+<p>Let's say you want to change someone's address. You can do this using the following <tt>mongo</tt> commands:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">person = db.people.findOne( { name : <span class="code-quote">"sara"</span> } );
+person.city = <span class="code-quote">"New York"</span>;
+db.people.save( person );
+</pre>
+</div></div>
+<h3><a name="Overview-TheMongoDBInteractiveShell-DeletingData"></a>Deleting Data</h3>
+
+<div class="table-wrap">
+<table class="confluenceTable"><tbody>
+<tr>
+<td class="confluenceTd"> <tt>db.<em>foo</em>.drop()</tt> </td>
+<td class="confluenceTd"> drop the entire <tt><em>foo</em></tt> collection </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <tt>db.<em>foo</em>.remove()</tt> </td>
+<td class="confluenceTd"> remove all objects from the collection </td>
+</tr>
+<tr>
+<td class="confluenceTd"> db.<em>foo</em>.remove( { name : "sara" } ) </td>
+<td class="confluenceTd"> remove objects from the collection where <tt>name</tt> is <tt>sara</tt> </td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h3><a name="Overview-TheMongoDBInteractiveShell-Indexes"></a>Indexes</h3>
+
+<div class="table-wrap">
+<table class="confluenceTable"><tbody>
+<tr>
+<td class="confluenceTd"> <tt>db.<em>foo</em>.getIndexKeys()</tt> </td>
+<td class="confluenceTd"> get all fields that have indexes on them </td>
+</tr>
+<tr>
+<td class="confluenceTd"> <tt>db.<em>foo</em>.ensureIndex({ _field_ : 1 })</tt> </td>
+<td class="confluenceTd"> create an index on <tt><em>field</em></tt> if it doesn't exist </td>
+</tr>
+</tbody></table>
+</div>
+
+
+<h2><a name="Overview-TheMongoDBInteractiveShell-LineContinuation"></a>Line Continuation</h2>
+
+<p>If a line contains open '(' or '{' characters, the shell will request more input before evaluating:</p>
+
+<div class="code panel" style="border-width: 1px;"><div class="codeContent panelContent">
+<pre class="code-java">&gt; function f() {
+... x = 1;
+... }
+&gt;
+</pre>
+</div></div>
+<p>You can press Ctrl-C to escape from "..." mode and terminate line entry.</p>
+
+
+<h2><a name="Overview-TheMongoDBInteractiveShell-SeeAlso"></a>See Also</h2>
+
+<ul>
+	<li><a indepth="true" href="dbshell+reference.html" title="dbshell Reference">MongoDB Shell Reference</a></li>
+</ul>
+</div>
+</td>
+<td class="noprint" align="left" valign="top" width="22%">
+<div class="spacetree">
+                                            
+    
+
+<div class="plugin_pagetree">
+
+        
+        
+    <ul class="plugin_pagetree_children_list plugin_pagetree_children_list_noleftspace">
+        <div class="plugin_pagetree_children">
+        </div>
+    </ul>
+
+    <fieldset class="hidden">
+        <input name="treeId" value="" type="hidden">
+        <input name="treeRequestId" value="/plugins/pagetree/naturalchildren.action?decorator=none&amp;excerpt=false&amp;sort=position&amp;reverse=false&amp;disableLinks=false" type="hidden">
+        <input name="treePageId" value="131134" type="hidden">
+
+        <input name="noRoot" value="false" type="hidden">
+        <input name="rootPageId" value="131081" type="hidden">
+
+        <input name="rootPage" value="" type="hidden">
+        <input name="startDepth" value="0" type="hidden">
+        <input name="spaceKey" value="DOCS" type="hidden">
+
+        <input name="i18n-pagetree.loading" value="Loading..." type="hidden">
+        <input name="loginUrl" value="/login.action?os_destination=%2Fdisplay%2FDOCS%2FOverview%2B-%2BThe%2BMongoDB%2BInteractive%2BShell" type="hidden">
+
+                <fieldset class="hidden">
+                                                <input name="ancestorId" value="131685" type="hidden">
+                                    <input name="ancestorId" value="1048712" type="hidden">
+                                    <input name="ancestorId" value="131081" type="hidden">
+                                    </fieldset>
+    </fieldset>
+</div>
+
+
+
+
+<p>
+</p>
+                        <!-- Overview - The MongoDB Interactive Shell -->
+</div>
+</td>
+</tr>
+</tbody></table>
+       
+       <hr class="grey">
+       
+       <div class="page-metadata">
+    <ul>
+                <li class="page-metadata-modification-info">
+                    Added by <a class="username:rian url fn" href="http://www.mongodb.org/display/%7Erian">Rian Murphy</a>, last edited by <a class="username:scotthernandez url fn" href="http://www.mongodb.org/display/%7Escotthernandez">Scott Hernandez</a> on Aug 22, 2010
+                                        <span class="noprint">&nbsp;(<a href="http://www.mongodb.org/pages/diffpages.action?pageId=131134&amp;originalId=17596972">view change</a>)</span>
+                            </li>
+                <li class="show-hide-comment-link">
+            <a id="show" class="inline-control-link" href="#" onclick="showComment(); return false;">show comment</a>
+            <a id="hide" class="inline-control-link" style="display: none;" href="#" onclick="hideComment(); return false;">hide comment</a>
+        </li>
+            </ul>
+      <div id="versionComment" class="noteMacro" style="padding: 5px; display: none;">
+      <strong>Comment:</strong>
+      shellBatchSize<br>
+  </div>
+
+    
+</div>                          
+                           
+       <!--
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+         <rdf:Description
+    rdf:about="http://www.mongodb.org/display/DOCS/Overview+-+The+MongoDB+Interactive+Shell"
+    dc:identifier="http://www.mongodb.org/display/DOCS/Overview+-+The+MongoDB+Interactive+Shell"
+    dc:title="Overview - The MongoDB Interactive Shell"
+    trackback:ping="http://www.mongodb.org/rpc/trackback/131134"/>
+</rdf:RDF>
+-->
+       
+           
+    
+    
+    
+
+
+<fieldset class="hidden parameters">
+    <legend>Labels parameters</legend>
+    <input id="editLabel" value="Edit" type="hidden">
+    <input id="addLabel" value="Add Labels" type="hidden">
+    <input id="domainName" value="http://www.mongodb.org" type="hidden">
+    <input id="pageId" value="131134" type="hidden">
+    <input id="spaceKey" value="DOCS" type="hidden">
+</fieldset>
+
+<div id="labels-section" class="pageSection">
+    <div id="default-labels-header" class="section-header">
+        <h2 id="labels-section-title" class="section-title  hidden ">Labels</h2>
+            </div>
+
+    <div class="labels-editor">
+        <div id="labelsList">
+                    </div>
+
+        <span class="errorMessage error" id="errorSpan"></span>
+        <form method="GET" action="http://www.mongodb.org/display/DOCS/Overview+-+The+MongoDB+Interactive+Shell" id="add-labels-form">
+            <div id="labelInputSpan" class="labels-input">
+                <div id="labelOperationErrorContainer" class="hidden">
+                    <span class="error"><span class="errorMessage" id="labelOperationErrorMessage"></span></span>
+                </div>
+
+                <div class="caption">Enter labels to add to this page:</div>
+
+                <input autocomplete="off" id="labelsString" name="labelsString" value="" size="40">
+                <input class="add-labels" value="Add" type="submit">
+                <input class="hide-labels-editor" value="Done" type="submit">
+                <div id="waitImageAndStatus">
+                    <img class="waiting" alt="Please wait" src="wait.gif">&nbsp;
+                    <span id="labelOperationStatus" class="smalltext"></span>
+                </div>
+                <div class="auto_complete" id="labelsAutocompleteList"></div>
+                <div class="labels-tip">
+                    <div id="suggestedLabelsSpan"></div>
+                    Looking for a label? Just start typing.
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+       
+                  
+           
+
+<!--
+    Root decorator: this is a layer of abstraction that Confluence doesn't need. It will be removed eventually.
+-->
+
+
+
+
+    
+        
+    
+    
+
+
+<fieldset class="parameters hidden">
+    <input id="deleteCommentConfirmMessage" value="Are you sure you want to remove the comment?" type="hidden">
+    <input id="collapseTooltip" value="Click to toggle the display of this comment." type="hidden">
+</fieldset>
+
+
+
+
+
+<div id="comments-section" class="pageSection">
+    
+            <div class="section-header">
+            <ul id="comment-top-links" class="global-comment-actions">
+                <li id="comments-expand-collapse">
+                    <a href="#" id="comments-collapse">Collapse All</a>
+                    <span id="collapse-wait" class="hidden">Collapsing…</span>
+                    <span id="expand-wait" class="hidden">Expanding…</span>
+                    <a href="#" class="hidden" id="comments-expand">Expand All</a>
+                </li>
+            </ul>
+        </div>
+            <!-- added by Kristina 1/7/10 -->
+<p>
+<b><a style="color: rgb(55, 95, 160);" href="http://groups.google.com/group/mongodb-user">PLEASE POST QUESTIONS IN  THE USER GROUPS FORUM</a>.</b> 
+Post non-question comments and helpful hints here.
+</p>
+            <!-- end -->
+<div id="disqus_thread"></div><a href="http://disqus.com/" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+    
+    
+    
+                </div>
+
+
+
+
+       
+                                    
+       </div>
+    <br class="clear">
+  </div>
+</div>
+
+<div class="sponsor">Copyright © <a class="smalltext" href="http://www.10gen.com/">10gen</a>, Inc. All Rights Reserved | Licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/3.0/">Creative Commons</a></div>
+
+
+
+
+
+
+
+<div id="footer">
+                    <ul id="poweredby">
+        <li class="noprint">Powered by <a href="http://www.atlassian.com/software/confluence" class="smalltext">Atlassian Confluence</a> 3.0.0_01, the <a href="http://www.atlassian.com/software/confluence" class="smalltext">Enterprise Wiki</a>.</li>
+        <li class="print-only">Printed by Atlassian Confluence 3.0.0_01, the Enterprise Wiki.</li>
+        <li class="noprint"><a href="http://jira.atlassian.com/secure/BrowseProject.jspa?id=10470" class="smalltext">Bug/feature request</a> –</li>
+        <li class="noprint"><a href="http://www.atlassian.com/about/connected.jsp?s_kwcid=Confluence-stayintouch" class="smalltext">Atlassian news</a> –</li>
+        <li class="noprint"><a href="http://www.mongodb.org/administrators.action">Contact administrators</a></li>
+    </ul>
+</div>
+
+
+</body></html>

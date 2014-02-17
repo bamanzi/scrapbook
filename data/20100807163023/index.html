@@ -1,0 +1,451 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" dir="ltr" xml:lang="en" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+		
+                <!-- Skin = Monaco.php -->
+		<meta name="description" content="A useful feature in many text editors is the ability to search for regular expressions in multiple files. Vim has this feature, but it is a little hard to find.">
+		<meta http-equiv="Content-Style-Type" content="text/css">
+		<meta name="generator" content="MediaWiki 1.15.5">
+		<meta name="keywords" content="Vim Tips Wiki,vim,Find in files within Vim,Execute external programs asynchronously under Windows,Using vim as an IDE all in one,VimTip1008,VimTip1234,VimTip1542,VimTip1544,VimTip483,New tips/200801">
+		<link rel="canonical" href="http://vim.wikia.com/wiki/Find_in_files_within_Vim">
+		<link rel="alternate" type="application/x-wiki" title="Edit this page" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit">
+		<link rel="edit" title="Edit this page" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit">
+		<link rel="apple-touch-icon" href="http://images.wikia.com/vim/images/b/bc/Wiki.png">
+		<link rel="shortcut icon" href="favicon.ico">
+		<link rel="search" type="application/opensearchdescription+xml" href="http://vim.wikia.com/opensearch_desc.php" title="Vim Tips Wiki (en)">
+		<link rel="copyright" href="http://community.wikia.com/wiki/Wikia:Licensing">
+		<link rel="alternate" type="application/rss+xml" title="Vim Tips Wiki RSS feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=rss">
+		<link rel="alternate" type="application/atom+xml" title="Vim Tips Wiki Atom feed" href="http://vim.wikia.com/index.php?title=Special:RecentChanges&amp;feed=atom">
+		<!--[if lt IE 7]><script type="text/javascript">var wgShowIE6PhaseOutMessage = true;</script><![endif]-->
+		
+		<title>Find in files within Vim - Vim Tips Wiki</title>
+		
+
+<!-- GetCoreCSS -->
+<!--[if lt IE 7]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IElt7" /><![endif]-->
+<!--[if IE 7]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IEeq7" /><![endif]-->
+<!--[if IE 8]><link rel="stylesheet" type="text/css" href="http://images1.wikia.nocookie.net/__wikia_combined/cb=25024&amp;type=CoreCSS&amp;themename=jade&amp;rtl=&amp;StaticChute=&amp;browser=IEeq8" /><![endif]-->
+<!--[if !IE]>--><!--<![endif]-->
+<!-- GetExtensionsCSS -->
+<!-- GetThemeCSS -->
+<!-- GetSiteCSS -->
+<!-- GetUserCSS -->	
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="mediawiki ltr ns-0 ns-subject page-Find_in_files_within_Vim TOCimprovements loggedout color2 wikiaSkinMonaco action_view" id="body">
+	<form action="http://vim.wikia.com/wiki/VimTip1543" method="post" name="userajaxloginform" id="userajaxloginformhide" style="display: none;">
+			<input value="" name="wpName" id="wpName1Ajax" tabindex="101" size="20" type="text">
+			<input name="wpPassword" id="wpPassword1Ajax" tabindex="102" size="20" type="password">
+			<input name="wpRemember" id="wpRemember1Ajax" tabindex="104" value="1" type="checkbox">
+		</form>
+	<!-- HEADER -->
+		<div id="wikia_header" class="reset color2">
+			<div class="monaco_shrinkwrap">
+			<div id="wikiaBranding">
+			<div id="wikia_logo"><a rel="nofollow" href="http://www.wikia.com/Wikia">Wikia</a></div>						<button id="headerButtonHub" class="header-button color1">Technology<img src="blank.gif"></button>
+
+			</div>
+<div id="requestWikiData"><a rel="nofollow" href="http://www.wikia.com/Special:CreateWiki" id="request_wiki" class="wikia-button">Create a new wiki</a>&nbsp;<span id="request_wiki_ad"></span></div>			<div id="userData">
+<span id="fbconnect"><a href="#" class="fb_button fb_button_small"><span class="fb_button_text">Connect</span></a></span>				<span id="userLogin">
+					<a rel="nofollow" class="ajaxLogin" id="login" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=Find_in_files_within_Vim&amp;type=login">Log in</a>
+				</span>
+
+					<a rel="nofollow" class="wikia-button ajaxRegister" id="register" href="http://vim.wikia.com/index.php?title=Special:Signup&amp;returnto=Find_in_files_within_Vim&amp;type=signup">Create an account</a>
+
+		</div>
+		</div>
+	</div>
+
+	<div class="monaco_shrinkwrap"><div id="background_accent1"></div></div>
+	<div style="position: relative;"><div id="background_accent2"></div></div>
+
+		<div id="background_strip" class="reset">
+			<div class="monaco_shrinkwrap">
+
+			<div id="accent_graphic1"></div>
+			<div id="accent_graphic2"></div>
+			<div id="wiki_logo" style="background-image: url(&quot;wiki.png&quot;);"><a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" accesskey="z">Vim Tips Wiki</a></div>
+			<!--[if lt IE 7]>
+			<style type="text/css">
+				#wiki_logo {
+					background-image: none !important;
+					filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='http://images.wikia.com/vim/images/b/bc/Wiki.png', sizingMethod='image');
+				}
+			</style>
+			<![endif]-->
+			</div>
+		</div>
+		<!-- /HEADER -->
+
+		<!-- PAGE -->
+
+	<div class="monaco_shrinkwrap" id="monaco_shrinkwrap_main">
+		<div id="wikia_page">
+					<div id="page_bar" class="reset color1 clearfix">
+				<ul id="page_controls">
+		  							  <li id="control_edit" class=""><img src="blank.gif" class="sprite edit"><a rel="nofollow" id="ca-edit" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit" title="You can edit this page. Please use the preview button before saving. [e]" accesskey="e">Edit this page</a></li>
+		  							  <li id="control_history" class=""><img src="blank.gif" class="sprite history"><a rel="nofollow" id="ca-history" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=history" title="Past versions of this page [h]" accesskey="h">History</a></li>
+		  							  <li id="control_watch" class=""><img src="blank.gif" class="sprite watch"><a rel="nofollow" id="ca-watch" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=watch" title="Follow this page [w]" accesskey="w">Follow</a></li>
+		  							  <li id="control_share_feature" class=""><img src="blank.gif" class="sprite share"><a rel="nofollow" id="ca-share_feature" href="#">Share this article</a></li>
+		  						  </ul>
+						  <ul id="page_tabs">
+		  							  <li class="selected"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" id="ca-nstab-main" title="View the content page [c]" accesskey="c" class="selected">Article</a></li>
+		  							  <li class="new"><a href="http://vim.wikia.com/index.php?title=Talk:Find_in_files_within_Vim&amp;action=edit&amp;redlink=1" id="ca-talk" title="Discussion about the content page [t]" accesskey="t" class="new">Discussion</a></li>
+		  				</ul>
+			</div>
+		        	<!-- #### BEGIN AdEngine::AdEngine::getSetupHtml ####-->
+<!-- #### END AdEngine::AdEngine::getSetupHtml ####-->
+					<!-- ARTICLE -->
+
+			<div id="article">
+				<a name="top" id="top"></a>
+								<h1 class="firstHeading">Find in files within Vim<span class="editsection-upper noprint"><a href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit" title="Find in files within Vim" onclick='WET.byStr("articleAction/topedit")' rel="nofollow" id="te-editsection-noprompt" class="wikia-button">edit this page</a></span></h1>				<div id="bodyContent">
+					<h3 id="siteSub">From Vim Tips Wiki</h3>
+					<div id="contentSub">(Redirected from <a href="http://vim.wikia.com/index.php?title=VimTip1543&amp;redirect=no" title="VimTip1543" rel="nofollow">VimTip1543</a>)</div>
+																				<!-- #### BEGIN AdEngine::AdEngine::getSetupHtml ####-->
+<!-- #### END AdEngine::AdEngine::getSetupHtml ####-->
+<div id="TOP_LEADERBOARD" class="noprint"><div id="Liftium_728x90_1_php"><iframe src="index_1.html" id="TOP_LEADERBOARD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="90" scrolling="no" width="728"></iframe></div></div>					
+					<!-- start content -->
+					
+				<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"></div></div>
+				
+<div><b><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" class="text" title="http://vim.wikia.com/wiki/Find_in_files_within_Vim">Tip 1543</a></b> <a href="http://vim.wikia.com/wiki/VimTip1542" title="VimTip1542" class="mw-redirect"><small>Previous</small></a> <a href="http://vim.wikia.com/wiki/VimTip1544" title="VimTip1544" class="mw-redirect"><small>Next</small></a>
+<p><b><a href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:New_tips/200801#Find_in_files_within_Vim" title="Vim Tips Wiki:New tips/200801">created</a></b>&nbsp;January 9, 2008 · <b>complexity</b>&nbsp;basic · <b>author</b>&nbsp;Fritzophrenic · <b>version</b>&nbsp;7.0
+</p>
+<hr>
+</div>
+<table id="toc" class="toc" summary="Contents"><tbody><tr><td><div id="toctitle"><h2>Contents</h2> <span class="toctoggle">[<a href="javascript:toggleToc()" rel="nofollow" class="internal" id="togglelink">show</a>]</span></div>
+<ul>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Basic_use"><span class="tocnumber">1</span> <span class="toctext">Basic use</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Tips_and_Tricks"><span class="tocnumber">2</span> <span class="toctext">Tips and Tricks</span></a>
+<ul>
+<li class="toclevel-2"><a rel="nofollow" href="#Old_search_results"><span class="tocnumber">2.1</span> <span class="toctext">Old search results</span></a></li>
+<li class="toclevel-2"><a rel="nofollow" href="#Recursive_search"><span class="tocnumber">2.2</span> <span class="toctext">Recursive search</span></a></li>
+<li class="toclevel-2"><a rel="nofollow" href="#Path_separators"><span class="tocnumber">2.3</span> <span class="toctext">Path separators</span></a></li>
+<li class="toclevel-2"><a rel="nofollow" href="#Mappings"><span class="tocnumber">2.4</span> <span class="toctext">Mappings</span></a></li>
+</ul>
+</li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Disabling_autocmds_for_fast_searches"><span class="tocnumber">3</span> <span class="toctext">Disabling autocmds for fast searches</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Using_external_programs_for_fast_searches"><span class="tocnumber">4</span> <span class="toctext">Using external programs for fast searches</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Related_Plugins"><span class="tocnumber">5</span> <span class="toctext">Related Plugins</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#See_also"><span class="tocnumber">6</span> <span class="toctext">See also</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#References"><span class="tocnumber">7</span> <span class="toctext">References</span></a></li>
+<li style="display: none;" class="toclevel-1"><a rel="nofollow" href="#Comments"><span class="tocnumber">8</span> <span class="toctext">Comments</span></a></li>
+</ul>
+</td></tr></tbody></table>
+<a rel="nofollow" name="Basic_use" id="Basic_use"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit&amp;section=1" title="Edit section: Basic use" rel="nofollow">edit</a></span> <span class="mw-headline">Basic use</span></h2><div style="float: right; margin-top: 10px; margin-bottom: 10px; margin-left: 10px; clear: right;" id="Liftium_300x250_2"><iframe id="Liftium_300x250_2_140" marginwidth="0" marginheight="0" src="index_2.html" frameborder="0" height="250" scrolling="no" width="300"></iframe></div>
+<p>A useful feature in many text editors is the ability to search for regular expressions in multiple files. Vim has this feature, but it is a little hard to find.
+</p><p>Vim provides these commands for searching files:
+</p>
+<ul><li><tt>:grep</tt>
+</li><li><tt>:lgrep</tt>
+</li><li><tt>:vimgrep</tt>
+</li><li><tt>:lvimgrep</tt>
+</li></ul>
+<p>All of these commands can be used to search for a regular expression in whatever files you specify. "grep" and "lgrep" use an external application to perform the search, and are great if you are running Vim on a system with a good file searching utility, if you are accustomed to using an external application for your searches, or if your search is not a complicated one. "vimgrep" and "lvimgrep" are part of Vim, and therefore are good for using on any system, especially if you want to use Vim-style regular expressions in your search. Keep in mind though, that vimgrep can often be slower than grep, which will call an external program to do the dirty work.
+</p><p>These commands all fill a list with the results of their search. "grep" and "vimgrep" fill the "quickfix list", which can be opened with <tt>:cw</tt> or <tt>:copen</tt>, and is a list shared between ALL windows. "lgrep" and "lvimgrep" fill the "location list," which is local to the current window, and can be opened with <tt>:lw</tt> or <tt>:lopen</tt>. Both of these lists can be used to instantly jump to the matching line in whatever file it occurs in.
+</p><p>Use of grep and lgrep depend on the external application they point to, but use of vimgrep and lvimgrep is as follows:
+</p>
+<pre>:vim[grep][!] /{pattern}/[g][j] {file} ...
+</pre>
+<p>The 'g' option specifies that <i>all</i> matches for a search will be returned instead of just one per line, and the 'j' option specifies that Vim will <i>not</i> jump to the first match automatically.
+</p><p>For example, to search for the words "house" or "home" in all .txt files in the current directory, use:
+</p>
+<pre>:lvim /\&lt;\(house\|home\)\&gt;/gj *.txt
+:lw
+</pre>
+<a rel="nofollow" name="Tips_and_Tricks" id="Tips_and_Tricks"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit&amp;section=2" title="Edit section: Tips and Tricks" rel="nofollow">edit</a></span> <span class="mw-headline">Tips and Tricks</span></h2>
+<a rel="nofollow" name="Old_search_results" id="Old_search_results"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit&amp;section=3" title="Edit section: Old search results" rel="nofollow">edit</a>]</span> <span class="mw-headline">Old search results</span></h3>
+<p>If you would like to view the results of a previous search, the&nbsp;:colder (or&nbsp;:lolder) and&nbsp;:cnewer (or&nbsp;:lnewer) commands will allow you to do this without typing the search again.
+</p>
+<ul><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Acolder" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3D%253Acolder">:help&nbsp;:colder</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Acnewer" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3D%253Acnewer">:help&nbsp;:cnewer</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Alolder" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3D%253Alolder">:help&nbsp;:lolder</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Alnewer" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3D%253Alnewer">:help&nbsp;:lnewer</a>
+</li></ul>
+<a rel="nofollow" name="Recursive_search" id="Recursive_search"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit&amp;section=4" title="Edit section: Recursive search" rel="nofollow">edit</a>]</span> <span class="mw-headline">Recursive search</span></h3>
+<p>You can use <tt>**</tt> in the file pattern to search recursively. For example, to search for all lines containing "dostuff()" in all .c files in the parent directory and all its subdirectories, use:
+</p>
+<pre>:vimgrep /dostuff()/j ../**/*.c
+</pre>
+<p>Be careful! On Windows, either escape the backslash with another backslash, or use a forward slash (see next section). The above will work on Windows, but this will not, for example:
+</p>
+<pre>:vimgrep /dostuff()/j ..\**\*.c
+</pre>
+<a rel="nofollow" name="Path_separators" id="Path_separators"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit&amp;section=5" title="Edit section: Path separators" rel="nofollow">edit</a>]</span> <span class="mw-headline">Path separators</span></h3>
+<p>In the Windows version of Vim, backslash ('\') characters can be used as path separators, but forward slashes also work, and using '/' allows file paths in these searches to work in Vim under any operating system. This is especially useful if your vimrc file is used on multiple platforms, and you want to write mappings for common searches as below.
+</p>
+<a rel="nofollow" name="Mappings" id="Mappings"></a><h3><span class="editsection">[<a href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit&amp;section=6" title="Edit section: Mappings" rel="nofollow">edit</a>]</span> <span class="mw-headline">Mappings</span></h3>
+<p>You can use a mapping, command, or abbreviation for common searches, like a search for a word under the cursor in all files of the same type in the current directory. This can be especially useful if you have it automatically open the results list as well.
+</p><p>This mapping uses <tt>&lt;cword&gt;</tt> to get the word under the cursor, and searches for it in the current directory and all subdirectories, opening the quickfix window when done:
+</p>
+<pre>map &lt;F4&gt;&nbsp;:execute "vimgrep /" . expand("&lt;cword&gt;") . "/j **" &lt;Bar&gt; cw&lt;CR&gt;
+</pre>
+<p>This command based on <a href="http://vim.wikia.com/wiki/VimTip483" title="VimTip483" class="mw-redirect">VimTip483</a> uses <tt>&lt;cword&gt;</tt> to get the word under the cursor, but also uses <tt>%</tt> to limit the search to the current file only:
+</p>
+<pre>command GREP&nbsp;:execute 'vimgrep /'.expand('&lt;cword&gt;').'/gj '.expand('%') | copen
+</pre>
+<p>Finally, this cabbrev uses CTRL-R CTRL-W to get the word under the cursor, limiting the search to files of the same type using expand("%:e"), and moving the cursor on the command-line to be just before the file list using &lt;C-Left&gt;, so that you can easily specify a different search location. This method is nice because you can either type <tt>:lvim&lt;Enter&gt;</tt> to perform the default search, or <tt>:lvim&lt;Space&gt;</tt> to enter the default search into the command line, but leave it there for editing.
+</p>
+<pre>cabbrev lvim
+      \ lvim /\&lt;lt&gt;&lt;C-R&gt;&lt;C-W&gt;\&gt;/gj
+      \ *&lt;C-R&gt;=(expand("%:e")==""&nbsp;? ""&nbsp;: ".".expand("%:e"))&lt;CR&gt;
+      \ &lt;Bar&gt; lw
+      \ &lt;C-Left&gt;&lt;C-Left&gt;&lt;C-Left&gt;
+</pre>
+<p>Note: Using a cabbrev and a mapping together may not work very well, because the mapping will trigger the cabbrev. Also, be careful not to use common text in your cabbrev, such as making one for the "vim" command, because then whenever you try to edit a .vim file for example, the cabbrev will be expanded when you press Enter. You could avoid this by moving the cursor to somewhere else in the line before pressing enter.
+</p>
+<a rel="nofollow" name="Disabling_autocmds_for_fast_searches" id="Disabling_autocmds_for_fast_searches"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit&amp;section=7" title="Edit section: Disabling autocmds for fast searches" rel="nofollow">edit</a></span> <span class="mw-headline">Disabling autocmds for fast searches</span></h2><div style="float: left; margin-top: 10px; margin-bottom: 10px; margin-right: 20px; clear: left;" id="Liftium_300x250_3"><iframe style="display: none;" id="Liftium_300x250_3_428" marginwidth="0" marginheight="0" src="index_3.html" frameborder="0" height="250" scrolling="no" width="300"></iframe><iframe id="Liftium_300x250_3_20" marginwidth="0" marginheight="0" src="index_4.html" frameborder="0" height="250" scrolling="no" width="300"></iframe></div>
+<p>Using vimgrep to search hundreds of files can be slow. A search taking only a few seconds using an external grep program might take nearly a minute with vimgrep. One reason for this is that vimgrep uses Vim's procedures to read files, which can involve execution of several autocommands.
+</p><p>You can make use of the <tt>:noautocmd</tt> command modifier to drastically increase search speed by temporarily disabling all autocmds during the execution of the <tt>:vimgrep</tt>. It may also solve other issues you may have, such as unwanted interaction with plugins that trigger off BufRead events. Use it as follows:
+</p>
+<pre>:noautocmd vimgrep /{pattern}/[flags] {file(s)}
+</pre>
+<p>See <a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Anoautocmd" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3D%253Anoautocmd">:help&nbsp;:noautocmd</a>
+</p><p>This simple addition should work in any of the examples given in this tip, including mappings and abbreviations.
+</p><p>An unfortunate side effect of disabling autocmds in this way is that you may find syntax highlighting is off when Vim displays the result. One workaround is to type <tt>:e</tt> and press Enter to reload the file. Another is to use the <tt>j</tt> flag in the search, to prevent jumping to the first match automatically. You will then need to enter a command such as <tt>:cw</tt> to open the quickfix window, then press Enter to see it. Or, use <tt>:cnext</tt>.
+</p><p>Note that autocmds must be enabled in order for vimgrep to work for remote or archived files, since Vim's editing of such files depends on plugins using autocmds.
+</p>
+<a rel="nofollow" name="Using_external_programs_for_fast_searches" id="Using_external_programs_for_fast_searches"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit&amp;section=8" title="Edit section: Using external programs for fast searches" rel="nofollow">edit</a></span> <span class="mw-headline">Using external programs for fast searches</span></h2>
+<p>If you want to speed up searching in files, and you don't need the power of Vim's regular expressions or its ability to detect file encodings, you can use an external program (traditionally <tt>grep</tt>) for searching. But, remember to do it within Vim using <b>:grep</b>, so that you have the output available in Vim to view and navigate by!
+</p><p>Depending on your system, you may find that a command like the following will quickly search files:
+</p>
+<pre>:grep pattern *.c
+</pre>
+<p>See <a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Agrep" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3D%253Agrep">:help&nbsp;:grep</a>, <a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%27grepprg%27" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3D%2527grepprg%2527">:help&nbsp;'grepprg'</a>, and <a href="http://vim.wikia.com/wiki/VimTip483" title="VimTip483" class="mw-redirect">Search using quickfix to list occurrences</a> for ways to customize this, either to make it work on your system or to do something else entirely! The above example will work on many Unix-based systems (which have <tt>grep</tt> in the path), and on many Windows systems (where Vim will try to use <tt>findstr</tt>).
+</p><p>In addition there are plugins to integrate these utilities with Vim:
+</p>
+<ul><li><a class="external" title="http://www.vim.org/scripts/script.php?script_id=311" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fwww.vim.org%2Fscripts%2Fscript.php%3Fscript_id%3D311">grep.vim&nbsp;: Grep search tools integration with Vim</a>
+</li><li><a class="external" title="http://www.vim.org/scripts/script.php?script_id=1575" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fwww.vim.org%2Fscripts%2Fscript.php%3Fscript_id%3D1575">findstr.vim&nbsp;: Using MS-Windows findstr utility to search for text with Vim</a>
+</li></ul>
+<a rel="nofollow" name="Related_Plugins" id="Related_Plugins"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit&amp;section=9" title="Edit section: Related Plugins" rel="nofollow">edit</a></span> <span class="mw-headline">Related Plugins</span></h2><div style="float: right; margin-top: 10px; margin-bottom: 10px; margin-left: 10px; clear: right;" id="Liftium_300x250_4"></div>
+<ul><li><a class="external" title="http://www.vim.org/scripts/script.php?script_id=2033" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fwww.vim.org%2Fscripts%2Fscript.php%3Fscript_id%3D2033">trag.vim: A wrapper for vimgrep that facilitates regexp building and project handling</a>
+</li><li><a class="external" title="http://www.vim.org/scripts/script.php?script_id=2438" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fwww.vim.org%2Fscripts%2Fscript.php%3Fscript_id%3D2438">EasyGrep: Makes vimgrep easier with mappings and configurable options, and provides "replace in files" capability</a>
+</li></ul>
+<a rel="nofollow" name="See_also" id="See_also"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit&amp;section=10" title="Edit section: See also" rel="nofollow">edit</a></span> <span class="mw-headline">See also</span></h2>
+<ul><li><a href="http://vim.wikia.com/wiki/VimTip1234" title="VimTip1234" class="mw-redirect">Tip 1234: Find files in subdirectories</a>, for when the contents of a file are not known, but the file name or part of the file name is.
+</li><li><a href="http://vim.wikia.com/wiki/VimTip1008" title="VimTip1008" class="mw-redirect">Tip 1008: Toggle to open or close the quickfix window</a>, for a quick way to toggle on or off the quickfix window which contains the results of your vimgrep searches.
+</li><li><a href="http://vim.wikia.com/wiki/Execute_external_programs_asynchronously_under_Windows#Extended_example:_asynchronous_grep" title="Execute external programs asynchronously under Windows">Asynchronous grep on Windows</a>
+</li></ul>
+<a rel="nofollow" name="References" id="References"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit&amp;section=11" title="Edit section: References" rel="nofollow">edit</a></span> <span class="mw-headline">References</span></h2>
+<ul><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Agrep" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3D%253Agrep">:help&nbsp;:grep</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Avimgrep" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3D%253Avimgrep">:help&nbsp;:vimgrep</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=quickfix" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dquickfix">:help&nbsp;quickfix</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=starstar" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dstarstar">:help&nbsp;starstar</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3A%3Ccword%3E" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3D%253A%253Ccword%253E">:help&nbsp;:&lt;cword&gt;</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=c_%3CC-R%3E_%3CC-W%3E" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dc_%253CC-R%253E_%253CC-W%253E">:help&nbsp;c_&lt;C-R&gt;_&lt;C-W&gt;</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=%3Acabbrev" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3D%253Acabbrev">:help&nbsp;:cabbrev</a>
+</li><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=abbreviations" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dabbreviations">:help&nbsp;abbreviations</a>
+</li></ul>
+<a rel="nofollow" name="Comments" id="Comments"></a><h2 style="position: relative; top: -3px; margin-bottom: -2px;"><span class="editsection"><a class="wikia-button" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit&amp;section=12" title="Edit section: Comments" rel="nofollow">edit</a></span> <span class="mw-headline">Comments</span></h2>
+<p>I enjoy using the GNU id-utils (<a class="external" title="http://www.gnu.org/software/idutils/" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fwww.gnu.org%2Fsoftware%2Fidutils%2F">http://www.gnu.org/software/idutils/</a>).
+Searches with the id-utils are incredibly fast!
+</p><p>For a few tips and plugins about the id-utils see:
+</p>
+<ul><li><a class="external" title="http://vimdoc.sourceforge.net/cgi-bin/help?tag=tips.txt" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fvimdoc.sourceforge.net%2Fcgi-bin%2Fhelp%3Ftag%3Dtips.txt">:help&nbsp;tips.txt</a>
+</li><li><a href="http://vim.wikia.com/wiki/Using_vim_as_an_IDE_all_in_one" title="Using vim as an IDE all in one">Using_vim_as_an_IDE_all_in_one</a>
+</li><li><a class="external" title="http://www.vim.org/scripts/script.php?script_id=251" href="http://vim.wikia.com/index.php?title=Special:Outbound&amp;f=Find_in_files_within_Vim&amp;u=http%3A%2F%2Fwww.vim.org%2Fscripts%2Fscript.php%3Fscript_id%3D251">script#251</a>
+</li></ul>
+<p>And don't forget ctags and the TagList plugin if you are developing code.
+</p><p>Cheers!
+</p><!-- 
+NewPP limit report
+Preprocessor node count: 365/1000000
+Post-expand include size: 3482/2097152 bytes
+Template argument size: 1032/2097152 bytes
+Expensive parser function count: 0/100
+--><!-- Saved in parser cache with key vim:pcache:idhash:5604-0!1!0!!en!2 and timestamp 20100801045446 --><div class="printfooter">
+Retrieved from "<a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim">http://vim.wikia.com/wiki/Find_in_files_within_Vim</a>"</div>
+<table style="margin-top: 1em; width: 100%; clear: both;"><tbody><tr><td style="text-align: center;"><div id="PREFOOTER_LEFT_BOXAD" class="noprint"><div id="Liftium_300x250_2_php"><iframe src="index_5.html" id="PREFOOTER_LEFT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div></td><td style="text-align: center;"><div id="PREFOOTER_RIGHT_BOXAD" class="noprint"><div id="Liftium_300x250_3_php"><iframe src="index_6.html" id="PREFOOTER_RIGHT_BOXAD_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="250" scrolling="no" width="300"></iframe></div></div></td></tr>
+</tbody></table><div id="catlinks" class="catlinks"><div id="mw-normal-catlinks"><a href="http://vim.wikia.com/wiki/Special:Categories" title="Special:Categories" rel="nofollow">Categories</a>: <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:VimTip" title="Category:VimTip">VimTip</a></span> | <span dir="ltr"><a href="http://vim.wikia.com/wiki/Category:Searching" title="Category:Searching">Searching</a></span></div> <div id="csAddCategorySwitch" class="noprint" style="background: none repeat scroll 0% 0% rgb(221, 221, 221); position: relative; float: left; border: 1px solid rgb(187, 187, 187); -moz-border-radius: 3px 3px 3px 3px; padding: 0pt 5px; line-height: 16px;"><img src="blank.gif" class="sprite-small add"><a href="#" onfocus="this.blur();" style="color: rgb(0, 0, 0); font-size: 0.85em; text-decoration: none; display: inline-block;" rel="nofollow">Add category</a></div></div>					<!-- end content -->
+										<div class="visualClear"></div>
+				</div>
+
+				<!--google_ad_section_end-->
+				<!--contextual_targeting_end-->
+
+			</div>
+			<!-- /ARTICLE -->
+			
+			<!-- ARTICLE FOOTER -->
+			<div id="articleFooter" class="reset">
+				<table cellspacing="0">
+					<tbody><tr>
+						<td class="col1">
+							<ul class="actions" id="articleFooterActions">
+								<li><a rel="nofollow" id="fe_edit_icon" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit"><img src="blank.gif" id="fe_edit_img" class="sprite edit" alt="Edit this page"></a> <div>Improve Vim Tips Wiki by <a id="fe_edit_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=edit">editing this page</a></div></li>
+								<li><a id="fe_user_icon" rel="nofollow" href="http://vim.wikia.com/wiki/User:Fritzophrenic"><img src="blank.gif" id="fe_user_img" class="sprite user" alt="View user page"></a> <div><a id="fe_user_link" rel="nofollow" href="http://vim.wikia.com/wiki/User:Fritzophrenic">Fritzophrenic</a> made an edit on January 29, 2010</div></li>
+							</ul>
+							<ul id="articleFooterActions3" class="actions clearfix">
+								<li id="fe_history"><a rel="nofollow" id="fe_history_icon" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=history"><img src="blank.gif" id="fe_history_img" class="sprite history" alt="History"></a> <div><a id="fe_history_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;action=history">History</a></div></li>
+								<li id="fe_recent"><a rel="nofollow" id="fe_recent_icon" href="http://vim.wikia.com/wiki/Special:RecentChangesLinked/Find_in_files_within_Vim"><img src="blank.gif" id="fe_recent_img" class="sprite recent" alt="Related changes"></a> <div><a id="fe_recent_link" rel="nofollow" href="http://vim.wikia.com/wiki/Special:RecentChangesLinked/Find_in_files_within_Vim">Related changes</a></div></li></ul><ul id="articleFooterActions4" class="actions clearfix">
+								<li id="fe_permalink"><a rel="nofollow" id="fe_permalink_icon" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;oldid=26172"><img src="blank.gif" id="fe_permalink_img" class="sprite move" alt="Permanent link"></a> <div><a id="fe_permalink_link" rel="nofollow" href="http://vim.wikia.com/index.php?title=Find_in_files_within_Vim&amp;oldid=26172">Permanent link</a></div></li>
+								<li id="fe_whatlinkshere"><a rel="nofollow" id="fe_whatlinkshere_icon" href="http://vim.wikia.com/wiki/Special:WhatLinksHere/Find_in_files_within_Vim"><img src="blank.gif" id="fe_whatlinkshere_img" class="sprite pagelink" alt="What links here"></a> <div><a id="fe_whatlinkshere_link" rel="nofollow" href="http://vim.wikia.com/wiki/Special:WhatLinksHere/Find_in_files_within_Vim">What links here</a></div></li></ul>						</td>
+						<td class="col2">
+							<ul class="actions" id="articleFooterActions2">
+								<li><a rel="nofollow" id="fe_random_icon" href="http://vim.wikia.com/wiki/Special:Random"><img src="blank.gif" id="fe_random_img" class="sprite random" alt="Random page"></a> <div><a rel="nofollow" id="fe_random_link" href="http://vim.wikia.com/wiki/Special:Random">View random page</a></div></li>
+								<li><img src="blank.gif" id="fe_report_img" class="sprite error" alt="Report a problem with this page"> <div><a style="cursor: pointer;" id="fe_report_link">Report a problem with this page</a></div></li>
+
+								<li><img src="blank.gif" id="fe_sharefeature_img" class="sprite share" alt="Share this article"> <div><a style="cursor: pointer;" id="fe_sharefeature_link">Share this article</a></div></li>
+							</ul>
+		<div class="clearfix" id="star-rating-row">
+		  <strong>Rate this article:</strong>
+		  		  <div id="star-rating-wrapper">
+		    <ul id="star-rating" class="star-rating" rel="20">
+			<li style="width: 100px;" id="current-rating" class="current-rating"><span>5.0000/5</span></li>
+			<li><a rel="nofollow" class="one-star" id="star1" title="1/5"><span>1</span></a></li>
+			<li><a rel="nofollow" class="two-stars" id="star2" title="2/5"><span>2</span></a></li>
+			<li><a rel="nofollow" class="three-stars" id="star3" title="3/5"><span>3</span></a></li>
+			<li><a rel="nofollow" class="four-stars" id="star4" title="4/5"><span>4</span></a></li>
+			<li><a rel="nofollow" class="five-stars" id="star5" title="5/5"><span>5</span></a></li>
+		    </ul>
+		    <span style="display: none;" id="unrateLink"><a rel="nofollow" id="unrate" href="#">Unrate it</a></span>
+		  </div>
+		</div>
+								</td>
+					</tr>
+				</tbody></table>
+			</div>
+			<!-- /ARTICLE FOOTER -->
+
+		</div>
+		<!-- /PAGE -->
+<!-- Begin Analytics -->
+<!-- Start for GA_Urchin, page_view -->
+
+
+<!-- Start for GA_Urchin, hub -->
+
+<!-- Start for GA_Urchin, onewiki -->
+<!-- No tracking for this wiki -->
+<!-- Start for GA_Urchin, pagetime -->
+
+<!-- End Analytics -->
+
+
+		
+		
+				
+		
+		<div id="monaco_footer" class="reset">
+
+
+		<div id="spotlight_footer">
+		<table>
+		<tbody><tr>
+			<td>
+				<!-- ## BEGIN AdProviderGAM::AdProviderGAM::getSetupHtml ## -->
+
+<!-- ## END AdProviderGAM::AdProviderGAM::getSetupHtml ## -->
+<!-- ## BEGIN AdProviderGAM::AdProviderGAM::getBatchCallHtml ## -->
+
+<!-- ## END AdProviderGAM::AdProviderGAM::getBatchCallHtml ## -->
+<div id="google_ads_div_FOOTER_SPOTLIGHT_LEFT"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_LEFT" name="google_ads_iframe_FOOTER_SPOTLIGHT_LEFT" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_7.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+			<td>
+				<div id="google_ads_div_FOOTER_SPOTLIGHT_MIDDLE"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_MIDDLE" name="google_ads_iframe_FOOTER_SPOTLIGHT_MIDDLE" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_8.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+			<td>
+				<div id="google_ads_div_FOOTER_SPOTLIGHT_RIGHT"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: inline-table;"><ins style="position: relative; width: 200px; height: 75px; border: medium none; display: block;"><iframe id="google_ads_iframe_FOOTER_SPOTLIGHT_RIGHT" name="google_ads_iframe_FOOTER_SPOTLIGHT_RIGHT" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_9.html" frameborder="0" height="75" scrolling="no" width="200"></iframe></ins></ins></div>			</td>
+		</tr>
+		</tbody></table>
+		</div>
+				  <table id="wikia_footer">
+	  			<tbody><tr>
+				<td colspan="2" id="wikia_corporate_footer">
+	  <a rel="nofollow" href="http://www.wikia.com/About_Us"><span>About</span></a> | <a rel="nofollow" href="http://www.wikia.com/Hiring">Jobs</a> | <a rel="nofollow" href="http://www.wikia.com/Terms_of_Use">Terms of Use</a> | <a rel="nofollow" href="http://www.wikia.com/Special:CreateWiki">Create a wiki</a> | <a rel="nofollow" href="http://www.wikia.com/Privacy_Policy">Privacy Policy</a> | <a rel="nofollow" href="http://community.wikia.com/wiki/Wikia:Licensing" title="w:Wikia:Licensing">CC-BY-SA</a> | <a rel="nofollow" href="http://community.wikia.com/wiki/Community_Guidelines">Community Guidelines</a> | <a rel="nofollow" href="http://vim.wikia.com/wiki/Special:Contact">Contact</a> | <a rel="nofollow" href="http://www.wikia.com/Advertising">Advertise</a> | <a rel="nofollow" href="http://www.wikia.com/Lifestyle">Lifestyle</a>				</td>
+			</tr>
+	  	  </tbody></table>
+					</div>
+		<!-- WIDGETS -->
+		<div id="widget_sidebar" class="reset widget_sidebar">
+
+			<!-- SEARCH/NAVIGATION -->
+			<div class="widget" id="navigation_widget">
+				<div id="search_box" class="color1">
+					<form action="http://vim.wikia.com/wiki/Special:Search" id="searchform">
+						<input id="search_field" name="search" value="Search this wiki" maxlength="200" onfocus="sf_focus(event);" alt="Search this wiki" autocomplete="off" title="Search this wiki [alt-shift-f]" accesskey="f" type="text">
+						<input name="go" value="1" type="hidden">
+						<input src="blank.gif" id="search-button" class="sprite search" type="image">
+					</form>
+				</div>
+<div id="navigation"><div id="menu-item_1" class="menu-item"><a id="a-menu-item_1" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" rel="nofollow">Home</a></div><div id="menu-item_2" class="menu-item"><a id="a-menu-item_2" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Community_Portal" rel="nofollow">Community portal</a></div><div id="menu-item_3" class="menu-item"><a id="a-menu-item_3" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki:Todo" rel="nofollow">To do</a></div><div id="menu-item_4" class="menu-item"><a id="a-menu-item_4" href="http://vim.wikia.com/wiki/Vim_Tips_Wiki" rel="nofollow">Top content<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="#" rel="nofollow">Editor's pick<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Best_Vim_Tips" rel="nofollow">Best Vim Tips</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Browsing_programs_with_tags" rel="nofollow">Browsing programs with tags</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_end-of-line_format_for_dos-mac-unix" rel="nofollow">Change end-of-line format for dos-mac-unix</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces" rel="nofollow">Converting tabs to spaces</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Cut/copy_and_paste_using_visual_selection" rel="nofollow">Cut/copy and paste using visual selection</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/File_no_longer_available_-_mark_buffer_modified" rel="nofollow">File no longer available - mark buffer modified</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/most_popular" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div class="menu-item"><a href="#" rel="nofollow">Most visited<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Best_Vim_Tips" rel="nofollow">Best Vim Tips</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace" rel="nofollow">Search and replace</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_end-of-line_format_for_dos-mac-unix" rel="nofollow">Change end-of-line format for dos-mac-unix</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Indenting_source_code" rel="nofollow">Indenting source code</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Open_vimrc_file" rel="nofollow">Open vimrc file</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Change_the_color_scheme" rel="nofollow">Change the color scheme</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Converting_tabs_to_spaces" rel="nofollow">Converting tabs to spaces</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/most_visited" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div class="menu-item"><a href="#" rel="nofollow">Highest voted<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Add/change_file_extension_in_current_buffer" rel="nofollow">Add/change file extension in current buffer</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Manage_a_tasklist_of_to-do_code_snippets" rel="nofollow">Manage a tasklist of to-do code snippets</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Vim_Doclet" rel="nofollow">Vim Doclet</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Record_a_recursive_macro" rel="nofollow">Record a recursive macro</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Improved_Javascript_Indent_script_for_Vim" rel="nofollow">Improved Javascript Indent script for Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Scripting_-_Indirectly_Referencing_Variables" rel="nofollow">Scripting - Indirectly Referencing Variables</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/highest_ratings" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div style="border: 0px none;" class="menu-item"><a href="#" rel="nofollow">Newly changed<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Any_word_completion" rel="nofollow">Any word completion</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Copy,_cut_and_paste" rel="nofollow">Copy, cut and paste</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint" rel="nofollow">Format your xml document using xmllint</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Restoring_indent_after_typing_hash" rel="nofollow">Restoring indent after typing hash</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard" rel="nofollow">In line copy and paste to system clipboard</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/C%2B%2B_code_completion" rel="nofollow">C++ code completion</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Power_of_g" rel="nofollow">Power of g</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Special:Top/newly_changed" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div></div></div><div id="menu-item_9" class="menu-item"><a id="a-menu-item_9" href="http://vim.wikia.com/wiki/Category:Folding" rel="nofollow">Folding category<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Syntax_folding_of_Vim_scripts" rel="nofollow">Syntax folding of Vim scripts</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding" rel="nofollow">Folding</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Java/C/C%2B%2B_folding" rel="nofollow">Java/C/C++ folding</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding_with_Regular_Expression" rel="nofollow">Folding with Regular Expression</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Auto-fold_Perl_subs" rel="nofollow">Auto-fold Perl subs</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Folding_for_plain_text_files_based_on_indentation" rel="nofollow">Folding for plain text files based on indentation</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Outline_editing_of_Python_programs" rel="nofollow">Outline editing of Python programs</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Category:Folding" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div><div id="menu-item_10" class="menu-item"><a id="a-menu-item_10" href="http://vim.wikia.com/wiki/Category:Searching" rel="nofollow">Searching category<em>›</em></a><div class="sub-menu widget" style="display: none;"><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace" rel="nofollow">Search and replace</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Searching" rel="nofollow">Searching</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Highlight_all_search_pattern_matches" rel="nofollow">Highlight all search pattern matches</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Find_in_files_within_Vim" rel="nofollow">Find in files within Vim</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Search_and_replace_in_a_visual_selection" rel="nofollow">Search and replace in a visual selection</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Power_of_g" rel="nofollow">Power of g</a></div><div class="menu-item"><a href="http://vim.wikia.com/wiki/Remove_unwanted_empty_lines" rel="nofollow">Remove unwanted empty lines</a></div><div style="border: 0px none;" class="menu-item"><a href="http://vim.wikia.com/wiki/Category:Searching" rel="nofollow" class="Monaco-sidebar_more">more...</a></div></div></div></div><table id="link_box_table" cellspacing="0">		<tbody id="link_box_dynamic">
+			<tr>
+				<td colspan="2">
+					<ul>
+<li id="dynamic-links-write-article-row" class="link_box_dynamic_item"><a rel="nofollow" id="dynamic-links-write-article-icon" href="http://vim.wikia.com/wiki/toolbox/dynamic/CreatePage"><img src="blank.gif" id="dynamic-links-write-article-img" class="sprite edit" alt="Create a new article"></a> <a id="dynamic-links-write-article-link" rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/dynamic/CreatePage">Create a new article</a></li><li id="dynamic-links-add-image-row" class="link_box_dynamic_item"><a rel="nofollow" id="dynamic-links-add-image-icon" href="http://vim.wikia.com/wiki/toolbox/dynamic/Upload"><img src="blank.gif" id="dynamic-links-add-image-img" class="sprite photo" alt="Upload a new image"></a> <a id="dynamic-links-add-image-link" rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/dynamic/Upload">Upload a new image</a></li>					</ul>
+				</td>
+			</tr>
+		</tbody>
+		<tbody id="link_box" class="color2 linkbox_static">
+			<tr>
+				<td>
+					<ul>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/recentchanges">Recent changes</a></li>
+						<li><a rel="nofollow" href="http://community.wikia.com/wiki/Blog:Wikia_Staff_Blog" onclick="WET.byStr('toolbox/w_c_community_Blog_Wikia_Staff_Blog')">Staff blog</a></li>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/helppage">Help</a></li>
+					</ul>
+				</td>
+				<td>
+					<ul>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/randompage">Random page</a></li>
+						<li><a rel="nofollow" href="http://vim.wikia.com/wiki/toolbox/specialpages">Special pages</a></li>
+						<li style="font-size: 1px; position: absolute; top: -10000px;"><a href="http://vim.wikia.com/wiki/Special:Recentchanges" accesskey="r" rel="nofollow">Recent changes</a><a href="http://vim.wikia.com/wiki/Special:Random" accesskey="x" rel="nofollow">Random page</a></li>
+					</ul>
+				</td>
+			</tr>
+		</tbody>
+	</table>
+			</div>
+			<!-- /SEARCH/NAVIGATION -->
+
+			<!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_NAVBOX_1 --><div style="text-align: center; margin-bottom: 10px;"><div id="LEFT_SKYSCRAPER_1" class="noprint"><div id="Liftium_160x600_4_php"><iframe src="index_10.html" id="LEFT_SKYSCRAPER_1_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none; display: none;" target="_blank" frameborder="0" height="600" scrolling="no" width="160"></iframe></div></div></div>
+
+			<div id="sidebar_1" class="sidebar">
+			<dl class="widget WidgetCommunity" id="widget_303"><dt class="color1 widget_title" id="widget_303_header"><span class="widgetToolbox"></span>Latest activity</dt><dd class="shadow widget_contents" id="widget_303_content"><div class="community_header accent">
+	<span class="article_count dark_text_1">1,593</span> articles on this wiki<br></div>
+<div class="community_body">
+		<ul class="activityfeed widgetfeed" id="widget_303-recently-edited">		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Copy,_cut_and_paste">Copy, cut and paste</a></strong><br>			<cite><span class="timeago" title="2010-08-06T15:40:31Z">17 hours ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/216.235.10.210" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Format_your_xml_document_using_xmllint">Format your xml document using xmllint</a></strong><br>			<cite><span class="timeago" title="2010-08-06T13:01:46Z">19 hours ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/145.242.11.3" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/Restoring_indent_after_typing_hash">Restoring indent after typing hash</a></strong><br>			<cite><span class="timeago" title="2010-08-06T07:49:30Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/User:JohnBeckett" rel="nofollow">JohnBeckett</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/In_line_copy_and_paste_to_system_clipboard">In line copy and paste to system clipboard</a></strong><br>			<cite><span class="timeago" title="2010-08-06T04:33:00Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/Special:Contributions/68.231.48.165" rel="nofollow">Unregistered contributor</a></cite>		</li>		<li class="activity-type-edit activity-ns-0">			<img class="edit sprite" src="blank.gif" alt="edit" title="edit" height="16" width="16">			<strong><a href="http://vim.wikia.com/wiki/C%2B%2B_code_completion">C++ code completion</a></strong><br>			<cite><span class="timeago" title="2010-08-06T01:57:05Z">A day ago</span> by <a href="http://vim.wikia.com/wiki/User:JohnBeckett" rel="nofollow">JohnBeckett</a></cite>		</li>	</ul></div>
+<div class="toolbar neutral">
+	<a id="community-widget-action-button" href="http://vim.wikia.com/wiki/Special:ActivityFeed" class="wikia-button forward" rel="nofollow">Activity feed</a>
+</div>
+
+</dd></dl><div style="margin-bottom: 10px;"><div id="google_ads_div_LEFT_NAV_205x400"><ins style="position: relative; width: 205px; height: 400px; border: medium none; display: inline-table;"><ins style="position: relative; width: 205px; height: 400px; border: medium none; display: block;"><iframe id="google_ads_iframe_LEFT_NAV_205x400" name="google_ads_iframe_LEFT_NAV_205x400" vspace="0" hspace="0" allowtransparency="true" marginwidth="0" marginheight="0" style="border: 0px none; left: 0pt; position: absolute; top: 0pt;" src="index_11.html" frameborder="0" height="400" scrolling="no" width="205"></iframe></ins></ins></div></div>
+			<!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_SLIMBOX_1 --><!-- Null Ad. Reason: Slot is disabled, slotname=LEFT_NAVBOX_2 --><div style="text-align: center; margin-bottom: 10px;"><div id="LEFT_SKYSCRAPER_2" class="noprint"><div id="Liftium_160x600_5_php"><iframe src="index_13.html" id="LEFT_SKYSCRAPER_2_iframe" class="" noresize="true" marginheight="0" marginwidth="0" style="border: medium none;" target="_blank" frameborder="0" height="600" scrolling="no" width="160"></iframe></div></div></div>
+			</div>
+		</div>
+		<!-- /WIDGETS -->
+	<!--/div-->
+
+
+
+<div id="Liftium_0x0_0"><!-- Liftium No ad --></div>
+<!-- #### BEGIN AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+
+
+
+
+
+<!-- #### END AdEngine::AdEngine::getDelayedIframeLoadingCode ####-->
+<div id="Liftium_0x0_1"><!-- Liftium No ad --></div>
+</div><!-- Start for Comscore, page_view -->
+
+<!-- Begin comScore Tag -->
+
+
+
+<!-- End comScore Tag -->
+<!-- Start for QuantServe, page_view -->
+
+
+<!-- Start for Exelate, page_view -->
+
+
+		
+<img src="__onedot" alt="" border="0" height="1" width="1">
+		<div id="positioned_elements" class="reset"></div>
+		<!-- Served by ap-s11 in 0.161 secs. cpu: 0.070 -->
+	
+
+</body>
+</html>
