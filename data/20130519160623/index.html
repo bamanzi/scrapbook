@@ -1,0 +1,774 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+			<title>  Running Shells in Emacs: An Overview | Mastering Emacs</title>
+	
+	<!-- Basic Meta Data -->
+	<meta name="Copyright" content="Design is copyright 2008 - 2013 The Theme Foundry">
+	<meta http-equiv="imagetoolbar" content="no">
+	
+	
+	<!-- Favicon -->
+	<link rel="shortcut icon" href="favicon.ico">
+
+	<!--Stylesheets-->
+	
+	<!--[if lt IE 8]>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://www.masteringemacs.org/wp-content/themes/titan/stylesheets/ie.css" />
+	<![endif]-->
+
+	<!--Scripts-->
+	<!--[if lte IE 7]>
+	<script type="text/javascript">
+	sfHover=function(){var sfEls=document.getElementById("nav").getElementsByTagName("LI");for(var i=0;i<sfEls.length;i++){sfEls[i].onmouseover=function(){this.className+=" sfhover";}
+	sfEls[i].onmouseout=function(){this.className=this.className.replace(new RegExp(" sfhover\\b"),"");}}}
+	if (window.attachEvent)window.attachEvent("onload",sfHover);
+	</script>
+	<![endif]-->
+
+	<!--WordPress-->
+	<link rel="alternate" type="application/rss+xml" title="Mastering Emacs RSS Feed" href="http://www.masteringemacs.org/feed/">
+	<link rel="pingback" href="http://www.masteringemacs.org/xmlrpc.php">
+
+	<!--WP Hook-->
+		<link rel="alternate" type="application/rss+xml" title="Mastering Emacs » Running Shells in Emacs: An Overview Comments Feed" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/feed/">
+
+
+
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.masteringemacs.org/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Maximizing Emacs on startup" href="http://www.masteringemacs.org/articles/2010/10/18/maximizing-emacs-startup/">
+<link rel="next" title="Making CamelCase Readable with Glasses-Mode" href="http://www.masteringemacs.org/articles/2010/11/10/making-camelcase-readable-glasses-mode/">
+<link rel="canonical" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/">
+<link rel="shortlink" href="http://www.masteringemacs.org/?p=160">
+
+
+<!-- HeadSpace SEO 3.6.41 by John Godley - urbangiraffe.com -->
+<meta name="description" content="To use Emacs effectively, you must learn to use all that Emacs has to offer. One of Emacs's strongest selling-points is its shell integration and term">
+<!-- HeadSpace -->
+<!-- Meta tags added by Robots Meta: http://yoast.com/wordpress/meta-robots-wordpress-plugin/ -->
+<meta name="robots" content="noarchive">
+<link rel="shortcut icon" href="favicon_001.ico" type="image/x-icon"><!-- Favi --><!--[if IE]>
+<style type="text/css">
+.addtoany_list a img{filter:alpha(opacity=70)}
+.addtoany_list a:hover img,.addtoany_list a.addtoany_share_save img{filter:alpha(opacity=100)}
+</style>
+<![endif]-->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body data-twttr-rendered="true" class="single single-post postid-160 single-format-standard"><iframe src="index_1.html" style="position: absolute; top: -9999em; width: 10px; height: 10px;" name="twttrHubFrameSecure" tabindex="0" allowtransparency="true" id="twttrHubFrameSecure" frameborder="0" scrolling="no"></iframe><iframe src="index_2.html" style="position: absolute; top: -9999em; width: 10px; height: 10px;" name="twttrHubFrame" tabindex="0" allowtransparency="true" id="twttrHubFrame" frameborder="0" scrolling="no"></iframe><iframe src="index_3.html" allowtransparency="true" transparency="true" style="border: 0pt none; left: 0pt; top: 0pt; position: absolute; z-index: 100000;" id="a2apage_sm_ifr" frameborder="0" height="1" width="1"></iframe><div style="position: static;"><div id="a2apage_dropdown" class="a2a_menu"><div class="a2a_menu_inside"><div id="a2apage_title_container" class="a2a_menu_title_container" style="display: none;"><input value="" id="a2apage_title" class="a2a_menu_title"></div><div class="a2apage_wide a2a_wide"><div class="a2a_tabs a2a_tabs_default"><div id="a2apage_DEFAULT" class="a2a_tab_selected" style="margin-right: 1px;" onclick="return a2a.tabs.open('DEFAULT')"><span class="a2a_i_a2a">分享</span></div></div><div class="a2a_tabs"><div title="通过电子邮件分享" id="a2apage_EMAIL" style="margin-right: 1px;" onclick="return a2a.tabs.open('EMAIL')"><span class="a2a_i_email_bw">电子邮件</span></div></div></div><div class="a2a_clear"></div><div id="a2apage_find_container" class="a2a_menu_find_container"><input value="" id="a2apage_find" class="a2a_menu_find" onclick="a2a.focus_find()" onkeyup="a2a.do_find()" autocomplete="off" onfocus="a2a['page'].find_focused=true;a2a.onMouseOver_stay()" title="快速查找您使用的服务" type="text"><span id="a2apage_find_icon" class="a2a_i_find" onclick="a2a.focus_find()"></span></div><div id="a2apage_cols_container" class="a2a_cols_container"><div class="a2a_col1" id="a2apage_col1"><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_qq"><span style="background-image: url('favicon_002.ico');">QQ</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_sina_weibo"><span style="background-image: url('miniblog_icon_str16.png');">Sina Weibo</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_facebook"><span class="a2a_i_facebook">Facebook</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_twitter"><span class="a2a_i_twitter">Twitter</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_google_plus"><span class="a2a_i_google_plus">Google+</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_pinterest"><span class="a2a_i_pinterest">Pinterest</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_linkedin"><span class="a2a_i_linkedin">LinkedIn</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_stumbleupon"><span class="a2a_i_stumbleupon">StumbleUpon</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_reddit"><span class="a2a_i_reddit">Reddit</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_google_bookmarks"><span class="a2a_i_google">Google Bookmarks</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_wordpress"><span class="a2a_i_wordpress">WordPress</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_tumblr"><span class="a2a_i_tumblr">Tumblr</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_delicious"><span class="a2a_i_delicious">Delicious</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_digg"><span class="a2a_i_digg">Digg</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_live"><span class="a2a_i_messenger">Messenger</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_myspace"><span class="a2a_i_myspace">MySpace</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_yahoo_bookmarks"><span class="a2a_i_yahoo">Yahoo Bookmarks</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_bebo"><span class="a2a_i_bebo">Bebo</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_mister_wong"><span class="a2a_i_mister-wong">Mister-Wong</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_google_reader"><span class="a2a_i_reader">Google Reader</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_orkut"><span class="a2a_i_orkut">Orkut</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_xing"><span class="a2a_i_xing">XING</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_buffer"><span class="a2a_i_default">Buffer</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_evernote"><span class="a2a_i_evernote">Evernote</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_netvibes_share"><span class="a2a_i_netvibes">Netvibes Share</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_strands"><span class="a2a_i_strands">Strands</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_business_exchange"><span class="a2a_i_business_exchange">Business Exchange</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_arto"><span class="a2a_i_arto">Arto</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_tipd"><span class="a2a_i_tipd">Tipd</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_smaknews"><span class="a2a_i_smaknews">SmakNews</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_plurk"><span class="a2a_i_plurk">Plurk</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_aim"><span class="a2a_i_aim">AIM</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_yahoo_messenger"><span class="a2a_i_yim">Yahoo Messenger</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_identi_ca"><span class="a2a_i_identica">Identi.ca</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_mozillaca"><span class="a2a_i_mozillaca">Mozillaca</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_lockerz_grab"><span class="a2a_i_lockerz">Lockerz Grab</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_blogger_post"><span class="a2a_i_blogger">Blogger Post</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_typepad_post"><span class="a2a_i_typepad">TypePad Post</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_box_net"><span class="a2a_i_box">Box.net</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_kindle_it"><span class="a2a_i_default">Kindle It</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_netlog"><span class="a2a_i_netlog">Netlog</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_technorati_favorites"><span class="a2a_i_technorati">Technorati Favorites</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_citeulike"><span class="a2a_i_citeulike">CiteULike</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_jumptags"><span class="a2a_i_jumptags">Jumptags</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_hemidemi"><span class="a2a_i_hemidemi">Hemidemi</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_funp"><span class="a2a_i_funp">FunP</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_instapaper"><span class="a2a_i_instapaper">Instapaper</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_phonefavs"><span class="a2a_i_phonefavs">PhoneFavs</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_xerpi"><span class="a2a_i_xerpi">Xerpi</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_netvouz"><span class="a2a_i_netvouz">Netvouz</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_wink"><span class="a2a_i_wink">Wink</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_diigo"><span class="a2a_i_diigo">Diigo</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_bibsonomy"><span class="a2a_i_bibsonomy">BibSonomy</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_blogmarks"><span class="a2a_i_blogmarks">BlogMarks</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_tailrank"><span class="a2a_i_tailrank">Tailrank</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_startaid"><span class="a2a_i_startaid">StartAid</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_kledy"><span class="a2a_i_kledy">Kledy</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_khabbr"><span class="a2a_i_khabbr">Khabbr</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_meneame"><span class="a2a_i_meneame">Meneame</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_yoolink"><span class="a2a_i_yoolink">Yoolink</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_bookmarks_fr"><span class="a2a_i_bookmarks_fr">Bookmarks.fr</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_technotizie"><span class="a2a_i_technotizie">Technotizie</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_newsvine"><span class="a2a_i_newsvine">NewsVine</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_multiply"><span class="a2a_i_multiply">Multiply</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_friendfeed"><span class="a2a_i_friendfeed">FriendFeed</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_plaxo_pulse"><span class="a2a_i_plaxo">Plaxo Pulse</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_ping"><span class="a2a_i_ping">Ping</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_squidoo"><span class="a2a_i_squidoo">Squidoo</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_protopage_bookmarks"><span class="a2a_i_protopage">Protopage Bookmarks</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_blinklist"><span class="a2a_i_blinklist">Blinklist</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_faves"><span class="a2a_i_faves">Faves</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_yigg"><span class="a2a_i_yigg">YiGG</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_webnews"><span class="a2a_i_webnews">Webnews</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_segnalo"><span class="a2a_i_segnalo">Segnalo</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_pusha"><span class="a2a_i_pusha">Pusha</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_youmob"><span class="a2a_i_youmob">YouMob</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_slashdot"><span class="a2a_i_slashdot">Slashdot</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_fark"><span class="a2a_i_fark">Fark</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_allvoices"><span class="a2a_i_allvoices">Allvoices</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_jamespot"><span class="a2a_i_jamespot">Jamespot</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_imera_brazil"><span class="a2a_i_imera">Imera Brazil</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_twiddla"><span class="a2a_i_twiddla">Twiddla</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_linkagogo"><span class="a2a_i_linkagogo">LinkaGoGo</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_unalog"><span class="a2a_i_unalog">unalog</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_hugg"><span class="a2a_i_hugg">Hugg</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_diglog"><span class="a2a_i_diglog">Diglog</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_nowpublic"><span class="a2a_i_nowpublic">NowPublic</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_livejournal"><span class="a2a_i_livejournal">LiveJournal</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_current"><span class="a2a_i_current">Current</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_hellotxt"><span class="a2a_i_hellotxt">HelloTxt</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_spurl"><span class="a2a_i_spurl">Spurl</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_yample"><span class="a2a_i_yample">Yample</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_oneview"><span class="a2a_i_oneview">Oneview</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_linkatopia"><span class="a2a_i_linkatopia">Linkatopia</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_simpy"><span class="a2a_i_simpy">Simpy</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_buddymarks"><span class="a2a_i_buddymarks">BuddyMarks</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_ask_com_mystuff"><span class="a2a_i_ask">Ask.com MyStuff</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_viadeo"><span class="a2a_i_viadeo">Viadeo</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_maple"><span class="a2a_i_maple">Maple</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_wists"><span class="a2a_i_wists">Wists</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_connotea"><span class="a2a_i_connotea">Connotea</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_backflip"><span class="a2a_i_backflip">Backflip</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_mylinkvault"><span class="a2a_i_mylinkvault">MyLinkVault</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_sitejot"><span class="a2a_i_sitejot">SiteJot</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_sphinn"><span class="a2a_i_sphinn">Sphinn</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_dzone"><span class="a2a_i_dzone">DZone</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_care2_news"><span class="a2a_i_care2">Care2 News</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_hyves"><span class="a2a_i_hyves">Hyves</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_sphere"><span class="a2a_i_sphere">Sphere</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_bitty_browser"><span class="a2a_i_bitty">Bitty Browser</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_gabbr"><span class="a2a_i_gabbr">Gabbr</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_symbaloo_feeds"><span class="a2a_i_symbaloo">Symbaloo Feeds</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_tagza"><span class="a2a_i_tagza">Tagza</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_folkd"><span class="a2a_i_folkd">Folkd</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_newstrust"><span class="a2a_i_newstrust">NewsTrust</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_amazon_wish_list"><span class="a2a_i_amazon">Amazon Wish List</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_printfriendly"><span class="a2a_i_printfriendly">PrintFriendly</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_read_it_later"><span class="a2a_i_read_it_later">Read It Later</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_tuenti"><span class="a2a_i_tuenti">Tuenti</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_email"><span class="a2a_i_email">Email</span></a><a style="display: none;" target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_rediff"><span class="a2a_i_rediff">Rediff MyPage</span></a></div><div id="a2apage_2_col1" style="display: none;"><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_google_gmail"><span class="a2a_i_gmail">Google Gmail</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_yahoo_mail"><span class="a2a_i_yahoo">Yahoo Mail</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_hotmail"><span class="a2a_i_live">Hotmail</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i" rel="nofollow" id="a2apage_aol_mail"><span class="a2a_i_aol">AOL Mail</span></a><a target="_top" href="http://www.masteringemacs.org/" class="a2a_i a2a_emailer" rel="nofollow" id="a2apage_any_email"><span class="a2a_i_email">Any email</span></a><a target="" href="http://www.masteringemacs.org/" class="a2a_i a2a_emailer a2a_email_client" rel="nofollow" id="a2apage_email_client"><span class="a2a_i_outlook">&nbsp;</span><span class="a2a_i_windows_mail">&nbsp;</span><span class="a2a_i_apple_mail">&nbsp;</span><span class="a2a_i_thunderbird">&nbsp;</span></a></div><div class="a2a_clear"></div></div><div class="a2apage_wide a2a_wide"><a href="javascript:void(0)" id="a2apage_show_more_less" class="a2a_menu_show_more_less" onclick="return a2a.show_more_less(0)" title="显示全部/展开"><span class="a2a_i_darr"></span></a></div><div class="a2a_menu_powered_by" id="a2apage_powered_by">By <a href="http://www.addtoany.com/" target="_top" title="Share Buttons">AddToAny</a></div></div></div></div>
+	<div class="skip-content"><a href="#content">Skip to content</a></div>
+	<div id="header" class="clear">
+		<div id="follow">
+			<div class="wrapper clear">
+				<dl>
+					<dt>Follow:</dt>
+					<dd><a class="rss" href="http://www.masteringemacs.org/feed/">RSS</a></dd>
+										 <dd><a class="email" href="#">Email</a></dd>
+															 <dd><a class="twitter" href="http://www.twitter.com/mickeynp">Twitter</a></dd>
+									</dl>
+			</div><!--end wrapper-->
+		</div><!--end follow-->
+		<div class="wrapper">
+			<div id="title"><a href="http://www.masteringemacs.org/"><img src="emacs22.png" alt="Emacs 22 Logo">Mastering Emacs</a></div>			<div id="description">
+				a blog about mastering the world's best text editor			</div><!--end description-->
+			<div id="navigation">
+				<ul id="nav">
+					<li class="page_item "><a href="http://www.masteringemacs.org/">Home</a></li>
+											<li class="page_item page-item-2"><a href="http://www.masteringemacs.org/about/">About</a></li>
+<li class="page_item page-item-277"><a href="http://www.masteringemacs.org/effective-editing-series/">Effective Editing</a></li>
+<li class="page_item page-item-496"><a href="http://www.masteringemacs.org/reading-guide/">Reading Guide</a></li>
+																	<li class="cat-item cat-item-5"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/articles/" title="View all posts filed under All Articles">All Articles</a>
+</li>
+	<li class="cat-item cat-item-3"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/beginner/" title="View all posts filed under For Beginners">For Beginners</a>
+</li>
+	<li class="cat-item cat-item-6"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/quick-tips/" title="View all posts filed under Quick Tips">Quick Tips</a>
+</li>
+	<li class="cat-item cat-item-4"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/tutorial/" title="View all posts filed under Tutorials">Tutorials</a>
+</li>
+									</ul>
+			</div><!--end navigation-->
+		</div><!--end wrapper-->
+	</div><!--end header-->
+<div class="content-background">
+	<div class="wrapper">
+		<div class="notice"></div>
+		<div id="content">				<div id="post-160" class="post-160 post type-post status-publish format-standard hentry category-articles category-tutorial tag-ansi-term tag-cygwin tag-elisp tag-eshell tag-navigation tag-productivity tag-shell tag-term">
+                
+			<div class="post-header">
+                          
+				<div class="tags"><span>Tags</span> <p><a href="http://www.masteringemacs.org/articles/tag/ansi-term/" rel="nofollow tag">ansi-term</a>, <a href="http://www.masteringemacs.org/articles/tag/cygwin/" rel="nofollow tag">cygwin</a>, <a href="http://www.masteringemacs.org/articles/tag/elisp/" rel="nofollow tag">elisp</a>, <a href="http://www.masteringemacs.org/articles/tag/eshell/" rel="nofollow tag">eshell</a>, <a href="http://www.masteringemacs.org/articles/tag/navigation/" rel="nofollow tag">navigation</a>, <a href="http://www.masteringemacs.org/articles/tag/productivity/" rel="nofollow tag">productivity</a>, <a href="http://www.masteringemacs.org/articles/tag/shell/" rel="nofollow tag">shell</a>, <a href="http://www.masteringemacs.org/articles/tag/term/" rel="nofollow tag">term</a></p></div>
+				<h1>Running Shells in Emacs: An Overview</h1>
+				<div class="author">by mickey on November 1st, 2010</div>
+                                <div class="breadcrumbs"> <!-- Breadcrumb NavXT 4.2.0 -->
+<a title="Go to Home." href="http://www.masteringemacs.org/" class="site-home">Home</a> &gt; <a title="Go to the All Articles category archives." href="http://www.masteringemacs.org/articles/category/articles/" class="category">All Articles</a> &gt; Running Shells in Emacs: An Overview </div>
+			</div><!--end post header-->
+			<div class="entry clear">
+								<p>To use Emacs effectively, you must learn to use all that Emacs has to offer. One of Emacs’s strongest selling-points is its shell integration and terminal emulation. If you come from other editors or IDEs you’re probably using an external terminal window (like xterm), a terminal multiplexer (like GNU Screen) or console window (in Windows) and switching back and forth. But there’s a better way…</p>
+<p><span id="more-160"></span><br>
+If you use Emacs as your shell you will have all the functionality that Emacs provides <em>plus</em> you get almost all of the advantages provided by the shell itself, but built into Emacs. This article is only a quick overview of all the shells: I plan on tackling each one, in-depth, later on.</p>
+<p>All external, interactive shells in Emacs are derived from something called <code>comint-mode</code>. <code>comint-mode</code> introduces low-level functions for dealing with interactive shells that require user input, a history ring, and so on. Shells like <code>M-x shell</code> and <code>M-x python-shell</code> inherit from comint mode.</p>
+<p>Emacs provides you with three shell ways of interacting with a shell (like bash or zsh), and these shells are often called <em>inferior shells</em>. Confusingly, there is a shell (called "shell" or "shell mode") which, by the nature of how it works, is also an <em>inferior shell</em>. Yeah, confusing…</p>
+<h2>The Inferior Shell ("Shell Mode")</h2>
+<p><em>The</em> inferior shell is what you get when you run <code>M-x shell</code>. It is a wrapper around your default shell. It is governed by <code>explicit-shell-file-name</code>, the <code>ESHELL</code> environment variable or <code>shell-file-name</code>, in that order.</p>
+<p><strong>NOTE</strong>: If you change the default shell, you <em>must</em> create a new variable called <code>explicit-&lt;filename&gt;-args</code> where <em>filename</em> is obviously the filename of the new shell — and the variable istself should contain a list of arguments. If you’re on Windows, make sure you include the extension!</p>
+<p>Here’s a quick example of how to get bash working in Windows:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> explicit-shell-file-<span style="color: rgb(177, 177, 0);">name</span> <span style="color: rgb(255, 0, 0);">"C:/path/to/bash.exe"</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> shell-file-<span style="color: rgb(177, 177, 0);">name</span> <span style="color: rgb(255, 0, 0);">"bash"</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> explicit-bash<span style="color: rgb(102, 204, 102);">.</span>exe-args '<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(255, 0, 0);">"--noediting"</span> <span style="color: rgb(255, 0, 0);">"--login"</span> <span style="color: rgb(255, 0, 0);">"-i"</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(102, 204, 102);">(</span>setenv <span style="color: rgb(255, 0, 0);">"SHELL"</span> shell-file-<span style="color: rgb(177, 177, 0);">name</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(102, 204, 102);">(</span>add-hook 'comint-output-filter-functions 'comint-strip-ctrl-m<span style="color: rgb(102, 204, 102);">)</span></pre></td></tr></tbody></table></div>
+
+<p>The example above is just a quick-and-dirty example. There’s a better, and more complete, way of <a href="http://www.cygwin.com/faq/faq-nochunks.html#faq.using.ntemacs">getting Cygwin bash to work in Windows</a>.</p>
+<p>All <code>shell</code> does is redirect the input and output to Emacs, and that means interactive console programs (like top, ssh, midnight commander, etc.) won’t work properly.</p>
+<p>This limitation can be a problem as, traditionally, some UNIX apps behave differently (by suppressing the prompt for instance) if they detect their input and output is redirected. To get around this, some programs will let you force it to run in <em>interactive</em> mode.</p>
+<p>If you’re on Windows it is the simplest thing to use out-of-the-box, as, even without interactive support, it is <em>vastly</em> superior to the standard command prompt. In fact, it is my preferred shell as I do a lot of Windows development and need a “native” shell to ensure my stuff works correctly on machines that may not have Cygwin set up.</p>
+<p>I replace the redundant “help” binding on f1 with <code>shell</code>:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(102, 204, 102);">(</span>global-set-key <span style="color: rgb(102, 204, 102);">[</span>f1<span style="color: rgb(102, 204, 102);">]</span> 'shell<span style="color: rgb(102, 204, 102);">)</span></pre></td></tr></tbody></table></div>
+
+<h2>Terminal Emulator</h2>
+<p>The Emacs terminal emulator is exactly that; it emulates the VT100-style ANSI escape codes, just like <em>xterm</em> or <em>rxvt</em>. Emacs’s emulator isn’t complete or perfect, so some interactive programs won’t work properly, but most things like <em>top</em> and <em>ssh</em> will. To run the terminal emulator, type <code>M-x term</code> or <code>M-x ansi-term</code> (for full ANSI support). I recommend the latter.</p>
+<p>Due to the way terminal emulators work, most of Emacs’s common keybindings are reserved for the subshell itself; to get around this you can switch between <em>line mode</em> and <em>char mode</em>. In <em>line mode</em> the terminal buffer will behave much like <em>shell mode</em> and normal Emacs buffers. In <em>char mode</em> each character is sent directly to the underlying inferior shell without preprocessing by Emacs.</p>
+<p>To switch between the two modes type <code>C-c C-j</code> to switch to line mode, and <code>C-c C-k</code> to switch to char mode. To save you from having to switch between modes for one-off commands you can use the alias <code>C-c char</code> which translates into <code>C-x char</code>.</p>
+<p><strong>MS Windows</strong>: The terminal emulator won’t work on Windows out of the box.</p>
+<p>To summarize, Emacs’s Terminal Emulator is a more than adequate emulator and it is flexible and feature-rich enough to run even complex interactive programs like <em>vim</em>!</p>
+<h2>The Emacs Shell</h2>
+<p>Emacs comes with its own shell (as in, like <em>bash</em> or <em>zsh</em>) written in entirely in Emacs-Lisp. The shell, named <em>eshell</em>, is a feature-rich replacement for your standard-fare shells like <em>bash</em> with the added bonus of working on any platform Emacs runs on. This is especially useful if you’re on Windows but crave a Linux-like environment. It’s heavily inspired by the likes of <em>bash</em>, and has gone to some lengths to keep the syntax familiar. To invoke it, run <code>M-x eshell</code>.</p>
+<p>As the shell is written entirely in elisp, that means you can also <em>extend</em> it with elisp; and the shell has provisions for inlining elisp and using the results as part of your commands. EShell is clever enough to redirect certain commands that Emacs itself offers, such as <code>man</code>, <code>grep</code> and so on. Very useful.</p>
+<p>Despite the many advantages Eshell brings to the table, it is <em>not</em> a shoe-in replacement for a terminal emulator running bash.</p>
+<p>EShell is a great shell but woefully underdocumented; therefore, I’ve written <a href="http://www.masteringemacs.org/articles/2010/12/13/complete-guide-mastering-eshell/">a guide to mastering Eshell</a>.</p>
+<h2>Conclusion</h2>
+<p>Three excellent shell choices, all with their own advantages and disadvantages. If you’re looking for a faithful emulator, then <code>ansi-term</code> is the choice for you; if you are more interested in a dumb terminal that behaves like an Emacs buffer then use <code>shell</code>; if you want something fancier that you can tweak and customize like Emacs itself, <code>eshell</code> may be the right shell for you.</p>
+<p>Whatever the case, the shells above should eliminate almost all external terminal emulators for all but the most complex interactive programs out there.</p><div class="addtoany_share_save_container"><div class="a2a_kit a2a_target addtoany_list" id="wpa2a_1"><a rel="nofollow" target="_top" href="http://www.addtoany.com/add_to/google_plusone?linkurl=http%3A%2F%2Fwww.masteringemacs.org%2Farticles%2F2010%2F11%2F01%2Frunning-shells-in-emacs-overview%2F&amp;type=page&amp;linkname=Running%20Shells%20in%20Emacs%3A%20An%20Overview&amp;linknote=" class="a2a_button_google_plusone addtoany_special_service" data-href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/"><div id="___plusone_0" style="text-indent: 0pt; margin: 0pt; padding: 0pt; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px;"><iframe title="+1" data-gapiattached="true" allowtransparency="true" src="index_4.html" name="I0_1368950749134" id="I0_1368950749134" vspace="0" tabindex="0" style="position: static; top: 0pt; width: 90px; margin: 0px; border-style: none; left: 0pt; visibility: visible; height: 20px;" marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe></div></a><a rel="nofollow" target="_top" href="http://www.addtoany.com/add_to/twitter_tweet?linkurl=http%3A%2F%2Fwww.masteringemacs.org%2Farticles%2F2010%2F11%2F01%2Frunning-shells-in-emacs-overview%2F&amp;type=page&amp;linkname=Running%20Shells%20in%20Emacs%3A%20An%20Overview&amp;linknote=" class="a2a_button_twitter_tweet addtoany_special_service" data-count="horizontal" data-url="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/" data-text="Running Shells in Emacs: An Overview"><iframe data-twttr-rendered="true" title="Twitter Tweet Button" style="width: 106px; height: 20px;" class="twitter-share-button twitter-count-horizontal" src="index_5.html" allowtransparency="true" frameborder="0" scrolling="no"></iframe></a><a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save#url=http%3A%2F%2Fwww.masteringemacs.org%2Farticles%2F2010%2F11%2F01%2Frunning-shells-in-emacs-overview%2F&amp;title=Running%20Shells%20in%20Emacs%3A%20An%20Overview&amp;description=To%20use%20Emacs%20effectively%2C%20you%20must%20learn%20to%20use%20all%20that%20Emacs%20has%20to%20offer.%20One%20of%20Emacs%27s%20strongest%20selling-points%20is%20its%20shell%20integration%20and%20term" style="background: url('favicon.png') no-repeat scroll 9px 0px transparent ! important; padding: 0pt 0pt 0pt 30px; display: inline-block; height: 16px; line-height: 16px; vertical-align: middle;">Share</a></div>
+
+</div>											</div><!--end entry-->
+			<div class="meta clear">
+				<p>From → <a href="http://www.masteringemacs.org/articles/category/articles/" title="View all posts in All Articles" rel="category tag">All Articles</a>, <a href="http://www.masteringemacs.org/articles/category/tutorial/" title="View all posts in Tutorials" rel="category tag">Tutorials</a></p>
+			</div><!--end meta-->
+		</div><!--end post-->
+			<!-- You can start editing here. -->
+<div id="comments">
+	<div class="comment-number">
+		<span>36 Comments</span>
+					<a id="leavecomment" href="#respond" title="Leave One"> →</a>
+			</div><!--end comment-number-->
+	<ol class="commentlist">
+			<li class="comment even thread-even depth-1" id="comment-12">
+		<div class="c-grav"><img alt="" src="112b6e99b057c5db8283a307bec0a551" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				<a href="http://minaev.blogspot.com/" rel="external nofollow" class="url">Dmitri Minaev</a> <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-12">permalink</a></span>
+			</div>
+						<p>Indeed, EShell is not documented well. Most of all I miss some kind of best practices review. EShell has a funny way of using SSH, but I could not find a way to use GNU Screen. Perhaps, EShell might use something like `dtach’ or `retty’ to imitate the behavior of Screen? Could you, please, cover the questions of terminal multiplexing and remote execution from EShell in your next articles?</p>
+<p>Thank you.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=12#respond" onclick='return addComment.moveForm("comment-12", "12", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+	<li class="comment byuser comment-author-admin bypostauthor odd alt thread-odd thread-alt depth-1" id="comment-13">
+		<div class="c-grav"><img alt="" src="ca56988fe68d78f575685973591ed2ab" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				mickey <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-13">permalink</a></span>
+			</div>
+						<p>Dmitri,</p>
+<p>Thanks for your feedback. I plan on tackling EShell next. It is indeed a complex beast, and there’s a lot of facets I want to cover… I might even have the split the article into two posts.</p>
+<p>-Mickey.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=13#respond" onclick='return addComment.moveForm("comment-13", "13", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment even depth-2" id="comment-17">
+		<div class="c-grav"><img alt="" src="70e1df6d764231a430b6e30b86749e1a" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				Win Smith <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-17">permalink</a></span>
+			</div>
+						<p>I took eshell for a test drive and soon ran into this<br>
+problem:</p>
+<p>     $ /usr/bin/firefox -remote ‘openurl(<a href="http://google.com,new-window/" rel="nofollow">http://google.com,new-window</a>)’<br>
+         Error: Failed to send command: 500 command not parseable</p>
+<p>(The command works as expected under bash/gnome-terminal.)</p>
+<p>Also, sending interrupts to programs didn’t behave<br>
+as expected.</p>
+<p>If you could comment on these problems it would<br>
+be great!</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=17#respond" onclick='return addComment.moveForm("comment-17", "17", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-3" id="comment-18">
+		<div class="c-grav"><img alt="" src="ca56988fe68d78f575685973591ed2ab" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				mickey <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-18">permalink</a></span>
+			</div>
+						<p>The quotes have been replaced by smart quotes (try enclosing your commands in pre tags) but when i run it with the smart quotes replaced with single quotes, firefox correctly opens a new window and opens google.com.</p>
+<p>Not sure what your problems were regarding interrupts either: what happened and what did you expect to happen?</p>
+<p>But don’t forget that Eshell is not a terminal emulator: it’s a completely different implementation.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=18#respond" onclick='return addComment.moveForm("comment-18", "18", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment even depth-4" id="comment-19">
+		<div class="c-grav"><img alt="" src="70e1df6d764231a430b6e30b86749e1a" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				Win Smith <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-19">permalink</a></span>
+			</div>
+						<p>It was single quotes among other possibilities that I tried for escaping the parenthesis. Sorry about the bad formating.</p>
+<pre>$ /usr/bin/firefox -remote 'openurl(<a href="http://google.com,new-window/" rel="nofollow">http://google.com,new-window</a>)'
+Error: Failed to send command: 500 command not parseable
+
+$  /usr/bin/firefox -remote "'openurl(<a href="http://google.com,new-window/" rel="nofollow">http://google.com,new-window</a>)'"
+Error: Failed to send command: 500 command not parseable
+
+$ /usr/bin/firefox -remote openurl(<a href="http://google.com,new-window/" rel="nofollow">http://google.com,new-window</a>)
+Unknown predicate character 'h'
+
+$ /usr/bin/firefox -remote openurl\(<a href="http://google.com,new-window/" rel="nofollow">http://google.com,new-window</a>\)
+Error: Failed to send command: 500 command not parseable
+</pre>
+<p>After some more googling, I’m less sure it’s a  problem with with escaping the parenthesis.  It might have to do with a difference in the environment, e.g., the value of $MOZ_NO_REMOTE or something. Naturally I tried ‘export MOZ_NO_REMOTE=1′, but to no avail.</p>
+<p>As for the interrupt issue, I can’t reliably reproduce it, but somehow I end up with a process backgrounded but still sending output and no way I can find to foreground it again. (I have the eshell prompt at that point.)</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=19#respond" onclick='return addComment.moveForm("comment-19", "19", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-5" id="comment-20">
+		<div class="c-grav"><img alt="" src="ca56988fe68d78f575685973591ed2ab" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				mickey <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-20">permalink</a></span>
+			</div>
+						<p>Hmm. It’s not the parser, as you discovered yourself. I ran this:</p>
+<pre>~ $ listify -remote 'openurl(<a href="http://google.com,new-window/" rel="nofollow">http://google.com,new-window</a>)'
+("-remote"
+ #("openurl(<a href="http://google.com,new-window/" rel="nofollow">http://google.com,new-window</a>)" 0 37
+   (escaped t)))
+</pre>
+<p>So, <code>listify</code> will parse a commandline parameter string and give it to you as an lisp list, and as you can see it correctly said it’s escaped. The “500 command not parseable” might be the HTTP error code “Internal server error”.</p>
+<p>The way Emacs generally handles inferior processes can be a bit messy: sometimes things just run askew, and EShell (given its complex way of asynchronously launching the processes and filtering their output to EShell) could easily trip up and screw up.</p>
+						<div class="reply">
+							</div>
+					</div><!--end c-body-->
+</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li class="comment even depth-3" id="comment-21">
+		<div class="c-grav"><img alt="" src="70e1df6d764231a430b6e30b86749e1a" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				Win Smith <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-21">permalink</a></span>
+			</div>
+						<p>A fix for my problem (running ‘firefox …’ from eshell) turns out to be to invoke emacs23-x from the command line of a terminal or configure the emacs icon to use a controlling terminal.</p>
+<p>I don’t know exactly why this works, but there is a similar situation with Tcl described <a href="http://coding.derkeiler.com/Archive/Tcl/comp.lang.tcl/2007-10/msg00966.html" rel="nofollow">here.</a></p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=21#respond" onclick='return addComment.moveForm("comment-21", "21", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li class="comment odd alt thread-even depth-1" id="comment-15">
+		<div class="c-grav"><img alt="" src="a38bcc2a74ea6dc631cc389e74f7dac0" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				Oscar <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-15">permalink</a></span>
+			</div>
+						<p>Woah, just found this blog. Great work! I hope you keep it going like this, it’s really nice <img src="icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+<p>And btw, I didn’t know there was a difference between M-x shell and M-x (ansi-)term, and using ansi-term seems to fix the issues I’ve had with M-x shell. Thank you for that!</p>
+<p>If I could come with a recommendation for a subject to cover in a future blog entry, that would be registers. Once you understand them and why they’re good to know, you can’t stop using them. Especially when doing macros. Or storing window configurations. Etc <img src="icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=15#respond" onclick='return addComment.moveForm("comment-15", "15", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-16">
+		<div class="c-grav"><img alt="" src="ca56988fe68d78f575685973591ed2ab" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				mickey <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-16">permalink</a></span>
+			</div>
+						<p>Hi Oscar,</p>
+<p>Thanks for the kind words. I have a laundry list of stuff I want to talk about, including registers and bookmarks, but I just have to find the time to write the posts. I’ll see if I can’t write about them in the coming weeks <img src="icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+<p>-Mickey.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=16#respond" onclick='return addComment.moveForm("comment-16", "16", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+</ul>
+</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-24">
+		<div class="c-grav"><img alt="" src="c1bf5aa068bbfc0e6daf8aacb84c49fb" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				david <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-24">permalink</a></span>
+			</div>
+						<p>Just found this well written blog – I’m looking forward to future posts!</p>
+<p>I’ve a question concerning running programs/scripts in shell or eshell in stead of  cmd (Windows). The (Ruby) script asks for input, but the text that asks for the input is not displayed. I read somewhere that this is because the program – not Emacs – buffers the text. How can this buffer be flushed? When running the same script in cmd, there’s no problem. How can the same behavior be realized in Emacs?</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=24#respond" onclick='return addComment.moveForm("comment-24", "24", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-25">
+		<div class="c-grav"><img alt="" src="ca56988fe68d78f575685973591ed2ab" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				mickey <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-25">permalink</a></span>
+			</div>
+						<p>Well, it could be buffering, or it could be that the Ruby script won’t work properly unless it’s running in interactive mode. I’m not sure how you would force the script to flush its own buffer to stdout/err, but you can probably pass the Ruby interpreter a parameter forcing it to run in interactive mode. This is needed with Python and other interactive commandline programs as they, like the problem you experience, won’t show the prompt without.</p>
+<p>So in Python you’d type <code>python -i</code> and it would launch in shell (or eshell).</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=25#respond" onclick='return addComment.moveForm("comment-25", "25", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+	<li class="comment odd alt depth-2" id="comment-449">
+		<div class="c-grav"><img alt="" src="1959a73bef545144e74593d50d60b9c9" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				rgiar <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-449">permalink</a></span>
+			</div>
+						<p>try –inf-ruby-mode which is custom-made for emacs</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=449#respond" onclick='return addComment.moveForm("comment-449", "449", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+</ul>
+</li>
+	<li class="comment even thread-even depth-1" id="comment-27">
+		<div class="c-grav"><img alt="" src="2ab7ad08d30692f330f028780b365483" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				<a href="http://www.pechfunk.de/" rel="external nofollow" class="url">Konrad</a> <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-27">permalink</a></span>
+			</div>
+						<p>I recommend turning on color in shell-mode with ansi-color:</p>
+<p>(add-hook ‘shell-mode-hook ‘ansi-color-for-comint-mode-on)<br>
+; thanks to <a href="http://www.emacswiki.org/emacs/AnsiColor" rel="nofollow">http://www.emacswiki.org/emacs/AnsiColor</a></p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=27#respond" onclick='return addComment.moveForm("comment-27", "27", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-28">
+		<div class="c-grav"><img alt="" src="ca56988fe68d78f575685973591ed2ab" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				mickey <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-28">permalink</a></span>
+			</div>
+						<p>Good idea. It’s enabled by default in Emacs 23.2, though.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=28#respond" onclick='return addComment.moveForm("comment-28", "28", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+</ul>
+</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="comment-30">
+		<div class="c-grav"><img alt="" src="0573f5bb10a088dfc3179fc4fdf6f285" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				<a href="http://hotpads.com/" rel="external nofollow" class="url">Tim</a> <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-30">permalink</a></span>
+			</div>
+						<p>Cool article, thanks!  I’ve been using M-x shell but after reading this I took M-x ansi-term for a spin.  I wish M-x shell formatted its “ls” output as well as M-x ansi-term does!</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=30#respond" onclick='return addComment.moveForm("comment-30", "30", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+	<li class="comment odd alt thread-even depth-1" id="comment-31">
+		<div class="c-grav"><img alt="" src="58d18ef07b16fafaf24be693168dce5a" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				John <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-31">permalink</a></span>
+			</div>
+						<p>I don’t know where I would be today if it weren’t for Emacs shell mode, especially when combined with Gnu Screen.</p>
+<p>I’ll typically start a Screen window with Emacs, and keep that running for months (in some cases years). The buffer ends up containing hundreds of thousands of lines of commands and their results, and becomes a kind of journal of my activity. Searching through the buffer for commands, output, etc is simple. When I want to notate something I know I’ll want to find in the future, I add a comment to the end of the command (for example: bash$ ./runSomeObscureCommand.pl foo foo foo # MELTDOWN COMMAND). Plus this buffer can be saved for future reference.</p>
+<p>Another use has been for trying snips of code when writing Perl scripts. I’ll start a shell buffer, rename it *perl* (so that I can create another *shell* buffer for normal shell use), then run: perl -de 0. Now I can execute small pieces of Perl code, test out things quicker than I can look them up, try out regular expressions, etc. Again, I have a completely searchable log of all my trial-and-error efforts.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=31#respond" onclick='return addComment.moveForm("comment-31", "31", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+	<li class="comment even thread-odd thread-alt depth-1" id="comment-32">
+		<div class="c-grav"><img alt="" src="040b831445b7a915d1943b57571cfebe" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				Glen <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-32">permalink</a></span>
+			</div>
+						<p>I’m just a novice, I don’t even know the real shell all that well….which one do you recommend i start with?</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=32#respond" onclick='return addComment.moveForm("comment-32", "32", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-33">
+		<div class="c-grav"><img alt="" src="ca56988fe68d78f575685973591ed2ab" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				mickey <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-33">permalink</a></span>
+			</div>
+						<p>I’d probably use ansi-term as it is the closest approximation to a real terminal emulator.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=33#respond" onclick='return addComment.moveForm("comment-33", "33", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment even depth-3" id="comment-34">
+		<div class="c-grav"><img alt="" src="040b831445b7a915d1943b57571cfebe" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				Glen <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-34">permalink</a></span>
+			</div>
+						<p>ok, great i’ll try it.  how do i get it to start an ansi-terminal and execute a couple of commands when I click on emacs.  is that something i would place in .emacs?</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=34#respond" onclick='return addComment.moveForm("comment-34", "34", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+	<li class="comment odd alt depth-3" id="comment-35">
+		<div class="c-grav"><img alt="" src="040b831445b7a915d1943b57571cfebe" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				Glen <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-35">permalink</a></span>
+			</div>
+						<p>I tried putting the following in my .emacs file, which worked</p>
+<p>(ansi-term “/bin/bash”)</p>
+<p>but I want to start in a default directory and run a shell script, so i tried adding the bash option for this,</p>
+<p>(ansi-term “bin/bash –init-file ~/start.sh”  </p>
+<p>but this returned an error.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=35#respond" onclick='return addComment.moveForm("comment-35", "35", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment even depth-4" id="comment-39">
+		<div class="c-grav"><img alt="" src="040b831445b7a915d1943b57571cfebe" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				Glen <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-39">permalink</a></span>
+			</div>
+						<p>ok, i figured out how to do this.  I created an executable shell script that looks like this:</p>
+<p>#!/bin/bash<br>
+bash –init-file ~/statupscript.sh</p>
+<p>Then I put all the startup commands i want in startupscript.sh, another shell script.  don’t know if this is<br>
+‘propper’, but it works!</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=39#respond" onclick='return addComment.moveForm("comment-39", "39", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+	<li class="comment odd alt thread-even depth-1" id="comment-49">
+		<div class="c-grav"><img alt="" src="2a1ad379159a4f4eaf5b54c5dbfe235a" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				<a href="http://www.bennee.com%7E/alex" rel="external nofollow" class="url">Alex</a> <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-49">permalink</a></span>
+			</div>
+						<p>I’m still mainly running with a bunch of terminals under GNU Screen running urxvt-unicode (a very lightweight terminal app). I then run a demonised Emacs on-top in full-screen mode (and the occasional in-screen terminal mode display).</p>
+<p>I think the main reason I still do this is because it’s still quicker to Alt-Tab Screen-Esc  than C-x-b and search for the terminal I want. I’ve been experimenting with alternative buffer switchers like ido and lusty which do help with code but given the number of buffers my Emacs can have sometime it can look like quite a list.</p>
+<p>The other reason is I’m often running remote screen sessions which is very useful when connections die. Although emacs is pretty stable it does sometimes lock up on me, certainly more often than screen has let me down.</p>
+<p>Perhaps you could also talk about remote terminals (and the interaction between remote tramp and compile-mode) in a future post? I shall certainly try to use in-emacs term-mode more often when I want to do quick things in a shell.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=49#respond" onclick='return addComment.moveForm("comment-49", "49", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-50">
+		<div class="c-grav"><img alt="" src="ca56988fe68d78f575685973591ed2ab" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				mickey <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-50">permalink</a></span>
+			</div>
+						<p>Alex,</p>
+<p>Have you tried binding your terminal buffers in emacs to different buttons? If you enable Hyper/Super (with xmodmap) you have a full set of keybindings available to you, such as H-0 through to H-9. Here’s a random snippet of code to demonstrate what I’m talking about:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(102, 204, 102);">(</span>global-set-key <span style="color: rgb(102, 204, 102);">(</span>kbd <span style="color: rgb(255, 0, 0);">"H-1"</span><span style="color: rgb(102, 204, 102);">)</span> '<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">lambda</span> <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(102, 204, 102);">)</span> <span style="color: rgb(102, 204, 102);">(</span>interactive<span style="color: rgb(102, 204, 102);">)</span> <span style="color: rgb(102, 204, 102);">(</span>switch-to-buffer <span style="color: rgb(255, 0, 0);">"*my-term*"</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span></pre></td></tr></tbody></table></div>
+
+<p>Alternatively you could give “elscreen” a shot – it brings screen to Emacs (by using Emacs’ window configurations.)</p>
+<p>And I do plan on tackling remote editing/compilation with TRAMP soon-ish. Next article will focus on EShell though!</p>
+<p>-Mickey.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=50#respond" onclick='return addComment.moveForm("comment-50", "50", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+</ul>
+</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-58">
+		<div class="c-grav"><img alt="" src="07cbee97b98b8954545dc0147dc599a9" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				Karthik <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-58">permalink</a></span>
+			</div>
+						<p>Are you going to do a piece on running multiple *shell* buffers at a time?</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=58#respond" onclick='return addComment.moveForm("comment-58", "58", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-59">
+		<div class="c-grav"><img alt="" src="ca56988fe68d78f575685973591ed2ab" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				mickey <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-59">permalink</a></span>
+			</div>
+						<p>Karthik,</p>
+<p>That can easily be done by either using <code>M-x rename-buffer</code> on the shell buffer or <code>C-u</code> when you invoke one of the shell commands.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=59#respond" onclick='return addComment.moveForm("comment-59", "59", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+	<li class="comment odd alt depth-2" id="comment-60">
+		<div class="c-grav"><img alt="" src="d5c8e61f63aeced42a39e1444c4894d0" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				jaybee <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-60">permalink</a></span>
+			</div>
+						<p>Have a look at <a href="http://www.enigmacurry.com/2008/12/26/emacs-ansi-term-tricks/" rel="nofollow">http://www.enigmacurry.com/2008/12/26/emacs-ansi-term-tricks/</a> which has a neat way of setting things up so the same command either starts a new shell, makes an existing shell buffer active, or renames a shell buffer (prerequisite to starting a new one).</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=60#respond" onclick='return addComment.moveForm("comment-60", "60", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+</ul>
+</li>
+	<li class="comment even thread-even depth-1" id="comment-64">
+		<div class="c-grav"><img alt="" src="fa62492c4162a20e536de86777855dc6" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				<a href="http://www.emacswiki.org/emacs/Sunrise_Commander" rel="external nofollow" class="url">escherdragon</a> <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-64">permalink</a></span>
+			</div>
+						<p>The Sunrise Commander (a dual-pane file manager for GNU Emacs based on Dired) provides convenient integration with term-mode and eshell and makes quite easy to work with multiple terminals in Emacs.</p>
+<p><a href="http://www.emacswiki.org/emacs/Sunrise_Commander" rel="nofollow">http://www.emacswiki.org/emacs/Sunrise_Commander</a></p>
+<p>Cheers,<br>
+–<br>
+José A. Romero L.<br>
+escherdragon at gmail<br>
+“We who cut mere stones must always be envisioning cathedrals.”<br>
+(Quarry worker’s creed)</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=64#respond" onclick='return addComment.moveForm("comment-64", "64", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-88">
+		<div class="c-grav"><img alt="" src="d6cf2f8ecdad8896da5c2f8614f6542b" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				chuck <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-88">permalink</a></span>
+			</div>
+						<p>Thanks for turning me on to M-x ansi-term! </p>
+<p>I could use some suggestions, though… right now I usually have both emacs and Terminal open on my Mac, and the Terminal window usually has a couple tabs open, most of which have ssh sessions to different servers.  I occasionally will run emacs in one of those ssh sessions to do some quick editing; I’ve noticed that when I do, (1) my alt/option key doesn’t work as Meta, so I have to use Esc instead, and (2) I don’t get any colors, just all green.  Often though, I have much more involved editing to do on files on those servers, so I’ll open them in my local emacs using TRAMP.  But then I’m usually going back to my Terminal do issue shell commands on the server.  It seems like ansi-term could help a lot here, but the first thing I’d be doing in the ansi-term buffer would be sshing to a server; once I do, I’m finding that some things don’t work, for example if I try to run ‘top’ I get the error “‘eterm-color’: unknown terminal type.”</p>
+<p>I’m not even completely sure which would be better to fix — get emacs on the servers set up nicer, or get it working better to run ssh sessions to the servers within M-x ansi-term on my local machine’s emacs.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=88#respond" onclick='return addComment.moveForm("comment-88", "88", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment even depth-2" id="comment-16270">
+		<div class="c-grav"><img alt="" src="02f9884dd5f520731261c61384a47b34" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				<a href="http://nakkaya.com/" rel="external nofollow" class="url">Nurullah Akkaya</a> <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-16270">permalink</a></span>
+			</div>
+						<p>You can fix the  “‘eterm-color’: unknown terminal type.” error, by copying “eterm-color” and “eterm-color.ti” from “/usr/share/emacs/23.2/etc/e” into “~/.terminfo/e/” on the remote machine.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=16270#respond" onclick='return addComment.moveForm("comment-16270", "16270", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+</ul>
+</li>
+	<li class="comment odd alt thread-even depth-1" id="comment-258">
+		<div class="c-grav"><img alt="" src="e3a52753290edfe79b29b5bc30eabc7b" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				Jeff Maner <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-258">permalink</a></span>
+			</div>
+						<p>Any idea why doskey won’t work in M-x shell? I can call doskey, I can assign doskey macros, but the macros aren’t recognized on invocation. For example, doskey ls=dir $* successfully defines ls as dir, but ls is subsequently not recognized.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=258#respond" onclick='return addComment.moveForm("comment-258", "258", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-259">
+		<div class="c-grav"><img alt="" src="ca56988fe68d78f575685973591ed2ab" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				mickey <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-259">permalink</a></span>
+			</div>
+						<p>doskey? I thought they deprecated that thing 15 years ago. Assuming we’re talking about the ancient tool for MS-dos that added history and aliasing (as your post would imply) then I’d imagine it is because it hooks — or tries to — some low-level commands in the command console that a simple stdin/out redirection wouldn’t trigger.</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=259#respond" onclick='return addComment.moveForm("comment-259", "259", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+<ul class="children">
+	<li class="comment odd alt depth-3" id="comment-260">
+		<div class="c-grav"><img alt="" src="e3a52753290edfe79b29b5bc30eabc7b" class="avatar avatar-40 photo" height="40" width="40"></div>
+		<div class="c-body">
+			<div class="c-head">
+				Jeff Maner <span class="c-permalink"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#comment-260">permalink</a></span>
+			</div>
+						<p>LOL! Didn’t know it was deprecated 15 years ago, but that’s what I’m talking about. Your response makes good sense.  I’ve relied on doskey for years to make cmd.exe understand ls and other commands I prefer to Windows’ native commands. I’m having trouble getting them all working as EShell aliases, so I thought I’d check into using shell instead. Guess it’s back to EShell. Thanks for this post and your great Guide to Mastering EShell!</p>
+						<div class="reply">
+				<a class="comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?replytocom=260#respond" onclick='return addComment.moveForm("comment-260", "260", "respond", "160")'>Reply</a>			</div>
+					</div><!--end c-body-->
+</li>
+</ul>
+</li>
+</ul>
+</li>
+	</ol>
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+			<h3 class="pinghead">Trackbacks &amp; Pingbacks</h3>
+		<ol class="pinglist">
+				<li id="comment-29"><a href="http://topsy.com/www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/?utm_source=pingback&amp;utm_campaign=L2" rel="external nofollow" class="url">Tweets that mention Running Shells in Emacs: An Overview | Mastering Emacs -- Topsy.com</a></li>
+	<li id="comment-57"><a href="http://www.jeff-barr.com/?p=1578" rel="external nofollow" class="url">Jeff Barr’s Blog » Links for Sunday, November 14, 2010</a></li>
+	<li id="comment-2017"><a href="http://www.masteringemacs.org/articles/2011/10/19/executing-shell-commands-emacs/" rel="external nofollow" class="url">Executing Shell Commands in Emacs | Mastering Emacs</a></li>
+	<li id="comment-9890"><a href="http://www.masteringemacs.org/articles/2012/05/29/compiling-running-scripts-emacs/" rel="external nofollow" class="url">Compiling and running scripts in Emacs | Mastering Emacs</a></li>
+		</ol>
+			</div><!--end comments-->
+
+
+	<div id="respond">
+		<div class="cancel-comment-reply">
+			<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/#respond" style="display: none;">Click here to cancel reply.</a></small>
+		</div>
+		<h4 id="postcomment">Leave a Reply</h4>
+				<form action="http://www.masteringemacs.org/wp-comments-post.php" method="post" id="commentform">
+							<fieldset>
+					<label for="author" class="comment-field"><small>Name: (required):</small></label>
+					<input class="text-input" name="author" id="author" value="" tabindex="1" type="text">
+				</fieldset>
+				<fieldset>
+					<label for="email" class="comment-field"><small>Email: (required):</small></label>
+					<input class="text-input" name="email" id="email" value="" tabindex="2" type="text">
+				</fieldset>
+				<fieldset>
+					<label for="url" class="comment-field"><small>Website:</small></label>
+					<input class="text-input" name="url" id="url" value="" tabindex="3" type="text">
+				</fieldset>
+						<fieldset>
+				<label for="comment" class="comment-field"><small>Comment:</small></label>
+				<textarea name="comment" id="comment" cols="50" rows="10" tabindex="4"></textarea>
+			</fieldset>
+			<p class="guidelines"><strong>Note:</strong> XHTML is allowed. Your email address will <strong>never</strong> be published.</p>
+			<p class="comments-rss"><a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/feed/">Subscribe to this comment feed via RSS</a></p>
+			<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="3c3af78876" type="hidden"></p>			<fieldset>
+				<input name="submit" id="submit" tabindex="5" value="Submit Comment" type="submit">
+				<input name="comment_post_ID" value="160" type="hidden">
+			</fieldset>
+			<input name="comment_post_ID" value="160" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+		</form><!--end commentform-->
+	</div><!--end respond-->
+
+
+	</div><!--end content-->
+<div id="sidebar">
+			<ul>	<li id="tag_cloud-2" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2><div class="tagcloud"><a href="http://www.masteringemacs.org/articles/tag/ansi-term/" class="tag-link-38" title="1 topic" style="font-size: 8pt;">ansi-term</a>
+<a href="http://www.masteringemacs.org/articles/tag/autocomplete/" class="tag-link-24" title="1 topic" style="font-size: 8pt;">autocomplete</a>
+<a href="http://www.masteringemacs.org/articles/tag/beginner-2/" class="tag-link-18" title="8 topics" style="font-size: 15.5207pt;">beginner</a>
+<a href="http://www.masteringemacs.org/articles/tag/buffer/" class="tag-link-44" title="11 topics" style="font-size: 17.0248pt;">buffer</a>
+<a href="http://www.masteringemacs.org/articles/tag/customization/" class="tag-link-11" title="28 topics" style="font-size: 21.4215pt;">customization</a>
+<a href="http://www.masteringemacs.org/articles/tag/cygwin/" class="tag-link-17" title="1 topic" style="font-size: 8pt;">cygwin</a>
+<a href="http://www.masteringemacs.org/articles/tag/editing/" class="tag-link-13" title="20 topics" style="font-size: 19.8017pt;">editing</a>
+<a href="http://www.masteringemacs.org/articles/tag/elisp/" class="tag-link-9" title="31 topics" style="font-size: 22pt;">elisp</a>
+<a href="http://www.masteringemacs.org/articles/tag/eshell/" class="tag-link-8" title="3 topics" style="font-size: 11.4711pt;">eshell</a>
+<a href="http://www.masteringemacs.org/articles/tag/eval/" class="tag-link-27" title="1 topic" style="font-size: 8pt;">eval</a>
+<a href="http://www.masteringemacs.org/articles/tag/files/" class="tag-link-37" title="8 topics" style="font-size: 15.5207pt;">files</a>
+<a href="http://www.masteringemacs.org/articles/tag/guide/" class="tag-link-19" title="5 topics" style="font-size: 13.5537pt;">guide</a>
+<a href="http://www.masteringemacs.org/articles/tag/ido/" class="tag-link-15" title="6 topics" style="font-size: 14.3636pt;">ido</a>
+<a href="http://www.masteringemacs.org/articles/tag/ielm/" class="tag-link-25" title="2 topics" style="font-size: 10.0826pt;">ielm</a>
+<a href="http://www.masteringemacs.org/articles/tag/info/" class="tag-link-54" title="2 topics" style="font-size: 10.0826pt;">info</a>
+<a href="http://www.masteringemacs.org/articles/tag/inspect/" class="tag-link-28" title="1 topic" style="font-size: 8pt;">inspect</a>
+<a href="http://www.masteringemacs.org/articles/tag/key-bind/" class="tag-link-40" title="1 topic" style="font-size: 8pt;">key bind</a>
+<a href="http://www.masteringemacs.org/articles/tag/mark/" class="tag-link-34" title="4 topics" style="font-size: 12.6281pt;">mark</a>
+<a href="http://www.masteringemacs.org/articles/tag/multilingual/" class="tag-link-14" title="1 topic" style="font-size: 8pt;">multilingual</a>
+<a href="http://www.masteringemacs.org/articles/tag/navigation/" class="tag-link-12" title="13 topics" style="font-size: 17.8347pt;">navigation</a>
+<a href="http://www.masteringemacs.org/articles/tag/network/" class="tag-link-45" title="1 topic" style="font-size: 8pt;">network</a>
+<a href="http://www.masteringemacs.org/articles/tag/news/" class="tag-link-49" title="3 topics" style="font-size: 11.4711pt;">news</a>
+<a href="http://www.masteringemacs.org/articles/tag/opinion/" class="tag-link-23" title="17 topics" style="font-size: 19.1074pt;">opinion</a>
+<a href="http://www.masteringemacs.org/articles/tag/orgmode/" class="tag-link-55" title="2 topics" style="font-size: 10.0826pt;">orgmode</a>
+<a href="http://www.masteringemacs.org/articles/tag/productivity/" class="tag-link-21" title="31 topics" style="font-size: 22pt;">productivity</a>
+<a href="http://www.masteringemacs.org/articles/tag/prompt/" class="tag-link-22" title="3 topics" style="font-size: 11.4711pt;">prompt</a>
+<a href="http://www.masteringemacs.org/articles/tag/python/" class="tag-link-41" title="3 topics" style="font-size: 11.4711pt;">python</a>
+<a href="http://www.masteringemacs.org/articles/tag/readability/" class="tag-link-10" title="4 topics" style="font-size: 12.6281pt;">readability</a>
+<a href="http://www.masteringemacs.org/articles/tag/recentf/" class="tag-link-39" title="1 topic" style="font-size: 8pt;">recentf</a>
+<a href="http://www.masteringemacs.org/articles/tag/regexp/" class="tag-link-50" title="7 topics" style="font-size: 14.9421pt;">regexp</a>
+<a href="http://www.masteringemacs.org/articles/tag/region/" class="tag-link-35" title="3 topics" style="font-size: 11.4711pt;">region</a>
+<a href="http://www.masteringemacs.org/articles/tag/repl/" class="tag-link-31" title="1 topic" style="font-size: 8pt;">repl</a>
+<a href="http://www.masteringemacs.org/articles/tag/scratch/" class="tag-link-26" title="1 topic" style="font-size: 8pt;">scratch</a>
+<a href="http://www.masteringemacs.org/articles/tag/shell/" class="tag-link-7" title="5 topics" style="font-size: 13.5537pt;">shell</a>
+<a href="http://www.masteringemacs.org/articles/tag/tabs/" class="tag-link-29" title="1 topic" style="font-size: 8pt;">tabs</a>
+<a href="http://www.masteringemacs.org/articles/tag/term/" class="tag-link-16" title="1 topic" style="font-size: 8pt;">term</a>
+<a href="http://www.masteringemacs.org/articles/tag/terminology/" class="tag-link-20" title="1 topic" style="font-size: 8pt;">terminology</a>
+<a href="http://www.masteringemacs.org/articles/tag/tips/" class="tag-link-51" title="4 topics" style="font-size: 12.6281pt;">tips</a>
+<a href="http://www.masteringemacs.org/articles/tag/tramp/" class="tag-link-32" title="1 topic" style="font-size: 8pt;">tramp</a>
+<a href="http://www.masteringemacs.org/articles/tag/transient/" class="tag-link-33" title="1 topic" style="font-size: 8pt;">transient</a>
+<a href="http://www.masteringemacs.org/articles/tag/trash-can/" class="tag-link-36" title="1 topic" style="font-size: 8pt;">trash can</a>
+<a href="http://www.masteringemacs.org/articles/tag/twitter/" class="tag-link-43" title="1 topic" style="font-size: 8pt;">twitter</a>
+<a href="http://www.masteringemacs.org/articles/tag/vimgolf/" class="tag-link-56" title="4 topics" style="font-size: 12.6281pt;">vimgolf</a>
+<a href="http://www.masteringemacs.org/articles/tag/whitespace/" class="tag-link-30" title="1 topic" style="font-size: 8pt;">whitespace</a>
+<a href="http://www.masteringemacs.org/articles/tag/workflow/" class="tag-link-42" title="14 topics" style="font-size: 18.1818pt;">workflow</a></div>
+</li><li id="pages-4" class="widget widget_pages"><h2 class="widgettitle">Pages</h2>		<ul>
+			<li class="page_item page-item-2"><a href="http://www.masteringemacs.org/about/">About</a></li>
+<li class="page_item page-item-277"><a href="http://www.masteringemacs.org/effective-editing-series/">Effective Editing</a></li>
+<li class="page_item page-item-496"><a href="http://www.masteringemacs.org/reading-guide/">Reading Guide</a></li>
+		</ul>
+		</li><li id="linkcat-2" class="widget widget_links"><h2 class="widgettitle">Blogroll</h2>
+	<ul class="xoxo blogroll">
+<li><a href="http://www.reddit.com/r/emacs">Emacs on Reddit</a></li>
+<li><a href="http://www.twitter.com/mickeynp">Follow me on Twitter</a></li>
+<li><a href="http://irreal.org/blog/">Irreal's Emacs blog</a></li>
+<li><a href="http://www.emacswiki.org/">The Emacs Wiki</a></li>
+<li><a href="http://wikemacs.org/wiki/Main_Page">WikEmacs</a></li>
+
+	</ul>
+</li>
+	</ul></div><!--end sidebar--></div><!--end wrapper-->
+</div><!--end content-background-->
+<div id="footer">
+	<div class="wrapper clear">
+		<div id="footer-about" class="footer-column">
+			<h2>About</h2>
+							<p>Hi, I'm Mickey and this is my blog about mastering Emacs. I've been using Emacs for eight years and I'd like to share with you all the things I've learned over the years.</p>
+<p>The blog will cover all facets of Emacs and will be suitable for beginners and -- I hope -- experts alike.</p>
+					</div>
+		<div id="footer-flickr" class="footer-column">
+							<ul>
+											<li class="widget widget_categories">
+							<h2 class="widgettitle">Categories</h2>
+							<ul>
+									<li class="cat-item cat-item-5"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/articles/" title="View all posts filed under All Articles">All Articles</a>
+</li>
+	<li class="cat-item cat-item-3"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/beginner/" title="View all posts filed under For Beginners">For Beginners</a>
+</li>
+	<li class="cat-item cat-item-6"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/quick-tips/" title="View all posts filed under Quick Tips">Quick Tips</a>
+</li>
+	<li class="cat-item cat-item-4"><a rel="nofollow" href="http://www.masteringemacs.org/articles/category/tutorial/" title="View all posts filed under Tutorials">Tutorials</a>
+</li>
+							</ul>
+						</li>
+									</ul>
+					</div>
+		<div id="footer-search" class="footer-column">
+			<h2>Search</h2>
+			<form method="get" id="search_form" action="http://www.masteringemacs.org/">
+	<div>
+		<input value="" name="s" id="s" class="search" type="text">
+		<input id="searchsubmit" value="Search" type="submit">
+	</div>
+</form>
+		</div>
+		<div id="copyright">
+			<p class="copyright-notice">Copyright © 2013 Mickey Petersen. <a href="http://thethemefoundry.com/titan/">Titan Theme</a> by <a href="http://thethemefoundry.com/">The Theme Foundry</a>.</p>
+		</div><!--end copyright-->
+	</div><!--end wrapper-->
+</div><!--end footer-->
+
+
+
+
+
+
+
+</body>
+</html>

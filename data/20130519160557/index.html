@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+    <title>tags</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    
+    
+    
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="http://zmalltalker.com/bootstrap/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="http://zmalltalker.com/bootstrap/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="http://zmalltalker.com/bootstrap/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="http://zmalltalker.com/bootstrap/ico/apple-touch-icon-57-precomposed.png">
+  
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="#">Zmalltalker</a>
+          <div class="nav-collapse">
+            <ul class="nav">
+              <li class="active"><a href="http://zmalltalker.com/">Home</a></li>
+              <li><a href="http://zmalltalker.com/zlog">Blog</a></li>
+              <li><a href="http://zmalltalker.com/about">About</a></li>
+            </ul>
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div id="outline-container-1" class="outline-2">
+<h2 id="sec-1">Using tags in Emacs</h2>
+<div class="outline-text-2" id="text-1">
+
+<p>  Tags are a mechanism for generating an index of symbols (classes,
+  modules, functions) from your source code which can be searched
+  really fast. Emacs ships with some functions that work really great
+  with tags, here are my personal favorites.
+</p>
+
+</div>
+
+<div id="outline-container-1-1" class="outline-3">
+<h3 id="sec-1-1">Generating your tag index</h3>
+<div class="outline-text-3" id="text-1-1">
+
+<p>   First of all, you need to install the ctags program, if it's not
+   already installed. There are a couple of variants, on my Fedora
+   box I use ctags with the <code>-e</code> switch to generate a tags table
+   that's compatible with Emacs. When I work with Gitorious, I enter:
+</p>
+
+
+
+<pre class="src src-shell">ctags -e -a --Ruby-kinds=fF -o TAGS app test lib config script bin
+</pre>
+
+
+<p>
+   which generates an Emacs-compatible file named TAGS from any Ruby
+   file in the <code>app</code>, <code>test</code>, <code>lib</code>, <code>config</code>, <code>script</code> and <code>bin</code>
+   directories. There are <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Create-Tags-Table.html#Create-Tags-Table">several ways to have Emacs generate this file for you.</a>
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-2" class="outline-3">
+<h3 id="sec-1-2">Finding the definition of a symbol</h3>
+<div class="outline-text-3" id="text-1-2">
+
+<p>   Consider the following piece of Ruby code:
+</p>
+
+
+
+<pre class="src src-ruby"><span style="color: rgb(181, 137, 0);">Person</span>.new(<span style="color: rgb(38, 139, 210); font-weight: bold;">:name</span> =&gt; <span style="color: rgb(42, 161, 152);">"John"</span>)
+</pre>
+
+
+<p>
+   place your cursor at the end of <code>Person</code> and type <code>M-.</code>
+   (<code>find-tag</code>). Emacs will find and open the definition of the
+   Person class:
+</p>
+
+
+
+<pre class="src src-ruby"><span style="color: rgb(133, 153, 0); font-weight: bold;">class</span> <span style="color: rgb(181, 137, 0);">Person</span> &lt; <span style="color: rgb(181, 137, 0);">ActiveRecord</span>::<span style="color: rgb(181, 137, 0);">Base</span>
+  include <span style="color: rgb(181, 137, 0);">Human</span>
+<span style="color: rgb(133, 153, 0); font-weight: bold;">end</span>
+</pre>
+
+
+<p>
+   Now, place your cursor at the end of <code>Human</code>, and type <code>M-.</code>
+   again:
+</p>
+
+
+
+<pre class="src src-ruby"><span style="color: rgb(133, 153, 0); font-weight: bold;">module</span> <span style="color: rgb(181, 137, 0);">Human</span>
+<span style="color: rgb(133, 153, 0); font-weight: bold;">end</span>
+</pre>
+
+
+</div>
+
+</div>
+
+<div id="outline-container-1-3" class="outline-3">
+<h3 id="sec-1-3">Returning to where you started</h3>
+<div class="outline-text-3" id="text-1-3">
+
+<p>   When you're done looking at the <code>Human</code> module, type <code>M-*</code>
+   (<code>pop-tag-mark</code>), and Emacs will return to the <code>Person</code> class. Type
+   <code>M-*</code> again, and you'll be taken to where you started off. Note
+   that <code>pop-tag-mark</code> operates on a stack, so running <code>find-tag</code>
+   several times will let you step back one symbol at a time. I find
+   this immensely useful.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-4" class="outline-3">
+<h3 id="sec-1-4">Find the next occurence of a tag</h3>
+<div class="outline-text-3" id="text-1-4">
+
+<p>   If the first match returned by <code>M-.</code> wasn't what you were looking
+   for, use <code>C-t M-.</code> to find the next one.
+</p></div>
+
+</div>
+
+<div id="outline-container-1-5" class="outline-3">
+<h3 id="sec-1-5">Use tags for completion</h3>
+<div class="outline-text-3" id="text-1-5">
+
+<p>   Consider the following piece of Ruby code:
+</p>
+
+
+
+<pre class="src src-ruby"><span style="color: rgb(133, 153, 0); font-weight: bold;">class</span> <span style="color: rgb(181, 137, 0);">Thing</span>
+  <span style="color: rgb(133, 153, 0); font-weight: bold;">def</span> <span style="color: rgb(38, 139, 210);">perform</span>
+  <span style="color: rgb(133, 153, 0); font-weight: bold;">end</span>
+<span style="color: rgb(133, 153, 0); font-weight: bold;">end</span>
+
+t = <span style="color: rgb(181, 137, 0);">Thing</span>.new
+t.per
+</pre>
+
+
+<p>
+   To complete the last expression, use <code>complete-tag</code>, I've bound
+   this to <code>M-RET</code>. By typing <code>M-RET</code> with point after `per`, Emacs
+   will complete to `perform` for me by using the tags table.
+</p></div>
+
+</div>
+
+<div id="outline-container-1-6" class="outline-3">
+<h3 id="sec-1-6">Searching your source code</h3>
+<div class="outline-text-3" id="text-1-6">
+
+<p>   Now that you have a fast index of all your source code, you can
+   use ctags to search through your code. Simply call <code>tags-search</code>,
+   and enter an expression. If the first match wasn't what you were
+   looking for, enter M-, to jump to the next match. I've mapped
+   <code>tags-search</code> to <code>M-?</code>.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-7" class="outline-3">
+<h3 id="sec-1-7">Poor man's refactoring support</h3>
+<div class="outline-text-3" id="text-1-7">
+
+<p>   There's also <code>tags-query-replace</code>, which lets you search and
+   replace all occurrences of a string in your source code. Use it
+   like a buffer-local <code>query-replace</code> for things like renaming
+   functions.
+</p>
+</div>
+
+</div>
+
+<div id="outline-container-1-8" class="outline-3">
+<h3 id="sec-1-8">Update your tags automatically</h3>
+<div class="outline-text-3" id="text-1-8">
+
+<p>   Inspired by <a href="http://tbaggery.com/2011/08/08/effortless-ctags-with-git.html">this blog post</a> I was inspired to set up automatic
+   rebuilds of my <code>TAGS</code> file automatically, based on Git activity.
+</p>
+<p>
+   For my local Gitorious clone I've set up the following hooks (in
+   <code>.git/hooks</code>):
+</p><ul>
+<li>post-commit
+</li>
+<li>post-merge
+</li>
+<li>post-checkout
+</li>
+</ul>
+
+
+<p>
+   all of which have the same contents:
+</p>
+
+
+
+<pre class="src src-shell-script"><span style="color: rgb(147, 161, 161);">#</span><span style="color: rgb(147, 161, 161);">!/bin/</span><span style="color: rgb(133, 153, 0); font-weight: bold;">sh</span>
+~/bin/gitorious-tags-update &gt;/dev/null 2&gt;&amp;1 &amp;
+</pre>
+
+
+<p>
+   So whenever I commit to my local repository, merge another branch
+   or check out another branch, the script in
+   <code>~/bin/gitorious-tags-update</code> will be run. I background these
+   tasks so they don't disrupt my normal workflow.
+</p>
+<p>
+   The script that they all call looks like this:
+</p>
+
+
+
+<pre class="src src-shell-script"><span style="color: rgb(147, 161, 161);">#</span><span style="color: rgb(147, 161, 161);">!/bin/</span><span style="color: rgb(133, 153, 0); font-weight: bold;">sh</span>
+
+ctags -e --Ruby-kinds=-fF -o TAGS -R app test lib config script bin
+</pre>
+
+
+<p>
+   Using this setup, my TAGS file will always be up to date.
+</p>
+
+
+
+  <div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="index_1.html" style="width: 100%; border: medium none; overflow: hidden; height: 1315px;" role="complementary" allowtransparency="true" data-disqus-uid="1" id="dsq1" frameborder="0" scrolling="no" width="100%"></iframe><iframe src="index_2.html" style="width: 100%; border: medium none; overflow: hidden; display: none;" role="application" allowtransparency="true" data-disqus-uid="2" id="dsq2" frameborder="0" width="100%"></iframe></div>
+  
+  
+  
+</div>
+</div>
+</div>
+
+
+      <footer class="footer">
+	<p>Read all the gory details about this
+	site <a href="http://zmalltalker.com/meta.html">here</a> or have a look at
+	the <a href="http://zmalltalker.com/sitemap.html">sitemap</a>. Since there's no
+	point in me getting all creative with colors and shit, I
+	chose <a href="http://twitter.github.com/bootstrap/">the easy
+	way out</a>. Probably for the same reason, I think it looks
+	  kind of pretty.</p>
+	<p> I'm <a href="http://twitter.com/zmalltalker" title="Me on Twitter">@zmalltalker</a>, <a href="http://identi.ca/zmalltalker" title="Me on Identi.ca">@zmalltalker</a>, I <a href="https://gitorious.org/%7Ezmalltalker" title="Me on gitorious.org">write software</a> and <a href="https://github.com/zmalltalker" title="Me on GitHub">do cargo-culting</a> and reside in <a href="http://zmalltalker.com/+" title="G+">all kinds of walled gardens</a>. I'm <a href="http://mdg.no/"> green</a>.
+	</p>
+	<p class="pull-right"><a href="#"><i class="icon icon-arrow-up"></i></a></p>
+      </footer>
+
+    </div> <!-- /container -->
+
+
+    <!-- Le javascript
+    ================================================== -->
+    
+    
+    
+  
+
+</body>
+</html>

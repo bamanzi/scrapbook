@@ -1,0 +1,1251 @@
+<!DOCTYPE html>
+<html lang="en" class=" js no-touch localstorage sessionstorage contenteditable">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Disqus Comments</title>
+        <base target="_parent">
+
+        <!--
+        
+        -->
+        
+
+        
+        
+        
+    
+<link rel="stylesheet" type="text/css" href="index_1.css" media="all">
+</head>
+<body>
+        
+        <div id="postCompatContainer">
+            <ul>
+            
+                <li>
+                    <h4>
+                        <a href="http://disqus.com/jcubic/">Jakub Jankiewicz</a>
+                    </h4>
+
+                    <div>
+                        <p>I don't know about git hooks inside repo, good to know.</p>
+                    </div>
+                </li>
+            
+                <li>
+                    <h4>
+                        <a href="http://disqus.com/twitter-266497273/">sachin</a>
+                    </h4>
+
+                    <div>
+                        <p>Hi Marius,<br>   Nice blog! Thanks! :)<br>I have been using etags( ctags for emacs)/ctags for quite a long time. I never used tags-query-replace; quite exited about it.</p>
+
+<p>Here are few tips from my side:</p>
+
+<p>If your code never grows then you are fine, but that may not be the case or should not be the case ;). You may/must want to update your TAGS table quite often to find the tags for new code added by people/you. Hence, installing cron to refresh/update TAGS might be wise thing to do.  man crontab for more info or  cron <br>Here is my crontab file which updates my TAGS every 2 hours:</p>
+
+<p>[sachin@dev202]$ crontab -l<br>0 */2 * * * cd /home/sachin/ROR/; ctags -e -a --Ruby-kinds=-f -o TAGS -R .</p>
+
+<p>Also you may want to add the following elisp to your .emacsfile:</p>
+
+<p> <br>;;by default the emacs will search the  etags (TAGS) in pwd. Changing the default and pointing to your TAGS file <br>;; My tag file is @  /home/sachin/ROR/TAGS</p>
+
+<p>(let ((tags-table (concat (getenv "HOME") "/ROR/TAGS")))<br>  (when (file-exists-p tags-table)<br>    (visit-tags-table tags-table)))</p>
+
+<p>Cheers!!!!<br>Sachin</p>
+                    </div>
+                </li>
+            
+                <li>
+                    <h4>
+                        <a href="http://disqus.com/zmalltalker/">zmalltalker</a>
+                    </h4>
+
+                    <div>
+                        <p>Thanks! Having the tags file updated definitely makes a lot of sense. Until now, I've cheated by having a really simple shell alias, but a crontab definitely makes a lot more sense.</p>
+                    </div>
+                </li>
+            
+                <li>
+                    <h4>
+                        <a href="http://disqus.com/guest/ce193a3cbfabbf04aff52db2ebb91d8f/">BobbyC</a>
+                    </h4>
+
+                    <div>
+                        <p>In a similar vain, I use my version control system's (usually bzr) pre-commit hook to automatically update my tags. Although lately I've switched to using cscope and find it more powerful, have you looked into cscope at all?</p>
+                    </div>
+                </li>
+            
+                <li>
+                    <h4>
+                        <a href="http://disqus.com/zmalltalker/">zmalltalker</a>
+                    </h4>
+
+                    <div>
+                        <p>I just set up some git hooks which update my TAGS file and updated the post.</p>
+
+<p>I thought cscope was mainly for C/C++?</p>
+                    </div>
+                </li>
+            
+                <li>
+                    <h4>
+                        <a href="http://disqus.com/HongxuChen/">HongxuChen</a>
+                    </h4>
+
+                    <div>
+                        <p>There is a GTAGS(global) in gnu environment which supports other program languages.</p>
+                    </div>
+                </li>
+            
+            </ul>
+        </div>
+
+        <div id="notFound" style="display: none;">
+            <p>We were unable to load Disqus. If you are a moderator please see our <a href="http://docs.disqus.com/help/83/"> troubleshooting guide</a>. </p>
+        </div>
+
+        
+            
+
+            
+
+
+<!--[if lte IE 8]>
+<script src="http://mediacdn.disqus.com/1368832477/build/next/ie8.js"></script>
+<![endif]-->
+<!--[if IE 9]>
+<script src="http://mediacdn.disqus.com/1368832477/build/next/ie9.js"></script>
+<![endif]-->
+
+
+            
+            
+            
+        
+    
+
+<div id="layout">
+    <div id="discovery-top"></div>
+
+    <div style="clear: both;"></div>
+
+    <div id="thread-votes" class="pull-right"><div class="thread-likes " data-role="vote-button">
+        <a href="#" data-action="upvote" title="Star this discussion">
+            <span class="notch"></span>
+            <span class="icon-star"></span>
+            <span class="counter"><span data-role="like-count">2</span></span>
+            <img src="checkx2.png" class="check-mark" alt="Voted" height="8" width="10">
+        </a>
+    </div></div>
+
+    <div id="realtime-toggle"></div>
+
+    <nav id="global-nav">
+        <ul class="publisher-anchor-hover">
+            <li class="active" data-role="global-nav">
+                <a href="#" id="post-count" data-nav="conversation">
+    <h4>
+            6 comments
+        </h4>
+</a>
+            </li>
+
+            
+        </ul>
+    </nav>
+
+    <div id="form"><div class="reply  ">
+    <div class="alert error" style="display: none;" role="alert">
+        <a class="close" data-action="dismiss-alert" title="Dismiss">×</a>
+        <span><!-- error goes here --></span>
+    </div>
+
+    <div class="postbox">
+        <div class="avatar">
+            
+                <span class="user">
+                    <img data-role="user-avatar" src="noavatar92.png">
+                </span>
+            
+        </div>
+        <form action="http://disqus.com/embed/comments/?f=zmalltalker&amp;t_u=http%3A%2F%2Fzmalltalker.com%2Femacs%2Ftags.html&amp;t_t=tags&amp;t_d=tags&amp;s_o=default&amp;disqus_version=1368832477">
+            <div class="textarea-wrapper" data-role="textarea">
+                <div style="overflow: auto; max-height: 350px;" aria-multiline="true" role="textbox" tabindex="0" class="textarea" contenteditable="true"><span class="placeholder">Leave a message...</span></div>
+                <div data-role="drag-drop-placeholder" class="media-drag-hover" style="display: none;">
+                    <div class="drag-text">
+                        ⬇ Drag and drop your images here to upload them.
+                    </div>
+                </div>
+                
+                    <div class="media-preview empty" data-role="media-preview">
+                        <ul data-role="media-preview-list">
+                        
+                        </ul>
+                        <div class="media-expanded empty" data-role="media-preview-expanded">
+                            
+                            <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" data-role="media-preview-expanded-image">
+                        </div>
+                    </div>
+                
+                <div class="post-actions">
+                    <ul class="wysiwyg">
+                        
+                            <li>
+                                <a href="#" tabindex="-1" data-action="attach" class="attach" title="Upload Images"><span>Attach</span></a>
+                                <input data-role="media-upload" tabindex="-1" class="regular" accept="image/*" type="file">
+                            </li>
+                        
+                        
+                    </ul>
+                    
+                    
+                </div>
+            <div></div></div>
+            
+                
+<div class="logged-out auth-section">
+    <section data-tab="auth-external">
+        <div class="connect">
+            <h6>Sign in with</h6>
+            <ul class="services">
+                
+                    
+                
+                 <li class="auth-disqus">
+                    <a data-action="auth:disqus" href="#" title="Disqus">Disqus</a>
+                </li>
+                <li class="auth-facebook">
+                    <a data-action="auth:facebook" href="#" title="Facebook">Facebook</a>
+                </li>
+                <li class="auth-twitter">
+                    <a data-action="auth:twitter" href="#" title="Twitter">Twitter</a>
+                </li>
+                <li class="auth-google">
+                    <a data-action="auth:google" href="#" title="Google">Google</a>
+                </li>
+            </ul>
+        </div>
+
+        
+    <div class="guest">
+        <h6 class="guest-form-title">
+            
+                or pick a name
+            
+        </h6>
+
+        <div href="#" class="what-is-disqus">What's Disqus?
+            <div id="rules" class="tooltip show">
+                <h3>DISQUS is a conversation network</h3>
+                <ul>
+                    <li><span>Disqus never moderates or censors. The rules on this community are its own.</span></li>
+                    <li><span>Your email is safe with us. It's only used for moderation and optional notifications.</span></li>
+                    <li><span>Don't be a jerk or do anything illegal. Everything is easier that way.</span></li>
+                    </ul>
+                <p class="clearfix"><a href="http://docs.disqus.com/kb/terms-and-policies/" class="btn btn-small" target="_top">Read full terms and conditions</a></p>
+            </div>
+        </div>
+
+        <p class="input-wrapper">
+            <input value="" placeholder="Name" name="author-name" maxlength="30" type="text">
+        </p>
+
+        <div class="guest-details " data-role="guest-details">
+            <p class="input-wrapper">
+                <input placeholder="Email" name="author-email" type="email">
+            </p>
+
+            
+                
+                    <div>
+                        <label>
+                            <input name="author-register" type="checkbox">
+                            Register with Disqus
+                        </label>
+                    </div>
+                
+            
+
+        </div>
+    </div>
+    <div class="proceed">
+        
+             <button type="submit" class="btn submit" aria-label="Post"><span class="icon-proceed"></span></button>
+            <button type="submit" class="btn next" aria-label="Next"><span class="icon-proceed"></span></button>
+        
+    </div>
+
+
+    </section>
+</div>
+
+            
+            
+        </form>
+    </div>
+</div></div>
+
+    <div id="main-nav" class="nav">
+        <ul>
+            
+<li data-role="post-sort" class="active dropdown">
+    <a href="#" data-nav="conversation" class="dropdown-toggle publisher-nav-color" data-toggle="dropdown">
+        Best
+        
+        
+        <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        <li class="selected">
+            <a href="#" data-action="sort" data-sort="popular">Best</a>
+        </li>
+
+        <li>
+            <a href="#" data-action="sort" data-sort="desc">Newest</a>
+        </li>
+
+        <li>
+            <a href="#" data-action="sort" data-sort="asc">Oldest</a>
+        </li>
+    </ul>
+</li>
+
+
+            <li><a href="#" data-nav="community" class="publisher-nav-color" id="community-tab">Community</a></li>
+            <li><a href="#" data-nav="dashboard" style="display: none;" class="publisher-nav-color">My Disqus <span class="notification-count" data-role="notification-count" style="display: none;"></span></a></li>
+
+            <li class="user-menu dropdown" data-role="logout">
+    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+        <span class="cog"><i aria-hidden="true" class="icon-cog"></i></span> <span class="caret"></span>
+    </a>
+    <ul class="dropdown-menu">
+        
+        
+			
+            	<li>
+                	<a href="#" data-action="auth:disqus">Login</a>
+            	</li>
+        	
+        
+
+        
+
+        
+        <li>
+            <a href="https://www.surveymonkey.com/s/5RBPTTZ?c=http%3A%2F%2Fzmalltalker.com%2Femacs%2Ftags.html" target="_top">Send Feedback</a>
+        </li>
+        
+
+        
+
+        
+    </ul>
+</li>
+
+            <li id="thread-share-menu" class="share-menu dropdown">
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown" title="Share">
+                    <span class="label">Share</span> <span class="icon-export"></span>
+                </a>
+                <ul class="dropdown-menu pull-right">
+                    <li class="share">Share this discussion on
+                        <ul>
+                            <li class="twitter">
+                                <a data-action="share:twitter" href="#">Twitter</a>
+                            </li>
+                            <li class="facebook">
+                                <a data-action="share:facebook" href="#">Facebook</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+
+        </ul>
+    </div>
+
+    <section id="conversation" data-role="main">
+        <div id="posts">
+            <button class="alert realtime" style="display: none;" data-action="load-queued-posts" data-role="realtime-notification">
+                <!-- Show 2 new posts. -->
+            </button>
+
+            <!-- This message appears when there are no comments -->
+            <div id="no-posts" style="display: none;">No one has commented yet.</div>
+
+            <ul id="post-list" class="post-list"><li class="post
+    " id="post-868586820">
+
+    <div data-role="post-content" class="post-content ">
+        <div class="indicator"></div>
+
+        
+            
+
+                
+                    <div class="avatar hovercard">
+                        <a href="#" class="user" data-action="profile" data-user="25697741">
+                            <img src="avatar92.jpg" alt="Avatar">
+                        </a>
+                    </div>
+                
+
+                <div class="post-body">
+                    <header>
+                        
+                            <span class="publisher-anchor-color"><a href="#" data-action="profile" data-user="25697741">Jakub Jankiewicz</a></span>
+                            
+                        
+
+                        
+
+                        <span class="bullet" aria-hidden="true">•</span>
+
+                        
+                            <a href="#comment-868586820" data-role="relative-time" class="time-ago" title="Saturday, April 20 2013 4:48 AM">
+                                a month ago
+                            </a>
+                        
+
+                        <ul class="post-menu">
+
+                            <li class="collapse"><a href="#" data-action="collapse" title="Collapse">−</a></li>
+                            <li class="expand" style="display: none;"><a href="#" data-action="collapse" title="Expand">+</a></li>
+
+                            <li class="dropdown" data-role="menu" role="menu">
+                                
+    
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><b class="caret"></b></a>
+        <ul class="dropdown-menu invisible">
+            
+                
+                <li><a href="#" data-action="flag">Flag as inappropriate</a></li>
+            
+        </ul>
+    
+
+                            </li>
+                        </ul>
+                    </header>
+
+                    <!-- Use message-container to manage visible height of the post message (including media) -->
+                    <div class="post-message-container" data-role="message-container">
+                        <!-- Use message-content to measure post content (including media) -->
+                        <div data-role="message-content">
+                            <div class="post-message publisher-anchor-color " data-role="message">
+                                
+                                    <p>I don't know about git hooks inside repo, good to know.</p>
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+
+                    <div class="message-shadow hidden" data-role="message-shadow"></div>
+                    <a href="#" class="more-button hidden" title="see more" data-action="post-expand">see more</a>
+
+                    <footer>
+                        
+    
+        <menu>
+            <li class="realtime" data-role="realtime-notification:868586820">
+                <span style="display: none;" class="realtime-replies"></span>
+                <a style="display: none;" href="#" class="btn small" data-action="load-queued-posts"></a>
+                 <!-- Realtime notification about new replies -->
+            </li>
+
+            <li class="voting" data-role="voting">
+                
+    <a href="#" class="vote-up  count-0" data-action="upvote" title="Vote up">
+        <span class="updatable count" data-role="likes">0</span>
+        <span class="control"><i aria-hidden="true" class="icon-arrow-2"></i></span>
+    </a>
+    <a class="vote-down  count-0" title="Vote down">
+        <span class="updatable count" data-role="dislikes">0</span>
+        <span class="control"><i aria-hidden="true" class="icon-arrow"></i></span>
+        <span class="tooltip">You must sign in to down-vote this post.</span>
+    </a>
+
+            </li>
+            <li class="bullet" aria-hidden="true">•</li>
+
+            
+                
+
+                
+                    <li class="reply"><a href="#" data-action="reply">Reply</a></li>
+                    <li class="bullet" aria-hidden="true">•</li>
+                
+            
+
+            <li class="share">
+                <a class="toggle">Share ›</a>
+                <ul>
+                    <li class="twitter"><a href="#" data-action="share:twitter">Twitter</a></li>
+                    <li class="facebook"><a href="#" data-action="share:facebook">Facebook</a></li>
+                    <li class="link"><a href="#comment-868586820">Link</a></li>
+                </ul>
+            </li>
+        </menu>
+    
+
+                    </footer>
+                </div>
+
+             
+         
+
+        <div data-role="blacklist-form"></div>
+    </div>
+
+    <!-- Child comments are appended here -->
+    <ul data-role="children" class="children">
+
+</ul></li><li class="post
+    " id="post-859335888">
+
+    <div data-role="post-content" class="post-content ">
+        <div class="indicator"></div>
+
+        
+            
+
+                
+                    <div class="avatar hovercard">
+                        <a href="#" class="user" data-action="profile" data-user="47858044">
+                            <img src="avatar92_001.jpg" alt="Avatar">
+                        </a>
+                    </div>
+                
+
+                <div class="post-body">
+                    <header>
+                        
+                            <span class="publisher-anchor-color"><a href="#" data-action="profile" data-user="47858044">sachin</a></span>
+                            
+                        
+
+                        
+
+                        <span class="bullet" aria-hidden="true">•</span>
+
+                        
+                            <a href="#comment-859335888" data-role="relative-time" class="time-ago" title="Thursday, April 11 2013 12:58 PM">
+                                a month ago
+                            </a>
+                        
+
+                        <ul class="post-menu">
+
+                            <li class="collapse"><a href="#" data-action="collapse" title="Collapse">−</a></li>
+                            <li class="expand" style="display: none;"><a href="#" data-action="collapse" title="Expand">+</a></li>
+
+                            <li class="dropdown" data-role="menu" role="menu">
+                                
+    
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><b class="caret"></b></a>
+        <ul class="dropdown-menu invisible">
+            
+                
+                <li><a href="#" data-action="flag">Flag as inappropriate</a></li>
+            
+        </ul>
+    
+
+                            </li>
+                        </ul>
+                    </header>
+
+                    <!-- Use message-container to manage visible height of the post message (including media) -->
+                    <div class="post-message-container" data-role="message-container">
+                        <!-- Use message-content to measure post content (including media) -->
+                        <div data-role="message-content">
+                            <div class="post-message publisher-anchor-color " data-role="message">
+                                
+                                    <p>Hi Marius,<br>   Nice blog! Thanks! :)<br>I have been using etags( ctags for emacs)/ctags for quite a long time. I never used tags-query-replace; quite exited about it.</p>
+
+<p>Here are few tips from my side:</p>
+
+<p>If your code never grows then you are fine, but that may not be the case or should not be the case ;). You may/must want to update your TAGS table quite often to find the tags for new code added by people/you. Hence, installing cron to refresh/update TAGS might be wise thing to do.  man crontab for more info or  cron <br>Here is my crontab file which updates my TAGS every 2 hours:</p>
+
+<p>[sachin@dev202]$ crontab -l<br>0 */2 * * * cd /home/sachin/ROR/; ctags -e -a --Ruby-kinds=-f -o TAGS -R .</p>
+
+<p>Also you may want to add the following elisp to your .emacsfile:</p>
+
+<p> <br>;;by default the emacs will search the  etags (TAGS) in pwd. Changing the default and pointing to your TAGS file <br>;; My tag file is @  /home/sachin/ROR/TAGS</p>
+
+<p>(let ((tags-table (concat (getenv "HOME") "/ROR/TAGS")))<br>  (when (file-exists-p tags-table)<br>    (visit-tags-table tags-table)))</p>
+
+<p>Cheers!!!!<br>Sachin</p>
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+
+                    <div class="message-shadow hidden" data-role="message-shadow"></div>
+                    <a href="#" class="more-button hidden" title="see more" data-action="post-expand">see more</a>
+
+                    <footer>
+                        
+    
+        <menu>
+            <li class="realtime" data-role="realtime-notification:859335888">
+                <span style="display: none;" class="realtime-replies"></span>
+                <a style="display: none;" href="#" class="btn small" data-action="load-queued-posts"></a>
+                 <!-- Realtime notification about new replies -->
+            </li>
+
+            <li class="voting" data-role="voting">
+                
+    <a href="#" class="vote-up  count-0" data-action="upvote" title="Vote up">
+        <span class="updatable count" data-role="likes">0</span>
+        <span class="control"><i aria-hidden="true" class="icon-arrow-2"></i></span>
+    </a>
+    <a class="vote-down  count-0" title="Vote down">
+        <span class="updatable count" data-role="dislikes">0</span>
+        <span class="control"><i aria-hidden="true" class="icon-arrow"></i></span>
+        <span class="tooltip">You must sign in to down-vote this post.</span>
+    </a>
+
+            </li>
+            <li class="bullet" aria-hidden="true">•</li>
+
+            
+                
+
+                
+                    <li class="reply"><a href="#" data-action="reply">Reply</a></li>
+                    <li class="bullet" aria-hidden="true">•</li>
+                
+            
+
+            <li class="share">
+                <a class="toggle">Share ›</a>
+                <ul>
+                    <li class="twitter"><a href="#" data-action="share:twitter">Twitter</a></li>
+                    <li class="facebook"><a href="#" data-action="share:facebook">Facebook</a></li>
+                    <li class="link"><a href="#comment-859335888">Link</a></li>
+                </ul>
+            </li>
+        </menu>
+    
+
+                    </footer>
+                </div>
+
+             
+         
+
+        <div data-role="blacklist-form"></div>
+    </div>
+
+    <!-- Child comments are appended here -->
+    <ul data-role="children" class="children">
+
+<li class="post
+    " id="post-859405396">
+
+    <div data-role="post-content" class="post-content ">
+        <div class="indicator"></div>
+
+        
+            
+
+                
+                    <div class="avatar hovercard">
+                        <a href="#" class="user" data-action="profile" data-user="92630">
+                            <img src="avatar.php" alt="Avatar">
+                        </a>
+                    </div>
+                
+
+                <div class="post-body">
+                    <header>
+                        
+                            <span class="publisher-anchor-color"><a href="#" data-action="profile" data-user="92630">zmalltalker</a></span>
+                            
+                                <span class="badge moderator">Mod</span>
+                            
+                        
+
+                        
+                            <span><a href="#comment-859335888" class="parent-link" data-role="parent-link"><i aria-hidden="true" class="icon-forward" title="in reply to"></i> sachin</a></span>
+                        
+
+                        <span class="bullet" aria-hidden="true">•</span>
+
+                        
+                            <a href="#comment-859405396" data-role="relative-time" class="time-ago" title="Thursday, April 11 2013 2:20 PM">
+                                a month ago
+                            </a>
+                        
+
+                        <ul class="post-menu">
+
+                            <li class="collapse"><a href="#" data-action="collapse" title="Collapse">−</a></li>
+                            <li class="expand" style="display: none;"><a href="#" data-action="collapse" title="Expand">+</a></li>
+
+                            <li class="dropdown" data-role="menu" role="menu">
+                                
+    
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><b class="caret"></b></a>
+        <ul class="dropdown-menu invisible">
+            
+                
+                <li><a href="#" data-action="flag">Flag as inappropriate</a></li>
+            
+        </ul>
+    
+
+                            </li>
+                        </ul>
+                    </header>
+
+                    <!-- Use message-container to manage visible height of the post message (including media) -->
+                    <div class="post-message-container" data-role="message-container">
+                        <!-- Use message-content to measure post content (including media) -->
+                        <div data-role="message-content">
+                            <div class="post-message publisher-anchor-color " data-role="message">
+                                
+                                    <p>Thanks! Having the tags file updated definitely makes a lot of sense. Until now, I've cheated by having a really simple shell alias, but a crontab definitely makes a lot more sense.</p>
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+
+                    <div class="message-shadow hidden" data-role="message-shadow"></div>
+                    <a href="#" class="more-button hidden" title="see more" data-action="post-expand">see more</a>
+
+                    <footer>
+                        
+    
+        <menu>
+            <li class="realtime" data-role="realtime-notification:859405396">
+                <span style="display: none;" class="realtime-replies"></span>
+                <a style="display: none;" href="#" class="btn small" data-action="load-queued-posts"></a>
+                 <!-- Realtime notification about new replies -->
+            </li>
+
+            <li class="voting" data-role="voting">
+                
+    <a href="#" class="vote-up  count-0" data-action="upvote" title="Vote up">
+        <span class="updatable count" data-role="likes">0</span>
+        <span class="control"><i aria-hidden="true" class="icon-arrow-2"></i></span>
+    </a>
+    <a class="vote-down  count-0" title="Vote down">
+        <span class="updatable count" data-role="dislikes">0</span>
+        <span class="control"><i aria-hidden="true" class="icon-arrow"></i></span>
+        <span class="tooltip">You must sign in to down-vote this post.</span>
+    </a>
+
+            </li>
+            <li class="bullet" aria-hidden="true">•</li>
+
+            
+                
+
+                
+                    <li class="reply"><a href="#" data-action="reply">Reply</a></li>
+                    <li class="bullet" aria-hidden="true">•</li>
+                
+            
+
+            <li class="share">
+                <a class="toggle">Share ›</a>
+                <ul>
+                    <li class="twitter"><a href="#" data-action="share:twitter">Twitter</a></li>
+                    <li class="facebook"><a href="#" data-action="share:facebook">Facebook</a></li>
+                    <li class="link"><a href="#comment-859405396">Link</a></li>
+                </ul>
+            </li>
+        </menu>
+    
+
+                    </footer>
+                </div>
+
+             
+         
+
+        <div data-role="blacklist-form"></div>
+    </div>
+
+    <!-- Child comments are appended here -->
+    <ul data-role="children" class="children">
+
+<li class="post
+    " id="post-859470746">
+
+    <div data-role="post-content" class="post-content ">
+        <div class="indicator"></div>
+
+        
+            
+
+                
+                    <div class="avatar">
+                        <div class="user"><img src="avatar_001.php" class="user" alt="Avatar"></div>
+                    </div>
+                
+
+                <div class="post-body">
+                    <header>
+                        
+                            <span class="name">BobbyC</span>
+                        
+
+                        
+                            <span><a href="#comment-859405396" class="parent-link" data-role="parent-link"><i aria-hidden="true" class="icon-forward" title="in reply to"></i> zmalltalker</a></span>
+                        
+
+                        <span class="bullet" aria-hidden="true">•</span>
+
+                        
+                            <a href="#comment-859470746" data-role="relative-time" class="time-ago" title="Thursday, April 11 2013 3:51 PM">
+                                a month ago
+                            </a>
+                        
+
+                        <ul class="post-menu">
+
+                            <li class="collapse"><a href="#" data-action="collapse" title="Collapse">−</a></li>
+                            <li class="expand" style="display: none;"><a href="#" data-action="collapse" title="Expand">+</a></li>
+
+                            <li class="dropdown" data-role="menu" role="menu">
+                                
+    
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><b class="caret"></b></a>
+        <ul class="dropdown-menu invisible">
+            
+                
+                <li><a href="#" data-action="flag">Flag as inappropriate</a></li>
+            
+        </ul>
+    
+
+                            </li>
+                        </ul>
+                    </header>
+
+                    <!-- Use message-container to manage visible height of the post message (including media) -->
+                    <div class="post-message-container" data-role="message-container">
+                        <!-- Use message-content to measure post content (including media) -->
+                        <div data-role="message-content">
+                            <div class="post-message publisher-anchor-color " data-role="message">
+                                
+                                    <p>In a similar vain, I use my version control system's (usually bzr) pre-commit hook to automatically update my tags. Although lately I've switched to using cscope and find it more powerful, have you looked into cscope at all?</p>
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+
+                    <div class="message-shadow hidden" data-role="message-shadow"></div>
+                    <a href="#" class="more-button hidden" title="see more" data-action="post-expand">see more</a>
+
+                    <footer>
+                        
+    
+        <menu>
+            <li class="realtime" data-role="realtime-notification:859470746">
+                <span style="display: none;" class="realtime-replies"></span>
+                <a style="display: none;" href="#" class="btn small" data-action="load-queued-posts"></a>
+                 <!-- Realtime notification about new replies -->
+            </li>
+
+            <li class="voting" data-role="voting">
+                
+    <a href="#" class="vote-up  count-0" data-action="upvote" title="Vote up">
+        <span class="updatable count" data-role="likes">0</span>
+        <span class="control"><i aria-hidden="true" class="icon-arrow-2"></i></span>
+    </a>
+    <a class="vote-down  count-0" title="Vote down">
+        <span class="updatable count" data-role="dislikes">0</span>
+        <span class="control"><i aria-hidden="true" class="icon-arrow"></i></span>
+        <span class="tooltip">You must sign in to down-vote this post.</span>
+    </a>
+
+            </li>
+            <li class="bullet" aria-hidden="true">•</li>
+
+            
+                
+
+                
+                    <li class="reply"><a href="#" data-action="reply">Reply</a></li>
+                    <li class="bullet" aria-hidden="true">•</li>
+                
+            
+
+            <li class="share">
+                <a class="toggle">Share ›</a>
+                <ul>
+                    <li class="twitter"><a href="#" data-action="share:twitter">Twitter</a></li>
+                    <li class="facebook"><a href="#" data-action="share:facebook">Facebook</a></li>
+                    <li class="link"><a href="#comment-859470746">Link</a></li>
+                </ul>
+            </li>
+        </menu>
+    
+
+                    </footer>
+                </div>
+
+             
+         
+
+        <div data-role="blacklist-form"></div>
+    </div>
+
+    <!-- Child comments are appended here -->
+    <ul data-role="children" class="children">
+
+<li class="post
+    " id="post-859554569">
+
+    <div data-role="post-content" class="post-content ">
+        <div class="indicator"></div>
+
+        
+            
+
+                
+                    <div class="avatar hovercard">
+                        <a href="#" class="user" data-action="profile" data-user="92630">
+                            <img src="avatar.php" alt="Avatar">
+                        </a>
+                    </div>
+                
+
+                <div class="post-body">
+                    <header>
+                        
+                            <span class="publisher-anchor-color"><a href="#" data-action="profile" data-user="92630">zmalltalker</a></span>
+                            
+                                <span class="badge moderator">Mod</span>
+                            
+                        
+
+                        
+                            <span><a href="#comment-859470746" class="parent-link" data-role="parent-link"><i aria-hidden="true" class="icon-forward" title="in reply to"></i> BobbyC</a></span>
+                        
+
+                        <span class="bullet" aria-hidden="true">•</span>
+
+                        
+                            <a href="#comment-859554569" data-role="relative-time" class="time-ago" title="Thursday, April 11 2013 6:12 PM">
+                                a month ago
+                            </a>
+                        
+
+                        <ul class="post-menu">
+
+                            <li class="collapse"><a href="#" data-action="collapse" title="Collapse">−</a></li>
+                            <li class="expand" style="display: none;"><a href="#" data-action="collapse" title="Expand">+</a></li>
+
+                            <li class="dropdown" data-role="menu" role="menu">
+                                
+    
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><b class="caret"></b></a>
+        <ul class="dropdown-menu invisible">
+            
+                
+                <li><a href="#" data-action="flag">Flag as inappropriate</a></li>
+            
+        </ul>
+    
+
+                            </li>
+                        </ul>
+                    </header>
+
+                    <!-- Use message-container to manage visible height of the post message (including media) -->
+                    <div class="post-message-container" data-role="message-container">
+                        <!-- Use message-content to measure post content (including media) -->
+                        <div data-role="message-content">
+                            <div class="post-message publisher-anchor-color " data-role="message">
+                                
+                                    <p>I just set up some git hooks which update my TAGS file and updated the post.</p>
+
+<p>I thought cscope was mainly for C/C++?</p>
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+
+                    <div class="message-shadow hidden" data-role="message-shadow"></div>
+                    <a href="#" class="more-button hidden" title="see more" data-action="post-expand">see more</a>
+
+                    <footer>
+                        
+    
+        <menu>
+            <li class="realtime" data-role="realtime-notification:859554569">
+                <span style="display: none;" class="realtime-replies"></span>
+                <a style="display: none;" href="#" class="btn small" data-action="load-queued-posts"></a>
+                 <!-- Realtime notification about new replies -->
+            </li>
+
+            <li class="voting" data-role="voting">
+                
+    <a href="#" class="vote-up  count-0" data-action="upvote" title="Vote up">
+        <span class="updatable count" data-role="likes">0</span>
+        <span class="control"><i aria-hidden="true" class="icon-arrow-2"></i></span>
+    </a>
+    <a class="vote-down  count-0" title="Vote down">
+        <span class="updatable count" data-role="dislikes">0</span>
+        <span class="control"><i aria-hidden="true" class="icon-arrow"></i></span>
+        <span class="tooltip">You must sign in to down-vote this post.</span>
+    </a>
+
+            </li>
+            <li class="bullet" aria-hidden="true">•</li>
+
+            
+                
+
+                
+                    <li class="reply"><a href="#" data-action="reply">Reply</a></li>
+                    <li class="bullet" aria-hidden="true">•</li>
+                
+            
+
+            <li class="share">
+                <a class="toggle">Share ›</a>
+                <ul>
+                    <li class="twitter"><a href="#" data-action="share:twitter">Twitter</a></li>
+                    <li class="facebook"><a href="#" data-action="share:facebook">Facebook</a></li>
+                    <li class="link"><a href="#comment-859554569">Link</a></li>
+                </ul>
+            </li>
+        </menu>
+    
+
+                    </footer>
+                </div>
+
+             
+         
+
+        <div data-role="blacklist-form"></div>
+    </div>
+
+    <!-- Child comments are appended here -->
+    <ul data-role="children" class="children">
+
+<li class="post
+    " id="post-872910559">
+
+    <div data-role="post-content" class="post-content ">
+        <div class="indicator"></div>
+
+        
+            
+
+                
+                    <div class="avatar hovercard">
+                        <a href="#" class="user" data-action="profile" data-user="33694016">
+                            <img src="avatar92_002.jpg" alt="Avatar">
+                        </a>
+                    </div>
+                
+
+                <div class="post-body">
+                    <header>
+                        
+                            <span class="publisher-anchor-color"><a href="#" data-action="profile" data-user="33694016">HongxuChen</a></span>
+                            
+                        
+
+                        
+                            <span><a href="#comment-859554569" class="parent-link" data-role="parent-link"><i aria-hidden="true" class="icon-forward" title="in reply to"></i> zmalltalker</a></span>
+                        
+
+                        <span class="bullet" aria-hidden="true">•</span>
+
+                        
+                            <a href="#comment-872910559" data-role="relative-time" class="time-ago" title="Tuesday, April 23 2013 1:55 PM">
+                                a month ago
+                            </a>
+                        
+
+                        <ul class="post-menu">
+
+                            <li class="collapse"><a href="#" data-action="collapse" title="Collapse">−</a></li>
+                            <li class="expand" style="display: none;"><a href="#" data-action="collapse" title="Expand">+</a></li>
+
+                            <li class="dropdown" data-role="menu" role="menu">
+                                
+    
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><b class="caret"></b></a>
+        <ul class="dropdown-menu invisible">
+            
+                
+                <li><a href="#" data-action="flag">Flag as inappropriate</a></li>
+            
+        </ul>
+    
+
+                            </li>
+                        </ul>
+                    </header>
+
+                    <!-- Use message-container to manage visible height of the post message (including media) -->
+                    <div class="post-message-container" data-role="message-container">
+                        <!-- Use message-content to measure post content (including media) -->
+                        <div data-role="message-content">
+                            <div class="post-message publisher-anchor-color " data-role="message">
+                                
+                                    <p>There is a GTAGS(global) in gnu environment which supports other program languages.</p>
+                                
+                            </div>
+
+                            
+                        </div>
+                    </div>
+
+                    <div class="message-shadow hidden" data-role="message-shadow"></div>
+                    <a href="#" class="more-button hidden" title="see more" data-action="post-expand">see more</a>
+
+                    <footer>
+                        
+    
+        <menu>
+            <li class="realtime" data-role="realtime-notification:872910559">
+                <span style="display: none;" class="realtime-replies"></span>
+                <a style="display: none;" href="#" class="btn small" data-action="load-queued-posts"></a>
+                 <!-- Realtime notification about new replies -->
+            </li>
+
+            <li class="voting" data-role="voting">
+                
+    <a href="#" class="vote-up  count-0" data-action="upvote" title="Vote up">
+        <span class="updatable count" data-role="likes">0</span>
+        <span class="control"><i aria-hidden="true" class="icon-arrow-2"></i></span>
+    </a>
+    <a class="vote-down  count-0" title="Vote down">
+        <span class="updatable count" data-role="dislikes">0</span>
+        <span class="control"><i aria-hidden="true" class="icon-arrow"></i></span>
+        <span class="tooltip">You must sign in to down-vote this post.</span>
+    </a>
+
+            </li>
+            <li class="bullet" aria-hidden="true">•</li>
+
+            
+                
+
+                
+                    <li class="reply"><a href="#" data-action="reply">Reply</a></li>
+                    <li class="bullet" aria-hidden="true">•</li>
+                
+            
+
+            <li class="share">
+                <a class="toggle">Share ›</a>
+                <ul>
+                    <li class="twitter"><a href="#" data-action="share:twitter">Twitter</a></li>
+                    <li class="facebook"><a href="#" data-action="share:facebook">Facebook</a></li>
+                    <li class="link"><a href="#comment-872910559">Link</a></li>
+                </ul>
+            </li>
+        </menu>
+    
+
+                    </footer>
+                </div>
+
+             
+         
+
+        <div data-role="blacklist-form"></div>
+    </div>
+
+    <!-- Child comments are appended here -->
+    <ul data-role="children" class="children">
+
+</ul></li></ul></li></ul></li></ul></li></ul></li></ul>
+
+            <div class="load-more" data-role="more" style="display: none;">
+                <a href="#" data-action="more-posts" class="btn">Load more comments</a>
+            </div>
+        </div>
+
+        
+    </section>
+
+    <section id="community" style="display: none;" data-role="main">
+<div>
+    <div class="primary">
+        <h3>Top Discussions on 
+    <strong>Zmalltalker does not have a slurvete job</strong>
+</h3>
+        <div data-role="top-threads"><ol class="loading" id="top-threads"></ol></div>
+    </div>
+
+    <div class="secondary">
+        <h3>Top Commenters</h3>
+
+        <div data-role="top-users"><ol class="loading" id="top-users"></ol></div>
+    </div>
+</div>
+
+</section>
+
+    <section id="dashboard" style="display: none;" data-role="main">
+        <!-- Dashboard goes here -->
+        <!-- Default message if there are no notifications or activity to show -->
+        <p style="line-height: 1.4;">Nothing for you here ... yet. But as you comment with Disqus and follow
+        other Disqus users, you will start to receive notifications here, as well as a personalized
+        feed of activity by you and the people you follow. So get out there and participate in
+        some discussions!</p>
+    </section>
+
+    <section id="profile" style="display: none;" data-role="main">
+    </section>
+
+    
+        
+            
+    
+        <section id="reactions" style="display: none;" data-role="main">
+
+            <ul id="reaction-list" class="post-list loading">
+            </ul>
+
+            <div class="load-more" data-role="more" style="display: none;">
+                <a href="#" data-action="more-reactions" class="btn">Load more reactions</a>
+            </div>
+        </section>
+    
+
+        
+    
+
+    <div id="discovery"></div>
+
+    <div id="footer">
+        <ul>
+            <li class="logo"><a href="http://disqus.com/" title="Powered by Disqus">Powered by Disqus</a></li>
+            <li class="rss"><a href="http://zmalltalker.disqus.com/tags/latest.rss"><i aria-hidden="true" class="icon-feed" title="in reply to"></i><span class="clip">Comment feed</span></a></li>
+            <li id="thread-subscribe-button" class="email"> <!-- Three options: nothing, show-form, subscribed -->
+                <div class="default">
+                    <a href="#" data-action="subscribe"><i aria-hidden="true" class="icon-mail" title="Get email updates"></i><span class="clip">Subscribe via email</span> <i aria-hidden="true" class="icon-checkmark" title="Subscribe via email"></i></a>
+                </div>
+                <div class="form">
+                    <div class="input-wrapper"><input id="thread-subscribe-email" placeholder="yourname@email.com" type="email"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div></body>
+</html>
