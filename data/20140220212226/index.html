@@ -1,0 +1,1137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://dublincore.org/documents/dcq-html/ http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Blogging is futile — grep everything</title>
+
+<meta name="description" content="Yet another Blosxom weblog from someone who promised himself to never start blogging - since blogging is futile." lang="en">
+<meta name="keywords" content="Axel Beckert, abe, XTaran, Blog, Weblog, Citroën, CX, 2CV, HY, Debian, Linux, Zurich, ETH Zurich, Symlink, 2CV, bijou, Blogging, Blosxom, CLI, Conkeror, Debian, EeePC, Emacs, Etch, ETH ZÃ¼rich, Events, Firefox, Galeon, Hacks, Hardware, IRC, Kazehakase, Lenny, Linux, Meme, nuggets, Open Source, Opera, Perl, Planet Debian, Rant, Sarcasm, Sarge, Shell, Sid, SSH, Symlink, Talk, Text Mode, Ubuntu, UUUT, WTF, X, ZÃ¼rich" lang="en">
+<meta name="keywords" content="Axel Beckert, abe, XTaran, Blog, Weblog, Citroën, CX, 2CV, HY, Debian, Linux, Zürich, ETH Zürich, Symlink, 2CV, bijou, Blogging, Blosxom, CLI, Conkeror, Debian, EeePC, Emacs, Etch, ETH ZÃ¼rich, Events, Firefox, Galeon, Hacks, Hardware, IRC, Kazehakase, Lenny, Linux, Meme, nuggets, Open Source, Opera, Perl, Planet Debian, Rant, Sarcasm, Sarge, Shell, Sid, SSH, Symlink, Talk, Text Mode, Ubuntu, UUUT, WTF, X, ZÃ¼rich" lang="de">
+<meta name="generator" content="blosxom/2.1.2+dev">
+<meta name="author" content="Axel Beckert &lt;abe+blog@deuxchevaux.org&gt;">
+<meta name="robots" content="follow">
+
+<meta name="MSSmartTagsPreventParsing" content="true">
+<!-- <meta name="OLD-ICBM" content="49.7908, 8.347" /> -->
+<meta name="ICBM" content="47.399453, 8.507232">
+<meta name="geo.position" content="47.399453;8.507232">
+<meta name="geo.placename" content="Zürich">
+<meta name="geo.region" content="CH-ZH">
+<meta name="geo.country" content="CH">
+
+<link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+<link rel="schema.DCTERMS" href="http://purl.org/dc/terms/">
+<meta name="DC.title" content="Blogging is futile — grep everything">
+<meta name="DC.subject" content="Life, the universe and everything">
+<meta name="DC.publisher" content="Axel Beckert">
+<meta name="DC.creator" content="Axel Beckert">
+<meta name="DC.description" content="Yet another Blosxom weblog from someone who promised himself to never start blogging - since blogging is futile." lang="en">
+<meta name="DC.type" content="Text" scheme="DCTERMS.DCMIType">
+<meta name="DC.format" content="text/html; charset=utf-8" scheme="DCTERMS.IMT">
+<meta name="DC.language" content="en, de">
+<meta name="DC.rights copyright" content="http://creativecommons.org/licenses/by-nc-sa/2.0/de/">
+
+
+<meta http-equiv="Content-Language" content="en, de">
+<meta http-equiv="Content-Style-Type" content="text/css">
+
+<link rel="alternate" type="application/rss+xml" title="RSS" href="http://noone.org/blog/index.rss">
+<!-- <link rel="alternate" type="application/atom+xml" title="Atom" href="http://noone.org/blog/index.atom" /> -->
+<link rev="made" title="Autor" href="mailto:abe@deuxchevaux.org">
+<link rel="shortcut icon" href="abe.ico" type="image/x-icon">
+<link rel="pavatar" href="http://noone.org/static/XTaran1.3t80x80.png">
+
+
+
+<!-- AKVS head start v1.5 -->
+
+<!--[if gte IE 5.5]>
+<![if lt IE 7]>
+<style type="text/css">
+div#akct a#akpeel:hover {
+right: -1px;
+}
+</style>
+<![endif]>
+<![endif]-->
+<!-- AKVS head end -->
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body alink="#6666cc" bgcolor="#ffffff" link="#ff9200" text="#000000" vlink="#ff8800">
+
+<!-- AKVS body start v1.5 -->
+<div id="akct"><a id="akpeel" href="http://www.vorratsdatenspeicherung.de/" target="_top" title="Stoppt die Vorratsdatenspeicherung! Jetzt klicken &amp; handeln!"><img src="akvst.gif" alt="Stoppt die Vorratsdatenspeicherung! Jetzt klicken &amp;handeln!"></a>
+  <a id="akpreload" href="http://wiki.vorratsdatenspeicherung.de/?title=Online-Demo" target="_top" title="Willst du auch an der Aktion teilnehmen? Hier findest du alle relevanten Infos und Materialien:"><img src="akvsi.gif" alt="Willst du auch an der Aktion teilnehmen? Hier findest du alle relevanten Infos und Materialien:"></a></div>
+<!-- AKVS body end -->
+
+<div id="topbox">
+  <div id="logo">
+    <div id="logo2"></div>
+    <div id="logo3"></div>
+    <h1 id="logotext"><a href="http://noone.org/blog" class="logo" title="Blog Starting Page">
+      <span id="l1">Bloggin<span class="last-letter">g</span></span><br>
+      <span id="l2">is<span style="display: none;"> </span><strong>futil<span class="last-letter">e</span></strong></span>
+    </a></h1>
+  </div>
+  <div id="nav">
+    <!-- nothing yet -->
+  </div>
+</div>
+
+<div id="outerbox">
+  <div id="thebox">
+
+<div id="content">
+
+<div class="prevnext" style="margin-bottom: -12px;">
+
+
+
+</div>
+
+<!-- This category: http://noone.org/blog -->
+
+<div style="display: none;"><!-- story -->
+
+<a href="#about" title="About">Jump to menu and information about this site.</a>
+</div><div class="inside_x">
+
+<h1 class="date"><a href="http://noone.org/blog/2011/11/14/">Monday·14·November·2011</a></h1>
+<div class="inside">
+
+<h3><a name="" href="http://noone.org/blog/English/Computer/Shell/grep%20everything.futile" class="title">grep everything</a>
+    <span class="slashslash">/</span>/<small class="smpref">at</small> 09:43
+    <span class="slashslash">/</span>/<small class="smpref">by</small> abe</h3>
+
+<div class="dept">from the <b>*grep*</b> dept.</div>
+
+<p>
+
+During the <a href="http://www.openrheinruhr.de/" class="ext">OpenRheinRuhr</a> I noticed that a friend of mine didn’t know
+about <code>zgrep</code> and friends. So I told him what other grep
+variations I know and he told me about some grep variations I didn’t
+know about.
+
+</p><p>
+
+So here’s our collection of grep wrappers, derivatives and variations.
+First I’ll list programs which search for text in different file
+formats:
+
+</p><table border="1" cellpadding="2" cellspacing="0">
+<tbody><tr><th>grep through what</th><th>Fixed Strings</th><th>Wildcards / Basic RegExps</th><th>Extended RegExps</th><th><a href="http://www.debian.org/" class="ext">Debian</a> package</th></tr>
+<tr><td>uncompressed text files</td><td>fgrep</td><td>grep</td><td>egrep</td><td><a class="ext" href="http://packages.debian.org/grep">grep</a></td></tr>
+<tr><td>gzip-compressed text files</td><td>zfgrep</td><td>zgrep</td><td>zegrep</td><td><a class="ext" href="http://packages.debian.org/zutils">zutils</a>, <a class="ext" href="http://packages.debian.org/gzip">gzip</a></td></tr>
+<tr><td>bzip2-compressed text files</td><td>bzfgrep</td><td>bzgrep</td><td>bzegrep</td><td><a class="ext" href="http://packages.debian.org/bzip2">bzip2</a></td></tr>
+<tr><td>xz-compressed text files</td><td>xzfgrep</td><td>xzgrep</td><td>xzegrep</td><td><a class="ext" href="http://packages.debian.org/xz-utils">xz-utils</a></td></tr>
+<tr><td>uncompressed text files in installed Debian packages</td><td>dfgrep</td><td>dgrep</td><td>degrep</td><td><a class="ext" href="http://packages.debian.org/debian-goodies">debian-goodies</a></td></tr>
+<tr><td>gzip-compressed text files in installed Debian packages</td><td>-</td><td>dzgrep</td><td>-</td><td><a class="ext" href="http://packages.debian.org/debian-goodies">debian-goodies</a></td></tr>
+<tr><td>PDF documents</td><td>-</td><td>-</td><td>pdfgrep</td><td><a class="ext" href="http://packages.debian.org/pdfgrep">pdfgrep</a></td></tr>
+<tr><td>POD texts</td><td>podgrep</td><td>-</td><td>-</td><td><a class="ext" href="http://packages.debian.org/pmtools">pmtools</a></td></tr>
+<tr><td>E-Mail folder (mbox, MH, Maildir)</td><td>-</td><td>mboxgrep -G</td><td>mboxgrep -E</td><td><a class="ext" href="http://packages.debian.org/mboxgrep">mboxgrep</a></td></tr>
+<tr><td>Patches</td><td>-</td><td>grepdiff</td><td>grepdiff -E</td><td><a class="ext" href="http://packages.debian.org/patchutils">patchutils</a></td></tr>
+<tr><td>Process list</td><td>-</td><td>-</td><td>pgrep</td><td><a class="ext" href="http://packages.debian.org/procps">procps</a></td></tr>
+<tr><td><a class="ext" href="http://packages.debian.org/Gnumeric">Gnumeric</a> spreadsheets</td><td>ssgrep -F</td><td>ssgrep</td><td>?</td><td><a class="ext" href="http://packages.debian.org/gnumeric">gnumeric</a></td></tr>
+<tr><td>Files in ZIP archives</td><td>-</td><td>-</td><td>zipgrep</td><td><a class="ext" href="http://packages.debian.org/unzip">unzip</a></td></tr>
+<tr><td>ID3 tags in MP3s</td><td>-</td><td>-</td><td>taggrepper</td><td><a class="ext" href="http://packages.debian.org/taggrepper">taggrepper</a></td></tr>
+<tr><td>Network packets</td><td>-</td><td>-</td><td>ngrep</td><td><a class="ext" href="http://packages.debian.org/ngrep">ngrep</a></td></tr>
+<tr><td>Tar archives</td><td>-</td><td>-</td><td>targrep / ptargrep</td><td><a class="ext" href="http://packages.debian.org/perl">perl</a> (Experimental only for now)</td></tr>
+</tbody></table><p>
+
+And then there are also greps for special patterns on more or less
+normal files:
+
+</p><p></p><table border="1" cellpadding="2" cellspacing="0">
+<tbody><tr><th>grep for what</th><th>uncompressed files</th><th>compressed files</th><th>Debian package</th></tr>
+<tr><td>PCRE (<a href="http://www.perl.com/" class="ext">Perl</a> Compatible Regular Expression)</td><td>pcregrep (see also the <code>grep -P</code> option)</td><td>zpcregrep</td><td><a class="ext" href="http://packages.debian.org/pcregrep">pcregrep</a></td></tr>
+<tr><td><acronym title="Internet Protocol">IP</acronym> Address in a given CIDR range</td><td>grepcidr</td><td>-</td><td><a class="ext" href="http://packages.debian.org/grepcidr">grepcidr</a></td></tr>
+<tr><td>XPath expression</td><td>xml_grep</td><td>-</td><td><a class="ext" href="http://packages.debian.org/xml-twig-tools">xml-twig-tools</a></td></tr>
+</tbody></table><p>
+
+One question is though still unanswered for us: Is there some kind of
+meta-grep which chooses per file the right grep from above by looking
+at the MIME type of the according files, similar to <a class="ext" href="http://portland.freedesktop.org/xdg-utils-1.0/xdg-open.html">xdg-open</a>.
+
+</p><p>
+
+Other tools which have grep in their name, but are too special to
+properly fit into the above lists:
+
+</p><ul>
+
+<li><a class="ext" href="http://packages.debian.org/ext3grep">ext3grep</a>: Tool to help recover deleted files on ext3
+filesystems</li>
+
+<li><a class="ext" href="http://packages.debian.org/xautomation">xautomation</a>: Includes a tool named <code>visgrep</code>
+to grep for subimages inside other images.</li>
+
+</ul><p>
+
+Includes contributions by <a href="http://www.efho.de/" class="ext">Frank Hofmann</a> and Faidon Liambotis.
+<br clear="right"></p>
+
+<div class="blosxomstoryfoot" align="center">
+
+Filed under:
+<a href="http://noone.org/blog">Blogging is futile</a>  » <a href="http://noone.org/blog/English" rel="category">English</a> » <a href="http://noone.org/blog/English/Computer" rel="category">Computer</a> » <a href="http://noone.org/blog/English/Computer/Shell" rel="category">Shell</a> »
+<b><a href="http://noone.org/blog/English/Computer/Shell/grep%20everything.html" rel="bookmark" title="permafrost link"></a></b><br>
+Tagged as:  <a href="http://noone.org/blog/tags/.deb" rel="tag">.deb</a>, <a href="http://noone.org/blog/tags/bzip2" rel="tag">bzip2</a>, <a href="http://noone.org/blog/tags/CIDR" rel="tag">CIDR</a>, <a href="http://noone.org/blog/tags/compression" rel="tag">compression</a>, <a href="http://noone.org/blog/tags/Debian" rel="tag">Debian</a>, <a href="http://noone.org/blog/tags/debian%2Dgoodies" rel="tag">debian-goodies</a>, <a href="http://noone.org/blog/tags/E%2DMail" rel="tag">E-Mail</a>, <a href="http://noone.org/blog/tags/efho" rel="tag">efho</a>, <a href="http://noone.org/blog/tags/ext3grep" rel="tag">ext3grep</a>, <a href="http://noone.org/blog/tags/Gnumeric" rel="tag">Gnumeric</a>, <a href="http://noone.org/blog/tags/grep" rel="tag">grep</a>, <a href="http://noone.org/blog/tags/grepcidr" rel="tag">grepcidr</a>, <a href="http://noone.org/blog/tags/gzip" rel="tag">gzip</a>, <a href="http://noone.org/blog/tags/ID3" rel="tag">ID3</a>, <a href="http://noone.org/blog/tags/list" rel="tag">list</a>, <a href="http://noone.org/blog/tags/Maildir" rel="tag">Maildir</a>, <a href="http://noone.org/blog/tags/mbox" rel="tag">mbox</a>, <a href="http://noone.org/blog/tags/mboxgrep" rel="tag">mboxgrep</a>, <a href="http://noone.org/blog/tags/mh" rel="tag">mh</a>, <a href="http://noone.org/blog/tags/MP3" rel="tag">MP3</a>, <a href="http://noone.org/blog/tags/ngrep" rel="tag">ngrep</a>, <a href="http://noone.org/blog/tags/packages" rel="tag">packages</a>, <a href="http://noone.org/blog/tags/patches" rel="tag">patches</a>, <a href="http://noone.org/blog/tags/PCRE" rel="tag">PCRE</a>, <a href="http://noone.org/blog/tags/PDF" rel="tag">PDF</a>, <a href="http://noone.org/blog/tags/pdfgrep" rel="tag">pdfgrep</a>, <a href="http://noone.org/blog/tags/Perl" rel="tag">Perl</a>, <a href="http://noone.org/blog/tags/pmtools" rel="tag">pmtools</a>, <a href="http://noone.org/blog/tags/POD" rel="tag">POD</a>, <a href="http://noone.org/blog/tags/podgrep" rel="tag">podgrep</a>, <a href="http://noone.org/blog/tags/procps" rel="tag">procps</a>, <a href="http://noone.org/blog/tags/taggrepper" rel="tag">taggrepper</a>, <a href="http://noone.org/blog/tags/TWIG" rel="tag">TWIG</a>, <a href="http://noone.org/blog/tags/unzip" rel="tag">unzip</a>, <a href="http://noone.org/blog/tags/visgrep" rel="tag">visgrep</a>, <a href="http://noone.org/blog/tags/xautomation" rel="tag">xautomation</a>, <a href="http://noone.org/blog/tags/XDG" rel="tag">XDG</a>, <a href="http://noone.org/blog/tags/XML" rel="tag">XML</a>, <a href="http://noone.org/blog/tags/xz" rel="tag">xz</a>, <a href="http://noone.org/blog/tags/xz%2Dutils" rel="tag">xz-utils</a>, <a href="http://noone.org/blog/tags/zip" rel="tag">zip</a>, <a href="http://noone.org/blog/tags/zutils" rel="tag">zutils</a> <br>
+
+<a href="http://noone.org/blog/English/Computer/Shell/grep%20everything.futile#comments">6 comments</a> 
+<span class="slashslash">/</span>/
+<a href="http://noone.org/blog/English/Computer/Shell/grep%20everything.html">show without comments</a>
+<span class="slashslash">/</span>/
+<a href="http://noone.org/blog/English/Computer/Shell/grep%20everything.futile#post">write a comment</a> 
+
+<br clear="left"></div>
+
+<div class="blosxomstoryfoot" align="left"><h4 class="related_stories">Related stories</h4><ul class="related_stories">
+<li class="related_stories"><a href="http://noone.org/blog/English/Computer/Debian/CoolTools/atool-unp-dtrx.html" class="related_stories" title="5 shared tags: bzip2, grep, gzip, xz, zip">atool-unp-dtrx</a> (5 shared tags)</li>
+<li class="related_stories"><a href="http://noone.org/blog/English/Computer/Debian/CoolTools/zutils.html" class="related_stories" title="5 shared tags: bzip2, Debian, gzip, xz, zutils">zutils</a> (5 shared tags)</li>
+<li class="related_stories"><a href="http://noone.org/blog/English/Computer/Debian/CoolTools/deepgrep.html" class="related_stories" title="5 shared tags: bzip2, efho, grep, gzip, zip">deepgrep</a> (5 shared tags)</li>
+<li class="related_stories"><a href="http://noone.org/blog/English/Computer/Web/WML/Is%20ikiwiki%20a%20WML%20killer?.html" class="related_stories" title="3 shared tags: Debian, Perl, XML">Is ikiwiki a WML killer?</a> (3 shared tags)</li>
+<li class="related_stories"><a href="http://noone.org/blog/English/Computer/Shell/Screen%20and%20Emacsclient:%20Automatically%20switching%20to%20the%20Emacs%20window.html" class="related_stories" title="2 shared tags: Debian, E-Mail">Screen and Emacsclient: Automatically switching to the Emacs window</a> (2 shared tags)</li>
+</ul></div>
+
+
+</div>
+<div class="prevnext" style="top: 0px; margin-bottom: 12px;">
+
+
+
+</div>
+
+     </div><!-- story -->
+  </div><!-- content -->
+</div><!-- thebox -->
+
+<div id="middlepane">
+  <div class="rightpane">
+
+<h2><!-- Blog --><!-- <a href="http://en.wikipedia.org/wiki/Tag_cloud" class="wiki"> -->Tag Cloud<!-- </a> --></h2>
+
+
+
+
+<p style="text-align: justify;"> <a href="http://noone.org/blog?-tags=2CV" title="13 postings tagged" style="font-size: 92%; color: rgb(245, 140, 0);">2CV</a>,
+ <a href="http://noone.org/blog?-tags=aha" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">aha</a>,
+ <a href="http://noone.org/blog?-tags=Apache" title="7 postings tagged" style="font-size: 80%; color: rgb(252, 149, 0);">Apache</a>,
+ <a href="http://noone.org/blog?-tags=aptitude" title="10 postings tagged" style="font-size: 86%; color: rgb(249, 145, 0);">aptitude</a>,
+ <a href="http://noone.org/blog?-tags=ASUS" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">ASUS</a>,
+ <a href="http://noone.org/blog?-tags=Automobiles" title="9 postings tagged" style="font-size: 84%; color: rgb(250, 146, 0);">Automobiles</a>,
+ <a href="http://noone.org/blog?-tags=autossh" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">autossh</a>,
+ <a href="http://noone.org/blog?-tags=Berlin" title="8 postings tagged" style="font-size: 82%; color: rgb(251, 148, 0);">Berlin</a>,
+ <a href="http://noone.org/blog?-tags=bijou" title="13 postings tagged" style="font-size: 92%; color: rgb(245, 140, 0);">bijou</a>,
+ <a href="http://noone.org/blog?-tags=Blogging" title="18 postings tagged" style="font-size: 102%; color: rgb(239, 132, 0);">Blogging</a>,
+ <a href="http://noone.org/blog?-tags=Blosxom" title="17 postings tagged" style="font-size: 100%; color: rgb(241, 134, 0);">Blosxom</a>,
+ <a href="http://noone.org/blog?-tags=Blosxom%20Plugin" title="10 postings tagged" style="font-size: 86%; color: rgb(249, 145, 0);">Blosxom Plugin</a>,
+ <a href="http://noone.org/blog?-tags=Browser" title="8 postings tagged" style="font-size: 82%; color: rgb(251, 148, 0);">Browser</a>,
+ <a href="http://noone.org/blog?-tags=BSD" title="7 postings tagged" style="font-size: 80%; color: rgb(252, 149, 0);">BSD</a>,
+ <a href="http://noone.org/blog?-tags=CDU" title="7 postings tagged" style="font-size: 80%; color: rgb(252, 149, 0);">CDU</a>,
+ <a href="http://noone.org/blog?-tags=Chemnitz" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">Chemnitz</a>,
+ <a href="http://noone.org/blog?-tags=Citro%EBn" title="12 postings tagged" style="font-size: 90%; color: rgb(246, 142, 0);">CitroÃ«n</a>,
+ <a href="http://noone.org/blog?-tags=CLI" title="20 postings tagged" style="font-size: 106%; color: rgb(237, 129, 0);">CLI</a>,
+ <a href="http://noone.org/blog?-tags=CLT" title="9 postings tagged" style="font-size: 84%; color: rgb(250, 146, 0);">CLT</a>,
+ <a href="http://noone.org/blog?-tags=Conkeror" title="14 postings tagged" style="font-size: 94%; color: rgb(244, 139, 0);">Conkeror</a>,
+ <a href="http://noone.org/blog?-tags=CX" title="7 postings tagged" style="font-size: 80%; color: rgb(252, 149, 0);">CX</a>,
+ <a href="http://noone.org/blog?-tags=deb" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">deb</a>,
+ <a href="http://noone.org/blog?-tags=Debian" title="93 postings tagged" style="font-size: 251%; color: rgb(153, 17, 0);">Debian</a>,
+ <a href="http://noone.org/blog?-tags=Doofe%20Parteien" title="8 postings tagged" style="font-size: 82%; color: rgb(251, 148, 0);">Doofe Parteien</a>,
+ <a href="http://noone.org/blog?-tags=E%2DMail" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">E-Mail</a>,
+ <a href="http://noone.org/blog?-tags=eBay" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">eBay</a>,
+ <a href="http://noone.org/blog?-tags=EeePC" title="13 postings tagged" style="font-size: 92%; color: rgb(245, 140, 0);">EeePC</a>,
+ <a href="http://noone.org/blog?-tags=Emacs" title="15 postings tagged" style="font-size: 96%; color: rgb(243, 137, 0);">Emacs</a>,
+ <a href="http://noone.org/blog?-tags=Epiphany" title="8 postings tagged" style="font-size: 82%; color: rgb(251, 148, 0);">Epiphany</a>,
+ <a href="http://noone.org/blog?-tags=Etch" title="15 postings tagged" style="font-size: 96%; color: rgb(243, 137, 0);">Etch</a>,
+ <a href="http://noone.org/blog?-tags=ETH%20Z%FCrich" title="18 postings tagged" style="font-size: 102%; color: rgb(239, 132, 0);">ETH ZÃ¼rich</a>,
+ <a href="http://noone.org/blog?-tags=Events" title="24 postings tagged" style="font-size: 114%; color: rgb(232, 123, 0);">Events</a>,
+ <a href="http://noone.org/blog?-tags=Experimental" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">Experimental</a>,
+ <a href="http://noone.org/blog?-tags=Firefox" title="14 postings tagged" style="font-size: 94%; color: rgb(244, 139, 0);">Firefox</a>,
+ <a href="http://noone.org/blog?-tags=Fl%E4sch" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">FlÃ¤sch</a>,
+ <a href="http://noone.org/blog?-tags=FreeBSD" title="7 postings tagged" style="font-size: 80%; color: rgb(252, 149, 0);">FreeBSD</a>,
+ <a href="http://noone.org/blog?-tags=FVWM" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">FVWM</a>,
+ <a href="http://noone.org/blog?-tags=Galeon" title="17 postings tagged" style="font-size: 100%; color: rgb(241, 134, 0);">Galeon</a>,
+ <a href="http://noone.org/blog?-tags=Gecko" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">Gecko</a>,
+ <a href="http://noone.org/blog?-tags=git" title="11 postings tagged" style="font-size: 88%; color: rgb(248, 143, 0);">git</a>,
+ <a href="http://noone.org/blog?-tags=GitHub" title="7 postings tagged" style="font-size: 80%; color: rgb(252, 149, 0);">GitHub</a>,
+ <a href="http://noone.org/blog?-tags=GNOME" title="12 postings tagged" style="font-size: 90%; color: rgb(246, 142, 0);">GNOME</a>,
+ <a href="http://noone.org/blog?-tags=GNU" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">GNU</a>,
+ <a href="http://noone.org/blog?-tags=GNU%20Coreutils" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">GNU Coreutils</a>,
+ <a href="http://noone.org/blog?-tags=GNU%20Screen" title="7 postings tagged" style="font-size: 80%; color: rgb(252, 149, 0);">GNU Screen</a>,
+ <a href="http://noone.org/blog?-tags=Google" title="11 postings tagged" style="font-size: 88%; color: rgb(248, 143, 0);">Google</a>,
+ <a href="http://noone.org/blog?-tags=GPL" title="9 postings tagged" style="font-size: 84%; color: rgb(250, 146, 0);">GPL</a>,
+ <a href="http://noone.org/blog?-tags=grep" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">grep</a>,
+ <a href="http://noone.org/blog?-tags=grml" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">grml</a>,
+ <a href="http://noone.org/blog?-tags=gzip" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">gzip</a>,
+ <a href="http://noone.org/blog?-tags=Hacks" title="19 postings tagged" style="font-size: 104%; color: rgb(238, 131, 0);">Hacks</a>,
+ <a href="http://noone.org/blog?-tags=Hardware" title="13 postings tagged" style="font-size: 92%; color: rgb(245, 140, 0);">Hardware</a>,
+ <a href="http://noone.org/blog?-tags=Heise" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">Heise</a>,
+ <a href="http://noone.org/blog?-tags=HTML" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">HTML</a>,
+ <a href="http://noone.org/blog?-tags=identi.ca" title="9 postings tagged" style="font-size: 84%; color: rgb(250, 146, 0);">identi.ca</a>,
+ <a href="http://noone.org/blog?-tags=IRC" title="13 postings tagged" style="font-size: 92%; color: rgb(245, 140, 0);">IRC</a>,
+ <a href="http://noone.org/blog?-tags=irssi" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">irssi</a>,
+ <a href="http://noone.org/blog?-tags=Jabber" title="7 postings tagged" style="font-size: 80%; color: rgb(252, 149, 0);">Jabber</a>,
+ <a href="http://noone.org/blog?-tags=JavaShit" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">JavaShit</a>,
+ <a href="http://noone.org/blog?-tags=Kazehakase" title="15 postings tagged" style="font-size: 96%; color: rgb(243, 137, 0);">Kazehakase</a>,
+ <a href="http://noone.org/blog?-tags=Lenny" title="17 postings tagged" style="font-size: 100%; color: rgb(241, 134, 0);">Lenny</a>,
+ <a href="http://noone.org/blog?-tags=Liferea" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">Liferea</a>,
+ <a href="http://noone.org/blog?-tags=Linux" title="34 postings tagged" style="font-size: 134%; color: rgb(221, 108, 0);">Linux</a>,
+ <a href="http://noone.org/blog?-tags=LinuxTag" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">LinuxTag</a>,
+ <a href="http://noone.org/blog?-tags=LUGS" title="10 postings tagged" style="font-size: 86%; color: rgb(249, 145, 0);">LUGS</a>,
+ <a href="http://noone.org/blog?-tags=Lynx" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">Lynx</a>,
+ <a href="http://noone.org/blog?-tags=maol" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">maol</a>,
+ <a href="http://noone.org/blog?-tags=Meme" title="16 postings tagged" style="font-size: 98%; color: rgb(242, 136, 0);">Meme</a>,
+ <a href="http://noone.org/blog?-tags=Microsoft" title="8 postings tagged" style="font-size: 82%; color: rgb(251, 148, 0);">Microsoft</a>,
+ <a href="http://noone.org/blog?-tags=Mozilla" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">Mozilla</a>,
+ <a href="http://noone.org/blog?-tags=Music" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">Music</a>,
+ <a href="http://noone.org/blog?-tags=mutt" title="7 postings tagged" style="font-size: 80%; color: rgb(252, 149, 0);">mutt</a>,
+ <a href="http://noone.org/blog?-tags=Myon" title="8 postings tagged" style="font-size: 82%; color: rgb(251, 148, 0);">Myon</a>,
+ <a href="http://noone.org/blog?-tags=M%FCnchen" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">MÃ¼nchen</a>,
+ <a href="http://noone.org/blog?-tags=nemo" title="10 postings tagged" style="font-size: 86%; color: rgb(249, 145, 0);">nemo</a>,
+ <a href="http://noone.org/blog?-tags=Nokia" title="9 postings tagged" style="font-size: 84%; color: rgb(250, 146, 0);">Nokia</a>,
+ <a href="http://noone.org/blog?-tags=nuggets" title="21 postings tagged" style="font-size: 108%; color: rgb(236, 128, 0);">nuggets</a>,
+ <a href="http://noone.org/blog?-tags=Open%20Source" title="28 postings tagged" style="font-size: 122%; color: rgb(228, 117, 0);">Open Source</a>,
+ <a href="http://noone.org/blog?-tags=Opera" title="17 postings tagged" style="font-size: 100%; color: rgb(241, 134, 0);">Opera</a>,
+ <a href="http://noone.org/blog?-tags=Pentium%20I" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">Pentium I</a>,
+ <a href="http://noone.org/blog?-tags=Perl" title="23 postings tagged" style="font-size: 112%; color: rgb(234, 125, 0);">Perl</a>,
+ <a href="http://noone.org/blog?-tags=Planet%20Debian" title="41 postings tagged" style="font-size: 148%; color: rgb(213, 97, 0);">Planet Debian</a>,
+ <a href="http://noone.org/blog?-tags=Planet%20Symlink" title="12 postings tagged" style="font-size: 90%; color: rgb(246, 142, 0);">Planet Symlink</a>,
+ <a href="http://noone.org/blog?-tags=Quiz" title="12 postings tagged" style="font-size: 90%; color: rgb(246, 142, 0);">Quiz</a>,
+ <a href="http://noone.org/blog?-tags=Rant" title="16 postings tagged" style="font-size: 98%; color: rgb(242, 136, 0);">Rant</a>,
+ <a href="http://noone.org/blog?-tags=ratpoison" title="9 postings tagged" style="font-size: 84%; color: rgb(250, 146, 0);">ratpoison</a>,
+ <a href="http://noone.org/blog?-tags=Religion" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">Religion</a>,
+ <a href="http://noone.org/blog?-tags=RIP" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">RIP</a>,
+ <a href="http://noone.org/blog?-tags=Sarcasm" title="13 postings tagged" style="font-size: 92%; color: rgb(245, 140, 0);">Sarcasm</a>,
+ <a href="http://noone.org/blog?-tags=Sarge" title="20 postings tagged" style="font-size: 106%; color: rgb(237, 129, 0);">Sarge</a>,
+ <a href="http://noone.org/blog?-tags=Schweiz" title="8 postings tagged" style="font-size: 82%; color: rgb(251, 148, 0);">Schweiz</a>,
+ <a href="http://noone.org/blog?-tags=screen" title="12 postings tagged" style="font-size: 90%; color: rgb(246, 142, 0);">screen</a>,
+ <a href="http://noone.org/blog?-tags=Shell" title="18 postings tagged" style="font-size: 102%; color: rgb(239, 132, 0);">Shell</a>,
+ <a href="http://noone.org/blog?-tags=Sid" title="24 postings tagged" style="font-size: 114%; color: rgb(232, 123, 0);">Sid</a>,
+ <a href="http://noone.org/blog?-tags=Spam" title="8 postings tagged" style="font-size: 82%; color: rgb(251, 148, 0);">Spam</a>,
+ <a href="http://noone.org/blog?-tags=Squeeze" title="9 postings tagged" style="font-size: 84%; color: rgb(250, 146, 0);">Squeeze</a>,
+ <a href="http://noone.org/blog?-tags=SSH" title="13 postings tagged" style="font-size: 92%; color: rgb(245, 140, 0);">SSH</a>,
+ <a href="http://noone.org/blog?-tags=St%F6ckchen" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">StÃ¶ckchen</a>,
+ <a href="http://noone.org/blog?-tags=SuSE" title="7 postings tagged" style="font-size: 80%; color: rgb(252, 149, 0);">SuSE</a>,
+ <a href="http://noone.org/blog?-tags=Symlink" title="18 postings tagged" style="font-size: 102%; color: rgb(239, 132, 0);">Symlink</a>,
+ <a href="http://noone.org/blog?-tags=Symlink%2DArtikel" title="10 postings tagged" style="font-size: 86%; color: rgb(249, 145, 0);">Symlink-Artikel</a>,
+ <a href="http://noone.org/blog?-tags=Tagging" title="7 postings tagged" style="font-size: 80%; color: rgb(252, 149, 0);">Tagging</a>,
+ <a href="http://noone.org/blog?-tags=Talk" title="15 postings tagged" style="font-size: 96%; color: rgb(243, 137, 0);">Talk</a>,
+ <a href="http://noone.org/blog?-tags=taz" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">taz</a>,
+ <a href="http://noone.org/blog?-tags=Text%20Mode" title="14 postings tagged" style="font-size: 94%; color: rgb(244, 139, 0);">Text Mode</a>,
+ <a href="http://noone.org/blog?-tags=ThinkPad" title="10 postings tagged" style="font-size: 86%; color: rgb(249, 145, 0);">ThinkPad</a>,
+ <a href="http://noone.org/blog?-tags=Ubuntu" title="23 postings tagged" style="font-size: 112%; color: rgb(234, 125, 0);">Ubuntu</a>,
+ <a href="http://noone.org/blog?-tags=USA" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">USA</a>,
+ <a href="http://noone.org/blog?-tags=USB" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">USB</a>,
+ <a href="http://noone.org/blog?-tags=UUUCO" title="11 postings tagged" style="font-size: 88%; color: rgb(248, 143, 0);">UUUCO</a>,
+ <a href="http://noone.org/blog?-tags=UUUT" title="28 postings tagged" style="font-size: 122%; color: rgb(228, 117, 0);">UUUT</a>,
+ <a href="http://noone.org/blog?-tags=VCFe" title="7 postings tagged" style="font-size: 80%; color: rgb(252, 149, 0);">VCFe</a>,
+ <a href="http://noone.org/blog?-tags=Ventilator" title="10 postings tagged" style="font-size: 86%; color: rgb(249, 145, 0);">Ventilator</a>,
+ <a href="http://noone.org/blog?-tags=Vintage" title="10 postings tagged" style="font-size: 86%; color: rgb(249, 145, 0);">Vintage</a>,
+ <a href="http://noone.org/blog?-tags=Wahlen" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">Wahlen</a>,
+ <a href="http://noone.org/blog?-tags=Wheezy" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">Wheezy</a>,
+ <a href="http://noone.org/blog?-tags=Wikipedia" title="8 postings tagged" style="font-size: 82%; color: rgb(251, 148, 0);">Wikipedia</a>,
+ <a href="http://noone.org/blog?-tags=Windows" title="6 postings tagged" style="font-size: 78%; color: rgb(253, 151, 0);">Windows</a>,
+ <a href="http://noone.org/blog?-tags=WML" title="9 postings tagged" style="font-size: 84%; color: rgb(250, 146, 0);">WML</a>,
+ <a href="http://noone.org/blog?-tags=Woody" title="11 postings tagged" style="font-size: 88%; color: rgb(248, 143, 0);">Woody</a>,
+ <a href="http://noone.org/blog?-tags=WTF" title="14 postings tagged" style="font-size: 94%; color: rgb(244, 139, 0);">WTF</a>,
+ <a href="http://noone.org/blog?-tags=X" title="14 postings tagged" style="font-size: 94%; color: rgb(244, 139, 0);">X</a>,
+ <a href="http://noone.org/blog?-tags=zsh" title="7 postings tagged" style="font-size: 80%; color: rgb(252, 149, 0);">zsh</a>,
+ <a href="http://noone.org/blog?-tags=Z%FCrich" title="19 postings tagged" style="font-size: 104%; color: rgb(238, 131, 0);">ZÃ¼rich</a>,
+ <a href="http://noone.org/blog?-tags=%D6PNV" title="5 postings tagged" style="font-size: 76%; color: rgb(255, 153, 0);">Ã–PNV</a>
+</p>
+
+<h2>Calendar</h2>
+
+<div style="width: 100%; font-size: small; padding-top: 8px;" align="center">
+<table class="year-calendar"><caption class="year-calendar-head"><a title="2010 (28)" href="http://noone.org/blog/2010/">←</a>&nbsp;<a title="2011 (28)" href="http://noone.org/blog/2011/">2011</a>&nbsp;<a title="2012 (19)" href="http://noone.org/blog/2012/">→</a> </caption><tbody><tr><th class="year-calendar-subhead" colspan="6">Months</th></tr>
+<tr>
+<td class="year-calendar-month-link"><a title="January 2011 (2)" href="http://noone.org/blog/2011/01/">Jan</a></td>
+<td class="year-calendar-month-nolink">Feb</td>
+<td class="year-calendar-month-link"><a title="March 2011 (3)" href="http://noone.org/blog/2011/03/">Mar</a></td>
+<td class="year-calendar-month-link"><a title="April 2011 (1)" href="http://noone.org/blog/2011/04/">Apr</a></td>
+<td class="year-calendar-month-nolink">May</td>
+<td class="year-calendar-month-link"><a title="June 2011 (2)" href="http://noone.org/blog/2011/06/">Jun</a></td>
+</tr>
+<tr>
+<td class="year-calendar-month-link"><a title="July 2011 (1)" href="http://noone.org/blog/2011/07/">Jul</a></td>
+<td class="year-calendar-month-link"><a title="August 2011 (7)" href="http://noone.org/blog/2011/08/">Aug</a></td>
+<td class="year-calendar-month-link"><a title="September 2011 (4)" href="http://noone.org/blog/2011/09/">Sep</a></td>
+<td class="year-calendar-month-link"><a title="October 2011 (6)" href="http://noone.org/blog/2011/10/">Oct</a></td>
+<td class="year-calendar-this-month"><a title="November 2011 (1)" href="http://noone.org/blog/2011/11/">Nov</a></td><td class="year-calendar-month-link"><a title="December 2011 (1)" href="http://noone.org/blog/2011/12/">Dec</a></td>
+</tr>
+</tbody></table>
+
+<table class="month-calendar"><caption class="month-calendar-head"><a title="October 2011 (6)" href="http://noone.org/blog/2011/10/">←</a>&nbsp;<a title="November 2011 (1)" href="http://noone.org/blog/2011/11/">November</a>&nbsp;<a title="December 2011 (1)" href="http://noone.org/blog/2011/12/">→</a> </caption>
+<tbody><tr>
+<th class="month-calendar-day-head Monday">Mo</th>
+<th class="month-calendar-day-head Tuesday">Tu</th>
+<th class="month-calendar-day-head Wednesday">We</th>
+<th class="month-calendar-day-head Thursday">Th</th>
+<th class="month-calendar-day-head Friday">Fr</th>
+<th class="month-calendar-day-head Saturday">Sa</th>
+<th class="month-calendar-day-head Sunday">Su</th>
+</tr>
+<tr>
+<td class="month-calendar-day-noday Monday">&nbsp;</td>
+<td class="month-calendar-day-nolink Tuesday">1</td>
+<td class="month-calendar-day-nolink Wednesday">2</td>
+<td class="month-calendar-day-nolink Thursday">3</td>
+<td class="month-calendar-day-nolink Friday">4</td>
+<td class="month-calendar-day-nolink Saturday">5</td>
+<td class="month-calendar-day-nolink Sunday">6</td>
+</tr>
+<tr>
+<td class="month-calendar-day-nolink Monday">7</td>
+<td class="month-calendar-day-nolink Tuesday">8</td>
+<td class="month-calendar-day-nolink Wednesday">9</td>
+<td class="month-calendar-day-nolink Thursday">10</td>
+<td class="month-calendar-day-nolink Friday">11</td>
+<td class="month-calendar-day-nolink Saturday">12</td>
+<td class="month-calendar-day-nolink Sunday">13</td>
+</tr>
+<tr>
+<td class="month-calendar-day-this-day Monday"><a title="Monday, 14 November 2011 (current) (1)" href="http://noone.org/blog/2011/11/14/">14</a></td>
+<td class="month-calendar-day-nolink Tuesday">15</td>
+<td class="month-calendar-day-nolink Wednesday">16</td>
+<td class="month-calendar-day-nolink Thursday">17</td>
+<td class="month-calendar-day-nolink Friday">18</td>
+<td class="month-calendar-day-nolink Saturday">19</td>
+<td class="month-calendar-day-nolink Sunday">20</td>
+</tr>
+<tr>
+<td class="month-calendar-day-nolink Monday">21</td>
+<td class="month-calendar-day-nolink Tuesday">22</td>
+<td class="month-calendar-day-nolink Wednesday">23</td>
+<td class="month-calendar-day-nolink Thursday">24</td>
+<td class="month-calendar-day-nolink Friday">25</td>
+<td class="month-calendar-day-nolink Saturday">26</td>
+<td class="month-calendar-day-nolink Sunday">27</td>
+</tr>
+<tr>
+<td class="month-calendar-day-nolink Monday">28</td>
+<td class="month-calendar-day-nolink Tuesday">29</td>
+<td class="month-calendar-day-nolink Wednesday">30</td>
+<td class="month-calendar-day-noday Thursday">&nbsp;</td>
+<td class="month-calendar-day-noday Friday">&nbsp;</td>
+<td class="month-calendar-day-noday Saturday">&nbsp;</td>
+<td class="month-calendar-day-noday Sunday">&nbsp;</td>
+</tr>
+</tbody></table>
+
+</div>
+
+<h2>Tattletale Statistics</h2>
+
+<p>
+
+<img src="graph.gif" alt="Blog postings by posting time" title="Blog postings by posting time" height="100" width="160"><br>
+<img src="blogtimes.gif" alt="Blog posting times this month" title="Blog posting times this month" height="43" width="160">
+
+</p>
+
+<hr>
+
+<hr>
+
+<h2>Search</h2>
+
+<form method="GET" action="http://noone.org/blog">
+	<p id="searchform">
+		<input name="find" id="find" size="12" value="" type="text"><input id="submit" value="→" type="submit">
+		<input name="plugin" id="plugin" value="find" type="hidden">
+		<input name="path" id="path" value="English/Computer/Shell/grep everything.html" type="hidden">
+		<br>
+<a href="http://noone.org/blog/English/Computer/Shell/grep%20everything.html?advanced_search=1">Advanced Search</a>
+</p></form>
+
+<hr>
+
+<h2>Categories</h2>
+
+<ul class="categorytree">
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch" class="categorytree">Deutsch</a><small class="feeds"> (<span title="Postings" style="cursor: help;">48</span>, <span title="Symlinks" style="cursor: help;">1sym, <a href="http://noone.org/blog/Deutsch/index.rss" class="feed">RSS</a></span>)</small>
+<ul class="categorytree">
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Automobiles" class="categorytree">Automobiles</a><small class="feeds"> (<span title="Postings" style="cursor: help;">6, <a href="http://noone.org/blog/Deutsch/Automobiles/index.rss" class="feed">RSS</a></span>)</small>
+<ul class="categorytree">
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Automobiles/Citro%C3%83%C2%ABn" class="categorytree">CitroÃ«n</a><small class="feeds"> (<span title="Postings" style="cursor: help;">4, <a href="http://noone.org/blog/Deutsch/Automobiles/Citro%C3%83%C2%ABn/index.rss" class="feed">RSS</a></span>)</small>
+<ul class="categorytree">
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Automobiles/Citro%C3%83%C2%ABn/CX" class="categorytree">CX</a><small class="feeds"> (<span title="Postings" style="cursor: help;">2, <a href="http://noone.org/blog/Deutsch/Automobiles/Citro%C3%83%C2%ABn/CX/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Automobiles/Citro%C3%83%C2%ABn/Ente" class="categorytree">Ente</a><small class="feeds"> (<span title="Postings" style="cursor: help;">1, <a href="http://noone.org/blog/Deutsch/Automobiles/Citro%C3%83%C2%ABn/Ente/index.rss" class="feed">RSS</a></span>)</small></li>
+</ul></li>
+</ul></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Bl%C3%83%C2%B6dsinn" class="categorytree">BlÃ¶dsinn</a><small class="feeds"> (<span title="Postings" style="cursor: help;">2, <a href="http://noone.org/blog/Deutsch/Bl%C3%83%C2%B6dsinn/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Computer" class="categorytree">Computer</a><small class="feeds"> (<span title="Postings" style="cursor: help;">19, <a href="http://noone.org/blog/Deutsch/Computer/index.rss" class="feed">RSS</a></span>)</small>
+<ul class="categorytree">
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Computer/Events" class="categorytree">Events</a><small class="feeds"> (<span title="Postings" style="cursor: help;">1, <a href="http://noone.org/blog/Deutsch/Computer/Events/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Computer/Internet" class="categorytree">Internet</a><small class="feeds"> (<span title="Postings" style="cursor: help;">11, <a href="http://noone.org/blog/Deutsch/Computer/Internet/index.rss" class="feed">RSS</a></span>)</small>
+<ul class="categorytree">
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Computer/Internet/Spam" class="categorytree">Spam</a><small class="feeds"> (<span title="Postings" style="cursor: help;">1, <a href="http://noone.org/blog/Deutsch/Computer/Internet/Spam/index.rss" class="feed">RSS</a></span>)</small></li>
+</ul></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Computer/Linux" class="categorytree">Linux</a><small class="feeds"> (<span title="Postings" style="cursor: help;">5, <a href="http://noone.org/blog/Deutsch/Computer/Linux/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Computer/Microsoft" class="categorytree">Microsoft</a><small class="feeds"> (<span title="Postings" style="cursor: help;">2, <a href="http://noone.org/blog/Deutsch/Computer/Microsoft/index.rss" class="feed">RSS</a></span>)</small></li>
+</ul></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/G5" class="categorytree">G5</a><small class="feeds"> (<span title="Postings" style="cursor: help;">1, <a href="http://noone.org/blog/Deutsch/G5/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Musik" class="categorytree">Musik</a><small class="feeds"> (<span title="Postings" style="cursor: help;">1, <a href="http://noone.org/blog/Deutsch/Musik/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Politik" class="categorytree">Politik</a><small class="feeds"> (<span title="Postings" style="cursor: help;">6</span>, <span title="Symlinks" style="cursor: help;">1sym, <a href="http://noone.org/blog/Deutsch/Politik/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Reisen" class="categorytree">Reisen</a><small class="feeds"> (<span title="Postings" style="cursor: help;">1, <a href="http://noone.org/blog/Deutsch/Reisen/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Religion" class="categorytree">Religion</a><small class="feeds"> (<span title="Postings" style="cursor: help;">2, <a href="http://noone.org/blog/Deutsch/Religion/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/Deutsch/Umzug" class="categorytree">Umzug</a><small class="feeds"> (<span title="Postings" style="cursor: help;">4, <a href="http://noone.org/blog/Deutsch/Umzug/index.rss" class="feed">RSS</a></span>)</small></li>
+</ul></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English" class="categorytree">English</a><small class="feeds"> (<span title="Postings" style="cursor: help;">219</span>, <span title="Symlinks" style="cursor: help;">43sym, <a href="http://noone.org/blog/English/index.rss" class="feed">RSS</a></span>)</small>
+<ul class="categorytree">
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Automobiles" class="categorytree">Automobiles</a><small class="feeds"> (<span title="Postings" style="cursor: help;">3, <a href="http://noone.org/blog/English/Automobiles/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer" class="categorytree">Computer</a><small class="feeds"> (<span title="Postings" style="cursor: help;">201</span>, <span title="Symlinks" style="cursor: help;">35sym, <a href="http://noone.org/blog/English/Computer/index.rss" class="feed">RSS</a></span>)</small>
+<ul class="categorytree">
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Admin" class="categorytree">Admin</a><small class="feeds"> (<span title="Postings" style="cursor: help;">0</span>, <span title="Symlinks" style="cursor: help;">2sym, <a href="http://noone.org/blog/English/Computer/Admin/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Debian" class="categorytree">Debian</a><small class="feeds"> (<span title="Postings" style="cursor: help;">59</span>, <span title="Symlinks" style="cursor: help;">5sym, <a href="http://noone.org/blog/English/Computer/Debian/index.rss" class="feed">RSS</a></span>)</small>
+<ul class="categorytree">
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Debian/CoolTools" class="categorytree">CoolTools</a><small class="feeds"> (<span title="Postings" style="cursor: help;">30, <a href="http://noone.org/blog/English/Computer/Debian/CoolTools/index.rss" class="feed">RSS</a></span>)</small>
+<ul class="categorytree">
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Debian/CoolTools/SSH" class="categorytree">SSH</a><small class="feeds"> (<span title="Postings" style="cursor: help;">2, <a href="http://noone.org/blog/English/Computer/Debian/CoolTools/SSH/index.rss" class="feed">RSS</a></span>)</small></li>
+</ul></li>
+</ul></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Events" class="categorytree">Events</a><small class="feeds"> (<span title="Postings" style="cursor: help;">15, <a href="http://noone.org/blog/English/Computer/Events/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Fedora" class="categorytree">Fedora</a><small class="feeds"> (<span title="Postings" style="cursor: help;">2, <a href="http://noone.org/blog/English/Computer/Fedora/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/FreeBSD" class="categorytree">FreeBSD</a><small class="feeds"> (<span title="Postings" style="cursor: help;">1, <a href="http://noone.org/blog/English/Computer/FreeBSD/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Hardware" class="categorytree">Hardware</a><small class="feeds"> (<span title="Postings" style="cursor: help;">17</span>, <span title="Symlinks" style="cursor: help;">1sym, <a href="http://noone.org/blog/English/Computer/Hardware/index.rss" class="feed">RSS</a></span>)</small>
+<ul class="categorytree">
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Hardware/Vintage" class="categorytree">Vintage</a><small class="feeds"> (<span title="Postings" style="cursor: help;">4, <a href="http://noone.org/blog/English/Computer/Hardware/Vintage/index.rss" class="feed">RSS</a></span>)</small></li>
+</ul></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/IRC" class="categorytree">IRC</a><small class="feeds"> (<span title="Postings" style="cursor: help;">3</span>, <span title="Symlinks" style="cursor: help;">2sym, <a href="http://noone.org/blog/English/Computer/IRC/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Mail" class="categorytree">Mail</a><small class="feeds"> (<span title="Postings" style="cursor: help;">3, <a href="http://noone.org/blog/English/Computer/Mail/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Microsoft" class="categorytree">Microsoft</a><small class="feeds"> (<span title="Postings" style="cursor: help;">2, <a href="http://noone.org/blog/English/Computer/Microsoft/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Mobile" class="categorytree">Mobile</a><small class="feeds"> (<span title="Postings" style="cursor: help;">4, <a href="http://noone.org/blog/English/Computer/Mobile/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Perl" class="categorytree">Perl</a><small class="feeds"> (<span title="Postings" style="cursor: help;">0</span>, <span title="Symlinks" style="cursor: help;">15sym, <a href="http://noone.org/blog/English/Computer/Perl/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Science" class="categorytree">Science</a><small class="feeds"> (<span title="Postings" style="cursor: help;">0</span>, <span title="Symlinks" style="cursor: help;">1sym, <a href="http://noone.org/blog/English/Computer/Science/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Shell" class="categorytree">Shell</a><small class="feeds"> (<span title="Postings" style="cursor: help;">17</span>, <span title="Symlinks" style="cursor: help;">6sym, <a href="http://noone.org/blog/English/Computer/Shell/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Spam" class="categorytree">Spam</a><small class="feeds"> (<span title="Postings" style="cursor: help;">2, <a href="http://noone.org/blog/English/Computer/Spam/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/SuSE" class="categorytree">SuSE</a><small class="feeds"> (<span title="Postings" style="cursor: help;">1, <a href="http://noone.org/blog/English/Computer/SuSE/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/VCS" class="categorytree">VCS</a><small class="feeds"> (<span title="Postings" style="cursor: help;">3, <a href="http://noone.org/blog/English/Computer/VCS/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Web" class="categorytree">Web</a><small class="feeds"> (<span title="Postings" style="cursor: help;">46</span>, <span title="Symlinks" style="cursor: help;">3sym, <a href="http://noone.org/blog/English/Computer/Web/index.rss" class="feed">RSS</a></span>)</small>
+<ul class="categorytree">
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Web/Accessibility" class="categorytree">Accessibility</a><small class="feeds"> (<span title="Postings" style="cursor: help;">1, <a href="http://noone.org/blog/English/Computer/Web/Accessibility/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Web/Apache" class="categorytree">Apache</a><small class="feeds"> (<span title="Postings" style="cursor: help;">1, <a href="http://noone.org/blog/English/Computer/Web/Apache/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Web/Blosxom" class="categorytree">Blosxom</a><small class="feeds"> (<span title="Postings" style="cursor: help;">14, <a href="http://noone.org/blog/English/Computer/Web/Blosxom/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Web/Browsers" class="categorytree">Browsers</a><small class="feeds"> (<span title="Postings" style="cursor: help;">12</span>, <span title="Symlinks" style="cursor: help;">2sym, <a href="http://noone.org/blog/English/Computer/Web/Browsers/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Web/Comics" class="categorytree">Comics</a><small class="feeds"> (<span title="Postings" style="cursor: help;">1, <a href="http://noone.org/blog/English/Computer/Web/Comics/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Web/KoL" class="categorytree">KoL</a><small class="feeds"> (<span title="Postings" style="cursor: help;">3, <a href="http://noone.org/blog/English/Computer/Web/KoL/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Web/WML" class="categorytree">WML</a><small class="feeds"> (<span title="Postings" style="cursor: help;">2, <a href="http://noone.org/blog/English/Computer/Web/WML/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/Web/Wikipedia" class="categorytree">Wikipedia</a><small class="feeds"> (<span title="Postings" style="cursor: help;">1</span>, <span title="Symlinks" style="cursor: help;">1sym, <a href="http://noone.org/blog/English/Computer/Web/Wikipedia/index.rss" class="feed">RSS</a></span>)</small></li>
+</ul></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Computer/X" class="categorytree">X</a><small class="feeds"> (<span title="Postings" style="cursor: help;">7, <a href="http://noone.org/blog/English/Computer/X/index.rss" class="feed">RSS</a></span>)</small></li>
+</ul></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/HPV" class="categorytree">HPV</a><small class="feeds"> (<span title="Postings" style="cursor: help;">3, <a href="http://noone.org/blog/English/HPV/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Journeys" class="categorytree">Journeys</a><small class="feeds"> (<span title="Postings" style="cursor: help;">2, <a href="http://noone.org/blog/English/Journeys/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Music" class="categorytree">Music</a><small class="feeds"> (<span title="Postings" style="cursor: help;">2, <a href="http://noone.org/blog/English/Music/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Politics" class="categorytree">Politics</a><small class="feeds"> (<span title="Postings" style="cursor: help;">0</span>, <span title="Symlinks" style="cursor: help;">3sym, <a href="http://noone.org/blog/English/Politics/index.rss" class="feed">RSS</a></span>)</small>
+<ul class="categorytree">
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Politics/Big%20Brother" class="categorytree">Big Brother</a><small class="feeds"> (<span title="Postings" style="cursor: help;">0</span>, <span title="Symlinks" style="cursor: help;">1sym, <a href="http://noone.org/blog/English/Politics/Big%20Brother/index.rss" class="feed">RSS</a></span>)</small></li>
+</ul></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Rants" class="categorytree">Rants</a><small class="feeds"> (<span title="Postings" style="cursor: help;">0</span>, <span title="Symlinks" style="cursor: help;">5sym, <a href="http://noone.org/blog/English/Rants/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/Religion" class="categorytree">Religion</a><small class="feeds"> (<span title="Postings" style="cursor: help;">1, <a href="http://noone.org/blog/English/Religion/index.rss" class="feed">RSS</a></span>)</small></li>
+<li class="categorytree_item"><a href="http://noone.org/blog/English/SciFi" class="categorytree">SciFi</a><small class="feeds"> (<span title="Postings" style="cursor: help;">1, <a href="http://noone.org/blog/English/SciFi/index.rss" class="feed">RSS</a></span>)</small></li>
+</ul></li>
+</ul>
+
+<hr>
+
+<h2>Recent Postings</h2>
+
+<p>
+0 most recent of 0
+postings total shown.
+</p>
+
+<ul class="recent">
+  
+</ul>
+
+<hr>
+
+<h2>Recent Comments</h2>
+
+<ul class="recent">
+  
+</ul>
+
+<!--
+<hr/>
+
+<h2>Recent Referers</h2>
+
+
+
+<hr/>
+-->
+
+</div><div class="rightpane">
+
+<div id="identica_div">
+  <h2 class="identica-title"><a href="http://identi.ca/xtaran" rel="me">Recent 'dents</a></h2>
+  <ul id="identica_update_list"></ul>
+</div>
+
+</div><div class="rightpane">
+
+<div id="delicious_div">
+  
+<div class="delicious-posts" id="delicious-posts-XTaran"><h2 class="delicious-banner sidebar-title"><a href="http://previous.delicious.com//XTaran">Recent del.icio.us</a></h2><ul><li class="delicious-post delicious-odd"><a class="delicious-link" href="https://xkcd.com/1319/">xkcd: Automation</a> </li><li class="delicious-post delicious-even"><a class="delicious-link" href="http://appleinsider.com/articles/13/06/11/apple-shifts-from-afp-file-sharing-to-smb2-in-os-x-109-mavericks">Apple shifts from AFP file sharing to SMB2 in OS X 10.9 Mavericks</a> </li><li class="delicious-post delicious-odd"><a class="delicious-link" href="http://www.kosagi.com/w/index.php?title=Novena_Main_Page">Novena Main Page - Studio Kousagi Wiki</a> </li><li class="delicious-post delicious-even"><a class="delicious-link" href="http://www.bunniestudios.com/">bunnie's blog</a> </li><li class="delicious-post delicious-odd"><a class="delicious-link" href="http://blog.ruecker.fi/2013/12/01/mosh-for-sailfish/">MOSH for Sailfish | Notes on open source and random ramblings</a> </li><li class="delicious-post delicious-even"><a class="delicious-link" href="http://www.thepembleton.org.uk/index.shtml">Home Page</a> </li><li class="delicious-post delicious-odd"><a class="delicious-link" href="http://www.pembleton.co.uk/">Pembleton Motor Company</a> </li><li class="delicious-post delicious-even"><a class="delicious-link" href="http://www.golem.de/1106/84517.html">Solar-Sintern: Mit der Sonne in 3D drucken - Golem.de</a> </li><li class="delicious-post delicious-odd"><a class="delicious-link" href="http://geek-and-poke.com/geekandpoke/2013/11/20/technical-debts">Technical Debts — Geek&amp;Poke</a> </li><li class="delicious-post delicious-even"><a class="delicious-link" href="http://www.phys.ethz.ch/%7Ewuertz/LinuxWS0607/index.htm">Linux Workshop - Vorlesung</a> </li><li class="delicious-post delicious-odd"><a class="delicious-link" href="http://www.golem.de/news/verschluesselung-was-noch-sicher-ist-1309-101457.html">Verschlüsselung: Was noch sicher ist - Golem.de</a> </li><li class="delicious-post delicious-even"><a class="delicious-link" href="http://kotaku.com/lego-car-has-lego-engine-actually-drives-1486156849">LEGO Car Has LEGO Engine, Actually Drives</a> </li><li class="delicious-post delicious-odd"><a class="delicious-link" title="Aus der Reihe &quot;Was man über PHP lieber nicht gewusst hätte&quot;" href="http://phpmanualmasterpieces.tumblr.com/post/70257636397/im-crying-literally-crying-actual-tears-in-my">PHP Manual Masterpieces</a> </li></ul></div>
+
+  
+
+  
+<div class="delicious-tags" id="delicious-tags-XTaran"><h2 class="delicious-banner sidebar-title"><a href="http://previous.delicious.com//XTaran">del.icio.us tag cloud</a></h2><ul class="delicious-cloud"><li><a href="http://previous.delicious.com//XTaran/2009" style="color: rgb(207, 88, 0); font-size: 14px;" title="48 bookmarks">2009</a> </li> <li><a href="http://previous.delicious.com//XTaran/2010" style="color: rgb(230, 120, 0); font-size: 10px;" title="37 bookmarks">2010</a> </li> <li><a href="http://previous.delicious.com//XTaran/art" style="color: rgb(203, 84, 0); font-size: 15px;" title="51 bookmarks">art</a> </li> <li><a href="http://previous.delicious.com//XTaran/bicycle" style="color: rgb(208, 90, 0); font-size: 14px;" title="47 bookmarks">bicycle</a> </li> <li><a href="http://previous.delicious.com//XTaran/bike" style="color: rgb(202, 83, 0); font-size: 15px;" title="52 bookmarks">bike</a> </li> <li><a href="http://previous.delicious.com//XTaran/blog" style="color: rgb(179, 51, 0); font-size: 19px;" title="103 bookmarks">blog</a> </li> <li><a href="http://previous.delicious.com//XTaran/blog-posting" style="color: rgb(157, 22, 0); font-size: 22px;" title="270 bookmarks">blog-posting</a> </li> <li><a href="http://previous.delicious.com//XTaran/blog_to_add_to_feedreader" style="color: rgb(177, 49, 0); font-size: 19px;" title="111 bookmarks">blog_to_add_to_feedreader</a> </li> <li><a href="http://previous.delicious.com//XTaran/bts" style="color: rgb(236, 127, 0); font-size: 10px;" title="36 bookmarks">bts</a> </li> <li><a href="http://previous.delicious.com//XTaran/bug" style="color: rgb(199, 78, 0); font-size: 15px;" title="56 bookmarks">bug</a> </li> <li><a href="http://previous.delicious.com//XTaran/citro%C3%ABn" style="color: rgb(197, 76, 0); font-size: 16px;" title="58 bookmarks">citroën</a> </li> <li><a href="http://previous.delicious.com//XTaran/cli" style="color: rgb(208, 90, 0); font-size: 14px;" title="47 bookmarks">cli</a> </li> <li><a href="http://previous.delicious.com//XTaran/comparison" style="color: rgb(216, 101, 0); font-size: 13px;" title="42 bookmarks">comparison</a> </li> <li><a href="http://previous.delicious.com//XTaran/deb" style="color: rgb(171, 41, 0); font-size: 20px;" title="141 bookmarks">deb</a> </li> <li><a href="http://previous.delicious.com//XTaran/debian" style="color: rgb(155, 19, 0); font-size: 22px;" title="300 bookmarks">debian</a> </li> <li><a href="http://previous.delicious.com//XTaran/design" style="color: rgb(185, 59, 0); font-size: 18px;" title="84 bookmarks">design</a> </li> <li><a href="http://previous.delicious.com//XTaran/desktop" style="color: rgb(216, 101, 0); font-size: 13px;" title="42 bookmarks">desktop</a> </li> <li><a href="http://previous.delicious.com//XTaran/diy" style="color: rgb(203, 84, 0); font-size: 15px;" title="51 bookmarks">diy</a> </li> <li><a href="http://previous.delicious.com//XTaran/dns" style="color: rgb(243, 137, 0); font-size: 8px;" title="35 bookmarks">dns</a> </li> <li><a href="http://previous.delicious.com//XTaran/documentation" style="color: rgb(180, 53, 0); font-size: 18px;" title="97 bookmarks">documentation</a> </li> <li><a href="http://previous.delicious.com//XTaran/embedded" style="color: rgb(218, 103, 0); font-size: 12px;" title="41 bookmarks">embedded</a> </li> <li><a href="http://previous.delicious.com//XTaran/ethz" style="color: rgb(204, 85, 0); font-size: 15px;" title="50 bookmarks">ethz</a> </li> <li><a href="http://previous.delicious.com//XTaran/fail" style="color: rgb(194, 72, 0); font-size: 16px;" title="63 bookmarks">fail</a> </li> <li><a href="http://previous.delicious.com//XTaran/filetype%3Ajpg" style="color: rgb(230, 120, 0); font-size: 10px;" title="37 bookmarks">filetype:jpg</a> </li> <li><a href="http://previous.delicious.com//XTaran/firefox" style="color: rgb(214, 98, 0); font-size: 13px;" title="43 bookmarks">firefox</a> </li> <li><a href="http://previous.delicious.com//XTaran/free" style="color: rgb(195, 73, 0); font-size: 16px;" title="62 bookmarks">free</a> </li> <li><a href="http://previous.delicious.com//XTaran/fun" style="color: rgb(153, 17, 0); font-size: 23px;" title="319 bookmarks">fun</a> </li> <li><a href="http://previous.delicious.com//XTaran/git" style="color: rgb(181, 54, 0); font-size: 18px;" title="95 bookmarks">git</a> </li> <li><a href="http://previous.delicious.com//XTaran/github" style="color: rgb(192, 69, 0); font-size: 16px;" title="66 bookmarks">github</a> </li> <li><a href="http://previous.delicious.com//XTaran/google" style="color: rgb(208, 90, 0); font-size: 14px;" title="47 bookmarks">google</a> </li> <li><a href="http://previous.delicious.com//XTaran/gpl" style="color: rgb(230, 120, 0); font-size: 10px;" title="37 bookmarks">gpl</a> </li> <li><a href="http://previous.delicious.com//XTaran/hack" style="color: rgb(204, 85, 0); font-size: 15px;" title="50 bookmarks">hack</a> </li> <li><a href="http://previous.delicious.com//XTaran/hardware" style="color: rgb(176, 47, 0); font-size: 19px;" title="116 bookmarks">hardware</a> </li> <li><a href="http://previous.delicious.com//XTaran/heise" style="color: rgb(216, 101, 0); font-size: 13px;" title="42 bookmarks">heise</a> </li> <li><a href="http://previous.delicious.com//XTaran/history" style="color: rgb(204, 85, 0); font-size: 15px;" title="50 bookmarks">history</a> </li> <li><a href="http://previous.delicious.com//XTaran/howto" style="color: rgb(158, 24, 0); font-size: 22px;" title="250 bookmarks">howto</a> </li> <li><a href="http://previous.delicious.com//XTaran/humor" style="color: rgb(198, 77, 0); font-size: 15px;" title="57 bookmarks">humor</a> </li> <li><a href="http://previous.delicious.com//XTaran/identi.ca" style="color: rgb(223, 110, 0); font-size: 12px;" title="39 bookmarks">identi.ca</a> </li> <li><a href="http://previous.delicious.com//XTaran/image" style="color: rgb(176, 48, 0); font-size: 19px;" title="113 bookmarks">image</a> </li> <li><a href="http://previous.delicious.com//XTaran/images" style="color: rgb(182, 55, 0); font-size: 18px;" title="93 bookmarks">images</a> </li> <li><a href="http://previous.delicious.com//XTaran/isg" style="color: rgb(186, 60, 0); font-size: 17px;" title="81 bookmarks">isg</a> </li> <li><a href="http://previous.delicious.com//XTaran/javascript" style="color: rgb(208, 90, 0); font-size: 14px;" title="47 bookmarks">javascript</a> </li> <li><a href="http://previous.delicious.com//XTaran/kernel" style="color: rgb(192, 69, 0); font-size: 16px;" title="67 bookmarks">kernel</a> </li> <li><a href="http://previous.delicious.com//XTaran/linux" style="color: rgb(157, 23, 0); font-size: 22px;" title="263 bookmarks">linux</a> </li> <li><a href="http://previous.delicious.com//XTaran/list" style="color: rgb(173, 43, 0); font-size: 19px;" title="130 bookmarks">list</a> </li> <li><a href="http://previous.delicious.com//XTaran/mailinglist-post" style="color: rgb(216, 101, 0); font-size: 13px;" title="42 bookmarks">mailinglist-post</a> </li> <li><a href="http://previous.delicious.com//XTaran/mainboard" style="color: rgb(226, 115, 0); font-size: 11px;" title="38 bookmarks">mainboard</a> </li> <li><a href="http://previous.delicious.com//XTaran/media%3Aimage" style="color: rgb(201, 80, 0); font-size: 15px;" title="54 bookmarks">media:image</a> </li> <li><a href="http://previous.delicious.com//XTaran/mini-itx" style="color: rgb(218, 103, 0); font-size: 12px;" title="41 bookmarks">mini-itx</a> </li> <li><a href="http://previous.delicious.com//XTaran/mobile" style="color: rgb(194, 71, 0); font-size: 16px;" title="64 bookmarks">mobile</a> </li> <li><a href="http://previous.delicious.com//XTaran/mozilla" style="color: rgb(214, 98, 0); font-size: 13px;" title="43 bookmarks">mozilla</a> </li> <li><a href="http://previous.delicious.com//XTaran/music" style="color: rgb(230, 120, 0); font-size: 10px;" title="37 bookmarks">music</a> </li> <li><a href="http://previous.delicious.com//XTaran/news-article" style="color: rgb(175, 46, 0); font-size: 19px;" title="122 bookmarks">news-article</a> </li> <li><a href="http://previous.delicious.com//XTaran/nokia" style="color: rgb(194, 72, 0); font-size: 16px;" title="63 bookmarks">nokia</a> </li> <li><a href="http://previous.delicious.com//XTaran/online-shop" style="color: rgb(211, 94, 0); font-size: 14px;" title="45 bookmarks">online-shop</a> </li> <li><a href="http://previous.delicious.com//XTaran/opensource" style="color: rgb(177, 49, 0); font-size: 19px;" title="109 bookmarks">opensource</a> </li> <li><a href="http://previous.delicious.com//XTaran/parody" style="color: rgb(216, 101, 0); font-size: 13px;" title="42 bookmarks">parody</a> </li> <li><a href="http://previous.delicious.com//XTaran/performance" style="color: rgb(218, 103, 0); font-size: 12px;" title="41 bookmarks">performance</a> </li> <li><a href="http://previous.delicious.com//XTaran/perl" style="color: rgb(197, 75, 0); font-size: 16px;" title="59 bookmarks">perl</a> </li> <li><a href="http://previous.delicious.com//XTaran/php" style="color: rgb(214, 98, 0); font-size: 13px;" title="43 bookmarks">php</a> </li> <li><a href="http://previous.delicious.com//XTaran/privacy" style="color: rgb(226, 115, 0); font-size: 11px;" title="38 bookmarks">privacy</a> </li> <li><a href="http://previous.delicious.com//XTaran/python" style="color: rgb(194, 71, 0); font-size: 16px;" title="64 bookmarks">python</a> </li> <li><a href="http://previous.delicious.com//XTaran/reference" style="color: rgb(187, 62, 0); font-size: 17px;" title="78 bookmarks">reference</a> </li> <li><a href="http://previous.delicious.com//XTaran/rss" style="color: rgb(243, 137, 0); font-size: 8px;" title="35 bookmarks">rss</a> </li> <li><a href="http://previous.delicious.com//XTaran/satire" style="color: rgb(216, 101, 0); font-size: 13px;" title="42 bookmarks">satire</a> </li> <li><a href="http://previous.delicious.com//XTaran/security" style="color: rgb(180, 53, 0); font-size: 18px;" title="97 bookmarks">security</a> </li> <li><a href="http://previous.delicious.com//XTaran/service" style="color: rgb(187, 62, 0); font-size: 17px;" title="78 bookmarks">service</a> </li> <li><a href="http://previous.delicious.com//XTaran/shop" style="color: rgb(208, 90, 0); font-size: 14px;" title="47 bookmarks">shop</a> </li> <li><a href="http://previous.delicious.com//XTaran/sourceforge" style="color: rgb(226, 115, 0); font-size: 11px;" title="38 bookmarks">sourceforge</a> </li> <li><a href="http://previous.delicious.com//XTaran/ssh" style="color: rgb(190, 66, 0); font-size: 17px;" title="71 bookmarks">ssh</a> </li> <li><a href="http://previous.delicious.com//XTaran/switzerland" style="color: rgb(197, 75, 0); font-size: 16px;" title="59 bookmarks">switzerland</a> </li> <li><a href="http://previous.delicious.com//XTaran/sysadmin" style="color: rgb(163, 30, 0); font-size: 21px;" title="204 bookmarks">sysadmin</a> </li> <li><a href="http://previous.delicious.com//XTaran/twitter" style="color: rgb(190, 67, 0); font-size: 17px;" title="70 bookmarks">twitter</a> </li> <li><a href="http://previous.delicious.com//XTaran/ubuntu" style="color: rgb(177, 49, 0); font-size: 19px;" title="111 bookmarks">ubuntu</a> </li> <li><a href="http://previous.delicious.com//XTaran/usb" style="color: rgb(226, 115, 0); font-size: 11px;" title="38 bookmarks">usb</a> </li> <li><a href="http://previous.delicious.com//XTaran/via%3Aermel" style="color: rgb(188, 64, 0); font-size: 17px;" title="75 bookmarks">via:ermel</a> </li> <li><a href="http://previous.delicious.com//XTaran/via%3Aesh" style="color: rgb(255, 153, 0); font-size: 7px;" title="34 bookmarks">via:esh</a> </li> <li><a href="http://previous.delicious.com//XTaran/via%3Aventy" style="color: rgb(183, 57, 0); font-size: 18px;" title="88 bookmarks">via:venty</a> </li> <li><a href="http://previous.delicious.com//XTaran/video" style="color: rgb(185, 60, 0); font-size: 18px;" title="82 bookmarks">video</a> </li> <li><a href="http://previous.delicious.com//XTaran/web" style="color: rgb(212, 96, 0); font-size: 13px;" title="44 bookmarks">web</a> </li> <li><a href="http://previous.delicious.com//XTaran/web2.0" style="color: rgb(183, 56, 0); font-size: 18px;" title="90 bookmarks">web2.0</a> </li> <li><a href="http://previous.delicious.com//XTaran/webcomic" style="color: rgb(187, 63, 0); font-size: 17px;" title="77 bookmarks">webcomic</a> </li> <li><a href="http://previous.delicious.com//XTaran/webdev" style="color: rgb(230, 120, 0); font-size: 10px;" title="37 bookmarks">webdev</a> </li> <li><a href="http://previous.delicious.com//XTaran/wiki" style="color: rgb(226, 115, 0); font-size: 11px;" title="38 bookmarks">wiki</a> </li> <li><a href="http://previous.delicious.com//XTaran/wiki-article" style="color: rgb(184, 58, 0); font-size: 18px;" title="85 bookmarks">wiki-article</a> </li> <li><a href="http://previous.delicious.com//XTaran/wiki-page" style="color: rgb(180, 53, 0); font-size: 18px;" title="99 bookmarks">wiki-page</a> </li> <li><a href="http://previous.delicious.com//XTaran/wikipedia" style="color: rgb(191, 68, 0); font-size: 17px;" title="68 bookmarks">wikipedia</a> </li> <li><a href="http://previous.delicious.com//XTaran/windows" style="color: rgb(216, 101, 0); font-size: 13px;" title="42 bookmarks">windows</a> </li> <li><a href="http://previous.delicious.com//XTaran/wnpp" style="color: rgb(211, 94, 0); font-size: 14px;" title="45 bookmarks">wnpp</a> </li> <li><a href="http://previous.delicious.com//XTaran/youtube" style="color: rgb(201, 81, 0); font-size: 15px;" title="53 bookmarks">youtube</a> </li> <li><a href="http://previous.delicious.com//XTaran/z%C3%BCrich" style="color: rgb(186, 60, 0); font-size: 17px;" title="81 bookmarks">zürich</a> </li> </ul></div>
+
+</div>
+
+<hr>
+
+  </div>
+</div><!-- middlepane -->
+
+<!-- ********************************************************************** -->
+
+<div id="rightpane">
+  <div class="rightpane">
+
+<img src="xtaran1.3t.png" alt="Hackergotchi of Axel Beckert" title="Hackergotchi of Axel Beckert" style="margin-left: -18px; margin-right: -36px; margin-bottom: -8px;" align="right">
+
+<h1><a name="about">About...</a></h1>
+
+<p>
+This is the <a href="http://en.wikipedia.org/wiki/Weblog" class="wiki">blog or weblog</a> of <a href="http://noone.org/abe/" rel="me"><b>Axel
+Stefan Beckert</b></a> (aka <b>abe</b> or <b>XTaran</b>) who thought,
+he would <a href="http://noone.org/blog/English/Computer/Web/Blosxom/A%20new%20toy.html">never
+start blogging</a>... (He also once thought, that there is no reason
+to switch to this new ugly Netscape thing because Mosaïc works
+fine. That was about 1996.)  Well, times change...
+
+</p><p>
+
+He was born 1975 at <a href="http://www.villingen-schwenningen.de/" class="ext">Villingen-Schwenningen</a>, made his <a class="wiki" href="http://en.wikipedia.org/wiki/Abitur">Abitur</a> at <a class="ext" href="http://www.schwaebischhall.de/">Schwäbisch
+Hall</a>, studied <a href="http://www.cs.uni-sb.de/" class="ext">Computer Science</a> with minor Biology at <a class="ext" href="http://www.uni-saarland.de/">University of Saarland</a> at <a class="ext" href="http://www.saarbruecken.de/">Saarbrücken</a>
+(<a href="http://en.wikipedia.org/wiki/Germany" class="wiki">Germany</a>) and now lives in <a href="http://www.stadt-zuerich.ch/" class="ext">Zürich</a> (<a href="http://en.wikipedia.org/wiki/Switzerland" class="wiki">Switzerland</a>), working at the <a href="http://www.phys.ethz.ch/phys/dep/dienste/techbetr/informatik" class="uni">IT Support Group</a> (ISG) of the <a href="http://www.phys.ethz.ch/" class="ext">Departement of Physics</a> at
+<a href="http://www.ethz.ch/" class="ext">ETH Zurich</a>.
+
+</p><p>
+
+Links to internal pages are <span class="BLI">orange</span>, links to
+related pages are <span class="BLU">blue</span>, links to external
+resources are <span class="BLE">green</span> and links to <a href="http://www.wikipedia.org/" class="ext">Wikipedia</a> articles,
+<a href="http://www.imdb.com/" class="ext">Internet Movie Database</a>
+(IMDb) entries or similar resources are <span class="BLW">bordeaux</span>. Times are <acronym title="Central
+European Time">CET</acronym> respective <acronym title="Central
+European Summer Time">CEST</acronym> (which means <acronym title="Greenwich Mean Time">GMT</acronym> +0100 respective +0200).
+
+</p>
+
+<hr>
+
+<h2>RSS Feeds</h2>
+
+<ul>
+  <li><a href="http://noone.org/blog/index.rss">All postings</a></li>
+  <li><a href="http://noone.org/blog/English/Computer/Shell/index.rss">This category only</a></li>
+  <li><a href="http://noone.org/blog/Deutsch/index.rss">German written postings</a></li>
+  <li><a href="http://noone.org/blog/English/index.rss">English written postings</a></li>
+</ul>
+
+<hr>
+
+<h2>Identity Archipelago</h2>
+
+<ul>
+<li><a href="http://www.phys.ethz.ch/%7Eabe/" rel="me">ETH Zürich</a></li>
+<li><a href="http://fsinfo.noone.org/%7Eabe/" rel="me">ex-fsinfo</a></li>
+<li><a href="http://people.debian.org/%7Eabe/" rel="me">Debian</a></li>
+<li><a href="http://www.symlink.ch/users.pl?nick=XTaran" rel="me" class="uni">Symlink</a></li>
+<li><a href="http://slashdot.org/%7EXTaran/" rel="me">/.</a></li>
+<li><a href="http://www.ohloh.net/accounts/xtaran" rel="me" class="ext">Ohloh</a></li>
+<li><a href="http://sourceforge.net/users/xtaran/" rel="me" class="ext">SourceForge</a></li>
+<li><a href="http://launchpad.net/%7Extaran/" rel="me" class="ext">Launchpad</a></li>
+<li><a href="https://metacpan.org/author/ABE" rel="me">CPAN</a></li>
+<li>Wikipedia: <a href="http://de.wikipedia.org/wiki/Benutzer:XTaran" rel="me">de</a>
+               <a href="http://en.wikipedia.org/wiki/User:XTaran" rel="me">en</a></li>
+<li><a href="http://del.icio.us/XTaran" rel="me">Del.icio.us</a></li>
+<li><a href="http://identi.ca/xtaran" rel="me">Identi.ca</a></li>
+<li><a href="http://twitter.com/XTaran" rel="me">Twitter</a></li>
+<li><a href="http://technorati.com/people/technorati/XTaran" rel="me" class="ext">Technorati</a></li>
+<li><a href="http://alpha.libre.fm/user/xtaran" rel="me">Libre.fm</a></li>
+<li><a href="http://www.last.fm/user/XTaran" rel="me">Last.fm</a></li>
+<li><a href="https://www.dopplr.com/traveller/XTaran" rel="me">Dopplr</a></li>
+<li><a href="http://friendfeed.com/xtaran" rel="me">FriendFeed</a></li>
+</ul>
+
+<hr>
+
+<h2><a href="http://noone.org/gallery/">Picture Gallery</a></h2>
+
+<hr>
+
+<h2>Button Futility</h2>
+
+<div id="buttons">
+
+<a href="http://validator.w3.org/check?uri=referer" class="ext"><img src="valid-xhtml.png" alt="Valid XHTML" align="middle" border="0" height="15" width="80"></a>
+<a href="http://jigsaw.w3.org/css-validator/check/referer" class="ext"><img src="valid-css.png" alt="Valid CSS" align="middle" border="0" height="15" width="80"></a><br>
+
+<a class="ext" href="http://feedvalidator.org/check.cgi?url=http%3A%2F%2Fnoone.org%2Fblog%2Findex.rss"><img src="valid-rss.png" alt="Valid RSS" align="middle" border="0" height="15" width="80"></a>
+<a class="ext" href="http://www.anybrowser.org/campaign/"><img src="any-browser.png" alt="Any Browser" align="middle" border="0" height="15" width="80"></a><br>
+
+<!--
+
+<a class="ext" href=""><img src="/static/buttons/.png" width="80" alt="" height="15" border="0" align="middle" /></a>
+<a class="ext" href=""><img src="/static/buttons/.png" width="80" alt="" height="15" border="0" align="middle" /></a><br />
+
+-->
+
+<a class="ext" href="http://geourl.org/near?p=http://noone.org/blog" title="check out my neighbors in meatspace"><img src="geourl-tiles.png" alt="GeoURL" align="middle" border="0" height="15" width="80"></a><br>
+
+
+<a rel="license" class="ext" href="http://creativecommons.org/licenses/by-sa/3.0/de/"><img src="cc-license_80x15.png" alt="This content is licensed under a Creative Commons License (SA 3.0 DE). Some rights reserved." title="This content is licensed under a Creative Commons License (SA 3.0 DE). Some rights reserved." align="middle" border="0" height="15" width="80"></a>
+<a class="ext" href="http://www.catb.org/hacker-emblem/"><img src="hacker.png" alt="Hacker Emblem" align="middle" border="0" height="15" width="80"></a><br>
+
+<a class="ext" href="http://www.getfirefox.com/"><img src="get_firefox_80x15.png" alt="Get Mozilla Firefox!" align="middle" border="0" height="15" width="80"></a>
+<a class="ext" href="http://www.kernel.org/"><img src="powered_linux_80x15_2.png" alt="Powered by Linux!" align="middle" border="0" height="15" width="80"></a><br>
+
+<a class="ext" href="http://www.emacswiki.org/"><img src="gnu-emacs.png" alt="Typed with GNU Emacs" align="middle" border="0" height="15" width="80"></a>
+<a class="ext" href="http://tuxmobil.org/"><img src="tuxmobil_sticker_small.png" alt="Listed at Tux Mobil" align="middle" border="0" height="15" width="80"></a><br>
+
+<a class="ext" href="http://gmpg.org/xfn"><img src="xfn-btn.png" alt="XFN Friendly" align="middle" border="0" height="15" width="80"></a>
+<a class="ext" href="http://kalsey.com/tools/buttonmaker/"><img src="button-maker.png" alt="Button Maker" align="middle" border="0" height="15" width="80"></a><br>
+
+<!--
+<span id="bccount"></span><script type="text/javascript" src="http://track.blogcounter.de/js.php?user=abe&amp;style=1"></script><noscript><a class="ext" href="http://www.blogcounter.de/"><img border="0" width="80" height="15" alt="Z&auml;hler von BlogCounter.de" src="http://track.blogcounter.de/log.php?id=abe" align="middle" /></a></noscript>
+-->
+
+<!--
+<a class="ext" href="http://pr.blogflux.com/"><img src="http://pr.blogflux.com/pr.php" width="80" alt="Free Google Page Rank Checker (that either doesn't work at the moment or you don't see images in general, if you see this. ;-)" height="15" border="0" align="middle" title="Google PageRank via BlogFlux.com" /></a>
+<a class="ext" href="http://blogstats.de/index.php?url=http://noone.org/blog" title="Meine Linksph&auml;re"><img src="http://blogstats.de/images/blogstats_mini_80x15.gif" width="80" height="15" border="0" alt="Blogstats" /></a><br />
+-->
+
+<!-- <img src="/static/buttons/is-futile.png" width="80" alt="is futile" height="15" border="0" align="middle" /><br /> -->
+
+</div><!-- buttons -->
+
+</div><div class="rightpane">
+
+<h1>Blogroll</h1>
+
+<h2 title="I say &quot;not&quot;.">Blog or not?</h2>
+
+<ul>
+<li><a class="uni" href="http://www.symlink.ch/" title="[German written]">Symlink</a></li>
+<li><a class="ext" href="http://slashdot.org/">Slashdot</a></li>
+<li><a class="ext" href="http://www.bluephod.net/">Bluephod</a> (RIP)</li>
+</ul>
+
+<hr>
+
+<h2>People I know personally</h2>
+
+<ul>
+<li><a class="ext" href="http://blogs.turmzimmer.net/" title="Andreas Barth" rel="acquaintance met colleague">aba</a></li>
+<li><a class="ext" href="http://blog.alphascorpii.net/" title="L'enfer, c'est les autres" rel="friend met colleague muse">alphascorpii</a></li>
+<li><a class="ext" href="http://www.livejournal.com/users/amayita/" title="The girl named after a web browser" rel="acquaintance met colleague">Amaya</a></li>
+<li><a class="ext" href="http://blog.crash-override.net/" title="The TechSucks TechBlog [German written]" rel="acquaintance met colleague">blindcoder</a></li>
+<li><a class="ext" href="http://www.flexserv.de/blog" title="Daniel J. Priem" rel="acquaintance met colleague">codebreaker</a></li>
+<li><a class="ext" href="http://coffea.linux-geeks.de/" title="[German written]" rel="acquaintance met colleague">coffea</a> (sirio &amp; piz)</li>
+<li><a class="ext" href="http://daduke.org/" title="Christian Herzog" rel="acquaintance met colleague daduke">daduke</a></li>
+<li><a class="ext" href="http://danielkgebhart.net/" title="daniel k. gebhart: online journal — live und direkt" rel="acquaintance met colleague">dkg</a> <small>(<a class="ext" href="http://www.flickrz.info/" title="flickr celeb interviews">flickrz</a>, <a class="ext" href="http://photohacks.twoday.net/" title="photo hacks [German written]">photo hacks</a>, <a class="ext" href="http://www.fotex.at/" title="Fotex - Fotografie &amp; Text aus Leidenschaft [German written]">fotex</a>, <a class="ext" href="http://moday.at/dkg82/main" title="daniel k. gebhart: moblog">moblog</a>)</small></li>
+<li><a class="ext" href="http://www-user.tu-chemnitz.de/%7Eanschu/tag.php" title="{What made my day...} [German written]" rel="friend met colleague">drosera</a></li>
+<li><a class="ext" href="http://blog.jpru.de/" title="Jürgen P. R. Unger — another boring blog [German written]" rel="acquaintance met colleague">Dwalin</a></li>
+<li><a class="ext" href="http://blog.addict.de/" title="dyfustifications — Das britzelianische Weltbild [German written]" rel="friend met colleague">dyfa</a></li>
+<li><a class="ext" href="http://epe.at/blog/" title="wie nenn' ich das jetzt? [German written]" rel="friend met colleague muse">epic</a></li>
+<li><a class="ext" href="http://www.formorer.de/blogs/" title="formorers personal blog [German written]" rel="acquaintance met colleague">formorer</a></li>
+<li><a class="ext" href="http://fukami.vakuum.net/" title="The Turkey Curse" rel="acquaintance met colleague">fukami</a></li>
+<li><a class="ext" href="http://www.ganneff.de/blog" title="Ganneffs little Blog" rel="acquaintance met colleague">Ganneff</a></li>
+<li><a class="ext" href="http://gonzo.dicp.de/%7Ehe/blog/" title="Marc's blog — ME TOO !!!1" rel="acquaintance met colleague">HE</a></li>
+<li><a class="ext" href="http://www.feyrer.de/NetBSD/blog.html" title="hubertf's NetBSD Blog" rel="acquaintance met colleague">hubertf</a></li>
+<li><a class="ext" href="http://www.hilluzination.de/" title="Hilluzinationen [German written]" rel="acquaintance met colleague">hillu</a></li>
+<li><a class="ext" href="http://blog.vodkamelone.de/" title="ixs' Vodkamelone — rants and raves... [German written]" rel="acquaintance met colleague">ixs</a></li>
+<li><a class="ext" href="http://www.lithe.de/blog/" title="Weblog von Jan Niklas Fingerle [German written]" rel="friend met colleague">Jan Niklas</a></li>
+<li><a class="ext" href="http://www.infodrom.org/%7Ejoey/log/" title="Joey's Logbook" rel="friend met colleague">Joey</a></li>
+<li><a class="ext" href="http://maol.ch/" title="maol symbolisch [German written]" rel="friend met colleague">maol</a></li>
+<!-- <li><a class="ext" href="http://bob.hentges.lu/blog/" title="/home/bob/" rel="friend met colleague">Maradong</a></li> -->
+<li><a class="ext" href="http://bob.hentges.lu/blog/" title="Journal of maradong" rel="friend met colleague muse">Maradong</a>†</li>
+<li><a class="ext" href="http://www.df7cb.de/blog/" title="Christoph Berg" rel="friend met colleague muse">Myon</a></li>
+<li><a class="ext" href="http://nion.modprobe.de/blog/" title="nion's blog — the daily $(prefix)/bin/fortune" rel="friend met colleague">nion</a></li>
+<li><a class="ext" href="http://www.inittab.de/blog" title="Norbert Tretkowski" rel="friend met colleague">nobse</a></li>
+<li><a class="ext" href="http://tri-ceps.blogspot.com/" title="triky Concepts" rel="acquaintance met colleague">Olaf Buddenhagen</a></li>
+<li><a class="ext" href="http://www.kubieziel.de/blog/" title="Qbi's Weblog — Gedanken Ã¼ber mich, die Welt und noch viel mehr [German written]" rel="acquaintance met colleague">Qbi</a></li>
+<li><a class="ext" href="http://rhonda.deb.at/blog" title="Rhonda's Blog" rel="friend met colleague">Alfie</a></li>
+<li><a class="ext" href="http://blog.rince.de/" title="Der Zauberer mit dem Hut in der groÃŸen weiten Welt — Ein Zauberer auf der Suche [German written]" rel="acquaintance met colleague">Rince</a></li>
+<li><a class="ext" href="http://www.fundierteshalbwissen.de/blog/" title="Fundiertes Halbwissen — Einfach nix verstehen [German written]" rel="friend met colleague">roquas</a></li>
+<li><a class="ext" href="http://reports.progn.org/cgi-bin/blosxom" title="News from RenÃ© van Bevern — The Not-Blog from RvB ;-)" rel="friend met colleague">RvB</a></li>
+<li>Die <a class="ext" href="http://www.0x1b.ch/blog/" title="0x1b — ESCAPE [German written]" rel="acquaintance met colleague">RUBIs</a></li>
+<li><a class="uni" href="http://www.schlabonski.de/index.php" title="Willkommen in Schlabonskis Welt! ... only life is worse ... [German written]" rel="friend met colleague">Schlabonski</a><!-- <span style="cursor:help; font-weight: bold;" title="Not really a classic blog, but can be understood as such. *eg*">*</span> --></li>
+<li><a class="ext" href="http://www.sebastian-kirsch.org/moebius/blog/" title="Sebastian Kirsch: Blog" rel="friend met colleague muse">Sebastian Kirsch</a></li>
+<li><a class="ext" href="http://blogmal.42.org/" title="Sec, blogmal! [German written]" rel="acquaintance met colleague">Sec</a></li>
+<li><a class="ext" href="http://blog.schmehl.info/" title="Tolimars blog" rel="friend met colleague">Tolimar</a></li>
+<li><a class="ext" href="http://www.sozial-inkompetent.de/" title="sozial-inkompetent.de — wo der gesunde Menschenverstand versagt... [German written]" rel="friend met">Treibholz</a></li>
+<li><a class="ext" href="gopher://gopher.semmel.ch/11/blog" title="Ventilators Gopher-Blog [German written]" rel="friend met colleague muse">Ventilator</a> (<a href="http://www.semmel.ch/podcast/" title="Ventys Podcast" class="ext">Podcast</a>)</li>
+<li><a class="ext" href="http://blog.zobel.ftbfs.de/" title="zobel's blog" rel="friend met colleague">zobel</a></li>
+<li><a class="ext" href="http://blog.zugschlus.de/" title="Zugschlusbeobachtungen — Das persÃ¶nliche Blog von Marc Haber [German written]" rel="acquaintance met colleague">Zugschlus</a></li>
+<!--
+<li><a class="ext" href="" title=" [German written]" rel="acquaintance met colleague"></a></li>
+-->
+</ul>
+
+<hr>
+
+<h2>Other blogs I like or read</h2>
+
+<ul>
+<li><a class="ext" href="http://www.bildblog.de/" title="Notizen Ã¼ber eine groÃŸe deutsche Boulevardzeitung [German written]">BILDblog</a></li>
+<li>The other <a class="ext" href="http://lusan.id.au/%7Enikolai/blog/" title="Blogging is futile — The futility continues">Blogging is futile</a><span style="cursor: help; font-weight: bold;" title="Like it because of the name. ;-)">*</span></li>
+<li><a class="ext" href="http://www.blogwiese.ch/" title="Erlebnisse und sprachliche Beobachtungen als Deutscher in der Schweiz [German written]" rel="muse">Blogwiese</a></li>
+<li><a href="http://bluephod.blogspot.com/" class="ext" title="[German written]" rel="acquaintance colleague">Bluephods Katzenblog</a></li>
+<li><a class="ext" href="http://blog.denkmetho.de/" title="denkmetho.de ... Gedanken ungebremst [German written]" rel="acquaintance colleague neighbor">bebal</a><a href="http://geourl.org/near?p=http://noone.org/blog" style="cursor: help; font-weight: bold;" title="Das Blog um die Ecke laut GeoURL. ;-)">*</a></li>
+<li><a class="ext" href="http://debaday.debian.net/" title="One Debian Package a Day">debaday</a></li>
+<li><a class="ext" href="http://douglas.nerad.org/journal/" title="douglas.nerad" rel="acquaintance colleague">douglas.nerad</a></li>
+<li><a class="ext" href="http://blog.fefe.de/" title="Fefe's [sic!] Blog [German written]" rel="colleague muse">Fefe</a></li>
+<li><a class="ext" href="http://gez.pandemonium.de/" title="Spass mit der GEZ — Das Weblog eines Nicht-GEZ-Pflichtigen [German written]" rel="muse">GEZ Blog</a></li>
+<li><a class="ext" href="http://blog.koehntopp.de/" title="Die wunderbare Welt von Isotopp [German written]" rel="colleague">Isotopp</a></li>
+<li><a class="ext" href="http://www.livejournal.com/users/jwz/" title="Jamie Zawinski" rel="colleague muse">jwz</a></li>
+<li><a class="ext" href="http://www.industrial-technology-and-witchcraft.de/" title="Industrial, Technology &amp; Witchcraft [German written]">IT&amp;W</a></li>
+<li><a class="ext" href="http://google-blog.dirson.com/" title="New Google Blog">New Google Blog</a></li>
+<li><a class="ext" href="http://nodomain.cc/" title="there are 10 types of people: those who understand binary and those who don't [German written]">nodomain.cc</a></li>
+<li><a class="ext" href="http://nostromo.joeh.org/blog/" title="nostromos bLog — bLog means boring-Log" rel="acquaintance">nostromo</a></li>
+<li><a class="ext" href="http://journal.puredew.com/" title="PureDew - Pure Thushara" rel="acquaintance">PureDew</a></li>
+<li><a class="ext" href="http://ookee.com/linkblog/" title="OOKEE.com - a linkblog and such">OOKEE.com</a></li>
+<li><a class="ext" href="http://www.rundfunkgebuehrenzahler.de/" title="Schon abGEZockt worden? [German written, more news than blog]" rel="muse">RundfunkgebÃ¼hrenzahler.de</a></li>
+<li><a class="ext" href="http://www.schneier.com/blog/" title="Schneier on Security" rel="muse">Schneier on Security</a></li>
+<li><a class="ext" href="http://ivy.antville.org/" title="Daily Ivy [German written]" rel="acquaintance muse">Sven K.</a> (Daily Ivy)</li>
+<!--
+<li><a class="ext" href="http://poocs.net/">poocs.net</a> / 
+    <a class="ext" href="http://poocs.de/" title="[German written]">poocs.de</a></li>
+-->
+</ul>
+
+<hr>
+
+<h2>Independent News</h2>
+
+<ul>
+<li><a class="ext" href="http://de.indymedia.org/" title="Indymedia Deutschland [German written]">Indymedia Deutschland</a> </li>
+<li><a class="ext" href="http://www.taz.de/" title="die tageszeitung [German written]; Ich lese die Toter-Baum-Edition im Abo. ;-)">taz — die tageszeitung</a></li>
+</ul>
+
+<hr>
+
+<h2>Interesting <a href="http://www.planetplanet.org/" class="ext">Planets</a></h2>
+
+<ul>
+<li><a class="ext" href="http://www.planetapache.org/">Planet Apache</a></li>
+<li><a class="ext" href="http://people.bsdplanet.net/"><acronym title="Berkeley System Distribution">BSD</acronym> Planet</a></li>
+<li><a class="uni" href="http://planet.debian.org/">Planet Debian</a> (<a href="http://people.debian.org/%7Enomeata/planet-int/" class="uni">International</a>, <a href="http://people.debian.org/%7Ejoeyh/tmp/upstream.planet.debian.org/" class="ext">Upstream</a>)</li>
+<li><a class="ext" href="http://planet.debianforum.de/">Planet Debianforum</a></li>
+<li><a class="ext" href="http://planet.mozilla.org/">Planet Mozilla</a></li>
+<li><a class="ext" href="http://planet.mozillazine.org/">MozillaZine feedHouse</a></li>
+<li><a class="ext" href="http://planet.perl.org/">Planet Perl</a></li>
+<li><a class="ext" href="http://planetruby.0x42.net/">Planet Ruby</a></li>
+<li><a class="ext" href="http://www.planetrubyonrails.org/">Planet Ruby on Rails</a></li>
+<li><a class="uni" href="http://planet.symlink.ch/">Planet Symlink</a></li>
+<li><a class="ext" href="http://planet.ubuntulinux.org/">Planet Ubuntu</a></li>
+</ul>
+
+<hr>
+
+<h2>Web comics I like and read</h2>
+
+<ul>
+<li><a class="ext" href="http://www.questionablecontent.net/">Questionable Content</a></li>
+<li><a class="ext" href="http://www.ozyandmillie.org/">Ozy and Millie</a></li>
+<li><a class="ext" href="http://www.wapsisquare.com/">Wapsi's Square</a></li>
+<li><a class="ext" href="http://www.kevinandkell.com/">Kevin &amp; Kell</a></li>
+<li><a class="ext" href="http://www.sinfest.net/">Sinfest</a></li>
+
+<li><a class="ext" href="http://www.userfriendly.org/">User Friendly</a></li>
+<li><a class="ext" href="http://xkcd.com/">XKCD</a></li>
+<li><a class="ext" href="http://geekz.co.uk/lovesraymond">Everybody loves Eric Raymond</a></li>
+<li><a class="ext" href="http://www.commissionedcomic.com/">Commissioned Comic</a></li>
+<li><a class="ext" href="http://www.phdcomics.com/">Piled Higher and Deeper</a></li>
+<li><a class="ext" href="http://www.joyoftech.com/joyoftech/">Joy of Tech</a></li>
+<li><a class="ext" href="http://www.ctrlaltdel-online.com/index.php?t=archives&amp;date=last">Ctrl+Alt+Del</a></li>
+<li><a class="ext" href="http://www.reallifecomics.com/">Real Life Comics</a></li>
+
+<li><a class="ext" href="http://zapinspace.com/">Zap!</a></li>
+<li><a class="ext" href="http://www.zortic.com/">Zortic</a></li>
+<li><a class="ext" href="http://www.stripteasecomic.com/">Striptease Comic</a></li>
+<li><a class="ext" href="http://devilspanties.keenspot.com/">Devil's Panties</a></li>
+
+<li><a class="ext" href="http://www.dilbert.com/comics/dilbert/archive/">Dilbert</a></li>
+<li><a class="ext" href="http://www.gocomics.com/calvinandhobbes/">Calvin &amp; Hobbes</a></li>
+<li><a class="ext" href="http://www.senseless-software.de/php/garfield.php">Garfield</a> (Light)</li>
+<li><a class="ext" href="http://www.taz.de/digitaz/.tom/tomdestages" title="[German written]">©Tom Touché</a></li>
+
+<li><a class="ext" href="http://www.myextralife.com/">Extra Life</a></li>
+<li><a class="ext" href="http://www.nichtlustig.de/" title="[German written]">Nicht Lustig</a></li>
+<!-- <li><a class="ext" href="http://www.ruthe.de/strip/strip.pl">Shit Happens</a></li> -->
+<li><a class="ext" href="http://www.ruthe.de/">Shit Happens</a></li>
+
+<li><a class="ext" href="http://antwrp.gsfc.nasa.gov/apod/astropix.html">Astronomy Picture of the Day</a><span style="cursor: help; font-weight: bold;" title="Not really a web comic, but I &quot;read&quot; it the same way I read most web comics: daily...">*</span></li>
+</ul>
+
+<h2>Stalled Web comics I liked</h2>
+
+<ul>
+<li><a class="ext" href="http://www.geeksalad.net/">Geek Salad</a></li>
+<li><a class="ext" href="http://ivy.de/ivys_bar_today.html" title="[German written]">Ivys Bar</a></li>
+<li><!-- <a class="ext" href="http://www.dog-complex.com/"> -->Dog Complex<!-- </a> --> (RIP)</li>
+</ul>
+
+<hr>
+
+<h2>Blogging Software</h2>
+
+<ul>
+<li><a class="uni" href="http://blosxom.ookee.com/blog/" title="The Unofficial Blosxom User Group">The Unofficial Blosxom User Group</a></li>
+<li><a class="ext" href="http://sf.net/projects/blosxom/" title="Current Blosxom Development">Blosxom at SourceForge</a></li>
+<li><a class="ext" href="http://www.blosxonomy.com/main/" title="Blosxonomy — It's a Zen thing...">Blosxonomy</a></li>
+</ul>
+
+<h2>Blosxom Plugins I use</h2>
+
+<ul>
+<li><a href="http://www.insanum.com/downloads/BlosxomV2/rendertime.gz" class="ext">rendertime</a></li>
+<li><a href="http://noone.org/blosxom/pathbasedtagging">pathbasedtagging</a></li>
+<li><a href="http://ahab.com/code/blosxom-preview-0.8.zip" class="ext">preview</a></li>
+<li><a href="http://noone.org/blosxom/xml_ping_generic-devel">xml_ping_generic</a></li>
+<li><a href="http://www.blosxom.com/plugins/indexing/entries_index.htm" class="ext">entries_index</a></li>
+<li><a href="http://molelog.molehill.org/blomt/archives/2003/03/postgraph_01i.html" class="ext">postgraph</a></li>
+<li><a href="http://www.insanum.com/downloads/BlosxomV2/categorytree.gz" class="ext">categorytree</a></li>
+<li><a href="http://noone.org/blosxom/multcat">multcat</a></li>
+<li><a href="http://molelog.molehill.org/blox/Computers/Internet/Web/Blosxom/Calendar/" class="ext">calendar</a></li>
+<li><a href="http://blosxom.ookee.com/blosxom/plugins/v2/recententries-v0i3" class="ext">recententries</a></li>
+<li><a href="http://noone.org/blosxom/tagging">tagging</a></li>
+<li><a href="http://noone.org/blosxom/dept">dept</a></li>
+<li><a href="http://noone.org/blosxom/section-devel">section</a></li>
+<li><a href="http://fletcher.freeshell.org/wiki/FindPlugin" class="ext">find</a></li>
+<li><a href="http://molelog.molehill.org/blox/Computers/Internet/Web/Blosxom/SeeMore/" class="ext">seemore</a></li>
+<li><a href="http://fletcher.freeshell.org/wiki/AutolinkPlugin" class="ext">autolink</a></li>
+<li><a href="http://www.blosxom.com/plugins/date/date_fullname.htm" class="ext">date_fullname</a></li>
+<li><a href="http://noone.org/blosxom/date_rfc822">date_rfc822</a></li>
+<li><a href="http://alfie.ist.org/projects/blosxom/plugins/debtags" class="ext">debtags</a></li>
+<li><a href="http://my-security.net/bloxsom/directorybrowse.txt" class="ext">directorybrowse</a></li>
+<li><a href="http://www.hoso.net/%7Eyu-ji/blog/blosxom/listplugins.html" class="ext">listplugins</a></li>
+<li><a href="http://www.blosxom.com/plugins/display/readme.htm" class="ext">readme</a></li>
+<li><a href="http://exo.org.uk/code/storytitle/" class="ext">storytitle</a></li>
+<li><a href="http://adrian.pygmysoftware.com/blog/blosxom/syndicated/" class="ext">syndicated</a></li>
+<li><a href="http://noone.org/blosxom/acronyms">acronyms</a></li>
+<li><a href="http://noone.org/blosxom/comments_antispam">comments_antispam</a></li>
+<li><a href="http://daringfireball.net/projects/smartypants/" class="ext">SmartyPants</a></li>
+<li><a href="http://blosxom.ookee.com/blosxom/plugins/v2/strip_unix_comments-v1i0" class="ext">strip_unix_comments</a></li>
+<li><a href="http://jclark.org/weblog/WebDev/Blosxom/plugins/moreentries" class="ext">moreentries</a></li></ul>
+
+
+</div><div class="rightpane">
+
+<h1>Bedside Reading</h1>
+
+<h2>Just read</h2>
+
+<ul>
+  <li>Bastian Sick: Der Dativ ist dem Genitiv sein Tod (Teile 1-3)</li>
+  <li>Neil Gaiman and Terry Pratchett: Good Omens (borrowed from Ermel)</li>
+</ul>
+
+<h2>Currently Reading</h2>
+
+<ul>
+  <li>Douglas R. Hofstadter: GÃ¶del, Escher, Bach</li>
+  <li>Neil Gaiman: Keine Panik (borrowed from Ermel)</li>
+</ul>
+
+<h2>Yet to read</h2>
+
+<ul>
+  <li>Neil Stephenson: Cryptonomicon (borrowed from Ermel)</li>
+</ul>
+
+<h2>Always a good snack</h2>
+
+<ul>
+  <li>Wolfgang Stoffels: Lokomotivbau und Dampftechnik (borrowed from Ermel)</li>
+  <li>Beverly Cole: Trains — The Early Years (getty images)</li>
+</ul>
+
+<h2>Postponed</h2>
+
+<ul>
+  <li>Jochachim Fernau: Hallejua (borrowed from esh)</li>
+  <li><a href="http://www.bookcrossing.com/journal/2701847" class="uni">Dan Brown: The Da Vinci Code</a> (via BookCrossing)</li>
+</ul>
+
+  </div>
+  <div class="rightpane">
+
+<h1>External News Feeds</h1>
+
+<h2><a href="http://www.symlink.ch/" class="uni">Symlink</a></h2>
+
+<ul>
+<li><a href="http://www.symlink.ch/2012/08/09/blogstreik/" title="Einige werden sich gefragt haben, warum hier so gar nichts passiert. Nun, ich (also der Venty) bin im Blogstreik! Bisher gabs zwei Gründe, warum ich streikte. Einerseits war das WordPress Admininterface unbenutzbar, wenn man ein dunkles GTK-Theme benutzt mit Firefox. Ich hatte da jeweils weissen Text auf weissen Grund, was etwas schwer lesbar ist. Dank [â€¦]" class="uni">Blogstreik!</a></li>
+<li><a href="http://www.symlink.ch/2012/03/24/in-der-brauerei-feldhof-mit-dem-lugs-treff-spezial/" title="Diese Woche, genauer gesagt gestern, besuchte LUGS im Spezial-Treffzustand (*) die Brauerei, bzw. das Restaurant Feldhof. Kurz vorweg: Die Bedienung war sehr freundlich und schnell. Alles war pazifi-complete! Ich bestellte eine Rüebli-Süsskartoffelsuppe als Vorspeise welche ein tolles Geschmackserlebnis darstellte und ein sehr feines Cordonbleu mit Bergkäse- Rohschinkenfüllung und Pommes-Frittes als Hauptgang. (Theoretisch gäbe es vom [â€¦]" class="uni">In der Brauerei Feldhof mit dem LUGS Treff â€“ Spezial</a></li>
+<li><a href="http://www.symlink.ch/2012/03/20/happy-birthday-gnu-screen/" title="GNU Screen wird gemäss diesem Usenet-Posting (via Fefe) heute beeindruckende 25 Jahre alt. Und nein, es ist nicht tot. Auf Bugfixes mit Patches wird auf der Mailingliste sogar erschreckend flott reagiert. :-)" class="uni">Happy Birthday GNU Screen!</a></li>
+<li><a href="http://www.symlink.ch/2012/03/02/easterhegg-2012-rmll-lsm-2012-und-debconf13-in-der-schweiz/" title="Nachdem die FUDCon (Fedora Users and Developers Conference) 2010 im Rahmen des FrOSCamps zum ersten Mal in der Schweiz stattfand, zieht es dieses und kommendes Jahr gleich drei grosse Events aus der Free-Software- und Hacker-Szene zum ersten Mal in die Schweiz. Easterhegg 2012 Den Anfang macht das Easterhegg 2012 (6.-9. April 2012, Ostern) in Basel. [â€¦]" class="uni">Easterhegg 2012, RMLL/LSM 2012 und DebConf13 in der Schweiz</a></li>
+<li><a href="http://www.symlink.ch/2012/02/25/lugs-geht-essen/" title="Am letzten LUGS-Treff waren wir in der Brasserie Federal am Zürcher HB, diese Entscheidung fiel nach viel Wahlfälscherei und einem besetzten La Baracca. Das Essen war gut und laut (also, die Umgebung)! Allerdings war es nur fast pazifi-complete, unser reservierter Tisch war bei unserer Ankunft immernoch belagert und wir wurden vom einen Tisch zum anderen [â€¦]" class="uni">LUGS geht essen!</a></li>
+<li><a href="http://www.symlink.ch/2011/11/25/symlink-ist-am-linuxday/" title="Am Samstag, 26. November 2011, ist Symlink wieder mit einem Stand am Linuxday in Dornbirn. Komm vorbei und sag Hallo! Neben XTaran und mir, den beiden Oberwandernieren (bekannt aus Hackerfunk und Deimhart) werden wir auch unseren neuen Mitstreiter Pazifi vorstellen. Und falls jemand sich richtig gut mit WordPress auskennt hätten wir da noch die eine [â€¦]" class="uni">Symlink ist am Linuxday!</a></li>
+<li><a href="http://www.symlink.ch/2011/11/13/gruss-aus-den-ferien/" title="Hallo zusammen. Keine Sorge, weder wir noch Symlink ist tot, nur etwas Beta. XTaran und ich waren zusammen mit dem Wohnmobil in den Ferien und dabei kreuz und quer durch Deutschland und Dänemark getouret. Dabei hatten wir meistens nur langsames (GPRS/EDGE) oder gar kein Internet, darum gabs hier auch keine News. Bald sind wir aber [â€¦]" class="uni">Gruss aus den Ferien</a></li>
+<li><a href="http://www.symlink.ch/2011/10/08/der-ccc-seziert-den-bundestrojaner/" title="Dank des seit Jahren geltenden Aufrufs des Chaos Computer Clubs ist es diesem nun gelungen, ein Exemplar des deutschen Bundestrojaners zu bekommen und zu sezieren. Die umfangreiche Analyse fördert offenbar haarsträubendes zu Tage. So sei der Hin-Kanal zum Trojaner komplett unverschlüsselt und die staatliche Schadsoftware könne auch weitere Programmteile übers Netz nachladen. Weitere grausige Details [â€¦]" class="uni">Der CCC seziert den Bundestrojaner</a></li>
+<li><a href="http://www.symlink.ch/2011/10/03/coveragemapper-netzabdeckung-per-crowdsourcing/" title="Man kennt das ja: Die Mobiltelefonnetzbetreiber bieten zwar oft schöne Karten ihrer Netzabdeckung an, meistens sind diese aber jedoch etwas â€œbeschönigtâ€ oder veraltet. Scott Kennedy hatte da die Idee, eigene Karten zu erstellen, ähnlich wie dies Openstreetmap tut. Dazu hat er einerseits eine kleine Android App geschrieben, die man auf sein Androidofon aus dem Market [â€¦]" class="uni">Coveragemapper â€“ Netzabdeckung per Crowdsourcing</a></li>
+<li><a href="http://www.symlink.ch/2011/09/30/hackerfunk-50-mit-anschliessendem-horertreffen/" title="Morgen Samstag, von 19:00 Uhr bis 20:00 Uhr gibts auf Radio LoRa eine weitere Folge des Hackerfunks. Dieses Mal mit einem kleinen Jubiläum, nämlich die 50. Sendung! Thematisch geht es diesmal um um Debian, Ubuntu und um einige der Derivate davon. Zu Gast bei uns im Studio dürfen wir Dirk Deimeke vom Deimhart Podcast begrüssen. [â€¦]" class="uni">Hackerfunk #50 mit anschliessendem HÃ¶rertreffen</a></li>
+
+</ul>
+
+<h2><a href="http://www.pro-linux.de/" class="ext">Pro-Linux</a></h2>
+
+<ul>
+<li><a href="http://www.pro-linux.de/news/1/20797/steam-anzahl-an-linux-spielen-vervierfacht-sich.html" title="Seit der Veröffentlichung von Steam für Linux vor einem Jahr hat sich die Zahl der Titel für Linux vervierfacht. Auch die Qualität der Titel erhöhte sich. Was allerdings immer noch fehlt, ist ein großer Hersteller." class="ext">Steam: Anzahl an Linux-Spielen vervierfacht sich</a></li>
+<li><a href="http://www.pro-linux.de/news/1/20796/open-source-beratungszentrum-nimmt-arbeit-auf.html" title="Die MFG Innovationsagentur für IT und Medien Baden-Württemberg sieht ein stetig wachsendes Interesse an Open Source und entsprechend steigenden Beratungsbedarf. Mit dem jetzt gegründeten Open Source-Beratungszentrum sollen vor allem neu gegründete und kleinere Firmen unterstützt werden." class="ext">Open Source-Beratungszentrum nimmt Arbeit auf</a></li>
+<li><a href="http://www.pro-linux.de/news/1/20794/canonical-gibt-erste-hardware-partner-fuer-ubuntu-phones-bekannt.html" title="Canonical hat zwei Partnerfirmen benannt, die Smartphones mit Ubuntu for Phones weltweit vertreiben wollen. Es handelt sich um Meizu aus China und den spanischen Hersteller bq." class="ext">Canonical gibt erste Hardware-Partner fÃ¼r Ubuntu-Phones bekannt</a></li>
+<li><a href="http://www.pro-linux.de/news/1/20795/clasen-gnome-3-nicht-von-systemd-abhaengig.html" title="Matthias Clasen hat den seit Wochen kursierenden Behauptungen, Gnome 3 würde nur noch mit Systemd funktionieren, widersprochen. Gnome 3 sei unter anderem auch auf FreeBSD und OpenBSD lauffähig." class="ext">Clasen: Gnome 3 nicht von Systemd abhÃ¤ngig</a></li>
+<li><a href="http://www.pro-linux.de/news/1/20793/linux-foundation-linux-kenntnisse-immer-mehr-gefragt.html" title="Laut dem neu herausgegebenen Job-Report 2014 der Linux Foundation ist die Nachfrage nach Linux-Kenntnissen ungebrochen wachsend und Linux-Könner werden überdurchschnittlich bezahlt." class="ext">Linux Foundation: Linux-Kenntnisse immer mehr gefragt</a></li>
+<li><a href="http://www.pro-linux.de/news/1/20791/treiberupdate-bei-nvidia.html" title="Der Grafikchiphersteller Nvidia hat überarbeitete Fassungen seiner proprietären Grafiktreiber für FreeBSD, Linux und Solaris veröffentlicht. Neu ist neben der Unterstützung diverser neuer GeForce- und Quadro-Modelle auch eine experimentelle Unterstützung von ARGB GLX in Verbindung mit Xinerama, Composite und X.org 1.15." class="ext">Treiberupdate bei Nvidia</a></li>
+<li><a href="http://www.pro-linux.de/news/1/20792/cebit-2014-osb-alliance-bietet-os-fuehrungen-an.html" title="Um die Besucher der CeBit 2014 von der Leistungsfähigkeit von freier und offener Software zu überzeugen, veranstaltet die Open Source Business Alliance Führungen durch die Messe. Insgesamt stellen um die 40 Mitglieder der Organisation auf der diesjährigen Veranstaltung aus." class="ext">Cebit 2014: OSB-Alliance bietet OS-FÃ¼hrungen an</a></li>
+<li><a href="http://www.pro-linux.de/news/1/20790/univention-corporate-server-32-1-verfuegbar.html" title="Der Bremer Open-Source-Anbieter Univention hat die erste Aktualisierung seiner Unternehmens-Linux-Distribution Univention Corporate Server (UCS) 3.2 veröffentlicht." class="ext">Univention Corporate Server 3.2-1 verfÃ¼gbar</a></li>
+<li><a href="http://www.pro-linux.de/news/1/20789/humble-indie-bundle-11-gestartet.html" title="Mit dem Â»Humble Indie Bundle 11Â« sind nur vier Wochen nach der letzten Aktion ein weiteres Mal hochwertige Independent-Spiele zu einem selbst wählbaren Preis für Linux, Mac OS X und Windows erhältlich." class="ext">Humble Indie Bundle 11 gestartet</a></li>
+<li><a href="http://www.pro-linux.de/news/1/20788/kprinter-reanimiert.html" title="Mit einer Portierung der Anwendung Kprinter von KDE 3 auf die aktuelle Version der KDE-Desktopumgebung will ein Projekt der credativ GmbH das Programm wieder reanimieren, das bei der Umstellung auf KDE 4 abgeschafft worden war." class="ext">KPrinter reanimiert</a></li>
+
+</ul>
+
+<!--
+<h2><a href="http://www.bluephod.net/" class="ext">Bluephod</a></h2>
+
+<ul>
+#
+</ul>
+
+<h2><a href="http://yigg.de/" class="ext">Yigg</a></h2>
+
+<ul>
+#
+</ul>
+-->
+
+  </div><!-- blogs -->
+</div><!-- rightpane -->
+
+  <div id="foot">
+
+<a href="http://sourceforge.net/project/showfiles.php?group_id=148044"><img src="pb_blosxom.png" alt="powered by blosxom" align="right" border="0"></a>
+
+Powered by <a href="http://httpd.apache.org/" class="ext">Apache</a>,
+<a href="http://www.perl.com/" class="ext">Perl</a>, <a class="ext" href="http://www.gnu.org/"><acronym title="GNU's not UNIX">GNU</acronym></a> <a href="http://www.emacswiki.org/" class="ext">Emacs</a>, <a href="http://www.kernel.org/" class="ext">Linux</a> and <a class="ext" href="http://sourceforge.net/projects/blosxom">Blosxom 2.1.2+dev</a>.
+
+&nbsp;|&nbsp;
+
+Rendered in 0.00 seconds.
+
+<br>
+
+Design idea from and loosely based on <a class="ext" href="http://oswd.org/viewdesign.phtml?id=2109">OrangeTwo</a> from <a class="ext" href="http://oswd.org/">Open Source Web Design</a> by <a class="ext" href="http://smallpark.org/">SmallPark</a>
+
+<br>
+
+<a href="http://validator.w3.org/check?uri=referer" class="ext">Valid
+<acronym title="Extensible Hypertext MarkupÂ&nbsp;Language">XHTML</acronym></a>
+
+&nbsp;|&nbsp;
+
+<a href="http://jigsaw.w3.org/css-validator/check/referer" class="ext">Valid <acronym title="Cascading Style Sheet">CSS</acronym></a>
+
+&nbsp;|&nbsp;
+
+<a class="ext" href="http://feedvalidator.org/check.cgi?url=http%3A%2F%2Fnoone.org%2Fblog%2Findex.rss">Valid <acronym title="Rich Site Summary">RSS</acronym></a>
+
+<!--
+
+&nbsp;|&nbsp;
+
+<a class="ext"
+href="http://feedvalidator.org/check.cgi?url=http%3A%2F%2Fnoone.org%2Fblog%2Findex.atom"
+>Valid Atom</a>
+
+-->
+
+&nbsp;|&nbsp;
+
+<a href="http://www.ermel.org/handcoded/" class="uni">100% hand-coded
+<acronym title="Hypertext MarkupÂ&nbsp;Language">HTML</acronym></a>
+
+&nbsp;|&nbsp;
+
+Viewable with <a href="http://www.anybrowser.org/campaign/" class="ext">any browser</a>.
+
+<br>
+
+<a href="http://noone.org/blog/index.rss"><acronym title="Rich Site Summary">RSS</acronym>-Feed</a>
+
+&nbsp;|&nbsp;
+
+<a href="http://geourl.org/near?p=http://noone.org/blog" class="ext">Neighbors in Meatspace</a>
+
+&nbsp;|&nbsp;
+
+© 2005-2009 by <a href="http://noone.org/abe/" rel="me">Axel Beckert</a> aka XTaran
+
+<br>
+
+<!-- Creative Commons License -->
+
+This content is licensed under a <a rel="license" class="ext" href="http://creativecommons.org/licenses/by-sa/3.0/de/">Creative
+Commons License</a>. Some rights reserved.
+
+&nbsp;|&nbsp;
+
+CC SA 3.0 DE
+
+<!-- /Creative Commons License -->
+
+<!--
+
+<rdf:RDF
+  xmlns="http://web.resource.org/cc/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+
+  <Work rdf:about="">
+    <license
+      rdf:resource="http://creativecommons.org/licenses/by-sa/3.0/de/" />
+    <dc:title>Blogging is Futile</dc:title>
+    <dc:date>2005-2011</dc:date>
+    <dc:creator><Agent><dc:title>Axel Beckert</dc:title></Agent></dc:creator>
+    <dc:rights><Agent><dc:title>Axel Beckert</dc:title></Agent></dc:rights>
+    <dc:type rdf:resource="http://purl.org/dc/dcmitype/Text" />
+    <dc:source rdf:resource="http://noone.org/blog" />
+  </Work>
+
+  <License
+    rdf:about="http://creativecommons.org/licenses/by-sa/3.0/de/">
+
+    <permits rdf:resource="http://web.resource.org/cc/Reproduction" />
+    <permits rdf:resource="http://web.resource.org/cc/Distribution" />
+    <permits rdf:resource="http://web.resource.org/cc/DerivativeWorks" />
+
+    <requires rdf:resource="http://web.resource.org/cc/Notice" />
+    <requires rdf:resource="http://web.resource.org/cc/Attribution" />
+    <requires rdf:resource="http://web.resource.org/cc/ShareAlike" />
+  </License>
+</rdf:RDF>
+
+-->
+
+  </div><!-- foot -->
+</div><!-- outerbox -->
+
+
+
+
+
+
+</body>
+</html>

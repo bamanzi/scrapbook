@@ -1,0 +1,740 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xmlns:og="http://opengraphprotocol.org/schema/" xmlns:fb="http://www.facebook.com/2008/fbml" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Mounting Remote Directories With SSHFS On Ubuntu 11.10 | HowtoForge - Linux Howtos and Tutorials</title>
+<meta http-equiv="X-UA-Compatible" content="IE=8">
+
+
+<meta name="keywords" content="remote, sshfs, ubuntu, mounting, directories, local, server2, share, backup, directory, mount, public, password, mounted, network, ssh, time, pdf, registered, boot, filesystem, owned, host, sure, pair, remote share">
+<meta name="description" content="Mounting Remote Directories With SSHFS On Ubuntu 11.10">
+
+
+
+
+
+
+
+
+<meta name="verify-v1" content="zcX/aIYg9nclzOvdOVQIp3QrZq39IvEyFGwIoFl9YUQ=">
+
+<link href="https://plus.google.com/101910906051442819024" rel="author"><link href="https://plus.google.com/106734490838285450112" rel="publisher">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<!-- closes #header-->
+<!-- START: HEADER -->
+<div id="wrapper1">
+ <div id="wrapper2">
+  <div class="header" id="header">
+                                <div class="auxnav">
+                                        <ul>
+                                                                                                <li><a href="http://www.howtoforge.com/forums/register.php" title="Register">Register</a></li>
+                                                <li><a href="http://www.howtoforge.com/index.php?q=user/login" title="Login">Login</a></li>
+                                                                                                <li class="auxnavcontr"><a href="http://www.howtoforge.com/add_howto" title="Contribute">Contribute</a></li>
+                                                                                                <li class="auxnavsubs"><a href="http://www.howtoforge.com/subscription" title="Subscribe">Subscribe</a></li>
+                                                                                                <li><a href="http://www.howtoforge.com/feed.rss" title="RSS Feed">RSS</a></li>
+
+                                        </ul>
+                                </div>
+  <h1><span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span></h1>
+   <div class="headerpadding">
+         <div id="site-name"><a href="http://www.howtoforge.com/" title="Home"><img src="howtoforge_logo_trans.gif" alt="HowtoForge - Linux Howtos and Tutorials Logo" height="64" width="215"></a></div>
+    
+    
+    <ul id="primary">
+             <li><a href="http://lxer.com/" target="_top">News</a></li>
+         <li><a href="http://www.faqforge.com/" target="_top">FAQForge</a></li>
+                 <li><a href="http://www.ispconfig.org/" target="_top">ISPConfig</a></li>
+                                                 <li><a href="http://www.howtoforge.com/subscription">Subscribe</a></li>
+                                 <li><a href="http://www.howtoforge.com/add_howto">Contribute</a></li>
+         <!--<li><a href="trip_search">Search</a></li>-->
+         <li><a href="http://www.howtoforge.com/forums">Forums</a></li>
+         <li><a href="http://www.howtoforge.com/howtos">Howtos</a></li>
+     </ul>
+
+     <form action="http://www.howtoforge.com/trip_search" method="post" id="search">
+      <input placeholder="Search" size="15" value="" name="keys" id="keys" class="form-text" type="text"> <input src="search.gif" class="form-submit" type="image">
+     </form>
+    </div>
+   </div>
+<!-- END: HEADER-->
+<hr class="hide">
+    <div class="columns">
+            <div class="leftcolumn sidebar">
+        <div class="leftpadding">
+            <div class="block block-sidecontent">
+<h2>Options For This Howto</h2>
+<div class="content"><table width="140"><tbody><tr><td><ul style="list-style-image: url('pointer.gif');">
+<li><a href="http://www.howtoforge.com/forums">Free Support</a><br></li>
+<li><a target="_top" href="http://www.projektfarm.de/contact_nav.html">Paid Support</a></li>
+</ul></td></tr></tbody></table></div>
+</div><div class="block block-user">
+<h2>Navigation</h2>
+<div class="content"><div class="menu">
+<div align="right"><span id="clickexpand" style="cursor: pointer; font-size: 10px; text-decoration: underline; color: rgb(0, 51, 153); visibility: visible;">[+] Expand</span>&nbsp;<span id="clickcollapse" style="cursor: pointer; font-size: 10px; text-decoration: underline; color: rgb(0, 51, 153); visibility: visible;">[-] Collapse</span></div><ul class="nav cookie1">
+<li class="expanded"><span class="open" style="width: 12px; height: 12px; cursor: pointer; margin-left: -6px; float: left;">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://www.howtoforge.com/howtos" title="">Howtos</a>
+<ul style="display: block;">
+<li class="expanded"><span class="open" style="width: 12px; height: 12px; cursor: pointer; margin-left: -6px; float: left;">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://www.howtoforge.com/howtos/linux" title="">Linux</a>
+<ul style="display: block;">
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/linux/android">Android</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/linux/centos">CentOS</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/linux/debian">Debian</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/linux/fedora">Fedora</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/linux/kernel">Kernel</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/linux/mandriva">Mandriva</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/linux/pclinuxos">PCLinuxOS</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/linux/suse">SuSE</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/linux/ubuntu">Ubuntu</a></li>
+
+</ul>
+</li>
+<li class="expanded"><span class="open" style="width: 12px; height: 12px; cursor: pointer; margin-left: -6px; float: left;">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://www.howtoforge.com/howtos/web-server" title="">Web Server</a>
+<ul style="display: block;">
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/web-server/apache">Apache</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/web-server/cherokee">Cherokee</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/web-server/lighttpd">Lighttpd</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/web-server/nginx">nginx</a></li>
+
+</ul>
+</li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/backup">Backup</a></li>
+<li class="expanded"><span class="open" style="width: 12px; height: 12px; cursor: pointer; margin-left: -6px; float: left;">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://www.howtoforge.com/howtos/control-panels" title="">Control Panels</a>
+<ul style="display: block;">
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/control-panels/ispconfig">ISPConfig</a></li>
+
+</ul>
+</li>
+<li class="expanded"><span class="open" style="width: 12px; height: 12px; cursor: pointer; margin-left: -6px; float: left;">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://www.howtoforge.com/howtos/dns" title="">DNS</a>
+<ul style="display: block;">
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/dns/bind">BIND</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/dns/mydns">MyDNS</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/dns/powerdns">PowerDNS</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/dns/djbdns">djbdns</a></li>
+
+</ul>
+</li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/desktop">Desktop</a></li>
+<li class="expanded"><span class="open" style="width: 12px; height: 12px; cursor: pointer; margin-left: -6px; float: left;">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://www.howtoforge.com/howtos/email" title="">Email</a>
+<ul style="display: block;">
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/email/antispam-antivirus">Anti-Spam/Virus</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/email/postfix">Postfix</a></li>
+
+</ul>
+</li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/ftp">FTP</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/high-availability">High-Availability</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/monitoring">Monitoring</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/mysql">MySQL</a></li>
+<li class="expanded"><span class="open" style="width: 12px; height: 12px; cursor: pointer; margin-left: -6px; float: left;">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://www.howtoforge.com/howtos/programming" title="">Programming</a>
+<ul style="display: block;">
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/programming/c-cplusplus">C/C++</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/programming/php">PHP</a></li>
+
+</ul>
+</li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/samba">Samba</a></li>
+<li class="expanded"><span class="open" style="width: 12px; height: 12px; cursor: pointer; margin-left: -6px; float: left;">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://www.howtoforge.com/howtos/security" title="">Security</a>
+<ul style="display: block;">
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/security/antispam-antivirus">Anti-Spam/Virus</a></li>
+
+</ul>
+</li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/storage">Storage</a></li>
+<li class="expanded"><span class="open" style="width: 12px; height: 12px; cursor: pointer; margin-left: -6px; float: left;">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://www.howtoforge.com/howtos/virtualization" title="">Virtualization</a>
+<ul style="display: block;">
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/virtualization/kvm">KVM</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/virtualization/openvz">OpenVZ</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/virtualization/vmware">VMware</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/virtualization/virtualbox">VirtualBox</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/virtualization/xen">Xen</a></li>
+
+</ul>
+</li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/other">Other</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/freebsd">FreeBSD</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/howtos/commercial">Commercial</a></li>
+
+</ul>
+</li>
+<li class="collapsed"><span class="close" style="width: 12px; height: 12px; cursor: pointer; margin-left: -6px; float: left;">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://www.howtoforge.com/mini-howtos" title="">Mini-Howtos</a>
+<ul style="display: none;">
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/linux">Linux</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/apache">Apache</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/backup">Backup</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/dns">DNS</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/errors">Errors</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/ftp">FTP</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/mysql">MySQL</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/networking">Networking</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/php">PHP</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/postfix">Postfix</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/security">Security</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/sendmail">Sendmail</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/shell">Shell</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/other">Other</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/mini-howtos/ispconfig">ISPConfig</a></li>
+
+</ul>
+</li>
+<li class="leaf"><a href="http://www.howtoforge.com/forums" title="">Forums</a></li>
+<li class="collapsed"><span class="close" style="width: 12px; height: 12px; cursor: pointer; margin-left: -6px; float: left;">&nbsp;&nbsp;&nbsp;&nbsp;</span><a href="http://www.howtoforge.com/add_howto" title="">Contribute</a>
+<ul style="display: none;">
+<li class="leaf"><a href="http://www.howtoforge.com/node/add" title="">Create Content</a></li>
+
+</ul>
+</li>
+<li class="leaf"><a href="http://www.howtoforge.com/subscription" title="">Subscription</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/user" title="">Login</a></li>
+<li class="leaf"><a href="http://www.howtoforge.com/sitemap" title="">Site Map/RSS Feeds</a></li>
+
+</ul>
+</div></div>
+</div><div class="block block-user">
+<h2>User login</h2>
+<div class="content"><div class="user-login-block">
+<!-- /index.php?q=user/login -->
+  <form action="http://www.howtoforge.com/forums/login.php?do=login" method="post" onsubmit="SHA1hash(vb_login_password,vb_login_md5password,vb_login_md5password_utf)">
+
+  
+
+  <div class="user-login-block">
+
+    <div class="form-item">
+
+    <label for="edit-vb_login_username">Username:</label><br>
+
+    <input maxlength="64" class="form-text" name="vb_login_username" id="navbar_username" size="15" value="" type="text">
+
+    </div>
+
+    <div class="form-item">
+
+    <label for="edit-vb_login_password">Password:</label><br>
+
+    <input class="form-text" maxlength="64" name="vb_login_password" id="edit-vb_login_password" size="15" value="" type="password">
+
+    </div>
+
+    <div class="form-item">
+
+    <label for="cb_cookieuser_navbar"><input name="cookieuser" value="1" tabindex="103" id="cb_cookieuser_navbar" accesskey="c" type="checkbox">Remember Me?</label>
+
+    </div>
+
+    <input class="form-submit" name="op" value="Log in" type="submit">
+
+  </div>
+
+  <input name="s" value="" type="hidden">
+	<input name="securitytoken" value="guest" type="hidden">
+
+  <input name="do" value="login" type="hidden">
+
+  <input name="forceredirect" value="1" type="hidden">
+
+  <input name="vb_login_md5password" type="hidden">
+
+  <input name="vb_login_md5password_utf" type="hidden">
+
+  <input name="url" value="/" type="hidden">
+
+  </form>
+
+<div class="item_list">
+
+  <a href="http://www.howtoforge.com/forums/register.php">Create a new account</a><br>
+
+  <a href="http://www.howtoforge.com/forums/login.php?do=lostpw">Request new password</a>
+
+</div>
+
+</div></div>
+</div><div class="block block-block">
+<h2>Facebook</h2>
+<div class="content"><iframe src="index_1.html" style="border: medium none; overflow: hidden; width: 140px; height: 180px;" allowtransparency="true" frameborder="0" scrolling="no"></iframe></div>
+</div><div class="block block-user">
+<h2>Who's online</h2>
+<div class="content">There are currently 6 users and 3828 guests online.</div>
+</div><div class="block block-vbforumblocks">
+<h2>HowtoForge Forums</h2>
+<div class="content"><div class="item-list"><ul><li><a href="http://www.howtoforge.com/forums/showthread.php?t=65015&amp;goto=newpost">nslookup my<br>domain.com showing<br>error</a>
+</li><li><a href="http://www.howtoforge.com/forums/showthread.php?t=65014&amp;goto=newpost">Moving Email Boxes<br>from Server 1 to<br>Server 2</a>
+</li><li><a href="http://www.howtoforge.com/forums/showthread.php?t=65013&amp;goto=newpost">I delete from<br>mistake<br>/etc/apache2/apach<br>e2.conf</a>
+</li><li><a href="http://www.howtoforge.com/forums/showthread.php?t=65012&amp;goto=newpost">SSl certificate<br>and email</a>
+</li><li><a href="http://www.howtoforge.com/forums/showthread.php?t=65011&amp;goto=newpost" title="SpamSnake - Ubuntu Jeos 12.04 LTS Precise Pangolin - Smart Host">SpamSnake - Ubuntu<br>Jeos 12.04 LTS<br>Precise ...</a>
+</li><li><a href="http://www.howtoforge.com/forums/showthread.php?t=65010&amp;goto=newpost">Phpmyadmin not<br>loading</a>
+</li><li><a href="http://www.howtoforge.com/forums/showthread.php?t=65009&amp;goto=newpost">Using the CentOS 6<br>instruction for<br>RHEL 6</a>
+</li><li><a href="http://www.howtoforge.com/forums/showthread.php?t=65008&amp;goto=newpost">Info</a>
+</li><li><a href="http://www.howtoforge.com/forums/showthread.php?t=65007&amp;goto=newpost">Howto view<br>websites before<br>really moving DNS</a>
+</li><li><a href="http://www.howtoforge.com/forums/showthread.php?t=65006&amp;goto=newpost">Can't receive<br>emails.</a>
+</li></ul></div></div>
+</div><div class="block block-aggregator">
+<h2>News</h2>
+<div class="content"><div class="item-list"><ul><li><a href="http://lxer.com/module/newswire/ext_link.php?rid=198798" target="_top">Displaying Upload Progress With nginx On Debian Wheezy</a>
+</li><li><a href="http://lxer.com/module/newswire/ext_link.php?rid=198766" target="_top">Starbound Releases A Major Patch, With Some Major Flaws</a>
+</li><li><a href="http://lxer.com/module/newswire/ext_link.php?rid=198772" target="_top">Okay, Google</a>
+</li><li><a href="http://lxer.com/module/newswire/ext_link.php?rid=198776" target="_top">Tiny ARM+FPGA COM tips, embedded Linux revs up</a>
+</li><li><a href="http://lxer.com/module/newswire/ext_link.php?rid=198767" target="_top">Cobalt Action-Platformer Delayed For Linux, Is Anyone Surprised?</a>
+</li><li><a href="http://lxer.com/module/newswire/ext_link.php?rid=198777" target="_top">You'll NEVER guess who's making the first Ubuntu mobes in 2014</a>
+</li><li><a href="http://lxer.com/module/newswire/ext_link.php?rid=198771" target="_top">Slackel 6.0 Beta 1 (Openbox) Screenshot Tour</a>
+</li><li><a href="http://lxer.com/module/newswire/ext_link.php?rid=198763" target="_top">FREE cloud access to IBM Power servers for Linux Developers-</a>
+</li><li><a href="http://lxer.com/module/newswire/ext_link.php?rid=198762" target="_top">Canonical announces first Ubuntu smartphone manufacturers</a>
+</li><li><a href="http://lxer.com/module/newswire/ext_link.php?rid=198761" target="_top">Short Stack: Data as a Service takes off, top OpenStack vendors jockey for position</a>
+</li></ul></div><div class="more-link"><a href="http://www.howtoforge.com/aggregator/sources/1" title="View this feed's recent news.">more</a></div></div>
+</div><div class="block block-comment">
+<h2>Recent comments</h2>
+<div class="content"><div class="item-list"><ul><li><a href="http://www.howtoforge.com/perfect-server-ubuntu-12.04-lts-apache2-bind-dovecot-ispconfig-3-p5#comment-34936">Forcing TLS for ALL FTP connections.</a><br>2 hours 23 min ago</li><li><a href="http://www.howtoforge.com/data_recovery_with_testdisk#comment-34935">With all these wonderful</a><br>1 day 22 min ago</li><li><a href="http://www.howtoforge.com/server-monitoring-with-munin-and-monit-on-debian-wheezy#comment-34934">Re: Always showing critical problem in mysql in munin</a><br>2 days 12 hours ago</li><li><a href="http://www.howtoforge.com/ubuntu_lamp_for_newbies#comment-34933">Re: XAMPP - Installation Problems.</a><br>2 days 14 hours ago</li><li><a href="http://www.howtoforge.com/perfect-server-centos-6.1-x86_64-with-nginx-ispconfig-3-p4#comment-34932">Courier 0.63 is no longer available to download from sourceforge</a><br>2 days 21 hours ago</li><li><a href="http://www.howtoforge.com/linux_lvm_p9#comment-34931">excellent tutorial that</a><br>2 days 22 hours ago</li><li><a href="http://www.howtoforge.com/the-perfect-desktop-xubuntu-12.04-p4#comment-34930">Really appreciate the work</a><br>4 days 3 hours ago</li><li><a href="http://www.howtoforge.com/how-to-install-no-ip2-on-ubuntu-12.04-lts-in-order-to-host-servers-on-a-dynamic-ip-address#comment-34929">Re: Error in your tutorial</a><br>4 days 13 hours ago</li><li><a href="http://www.howtoforge.com/how-to-install-no-ip2-on-ubuntu-12.04-lts-in-order-to-host-servers-on-a-dynamic-ip-address#comment-34928">Re: Error in your tutorial</a><br>4 days 13 hours ago</li><li><a href="http://www.howtoforge.com/how-to-set-up-software-raid1-on-a-running-system-incl-grub2-configuration-ubuntu-10.04-p4#comment-34927">&amp;quot;Failing&amp;quot ; device is not a good test method </a><br>4 days 16 hours ago</li></ul></div></div>
+</div><div class="block block-block">
+<h2>Newsletter</h2>
+<div class="content"><form method="post" action="http://newsletter.howtoforge.com/howtoforge/user/process.php" name="signup" target="_blank">
+<input name="pommo_signup" value="true" type="hidden">
+<table border="0" width="136" cellpadding="0" cellspacing="0">
+<tbody><tr>
+
+<td colspan="2">
+<b>Subscribe to HowtoForge Newsletter</b><br>
+and stay informed about our latest HOWTOs and projects.
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<input name="Email" id="email" value="enter email address" size="17" onclick="document.signup.Email.value = ''" class="form-text" type="text">
+</td>
+</tr>
+<tr>
+<td colspan="2" align="center">
+<input class="form-submit" name="Submit" value="Submit" style="margin-top: 0pt;" border="0" type="submit">
+</td>
+</tr>
+<tr>
+
+<td colspan="2">
+(To unsubscribe from our newsletter, visit this <a href="http://newsletter.howtoforge.com/howtoforge/user/login.php" target="_top">link</a>.)
+</td>
+</tr>
+</tbody></table>
+</form> </div>
+</div>          </div>
+        </div>
+            
+      <hr class="hide">
+
+      <div class="centercolumn">
+        <div class="centerpadding">
+        <div class="additional_links" align="right"><b><img src="uk_flag.gif" alt="HowtoForge - Linux Howtos in English" border="0" height="10" width="20"> English</b> | <a href="http://www.howtoforge.de/" title="HowtoForge.de - Linux-Howtos auf Deutsch"><img src="de_flag.gif" alt="HowtoForge.de - Linux-Howtos auf Deutsch" height="10" width="20"> Deutsch</a> | <a href="http://www.howtoforge.com/sitemap">Site Map/RSS Feeds</a> | <a href="http://www.howtoforge.com/advertise">Advertise</a></div>
+          <div class="main-content" id="main">
+
+<div id="adleaderboard_flex" style="width: 728px; height: 93px;" align="center"><div id="adleaderboard" style="width: 728px; height: 93px;" align="center"></div></div>
+            
+                              <div id="breadcrumbs">
+                  <div class="breadcrumb"><a href="http://www.howtoforge.com/">Home</a> » <a href="http://www.howtoforge.com/howtos" title="">Howtos</a> » <a href="http://www.howtoforge.com/howtos/linux" title="">Linux</a> » <a href="http://www.howtoforge.com/howtos/linux/ubuntu">Ubuntu</a></div> <span class="breadcrumb">  »  Mounting Remote Directories With SSHFS On Ubuntu 11.10</span>
+                </div>
+                          
+            
+
+
+                          <h1 id="title">Mounting Remote Directories With SSHFS On Ubuntu 11.10</h1>
+                                                            
+<div style="padding: 0.7em; border: 1px dashed rgb(47, 111, 171); margin: 5px; background-color: rgb(249, 249, 249); font-family: arial,verdana,sans-serif; font-size: 20px; color: rgb(0, 102, 204);"><!--Do you like HowtoForge? Please consider supporting us by <a href="/subscription">becoming a subscriber</a>.-->Want to support HowtoForge? Become a <a href="http://www.howtoforge.com/subscription">subscriber</a>!</div>
+
+            <!-- start main content -->
+            <table border="0" width="98%" cellpadding="0" cellspacing="0">
+            <tbody><tr><td>
+            <div id="content">
+            <div id="adrectanglea_flex" style="height: 253px; width: 300px; float: left; margin: 10px;"><div id="adrectanglea" style="height: 253px; width: 300px;">&nbsp;</div></div>
+<!-- begin content --><div class="node">
+
+   
+    <div class="info">Submitted by <a href="http://www.howtoforge.com/forums/member.php?u=2" title="View user profile." rel="nofollow">falko</a> (<a href="http://www.howtoforge.com/forums/private.php?do=newpm&amp;u=2" title="Contact author." rel="nofollow">Contact Author</a>) (<a href="http://www.howtoforge.com/forums" title="Forums.">Forums</a>) on Sun, 2011-12-04 22:13.<span class="taxonomy"> :: <a href="http://www.howtoforge.com/sitemap/linux/ubuntu">Ubuntu</a> | <a href="http://www.howtoforge.com/sitemap/storage">Storage</a></span></div>
+    <div class="content">
+  <div style="width: 100%; border-top: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204); padding: 4px 0pt 2px; margin-bottom: 5px; height: 27px;">
+			<ul style="list-style-type: none;">
+				<li style="width: 115px; overflow: hidden; float: left; display: inline;"><div id="___plusone_0" style="text-indent: 0pt; margin: 0pt; padding: 0pt; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px;"><iframe data-gapiattached="true" title="+1" src="index_2.html" name="I0_1392905088426" id="I0_1392905088426" vspace="0" tabindex="0" style="position: static; top: 0pt; width: 90px; margin: 0px; border-style: none; left: 0pt; visibility: visible; height: 20px;" marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe></div></li>
+				<li style="width: 180px; overflow: visible; float: left; display: inline;"><div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"><div><iframe src="index_3.html" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0" scrolling="no"></iframe><iframe src="index_4.html" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0" scrolling="no"></iframe></div></div></div><fb:like href="http://www.howtoforge.com/mounting-remote-directories-with-sshfs-on-ubuntu-11.10" send="true" layout="button_count" width="180" show_faces="false" font=""></fb:like></li>
+				<li style="width: 115px; overflow: hidden; float: left; display: inline;"><a href="http://twitter.com/share" class="twitter-share-button" data-text="Mounting Remote Directories With SSHFS On Ubuntu 11.10" data-url="http://www.howtoforge.com/mounting-remote-directories-with-sshfs-on-ubuntu-11.10" data-counturl="http://www.howtoforge.com/mounting-remote-directories-with-sshfs-on-ubuntu-11.10" data-count="horizontal" data-via="falko">Tweet</a></li>
+			</ul>
+			</div><h2>Mounting Remote Directories With SSHFS On Ubuntu 11.10 </h2>
+<div>&nbsp;</div><div id="adlinkblock" style="width: 778px; height: 18px;"></div><p>Version 1.0 <br>
+  Author: Falko Timme &lt;ft [at] falkotimme [dot] com&gt; <br>
+  <a mce_real_href="http://twitter.com/falko" href="http://twitter.com/falko" target="_top"><img mce_real_src="http://static.howtoforge.com/images/socialmedia/twitter.png" src="twitter.png" alt="" border="0" height="16px" width="16px"></a> <a mce_real_href="http://twitter.com/falko" href="http://twitter.com/falko" target="_top">Follow me on Twitter</a><br>
+Last edited 11/01/2011</p>
+<p>This tutorial explains how you can mount a directory from a remote server on the local server securely using SSHFS. SSHFS (<b>S</b>ecure  <b>SH</b>ell  <b>F</b>ile<b>S</b>ystem) is a filesystem that serves files/directories securely over SSH, and local users can use them just as if the were local files/directories. On the local computer, the remote share is mounted via FUSE (Filesystem in Userspace). I will use Ubuntu 11.10 for both the local and the remote server. </p>
+<p>I do not issue any guarantee that this will work for you!</p>
+<p>&nbsp;</p>
+<h3>1 Preliminary Note</h3>
+<p>I'm using the following two systems in this tutorial:</p>
+<ul>
+  <li>Local system: <span class="system">server1.example.com</span>, IP address: <span class="system">192.168.0.100</span></li>
+  <li>Remote system: <span class="system">server2.example.com</span>, IP address: <span class="system">192.168.0.101</span> </li>
+</ul>
+<p>I will show how to use SSHFS as root and also as a normal user. </p>
+<p>I'm running all the steps in this tutorial with root privileges, so make sure you're logged in as root: </p>
+<p class="command">sudo su </p>
+<p>&nbsp;</p>
+<h3>2 Installing SSHFS</h3>
+<p class="highlight">server1:</p>
+<p>On the local system, SSHFS must be installed as follows:</p>
+<p class="command">apt-get install sshfs</p>
+<p>&nbsp;</p>
+<h3>3 Using SSHFS As root</h3>
+<p class="highlight">server1:</p>
+<p>Now I want to mount the remote directory <span class="system">/home/backup</span> (on <span class="system">server2</span>, owned by <span class="system">server2</span>'s root user) to the local <span class="system">/backup</span> directory as the local root user.</p>
+<p>First add root to the <span class="system">fuse</span> group:</p>
+<p class="command">adduser root fuse</p>
+<p>Create the local <span class="system">/backup</span> directory and make sure it's owned by root (it should be anyway as you are running these commands as root):</p>
+<p class="command">mkdir /backup<br>
+chown root /backup</p>
+<p>Then mount the remote <span class="system">/home/backup</span> directory to <span class="system">/backup</span>:</p>
+<p class="command">sshfs -o idmap=user root@192.168.0.101:/home/backup /backup</p>
+<p>(You can use a full path for the remote system, as sown above, or a relative path, like this:</p>
+<p class="command">sshfs -o idmap=user root@192.168.0.101:backup /backup</p>
+<p>If you use a relative path, this path is relative to the remote user's home directory, so in this case it would be <span class="system">/root/backup</span>. You can even leave out the remote directory, as follows:</p>
+<p class="command">sshfs -o idmap=user root@192.168.0.101: /backup</p>
+<p>This would then translate to the remote user's home directory - <span class="system">/root</span> in this case. </p>
+<p>)</p>
+<p><span class="system">-o idmap=user</span> makes that it does not matter if the local and the remote system use different user IDs - files owned by the remote user are also owned by the local user. If you don't use this, you might get permission problems. </p>
+<p>If you connect to the remote host for the first time, you will see a warning about the authenticity of the remote host (if you have connected to the remote host before using ssh or scp, you will not see the warning). In any case, you will be asked for the root password for <span class="system">server2</span>:</p>
+<p><span class="system">root@server1:~# sshfs -o idmap=user root@192.168.0.101:/home/backup /backup<br>
+  The authenticity of host '192.168.0.101 (192.168.0.101)' can't be established.<br>
+  ECDSA key fingerprint is a2:38:f3:df:7a:6c:b6:3c:d6:c3:9c:88:93:e2:f0:63.<br>
+  Are you sure you want to continue connecting (yes/no)?</span> <span class="highlight">&lt;-- yes</span><br>
+  <span class="system">root@192.168.0.101's password:</span> <span class="highlight">&lt;-- server2 root password</span> <br>
+  <span class="system">root@server1:~#</span></p>
+<p>Let's check if the remote directory got mounted to <span class="system">/backup</span>:</p>
+<p class="command">mount</p>
+<p class="system">root@server1:~# mount<br>
+  /dev/mapper/server1-root on / type ext4 (rw,errors=remount-ro)<br>
+  proc on /proc type proc (rw,noexec,nosuid,nodev)<br>
+  sysfs on /sys type sysfs (rw,noexec,nosuid,nodev)<br>
+  fusectl on /sys/fs/fuse/connections type fusectl (rw)<br>
+  none on /sys/kernel/debug type debugfs (rw)<br>
+  none on /sys/kernel/security type securityfs (rw)<br>
+  udev on /dev type devtmpfs (rw,mode=0755)<br>
+  devpts on /dev/pts type devpts (rw,noexec,nosuid,gid=5,mode=0620)<br>
+  tmpfs on /run type tmpfs (rw,noexec,nosuid,size=10%,mode=0755)<br>
+  none on /run/lock type tmpfs (rw,noexec,nosuid,nodev,size=5242880)<br>
+  none on /run/shm type tmpfs (rw,nosuid,nodev)<br>
+  /dev/sda1 on /boot type ext2 (rw)<br>
+  root@192.168.0.101:/home/backup on /backup type fuse.sshfs (rw,nosuid,nodev,max_read=65536)<br>
+root@server1:~#</p>
+<p class="command">df -h</p>
+<div id="adrectangleb_flex" style="width: 300px; height: 253px;" align="center"><div id="adrectangleb" style="width: 300px; height: 253px;" align="center"></div></div><div id="adibm300x600_flex" style="width: 300px; height: 5px;" align="center"><div id="adibm300x600" style="width: 0px; height: 5px;" align="center"></div></div><p class="system">root@server1:~#&nbsp;df&nbsp;-h<br>
+Filesystem&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Size&nbsp;&nbsp;Used&nbsp;Avail&nbsp;Use%&nbsp;Mounted&nbsp;on<br>
+/dev/mapper/server1-root<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;29G&nbsp;1015M&nbsp;&nbsp;&nbsp;27G&nbsp;&nbsp;&nbsp;4%&nbsp;/<br>
+udev&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;238M&nbsp;&nbsp;4.0K&nbsp;&nbsp;238M&nbsp;&nbsp;&nbsp;1%&nbsp;/dev<br>
+tmpfs&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;99M&nbsp;&nbsp;212K&nbsp;&nbsp;&nbsp;99M&nbsp;&nbsp;&nbsp;1%&nbsp;/run<br>
+none&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5.0M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;5.0M&nbsp;&nbsp;&nbsp;0%&nbsp;/run/lock<br>
+none&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;247M&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;247M&nbsp;&nbsp;&nbsp;0%&nbsp;/run/shm<br>
+/dev/sda1&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;228M&nbsp;&nbsp;&nbsp;24M&nbsp;&nbsp;193M&nbsp;&nbsp;11%&nbsp;/boot<br>
+root@192.168.0.101:/home/backup<br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;29G&nbsp;1019M&nbsp;&nbsp;&nbsp;27G&nbsp;&nbsp;&nbsp;4%&nbsp;/backup<br>
+root@server1:~#</p>
+<p>Looks good!</p>
+<p>To unmount the share, run</p>
+<p class="command">fusermount -u /backup</p>
+<p>&nbsp;</p>
+<h4>3.1 Creating A Private/Public Key Pair On server1  </h4>
+<p>Of course, we don't want to type in a password every time we try to mount the remote share. Therefore we create a private/public key pair and transfer the public key to <span class="system">server2</span> so that we will not be asked for a password anymore.</p>
+<p class="highlight">server1: </p>
+<p> Create a private/public key pair on <span class="system">server1.example.com</span>: </p>
+<p class="command">ssh-keygen</p>
+<p><span class="system">root@server1:~#&nbsp;ssh-keygen<br>
+  Generating&nbsp;public/private&nbsp;rsa&nbsp;key&nbsp;pair.<br>
+  Enter&nbsp;file&nbsp;in&nbsp;which&nbsp;to&nbsp;save&nbsp;the&nbsp;key&nbsp;(/root/.ssh/id_rsa):</span>&nbsp;<span class="highlight">&lt;--&nbsp;ENTER</span><br>
+  <span class="system">Enter&nbsp;passphrase&nbsp;(empty&nbsp;for&nbsp;no&nbsp;passphrase):</span>&nbsp;<span class="highlight">&lt;--&nbsp;ENTER</span><br>
+  <span class="system">Enter&nbsp;same&nbsp;passphrase&nbsp;again:</span>&nbsp;<span class="highlight">&lt;--&nbsp;ENTER</span><br>
+  <span class="system">Your&nbsp;identification&nbsp;has&nbsp;been&nbsp;saved&nbsp;in&nbsp;/root/.ssh/id_rsa.<br>
+  Your&nbsp;public&nbsp;key&nbsp;has&nbsp;been&nbsp;saved&nbsp;in&nbsp;/root/.ssh/id_rsa.pub.<br>
+  The&nbsp;key&nbsp;fingerprint&nbsp;is:<br>
+  ca:0d:df:a8:0b:18:4e:a7:f3:a2:8b:e2:81:4b:ab:f8&nbsp;root@server1.example.com<br>
+  The&nbsp;key's&nbsp;randomart&nbsp;image&nbsp;is:<br>
+  +--[&nbsp;RSA&nbsp;2048]----+<br>
+  |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+  |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+  |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+  |&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+  |&nbsp;&nbsp;o&nbsp;.&nbsp;.&nbsp;S&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+  |.o&nbsp;=&nbsp;.&nbsp;=&nbsp;o&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+  |.o=&nbsp;.&nbsp;o&nbsp;+&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+  |=.+o&nbsp;.&nbsp;.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
+  |@*E..&nbsp;o.&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|<br>
++-----------------+<br>
+root@server1:~#</span></p>
+<p> It is important that you do not enter a passphrase otherwise mounting will not work without human interaction so simply hit <span class="system">ENTER</span>! </p>
+<p>Next, we copy our public key to <span class="system">server2.example.com</span>: </p>
+<p class="command">ssh-copy-id -i $HOME/.ssh/id_rsa.pub root@192.168.0.101</p>
+<p>Now check on <span class="system">server2</span> if <span class="system">server1</span>'s public key has correctly been transferred: </p>
+<p class="highlight">server2: </p>
+<p class="command">cat $HOME/.ssh/authorized_keys</p>
+<table class="" align="center" bgcolor="#CCCCCC" border="1" bordercolor="#000000" width="90%" cellpadding="2" cellspacing="0">
+  <tbody><tr>
+    <td class="">
+      <pre>ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDnz2RwCZLLqBtB1rZKyN9XVfdAdt+PSpbGeLn+vlG/5nQvCSJhkRM3vpdmHPFrcYgJGtIU4gTCg6VDox2AxzJdGsrZN6zsLCndhgbs/r7N56ucuhdKSdeM/gLocnxkdQ86EECQqq42DaXgtqz3d8Q/Z+1KxYR82p7XK5ZoQG9vovNQNx9qhxIhsYIXMAbEv61bD1e0pBP9k9c1GfrZ79iRQrV+4UhHs/+Bca1YNby4gRmKIZK4FkzOYRUWYnIKVMMteC+lNho+ZMkKioo4CR3Z02hOV7ELFapqFY+6g7sj9cpLaM9gMY3rOd4EDARU+45U9yHBPsmIlA3zh4VkdnG/ root@server1.example.com</pre>
+    </td>
+  </tr>
+</tbody></table>
+<p>Now back on <span class="system">server1</span>, try to mount the remote share again (make sure it's unmounted before you run the command):</p>
+<p class="highlight">server1:</p>
+<p class="command">sshfs -o idmap=user root@192.168.0.101:/home/backup /backup</p>
+<p>If all goes well, you should not be prompted for a password:</p>
+<p class="system">root@server1:~# sshfs -o idmap=user root@192.168.0.101:/home/backup /backup<br>
+root@server1:~#</p>
+<p>&nbsp;</p>
+<h4>3.2 Mounting The Remote Share Automatically At Boot Time</h4>
+<p class="highlight">server1:</p>
+<p>If you don't want to mount the remote share manually, it is possible to have it mounted automatically when the system boots (provided you have followed chapter 3.1 because otherwise an automatic mount is not possible because you will be asked for a password). Normally we would modify <span class="system">/etc/fstab</span> to achieve this, but unfortunately the network isn't up yet when <span class="system">/etc/fstab</span> is processed in the boot process, which means that the remote share cannot be mounted.</p>
+<p>To circumvent this, we simply add our mount command to <span class="system">/etc/rc.local</span>, which is the last file to be processed in the boot process, and at that time the network is up and running:</p>
+<p class="command">vi /etc/rc.local</p>
+<table class="" align="center" bgcolor="#CCCCCC" border="1" bordercolor="#000000" width="90%" cellpadding="2" cellspacing="0">
+  <tbody><tr>
+    <td class="">
+      <pre>#!/bin/sh -e
+#
+# rc.local
+#
+# This script is executed at the end of each multiuser runlevel.
+# Make sure that the script will "exit 0" on success or any other
+# value on error.
+#
+# In order to enable or disable this script just change the execution
+# bits.
+#
+# By default this script does nothing.
+
+/usr/bin/sshfs -o idmap=user root@192.168.0.101:/home/backup /backup
+exit 0</pre>
+    </td>
+  </tr>
+</tbody></table>
+<p>You can test this by simply rebooting your system:</p>
+<p class="command">reboot</p>
+<p>After the reboot, you can check with</p>
+<p class="command">mount</p>
+<p>and </p>
+<p class="command">df -h</p>
+<p>if the remote share got mounted.      </p><div class="book"><div class="tree"><div class="menu"><ul><li class="leaf"><a href="http://www.howtoforge.com/mounting-remote-directories-with-sshfs-on-ubuntu-11.10-p2">Mounting Remote Directories With SSHFS On Ubuntu 11.10 - Page 2</a></li></ul></div></div><div class="nav"> <div class="links"><div class="prev">&nbsp;</div><div class="next"><a href="http://www.howtoforge.com/mounting-remote-directories-with-sshfs-on-ubuntu-11.10-p2" title="View the next page.">next</a></div></div> <div class="titles"><div class="next">Mounting Remote Directories With SSHFS On Ubuntu 11.10 - Page 2</div></div></div></div><br><div class="copyright-footer">Copyright © 2011 Falko Timme<br>All Rights Reserved.
+</div><div style="width: 100%; border-top: 1px solid rgb(204, 204, 204); border-bottom: 1px solid rgb(204, 204, 204); padding: 4px 0pt 2px; margin-bottom: 5px; height: 27px;">
+			<ul style="list-style-type: none;">
+				<li style="width: 115px; overflow: hidden; float: left; display: inline;"><div id="___plusone_1" style="text-indent: 0pt; margin: 0pt; padding: 0pt; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px;"><iframe data-gapiattached="true" title="+1" src="index_5.html" name="I1_1392905088434" id="I1_1392905088434" vspace="0" tabindex="0" style="position: static; top: 0pt; width: 90px; margin: 0px; border-style: none; left: 0pt; visibility: visible; height: 20px;" marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe></div></li>
+				<li style="width: 180px; overflow: visible; float: left; display: inline;"><div id="fb-root"></div><fb:like href="http://www.howtoforge.com/mounting-remote-directories-with-sshfs-on-ubuntu-11.10" send="true" layout="button_count" width="180" show_faces="false" font=""></fb:like></li>
+				<li style="width: 115px; overflow: hidden; float: left; display: inline;"><a href="http://twitter.com/share" class="twitter-share-button" data-text="Mounting Remote Directories With SSHFS On Ubuntu 11.10" data-url="http://www.howtoforge.com/mounting-remote-directories-with-sshfs-on-ubuntu-11.10" data-counturl="http://www.howtoforge.com/mounting-remote-directories-with-sshfs-on-ubuntu-11.10" data-count="horizontal" data-via="falko">Tweet</a></li>
+			</ul>
+			</div>  </div>
+      <div class="links"><a href="http://www.howtoforge.com/comment/reply/6562#comment" title="Share your thoughts and opinions related to this posting." rel="nofollow">add comment</a> | <a href="http://www.howtoforge.com/subscription" title="View and print node as pdf."><img src="pdf.gif" alt="view as pdf" border="0" height="16" width="16"></a> <a href="http://www.howtoforge.com/subscription" title="View and print node as pdf.">view as pdf</a> | <img src="print.gif" alt="" border="0" height="16" width="16"> print: <a href="http://www.howtoforge.com/subscription" title="Print this page.">this</a> | <a href="http://www.howtoforge.com/subscription" title="Print all pages of this book.">all</a> page(s)</div>
+  
+</div><a id="comment"></a>
+<table style="border: 1px solid rgb(128, 128, 128); background-color: rgb(255, 244, 183);" width="100%"><tbody><tr><td style="background-color: rgb(255, 244, 183); padding: 15px 7px 7px 15px;"><img src="please_note.gif" alt="" border="0"></td><td style="font-size: 12px; font-style: italic; background-color: rgb(255, 244, 183); padding: 15px 15px 15px 7px;">Please do not use the comment function to ask for help! If you need help, please use our <a href="http://www.howtoforge.com/forums">forum</a>.<br>Comments will be published after administrator approval.</td></tr></tbody></table><form method="post" action="http://www.howtoforge.com/comment"><div>
+<input name="edit[nid]" value="6562" type="hidden">
+<a id="comment-32793"></a>
+<div class="comment ">
+
+
+ <!--<div class="gravatar">
+  <img src="" alt="Mondane" />
+ </div>//-->
+<div class="title"><a href="http://www.howtoforge.com/mounting-remote-directories-with-sshfs-on-ubuntu-11.10#comment-32793" class="active">Here's an easier method for</a></div>
+    <div class="author">Submitted by Mondane (not registered) on Wed, 2012-10-17 14:42.</div>
+  <div class="content"><p>Here's an easier method for automounting sshfs:</p><p>&nbsp;<a target="_top" href="http://ubuntuforums.org/showthread.php?t=430312" mce_real_href="http://ubuntuforums.org/showthread.php?t=430312">http://ubuntuforums.org/showthread.php?t=430312</a></p></div>
+    <div class="links"><a href="http://www.howtoforge.com/comment/reply/6562/32793">reply</a> | <a href="http://www.howtoforge.com/subscription" title="View and print node as pdf."><img src="pdf.gif" alt="view as pdf" border="0" height="16" width="16"></a> <a href="http://www.howtoforge.com/subscription" title="View and print node as pdf.">view as pdf</a></div>
+</div><a id="comment-31534"></a>
+<div class="comment ">
+
+
+ <!--<div class="gravatar">
+  <img src="" alt="Anonymous" />
+ </div>//-->
+<div class="title"><a href="http://www.howtoforge.com/mounting-remote-directories-with-sshfs-on-ubuntu-11.10#comment-31534" class="active">12.04 public cert back from server2 to server1 needed</a></div>
+    <div class="author">Submitted by Anonymous (not registered) on Sun, 2012-04-08 03:09.</div>
+  <div class="content"><p>I just tried this on ubuntu 12.04 precise and was not getting the password-less access until I generated a key on server2 and put it in the authorized_keys of server1.</p><p>&nbsp;</p></div>
+    <div class="links"><a href="http://www.howtoforge.com/comment/reply/6562/31534">reply</a> | <a href="http://www.howtoforge.com/subscription" title="View and print node as pdf."><img src="pdf.gif" alt="view as pdf" border="0" height="16" width="16"></a> <a href="http://www.howtoforge.com/subscription" title="View and print node as pdf.">view as pdf</a></div>
+</div><a id="comment-30849"></a>
+<div class="comment ">
+
+
+ <!--<div class="gravatar">
+  <img src="" alt="Hemo" />
+ </div>//-->
+<div class="title"><a href="http://www.howtoforge.com/mounting-remote-directories-with-sshfs-on-ubuntu-11.10#comment-30849" class="active">Why not use</a></div>
+    <div class="author">Submitted by Hemo (not registered) on Thu, 2011-12-29 23:44.</div>
+  <div class="content"><p>Why not use </p><p>/etc/network/if-up.d/</p><p>and/or</p><p>&nbsp;/etc/network/if-down.d/</p><p>&nbsp;to store scripts to mount and unmount the share when the network goes up/down.</p><p>&nbsp;I am using this method to attach to a remote system with sshfs whenever my vpn connection is active and it works great.&nbsp;</p></div>
+    <div class="links"><a href="http://www.howtoforge.com/comment/reply/6562/30849">reply</a> | <a href="http://www.howtoforge.com/subscription" title="View and print node as pdf."><img src="pdf.gif" alt="view as pdf" border="0" height="16" width="16"></a> <a href="http://www.howtoforge.com/subscription" title="View and print node as pdf.">view as pdf</a></div>
+</div><a id="comment-30654"></a>
+<div class="comment ">
+
+
+ <!--<div class="gravatar">
+  <img src="" alt="Anonymous" />
+ </div>//-->
+<div class="title"><a href="http://www.howtoforge.com/mounting-remote-directories-with-sshfs-on-ubuntu-11.10#comment-30654" class="active">_netdev</a></div>
+    <div class="author">Submitted by Anonymous (not registered) on Wed, 2011-12-14 14:36.</div>
+  <div class="content">Nice article. I'd expect that the filesystem could be mounted at boot time with fstab using the _netdev option as an alternative to mounting with rc.local?<br></div>
+    <div class="links"><a href="http://www.howtoforge.com/comment/reply/6562/30654">reply</a> | <a href="http://www.howtoforge.com/subscription" title="View and print node as pdf."><img src="pdf.gif" alt="view as pdf" border="0" height="16" width="16"></a> <a href="http://www.howtoforge.com/subscription" title="View and print node as pdf.">view as pdf</a></div>
+</div></div></form><!-- end content -->            </div>
+            </td></tr></tbody></table>
+            <!-- end main content -->
+
+
+<!-- BEGIN Sponsored Links-->
+<div id="adtextlinka_flex" style="width: 600px; height: 0px;" align="center"><div id="adtextlinka" style="width: 0px; height: 0px;" align="center"></div></div>
+<div id="adtextlinkb_flex" style="width: 600px; height: 0px;" align="center"><div id="adtextlinkb" style="width: 0px; height: 0px;" align="center"></div></div>
+<div id="adtextlinkc_flex" style="width: 600px; height: 0px;" align="center"><div id="adtextlinkc" style="width: 0px; height: 0px;" align="center"></div></div>
+<div id="adtextlinkd_flex" style="width: 600px; height: 0px;" align="center"><div id="adtextlinkd" style="width: 0px; height: 0px;" align="center"></div></div>
+
+<div id="adleaderboardb_flex" style="width: 728px; height: 90px;" align="center"><div id="adleaderboardb" style="width: 0px; height: 16px;" align="center"></div></div>
+<div id="adpreroll_flex" style="width: 300px; height: 0px;" align="center"><div id="adpreroll" style="width: 300px; height: 0px;" align="center"></div></div>
+<!-- END Sponsored Links-->
+
+          </div><!-- main -->
+        </div>
+      </div>
+    </div>
+    <div class="clearing"></div>
+    <hr class="hide">
+<!-- START: FOOTER-->
+    <div id="footer" class="footer">
+
+        <p></p><center><a href="http://www.howtoforge.com/">Howtos</a> | <a href="http://www.howtoforge.com/mini-howtos">Mini-Howtos</a> | <a href="http://www.howtoforge.com/forums">Forums</a> | <a href="http://lxer.com/" target="_top">News</a> | <a href="http://www.howtoforge.com/trip_search">Search</a> | <a href="http://www.howtoforge.com/add_howto">Contribute</a> | <a href="http://www.howtoforge.com/subscription">Subscription</a><br><a href="http://www.howtoforge.com/sitemap">Site Map/RSS Feeds</a> | <a href="http://www.howtoforge.com/advertise">Advertise</a> | <a href="http://www.howtoforge.com/forums/sendmessage.php">Contact</a> | <a href="http://www.howtoforge.com/disclaimer">Disclaimer</a> | <a href="http://www.howtoforge.com/imprint">Imprint</a></center><p></p>
+                <p></p><center><img src="idg_footer_logo.gif" boder="0" height="29" width="149"><br><br><img src="premium_publisher_logo.jpg" alt="" border="0" height="164" width="186"></center><p></p>
+
+      <br><div class="copyright-footer">Copyright © 2014 HowtoForge - Linux Howtos and Tutorials<br>All Rights Reserved.
+</div>    </div>
+<!-- END: FOOTER -->
+        </div><!-- wrapper -->
+</div><!-- outer_wrapper -->
+
+
+
+
+
+
+<!--<script type="text/javascript" src="http://static.howtoforge.com/js/addthis_widget-1.1.js"></script>-->
+
+
+
+
+
+
+
+
+
+
+
+<div id="adlinkblock_hidden" class="banner" style="position: absolute; top: 471.733px; left: 191px; display: block;">
+<div style="margin-left: 310px;">
+<!-- begin Link Block 468x15 -->
+
+<ins style="display: inline-table; border: medium none; height: 15px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 468px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 15px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 468px; background-color: transparent;"><iframe src="index_6.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" id="aswift_0" name="aswift_0" style="left: 0pt; position: absolute; top: 0pt;" frameborder="0" height="15" scrolling="no" width="468"></iframe></ins></ins>
+<!-- End Link Block 468x15 -->
+</div>
+</div>
+
+
+
+<div id="adleaderboard_hidden" class="banner" style="position: absolute; top: 119.167px; left: 126px; display: block;">
+<!-- begin ad tag Leaderboard -->
+<!-- howtoforge_com_article_leaderboard_a_728x90 -->
+<div id="google_ads_div_howtoforge_com_article_leaderboard_a_728x90_ad_wrapper">
+<div id="google_ads_div_howtoforge_com_article_leaderboard_a_728x90_ad_container" style="display: inline-block;">
+<ins style="width: 728px; height: 90px; display: inline-table; position: relative; border: 0pt none;"><ins style="width: 728px; height: 90px; display: block; position: relative; border: 0pt none;"><iframe src="index_10.html" style="border: 0pt none; position: absolute; top: 0pt; left: 0pt;" marginheight="0" marginwidth="0" name="google_ads_iframe_howtoforge_com_article_leaderboard_a_728x90" id="google_ads_iframe_howtoforge_com_article_leaderboard_a_728x90" frameborder="0" height="90" scrolling="no" width="728"></iframe></ins></ins></div>
+</div>
+
+<!-- End ad tag Leaderboard -->
+</div>
+
+
+<div id="adrectanglea_hidden" class="banner" style="position: absolute; top: 348.983px; left: 183px; display: block;">
+<div>
+<!-- begin ad tag Rectangle A -->
+<!-- howtoforge_com_article_rectangle_a_300x250 -->
+<div id="google_ads_div_howtoforge_com_article_rectangle_a_300x250_ad_wrapper">
+<div id="google_ads_div_howtoforge_com_article_rectangle_a_300x250_ad_container" style="display: inline-block;">
+<ins style="width: 300px; height: 250px; display: inline-table; position: relative; border: 0pt none;"><ins style="width: 300px; height: 250px; display: block; position: relative; border: 0pt none;"><iframe src="index_11.html" style="border: 0pt none; position: absolute; top: 0pt; left: 0pt;" marginheight="0" marginwidth="0" name="google_ads_iframe_howtoforge_com_article_rectangle_a_300x250" id="google_ads_iframe_howtoforge_com_article_rectangle_a_300x250" frameborder="0" height="250" scrolling="no" width="300"></iframe></ins></ins></div>
+</div>
+
+<!-- End ad tag Rectangle A -->
+</div>
+</div>
+
+
+<div id="adrectangleb_hidden" class="banner" style="position: absolute; top: 2364.98px; left: 340px; display: block;">
+<!-- begin ad tag Rectangle B -->
+<!-- howtoforge_com_article_rectangle_b_300x250 -->
+<div id="google_ads_div_howtoforge_com_article_rectangle_b_300x250_ad_wrapper">
+<div id="google_ads_div_howtoforge_com_article_rectangle_b_300x250_ad_container" style="display: inline-block;">
+<ins style="width: 300px; height: 250px; display: inline-table; position: relative; border: 0pt none;"><ins style="width: 300px; height: 250px; display: block; position: relative; border: 0pt none;"><iframe src="index_12.html" style="border: 0pt none; position: absolute; top: 0pt; left: 0pt;" marginheight="0" marginwidth="0" name="google_ads_iframe_howtoforge_com_article_rectangle_b_300x250" id="google_ads_iframe_howtoforge_com_article_rectangle_b_300x250" frameborder="0" height="250" scrolling="no" width="300"></iframe></ins></ins></div>
+</div>
+
+<!-- End ad tag Rectangle B -->
+</div><iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="index_13.html" id="oauth2relay519613570" name="oauth2relay519613570"></iframe>
+
+
+<div id="adibm300x600_hidden" class="banner" style="position: absolute; top: 2617.98px; left: 340px; display: block;">
+<div style="margin-top: 5px;" align="center">
+<!-- begin ad tag IBM 300x600 -->
+<!-- howtoforge_com_article_halfpage_a_300x600 -->
+
+<!-- End ad tag IBM 300x600 -->
+</div>
+</div>
+
+
+<div id="adtextlinka_hidden" class="banner" style="position: absolute; top: 6160px; left: 190px; display: block;">
+<!-- begin ad tag textlink a -->
+<!-- howtoforge_com_textlink_a_600x50 -->
+
+<!-- End ad tag textlink a -->
+</div>
+
+
+<div id="adtextlinkb_hidden" class="banner" style="position: absolute; top: 6160px; left: 190px; display: block;">
+<!-- begin ad tag textlink b -->
+<!-- howtoforge_com_textlink_b_600x50 -->
+
+<!-- End ad tag textlink b -->
+</div>
+
+
+<div id="adtextlinkc_hidden" class="banner" style="position: absolute; top: 6160px; left: 190px; display: block;">
+<!-- begin ad tag textlink c -->
+<!-- howtoforge_com_textlink_c_600x50 -->
+
+<!-- End ad tag textlink c -->
+</div>
+
+
+<div id="adtextlinkd_hidden" class="banner" style="position: absolute; top: 6160px; left: 190px; display: block;">
+<!-- begin ad tag textlink d -->
+<!-- howtoforge_com_textlink_d_600x50 -->
+
+<!-- End ad tag textlink d -->
+</div>
+
+
+<div id="adleaderboardb_hidden" class="banner" style="position: absolute; top: 6160px; left: 126px; display: block;">
+<!-- begin ad tag Leaderboard B -->
+<!-- howtoforge_com_article_leaderboard_b_728x90 -->
+<div id="google_ads_div_howtoforge_com_article_leaderboard_b_728x90_ad_wrapper">
+<div id="google_ads_div_howtoforge_com_article_leaderboard_b_728x90_ad_container" style="display: inline-block;">
+
+
+<div id="div-gpt-ad-4480933336897-0">
+    
+</div>
+</div>
+</div>
+
+<!-- End ad tag Leaderboard B -->
+</div>
+
+
+<div id="adpreroll_hidden" class="banner" style="position: absolute; top: -1000px; left: -1000px; display: none;">
+<div style="margin-top: 5px;" align="center">
+<!-- begin ad tag 300x600 -->
+<!-- howtoforge_com_article_halfpage_b_300x600 -->
+<div id="google_ads_div_howtoforge_com_article_halfpage_b_300x600_ad_wrapper">
+<div id="google_ads_div_howtoforge_com_article_halfpage_b_300x600_ad_container" style="display: inline-block;"></div></div></div></div></body>
+</html>

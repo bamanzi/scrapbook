@@ -1,0 +1,691 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="zh" xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<title>  Zsh 技巧三则 — LinuxTOY</title>
+
+
+
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"><!-- leave this for stats -->
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://linuxtoy.org/feed">
+<link rel="pingback" href="https://linuxtoy.org/xmlrpc.php">
+
+    <link rel="canonical" href="https://linuxtoy.org/archives/zsh_per_dir_hist.html">
+
+<link rel="alternate" type="application/rss+xml" title="LinuxTOY » Zsh 技巧三则 评论 Feed" href="https://linuxtoy.org/archives/zsh_per_dir_hist.html/feed">
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://linuxtoy.org/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://linuxtoy.org/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="ePDFView 0.1.7 发布" href="https://linuxtoy.org/archives/epdfview-017-released.html">
+<link rel="next" title="CoreAVC 1.9 for Linux 安装指南" href="https://linuxtoy.org/archives/coreavc-19-for-linux-installation-guide.html">
+<link rel="canonical" href="https://linuxtoy.org/archives/zsh_per_dir_hist.html">
+<link rel="shortlink" href="https://linuxtoy.org/?p=2896">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body id="sp">
+<div id="page">
+    <div id="header">
+    <h1><a href="https://linuxtoy.org/">LinuxTOY</a></h1>
+    
+        <form action="https://linuxtoy.org/index.php" method="get" onsubmit="location.href='https://linuxtoy.org/search/' + encodeURIComponent(this.s.value).replace(/%20/g, '+'); return false;">
+
+    <ul id="hnav">
+    <li class="current_page_item"><a href="https://linuxtoy.org/">Home</a></li>
+    <li class="page_item page-item-82"><a href="https://linuxtoy.org/archives">Archives</a></li>
+<li class="page_item page-item-2303"><a href="https://linuxtoy.org/download">Download</a></li>
+<li class="page_item page-item-55"><a href="https://linuxtoy.org/faq">FAQs</a></li>
+<li class="page_item page-item-44"><a href="https://linuxtoy.org/contact">Contact</a></li>
+        <li><a href="https://linuxtoy.org/wp-login.php">Login</a></li>
+    <li id="search"><input size="30" id="s" name="s" value="Search" onfocus="if (this.value == 'Search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search';}" type="text"></li>
+    </ul>
+    </form>
+
+    <p class="position">Home » Zsh 技巧三则</p>
+    </div><!--#header-->
+    <div class="navposts">
+    <p class="prev">« <a href="https://linuxtoy.org/archives/epdfview-017-released.html" rel="prev">ePDFView 0.1.7 发布</a></p>    <p class="next"><a href="https://linuxtoy.org/archives/coreavc-19-for-linux-installation-guide.html" rel="next">CoreAVC 1.9 for Linux 安装指南</a> »</p>    </div>
+
+<div id="main">
+<!-- google_ad_section_start -->
+
+<div id="side-r">
+<div class="tab">LinuxTOY 是一个致力于提供 Linux 相关资讯的专题站点。如果您发现了好用好玩的 Linux 东东并愿意发扬自由、分享的精神，可以点击顶部导航 Contact 按钮进行投稿。</div>
+<div class="tab">
+  <ul>
+  <li><i class="fa fa-heart fa-fw"></i><a href="http://linuxtoy.org/faq/donate" title="捐助本站">捐助本站</a></li>
+  <li><i class="fa fa-rss fa-fw"></i><a href="http://linuxtoy.org/feed/" title="Subscribe in a reader">Subscribe in Reader</a></li>
+  <li><i class="fa fa-twitter fa-fw"></i><a href="https://twitter.com/Linuxtoy" title="Follow us on Twitter">Follow us on Twitter</a></li>
+  <li><i class="fa fa-comment fa-fw"></i><a href="http://identi.ca/linuxtoy" title="Follow us on Identi.ca">Follow us on Identi.ca</a></li>
+  <li><i class="fa fa-google-plus fa-fw"></i><a href="https://plus.google.com/b/101096637428284023293/" title="Linuxtoy on G+">Linuxtoy on G+</a></li>
+  </ul></div>
+<div class="tab">
+    <ul>
+    
+<li><i class="fa fa-link fa-fw"></i><a href="http://www.emtcompany.com/cordless-phone-batteries/uniden-battery.html">battery</a> </li>
+<li><i class="fa fa-link fa-fw"></i><a href="http://www.softmebo.com/">softmebo</a> </li>
+    <li><i class="fa fa-link fa-fw"></i><a href="https://www.dropbox.com/referrals/NTI4NTgyMTk" title="Dropbox">Free Online Storage Space</a></li>
+    <li><i class="fa fa-link fa-fw"></i><a href="http://www.amazon.cn/gp/search?ie=UTF8&amp;keywords=linux&amp;tag=linuxtoy-23&amp;index=books&amp;linkCode=ur2&amp;camp=536&amp;creative=3200" title="Linux books">Linux Books</a></li>
+    <li><i class="fa fa-link fa-fw"></i>静态文件存储由<a href="https://www.upyun.com/?md=linuxtoy" title="又拍云存储">又拍云存储</a>提供</li>
+    </ul></div>
+    <h2>Popular entries</h2>
+    <ul>
+    <li><a href="https://linuxtoy.org/archives/the-perfect-linux-desktop-arch-linux-2007-08-2-1.html">Archlinux 安装指南</a></li>
+    <li><a href="https://linuxtoy.org/archives/unix-linux-command-cheat-sheet.html">Unix/Linux 命令速查表</a></li>
+    <li><a href="https://linuxtoy.org/archives/efficient-editing-with-vim.html">高效率编辑器 Vim</a></li>
+    <li><a href="https://linuxtoy.org/archives/wget-tips.html">Wget 使用技巧</a></li>
+    <li><a href="https://linuxtoy.org/archives/playing-around-with-mplayer.html">玩转 MPlayer</a></li>
+    <li><a href="https://linuxtoy.org/archives/awesome.html">平铺式窗口管理器 Awesome</a></li>
+    <li><a href="https://linuxtoy.org/archives/3_free_antivirus_under_linux.html">三款 Linux 下的免费桌面级杀毒软件</a></li>
+    <li><a href="https://linuxtoy.org/archives/openbox-getting-started-guide.html">窗口管理器 Openbox 入门指南</a></li>
+    <li><a href="https://linuxtoy.org/archives/minimalist-install-of-ubuntu.html">最小化安装 Ubuntu</a></li>
+    <li><a href="https://linuxtoy.org/archives/5-desktop-environment-for-linux.html">五个你可能不知道的 Linux 桌面环境</a></li>
+    <li><a href="https://linuxtoy.org/archives/the-7-deadly-linux-commands.html">7 个致命的 Linux 命令</a></li>
+    <li><a href="https://linuxtoy.org/archives/lightweight-desktop-compare.html">很轻很强大：轻量级桌面环境比较</a></li>
+    <li><a href="https://linuxtoy.org/archives/gnome-shell-intro.html">GNOME Shell 介绍</a></li>
+    <li><a href="https://linuxtoy.org/archives/zsh.html">终极 Shell——Zsh</a></li>
+    <li><a href="https://linuxtoy.org/archives/6-of-the-best-free-linux-cad-software.html">6 款高品质的免费 Linux CAD 应用程序</a></li>
+    <li><a href="https://linuxtoy.org/archives/25-linux-twitterers.html">25+ 个值得跟随的 Linux 相关 Twitter 帐号</a></li>
+    <li><a href="https://linuxtoy.org/archives/3-standalone-flash-player-under-linux.html">Linux 下的三款 Flash 独立播放器</a></li>
+    <li><a href="https://linuxtoy.org/archives/game_emulator_for_linux.html">Linux 下的几个游戏模拟器</a></li>
+    <li><a href="https://linuxtoy.org/archives/musca.html">平铺式窗口管理器 Musca 初体验</a></li>
+    <li><a href="https://linuxtoy.org/archives/history-command-usage-examples.html">History（历史）命令用法 15 例</a></li>
+    <li><a href="https://linuxtoy.org/archives/fluxbox_config.html">Fluxbox 配置</a></li>
+    <li><a href="https://linuxtoy.org/archives/the-best-tips-and-tricks-for-bash.html">bash 使用技巧</a></li>
+    <li><a href="https://linuxtoy.org/archives/10-oreilly-books.html">10 本 O'Reilly 出版的免费好书</a></li>
+    </ul>
+</div><!--side-r-->
+
+
+<div id="story">
+    <div class="post" id="post-2896">
+        <h2>Zsh 技巧三则</h2>
+    <p class="postmeta">2009-03-03 <a href="https://linuxtoy.org/archives/author/kardinal" title="由 Kardinal 发布" rel="author">Kardinal</a> Posted in <a href="https://linuxtoy.org/category/cli" title="查看 Cli 中的全部文章" rel="category tag">Cli</a>, <a href="https://linuxtoy.org/category/news" title="查看 News 中的全部文章" rel="category tag">News</a>, <a href="https://linuxtoy.org/category/tips" title="查看 Tips 中的全部文章" rel="category tag">Tips</a>, <a href="https://linuxtoy.org/category/tutorials" title="查看 Tutorials 中的全部文章" rel="category tag">Tutorials</a>Tagged as <a href="https://linuxtoy.org/tag/per-directory-history" rel="tag">per-Directory  history</a>, <a href="https://linuxtoy.org/tag/zsh" rel="tag">Zsh</a><span class="rss" title="comment RSS of this post"><a href="https://linuxtoy.org/archives/zsh_per_dir_hist.html/feed">RSS</a></span></p>
+        <div class="entry">
+	<p>在每个目录下，经常用到的命令是不一样的
+比如在源码目录下常用的是 make xxx ，在配置文件目录下常用的是 vi xxx ……
+这种情况下，每个目录使用独立的历史纪录就比较方便（似乎有发行版中的 bash 默认如此设置）
+<span id="more-2896"></span>
+实现方式很简单：
+1. 在 $HOME/.zsh<em>history 目录下创建与工作目录层级相同的目录，并在使用该目录下的 zhistory 作为历史纪录文件
+2. 由于切换目录总是使用 cd 命令，因此在 cd 的时候重新设定 $HISTFILE 变量即可 （$HISTFILE 指定 zsh 使用的历史纪录文件）
+</em></p><pre><em><i><font color="#9A1900"># 定义函数，替换原来的 cd </font></i>
+<b><font color="#000000">cd()</font></b> {
+    <b><font color="#0000FF">builtin</font></b> cd <font color="#FF0000">"$@"</font>                             <i><font color="#9A1900"># 执行原来的 cd 命令</font></i>
+    <b><font color="#0000FF">fc</font></b> -W                                       <i><font color="#9A1900"># 写历史纪录文件，默认参数为 $HISTFILE 。初始值为 #2 处的定义；执行了 cd 命令后为 #1 处的定义</font></i>
+<i><font color="#9A1900"># 实际上，你不可能在每个目录下都执行个把命令，很多目录你没有去过，只要为你去过的目录建立历史纪录就可以了</font></i>
+    <b><font color="#0000FF">local</font></b> <font color="#009900">HISTDIR</font><font color="#990000">=</font><font color="#FF0000">"$HOME/.zsh</font></em><font color="#FF0000">history$PWD"</font>      <i><font color="#9A1900"># 定义历史纪录目录。每次 cd 后，$PWD 对应与工作目录层级相同的目录</font></i>
+        <b><font color="#0000FF">if</font></b>  <font color="#990000">[</font> <font color="#990000">!</font> -d <font color="#FF0000">"$HISTDIR"</font> <font color="#990000">]</font> <font color="#990000">;</font> <b><font color="#0000FF">then</font></b>          <i><font color="#9A1900"># 如果不存在这个目录，则建立一个</font></i>
+            mkdir -p <font color="#FF0000">"$HISTDIR"</font>
+        <b><font color="#0000FF">fi</font></b>
+        <b><font color="#0000FF">export</font></b> <font color="#009900">HISTFILE</font><font color="#990000">=</font><font color="#FF0000">"$HISTDIR/zhistory"</font>     <i><font color="#9A1900">#1 定义历史纪录文件  </font></i>
+    touch <font color="#009900">$HISTFILE</font>                                <i><font color="#9A1900"># 先 touch 一下，如果不存在的话就会新建一个</font></i>
+<i><font color="#9A1900"># 清空原来的历史纪录</font></i>
+    <b><font color="#0000FF">local</font></b> <font color="#009900">ohistsize</font><font color="#990000">=</font><font color="#009900">$HISTSIZE</font>                <i><font color="#9A1900"># 设定一个变量临时存储原历史纪录大小</font></i>
+        <font color="#009900">HISTSIZE</font><font color="#990000">=</font><font color="#993399">0</font>                              <i><font color="#9A1900"># 通过禁用历史纪录清空</font></i>
+        <font color="#009900">HISTSIZE</font><font color="#990000">=</font><font color="#009900">$ohistsize</font>                     <i><font color="#9A1900"># 重新设定历史纪录大小</font></i>
+    <b><font color="#0000FF">fc</font></b> -R                                       <i><font color="#9A1900">#读历史纪录文件，默认参数为 $HISTFILE  。也就是 #1 处的定义</font></i>
+}
+<i><font color="#9A1900"># 启动 zsh 的时候，并没有执行 cd 命令，因此 $HOME 目录对应的历史纪录目录可能不存在，先建立它</font></i>
+mkdir -p <font color="#009900">$HOME</font><font color="#990000">/.</font>zsh<em>history<font color="#009900">$PWD</font>
+<i><font color="#9A1900">#2 同样，启动 zsh 的时候， 还没有定义 $HOME 目录对应的 $HISTFILE ，所以先定义它</font></i>
+<b><font color="#0000FF">export</font></b> <font color="#009900">HISTFILE</font><font color="#990000">=</font><font color="#FF0000">"$HOME/.zsh</font></em><font color="#FF0000">history$PWD/zhistory"</font>
+</pre><p></p>
+
+<p><strong>这样翻历史纪录是方便了，但要查看全部的历史纪录可能有点麻烦了</strong>
+</p><pre><i><font color="#9A1900"># 使用 setopt EXTENDED_HISTORY 选项，为命令添加时间戳 </font></i>
+<i><font color="#9A1900"># 这非常重要，汇总到一起的历史纪录比较混乱，时间戳是重新排序的依据 </font></i><p></p>
+
+<p><i><font color="#9A1900"># 定义 allhistory ，将所有的历史纪录汇总到一起</font></i>
+<b><font color="#000000">function allhistory </font></b>{ cat <font color="#009900">$(</font>find <font color="#009900">$HOME</font><font color="#990000">/.</font>zsh_history -name zhistory<font color="#990000">)</font> }
+<i><font color="#9A1900"># 针对历史纪录的格式进行转换</font></i>
+<b><font color="#000000">function convhistory </font></b>{
+            sort <font color="#009900">$1</font> <font color="#990000">|</font>         <i><font color="#9A1900">#排序</font></i>
+            uniq <font color="#990000">|</font>         <i><font color="#9A1900">#合并相同行。</font></i>
+                            <i><font color="#9A1900">#由于时间戳精确到秒，所以几乎不可能有相同的纪录</font></i>
+                            <i><font color="#9A1900">#出现相同的纪录是因为 zsh 的处理方式，每次 cd 会在两个纪录文件中产生相同的 cd 命令</font></i>
+            sed <font color="#FF0000">'s/^:</font><font color="#CC33CC">(</font><font color="#FF0000">[ 0-9]*</font><font color="#CC33CC">)</font><font color="#FF0000">:[0-9]*;</font><font color="#CC33CC">(</font><font color="#FF0000">.*</font><font color="#CC33CC">)</font><font color="#FF0000">/</font><font color="#CC33CC">\1</font><font color="#FF0000">::::::</font><font color="#CC33CC">\2</font><font color="#FF0000">/'</font> <font color="#990000">|</font>   <i><font color="#9A1900">#去掉历史纪录中不需要的字段。添加自定义的分隔符，方便下一步处理</font></i>
+            awk -F<font color="#FF0000">"::::::"</font> <font color="#FF0000">'{ $1=strftime("%Y-%m-%d %T",$1) "|"; print }'</font>    <i><font color="#9A1900"># 将 UNIX 时间戳转换成可以看懂的格式</font></i>
+}</p>
+
+<p><i><font color="#9A1900">#使用 histall 命令查看全部历史纪录</font></i>
+<b><font color="#000000">function histall </font></b>{ convhistory <font color="#990000">=(</font>allhistory<font color="#990000">)</font> <font color="#990000">|</font>
+            sed <font color="#FF0000">'/^.</font><font color="#CC33CC">{</font><font color="#FF0000">20</font><font color="#CC33CC">}</font><font color="#FF0000"> *cd/i</font><font color="#CC33CC">\</font><font color="#FF0000">'</font> }  <i><font color="#9A1900"># 在每个 cd 命令前添加空行，判断工作目录比较容易 </font></i>
+                                       <i><font color="#9A1900"># 可能会有一点不准确。因为启动和退出时不执行 cd 命令，没有相应的纪录。尤其是同时运行多个 zsh  的时候</font></i>
+<i><font color="#9A1900">#使用 hist 查看当前目录历史纪录</font></i>
+<b><font color="#000000">function hist </font></b>{ convhistory <font color="#009900">$HISTFILE</font> }</p>
+
+<p><i><font color="#9A1900">#全部历史纪录 top20</font></i>
+<i><font color="#9A1900">#统计单词出现的次数 </font></i>
+<b><font color="#000000">function top20 </font></b>{ allhistory <font color="#990000">|</font> awk -F<font color="#FF0000">':[ 0-9]<em>:[0-9]</em>;'</font> <font color="#FF0000">'{ $1="" ; print }'</font> <font color="#990000">|</font> 
+sed <font color="#FF0000">'s/ /</font><font color="#CC33CC">\n</font><font color="#FF0000">/g'</font> <font color="#990000">|</font>    <i><font color="#9A1900"># 根据空格拆分单词，可能不准确，比如 "\ " 之类的。但是以这类单词出现的频率，应该不会进入 top20</font></i>
+                    <i><font color="#9A1900"># 本着我不会的就是不需要的原则，不作相应的处理了</font></i>
+sed <font color="#FF0000">'/^$/d'</font> <font color="#990000">|</font> sort <font color="#990000">|</font> uniq -c <font color="#990000">|</font> sort -nr <font color="#990000">|</font> head -n <font color="#993399">20</font> }
+</p></pre>
+<a href="http://i.linuxtoy.org/images/2009/03/histall.jpg"><img src="histall.jpg" alt="" class="alignleft size-full wp-image-2899" height="163" width="224"></a><p></p>
+
+<p><strong>切换目录时输入 cd 还是比较麻烦的，下面的脚本实现在没有输入任何内容的情况下按 TAB ，自动填入 "cd [TAB]"</strong>
+</p><pre>user-complete<font color="#990000">()</font>{
+    <b><font color="#0000FF">if</font></b> <font color="#990000">[[</font> -n <font color="#009900">$BUFFER</font> <font color="#990000">]]</font> <font color="#990000">;</font> <b><font color="#0000FF">then</font></b>     <i><font color="#9A1900"># 如果该行有内容</font></i>
+        zle expand-or-complete    <i><font color="#9A1900"># 执行 TAB 原来的功能</font></i>
+    <b><font color="#0000FF">else</font></b>                                  <i><font color="#9A1900"># 如果没有</font></i>
+        <font color="#009900">BUFFER</font><font color="#990000">=</font><font color="#FF0000">"cd "</font>                 <i><font color="#9A1900"># 填入 cd（空格）</font></i>
+        zle end-of-line                <i><font color="#9A1900"># 这时光标在行首，移动到行末</font></i>
+        zle expand-or-complete    <i><font color="#9A1900"># 执行 TAB 原来的功能</font></i>
+    <b><font color="#0000FF">fi</font></b> }
+zle -N user-complete
+bindkey <font color="#FF0000">"</font><font color="#CC33CC">\t</font><font color="#FF0000">"</font> user-complete        <i><font color="#9A1900">#将上面的功能绑定到 TAB 键</font></i></pre><p></p>
+
+<p><strong>有时候输完了一个命令，才想起这个命令需要管理员权限，这时最快的步骤为：
+Ctrl+a s u d o (空格）[Ctrl+e]
+按两下 ESC 键完成上面的过程：</strong>
+</p><pre>sudo-command-line<font color="#990000">()</font> {
+    <font color="#990000">[[</font> -z <font color="#009900">$BUFFER</font> <font color="#990000">]]</font> <font color="#990000"></font>&amp;<font color="#990000"></font>&amp;<font color="#990000"></font> zle up-history
+    <font color="#990000">[[</font> <font color="#009900">$BUFFER</font> <font color="#990000">!=</font> sudo<font color="#990000">\</font> <font color="#990000">*</font> <font color="#990000">]]</font> <font color="#990000"></font>&amp;<font color="#990000"></font>&amp;<font color="#990000"></font> <font color="#009900">BUFFER</font><font color="#990000">=</font><font color="#FF0000">"sudo $BUFFER"</font>
+<i><font color="#9A1900">#光标移动到行末</font></i>
+    zle end-of-line
+}
+zle -N sudo-command-line
+<i><font color="#9A1900">#定义快捷键为： [Esc] [Esc]</font></i>
+bindkey <font color="#FF0000">"</font><font color="#CC33CC">\e\e</font><font color="#FF0000">"</font> sudo-command-line
+</pre><p></p>
+
+<p><strong>以下配置文件供参考</strong>
+WP会自动把引号转换为成对的，可以复制这里的配置文件：
+
+http://forum.ubuntu.org.cn/viewtopic.php?f=95&amp;t=138936&amp;start=1
+
+</p><pre><i><font color="#9A1900">#命令提示符 {{{</font></i>
+<font color="#009900">RPROMPT</font><font color="#990000">=</font><font color="#009900">$(</font>echo <font color="#FF0000">'%{</font><font color="#CC33CC"></font><font color="#FF0000">33[31m%}%D %T%{</font><font color="#CC33CC"></font><font color="#FF0000">33[m%}'</font><font color="#990000">)</font>
+<font color="#009900">PROMPT</font><font color="#990000">=</font><font color="#009900">$(</font>echo <font color="#FF0000">'%{</font><font color="#CC33CC"></font><font color="#FF0000">33[34m%}%M%{</font><font color="#CC33CC"></font><font color="#FF0000">33[32m%}%/</font>
+<font color="#FF0000">%{</font><font color="#CC33CC"></font><font color="#FF0000">33[36m%}%n%{</font><font color="#CC33CC"></font><font color="#FF0000">33[01;33m%} &gt;&gt;&gt; %{</font><font color="#CC33CC"></font><font color="#FF0000">33[m%}'</font><font color="#990000">)</font>
+<i><font color="#9A1900">#}}}</font></i><p></p>
+
+<p><i><font color="#9A1900">#关于历史纪录的配置 {{{</font></i>
+<i><font color="#9A1900">#历史纪录条目数量</font></i>
+<b><font color="#0000FF">export</font></b> <font color="#009900">HISTSIZE</font><font color="#990000">=</font><font color="#993399">10000</font>
+<i><font color="#9A1900">#注销后保存的历史纪录条目数量</font></i>
+<b><font color="#0000FF">export</font></b> <font color="#009900">SAVEHIST</font><font color="#990000">=</font><font color="#993399">10000</font>
+<i><font color="#9A1900">#历史纪录文件</font></i>
+<i><font color="#9A1900">#export HISTFILE=~/.zhistory</font></i>
+<i><font color="#9A1900">#以附加的方式写入历史纪录</font></i>
+setopt INC<em>APPEND</em>HISTORY
+<i><font color="#9A1900">#如果连续输入的命令相同，历史纪录中只保留一个</font></i>
+setopt HIST<em>IGNORE</em>DUPS<br>
+<i><font color="#9A1900">#为历史纪录中的命令添加时间戳      </font></i>
+setopt EXTENDED_HISTORY      </p>
+
+<p><i><font color="#9A1900">#启用 cd 命令的历史纪录，cd -[TAB]进入历史路径</font></i>
+setopt AUTO<em>PUSHD
+<i><font color="#9A1900">#相同的历史路径只保留一个</font></i>
+setopt PUSHD</em>IGNORE_DUPS</p>
+
+<p><i><font color="#9A1900">#在命令前添加空格，不将此命令添加到纪录文件中</font></i>
+<i><font color="#9A1900">#setopt HIST<em>IGNORE</em>SPACE      </font></i>
+<i><font color="#9A1900">#}}}</font></i></p>
+
+<p><i><font color="#9A1900">#每个目录使用独立的历史纪录{{{</font></i>
+<b><font color="#000000">cd()</font></b> {
+    <b><font color="#0000FF">builtin</font></b> cd <font color="#FF0000">"$@"</font>                             <i><font color="#9A1900"># do actual cd</font></i>
+    <b><font color="#0000FF">fc</font></b> -W                                       <i><font color="#9A1900"># write current history  file</font></i>
+    <b><font color="#0000FF">local</font></b> <font color="#009900">HISTDIR</font><font color="#990000">=</font><font color="#FF0000">"$HOME/.zsh<em>history$PWD"</em></font><em>      <i><font color="#9A1900"># use nested folders for history</font></i>
+        <b><font color="#0000FF">if</font></b>  <font color="#990000">[</font> <font color="#990000">!</font> -d <font color="#FF0000">"$HISTDIR"</font> <font color="#990000">]</font> <font color="#990000">;</font> <b><font color="#0000FF">then</font></b>          <i><font color="#9A1900"># create folder if needed</font></i>
+            mkdir -p <font color="#FF0000">"$HISTDIR"</font>
+        <b><font color="#0000FF">fi</font></b>
+        <b><font color="#0000FF">export</font></b> <font color="#009900">HISTFILE</font><font color="#990000">=</font><font color="#FF0000">"$HISTDIR/zhistory"</font>     <i><font color="#9A1900"># set new history file</font></i>
+    touch <font color="#009900">$HISTFILE</font>
+    <b><font color="#0000FF">local</font></b> <font color="#009900">ohistsize</font><font color="#990000">=</font><font color="#009900">$HISTSIZE</font>
+        <font color="#009900">HISTSIZE</font><font color="#990000">=</font><font color="#993399">0</font>                              <i><font color="#9A1900"># Discard previous dir's history</font></i>
+        <font color="#009900">HISTSIZE</font><font color="#990000">=</font><font color="#009900">$ohistsize</font>                     <i><font color="#9A1900"># Prepare for new dir's history</font></i>
+    <b><font color="#0000FF">fc</font></b> -R                                       <i><font color="#9A1900">#read from current histfile</font></i>
+}
+mkdir -p <font color="#009900">$HOME</font><font color="#990000">/.</font>zsh</em>history<font color="#009900">$PWD</font>
+<b><font color="#0000FF">export</font></b> <font color="#009900">HISTFILE</font><font color="#990000">=</font><font color="#FF0000">"$HOME/.zsh_history$PWD/zhistory"</font></p>
+
+<p><b><font color="#000000">function allhistory </font></b>{ cat <font color="#009900">$(</font>find <font color="#009900">$HOME</font><font color="#990000">/.</font>zsh_history -name zhistory<font color="#990000">)</font> }
+<b><font color="#000000">function convhistory </font></b>{
+            sort <font color="#009900">$1</font> <font color="#990000">|</font> uniq <font color="#990000">|</font>
+            sed <font color="#FF0000">'s/^:</font><font color="#CC33CC">(</font><font color="#FF0000">[ 0-9]*</font><font color="#CC33CC">)</font><font color="#FF0000">:[0-9]*;</font><font color="#CC33CC">(</font><font color="#FF0000">.*</font><font color="#CC33CC">)</font><font color="#FF0000">/</font><font color="#CC33CC">\1</font><font color="#FF0000">::::::</font><font color="#CC33CC">\2</font><font color="#FF0000">/'</font> <font color="#990000">|</font>
+            awk -F<font color="#FF0000">"::::::"</font> <font color="#FF0000">'{ $1=strftime("%Y-%m-%d %T",$1) "|"; print }'</font><br>
+}
+<i><font color="#9A1900">#使用 histall 命令查看全部历史纪录</font></i>
+<b><font color="#000000">function histall </font></b>{ convhistory <font color="#990000">=(</font>allhistory<font color="#990000">)</font> <font color="#990000">|</font>
+            sed <font color="#FF0000">'/^.</font><font color="#CC33CC">{</font><font color="#FF0000">20</font><font color="#CC33CC">}</font><font color="#FF0000"> *cd/i</font><font color="#CC33CC">\</font><font color="#FF0000">'</font> }
+<i><font color="#9A1900">#使用 hist 查看当前目录历史纪录</font></i>
+<b><font color="#000000">function hist </font></b>{ convhistory <font color="#009900">$HISTFILE</font> }</p>
+
+<p><i><font color="#9A1900">#全部历史纪录 top44</font></i>
+<b><font color="#000000">function top44 </font></b>{ allhistory <font color="#990000">|</font> awk -F<font color="#FF0000">':[ 0-9]<em>:[0-9]</em>;'</font> <font color="#FF0000">'{ $1="" ; print }'</font> <font color="#990000">|</font> sed <font color="#FF0000">'s/ /</font><font color="#CC33CC">\n</font><font color="#FF0000">/g'</font> <font color="#990000">|</font> sed <font color="#FF0000">'/^$/d'</font> <font color="#990000">|</font> sort <font color="#990000">|</font> uniq -c <font color="#990000">|</font> sort -nr <font color="#990000">|</font> head -n <font color="#993399">44</font> }</p>
+
+<p><i><font color="#9A1900">#}}}</font></i></p>
+
+<p><i><font color="#9A1900">#杂项 {{{</font></i>
+<i><font color="#9A1900">#允许在交互模式中使用注释  例如：</font></i>
+<i><font color="#9A1900">#cmd #这是注释</font></i>
+setopt INTERACTIVE_COMMENTS      </p>
+
+<p><i><font color="#9A1900">#启用自动 cd，输入目录名回车进入目录</font></i>
+<i><font color="#9A1900">#稍微有点混乱，不如 cd 补全实用</font></i>
+<i><font color="#9A1900">#setopt AUTO_CD</font></i></p>
+
+<p><i><font color="#9A1900">#禁用 core dumps</font></i>
+limit coredumpsize <font color="#993399">0</font></p>
+
+<p><i><font color="#9A1900">#Emacs风格 键绑定</font></i>
+bindkey -e
+<i><font color="#9A1900">#设置 [DEL]键 为向后删除</font></i>
+bindkey <font color="#FF0000">"</font><font color="#CC33CC">\e</font><font color="#FF0000">[3~"</font> delete-char</p>
+
+<p><i><font color="#9A1900">#以下字符视为单词的一部分</font></i>
+<font color="#009900">WORDCHARS</font><font color="#990000">=</font><font color="#FF0000">'*?_-[]~=&amp;;!#$%^(){}&lt;&gt;'</font>
+<i><font color="#9A1900">#}}}</font></i></p>
+
+<p><i><font color="#9A1900">#自动补全功能 {{{</font></i>
+setopt AUTO<em>LIST
+setopt AUTO</em>MENU
+<i><font color="#9A1900">#开启此选项，补全时会直接选中菜单项</font></i>
+<i><font color="#9A1900">#setopt MENU_COMPLETE</font></i></p>
+
+<p>autoload -U compinit
+compinit</p>
+
+<p><i><font color="#9A1900">#自动补全缓存</font></i>
+<i><font color="#9A1900">#zstyle ':completion::complete:<em>' use-cache on</em></font></i><em>
+<i><font color="#9A1900">#zstyle ':completion::complete:</font></i></em><i><font color="#9A1900">' cache-path .zcache</font></i>
+<i><font color="#9A1900">#zstyle ':completion:<em>:cd:</em>' ignore-parents parent pwd</font></i></p>
+
+<p><i><font color="#9A1900">#自动补全选项</font></i>
+zstyle <font color="#FF0000">':completion:<em>:match:</em>'</font> original only
+zstyle <font color="#FF0000">':completion::prefix-1:<em>'</em></font><em> completer _complete
+zstyle <font color="#FF0000">':completion:predict:</font></em><font color="#FF0000">'</font> completer _complete
+zstyle <font color="#FF0000">':completion:incremental:*'</font> completer _complete _correct
+zstyle <font color="#FF0000">':completion:*'</font> completer _complete _prefix _correct _prefix _match _approximate</p>
+
+<p><i><font color="#9A1900">#路径补全</font></i>
+zstyle <font color="#FF0000">':completion:<em>'</em></font><em> expand <font color="#FF0000">'yes'</font>
+zstyle <font color="#FF0000">':completion:</font></em><font color="#FF0000">'</font> squeeze-shlashes <font color="#FF0000">'yes'</font>
+zstyle <font color="#FF0000">':completion::complete:*'</font> <font color="#FF0000">'</font><font color="#CC33CC">\</font><font color="#FF0000">'</font></p>
+
+<p>zstyle <font color="#FF0000">':completion:<em>'</em></font><em> menu <b><font color="#0000FF">select</font></b>
+zstyle <font color="#FF0000">':completion:</font></em><font color="#FF0000">:*:default'</font> force-list always</p>
+
+<p><i><font color="#9A1900">#彩色补全菜单 </font></i>
+<b><font color="#0000FF">eval</font></b> <font color="#009900">$(</font>dircolors -b<font color="#990000">)</font> 
+<b><font color="#0000FF">export</font></b> <font color="#009900">ZLSCOLORS</font><font color="#990000">=</font><font color="#FF0000">"${LS<em>COLORS}"</em></font><em>
+zmodload zsh/complist
+zstyle <font color="#FF0000">':completion:*'</font> list-colors <font color="#009900">${(s.:.)LS</font></em><font color="#009900">COLORS}</font>
+zstyle <font color="#FF0000">':completion:<em>:</em>:kill:<em>:processes'</em></font><em> list-colors <font color="#FF0000">'=(#b) #([0-9]#)</font></em><font color="#FF0000">=0=01;31'</font></p>
+
+<p><i><font color="#9A1900">#错误校正      </font></i>
+zstyle <font color="#FF0000">':completion:<em>'</em></font><em> completer _complete _match _approximate
+zstyle <font color="#FF0000">':completion:</font></em><font color="#FF0000">:match:<em>'</em></font><em> original only
+zstyle <font color="#FF0000">':completion:</font></em><font color="#FF0000">:approximate:*'</font> max-errors <font color="#993399">1</font> numeric</p>
+
+<p><i><font color="#9A1900">#kill 命令补全      </font></i>
+compdef <font color="#009900">pkill</font><font color="#990000">=</font>kill
+compdef <font color="#009900">pkill</font><font color="#990000">=</font>killall
+zstyle <font color="#FF0000">':completion:<em>:</em>:kill:<em>'</em></font><em> menu yes <b><font color="#0000FF">select</font></b>
+zstyle <font color="#FF0000">':completion:</font></em><font color="#FF0000">:<em>:</em>:<em>:processes'</em></font><em> force-list always
+zstyle <font color="#FF0000">':completion:</font></em><font color="#FF0000">:processes'</font> <b><font color="#0000FF">command</font></b> <font color="#FF0000">'ps -au$USER'</font></p>
+
+<p><i><font color="#9A1900">#补全类型提示分组 </font></i>
+zstyle <font color="#FF0000">':completion:<em>:matches'</em></font><em> group <font color="#FF0000">'yes'</font>
+zstyle <font color="#FF0000">':completion:</font></em><font color="#FF0000">'</font> group-name <font color="#FF0000">''</font>
+zstyle <font color="#FF0000">':completion:<em>:options'</em></font><em> description <font color="#FF0000">'yes'</font>
+zstyle <font color="#FF0000">':completion:</font></em><font color="#FF0000">:options'</font> auto-description <font color="#FF0000">'%d'</font>
+zstyle <font color="#FF0000">':completion:<em>:descriptions'</em></font><em> format <font color="#009900">$'</font><font color="#990000">\</font>e<font color="#990000">[</font><font color="#993399">01</font><font color="#990000">;</font>33m -- <font color="#990000">%</font>d --<font color="#990000">\</font>e<font color="#990000">[</font>0m<font color="#FF0000">'                  #'</font>
+zstyle <font color="#FF0000">':completion:</font></em><font color="#FF0000">:messages'</font> format <font color="#009900">$'</font><font color="#990000">\</font>e<font color="#990000">[</font><font color="#993399">01</font><font color="#990000">;</font>35m -- <font color="#990000">%</font>d --<font color="#990000">\</font>e<font color="#990000">[</font>0m<font color="#FF0000">'                      #'</font>
+zstyle <font color="#FF0000">':completion:*:warnings'</font> format <font color="#009900">$'</font><font color="#990000">\</font>e<font color="#990000">[</font><font color="#993399">01</font><font color="#990000">;</font>31m -- No Matches Found --<font color="#990000">\</font>e<font color="#990000">[</font>0m<font color="#FF0000">'        #'</font>
+<i><font color="#9A1900">#}}}</font></i></p>
+
+<p><i><font color="#9A1900">##行编辑高亮模式 {{{</font></i>
+<i><font color="#9A1900"># Ctrl+@ 设置标记，标记和光标点之间为 region</font></i>
+<font color="#009900">zle_highlight</font><font color="#990000">=(</font>region<font color="#990000">:</font><b><font color="#0000FF">bg</font></b><font color="#990000">=</font>magenta <i><font color="#9A1900">#选中区域 </font></i>
+               special<font color="#990000">:</font>bold      <i><font color="#9A1900">#特殊字符</font></i>
+               isearch<font color="#990000">:</font>underline<font color="#990000">)</font><i><font color="#9A1900">#搜索时使用的关键字</font></i>
+<i><font color="#9A1900">#}}}</font></i></p>
+
+<p><i><font color="#9A1900">##空行(光标在行首)补全 cd {{{</font></i>
+user-complete<font color="#990000">()</font>{
+    <b><font color="#0000FF">if</font></b> <font color="#990000">[[</font> -n <font color="#009900">$BUFFER</font> <font color="#990000">]]</font> <font color="#990000">;</font> <b><font color="#0000FF">then</font></b>
+        zle expand-or-complete
+    <b><font color="#0000FF">else</font></b>
+        <font color="#009900">BUFFER</font><font color="#990000">=</font><font color="#FF0000">"cd "</font>
+        zle end-of-line
+        zle expand-or-complete
+    <b><font color="#0000FF">fi</font></b> }
+zle -N user-complete
+bindkey <font color="#FF0000">"</font><font color="#CC33CC">\t</font><font color="#FF0000">"</font> user-complete
+<i><font color="#9A1900">#}}}</font></i></p>
+
+<p><i><font color="#9A1900">##在命令前插入 sudo {{{</font></i>
+<i><font color="#9A1900">#定义功能 </font></i>
+sudo-command-line<font color="#990000">()</font> {
+    <font color="#990000">[[</font> -z <font color="#009900">$BUFFER</font> <font color="#990000">]]</font> <font color="#990000">&amp;&amp;</font> zle up-history
+    <font color="#990000">[[</font> <font color="#009900">$BUFFER</font> <font color="#990000">!=</font> sudo<font color="#990000">\</font> <font color="#990000">*</font> <font color="#990000">]]</font> <font color="#990000">&amp;&amp;</font> <font color="#009900">BUFFER</font><font color="#990000">=</font><font color="#FF0000">"sudo $BUFFER"</font>
+<i><font color="#9A1900">#光标移动到行末</font></i>
+    zle end-of-line
+}
+zle -N sudo-command-line
+<i><font color="#9A1900">#定义快捷键为： [Esc] [Esc]</font></i>
+bindkey <font color="#FF0000">"</font><font color="#CC33CC">\e\e</font><font color="#FF0000">"</font> sudo-command-line
+<i><font color="#9A1900">#}}}</font></i></p>
+
+<p><i><font color="#9A1900">#命令别名 {{{</font></i>
+<b><font color="#0000FF">alias</font></b> <font color="#009900">cp</font><font color="#990000">=</font><font color="#FF0000">'cp -i'</font>
+<b><font color="#0000FF">alias</font></b> <font color="#009900">mv</font><font color="#990000">=</font><font color="#FF0000">'mv -i'</font>
+<b><font color="#0000FF">alias</font></b> <font color="#009900">rm</font><font color="#990000">=</font><font color="#FF0000">'rm -i'</font>
+<b><font color="#0000FF">alias</font></b> <font color="#009900">ls</font><font color="#990000">=</font><font color="#FF0000">'ls -F --color=auto'</font>
+<b><font color="#0000FF">alias</font></b> <font color="#009900">ll</font><font color="#990000">=</font><font color="#FF0000">'ls -l'</font>
+<b><font color="#0000FF">alias</font></b> <font color="#009900">grep</font><font color="#990000">=</font><font color="#FF0000">'grep --color=auto'</font>
+<b><font color="#0000FF">alias</font></b> <font color="#009900">ee</font><font color="#990000">=</font><font color="#FF0000">'emacsclient -t'</font></p>
+
+<p><i><font color="#9A1900">#[Esc][h] man 当前命令时，显示简短说明 </font></i>
+<b><font color="#0000FF">alias</font></b> run-help <font color="#990000">&gt;&amp;</font>/dev/null <font color="#990000">&amp;&amp;</font> <b><font color="#0000FF">unalias</font></b> run-help
+autoload run-help</p>
+
+<p><i><font color="#9A1900">#历史命令 top10</font></i>
+<b><font color="#0000FF">alias</font></b> <font color="#009900">top10</font><font color="#990000">=</font><font color="#FF0000">'print -l  ${(o)history%% *} | uniq -c | sort -nr | head -n 10'</font>
+<i><font color="#9A1900">#}}}</font></i></p>
+
+<p><i><font color="#9A1900">#路径别名 {{{</font></i>
+<i><font color="#9A1900">#进入相应的路径时只要 cd ~xxx</font></i>
+<b><font color="#0000FF">hash</font></b> -d <font color="#009900">WWW</font><font color="#990000">=</font><font color="#FF0000">"/home/lighttpd/html"</font>
+<b><font color="#0000FF">hash</font></b> -d <font color="#009900">ARCH</font><font color="#990000">=</font><font color="#FF0000">"/mnt/arch"</font>
+<b><font color="#0000FF">hash</font></b> -d <font color="#009900">PKG</font><font color="#990000">=</font><font color="#FF0000">"/var/cache/pacman/pkg"</font>
+<b><font color="#0000FF">hash</font></b> -d <font color="#009900">E</font><font color="#990000">=</font><font color="#FF0000">"/etc/env.d"</font>
+<b><font color="#0000FF">hash</font></b> -d <font color="#009900">C</font><font color="#990000">=</font><font color="#FF0000">"/etc/conf.d"</font>
+<b><font color="#0000FF">hash</font></b> -d <font color="#009900">I</font><font color="#990000">=</font><font color="#FF0000">"/etc/rc.d"</font>
+<b><font color="#0000FF">hash</font></b> -d <font color="#009900">X</font><font color="#990000">=</font><font color="#FF0000">"/etc/X11"</font>
+<b><font color="#0000FF">hash</font></b> -d <font color="#009900">BK</font><font color="#990000">=</font><font color="#FF0000">"/home/r00t/config_bak"</font>
+<i><font color="#9A1900">#}}}</font></i></p>
+
+<p><i><font color="#9A1900">##for Emacs {{{</font></i>
+<i><font color="#9A1900">#在 Emacs终端 中使用 Zsh 的一些设置 不推荐在 Emacs 中使用它</font></i>
+<b><font color="#0000FF">if</font></b> <font color="#990000">[[</font> <font color="#FF0000">"$TERM"</font> <font color="#990000">==</font> <font color="#FF0000">"dumb"</font> <font color="#990000">]];</font> <b><font color="#0000FF">then</font></b>
+setopt No_zle
+<font color="#009900">PROMPT</font><font color="#990000">=</font><font color="#FF0000">'%n@%M %/</font>
+<font color="#FF0000">&gt;&gt;'</font>
+<b><font color="#0000FF">alias</font></b> <font color="#009900">ls</font><font color="#990000">=</font><font color="#FF0000">'ls -F'</font>
+<b><font color="#0000FF">fi</font></b><br>
+<i><font color="#9A1900">#}}}</font></i></p>
+
+<p><font color="#990000">####</font>{{{
+<b><font color="#000000">function timeconv </font></b>{ date -d @<font color="#009900">$1</font> <font color="#990000">+</font><font color="#FF0000">"%Y-%m-%d %T"</font> }</p>
+
+<p>zstyle <font color="#FF0000">':completion:<em>:ping:</em>'</font> hosts <font color="#993399">129.27</font><font color="#990000">.</font><font color="#993399">2.3</font> www<font color="#990000">.</font>tugraz<font color="#990000">.</font>at <font color="#990000">\</font>
+       <font color="#993399">10.16</font><font color="#990000">.</font><font color="#993399">17.1</font>{{<font color="#993399">7</font><font color="#990000">..</font><font color="#993399">9</font>}<font color="#990000">,</font>}
+<i><font color="#9A1900"># }}}</font></i></p>
+
+<p><i><font color="#9A1900">## END OF FILE #################################################################</font></i>
+<i><font color="#9A1900"># vim:filetype=zsh foldmethod=marker autoindent expandtab shiftwidth=4</font></i></p></pre><p></p>
+
+<p>(<a href="http://i.linuxtoy.org/files/zsh.tgz">下载 Zsh 配置文件</a>)</p>
+        		
+	<p><strong>Read More:</strong></p>
+	<ul class="entrylist"><li>» No related posts</li></ul>
+	</div><!--.entry-->
+        
+<ins style="display: inline-table; border: medium none; height: 280px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 336px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 280px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 336px; background-color: transparent;"><iframe src="index_1.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" id="aswift_0" name="aswift_0" style="left: 0pt; position: absolute; top: 0pt;" frameborder="0" height="280" scrolling="no" width="336"></iframe></ins></ins><hr>
+	<!-- google_ad_section_end -->
+    </div><!--.post-->
+
+
+<h3 id="comments">21 Comments</h3>
+
+<ol class="commentlist">
+    	<li class="oddbox" id="comment-105575">
+		<span class="count">1</span>
+    <cite>eric</cite>
+    <small>评论 <a href="#comment-105575"> @ 2009-03-03 13:00</a><img style="cursor: pointer;" onclick='yus_replyTo("105575", "eric")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@－@眼睛花了。。。</p>
+    		</li>
+		<li class="box" id="comment-105577">
+		<span class="count">2</span>
+    <cite>ahtya</cite>
+    <small>评论 <a href="#comment-105577"> @ 2009-03-03 13:04</a><img style="cursor: pointer;" onclick='yus_replyTo("105577", "ahtya")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>楼上经典！</p>
+    		</li>
+		<li class="posteroddbox" id="comment-105578">
+		<span class="count">3</span>
+    <cite><a href="http://hi.baidu.com/ran9er" rel="external nofollow" class="url">Kardinal</a></cite>
+    <small>评论 <a href="#comment-105578"> @ 2009-03-03 13:08</a><img style="cursor: pointer;" onclick='yus_replyTo("105578", "Kardinal")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>本来排的很整齐的……
+WP 显示代码没有缩进，而且把空格也压缩了
+所以就成了这样……</p>
+
+<p>这里的还能凑合看（复制后用 vim 打开效果不错)
+<a href="http://forum.ubuntu.org.cn/viewtopic.php?f=95&amp;t=138936&amp;start=1" rel="nofollow">http://forum.ubuntu.org.cn/viewtopic.php?f=95&amp;t=138936&amp;start=1</a></p>
+    		</li>
+		<li class="box" id="comment-105579">
+		<span class="count">4</span>
+    <cite>eject</cite>
+    <small>评论 <a href="#comment-105579"> @ 2009-03-03 13:10</a><img style="cursor: pointer;" onclick='yus_replyTo("105579", "eject")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>偶没眼花，，，坚定滴看完了。。也测试了。。。</p>
+
+<p>但还是不明白一些参数~~~试完了后。。。坚定的认为bash最适合我了</p>
+    		</li>
+		<li class="oddbox" id="comment-105580">
+		<span class="count">5</span>
+    <cite>vern</cite>
+    <small>评论 <a href="#comment-105580"> @ 2009-03-03 13:14</a><img style="cursor: pointer;" onclick='yus_replyTo("105580", "vern")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>zsh 自带的 dirs 命令也很实用，输入
+dirs -v
+将会列出最近 20 个目录，在输入
+cd -[n]
+将会进入相应的目录。</p>
+
+<p>如果希望 dirs -v 的列表降序排列，可以使用
+dirs -v | sort -nr</p>
+    		</li>
+		<li class="posterbox" id="comment-105581">
+		<span class="count">6</span>
+    <cite><a href="http://hi.baidu.com/ran9er" rel="external nofollow" class="url">Kardinal</a></cite>
+    <small>评论 <a href="#comment-105581"> @ 2009-03-03 13:18</a><img style="cursor: pointer;" onclick='yus_replyTo("105581", "Kardinal")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@eject: 多用一会，你就会爱不释手
+@vern: 启用 setopt AUTO_PUSHD 
+然后 cd -[tab]
+逆序 cd +[tab]
+最好试试我这个配置文件，保存为 xxx ， source xxx
+也就是 [tab]-[tab]</p>
+    		</li>
+		<li class="oddbox" id="comment-105582">
+		<span class="count">7</span>
+    <cite><a href="http://vifix.cn/" rel="external nofollow" class="url">Mac</a></cite>
+    <small>评论 <a href="#comment-105582"> @ 2009-03-03 13:38</a><img style="cursor: pointer;" onclick='yus_replyTo("105582", "Mac")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>用HTML源编辑的pre或code标签可以解决缩进问题</p>
+    		</li>
+		<li class="posterbox" id="comment-105584">
+		<span class="count">8</span>
+    <cite><a href="http://hi.baidu.com/ran9er" rel="external nofollow" class="url">Kardinal</a></cite>
+    <small>评论 <a href="#comment-105584"> @ 2009-03-03 14:00</a><img style="cursor: pointer;" onclick='yus_replyTo("105584", "Kardinal")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@Mac: 谢了</p>
+    		</li>
+		<li class="oddbox" id="comment-105587">
+		<span class="count">9</span>
+    <cite>cdok</cite>
+    <small>评论 <a href="#comment-105587"> @ 2009-03-03 14:28</a><img style="cursor: pointer;" onclick='yus_replyTo("105587", "cdok")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>应该是 linuxtoy 最长的文章了</p>
+    		</li>
+		<li class="posterbox" id="comment-105588">
+		<span class="count">10</span>
+    <cite><a href="http://hi.baidu.com/ran9er" rel="external nofollow" class="url">Kardinal</a></cite>
+    <small>评论 <a href="#comment-105588"> @ 2009-03-03 14:31</a><img style="cursor: pointer;" onclick='yus_replyTo("105588", "Kardinal")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@Mac：这招不赖，俺生成了彩色语法的html 
+好像还有点问题，再瞅瞅……
+@cdok: 后面的配置文件不属于正文内容，复制粘贴就可以了</p>
+    		</li>
+		<li class="posteroddbox" id="comment-105592">
+		<span class="count">11</span>
+    <cite><a href="http://hi.baidu.com/ran9er" rel="external nofollow" class="url">Kardinal</a></cite>
+    <small>评论 <a href="#comment-105592"> @ 2009-03-03 15:19</a><img style="cursor: pointer;" onclick='yus_replyTo("105592", "Kardinal")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>我败了，好像WP会自动把引号转换成成对的……</p>
+    		</li>
+		<li class="box" id="comment-105597">
+		<span class="count">12</span>
+    <cite>arch</cite>
+    <small>评论 <a href="#comment-105597"> @ 2009-03-03 16:35</a><img style="cursor: pointer;" onclick='yus_replyTo("105597", "arch")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>TOY越来越深奥了。</p>
+    		</li>
+		<li class="oddbox" id="comment-105617">
+		<span class="count">13</span>
+    <cite>kelen</cite>
+    <small>评论 <a href="#comment-105617"> @ 2009-03-03 18:59</a><img style="cursor: pointer;" onclick='yus_replyTo("105617", "kelen")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>marks this. 不过貌似有一个功能一直很不爽, 就是zsh在补全的时候一直区分大小写, 有什么办法可以让其忽略大小写吗?</p>
+    		</li>
+		<li class="posterbox" id="comment-105645">
+		<span class="count">14</span>
+    <cite><a href="http://hi.baidu.com/ran9er" rel="external nofollow" class="url">Kardinal</a></cite>
+    <small>评论 <a href="#comment-105645"> @ 2009-03-03 22:19</a><img style="cursor: pointer;" onclick='yus_replyTo("105645", "Kardinal")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@kelen: 嘛意思？ 不太明白…… 不过里面有个错误校正的功能 
+zstyle ‘:completion:<em>:approximate:</em>’ max-errors 1 numeric
+这一行修改容错字数</p>
+
+<p>@vern:好像按"+"不太容易的说……把这个改了一下
+复制这里的 <a href="http://forum.ubuntu.org.cn/viewtopic.php?f=95&amp;t=138936&amp;start=113" rel="nofollow">http://forum.ubuntu.org.cn/viewtopic.php?f=95&amp;t=138936&amp;start=113</a>
+user-complete(){
+    case <em>$BUFFER in
+        "</em>cd --" )
+        BUFFER="cd +"
+        zle end-of-line
+        zle expand-or-complete
+        ;;
+        "_" )
+        BUFFER="cd "
+        zle end-of-line
+        zle expand-or-complete
+        ;;
+        * )
+        zle expand-or-complete
+        ;;
+    esac
+}
+空行按[tab] 出  "cd [tab]"
+这时：按[tab] 开始遍历菜单 ｜ -[tab] 出 directory stack ｜  - -[tab] 变为 +[tab] （负负得正哈）逆序 directory stack</p>
+    		</li>
+		<li class="oddbox" id="comment-105651">
+		<span class="count">15</span>
+    <cite>kelen</cite>
+    <small>评论 <a href="#comment-105651"> @ 2009-03-04 0:00</a><img style="cursor: pointer;" onclick='yus_replyTo("105651", "kelen")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@kardinal 就是比如当要补全文件名为 NVIDIA-Linux-x86-177.80-pkg1.run 的时候, 如果只输入nvi.....(小写) zsh是不会补全到这个文件的. 而要按shift键就太麻烦, 这个问题在bash里我是设置~/.inputrc来解决的. 但在zsh里没有效.</p>
+    		</li>
+		<li class="posterbox" id="comment-105667">
+		<span class="count">16</span>
+    <cite><a href="http://hi.baidu.com/ran9er" rel="external nofollow" class="url">Kardinal</a></cite>
+    <small>评论 <a href="#comment-105667"> @ 2009-03-04 8:58</a><img style="cursor: pointer;" onclick='yus_replyTo("105667", "Kardinal")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'</p>
+
+<p>……WP又把引号给改了……
+见http://zsh.dotsrc.org/Doc/Release/zsh_19.html
+matcher-list 一段</p>
+    		</li>
+		<li class="oddbox" id="comment-105715">
+		<span class="count">17</span>
+    <cite>kelen</cite>
+    <small>评论 <a href="#comment-105715"> @ 2009-03-04 15:25</a><img style="cursor: pointer;" onclick='yus_replyTo("105715", "kelen")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>去官方看了, 原来是这样. 感谢kerdinal的回复. 再去KK. 
+PS, 麻烦把#17错误的信息DEL掉, 以免有误导他人之嫌..</p>
+    		</li>
+		<li class="posterbox" id="comment-105723">
+		<span class="count">18</span>
+    <cite><a href="http://hi.baidu.com/ran9er" rel="external nofollow" class="url">Kardinal</a></cite>
+    <small>评论 <a href="#comment-105723"> @ 2009-03-04 16:06</a><img style="cursor: pointer;" onclick='yus_replyTo("105723", "Kardinal")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>复制那个页面里的就行，粘在这里的WP都会给“修正”一下 -___-|||</p>
+
+<p>PS：可以直接输入 zstyle [tab] 使劲按 TAB 看看都有什么选项
+还可以按 Alt+x 输入 zle 命令 ……</p>
+    		</li>
+		<li class="oddbox" id="comment-106132">
+		<span class="count">19</span>
+    <cite><a href="http://www.rainux.org/" rel="external nofollow" class="url">Rainux</a></cite>
+    <small>评论 <a href="#comment-106132"> @ 2009-03-08 1:24</a><img style="cursor: pointer;" onclick='yus_replyTo("106132", "Rainux")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>WP 贴代码的时候同时加  和 &lt;code&gt; 标签应该就没问题了，包括引号也不会被自动转换。</p>
+
+<p>建议 Toy 可以启用 Markdown 插件，这样在帖子和回复里都可以很方便的时候 Markdown 语法来排版和写代码。参考这两个链接：</p>
+
+<p><a href="http://daringfireball.net/projects/markdown/dingus" rel="nofollow">http://daringfireball.net/projects/markdown/dingus</a>
+<a href="http://michelf.com/projects/php-markdown/" rel="nofollow">http://michelf.com/projects/php-markdown/</a></p>
+    		</li>
+		<li class="box" id="comment-111840">
+		<span class="count">20</span>
+    <cite><a href="http://bbs.deepin.org/" rel="external nofollow" class="url">SecretZero</a></cite>
+    <small>评论 <a href="#comment-111840"> @ 2009-05-05 3:22</a><img style="cursor: pointer;" onclick='yus_replyTo("111840", "SecretZero")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>找到了，很漂亮，谢谢。</p>
+    		</li>
+		<li class="oddbox" id="comment-277095">
+		<span class="count">21</span>
+    <cite><a href="http://amoblin.sinaapp.com/" rel="external nofollow" class="url">amoblin</a></cite>
+    <small>评论 <a href="#comment-277095"> @ 2012-05-15 11:34</a><img style="cursor: pointer;" onclick='yus_replyTo("277095", "amoblin")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>文中：
+有时候输完了一个命令，才想起这个命令需要管理员权限，这时最快的步骤为： Ctrl+a s u d o (空格）[Ctrl+e] 按两下 ESC 键完成上面的过程</p>
+
+<p>这样：　$ sudo !!
+不是更快么？</p>
+    		</li>
+	</ol>
+
+
+<div id="respond">
+    
+    <form action="https://linuxtoy.org/wp-comments-post.php" method="post" id="commentform">
+
+        <p class="cf_info"><input name="author" id="author" value="" size="30" tabindex="1" type="text"><label for="author">Name (必填)</label></p>
+    <p class="cf_info"><input name="email" id="email" value="" size="30" tabindex="2" type="text"><label for="email">Mail (will not be published) (必填)</label></p>
+    <p class="cf_info"><input name="url" id="url" value="" size="30" tabindex="3" type="text"><label for="url">Website</label></p>
+    
+    <p class="cf_info"><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+    <p class="aright cf_info"><input name="submit" id="submit" tabindex="5" value="Submit" type="submit">
+    <input name="comment_post_ID" value="2896" type="hidden"></p>
+    <p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="316a4956ba" type="hidden"></p>    
+
+
+
+	<p style="clear: both;" class="subscribe-to-comments">
+	<input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" type="checkbox">
+	<label for="subscribe">Notify me of followup comments via e-mail</label>
+	</p>
+
+
+    
+</form>
+</div><!--#respond-->
+</div><!--#story-->
+</div><!--#main-->
+    <div class="navposts">
+    <p class="prev">« <a href="https://linuxtoy.org/archives/epdfview-017-released.html" rel="prev">ePDFView 0.1.7 发布</a></p>    <p class="next"><a href="https://linuxtoy.org/archives/coreavc-19-for-linux-installation-guide.html" rel="next">CoreAVC 1.9 for Linux 安装指南</a> »</p>    </div>
+<div id="footer">
+    <p><a href="http://creativecommons.org/licenses/by-nc-sa/2.5/cn/">(cc)</a> LinuxTOY, Designed by <a href="http://yx.takeback.net/" title="Dark's blog">Dark</a>. Be Valid <a href="http://validator.w3.org/check/referer">Xhtml 1.1</a>. A better web experience in Firefox. 47 queries in 0.470s. <span class="rss"><a href="https://linuxtoy.org/feed" title="订阅整站 RSS">RSS</a></span> (Entries).</p>
+    
+		
+    
+</div>
+</div><!--#page-->
+
+
+</body>
+</html>

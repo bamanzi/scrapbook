@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+        <title>ack's features</title>
+        <meta name="Author" content="Andy Lester">
+        <meta name="google-site-verification" content="qm9jhn-etECEUlDgRf7gRtnJoSD1hmHOQm_iue_ng3A">
+        <meta name="msvalidate.01" content="4EF6B7CF4E86418C29626DA5E8B28AF5">                  
+        
+        <link rel="shortcut icon" href="favicon.ico">
+        
+    
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body> <div class="nav">
+<h1 class="logo"><a href="http://beyondgrep.com/">ack!</a></h1>
+    <ul>
+        <li><a href="http://beyondgrep.com/security/">Security alert</a></li>
+        <li><a href="http://beyondgrep.com/ack-2.0/">New in ack 2</a></li>
+        <li><a href="http://beyondgrep.com/why-ack/">Why ack?</a></li>
+        <li><a href="http://beyondgrep.com/install/">Install</a></li>
+        <li><a href="http://beyondgrep.com/documentation/">Documentation</a></li>
+        <li><a href="http://beyondgrep.com/community/">Community</a></li>
+        <li><a href="http://beyondgrep.com/more-tools/">More Tools</a></li>
+    </ul>
+</div> 
+<div class="content">
+
+    <h1>Top 10 reasons to use ack for source code</h1>
+
+    <h2>1. It's fast</h2>
+
+    <p>
+    Ack only searches the stuff that makes sense to search.  Perl's
+    regular expressions are highly optimized.
+    </p>
+
+    <h2>2. It's portable</h2>
+
+    <p>
+    ack is pure Perl, so it runs on Windows just fine. It has no
+    dependencies other than Perl 5. <a href="http://beyondgrep.com/install/">Installation is a snap</a>.
+    </p>
+
+    <h2>3. It ignores VCS directories</h2>
+
+    <p>
+    ack searches recursively by default, while ignoring <code>.git</code>,
+    <code>.svn</code>, <code>CVS</code> and other VCS directories.
+    </p>
+
+    <blockquote><code>
+            # Which would you rather type?<br>
+            $ grep pattern $(find . -type f | grep -v '\.svn')<br>
+            <br>
+            $ ack pattern</code></blockquote>
+
+    <h2>4. Better search results</h2>
+
+    <p>
+    Since ack defaults to only searching source code, you get fewer false positives.
+    </p><ul>
+        <li>VCS directories
+        </li><li><i>blib</i>, the Perl build directory
+        </li><li>backup files like <i>foo~</i> and <i>#foo#</i>
+        </li><li>binary files, core dumps, etc
+    </li></ul>
+    <p></p>
+
+    <h2>5. Easy filetype specifications</h2>
+
+    <p>
+    If you have a big project with many different languages combined, it's easy to add
+    <tt>--perl</tt> to search only Perl files, or use <tt>--nohtml</tt> to search everything except HTML.
+    </p>
+
+    <p>
+    ack's filetype detection means more than just specifying a single file extension.
+    </p>
+
+    <blockquote><code>
+            # Which would you rather type?
+            $ grep pattern $(find . -name '*.pl' -or -name '*.pm' -or  -name '*.pod' | grep -v .svn)<br>
+            <br>
+            $ ack --perl pattern
+    </code></blockquote>
+
+    <p>
+    Plus, ack does filetype detection that <code>find</code> can't.
+    ack checks the shebang lines of scripts without extensions.
+    </p>
+
+    <h2>6. Creates lists of files without searching</h2>
+
+    <p>
+    Since ack can know to search only, say, Ruby files with the
+    <code>--ruby</code> switch, you can also generate a list of
+    files in a tree with the <code>-f</code> switch.
+    </p>
+
+    <blockquote><code>
+            # List all Ruby files in the tree<br>
+            $ ack -f --ruby &gt; all-ruby-files
+    </code></blockquote>
+
+    <h2>7. Match highlighting</h2>
+
+    <p>
+    ack has flexible match highlighting, where you can specify the
+    colors to use in its output.
+    </p>
+
+    <h2>8. Perl regular expressions</h2>
+
+    <p>
+    Perl leads the programming world with its regular expressions.
+    ack uses Perl's regular expressions, not a "Perl-compatible"
+    subset.
+    </p>
+
+    <p>
+    You can also take advantage of Perl's match variables.  For
+    example, to generate a list of all files <code>#include</code>d
+    in your C code, use this:
+    </p>
+
+    <blockquote><code>
+            ack --cc '#include\s+&lt;(.*)&gt;' --output '$1' -h
+    </code></blockquote>
+
+
+    <h2>9. Command switches much like GNU grep</h2>
+
+    <p>
+    If you know GNU grep, you know most of ack's switches, too.
+    Word-only searching with <code>-w</code>, case-insensitive
+    searching with <code>-i</code>, etc
+    </p>
+
+    <h2>10. "ack" is shorter than "grep" to type</h2>
+
+    <p>
+    This one is sort of a joke, but sort of not.  You spend hours
+    every day searching through source code.  ack makes it as quick
+    and easy as possible to do that searching and to remove as much
+    drudgerous typing as possible.
+    </p>
+
+    <p>
+    Defaults matter.  The less typing you have to do, the better.
+    </p>
+
+    <h2>What are you waiting for?</h2>
+    <p> <a href="http://beyondgrep.com/install/">Installation</a> is a snap.
+    Try ack for yourself.
+    </p>
+
+    <h1>Ack in five minutes</h1>
+
+    <p>
+    A lightning talk by <a href="https://twitter.com/theaboutbox">Cameron Pope</a> on why you should use ack.
+    </p>
+    <iframe style="" src="index_1.html" allowfullscreen="" frameborder="0" height="360" width="640"></iframe>
+
+    <a name="testimonials"></a>
+    <h1>Testimonials</h1>
+
+    <p>
+    "Every once in a while something comes along that improves an idea so much,
+    you can't ignore it. Such a thing is Ack, the grep replacement."
+    -- <a href="http://www.unixlore.net/use-ack-as-better-grep.html">unixlore.net</a>
+    </p>
+
+    <p>
+    "Whoa, this is *so* much better than grep it's not even funny."
+    -- <a href="http://jacobian.org/">Jacob Kaplan-Moss</a>, creator of <a href="http://www.djangoproject.com/">Django</a>.
+    </p>
+
+    <p>
+    "Thanks for creating ack and sharing it with the world.  It
+    makes my days just a little more pleasant.  I'm glad to have
+    it in my toolbox.  That <a href="http://beyondgrep.com/install/">installation is as simple
+    as downloading the standalone version</a> and chmodding
+    is a nice touch."
+    -- <a href="http://www.highprogrammer.com/alan/">Alan De Smet</a>
+    </p>
+
+    <p>
+    "I came across ack today, and now grep is sleeping outside. It's very
+    much like grep, except it assumes all the little things that you always
+    wanted grep to remember, but that it never did. It actually left the
+    light on for you, and put the toilet seat down."
+    -- <a href="http://assistedsilicon.blogspot.com/2008/09/ack-grep-but-better.html">Samuel Huckins</a>
+    </p>
+
+    <p>
+    "ack is the best tool I have added to my toolbox in the past year, hands down."
+    -- <a href="http://billmill.org/">Bill Mill</a> on <a href="http://www.reddit.com/info/6odl4/comments/">reddit</a>
+    </p>
+
+    <p>
+    "I use it all the time and I can't imagine how I managed with only
+    grep."
+    -- <a href="http://marnanel.org/">Thomas Thurman</a>
+    </p>
+
+    <p>
+    "This has been replacing a Rube Goldberg mess of <tt>find/grep/xargs</tt>
+    that I've been using to search source files in a fairly large codebase."
+    -- <a href="http://www.anomaly.org/wade/">G. Wade Johnson</a>
+    </p>
+
+    <p>
+    "You had me at <tt>--thpppt</tt>."
+    -- John Gruber, <a href="http://daringfireball.net/linked/2007/november#tue-27-ack">Daring Fireball</a>
+    </p>
+
+    <p>
+    "Grepping of SVN repositories was driving me crazy until I found ack. It
+    fixes all of my grep annoyances and adds features I didn't even know I
+    wanted." -- <a href="http://www.prescod.net/">Paul Prescod</a>
+    </p>
+
+    <p>
+    "I added ack standalone to our internal devtools project at work. People
+    are all over it." -- <a href="http://www.multiply.org/">Jason Gessner</a>
+    </p>
+
+    <p>
+    "I just wanted to send you my praise for this wonderful little
+    application.  It's in my toolbox now and after one day of use has proven
+    itself invaluable." -- <a href="http://www.just-another.net/">Benjamin W. Smith</a>
+    </p>
+
+    <p>
+    "ack has replaced grep for me for 90% of what I used it for.
+    Obsoleted most of my 'grep is crippled' wrapper scripts, too."
+    -- Randall Hansen
+    </p>
+
+    <p>
+    "ack's powerful search facilities are an invaluable tool for searching
+    large repositories like <a href="http://parrot.org/">Parrot</a>. The
+    ability to control the search domain by filetype--and to do so
+    independent of platform--has made one-liners out of many complex
+    queries previously done with custom scripts. Parrot developers
+    are hooked on ack."
+    -- <a href="http://www.rakudoconsulting.com/">Jerry Gay</a>
+    </p>
+
+    <p>
+    "That thing is awesome. People see me using it and ask what the heck it is."
+    -- Andrew Moore
+    </p>
+
+    <p>
+    "ack is certainly one of those simple pleasures of life on the command line."
+    -- <a href="https://twitter.com/michaellehmkuhl/status/325358593085960192">Michael Lehmkuml</a>
+    </p>
+</div> 
+        <div class="footer">
+            <p>
+            Ack is copyright 2005-2013 <a href="http://petdance.com/">Andy Lester</a>,
+            <a href="mailto:andy@petdance.com">andy@petdance.com</a>.
+            Ack is free software; you can redistribute it and/or modify it under the terms of the
+            <a href="http://www.opensource.org/licenses/Artistic-2.0">Artistic License v2.0</a>.
+            </p>
+            <p>
+            Website design by <a href="http://www.madebyargon.com/">Ashraful Sheikh</a>
+            and <a href="http://www.jeanaclark.org/">Jeana Clark</a>.
+            </p>
+        </div> <!-- Google tracking, must be just before close of body tag -->
+    
+</body>
+</html>

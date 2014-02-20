@@ -1,0 +1,937 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html itemtype="http://schema.org/Article" itemscope="" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="Cache-control" content="private">
+<link href="https://plus.google.com/100292833634918081724" rel="publisher">
+	<title>  How To Get SSH Command-Line Access to Windows 7 Using Cygwin</title>
+	
+	<meta property="fb:page_id" content="65878196434">
+	<meta name="verify-v1" content="WiU7236KQY8e6jcxePbZscPXDuMvJ3b9ydseGd4G5AE=">
+
+			<meta name="ROBOTS" content="INDEX, FOLLOW">
+	<meta name="REVISIT-AFTER" content="1 DAYS">
+		<link rel="alternate" type="application/rss+xml" title="How-To Geek RSS Feed" href="http://feeds.howtogeek.com/HowToGeek">
+			<meta property="og:title" itemprop="name" name="title" content="How To Get SSH Command-Line Access to Windows 7 Using Cygwin">
+		<meta property="og:type" content="article">
+		<meta property="og:description" name="og:description" itemprop="og:description" content="Are you comfortable with Linux/Unix and want SSH access to your Windows 7 machine? Cygwin provides this functionality and gives you a familiar environment to work with in a few simple steps.">
+		<meta property="og:image" content="http://cdn.howtogeek.com/thumbcache/140/160/31ecc53edca1e7d430a036f5ba2344ac/wp-content/uploads/2011/01/banner3.png">
+		<link rel="image_src" href="http://cdn.howtogeek.com/thumbcache/140/160/31ecc53edca1e7d430a036f5ba2344ac/wp-content/uploads/2011/01/banner3.png">
+		
+	
+	
+	
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	
+		<!--[if lt IE 8]>
+	<link rel="stylesheet" type="text/css" href="http://cdn.howtogeek.com/public/css/htgIE.css?1360963563" />
+	<![endif]-->
+		
+					
+			
+		
+	
+
+	<link rel="shortlink" href="http://www.howtogeek.com/?p=41560">
+<link rel="canonical" href="http://www.howtogeek.com/howto/41560/how-to-get-ssh-command-line-access-to-windows-7-using-cygwin/">
+<meta property="og:url" content="http://www.howtogeek.com/howto/41560/how-to-get-ssh-command-line-access-to-windows-7-using-cygwin/"> 
+
+
+
+				
+	
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="v3">
+
+<div id="doc4" class="yui-t7">
+	<div id="hd"></div>		
+	<div id="bd">
+		<div id="htgHeader">
+			<div class="logo">
+				<h1 id="printH1">How-To Geek</h1><a href="http://www.howtogeek.com/" class="home"><img src="blank.gif" alt="How-To Geek" title="How-To Geek"></a>
+				<div class="logo2">
+					<div id="div-gpt-ad-1342044737928-2">
+
+<div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_1__container__"><iframe src="index_1.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_1" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_1" frameborder="0" height="90" scrolling="no" width="728"></iframe></div><iframe src="index_5.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_1__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_1__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>
+				</div>
+			</div>
+		</div>
+		<div class="yui-g" id="htgNavBar">
+			<a href="http://www.howtogeek.com/" title="How-To Geek Home" id="home"></a>
+			<ul id="mnuMainul">
+				<li>
+					<a id="mnuMainMenu" href="#" class="arrow">ARTICLES</a>
+					<div class="subMenu">
+						<div class="subMenuSection">
+							<h4>SECTIONS</h4>
+							<ul style="width: 100px;">
+								<li><h2><a href="http://www.howtogeek.com/t/windows/">WINDOWS</a></h2></li>
+								<li><h2><a href="http://www.howtogeek.com/t/linux/">LINUX</a></h2></li>
+								<li><h2><a href="http://www.howtogeek.com/t/office/">OFFICE</a></h2></li>
+								<li><h2><a href="http://www.howtogeek.com/t/wallpaper/">WALLPAPER</a></h2></li>
+							</ul>
+							<ul>
+								<li><h2><a href="http://www.howtogeek.com/t/mobile/">MOBILE</a></h2></li>
+								<li><h2><a href="http://www.howtogeek.com/t/hardware/">HARDWARE</a></h2></li>
+								<li><h2><a href="http://www.howtogeek.com/t/infotech/">IT TECH</a></h2></li>
+								<li><h2><a href="http://www.howtogeek.com/t/news/">NEWS</a></h2></li>
+							</ul>
+						</div>
+						<div class="subMenuSection" style="margin-left: 20px;">
+							<div class="submenudetail sm300" onclick="window.location='/t/features'">
+								<div id="ftquest"></div>
+								<span>FEATURED ARTICLES</span>
+								<p>Read just our best, feature-length articles without all the extra stuff.</p><div style="clear: both;"></div>
+							</div>
+							<div style="clear: both;"></div>
+										
+							<div onclick="window.location='http://www.howtogeek.com/trivia/which-film-featured-the-worlds-first-entirely-computer-generated-sequence/'" class="submenudetail sm300">
+								<div id="gtquest"></div>
+								<span>GEEK TRIVIA</span>
+								<p>Which Film Featured The World’s First Entirely Computer Generated Sequence?</p>
+								<div style="clear: both;"></div>		
+							</div>
+											
+							<div style="clear: both;"></div>								
+						</div>
+						
+						<div class="subMenuSection" style="margin-left: 30px;">
+							<div class="submenudetail sm330" onclick="window.location='/books/windows-8/'">
+								<img src="sshot51103afc72508.png"> 
+								<span>HOW-TO GEEK BOOKS</span><p>Read our first book, the HTG Guide to Windows 8, or check our upcoming books.</p>
+								<div style="clear: both;"></div>
+							</div>
+							<ul style="margin-top: 0px;">
+								<li><h2><a style="color: rgb(204, 204, 204);" href="http://www.howtogeek.com/about/">ABOUT</a></h2></li>
+								<li><h2><a style="color: rgb(204, 204, 204);" href="http://www.howtogeek.com/contact/">CONTACT</a></h2></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+							</ul>			
+						<ul>
+				<li><a class="mnuMainItem" href="http://discuss.howtogeek.com/">DISCUSSION</a></li>
+			</ul>
+			<ul id="mnuMainul2">
+				<li><a id="mnuSubNow" class="mnuMainItem arrow" href="#">SUBSCRIBE</a>
+					<div class="subMenu" style="padding-bottom: 10px;">
+						<div class="subMenuSection" style="margin-left: 20px;">							
+							<h4>FOLLOW US</h4>
+							<ul style="width: 100px;">
+								<li><h2><a class="icon-twitter" href="https://twitter.com/intent/user?original_referer=http://www.howtogeek.com&amp;region=following&amp;screen_name=howtogeeksite&amp;tw_p=followbutton&amp;variant=2.0" target="_top">TWITTER</a></h2></li>
+								<li><h2><a class="icon-google-plus" href="http://plus.google.com/+howtogeek">GOOGLE+</a></h2></li>
+							</ul>					
+						</div>							
+						<div class="subMenuSection" style="margin-left: 0px;">							
+							<h4>&nbsp;</h4>
+							<ul style="width: 100px;">
+								<li><h2><a class="icon-facebook" href="http://facebook.com/thehowtogeek">FACEBOOK</a></h2></li>
+							</ul>					
+						</div>							
+						<div class="subMenuSection" style="margin-left: 20px;">							
+							<div id="subemsub" class="submenudetail sm400 noclick" style="padding-bottom: 20px;">
+								<div id="emquest"><div class="fs1" aria-hidden="true" data-icon=""></div></div>
+								<span>EMAIL NEWSLETTER</span>
+									<form action="http://www.howtogeek.com/em/subscribe" method="get">
+									<input name="list" value="weekday" type="hidden">
+									<input name="tr" value="topmenu" type="hidden">
+									<input value="" id="fromaddress" name="emailaddress" style="z-index: -9; height: 1px; width: 1px; position: absolute;" type="text">
+									<p>Subscribe to our daily email newsletter, chock full of great articles and tips.</p>
+									<p><input value="" id="from" name="email" type="text"><input id="sub1" name="sub1" value="Subscribe Now" type="submit"></p>
+									<div style="clear: both;"></div>
+									</form>
+							</div>
+						</div>
+						<div class="subMenuSection" style="margin-left: 20px;">							
+							<h4>RSS</h4>
+							<ul style="width: 130px;">
+								<li><h2><a class="icon-feed" href="http://feeds.howtogeek.com/howtogeek">ALL ARTICLES</a></h2></li>
+								<li><h2><a class="icon-feed" href="http://www.howtogeek.com/t/features/feed/">FEATURES ONLY</a></h2></li>
+							</ul>					
+						</div>			
+						<div class="subMenuSection" style="margin-left: 0px;">	
+							<h4>&nbsp;</h4>
+							<ul style="width: 150px;">
+								<li><h2><a class="icon-feed" href="http://www.howtogeek.com/t/reviews/feed/">GADGET REVIEWS</a></h2></li>
+								<li><h2><a class="icon-feed" href="http://www.howtogeek.com/trivia/feed/">TRIVIA</a></h2></li>							
+							</ul>					
+						</div>									
+						
+				
+					
+					</div>				
+				</li>
+			</ul>
+			<ul>
+				<li><a class="mnuMainItem" href="http://www.howtogeek.com/t/gadgets">GADGETS</a></li>
+			</ul>			
+			<ul>
+				<li>				<a href="https://twitter.com/howtogeeksite" class="twitter-follow-button mnuTwitterButton" data-show-count="false">Follow @howtogeeksite</a>
+
+				</li>
+							</ul>			
+
+			
+						
+			
+			
+			<div id="searchwrapper" class="searchinactive">
+			  <span id="searchhover">SEARCH</span>
+			  <form action="http://www.howtogeek.com/search/" method="get" id="sea">
+				<input name="q" id="s" value="" type="text">
+				<input id="searchsubmit" value="" style="" type="submit">
+						  </form>
+			</div>
+
+						
+				
+						
+			<div style="clear: both;"></div>
+		</div>
+		<div class="yui-g" id="headerpanel"></div>
+
+		
+		
+		
+		
+		
+		
+		
+<div class="yui-ge">
+
+
+			
+						
+		
+	
+	<div class="yui-u first">
+		<div class="content" id="htgArticle">
+			<h1 id="printHeader" style="display: none;">How-To Geek</h1>
+			<!-- abovepost -->
+						<div class="thepost" id="post-41560">
+			
+							<div style="width: 650px; margin-bottom: 0px; margin-top: -10px; min-height: 24px;">
+					<div style="margin-bottom: 10px;"><div id="div-1342-1" style="margin-top: 10px;"><div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_3__container__"><iframe src="index_6.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_3" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_3" frameborder="0" height="140" scrolling="no" width="650"></iframe></div><iframe src="index_13.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_3__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_3__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div></div>					<div style="clear: both;"></div>
+				</div>
+												<h2><a href="http://www.howtogeek.com/howto/41560/how-to-get-ssh-command-line-access-to-windows-7-using-cygwin/" rel="bookmark" title="How To Get SSH Command-Line Access to Windows 7 Using Cygwin">How To Get SSH Command-Line Access to Windows 7 Using Cygwin</a></h2>
+
+
+				<div class="thecontent">
+					<!-- google_ad_section_start -->
+					<p><img style="border-width: 0px; border-style: none; border-color: -moz-use-text-color; display: inline; margin-left: 0px; margin-right: 0px;" title="banner" alt="banner" src="banner3.png" border="0" height="310" width="650"> </p>
+<p>Are you comfortable with Linux/Unix and want SSH access to your Windows 7 machine? Cygwin provides this functionality and gives you a familiar environment to work with in a few simple steps.</p>
+<p>We’re assuming you’ve got Cygwin installed and configured. If not, check out our article, <a href="http://www.howtogeek.com/howto/41382/how-to-use-linux-commands-in-windows-with-cygwin/">How To Use Linux Commands in Windows with Cygwin</a> to get started.<span id="more-41560"></span></p>
+<h3>Installing OpenSSH</h3>
+<p>OpenSSH is what we’ll be using, so if you don’t have it installed, find Cygwin’s setup.exe file and run it.</p>
+<p><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="17-open setup" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/17opensetup.png" class="lazyLoad" border="" height="427" width="574"></span> </p>
+<p>You can keep all of the same defaults as when you originally set up Cygwin. On the package selection screen, search for “open” and look under the “Net” menu.</p>
+<p><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="18-install openssh" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/18installopenssh.png" class="lazyLoad" border="" height="492" width="630"></span> </p>
+<p>You’ll see a package called “openssh”. Click under the “New” column, where it says “Skip” until you see an X appear in the “Bin?” column. Look at the previous screenshot for where to click if you’re confused. Hit “Next” and finish up the rest of the setup process, just like you did last time.</p>
+<h3>Configuring OpenSSH in Cygwin</h3>
+<p>Unlike in most Linux distros, OpenSSH won’t automatically configure itself to run and just work. We need to perform a few easy steps. First, right-click your Cygwin shortcut, and click on “Run as administrator”:</p>
+<p><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="00-run as admin" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/00runasadmin.png" class="lazyLoad" border="" height="413" width="326"></span> </p>
+<p>This will make sure we have the proper privileges for everything. You’ll see an empty Cygwin window come up.</p>
+<p><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="01-cygwin window" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/01cygwinwindow.png" class="lazyLoad" border="" height="341" width="650"></span> </p>
+<p>Enter the following command:</p>
+<blockquote><p>ssh-host-config</p>
+</blockquote>
+<p><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="02-ssh-host-config" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/02command1.png" class="lazyLoad" border="" height="341" width="650"></span> </p>
+<p>You’ll see the script generate some default files, and then you’ll be prompted for whether or not you want to enable “Privilege Separation.” It’s on by default in standard installations of OpenSSH on other systems, so go ahead and say “yes” to the prompt.</p>
+<p><a href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/03privsep.png"><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="03-priv sep" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/03privsep_thumb.png" class="lazyLoad" border="" height="341" width="650"></span></a> </p>
+<p>You’ll be prompted to create a new account with special privileges. Select “yes” and the script will continue.</p>
+<p><a href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/04newacct.png"><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="04-new acct" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/04newacct_thumb.png" class="lazyLoad" border="" height="341" width="650"></span></a> </p>
+<p>Next, you’ll be asked if you want sshd to run as a service. This will allow you to get SSH access regardless of whether or not Cygwin is currently running, which is what we want. Go ahead and hit “yes” to continue.</p>
+<p><a href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/05sshdasservice.png"><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="05-sshd as service" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/05sshdasservice_thumb.png" class="lazyLoad" border="" height="341" width="650"></span></a> </p>
+<p>Next, you’ll be asked to enter a value for the daemon. Enter the following:</p>
+<blockquote><p>ntsec</p>
+</blockquote>
+<p><a href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/06daemonntsec.png"><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="06-daemon ntsec" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/06daemonntsec_thumb.png" class="lazyLoad" border="" height="341" width="650"></span></a> </p>
+<p>You’ll see the script give you some information on your system and then it will ask you to create a privileged account with the default username “cyg_server”. The default works well, so type “no” when it asks you if you want to use a different account name, although you can change this if you really like.</p>
+<p><a href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/07privacctcyg_server.png"><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="07-priv acct cyg_server" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/07privacctcyg_server_thumb.png" class="lazyLoad" border="" height="341" width="650"></span></a> </p>
+<p>Of course, you’ll have to enter a password for this account as well.</p>
+<p><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="08-password" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/08password.png" class="lazyLoad" border="" height="341" width="650"></span> </p>
+<p>Cygwin will show you your password in plain text for verification, so be sure you’re in a secure place. You’ll see some extra info come up and if all’s well, you’ll get a message that says it successfully completed.</p>
+<p><a href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/09finhostconfig.png"><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="09-fin host config" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/09finhostconfig_thumb.png" class="lazyLoad" border="" height="341" width="650"></span></a> </p>
+<p>You can either restart, or enter the following command to start the sshd service:</p>
+<blockquote><p>net start sshd</p>
+</blockquote>
+<p><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="10-net start sshd" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/10netstartsshd.png" class="lazyLoad" border="" height="341" width="650"></span> </p>
+<p>Now, you can type “exit” to close this Cygwin instance.</p>
+<h3>User Configuration of SSH</h3>
+<p>Next, we’ll create the appropriate SSH keys for your user account. Open up Cygwin normally, and enter the following command:</p>
+<blockquote><p>ssh-user-config</p>
+</blockquote>
+<p><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="11-ssh-user-config" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/11sshuserconfig.png" class="lazyLoad" border="" height="341" width="650"></span> </p>
+<p>You’ll be asked to create specific keys for your user account, so use what you need. I went ahead and said “no” to the first question, and “yes” to the second.</p>
+<p><a href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/12passphrase.png"><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="12-passphrase" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/12passphrase_thumb.png" class="lazyLoad" border="" height="341" width="650"></span></a> </p>
+<p>SSH2 is more secure, so that’s what I recommend to you. After entering a password, you’ll be asked if you want to use that ID to access your machine. Type “yes”.</p>
+<p><a href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/13usethisid.png"><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="13-use this id" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/13usethisid_thumb.png" class="lazyLoad" border="" height="341" width="650"></span></a> </p>
+<p>Next, you’ll be asked to create an SSH2 DSA ID file, if you want to use password-less access. I declined at this step.</p>
+<p><a href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/14notodsa.png"><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="14-no to dsa" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/14notodsa_thumb.png" class="lazyLoad" border="" height="341" width="650"></span></a> </p>
+<p>That’s it! You’re all configured. If you want to test your configuration really quickly, enter the following command in your Cygwin window:</p>
+<blockquote><p>ssh –v localhost</p>
+</blockquote>
+<p><a href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/15test.png"><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="15-test" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/15test_thumb.png" class="lazyLoad" border="" height="341" width="650"></span></a> </p>
+<p>The –v option stands for “verbose” and gives you all of the details of the process. You’ll be asked if you want to continue connecting, so enter “yes” and then enter your password at the prompt. Remember that when you enter your username, it is case-sensitive!</p>
+<p><a href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/16exit.png"><span class="lazyLoaderWrap" style="width: 574px; height: 427px;"><img src="loading.gif" class="loading" alt=""><img alt="" style="border-width: 0px; display: inline;" title="16-exit" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/01/16exit_thumb.png" class="lazyLoad" border="" height="341" width="650"></span></a> </p>
+<p></p>
+<p>If everything worked out well, you’ll see a normal bash prompt.</p>
+<h3>Minor Issues</h3>
+<p>If you find yourself stuck at any of the configuration steps, make sure that the Windows User Account you’re running has Administrative access. You may get weird errors if you try to run the host configuration as a normal user, so make sure you run Cygwin with admin privileges during that step. If, when you exit, you get a prompt about leaving your batch jobs running, you can hit “no” to terminate them.</p>
+<p>Lastly, if you test SSH access from another machine and get an error, make sure that your firewall isn’t blocking access to port 22 (or 23 if you’re using SFTP).</p>
+<hr>
+<p>This works extremely well if you like the ability to get SSH/SFTP access to your files on a Windows 7 machine and you also want a familiar shell to do that with. Cygwin mounts Windows drives to “/cygdrive/driveletter” in case you were wondering. ;-)</p>
+				<!-- google_ad_section_end -->
+				</div>
+								<div style="clear: both; height: 0px;"></div>
+
+									<div style="margin-top: 0px; margin-bottom: 10px;">
+						<!-- Place this tag where you want the +1 button to render. -->
+						<div id="___plusone_0" style="text-indent: 0pt; margin: 0pt; padding: 0pt; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 450px; height: 24px;"><iframe title="+1" data-gapiattached="true" src="index_20.html" name="I2_1392902242876" id="I2_1392902242876" vspace="0" tabindex="0" style="position: static; top: 0pt; width: 450px; margin: 0px; border-style: none; left: 0pt; visibility: visible; height: 24px;" marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe></div>
+
+						<!-- Place this tag after the last +1 button tag. -->
+						
+					</div>
+								
+								
+				
+<div id="postiddiv" post="41560"></div>
+				<div style="clear: both;"></div>
+				
+				
+				
+				<div class="articleExtras">
+					<div style="width: 450px; float: left;" id="authorinfobox">
+						
+						<p style="font-weight: normal; color: rgb(51, 51, 51);">Yatri Trivedi is a monk-like geek.  When he's not overdosing on meditation and geek news of all kinds, he's hacking and tweaking something, often while mumbling in 4 or 5 other languages.</p>
+
+											</div>
+					<div style="width: 130px; float: right;">
+						<ul class="normul" style="margin-bottom: 6px;">
+							<li>Published 01/28/11</li>
+							<li><span id="pv3"></span></li>
+						</ul>
+												
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+				
+				
+				<div style="clear: both;"></div>
+				
+				<div style="width: 650px; margin-bottom: 0px;">
+					<div id="div-1342-2"><div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_4__container__"><iframe src="index_21.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_4" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_4" frameborder="0" height="140" scrolling="no" width="650"></iframe></div><iframe src="index_23.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_4__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_4__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>					<div style="clear: both;"></div>
+				</div>							
+
+
+
+<div class="below-post-features">
+<div class=" trc_related_container trc_spotlight_widget" id="taboola-below-article"><div style="display: block;" class="trc_rbox_container"><div><div style="overflow: hidden; display: block; position: relative;" class="trc_rbox thumbs-2r trc-content-sponsored  trc-auto-size" id="trc_wrapper_73147"><div class="trc_rbox_header trc_rbox_border_elm" id="trc_header_73147"><div class="trc_header_ext"><div class="logoDiv link-attribution "><a target="_top" href="http://www.taboola.com/en/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:" rel="nofollow" class="trc_desktop_attribution_link trc_attribution_position_top"><span>by Taboola</span></a><a target="_top" href="http://www.taboola.com/en/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:" rel="nofollow" class="trc_mobile_attribution_link trc_attribution_position_top"><span>by Taboola</span></a></div><div class="logoDiv link-disclosure  attribution-disclosure-link-sponsored"><a target="_top" href="http://www.taboola.com/en/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:" rel="nofollow" class="trc_desktop_disclosure_link trc_attribution_position_top"><span>Sponsored Content</span></a><a target="_top" href="http://www.taboola.com/en/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:" rel="nofollow" class="trc_mobile_disclosure_link trc_attribution_position_top"><span>Sponsored Content</span></a></div><div class="logoDiv link-disclosure  attribution-disclosure-link-hybrid"><a target="_top" href="http://www.taboola.com/en/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:" rel="nofollow" class="trc_desktop_disclosure_link trc_attribution_position_top"><span>Promoted Content</span></a><a target="_top" href="http://www.taboola.com/en/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:" rel="nofollow" class="trc_mobile_disclosure_link trc_attribution_position_top"><span>Promoted Content</span></a></div></div><span class="trc_rbox_header_span"><span class="trc_inner_header trc_header_left_column">FROM THE WEB</span><span class="trc_inner_header trc_header_right_column">From The Web</span></span></div><div style="overflow: hidden;" class="trc_rbox_outer" id="outer_73147"><div style="overflow: hidden;" class="trc_rbox_div trc_rbox_border_elm" id="rbox-t2v"><div style="width: auto;" id="internal_trc_73147"><div style="margin-bottom: 10px; margin-left: 0pt; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc-first-recommendation trc-spotlight-first-recommendation trc_excludable " data-item-syndicated="true" data-item-thumb="http://www.tandfonline.com/na101/home/literatum/publisher/tandf/journals/content/rchm20/2014/rchm20.v008.i01/rchm20.v008.i01/20140131-01/rchm20.v008.i01.cover.jpg" data-item-title="Facebook Depression" data-item-id="~~V1~~-1685704530244210504~~BIycmG82ThSKKccIayQvvWlIpGazy2cYzNjH_TbcHZ-uniL6zQG_A7JieeJ4hhMV"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://www.tandfonline.com/doi/full/10.1080/17482798.2014.863486" title="Facebook Depression"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">Taylor &amp; Francis</span><span class="static-text top-right"></span><img src="rchm20.v008.i01.cover.jpg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://www.tandfonline.com/doi/full/10.1080/17482798.2014.863486" title="Facebook Depression"><span class="video-label-box" style="display: block;"><span class="video-label video-title">Facebook Depression</span><span class="branding">Taylor &amp; Francis</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="margin-bottom: 10px; margin-left: 10px; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc_excludable " data-item-syndicated="true" data-item-thumb="http://www.besttechie.com/wp-content/uploads/2014/02/Samsung-S5-001-578-80.jpg" data-item-title="Rumor Roundup: Samsung Galaxy S5" data-item-id="~~V1~~6892023950103669870~~7oWMHqnvdMRJ9U63H7R19Mq4CCvDv-4CNw5z0YuyPOCuniL6zQG_A7JieeJ4hhMV"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://www.besttechie.com/2014/02/05/video-everything-we-think-we-know-about-the-samsung-galaxy-s5/?utm_source=taboola&amp;utm_medium=referral" title="Rumor Roundup: Samsung Galaxy S5"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">BestTechie.com</span><span class="static-text top-right"></span><img src="samsung-s5-001-578-80.jpg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://www.besttechie.com/2014/02/05/video-everything-we-think-we-know-about-the-samsung-galaxy-s5/?utm_source=taboola&amp;utm_medium=referral" title="Rumor Roundup: Samsung Galaxy S5"><span class="video-label-box" style="display: block;"><span class="video-label video-title">Rumor Roundup: Samsung Galaxy S5</span><span class="branding">BestTechie.com</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="margin-bottom: 10px; margin-left: 10px; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc_excludable " data-item-syndicated="true" data-item-thumb="http://i1274.photobucket.com/albums/y422/showapp/88e175b7-dc4f-45ed-aeed-73ad458b4e0d_zpsc07f6e64.jpg" data-item-title="The Most Unique Art Form Today" data-item-id="~~V1~~7779363930005359322~~E6uw4TOUdbhr_x3qHX0SOKpg0s0-6OXy4LvmqDsmKIyuniL6zQG_A7JieeJ4hhMV"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://www.youtube.com/watch?v=KXFe9ghgu3s&amp;utm_source=taboola&amp;utm_medium=referral" title="The Most Unique Art Form Today"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">SandFantasy</span><span class="static-text top-right"></span><div style="left: 0pt; margin-left: 152px; top: 112px;" class="video-duration video-duration-detail"><dt style="position: absolute; overflow: hidden; height: auto; width: auto; z-index: 48; right: 0pt;"><div style="z-index: 50; padding-left: 4px; padding-right: 4px;">05:21</div></dt><dt style="position: absolute; overflow: hidden; height: auto; width: auto; z-index: 48; right: 0pt; opacity: 1; background-color: transparent;"><div style="z-index: 50; padding-left: 4px; padding-right: 4px;">05:21</div></dt></div><img src="88e175b7-dc4f-45ed-aeed-73ad458b4e0d_zpsc07f6e64.jpg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://www.youtube.com/watch?v=KXFe9ghgu3s&amp;utm_source=taboola&amp;utm_medium=referral" title="The Most Unique Art Form Today"><span class="video-label-box" style="display: block;"><span class="video-label video-title">The Most Unique Art Form Today</span><span class="branding">SandFantasy</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="margin-bottom: 10px; margin-left: 10px; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc_excludable " data-item-syndicated="true" data-item-thumb="http://cdn.taboolasyndication.com/libtrc/static/thumbnails/e5ddc61d483f9becf6e9fe1bf5006ce2.jpg" data-item-title="‘Warren Buffett Indicator’ Signals Collapse in Stock Market" data-item-id="~~V1~~5497751253640735464~~1sicCP02w7dnryaXCMjJOsWyFvcHJK8ATxdgepRasNkiHmzo1Td0c79an-yZwnnL"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://www.moneynews.com/MKTNewsIntl/Stock-market-recession-alert/2014/02/10/id/551985?promo_code=166D4-1&amp;utm_source=taboola&amp;utm_medium=referral" title="‘Warren Buffett Indicator’ Signals Collapse in Stock Market"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">Newsmax</span><span class="static-text top-right"></span><img src="e5ddc61d483f9becf6e9fe1bf5006ce2.jpg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://www.moneynews.com/MKTNewsIntl/Stock-market-recession-alert/2014/02/10/id/551985?promo_code=166D4-1&amp;utm_source=taboola&amp;utm_medium=referral" title="‘Warren Buffett Indicator’ Signals Collapse in Stock Market"><span class="video-label-box" style="display: block;"><span class="video-label video-title">‘Warren Buffett Indicator’ Signals Collapse in Stock M<span>…</span></span><span class="branding">Newsmax</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="clear: both; width: 100%;"></div><div style="margin-bottom: 10px; margin-left: 0pt; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc_excludable " data-item-syndicated="true" data-item-thumb="http://cdn.taboolasyndication.com/libtrc/static/thumbnails/93661e07ec7ad745d58fddccebdd5e87.jpg" data-item-title="Something better than LASIK? Meet the Visian ICL" data-item-id="~~V1~~-5179248141686099743~~xF87cBZcrtniQLKI3r3IxBODGriWJVi3Fd1Mxrqv9WCuniL6zQG_A7JieeJ4hhMV"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://www.iclcn.com/something-better-than-lasik-meet-the-visian-icl/?utm_source=taboola&amp;utm_medium=referral&amp;site=howtogeek-howtogeek" title="Something better than LASIK? Meet the Visian ICL"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">Visian ICL</span><span class="static-text top-right"></span><img src="93661e07ec7ad745d58fddccebdd5e87.jpg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://www.iclcn.com/something-better-than-lasik-meet-the-visian-icl/?utm_source=taboola&amp;utm_medium=referral&amp;site=howtogeek-howtogeek" title="Something better than LASIK? Meet the Visian ICL"><span class="video-label-box" style="display: block;"><span class="video-label video-title">Something better than LASIK? Meet the Visian ICL</span><span class="branding">Visian ICL</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="margin-bottom: 10px; margin-left: 10px; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc_excludable " data-item-syndicated="true" data-item-thumb="http://amazinglytimedphotos.com/wp-content/uploads/2013/09/Helping-console-a-friend-resizecrop--.jpg" data-item-title="The Most Amazing, Hilarious, Perfectly Timed Pictures Taken at the Right Moment" data-item-id="~~V1~~-5349137212203756324~~TJVBY12uCPELvuamrX30oMG2NqCqODgdmhiL86HGinmuniL6zQG_A7JieeJ4hhMV"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://amazinglytimedphotos.com/helping-console-a-friend?utm_source=taboola&amp;utm_medium=referral" title="The Most Amazing, Hilarious, Perfectly Timed Pictures Taken at the Right Moment"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">Amazingly Timed Photos</span><span class="static-text top-right"></span><img src="helping-console-a-friend-resizecrop--.jpg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://amazinglytimedphotos.com/helping-console-a-friend?utm_source=taboola&amp;utm_medium=referral" title="The Most Amazing, Hilarious, Perfectly Timed Pictures Taken at the Right Moment"><span class="video-label-box" style="display: block;"><span class="video-label video-title">The Most Amazing, Hilarious, Perfectly Timed Pictures Take<span>…</span></span><span class="branding">Amazingly Timed Photos</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="margin-bottom: 10px; margin-left: 10px; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc_excludable " data-item-syndicated="true" data-item-thumb="http://dd81hpe6w3mf9.cloudfront.net/wp-content/uploads/2014/02/Big-Oil-Blunders-Avoidable-According-to-Heather-Uboh.jpeg" data-item-title="Here's Why Big Oil Won't Cease Their Reckless, Greedy Tactics" data-item-id="~~V1~~-2469250096502853562~~4aYG7tDqsLgrLRiUuXwwQwTG3Kq7Macrr1SCyY_flTmuniL6zQG_A7JieeJ4hhMV"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://segment.com/heather-uboh-big-oil-blunders/?utm_source=taboola&amp;utm_medium=referral" title="Here's Why Big Oil Won't Cease Their Reckless, Greedy Tactics"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">Segment.com</span><span class="static-text top-right"></span><img src="big-oil-blunders-avoidable-according-to-heather-uboh.jpeg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://segment.com/heather-uboh-big-oil-blunders/?utm_source=taboola&amp;utm_medium=referral" title="Here's Why Big Oil Won't Cease Their Reckless, Greedy Tactics"><span class="video-label-box" style="display: block;"><span class="video-label video-title">Here's Why Big Oil Won't Cease Their Reckless, Greedy Ta<span>…</span></span><span class="branding">Segment.com</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="margin-bottom: 10px; margin-left: 10px; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc_excludable " data-item-syndicated="true" data-item-thumb="http://www.bloomberg.com/image/i5CUpZSFjoLQ.jpg" data-item-title="Microsoft's X-Factor: A Look at How Xbox One Works" data-item-id="~~V1~~-7838542594626154879~~jdbrCMBeklCbI09XAlITe7Nl5DL74VXlfXAm0Ar4pZwiHmzo1Td0c79an-yZwnnL"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://www.businessweek.com/videos/2013-12-10/microsofts-x-factor-a-look-at-how-xbox-one-works?cmpid=taboola.bw.vid.intl" title="Microsoft's X-Factor: A Look at How Xbox One Works"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">Businessweek</span><span class="static-text top-right"></span><img src="i5cupzsfjolq.jpg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://www.businessweek.com/videos/2013-12-10/microsofts-x-factor-a-look-at-how-xbox-one-works?cmpid=taboola.bw.vid.intl" title="Microsoft's X-Factor: A Look at How Xbox One Works"><span class="video-label-box" style="display: block;"><span class="video-label video-title">Microsoft's X-Factor: A Look at How Xbox One Works</span><span class="branding">Businessweek</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="clear: both;"></div></div></div></div><div class="trc_clearer"></div><a target="_top" class="whatsThisSyndicated a-bottom-right trc_desktop_attribution_link" style="display: block;" title="" rel="nofollow" href="http://www.taboola.com/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:"></a><a target="_top" class="whatsThisSyndicated a-bottom-right trc_mobile_attribution_link" style="display: block;" title="" rel="nofollow" href="http://www.taboola.com/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:"></a></div></div></div></div>
+
+
+</div>				
+
+<div style="clear: both;"></div>
+
+				
+
+
+	<div id="discourselink">
+        <h3 id="reply-title"><a href="http://discuss.howtogeek.com/">Got Feedback? Join the discussion</a> at discuss.howtogeek.com</h3>
+    </div>
+
+	
+			
+							
+								<div id="showcomments" class="showcomments" style="">
+						<a id="sc1" href="http://www.howtogeek.com/howto/41560/how-to-get-ssh-command-line-access-to-windows-7-using-cygwin/?showcomments=1#comments">SHOW ARCHIVED READER COMMENTS (23)</a>
+				</div>
+								
+				<div id="commentsWrap" post="41560" replyto="0">
+					
+					
+												<div id="sc2">
+								
+<!-- You can start editing here. -->
+
+<h3 id="comments">Comments <span id="commentnumber">(23)</span></h3>
+<ol class="commentlist">
+		<li class="comment-def" id="comment-116393">
+		<div class="commentmetadata date"><a href="#comment-116393" title="">January 28, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Gene</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Why not simply use PuTTY? It’s open source and free.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-116416">
+		<div class="commentmetadata date"><a href="#comment-116416" title="">January 29, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Max</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>PuTTY lets you use Windows to SSH into another computer. Cygwin lets you actually run a SSH service on your Windows machine so you can SSH into it from another computer. Also, Cygwin is open source and free as well.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-116420">
+		<div class="commentmetadata date"><a href="#comment-116420" title="">January 29, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">xilmiki</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>PuTTY is simple and not require install, why use this, time to spend?</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-116424">
+		<div class="commentmetadata date"><a href="#comment-116424" title="">January 29, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Alexzm1</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>PuTTY its a SSH client<br>
+not a SSH Server</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-116445">
+		<div class="commentmetadata date"><a href="#comment-116445" title="">January 29, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">jasray</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Much better and more convenient SSH servers available for Windows (free and secure); to go through the convoluted process here is pointless.  Terminal command from Linux to Windows is equally simplified, or, as others have mentioned PuTTy/KiTTy is a breeze.  Not quite sure what the author has in mind in promoting the above procedure.  Hmmmm . . . .  </p>
+<p>Such a shame because other methods allow using non-standard ports (absolutely necessary in most lockdown situations) and DNS forwarding (absolutely essential).  </p>
+<p>Maybe he’ll share further knowledge later on down the road.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-116449">
+		<div class="commentmetadata date"><a href="#comment-116449" title="">January 29, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Trevor</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>How can there be so many people who use PuTTy who also don’t know why that’s not what we’re talking about here?!</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-116450">
+		<div class="commentmetadata date"><a href="#comment-116450" title="">January 29, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">jasray</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Yes, that is a good question; one needs an SSH server on the Windows (or Linux) machine or router (e.g. DD-WRT) and one can use PuTTy as a client from either a Linux or Windows machine to connect.  Likewise, it’s as easy to use the command line in Linux; however, much better SSH servers exist for Windows, and the command on Linux is so simple a five year old could do it.  </p>
+<p>One can, as pointed out in the article, mix and match systems.  A person using Windows can connect to a SSH server running on Linux; a person using Linux can connect to a SSH server on Windows. The question remains:  Why such a choice as Cygwin when other SSH servers (opinion only) provide a much easier, more secure, and readily understandable approach.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-116451">
+		<div class="commentmetadata date"><a href="#comment-116451" title="">January 29, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Alexander</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Hey,<br>
+I had some problems with SSH1 (kept telling me I had the wrong password, even though I input the right one). But SSH2 works well.<br>
+…any advice on how to change the configuration (ie. password)? and how to SSH into other systems? I kind of want to replace PuTTy on my computer and use Cygwin instead :)</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-116510">
+		<div class="commentmetadata date"><a href="#comment-116510" title="">January 30, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">joe_Da_Schmoe</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>so why not copssh????</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-116512">
+		<div class="commentmetadata date"><a href="#comment-116512" title="">January 30, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">squeeky</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Looks like copssh uses cygwin.  The developer has obviously hidden many of the above steps from the user.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-116588">
+		<div class="commentmetadata date"><a href="#comment-116588" title="">January 31, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Rasputin Paskudniak</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Well, I got stopped at the step ssh-user-config, the second major segment of this exercise.</p>
+<p>Here’s the screen shot:<br>
+1$ ssh-user-config<br>
+*** ERROR: There is no home directory set for you in /etc/passwd.<br>
+*** ERROR: Setting $HOME is not sufficient!</p>
+<p>Who is it talking to, me or user cyg_server?</p>
+<p>In either case, /etc/passwd shows that both I and cyg_server have home directories, although cyg_server’s home directory is a bit weird – /var/empty<br>
+So is cyg_server’s shell: /bin/false – though that should be OK for a daemon.</p>
+<p>BTW, that home direcotry has some interesting permissions, and clearly was not just created.</p>
+<p>drwxr-xr-x+ 1 cyg_server root 0 Dec 21 20:02 /var/empty</p>
+<p>So I am stumped at this point.  Was I missing an undocumented dependency (as happened with a2ps)</p>
+<p>Clues, anyone?</p>
+<p>Thanks.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-116658">
+		<div class="commentmetadata date"><a href="#comment-116658" title="">February 1, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Horses4Courses</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Why would you actually want to do this?  If you want better scripting then just use Perl (for Windows) or Powershell.  I can totally understand dual-booting Linux (maybe Ubuntu) and Windows on the same machine, but I just don’t understand why you’d want to run cygwin on Windows (plus cygwin is a pain in the ass).</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-117123">
+		<div class="commentmetadata date"><a href="#comment-117123" title="">February 7, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Greg</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Great post, very helpful for those of us who understand what it was clearly intended for.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-117850">
+		<div class="commentmetadata date"><a href="#comment-117850" title="">February 13, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">halka</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>(And those are few and far between, or so it seems.)</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-119127">
+		<div class="commentmetadata date"><a href="#comment-119127" title="">February 23, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">John</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>I got through all the steps but my ssh login attempt hangs:</p>
+<p>$ ssh -vvv localhost<br>
+OpenSSH_5.8p1, OpenSSL 0.9.8r 8 Feb 2011<br>
+debug1: Reading configuration data /etc/ssh_config<br>
+debug2: ssh_connect: needpriv 0<br>
+debug1: Connecting to localhost [::1] port 22.<br>
+debug1: Connection established.<br>
+debug3: Incorrect RSA1 identifier<br>
+debug3: Could not load “/home/john/.ssh/id_rsa” as a RSA1 public key<br>
+debug2: key_type_from_name: unknown key type ‘—–BEGIN’<br>
+debug3: key_read: missing keytype<br>
+debug2: key_type_from_name: unknown key type ‘Proc-Type:’<br>
+debug3: key_read: missing keytype<br>
+debug2: key_type_from_name: unknown key type ‘DEK-Info:’<br>
+debug3: key_read: missing keytype<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug2: key_type_from_name: unknown key type ‘—–END’<br>
+debug3: key_read: missing keytype<br>
+debug1: identity file /home/john/.ssh/id_rsa type 1<br>
+debug1: identity file /home/john/.ssh/id_rsa-cert type -1<br>
+debug3: Incorrect RSA1 identifier<br>
+debug3: Could not load “/home/john/.ssh/id_dsa” as a RSA1 public key<br>
+debug2: key_type_from_name: unknown key type ‘—–BEGIN’<br>
+debug3: key_read: missing keytype<br>
+debug2: key_type_from_name: unknown key type ‘Proc-Type:’<br>
+debug3: key_read: missing keytype<br>
+debug2: key_type_from_name: unknown key type ‘DEK-Info:’<br>
+debug3: key_read: missing keytype<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug2: key_type_from_name: unknown key type ‘—–END’<br>
+debug3: key_read: missing keytype<br>
+debug1: identity file /home/john/.ssh/id_dsa type 2<br>
+debug1: identity file /home/john/.ssh/id_dsa-cert type -1<br>
+debug3: Incorrect RSA1 identifier<br>
+debug3: Could not load “/home/john/.ssh/id_ecdsa” as a RSA1 public key<br>
+debug2: key_type_from_name: unknown key type ‘—–BEGIN’<br>
+debug3: key_read: missing keytype<br>
+debug2: key_type_from_name: unknown key type ‘Proc-Type:’<br>
+debug3: key_read: missing keytype<br>
+debug2: key_type_from_name: unknown key type ‘DEK-Info:’<br>
+debug3: key_read: missing keytype<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug3: key_read: missing whitespace<br>
+debug2: key_type_from_name: unknown key type ‘—–END’<br>
+debug3: key_read: missing keytype<br>
+debug1: identity file /home/john/.ssh/id_ecdsa type 3<br>
+debug1: identity file /home/john/.ssh/id_ecdsa-cert type -1</p>
+<p>(hangs now … does nothing until I press Ctrl-C)</p>
+<p>I’m using Windows 7.</p>
+<p>Here are some of the permissions on relevant files:<br>
+$ ls -l /etc/ssh*<br>
+-rw-r–r– 1 cyg_server None           1547 Feb 23 13:39 /etc/ssh_config<br>
+-rw——- 1 cyg_server Administrators  668 Feb 17 00:15 /etc/ssh_host_dsa_key<br>
+-rw-r–r– 1 cyg_server Administrators  607 Feb 17 00:15 /etc/ssh_host_dsa_key.pub<br>
+-rw——- 1 cyg_server Administrators  227 Feb 17 00:15 /etc/ssh_host_ecdsa_key<br>
+-rw-r–r– 1 cyg_server Administrators  179 Feb 17 00:15 /etc/ssh_host_ecdsa_key.pub<br>
+-rw——- 1 cyg_server Administrators  982 Feb 17 00:15 /etc/ssh_host_key<br>
+-rw-r–r– 1 cyg_server Administrators  647 Feb 17 00:15 /etc/ssh_host_key.pub<br>
+-rw——- 1 cyg_server Administrators 1679 Feb 17 00:15 /etc/ssh_host_rsa_key<br>
+-rw-r–r– 1 cyg_server Administrators  399 Feb 17 00:15 /etc/ssh_host_rsa_key.pub</p>
+<p>$ ls -al<br>
+total 24<br>
+drw-rw-rw-+ 1 john   Administrators 4096 Feb 23 14:13 .<br>
+drwxr-xr-x+ 1 ???????? ????????       4096 Feb 22 23:40 ..<br>
+-rw——-  1 john   None           2651 Feb 23 14:01 authorized_keys<br>
+-rw——-  1 john   None            771 Feb 23 14:00 id_dsa<br>
+-rw-r–r–  1 john   None            607 Feb 23 14:00 id_dsa.pub<br>
+-rw——-  1 john   None            314 Feb 23 14:01 id_ecdsa<br>
+-rw-r–r–  1 john   None            179 Feb 23 14:01 id_ecdsa.pub<br>
+-rw——-  1 john   None           1766 Feb 23 14:01 id_rsa<br>
+-rw-r–r–  1 john   None            399 Feb 23 14:01 id_rsa.pub</p>
+<p>I’ve opened the Windows FIrewall port 22 (and verified that it was open on the cyg_server account), as well as port 22 on my router.</p>
+<p>But I doubt the firewall is the issue, since the ssh client is able to “talk” to the server … the session startup just hangs …</p>
+<p>any ideas?</p>
+<p>tks,<br>
+John</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-120390">
+		<div class="commentmetadata date"><a href="#comment-120390" title="">March 5, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Rashy</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>What bout PuTTY?</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-127098">
+		<div class="commentmetadata date"><a href="#comment-127098" title="">April 11, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">DrRob</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Putty is not an SSH demon. It is just a client. There are other demons out there such as FreeSSHd but I’ve also had problems with that.</p>
+<p>One problem I have with ssh with cygwin is that it is not quite the same as starting a cygwin shell from the desktop. Some command run on desktop cygwin shell that do not run from ssh shell. Clearly the actually shells are different somehow.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-129270">
+		<div class="commentmetadata date"><a href="#comment-129270" title="">April 28, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Misty</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Hi…<br>
+I am trying to configure Cygwin, but after this step</p>
+<p>“You’ll see the script give you some information on your system and then it will ask you to create a privileged account with the default username “cyg_server”. The default works well, so type “no” when it asks you if you want to use a different account name, although you can change this if you really like”</p>
+<p>, when it asks for password, and i try to enter a password,</p>
+<p>“Of course, you’ll have to enter a password for this account as well.”<br>
+“Cygwin will show you your password in plain text for verification, so be sure you’re in a secure place. You’ll see some extra info come up and if all’s well, you’ll get a message that says it successfully.. ”</p>
+<p>It does not display the password, but asks me to reenter, even thou I re enter it shows the error<br>
+ “Creating the user ‘cyg_server’ failed! Reason: System error 5 has occured. ”</p>
+<p>Can you tell me where I am going wrong?</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-133343">
+		<div class="commentmetadata date"><a href="#comment-133343" title="">May 28, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">flurion</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>@Misty. I solved the same problem by running CYGWIN shell as administrator</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-136872">
+		<div class="commentmetadata date"><a href="#comment-136872" title="">June 24, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">acepelon</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>It is funny how many people mention Putty here considering how horrible it is compared to other SSH clients.  Skipping the fact that the author wasn’t talking about an SSH client, might I recommend those who want a better experience with SSH (free) to try Poderosa?  Not Ponderosa, but Poderosa.  </p>
+<p><a href="http://sourceforge.net/projects/poderosa/" rel="nofollow">http://sourceforge.net/projects/poderosa/</a></p>
+<p>Poderosa has support for creating tabs for Cygwin.  Cygwin stand-alone is horrible but through Poderosa is great. </p>
+<p>Give it a shot.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-136990">
+		<div class="commentmetadata date"><a href="#comment-136990" title="">June 25, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">hari</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>How to  install, where is the link to click and install in at desktop? I could not  see any link which I could click.pls help me to install it.thanks</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-138524">
+		<div class="commentmetadata date"><a href="#comment-138524" title="">July 8, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Joe Poniatowski</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Nice post.  I too am amazed at the number of people suggesting PuTTY, as it is clearly not intended for the same purpose.  And to the person suggesting Powershell as a better scripting tool:  Powershell is great, but not portable to non-windows machines.  Shell scripts run in cygwin, Linux, BSD, etc. with little to no modifications.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-146573">
+		<div class="commentmetadata date"><a href="#comment-146573" title="">September 15, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Ankit</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Why not simply use mRemoteNG ? It’s open source and free.</p>
+</div>
+			</li><!-- #comment-## -->
+</ol>
+
+<div style="clear: both;"></div>
+
+
+
+
+
+
+							</div>
+										<div id="respond"></div>
+				</div>				
+						
+			
+				
+					
+		
+				
+
+				<div style="clear: both;"></div>
+				<div class="contsep"></div>
+
+	
+
+
+
+				<div class="contsep"></div>
+			</div>
+
+
+
+            			<div style="clear: both;"></div>
+		</div>
+	</div>
+	<div class="yui-u">
+		<div class="sidebar">
+	<div class="adSystem_ads">
+<div class="html"><div style="margin-bottom: 20px;"></div>
+<div id="___page_0" style="text-indent: 0pt; margin: 0pt; padding: 0pt; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 320px; height: 106px;"><iframe title="+Badge" data-gapiattached="true" src="index_30.html" name="I3_1392902242909" id="I3_1392902242909" vspace="0" tabindex="0" style="position: static; top: 0pt; width: 320px; margin: 0px; border-style: none; left: 0pt; visibility: visible; height: 106px;" marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe></div>
+<div style="margin-bottom: 15px;"></div></div>
+	<div style="clear: both;"></div>
+</div>	<div id="side78"><!-- tmnp.howtogeek 300x250 ATF -->
+<div id="div-gpt-ad-1342044737928-1">
+
+<div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_0__container__"><iframe src="javascript:&quot;<html><body style='background:transparent'></body></html>&quot;" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_0" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_0" frameborder="0" height="250" scrolling="no" width="300"></iframe></div><iframe src="index_34.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_0__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_0__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div></div>				
+    			<div class="sidebar-glossary">
+				<h4 class="sidebarh4">DID YOU KNOW?</h4>
+							
+	<div class="glossaryhomebox" style="padding: 10px;">
+
+                <p>pH, a common notation used to indicate &nbsp;a mediums alkalinity or acidity, stands for “potential hydrogen”–as it is a measure of the concentration of hydrogen ions in the medium.</p>
+            </div>
+											
+			
+			</div>
+
+				<div class="sidebar-glossary lazyloaddiv">
+				<h4 class="sidebarh4">BEST OF HOW-TO GEEK</h4>
+																		<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/165064/what-is-overclocking-the-absolute-beginners-guide-to-understanding-how-geeks-speed-up-their-pcs/" align="left" class="title" rel="bookmark"><span><img src="loading_001.gif" style="padding: 12px 22px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/d4f978fea90aaffb1ce1267a14a13434/wp-content/uploads/2013/06/overclocking.jpg"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/165064/what-is-overclocking-the-absolute-beginners-guide-to-understanding-how-geeks-speed-up-their-pcs/" class="title" rel="bookmark">What is Overclocking? The Absolute Beginner’s Guide to Understanding How Geeks Speed Up Their PCs</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/165893/how-to-integrate-a-remote-sftp-directory-into-windows-explorer/" align="left" class="title" rel="bookmark"><span><img src="loading_001.gif" style="padding: 12px 22px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/43c0e26dd013a17c117a956232abbf4f/wp-content/uploads/2013/06/2013-06-19_105358.jpg"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/165893/how-to-integrate-a-remote-sftp-directory-into-windows-explorer/" class="title" rel="bookmark">How to Integrate a Remote SFTP Directory into Windows Explorer</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/174478/10-great-free-icon-packs-to-theme-your-android-phone/" align="left" class="title" rel="bookmark"><span><img src="loading_001.gif" style="padding: 12px 22px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/fee879e9e8d7e4dd0dde3c337945763a/wp-content/uploads/2013/10/android-icon-theme-miui.png"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/174478/10-great-free-icon-packs-to-theme-your-android-phone/" class="title" rel="bookmark">10 Great Free Icon Packs To Theme Your Android Phone</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/129442/the-beginners-guide-to-customizing-your-android-home-screen/" align="left" class="title" rel="bookmark"><span><img src="loading_001.gif" style="padding: 12px 22px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/d5231ce591d7c7a3848b69fa776be12a/wp-content/uploads/2012/11/android-home-screen-customization.png"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/129442/the-beginners-guide-to-customizing-your-android-home-screen/" class="title" rel="bookmark">The Beginner’s Guide to Customizing Your Android Home Screen</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/124260/use-these-alternatives-to-get-professional-features-on-home-versions-of-windows/" align="left" class="title" rel="bookmark"><span><img src="loading_001.gif" style="padding: 12px 22px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/aaa361b90e73ee453ccf8a6216925b79/geekers/up/sshot50507ceee5238.png"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/124260/use-these-alternatives-to-get-professional-features-on-home-versions-of-windows/" class="title" rel="bookmark">How to Get Pro Features in Windows Home Versions with Third Party Tools</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/131632/hardware-upgrade-why-windows-cant-see-all-your-ram/" align="left" class="title" rel="bookmark"><span><img src="loading_001.gif" style="padding: 12px 22px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/4ea4fcface0d47f2f9b419e9748cfff9/wp-content/uploads/2012/12/ram-header.jpg"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/131632/hardware-upgrade-why-windows-cant-see-all-your-ram/" class="title" rel="bookmark">Hardware Upgrade: Why Windows Can’t See All Your RAM</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/179883/how-to-use-the-steamos-desktop/" align="left" class="title" rel="bookmark"><span><img src="loading_001.gif" style="padding: 12px 22px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/9cb54a69f02fa4014a9d177122194565/wp-content/uploads/2014/01/steamos-beta-desktop.png"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/179883/how-to-use-the-steamos-desktop/" class="title" rel="bookmark">How to Use the SteamOS Desktop</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/136123/htg-explains-what-you-need-to-know-about-nvidia-optimus/" align="left" class="title" rel="bookmark"><span><img src="loading_001.gif" style="padding: 12px 22px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/2767e9876a41b8dc67007a3bb25b17e0/wp-content/uploads/2013/01/nvidia-optimus3.jpg"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/136123/htg-explains-what-you-need-to-know-about-nvidia-optimus/" class="title" rel="bookmark">HTG Explains: What You Need to Know About NVIDIA Optimus</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/168831/htg-explains-do-you-need-to-worry-about-desktop-application-updates/" align="left" class="title" rel="bookmark"><span><img src="loading_001.gif" style="padding: 12px 22px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/53e7ac4a4d491e188b6ff75c1358a194/wp-content/uploads/2013/07/computer-updates.jpg"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/168831/htg-explains-do-you-need-to-worry-about-desktop-application-updates/" class="title" rel="bookmark">HTG Explains: Do You Need to Worry About Updating Your Desktop Programs?</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/169575/how-to-ensure-your-router-cameras-printers-and-other-devices-arent-accessible-on-the-internet/" align="left" class="title" rel="bookmark"><span><img src="loading_001.gif" style="padding: 12px 22px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/a127f8500c67a84a3bdbe2144c1db8ad/wp-content/uploads/2013/08/shodan-banner.png"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/169575/how-to-ensure-your-router-cameras-printers-and-other-devices-arent-accessible-on-the-internet/" class="title" rel="bookmark">How to Ensure Your Router, Cameras, Printers, and Other Devices Aren’t Accessible on the Internet</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+															
+			</div>			
+		<div style="clear: both;"></div>
+				<div style="width: 300px; min-height: 20px; margin-top: 30px;">
+			<div style="width: 160px; text-align: center; margin-left: auto; margin-right: auto;">
+				<!-- tmnp.howtogeek 160x600 BTF -->
+<div id="div-gpt-ad-1342044737928-12">
+
+<div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek-btf/infotech_0__container__"><iframe src="index_35.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek-btf/infotech_0" id="google_ads_iframe_/10518929/tmnp.howtogeek-btf/infotech_0" frameborder="0" height="600" scrolling="no" width="160"></iframe></div><iframe src="index_36.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek-btf/infotech_0__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek-btf/infotech_0__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>				<div style="padding-top: 10px;"></div>
+			</div>
+			
+							<div style="clear: both;"></div>
+				<div id="div-1342-3" style="margin-left: 14px;"><div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_5__container__"><iframe src="index_37.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_5" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_5" frameborder="0" height="300" scrolling="no" width="300"></iframe></div><iframe src="index_38.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_5__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_5__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>														
+			
+			<div style="clear: both;"></div>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div class="yui-g" id="sb2">
+	<div id="sb3">
+		<div id="ns_ad8">
+			<div id="sb4">
+				<!-- tmnp.howtogeek 728x90 BTF -->
+<div id="div-gpt-ad-1342044737928-14">
+
+<div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek-btf/infotech_1__container__"><iframe src="index_39.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek-btf/infotech_1" id="google_ads_iframe_/10518929/tmnp.howtogeek-btf/infotech_1" frameborder="0" height="90" scrolling="no" width="728"></iframe></div><iframe src="index_40.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek-btf/infotech_1__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek-btf/infotech_1__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>			</div>
+			<div style="clear: both;"></div>
+		</div>
+	</div>
+</div>
+
+			<div class="yui-g" style=""></div>
+		</div>
+		
+		<div class="footer" id="ft">
+			<div style="width: 18%;" class="ftdiv">
+				<div class="ftsection" style="">ABOUT</div>
+				<ul class="bottomul">
+					<li><a href="http://www.howtogeek.com/about/">About Us</a></li>
+					<li><a href="http://www.howtogeek.com/contact/">Contact Us</a></li>
+					<li><a href="http://www.techmedianetwork.com/advertisers.html">Advertising</a></li>
+					<li><a href="http://www.howtogeek.com/privacy-policy/">Privacy Policy</a></li>
+				</ul>
+			</div>
+			<div style="width: 45%;" class="ftdiv">
+				<div class="ftsection" style="">EMAIL SUBSCRIPTION</div>
+				<p id="ftemp">Enter your email address to subscribe to our daily newsletter.</p>
+				<p>
+				</p><form action="http://www.howtogeek.com/em/subscribe" method="get">
+				<input name="list" value="weekday" type="hidden">
+				<input name="tr" value="footer" type="hidden">		
+				<input value="" id="fromaddress2" name="emailaddress" style="z-index: -9; height: 1px; width: 1px; position: absolute;" type="text">
+				<input value="" name="email" id="ftemtxt" type="text"> 
+				<input id="ftemsub" value="Subscribe Now" type="submit">
+				</form>
+				<p></p>
+			<div style="clear: both;"></div>
+			</div>
+			<div style="width: 280px; float: left;">
+				<div class="ftsection">FOLLOW US</div>
+				<ul class="ftsub" style="float: left;">
+					<li class="icon-twitter"><a href="https://twitter.com/intent/user?original_referer=http://www.howtogeek.com&amp;region=following&amp;screen_name=howtogeeksite&amp;tw_p=followbutton&amp;variant=2.0">Twitter</a></li>
+					<li class="icon-facebook"><a href="http://facebook.com/thehowtogeek">Facebook</a></li>
+				</ul>
+				<ul class="ftsub" style="float: left; margin-left: 20px;">
+					<li class="icon-google-plus"><a href="http://plus.google.com/+howtogeek">Google+</a></li>
+					<li class="icon-feed"><a href="http://feeds.howtogeek.com/howtogeek">RSS Feed</a></li>
+				</ul>
+				<div style="clear: both;"></div>
+			</div>	
+			
+			<div style="clear: both;"></div><br>
+			<div class="copyright" style="font-size: 11px;">Copyright © 2006-2014 HowToGeek.com.&nbsp; All Rights Reserved.</div>
+		</div>		
+		
+		
+	</div>
+	                    
+
+
+                                         
+                                             
+<!-- Begin comScore Tag -->
+
+
+
+
+<!-- End comScore Tag -->
+
+
+
+
+
+  	
+<!-- tmnp.howtogeek 1x1 ATF -->
+<div id="div-gpt-ad-1342044737928-5">
+
+<div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_2__container__"><iframe src="index_41.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_2" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_2" frameborder="0" height="1" scrolling="no" width="1"></iframe></div><iframe src="index_42.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_2__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek/infotech_2__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>
+
+
+
+
+<!-- Quantcast Tag -->
+
+
+
+<!-- End Quantcast tag -->
+
+
+
+
+
+
+
+
+<div id="tbl-aug-by374r"><div id="tbl-aug-jb5hca"><div id="tbl-aug-jqawup"><div class=" trc_popover trc_popover_fade bottom "><div class=" trc_popover_arrow "></div><iframe src="index_43.html" frameborder="0" scrolling="no"></iframe></div></div></div></div><iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="index_44.html" id="oauth2relay461455508" name="oauth2relay461455508"></iframe><iframe style="border: 0px none; width: 0px; height: 0px; display: block;" src="index_45.html" id="LOTCCFrameThu Feb 20 2014 21:20:20 GMT+0800 (HKT)"></iframe><iframe src="index_46.html" style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_7653537822103"></iframe></body>
+</html>
