@@ -1,0 +1,988 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
+<html xml:lang="zh" xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<title>  从 screen 切换到 tmux — LinuxTOY</title>
+
+
+
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico"><!-- leave this for stats -->
+<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="https://linuxtoy.org/feed">
+<link rel="pingback" href="https://linuxtoy.org/xmlrpc.php">
+
+    <link rel="canonical" href="https://linuxtoy.org/archives/from-screen-to-tmux.html">
+
+<link rel="alternate" type="application/rss+xml" title="LinuxTOY » 从 screen 切换到 tmux 评论 Feed" href="https://linuxtoy.org/archives/from-screen-to-tmux.html/feed">
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://linuxtoy.org/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://linuxtoy.org/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="支付宝与Chrome合作" href="https://linuxtoy.org/archives/alipay-work-with-chrome.html">
+<link rel="next" title="Oracle 宣布将 OpenOffice.org 完全社区化" href="https://linuxtoy.org/archives/oracle-announce-to-move-openofficeorg-to-a-purely-community-project.html">
+<link rel="canonical" href="https://linuxtoy.org/archives/from-screen-to-tmux.html">
+<link rel="shortlink" href="https://linuxtoy.org/?p=4691">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body id="sp">
+<div id="page">
+    <div id="header">
+    <h1><a href="https://linuxtoy.org/">LinuxTOY</a></h1>
+    
+        <form action="https://linuxtoy.org/index.php" method="get" onsubmit="location.href='https://linuxtoy.org/search/' + encodeURIComponent(this.s.value).replace(/%20/g, '+'); return false;">
+
+    <ul id="hnav">
+    <li class="current_page_item"><a href="https://linuxtoy.org/">Home</a></li>
+    <li class="page_item page-item-82"><a href="https://linuxtoy.org/archives">Archives</a></li>
+<li class="page_item page-item-2303"><a href="https://linuxtoy.org/download">Download</a></li>
+<li class="page_item page-item-55"><a href="https://linuxtoy.org/faq">FAQs</a></li>
+<li class="page_item page-item-44"><a href="https://linuxtoy.org/contact">Contact</a></li>
+        <li><a href="https://linuxtoy.org/wp-login.php">Login</a></li>
+    <li id="search"><input size="30" id="s" name="s" value="Search" onfocus="if (this.value == 'Search') {this.value = '';}" onblur="if (this.value == '') {this.value = 'Search';}" type="text"></li>
+    </ul>
+    </form>
+
+    <p class="position">Home » 从 screen 切换到 tmux</p>
+    </div><!--#header-->
+    <div class="navposts">
+    <p class="prev">« <a href="https://linuxtoy.org/archives/alipay-work-with-chrome.html" rel="prev">支付宝与Chrome合作</a></p>    <p class="next"><a href="https://linuxtoy.org/archives/oracle-announce-to-move-openofficeorg-to-a-purely-community-project.html" rel="next">Oracle 宣布将 OpenOffice.org 完全社区化</a> »</p>    </div>
+
+<div id="main">
+<!-- google_ad_section_start -->
+
+<div id="side-r">
+<div class="tab">LinuxTOY 是一个致力于提供 Linux 相关资讯的专题站点。如果您发现了好用好玩的 Linux 东东并愿意发扬自由、分享的精神，可以点击顶部导航 Contact 按钮进行投稿。</div>
+<div class="tab">
+  <ul>
+  <li><i class="fa fa-heart fa-fw"></i><a href="http://linuxtoy.org/faq/donate" title="捐助本站">捐助本站</a></li>
+  <li><i class="fa fa-rss fa-fw"></i><a href="http://linuxtoy.org/feed/" title="Subscribe in a reader">Subscribe in Reader</a></li>
+  <li><i class="fa fa-twitter fa-fw"></i><a href="https://twitter.com/Linuxtoy" title="Follow us on Twitter">Follow us on Twitter</a></li>
+  <li><i class="fa fa-comment fa-fw"></i><a href="http://identi.ca/linuxtoy" title="Follow us on Identi.ca">Follow us on Identi.ca</a></li>
+  <li><i class="fa fa-google-plus fa-fw"></i><a href="https://plus.google.com/b/101096637428284023293/" title="Linuxtoy on G+">Linuxtoy on G+</a></li>
+  </ul></div>
+<div class="tab">
+    <ul>
+    
+<li><i class="fa fa-link fa-fw"></i><a href="http://www.emtcompany.com/cordless-phone-batteries/uniden-battery.html">battery</a> </li>
+<li><i class="fa fa-link fa-fw"></i><a href="http://www.softmebo.com/">softmebo</a> </li>
+    <li><i class="fa fa-link fa-fw"></i><a href="https://www.dropbox.com/referrals/NTI4NTgyMTk" title="Dropbox">Free Online Storage Space</a></li>
+    <li><i class="fa fa-link fa-fw"></i><a href="http://www.amazon.cn/gp/search?ie=UTF8&amp;keywords=linux&amp;tag=linuxtoy-23&amp;index=books&amp;linkCode=ur2&amp;camp=536&amp;creative=3200" title="Linux books">Linux Books</a></li>
+    <li><i class="fa fa-link fa-fw"></i>静态文件存储由<a href="https://www.upyun.com/?md=linuxtoy" title="又拍云存储">又拍云存储</a>提供</li>
+    </ul></div>
+    <h2>Popular entries</h2>
+    <ul>
+    <li><a href="https://linuxtoy.org/archives/the-perfect-linux-desktop-arch-linux-2007-08-2-1.html">Archlinux 安装指南</a></li>
+    <li><a href="https://linuxtoy.org/archives/unix-linux-command-cheat-sheet.html">Unix/Linux 命令速查表</a></li>
+    <li><a href="https://linuxtoy.org/archives/efficient-editing-with-vim.html">高效率编辑器 Vim</a></li>
+    <li><a href="https://linuxtoy.org/archives/wget-tips.html">Wget 使用技巧</a></li>
+    <li><a href="https://linuxtoy.org/archives/playing-around-with-mplayer.html">玩转 MPlayer</a></li>
+    <li><a href="https://linuxtoy.org/archives/awesome.html">平铺式窗口管理器 Awesome</a></li>
+    <li><a href="https://linuxtoy.org/archives/3_free_antivirus_under_linux.html">三款 Linux 下的免费桌面级杀毒软件</a></li>
+    <li><a href="https://linuxtoy.org/archives/openbox-getting-started-guide.html">窗口管理器 Openbox 入门指南</a></li>
+    <li><a href="https://linuxtoy.org/archives/minimalist-install-of-ubuntu.html">最小化安装 Ubuntu</a></li>
+    <li><a href="https://linuxtoy.org/archives/5-desktop-environment-for-linux.html">五个你可能不知道的 Linux 桌面环境</a></li>
+    <li><a href="https://linuxtoy.org/archives/the-7-deadly-linux-commands.html">7 个致命的 Linux 命令</a></li>
+    <li><a href="https://linuxtoy.org/archives/lightweight-desktop-compare.html">很轻很强大：轻量级桌面环境比较</a></li>
+    <li><a href="https://linuxtoy.org/archives/gnome-shell-intro.html">GNOME Shell 介绍</a></li>
+    <li><a href="https://linuxtoy.org/archives/zsh.html">终极 Shell——Zsh</a></li>
+    <li><a href="https://linuxtoy.org/archives/6-of-the-best-free-linux-cad-software.html">6 款高品质的免费 Linux CAD 应用程序</a></li>
+    <li><a href="https://linuxtoy.org/archives/25-linux-twitterers.html">25+ 个值得跟随的 Linux 相关 Twitter 帐号</a></li>
+    <li><a href="https://linuxtoy.org/archives/3-standalone-flash-player-under-linux.html">Linux 下的三款 Flash 独立播放器</a></li>
+    <li><a href="https://linuxtoy.org/archives/game_emulator_for_linux.html">Linux 下的几个游戏模拟器</a></li>
+    <li><a href="https://linuxtoy.org/archives/musca.html">平铺式窗口管理器 Musca 初体验</a></li>
+    <li><a href="https://linuxtoy.org/archives/history-command-usage-examples.html">History（历史）命令用法 15 例</a></li>
+    <li><a href="https://linuxtoy.org/archives/fluxbox_config.html">Fluxbox 配置</a></li>
+    <li><a href="https://linuxtoy.org/archives/the-best-tips-and-tricks-for-bash.html">bash 使用技巧</a></li>
+    <li><a href="https://linuxtoy.org/archives/10-oreilly-books.html">10 本 O'Reilly 出版的免费好书</a></li>
+    </ul>
+</div><!--side-r-->
+
+
+<div id="story">
+    <div class="post" id="post-4691">
+        <h2>从 screen 切换到 tmux</h2>
+    <p class="postmeta">2011-04-15 <a href="https://linuxtoy.org/archives/author/admin-2" title="由 Toy 发布" rel="author">Toy</a> Posted in <a href="https://linuxtoy.org/category/tips" title="查看 Tips 中的全部文章" rel="category tag">Tips</a>Tagged as <a href="https://linuxtoy.org/tag/tmux" rel="tag">tmux</a><span class="rss" title="comment RSS of this post"><a href="https://linuxtoy.org/archives/from-screen-to-tmux.html/feed">RSS</a></span></p>
+        <div class="entry">
+	<p>在我的 Linux 生活中，我曾做过几次重要的切换。我先是从 Archlinux 切换到
+Gentoo，后来又从 bash 切换到了 zsh。现在，我又从 screen 切换到
+tmux。对于各个终端控来说，screen
+是几乎每天都会使用的好工具，抛开确实不易。但有了更加好用的
+tmux，我为什么不切换？<span id="more-4691"></span> </p>
+
+<p><a href="http://linuxtoy.org/img/2011/04/tmux.png"><img src="tmux-thumb.png" alt="Tmux thumb"></a></p>
+
+<h3>我为什么要从 screen 切换到 tmux</h3>
+
+<p>对我来说，从 screen 切换到 tmux 不是平白无故的，自然有其充分的理由。我感觉使用
+tmux 更加方便、灵活和高效。我非常喜欢 tmux 的这些方面：</p>
+
+<ul>
+<li>垂直分割窗口，当然水平也是可以的</li>
+<li>vi 或 emacs 按键绑定模式</li>
+<li>有多个粘贴缓冲，可完全由按键进行选取、复制、以及粘贴操作</li>
+<li>配置很容易，尤其是状态行</li>
+<li>脚本化，通过脚本可以方便的控制 tmux 会话</li>
+<li>有预设布局，可搜索窗口，自动命名窗口名称</li>
+<li>文档清晰、详尽</li>
+</ul>
+
+<h3>更改默认按键前缀</h3>
+
+<p>从 screen 切换到 tmux 十分平滑，tmux 的按键设置与 screen
+大都相同，只是其默认按键前缀为 Ctrl-b。为了延续在 screen
+中的使用习惯，我将其更改为 Ctrl-a。将下列内容加到 $HOME/.tmux.conf 中即可：</p>
+
+<pre><code>set -g prefix ^a
+unbind ^b
+bind a send-prefix
+</code></pre>
+
+<h3>按键绑定</h3>
+
+<p>我还在 .tmux.conf 中定义了以下按键绑定：</p>
+
+<ul>
+<li><p>水平或垂直分割窗口</p>
+
+<pre><code>unbind '"'
+bind - splitw -v # 分割成上下两个窗口
+unbind %
+bind | splitw -h # 分割成左右两个窗口
+</code></pre></li>
+<li><p>选择分割的窗格</p>
+
+<pre><code>bind k selectp -U # 选择上窗格
+bind j selectp -D # 选择下窗格
+bind h selectp -L # 选择左窗格
+bind l selectp -R # 选择右窗格
+</code></pre></li>
+<li><p>重新调整窗格的大小</p>
+
+<pre><code>bind ^k resizep -U 10 # 跟选择窗格的设置相同，只是多加 Ctrl（Ctrl-k）
+bind ^j resizep -D 10 # 同上
+bind ^h resizep -L 10 # ...
+bind ^l resizep -R 10 # ...
+</code></pre></li>
+<li><p>交换两个窗格</p>
+
+<pre><code>bind ^u swapp -U # 与上窗格交换 Ctrl-u
+bind ^d swapp -D # 与下窗格交换 Ctrl-d
+</code></pre></li>
+<li><p>执行命令，比如看 Manpage、查 Perl 函数</p>
+
+<pre><code>bind m command-prompt "splitw -h 'exec man %%'"
+bind @ command-prompt "splitw -h 'exec perldoc -f %%'"
+</code></pre></li>
+</ul>
+
+<h3>定制状态行</h3>
+
+<p>状态行左边默认就很好了，我对右边定制了一下，显示 uptime 和 loadavg：</p>
+
+<pre><code>set -g status-right "#[fg=green]#(uptime.pl)#[default] • #[fg=green]#(cut -d ' ' -f 1-3 /proc/loadavg)#[default]"
+</code></pre>
+
+<p>下面两行设置状态行的背景和前景色:</p>
+
+<pre><code>set -g status-bg black
+set -g status-fg yellow
+</code></pre>
+
+<h3>默认启动应用</h3>
+
+<p>当 tmux 启动时，可以默认启动一些应用：</p>
+
+<pre><code>new -s work mutt # 新建名为 work 的会话，并启动 mutt
+neww rtorrent # 启动 rtorrent
+neww vim # 启动 vim
+neww zsh
+selectw -t 3 # 默认选择标号为 3 的窗口
+</code></pre>
+
+<h3>复制与粘贴操作</h3>
+
+<ol>
+<li><p>按 C-a [ 进入复制模式，如果有设置 <code>setw -g mode-keys vi</code> 的话，可按 vi
+的按键模式操作。移动至待复制的文本处，按一下空格，结合 vi
+移动命令开始选择，选好后按回车确认。</p></li>
+<li><p>按 C-a ] 粘贴已复制的内容。</p></li>
+</ol>
+
+<h3>参考</h3>
+
+<p>tmux 的官方主页: <a href="http://tmux.sourceforge.net/">http://tmux.sourceforge.net</a><br>
+我的 <a href="https://bitbucket.org/xuxiaodong/dotman/src">.tmux.conf</a></p>
+        		
+	<p><strong>Read More:</strong></p>
+	<ul class="entrylist"><li>» <a href="https://linuxtoy.org/archives/tmux.html" rel="bookmark" title="Permanent Link: tmux：GNU screen 替代品">tmux：GNU screen 替代品</a></li><li>» <a href="https://linuxtoy.org/archives/tmux-1-7.html" rel="bookmark" title="Permanent Link: tmux 1.7 发布">tmux 1.7 发布</a></li><li>» <a href="https://linuxtoy.org/archives/scripting-tmux.html" rel="bookmark" title="Permanent Link: 脚本化 tmux">脚本化 tmux</a></li><li>» <a href="https://linuxtoy.org/archives/tmux-14.html" rel="bookmark" title="Permanent Link: tmux 1.4 发布">tmux 1.4 发布</a></li><li>» <a href="https://linuxtoy.org/archives/tmux-powerline.html" rel="bookmark" title="Permanent Link: tmux powerline">tmux powerline</a></li></ul>
+	</div><!--.entry-->
+        
+<ins style="display: inline-table; border: medium none; height: 280px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 336px; background-color: transparent;"><ins id="aswift_0_anchor" style="display: block; border: medium none; height: 280px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 336px; background-color: transparent;"><iframe src="index_1.html" marginwidth="0" marginheight="0" vspace="0" hspace="0" allowtransparency="true" id="aswift_0" name="aswift_0" style="left: 0pt; position: absolute; top: 0pt;" frameborder="0" height="280" scrolling="no" width="336"></iframe></ins></ins><hr>
+	<!-- google_ad_section_end -->
+    </div><!--.post-->
+
+
+<h3 id="comments">85 Comments</h3>
+
+<ol class="commentlist">
+    	<li class="oddbox" id="comment-200040">
+		<span class="count">1</span>
+    <cite><a href="http://www.kissuki.com/" rel="external nofollow" class="url">Iven</a></cite>
+    <small>评论 <a href="#comment-200040"> @ 2011-04-15 21:40</a><img style="cursor: pointer;" onclick='yus_replyTo("200040", "Iven")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>在用 byobu …… tmux 久闻其名，一定要试一下……</p>
+    		</li>
+		<li class="box" id="comment-200041">
+		<span class="count">2</span>
+    <cite><a href="http://www.adam8157.info/" rel="external nofollow" class="url">adam8157</a></cite>
+    <small>评论 <a href="#comment-200041"> @ 2011-04-15 21:40</a><img style="cursor: pointer;" onclick='yus_replyTo("200041", "adam8157")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>嗯, 都说tmux很不错, 但我还是在坚守screen, 因为不是每台服务器上都有tmux, 但是一般都有screen...</p>
+    		</li>
+		<li class="oddbox" id="comment-200042">
+		<span class="count">3</span>
+    <cite><a href="http://ihipop.info/" rel="external nofollow" class="url">ihipop</a></cite>
+    <small>评论 <a href="#comment-200042"> @ 2011-04-15 21:41</a><img style="cursor: pointer;" onclick='yus_replyTo("200042", "ihipop")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>Toy现身。膜拜,,,,,,</p>
+    		</li>
+		<li class="box" id="comment-200043">
+		<span class="count">4</span>
+    <cite><a href="http://www.adam8157.info/" rel="external nofollow" class="url">adam8157</a></cite>
+    <small>评论 <a href="#comment-200043"> @ 2011-04-15 21:46</a><img style="cursor: pointer;" onclick='yus_replyTo("200043", "adam8157")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>PS: 个人以为, 脚本控制是tmux的杀手锏...</p>
+    		</li>
+		<li class="oddbox" id="comment-200047">
+		<span class="count">5</span>
+    <cite><a href="http://hi.baidu.com/rothsdad/home" rel="external nofollow" class="url">Rothsdad</a></cite>
+    <small>评论 <a href="#comment-200047"> @ 2011-04-15 22:02</a><img style="cursor: pointer;" onclick='yus_replyTo("200047", "Rothsdad")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>[转]</p>
+
+<p>tmux将会有中文标题支持，screen中文标题遥遥无期
+tmux的标题需要分开左中右分别定义，并且要指定左和右标题栏的宽度，screen一行代码就全部指定了。
+tmux的标题似乎只能有一行（欢迎纠错），但是screen可以有两行，分别是hardstatus和caption。
+tmux可以为有事件发生的窗口专门定义标题格式（alert-bg，alert-fg，alert-attr），这是1.3新加的功能，screen无此功能。
+tmux可以很方便的把第一个窗口序号改成1，screen不可以。
+tmux的窗口消息默认是按q之后才消失，screen里面则用msgwait定义消息显示时间。
+tmux不是在所有*nix平台上都有，而screen则到处可以找得到。
+tmux可以用server-info显示终端相关信息，screen里面没有类似功能。
+screen有nethack模式，tmux没有。
+tmux有if-shell命令，可以根据shell命令执行结果来执行tmux命令（这个才是screen killer阿）。
+tmux可以随便横着竖着分割窗口，screen只能一个方向（忘了哪个方向，反正我不用）。</p>
+    		</li>
+		<li class="box" id="comment-200050">
+		<span class="count">6</span>
+    <cite><a href="http://banjuan.net/" rel="external nofollow" class="url">沈觅仁</a></cite>
+    <small>评论 <a href="#comment-200050"> @ 2011-04-15 22:22</a><img style="cursor: pointer;" onclick='yus_replyTo("200050", "沈觅仁")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>回头试试tmux。
+screen在公司的机器上总是会出现迟钝的问题。很是苦恼。</p>
+    		</li>
+		<li class="oddbox" id="comment-200053">
+		<span class="count">7</span>
+    <cite>GunsNRose</cite>
+    <small>评论 <a href="#comment-200053"> @ 2011-04-15 23:00</a><img style="cursor: pointer;" onclick='yus_replyTo("200053", "GunsNRose")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>切换到tmux有一段时间了，使用的是screen的键梆定，转过去非常容易上手</p>
+    		</li>
+		<li class="box" id="comment-200055">
+		<span class="count">8</span>
+    <cite><a href="http://coolwanglu.blogspot.com/" rel="external nofollow" class="url">WangLu</a></cite>
+    <small>评论 <a href="#comment-200055"> @ 2011-04-15 23:08</a><img style="cursor: pointer;" onclick='yus_replyTo("200055", "WangLu")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>看了这个截图又想用awesome了，但是还是离不开gnome-panel @ @</p>
+
+<p>平时用screen只是最傻的用途：在几个ssh中间共享一个终端。</p>
+
+<p>看这意思tmux不错，回头研究一下放在我全屏的guake里去，估计靠谱 :)</p>
+    		</li>
+		<li class="oddbox" id="comment-200056">
+		<span class="count">9</span>
+    <cite>Kent</cite>
+    <small>评论 <a href="#comment-200056"> @ 2011-04-15 23:11</a><img style="cursor: pointer;" onclick='yus_replyTo("200056", "Kent")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@rothsdad. 你把TOY BLOG的文章转到了LINUX TOY。 呵呵。
+我也还在用SCREEN。回头试试TMUX</p>
+    		</li>
+		<li class="box" id="comment-200058">
+		<span class="count">10</span>
+    <cite>Xi</cite>
+    <small>评论 <a href="#comment-200058"> @ 2011-04-15 23:15</a><img style="cursor: pointer;" onclick='yus_replyTo("200058", "Xi")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@Toy 请问这是啥英文字体？</p>
+    		</li>
+		<li class="oddbox" id="comment-200068">
+		<span class="count">11</span>
+    <cite>kidfruit</cite>
+    <small>评论 <a href="#comment-200068"> @ 2011-04-16 0:06</a><img style="cursor: pointer;" onclick='yus_replyTo("200068", "kidfruit")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>zsh的通配符挺强大的。Toy看来是个资深系统管理员啊……</p>
+    		</li>
+		<li class="box" id="comment-200081">
+		<span class="count">12</span>
+    <cite>fanhe</cite>
+    <small>评论 <a href="#comment-200081"> @ 2011-04-16 1:21</a><img style="cursor: pointer;" onclick='yus_replyTo("200081", "fanhe")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>不ssh就不用终端。
+平时都是依赖面板的路过。</p>
+    		</li>
+		<li class="oddbox" id="comment-200112">
+		<span class="count">13</span>
+    <cite>lyehust</cite>
+    <small>评论 <a href="#comment-200112"> @ 2011-04-16 6:37</a><img style="cursor: pointer;" onclick='yus_replyTo("200112", "lyehust")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>tmux有detach功能么。这是我最需要的功能，程序可以在服务器上后台运行。</p>
+    		</li>
+		<li class="posterbox" id="comment-200119">
+		<span class="count">14</span>
+    <cite>toy</cite>
+    <small>评论 <a href="#comment-200119"> @ 2011-04-16 7:15</a><img style="cursor: pointer;" onclick='yus_replyTo("200119", "toy")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200058" rel="nofollow">Xi</a>: 是 terminus。</p>
+
+<p>@<a href="#comment-200112" rel="nofollow">lyehust</a>: 当然有。</p>
+    		</li>
+		<li class="oddbox" id="comment-200121">
+		<span class="count">15</span>
+    <cite>rwx</cite>
+    <small>评论 <a href="#comment-200121"> @ 2011-04-16 7:45</a><img style="cursor: pointer;" onclick='yus_replyTo("200121", "rwx")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>screen里用emacs编辑时256色会变的和原来不一样，不知这个toy大神有遇到过吗</p>
+    		</li>
+		<li class="box" id="comment-200130">
+		<span class="count">16</span>
+    <cite>BILLYKANE</cite>
+    <small>评论 <a href="#comment-200130"> @ 2011-04-16 8:35</a><img style="cursor: pointer;" onclick='yus_replyTo("200130", "BILLYKANE")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>这些和dvtm有什么区别吗？
+<a href="http://www.brain-dump.org/projects/dvtm/" rel="nofollow">http://www.brain-dump.org/projects/dvtm/</a></p>
+    		</li>
+		<li class="oddbox" id="comment-200131">
+		<span class="count">17</span>
+    <cite>Xi</cite>
+    <small>评论 <a href="#comment-200131"> @ 2011-04-16 8:37</a><img style="cursor: pointer;" onclick='yus_replyTo("200131", "Xi")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200119" rel="nofollow">toy</a>: 怎么和我装的有些不一样，例如字母“a”
+还有你这个是什么wm，很漂亮</p>
+    		</li>
+		<li class="box" id="comment-200137">
+		<span class="count">18</span>
+    <cite><a href="http://hi.baidu.com/rothsdad/home" rel="external nofollow" class="url">Rothsdad</a></cite>
+    <small>评论 <a href="#comment-200137"> @ 2011-04-16 9:51</a><img style="cursor: pointer;" onclick='yus_replyTo("200137", "Rothsdad")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@XI
+应该是dwn吧</p>
+    		</li>
+		<li class="oddbox" id="comment-200140">
+		<span class="count">19</span>
+    <cite><a href="http://lilydjwg.is-programmer.com/" rel="external nofollow" class="url">依云</a></cite>
+    <small>评论 <a href="#comment-200140"> @ 2011-04-16 10:00</a><img style="cursor: pointer;" onclick='yus_replyTo("200140", "依云")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200137" rel="nofollow">Rothsdad</a>: 我觉得是 subtle。</p>
+    		</li>
+		<li class="posterbox" id="comment-200145">
+		<span class="count">20</span>
+    <cite>toy</cite>
+    <small>评论 <a href="#comment-200145"> @ 2011-04-16 10:41</a><img style="cursor: pointer;" onclick='yus_replyTo("200145", "toy")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200131" rel="nofollow">Xi</a>: 你可以看看我在 <a href="https://bitbucket.org/xuxiaodong/dotman/src">.Xdefaults</a> 中对 terminus 的设置。另外，wm 是 dwm。</p>
+
+<p>@<a href="#comment-200130" rel="nofollow">BILLYKANE</a>: dvtm 没有 screen/tmux 的连接/分离会话等功能。</p>
+
+<p>@<a href="#comment-200121" rel="nofollow">rwx</a>: screen 的 256 色支持需要在 .screenrc 中设置一下。</p>
+    		</li>
+		<li class="oddbox" id="comment-200146">
+		<span class="count">21</span>
+    <cite><a href="http://www.ekd123.org/" rel="external nofollow" class="url">Mike Ma</a></cite>
+    <small>评论 <a href="#comment-200146"> @ 2011-04-16 10:42</a><img style="cursor: pointer;" onclick='yus_replyTo("200146", "Mike Ma")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>如果是切分终端，表示emacs无鸭梨。。。</p>
+
+<p>但是还是少了点东西</p>
+
+<p>不过vi还是能用的，就是工作的不好</p>
+    		</li>
+		<li class="box" id="comment-200149">
+		<span class="count">22</span>
+    <cite>rooftop</cite>
+    <small>评论 <a href="#comment-200149"> @ 2011-04-16 11:09</a><img style="cursor: pointer;" onclick='yus_replyTo("200149", "rooftop")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>膜拜高人，连Arch都没敢尝试，在Linux mint（基于debian版本）这个小温室里待着呢</p>
+    		</li>
+		<li class="oddbox" id="comment-200154">
+		<span class="count">23</span>
+    <cite>bcbc</cite>
+    <small>评论 <a href="#comment-200154"> @ 2011-04-16 11:40</a><img style="cursor: pointer;" onclick='yus_replyTo("200154", "bcbc")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>tmux的初衷是bsd授权的screen替代品，似乎是openbsd发起的。未来有可能进入FreeBSD的base。</p>
+    		</li>
+		<li class="box" id="comment-200162">
+		<span class="count">24</span>
+    <cite><a href="http://coolwanglu.blogspot.com/" rel="external nofollow" class="url">WangLu</a></cite>
+    <small>评论 <a href="#comment-200162"> @ 2011-04-16 13:19</a><img style="cursor: pointer;" onclick='yus_replyTo("200162", "WangLu")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>screen 切分以后是不是每个还都是window，而不是tmux里那种pane？
+那样的话还是喜欢tmux</p>
+    		</li>
+		<li class="oddbox" id="comment-200166">
+		<span class="count">25</span>
+    <cite>kaji331</cite>
+    <small>评论 <a href="#comment-200166"> @ 2011-04-16 13:41</a><img style="cursor: pointer;" onclick='yus_replyTo("200166", "kaji331")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>我现在用wmfs，以前用过一段时间的awesome，感觉都挺不错的~我很好奇的是既然有了wmfs或者awesome这样的平铺窗口管理器了，tmux或者screen还有必要么？仅仅是平铺窗口的话wmfs和awesome已经足够强大了！</p>
+    		</li>
+		<li class="box" id="comment-200171">
+		<span class="count">26</span>
+    <cite>ibex</cite>
+    <small>评论 <a href="#comment-200171"> @ 2011-04-16 14:27</a><img style="cursor: pointer;" onclick='yus_replyTo("200171", "ibex")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>screenתȷǿToyϰġ</p>
+    		</li>
+		<li class="oddbox" id="comment-200180">
+		<span class="count">27</span>
+    <cite><a href="http://webabie.com/" rel="external nofollow" class="url">blacktulip</a></cite>
+    <small>评论 <a href="#comment-200180"> @ 2011-04-16 15:59</a><img style="cursor: pointer;" onclick='yus_replyTo("200180", "blacktulip")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>17寸屏幕悲惨地飘过...还是乖乖screen吧</p>
+    		</li>
+		<li class="box" id="comment-200185">
+		<span class="count">28</span>
+    <cite>damn</cite>
+    <small>评论 <a href="#comment-200185"> @ 2011-04-16 16:50</a><img style="cursor: pointer;" onclick='yus_replyTo("200185", "damn")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>我喜欢加粗terminus 字体。
+screen和tmux初衷不是屏幕分割，而是后台运行会话不必中断。例如你要在远程的机上编译内核，后台化之后断开ssh</p>
+    		</li>
+		<li class="oddbox" id="comment-200186">
+		<span class="count">29</span>
+    <cite>transtone</cite>
+    <small>评论 <a href="#comment-200186"> @ 2011-04-16 16:54</a><img style="cursor: pointer;" onclick='yus_replyTo("200186", "transtone")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>我觉得tmux更适合与urxvt搭配。GNU screen的使用和特点这里不说了，只说说个人用起来不爽的地方。没有状态栏的screen用起来很不方便，当然可以自定义，有一个byobu的项目非常强大，帮用户默认设置了很多方便的功能，还能根据自己的需要来自由配置。但就是这个byobu，其颜色配置和urxvt有冲突，导致银灰色在urxvt+byobu下不显示。在修改了byobu配置中的一个选项才正常. 另两个问题是screen本身的引起的。
+其一：在screen中用less/vi查看/编辑文件，浏览到顶端或底端的时候，屏幕会随着按键而闪动，一下白一下黑，按一下闪一下，让人觉得很山寨。此问题只在配合rxvt时出现，在vte类的终端下正常。
+其二：在screen中另外在开一个screen的时候，特别是远程登录后用screen -r的时候，状态栏会自动缩小至屏幕的一半，需要Ctrl-a d退出，再screen -r回来才好。此问题普便存在。
+这几个问题在tmux都没有出现。无奈放弃了漂亮的byobu。
+<a href="http://transtone.wordpress.com/2010/09/29/hello-world/" rel="nofollow">http://transtone.wordpress.com/2010/09/29/hello-world/</a></p>
+    		</li>
+		<li class="box" id="comment-200188">
+		<span class="count">30</span>
+    <cite><a href="http://aoy.me/" rel="external nofollow" class="url">Auston_Jary</a></cite>
+    <small>评论 <a href="#comment-200188"> @ 2011-04-16 17:22</a><img style="cursor: pointer;" onclick='yus_replyTo("200188", "Auston_Jary")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>当 tmux 启动时，可以默认启动一些应用</p>
+
+<p>在我这里没用啊~~~~~~~~~~</p>
+
+<p>tmux 1.4</p>
+    		</li>
+		<li class="posteroddbox" id="comment-200190">
+		<span class="count">31</span>
+    <cite>toy</cite>
+    <small>评论 <a href="#comment-200190"> @ 2011-04-16 17:27</a><img style="cursor: pointer;" onclick='yus_replyTo("200190", "toy")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200188" rel="nofollow">Auston_Jary</a>: 你要这样启动 tmux: <code>tmux att</code></p>
+    		</li>
+		<li class="box" id="comment-200197">
+		<span class="count">32</span>
+    <cite><a href="http://aoy.me/" rel="external nofollow" class="url">Auston_Jary</a></cite>
+    <small>评论 <a href="#comment-200197"> @ 2011-04-16 17:40</a><img style="cursor: pointer;" onclick='yus_replyTo("200197", "Auston_Jary")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200190" rel="nofollow">toy</a>: </p>
+
+<p>谢谢了~
+可是这个没screnn的好用</p>
+
+<p>比如我在.zshrc设置了alias sshh="ssh <a href="mailto:a@a.com">a@a.com</a>"之类的
+再neww  sshh  没用,screen是启动个shell在运行命令的
+screen -t ssh   zsh -i -c "sshh;zsh"</p>
+
+<p>tmux里启动的vim 退出那个页面就直接关闭了,而不是退出到shell....</p>
+    		</li>
+		<li class="oddbox" id="comment-200203">
+		<span class="count">33</span>
+    <cite><a href="http://zhx.me/" rel="external nofollow" class="url">zhx</a></cite>
+    <small>评论 <a href="#comment-200203"> @ 2011-04-16 18:50</a><img style="cursor: pointer;" onclick='yus_replyTo("200203", "zhx")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>gentoo我死活没装上啊！！郁闷~~要是楼主能写一个新的教程就好！~</p>
+    		</li>
+		<li class="posterbox" id="comment-200204">
+		<span class="count">34</span>
+    <cite>toy</cite>
+    <small>评论 <a href="#comment-200204"> @ 2011-04-16 18:54</a><img style="cursor: pointer;" onclick='yus_replyTo("200204", "toy")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200197" rel="nofollow">Auston_Jary</a>: 可以这样：<code>neww -n ssh 'exec ssh <a href="mailto:a@a.com">a@a.com</a>'</code></p>
+    		</li>
+		<li class="oddbox" id="comment-200209">
+		<span class="count">35</span>
+    <cite>喵喵</cite>
+    <small>评论 <a href="#comment-200209"> @ 2011-04-16 19:15</a><img style="cursor: pointer;" onclick='yus_replyTo("200209", "喵喵")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@toy: 看起来真不错，准备也换zsh和tmux，gentoo已经在用挺好的。</p>
+
+<p>感谢分享喵！</p>
+    		</li>
+		<li class="box" id="comment-200210">
+		<span class="count">36</span>
+    <cite><a href="http://dbabc.net/" rel="external nofollow" class="url">dbabc</a></cite>
+    <small>评论 <a href="#comment-200210"> @ 2011-04-16 19:34</a><img style="cursor: pointer;" onclick='yus_replyTo("200210", "dbabc")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>准备测试下，呵呵，</p>
+    		</li>
+		<li class="oddbox" id="comment-200211">
+		<span class="count">37</span>
+    <cite><a href="http://aoy.me/" rel="external nofollow" class="url">Auston_Jary</a></cite>
+    <small>评论 <a href="#comment-200211"> @ 2011-04-16 19:35</a><img style="cursor: pointer;" onclick='yus_replyTo("200211", "Auston_Jary")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200204" rel="nofollow">toy</a>: 
+能打开window了并自动链接了</p>
+
+<p>但可不可以断开链接或退出vim后不自动关闭那个window...</p>
+
+<p>还有怎么bind 为 F2和F3分别为C-a n和C-a p</p>
+    		</li>
+		<li class="box" id="comment-200212">
+		<span class="count">38</span>
+    <cite><a href="http://ihipop.info/" rel="external nofollow" class="url">ihipop</a></cite>
+    <small>评论 <a href="#comment-200212"> @ 2011-04-16 19:39</a><img style="cursor: pointer;" onclick='yus_replyTo("200212", "ihipop")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>那个uptime.pl那一行可以改成这样</p>
+
+<p>set -g status-right "#[fg=green]#(uptime |cut -d ',' -f 1)#[default] • #[fg=green]#(cut -d ' ' -f 1-3 /proc/loadavg)#[default]"</p>
+
+<p>另外 这里有个非常详细的说明</p>
+
+<p><a href="http://blog.csdn.net/yjj1s/archive/2010/10/21/5957069.aspx" rel="nofollow">http://blog.csdn.net/yjj1s/archive/2010/10/21/5957069.aspx</a></p>
+    		</li>
+		<li class="posteroddbox" id="comment-200218">
+		<span class="count">39</span>
+    <cite><a href="http://xd.linuxtoy.org/" rel="external nofollow" class="url">Toy</a></cite>
+    <small>评论 <a href="#comment-200218"> @ 2011-04-16 20:03</a><img style="cursor: pointer;" onclick='yus_replyTo("200218", "Toy")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200211" rel="nofollow">Auston_Jary</a>: </p>
+
+<p># 退出程序后仍保留窗口，稍后可以使用 <code>respawn-window</code> 命令重新激活</p>
+
+<p>set -g set-remain-on-exit on</p>
+
+<p># F2 到下一个窗口，F3 到上一个窗口，不需要按前缀键</p>
+
+<p>bind -n 'F2' next</p>
+
+<p>bind -n 'F3' prev</p>
+    		</li>
+		<li class="box" id="comment-200219">
+		<span class="count">40</span>
+    <cite><a href="http://twitter.com/kurorozhang" rel="external nofollow" class="url">zach</a></cite>
+    <small>评论 <a href="#comment-200219"> @ 2011-04-16 20:17</a><img style="cursor: pointer;" onclick='yus_replyTo("200219", "zach")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>我想请教下具体Gentoo比Arch好在哪？</p>
+    		</li>
+		<li class="oddbox" id="comment-200220">
+		<span class="count">41</span>
+    <cite><a href="http://aoy.me/" rel="external nofollow" class="url">Auston_Jary</a></cite>
+    <small>评论 <a href="#comment-200220"> @ 2011-04-16 20:30</a><img style="cursor: pointer;" onclick='yus_replyTo("200220", "Auston_Jary")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200218" rel="nofollow">Toy</a>: </p>
+
+<p>绑定无效。。。</p>
+    		</li>
+		<li class="posterbox" id="comment-200223">
+		<span class="count">42</span>
+    <cite>toy</cite>
+    <small>评论 <a href="#comment-200223"> @ 2011-04-16 20:58</a><img style="cursor: pointer;" onclick='yus_replyTo("200223", "toy")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200219" rel="nofollow">zach</a>: Gentoo 相比 Archlinux，在编译级定制上更加灵活。</p>
+
+<p>@<a href="#comment-200220" rel="nofollow">Auston_Jary</a>: 完全退出 tmux，重新加载配置。</p>
+    		</li>
+		<li class="oddbox" id="comment-200224">
+		<span class="count">43</span>
+    <cite><a href="http://yangtianyu.com/" rel="external nofollow" class="url">令狐少侠</a></cite>
+    <small>评论 <a href="#comment-200224"> @ 2011-04-16 21:41</a><img style="cursor: pointer;" onclick='yus_replyTo("200224", "令狐少侠")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>fvwm 2.6.0来了。</p>
+    		</li>
+		<li class="box" id="comment-200226">
+		<span class="count">44</span>
+    <cite><a href="http://ltsan.info/" rel="external nofollow" class="url">etc</a></cite>
+    <small>评论 <a href="#comment-200226"> @ 2011-04-16 21:56</a><img style="cursor: pointer;" onclick='yus_replyTo("200226", "etc")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>很好看啊</p>
+    		</li>
+		<li class="oddbox" id="comment-200232">
+		<span class="count">45</span>
+    <cite>fcicq</cite>
+    <small>评论 <a href="#comment-200232"> @ 2011-04-16 22:51</a><img style="cursor: pointer;" onclick='yus_replyTo("200232", "fcicq")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>万年没完全学会 vim 的用不起 tmux ...</p>
+    		</li>
+		<li class="box" id="comment-200233">
+		<span class="count">46</span>
+    <cite>Xi</cite>
+    <small>评论 <a href="#comment-200233"> @ 2011-04-16 23:12</a><img style="cursor: pointer;" onclick='yus_replyTo("200233", "Xi")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200145" rel="nofollow">toy</a>: 谢谢你共享的文件，学习了，如果能把系统字体的配件文件也共享就最好了</p>
+    		</li>
+		<li class="oddbox" id="comment-200234">
+		<span class="count">47</span>
+    <cite>guest</cite>
+    <small>评论 <a href="#comment-200234"> @ 2011-04-16 23:15</a><img style="cursor: pointer;" onclick='yus_replyTo("200234", "guest")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>好喜欢toy的dwm</p>
+    		</li>
+		<li class="box" id="comment-200264">
+		<span class="count">48</span>
+    <cite>kent</cite>
+    <small>评论 <a href="#comment-200264"> @ 2011-04-17 4:35</a><img style="cursor: pointer;" onclick='yus_replyTo("200264", "kent")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>有个问题。当screen里面开个vim的时候，我要某个数字加1，在VIM里要ctrl-a a ，刚装了个tmux,可在tmux里开个VIM，怎么都用不了 vi里ctrl-a数字+1的功能。 （tmux的前缀我已经设成c-a) 这个该怎么解决？</p>
+    		</li>
+		<li class="posteroddbox" id="comment-200267">
+		<span class="count">49</span>
+    <cite>toy</cite>
+    <small>评论 <a href="#comment-200267"> @ 2011-04-17 6:34</a><img style="cursor: pointer;" onclick='yus_replyTo("200267", "toy")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200233" rel="nofollow">Xi</a>: 这是我的字体配置 <a href="https://bitbucket.org/xuxiaodong/dotman/src/013b9fcaaa69/.fonts.conf">.fonts.conf</a>。</p>
+
+<p>@<a href="#comment-200264" rel="nofollow">kent</a>: 一样，先 Ctrl-a，再按 a。</p>
+    		</li>
+		<li class="box" id="comment-200274">
+		<span class="count">50</span>
+    <cite>SHmech</cite>
+    <small>评论 <a href="#comment-200274"> @ 2011-04-17 9:25</a><img style="cursor: pointer;" onclick='yus_replyTo("200274", "SHmech")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>能不能在tmux里使用鼠标？上下翻页的时候还是鼠标滚轮方便些</p>
+    		</li>
+		<li class="oddbox" id="comment-200277">
+		<span class="count">51</span>
+    <cite>jijinger</cite>
+    <small>评论 <a href="#comment-200277"> @ 2011-04-17 11:25</a><img style="cursor: pointer;" onclick='yus_replyTo("200277", "jijinger")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>求toy的 dwm 配置文件</p>
+    		</li>
+		<li class="posterbox" id="comment-200280">
+		<span class="count">52</span>
+    <cite>toy</cite>
+    <small>评论 <a href="#comment-200280"> @ 2011-04-17 11:56</a><img style="cursor: pointer;" onclick='yus_replyTo("200280", "toy")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200274" rel="nofollow">SHmech</a>: 可以设置 <code>setw -g mode-mouse on</code></p>
+
+<p>@<a href="#comment-200277" rel="nofollow">jijinger</a>: 见 <a href="https://bitbucket.org/xuxiaodong/dotman/src/6f8fb7471300/etc/dwm-5.8.2">dwm config.h</a></p>
+    		</li>
+		<li class="oddbox" id="comment-200303">
+		<span class="count">53</span>
+    <cite>wang</cite>
+    <small>评论 <a href="#comment-200303"> @ 2011-04-17 17:48</a><img style="cursor: pointer;" onclick='yus_replyTo("200303", "wang")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>没人用terminator么，用过screen 受不了那个键盘的累，比如这种ctrl+a, a的问题。gentoo也试过，那个编译量实在是忍受不了。真的需要compile time的设置单独下个tar来玩就行了。</p>
+    		</li>
+		<li class="box" id="comment-200308">
+		<span class="count">54</span>
+    <cite>kent</cite>
+    <small>评论 <a href="#comment-200308"> @ 2011-04-17 18:55</a><img style="cursor: pointer;" onclick='yus_replyTo("200308", "kent")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@toy 我试了c-a a 不行。 不光vi里数字+1 不行，命令行写命令的时候回到行首c-a a 也不好用。 screen里可以。你那里可以用？有什么特殊配置？</p>
+    		</li>
+		<li class="oddbox" id="comment-200310">
+		<span class="count">55</span>
+    <cite>kent</cite>
+    <small>评论 <a href="#comment-200310"> @ 2011-04-17 19:18</a><img style="cursor: pointer;" onclick='yus_replyTo("200310", "kent")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>我在tmux的主页FAQ里找到了答案：</p>
+
+<p>Changing(这里指的是prefix) is simple: change the "prefix-key" option, and - if required - move
+the binding of the "send-prefix" command from C-b (C-b C-b sends C-b by
+default) to the new key. For example:</p>
+
+<pre><code>set -g prefix C-a
+unbind C-b
+bind C-a send-prefix
+</code></pre>
+
+<p>我现在加了
+bind a send-prefix
+和screen一样了。 如果按FAQ里的，想要c-a需要按c-a c-a，个人觉得比较麻烦。</p>
+    		</li>
+		<li class="box" id="comment-200311">
+		<span class="count">56</span>
+    <cite>yongw</cite>
+    <small>评论 <a href="#comment-200311"> @ 2011-04-17 19:28</a><img style="cursor: pointer;" onclick='yus_replyTo("200311", "yongw")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>screen有类似script的功能，tmux没有</p>
+    		</li>
+		<li class="posteroddbox" id="comment-200312">
+		<span class="count">57</span>
+    <cite>toy</cite>
+    <small>评论 <a href="#comment-200312"> @ 2011-04-17 19:35</a><img style="cursor: pointer;" onclick='yus_replyTo("200312", "toy")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200308" rel="nofollow">kent</a>: 我这可以，你用什么版本？</p>
+    		</li>
+		<li class="box" id="comment-200314">
+		<span class="count">58</span>
+    <cite>kent</cite>
+    <small>评论 <a href="#comment-200314"> @ 2011-04-17 20:13</a><img style="cursor: pointer;" onclick='yus_replyTo("200314", "kent")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@toy
+kent$ tmux -V
+tmux 1.4</p>
+    		</li>
+		<li class="oddbox" id="comment-200315">
+		<span class="count">59</span>
+    <cite>kent</cite>
+    <small>评论 <a href="#comment-200315"> @ 2011-04-17 20:15</a><img style="cursor: pointer;" onclick='yus_replyTo("200315", "kent")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@toy
+刚看了你发布的.tmux.conf 文件，就像我说的，你在里面定义了
+bind a send-prefix</p>
+
+<p>我开始没有这行。 所以尽管映射了prefix 是c-a，但是如果要在终端输入c-a，需要c-a c-b才行。</p>
+    		</li>
+		<li class="box" id="comment-200347">
+		<span class="count">60</span>
+    <cite>SHmech</cite>
+    <small>评论 <a href="#comment-200347"> @ 2011-04-18 7:54</a><img style="cursor: pointer;" onclick='yus_replyTo("200347", "SHmech")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>还有一个问题，我在gnome-terminal中使用vim的时候colortheme可以正常显示，在tmux下程序的高亮没有问题，但空白的地方还是gnome的背景色，整体上很不一致，请问如何修改配置？</p>
+    		</li>
+		<li class="oddbox" id="comment-200358">
+		<span class="count">61</span>
+    <cite>linyunxian</cite>
+    <small>评论 <a href="#comment-200358"> @ 2011-04-18 8:53</a><img style="cursor: pointer;" onclick='yus_replyTo("200358", "linyunxian")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>在本机中。
+awesome+urxvtd+urxvtc 是不是也可以替代掉 screen+terminal 的功能？</p>
+    		</li>
+		<li class="box" id="comment-200383">
+		<span class="count">62</span>
+    <cite>wsw</cite>
+    <small>评论 <a href="#comment-200383"> @ 2011-04-18 16:25</a><img style="cursor: pointer;" onclick='yus_replyTo("200383", "wsw")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>服务器不自带tmux但是自带screen，仅此一点，对于一个SA来说，等于宣判了tmux的死刑。</p>
+    		</li>
+		<li class="oddbox" id="comment-200454">
+		<span class="count">63</span>
+    <cite><a href="http://coolwanglu.blogspot.com/" rel="external nofollow" class="url">WangLu</a></cite>
+    <small>评论 <a href="#comment-200454"> @ 2011-04-19 11:30</a><img style="cursor: pointer;" onclick='yus_replyTo("200454", "WangLu")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200280" rel="nofollow">toy</a>: 那个还是不能翻页。网上有个说设置terminal overrides成smcup@啥的，但是那个是整屏滚动。有没有每个pane滚动的。。。没找到</p>
+    		</li>
+		<li class="posterbox" id="comment-200458">
+		<span class="count">64</span>
+    <cite>toy</cite>
+    <small>评论 <a href="#comment-200458"> @ 2011-04-19 12:04</a><img style="cursor: pointer;" onclick='yus_replyTo("200458", "toy")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200454" rel="nofollow">WangLu</a>: 按 Ctrl-a [ 进入复制模式就可以滚动了。</p>
+    		</li>
+		<li class="oddbox" id="comment-200472">
+		<span class="count">65</span>
+    <cite><a href="http://rainux.org/" rel="external nofollow" class="url">Rainux</a></cite>
+    <small>评论 <a href="#comment-200472"> @ 2011-04-19 16:03</a><img style="cursor: pointer;" onclick='yus_replyTo("200472", "Rainux")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200383" rel="nofollow">wsw</a>: 真是好笑，对于一个 SA 来说还不能自己给服务器安装软件？</p>
+
+<p>@Toy awesome 的那些小图标是怎么弄的？求配置文件。</p>
+    		</li>
+		<li class="box" id="comment-200473">
+		<span class="count">66</span>
+    <cite>kyrre</cite>
+    <small>评论 <a href="#comment-200473"> @ 2011-04-19 16:13</a><img style="cursor: pointer;" onclick='yus_replyTo("200473", "kyrre")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>试用了一下，感觉不错，如果有个大屏幕的话尤其推荐。
+有个Screen的功能发现tmux里找不到：Screen里可以C-a C清除窗口当前内容，这个功能在tmux里有什么快捷键？</p>
+    		</li>
+		<li class="oddbox" id="comment-200503">
+		<span class="count">67</span>
+    <cite>hezhit</cite>
+    <small>评论 <a href="#comment-200503"> @ 2011-04-19 19:40</a><img style="cursor: pointer;" onclick='yus_replyTo("200503", "hezhit")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200472" rel="nofollow">Rainux</a>: conky + dzen2</p>
+    		</li>
+		<li class="posterbox" id="comment-200504">
+		<span class="count">68</span>
+    <cite>toy</cite>
+    <small>评论 <a href="#comment-200504"> @ 2011-04-19 19:58</a><img style="cursor: pointer;" onclick='yus_replyTo("200504", "toy")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200472" rel="nofollow">Rainux</a>: 参见 <a href="https://bitbucket.org/xuxiaodong/utils/src">脚本</a> 、<a href="https://bitbucket.org/xuxiaodong/dotman/src">conky 配置</a>、及<a href="https://bitbucket.org/xuxiaodong/dotman/src/1cab90e89b30/.dico/">图标</a>。</p>
+    		</li>
+		<li class="oddbox" id="comment-200507">
+		<span class="count">69</span>
+    <cite><a href="http://coolwanglu.blogspot.com/" rel="external nofollow" class="url">WangLu</a></cite>
+    <small>评论 <a href="#comment-200507"> @ 2011-04-19 20:44</a><img style="cursor: pointer;" onclick='yus_replyTo("200507", "WangLu")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200458" rel="nofollow">toy</a>: 复制模式我是知道。但是就是觉得有点不爽。本来用鼠标就是为了方面嘛，结果还需要按这么个快捷键，但是既然按了还不如pageup/down方便。
+还是平时注意用pager好了.</p>
+    		</li>
+		<li class="box" id="comment-200542">
+		<span class="count">70</span>
+    <cite><a href="http://rainux.org/" rel="external nofollow" class="url">Rainux</a></cite>
+    <small>评论 <a href="#comment-200542"> @ 2011-04-20 5:09</a><img style="cursor: pointer;" onclick='yus_replyTo("200542", "Rainux")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200503" rel="nofollow">hezhit</a>, @<a href="#comment-200504" rel="nofollow">toy</a>: 原来是还有个 conky 用来显示系统信息，这东西使用看上去方便多了。我之前是直接看的 awesome wiki，上面只介绍了 vicious 和 obvious，自己加一个 widget 的复杂度已经跟写一小段程序一样了。</p>
+
+<p>那套图标有更大的版本吗？我眼睛已经不太能适应这么小的东西了。</p>
+    		</li>
+		<li class="posteroddbox" id="comment-200558">
+		<span class="count">71</span>
+    <cite>toy</cite>
+    <small>评论 <a href="#comment-200558"> @ 2011-04-20 8:02</a><img style="cursor: pointer;" onclick='yus_replyTo("200558", "toy")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200542" rel="nofollow">Rainux</a>:  你可以在 <a href="http://dzen.geekmode.org/dwiki/doku.php?id=dzen:icon-packs">dzen wiki</a> 上找到一些更大的图标。</p>
+    		</li>
+		<li class="box" id="comment-200567">
+		<span class="count">72</span>
+    <cite>wsw</cite>
+    <small>评论 <a href="#comment-200567"> @ 2011-04-20 10:15</a><img style="cursor: pointer;" onclick='yus_replyTo("200567", "wsw")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200472" rel="nofollow">Rainux</a>: 
+呵呵，你可能不是SA吧，所以才会觉得只要是系统管理员，系统就是你的了，随便什么都可以安装，^_^，理解你的想法。</p>
+    		</li>
+		<li class="oddbox" id="comment-200572">
+		<span class="count">73</span>
+    <cite>zephyr</cite>
+    <small>评论 <a href="#comment-200572"> @ 2011-04-20 12:24</a><img style="cursor: pointer;" onclick='yus_replyTo("200572", "zephyr")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>最近在想，Emacs的Daemon模式可能代替Screen吗？</p>
+    		</li>
+		<li class="box" id="comment-200688">
+		<span class="count">74</span>
+    <cite><a href="http://rainux.org/" rel="external nofollow" class="url">Rainux</a></cite>
+    <small>评论 <a href="#comment-200688"> @ 2011-04-21 8:54</a><img style="cursor: pointer;" onclick='yus_replyTo("200688", "Rainux")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200558" rel="nofollow">toy</a>: 多谢。</p>
+
+<p>@<a href="#comment-200567" rel="nofollow">wsw</a>: 我的确不是专职 SA，但在几家公司运行项目的 app server 几乎都是我自己配置的，还没听说过有什么规定不能随便装工作需要的软件。</p>
+    		</li>
+		<li class="oddbox" id="comment-200718">
+		<span class="count">75</span>
+    <cite><a href="http://linuxzh.org/" rel="external nofollow" class="url">muxueqz</a></cite>
+    <small>评论 <a href="#comment-200718"> @ 2011-04-21 15:13</a><img style="cursor: pointer;" onclick='yus_replyTo("200718", "muxueqz")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>赞！
+切换到tmux!</p>
+    		</li>
+		<li class="box" id="comment-200723">
+		<span class="count">76</span>
+    <cite><a href="http://linuxzh.org/" rel="external nofollow" class="url">muxueqz</a></cite>
+    <small>评论 <a href="#comment-200723"> @ 2011-04-21 15:33</a><img style="cursor: pointer;" onclick='yus_replyTo("200723", "muxueqz")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>好吧，作为SA，我想说的是，我的服务器上既不会有screen，也不会有tmux……</p>
+    		</li>
+		<li class="oddbox" id="comment-200850">
+		<span class="count">77</span>
+    <cite><a href="http://zoujichun.info/" rel="external nofollow" class="url">zoujichun</a></cite>
+    <small>评论 <a href="#comment-200850"> @ 2011-04-22 11:30</a><img style="cursor: pointer;" onclick='yus_replyTo("200850", "zoujichun")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>tmux 没有 encoding 功能啊。</p>
+    		</li>
+		<li class="box" id="comment-201201">
+		<span class="count">78</span>
+    <cite>saiddy</cite>
+    <small>评论 <a href="#comment-201201"> @ 2011-04-25 0:00</a><img style="cursor: pointer;" onclick='yus_replyTo("201201", "saiddy")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>呵呵  我也切换了</p>
+    		</li>
+		<li class="oddbox" id="comment-201233">
+		<span class="count">79</span>
+    <cite>hank</cite>
+    <small>评论 <a href="#comment-201233"> @ 2011-04-25 9:00</a><img style="cursor: pointer;" onclick='yus_replyTo("201233", "hank")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>似乎在suse上不能安装</p>
+    		</li>
+		<li class="box" id="comment-201255">
+		<span class="count">80</span>
+    <cite>anton</cite>
+    <small>评论 <a href="#comment-201255"> @ 2011-04-25 15:03</a><img style="cursor: pointer;" onclick='yus_replyTo("201255", "anton")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p><a href="http://forum.linode.com/viewtopic.php?p=33412" rel="nofollow">http://forum.linode.com/viewtopic.php?p=33412</a>
+我的 CPU loading 跟上面的论坛提到的一样，会莫名其妙的升高。</p>
+    		</li>
+		<li class="oddbox" id="comment-202102">
+		<span class="count">81</span>
+    <cite><a href="http://linuxtoy.org/archives/author/lovenemesis" rel="external nofollow" class="url">黑日白月</a></cite>
+    <small>评论 <a href="#comment-202102"> @ 2011-04-30 17:41</a><img style="cursor: pointer;" onclick='yus_replyTo("202102", "黑日白月")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>@<a href="#comment-200504" rel="nofollow">toy</a>: </p>
+
+<p>Toy 兄，LT 的 VPS 到期了，费用我先付半年的了……</p>
+
+<p>详情请看邮件……</p>
+    		</li>
+		<li class="box" id="comment-206233">
+		<span class="count">82</span>
+    <cite>lucilu</cite>
+    <small>评论 <a href="#comment-206233"> @ 2011-05-21 0:01</a><img style="cursor: pointer;" onclick='yus_replyTo("206233", "lucilu")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>kyrre Commented @ 2011-04-19 16:13Reply to this comment</p>
+
+<p>试用了一下，感觉不错，如果有个大屏幕的话尤其推荐。有个Screen的功能发现tmux里找不到：Screen里可以C-a C清除窗口当前内容，这个功能在tmux里有什么快捷键？
+直接C-l</p>
+    		</li>
+		<li class="oddbox" id="comment-278729">
+		<span class="count">83</span>
+    <cite><a href="http://tjsweb.info/" rel="external nofollow" class="url">sdpfoue</a></cite>
+    <small>评论 <a href="#comment-278729"> @ 2012-05-23 15:57</a><img style="cursor: pointer;" onclick='yus_replyTo("278729", "sdpfoue")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>一直用screen, 换tumx试试</p>
+    		</li>
+		<li class="box" id="comment-285711">
+		<span class="count">84</span>
+    <cite><a href="http://chenpeng.info/" rel="external nofollow" class="url">陈鹏</a></cite>
+    <small>评论 <a href="#comment-285711"> @ 2012-06-28 15:19</a><img style="cursor: pointer;" onclick='yus_replyTo("285711", "陈鹏")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>嗯，学习过了，给你加了个链接。
+<a href="http://chenpeng.info/html/510" rel="nofollow">http://chenpeng.info/html/510</a></p>
+    		</li>
+		<li class="oddbox" id="comment-310772">
+		<span class="count">85</span>
+    <cite>ptostrike</cite>
+    <small>评论 <a href="#comment-310772"> @ 2014-01-28 1:49</a><img style="cursor: pointer;" onclick='yus_replyTo("310772", "ptostrike")' title="Reply to this comment" alt="Reply to this comment" src="reply.png">
+</small>
+    <p>楼主的配色真不错，求问是那个主题？</p>
+    		</li>
+	</ol>
+
+
+<div id="respond">
+    
+    <form action="https://linuxtoy.org/wp-comments-post.php" method="post" id="commentform">
+
+        <p class="cf_info"><input name="author" id="author" value="" size="30" tabindex="1" type="text"><label for="author">Name (必填)</label></p>
+    <p class="cf_info"><input name="email" id="email" value="" size="30" tabindex="2" type="text"><label for="email">Mail (will not be published) (必填)</label></p>
+    <p class="cf_info"><input name="url" id="url" value="" size="30" tabindex="3" type="text"><label for="url">Website</label></p>
+    
+    <p class="cf_info"><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+    <p class="aright cf_info"><input name="submit" id="submit" tabindex="5" value="Submit" type="submit">
+    <input name="comment_post_ID" value="4691" type="hidden"></p>
+    <p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="cd35e67ec7" type="hidden"></p>    
+
+
+
+	<p style="clear: both;" class="subscribe-to-comments">
+	<input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" type="checkbox">
+	<label for="subscribe">Notify me of followup comments via e-mail</label>
+	</p>
+
+
+    
+</form>
+</div><!--#respond-->
+</div><!--#story-->
+</div><!--#main-->
+    <div class="navposts">
+    <p class="prev">« <a href="https://linuxtoy.org/archives/alipay-work-with-chrome.html" rel="prev">支付宝与Chrome合作</a></p>    <p class="next"><a href="https://linuxtoy.org/archives/oracle-announce-to-move-openofficeorg-to-a-purely-community-project.html" rel="next">Oracle 宣布将 OpenOffice.org 完全社区化</a> »</p>    </div>
+<div id="footer">
+    <p><a href="http://creativecommons.org/licenses/by-nc-sa/2.5/cn/">(cc)</a> LinuxTOY, Designed by <a href="http://yx.takeback.net/" title="Dark's blog">Dark</a>. Be Valid <a href="http://validator.w3.org/check/referer">Xhtml 1.1</a>. A better web experience in Firefox. 52 queries in 0.340s. <span class="rss"><a href="https://linuxtoy.org/feed" title="订阅整站 RSS">RSS</a></span> (Entries).</p>
+    
+		
+    
+</div>
+</div><!--#page-->
+
+
+</body>
+</html>
