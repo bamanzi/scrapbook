@@ -1,0 +1,623 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>keyconfig快捷键的自定义 - 公子姬良 - 博客园</title>
+
+
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/sinianyufang/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/sinianyufang/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/sinianyufang/wlwmanifest.xml">
+  
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<a name="top"></a>
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/sinianyufang/">斯年余芳</a></div>
+<div class="subtitle">一枕黄粱点破千秋大梦 九转丹炉炼就万劫真仙</div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li id="nav_myhome"></li>
+<li id="nav_q"><a class="menu" href="http://q.cnblogs.com/">博问</a></li>
+<li id="nav_ing"><a class="menu" href="http://home.cnblogs.com/ing/">闪存</a></li>
+<li id="nav_newpost"><a id="MyLinks1_NewPostLink" class="menu" rel="nofollow" href="http://www.cnblogs.com/sinianyufang/admin/EditPosts.aspx?opt=1">新随笔</a></li>
+<li id="nav_contact"><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://space.cnblogs.com/msg/send/%e5%85%ac%e5%ad%90%e5%a7%ac%e8%89%af">联系</a></li>
+<li id="nav_rss">
+<!----></li>
+<li id="nav_admin"><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://www.cnblogs.com/sinianyufang/admin/EditPosts.aspx">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/sinianyufang/archive/2011/03/28/1997682.html">keyconfig快捷键的自定义</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><div id="app-share-content">
+<div class="cnt">
+<p>转载自http://apps.hi.baidu.com/share/detail/17546269</p>
+<p>1、关闭左边标签页：</p>
+<p class="codetop">代码：</p>
+<p>var tab = gBrowser.mCurrentTab.boxObject.previousSibling;<br>
+if(tab)  gBrowser.removeTab(tab);</p>
+<p>2、关闭右边标签页：</p>
+<p class="codetop">代码</p>
+<p>var tab = gBrowser.mCurrentTab.boxObject.nextSibling;<br>
+if(tab)  gBrowser.removeTab(tab);</p>
+<p>3、复制当前标签页：</p>
+<p class="codetop">代码</p>
+<p>var oldHistory =  gBrowser.webNavigation.sessionHistory;<br>
+gBrowser.selectedTab =  gBrowser.addTab("about:blank");<br>
+var newHistory =  gBrowser.webNavigation.sessionHistory;<br>
+newHistory.QueryInterface(Components.interfaces.nsISHistoryInternal);</p>
+<p>for (var i = 0; i &lt; oldHistory.count; i++) {  newHistory.addEntry(oldHistory.getEntryAtIndex(i, false), true); }</p>
+<p>if(oldHistory.count) gBrowser.webNavigation.gotoIndex(oldHistory.index);</p>
+<p>4、下一个标签页（与ctrl+pagedown同）：</p>
+<p class="codetop">代码</p>
+<p class="codemain">gBrowser.mTabContainer.advanceSelectedTab(1,true);</p>
+<p>5、上一个标签页（与ctrl+pageup同):</p>
+<p class="codetop">代码</p>
+<p class="codemain">gBrowser.mTabContainer.advanceSelectedTab(-1,true);</p>
+<p>6、重新载入其它标签页：</p>
+<p class="codetop">代码</p>
+<p class="codemain">var browsers = gBrowser.browsers;<br>
+var i = 0;<br>
+var l =  browsers.length;<br>
+var x = gBrowser.mCurrentTab._tPos;</p>
+<p>for(; i &lt; l; i++)<br>
+if(i != x) try { browsers[i].reload(); }  catch(err){};</p>
+<p>7、重新载入所有标签页：</p>
+<p class="codetop">代码</p>
+<p class="codemain">gBrowser.reloadAllTabs();</p>
+<p>8、重新载入左边所有标签页：</p>
+<p class="codetop">代码</p>
+<p class="codemain">var browsers = gBrowser.browsers;<br>
+var i =  gBrowser.mCurrentTab._tPos - 1;<br>
+var l = -1;</p>
+<p>for(; i &gt; l; i--)<br>
+try { browsers[i].reload(); } catch(err){};</p>
+<p>9、重新载入右边所有标签页：</p>
+<p class="codetop">代码</p>
+<p class="codemain">var browsers = gBrowser.browsers;<br>
+var i =  gBrowser.mCurrentTab._tPos + 1;<br>
+var l = browsers.length;</p>
+<p>for(; i &lt; l; i++)<br>
+try { browsers[i].reload(); } catch(err){};</p>
+<p>10、定位到最左边标签页：</p>
+<p class="codetop">代码</p>
+<p class="codemain">gBrowser.selectedTab = gBrowser.mTabContainer.firstChild;</p>
+<p>11、定位到最右边标签页：</p>
+<p class="codetop">代码</p>
+<p class="codemain">gBrowser.selectedTab  =<br>
+gBrowser.tabContainer.childNodes[gBrowser.tabContainer.childNodes.length-1];</p>
+<p>12、关闭其他标签页：</p>
+<p class="codetop">代码</p>
+<p class="codemain">gBrowser.removeAllTabsBut(gBrowser.mCurrentTab);</p>
+<p>13、关闭所有标签页：</p>
+<p class="codetop">代码</p>
+<p class="codemain">gBrowser.removeAllTabsBut(gBrowser.mCurrentTab);<br>
+gBrowser.removeCurrentTab();</p>
+<p>14、定位到左邻标签页（不能循环）：</p>
+<p class="codetop">代码</p>
+<p class="codemain">gBrowser.mTabContainer.advanceSelectedTab(-1);</p>
+<p>15、定位到右邻标签页（不能循环）：</p>
+<p class="codetop">代码</p>
+<p class="codemain">gBrowser.mTabContainer.advanceSelectedTab(1);</p>
+<p>16、在当前标签页右边新建标签页：</p>
+<p class="codetop">代码</p>
+<p class="codemain">var x = gBrowser.mCurrentTab._tPos +  1;<br>
+gBrowser.moveTabTo(gBrowser.selectedTab = gBrowser.addTab("about:blank"),  x);</p>
+<p>17、高亮关键词后，新建标签页后台搜索（以当前搜索栏搜索引擎，下同）：</p>
+<p class="codetop">代码</p>
+<p class="codemain">BrowserSearch.loadSearch(getBrowserSelection(), true);</p>
+<p>18、新建标签页前台搜索：</p>
+<p class="codetop">代码</p>
+<p class="codemain">gBrowser.mPrefs.setBoolPref("browser.tabs.loadInBackground",false);<br>
+BrowserSearch.loadSearch(getBrowserSelection(),  true);<br>
+gBrowser.mPrefs.setBoolPref("browser.tabs.loadInBackground",true);</p>
+<p>19、在当前标签页搜索：</p>
+<p class="codetop">代码</p>
+<p class="codemain">BrowserSearch.loadSearch(getBrowserSelection(), false);</p>
+<p>20、在新窗口打开about:config：</p>
+<p class="codetop">代码</p>
+<p class="codemain">toOpenWindowByType('pref:pref', 'About:config');</p>
+<p>21、书签管理器对话框：</p>
+<p class="codetop">代码</p>
+<p class="codemain">toOpenWindowByType('bookmarks:manager',<br>
+'chrome://browser/content/bookmarks/bookmarksManager.xul');</p>
+<p>22、工具—选项对话框：</p>
+<p class="codetop">代码</p>
+<p class="codemain">openPreferences();</p>
+<p>23、附加软件对话框：</p>
+<p class="codetop">代码</p>
+<p class="codemain">toOpenWindowByType('Add-ons:manager',<br>
+'chrome://mozapps/content/extensions/extensions.xul');</p>
+<p>24、scrapbook扩展“获取前进行编辑”命令：</p>
+<p class="codetop">代码</p>
+<p class="codemain">if(sbPageEditor.TOOLBAR.hidden  ||<br>
+document.getElementById("ScrapBookToolbox").hidden)  {<br>
+sbPageEditor.init();<br>
+} else {<br>
+sbPageEditor.exit(true);<br>
+}</p>
+<p><br>
+25、显示/隐藏书签工具栏：</p>
+<p class="codetop">代码</p>
+<p class="codemain">const bmToolbar =  document.getElementById("PersonalToolbar");<br>
+bmToolbar.collapsed =  !bmToolbar.collapsed;</p>
+<p>26、显示/隐藏菜单栏：</p>
+<p class="codetop">代码</p>
+<p class="codemain">var mb =  document.getElementById("toolbar-menubar");<br>
+mb.collapsed = !mb.collapsed;</p>
+<p>27、页面向右滚动：</p>
+<p class="codetop">代码</p>
+<p class="codemain">goDoCommand('cmd_scrollRight');</p>
+<p>28、页面向左滚动：</p>
+<p class="codetop">代码</p>
+<p class="codemain">goDoCommand('cmd_scrollLeft');</p>
+<p>29、页面向上滚动：</p>
+<p class="codetop">代码</p>
+<p class="codemain">goDoCommand('cmd_scrollLineUp');</p>
+<p>30、页面向下滚动：</p>
+<p class="codetop">代码</p>
+<p class="codemain">goDoCommand('cmd_scrollLinedown');</p>
+<p>31、向下翻页（与space同）：</p>
+<p class="codetop">代码</p>
+<p class="codemain">goDoCommand('cmd_scrollPageDown');</p>
+<p>32、向上翻页（与shift+space同）：</p>
+<p class="codetop">代码</p>
+<p class="codemain">goDoCommand('cmd_scrollPageup');</p>
+<p>33、回到页首（与home同）：</p>
+<p class="codetop">代码</p>
+<p class="codemain">goDoCommand('cmd_scrollTop');</p>
+<p>34、回到页尾（与end同）：</p>
+<p class="codetop">代码</p>
+<p class="codemain">goDoCommand('cmd_scrollBottom');</p>
+<p>35、关闭所有正在运行的Firefox程序：</p>
+<p class="codetop">代码</p>
+<p class="codemain">goQuitApplication();</p>
+<p>36、拷贝当前标签页标题：</p>
+<p class="codetop">代码</p>
+<p class="codemain">Components.classes["@mozilla.org/widget/clipboardhelper;1"]<br>
+.getService(Components.interfaces.nsIClipboardHelper)<br>
+.copyString(content.document.title);</p>
+<p>37、在当前标签打开网页：</p>
+<p class="codetop">代码</p>
+<p class="codemain">gBrowser.loadURI('http://www.google.com/');</p>
+<p>38、在新标签打开网页：（<span style="color: rgb(255, 0, 0);">原来还可以用来打开about:config。Great!</span>）</p>
+<p class="codetop">代码</p>
+<p class="codemain">var myUrl = "http://www.baidu.com";<br>
+var ff=  document.getElementById("content");<br>
+var tab =  ff.addTab(myUrl);<br>
+ff.selectedTab = tab;</p>
+<p>39、以定义的书签关键词在当前标签打开书签（对运行bookmarklets非常有用）：</p>
+<p class="codetop">代码</p>
+<p class="codemain">if(window.loadURI)  loadURI(getShortcutOrURI('填入你定义的关键词',{}));</p>
+<p>40、类似paste and go，节省一次enter键：</p>
+<p class="codetop">代码</p>
+<p class="codemain">var url = readFromClipboard(); if (url) content.location =  url;</p>
+<p>41、跟踪下一链接（论坛的<span style="color: rgb(255, 0, 0);">Sprill</span>朋友提供，谢谢。下同。）：</p>
+<p class="codetop">代码</p>
+<p class="codemain">var document = window._content.document;<br>
+var links =  document.links;<br>
+for(i = 0; i &lt; links.length; i++) {<br>
+if ((links[i].text  == '下一頁') ||(links[i].text == '下一页')  
+||(links[i].text ==  '下一页&gt;')||(links[i].text == '下一页 »')  
+||(links[i].text == '下一页&gt;&gt;') ||  (links[i].text == '[下一页]') ||  
+(links[i].text == '【下一页】') ||(links[i].text ==  'Next') ||  
+(links[i].text == 'next') || (links[i].text == '››') ||  (links[i].text 
+ == '&gt;')) document.location = links[i].href;<br>
+}</p>
+<p><br>
+42、跟踪上一链接：</p>
+<p class="codetop">代码</p>
+<p class="codemain">var document = window._content.document;<br>
+var links =  document.links;<br>
+for(i = 0; i &lt; links.length; i++) {<br>
+if ((links[i].text  == '上一頁') ||(links[i].text == '上一页')  
+||(links[i].text ==  '&lt;上一页')||(links[i].text == '« 上一页')  
+||(links[i].text == '&lt;&lt;上一页') ||  (links[i].text == '[上一页]') ||  
+(links[i].text == '【上一页】') ||(links[i].text ==  'Previous') ||  
+(links[i].text == 'Prev') ||(links[i].text == 'previous') ||   
+(links[i].text == 'prev') || (links[i].text == '‹‹') || (links[i].text  
+==  '&lt;')) document.location = links[i].href;<br>
+}</p>
+<p>PS:补充</p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">关闭当前标签并定位到左边的标签：</span></p>
+<p class="codetop">代码</p>
+<p class="codemain">var tab = gBrowser.mCurrentTab;  if(tab.previousSibling)<br>
+gBrowser.mTabContainer.selectedIndex--;<br>
+gBrowser.removeTab(tab);</p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">关闭当前标签并定位到右边的标签：</span></p>
+<p class="codetop">代码</p>
+<p class="codemain">var tab = gBrowser.mCurrentTab;  if(tab.nextSibling)<br>
+gBrowser.mTabContainer.selectedIndex++;<br>
+gBrowser.removeTab(tab);</p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">还有一个，类似paste and  go，在新标签页后台打开剪贴板中的url地址。很是喜欢，原代码已经失效了，试着修改了一下，可以工作了。</span></p>
+<p class="codetop">代码</p>
+<p>var url = readFromClipboard(); if (url) content.location=  gBrowser.addTab(url);</p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">高亮关键词使用Google后台搜索</span></p>
+<p class="codetop">代码</p>
+<p>var ss =  Cc["@mozilla.org/browser/search-service;1"].getService(Ci.nsIBrowserSearchService);<br>
+var  submission = ss.defaultEngine.getSubmission(getBrowserSelection(),  null);<br>
+gBrowser.loadOneTab(submission.uri.spec, null, null,  submission.postData, true, false);</p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">高亮关键词Google前台搜索：</span></p>
+<p class="codetop">代码</p>
+<p>var ss =  Cc["@mozilla.org/browser/search-service;1"].getService(Ci.nsIBrowserSearchService);<br>
+var  submission = ss.defaultEngine.getSubmission(getBrowserSelection(),  null);<br>
+gBrowser.loadOneTab(submission.uri.spec, null, null,  submission.postData, false, false);</p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">新标签页前台打开：</span></p>
+<p class="codetop">代码</p>
+<p>var paste = readFromClipboard();<br>
+if(!paste)  return;<br>
+gBrowser.selectedTab = gBrowser.addTab(paste);</p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">撤销关闭标签页：</span><br>
+CODE<br>
+gBrowser.undoRemoveTab();</p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">快退</span></p>
+<p class="codetop">代码</p>
+<p class="codemain">if (gBrowser.sessionHistory.index &gt;  0)<br>
+gBrowser.gotoIndex(0);</p>
+<p><br>
+<span style="color: rgb(255, 0, 0);" color="#ff0000">快进</span></p>
+<p class="codetop">代码</p>
+<p>var nav = gBrowser.webNavigation;<br>
+var hist =  nav.sessionHistory;<br>
+nav.gotoIndex(hist.count - 1);</p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">跟踪下一链接的脚本</span><br>
+nextpage:</p>
+<p class="codetop">代码</p>
+<p class="codemain">var document = window._content.document;<br>
+var links =  document.links;<br>
+for(i = 0; i &lt; links.length; i++)  {<br>
+if(/^([^\d^\w.]*(下一页|下一頁|next)[^\d^\w]*|\s*(»|&gt;+|›+)\s*)$/i.test(links[i].text))<br>
+document.location  = links[i].href;<br>
+}</p>
+<p><br>
+prevpage:</p>
+<p class="codetop">代码</p>
+<p>var document = window._content.document;<br>
+var links =  document.links;<br>
+for(i = 0; i &lt; links.length; i++)  {<br>
+if(/^([^\d^\w.]*(上一頁|上一页|previous|prev)[^\d^\w]*|\s*(«|&lt;+|‹+)\s*)$/i.test(links[i].text))<br>
+document.location  = links[i].href;<br>
+}</p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">复制当前页URL：</span><br>
+代码<br>
+var   
+gClipboardHelper=Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);<br>
+gClipboardHelper.copyString(window._content.location.href);</p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">开/关查找栏</span></p>
+<p>代码</p>
+<p><code>gFindBar.hidden ? gFindBar.onFindCommand() :  gFindBar.close();</code></p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">通过热键能重启ff3, 并且恢复重启前tabs </span></p>
+<p>代码</p>
+<p><code>const nsIAppStartup = Components.interfaces.nsIAppStartup;</code></p>
+<p>// Notify all windows that an application quit has been requested.<br>
+var os  =  Components.classes["@mozilla.org/observer-service;1"]<br>
+.getService(Components.interfaces.nsIObserverService);<br>
+var  cancelQuit =  Components.classes["@mozilla.org/supports-PRBool;1"]<br>
+.createInstance(Components.interfaces.nsISupportsPRBool);<br>
+os.notifyObservers(cancelQuit,  "quit-application-requested", null);</p>
+<p>// Something aborted the quit process.<br>
+if (cancelQuit.data)<br>
+return;</p>
+<p>// Notify all windows that an application quit has been  granted.<br>
+os.notifyObservers(null, "quit-application-granted", null);</p>
+<p>// Enumerate all windows and call shutdown handlers<br>
+var wm =  Components.classes["@mozilla.org/appshell/window-mediator;1"]<br>
+.getService(Components.interfaces.nsIWindowMediator);<br>
+var  windows = wm.getEnumerator(null);<br>
+while (windows.hasMoreElements()) {<br>
+var  win = windows.getNext();<br>
+if (("tryToClose" in win) &amp;&amp;  !win.tryToClose())<br>
+return;<br>
+}<br>
+Components.classes["@mozilla.org/toolkit/app-startup;1"].getService(nsIAppStartup)<br>
+.quit(nsIAppStartup.eRestart  | nsIAppStartup.eAttemptQuit);</p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">打开配置文件夹</span></p>
+<p>代码</p>
+<p><code>Components.classes["@mozilla.org/file/directory_service;1"].<br>
+getService(Components.interfaces.nsIProperties).get("ProfD",  Components.interfaces.nsILocalFile).launch();</code><br>
+<span style="color: rgb(255, 0, 0);" color="#ff0000">复制标签页的URL地址</span></p>
+<p>代码</p>
+<p><code>var   
+gClipboardHelper=Components.classes["@mozilla.org/widget/clipboardhelper;1"].getService(Components.interfaces.nsIClipboardHelper);<br>
+gClipboardHelper.copyString(window._content.location.href);</code></p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">复制标签页的标题</span></p>
+<p>代码</p>
+<p><code>Components.classes["@mozilla.org/widget/clipboardhelper;1"]<br>
+.getService(Components.interfaces.nsIClipboardHelper)<br>
+.copyString(content.document.title);</code></p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">同时复制标签页标题和url（格式“标题” - "URL"）</span></p>
+<p>代码</p>
+<p><code>Components.classes["@mozilla.org/widget/clipboardhelper;1"]<br>
+.getService(Components.interfaces.nsIClipboardHelper)<br>
+.copyString(content.document.title  + " - " + content.location); </code></p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">开/关菜单栏</span></p>
+<p>代码</p>
+<p><code>var toolbar =  document.getElementById("toolbar-menubar");<br>
+toolbar.collapsed =  !toolbar.collapsed;<br>
+document.persist(toolbar.id, "collapsed");</code></p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">开/关导航栏</span></p>
+<p>代码</p>
+<p><code>var toolbar = document.getElementById("nav-bar");<br>
+toolbar.collapsed  = !toolbar.collapsed;<br>
+document.persist(toolbar.id, "collapsed");</code></p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">开/关书签工具栏</span></p>
+<p>代码</p>
+<p><code>var toolbar =  document.getElementById("PersonalToolbar");<br>
+toolbar.collapsed =  !toolbar.collapsed;<br>
+document.persist(toolbar.id, "collapsed");</code></p>
+<p>或者</p>
+<p><code>goToggleToolbar('PersonalToolbar',''); </code></p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">开/关标签栏</span></p>
+<p>代码</p>
+<p><code>function tbtoggle (thisBTN)<br>
+{thisBTN.checked =  !thisBTN.checked;<br>
+if ( thisBTN.checked  )<br>
+{gBrowser.setStripVisibilityTo(false);<br>
+gBrowser.mPrefs.setBoolPref("browser.tabs.forceHide",  true);}<br>
+else<br>
+{gBrowser.setStripVisibilityTo(true);<br>
+gBrowser.mPrefs.setBoolPref("browser.tabs.forceHide",  false);}}<br>
+tbtoggle(this);</code></p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">开/关Google Toolbar</span></p>
+<p>代码</p>
+<p><code>goToggleToolbar('gtbToolbar','toggle_taskbar');</code></p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">开/关状态栏</span></p>
+<p>代码</p>
+<p><code>goToggleToolbar('status-bar','toggle_taskbar');</code></p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">当鼠标放在链接上时，复制链接地址</span></p>
+<p>代码</p>
+<p><code>if(XULBrowserWindow.overLink)<br>
+Components.classes["@mozilla.org/widget/clipboardhelper;1"].<br>
+getService(Components.interfaces.nsIClipboardHelper).copyString(XULBrowserWindow.</code></p>
+<p><code>overLink); </code></p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">复制链接文字 - 链接地址</span></p>
+<p>代码</p>
+<p><code>if(XULBrowserWindow.overLink)<br>
+for (var i = 0, links =  content.document.links, l = links.length ; i &lt; l; i++)<br>
+if(links[i].href ==  XULBrowserWindow.overLink)  {<br>
+Components.classes["@mozilla.org/widget/clipboardhelper;1"]<br>
+.getService(Components.interfaces.nsIClipboardHelper)<br>
+.copyString(links[i].text  + " - " + links[i].href);</code></p>
+<p>break;<br>
+}&nbsp;&nbsp;</p>
+<p><span style="color: rgb(255, 0, 0);" color="#ff0000">在侧边栏开/关在线版的google talk</span></p>
+<p>代码</p>
+<p><code>var sidebar_box =  document.getElementById('sidebar-box');<br>
+if(sidebar_box.hidden)  {openWebPanel("Google  Talk","http://talkgadget.google.com/talkgadget/popout");}<br>
+else  {toggleSidebar();}</code></p>
+<p>知识在于积累</p>
+</div>
+</div></div><div id="MySignature"></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="blog_post_info"><div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/sinianyufang/category/280197.html">工具使用</a></div>
+<div id="EntryTag"></div>
+<div id="green_channel">
+绿色通道：
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(cb_entryId,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://space.cnblogs.com/msg/send/%e5%85%ac%e5%ad%90%e5%a7%ac%e8%89%af" target="_top">与我联系</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="icon_weibo_24.png" alt=""></a>
+</div>
+<div id="digg_block">
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/sinianyufang/" target="_top"><img src="u140795.jpg" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/sinianyufang/">公子姬良</a><br>
+<a href="http://home.cnblogs.com/u/sinianyufang/followees">关注 - 5</a><br>
+<a href="http://home.cnblogs.com/u/sinianyufang/followers">粉丝 - 2</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+<a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+	<div class="diggit" onclick="votePost(cb_entryId,'Digg')"> 
+		<span class="diggnum" id="digg_count">0</span>
+	</div>
+	<div class="buryit" onclick="votePost(cb_entryId,'Bury')"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div></div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/sinianyufang/archive/2011/03/24/1994367.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/sinianyufang/archive/2011/03/24/1994367.html" title="发布于2011-03-24 22:07">iis7.5部署mvc3遇到的问题</a><br><a href="http://www.cnblogs.com/sinianyufang/archive/2011/03/29/1998573.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/sinianyufang/archive/2011/03/29/1998573.html" title="发布于2011-03-29 11:21">负载均衡的机子中如何知道命中哪台服务器？X2</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2011-03-28 14:10</span> <a href="http://www.cnblogs.com/sinianyufang/">公子姬良</a> 阅读(<span id="post_view_count">643</span>) 评论(<span id="post_comment_count">0</span>)  <a href="http://www.cnblogs.com/sinianyufang/admin/EditPosts.aspx?postid=1997682" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(1997682);return false;">收藏</a></div>
+	</div>
+	
+	
+</div><!--end: topics 文章、评论容器-->
+<a name="!comments"></a><div id="blog-comments-placeholder"></div>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div id="commentform_title">发表评论</div>
+<span id="tip_comment" style="color: Red;"></span>
+<p>
+昵称：<input id="tbCommentAuthor" class="author" disabled="disabled" size="50" value="巴蛮子" type="text">
+</p>
+<div class="commentbox_main">
+<div class="commentbox_title">
+<div class="commentbox_title_left">评论内容：</div>
+<div class="commentbox_title_right">
+<img id="ubb_quote" class="comment_icon" src="quote.gif" alt="引用" title="添加引用" onclick="insertUBB('tbCommentBody','quote')">
+<img id="ubb_bold" class="comment_icon" src="b.png" alt="粗体" title="添加粗体" onclick="insertUBB('tbCommentBody','b')">
+<img id="ubb_url" class="comment_icon" src="lk.png" alt="链接" title="添加链接" onclick="insertUbbUrl('tbCommentBody')">
+<img id="ubb_indent" class="comment_icon" src="indent.png" alt="缩进" title="添加首行缩进" onclick="insertIndent('tbCommentBody')">
+<img id="ubb_code" class="comment_icon" src="insertcode.gif" alt="代码" title="添加代码" onclick="insertUbbCode()">
+<img id="ubb_img" class="comment_icon" src="img.gif" alt="图片" title="上传图片" onclick="OpenImageUploadWindow();">
+</div>
+</div>
+<div class="clear"></div>
+<textarea id="tbCommentBody" class="comment_textarea" rows="20" cols="50"></textarea>
+</div>
+<p id="commentbox_opt">
+<input id="btn_comment_submit" class="comment_btn" value="提交评论" type="button">
+<span id="span_comment_canceledit" style="display: none;"><a href="javascript:void(0);" onclick="return CancelCommentEdit()">不改了</a></span>
+<a href="javascript:void(0);" onclick="return logout();">注销</a>
+        <a id="commentbox_opt_sub" href="javascript:void(0);" title="订阅后有新评论时会邮件通知您" onclick="commentManager.Subscribe()">订阅评论</a>
+</p>
+<p>
+[使用Ctrl+Enter键快速提交]
+</p>
+<div style="display: none;">
+<span id="comment_edit_id"></span><span id="span_parentcomment_id"></span>
+<span id="span_parent_id"></span>
+<span id="span_comment_replyto"></span>
+<span id="span_comment_posted"></span>
+</div>
+</div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"><a target="_top" href="http://q.cnblogs.com/">程序员问答平台，解决您的技术难题</a></div>
+<div id="site_nav_under"><a href="http://www.cnblogs.com/" target="_top" title="程序员的网上家园">博客园首页</a><a href="http://q.cnblogs.com/" target="_top" title="程序员问答社区">博问</a><a href="http://news.cnblogs.com/" target="_top" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/ing/" target="_top">闪存</a><a href="http://job.cnblogs.com/" target="_top">程序员招聘</a><a href="http://kb.cnblogs.com/" target="_top">知识库</a></div>
+<div id="ad_under_post_holder">
+
+<div id="google_ad_c1" class="c_ad_block">
+    <!-- cnblogs_blogpost_C1_sitehome -->
+    <div id="div-gpt-ad-1346480159711-0" style="width: 300px; height: 250px;">
+    
+    <div style="border: 0pt none;" id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__container__"><iframe src="index_1.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0" id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0" frameborder="0" height="250" scrolling="no" width="300"></iframe></div><iframe src="index_2.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__hidden__" id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>
+</div>
+<div id="blog_news_kb"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/201014/" target="_top">微软推出iPad Office已晚了?</a><br> ·  <a href="http://news.cnblogs.com/n/201013/" target="_top">传三星与Paypal秘密合作开发移动支付解决方案</a><br> ·  <a href="http://news.cnblogs.com/n/201012/" target="_top">十年内3D打印或将实现的5件疯狂之事</a><br> ·  <a href="http://news.cnblogs.com/n/201011/" target="_top">五支团队竞争六百万美元月球车竞赛奖金</a><br> ·  <a href="http://news.cnblogs.com/n/201010/" target="_top">美团销售副总裁：美团市场份额过半 拉手窝窝份额缩水</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_top">更多新闻...</a></div><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/200929/" target="_top">Node.js 究竟是什么？</a><br> ·  <a href="http://kb.cnblogs.com/page/194376/" target="_top">Habya'a（临时拼凑的组件）与技术债务</a><br> ·  <a href="http://kb.cnblogs.com/page/200528/" target="_top">关于在线教育和线下教育的六个问题</a><br> ·  <a href="http://kb.cnblogs.com/page/199787/" target="_top">别错把需求当市场</a><br> ·  <a href="http://kb.cnblogs.com/page/199251/" target="_top">浏览器中关于事件的那点事儿</a><br></div>» <a href="http://kb.cnblogs.com/" target="_top">更多知识库文章...</a></div></div></div>
+
+<div id="HistoryToday" class="c_ad_block"></div>
+
+
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+			<div id="calendar"><div id="blog-calendar" style="display: none;"></div></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn">
+
+<div class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="widget_my_zzk" class="div_my_zzk"><input value="" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+
+</div>
+
+
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="ctl02_CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/sinianyufang/category/289425.html">Asp.net(4)</a> </li>
+
+<li><a id="ctl02_CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/sinianyufang/category/250790.html">C#基础(6)</a> </li>
+
+<li><a id="ctl02_CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/sinianyufang/category/290645.html">Javascript(3)</a> </li>
+
+<li><a id="ctl02_CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/sinianyufang/category/280197.html">工具使用(2)</a> </li>
+
+<li><a id="ctl02_CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/sinianyufang/category/273081.html">软件使用(3)</a> </li>
+
+<li><a id="ctl02_CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/sinianyufang/category/250685.html">杂七杂八</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="ctl02_CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/sinianyufang/archive/2011/04.html">2011年4月 (1)</a> </li>
+
+<li><a id="ctl02_CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/sinianyufang/archive/2011/03.html">2011年3月 (7)</a> </li>
+
+<li><a id="ctl02_CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/sinianyufang/archive/2011/01.html">2011年1月 (7)</a> </li>
+
+<li><a id="ctl02_CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/sinianyufang/archive/2010/12.html">2010年12月 (1)</a> </li>
+
+<li><a id="ctl02_CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/sinianyufang/archive/2010/06.html">2010年6月 (1)</a> </li>
+
+</ul>
+
+</div>
+
+
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+	<div id="RecentCommentsBlock"><ul>
+</ul>
+</div>
+</div>
+
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/sinianyufang/archive/2010/12/02/1894939.html">1. TotalCommander中快捷键的设置。(1)</a></li><li><a href="http://www.cnblogs.com/sinianyufang/archive/2011/01/05/1926125.html">2. vs编译和网站部署(0)</a></li><li><a href="http://www.cnblogs.com/sinianyufang/archive/2011/01/05/1926563.html">3. Server Application Unavailable的解决方法(0)</a></li><li><a href="http://www.cnblogs.com/sinianyufang/archive/2011/03/24/1994367.html">4. iis7.5部署mvc3遇到的问题(0)</a></li><li><a href="http://www.cnblogs.com/sinianyufang/archive/2011/03/24/1993622.html">5. HTTP Error 500.19 - Internal Server Error的处理(0)</a></li></ul></div>
+</div>
+</div>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2014 公子姬良
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+
+
+<iframe src="index_3.html" style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_7389319526704"></iframe></body>
+</html>
