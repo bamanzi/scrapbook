@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<!-- Copyright (C) 2003-2005 by Bastian Kleineidam
+  This document is in the public domain.
+-->
+
+<title>Packaging tips for unofficial Debian packages</title>
+<link rel="shortcut icon" href="debian-swirl.png">
+<link rel="icon" type="image/png" href="debian-swirl.png">
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+
+<div class="main">
+
+<h1>Packaging tips for unofficial Debian packages</h1>
+
+<h2>Introduction</h2>
+<p>This page offers some tips and tricks on how to
+build and maintain an unofficial Debian package repository.
+Before using this information, you should have read the Debian packaging
+paragraph of the
+<a href="http://www.debian.org/doc/developers-reference/best-pkging-practices.html">Developers Reference</a>.
+<br>
+If you just wanted to search for existing packages, hop over to the
+<a href="http://www.apt-get.org/">Unofficial APT repositories</a>.
+</p>
+
+<h2>First things first: setting the maintainer email</h2>
+<p>
+You can set the DEBEMAIL environment variable if you like to have a
+different email address for Debian packaging.
+This address will be used in the package metadata information.
+</p>
+<pre>$ export DEBEMAIL=joe@joesdomain.org
+</pre>
+
+<h2>Setting up the package directory</h2>
+<p>Generate a separate directory where all the package data will be
+put in. <a href="http://people.debian.org/%7Ecalvin/unofficial/package.tar.gz">Download</a> and extract the
+dh_make templates and the package build Makefile.
+Installing
+<a href="http://packages.debian.org/stable/devel/mini-dinstall">mini-dinstall</a> and
+<a href="http://packages.debian.org/stable/devel/dput">dput</a>
+finishes up the preparation.
+</p>
+<pre>$ mkdir $HOME/packages
+$ cd $HOME/packages
+$ wget http://people.debian.org/~calvin/unofficial/package.tar.gz
+$ tar xzvf package.tar.gz
+$ sudo apt-get install dput mini-dinstall
+</pre>
+
+<h2>Adding a source package</h2>
+<p>
+Now it is time to download a source package, let's call it
+<code>mypackage-1.0.tar.gz</code>, and extract it.
+After that, <code>dh_make</code> is run within the extracted source
+directory. A few questions will pop up which should be answered
+accordingly.
+Now you are ready to edit the files in the <code>debian/</code>
+directory which the next paragraphs will describe.
+</p>
+<pre>$ wget http://example.org/mypackage-1.0.tar.gz
+$ tar xzvf mypackage-1.0.tar.gz
+$ cd mypackage-1.0 &amp;&amp; \
+  dh_make --templates $HOME/packages/dhtemplates -f ../mypackage-1.0.tar.gz; \
+  cd ..
+</pre>
+
+<h2>Package version</h2>
+<p>The Debian package version number is parsed from the
+top entry of <code>debian/changelog</code>, eg.
+<code>mypackage (1.0<b>-0joe1</b>) unstable; urgency=low</code>.
+The <code>`-0joe1'</code> is the debian release number.
+Subsequent releases have release numbers 
+<code>`-0joe2'</code>, <code>`-0joe3'</code>, etc.
+<br>
+If there is already an official package, for example with version
+<code>`1.0-4'</code>, then use <code>`1.0-4joe1'</code>.
+<br>
+You can compare versions with <code>dpkg</code>,
+see the <code>dpkg(8)</code> manpage for more info.
+</p>
+<pre>$ dpkg --compare-versions "1.0-4.1" gt "1.0-4joe5" &amp;&amp; \
+  echo "NMU version -4.1 greater than -4joe5"
+</pre>
+
+<h3>Advanced package versioning</h3>
+<p>The above scheme is not sufficient in some cases which I will explain
+here.
+</p>
+<ul>
+<li>The package version is a beta version or release candidate, for example
+<code>1.0b1</code> or <code>1.0rc2</code><br>
+Problems will arise because dpkg will consider the final version <code>1.0</code>
+lower than the beta or release candidate version. The solution is to
+use a version like <code>0.99+1.0rc2-0joe1</code> which uses a lower version
+than <code>1.0</code> (<code>0.99</code>) and joins the release candidate version with a plus sign.
+This way the final version is greater than the previous one:
+<code>0.99+1.0rc2-0joe1 &lt; 1.0-0joe1</code>.
+</li>
+
+<li>The new upstream version is lower than the previous one.<br>
+How can this happen? A simple typo for example. Instead of <code>1.0</code>
+someone uploaded the package as version <code>10.0</code>. Now the new
+upstream version <code>1.1</code> is not greater than the last one.
+Solution is to use an epoch: <code>10.0-0joe1 &lt; 1:1.1-0joe1</code>.
+See the <a href="http://www.debian.org/doc/debian-policy/ch-controlfields.html#s-f-Version">Debian Policy epoch entry</a> for an explanation.
+</li>
+</ul>
+
+
+<h2>Package description</h2>
+<p>The package description in <code>debian/control</code>
+should note that this is not an
+official Debian package. Note that there is a single space at the
+beginning of each line below the <code>Description:</code> line.
+</p>
+<pre>Description: this is mypackage
+ *** Unofficial package from joe@joesdomain.org ***
+ .
+ [description follows]
+</pre>
+
+<h2>Bug reports</h2>
+<p>The standard tool for reporting bugs is
+<code>reportbug</code>.
+See <code>/usr/share/doc/reportbug/README.developers</code> for more info.
+Your package should have the file
+<code>/usr/share/bug/mypackage/control</code> installed
+with the following content:
+</p><pre>Send-To: joe@joesdomain.org
+</pre>
+
+<h2>Building the package</h2>
+<p>
+Now add the <code>mypackage</code> target to the <code>Makefile</code>.
+There is already an example there, just adjust it.
+The package should be signed with your GPG key (run
+<code>gpg --gen-key</code> to generate one).
+Adjust the <code>GPGKEY</code> variable to hold your GPG key id.
+After that, build the package:
+</p>
+<pre>$ make mypackage
+</pre>
+
+<h2>Making it apt-get'able</h2>
+<p>
+Copy the mini-dinstall configuration into
+<code>$HOME/.mini-dinstall.conf</code> and adjust it to your needs.
+Do the same with the dput configuration, putting it in
+<code>$HOME/.dput.cf</code>
+After that, run dput to install the package into the repository.
+</p>
+<pre>$ dput local mypackage_1.0-0joe1.changes
+</pre>
+
+<p>
+Now edit <code>/etc/apt/sources.list</code> and add the deb and deb-src lines.
+By putting the files onto a web server, others can also access it with
+the http:// protocol.
+</p>
+<pre># /etc/apt/sources.list
+# local repository
+deb file:/home/joe/public_html/debian unstable/
+deb-src file:/home/joe/public_html/debian unstable/
+# http repository
+deb http://www.joesdomain.org/~joe/debian unstable/
+deb-src http://www.joesdomain.org/~joe/debian unstable/
+</pre>
+
+</div>
+
+<div class="sidebar">
+<dl>
+<dt>Author:</dt>
+<dd>Bastian Kleineidam</dd>
+<dd>CSS layout from Sandino Flores</dd>
+<dt>License of this tutorial:</dt>
+<dd><a href="http://www.gnu.org/licenses/gpl.html">GPLv3</a></dd>
+<dt>Email:</dt>
+<dd>calvin_at_debian_dot_org</dd>
+<dt>Files:</dt>
+<dd>
+<ul>
+  <li><a href="http://people.debian.org/%7Ecalvin/unofficial/package.tar.gz">Package data</a></li>
+</ul>
+</dd>
+</dl>
+</div>
+
+
+</body>
+</html>

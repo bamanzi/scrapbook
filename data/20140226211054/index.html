@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="zh-sg">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>GNU Screen v.s. tmux | demonstrate 的 blog</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="http://remonstrate.wordpress.com/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="http://s1.wp.com/wp-content/themes/pub/reddle/js/html5.js?m=1322254433g" type="text/javascript"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="demonstrate 的 blog » Feed" href="http://remonstrate.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="demonstrate 的 blog » Comments Feed" href="http://remonstrate.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="demonstrate 的 blog » GNU Screen v.s.&nbsp;tmux Comments Feed" href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/feed/">
+
+
+
+
+
+<!--[if lt IE 8]>
+<link rel='stylesheet' id='highlander-comments-ie7-css'  href='http://s2.wp.com/wp-content/mu-plugins/highlander-comments/style-ie7.css?m=1351637563g&#038;ver=20110606' type='text/css' media='all' />
+<![endif]-->
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://remonstrate.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://remonstrate.wordpress.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Hibernate 与&nbsp;Spring" href="http://remonstrate.wordpress.com/2012/10/22/hibernate-%e4%b8%8e-spring/">
+<link rel="next" title="新家,2012" href="http://remonstrate.wordpress.com/2012/10/28/%e6%96%b0%e5%ae%b62012/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/">
+<link rel="shortlink" href="http://wp.me/pulEC-1S2">
+<link rel="alternate" type="application/json+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=http%3A%2F%2Fremonstrate.wordpress.com%2F2012%2F10%2F22%2Fgnu-screen-vs-tmux%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=http%3A%2F%2Fremonstrate.wordpress.com%2F2012%2F10%2F22%2Fgnu-screen-vs-tmux%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="GNU Screen v.s. tmux">
+<meta property="og:url" content="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/">
+<meta property="og:description" content="虽说这篇 blog 标题是 screen vs tmux，但是并不局限于此。不少朋友对这两个东西还可能比较陌生，这里简单的做个广告。 很多互联网开发的程序员都是通过 ssh 连接到远程主机，并在远程主机上进行开发和执行任务，但是一个 ssh 连接往往不能很方便的在多个任务之间切换。最原始的切换方式莫过于 bash 自带的 job 管理，但这有一定的缺陷： 比如你一边在写程序，突然一个同事跑过...">
+<meta property="article:published_time" content="2012-10-23T04:47:21+00:00">
+<meta property="article:modified_time" content="2012-10-23T04:47:21+00:00">
+<meta property="article:author" content="http://remonstrate.wordpress.com/author/remonstrate/">
+<meta property="og:site_name" content="demonstrate 的 blog">
+<meta property="og:image" content="http://wordpress.com/i/blank.jpg?m=1383295312g">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:card" content="summary">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="http://s0.wp.com/i/webclip.png?m=1391188133g">
+<link rel="openid.server" href="http://remonstrate.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="http://remonstrate.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="http://remonstrate.wordpress.com/osd.xml" title="demonstrate 的 blog">
+<link rel="search" type="application/opensearchdescription+xml" href="http://wordpress.com/opensearch.xml" title="WordPress.com">
+	
+		
+		
+<meta name="application-name" content="demonstrate 的 blog"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="daily blog"><meta name="msapplication-task" content="name=Subscribe;action-uri=http://remonstrate.wordpress.com/feed/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="title" content="GNU Screen v.s.&nbsp;tmux | demonstrate 的 blog on WordPress.com">
+<meta name="description" content="虽说这篇 blog 标题是 screen vs tmux，但是并不局限于此。不少朋友对这两个东西还可能比较陌生，这里简单的做个广告。 很多互联网开发的程序员都是通过 ssh 连接到远程主机，并在远程主机上进行开发和执行任务，但是一个 ssh 连接往往不能很方便的在多个任务之间切换。最原始的切换方式莫过于 bash 自带的 job 管理，但这有一定的缺陷： 比如你一边在写程序，突然一个同事跑过来对你说希望看看某个地方的问题如何解决 比如你使用了有线网，然后同事叫你去开会，你必须切换到无线网上，手头的事情中断之后难以继续 有的人使用 emacs 能 cover 第一种情形，但是对于后面一种情况还是有点无能为力（尽管可以使用 emacs 的 server 来实现类似的效果！）。screen 和 tmux 的解决方案在于能从某个 bash 会话中产生一个他们呢自己管理的 session，这个 session 里面的程序不受到 SIGHANGUP 的影响，就算用户突然短线，运行中的程序也不会收到此 signal（默认行为是 abort），同时他们还会在这个 session 中通过一些自己的命令（和 key binding）帮助你创建新的 shell，将窗口进行分割组织，甚至共享。 说到这些功能，鼻祖自然是 GNU screen，在成为 FSF 的产品之后加入了不少新特性，虽然说 tmux 是 screen 的重写，但新增了多少功能，我看也不是那么有质的区别。screen 曾经有个&nbsp; frontend 叫…">
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body data-twttr-rendered="true" class="single single-post postid-7194 single-format-standard mp6 primary secondary single-author fluid highlander-enabled highlander-light">
+<div id="page" class="hfeed">
+	<header id="masthead" role="banner">
+		<div class="site-branding">
+			<h1 id="site-title"><a sl-processed="1" href="http://remonstrate.wordpress.com/" title="demonstrate 的 blog" rel="home">demonstrate 的 blog</a></h1>
+			<h2 id="site-description">daily blog</h2>
+		</div><!-- .site-branding -->
+
+		
+			</header><!-- #masthead -->
+
+	<div id="main">
+		<div id="primary">
+			<div id="content" role="main">
+
+			
+					<nav id="nav-above">
+		<h1 class="assistive-text section-heading">Post navigation</h1>
+
+	
+		<div class="nav-previous"><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/22/hibernate-%e4%b8%8e-spring/" rel="prev"><span class="meta-nav">←</span> Hibernate 与&nbsp;Spring</a></div>		<div class="nav-next"><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/28/%e6%96%b0%e5%ae%b62012/" rel="next">新家,2012 <span class="meta-nav">→</span></a></div>
+	
+	</nav><!-- #nav-above -->
+	
+				
+<article id="post-7194" class="post-7194 post type-post status-publish format-standard hentry category-linux-related tag-byobu tag-screen tag-tmux tag-xpra">
+		<header class="entry-header">
+		<h1 class="entry-title">GNU Screen v.s.&nbsp;tmux</h1>
+				<div class="entry-meta">
+			<span class="byline">Posted by <span class="author vcard"><a sl-processed="1" class="url fn n" href="http://remonstrate.wordpress.com/author/remonstrate/" title="View all posts by zt" rel="author">zt</a></span></span>		</div><!-- .entry-meta -->
+		
+				<p class="comments-link"><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/#comments" title="Comment on GNU Screen v.s.&nbsp;tmux">4</a></p>
+			</header><!-- .entry-header -->
+
+		<div class="entry-content">
+		<p>虽说这篇 blog 标题是 screen vs tmux，但是并不局限于此。不少朋友对这两个东西还可能比较陌生，这里简单的做个广告。</p>
+<p>很多互联网开发的程序员都是通过 ssh 连接到远程主机，并在远程主机上进行开发和执行任务，但是一个 ssh 连接往往不能很方便的在多个任务之间切换。最原始的切换方式莫过于 bash 自带的 job 管理，但这有一定的缺陷：</p>
+<ul>
+<li>比如你一边在写程序，突然一个同事跑过来对你说希望看看某个地方的问题如何解决</li>
+<li>比如你使用了有线网，然后同事叫你去开会，你必须切换到无线网上，手头的事情中断之后难以继续</li>
+</ul>
+<p>有的人使用 emacs 能 cover 第一种情形，但是对于后面一种情况还是有点无能为力（尽管可以使用 emacs 的 server 来实现类似的效果！）。screen 和 tmux 的解决方案在于能从某个 bash 会话中产生一个他们呢自己管理的 session，这个 session 里面的程序不受到 SIGHANGUP 的影响，就算用户突然短线，运行中的程序也不会收到此 signal（默认行为是 abort），同时他们还会在这个 session 中通过一些自己的命令（和 key binding）帮助你创建新的 shell，将窗口进行分割组织，甚至共享。</p>
+<p>说到这些功能，鼻祖自然是 <a sl-processed="1" href="http://www.gnu.org/software/screen/">GNU screen</a>，在成为 FSF 的产品之后加入了不少新特性，虽然说 <a sl-processed="1" href="http://tmux.sourceforge.net/">tmux</a> 是 screen 的重写，但新增了多少功能，我看也不是那么有质的区别。screen 曾经有个&nbsp; frontend 叫 <a sl-processed="1" href="https://launchpad.net/byobu">byobu</a>，现在 byobu 也开始支持 tmux 了。其实这三个玩意功能现在都差不多，前面 leemars 同学提供了一些比较(<a sl-processed="1" href="http://www.dayid.org/os/notes/tm.html">这里</a>还有一份 key binding 的比较)，我擅自加上一些我的 comment 吧：</p>
+<ul>
+<li>配置能力，其实没觉得 screen 比 tmux 弱多少哈，不过 tmux 的确要更加细致一些的感觉，screen 很多时候要依靠 termcap/terminfo 来搞一些不知道什么的玩意，tmux 这点上似乎不需要这么操心</li>
+<li>但是 tmux 的确很蛋疼的招惹了 Emacs 用户，因为它的 window 是 emacs 的 buffer，而它的 panel 是 emacs 的 window… 怎么这么绕呢！</li>
+<li>竖分屏，其实 screen 也支持的哈，split -v（默认的 binding 是 C-a |）</li>
+<li>文档，screen 沿袭了 FSF 风格的文档，我喜欢；其他两个似乎只有 man page。</li>
+<li>不知道为啥进入 copy-mode 之后不能把 key binding 弄得和 vi 或者 emacs 一样，人家 bash 都考虑到了…</li>
+<li>tmux 似乎还有 monitor 某个窗口是否有变化的功能，这个不错…</li>
+</ul>
+<p>可能 tmux 的确是值得迁移的哈，基本可以配置成 screen 类似的 key binding，就是每次都要写 attach 比较蛋疼…</p>
+<p>最后提一句的是 <a sl-processed="1" href="http://xpra.org/">xpra</a> 这个东西。这类似一个 X-server + screen 的作用，我们知道很多 X11 的程序必须 attach 到某个 X server 上才能执行，这导致如果我们的 X-server 必须重启，或者我们想把一个 X client 从远程的显示转移到本地，都是不可能做到的。VNC 提供了一个重量级的解决方案，它的想法是完全重新打开一个 X11 session，包括对应的 Window Manager，当然现在有不少轻量级的 WM 比如我比较喜欢的 openbox、WindowMaker、lxde，但是这样一来所有的 X clients 必须都放在一个窗口里面，这个窗口就是 vncviewer 被当前 window manager 处理产生的。xpra 是一个轻量级的解决方案，它并不需要额外设置一个完整的 X11 session，相反启动了 xpra 之后，通过设置 DISPLAY 将 X client 放到其中执行后，我们可以使用 xpra attach 连接到 xpra 的会话里面，使用执行 xpra 所在环境的 X server 和 window manager 显示这个 X client。与 screen 等类似，我们只需要 Ctrl-c 中断 xpra 就 detach 了这个 session。有了这等神器，我们是否还需要原先 X11rdp 的解决方案呢？（尝试在 RHEL5 上编译一个失败了，nnd 原因居然是 xutil 太老，attach 不到 server 上去，WTF！）</p>
+<p><em>——————<br>
+And there was set meat before him to eat: but he said, I will not eat, until I have told my errand. And he said, Speak on.</em></p>
+
+<div class="wpa" style="position: relative; width: 400px; text-align: center; padding: 0pt; margin: 10px auto; overflow: hidden; clear: both;">
+<a sl-processed="1" style="position: absolute; text-align: left; display: block; font: 9px/1 sans-serif; text-decoration: underline;" href="http://en.wordpress.com/about-these-ads/" rel="nofollow">About these ads</a>
+<div id="google_ads_div_wpcom_below_post_adsafe_ad_wrapper">
+<div id="google_ads_div_wpcom_below_post_adsafe_ad_container" style="display: inline-block;">
+<div data-sharethrough-key="12b0c122" data-sharethrough-type="placement" class="sharethrough-placement" data-sharethrough-placement-key="12b0c122" data-sharethrough-params="{ &quot;pext&quot; : &quot;wp-7233082&quot; }" style="width: 400px; height: 267px;"><iframe allowtransparency="true" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0" style="width: 400px; height: 267px;" src="index_1.html" frameborder="0" scrolling="no"></iframe></div>
+
+
+</div>
+</div>
+
+</div>
+
+
+<div id="jp-post-flair" class="sharedaddy sd-rating-enabled sd-like-enabled"><div class="sd-block sd-rating"><h3 class="sd-title">Rate this:</h3><div style="display: inline-block;" class="pd-rating" id="pd_rating_holder_7344398_post_7194"><div class="rating-icons" id="pd_rate_7344398_post_7194" style="float: left;"><div class="rating-star-icon" onclick="PDRTJS_7344398_post_7194.rate(1);" id="PDRTJS_7344398_post_7194_stars_1" style="background-size: 32px 48px ! important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background-color: transparent; background-image: url('star-yellow-sml.png'); background-repeat: repeat; background-attachment: scroll; background-position: left bottom; background-clip: border-box; background-origin: padding-box; float: left; padding: 0px; margin: 0px 1px 0px 0px;">&nbsp;</div><div class="rating-star-icon" onclick="PDRTJS_7344398_post_7194.rate(2);" id="PDRTJS_7344398_post_7194_stars_2" style="background-size: 32px 48px ! important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background-color: transparent; background-image: url('star-yellow-sml.png'); background-repeat: repeat; background-attachment: scroll; background-position: left bottom; background-clip: border-box; background-origin: padding-box; float: left; padding: 0px; margin: 0px 1px 0px 0px;">&nbsp;</div><div class="rating-star-icon" onclick="PDRTJS_7344398_post_7194.rate(3);" id="PDRTJS_7344398_post_7194_stars_3" style="background-size: 32px 48px ! important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background-color: transparent; background-image: url('star-yellow-sml.png'); background-repeat: repeat; background-attachment: scroll; background-position: left bottom; background-clip: border-box; background-origin: padding-box; float: left; padding: 0px; margin: 0px 1px 0px 0px;">&nbsp;</div><div class="rating-star-icon" onclick="PDRTJS_7344398_post_7194.rate(4);" id="PDRTJS_7344398_post_7194_stars_4" style="background-size: 32px 48px ! important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background-color: transparent; background-image: url('star-yellow-sml.png'); background-repeat: repeat; background-attachment: scroll; background-position: left bottom; background-clip: border-box; background-origin: padding-box; float: left; padding: 0px; margin: 0px 1px 0px 0px;">&nbsp;</div><div class="rating-star-icon" onclick="PDRTJS_7344398_post_7194.rate(5);" id="PDRTJS_7344398_post_7194_stars_5" style="background-size: 32px 48px ! important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background-color: transparent; background-image: url('star-yellow-sml.png'); background-repeat: repeat; background-attachment: scroll; background-position: left bottom; background-clip: border-box; background-origin: padding-box; float: left; padding: 0px; margin: 0px 1px 0px 0px;">&nbsp;</div></div><span style="float: left;">&nbsp;</span><div id="rating_info_7344398_post_7194" style="display: block; float: left; background: url('info.png') no-repeat scroll 3px 2px transparent; width: 16px; height: 16px; cursor: pointer;" onclick="javascript:PDRTJS_7344398_post_7194.togglePopup();return false;"><span style="display: none;">i</span></div><div class="pd_popup_holder" id="pd_popup_holder_7344398_post_7194">&nbsp;</div><div class="rating-msg" id="PDRTJS_7344398_post_7194_msg" style="float: left; padding-left: 5px; text-align: left;">Rate This</div><p style="padding: 0px; margin: 0px; clear: both;"></p></div></div><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-7233082-7194-530de6617a813" data-src="//widgets.wp.com/likes/#blog_id=7233082&amp;post_id=7194&amp;origin=remonstrate.wordpress.com&amp;obj_id=7233082-7194-530de6617a813" data-name="like-post-frame-7233082-7194-530de6617a813"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe style="" class="post-likes-widget jetpack-likes-widget" name="like-post-frame-7233082-7194-530de6617a813" src="index_2.html" frameborder="0" height="55px" width="100%"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div style="display: block;" id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<div class="jp-relatedposts-items jp-relatedposts-items-minimal"><p class="jp-relatedposts-post jp-relatedposts-post0" data-post-id="7999" data-post-format="false"><span class="jp-relatedposts-post-title"><a href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/?relatedposts_to=7999&amp;relatedposts_order=0" title="Java 的 idiom（3）
+
+这部分讨论一些 Object 公有的方法，往往重写这些函数是比较 non-trivial 的，慎重慎重。 重写 equals 一般来说只有类似“值”这种概念才需要重写这个函数，一般的其实都是比较引用，而不是比较“值”，同时需要说一下的是一般值最好弄成 immutable（Java 没有从语言上支持这个东西的概念，只能通过去掉 setter 等一些会修改内部状态的方法做到，而 C++ 可以利用 const 修饰）。同时这类对象一般都应该弄成 final（不产生子类），因为父类定义好了合适的 equal 后，子类对其 override 会产生很奇怪的现象。某些情况下，如果藏得比较好（private 或者 package private）的类，其使用不会被误碰。某些类你完全不希望被使用 equals 的话应该重写，在里面抛出 AssertionError。 那么对于一个逻辑上需要 equals 的类，我们应该遵循一些什么合约呢？其实数学里面对等价这个事情有很清楚的描述：自返、对称、传递，对程序来说还需要…" rel="nofollow">Java 的 idiom（3）</a></span><span class="jp-relatedposts-post-context">In "java-based languages"</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-id="1024" data-post-format="false"><span class="jp-relatedposts-post-title"><a href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/?relatedposts_to=1024&amp;relatedposts_order=1" title="胡思乱想
+
+最近 chrome OS 闹得沸沸扬扬，其实 google 费了很大的功夫来做这件事情，但是最后效果不如人们预期的好。现在的互联网，比起几年前的情况是大不一样了。 现在的 internet 强调一种普通用户的参与感。参与感来自一种成就感，比如有 wiki 之类的可以共享知识，有 panoramio 之类的网站可以分享在某些位置拍摄的照片，更是有 flickr 这种图片社区；另外诸多的 blog 的存在，让能贡献技术技巧的人能分享，让名人能更方便的和一般人交互，让有一技之长的人得以在网络上表现自己；社交网站的存在更让网络世界变的真实，当你发现更多你认识的人在社区里面存在很久了的时候，你会感叹有时候网络似乎更加真实，因为你能看到他的文字，欣赏到他在欣赏的美景。这一切，用户不仅仅获得了信息，也贡献着自己的信息，写作的成就感，分享的喜悦感，看到越来越多回复的攀比感... 从另外一个方面，参与感是来自技术上的变化。类似 twitter 开放 API 后能够让用户做出更多应用的网站将会越来越多，firefox 里面 greasemonkey 和 stylish 的存在从另外一个角度允许用户修改一些熟知的页面获得更加个性化的界面。也许这么说不是很明确。想想被墙掉的 twitter 上有不少人借助已有的代理继续使用，更有利用 google…" rel="nofollow">胡思乱想</a></span><span class="jp-relatedposts-post-context">In "duckese"</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-id="8322" data-post-format="false"><span class="jp-relatedposts-post-title"><a href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/?relatedposts_to=8322&amp;relatedposts_order=2" title="Spring + Hibernate + JUnit（上）
+
+这可能是 Java 程序员常见的一个配置，我们这里讨论一下如何利用这个配置来进行测试。 先从 hibernate 开始，常见的线上数据库和用来测试的往往是两个不同的东西，好在 hibernate 提供了不同数据库上的抽象，这样使得我们写的 portable 的代码能够在不同的数据库上进行测试，这意味着我们应该尽量减少 raw SQL 和利用某些数据库专有特性实现某些功能。如果性能上需要使用专有的代码，实现单元测试就会比较棘手，这往往是打破这种要求的唯一原因。因此通过 spring 我们往往有两套 hibernate 的配置，一个用于线上，一个用于单元测试，后者常见的选择就是一些 in-memory 的数据库，如 HSQLDB 等。 有了这个认识之后，测试时自然也应该通过 spring 将 hibernate 的 SessionFactory/EntityManager 植入到需要的类里面。如果是专门的数据访问层的代码，我们往往会将公用的放在一个类里面，这包括 因为 JUnit…" rel="nofollow">Spring + Hibernate + JUnit（上）</a></span><span class="jp-relatedposts-post-context">In "java-based languages"</span></p></div></div></div>			</div><!-- .entry-content -->
+	
+		<footer class="entry-meta">
+								<p class="cat-links taxonomy-links">
+				Posted in <a sl-processed="1" href="http://remonstrate.wordpress.com/category/linux-related/" title="View all posts in linux related" rel="category tag">linux related</a>			</p>
+			
+						<p class="tag-links taxonomy-links">
+				Tagged <a sl-processed="1" href="http://remonstrate.wordpress.com/tag/byobu/" rel="tag">byobu</a>, <a sl-processed="1" href="http://remonstrate.wordpress.com/tag/screen/" rel="tag">screen</a>, <a sl-processed="1" href="http://remonstrate.wordpress.com/tag/tmux/" rel="tag">tmux</a>, <a sl-processed="1" href="http://remonstrate.wordpress.com/tag/xpra/" rel="tag">xpra</a>			</p>
+					
+		<p class="date-link"><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/" title="Permalink to GNU Screen v.s.&nbsp;tmux" rel="bookmark" class="permalink"><span class="month">Oct</span><span class="sep">·</span><span class="day">22</span></a></p>
+
+			</footer><!-- #entry-meta -->
+	</article><!-- #post-## -->
+
+				
+<div id="comments">
+
+			<h2 id="comments-title">
+			4 thoughts on “<span>GNU Screen v.s.&nbsp;tmux</span>”		</h2>
+
+		
+		<ol class="commentlist">
+			
+	<li class="comment byuser comment-author-hxtang even thread-even depth-1 highlander-comment" id="li-comment-1868">
+		<article id="comment-1868" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<img id="grav-7eded1b034ea5ae646b34ac923b2f1ad-0" alt="" src="7eded1b034ea5ae646b34ac923b2f1ad" class="avatar avatar-47 grav-hashed grav-hijack" height="47" width="47">					<cite class="fn">hxtang</cite>
+				</div><!-- .comment-author .vcard -->
+				
+				<div class="comment-meta commentmetadata">
+					<a sl-processed="1" class="comment-time" href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/comment-page-1/#comment-1868"><time pubdate="" datetime="2012-10-24T12:09:33+00:00">
+					2012/10/24 at 12:09 PM					</time></a>
+									</div><!-- .comment-meta .commentmetadata -->
+			</footer>
+
+			<div class="comment-content"><div style="display: inline-block;" class="pd-rating" id="pd_rating_holder_7344400_comm_1868"><div class="rating-icons" id="pd_rate_7344400_comm_1868" style="float: left;"><div class="rating-nero-icon" onclick="PDRTJS_7344400_comm_1868.rate(1);" id="PDRTJS_7344400_comm_1868_nero_1" style="background-size: 32px 32px ! important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background-color: transparent; background-image: url('nero-hand-sml.png'); background-repeat: repeat; background-attachment: scroll; background-position: left bottom; background-clip: border-box; background-origin: padding-box; float: left; padding: 0px; margin: 0px;">&nbsp;</div><div class="rating-nero-value" id="PDRTJS_7344400_comm_1868_msg_1" style="text-align: center; float: left; padding: 0px 4px;">0</div><div class="rating-nero-icon" onclick="PDRTJS_7344400_comm_1868.rate(2);" id="PDRTJS_7344400_comm_1868_nero_2" style="background-size: 32px 32px ! important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background-color: transparent; background-image: url('nero-hand-sml.png'); background-repeat: repeat; background-attachment: scroll; background-position: right bottom; background-clip: border-box; background-origin: padding-box; float: left; padding: 0px; margin: 0px;">&nbsp;</div><div class="rating-nero-value" id="PDRTJS_7344400_comm_1868_msg_2" style="text-align: center; float: left; padding: 0px 4px;">0</div></div><span style="float: left;">&nbsp;</span><div id="rating_info_7344400_comm_1868" style="display: block; float: left; background: url('info.png') no-repeat scroll 3px 2px transparent; width: 16px; height: 16px; cursor: pointer;" onclick="javascript:PDRTJS_7344400_comm_1868.togglePopup();return false;"><span style="display: none;">i</span></div><div class="pd_popup_holder" id="pd_popup_holder_7344400_comm_1868">&nbsp;</div><div class="rating-msg" id="PDRTJS_7344400_comm_1868_msg" style="float: left; padding-left: 5px; text-align: left;">Rate This</div><p style="padding: 0px; margin: 0px; clear: both;"></p></div><p>这篇是不是以前发过的？</p>
+</div>
+
+			<div class="reply">
+				<a sl-processed="1" class="comment-reply-link" href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/?replytocom=1868#respond" onclick='return addComment.moveForm("comment-1868", "1868", "respond", "7194")'>Reply</a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+
+	<li class="comment byuser comment-author-remonstrate bypostauthor odd alt thread-odd thread-alt depth-1 highlander-comment" id="li-comment-1870">
+		<article id="comment-1870" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<img id="grav-0d14124dce9c45f797c1a4c0c4072ed4-0" alt="" src="0d14124dce9c45f797c1a4c0c4072ed4" class="avatar avatar-47 grav-hashed grav-hijack" height="47" width="47">					<cite class="fn">zt</cite>
+				</div><!-- .comment-author .vcard -->
+				
+				<div class="comment-meta commentmetadata">
+					<a sl-processed="1" class="comment-time" href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/comment-page-1/#comment-1870"><time pubdate="" datetime="2012-10-25T09:16:53+00:00">
+					2012/10/25 at 9:16 AM					</time></a>
+									</div><!-- .comment-meta .commentmetadata -->
+			</footer>
+
+			<div class="comment-content"><div style="display: inline-block;" class="pd-rating" id="pd_rating_holder_7344400_comm_1870"><div class="rating-icons" id="pd_rate_7344400_comm_1870" style="float: left;"><div class="rating-nero-icon" onclick="PDRTJS_7344400_comm_1870.rate(1);" id="PDRTJS_7344400_comm_1870_nero_1" style="background-size: 32px 32px ! important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background-color: transparent; background-image: url('nero-hand-sml.png'); background-repeat: repeat; background-attachment: scroll; background-position: left bottom; background-clip: border-box; background-origin: padding-box; float: left; padding: 0px; margin: 0px;">&nbsp;</div><div class="rating-nero-value" id="PDRTJS_7344400_comm_1870_msg_1" style="text-align: center; float: left; padding: 0px 4px;">0</div><div class="rating-nero-icon" onclick="PDRTJS_7344400_comm_1870.rate(2);" id="PDRTJS_7344400_comm_1870_nero_2" style="background-size: 32px 32px ! important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background-color: transparent; background-image: url('nero-hand-sml.png'); background-repeat: repeat; background-attachment: scroll; background-position: right bottom; background-clip: border-box; background-origin: padding-box; float: left; padding: 0px; margin: 0px;">&nbsp;</div><div class="rating-nero-value" id="PDRTJS_7344400_comm_1870_msg_2" style="text-align: center; float: left; padding: 0px 4px;">0</div></div><span style="float: left;">&nbsp;</span><div id="rating_info_7344400_comm_1870" style="display: block; float: left; background: url('info.png') no-repeat scroll 3px 2px transparent; width: 16px; height: 16px; cursor: pointer;" onclick="javascript:PDRTJS_7344400_comm_1870.togglePopup();return false;"><span style="display: none;">i</span></div><div class="pd_popup_holder" id="pd_popup_holder_7344400_comm_1870">&nbsp;</div><div class="rating-msg" id="PDRTJS_7344400_comm_1870_msg" style="float: left; padding-left: 5px; text-align: left;">Rate This</div><p style="padding: 0px; margin: 0px; clear: both;"></p></div><p>不晓得，一会搜一下</p>
+</div>
+
+			<div class="reply">
+				<a sl-processed="1" class="comment-reply-link" href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/?replytocom=1870#respond" onclick='return addComment.moveForm("comment-1870", "1870", "respond", "7194")'>Reply</a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+
+	<li class="comment even thread-even depth-1 highlander-comment" id="li-comment-1874">
+		<article id="comment-1874" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<img id="grav-false-0" alt="" src="untitled" class="avatar avatar-47 grav-hashed grav-hijack" height="47" width="47">					<cite class="fn">bamanzi</cite>
+				</div><!-- .comment-author .vcard -->
+				
+				<div class="comment-meta commentmetadata">
+					<a sl-processed="1" class="comment-time" href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/comment-page-1/#comment-1874"><time pubdate="" datetime="2012-10-29T20:28:33+00:00">
+					2012/10/29 at 8:28 PM					</time></a>
+									</div><!-- .comment-meta .commentmetadata -->
+			</footer>
+
+			<div class="comment-content"><div style="display: inline-block;" class="pd-rating" id="pd_rating_holder_7344400_comm_1874"><div class="rating-icons" id="pd_rate_7344400_comm_1874" style="float: left;"><div class="rating-nero-icon" onclick="PDRTJS_7344400_comm_1874.rate(1);" id="PDRTJS_7344400_comm_1874_nero_1" style="background-size: 32px 32px ! important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background-color: transparent; background-image: url('nero-hand-sml.png'); background-repeat: repeat; background-attachment: scroll; background-position: left bottom; background-clip: border-box; background-origin: padding-box; float: left; padding: 0px; margin: 0px;">&nbsp;</div><div class="rating-nero-value" id="PDRTJS_7344400_comm_1874_msg_1" style="text-align: center; float: left; padding: 0px 4px;">0</div><div class="rating-nero-icon" onclick="PDRTJS_7344400_comm_1874.rate(2);" id="PDRTJS_7344400_comm_1874_nero_2" style="background-size: 32px 32px ! important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background-color: transparent; background-image: url('nero-hand-sml.png'); background-repeat: repeat; background-attachment: scroll; background-position: right bottom; background-clip: border-box; background-origin: padding-box; float: left; padding: 0px; margin: 0px;">&nbsp;</div><div class="rating-nero-value" id="PDRTJS_7344400_comm_1874_msg_2" style="text-align: center; float: left; padding: 0px 4px;">0</div></div><span style="float: left;">&nbsp;</span><div id="rating_info_7344400_comm_1874" style="display: block; float: left; background: url('info.png') no-repeat scroll 3px 2px transparent; width: 16px; height: 16px; cursor: pointer;" onclick="javascript:PDRTJS_7344400_comm_1874.togglePopup();return false;"><span style="display: none;">i</span></div><div class="pd_popup_holder" id="pd_popup_holder_7344400_comm_1874">&nbsp;</div><div class="rating-msg" id="PDRTJS_7344400_comm_1874_msg" style="float: left; padding-left: 5px; text-align: left;">Rate This</div><p style="padding: 0px; margin: 0px; clear: both;"></p></div><p>Xpra跟Xnest/Xephyr之类有没有什么相同点和不同点？ 嗯，回头试验一下</p>
+</div>
+
+			<div class="reply">
+				<a sl-processed="1" class="comment-reply-link" href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/?replytocom=1874#respond" onclick='return addComment.moveForm("comment-1874", "1874", "respond", "7194")'>Reply</a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+
+	<li class="comment byuser comment-author-remonstrate bypostauthor odd alt thread-odd thread-alt depth-1 highlander-comment" id="li-comment-1876">
+		<article id="comment-1876" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<img id="grav-0d14124dce9c45f797c1a4c0c4072ed4-1" alt="" src="0d14124dce9c45f797c1a4c0c4072ed4" class="avatar avatar-47 grav-hashed grav-hijack" height="47" width="47">					<cite class="fn">zt</cite>
+				</div><!-- .comment-author .vcard -->
+				
+				<div class="comment-meta commentmetadata">
+					<a sl-processed="1" class="comment-time" href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/comment-page-1/#comment-1876"><time pubdate="" datetime="2012-10-29T21:35:09+00:00">
+					2012/10/29 at 9:35 PM					</time></a>
+									</div><!-- .comment-meta .commentmetadata -->
+			</footer>
+
+			<div class="comment-content"><div style="display: inline-block;" class="pd-rating" id="pd_rating_holder_7344400_comm_1876"><div class="rating-icons" id="pd_rate_7344400_comm_1876" style="float: left;"><div class="rating-nero-icon" onclick="PDRTJS_7344400_comm_1876.rate(1);" id="PDRTJS_7344400_comm_1876_nero_1" style="background-size: 32px 32px ! important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background-color: transparent; background-image: url('nero-hand-sml.png'); background-repeat: repeat; background-attachment: scroll; background-position: left bottom; background-clip: border-box; background-origin: padding-box; float: left; padding: 0px; margin: 0px;">&nbsp;</div><div class="rating-nero-value" id="PDRTJS_7344400_comm_1876_msg_1" style="text-align: center; float: left; padding: 0px 4px;">0</div><div class="rating-nero-icon" onclick="PDRTJS_7344400_comm_1876.rate(2);" id="PDRTJS_7344400_comm_1876_nero_2" style="background-size: 32px 32px ! important; cursor: pointer; width: 16px; height: 16px; line-height: 16px; background-color: transparent; background-image: url('nero-hand-sml.png'); background-repeat: repeat; background-attachment: scroll; background-position: right bottom; background-clip: border-box; background-origin: padding-box; float: left; padding: 0px; margin: 0px;">&nbsp;</div><div class="rating-nero-value" id="PDRTJS_7344400_comm_1876_msg_2" style="text-align: center; float: left; padding: 0px 4px;">0</div></div><span style="float: left;">&nbsp;</span><div id="rating_info_7344400_comm_1876" style="display: block; float: left; background: url('info.png') no-repeat scroll 3px 2px transparent; width: 16px; height: 16px; cursor: pointer;" onclick="javascript:PDRTJS_7344400_comm_1876.togglePopup();return false;"><span style="display: none;">i</span></div><div class="pd_popup_holder" id="pd_popup_holder_7344400_comm_1876">&nbsp;</div><div class="rating-msg" id="PDRTJS_7344400_comm_1876_msg" style="float: left; padding-left: 5px; text-align: left;">Rate This</div><p style="padding: 0px; margin: 0px; clear: both;"></p></div><p>Xnest 和 Xephyr 本身是 X server 也是当前 X server 的 client，其作用就是在 X server 里面产生一个字环境，可以方便的测试 window manager 或者别的 X client 在其他环境下的样式，当前的 X server 挂掉就会导致 Xnest/Xephyr 挂掉，因此不适合作为 session 管理，而且里面一般必须得打开新的 window manager。</p>
+<p>Xpra 不是一个 X client。同时里面的 X client 利用的是当前的 X server 里面的 window manager 做窗口管理。</p>
+</div>
+
+			<div class="reply">
+				<a sl-processed="1" class="comment-reply-link" href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/?replytocom=1876#respond" onclick='return addComment.moveForm("comment-1876", "1876", "respond", "7194")'>Reply</a>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+		</ol>
+
+		
+	
+	
+									<div id="respond" class="comment-respond js">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a sl-processed="1" rel="nofollow" id="cancel-comment-reply-link" href="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/#respond" style="display: none;">Cancel reply</a></small></h3>
+									<form action="http://remonstrate.wordpress.com/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																										
+
+
+												<input id="highlander_comment_nonce" name="highlander_comment_nonce" value="bc87a4dc4e" type="hidden"><input name="_wp_http_referer" value="/2012/10/22/gnu-screen-vs-tmux/" type="hidden">
+<input name="hc_post_as" id="hc_post_as" value="guest" type="hidden">
+
+<div class="comment-form-field comment-textarea">
+	
+	<div id="comment-form-comment"><textarea aria-hidden="true" tabindex="-1" style="height: 42px; resize: none; overflow-y: hidden; -moz-transition: none 0s ease 0s ; position: absolute; top: 0px; left: -9999px; width: 297px; line-height: 22.6167px; text-decoration: none; letter-spacing: 0px;" placeholder="Enter your comment here..." title="Enter your comment here..."></textarea><textarea style="height: 42px; resize: none; overflow-y: hidden; -moz-transition: none 0s ease 0s ;" placeholder="Enter your comment here..." id="comment" name="comment" title="Enter your comment here..."></textarea></div>
+</div>
+
+<div style="display: none;" id="comment-form-identity">
+
+	<div id="comment-form-nascar">
+		<p>Fill in your details below or click an icon to log in:</p>
+		<ul>
+			<li class="selected" style="display: none;">
+				<a sl-processed="1" href="#comment-form-guest" id="postas-guest" title="Guest">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a sl-processed="1" href="#comment-form-load-service:WordPress.com" id="postas-wordpress" title="WordPress.com">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a sl-processed="1" href="#comment-form-load-service:Twitter" id="postas-twitter" title="Twitter">
+					<span></span>
+				</a>
+			</li>
+			<li>
+				<a sl-processed="1" href="#comment-form-load-service:Facebook" id="postas-facebook" title="Facebook">
+					<span></span>
+				</a>
+			</li>
+			<li>
+			<iframe style="" id="googleplus-sign-in" name="googleplus-sign-in" src="index_4.html" allowtransparency="true" seamless="seamless" frameborder="0" height="24" scrolling="no" width="24"></iframe>
+			</li>
+		</ul>
+	</div>
+
+	<div id="comment-form-guest" class="comment-form-service selected">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+<a sl-processed="1" href="https://gravatar.com/site/signup/" target="_top">				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Gravatar" class="no-grav" width="25">
+</a>			</div>
+
+				<div class="comment-form-fields">
+				<div class="comment-form-field comment-form-email">
+					<label for="email">Email <span class="nopublish">(Address never made public)</span></label>
+					<div class="comment-form-input"><input id="email" name="email" value="" type="email"></div>
+				</div>
+				<div class="comment-form-field comment-form-author">
+					<label for="author">Name</label>
+					<div class="comment-form-input"><input id="author" name="author" value="" type="text"></div>
+				</div>
+				<div class="comment-form-field comment-form-url">
+					<label for="url">Website</label>
+					<div class="comment-form-input"><input id="url" name="url" value="" type="text"></div>
+				</div>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-wordpress" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="wplogo.png" alt="WordPress.com Logo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="wp_avatar" id="wordpress-avatar" class="comment-meta-wordpress" value="" type="hidden">
+				<input name="wp_user_id" id="wordpress-user_id" class="comment-meta-wordpress" value="" type="hidden">
+				<input name="wp_access_token" id="wordpress-access_token" class="comment-meta-wordpress" value="" type="hidden">
+				<p class="comment-form-posting-as pa-wordpress"><strong></strong> You are commenting using your WordPress.com account. <span class="comment-form-log-out">(&nbsp;<a sl-processed="1" href="javascript:HighlanderComments.doExternalLogout(%20'wordpress'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a sl-processed="1" href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-twitter" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Twitter picture" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="twitter_avatar" id="twitter-avatar" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_user_id" id="twitter-user_id" class="comment-meta-twitter" value="" type="hidden">
+				<input name="twitter_access_token" id="twitter-access_token" class="comment-meta-twitter" value="" type="hidden">
+				<p class="comment-form-posting-as pa-twitter"><strong></strong> You are commenting using your Twitter account. <span class="comment-form-log-out">(&nbsp;<a sl-processed="1" href="javascript:HighlanderComments.doExternalLogout(%20'twitter'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a sl-processed="1" href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-facebook" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Facebook photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="fb_avatar" id="facebook-avatar" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_user_id" id="facebook-user_id" class="comment-meta-facebook" value="" type="hidden">
+				<input name="fb_access_token" id="facebook-access_token" class="comment-meta-facebook" value="" type="hidden">
+				<p class="comment-form-posting-as pa-facebook"><strong></strong> You are commenting using your Facebook account. <span class="comment-form-log-out">(&nbsp;<a sl-processed="1" href="javascript:HighlanderComments.doExternalLogout(%20'facebook'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a sl-processed="1" href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+	<div id="comment-form-googleplus" class="comment-form-service">
+		<div class="comment-form-padder">
+			<div class="comment-form-avatar">
+				<img src="ad516503a11cd5ca435acc9bb6523536" alt="Google+ photo" class="no-grav" width="25">
+			</div>
+
+				<div class="comment-form-fields">
+				<input name="googleplus_avatar" id="googleplus-avatar" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_user_id" id="googleplus-user_id" class="comment-meta-googleplus" value="" type="hidden">
+				<input name="googleplus_access_token" id="googleplus-access_token" class="comment-meta-googleplus" value="" type="hidden">
+				<p class="comment-form-posting-as pa-googleplus"><strong></strong> You are commenting using your Google+ account. <span class="comment-form-log-out">(&nbsp;<a sl-processed="1" href="javascript:HighlanderComments.doExternalLogout(%20'googleplus'%20);">Log&nbsp;Out</a>&nbsp;/&nbsp;<a sl-processed="1" href="#" onclick="javascript:HighlanderComments.switchAccount();return false;">Change</a>&nbsp;)</span></p>
+			</div>
+	
+		</div>
+	</div>
+
+
+	<div id="comment-form-load-service" class="comment-form-service">
+		<div class="comment-form-posting-as-cancel"><a sl-processed="1" href="javascript:HighlanderComments.cancelExternalWindow();">Cancel</a></div>
+		<p>Connecting to %s</p>
+	</div>
+
+	
+</div>
+
+
+
+<div style="display: none;" id="comment-form-subscribe">
+	<p class="comment-subscription-form"><input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" tabindex="6" type="checkbox"> <label class="subscribe-label" id="subscribe-label" for="subscribe" style="display: inline;">Notify me of follow-up comments via email.</label></p><p class="post-subscription-form"><input name="subscribe_blog" id="subscribe_blog" value="subscribe" style="width: auto;" tabindex="7" type="checkbox"> <label class="subscribe-label" id="subscribe-blog-label" for="subscribe_blog" style="display: inline;">Notify me of new posts via email.</label></p></div>
+
+												<p style="display: none;" class="form-submit">
+							<input name="submit" id="comment-submit" value="Post Comment" type="submit">
+							<input name="comment_post_ID" value="7194" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						
+<input name="genseq" value="1393419873" type="hidden">
+<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="b0d996d674" type="hidden"></p>
+<p style="display: none;"><input id="ak_js" name="ak_js" value="1393419908935" type="hidden"></p>					</form>
+							</div><!-- #respond -->
+			<div style="clear: both;"></div>
+</div><!-- #comments -->
+
+					<nav id="nav-below">
+		<h1 class="assistive-text section-heading">Post navigation</h1>
+
+	
+		<div class="nav-previous"><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/22/hibernate-%e4%b8%8e-spring/" rel="prev"><span class="meta-nav">←</span> Hibernate 与&nbsp;Spring</a></div>		<div class="nav-next"><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/28/%e6%96%b0%e5%ae%b62012/" rel="next">新家,2012 <span class="meta-nav">→</span></a></div>
+	
+	</nav><!-- #nav-below -->
+	
+			
+			</div><!-- #content -->
+		</div><!-- #primary -->
+
+
+<div id="secondary" class="widget-area" role="complementary">
+	<aside id="calendar-2" class="widget widget_calendar"><h1 class="widget-title">争分夺秒</h1><div id="calendar_wrap"><table id="wp-calendar">
+	<caption>October 2012</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="Sunday">S</th>
+		<th scope="col" title="Monday">M</th>
+		<th scope="col" title="Tuesday">T</th>
+		<th scope="col" title="Wednesday">W</th>
+		<th scope="col" title="Thursday">T</th>
+		<th scope="col" title="Friday">F</th>
+		<th scope="col" title="Saturday">S</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/09/" title="View posts for September 2012">« Sep</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next"><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/11/" title="View posts for November 2012">Nov »</a></td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="1" class="pad">&nbsp;</td><td>1</td><td>2</td><td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/03/" title="又开始上班了">3</a></td><td>4</td><td>5</td><td>6</td>
+	</tr>
+	<tr>
+		<td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/07/" title="Lake Crescent 和 Cape&nbsp;Flattery">7</a></td><td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/08/" title="coroutine&nbsp;的两种实现">8</a></td><td>9</td><td>10</td><td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/11/" title="一些需要加强学习的工具">11</a></td><td>12</td><td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/13/" title="阴雨一周">13</a></td>
+	</tr>
+	<tr>
+		<td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/14/" title="输入法引起的折腾, 一些&nbsp;yy">14</a></td><td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/15/" title="关于 anomaly&nbsp;detection">15</a></td><td>16</td><td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/17/" title="几个经常听见的名词, 随便拍（四十）">17</a></td><td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/18/" title="Java 的&nbsp;annotation">18</a></td><td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/19/" title="细数几个 Win7&nbsp;的不爽">19</a></td><td>20</td>
+	</tr>
+	<tr>
+		<td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/21/" title="驾照的知识考核">21</a></td><td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/22/" title="某屋最后一贴, Hibernate 与&nbsp;Spring, GNU Screen v.s.&nbsp;tmux">22</a></td><td>23</td><td>24</td><td>25</td><td>26</td><td>27</td>
+	</tr>
+	<tr>
+		<td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/28/" title="新家,2012, 几个时间和地点">28</a></td><td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/29/" title="dynamo 一个 key/value store&nbsp;的一些技术要点, 两地网购, 新屋第一帖">29</a></td><td>30</td><td><a sl-processed="1" href="http://remonstrate.wordpress.com/2012/10/31/" title="随便拍（四十一）">31</a></td>
+		<td class="pad" colspan="3">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></aside><aside id="recent-comments-2" class="widget widget_recent_comments"><h1 class="widget-title">七嘴八舌</h1>				<ul id="recentcomments">
+											<li class="recentcomments">
+							<a sl-processed="1" href="http://honglangwang.wordpress.com/2014/02/25/useful-for-referring-2-25-2014/" rel="external nofollow" class="url">Useful for referring—2-25-2014 | Honglang Wang's Blog</a> on <a sl-processed="1" href="http://remonstrate.wordpress.com/2013/07/30/git-%e6%9c%80%e8%bf%91%e6%84%9f%e6%82%9f/comment-page-1/#comment-3996">git&nbsp;最近感悟</a>						</li>
+
+												<li class="recentcomments">
+							Anonymous on <a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/23/%e7%85%a7%e7%89%87%e5%a0%86%e5%8f%a0/comment-page-1/#comment-3994">照片堆叠</a>						</li>
+
+												<li class="recentcomments">
+							zt on <a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/19/%e9%9a%8f%e4%be%bf%e6%8b%8d%ef%bc%88%e5%85%ad%e5%8d%81%e5%9b%9b%ef%bc%89/comment-page-1/#comment-3986">随便拍（六十四）</a>						</li>
+
+												<li class="recentcomments">
+							hxtang on <a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/19/%e9%9a%8f%e4%be%bf%e6%8b%8d%ef%bc%88%e5%85%ad%e5%8d%81%e5%9b%9b%ef%bc%89/comment-page-1/#comment-3984">随便拍（六十四）</a>						</li>
+
+												<li class="recentcomments">
+							zt on <a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/18/%e6%9f%90%e4%ba%9b%e8%a7%82%e5%bf%b5/comment-page-1/#comment-3981">某些观念</a>						</li>
+
+												<li class="recentcomments">
+							zt on <a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/18/%e6%9f%90%e4%ba%9b%e8%a7%82%e5%bf%b5/comment-page-1/#comment-3980">某些观念</a>						</li>
+
+												<li class="recentcomments">
+							hxtang on <a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/18/%e6%9f%90%e4%ba%9b%e8%a7%82%e5%bf%b5/comment-page-1/#comment-3976">某些观念</a>						</li>
+
+												<li class="recentcomments">
+							guojc on <a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/18/%e6%9f%90%e4%ba%9b%e8%a7%82%e5%bf%b5/comment-page-1/#comment-3975">某些观念</a>						</li>
+
+												<li class="recentcomments">
+							<a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/15/%e5%87%a0%e4%b8%aa%e5%a5%bd%e7%8e%a9%e7%9a%84%e4%b8%9c%e8%a5%bf/" rel="external nofollow" class="url">几个好玩的东西 | demonstrate 的 blog</a> on <a sl-processed="1" href="http://remonstrate.wordpress.com/2013/10/20/%e7%bb%86%e8%b0%88-docker/comment-page-1/#comment-3964">细谈&nbsp;docker</a>						</li>
+
+												<li class="recentcomments">
+							indicator on <a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/06/%e6%b6%88%e9%80%9d%e7%9a%84%ef%bc%8c%e8%ae%b0%e5%bf%86%e7%9a%84%ef%bc%8c%e8%bf%b7%e5%a4%b1%e7%9a%84/comment-page-1/#comment-3954">消逝的，记忆的，迷失的</a>						</li>
+
+										</ul>
+				</aside>		<aside id="recent-posts-2" class="widget widget_recent_entries">		<h3 class="widget-title">叽叽喳喳</h3>		<ul>
+					<li>
+				<a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/25/ec2%e3%80%81emr-%e5%92%8c-spark/">EC2、EMR 和 Spark</a>
+						</li>
+					<li>
+				<a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/23/%e6%b3%a1%e6%b2%ab/">泡沫</a>
+						</li>
+					<li>
+				<a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/23/%e7%85%a7%e7%89%87%e5%a0%86%e5%8f%a0/">照片堆叠</a>
+						</li>
+					<li>
+				<a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/22/miss-mama/">Miss Mama</a>
+						</li>
+					<li>
+				<a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/19/%e9%9a%8f%e4%be%bf%e6%8b%8d%ef%bc%88%e5%85%ad%e5%8d%81%e5%9b%9b%ef%bc%89/">随便拍（六十四）</a>
+						</li>
+					<li>
+				<a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/18/%e6%9f%90%e4%ba%9b%e8%a7%82%e5%bf%b5/">某些观念</a>
+						</li>
+					<li>
+				<a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/15/%e5%87%a0%e4%b8%aa%e5%a5%bd%e7%8e%a9%e7%9a%84%e4%b8%9c%e8%a5%bf/">几个好玩的东西</a>
+						</li>
+					<li>
+				<a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/10/%e7%ac%ac%e4%b8%80%e6%ac%a1%e7%9c%8b%e8%a7%81%e8%a5%bf%e9%9b%85%e5%9b%be%e8%bf%99%e4%b9%88%e5%a4%a7%e7%9a%84%e9%9b%aa/">第一次看见西雅图这么大的雪</a>
+						</li>
+					<li>
+				<a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/09/costco-%e7%85%a7%e7%89%87%e6%89%93%e5%8d%b0%e6%94%bb%e7%95%a5/">costco 照片打印攻略</a>
+						</li>
+					<li>
+				<a sl-processed="1" href="http://remonstrate.wordpress.com/2014/02/08/seahawks-parade/">Seahawks parade</a>
+						</li>
+				</ul>
+		</aside><aside id="categories-397126691" class="widget widget_categories"><h1 class="widget-title">本草纲目</h1>		<ul>
+	<li class="cat-item cat-item-7847"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/academics/" title="View all posts filed under academics">academics</a> (141)
+<ul class="children">
+	<li class="cat-item cat-item-18127"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/academics/algorithm/" title="View all posts filed under algorithm">algorithm</a> (39)
+</li>
+	<li class="cat-item cat-item-76379"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/academics/computer-vision/" title="View all posts filed under computer vision">computer vision</a> (12)
+</li>
+	<li class="cat-item cat-item-40978"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/academics/machine-learning/" title="my research">machine learning</a> (42)
+</li>
+	<li class="cat-item cat-item-3582"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/academics/mathematics/" title="View all posts filed under mathematics">mathematics</a> (35)
+</li>
+	<li class="cat-item cat-item-145707"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/academics/natural-language-processing/" title="View all posts filed under natural language processing">natural language processing</a> (2)
+</li>
+	<li class="cat-item cat-item-1211"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/academics/physics/" title="View all posts filed under physics">physics</a> (13)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-148"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/design/" title="View all posts filed under design">design</a> (3)
+</li>
+	<li class="cat-item cat-item-18780412"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/duckese/" title="daily twitter">duckese</a> (256)
+</li>
+	<li class="cat-item cat-item-384"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/entertainment/" title="View all posts filed under entertainment">entertainment</a> (561)
+<ul class="children">
+	<li class="cat-item cat-item-17950989"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/entertainment/ducks-photos/" title="I like photography, though my photos are still not that good.">duck's photos</a> (314)
+</li>
+	<li class="cat-item cat-item-1186"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/entertainment/films/" title="View all posts filed under films">films</a> (28)
+</li>
+	<li class="cat-item cat-item-599239"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/entertainment/music-and-songs/" title="those music and songs I like">music and songs</a> (72)
+</li>
+	<li class="cat-item cat-item-15228"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/entertainment/readings/" title="View all posts filed under readings">readings</a> (151)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-126396"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/linux-related/" title="one of my hobbies">linux related</a> (159)
+<ul class="children">
+	<li class="cat-item cat-item-100030"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/linux-related/compilers/" title="View all posts filed under compilers">compilers</a> (4)
+</li>
+	<li class="cat-item cat-item-11362"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/linux-related/emacs/" title="View all posts filed under emacs">emacs</a> (10)
+</li>
+	<li class="cat-item cat-item-30647586"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/linux-related/gimp-linux-related/" title="View all posts filed under gimp">gimp</a> (1)
+</li>
+	<li class="cat-item cat-item-196209207"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/linux-related/parallelconcurrent-programming/" title="View all posts filed under parallel/concurrent programming">parallel/concurrent programming</a> (36)
+</li>
+	<li class="cat-item cat-item-13849"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/linux-related/web-service/" title="View all posts filed under web service">web service</a> (37)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-125045"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/mac-related/" title="View all posts filed under mac related">mac related</a> (5)
+</li>
+	<li class="cat-item cat-item-875"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/miscellaneous/" title="View all posts filed under miscellaneous">miscellaneous</a> (4)
+<ul class="children">
+	<li class="cat-item cat-item-13871028"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/miscellaneous/blogs-blog/" title="View all posts filed under blog's blog">blog's blog</a> (4)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-26083"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/mobile-devices/" title="View all posts filed under mobile devices">mobile devices</a> (21)
+<ul class="children">
+	<li class="cat-item cat-item-641922"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/mobile-devices/android/" title="View all posts filed under Android">Android</a> (1)
+</li>
+	<li class="cat-item cat-item-324281"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/mobile-devices/ios/" title="View all posts filed under iOS">iOS</a> (6)
+</li>
+	<li class="cat-item cat-item-66433"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/mobile-devices/maemo/" title="View all posts filed under maemo">maemo</a> (4)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-13215"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/programming-languages/" title="View all posts filed under programming languages">programming languages</a> (354)
+<ul class="children">
+	<li class="cat-item cat-item-95965834"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/programming-languages/cc-and-objective-c/" title="View all posts filed under c/c++ and objective c">c/c++ and objective c</a> (215)
+</li>
+	<li class="cat-item cat-item-2812"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/programming-languages/go/" title="View all posts filed under go">go</a> (1)
+</li>
+	<li class="cat-item cat-item-147967079"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/programming-languages/java-based-languages/" title="Java, scala, groovy, jython, jruby and many more...">java-based languages</a> (115)
+</li>
+	<li class="cat-item cat-item-116422819"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/programming-languages/lisp-and-other-functional-stuffs/" title="View all posts filed under lisp and other functional stuffs">lisp and other functional stuffs</a> (1)
+</li>
+	<li class="cat-item cat-item-7770"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/programming-languages/matlab/" title="View all posts filed under matlab">matlab</a> (8)
+</li>
+	<li class="cat-item cat-item-5226"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/programming-languages/perl/" title="View all posts filed under perl">perl</a> (7)
+</li>
+	<li class="cat-item cat-item-832"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/programming-languages/python/" title="View all posts filed under python">python</a> (36)
+</li>
+	<li class="cat-item cat-item-22294645"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/programming-languages/rs-plus/" title="View all posts filed under R/S-plus">R/S-plus</a> (6)
+</li>
+	<li class="cat-item cat-item-4283"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/programming-languages/texlatex/" title="View all posts filed under tex/latex">tex/latex</a> (5)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-1"><a sl-processed="1" href="http://remonstrate.wordpress.com/category/uncategorized/" title="View all posts filed under Uncategorized">Uncategorized</a> (2)
+</li>
+		</ul>
+</aside><aside id="search-3" class="widget widget_search"><h1 class="widget-title">穷搜猛索</h1><form method="get" id="searchform" action="http://remonstrate.wordpress.com/">
+	<label for="s" class="assistive-text">Search</label>
+	<input value="" class="field" name="s" id="s" placeholder="Search" type="text">
+	<input class="submit" name="submit" id="searchsubmit" value="Search" type="submit">
+</form>
+</aside><aside id="linkcat-677" class="widget widget_links"><h1 class="widget-title">friends</h1>
+	<ul class="xoxo blogroll">
+<li><a sl-processed="1" href="http://limityefei.spaces.live.com/" rel="friend met" title="我的祖师爷跟师父其实没关系" target="_top">祖师爷</a></li>
+<li><a sl-processed="1" href="http://thx.ycool.com/" rel="friend met sweetheart" title="my significant other" target="_top">super big cow soup</a></li>
+<li><a sl-processed="1" href="http://wshxzt.ycool.com/" rel="friend met" title="at wisc" target="_top">wshxzt 大牛</a></li>
+<li><a sl-processed="1" href="http://yangshuishi.spaces.live.com/" rel="friend met" title="他是我师父！" target="_top">师父</a></li>
+<li><a sl-processed="1" href="http://tzyyblog.ycool.com/" rel="friend met sibling" title="姐姐" target="_top">桃之夭夭姐姐</a></li>
+
+	</ul>
+</aside>
+<aside id="linkcat-18782066" class="widget widget_links"><h1 class="widget-title">my online albums</h1>
+	<ul class="xoxo blogroll">
+<li><a sl-processed="1" href="http://demonstrate.photo.163.com/" rel="me" title="曾经常用的，后来不支持 fx 就不用了" target="_top">163 album</a></li>
+<li><a sl-processed="1" href="http://demonstrate.bababian.com/" rel="me" title="最常用的相册" target="_top">bababian</a></li>
+<li><a sl-processed="1" href="http://www.dreamstime.com/demonstrate_info" rel="me" title="selling photos" target="_top">dreamstime</a></li>
+<li><a sl-processed="1" href="http://demonstrate.fotolog.com.cn/" rel="me" title="not used yet" target="_top">fotolog</a></li>
+<li><a sl-processed="1" href="http://www.panoramio.com/user/982643" rel="me" title="标定经纬度的照片" target="_top">panoramio</a></li>
+<li><a sl-processed="1" href="http://satyr.qudoo.net/" rel="me" title="not used yet" target="_top">qudoo</a></li>
+
+	</ul>
+</aside>
+<aside id="linkcat-792825" class="widget widget_links"><h1 class="widget-title">my own blogs</h1>
+	<ul class="xoxo blogroll">
+<li><a sl-processed="1" href="http://www.blog.163.com/demonstrate/" rel="me" title="not used yet" target="_top">163 blog</a></li>
+<li><a sl-processed="1" href="http://demonstrate.51.com/" rel="me" title="从来不用" target="_top">51 blog</a></li>
+<li><a sl-processed="1" href="http://heli.bokee.com/" rel="me" title="最早的 blog" target="_top">blogchina</a></li>
+<li><a sl-processed="1" href="http://hi.baidu.com/demonstrate" rel="me" title="not used yet" target="_top">百度 blog</a></li>
+<li><a sl-processed="1" href="http://fanfou.cn/demonstrate" rel="me" title="简短版本" target="_top">饭否？</a></li>
+<li><a sl-processed="1" href="http://sigmastudio.googlepages.com/" rel="me" title="not used yet" target="_top">google pages</a></li>
+<li><a sl-processed="1" href="http://certification.spaces.live.com/" rel="me" title="My MSN Live space">live space</a></li>
+<li><a sl-processed="1" href="http://pigese.tumblr.com/" rel="me" title="my tumblr" target="_top">tumblr</a></li>
+<li><a sl-processed="1" href="http://demonstrate.ycool.com/" rel="me" title="第二个，也是研究生开始写的最长的 blog" target="_top">ycool</a></li>
+
+	</ul>
+</aside>
+<aside id="pages-2" class="widget widget_pages"><h1 class="widget-title">长篇大论</h1>		<ul>
+			<li class="page_item page-item-32"><a sl-processed="1" href="http://remonstrate.wordpress.com/machine-learnng-resources/">Machine Learnng&nbsp;Resources</a></li>
+<li class="page_item page-item-1374"><a sl-processed="1" href="http://remonstrate.wordpress.com/useful-libraries/">Useful&nbsp;Libraries</a></li>
+		</ul>
+		</aside><aside id="meta-2" class="widget widget_meta"><h1 class="widget-title">无用操作</h1>			<ul>
+			<li><a sl-processed="1" href="http://wordpress.com/signup/?ref=wplogin">Register</a></li>			<li><a sl-processed="1" href="http://remonstrate.wordpress.com/wp-login.php">Log in</a></li>
+			<li><a sl-processed="1" href="http://remonstrate.wordpress.com/feed/" title="Syndicate this site using RSS 2.0">Entries <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a sl-processed="1" href="http://remonstrate.wordpress.com/comments/feed/" title="The latest comments to all posts in RSS">Comments <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a sl-processed="1" href="http://wordpress.com/" title="Powered by WordPress, state-of-the-art semantic personal publishing platform.">WordPress.com</a></li>						</ul>
+</aside><aside id="blog-stats-2" class="widget widget_blog-stats"><h1 class="widget-title">千夫已指</h1>		<ul>
+			<li>125,170 hits</li>
+		</ul>
+		</aside><aside id="twitter-3" class="widget widget_twitter"><h1 class="widget-title"><a sl-processed="1" href="http://twitter.com/demonstrate">鸟言鸟语</a></h1><ul class="tweets">
+			<li>
+				（已知的被点的最多的我拍的照片）复旦大学正门鸟瞰图 from 文科大楼 - <a sl-processed="1" href="http://panoramio.com/photo/6376255"> panoramio.com/photo/6376255</a> 				<a sl-processed="1" href="http://twitter.com/demonstrate/statuses/152425037079654400" class="timesince">2&nbsp;years&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				昨天被宇辉告知公司有镜像。RT @<a sl-processed="1" href="http://twitter.com/morgancheng">morgancheng</a>: XCode 4.2 + iOS5 SDK只能安装在Lion上？ 				<a sl-processed="1" href="http://twitter.com/demonstrate/statuses/139274721530351616" class="timesince">2&nbsp;years&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				RT @<a sl-processed="1" href="http://twitter.com/mashable">mashable</a>: Adobe Admits: Apple Won, Flash For Mobile is Done, HTML5 is the Future - <a sl-processed="1" href="http://on.mash.to/u4EPp8"> on.mash.to/u4EPp8</a> 				<a sl-processed="1" href="http://twitter.com/demonstrate/statuses/135235593515958272" class="timesince">2&nbsp;years&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				Stop thinking in a silly way. I have to get some serious business done! 				<a sl-processed="1" href="http://twitter.com/demonstrate/statuses/132089047677026304" class="timesince">2&nbsp;years&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				RT @<a sl-processed="1" href="http://twitter.com/haoel">haoel</a>: 酷壳 Coolshell.cn - SteveY对Amazon和Google的平台的长篇大论: Steve Yegge， Amazon的前员工，现任Google员工，其本来想在… <a sl-processed="1" href="http://goo.gl/fb/aLGmD"> goo.gl/fb/aLGmD</a> 				<a sl-processed="1" href="http://twitter.com/demonstrate/statuses/132023177739116544" class="timesince">2&nbsp;years&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				four kinds of orbit: infinite, cyclic, with a terminal or rho-shaped; if an orbit is finite, how to determine its type in const storage <a sl-processed="1" href="http://twitter.com/search?q=%23EoP">#EoP</a> 				<a sl-processed="1" href="http://twitter.com/demonstrate/statuses/87493915359461376" class="timesince">2&nbsp;years&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				is there any programming language able to deal to value/value type and object/object type simultaneously? <a sl-processed="1" href="http://twitter.com/search?q=%23EoP">#EoP</a> 				<a sl-processed="1" href="http://twitter.com/demonstrate/statuses/87458970855415808" class="timesince">2&nbsp;years&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				functional programming deals with values; imperative programming deals with objects <a sl-processed="1" href="http://twitter.com/search?q=%23EoP">#EoP</a> 				<a sl-processed="1" href="http://twitter.com/demonstrate/statuses/87457435685625856" class="timesince">2&nbsp;years&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				田野家 <a sl-processed="1" href="http://twitpic.com/5a1e98" rel="nofollow">http://twitpic.com/5a1e98</a> 				<a sl-processed="1" href="http://twitter.com/demonstrate/statuses/79537942724485121" class="timesince">2&nbsp;years&nbsp;ago</a>
+			</li>
+
+			
+			<li>
+				switch to fx5beta, but didn't find anything new, but losing several useful extensions.... 				<a sl-processed="1" href="http://twitter.com/demonstrate/statuses/73646612848721920" class="timesince">2&nbsp;years&nbsp;ago</a>
+			</li>
+
+			</ul></aside><aside id="image-3" class="widget widget_image"><h1 class="widget-title">机器请阅</h1><div style="overflow: hidden;"><img src="img.php" class="aligncenter" height="120" width="120"></div>
+</aside></div><!-- #secondary .widget-area -->
+
+
+	</div><!-- #main -->
+
+	<footer id="colophon" role="contentinfo">
+		
+		<div id="site-info">
+						<a sl-processed="1" href="http://zh-sg.wordpress.com/?ref=footer">Blog at WordPress.com</a>.
+			<span class="sep"> | </span>
+			<a sl-processed="1" href="http://theme.wordpress.com/themes/reddle/" title="Learn more about this theme">The Reddle Theme</a>.		</div>
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+
+
+
+	
+
+		<div style="display: none;">
+	<div class="grofile-hash-map-7eded1b034ea5ae646b34ac923b2f1ad">
+	</div>
+	<div class="grofile-hash-map-0d14124dce9c45f797c1a4c0c4072ed4">
+	</div>
+	<div class="grofile-hash-map-d41d8cd98f00b204e9800998ecf8427e">
+	</div>
+	</div>
+
+
+
+	<div style="bottom: -271px;" id="bit" class="loggedout-follow-normal">
+		<a sl-processed="1" class="bsub" href="javascript:void(0)"><span id="bsub-text">Follow</span></a>
+		<div id="bitsubscribe">
+
+					<h3><label for="loggedout-follow-field">Follow “demonstrate 的 blog”</label></h3>
+
+			<form action="https://subscribe.wordpress.com/" method="post" accept-charset="utf-8" id="loggedout-follow">
+			<p>Get every new post delivered to your Inbox.</p>
+
+			<p id="loggedout-follow-error" style="display: none;"></p>
+
+						<p class="bit-follow-count">Join 29 other followers</p>
+			<p><input name="email" value="Enter your email address" onfocus='this.value=(this.value=="Enter your email address") ? "" : this.value;' onblur='this.value=(this.value=="") ? "Enter email address" : this.value;' id="loggedout-follow-field" type="email"></p>
+
+			<input name="action" value="subscribe" type="hidden">
+			<input name="blog_id" value="7233082" type="hidden">
+			<input name="source" value="http://remonstrate.wordpress.com/2012/10/22/gnu-screen-vs-tmux/" type="hidden">
+			<input name="sub-type" value="loggedout-follow" type="hidden">
+
+			<input id="_wpnonce" name="_wpnonce" value="eb599e06a9" type="hidden"><input name="_wp_http_referer" value="/2012/10/22/gnu-screen-vs-tmux/" type="hidden">
+			<p id="bsub-subscribe-button"><input value="Sign me up" type="submit"></p>
+			</form>
+					<div id="bsub-credit"><a sl-processed="1" href="http://wordpress.com/signup/?ref=lof">Powered by WordPress.com</a></div>
+		</div><!-- #bitsubscribe -->
+	</div><!-- #bit -->
+	
+			<iframe src="index_5.html" id="likes-master" name="likes-master" style="display: none;" scrolling="no"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		
+
+
+
+
+
+
+
+<iframe src="index_6.html" style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_7270420668740"></iframe></body>
+</html>
