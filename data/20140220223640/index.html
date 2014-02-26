@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Unicode for dummies – just use&nbsp;UTF-8 | Python Conquers The Universe</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+<link rel="pingback" href="http://pythonconquerstheuniverse.wordpress.com/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="http://s2.wp.com/wp-content/themes/pub/twentyeleven/js/html5.js?m=1354160568g" type="text/javascript"></script>
+<![endif]-->
+<meta name="google-site-verification" content="20kUf4sIlFFHFlkLSm4URLm6SsgHOj23db03npkjWnA">
+<link rel="alternate" type="application/rss+xml" title="Python Conquers The Universe » Feed" href="http://pythonconquerstheuniverse.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Python Conquers The Universe » Comments Feed" href="http://pythonconquerstheuniverse.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Python Conquers The Universe » Unicode for dummies – just&nbsp;use&nbsp;UTF-8 Comments Feed" href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/feed/">
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://pythonconquerstheuniverse.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://pythonconquerstheuniverse.wordpress.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Unicode Beginners Introduction for Dummies&nbsp;Made&nbsp;Simple" href="http://pythonconquerstheuniverse.wordpress.com/2010/05/30/unicode-beginners-introduction-for-dummies-made-simple/">
+<link rel="next" title="Command-line syntax: some basic&nbsp;concepts" href="http://pythonconquerstheuniverse.wordpress.com/2010/07/25/command-line-syntax-some-basic-concepts/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/">
+<link rel="shortlink" href="http://wp.me/pCHyo-6W">
+<link rel="alternate" type="application/json+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=http%3A%2F%2Fpythonconquerstheuniverse.wordpress.com%2F2010%2F06%2F04%2Funicode-for-dummies-just-use-utf-8%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=http%3A%2F%2Fpythonconquerstheuniverse.wordpress.com%2F2010%2F06%2F04%2Funicode-for-dummies-just-use-utf-8%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unicode for dummies – just use&nbsp;UTF-8">
+<meta property="og:url" content="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/">
+<meta property="og:description" content="Revised 2012-03-18 — fixed a bad link, and removed an incorrect statement about the origin of the terms &quot;big-endian&quot; and &quot;little-endian&quot;. Commenting on my previous post about Unicode, an anon...">
+<meta property="article:published_time" content="2010-06-04T19:29:38+00:00">
+<meta property="article:modified_time" content="2012-03-18T20:38:47+00:00">
+<meta property="article:author" content="http://pythonconquerstheuniverse.wordpress.com/author/stephenferg/">
+<meta property="og:site_name" content="Python Conquers The Universe">
+<meta property="og:image" content="http://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Ei_mit_Spiraleierbecher.jpg/218px-Ei_mit_Spiraleierbecher.jpg">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:image" content="http://upload.wikimedia.org/wikipedia/commons/thumb/8/80/Ei_mit_Spiraleierbecher.jpg/218px-Ei_mit_Spiraleierbecher.jpg?w=240">
+<meta name="twitter:card" content="summary">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="http://s0.wp.com/i/webclip.png?m=1391188133g">
+<link rel="openid.server" href="http://pythonconquerstheuniverse.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="http://pythonconquerstheuniverse.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="http://pythonconquerstheuniverse.wordpress.com/osd.xml" title="Python Conquers The Universe">
+<link rel="search" type="application/opensearchdescription+xml" href="http://wordpress.com/opensearch.xml" title="WordPress.com">
+<meta name="application-name" content="Python Conquers The Universe"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Adventures across space and time with the Python programming language"><meta name="msapplication-task" content="name=Subscribe;action-uri=http://pythonconquerstheuniverse.wordpress.com/feed/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="title" content="Unicode for dummies – just&nbsp;use&nbsp;UTF-8 | Python Conquers The Universe on WordPress.com">
+<meta name="description" content="Revised 2012-03-18 — fixed a bad link, and removed an incorrect statement about the origin of the terms &quot;big-endian&quot; and &quot;little-endian&quot;. Commenting on my previous post about Unicode, an anonymous commentator noted that the usage of the BOM [the Unicode Byte Order Mark] with UTF-8 is strongly discouraged and really only a Microsoft-ism. It’s not…">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-430 single-format-standard mp6 single-author singular two-column right-sidebar highlander-enabled highlander-light">
+<div id="page" class="hfeed">
+	<header id="branding" role="banner">
+			<hgroup>
+				<h1 id="site-title"><span><a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/" title="Python Conquers The Universe" rel="home">Python Conquers The Universe</a></span></h1>
+				<h2 id="site-description">Adventures across space and time with the Python programming language</h2>
+			</hgroup>
+
+						<a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/">
+									<img src="shore.jpg" alt="" height="288" width="1000">
+							</a>
+			
+								<form method="get" id="searchform" action="http://pythonconquerstheuniverse.wordpress.com/">
+		<label for="s" class="assistive-text">Search</label>
+		<input value="" class="field" name="s" id="s" placeholder="Search" type="text">
+		<input class="submit" name="submit" id="searchsubmit" value="Search" type="submit">
+	</form>
+			
+			<nav id="access" role="navigation">
+				<h3 class="assistive-text">Main menu</h3>
+								<div class="skip-link"><a sl-processed="1" class="assistive-text" href="#content" title="Skip to primary content">Skip to primary content</a></div>
+				<div class="skip-link"><a sl-processed="1" class="assistive-text" href="#secondary" title="Skip to secondary content">Skip to secondary content</a></div>
+								<div class="menu"><ul><li><a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/">Home</a></li></ul></div>
+			</nav><!-- #access -->
+	</header><!-- #branding -->
+
+
+	<div id="main">
+
+		<div id="primary">
+			<div id="content" role="main">
+
+				
+					<nav id="nav-single">
+						<h3 class="assistive-text">Post navigation</h3>
+						<span class="nav-previous"><a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/05/30/unicode-beginners-introduction-for-dummies-made-simple/" rel="prev"><span class="meta-nav">←</span> Previous</a></span>
+						<span class="nav-next"><a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/07/25/command-line-syntax-some-basic-concepts/" rel="next">Next <span class="meta-nav">→</span></a></span>
+					</nav><!-- #nav-single -->
+
+					
+<article id="post-430" class="post-430 post type-post status-publish format-standard hentry category-unicode">
+	<header class="entry-header">
+		<h1 class="entry-title">Unicode for dummies – just&nbsp;use&nbsp;UTF-8</h1>
+
+				<div class="entry-meta">
+						<span class="sep">Posted on </span><a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/" title="3:29 pm" rel="bookmark"><time class="entry-date" datetime="2010-06-04T15:29:38+00:00">2010/06/04</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a sl-processed="1" class="url fn n" href="http://pythonconquerstheuniverse.wordpress.com/author/stephenferg/" title="View all posts by Steve Ferg" rel="author">Steve Ferg</a></span></span>		</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p><em>Revised 2012-03-18 — fixed a bad link, and removed an incorrect statement about the origin of the terms “big-endian” and “little-endian”.</em></p>
+<p>Commenting on my <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/05/30/unicode-beginners-introduction-for-dummies-made-simple/">previous post about Unicode</a>, an anonymous commentator noted that</p>
+<blockquote><p>the usage of the BOM <em>[the Unicode Byte Order Mark]</em> with UTF-8 is strongly discouraged and really only a Microsoft-ism. It’s not used on Linux or Macs and just tends to get in the way of things.</p></blockquote>
+<p>So it seems worth-while to talk a bit more about the BOM.&nbsp; And in the spirit of&nbsp;<a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/05/30/unicode-beginners-introduction-for-dummies-made-simple/">Beginners Introduction for Dummies Made Simple</a>,&nbsp;let’s begin at the beginning: by&nbsp;distinguishing big and little from left and right.</p>
+<h2><span style="color: rgb(0, 0, 255);">Big and Little</span></h2>
+<p>“Big” in this context means “more significant”. “Little” means “least significant”.</p>
+<p>Consider the year of American independence&nbsp;— 1776.&nbsp; In the number 1776:</p>
+<ul>
+<li>The least significant (“smallest”) digit&nbsp;is 6. It has the smallest magnitude: it represents 6 * 1, or 6.</li>
+<li>The most significant (“biggest”) digit is 1. It has the largest magnitude: it represents 1 * 1000, or 1000.</li>
+</ul>
+<p>So we say that 1 is located at the <em>big end</em> of 1776 and 6 is located at the<em> small end</em> of 1776.</p>
+<h2><span style="color: rgb(0, 0, 255);">Left and Right</span></h2>
+<div style="width: 228px;" class="wp-caption alignright"><a sl-processed="1" target="_top" href="http://en.wikipedia.org/wiki/Endianness#Etymology"><img alt="The terms big-endian and little-endian derive from Jonathan Swift's satirical novel 'Gulliver’s Travels' by way of Danny Cohen in 1980." src="218px-ei_mit_spiraleierbecher.jpg" title="The terms big-endian and little-endian derive from Jonathan Swift's satirical novel 'Gulliver’s Travels' by way of Danny Cohen in 1980." height="240" width="218"></a><p class="wp-caption-text">The terms big-endian and little-endian derive from Jonathan Swift's satirical novel 'Gulliver’s Travels' by way of Danny Cohen in 1980.</p></div>
+<p>Here are two technical terms: “big endian” and “little endian”.</p>
+<blockquote><p><del datetime="2012-03-18T19:54:58+00:00">These terms are derived from “Big End In” and “Little End In.”</del>&nbsp; According to <a sl-processed="1" href="http://en.wikipedia.org/wiki/Endianness#Etymology" target="_top">Wikipedia</a>, the terms Little-Endian and Big-Endian were introduced in 1980 by Danny Cohen in a paper called <a sl-processed="1" href="http://www.ietf.org/rfc/ien/ien137.txt">“On Holy Wars and a Plea for Peace”</a>.</p></blockquote>
+<p>1776 is a “big endian” number because the “biggest” (most significant) digit is stored in the leftmost position. The big end of 1776 is on the left.</p>
+<p>Big-endian numbers are familiar.&nbsp; Our everyday “arabic” numerals are&nbsp;big-endian representations of numbers.&nbsp; If we used a little-endian representation, the number 1776 would be represented as&nbsp;6771.&nbsp; That is, with the “little” end of 1776&nbsp;— the “smallest” (least significant) digit&nbsp;— in the leftmost position.</p>
+<blockquote><p><em>What do you think?&nbsp;In Roman numerals, 1776 is represented as MDCCLVI. Are Roman numerals big-endian or little-endian?</em></p></blockquote>
+<p>So big and little are not the same as left and right.</p>
+<h2><span style="color: rgb(0, 0, 255);">Byte Order</span></h2>
+<p>Now we’re ready to talk about <em>byte order</em>. And specifically, byte-order in computer architectures.</p>
+<p>Most computer (hardware) architectures agree on bits (ON and OFF) and bytes (a sequence of 8 bits), and byte-level endian-ness. &nbsp;(Bytes are big-endian: the leftmost bit of&nbsp;a byte is the biggest.&nbsp; See <a sl-processed="1" href="http://betterexplained.com/articles/understanding-big-and-little-endian-byte-order/?wwparam=1275657906">Understanding Big and Little Endian Byte Order</a>.)</p>
+<p>But problems come up when handling&nbsp;pieces of data, like large numbers and strings, that are stored in multiple bytes.&nbsp;&nbsp;Different computer architectures use different endian-ness at the level of&nbsp;multi-byte data items (I’ll call them <em>chunks</em> of data).</p>
+<p>In the memory of little-endian computers, the “little” end of a data chunk is stored leftmost. This means that, a data chunk whose logical value is&nbsp;0×12345678 is&nbsp;stored as 4 bytes with the least significant byte to the left, like this: 0×78 0×56 0×34 0×12.</p>
+<ul>
+<li>For those (like me) who are still operating largely at the dummies level: imagine 1776 being stored in memory as 6771.</li>
+</ul>
+<p>Big-endian hardward does the reverse. In the memory of big-endian computers, the “big” end of a data chunk is stored leftmost. This means that a data chunk of&nbsp;0×12345678 is stored as 4 bytes with the most significant byte to the left, like this: 0×12 0×34 0×56 0×78.</p>
+<ul>
+<li>For us dummies: imagine 1776 being stored in memory as 1776.</li>
+</ul>
+<p>Here are some random (but curiously interesting) bits of information, courtesy of the Microsoft Support web-site article <a sl-processed="1" href="http://support.microsoft.com/kb/102025">Explanation of Big Endian and Little Endian Architecture</a>.</p>
+<ul>
+<li>Intel computers are little endian.</li>
+<li>Motorola computers are big endian.</li>
+<li>RISC-based MIPS computers and the DEC Alpha computers are configurable for big endian or little endian.</li>
+<li>Windows NT was designed around a little endian architecture, and runs only&nbsp;on little-endian computers or computers running in little-endian mode.</li>
+</ul>
+<p>In summary, the byte order&nbsp;— the order of the bytes in multi-byte chunks of data — is different on big-endian and little-endian computers.</p>
+<p>Which brings us to…</p>
+<h2><span style="color: rgb(0, 0, 255);">The Unicode Byte Order Mark</span></h2>
+<p>In this section, I’m going shamelessly to rip off information from Jukka K. Korpela’s outstanding <a style="" sl-processed="1" href="http://www.amazon.com/Unicode-Explained-Jukka-K-Korpela/dp/059610121X/ref=sr_1_1?ie=UTF8&amp;s=books&amp;qid=1275657415&amp;sr=1-1">Unicode Explained</a> from O’Reilly (see the section on <em>Byte Order</em> starting on page 300). (See also Jukka’s valuable <a sl-processed="1" title="Link to Jukka Korpel's web page on characters and encodings" href="http://www.cs.tut.fi/%7Ejkorpela/chars/index.html" target="_top">web page on characters and encodings.</a>)</p>
+<p>Suppose you’re running a big-endian computer, and create a file in Unicode’s UTF-16 (two-byte) format.</p>
+<blockquote><p><em>Note that the encoding is the Unicode UTF-16 (two-byte) encoding, not UTF-8 (one-byte). </em><em>That’s an important aspect of the problem, as you will see.</em></p></blockquote>
+<p>You send the file out into the world, and it is downloaded by somebody running a little-endian computer. The recipient knows that the file is in UTF-16 encoding. But the bytes are not in the order that he (with his little-endian computer) expects. The&nbsp;data in the file appears to be&nbsp;scrambled beyond recognition.</p>
+<p>The solution, of course, is simply to tell the recipient that the file was encoded in UTF-16 <em>on a big-endian computer</em>.&nbsp; Ideally, we’d like for the data in the file itself to be able to tell the recipient&nbsp;the byte order (big endian or small endian) that was used when the data was encoded and stored in the file.</p>
+<p>This is exactly what the Unicode byte order mark (BOM) is designed to do.</p>
+<p>Unicode contains two code points reserved specifically for the purpose of indicating byte order: U+FEFF (big endian) and U+FFFE (little endian).</p>
+<p>These code points are used for nothing else than to indicate byte order. If the first two bytes of a file are 0xFEFF or 0xFFFE, then a Unicode decoder knows that those two bytes contain a Unicode BOM, and knows what to do with the BOM.</p>
+<p>This also means that if you (in the role, say, of a forensic computer scientist) must process a mystery file, and you see that the file’s first two bytes contain one of the two Unicode BOMs, you can (with a high probability of being correct) infer that the file is encoded in Unicode UTF-16 format.</p>
+<h2><span style="color: rgb(0, 0, 255);">So: Where’s the BOM?</span></h2>
+<p>In actual practice,&nbsp;most UTF-8 files do <em>not</em> include a BOM.&nbsp; Why not?</p>
+<p>A file that has been encoded using UTF-16 is an ordered sequence of 2-byte chunks. Knowing the order of the bytes within the chunks is crucial to being able to decode the file into the correct Unicode code points.&nbsp; So a BOM should be considered mandatory <em>for files encoded using UTF-16</em>.</p>
+<p>But a file in UTF-8 encoding is an ordered sequence of 1-byte chunks.&nbsp; In&nbsp;UTF-8, a byte and a chunk are essentially the same thing.&nbsp; So with UTF-8, the problem of knowing the order of the bytes within the chunks is simply a non-issue, and&nbsp;a BOM is pointless. And since the Unicode standard does not require the use of the BOM, virtually nobody puts a BOM <em>in files encoded using UTF-8.</em></p>
+<h2><span style="color: rgb(0, 0, 255);">Let’s do UTF-8… all the time!</span></h2>
+<p>It is important to recognize that <a sl-processed="1" href="http://en.wikipedia.org/wiki/UTF-8">UTF-8 is able to represent any character in the Unicode standard</a>. &nbsp;So there is a simple rule for coding English text (i.e. text that uses only or mostly ASCII characters)&nbsp;—</p>
+<p style="text-align: center;"><strong>Always use UTF-8. </strong></p>
+<ul>
+<li>UTF-8&nbsp;is easy to use. You don’t need a BOM.</li>
+<li>UTF-8&nbsp;can encode anything.</li>
+<li>For English or mostly-ASCII text, there is essentially <a sl-processed="1" href="http://en.wikipedia.org/wiki/Comparison_of_Unicode_encodings#Size_issues">no storage penalty</a> for using UTF-8. (Note, however, that if you’re encoding Chinese text, your mileage will differ!)</li>
+</ul>
+<p>What’s not to like!!??</p>
+<h2><span style="color: rgb(0, 0, 255);">UTF-8? For every Unicode code point?!</span></h2>
+<p>How can you possbily encode <em>every </em>character in the entire Unicode character set using only 8 bits!!!!</p>
+<p>Here’s where Joel Spolsky’s (Joel on Software) excellent post <a sl-processed="1" href="http://www.joelonsoftware.com/articles/unicode.html">The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets (No Excuses!)</a> comes in useful.&nbsp; As Joel notes</p>
+<blockquote><p>Some people are under the misconception that Unicode is simply a 16-bit code where each character takes 16 bits and therefore there are 65,536 possible characters. This is not, actually, correct. It is the single most common myth about Unicode, so if you thought that, don’t feel bad.</p></blockquote>
+<p>This is the myth that Unicode is what is known as a Multibyte Character Set (MBCS) or Double-Byte Character Set (DBCS).&nbsp;&nbsp; Hopefully, by now, this myth is dying.</p>
+<p>In fact, UTF-8 is what is known variously as a</p>
+<ul>
+<li>multibyte encoding</li>
+<li>variable-width encoding</li>
+<li>multi-octet encoding (For us dummies, <em>octet</em> == <em>byte</em>. For the difference, see page 46 of Korpela’s <a style="" sl-processed="1" href="http://www.amazon.com/Unicode-Explained-Jukka-K-Korpela/dp/059610121X/ref=sr_1_1?ie=UTF8&amp;s=books&amp;qid=1275657415&amp;sr=1-1">Unicode Explained</a>.)</li>
+</ul>
+<p>Here’s how multibyte encoding works in UTF-8.</p>
+<ul>
+<li>ASCII characters are stored in single bytes.</li>
+<li>Non-ASCII characters are stored in multiple bytes, in a “multibyte sequence”.</li>
+<li>For non-ASCII characters, the first byte in a multibyte sequence is always in the range 0xC0 to 0xFD. The coding of the first byte indicates how many bytes follow, and so indicates the total number of bytes in the multibyte sequence.</li>
+<li>In UTF-8, a multibyte sequence can contain as many as four bytes.</li>
+<li>Originally a multibyte sequence could contain&nbsp;six bytes, but UTF-8 was <a sl-processed="1" href="http://en.wikipedia.org/wiki/UTF-8#Description">restricted to four bytes by RFC 3629</a> in November 2003.</li>
+</ul>
+<p>For a quick overview of how this works at the bit level, take a look at the answer by <strong>dsimard</strong> to the question <a sl-processed="1" href="http://stackoverflow.com/questions/1543613/how-does-utf-8-variable-width-encoding-work">How does UTF-8 “variable-width encoding” work?</a> on stackoverflow.</p>
+<h2><span style="color: rgb(0, 0, 255);">Wrapping it all up</span></h2>
+<p>So that’s it. Our investigation of the BOM has led us to take a closer look at UTF-8 and multibyte encoding.</p>
+<p>And that leads us to a nice place. For the most part, and certainly if you’re working with ASCII data, there is a simple rule.</p>
+<blockquote><p><em>Just use UTF-8 and forget about the BOM.</em></p></blockquote>
+
+<div class="wpa" style="position: relative; width: 300px; text-align: center; padding: 0pt; margin: 10px auto; overflow: hidden; clear: both;">
+<a sl-processed="1" style="position: absolute; text-align: left; display: block; font: 9px/1 sans-serif; text-decoration: underline;" href="http://en.wordpress.com/about-these-ads/" rel="nofollow">About these ads</a>
+<div id="google_ads_div_wpcom_below_post_adsafe_ad_wrapper">
+<div id="google_ads_div_wpcom_below_post_adsafe_ad_container" style="display: inline-block;">
+<div class="gv-placement-sp" id="gv_target_6606458813880372831447928"><iframe src="index_1.html" style="border: 0px none; margin: 0px; padding: 0px; visibility: visible;" id="gv-iframe" frameborder="0" height="267" scrolling="no" width="400"></iframe></div>
+
+
+</div>
+</div>
+
+</div>
+
+
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled"><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-9223888-430-530612b669327" data-src="//widgets.wp.com/likes/#blog_id=9223888&amp;post_id=430&amp;origin=pythonconquerstheuniverse.wordpress.com&amp;obj_id=9223888-430-530612b669327" data-name="like-post-frame-9223888-430-530612b669327"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-9223888-430-530612b669327" src="index_3.html" frameborder="0" height="55px" width="100%"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div style="display: block;" id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<p class="jp-relatedposts-post jp-relatedposts-post0" data-post-format="false"><strong class="jp-relatedposts-post-title"><a href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/?relatedposts_to=406&amp;relatedposts_order=0" title="Unicode Beginners Introduction for Dummies Made&nbsp;Simple
+
+I've been trying to grok Unicode, and it hasn't been easy.&nbsp; But today, I finally got it.&nbsp; And, as it turns out, the basics of Unicode aren't too difficult. The problems that I've been having turn out not to be with Unicode, but with the introductions that I've found.&nbsp; They're pretty confusing.&nbsp; Or maybe I…" rel="nofollow">Unicode Beginners Introduction for Dummies Made&nbsp;Simple</a></strong><br><span>In "Unicode"</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-format="false"><strong class="jp-relatedposts-post-title"><a href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/?relatedposts_to=1680&amp;relatedposts_order=1" title="Unicode - the basics
+
+An introduction to the basics of Unicode, distilled from several earlier posts. In the interests of presenting the big picture, I have painted with a broad brush — large areas are summarized; nits are not picked; hairs are not split; wind resistance is ignored. Unicode = one character set, plus several encodings Unicode is actually…" rel="nofollow">Unicode - the basics</a></strong><br><span>In "Unicode"</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-format="false"><strong class="jp-relatedposts-post-title"><a href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/?relatedposts_to=1419&amp;relatedposts_order=2" title="Unicode for dummies -- Encoding
+
+Another entry in an irregular series of posts about Unicode. Typos fixed 2012-02-22. Thanks Anonymous, and Clinton, for reporting the typos. This is a story about encoding and decoding, with a minor subplot involving Unicode. As our story begins -- on a dark and stormy night, of course -- we find our protagonist deep in…" rel="nofollow">Unicode for dummies -- Encoding</a></strong><br><span>In "Unicode"</span></p></div></div>			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		This entry was posted in <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/category/unicode/" title="View all posts in Unicode" rel="category tag">Unicode</a> by <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/author/stephenferg/">Steve Ferg</a>. Bookmark the <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/" title="Permalink to Unicode for dummies – just&nbsp;use&nbsp;UTF-8" rel="bookmark">permalink</a>.		
+			</footer><!-- .entry-meta -->
+</article><!-- #post-430 -->
+
+						<div id="comments">
+	
+	
+			<h2 id="comments-title">
+			9 thoughts on “<span>Unicode for dummies – just&nbsp;use&nbsp;UTF-8</span>”		</h2>
+
+		
+		<ol class="commentlist">
+				<li class="comment even thread-even depth-1 highlander-comment" id="li-comment-290">
+		<article id="comment-290" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img id="grav-132aeb33251a1eddee3efc87633c0af1-0" alt="" src="132aeb33251a1eddee3efc87633c0af1" class="avatar avatar-68 grav-hashed grav-hijack" height="68" width="68"><span class="fn"><a sl-processed="1" href="http://tzotzioy.blogspot.com/" rel="external nofollow" class="url">ΤΖΩΤΖΙΟΥ</a></span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/#comment-290"><time datetime="2010-06-04T19:13:07+00:00">2010/06/04 at 7:13 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>The “Just use UTF-8 and forget about the BOM” is a sound advice, one with which I couldn’t agree more. However, this leaves millions of MS Windows users on brittle ice. Which version of Windows supports correctly UTF-8 as the default “codepage” for the system (and accordingly the “chcp 65001” thing for the command prompt ecosystem)?</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1 highlander-comment" id="li-comment-292">
+		<article id="comment-292" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img id="grav-ce4ec22e8cf4865d9611f07303089eb6-0" alt="" src="ce4ec22e8cf4865d9611f07303089eb6" class="avatar avatar-68 grav-hashed grav-hijack" height="68" width="68"><span class="fn"><a sl-processed="1" href="http://jizura.com/" rel="external nofollow" class="url">flow</a></span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/#comment-292"><time datetime="2010-06-05T11:41:03+00:00">2010/06/05 at 11:41 am</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>you are perfectly right that character encoding schemes often feel, and act, like ‘brittle ice’. however, i want to promote the idea that especially in an environment like ms windows, with all the legacy stuff lying around, where several layers of the system apply differing heuristics to render text and rely on differing assumptions, trying to ‘max out on utf-8’ is the only thing that will work in the long run. this strategy means (eg in a web application) that when tests or actual usage reveal an encoding error, go through the entire tool stack — os, web server, database, everything — and re-affirm that yes, i want to use utf-8 here. make sure the web page comes out with a meta header stating utf-8, and that the http response header also states utf-8. make sure your source files are all in utf-8, and that your editor / ide also uses that. ah, and for filenames: [-a-z0-8_.], except for tested exceptions that work. this last one is mainly intended for when you want to package your sources in a *.tgz or *.zip and unpack it on another platform; this will often lead to funny results when you go beyond 7-bit us ascii.</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1 highlander-comment" id="li-comment-296">
+		<article id="comment-296" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img id="grav-706032d4a7ad919e210d57a6aa5caccb-0" alt="" src="706032d4a7ad919e210d57a6aa5caccb" class="avatar avatar-68 grav-hashed grav-hijack" height="68" width="68"><span class="fn">Paul</span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/#comment-296"><time datetime="2010-06-07T12:14:29+00:00">2010/06/07 at 12:14 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Its a shame that the BOM is frowned upon when a file is encoded UTF8, since it provides a useful signature check.</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1 highlander-comment" id="li-comment-418">
+		<article id="comment-418" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img id="grav-f1340809bc5256fb324be57bb88b88a9-0" alt="" src="f1340809bc5256fb324be57bb88b88a9" class="avatar avatar-68 grav-hashed grav-hijack" height="68" width="68"><span class="fn">Simon Hibbs</span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/#comment-418"><time datetime="2010-10-28T04:30:21+00:00">2010/10/28 at 4:30 am</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Quote: These terms are derived from “Big End In” and “Little End In.”</p>
+<p>I’ve seen that theory posited before, but Danny Cohen explicitly refers to Guliver in his article, so it’s pretty clear his usage of the terms derives from Swift and the Lilliputians dispute as to which end of an egg should be eaten first.</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-stephenferg bypostauthor even depth-2 highlander-comment" id="li-comment-1391">
+		<article id="comment-1391" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img id="grav-ba3bd1b3d3ba79b1595052ca2f14eb2b-0" alt="" src="ba3bd1b3d3ba79b1595052ca2f14eb2b" class="avatar avatar-39 grav-hashed grav-hijack" height="39" width="39"><span class="fn">Steve Ferg</span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/#comment-1391"><time datetime="2012-03-18T16:42:07+00:00">2012/03/18 at 4:42 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>You’re absolutely correct.  This has been fixed.  Thanks!</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1 highlander-comment" id="li-comment-419">
+		<article id="comment-419" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="mu.gif" class="avatar avatar-68 avatar-default" height="68" width="68"><span class="fn">Walter Dörwald</span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/#comment-419"><time datetime="2010-10-28T05:36:41+00:00">2010/10/28 at 5:36 am</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Also see <a sl-processed="1" href="http://docs.python.org/library/codecs.html#encodings-and-unicode" rel="nofollow">http://docs.python.org/library/codecs.html#encodings-and-unicode</a> for an explaination of UTF-8 and the BOM</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1 highlander-comment" id="li-comment-766">
+		<article id="comment-766" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img id="grav-b575c50823a243bc25771e9818ad08f0-0" alt="" src="b575c50823a243bc25771e9818ad08f0" class="avatar avatar-68 grav-hashed grav-hijack" height="68" width="68"><span class="fn"><a sl-processed="1" href="http://windows8pack.weebly.com/" rel="external nofollow" class="url">costy</a></span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/#comment-766"><time datetime="2011-04-27T13:07:45+00:00">2011/04/27 at 1:07 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Hello! I’m at work surfing around your blog from my new iphone 3gs! Just wanted to say I love reading through your blog and look forward to all your posts! Carry on the great work!</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1 highlander-comment" id="li-comment-858">
+		<article id="comment-858" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img id="grav-6caee048c059d29522426ad86324fa59-0" alt="" src="6caee048c059d29522426ad86324fa59" class="avatar avatar-68 grav-hashed grav-hijack" height="68" width="68"><span class="fn"><a sl-processed="1" href="http://gravatar.com/mrlistersir" rel="external nofollow" class="url">Pim</a></span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/#comment-858"><time datetime="2011-09-12T05:20:13+00:00">2011/09/12 at 5:20 am</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>I agree with Paul that the BOM is a useful signature check for UTF-8 files.<br>
+In fact, it’s more useful for UTF-8 than for UTF-16 or UTF-32. If a computer program has to guess what encoding a BOM-less file is in, checking the first four bytes will provide enough information in the majority of cases. But not for UTF-8! UTF-8 will look just like any 1-byte charset in the absense of a BOM.</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1 highlander-comment" id="li-comment-2897">
+		<article id="comment-2897" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img id="grav-e2a667e5b251d7aaed6674206e2d4465-0" alt="" src="e2a667e5b251d7aaed6674206e2d4465" class="avatar avatar-68 grav-hashed grav-hijack" height="68" width="68"><span class="fn">Aditya</span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/#comment-2897"><time datetime="2013-04-29T06:50:49+00:00">2013/04/29 at 6:50 am</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Nice article,lucid ,concise and to the point.Though a small paragraph on why UTF-16 did come up or why someone/some people felt the need for UTF-16 would make “always using UTF-8″ an even better “informed” decision. Juxtapose them ,I feel it may help. Anyways it’s just a suggestion <img src="icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+		</ol>
+
+		
+				<p class="nocomments">Comments are closed.</p>
+		
+	
+			
+</div><!-- #comments -->
+
+				
+			</div><!-- #content -->
+		</div><!-- #primary -->
+
+
+	</div><!-- #main -->
+
+	<footer id="colophon" role="contentinfo">
+
+			
+
+			<div id="site-generator">
+				<a sl-processed="1" href="http://theme.wordpress.com/themes/twentyeleven/" title="Learn more about this theme">The Twenty Eleven Theme</a> <span class="sep"> | </span>				<a sl-processed="1" href="http://wordpress.com/?ref=footer">Blog at WordPress.com</a>.
+			</div>
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+
+
+
+	
+
+		<div style="display: none;">
+	<div class="grofile-hash-map-132aeb33251a1eddee3efc87633c0af1">
+	</div>
+	<div class="grofile-hash-map-ce4ec22e8cf4865d9611f07303089eb6">
+	</div>
+	<div class="grofile-hash-map-706032d4a7ad919e210d57a6aa5caccb">
+	</div>
+	<div class="grofile-hash-map-f1340809bc5256fb324be57bb88b88a9">
+	</div>
+	<div class="grofile-hash-map-ba3bd1b3d3ba79b1595052ca2f14eb2b">
+	</div>
+	<div class="grofile-hash-map-d41d8cd98f00b204e9800998ecf8427e">
+	</div>
+	<div class="grofile-hash-map-b575c50823a243bc25771e9818ad08f0">
+	</div>
+	<div class="grofile-hash-map-6caee048c059d29522426ad86324fa59">
+	</div>
+	<div class="grofile-hash-map-e2a667e5b251d7aaed6674206e2d4465">
+	</div>
+	</div>
+
+	<div style="bottom: -298px;" id="bit" class="loggedout-follow-normal">
+		<a sl-processed="1" class="bsub" href="javascript:void(0)"><span id="bsub-text">Follow</span></a>
+		<div id="bitsubscribe">
+
+					<h3><label for="loggedout-follow-field">Follow “Python Conquers The Universe”</label></h3>
+
+			<form action="https://subscribe.wordpress.com/" method="post" accept-charset="utf-8" id="loggedout-follow">
+			<p>Get every new post delivered to your Inbox.</p>
+
+			<p id="loggedout-follow-error" style="display: none;"></p>
+
+						<p class="bit-follow-count">Join 167 other followers</p>
+			<p><input name="email" value="Enter your email address" onfocus='this.value=(this.value=="Enter your email address") ? "" : this.value;' onblur='this.value=(this.value=="") ? "Enter email address" : this.value;' id="loggedout-follow-field" type="email"></p>
+
+			<input name="action" value="subscribe" type="hidden">
+			<input name="blog_id" value="9223888" type="hidden">
+			<input name="source" value="http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/" type="hidden">
+			<input name="sub-type" value="loggedout-follow" type="hidden">
+
+			<input id="_wpnonce" name="_wpnonce" value="ed6575fe6d" type="hidden"><input name="_wp_http_referer" value="/2010/06/04/unicode-for-dummies-just-use-utf-8/" type="hidden">
+			<p id="bsub-subscribe-button"><input value="Sign me up" type="submit"></p>
+			</form>
+					<div id="bsub-credit"><a sl-processed="1" href="http://wordpress.com/signup/?ref=lof">Powered by WordPress.com</a></div>
+		</div><!-- #bitsubscribe -->
+	</div><!-- #bit -->
+	
+			<iframe src="index_4.html" id="likes-master" name="likes-master" style="display: none;" scrolling="no"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		
+
+
+
+
+
+
+<iframe src="index_5.html" style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_5631307277110"></iframe></body>
+</html>

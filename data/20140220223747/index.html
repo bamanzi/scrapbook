@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+  
+    <title>Python 包工具之间的关系 | Life @ Refactoring </title>
+    
+    
+    <link href="http://blog.yangyubo.com/feed.atom" rel="alternate" title="Recent Blog Posts" type="application/atom+xml">
+    
+  
+  
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+    <div class="container">
+      <div class="header">
+        <a href="http://blog.yangyubo.com/"> Yang Yubo</a>'s Life @ Refactoring
+      </div>
+      <div class="navigation">
+        <ul>
+          <li><a href="http://blog.yangyubo.com/">blog</a>
+          </li><li><a href="http://blog.yangyubo.com/archive/">archive</a>
+          </li><li><a href="http://blog.yangyubo.com/tags/">tags</a>
+          </li><li><a href="http://blog.yangyubo.com/about/">about</a>
+        </li></ul>
+      </div>
+      <div class="body">
+      
+  <h1 class="title">
+  Python 包工具之间的关系
+  </h1>
+  
+  <p class="date">written on Friday, July 27, 2012
+  
+
+  </p><p>当前的包管理工具链是 <strong><code>easy_install/pip + distribute/setuptools + distutils</code></strong>, 显得较为混乱。</p>
+<p>而将来的工具链组合非常简单：<strong><code>pip + distutils2</code></strong></p>
+<ul>
+<li>
+<p><code>distutils</code> : Python 自带的基本安装工具, 适用于非常简单的应用场景; 使用:</p>
+<ul>
+<li>为项目创建 <code>setup.py</code> 脚本</li>
+<li>执行 <code>setup.py install</code> 可进行安装</li>
+</ul>
+</li>
+<li>
+<p><code>setuptools</code> : 针对 <code>distutils</code> 做了大量扩展, 尤其是加入了包依赖机制. 在部分 Python 子社区已然是事实上的标准;</p>
+</li>
+<li>
+<p><code>distribute</code> : 由于 <code>setuptools</code> 开发进度缓慢, 不支持 Python 3, 代码混乱, 一帮程序员另起炉灶, 重构代码, 增加功能, 希望能够取代 <code>setuptools</code> 并被接纳为官方标准库, 他们非常努力, 在很短的时间便让社区接受了 <code>distribute</code>;</p>
+</li>
+<li>
+<p><code>easy_install</code> : <code>setuptools</code> 和 <code>distribute</code> 自带的安装脚本, 也就是一旦 <code>setuptools</code> 或 <code>distribute</code> 安装完毕, <code>easy_install</code> 也便可用. 最大的特点是自动查找 Python 官方维护的包源 PyPI , 安装第三方 Python 包非常方便; 使用:</p>
+<ul>
+<li><code>setuptools / distribute</code> 都只是扩展了 <code>distutils</code>;</li>
+<li><code>easy_install [PACKAGE_NAME]</code> 自动从 PyPI 查找/下载/安装指定的包;</li>
+</ul>
+</li>
+<li>
+<p><code>pip</code> : <code>pip</code> 的目标非常明确 – 取代 <code>easy_install</code>. <code>easy_install</code> 有很多不足: 安装事务是非原子操作, 只支持 <code>svn</code>, 没有提供卸载命令, 安装一系列包时需要写脚本; <code>pip</code> 解决了以上问题, 已俨然成为新的事实标准, virtualenv 与它已经成为一对好搭档; 使用:</p>
+<ul>
+<li>安装: <code>pip install [PACKAGE_NAME]</code></li>
+<li>卸载: <code>pip uninstall [PACKAGE_NAME]</code></li>
+<li>支持从任意能够通过 VCS 或浏览器访问到的地址安装 Python 包</li>
+</ul>
+</li>
+<li>
+<p><code>distutils2</code> : <code>setuptools</code> 和 <code>distribute</code> 的诞生是因为 <code>distutils</code> 的不济, 进而导致目前分化的状况. 而 Guido 并未接纳 <code>distribute</code> 为官方标准, 并说明了原因. 开发者在失落之余明确了新的方向和任务 – <code>distutils2</code>, 它将成为 Python 3.3 的标准库 <code>packaging</code> , 并在其它版本中以 <code>distutils2</code> 的身份出现; 换句话说, 它和 <code>pip</code> 将联手结束目前混乱的状况;</p>
+</li>
+<li>
+<p><code>zc.buildout</code> : 这是一个臃肿的安装、部署系统, 在 Zope 社区运用教广, 功能强大/繁复但使用场景有限, 除非确有需要, 不值得投入太多的精力去研究, <code>pip + virtualenv + fabric</code> 的工具链组合更为简单、灵活.</p>
+</li>
+<li>
+<p><a href="http://stackoverflow.com/questions/3220404/why-use-pip-over-easy-install">Why use pip over easy_install?</a></p>
+</li>
+<li><a href="http://stackoverflow.com/questions/6344076/differences-between-distribute-distutils-and-setuptools">Differences between distribute, distutils and setuptools?</a></li>
+<li><a href="http://guide.python-distribute.org/introduction.html#current-state-of-packaging">Current State of Packaging</a></li>
+<li><a href="http://guide.python-distribute.org/future.html">Future of Packaging</a></li>
+<li><a href="http://tarekziade.wordpress.com/2010/03/03/the-fate-of-distutils-pycon-summit-packaging-sprint-detailed-report/">The fate of Distutils – Pycon Summit + Packaging Sprint detailed report</a></li>
+<li><a href="http://wokslog.wordpress.com/2011/06/04/distutils-diff/">A Quick Diff between Distutils and Distutils2</a></li>
+<li><a href="http://tarekziade.wordpress.com/2011/08/19/5-tips-for-packaging-your-python-projects/">5 tips for packaging your Python projects</a></li>
+</ul>
+
+  
+  <p class="tags">This entry was tagged
+    
+      <a href="http://blog.yangyubo.com/tags/notifications/">notifications</a>, 
+      <a href="http://blog.yangyubo.com/tags/packaging/">packaging</a> and 
+      <a href="http://blog.yangyubo.com/tags/python/">python</a>
+  
+
+  
+    
+</p><div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="index_1.html" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 744px ! important;" title="Disqus" tabindex="0" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" scrolling="no" width="100%"></iframe></div>
+
+
+
+
+  
+
+      </div>
+      <div class="footer">
+        <p>© Copyright 2013 by Yang Yubo.</p>
+        <p>
+          Content licensed under the Creative Commons
+          attribution-noncommercial-sharealike License.
+        </p>
+        <p>
+          Contact me via <img alt="Yang Yubo's email address" src="mail.png">,
+          <a href="http://twitter.com/yangyubo">twitter</a>,
+          <a href="http://codinn.com/people/brant">codinn</a>,
+          <a href="http://www.douban.com/people/yospaly/">douban</a> or
+          <a href="https://github.com/brantyoung">github</a>.
+        (<a href="http://blog.yangyubo.com/feed.atom" rel="alternate" title="Life @ Refactoring | Recent Blog Posts">feed</a>)
+        </p>
+        <p>
+          Powered by static blog generator <a href="https://github.com/brantyoung/blogdown">Blogdown</a>
+        </p>
+      </div>
+    </div>
+    
+  
+
+</body>
+</html>

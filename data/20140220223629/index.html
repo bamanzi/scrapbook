@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Unicode for dummies — Encoding | Python Conquers The Universe</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+<link rel="pingback" href="http://pythonconquerstheuniverse.wordpress.com/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="http://s2.wp.com/wp-content/themes/pub/twentyeleven/js/html5.js?m=1354160568g" type="text/javascript"></script>
+<![endif]-->
+<meta name="google-site-verification" content="20kUf4sIlFFHFlkLSm4URLm6SsgHOj23db03npkjWnA">
+<link rel="alternate" type="application/rss+xml" title="Python Conquers The Universe » Feed" href="http://pythonconquerstheuniverse.wordpress.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Python Conquers The Universe » Comments Feed" href="http://pythonconquerstheuniverse.wordpress.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Python Conquers The Universe » Unicode for dummies —&nbsp;Encoding Comments Feed" href="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/feed/">
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://pythonconquerstheuniverse.wordpress.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://pythonconquerstheuniverse.wordpress.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="How to post source code on&nbsp;WordPress" href="http://pythonconquerstheuniverse.wordpress.com/2011/11/06/posting-sourcecode-on-wordpress/">
+<link rel="next" title="Backing up your&nbsp;email" href="http://pythonconquerstheuniverse.wordpress.com/2012/02/13/backing-up-your-email/">
+<meta name="generator" content="WordPress.com">
+<link rel="canonical" href="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/">
+<link rel="shortlink" href="http://wp.me/pCHyo-mT">
+<link rel="alternate" type="application/json+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=json&amp;url=http%3A%2F%2Fpythonconquerstheuniverse.wordpress.com%2F2012%2F02%2F01%2Funicode-for-dummies-encoding%2F&amp;for=wpcom-auto-discovery"><link rel="alternate" type="application/xml+oembed" href="http://public-api.wordpress.com/oembed/1.0/?format=xml&amp;url=http%3A%2F%2Fpythonconquerstheuniverse.wordpress.com%2F2012%2F02%2F01%2Funicode-for-dummies-encoding%2F&amp;for=wpcom-auto-discovery">
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Unicode for dummies -- Encoding">
+<meta property="og:url" content="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/">
+<meta property="og:description" content="Another entry in an irregular series of posts about Unicode. Typos fixed 2012-02-22. Thanks Anonymous, and Clinton, for reporting the typos. This is a story about encoding and decoding, with a mino...">
+<meta property="article:published_time" content="2012-02-01T18:03:19+00:00">
+<meta property="article:modified_time" content="2012-08-05T16:27:44+00:00">
+<meta property="article:author" content="http://pythonconquerstheuniverse.wordpress.com/author/stephenferg/">
+<meta property="og:site_name" content="Python Conquers The Universe">
+<meta property="og:image" content="http://pythonconquerstheuniverse.files.wordpress.com/2012/01/encoding_decoding2.jpg">
+<meta property="og:image" content="http://pythonconquerstheuniverse.files.wordpress.com/2012/02/encoding_decoding_uf8.png">
+<meta property="og:image" content="http://pythonconquerstheuniverse.files.wordpress.com/2012/02/encoding_decoding_utf16.jpg">
+<meta name="twitter:site" content="@wordpressdotcom">
+<meta name="twitter:image" content="http://pythonconquerstheuniverse.files.wordpress.com/2012/01/encoding_decoding2.jpg?w=240">
+<meta name="twitter:card" content="summary">
+<meta property="fb:app_id" content="249643311490">
+<meta property="article:publisher" content="https://www.facebook.com/WordPresscom">
+<link rel="shortcut icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="icon" type="image/x-icon" href="favicon.ico" sizes="16x16 24x24 32x32 48x48">
+<link rel="apple-touch-icon-precomposed" href="http://s0.wp.com/i/webclip.png?m=1391188133g">
+<link rel="openid.server" href="http://pythonconquerstheuniverse.wordpress.com/?openidserver=1">
+<link rel="openid.delegate" href="http://pythonconquerstheuniverse.wordpress.com/">
+<link rel="search" type="application/opensearchdescription+xml" href="http://pythonconquerstheuniverse.wordpress.com/osd.xml" title="Python Conquers The Universe">
+<link rel="search" type="application/opensearchdescription+xml" href="http://wordpress.com/opensearch.xml" title="WordPress.com">
+<meta name="application-name" content="Python Conquers The Universe"><meta name="msapplication-window" content="width=device-width;height=device-height"><meta name="msapplication-tooltip" content="Adventures across space and time with the Python programming language"><meta name="msapplication-task" content="name=Subscribe;action-uri=http://pythonconquerstheuniverse.wordpress.com/feed/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=Sign up for a free blog;action-uri=http://wordpress.com/signup/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Support;action-uri=http://support.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="msapplication-task" content="name=WordPress.com Forums;action-uri=http://forums.wordpress.com/;icon-uri=http://s2.wp.com/i/favicon.ico"><meta name="title" content="Unicode for dummies —&nbsp;Encoding | Python Conquers The Universe on WordPress.com">
+<meta name="description" content="Another entry in an irregular series of posts about Unicode. Typos fixed 2012-02-22. Thanks Anonymous, and Clinton, for reporting the typos. This is a story about encoding and decoding, with a minor subplot involving Unicode. As our story begins -- on a dark and stormy night, of course -- we find our protagonist deep in…">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-1419 single-format-standard mp6 single-author singular two-column right-sidebar highlander-enabled highlander-light">
+<div id="page" class="hfeed">
+	<header id="branding" role="banner">
+			<hgroup>
+				<h1 id="site-title"><span><a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/" title="Python Conquers The Universe" rel="home">Python Conquers The Universe</a></span></h1>
+				<h2 id="site-description">Adventures across space and time with the Python programming language</h2>
+			</hgroup>
+
+						<a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/">
+									<img src="shore.jpg" alt="" height="288" width="1000">
+							</a>
+			
+								<form method="get" id="searchform" action="http://pythonconquerstheuniverse.wordpress.com/">
+		<label for="s" class="assistive-text">Search</label>
+		<input value="" class="field" name="s" id="s" placeholder="Search" type="text">
+		<input class="submit" name="submit" id="searchsubmit" value="Search" type="submit">
+	</form>
+			
+			<nav id="access" role="navigation">
+				<h3 class="assistive-text">Main menu</h3>
+								<div class="skip-link"><a sl-processed="1" class="assistive-text" href="#content" title="Skip to primary content">Skip to primary content</a></div>
+				<div class="skip-link"><a sl-processed="1" class="assistive-text" href="#secondary" title="Skip to secondary content">Skip to secondary content</a></div>
+								<div class="menu"><ul><li><a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/">Home</a></li></ul></div>
+			</nav><!-- #access -->
+	</header><!-- #branding -->
+
+
+	<div id="main">
+
+		<div id="primary">
+			<div id="content" role="main">
+
+				
+					<nav id="nav-single">
+						<h3 class="assistive-text">Post navigation</h3>
+						<span class="nav-previous"><a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2011/11/06/posting-sourcecode-on-wordpress/" rel="prev"><span class="meta-nav">←</span> Previous</a></span>
+						<span class="nav-next"><a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2012/02/13/backing-up-your-email/" rel="next">Next <span class="meta-nav">→</span></a></span>
+					</nav><!-- #nav-single -->
+
+					
+<article id="post-1419" class="post-1419 post type-post status-publish format-standard hentry category-unicode">
+	<header class="entry-header">
+		<h1 class="entry-title">Unicode for dummies —&nbsp;Encoding</h1>
+
+				<div class="entry-meta">
+						<span class="sep">Posted on </span><a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/" title="2:03 pm" rel="bookmark"><time class="entry-date" datetime="2012-02-01T14:03:19+00:00">2012/02/01</time></a><span class="by-author"> <span class="sep"> by </span> <span class="author vcard"><a sl-processed="1" class="url fn n" href="http://pythonconquerstheuniverse.wordpress.com/author/stephenferg/" title="View all posts by Steve Ferg" rel="author">Steve Ferg</a></span></span>		</div><!-- .entry-meta -->
+			</header><!-- .entry-header -->
+
+	<div class="entry-content">
+		<p><em>Another entry in <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/category/unicode/">an irregular series of posts about Unicode</a>.</em><br>
+<em>Typos fixed 2012-02-22.  Thanks Anonymous, and Clinton, for reporting the typos.</em></p>
+<p>This is a story about encoding and decoding, with a minor subplot involving Unicode.</p>
+<p>As our story begins — on a dark and stormy night, of course — we find our protagonist deep in thought.  He is asking himself “What is an encoding?” </p>
+<p><strong>What is an encoding?</strong></p>
+<p>The basic concepts are simple.  First, we start with the idea of a piece of information — a message — that exists in a representation that is understandable (perspicuous) to a human being.  I’m going to call that representation “plain text”.  For English-language speakers, for example, English words printed on a page, or displayed on a screen, count as plain text.  </p>
+<p>Next, (for reasons that we won’t explore right now) we need to be able to translate a message in a plain-text representation into some other representation (let’s call that representation the “encoded text”), and we need to be able to translate the encoded text back into plain text.  The translation from plain text to encoded text is called “encoding”, and the translation of encoded text back into plain text is called “decoding”.</p>
+<p><img src="encoding_decoding2.jpg" alt="encoding and decoding" title="encoding and decoding" class="aligncenter size-full wp-image-1420" border="0"></p>
+<p>There are three points worth noting about this process.  </p>
+<p><strong>The first point</strong> is that no information can be lost during encoding or decoding.  It must be possible for us to send a message on a round-trip journey — from plain text to encoded text, and then back again from encoded text to plain text — and get back exactly the same plain text that we started with.   That is why, for instance, we can’t use one natural language (Russian, Chinese, French, Navaho) as an encoding for another natural language (English, Hindi, Swahili).  The mappings between natural languages are too loose to guarantee that a piece of information can make the round-trip without losing something in translation.</p>
+<p>The requirement for a lossless round-trip means that the mapping between the plain text and the encoded text must be very tight, very exact.  And that brings us to <strong>the second point</strong>.</p>
+<p>In order for the mapping between the plain text and the encoded text to be very tight — which is to say: in order for us to be able to specify very precisely how the encoding and decoding processes work — we must specify very precisely what the plain text representation looks like.  </p>
+<p>Suppose, for example, we say that plain text looks like this:  the 26 upper-case letters of the Anglo-American alphabet, plus the space and three punctuation symbols: period (full stop), question mark, and dash (hyphen).  This gives us a plain-text alphabet of 30 characters.  If we need numbers, we can spell them out, like this: “SIX THOUSAND SEVEN HUNDRED FORTY-THREE”.  </p>
+<p>On the other hand, we may wish to say that our plain text looks like this: 26 upper-case letters, 26 lower-case letters, 10 numeric digits, the space character, and a dozen types of punctuation marks: period, comma, double-quote, left parenthesis, right parenthesis, and so on.  That gives us a plain-text alphabet of 75 characters.</p>
+<p>Once we’ve specified exactly what a plain-text representation of a message looks like — a finite sequence of characters from our 30-character alphabet, or perhaps our 75-character alphabet — then we can devise a system (a code) that can reliably encode and decode plain-text messages written in that alphabet.  The simplest such system is one in which every character in the plain-text alphabet has one and only one corresponding representation in the encoded text.  A familiar example is Morse code, in which “SOS” in plain text corresponds to
+</p><pre>                ... --- ...</pre>
+<p>in encoded text.</p>
+<p>In the real world, of course, the selection of characters for the plain-text alphabet is influenced by technological limitations on the encoded text.  Suppose we have several available technologies for storing encoded messages: one technology supports an encoded alphabet of 256 characters, another technology supports only 128 encoded characters, and a third technology supports only 64 encoded characters.  Naturally, we can make our plain-text alphabet much larger if we know that we can use a technology that supports a larger encoded-text alphabet.</p>
+<p>And the reverse is also true.  If we know that our plain-text alphabet must be very large, then we know that we must find — or devise — a technology capable of storing a large number of encoded characters.</p>
+<p>Which brings us to Unicode.</p>
+<p><strong>Unicode</strong></p>
+<p>Unicode was devised to be a system capable of storing encoded representations of every plain-text character of every human language that has ever existed.  English, French, Spanish.  Greek.  Arabic.  Hindi.  Chinese.  Assyrian (cuneiform characters).</p>
+<p>That’s a lot of characters.</p>
+<p>So the first task of the Unicode initiative was simply to list all of those characters, and count them.  That’s the first half of Unicode, the <a sl-processed="1" href="http://en.wikipedia.org/wiki/Universal_Character_Set">Universal Character Set</a>.  (And if you really want to “talk Unicode”, don’t call plain-text characters “characters”.  Call them “code points”.)</p>
+<p>Once you’ve done that, you’ve got to figure out a technology for storing all of the corresponding encoded-text characters. (In Unicode-speak, the encoded-text characters are called “code values”.)</p>
+<p>In fact Unicode defines not one but several methods of mapping code points to code values.  Each of these methods has its own name.  Some of the names start with “UTF”, others start with “UCS”: UTF-8, UTF-16, UTF-32, UCS-2, UCS-4, and so on.  The naming convention is “UTF-&lt;number of bits in a code value&gt;” and “UCS-&lt;number of bytes in a code value&gt;” Some (e.g. UCS-4 and UTF-32) are functionally equivalent.   See the <a sl-processed="1" href="http://en.wikipedia.org/wiki/Unicode#Mapping_and_encodings" target="_top">Wikipedia article on Unicode</a>.</p>
+<p>The most important thing about these methods is that some are fixed-width encodings and some are variable-width encodings.  The basic idea is that the fixed-width encodings are very long — UCS-4 and UTF-32 are 4 bytes (32 bits) long — long enough to hold the the biggest code value that we will ever need.  </p>
+<p>In contrast, the variable-width encodings are designed to be short, but expandable.  UTF-8, for example, can use as few as 8 bits (one byte) to store Latin and ASCII <del>characters</del> code points.  But it also has a sort of “continued on the next byte” mechanism that allows it to use 2 bytes or even 4 bytes if it needs to (as it might, for Chinese characters).  For Western programmers, that means that UTF-8 is both efficient and flexible, which is why UTF-8 is the de facto standardard encoding for exchanging Unicode text.</p>
+<p>There is, then, no such thing as THE Unicode encoding system or method.  There are <em>several</em> encoding methods, and if you want to exchange text with someone, you need explicitly to specify which encoding method you are using.  </p>
+<p>Is it, say, this.</p>
+<p><img src="encoding_decoding_uf8.png" alt="encoding decoding UTF-8" title="encoding_decoding_uf8" class="aligncenter size-full wp-image-1445"></p>
+<p>Or this.</p>
+<p><img src="encoding_decoding_utf16.jpg" alt="encoding decoding UTF-16" title="encoding_decoding_utf16" class="aligncenter size-full wp-image-1443"></p>
+<p>Or something else.</p>
+<p>Which brings us back to something I said earlier.  </p>
+<p><strong>Why encode something in Unicode?</strong></p>
+<p>At the beginning of this post I said</p>
+<blockquote><p>We start with the idea of a piece of information — a message — that exists in a representation that is understandable (perspicuous) to a human being. </p>
+<p>Next, (for reasons that we won’t explore right now) we need to be able to translate a message in a plain-text representation into some other representation.  The translation from plain text to encoded text is called “encoding”, and the translation of encoded text back into plain text is called “decoding”.</p></blockquote>
+<p>OK.  So now it is time to explore those reasons.  Why might we want to translate a message in a plain-text representation into some other representation?</p>
+<p>One reason, of course, is that we want to keep a secret.  We want to hide the plain text of our message by <em>encrypting </em>and <em>decrypting </em>it — basically, by keeping the algorithms for encoding and decoding secret and private.  </p>
+<p>But that is a completely different subject.  Right now, we’re not interested in keeping secrets; we’re Python programmers and we’re interested in Unicode.  So:</p>
+<blockquote><p><em>Why — as a Python programmer — would I need to be able to translate a plain-text message into some encoded representation… say, a Unicode representation such as UTF-8?</em></p></blockquote>
+<p>Suppose you are happily sitting at your PC, working with your favorite text editor, writing the standard Hello World program in Python (specifically, in Python 3+).  This single line is your entire program.</p>
+<pre>                   print("Hello, world!")
+</pre>
+<p>Here, “Hello, world!” is plain text.  You can see it on your screen.  You can read it. You know what it means.  It is just a string and you can (if you wish) do standard string-type operations on it, such as taking a substring (a slice).</p>
+<p>But now suppose you want to put this string — “Hello, world!” — into a file and save the file on your hard drive.  Perhaps you plan to send the file to a friend.</p>
+<p>That means that you must eject your poor little string from the warm, friendly, protected home in your Python program, where it exists simply as plain-text characters.  You must thrust it into the cold, impersonal, outside world of the file system.  And out there it will exist not as characters, but as mere 1′s and 0′s, a jumble of dits and dots, charged and uncharged particles.  And that means that your happy little plain-text string must be represented <em>by some specific configuration of 1s and 0s</em>, so that when somebody wants to retrieve that collection of 1s and 0s and convert it back into readable plain text, they can.  </p>
+<p>The process of converting a plain text into a specific configuration of 1s and 0s is a process of <em>encoding</em>.  In order to write a string to a file, you must encode it using some encoding system (such as UTF-8).  And to get it back from a file, you must read the file and decode the collection of 1s and 0s back into plain text.</p>
+<p>The need to encode/decode strings when writing/reading them from/to files isn’t something new — it is not an additional burden imposed by Python 3′s new support for Unicode.  It is something you have always done.  But it wasn’t always so obvious.  In earlier versions of Python, the encoding scheme was <a sl-processed="1" href="http://en.wikipedia.org/wiki/ASCII" title="Wikipedia - ASCII">ASCII</a>.  And because, in those olden times, ASCII was pretty much the only game in town, you didn’t need to specify that you wanted to write and read your files in ASCII.  Python just assumed it by default and did it.  But — whether or not you realized it — whenever one of your programs wrote or read strings from a file, Python was busy behind the scene, doing the encoding and decoding for you.  </p>
+<p>So that’s why you — as a Python programmer — need to be able to encode and decode text into, and out of, UTF-8 (or some other encoding: UTF-16, ASCII, whatever).  You need to encode your strings as 1s and 0s so you can put those 1s and 0s into a file and send the file to someone else.</p>
+<p><strong>What is plain text?</strong></p>
+<p>Earlier, I said that there were three points worth noting about the encoding/decoding process, and I discussed the first two.  Here is <strong>the third point</strong>.</p>
+<p>The distinction between plain text and encoded text is relative and context-dependent.  </p>
+<p>As programmers, we think of plain text as being written text.  But it is possible to look at matters differently.  For instance, we can think of spoken text as the plain text, and written text as the encoded text.  From this perspective, writing is encoded speech.  And there are many different encodings for speech as writing. Think of Egyptian hieroglyphics, Mayan hieroglyphics, the Latin alphabet, the Greek alphabet, Arabic, Chinese ideograms, wonderfully flowing <a sl-processed="1" href="http://en.wikipedia.org/wiki/Hindi_script">Devanagari देवनागरी</a>, sharp pointy cuneiform wedges, even shorthand.  These are all written encodings for the spoken word.  They are all, as Thomas Hobbes put it, “Marks by which we may remember our thoughts”.</p>
+<p>Which reminds us that, in a different context, even speech itself — language — may be regarded as a form of encoding.  In much of early modern philosophy (think of Hobbes and Locke) speech (or language) was basically considered to be an encoding of thoughts and ideas.  Communication happens when I encode my thought into language and say something — speak to you.  You hear the sound of my words and decode it back into ideas.  We achieve communication when I successfully transmit a thought from my mind to your mind via language.  You understand me when — as a result of my speech — you have the <em>same</em> idea in your mind as I have in mine.  (See Ian Hacking, <a style="" sl-processed="1" href="http://www.amazon.com/Why-Does-Language-Matter-Philosophy/dp/0521099986/ref=cm_cr_pr_product_top"><em>Why Does Language Matter to Philosophy?</em></a>)</p>
+<p>Finally, note that in other contexts, the “plain text” isn’t even text.  Where the plain text is soundwaves (e.g. music), it can be encoded as an mp3 file.  Where the plain text is an image, it can be encoded as a gif, or png, or jpg file.  Where the plain text is a movie, it can be encoded as a wmv file.  And so on.  </p>
+<p>Everywhere, we are surrounded by encoding and decoding.</p>
+<hr>
+<p><strong>Notes</strong></p>
+<p>I’d like to recommend Eli Bendersky’s recent post on <a sl-processed="1" href="http://eli.thegreenplace.net/2012/01/30/the-bytesstr-dichotomy-in-python-3">The bytes/str dichotomy in Python 3</a>, which prodded me — finally — to put these thoughts into writing.  I especially like this passage in his post.</p>
+<blockquote><p>Think of it this way: a string is an abstract representation of text. A string consists of characters, which are also abstract entities not tied to any particular binary representation. When manipulating strings, we’re living in blissful ignorance. We can split and slice them, concatenate and search inside them. We don’t care how they are represented internally and how many bytes it takes to hold each character in them. We only start caring about this when encoding strings into bytes (for example, in order to send them over a communication channel), or decoding strings from bytes (for the other direction).</p></blockquote>
+<p>I strongly recommend Charles Petzold’s wonderful book <a style="" sl-processed="1" href="http://www.amazon.com/Code-Language-Computer-Hardware-Software/dp/0735611319/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1328110879&amp;sr=1-1"><em>Code: The Hidden Language of Computer Hardware and Software.</em></a></p>
+<p>And finally, I’ve found Stephen Pincock’s <a style="" sl-processed="1" href="http://www.amazon.com/Codebreaker-History-Ciphers-Stephen-Pincock/dp/0802715478/ref=sr_1_1?s=books&amp;ie=UTF8&amp;qid=1328110831&amp;sr=1-1"><em>Codebreaker: The History of Secret Communications</em></a> a delightful read.  It will tell you, among many other things, how the famous WWII Navaho codetalkers could talk about submarines and dive bombers… despite the fact that there are no Navaho words for “submarine” or “dive bomber”.</p>
+
+<div class="wpa" style="position: relative; width: 300px; text-align: center; padding: 0pt; margin: 10px auto; overflow: hidden; clear: both;">
+<a sl-processed="1" style="position: absolute; text-align: left; display: block; font: 9px/1 sans-serif; text-decoration: underline;" href="http://en.wordpress.com/about-these-ads/" rel="nofollow">About these ads</a>
+<div id="google_ads_div_wpcom_below_post_adsafe_ad_wrapper">
+<div id="google_ads_div_wpcom_below_post_adsafe_ad_container" style="display: inline-block;">
+<div class="gv-placement-sp" id="gv_target_6606458813880372831447928"><iframe src="index_1.html" style="border: 0px none; margin: 0px; padding: 0px; visibility: visible;" id="gv-iframe" frameborder="0" height="267" scrolling="no" width="400"></iframe></div>
+
+
+</div>
+</div>
+
+</div>
+
+
+<div id="jp-post-flair" class="sharedaddy sd-like-enabled"><div class="sharedaddy sd-block sd-like jetpack-likes-widget-wrapper jetpack-likes-widget-loaded" id="like-post-wrapper-9223888-1419-530612b259377" data-src="//widgets.wp.com/likes/#blog_id=9223888&amp;post_id=1419&amp;origin=pythonconquerstheuniverse.wordpress.com&amp;obj_id=9223888-1419-530612b259377" data-name="like-post-frame-9223888-1419-530612b259377"><h3 class="sd-title">Like this:</h3><div class="likes-widget-placeholder post-likes-widget-placeholder" style="height: 55px; display: none;"><span class="button"><span>Like</span></span> <span class="loading">Loading...</span></div><iframe class="post-likes-widget jetpack-likes-widget" name="like-post-frame-9223888-1419-530612b259377" src="index_3.html" frameborder="0" height="55px" width="100%"></iframe><span class="sd-text-color"></span><a class="sd-link-color"></a></div>
+<div style="display: block;" id="jp-relatedposts" class="jp-relatedposts">
+	<h3 class="jp-relatedposts-headline"><em>Related</em></h3>
+<p class="jp-relatedposts-post jp-relatedposts-post0" data-post-format="false"><strong class="jp-relatedposts-post-title"><a href="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/?relatedposts_to=1680&amp;relatedposts_order=0" title="Unicode - the basics
+
+An introduction to the basics of Unicode, distilled from several earlier posts. In the interests of presenting the big picture, I have painted with a broad brush — large areas are summarized; nits are not picked; hairs are not split; wind resistance is ignored. Unicode = one character set, plus several encodings Unicode is actually…" rel="nofollow">Unicode - the basics</a></strong><br><span>In "Unicode"</span></p><p class="jp-relatedposts-post jp-relatedposts-post1" data-post-format="false"><strong class="jp-relatedposts-post-title"><a href="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/?relatedposts_to=430&amp;relatedposts_order=1" title="Unicode for dummies – just use&nbsp;UTF-8
+
+Revised 2012-03-18 — fixed a bad link, and removed an incorrect statement about the origin of the terms " big-endian"="" and="" "little-endian".="" commenting="" on="" my="" previous="" post="" about="" unicode,="" an="" anonymous="" commentator="" noted="" that="" the="" usage="" of="" bom="" [the="" unicode="" byte="" order="" mark]="" with="" utf-8="" is="" strongly="" discouraged="" really="" only="" a="" microsoft-ism.="" it’s="" not&hellip;"="" rel="nofollow">Unicode for dummies – just use&nbsp;UTF-8</a></strong><br><span>In "Unicode"</span></p><p class="jp-relatedposts-post jp-relatedposts-post2" data-post-format="false"><strong class="jp-relatedposts-post-title"><a href="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/?relatedposts_to=406&amp;relatedposts_order=2" title="Unicode Beginners Introduction for Dummies Made&nbsp;Simple
+
+I've been trying to grok Unicode, and it hasn't been easy.&nbsp; But today, I finally got it.&nbsp; And, as it turns out, the basics of Unicode aren't too difficult. The problems that I've been having turn out not to be with Unicode, but with the introductions that I've found.&nbsp; They're pretty confusing.&nbsp; Or maybe I…" rel="nofollow">Unicode Beginners Introduction for Dummies Made&nbsp;Simple</a></strong><br><span>In "Unicode"</span></p></div></div>			</div><!-- .entry-content -->
+
+	<footer class="entry-meta">
+		This entry was posted in <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/category/unicode/" title="View all posts in Unicode" rel="category tag">Unicode</a> by <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/author/stephenferg/">Steve Ferg</a>. Bookmark the <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/" title="Permalink to Unicode for dummies —&nbsp;Encoding" rel="bookmark">permalink</a>.		
+			</footer><!-- .entry-meta -->
+</article><!-- #post-1419 -->
+
+						<div id="comments">
+	
+	
+			<h2 id="comments-title">
+			7 thoughts on “<span>Unicode for dummies —&nbsp;Encoding</span>”		</h2>
+
+		
+		<ol class="commentlist">
+				<li class="comment even thread-even depth-1 highlander-comment" id="li-comment-1322">
+		<article id="comment-1322" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img id="grav-d59cb9321a7a2a3ea5e5790345279ac2-0" alt="" src="d59cb9321a7a2a3ea5e5790345279ac2" class="avatar avatar-68 grav-hashed grav-hijack" height="68" width="68"><span class="fn"><a sl-processed="1" href="http://milliams.com/" rel="external nofollow" class="url">Matt Williams</a></span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/#comment-1322"><time datetime="2012-02-01T15:23:38+00:00">2012/02/01 at 3:23 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Excellent read, thanks for that. For further reading, I’d suggest Joel Spolsky’s article at <a sl-processed="1" href="http://www.joelonsoftware.com/articles/Unicode.html" rel="nofollow">http://www.joelonsoftware.com/articles/Unicode.html</a></p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1 highlander-comment" id="li-comment-1325">
+		<article id="comment-1325" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img id="grav-d768e9263e1cd35f2d7b4d7f96116301-0" alt="" src="d768e9263e1cd35f2d7b4d7f96116301" class="avatar avatar-68 grav-hashed grav-hijack" height="68" width="68"><span class="fn"><a sl-processed="1" href="http://stomp.colorado.edu/blog/" rel="external nofollow" class="url">Erinn Looney-Triggs</a></span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/#comment-1325"><time datetime="2012-02-01T21:02:12+00:00">2012/02/01 at 9:02 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Pulled together a lot of bits for me that had been floating around in my head. Thanks for writing this up, very nice work.</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1 highlander-comment" id="li-comment-1331">
+		<article id="comment-1331" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img alt="" src="mu.gif" class="avatar avatar-68 avatar-default" height="68" width="68"><span class="fn">Anonymous</span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/#comment-1331"><time datetime="2012-02-04T00:54:47+00:00">2012/02/04 at 12:54 am</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Very good blog post.<br>
+Just one small comment: In your first example you write about “26 upper-case letters”. Thus the number should be represented in upper-case letters instead of lower-case letters imho. (“SIX THOUSAND SEVEN HUNDRED FORTY-THREE”).</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1 highlander-comment" id="li-comment-1348">
+		<article id="comment-1348" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img id="grav-d3bd7339e1941bc25c05110b69a82721-0" alt="" src="d3bd7339e1941bc25c05110b69a82721" class="avatar avatar-68 grav-hashed grav-hijack" height="68" width="68"><span class="fn"><a sl-processed="1" href="http://ich-wars-nicht.ch/" rel="external nofollow" class="url">Danilo</a></span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/#comment-1348"><time datetime="2012-02-13T06:47:01+00:00">2012/02/13 at 6:47 am</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>I strongly recommend this article: <a sl-processed="1" href="http://www.joelonsoftware.com/articles/Unicode.html" rel="nofollow">http://www.joelonsoftware.com/articles/Unicode.html</a></p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment byuser comment-author-stephenferg bypostauthor even thread-even depth-1 highlander-comment" id="li-comment-1358">
+		<article id="comment-1358" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img id="grav-ba3bd1b3d3ba79b1595052ca2f14eb2b-0" alt="" src="ba3bd1b3d3ba79b1595052ca2f14eb2b" class="avatar avatar-68 grav-hashed grav-hijack" height="68" width="68"><span class="fn">Steve Ferg</span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/#comment-1358"><time datetime="2012-02-22T22:45:50+00:00">2012/02/22 at 10:45 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Thanks for reporting this.  Fixed now.  <img src="icon_smile.gif" alt=":-)" class="wp-smiley"> </p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1 highlander-comment" id="li-comment-1543">
+		<article id="comment-1543" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img id="grav-50fc5ca4e4bc30983c16094e66434c42-0" alt="" src="50fc5ca4e4bc30983c16094e66434c42" class="avatar avatar-68 grav-hashed grav-hijack" height="68" width="68"><span class="fn">Vina Smith</span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/#comment-1543"><time datetime="2012-04-21T04:07:53+00:00">2012/04/21 at 4:07 am</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>can you explain again about the meaning of encoding and decoding in simple sentences? i still confused about it..thank you.</p>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-stephenferg bypostauthor even depth-2 highlander-comment" id="li-comment-1546">
+		<article id="comment-1546" class="comment">
+			<footer class="comment-meta">
+				<div class="comment-author vcard">
+					<img id="grav-ba3bd1b3d3ba79b1595052ca2f14eb2b-1" alt="" src="ba3bd1b3d3ba79b1595052ca2f14eb2b_001.dat" class="avatar avatar-39 grav-hashed grav-hijack" height="39" width="39"><span class="fn">Steve Ferg</span> on <a sl-processed="1" href="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/#comment-1546"><time datetime="2012-04-21T17:00:28+00:00">2012/04/21 at 5:00 pm</time></a> <span class="says">said:</span>
+									</div><!-- .comment-author .vcard -->
+
+				
+			</footer>
+
+			<div class="comment-content"><p>Roughly speaking, encoding is a kind of translation.</p>
+<p>You can think of translation as a function <i>translate</i> that takes three arguments:</p>
+<blockquote><p>
+translate(V, old, new)
+</p></blockquote>
+<p>where </p>
+<ul>
+<li>V    is the value to be translated</li>
+<li>old  is the name of the format in which V is currently stored</li>
+<li>new  is the name of the format into which which we want V to be translated</li>
+</ul>
+<p>Here are some examples.</p>
+<blockquote><pre>translate("ABC", uppercase, lowercase)   returns "abc"   # like Python's "lower" string method
+translate("abc", lowercase, uppercase)   returns "ABC"   # like Python's "upper" string method
+
+translate("1", string, integer)   returns  1  # translate a string to an integer, like Python's <strong>int </strong>function
+translate( 1 , integer, string)   returns "1" # translate an integer to a string, like Python's <strong>str </strong>function
+
+translate("one", english, spanish)   returns "uno"  # translate from english into spanish
+translate("uno", spanish, english)   returns "one"  # translate from spanish into english
+</pre>
+</blockquote>
+<p>In the last example, we could move the second argument (the name of the old format) out of the argument list and into the function name.  That means replacing the general <i>translate</i> function with two specialized functions: <i>translate_spanish</i> and <i>translate_english</i> like this.</p>
+<blockquote><pre>translate_english("one", spanish)   returns "uno"   # translate from english into spanish
+translate_spanish("uno", english)   returns "one"   # translate from spanish into english
+</pre>
+</blockquote>
+<p>And we could move the first argument (the value) out of the argument list by making our two functions into methods, like this.</p>
+<blockquote><pre>"one".translate_english(spanish)   returns "uno"   # translate from english into spanish
+"uno".translate_spanish(english)   returns "one"   # translate from spanish into english
+</pre>
+</blockquote>
+<p>Note that for this to work, our formats — our two languages — must be treated as two different types, in the same way that, say, <strong>int </strong>and <strong>str </strong>are types.</p>
+<ul>
+<li>“one” is an English word, not a Spanish word. Its type is <strong>English </strong>. </li>
+<li>“uno” is a Spanish word, not an English word. Its type is <strong>Spanish </strong>.</li>
+</ul>
+<p>That means that if we try to do something like this, it will raise a <strong>TypeException </strong>becaue “uno” is not an English word. </p>
+<blockquote><pre>"uno".translate_english(spanish)   # TypeException:  "uno" is not an English word
+</pre>
+</blockquote>
+<hr>
+OK.  Let’s stop now for a minute and catch our breath.<p></p>
+<p>At this point, we understand translation.  So what are “encoding” and “decoding”?</p>
+<p>“Encoding” and “decoding” refer to the translation process, when it is being done in a situation where one of the formats is considered to be the primary (or “plaintext”) format.  In such a situation:</p>
+<ul>
+<li>The process of translating the plain-text format into some other format is called “encoding”.</li>
+<li>The process of translating some other format into the plain-text format is called “decoding”.</li>
+</ul>
+<p>So let’s arbitrarily say that English is the plain-text format, and Spanish is the encoded format.  So instead of talking about “translating English into Spanish”, we can talk about “encoding English into Spanish”.  And instead of talking about “translating Spanish into English”, we can talk about “decoding Spanish into English”.</p>
+<p>And we can change our function names.  We can replace <i>translate_english</i> with <i>encode</i> and replace <i>translate_spanish</i> with <i>decode</i>.</p>
+<blockquote><pre>"one".encode(spanish)   returns "uno"   # translate from english into spanish
+"uno".decode(english)   returns "one"   # translate from spanish into english
+</pre>
+</blockquote>
+<hr>
+<p>So now, let’s talk about Unicode encoding.  </p>
+<p>Let’s use our discussion of English/Spanish translation as a model.  We can start with this.</p>
+<blockquote><pre>x = "one".encode(spanish)  # translate from english into spanish  
+x = "uno".decode(english)  # translate from spanish into english 
+</pre>
+</blockquote>
+<p>We replace the “English” type with a “string” type, and we replace the “Spanish” type with the “bytes” type.  And our English/Spanish dictionary will be replaced by the rules of the Unicode <strong>UTF-8</strong> encoding.</p>
+<blockquote><pre>x = some_string_value.encode("UTF-8")  # translate a string into a byte string in UTF-8 encoding
+x = some_byte_string.decode("UTF-8")   # translate a byte string in UTF-8 encoding into a string
+</pre>
+</blockquote>
+<p>And there you have it.</p>
+<hr>
+<p>So in response to your request, here is the best that I can do in the way of simple sentences.</p>
+<p>“Encoding” and “decoding” simply mean “translation” in a situation where one of the formats is considered to be the “plain-text” format.</p>
+<p>In such a situation:</p>
+<ul>
+<li>Translating a value (a message, an object) from the plain-text format into some other format is called “encoding”.</li>
+<li>Translating a value (a message, an object) from some other format into the plain-text format is called “decoding”.</li>
+</ul>
+</div>
+
+			<div class="reply">
+							</div><!-- .reply -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		</ol>
+
+		
+				<p class="nocomments">Comments are closed.</p>
+		
+	
+			
+</div><!-- #comments -->
+
+				
+			</div><!-- #content -->
+		</div><!-- #primary -->
+
+
+	</div><!-- #main -->
+
+	<footer id="colophon" role="contentinfo">
+
+			
+
+			<div id="site-generator">
+				<a sl-processed="1" href="http://theme.wordpress.com/themes/twentyeleven/" title="Learn more about this theme">The Twenty Eleven Theme</a> <span class="sep"> | </span>				<a sl-processed="1" href="http://wordpress.com/?ref=footer">Blog at WordPress.com</a>.
+			</div>
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+
+
+
+	
+
+		<div style="display: none;">
+	<div class="grofile-hash-map-d59cb9321a7a2a3ea5e5790345279ac2">
+	</div>
+	<div class="grofile-hash-map-d768e9263e1cd35f2d7b4d7f96116301">
+	</div>
+	<div class="grofile-hash-map-d41d8cd98f00b204e9800998ecf8427e">
+	</div>
+	<div class="grofile-hash-map-d3bd7339e1941bc25c05110b69a82721">
+	</div>
+	<div class="grofile-hash-map-ba3bd1b3d3ba79b1595052ca2f14eb2b">
+	</div>
+	<div class="grofile-hash-map-50fc5ca4e4bc30983c16094e66434c42">
+	</div>
+	</div>
+
+	<div style="bottom: -298px;" id="bit" class="loggedout-follow-normal">
+		<a sl-processed="1" class="bsub" href="javascript:void(0)"><span id="bsub-text">Follow</span></a>
+		<div id="bitsubscribe">
+
+					<h3><label for="loggedout-follow-field">Follow “Python Conquers The Universe”</label></h3>
+
+			<form action="https://subscribe.wordpress.com/" method="post" accept-charset="utf-8" id="loggedout-follow">
+			<p>Get every new post delivered to your Inbox.</p>
+
+			<p id="loggedout-follow-error" style="display: none;"></p>
+
+						<p class="bit-follow-count">Join 167 other followers</p>
+			<p><input name="email" value="Enter your email address" onfocus='this.value=(this.value=="Enter your email address") ? "" : this.value;' onblur='this.value=(this.value=="") ? "Enter email address" : this.value;' id="loggedout-follow-field" type="email"></p>
+
+			<input name="action" value="subscribe" type="hidden">
+			<input name="blog_id" value="9223888" type="hidden">
+			<input name="source" value="http://pythonconquerstheuniverse.wordpress.com/2012/02/01/unicode-for-dummies-encoding/" type="hidden">
+			<input name="sub-type" value="loggedout-follow" type="hidden">
+
+			<input id="_wpnonce" name="_wpnonce" value="ed6575fe6d" type="hidden"><input name="_wp_http_referer" value="/2012/02/01/unicode-for-dummies-encoding/" type="hidden">
+			<p id="bsub-subscribe-button"><input value="Sign me up" type="submit"></p>
+			</form>
+					<div id="bsub-credit"><a sl-processed="1" href="http://wordpress.com/signup/?ref=lof">Powered by WordPress.com</a></div>
+		</div><!-- #bitsubscribe -->
+	</div><!-- #bit -->
+	
+			<iframe src="index_4.html" id="likes-master" name="likes-master" style="display: none;" scrolling="no"></iframe>
+		<div id="likes-other-gravatars"><div class="likes-text"><span>%d</span> bloggers like this:</div><ul class="wpl-avatars sd-like-gravatars"></ul></div>
+		
+
+
+
+
+
+
+<iframe src="index_5.html" style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_7570220701359"></iframe></body>
+</html>
