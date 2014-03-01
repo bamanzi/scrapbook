@@ -1,0 +1,565 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>colinux简明安装说明 - 巴蛮子 - 博客园</title>
+<meta name="keywords" content="debian,linux,virtualization">
+
+
+
+
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/bamanzi/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/bamanzi/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/bamanzi/wlwmanifest.xml"> 
+  
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<a name="top"></a>
+<form method="post" action="http://www.cnblogs.com/bamanzi/archive/2012/01/28/colinux-simple-guide.html" id="Form1">
+<div class="aspNetHidden">
+<input name="__EVENTTARGET" id="__EVENTTARGET" value="" type="hidden">
+<input name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" type="hidden">
+<input name="__VIEWSTATE" id="__VIEWSTATE" value="" type="hidden">
+</div>
+
+
+
+
+
+
+
+    
+<!--PageBeginHtml Block Begin-->
+
+
+
+
+
+<!--PageBeginHtml Block End-->
+
+<!--done-->
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+	<a id="lnkBlogLogo" href="http://www.cnblogs.com/bamanzi/"><img id="blogLogo" src="logo.gif" alt="返回主页"></a>			
+		
+<!--done-->
+<h1><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/bamanzi/">巴蛮子的烂笔头</a></h1>
+<h2>好记性不如烂笔头啊。
+<br>跟我联系: bamanzi AT gmail.com <u><a href="http://www.cnblogs.com/bamanzi/articles/1871009.html">更多关于巴蛮子的信息</a></u><br></h2>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+</div><!--end: header 头部 -->
+
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		<div id="navigator">
+			
+<!--done-->
+			<ul id="navList">
+				<li><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+				<li><a id="MyLinks1_IngLink" class="menu" href="http://home.cnblogs.com/ing/">闪存</a></li>
+				<li><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/bamanzi/">首页</a></li>
+				<li></li>
+				<li><a id="MyLinks1_ContactLink" accesskey="9" class="menu" rel="nofollow" href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90">联系</a></li>
+				<li><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://www.cnblogs.com/bamanzi/admin/EditPosts.aspx">管理</a></li>
+				<li><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/bamanzi/rss">订阅</a>
+				<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/bamanzi/rss"><img src="rss.gif" alt="订阅"></a></li>
+			</ul>
+
+
+			<div class="blogStats">
+				
+				
+<!--done-->
+随笔- 50&nbsp;
+文章- 2&nbsp;
+评论- 368&nbsp;
+
+				
+			</div><!--end: blogStats -->
+		</div><!--end: navigator 博客导航栏 -->
+		
+				
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/bamanzi/archive/2012/01/28/colinux-simple-guide.html">colinux简明安装说明</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>很多时候我需要用一些gnu tools来处理一些文件/数据，以前基本上都是用cygwin来完成的。但后来发现了colinux，就不怎么用cygwin了，因为:</p>
+<ul>
+<li>colinux里也可以直接读写Windows的文件(通过cofs)、访问光盘（通过cobd)；</li>
+<li>colinux 里面跑的是原生的Linux，你可以直接安装现成的软件包，尤其是Debian，安装包非常方便，仓库里的资源又异常丰富(cygwin的安装程序实在比较烦，cyg-apt倒还方便一点，但才发现不久。而且Cygwin的包并不是太多）；</li>
+<li>你可以安装sshd, apache这些服务，然后结合colinux提供的port forwarding功能，你的Windows就有了这些服务了；</li>
+<li>colinux 运行也非常快（cygwin里面的东东比较慢，尤其是编译程序，实在是慢得不行），内存耗用也不多，比VirtualBox/VMWare的虚拟机方式强不少；</li>
+<li>cygwin不够稳定，尤其是fork层次较多时碰到的rebase问题非常恼人；</li>
+<li>colinux下可用vncserver方式运行X ( 因为效率的关系，cygwin里面跑X实在力不从心啊）。</li>
+</ul>
+<p>不过有另外一种场合可能不适合用colinux替代Cygwin，那就是其它工具需要调用gnu tools来完成某件事情（比如Emacs里面需要使用grep, find, diff等）——不过这种情况下大都可以用msys和gnuwin32了。</p>
+<p>&nbsp;</p>
+<p>1. 下载colinux安装程序</p>
+<p>&nbsp;&nbsp; <a href="http://sourceforge.net/projects/colinux/files/coLinux-stable/"><span style="font-family: courier new,courier;">http://sourceforge.net/projects/colinux/files/coLinux-stable/</span></a><br><br>2. 下载一个磁盘镜像，coLinux提供了几个主流发行版的磁盘镜像（更新频度不高，基本上只有大版本），，已经安装好了基本系统，只要下载解压即可:</p>
+<p>&nbsp;&nbsp; <a href="http://sourceforge.net/projects/colinux/files/"><span style="font-family: courier new,courier;">http://sourceforge.net/projects/colinux/files/</span></a></p>
+<p>比如Debian 6.0 squeeze:</p>
+<p>&nbsp; <a href="http://sourceforge.net/projects/colinux/files/Images%202.6.x%20Debian/Debian%206.0%20Squeeze/"><span style="font-family: courier new,courier;">http://sourceforge.net/projects/colinux/files/Images%202.6.x%20Debian/Debian%206.0%20Squeeze/</span></a><br><br>3. colinux的基本配置: 以example.conf为底稿，拷贝一个debian6.conf(别的名字也可以)，主要修改以下几个配置就可以了：</p>
+<div class="cnblogs_code">
+<pre># 上一步解压的磁盘镜像位置<br>cobd0="d:\colinux\root_fs.img<br>#将Windows磁盘以cofs文件系统类型提供<br>cofs1="c:\"<br>cofs2="d:\"<br><br>#设置slirp网络服务，这种方式这会将colinux虚拟机变得象一个普通应用一样访问外部网络<br>eth0=slirp</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)">复制代码</a></span></div></div>
+<p><br><br>4. 然后就可以启动colinux了，命令行如下:</p>
+<div class="cnblogs_code">
+<pre>$ colinux-daemon @debian6.conf </pre>
+</div>
+<p>它会自动打开nt console或者fltk console，这跟真实的console很象，甚至可以用Alt-F1..Alt-F6切换多个tty。这console窗口可以关闭再重打开，只要不关闭colinux-daemon进程即可。<br>（不喜欢那个显示Linux内核信息的窗口的话，可以用工具隐藏。或者将colinux注册为服务: <span style="font-family: courier new,courier;">colinux-daemon --install-service colinux @debian6.conf</span>，然后用<span style="font-family: courier new,courier;">sc start colinux</span>启动）</p>
+<p>然后在guest os里面进行如下配置:<br>4.1 用cofs读写Windows磁盘文件: 编辑/etc/fstab，添加如下内容</p>
+<blockquote>
+<p>cofs1 /mnt/c cofs defaults 0 0<br>cofs2 /mnt/d cofs defaults 0 0</p>
+</blockquote>
+<p>4.2 配置网络。上面采用的是slirp方式, colinux会启动自动colinux-slirp-net-daemon.exe这个进程，它对guest os提供了一个dhcp服务器。guest os里面用如下命令可以跟这个dhcp服务器连上:</p>
+<div class="cnblogs_code">
+<pre>$ dhclient eth0</pre>
+</div>
+<p><br>注意slirp方式下，linux里面启动的网络服务外面不能直接访问到，但可以通过slirp-net-daemon实现端口转发，方法是修改配置文件debian6.conf，在eth0=slirp后面添加一些内容(需要重启guest os才能生效):</p>
+<div class="cnblogs_code">
+<pre>#forwarding port 5901 (vncserver) &amp; 22 (ssh server)<br>eth0=slirp,,tcp:5901:5901/tcp:22:22 </pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)">复制代码</a></span></div></div>
+<p>其它的网络配置方法:&nbsp; <a href="http://colinux.wikia.com/wiki/Network">coLinux wiki: Network</a>。</p>
+<p><br>5. 运行X的方法<br>网上大都说用Cygwin/X或者XMing来做X server（andLinux也是选用XMing），但实际运行效果很不好，一方面是Cygwin/X和XMing缺乏一些特性，另一方面是运行得非常慢，而且不太稳定，所以我推荐使用vnc的方式<br><br>5.1 修改colinux的conf文件，确保5901端口被转发</p>
+<div class="cnblogs_code">
+<pre>eth0=slirp,,tcp:5901:5901/tcp:22:22/tcp:8080:80</pre>
+</div>
+<p><br>5.2 guest os里面的操作</p>
+<div class="cnblogs_code">
+<pre>$ apt-get install vnc-serverroot <br>$ apt-get install xfce4root <br>$ su - colinux<br>colinux # cat &gt; ~/.vnc/xstartup &lt;&lt;&lt; EOF<br>#!/bin/shstartxfce4 &amp; <br>EOF<br>colinux # chmod u+x ~/.vnc/startup<br>colinux # vncserver :1 -geometry 1024x768 -depth 16</pre>
+<div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)">复制代码</a></span></div></div>
+<p><br>5.3 然后就可以在Windows里面用vncviewer连接上去了<br>(如果vnc-server启动的时候是用vncserver :2，那么vncviewer就得连5902端口(debian6.conf里面就得配5902端口转发)<br><br>5.4 关闭vnc服务的方法</p>
+<div class="cnblogs_code">
+<pre>colinux # vnc-server -kill :1</pre>
+</div>
+<p>&nbsp;</p>
+<p>参考资料:</p>
+<ul>
+<li><a href="http://colinux.wikia.com/wiki/CoLinuxForDummies">coLinux for dummies - coLinux wikia</a></li>
+<li><a href="http://colinux.wikia.com/wiki/XCoLinux">XCoLinux - coLinux wikia</a></li>
+<li><a href="http://www.andlinux.org/">andLinux</a>: 这是个coLinux的衍生品，提供了不少host os和guest os桌面集成方面的功能，让用户开箱即用: 集成了Windows端的X server (Xming)和sound server (pulseaudio)，增加了Windows桌面工具条和通知栏菜单以启动linux程序，增加了Windows右键菜单以调用guest os里面的程序来打开文件，命令行andcmd.exe工具方便Windows里调用linux里面的命令行... 可惜09年5月发了beta 2之后没有再发过新版本。</li>
+</ul></div><div id="MySignature"><div class="wumii-hook"><div id="wumiiBtnDiv" style="clear: both; overflow: hidden; margin: 0pt; padding: 10px 0pt 0pt; text-shadow: none; text-indent: 0pt;">
+    <div id="wumiiLikeBtnDiv" style="position: static; float: left; display: inline; width: 89px; height: 28px; margin: 0pt 0pt 0pt 329px; padding: 0pt; background: url('widget_buttons_deepblue.png') no-repeat scroll 0pt 0pt transparent; text-indent: 0pt;">
+        <span id="wumiiNumLikes" style="float: left; width: 45px; height: 19px; line-height: 21px; margin: 4px 0pt 0pt; padding: 0pt; color: rgb(56, 92, 128); letter-spacing: 0pt; text-align: center; text-indent: 0pt; font-size: 12px;">0</span>
+        <span style="float: left; width: 40px; height: 29px; margin: 0pt; padding: 0pt; outline: medium none; cursor: pointer;" id="wumiiLikeBtn" hidefocus="true"></span>
+    </div>
+    <div id="wumiiRecommendBtnDiv" style="position: static; clear: none; float: left; display: inline; height: 28px; margin: 0pt; padding: 0pt 5px; text-indent: 0pt;">
+        <span id="wumiiRecommendBtn" hidefocus="true" style="float: left; display: inline; width: 60px; height: 28px; margin: 0pt 0pt 0pt 5px; padding: 0pt; background: url('widget_buttons_deepblue.png') no-repeat scroll -267px 0pt transparent; cursor: pointer; outline: medium none;"></span>
+        <img src="loading.gif" id="wumiiLoading" style="clear: none; display: none; height: 15px; margin: 7px 0pt 0pt 8px; padding: 0pt; border: 0pt none; background: none repeat scroll 0% 0% transparent; cursor: default;" alt="正在加载推荐文章">
+    </div>
+</div><div class="wumii-related-items-div" style="margin: 0pt; border: medium none; padding: 0pt; clear: both; overflow: hidden;">
+    <div class="wumii-internal" style="padding: 0pt; margin: 0pt; border: medium none; clear: both; display: block;">
+        <div class="wumii-widget-title" style="margin: 0pt; border: medium none; padding: 20px 0pt 5px; text-indent: 0pt; text-align: left; font-weight: bold;">您可能也喜欢：</div>
+            <div class="wumii-image-row" style="clear: both; border: medium none; margin: 0pt 0pt 0pt -1px; padding: 0pt; overflow: hidden;">
+                    <a class="wumii-image-block" hidefocus="true" title="选LinuxMint Debian Edition作为俺的家用Linux了" style="display: block; float: left; text-decoration: none; border-bottom: medium none; cursor: pointer; position: relative; margin: 5px 0pt; padding: 5px; width: 102px; text-align: left; outline: medium none; background-image: none; border-left: 1px solid rgb(221, 221, 221) ! important;" href="http://www.cnblogs.com/bamanzi/archive/2011/03/02/linuxmint-debian-edition-as-my-home-desktop.html" onmousedown="this.href='http://app.wumii.com/ext/redirect.htm?url=http%3A%2F%2Fwww.cnblogs.com%2Fbamanzi%2Farchive%2F2011%2F03%2F02%2Flinuxmint-debian-edition-as-my-home-desktop.html&amp;ts=' + (new Date()).getTime() + '&amp;from=http%3A%2F%2Fwww.cnblogs.com%2Fbamanzi%2Farchive%2F2012%2F01%2F28%2Fcolinux-simple-guide.html' + '&amp;ref=relatedItems'; return true;" onmouseup="t=this; setTimeout(function() {t.href='http://www.cnblogs.com/bamanzi/archive/2011/03/02/linuxmint-debian-edition-as-my-home-desktop.html';}, 50); return true;">
+                        <div class="wumii-image-border" style="margin: 0pt; padding: 0pt; width: auto; height: 100px; border: 1px solid rgb(221, 221, 221);"></div>
+                        <img class="wumii-image" onerror="wumiiImageError(this);" src="13351807.png" style="position: absolute; border: medium none; background: none repeat scroll 0% 0% transparent; visibility: visible; padding: 0pt; margin: 0pt; width: 96px; height: 96px; clip: rect(0px, 96px, 96px, 0px); left: 8px; top: 8px;">
+                        <div class="wumii-image-title" style="height: 60px; width: 100%; margin: 3px 0pt 0pt; padding: 0pt; text-indent: 0pt; border: medium none; font: 12px/15px arial; color: rgb(51, 51, 51); overflow: hidden;">选LinuxMint Debian Edition作为俺的家用Linux了</div>
+                    </a>
+                    <a class="wumii-image-block" hidefocus="true" title="Debian 6.0 (squeeze)发布啦  (以及几个有意思的东西)" style="display: block; float: left; text-decoration: none; border-bottom: medium none; cursor: pointer; position: relative; margin: 5px 0pt; padding: 5px; width: 102px; text-align: left; outline: medium none; background-image: none; border-left: 1px solid rgb(221, 221, 221) ! important;" href="http://www.cnblogs.com/bamanzi/archive/2011/03/02/debian-6_0-squeeze-released.html" onmousedown="this.href='http://app.wumii.com/ext/redirect.htm?url=http%3A%2F%2Fwww.cnblogs.com%2Fbamanzi%2Farchive%2F2011%2F03%2F02%2Fdebian-6_0-squeeze-released.html&amp;ts=' + (new Date()).getTime() + '&amp;from=http%3A%2F%2Fwww.cnblogs.com%2Fbamanzi%2Farchive%2F2012%2F01%2F28%2Fcolinux-simple-guide.html' + '&amp;ref=relatedItems'; return true;" onmouseup="t=this; setTimeout(function() {t.href='http://www.cnblogs.com/bamanzi/archive/2011/03/02/debian-6_0-squeeze-released.html';}, 50); return true;">
+                        <div class="wumii-image-border" style="margin: 0pt; padding: 0pt; width: auto; height: 100px; border: 1px solid rgb(221, 221, 221);"></div>
+                        <img class="wumii-image" onerror="wumiiImageError(this);" src="13351794.png" style="position: absolute; border: medium none; background: none repeat scroll 0% 0% transparent; visibility: visible; padding: 0pt; margin: 0pt; width: 96px; height: 96px; clip: rect(0px, 96px, 96px, 0px); left: 8px; top: 8px;">
+                        <div class="wumii-image-title" style="height: 60px; width: 100%; margin: 3px 0pt 0pt; padding: 0pt; text-indent: 0pt; border: medium none; font: 12px/15px arial; color: rgb(51, 51, 51); overflow: hidden;">Debian 6.0 (squeeze)发布啦  (以及几个有意思的东西)</div>
+                    </a>
+                    <a class="wumii-image-block" hidefocus="true" title="Debian testing上加装Mint的软件包，系统变身为LMDE" style="display: block; float: left; text-decoration: none; border-bottom: medium none; cursor: pointer; position: relative; margin: 5px 0pt; padding: 5px; width: 102px; text-align: left; outline: medium none; background-image: none; border-left: 1px solid rgb(221, 221, 221) ! important;" href="http://www.cnblogs.com/bamanzi/archive/2011/03/02/debian-testing-upgrade-to-lmde.html" onmousedown="this.href='http://app.wumii.com/ext/redirect.htm?url=http%3A%2F%2Fwww.cnblogs.com%2Fbamanzi%2Farchive%2F2011%2F03%2F02%2Fdebian-testing-upgrade-to-lmde.html&amp;ts=' + (new Date()).getTime() + '&amp;from=http%3A%2F%2Fwww.cnblogs.com%2Fbamanzi%2Farchive%2F2012%2F01%2F28%2Fcolinux-simple-guide.html' + '&amp;ref=relatedItems'; return true;" onmouseup="t=this; setTimeout(function() {t.href='http://www.cnblogs.com/bamanzi/archive/2011/03/02/debian-testing-upgrade-to-lmde.html';}, 50); return true;">
+                        <div class="wumii-image-border" style="margin: 0pt; padding: 0pt; width: auto; height: 100px; border: 1px solid rgb(221, 221, 221);"></div>
+                        <img class="wumii-image" onerror="wumiiImageError(this);" src="13351790.png" style="position: absolute; border: medium none; background: none repeat scroll 0% 0% transparent; visibility: visible; padding: 0pt; margin: 0pt; width: 96px; height: 96px; clip: rect(0px, 96px, 96px, 0px); left: 8px; top: 8px;">
+                        <div class="wumii-image-title" style="height: 60px; width: 100%; margin: 3px 0pt 0pt; padding: 0pt; text-indent: 0pt; border: medium none; font: 12px/15px arial; color: rgb(51, 51, 51); overflow: hidden;">Debian testing上加装Mint的软件包，系统变身为LMDE</div>
+                    </a>
+                    <a class="wumii-image-block" hidefocus="true" title="LinuxMint Debian Edition 201012安装笔记（不刻盘安装，以及安装过程中的一些问题）" style="display: block; float: left; text-decoration: none; border-bottom: medium none; cursor: pointer; position: relative; margin: 5px 0pt; padding: 5px; width: 102px; text-align: left; outline: medium none; background-image: none; border-left: 1px solid rgb(221, 221, 221) ! important;" href="http://www.cnblogs.com/bamanzi/archive/2011/03/02/install-lmde-from-harddisk.html" onmousedown="this.href='http://app.wumii.com/ext/redirect.htm?url=http%3A%2F%2Fwww.cnblogs.com%2Fbamanzi%2Farchive%2F2011%2F03%2F02%2Finstall-lmde-from-harddisk.html&amp;ts=' + (new Date()).getTime() + '&amp;from=http%3A%2F%2Fwww.cnblogs.com%2Fbamanzi%2Farchive%2F2012%2F01%2F28%2Fcolinux-simple-guide.html' + '&amp;ref=relatedItems'; return true;" onmouseup="t=this; setTimeout(function() {t.href='http://www.cnblogs.com/bamanzi/archive/2011/03/02/install-lmde-from-harddisk.html';}, 50); return true;">
+                        <div class="wumii-image-border" style="margin: 0pt; padding: 0pt; width: auto; height: 100px; border: 1px solid rgb(221, 221, 221);"></div>
+                        <img class="wumii-image" onerror="wumiiImageError(this);" src="wordpress_default.gif" style="position: absolute; border: medium none; background: none repeat scroll 0% 0% transparent; visibility: visible; padding: 0pt; margin: 0pt; width: 96px; height: 96px; clip: rect(0px, 96px, 96px, 0px); left: 8px; top: 8px;">
+                        <div class="wumii-image-title" style="height: 60px; width: 100%; margin: 3px 0pt 0pt; padding: 0pt; text-indent: 0pt; border: medium none; font: 12px/15px arial; color: rgb(51, 51, 51); overflow: hidden;">LinuxMint Debian Edition 201012安装笔记（不刻盘安装，以及安装过程中的一些问题）</div>
+                    </a>
+                    <a class="wumii-image-block" hidefocus="true" title="[debian] backport-sloppy套件介绍" style="display: block; float: left; text-decoration: none; border-bottom: medium none; cursor: pointer; position: relative; margin: 5px 0pt; padding: 5px; width: 102px; text-align: left; outline: medium none; background-image: none; border-left: 1px solid rgb(221, 221, 221) ! important;" href="http://www.cnblogs.com/bamanzi/archive/2011/02/28/debian-backports-sloppy-intro.html" onmousedown="this.href='http://app.wumii.com/ext/redirect.htm?url=http%3A%2F%2Fwww.cnblogs.com%2Fbamanzi%2Farchive%2F2011%2F02%2F28%2Fdebian-backports-sloppy-intro.html&amp;ts=' + (new Date()).getTime() + '&amp;from=http%3A%2F%2Fwww.cnblogs.com%2Fbamanzi%2Farchive%2F2012%2F01%2F28%2Fcolinux-simple-guide.html' + '&amp;ref=relatedItems'; return true;" onmouseup="t=this; setTimeout(function() {t.href='http://www.cnblogs.com/bamanzi/archive/2011/02/28/debian-backports-sloppy-intro.html';}, 50); return true;">
+                        <div class="wumii-image-border" style="margin: 0pt; padding: 0pt; width: auto; height: 100px; border: 1px solid rgb(221, 221, 221);"></div>
+                        <img class="wumii-image" onerror="wumiiImageError(this);" src="wordpress_default.gif" style="position: absolute; border: medium none; background: none repeat scroll 0% 0% transparent; visibility: visible; padding: 0pt; margin: 0pt; width: 96px; height: 96px; clip: rect(0px, 96px, 96px, 0px); left: 8px; top: 8px;">
+                        <div class="wumii-image-title" style="height: 60px; width: 100%; margin: 3px 0pt 0pt; padding: 0pt; text-indent: 0pt; border: medium none; font: 12px/15px arial; color: rgb(51, 51, 51); overflow: hidden;">[debian] backport-sloppy套件介绍</div>
+                    </a>
+            </div>
+    </div>
+        <div style="margin: 0pt; border: medium none; padding: 5px 0pt; clear: both; text-align: right; width: 564px;">
+            <a href="http://www.wumii.com/widget/relatedItems.htm" target="_top" title="无觅相关文章插件" style="font: 12px arial; color: rgb(187, 187, 187); border-bottom: medium none; word-wrap: normal; display: inline;">无觅</a>
+            
+        </div>
+</div>
+
+</div>
+</div>
+
+<div id="blog_post_info_block">
+<div id="BlogPostCategory"></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/bamanzi/tag/debian/">debian</a>, <a href="http://www.cnblogs.com/bamanzi/tag/linux/">linux</a>, <a href="http://www.cnblogs.com/bamanzi/tag/virtualization/">virtualization</a></div>
+<div id="green_channel" style="">
+绿色通道：<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(cb_entryId,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a><a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a><a id="green_channel_favorite" onclick="AddToWz(2330592);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://space.cnblogs.com/msg/send/%e5%b7%b4%e8%9b%ae%e5%ad%90" target="_top">与我联系</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="icon_sina.gif" alt=""></a>
+</div>
+<div id="digg_block">
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info"><a href="http://home.cnblogs.com/u/bamanzi/" target="_top"><img src="u163248.png" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/bamanzi/">巴蛮子</a><br><a href="http://home.cnblogs.com/u/bamanzi/followees">关注 - 21</a><br><a href="http://home.cnblogs.com/u/bamanzi/followers">粉丝 - 17</a></div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow"><a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a></div>
+</div>
+<div id="div_digg" style="">										
+	<div class="diggit" onclick="DiggIt(cb_entryId,cb_blogId,1)"> 
+		<span class="diggnum" id="digg_count">0</span>
+	</div>
+	<div class="buryit" onclick="DiggIt(cb_entryId,cb_blogId,2)"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">(请您对文章做出评价)</div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/bamanzi/archive/2012/01/03/two-grep-replacement-or-supplement.html" class="p_n_p_prefix">« </a> 博主前一篇：<a href="http://www.cnblogs.com/bamanzi/archive/2012/01/03/two-grep-replacement-or-supplement.html" title="发布于2012-01-03 11:58">grep的两个替代品(补充?)</a><br><a href="http://www.cnblogs.com/bamanzi/archive/2012/02/21/a-few-windows-tools.html" class="p_n_p_prefix">» </a> 博主后一篇：<a href="http://www.cnblogs.com/bamanzi/archive/2012/02/21/a-few-windows-tools.html" title="发布于2012-02-21 22:18">介绍几个Windows下的小工具</a><br></div>
+</div>
+
+
+
+
+
+		</div>
+		<div class="postDesc">posted @ 2012-01-28 16:34 <a href="http://www.cnblogs.com/bamanzi/">巴蛮子</a> 阅读(129) <a href="#commentform">评论(0)</a>  <a href="http://www.cnblogs.com/bamanzi/admin/EditPosts.aspx?postid=2330592" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(2330592);return false;">收藏</a></div>
+	</div>
+	<img src="2330592.html" alt="" height="1px" width="1px">
+	
+</div><!--end: topics 文章、评论容器-->
+
+
+<div id="comment_form" class="commentform">
+
+
+
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="#" onclick="return RefreshCommentList(2330592);" name="commentform" id="lnk_RefreshComments">刷新评论列表</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="commentform_title">发表评论</div>
+<span id="tip_comment" style="color: Red;"></span>
+<p>
+昵称：<input name="ctl05$tbCommentAuthor" id="ctl05_tbCommentAuthor" class="author" value="巴蛮子" disabled="disabled" type="text">
+</p>
+<p>
+主页：<input name="ctl05$tbCommentAuthorUrl" id="ctl05_tbCommentAuthorUrl" class="url" value="http://home.cnblogs.com/u/bamanzi/" disabled="disabled" type="text">
+</p>
+<div class="commentbox_main">
+<div class="commentbox_title">
+<div class="commentbox_title_left">评论内容： <a href="http://q.cnblogs.com/" target="_top">[小提示]新版博问上线</a></div>
+<div class="commentbox_title_right">
+<img id="ubb_quote" class="comment_icon" src="quote.gif" alt="引用" title="添加引用" onclick="insertUBB('tbCommentBody','quote')">
+<img id="ubb_bold" class="comment_icon" src="b.png" alt="粗体" title="添加粗体" onclick="insertUBB('tbCommentBody','b')">
+<img id="ubb_url" class="comment_icon" src="lk.png" alt="链接" title="添加链接" onclick="insertUbbUrl('tbCommentBody')">
+<img id="ubb_indent" class="comment_icon" src="indent.png" alt="缩进" title="添加首行缩进" onclick="insertIndent('tbCommentBody')">
+<img id="ubb_code" class="comment_icon" src="insertcode.gif" alt="代码" title="添加代码" onclick="insertUbbCode()">
+<img id="ubb_img" class="comment_icon" src="img.gif" alt="图片" title="添加图片" onclick="insertUbbImg('tbCommentBody')">
+<a href="javascript:OpenImageUploadWindow();" class="comment_uploadimg_a" title="上传图片并插入评论框">上传图片</a>
+</div>
+</div>
+<div class="clear"></div>
+<textarea id="tbCommentBody" class="comment_textarea" onkeydown="return clt_enter(event)"></textarea>
+</div>
+<p>
+<input id="btn_comment_submit" class="comment_btn" value="提交" onclick="PostComment();return false;" type="button">
+&nbsp;&nbsp;<span id="span_comment_canceledit" style="display: none;"><a href="###" onclick="return CancelCommentEdit()">不改了</a>&nbsp;&nbsp;</span><a href="http://passport.cnblogs.com/logout.aspx?ReturnUrl=http%3a%2f%2fwww.cnblogs.com%2fbamanzi%2farchive%2f2012%2f01%2f28%2fcolinux-simple-guide.html%3flogout%3d1%23commentform" onclick="return confirm('确认注销吗？')">注销</a>&nbsp;&nbsp;
+</p>
+<p>
+[使用Ctrl+Enter键快速提交]
+</p>
+<div style="display: none;">
+<span id="comment_edit_id"></span><span id="span_parentcomment_id">0</span>
+<span id="span_parent_id">2330592</span>
+<span id="span_comment_replyto"></span>
+<span id="span_comment_title">colinux简明安装说明</span>
+<span id="span_comment_posted"></span>
+</div>
+
+<div id="clear_read_link"><a href="http://archive.cnblogs.com/a/2330592/" target="_top">简洁阅读版式</a></div>
+
+<div id="site_nav_under">
+<a href="http://www.cnblogs.com/" target="_top" title="程序员的网上家园">首页</a><a href="http://q.cnblogs.com/" target="_top">博问</a><a href="http://home.cnblogs.com/ing/" target="_top">闪存</a><a href="http://news.cnblogs.com/" target="_top" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/" target="_top">园子</a><a href="http://job.cnblogs.com/" target="_top" title="程序员招聘">招聘</a><a href="http://kb.cnblogs.com/" target="_top">知识库</a> 
+<div id="site_editor_opt"></div>
+
+</div>
+
+<div class="itnews c_ad_block">
+<b>最新IT新闻</b>:<br>
+
+          ·  <a href="http://news.cnblogs.com/n/132158/" target="_top">马云：B2B面临巨大挑战 私有化是对股东负责</a><br>
+	
+          ·  <a href="http://news.cnblogs.com/n/132154/" target="_top">SkyDrive将支持单文件300MB和ODF</a><br>
+	
+          ·  <a href="http://news.cnblogs.com/n/132153/" target="_top">QR 码又迎来一名挑战者</a><br>
+	
+          ·  <a href="http://news.cnblogs.com/n/132152/" target="_top">阿里巴巴公告称私有化B2B和雅虎交易无关</a><br>
+	
+          ·  <a href="http://news.cnblogs.com/n/132151/" target="_top">中国电信将提供iPhone专家服务 主推三大卖点</a><br>
+	
+» <a href="http://news.cnblogs.com/" title="IT新闻" target="_top">更多新闻...</a>
+</div>
+
+
+<div class="itnews c_ad_block" id="kb_block">
+<b>最新知识库文章</b>:<br>
+<div id="kb_recent">
+
+·  <a href="http://kb.cnblogs.com/page/132089/" target="_top">编程：是一门艺术</a><br>
+
+·  <a href="http://kb.cnblogs.com/page/132075/" target="_top">编程是一门艺术吗？</a><br>
+
+·  <a href="http://kb.cnblogs.com/page/132067/" target="_top">对Java初学者的忠告</a><br>
+
+·  <a href="http://kb.cnblogs.com/page/131792/" target="_top">领域驱动设计和开发实战</a><br>
+
+·  <a href="http://kb.cnblogs.com/page/131884/" target="_top">著名编程语录</a><br>
+
+</div>
+» <a href="http://kb.cnblogs.com/" target="_top">更多知识库文章...</a>
+</div>
+
+
+
+
+
+<div id="google_ad_c1" class="c_ad_block">
+<!-- cnblogs_blogpost_C1 -->
+<div id="div-gpt-ad-1320933818841-0" style="width: 300px; height: 250px;">
+
+<iframe src="index_1.html" style="border: 0pt none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C1_0" id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_0" frameborder="0" height="250" scrolling="no" width="300"></iframe><iframe src="index_2.html" style="border: 0pt none; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C1_0__hidden__" id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_0__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>
+</div>
+<div id="google_ad_c2" class="c_ad_block">
+<!-- cnblogs_blogpost_C2 -->
+<div id="div-gpt-ad-1320933818841-1" style="width: 468px; height: 60px;">
+
+<iframe src="index_3.html" style="border: 0pt none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C2_0" id="google_ads_iframe_/1090369/cnblogs_blogpost_C2_0" frameborder="0" height="60" scrolling="no" width="468"></iframe></div>
+</div>
+
+
+<div id="HistoryToday" class="c_ad_block">
+</div>
+
+
+
+
+
+</div>
+
+
+
+
+			
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/bamanzi/">巴蛮子</a><br>园龄：<a href="http://home.cnblogs.com/u/bamanzi/" title="入园时间：2010-10-09">1年4个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/bamanzi/followers/">17</a><br>关注：<a href="http://home.cnblogs.com/u/bamanzi/followees/">21</a><div id="p_b_follow"></div><div id="p_b_ing"><a href="http://home.cnblogs.com/ing/my/">我的闪存</a></div></div>
+</div>
+
+			<div id="calendar"><table id="Calendar1_entryCal" class="Cal" title="Calendar" cellpadding="0" cellspacing="0">
+	<tbody><tr><td colspan="7"><table class="CalTitle" cellspacing="0">
+		<tbody><tr><td class="CalNextPrev"><a href="javascript:__doPostBack('Calendar1$entryCal','V4383')" style="color: Black;" title="Go to the previous month">&lt;</a></td><td align="center">2012年2月</td><td class="CalNextPrev" align="right"><a href="javascript:__doPostBack('Calendar1$entryCal','V4443')" style="color: Black;" title="Go to the next month">&gt;</a></td></tr>
+	</tbody></table></td></tr><tr><th class="CalDayHeader" abbr="日" scope="col" align="center">日</th><th class="CalDayHeader" abbr="一" scope="col" align="center">一</th><th class="CalDayHeader" abbr="二" scope="col" align="center">二</th><th class="CalDayHeader" abbr="三" scope="col" align="center">三</th><th class="CalDayHeader" abbr="四" scope="col" align="center">四</th><th class="CalDayHeader" abbr="五" scope="col" align="center">五</th><th class="CalDayHeader" abbr="六" scope="col" align="center">六</th></tr><tr><td class="CalOtherMonthDay" align="center">29</td><td class="CalOtherMonthDay" align="center">30</td><td class="CalOtherMonthDay" align="center">31</td><td align="center">1</td><td align="center">2</td><td align="center">3</td><td class="CalWeekendDay" align="center">4</td></tr><tr><td class="CalWeekendDay" align="center">5</td><td align="center">6</td><td align="center">7</td><td align="center">8</td><td align="center">9</td><td align="center">10</td><td class="CalWeekendDay" align="center">11</td></tr><tr><td class="CalWeekendDay" align="center">12</td><td align="center">13</td><td align="center">14</td><td align="center">15</td><td align="center">16</td><td align="center">17</td><td class="CalWeekendDay" align="center">18</td></tr><tr><td class="CalWeekendDay" align="center">19</td><td align="center">20</td><td class="CalTodayDay" align="center"><a href="http://www.cnblogs.com/bamanzi/archive/2012/2/21.html"><u>21</u></a></td><td align="center">22</td><td align="center">23</td><td align="center">24</td><td class="CalWeekendDay" align="center">25</td></tr><tr><td class="CalWeekendDay" align="center">26</td><td align="center">27</td><td align="center">28</td><td align="center">29</td><td class="CalOtherMonthDay" align="center">1</td><td class="CalOtherMonthDay" align="center">2</td><td class="CalOtherMonthDay" align="center">3</td></tr><tr><td class="CalOtherMonthDay" align="center">4</td><td class="CalOtherMonthDay" align="center">5</td><td class="CalOtherMonthDay" align="center">6</td><td class="CalOtherMonthDay" align="center">7</td><td class="CalOtherMonthDay" align="center">8</td><td class="CalOtherMonthDay" align="center">9</td><td class="CalOtherMonthDay" align="center">10</td></tr>
+</tbody></table>
+</div>
+			
+			<div id="leftcontentcontainer">
+				
+
+<div class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="widget_my_zzk" class="div_my_zzk"><input value="" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+<div id="SingleColumn1_ctl00_widget_my_google" class="div_my_zzk"><input value="" name="google_q" id="google_q" onkeydown="return google_go_enter(event)" class="input_my_zzk" type="text">&nbsp;<input onclick="google_go()" value="谷歌搜索" class="btn_my_zzk" type="button"></div>
+</div>
+
+
+<div class="catListLink">
+<h3 class="catListTitle">常用链接</h3>
+<ul>
+
+		<li><a id="SingleColumn1_ctl01_rptMainLinks_lnkLinkItem_0" href="http://www.cnblogs.com/bamanzi/MyPosts.html">我的随笔</a></li>
+	
+		<li><a id="SingleColumn1_ctl01_rptMainLinks_lnkLinkItem_1" href="http://www.cnblogs.com/bamanzi/MyComments.html">我的评论</a></li>
+	
+		<li><a id="SingleColumn1_ctl01_rptMainLinks_lnkLinkItem_2" title="我发表过评论的随笔" href="http://www.cnblogs.com/bamanzi/OtherPosts.html">我的参与</a></li>
+	
+		<li><a id="SingleColumn1_ctl01_rptMainLinks_lnkLinkItem_3" href="http://www.cnblogs.com/bamanzi/RecentComments.html">最新评论</a></li>
+	
+		<li><a id="SingleColumn1_ctl01_rptMainLinks_lnkLinkItem_4" href="http://www.cnblogs.com/bamanzi/tag/">我的标签</a></li>
+	
+<li><a id="itemListLink" onclick="this.blur();WarpClass('itemListLink', 'itemListLin_con');return false;" href="#">更多链接</a></li>
+</ul>
+<div id="itemListLin_con" style="display: none;">
+<ul>
+
+</ul>
+</div>
+</div>
+<div class="catListEssay">
+<h3 class="catListTitle">最新随笔</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/bamanzi/archive/2012/02/21/a-few-windows-tools.html">1. 介绍几个Windows下的小工具</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2012/01/28/colinux-simple-guide.html">2. colinux简明安装说明</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2012/01/03/two-grep-replacement-or-supplement.html">3. grep的两个替代品(补充?)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/12/17/cnblogs-lisp-code-hilight.html">4. 在博客园添加Lisp(或其它)代码高亮</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/12/10/firefox-too-many-tabs.html">5. Firefox上打开的标签页太多怎么办？</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/10/15/javascript-lint-with-jsdb.html">6. 最容易安装的javascript lint工具</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/10/09/emacs-outline-org-like.html">7. [emacs] org-mode风格的代码分段与折叠</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/10/06/mingw-javascript-v8.html">8. 用mingw编译javascript v8</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/08/29/opensuse-zypper-proxy-crazy.html">9. 吐槽文: opensuse里zypper的proxy设置问题</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/08/20/some-emacs-window-utils.html">10. Emacs窗口管理几个好东东</a></li>
+</ul>
+</div>
+
+
+<div class="catListTag">
+<h3 class="catListTitle">我的标签</h3>
+<ul>
+<li><a href="http://www.cnblogs.com/bamanzi/tag/emacs/">emacs(35)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/linux/">linux(7)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/firefox/">firefox(6)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/debian/">debian(6)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/delphi/">delphi(3)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/chm/">chm(3)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/lmde/">lmde(3)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/python/">python(3)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/microemacs/">microemacs(2)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/javascript/">javascript(2)</a></li><li><a href="http://www.cnblogs.com/bamanzi/tag/">更多</a></li>
+</ul>
+</div>
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案<span style="font-size: 11px; font-weight: normal;">(50)</span></h3>
+
+<ul>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/bamanzi/archive/2012/01.html">2012年1月 (2)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/bamanzi/archive/2011/12.html">2011年12月 (2)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/bamanzi/archive/2011/10.html">2011年10月 (3)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/bamanzi/archive/2011/08.html">2011年8月 (4)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/bamanzi/archive/2011/07.html">2011年7月 (1)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/bamanzi/archive/2011/06.html">2011年6月 (6)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/bamanzi/archive/2011/05.html">2011年5月 (2)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/bamanzi/archive/2011/04.html">2011年4月 (8)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/bamanzi/archive/2011/03.html">2011年3月 (12)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/bamanzi/archive/2011/02.html">2011年2月 (4)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/bamanzi/archive/2010/11.html">2010年11月 (2)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/bamanzi/archive/2010/10.html">2010年10月 (2)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/bamanzi/archive/2010/04.html">2010年4月 (2)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListArticleArchive">
+<h3 class="catListTitle">文章档案<span style="font-size: 11px; font-weight: normal;">(2)</span></h3>
+
+<ul>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_1_Link_0" rel="nofollow" href="http://www.cnblogs.com/bamanzi/archives/2011/08.html">2011年8月 (1)</a> </li>
+
+<li><a id="SingleColumn1_Categories_CatList_LinkList_1_Link_1" rel="nofollow" href="http://www.cnblogs.com/bamanzi/archives/2010/11.html">2010年11月 (1)</a> </li>
+
+</ul>
+
+</div>
+
+
+
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	13507
+	</li><li class="liRank">
+		排名 -	7031
+	</li>
+</ul>
+</div>
+
+
+
+<div class="catListComment">
+<h3 class="catListTitle">最新评论<a id="SingleColumn1__27b5106_RSSHyperlink1" title="RSS订阅最最新评论" href="http://www.cnblogs.com/bamanzi/CommentsRSS.aspx"><img title="RSS订阅最最新评论" src="xml.gif" alt=""></a></h3>
+
+	<div id="RecentCommentsBlock"><ul>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/firefox-keysnail-tips.html#2306343">1. Re:keysnail 使用方法与一些技巧搜集贴</a></li>
+    <li class="recent_comment_body">key.setGlobalKey(['C-&lt;f11&gt;', 'C-s'], function (ev, arg) { toggleSidebar("viewScrapBookSidebar");
+}, 'Toggle Scrapbook sidebar (extension Scrapbook or Scrapbook Plus)'); key.setGlobalKey(['C-&lt;f11...</li>
+    <li class="recent_comment_author">--巴蛮子</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/firefox-keysnail-tips.html#2306338">2. Re:keysnail 使用方法与一些技巧搜集贴</a></li>
+    <li class="recent_comment_body">Show translation for selection (extension Wiktionary &amp; Google Translate needed)
+ext.add("wiktionary-lookup-selection", function() { if (!getBrowserSelection()) { display.echoStatusBar("Wik...</li>
+    <li class="recent_comment_author">--巴蛮子</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/archive/2011/12/10/firefox-too-many-tabs.html#2305335">3. Re:Firefox上打开的标签页太多怎么办？</a></li>
+    <li class="recent_comment_body">&gt; TGM跟Firefox 4+版本的“标签栏置顶”配合起来有点别扭：分组栏在下面，组内的多个Tab反而在上面，用起来感觉很奇怪吧？所以最新的版本里面好像TGM强制把它的工 具栏和标签蓝组合在一起了，也就是说TGM分组总之时在上方，这样的话标题栏这块实用面积又得放弃了我从该扩展的评论中看到，最新的TGM可以解决这个问题了, 不过要自己设置一下。 enable "tabs on top" alon...</li>
+    <li class="recent_comment_author">--巴蛮子</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/archive/2011/12/10/firefox-too-many-tabs.html#2303809">4. Re:Firefox上打开的标签页太多怎么办？</a></li>
+    <li class="recent_comment_body">TooManyTabs的chrome版本: http://www.visibotech.com/TMTChrome/感觉比firefox版本好用，不过这个chrome版本是完全面向鼠标的[img]https://lh4.googleusercontent.com/M3bTRcfMbd5r7g8mnZLG0xoBU4gtMCPYce3jKXUnCY-0IatrMiorSCzLf9R9q5CdM22_...</li>
+    <li class="recent_comment_author">--巴蛮子</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/bamanzi/archive/2011/05/13/2045475.html#2301984">5. Re:记事本贴</a></li>
+    <li class="recent_comment_body">highlight-changes without bg, but with underlineupd: wind/window-number.el (HTML?)mov: color-theme/utils/-revert-theme -&gt; themes,rem: misc/goto-chg, misc/goto-last-change, emu/key-choices,add: vc/psvn...</li>
+    <li class="recent_comment_author">--巴蛮子</li>
+</ul>
+</div>
+</div>
+
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/bamanzi/archive/2010/10/19/iphone-chm-viewer-comparision.html">1. iPhone上面几个CHM阅读工具对比(4749)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/05/06/emacs-code-completion-for-python-methods.html">2. [emacs] Python代码补全的各种方法介绍以及对比(1256)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/07/emacs-auto-complete-scite-api.html">3. [emacs] auto-complete上使用scite的api文件进行补全(830)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/02/install-lmde-from-harddisk.html">4. LinuxMint Debian Edition 201012安装笔记（不刻盘安装，以及安装过程中的一些问题）(826)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/07/intro-microemacs.html">5. 介绍一下MicroEmacs(744)</a></li></ul></div>
+</div>
+
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/06/emacs-elisp-snippets.html">1. 我的Emacs elisp代码搜集贴(68)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/04/12/firefox-keysnail-tips.html">2. keysnail 使用方法与一些技巧搜集贴(35)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/05/06/emacs-code-completion-for-python-methods.html">3. [emacs] Python代码补全的各种方法介绍以及对比(25)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/03/08/emacs-window-related-tips.html">4. [Emacs] 与窗口相关的笔记(22)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/04/22/choose-with-ido-or-anything.html">5. [emacs] 用 ido 或 anything 进行选择(15)</a></li></ul></div>
+</div>
+
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/12/17/cnblogs-lisp-code-hilight.html">1. 在博客园添加Lisp(或其它)代码高亮(1)</a></li><li><a href="http://www.cnblogs.com/bamanzi/archive/2011/10/06/mingw-javascript-v8.html">2. 用mingw编译javascript v8(1)</a></li></ul></div>
+</div>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2012 巴蛮子
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<!--PageEndHtml Block Begin-->
+
+
+<a href="http://www.wumii.com/widget/relatedItems.htm" style="border: 0pt none;">
+    <img src="pixel.png" alt="无觅相关文章插件，快速提升流量" style="border: 0pt none; padding: 0pt; margin: 0pt;">
+</a>
+<!--PageEndHtml Block End-->
+
+</form> 
+
+
+
+
+
+</body>
+</html>

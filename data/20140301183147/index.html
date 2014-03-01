@@ -1,0 +1,801 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html itemtype="http://schema.org/Article" itemscope="" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta http-equiv="Cache-control" content="private">
+<link href="https://plus.google.com/100292833634918081724" rel="publisher">
+	<title>  The Beginner’s Guide to Using an AutoHotkey Script</title>
+	
+	<meta property="fb:page_id" content="65878196434">
+	<meta name="verify-v1" content="WiU7236KQY8e6jcxePbZscPXDuMvJ3b9ydseGd4G5AE=">
+
+			<meta name="ROBOTS" content="INDEX, FOLLOW">
+	<meta name="REVISIT-AFTER" content="1 DAYS">
+		<link rel="alternate" type="application/rss+xml" title="How-To Geek RSS Feed" href="http://feeds.howtogeek.com/HowToGeek">
+			<meta property="og:title" itemprop="name" name="title" content="The Beginner’s Guide to Using an AutoHotkey Script">
+		<meta property="og:type" content="article">
+		<meta property="og:description" name="og:description" itemprop="og:description" content="AutoHotkey scripts are a great way to customize your computer, but may seem daunting at first. Don’t worry – getting started is much easier than it looks! Read on to see.">
+		<meta property="og:image" content="http://cdn.howtogeek.com/thumbcache/140/160/2b45531391444e216b3045b49108a26e/wp-content/uploads/2011/03/AHK-post.jpg">
+		<link rel="image_src" href="http://cdn.howtogeek.com/thumbcache/140/160/2b45531391444e216b3045b49108a26e/wp-content/uploads/2011/03/AHK-post.jpg">
+		
+	
+	
+	
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+	
+		<!--[if lt IE 8]>
+	<link rel="stylesheet" type="text/css" href="http://cdn.howtogeek.com/public/css/htgIE.css?1360963563" />
+	<![endif]-->
+		
+					
+			
+		
+	
+
+	<link rel="shortlink" href="http://www.howtogeek.com/?p=56481">
+<link rel="canonical" href="http://www.howtogeek.com/56481/the-beginners-guide-to-using-an-autohotkey-script/">
+<meta property="og:url" content="http://www.howtogeek.com/56481/the-beginners-guide-to-using-an-autohotkey-script/"> 
+
+
+
+				
+	
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body data-twttr-rendered="true" class="v3">
+
+<div id="doc4" class="yui-t7">
+	<div id="hd"></div>		
+	<div id="bd">
+		<div id="htgHeader">
+			<div class="logo">
+				<h1 id="printH1">How-To Geek</h1><a href="http://www.howtogeek.com/" class="home"><img src="blank.gif" alt="How-To Geek" title="How-To Geek"></a>
+				<div class="logo2">
+					<div id="div-gpt-ad-1342044737928-2">
+
+<div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_1__container__"><iframe src="index_1.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/windows_1" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_1" frameborder="0" height="90" scrolling="no" width="728"></iframe></div><iframe src="index_4.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/windows_1__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_1__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>
+				</div>
+			</div>
+		</div>
+		<div class="yui-g" id="htgNavBar">
+			<a href="http://www.howtogeek.com/" title="How-To Geek Home" id="home"></a>
+			<ul id="mnuMainul">
+				<li>
+					<a id="mnuMainMenu" href="#" class="arrow">ARTICLES</a>
+					<div class="subMenu">
+						<div class="subMenuSection">
+							<h4>SECTIONS</h4>
+							<ul style="width: 100px;">
+								<li><h2><a href="http://www.howtogeek.com/t/windows/">WINDOWS</a></h2></li>
+								<li><h2><a href="http://www.howtogeek.com/t/linux/">LINUX</a></h2></li>
+								<li><h2><a href="http://www.howtogeek.com/t/office/">OFFICE</a></h2></li>
+								<li><h2><a href="http://www.howtogeek.com/t/wallpaper/">WALLPAPER</a></h2></li>
+							</ul>
+							<ul>
+								<li><h2><a href="http://www.howtogeek.com/t/mobile/">MOBILE</a></h2></li>
+								<li><h2><a href="http://www.howtogeek.com/t/hardware/">HARDWARE</a></h2></li>
+								<li><h2><a href="http://www.howtogeek.com/t/infotech/">IT TECH</a></h2></li>
+								<li><h2><a href="http://www.howtogeek.com/t/news/">NEWS</a></h2></li>
+							</ul>
+						</div>
+						<div class="subMenuSection" style="margin-left: 20px;">
+							<div class="submenudetail sm300" onclick="window.location='/t/features'">
+								<div id="ftquest"></div>
+								<span>FEATURED ARTICLES</span>
+								<p>Read just our best, feature-length articles without all the extra stuff.</p><div style="clear: both;"></div>
+							</div>
+							<div style="clear: both;"></div>
+										
+							<div onclick="window.location='http://www.howtogeek.com/trivia/rather-than-buy-locally-its-cheaper-to-fly-roundtrip-from-australia-to-the-us-for-what/'" class="submenudetail sm300">
+								<div id="gtquest"></div>
+								<span>GEEK TRIVIA</span>
+								<p>Rather Than Buy Locally, It’s Cheaper To Fly Roundtrip From Australia To The US For What?</p>
+								<div style="clear: both;"></div>		
+							</div>
+											
+							<div style="clear: both;"></div>								
+						</div>
+						
+						<div class="subMenuSection" style="margin-left: 30px;">
+							<div class="submenudetail sm330" onclick="window.location='/books/windows-8/'">
+								<img src="sshot51103afc72508.png"> 
+								<span>HOW-TO GEEK BOOKS</span><p>Read our first book, the HTG Guide to Windows 8, or check our upcoming books.</p>
+								<div style="clear: both;"></div>
+							</div>
+							<ul style="margin-top: 0px;">
+								<li><h2><a style="color: rgb(204, 204, 204);" href="http://www.howtogeek.com/about/">ABOUT</a></h2></li>
+								<li><h2><a style="color: rgb(204, 204, 204);" href="http://www.howtogeek.com/contact/">CONTACT</a></h2></li>
+							</ul>
+						</div>
+					</div>
+				</li>
+							</ul>			
+						<ul>
+				<li><a class="mnuMainItem" href="http://discuss.howtogeek.com/">DISCUSSION</a></li>
+			</ul>
+			<ul id="mnuMainul2">
+				<li><a id="mnuSubNow" class="mnuMainItem arrow" href="#">SUBSCRIBE</a>
+					<div class="subMenu" style="padding-bottom: 10px;">
+						<div class="subMenuSection" style="margin-left: 20px;">							
+							<h4>FOLLOW US</h4>
+							<ul style="width: 100px;">
+								<li><h2><a class="icon-twitter" href="https://twitter.com/intent/user?original_referer=http://www.howtogeek.com&amp;region=following&amp;screen_name=howtogeeksite&amp;tw_p=followbutton&amp;variant=2.0" target="_top">TWITTER</a></h2></li>
+								<li><h2><a class="icon-google-plus" href="http://plus.google.com/+howtogeek">GOOGLE+</a></h2></li>
+							</ul>					
+						</div>							
+						<div class="subMenuSection" style="margin-left: 0px;">							
+							<h4>&nbsp;</h4>
+							<ul style="width: 100px;">
+								<li><h2><a class="icon-facebook" href="http://facebook.com/thehowtogeek">FACEBOOK</a></h2></li>
+							</ul>					
+						</div>							
+						<div class="subMenuSection" style="margin-left: 20px;">							
+							<div id="subemsub" class="submenudetail sm400 noclick" style="padding-bottom: 20px;">
+								<div id="emquest"><div class="fs1" aria-hidden="true" data-icon=""></div></div>
+								<span>EMAIL NEWSLETTER</span>
+									<form action="http://www.howtogeek.com/em/subscribe" method="get">
+									<input name="list" value="weekday" type="hidden">
+									<input name="tr" value="topmenu" type="hidden">
+									<input value="" id="fromaddress" name="emailaddress" style="z-index: -9; height: 1px; width: 1px; position: absolute;" type="text">
+									<p>Subscribe to our daily email newsletter, chock full of great articles and tips.</p>
+									<p><input value="" id="from" name="email" type="text"><input id="sub1" name="sub1" value="Subscribe Now" type="submit"></p>
+									<div style="clear: both;"></div>
+									</form>
+							</div>
+						</div>
+						<div class="subMenuSection" style="margin-left: 20px;">							
+							<h4>RSS</h4>
+							<ul style="width: 130px;">
+								<li><h2><a class="icon-feed" href="http://feeds.howtogeek.com/howtogeek">ALL ARTICLES</a></h2></li>
+								<li><h2><a class="icon-feed" href="http://www.howtogeek.com/t/features/feed/">FEATURES ONLY</a></h2></li>
+							</ul>					
+						</div>			
+						<div class="subMenuSection" style="margin-left: 0px;">	
+							<h4>&nbsp;</h4>
+							<ul style="width: 150px;">
+								<li><h2><a class="icon-feed" href="http://www.howtogeek.com/t/reviews/feed/">GADGET REVIEWS</a></h2></li>
+								<li><h2><a class="icon-feed" href="http://www.howtogeek.com/trivia/feed/">TRIVIA</a></h2></li>							
+							</ul>					
+						</div>									
+						
+				
+					
+					</div>				
+				</li>
+			</ul>
+			<ul>
+				<li><a class="mnuMainItem" href="http://www.howtogeek.com/t/gadgets">GADGETS</a></li>
+			</ul>			
+			<ul>
+				<li>				<iframe style="width: 152px; height: 20px;" data-twttr-rendered="true" title="Twitter Follow Button" class="twitter-follow-button mnuTwitterButton twitter-follow-button" src="index_5.html" allowtransparency="true" id="twitter-widget-0" frameborder="0" scrolling="no"></iframe>
+
+				</li>
+							</ul>			
+
+			
+						
+			
+			
+			<div id="searchwrapper" class="searchinactive">
+			  <span id="searchhover">SEARCH</span>
+			  <form action="http://www.howtogeek.com/search/" method="get" id="sea">
+				<input name="q" id="s" value="" type="text">
+				<input id="searchsubmit" value="" style="" type="submit">
+						  </form>
+			</div>
+
+						
+				
+						
+			<div style="clear: both;"></div>
+		</div>
+		<div class="yui-g" id="headerpanel"></div>
+
+		
+		
+		
+		
+		
+		
+		
+<div class="yui-ge">
+
+
+			
+						
+		
+	
+	<div class="yui-u first">
+		<div class="content" id="htgArticle">
+			<h1 id="printHeader" style="display: none;">How-To Geek</h1>
+			<!-- abovepost -->
+						<div class="thepost" id="post-56481">
+			
+							<div style="width: 650px; margin-bottom: 0px; margin-top: -10px; min-height: 24px;">
+					<div style="margin-bottom: 10px;"><div id="div-1342-1" style="margin-top: 10px;"><div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_3__container__"><iframe src="index_12.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/windows_3" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_3" frameborder="0" height="140" scrolling="no" width="650"></iframe></div><iframe src="index_19.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/windows_3__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_3__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div></div>					<div style="clear: both;"></div>
+				</div>
+												<h2><a href="http://www.howtogeek.com/56481/the-beginners-guide-to-using-an-autohotkey-script/" rel="bookmark" title="The Beginner’s Guide to Using an AutoHotkey Script">The Beginner’s Guide to Using an AutoHotkey Script</a></h2>
+
+
+				<div class="thecontent">
+					<!-- google_ad_section_start -->
+					<p><img style="display: inline;" title="AHK post" src="ahk-post.jpg" alt="AHK post" height="349" width="650"></p>
+<p>AutoHotkey scripts are a great way to customize your computer, but may seem daunting at first. Don’t worry – getting started is much easier than it looks! Read on to see.</p>
+<p><em>[Image: <a href="http://www.flickr.com/photos/mlinksva/2988234664/sizes/z/in/photostream/">mlinksva</a>]</em></p>
+<h3>Getting AutoHotkey</h3>
+<p>The first thing you want to do is download and install AutoHotkey. Go to the <a href="http://www.autohotkey.com/download/">AutoHotkey download page</a>. You will be presented with a number of download links:</p>
+<p><span class="lazyLoaderWrap" style="width: 652px; height: 352px; display: block; float: left;"><img style="top: 168px; left: 318px; display: inline;" src="loading.gif" class="loading" alt=""><img alt="" style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px none;" title="image" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/03/image80.png" class="lazyLoad" border="" height="352" width="652"></span></p>
+<p>Click the first one, the installer for AutoHotkey_L. Save it to your hard drive – that’s what we’re going to use.</p>
+<h4>A Bit of History: Why Are There Two Versions?</h4>
+<p>You may be wondering why the download page offers both AutoHotkey_L and AutoHotkey Basic. What happened is that AutoHotkey’s original developer decided to stop working on the project; but AutoHotkey wouldn’t die so fast. Since the project is open-source and has an vibrant developer community, a number of efforts to continue development were started. Out of these, AutoHotkey_L was chosen as “AutoHotkey’s future”, and is now offered on the official download page.</p>
+<h3>Installing AutoHotkey</h3>
+<p>Okay, now that you’ve downloaded the executable, it’s time to set it up. The installer is fairly straightforward except for this next step which offers multiple choices:</p>
+<p><span class="lazyLoaderWrap" style="width: 652px; height: 352px; display: block; float: left;"><img style="top: 167px; left: 317px; display: inline;" src="loading.gif" class="loading" alt=""><img alt="" style="margin: 0px; display: inline;" title="image" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/03/image81.png" class="lazyLoad" height="350" width="650"></span></p>
+<p>We recommend to keep this at the default, Unicode 32-bit. If you’re running a 64-bit version of Windows you could opt for the 64-bit Unicode version, but it doesn’t offer significant performance gains for most scripts. Regarding ANSI, you should&nbsp; only choose this option if there’s a specific script you’d like to run which you know for sure doesn’t play well with Unicode. This very rarely happens.&nbsp; Bottom line: unless you have a good reason, stick to the default and click Next.</p>
+<h3>Getting The Script: Saving a Snippet</h3>
+<p>Now that you’ve got AutoHotkey set up, it’s time to get your first script. Some AutoHotkey scripts are so short, they’re posted online as short snippets of text. You can see one such script in our recent post about <a href="http://www.howtogeek.com/howto/45191/how-to-fake-back-and-forward-buttons-with-a-three-button-mouse/">How to Fake Back and Forward Buttons With a Three-button Mouse</a>. Select the script text and copy it:</p>
+<p><span class="lazyLoaderWrap" style="width: 652px; height: 352px; display: block; float: left;"><img style="top: 59.5px; left: 313px; display: inline;" src="loading.gif" class="loading" alt=""><img alt="" style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px none;" title="image" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/03/image82.png" class="lazyLoad" border="" height="135" width="642"></span></p>
+<p>Now run Notepad and paste the script in. Make sure you got the whole thing, from the very beginning to the end.</p>
+<p><span class="lazyLoaderWrap" style="width: 652px; height: 352px; display: block; float: left;"><img style="top: 99px; left: 231.5px; display: inline;" src="loading.gif" class="loading" alt=""><img alt="" style="display: inline;" title="image" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/03/image83.png" class="lazyLoad" height="214" width="479"></span></p>
+<p>Next, save the file somewhere on your computer. The filename doesn’t matter, but the extension must be AHK. If you installed the Unicode version of AutoHotkey_L, it would be a good idea to save the script with Unicode encoding. Most scripts would probably work if you save them using the default encoding (ANSI), but Unicode is a safe option.</p>
+<p><span class="lazyLoaderWrap" style="width: 652px; height: 352px; display: block; float: left;"><img style="top: 168px; left: 318px; display: inline;" src="loading.gif" class="loading" alt=""><img alt="" style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px none;" title="image" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/03/image84.png" class="lazyLoad" border="" height="352" width="652"></span></p>
+<p>&nbsp;</p>
+<p>Pro Tip: Understanding Character Encodings</p>
+<p>If you find all this talk about Unicode and ANSI a bit confusing, you might want to take a quick look at our recent post explaining <a href="http://www.howtogeek.com/howto/45765/htg-explains-what-are-character-encodings-and-how-do-they-differ/">What Are Character Encodings and How They Differ</a>.</p>
+<h3>Getting The Script: Saving a File</h3>
+<p>Some scripts go on for more than just a few lines; these are often offered as files rather than pasted in-page. We recently posted one of these larger scripts under <a href="http://www.howtogeek.com/howto/45068/how-to-get-spelling-autocorrect-across-all-applications-on-your-system/">How to Get Spelling Autocorrect Across All Applications on Your System</a>, so that’s what we’ll use for the example. Right-click the link to the AHK file and select to save it locally:</p>
+<p><span class="lazyLoaderWrap" style="width: 652px; height: 352px; display: block; float: left;"><img style="top: 99px; left: 197px; display: inline;" src="loading.gif" class="loading" alt=""><img alt="" style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px none;" title="image" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/03/image85.png" class="lazyLoad" border="" height="214" width="410"></span></p>
+<p>Again, make sure you save it as an AHK file.</p>
+<h3>Running The Script</h3>
+<p>You should now have an AHK file somewhere on your system, and AutoHotkey all set up. Simply double-click the AHK file to run it.</p>
+<p><span class="lazyLoaderWrap" style="width: 652px; height: 352px; display: block; float: left;"><img style="top: 73.5px; left: 146.5px; display: inline;" src="loading.gif" class="loading" alt=""><img alt="" style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px none;" title="image" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/03/image86.png" class="lazyLoad" border="" height="163" width="309"></span></p>
+<p>When the script is running, you should see a small icon in your system tray. Hovering over this icon with your mouse will pop up a tooltip showing the name of the script. AutoHotkey and AutoHotkey_L use slightly different icons.</p>
+<p><span class="lazyLoaderWrap" style="width: 652px; height: 352px; display: block; float: left;"><img style="top: 73px; left: 187.5px; display: inline;" src="loading.gif" class="loading" alt=""><img alt="" style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px none;" title="image" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/03/image87.png" class="lazyLoad" border="" height="162" width="391"></span></p>
+<h3>If Your Script Doesn’t Work</h3>
+<p>Most scripts work right off the bat. However, if your script won’t run and pops up an error message, go back to the AutoHotkey download page and get “AutoHotkey Basic” (the second option). Uninstall AutoHotkey_L, Install AutoHotkey Basic and try running the script again.</p>
+<p>You can also go back to “Saving a Snippet” and try saving the script with a different character encoding.</p>
+<h3>Exiting the Script</h3>
+<p>When you’re done working with a script, right-click its system tray icon and select Exit.</p>
+<p><span class="lazyLoaderWrap" style="width: 652px; height: 352px; display: block; float: left;"><img style="top: 109px; left: 128.5px; display: inline;" src="loading.gif" class="loading" alt=""><img alt="" style="background-image: none; padding-left: 0px; padding-right: 0px; display: inline; padding-top: 0px; border: 0px none;" title="image" src="blank_001.gif" data-href="http://cdn.howtogeek.com/wp-content/uploads/2011/03/image88.png" class="lazyLoad" border="" height="234" width="273"></span></p>
+				<!-- google_ad_section_end -->
+				</div>
+								<div style="clear: both; height: 0px;"></div>
+
+									<div style="margin-top: 0px; margin-bottom: 10px;">
+						<!-- Place this tag where you want the +1 button to render. -->
+						<div id="___plusone_0" style="text-indent: 0pt; margin: 0pt; padding: 0pt; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 450px; height: 24px;"><iframe title="+1" data-gapiattached="true" src="index_20.html" name="I2_1393669827562" id="I2_1393669827562" vspace="0" tabindex="0" style="position: static; top: 0pt; width: 450px; margin: 0px; border-style: none; left: 0pt; visibility: visible; height: 24px;" marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe></div>
+
+						<!-- Place this tag after the last +1 button tag. -->
+						
+					</div>
+								
+								
+				
+<div id="postiddiv" post="56481"></div>
+				<div style="clear: both;"></div>
+				
+				
+				
+				<div class="articleExtras">
+					<div style="width: 450px; float: left;" id="authorinfobox">
+						
+						<p style="font-weight: normal; color: rgb(51, 51, 51);">A technical writer for Tibbo Technology by day, Erez is obsessed with customizing anything and everything. After years of using Litestep and Blackbox, switching to a custom keyboard layout (Colemak), extending Word and Excel with elaborate VBA, losing weight with an AutoHotkey script he developed and spending countless hours tweaking Foobar2000 to get it to look "just right", Erez decided the time has come to share some of this obsession with the world at large.</p>
+
+											</div>
+					<div style="width: 130px; float: right;">
+						<ul class="normul" style="margin-bottom: 6px;">
+							<li>Published 03/21/11</li>
+							<li><span id="pv3"></span></li>
+						</ul>
+												
+					</div>
+					<div style="clear: both;"></div>
+				</div>
+				
+				
+				<div style="clear: both;"></div>
+				
+				<div style="width: 650px; margin-bottom: 0px;">
+					<div id="div-1342-2"><div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_4__container__"><iframe src="index_22.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/windows_4" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_4" frameborder="0" height="140" scrolling="no" width="650"></iframe></div><iframe src="index_29.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/windows_4__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_4__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>					<div style="clear: both;"></div>
+				</div>							
+
+
+
+<div class="below-post-features">
+<div class=" trc_related_container trc_spotlight_widget" id="taboola-below-article"><div style="display: block;" class="trc_rbox_container"><div><div style="overflow: hidden; display: block; position: relative;" class="trc_rbox thumbs-2r trc-content-sponsored  trc-auto-size" id="trc_wrapper_60061"><div class="trc_rbox_header trc_rbox_border_elm" id="trc_header_60061"><div class="trc_header_ext"><div class="logoDiv link-attribution "><a target="_top" href="http://www.taboola.com/en/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:" rel="nofollow" class="trc_desktop_attribution_link trc_attribution_position_top"><span>by Taboola</span></a><a target="_top" href="http://www.taboola.com/en/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:" rel="nofollow" class="trc_mobile_attribution_link trc_attribution_position_top"><span>by Taboola</span></a></div><div class="logoDiv link-disclosure  attribution-disclosure-link-sponsored"><a target="_top" href="http://www.taboola.com/en/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:" rel="nofollow" class="trc_desktop_disclosure_link trc_attribution_position_top"><span>Sponsored Content</span></a><a target="_top" href="http://www.taboola.com/en/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:" rel="nofollow" class="trc_mobile_disclosure_link trc_attribution_position_top"><span>Sponsored Content</span></a></div><div class="logoDiv link-disclosure  attribution-disclosure-link-hybrid"><a target="_top" href="http://www.taboola.com/en/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:" rel="nofollow" class="trc_desktop_disclosure_link trc_attribution_position_top"><span>Promoted Content</span></a><a target="_top" href="http://www.taboola.com/en/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:" rel="nofollow" class="trc_mobile_disclosure_link trc_attribution_position_top"><span>Promoted Content</span></a></div></div><span class="trc_rbox_header_span"><span class="trc_inner_header trc_header_left_column">FROM THE WEB</span><span class="trc_inner_header trc_header_right_column">From The Web</span></span></div><div style="overflow: hidden;" class="trc_rbox_outer" id="outer_60061"><div style="overflow: hidden;" class="trc_rbox_div trc_rbox_border_elm" id="rbox-t2v"><div style="width: auto;" id="internal_trc_60061"><div style="margin-bottom: 10px; margin-left: 0pt; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc-first-recommendation trc-spotlight-first-recommendation trc_excludable " data-item-syndicated="true" data-item-thumb="http://cdn.taboolasyndication.com/libtrc/static/thumbnails/71c929eb3d4e1e68c24d3f6b1ca39c63.jpg" data-item-title="The #1 WORST Food For Your Digestion (Are You Eating It?)" data-item-id="~~V1~~-974154597043504603~~MoEPxw9jEutake9N8-T4bGzHSAofi2jW-1AZJm57Ao6uniL6zQG_A7JieeJ4hhMV"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://info.toxicbellybugfix.com/?cid=tabtox&amp;ADID=taboolatoxic&amp;sid=tabtoxic&amp;ep=d" title="The #1 WORST Food For Your Digestion (Are You Eating It?)"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">Toxic Belly Bug Fix</span><span class="static-text top-right"></span><img src="71c929eb3d4e1e68c24d3f6b1ca39c63.jpg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://info.toxicbellybugfix.com/?cid=tabtox&amp;ADID=taboolatoxic&amp;sid=tabtoxic&amp;ep=d" title="The #1 WORST Food For Your Digestion (Are You Eating It?)"><span class="video-label-box" style="display: block;"><span class="video-label video-title">The #1 WORST Food For Your Digestion (Are You Eating It?)</span><span class="branding">Toxic Belly Bug Fix</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="margin-bottom: 10px; margin-left: 10px; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc_excludable " data-item-syndicated="true" data-item-thumb="http://cdn.taboolasyndication.com/libtrc/static/thumbnails/abfed285965f1b0c774d784544b52c52.jpg" data-item-title="5 Signs You'll Get Cancer" data-item-id="~~V1~~5885373742483759297~~oM2qptawG9FPTNv2MSS5WMWyFvcHJK8ATxdgepRasNkiHmzo1Td0c79an-yZwnnL"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://www.newsmaxhealth.com/MKTNews/Brownstein-cancer-video-documentary/2013/02/11/id/489887?promo_code=12729-1&amp;utm_source=taboola&amp;site=howtogeek-howtogeek" title="5 Signs You'll Get Cancer"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">Newsmax</span><span class="static-text top-right"></span><img src="abfed285965f1b0c774d784544b52c52.jpg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://www.newsmaxhealth.com/MKTNews/Brownstein-cancer-video-documentary/2013/02/11/id/489887?promo_code=12729-1&amp;utm_source=taboola&amp;site=howtogeek-howtogeek" title="5 Signs You'll Get Cancer"><span class="video-label-box" style="display: block;"><span class="video-label video-title">5 Signs You'll Get Cancer</span><span class="branding">Newsmax</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="margin-bottom: 10px; margin-left: 10px; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc_excludable " data-item-syndicated="true" data-item-thumb="http://cdn.taboolasyndication.com/libtrc/static/thumbnails/00b1667697b5ebd702e253d9f4b1db16.jpeg" data-item-title="5 veggies that FIGHT stomach fat (odd fat-fighters)" data-item-id="~~V1~~-1526958972194385539~~4Q7FuhLlQKK8-ZTPH6ovgl_9nKwXFxZvtrqv0OVf1SeuniL6zQG_A7JieeJ4hhMV"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://health1st.com/2013/11/eat-yourself-skinny-5-superfoods-to-rev-your-metabolism/?utm_source=taboola&amp;utm_medium=referral" title="5 veggies that FIGHT stomach fat (odd fat-fighters)"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">Health1st</span><span class="static-text top-right"></span><img src="00b1667697b5ebd702e253d9f4b1db16.jpeg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://health1st.com/2013/11/eat-yourself-skinny-5-superfoods-to-rev-your-metabolism/?utm_source=taboola&amp;utm_medium=referral" title="5 veggies that FIGHT stomach fat (odd fat-fighters)"><span class="video-label-box" style="display: block;"><span class="video-label video-title">5 veggies that FIGHT stomach fat (odd fat-fighters)</span><span class="branding">Health1st</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="margin-bottom: 10px; margin-left: 10px; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc_excludable " data-item-syndicated="true" data-item-thumb="http://cdn.taboolasyndication.com/libtrc/static/thumbnails/cbb5d6a105822279dad3575b0edc5e97.jpg" data-item-title="Meet Todd Chrisley: He's One Mother Of A Father" data-item-id="~~V1~~-3168689660449697867~~Da_13ydNvvXDoi4K8CcMmDvgjP2NjD9F4OPm0ai0YbiuniL6zQG_A7JieeJ4hhMV"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://ad.doubleclick.net/clk;279976275;106609616;y?utm_source=taboola&amp;utm_medium=referral" title="Meet Todd Chrisley: He's One Mother Of A Father"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">USA Network</span><span class="static-text top-right"></span><img src="cbb5d6a105822279dad3575b0edc5e97.jpg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://ad.doubleclick.net/clk;279976275;106609616;y?utm_source=taboola&amp;utm_medium=referral" title="Meet Todd Chrisley: He's One Mother Of A Father"><span class="video-label-box" style="display: block;"><span class="video-label video-title">Meet Todd Chrisley: He's One Mother Of A Father</span><span class="branding">USA Network</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="clear: both; width: 100%;"></div><div style="margin-bottom: 10px; margin-left: 0pt; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc_excludable " data-item-syndicated="true" data-item-thumb="http://cdn.taboolasyndication.com/libtrc/static/thumbnails/73ab79902dedea6e1624bf2352e06352.jpg" data-item-title="Little Known Way to Pay Off Mortgage" data-item-id="~~V1~~-3227149913260811912~~HwuLcf_x-3ib4S4CN_uhe8vIUKwQlYjADbEsCXAPJOGuniL6zQG_A7JieeJ4hhMV"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://www.weeklyfinancialsolutions.com/landers/pages/little-known-mortgage.html?utm_source=taboola&amp;utm_medium=%7Bsite%7D&amp;utm_term=Egg100_Little&amp;utm_medium=howtogeek-howtogeek" title="Little Known Way to Pay Off Mortgage"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">Weekly Financial Solutions</span><span class="static-text top-right"></span><img src="73ab79902dedea6e1624bf2352e06352.jpg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://www.weeklyfinancialsolutions.com/landers/pages/little-known-mortgage.html?utm_source=taboola&amp;utm_medium=%7Bsite%7D&amp;utm_term=Egg100_Little&amp;utm_medium=howtogeek-howtogeek" title="Little Known Way to Pay Off Mortgage"><span class="video-label-box" style="display: block;"><span class="video-label video-title">Little Known Way to Pay Off Mortgage</span><span class="branding">Weekly Financial Solutions</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="margin-bottom: 10px; margin-left: 10px; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc_excludable " data-item-syndicated="true" data-item-thumb="http://cdn.taboolasyndication.com/libtrc/static/thumbnails/1e1f1681cb0a0b0c9d101b5a3232734b.jpg" data-item-title="(FEB 2014): New &quot;Rule&quot; Has Drivers Furious &amp; Shocked..." data-item-id="~~V1~~-7614350270709668644~~nwCP9sfm5gutlfdx0i9spn-S8oUj226g6ZS3eV_-jCmuniL6zQG_A7JieeJ4hhMV"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://www.smartmoneytimes.com/auto-taboola.php?t202kw=US" title="(FEB 2014): New &quot;Rule&quot; Has Drivers Furious &amp; Shocked..."><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">Smart Money Times</span><span class="static-text top-right"></span><img src="1e1f1681cb0a0b0c9d101b5a3232734b.jpg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://www.smartmoneytimes.com/auto-taboola.php?t202kw=US" title="(FEB 2014): New &quot;Rule&quot; Has Drivers Furious &amp; Shocked..."><span class="video-label-box" style="display: block;"><span class="video-label video-title">(FEB 2014): New "Rule" Has Drivers Furious &amp; Shocked...</span><span class="branding">Smart Money Times</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="margin-bottom: 10px; margin-left: 10px; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc_excludable " data-item-syndicated="true" data-item-thumb="http://cdn.taboolasyndication.com/libtrc/static/thumbnails/2a5bd67417e03aca4e19ac5fd1f6bea1.jpg" data-item-title="Don’t know Spanish? See This Video (Shocking)" data-item-id="~~V1~~1451199686228346242~~0OjluCNEib2ZP1S_sH6J5hTBdsRWKqWW0xfgmrUq6mSuniL6zQG_A7JieeJ4hhMV"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://www.pimsleurapproach.com/presentation533.asp?sid=m9103bnr&amp;utm_source=taboola&amp;utm_medium=referral" title="Don’t know Spanish? See This Video (Shocking)"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">Pimsleur Approach</span><span class="static-text top-right"></span><img src="2a5bd67417e03aca4e19ac5fd1f6bea1.jpg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://www.pimsleurapproach.com/presentation533.asp?sid=m9103bnr&amp;utm_source=taboola&amp;utm_medium=referral" title="Don’t know Spanish? See This Video (Shocking)"><span class="video-label-box" style="display: block;"><span class="video-label video-title">Don’t know Spanish? See This Video (Shocking)</span><span class="branding">Pimsleur Approach</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="margin-bottom: 10px; margin-left: 10px; width: 155px; height: auto; position: relative;" class="videoCube trc_spotlight_item horizontal origin-default thumbnail_top syndicatedItem trc_excludable " data-item-syndicated="true" data-item-thumb="http://cdn.taboolasyndication.com/libtrc/static/thumbnails/548a7ade221373647fb27b4891e83a3e.jpg" data-item-title="The 'Forgotten Metal' That Is Making Big Profits for Ordinary Americans" data-item-id="~~V1~~-6778343194911903576~~UJ9-2a-qZUpj8ug7Y27wBE9tNFilOh2pj4vwRACXEgauniL6zQG_A7JieeJ4hhMV"><a class=" item-thumbnail-href " target="_top" rel="nofollow" href="http://www.selfrely.com/aievideonp/?Contact0LeadSourceId=1922&amp;utm_source=Taboola%20Cars%20Lava&amp;utm_medium=native%20cpc&amp;utm_campaign=Taboola%20Cars%20Lava&amp;utm_source=taboola&amp;utm_medium=referral" title="The 'Forgotten Metal' That Is Making Big Profits for Ordinary Americans"><span style="height: 127px; width: 155px; position: relative; float: none; display: block;" class="thumbBlock"><span style="height: 127px; width: 155px;" class="thumbnail-overlay"></span><span class="branding">American Income Engine</span><span class="static-text top-right"></span><img src="548a7ade221373647fb27b4891e83a3e.jpg" style="visibility: visible; height: 127px ! important;"></span></a><a class=" item-label-href " target="_top" rel="nofollow" href="http://www.selfrely.com/aievideonp/?Contact0LeadSourceId=1922&amp;utm_source=Taboola%20Cars%20Lava&amp;utm_medium=native%20cpc&amp;utm_campaign=Taboola%20Cars%20Lava&amp;utm_source=taboola&amp;utm_medium=referral" title="The 'Forgotten Metal' That Is Making Big Profits for Ordinary Americans"><span class="video-label-box" style="display: block;"><span class="video-label video-title">The 'Forgotten Metal' That Is Making Big Profits for Ordinary <span>…</span></span><span class="branding">American Income Engine</span></span></a><div title="Remove this item" class=" trc_user_exclude_btn "></div><div class=" trc_exclude_overlay trc_fade "></div><div class=" trc_undo_btn ">Undo</div></div><div style="clear: both;"></div></div></div></div><div class="trc_clearer"></div><a target="_top" class="whatsThisSyndicated a-bottom-right trc_desktop_attribution_link" style="display: block;" title="" rel="nofollow" href="http://www.taboola.com/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:"></a><a target="_top" class="whatsThisSyndicated a-bottom-right trc_mobile_attribution_link" style="display: block;" title="" rel="nofollow" href="http://www.taboola.com/popup?template=colorbox&amp;taboola_utm_source=howtogeek-howtogeek&amp;taboola_utm_medium=bytaboola&amp;taboola_utm_content=thumbs-2r:below-article:"></a></div></div></div></div>
+
+
+</div>				
+
+<div style="clear: both;"></div>
+
+				
+
+
+	<div id="discourselink">
+        <h3 id="reply-title"><a href="http://discuss.howtogeek.com/">Got Feedback? Join the discussion</a> at discuss.howtogeek.com</h3>
+    </div>
+
+	
+			
+							
+								<div id="showcomments" class="showcomments" style="">
+						<a id="sc1" href="http://www.howtogeek.com/56481/the-beginners-guide-to-using-an-autohotkey-script/?showcomments=1#comments">SHOW ARCHIVED READER COMMENTS (18)</a>
+				</div>
+								
+				<div id="commentsWrap" post="56481" replyto="0">
+					
+					
+												<div id="sc2">
+								
+<!-- You can start editing here. -->
+
+<h3 id="comments">Comments <span id="commentnumber">(18)</span></h3>
+<ol class="commentlist">
+		<li class="comment-def" id="comment-123969">
+		<div class="commentmetadata date"><a href="#comment-123969" title="">March 21, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Peter</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Hi,</p>
+<p>thanks for this great tutorial! I got my first script running in no time.</p>
+<p>While we are at AHK, do you know of any good repository of useful ahk scripts?</p>
+<p>Regards</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-123972">
+		<div class="commentmetadata date"><a href="#comment-123972" title="">March 21, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">BrianA</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>@Peter – start with the AHK site “Documentation” and “Forum”.<br>
+<a href="http://www.autohotkey.com/" rel="nofollow">http://www.autohotkey.com/</a></p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-123978">
+		<div class="commentmetadata date"><a href="#comment-123978" title="">March 21, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Hatryst</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>That was simple enough ;) And i thought AHK was only for programmers !<br>
+More tutorials please !</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-123985">
+		<div class="commentmetadata date"><a href="#comment-123985" title="">March 21, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Barry</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Peter, there are a whole boatload of scripts at the Autohotkey site.  In fact, there are so many that’s it’s hard to find stuff that you’re looking for sometimes.  If you want to tread into the fray, though, check out <a href="http://www.autohotkey.com/docs/scripts/index.htm" rel="nofollow">http://www.autohotkey.com/docs/scripts/index.htm</a></p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-123986">
+		<div class="commentmetadata date"><a href="#comment-123986" title="">March 21, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">sjkeegs</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>This is one of the documentation pages that contains a number of demonstration scripts.</p>
+<p><a href="http://www.autohotkey.com/docs/scripts/index.htm" rel="nofollow">http://www.autohotkey.com/docs/scripts/index.htm</a></p>
+<p>And if you go to the forums, there is a section dedicated to Scripts and Functions</p>
+<p><a href="http://www.autohotkey.com/forum/index.php" rel="nofollow">http://www.autohotkey.com/forum/index.php</a></p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-123995">
+		<div class="commentmetadata date"><a href="#comment-123995" title="">March 21, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Donald Krebs</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>For several years I have been a fan of Donation Coder. One of the most prolific contributors is “Skrommel.” I believe he uses AutoHotKey for all his work. Go here to see several dozen examples of his work. </p>
+<p><a href="http://www.donationcoder.com/Software/Skrommel/" rel="nofollow">http://www.donationcoder.com/Software/Skrommel/</a></p>
+<p>dk</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-124008">
+		<div class="commentmetadata date"><a href="#comment-124008" title="">March 21, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Randall</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>That’s great, but I was expecting to learn how to make scripts, not use premade ones.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-124031">
+		<div class="commentmetadata date"><a href="#comment-124031" title="">March 21, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Ajith Antony</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Randall, Skrommel has the AHK source linked for each one (the green AHK icons).  Just study what they do to make your own.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-124039">
+		<div class="commentmetadata date"><a href="#comment-124039" title="">March 21, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Jason</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Okay – you’ve finally inspired me to replace disappointing PhraseExpress.  No more annoying pop-ups asking for money!</p>
+<p>I, too, would like to see more AHK tutorials…</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-124087">
+		<div class="commentmetadata date"><a href="#comment-124087" title="">March 22, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">PhraseExpress</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>@Jason: PhraseExpress is completely free for personal use. Only, if you violate the fair-use license by, it will issue the license violation dialog. If you believe that the commercial use detection is not correct, please provide *evidence* and we will send you a free license PLUS licenses for the next 5 commenters – Worth US$ 840!. Are you willing to backup your claim?</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-124191">
+		<div class="commentmetadata date"><a href="#comment-124191" title="">March 22, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Mick</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>If anyone’s interested I posted a bunch of my favourite snippets a while back at <a href="http://www.pinnaclewebdesign.co.uk/blog/software/improve-your-workflow-with-autohotkey/" rel="nofollow">http://www.pinnaclewebdesign.co.uk/blog/software/improve-your-workflow-with-autohotkey/</a></p>
+<p>HTH</p>
+<p>Cheers,<br>
+Mick</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-124260">
+		<div class="commentmetadata date"><a href="#comment-124260" title="">March 23, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Lou B</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>You would do your readers a great service if you would show them how to use hot keys for macros.<br>
+Very useful and not too hard.  I have more than a dozen which I use regularly.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-124276">
+		<div class="commentmetadata date"><a href="#comment-124276" title="">March 23, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Jason</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>@PhraseExpress – I’ve read your fair use license and it’s crap.  Waaay to restrictive for anyone who uses their computer for both home and business use.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-124285">
+		<div class="commentmetadata date"><a href="#comment-124285" title="">March 23, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">PhraseExpress</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>So, there is nothing wrong with our commercial use detection. PhraseExpress doesn’t distinguish between full-time and part-time commercial use. You got the license violation warning because you have illegally used PhraseExpress for commercial activities without a valid license. We offer PhraseExpress free for all home users while commercial users finance the many manyears of development we put into PhraseExpress. You probably wouldn’t appreciate as well if you wouldn’t be paid for your work, would you? Please learn more about our fair-use license at <a href="http://www.phraseexpress.com/freeware.htm" rel="nofollow">http://www.phraseexpress.com/freeware.htm</a></p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-124399">
+		<div class="commentmetadata date"><a href="#comment-124399" title="">March 23, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Tux</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>One of my most frequent uses of AHK is the hotstrings feature.  While this is covered in the tutorial, I will give some examples of the way I use it.</p>
+<p>You can add them to an existing script or create a new one just for your hotstrings.  </p>
+<p>The format looks like this:</p>
+<p>::trigger::string</p>
+<p>in my script file I have the following</p>
+<p>::lftvm::Called user and left vm requesting a call back. </p>
+<p>After saving the file as hotstrings.ahk and double clicking it, anytime I type ‘lftvm’ it will insert the text ‘Called user and left vm requesting a call back.’</p>
+<p>I have also mixed some hot strings with simple scripts. For instance, if you want to have Ctrl+1 do something like paste frequently used text you can use the following:</p>
+<p>^1::Send Your Frequently used text</p>
+<p>This is a super simple AHK script, it’s all on oneline, so unlike longer scripts it doesn’t need ‘return’ to terminate it.   Step by step this says,When Ctrl+1 (^ is the Ctrl character) is pressed, Send (or type) the following text into the active window. </p>
+<p>A more involved script is the following, which pops up a message box asking if you want to reload your script. You would do this if you are actively adding things to your script and needed to activate the new additions, or if you were having problems with it running.</p>
+<p>; Reload<br>
+^#R::<br>
+msgbox, 4,, Reload Everyday Script?<br>
+IfMsgBox, No<br>
+	return<br>
+IfMsgBox, Yes<br>
+	Reload<br>
+	Sleep 1000 ; If successful, the reload will close this instance during the Sleep, so the line below will never be reached.<br>
+	MsgBox, 4,, The script could not be reloaded. Would you like to open it for editing?<br>
+	IfMsgBox, Yes, Edit<br>
+return</p>
+<p>If you’d like me to step through this one I can. </p>
+<p>Hopefully this is helpful to some.</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-124843">
+		<div class="commentmetadata date"><a href="#comment-124843" title="">March 26, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Ron</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>For you gamers…I’ve included a COD4 example script for making a single shot weapon act like a automatic…example uses a 50ms delay factor but set it to the best performing.  have fun !!!<br>
+; ===================================================================<br>
+; AutoHotKey Script for COD4 Rapid Fire using left mouse button                                 ===<br>
+; Uses Program Function key F12 – Rapid fire ON or OFF                                             ===<br>
+; ===================================================================<br>
+#SingleInstance<br>
+~F12::Suspend<br>
+return<br>
+~LButton::<br>
+IfWinActive, Call of Duty 4<br>
+    Loop<br>
+    {<br>
+       Click Left<br>
+       GetKeyState, LButtonState, LButton, P<br>
+       If LButtonState = U<br>
+            {<br>
+                break<br>
+            }<br>
+       Sleep, 50<br>
+     }<br>
+Return<br>
+exit</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-def" id="comment-126258">
+		<div class="commentmetadata date"><a href="#comment-126258" title="">April 5, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">Leroy</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>hey dudes, may anybody help me and codes me a small script, which includes that<br>
+the “Q” key on the keyboard is hiten every 4.1 seconds.</p>
+<p>I didn´t find a way to fix that problem…</p>
+</div>
+			</li><!-- #comment-## -->
+	<li class="comment-alt" id="comment-143548">
+		<div class="commentmetadata date"><a href="#comment-143548" title="">August 21, 2011</a></div>
+		<div class="commentauthor"><div class="ca2">kyniek</div></div>
+		<div style="clear: both;"></div>
+		<div class="commenttext"><p>Witam,</p>
+<p>jak zrobić w AHK żeby pod jednym klawiszem mieć F6 i ctl-v ??? Żeby przy jednym naciścnieniu włączały się.</p>
+<p>Proszę o pomoc.</p>
+</div>
+			</li><!-- #comment-## -->
+</ol>
+
+<div style="clear: both;"></div>
+
+
+
+
+
+
+							</div>
+										<div id="respond"></div>
+				</div>				
+						
+			
+				
+					
+		
+				
+
+				<div style="clear: both;"></div>
+				<div class="contsep"></div>
+
+	
+
+
+
+				<div class="contsep"></div>
+			</div>
+
+
+
+            			<div style="clear: both;"></div>
+		<img src="stats.php" alt="" id="htgstats" style="display: none;"></div>
+	</div>
+	<div class="yui-u">
+		<div class="sidebar">
+	<div class="adSystem_ads">
+<div class="html"><div style="margin-bottom: 20px;"></div>
+<div id="___page_0" style="text-indent: 0pt; margin: 0pt; padding: 0pt; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 320px; height: 106px;"><iframe title="+Badge" data-gapiattached="true" src="https://apis.google.com/u/0/_/widget/render/page?usegapi=1&amp;bsv=o&amp;rel=publisher&amp;layout=landscape&amp;href=%2F%2Fplus.google.com%2F100292833634918081724&amp;width=320&amp;origin=http%3A%2F%2Fwww.howtogeek.com&amp;gsrc=3p&amp;jsh=m%3B%2F_%2Fscs%2Fapps-static%2F_%2Fjs%2Fk%3Doz.gapi.zh_CN.tcPvZD_70pY.O%2Fm%3D__features__%2Fam%3DIQ%2Frt%3Dj%2Fd%3D1%2Ft%3Dzcms%2Frs%3DAItRSTNOlyM2OwD-eqDwHQoPKDvFL_UdyQ#_methods=onPlusOne%2C_ready%2C_close%2C_open%2C_resizeMe%2C_renderstart%2Concircled%2Cdrefresh%2Cerefresh%2Conload&amp;id=I3_1393669827591&amp;parent=http%3A%2F%2Fwww.howtogeek.com&amp;pfname=&amp;rpctoken=85394595" name="I3_1393669827591" id="I3_1393669827591" vspace="0" tabindex="0" style="position: static; top: 0pt; width: 320px; margin: 0px; border-style: none; left: 0pt; visibility: visible; height: 106px;" marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe></div>
+<div style="margin-bottom: 15px;"></div></div>
+	<div style="clear: both;"></div>
+</div>	<div id="side78"><!-- tmnp.howtogeek 300x250 ATF -->
+<div id="div-gpt-ad-1342044737928-1">
+
+<div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_0__container__"><iframe src="index_32.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/windows_0" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_0" frameborder="0" height="600" scrolling="no" width="300"></iframe></div><iframe src="index_33.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/windows_0__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_0__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div></div>				
+    			<div class="sidebar-glossary">
+				<h4 class="sidebarh4">DID YOU KNOW?</h4>
+							
+	<div class="glossaryhomebox" style="padding: 10px;">
+
+                <p>October 5th is the most common birthday in the United States.</p>
+            </div>
+											
+			
+			</div>
+
+				<div class="sidebar-glossary lazyloaddiv">
+				<h4 class="sidebarh4">BEST OF HOW-TO GEEK</h4>
+																		<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/168841/how-to-send-and-receive-faxes-online-without-a-fax-machine-or-phone-line/" align="left" class="title" rel="bookmark"><span style="display: block; float: left;"><img src="loading_001.gif" style="padding: 12px 22px; top: -0.5px; left: -8px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/44aa045475b59f30a1e5c2d472fef3d2/wp-content/uploads/2013/07/fax-and-copier-machine.jpg"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/168841/how-to-send-and-receive-faxes-online-without-a-fax-machine-or-phone-line/" class="title" rel="bookmark">How to Send and Receive Faxes Online Without a Fax Machine or Phone Line</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/143263/how-to-test-your-antivirus-firewall-browser-and-software-security/" align="left" class="title" rel="bookmark"><span style="display: block; float: left;"><img src="loading_001.gif" style="padding: 12px 22px; top: -0.5px; left: -8px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/14a08b1b63cee60720ab3664274b356d/wp-content/uploads/2013/04/fortress.jpg"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/143263/how-to-test-your-antivirus-firewall-browser-and-software-security/" class="title" rel="bookmark">How to Test Your Antivirus, Firewall, Browser, and Software Security</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/132348/dont-have-a-false-sense-of-security-5-insecure-ways-to-secure-your-wi-fi/" align="left" class="title" rel="bookmark"><span style="display: block; float: left;"><img src="loading_001.gif" style="padding: 12px 22px; top: -0.5px; left: -8px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/de3c1639a92e3aee3e2a26ecffcb71f5/wp-content/uploads/2012/12/rusty-broken-lock.jpg"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/132348/dont-have-a-false-sense-of-security-5-insecure-ways-to-secure-your-wi-fi/" class="title" rel="bookmark">Don’t Have a False Sense of Security: 5 Insecure Ways to Secure Your Wi-Fi</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/179195/9-things-to-do-when-you-first-get-an-iphone/" align="left" class="title" rel="bookmark"><span style="display: block; float: left;"><img src="loading_001.gif" style="padding: 12px 22px; top: -0.5px; left: -8px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/80776befae3c11ebf1eb46257fe7ef1e/wp-content/uploads/2014/01/1-new-iphone.jpg"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/179195/9-things-to-do-when-you-first-get-an-iphone/" class="title" rel="bookmark">9 Things to Do When You First Get an iPhone</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/139592/how-to-find-the-root-cause-of-your-android-battery-problems/" align="left" class="title" rel="bookmark"><span style="display: block; float: left;"><img src="loading_001.gif" style="padding: 12px 22px; top: -0.5px; left: -8px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/2ac9443879d545826118042cb3d4ea10/wp-content/uploads/2013/03/better-battery-stats-on-nexus-4.jpg"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/139592/how-to-find-the-root-cause-of-your-android-battery-problems/" class="title" rel="bookmark">How to Find the Root Cause of Your Android Battery Problems</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/168361/how-to-build-your-own-internet-security-suite-for-free/" align="left" class="title" rel="bookmark"><span style="display: block; float: left;"><img src="loading_001.gif" style="padding: 12px 22px; top: -0.5px; left: -8px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/f396471b16de5cea40b036c760fe38de/wp-content/uploads/2013/07/lock-on-keyboard.jpg"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/168361/how-to-build-your-own-internet-security-suite-for-free/" class="title" rel="bookmark">How to Build Your Own Internet Security Suite For Free</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/139926/securely-access-online-banking-and-email-on-untrusted-computers-with-a-linux-usb-drive/" align="left" class="title" rel="bookmark"><span style="display: block; float: left;"><img src="loading_001.gif" style="padding: 12px 22px; top: -0.5px; left: -8px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/69faf595c59123fda6168f78bfde1ffd/wp-content/uploads/2013/03/secure-online-banking-on-linux.png"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/139926/securely-access-online-banking-and-email-on-untrusted-computers-with-a-linux-usb-drive/" class="title" rel="bookmark">Securely Access Online Banking and Email on Untrusted Computers</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/179700/beginner-geek-how-to-configure-your-router/" align="left" class="title" rel="bookmark"><span style="display: block; float: left;"><img src="loading_001.gif" style="padding: 12px 22px; top: -0.5px; left: -8px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/86d0c152687ab02145450f1ac820ddc0/wp-content/uploads/2014/01/wireless-router.jpg"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/179700/beginner-geek-how-to-configure-your-router/" class="title" rel="bookmark">Beginner Geek: How to Configure Your Router</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/182817/htg-explains-why-does-windows-want-to-reboot-so-often/" align="left" class="title" rel="bookmark"><span style="display: block; float: left;"><img src="loading_001.gif" style="padding: 12px 22px; top: -0.5px; left: -8px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/e7b6b2ff79c32270d1b7e9582e7a69b1/wp-content/uploads/2014/02/installing-windows-updates-reboot.jpg"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/182817/htg-explains-why-does-windows-want-to-reboot-so-often/" class="title" rel="bookmark">HTG Explains: Why Does Windows Want to Reboot So Often?</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+																					<div class="sfpost" style="width: 300px; padding: 10px; height: 40px; margin-bottom: 5px;">
+								
+								<div style="float: left; width: 60px; padding-right: 4px;">
+									<a style="" href="http://www.howtogeek.com/182926/ask-htg-why-does-my-new-hdtvs-picture-look-awful/" align="left" class="title" rel="bookmark"><span style="display: block; float: left;"><img src="loading_001.gif" style="padding: 12px 22px; top: -0.5px; left: -8px;" class="loading" alt=""><img class="lazyLoad" alt="" src="blank.gif" data-href="http://cdn.howtogeek.com/thumbcache/60/40/5f9db521ba36afe50d0d0b2d85663689/wp-content/uploads/2014/02/img_53037e9f46053.jpg"></span></a>
+								</div>
+								<div style="float: right; width: 230px;">
+									<a style="font-weight: bold; font-size: 110%;" href="http://www.howtogeek.com/182926/ask-htg-why-does-my-new-hdtvs-picture-look-awful/" class="title" rel="bookmark">Ask HTG: Why Does My New HDTV’s Picture Look Awful?</a>
+								</div>
+								<div style="clear: both;"></div>
+							</div>
+															
+			</div>			
+		<div style="clear: both;"></div>
+				<div style="width: 300px; min-height: 20px; margin-top: 30px;">
+			<div style="width: 160px; text-align: center; margin-left: auto; margin-right: auto;">
+				<!-- tmnp.howtogeek 160x600 BTF -->
+<div id="div-gpt-ad-1342044737928-12">
+
+<div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek-btf/windows_0__container__"><iframe src="index_34.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek-btf/windows_0" id="google_ads_iframe_/10518929/tmnp.howtogeek-btf/windows_0" frameborder="0" height="600" scrolling="no" width="160"></iframe></div><iframe src="index_35.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek-btf/windows_0__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek-btf/windows_0__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>				<div style="padding-top: 10px;"></div>
+			</div>
+			
+							<div style="clear: both;"></div>
+				<div id="div-1342-3" style="margin-left: 14px;"><div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_5__container__"><iframe src="index_36.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/windows_5" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_5" frameborder="0" height="300" scrolling="no" width="300"></iframe></div><iframe src="index_37.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/windows_5__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_5__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>														
+			
+			<div style="clear: both;"></div>
+		</div>
+		</div>
+	</div>
+</div>
+
+<div class="yui-g" id="sb2">
+	<div id="sb3">
+		<div id="ns_ad8">
+			<div id="sb4">
+				<!-- tmnp.howtogeek 728x90 BTF -->
+<div id="div-gpt-ad-1342044737928-14">
+
+<div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek-btf/windows_1__container__"><iframe src="index_38.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek-btf/windows_1" id="google_ads_iframe_/10518929/tmnp.howtogeek-btf/windows_1" frameborder="0" height="90" scrolling="no" width="728"></iframe></div><iframe src="index_39.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek-btf/windows_1__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek-btf/windows_1__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>			</div>
+			<div style="clear: both;"></div>
+		</div>
+	</div>
+</div>
+
+			<div class="yui-g" style=""></div>
+		</div>
+		
+		<div class="footer" id="ft">
+			<div style="width: 18%;" class="ftdiv">
+				<div class="ftsection" style="">ABOUT</div>
+				<ul class="bottomul">
+					<li><a href="http://www.howtogeek.com/about/">About Us</a></li>
+					<li><a href="http://www.howtogeek.com/contact/">Contact Us</a></li>
+					<li><a href="http://www.techmedianetwork.com/advertisers.html">Advertising</a></li>
+					<li><a href="http://www.howtogeek.com/privacy-policy/">Privacy Policy</a></li>
+				</ul>
+			</div>
+			<div style="width: 45%;" class="ftdiv">
+				<div class="ftsection" style="">EMAIL SUBSCRIPTION</div>
+				<p id="ftemp">Enter your email address to subscribe to our daily newsletter.</p>
+				<p>
+				</p><form action="http://www.howtogeek.com/em/subscribe" method="get">
+				<input name="list" value="weekday" type="hidden">
+				<input name="tr" value="footer" type="hidden">		
+				<input value="" id="fromaddress2" name="emailaddress" style="z-index: -9; height: 1px; width: 1px; position: absolute;" type="text">
+				<input value="" name="email" id="ftemtxt" type="text"> 
+				<input id="ftemsub" value="Subscribe Now" type="submit">
+				</form>
+				<p></p>
+			<div style="clear: both;"></div>
+			</div>
+			<div style="width: 280px; float: left;">
+				<div class="ftsection">FOLLOW US</div>
+				<ul class="ftsub" style="float: left;">
+					<li class="icon-twitter"><a href="https://twitter.com/intent/user?original_referer=http://www.howtogeek.com&amp;region=following&amp;screen_name=howtogeeksite&amp;tw_p=followbutton&amp;variant=2.0">Twitter</a></li>
+					<li class="icon-facebook"><a href="http://facebook.com/thehowtogeek">Facebook</a></li>
+				</ul>
+				<ul class="ftsub" style="float: left; margin-left: 20px;">
+					<li class="icon-google-plus"><a href="http://plus.google.com/+howtogeek">Google+</a></li>
+					<li class="icon-feed"><a href="http://feeds.howtogeek.com/howtogeek">RSS Feed</a></li>
+				</ul>
+				<div style="clear: both;"></div>
+			</div>	
+			
+			<div style="clear: both;"></div><br>
+			<div class="copyright" style="font-size: 11px;">Copyright © 2006-2014 HowToGeek.com.&nbsp; All Rights Reserved.</div>
+		</div>		
+		
+		
+	</div>
+	                    
+
+
+                                         
+                                             
+<!-- Begin comScore Tag -->
+
+
+
+
+<!-- End comScore Tag -->
+
+
+
+
+
+  	
+<!-- tmnp.howtogeek 1x1 ATF -->
+<div id="div-gpt-ad-1342044737928-5">
+
+<div style="border: 0pt none;" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_2__container__"><iframe src="index_40.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/windows_2" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_2" frameborder="0" height="1" scrolling="no" width="1"></iframe></div><iframe src="index_41.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/10518929/tmnp.howtogeek/windows_2__hidden__" id="google_ads_iframe_/10518929/tmnp.howtogeek/windows_2__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>
+
+
+
+
+<!-- Quantcast Tag -->
+
+
+
+<!-- End Quantcast tag -->
+
+
+
+
+
+
+
+
+<iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="index_42.html" id="oauth2relay1124520843" name="oauth2relay1124520843"></iframe><div id="tbl-aug-o8grd"><div id="tbl-aug-53ze2v"><div id="tbl-aug-lechl5"><div class=" trc_popover trc_popover_fade bottom "><div class=" trc_popover_arrow "></div><iframe src="index_43.html" frameborder="0" scrolling="no"></iframe></div></div></div></div><iframe style="border: 0px none; width: 0px; height: 0px; display: block;" src="index_44.html" id="LOTCCFrameSat Mar 01 2014 18:31:18 GMT+0800 (HKT)"></iframe><iframe src="index_45.html" style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_4626800178764"></iframe></body>
+</html>

@@ -1,0 +1,608 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<meta name="keywords" content="shentar 忘我的追寻 童燕群 C++ Java 网络协议 互联网 软件">
+<meta name="description" content="童燕群的博客">
+<title>精选37条强大的常用linux shell命令组合 - 忘我的追寻</title>
+<link rel="pingback" href="http://shentar.me/xmlrpc.php">
+
+
+<link rel="alternate" type="application/rss+xml" title="忘我的追寻 » Feed" href="http://shentar.me/feed/">
+<link rel="alternate" type="application/rss+xml" title="忘我的追寻 » 评论Feed" href="http://shentar.me/comments/feed/">
+
+            
+			<link rel="alternate" type="application/rss+xml" title="忘我的追寻 » 精选37条强大的常用linux shell命令组合评论Feed" href="http://shentar.me/%e7%b2%be%e9%80%8937%e6%9d%a1%e5%bc%ba%e5%a4%a7%e7%9a%84%e5%b8%b8%e7%94%a8linux-shell%e5%91%bd%e4%bb%a4%e7%bb%84%e5%90%88/feed/">
+
+
+
+
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://shentar.me/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://shentar.me/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="二阶段提交及相关学习笔记" href="http://shentar.me/%e4%ba%8c%e9%98%b6%e6%ae%b5%e6%8f%90%e4%ba%a4%e5%8f%8a%e7%9b%b8%e5%85%b3%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0/">
+<link rel="next" title="精选实用正则表达式" href="http://shentar.me/%e7%b2%be%e9%80%89%e5%ae%9e%e7%94%a8%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f/">
+
+<link rel="shortlink" href="http://goo.gl/c5icRq">
+	
+    
+<!-- All in One SEO Pack 2.1.3 by Michael Torbert of Semper Fi Web Design[409,444] -->
+<meta name="keywords" content="linux,shell脚本,精选shell命令组合,实用脚本">
+
+<link rel="canonical" href="http://shentar.me/%e7%b2%be%e9%80%8937%e6%9d%a1%e5%bc%ba%e5%a4%a7%e7%9a%84%e5%b8%b8%e7%94%a8linux-shell%e5%91%bd%e4%bb%a4%e7%bb%84%e5%90%88/">
+<!-- /all in one seo pack -->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-966 single-format-standard unknown-os unknown-browser"><iframe src="index_1.html" style="display: none;" frameborder="0"></iframe><div style="left: 0pt; top: 300px; position: fixed; height: 330px; overflow: hidden;" id="bdshare"><img src="l3.gif" alt="" style="float: right; margin-top: 58px;"><iframe src="index_2.html" id="bdsIfr" style="position: absolute; display: none; z-index: 9999;" frameborder="0"></iframe><div style="display: none; right: 24px;" id="bdshare_l"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="#" class="bds_mshare mshare">一键分享</a></li><li><a href="#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="#" class="bds_baidu bdsc">百度云收藏</a></li><li><a href="#" class="bds_renren rrw">人人网</a></li><li><a href="#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="#" class="bds_douban db">豆瓣网</a></li><li><a href="#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="#" class="bds_sqq sqq">QQ好友</a></li><li><a href="#" class="bds_thx thx">和讯微博</a></li><li><a href="#" class="bds_more">更多...</a></li></ul><p><a href="#" class="goWebsite">百度分享</a></p></div></div></div>
+
+	<div id="wrapper" class="hfeed">
+
+		<div id="header">
+
+        		<div id="branding">
+    
+    	<div id="blog-title"><span><a href="http://shentar.me/" title="忘我的追寻" rel="home">忘我的追寻</a></span></div>
+    
+    	<div id="blog-description"></div>
+
+		</div><!--  #branding -->
+    
+    <div id="access">
+    
+    	<div class="skip-link"><a href="#content" title="Skip navigation to the content">Skip to content</a></div><!-- .skip-link -->
+    	
+    	<div class="menu"></div>
+    	
+    </div><!-- #access -->
+           		
+    	</div><!-- #header-->		        
+    	    	
+	<div id="main">
+
+		<div id="container">
+			
+			<div id="content">
+
+				<div id="nav-above" class="navigation">
+				
+					<div class="nav-previous"><a href="http://shentar.me/%e4%ba%8c%e9%98%b6%e6%ae%b5%e6%8f%90%e4%ba%a4%e5%8f%8a%e7%9b%b8%e5%85%b3%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0/" rel="prev"><span class="meta-nav">«</span> （上一篇） 二阶段提交及相关学习笔记</a></div>
+					
+					<div class="nav-next"><a href="http://shentar.me/%e7%b2%be%e9%80%89%e5%ae%9e%e7%94%a8%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f/" rel="next">精选实用正则表达式 （下一篇） <span class="meta-nav">»</span></a></div>
+					
+				</div>
+					
+				<div id="post-966" class="post-966 post type-post status-publish format-standard hentry category-13 tag-linux tag-shell tag-shell">
+
+					<h1 class="entry-title">精选37条强大的常用linux shell命令组合</h1>
+
+					<div class="entry-meta">
+
+	<span class="meta-prep meta-prep-author">作者：</span><span class="author vcard"><a class="url fn n" href="http://shentar.me/author/yanqun/" title="查看 童燕群 的所有文章">童燕群</a></span>
+
+	<span class="meta-sep meta-sep-entry-date"> | </span>
+
+	<span class="meta-prep meta-prep-entry-date">发布日期：</span><span class="entry-date"><abbr class="published" title="2013-09-04T22:40:41+0800">九月 4, 2013</abbr></span>
+
+	
+
+</div><!-- .entry-meta -->
+     				
+					<div class="entry-content">
+					
+						<p><iframe style="border-width: 0px; width: 100%;" id="divIfameId" marginheight="0" src="index_3.html" marginwidth="0" height="2430" scrolling="no" width="100%"></iframe></p>
+<div class="yarpp-related">
+<h3>相关阅读:</h3><ul>
+<li><a href="http://shentar.me/%e8%ae%a9%e8%bf%9b%e7%a8%8b%e5%9c%a8%e5%90%8e%e5%8f%b0%e5%8f%af%e9%9d%a0%e8%bf%90%e8%a1%8c%e7%9a%84%e5%87%a0%e7%a7%8d%e6%96%b9%e6%b3%95/" rel="bookmark" title="让进程在后台可靠运行的几种方法">让进程在后台可靠运行的几种方法</a></li>
+<li><a href="http://shentar.me/%e7%b2%be%e9%80%89%e5%ae%9e%e7%94%a8%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f/" rel="bookmark" title="精选实用正则表达式">精选实用正则表达式</a></li>
+</ul>
+</div>
+
+												
+					</div><!-- .entry-content -->
+
+	
+	 
+
+<p style="margin: 0pt;">	
+<img src="fenxiang.png" border="0"><a href="http://v.t.qq.com/share/share.php?title="><img title="转发到腾讯微博" alt="腾讯微博" src="txweibo.png" height="29" width="29"></a>
+<a href="http://service.weibo.com/share/share.php?title="><img title="转发到新浪微博" alt="新浪微博" src="xinlang.png" height="29" width="29"></a>
+<a href="http://sns.qzone.qq.com/cgi-bin/qzshare/cgi_qzshare_onekey?title="><img title="转发到QQ空间" alt="QQ空间" src="qzone.png" height="29" width="29"></a>
+<img id="sub_weixin" src="weixin.jpg" style="cursor: pointer;" height="29" width="29">
+<a href="http://shentar.me/%e7%b2%be%e9%80%8937%e6%9d%a1%e5%bc%ba%e5%a4%a7%e7%9a%84%e5%b8%b8%e7%94%a8linux-shell%e5%91%bd%e4%bb%a4%e7%bb%84%e5%90%88/" class="twitter-share-button" data-via="tyanqun" data-size="large" data-count="none"><img title="转发到推特" alt="推特" src="tweet.png" height="29" width="77"></a>
+</p>
+<div id="weixin_img" class="entry-content" style="line-height: 22px; vertical-align: baseline; text-align: center; display: none; border: 1px solid rgb(204, 204, 204); margin: 0pt 0pt 0pt 63px; width: 240px;">
+<b><span>微信扫描，分享到朋友圈和群</span></b><br><img id="imgsource" style="margin: 0pt;" height="224px;" width="224px"></div>
+
+
+<p align="left"></p>
+
+<div class="entry-utility">
+
+						<span class="cat-links">| 这篇文章归档在：<a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/%e5%ae%9e%e7%94%a8%e8%84%9a%e6%9c%ac/" title="查看实用脚本中的全部文章" rel="category tag">实用脚本</a></span><span class="tag-links">  | 标签： <a href="http://shentar.me/tag/linux/" rel="tag">linux</a>, <a href="http://shentar.me/tag/shell%e8%84%9a%e6%9c%ac/" rel="tag">shell脚本</a>, <a href="http://shentar.me/tag/%e7%b2%be%e9%80%89shell%e5%91%bd%e4%bb%a4%e7%bb%84%e5%90%88/" rel="tag">精选shell命令组合</a></span>.  | 永久链接：<a href="http://shentar.me/%e7%b2%be%e9%80%8937%e6%9d%a1%e5%bc%ba%e5%a4%a7%e7%9a%84%e5%b8%b8%e7%94%a8linux-shell%e5%91%bd%e4%bb%a4%e7%bb%84%e5%90%88/" title="永久链接：精选37条强大的常用linux shell命令组合">链接</a> |<a class="comment-link" href="#respond" title=""> 评论（3） </a>|
+
+					</div><!-- .entry-utility -->
+					
+				</div><!-- #post -->
+		
+			<div id="nav-below" class="navigation">
+				<div class="nav-previous"><a href="http://shentar.me/%e4%ba%8c%e9%98%b6%e6%ae%b5%e6%8f%90%e4%ba%a4%e5%8f%8a%e7%9b%b8%e5%85%b3%e5%ad%a6%e4%b9%a0%e7%ac%94%e8%ae%b0/" rel="prev"><span class="meta-nav">«</span> （上一篇） 二阶段提交及相关学习笔记</a></div>
+				<div class="nav-next"><a href="http://shentar.me/%e7%b2%be%e9%80%89%e5%ae%9e%e7%94%a8%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f/" rel="next">精选实用正则表达式 （下一篇） <span class="meta-nav">»</span></a></div>
+			</div>
+
+								
+				<div id="comments">
+	
+					
+					
+										
+												
+					
+											
+					<div id="comments-list-wrapper" class="comments">
+
+						<h3><span>3</span> Comments</h3>
+	
+						<ol id="comments-list">
+							    
+       	<li id="comment-688" class="comment even thread-even depth-1 thm-c-y2013 thm-c-m09 thm-c-d14 thm-c-h21">
+    	
+    		    		
+    		<div class="comment-author vcard"><img alt="" src="c5c6a6ff46d47ba81a1af818edb6e529" class="photo avatar avatar-80 photo" height="80" width="80"> <span class="fn n">funnuy</span></div>
+    		
+    			<div class="comment-meta">Posted 九月 14, 2013 at 13:46:23 CST <span class="meta-sep">|</span> <a href="#comment-688" title="Permalink to this comment">Permalink</a></div>
+    		
+    			    			
+            <div class="comment-content">
+            
+        		<p>9. 如何在编写SHELL显示多个信息，用EOF<br>
+那不是heredoc吗 ？不一定用EOF的。</p>
+<p>10. for的用法<br>
+for i  in *这种用法会有的，例如文件名有空格，虽然在例子里可能没问题。</p>
+        		
+    		</div>
+    		
+			<div class="comment-reply-link"><a class="comment-reply-link" href="http://shentar.me/%e7%b2%be%e9%80%8937%e6%9d%a1%e5%bc%ba%e5%a4%a7%e7%9a%84%e5%b8%b8%e7%94%a8linux-shell%e5%91%bd%e4%bb%a4%e7%bb%84%e5%90%88/?replytocom=688#respond" onclick='return addComment.moveForm("comment-688", "688", "respond", "966")'>回复</a></div>			
+			
+<ul class="children">
+    
+       	<li id="comment-689" class="comment odd alt depth-2 thm-c-y2013 thm-c-m09 thm-c-d14 thm-c-h21">
+    	
+    		    		
+    		<div class="comment-author vcard"><img alt="" src="c5c6a6ff46d47ba81a1af818edb6e529" class="photo avatar avatar-80 photo" height="80" width="80"> <span class="fn n">funnuy</span></div>
+    		
+    			<div class="comment-meta">Posted 九月 14, 2013 at 13:47:17 CST <span class="meta-sep">|</span> <a href="#comment-689" title="Permalink to this comment">Permalink</a></div>
+    		
+    			    			
+            <div class="comment-content">
+            
+        		<p>&gt; for i in *这种用法会有的</p>
+<p>&gt; for i in *这种用法会有问题的</p>
+        		
+    		</div>
+    		
+			<div class="comment-reply-link"><a class="comment-reply-link" href="http://shentar.me/%e7%b2%be%e9%80%8937%e6%9d%a1%e5%bc%ba%e5%a4%a7%e7%9a%84%e5%b8%b8%e7%94%a8linux-shell%e5%91%bd%e4%bb%a4%e7%bb%84%e5%90%88/?replytocom=689#respond" onclick='return addComment.moveForm("comment-689", "689", "respond", "966")'>回复</a></div>			
+			
+<ul class="children">
+    
+       	<li id="comment-725" class="comment even depth-3 thm-c-y2013 thm-c-m10 thm-c-d21 thm-c-h02">
+    	
+    		    		
+    		<div class="comment-author vcard"><img alt="" src="69110d9262a861d0a5a5a2506d7af2fd" class="photo avatar avatar-80 photo" height="80" width="80"> <span class="fn n"><a href="http://shentar.me/" rel="external nofollow" class="url url">童燕群</a></span></div>
+    		
+    			<div class="comment-meta">Posted 十月 20, 2013 at 18:35:29 CST <span class="meta-sep">|</span> <a href="#comment-725" title="Permalink to this comment">Permalink</a></div>
+    		
+    			    			
+            <div class="comment-content">
+            
+        		<p>多谢提醒，的确for i in * 这样的命令会有问题。正式的代码中应该杜绝。平时的工具脚本可以用以下。</p>
+        		
+    		</div>
+    		
+			<div class="comment-reply-link"><a class="comment-reply-link" href="http://shentar.me/%e7%b2%be%e9%80%8937%e6%9d%a1%e5%bc%ba%e5%a4%a7%e7%9a%84%e5%b8%b8%e7%94%a8linux-shell%e5%91%bd%e4%bb%a4%e7%bb%84%e5%90%88/?replytocom=725#respond" onclick='return addComment.moveForm("comment-725", "725", "respond", "966")'>回复</a></div>			
+			
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+						</ol>
+										
+					</div><!-- #comments-list-wrapper .comments -->
+					
+												
+										
+										
+					<div id="comments-nav-below" class="comment-navigation">
+	        		
+	        			<div class="paginated-comments-links"></div>
+	                
+	                </div>	
+	                	                  
+					
+											
+						
+					<div id="respond">
+					
+	    				<h3>评论</h3>
+	
+	    				<div id="cancel-comment-reply"><a rel="nofollow" id="cancel-comment-reply-link" href="http://shentar.me/%e7%b2%be%e9%80%8937%e6%9d%a1%e5%bc%ba%e5%a4%a7%e7%9a%84%e5%b8%b8%e7%94%a8linux-shell%e5%91%bd%e4%bb%a4%e7%bb%84%e5%90%88/#respond" style="display: none;">点击这里取消回复。</a></div>
+	
+												<div class="formcontainer">	
+	
+												
+	
+							<form id="commentform" action="http://shentar.me/wp-comments-post.php" method="post">
+	
+								
+								<p id="comment-notes">邮箱地址不会被泄露， 标记为 <span class="required">*</span> 的项目必填。</p>
+	
+	                            <div id="form-section-author" class="form-section">
+	    							<div class="form-label"><label for="author">昵称</label> <span class="required">*</span></div>
+	    							<div class="form-input"><input id="author" name="author" value="" size="30" maxlength="20" tabindex="3" type="text"></div>
+	                            </div><!-- #form-section-author .form-section -->
+	
+	                            <div id="form-section-email" class="form-section">
+	    							<div class="form-label"><label for="email">邮箱</label> <span class="required">*</span></div>
+	    							<div class="form-input"><input id="email" name="email" value="" size="30" maxlength="50" tabindex="4" type="text"></div>
+	                            </div><!-- #form-section-email .form-section -->
+	
+	                            <div id="form-section-url" class="form-section">
+	    							<div class="form-label"><label for="url">主页</label></div>
+	    							<div class="form-input"><input id="url" name="url" value="" size="30" maxlength="50" tabindex="5" type="text"></div>
+	                            </div><!-- #form-section-url .form-section -->
+	
+	                            <!-- the plugin register callback -->
+	                  			<div id="capatcha-area" class="form-section"><label><label for="result">计算结果</label><span class="required"> *</span></label><br>5 <img src="subtraction.png" alt="-" style="vertical-align: middle;" border="0" height="16" width="16"> 3 = <input value="" size="2" style="width: 40px;" name="capatcha" id="capatcha" type="text"></div><br> 
+	
+								
+	                            <div id="form-section-comment" class="form-section">
+	    							<div class="form-label"><label for="comment">内容</label></div>
+	    							<div class="form-textarea"><div class="quicktags-toolbar" id="qt_comment_toolbar"><input id="qt_comment_strong" accesskey="b" class="ed_button" title="" value="b" type="button"><input id="qt_comment_link" accesskey="a" class="ed_button" title="" value="link" type="button"><input id="qt_comment_img" accesskey="m" class="ed_button" title="" value="img" type="button"><input id="qt_comment_ul" accesskey="u" class="ed_button" title="" value="ul" type="button"><input id="qt_comment_ol" accesskey="o" class="ed_button" title="" value="ol" type="button"><input id="qt_comment_li" accesskey="l" class="ed_button" title="" value="li" type="button"><input id="qt_comment_close" class="ed_button" title="关闭所有打开的标签" value="关闭标签" type="button"></div><textarea id="comment" name="comment" cols="45" rows="8" tabindex="6"></textarea></div>
+	                            <div id="form-allowed-tags" class="form-section">
+	                                <p><span>You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:</span> <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></p>
+	                            </div>
+                                  <div class="inside">
+					<br> <label for="codehightlight">代码语法高亮</label> <br> <label for="codehightlight">选择编程语言</label> <select id="language" tabindex="7">
+						<option value="applescript">AppleScript</option>
+						<option value="as3">AS3</option>
+						<option value="bash">Bash</option>
+						<option value="c">C</option>
+						<option selected="selected" value="cpp">C++</option>
+						<option value="csharp">C#</option>
+						<option value="cf">ColdFusion</option>
+						<option value="css">CSS</option>
+						<option value="delphi">Delphi</option>
+						<option value="diff">Diff</option>
+						<option value="erl">Erlang</option>
+						<option value="groovy">Groovy</option>
+						<option value="php">HTML</option>
+						<option value="java">Java</option>
+						<option value="jfx">JavaFX</option>
+						<option value="javascript">Javascript</option>
+						<option value="perl">Perl</option>
+						<option value="php">PHP</option>
+						<option value="plain">Plain</option>
+						<option value="ps">PowerShell</option>
+						<option value="python">Python</option>
+						<option value="ruby">Ruby</option>
+						<option value="sass">Sass</option>
+						<option value="scala">Scala</option>
+						<option value="sql">SQL</option>
+						<option value="vb">VisualBasic</option>
+						<option value="vb">VB.NET</option>
+						<option value="xml">XML</option>
+						<option value="other">其他</option>
+					</select> <br> <label for="codehightlight">代码粘帖框</label> <br>
+					<textarea id="code" rows="5" cols="70" tabindex="8" style="width: 48%;"></textarea>
+					<br> <label for="codehightlight">点击按钮，插入代码到评论末尾：</label><input value="插入" tabindex="9" onclick="javascript:settext2();" type="button">
+				</div>			
+								</div>
+                                <!-- #form-section-comment .form-section -->					
+								<!-- the plugin register callback -->
+	                  			<!-- ?php do_action( 'comment_form', $post->ID ); ? --> 
+	                  
+								<div class="form-submit"><input id="submit" name="submit" value="提交评论" tabindex="10" type="submit"><input name="comment_post_ID" value="966" type="hidden"></div>
+	
+	                            <input name="comment_post_ID" value="966" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+    
+	
+							</form><!-- #commentform -->
+	
+								
+						</div><!-- .formcontainer -->
+							
+						</div><!-- #respond -->
+						
+							
+				</div><!-- #comments -->
+				
+				
+                        </div>
+
+
+			 
+		</div><!-- #container -->
+		
+
+		<div id="secondary" class="aside main-aside">
+
+			<ul class="xoxo">
+
+				<li id="text-3" class="widgetcontainer widget_text"><h3 class="widgettitle">关于</h3>
+			<div class="textwidget"><p></p><table border="0" width="262px"><tbody><tr><td align="left" valign="middle" width="32%">所在行业</td><td align="left" valign="middle" width="68%">互联网、软件</td></tr><tr><td align="left" valign="middle" width="32%">擅长方向</td><td align="left" valign="middle" width="68%">分布式存储</td></tr><tr><td align="left" valign="middle" width="32%">职业历程</td><td align="left" valign="middle" width="68%"><a target="_top" href="http://sdrv.ms/15uSjW2" onclick="javascript:_gaq.push(['_trackEvent','outbound-widget','http://sdrv.ms']);">简介.pdf</a></td></tr><tr><td align="left" valign="middle" width="32%">建站总结</td><td align="left" valign="middle" width="68%"><a target="_top" href="http://goo.gl/fkmlnO" onclick="javascript:_gaq.push(['_trackEvent','outbound-widget','http://goo.gl']);">本站建站技术</a></td></tr><tr><td align="left" valign="middle" width="32%">关注微博</td><td align="left" valign="middle" width="68%"><a target="_top" title="关注新浪微博" href="http://weibo.com/shentar" onclick="javascript:_gaq.push(['_trackEvent','outbound-widget','http://weibo.com']);"><img src="sina_weibo_sub.png" alt="新浪微博" name="sub_xinlang" id="sub_xinlang" style="vertical-align: middle;" align="AbsMiddle" border="0" height="22" width="22"></a>&nbsp;&nbsp;<a target="_top" title="关注腾讯微博" href="http://t.qq.com/shentar" onclick="javascript:_gaq.push(['_trackEvent','outbound-widget','http://t.qq.com']);"><img src="tencent_weibo_sub.png" alt="腾讯微博" name="sub_tencentweibo" style="vertical-align: middle;" id="sub_tencentweibo" align="absmiddle" border="0" height="22" width="21"></a>&nbsp;&nbsp;<a target="_top" title="关注脸书" href="https://www.facebook.com/tyanqun" onclick="javascript:_gaq.push(['_trackEvent','outbound-widget','http://www.facebook.com']);"><img src="facebook_sub.png" alt="脸书" name="sub_facebook" id="sub_facebook" style="vertical-align: middle;" align="absmiddle" border="0" height="22" width="22"></a>&nbsp;&nbsp;<a target="_top" title="关注推特" href="https://twitter.com/tyanqun" onclick="javascript:_gaq.push(['_trackEvent','outbound-widget','http://twitter.com']);"><img src="twitter_sub.png" alt="推特" name="sub_twitter" id="sub_twitter" style="vertical-align: middle;" align="absmiddle" border="0" height="22" width="22"></a></td></tr></tbody></table></div>
+		</li><li id="search-2" class="widgetcontainer widget_search"><h3 class="widgettitle"><label for="s">站内搜索</label></h3>
+
+						<form id="searchform" method="get" action="http://shentar.me/">
+
+							<div>
+								<input id="s" name="s" style="width: 262px;" value="请输入搜索内容并回车.." onfocus="if (this.value == '请输入搜索内容并回车..') {this.value = '';}" onblur="if (this.value == '') {this.value = '请输入搜索内容并回车..';}" size="36" tabindex="1" type="text">
+
+								<input id="searchsubmit" name="searchsubmit" value="Search" tabindex="2" type="submit">
+							</div>
+
+						</form>
+
+					</li><li id="text-5" class="widgetcontainer widget_text"><h3 class="widgettitle">常用</h3>
+			<div class="textwidget"><ul class="xoxo blogroll">
+<li><a href="http://rd.shentar.me/" target="_top" style="text-decoration: none;" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://rd.shentar.me']);">RSS阅读器</a></li>
+<li><a href="http://news.shentar.me/" target="_top" style="text-decoration: none;" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://news.shentar.me']);">一手存储分享</a></li>
+	</ul></div>
+		</li><li id="yarpp_widget-2" class="widgetcontainer widget_yarpp_widget"><h3 class="widgettitle">相关阅读</h3>
+<div class="yarpp-related-widget">
+<ul><li><a href="http://shentar.me/%e8%ae%a9%e8%bf%9b%e7%a8%8b%e5%9c%a8%e5%90%8e%e5%8f%b0%e5%8f%af%e9%9d%a0%e8%bf%90%e8%a1%8c%e7%9a%84%e5%87%a0%e7%a7%8d%e6%96%b9%e6%b3%95/" rel="bookmark">让进程在后台可靠运行的几种方法</a></li><li><a href="http://shentar.me/%e7%b2%be%e9%80%89%e5%ae%9e%e7%94%a8%e6%ad%a3%e5%88%99%e8%a1%a8%e8%be%be%e5%bc%8f/" rel="bookmark">精选实用正则表达式</a></li></ul>
+</div>
+</li><li id="categories-2" class="widgetcontainer widget_categories"><h3 class="widgettitle">分类目录</h3>
+		<ul>
+	<li class="cat-item cat-item-8"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e5%a5%87%e8%b6%a3/" title="查看奇趣见闻下的所有文章">奇趣见闻</a> (3)
+</li>
+	<li class="cat-item cat-item-25"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e6%95%b0%e7%a0%81%e7%a1%ac%e4%bb%b6/" title="查看数码硬件下的所有文章">数码硬件</a> (5)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e7%94%9f%e6%b4%bb%e6%9c%ad%e8%ae%b0/" title="查看生活札记下的所有文章">生活札记</a> (10)
+<ul class="children">
+	<li class="cat-item cat-item-84"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e7%94%9f%e6%b4%bb%e6%9c%ad%e8%ae%b0/%e6%96%87%e5%ad%97%e7%bd%91%e6%91%98/" title="查看文字网摘下的所有文章">文字网摘</a> (2)
+</li>
+	<li class="cat-item cat-item-64"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e7%94%9f%e6%b4%bb%e6%9c%ad%e8%ae%b0/%e8%a7%82%e5%bd%b1%e9%9a%8f%e6%83%b3/" title="查看观影随想下的所有文章">观影随想</a> (2)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-23"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e7%a7%bb%e5%8a%a8%e4%ba%92%e8%81%94/" title="查看移动互联下的所有文章">移动互联</a> (15)
+</li>
+	<li class="cat-item cat-item-6"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%81%8c%e4%b8%9a%e5%8f%91%e5%b1%95/" title="查看职业发展下的所有文章">职业发展</a> (5)
+</li>
+	<li class="cat-item cat-item-38"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/" title="软件编程技术，语言基础，算法数据结构。">软件技术</a> (69)
+<ul class="children">
+	<li class="cat-item cat-item-11"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/c%e5%92%8cc%e5%8a%a0%e5%8a%a0%e8%af%ad%e8%a8%80/" title="查看C/C++下的所有文章">C/C++</a> (18)
+</li>
+	<li class="cat-item cat-item-36"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/io%e7%bc%96%e7%a8%8b/" title="查看IO编程下的所有文章">IO编程</a> (3)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/java/" title="查看Java下的所有文章">Java</a> (19)
+	<ul class="children">
+	<li class="cat-item cat-item-4"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/java/geronimo/" title="查看Geronimo下的所有文章">Geronimo</a> (2)
+</li>
+	<li class="cat-item cat-item-12"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/java/jetty/" title="查看Jetty下的所有文章">Jetty</a> (5)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/java/jmx/" title="查看JMX下的所有文章">JMX</a> (1)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/java/jni%e6%8a%80%e6%9c%af/" title="查看JNI技术下的所有文章">JNI技术</a> (1)
+</li>
+	<li class="cat-item cat-item-39"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/java/netty/" title="查看Netty下的所有文章">Netty</a> (1)
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-10"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/linux%e5%86%85%e6%a0%b8/" title="查看Linux内核下的所有文章">Linux内核</a> (3)
+</li>
+	<li class="cat-item cat-item-106"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/%e5%a4%9a%e7%ba%bf%e7%a8%8b%e7%bc%96%e7%a8%8b/" title="查看多线程编程下的所有文章">多线程编程</a> (5)
+</li>
+	<li class="cat-item cat-item-214"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/%e5%ad%98%e5%82%a8/" title="查看存储技术下的所有文章">存储技术</a> (16)
+	<ul class="children">
+	<li class="cat-item cat-item-37"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/%e5%ad%98%e5%82%a8/%e5%88%86%e5%b8%83%e5%bc%8f%e5%ad%98%e5%82%a8/" title="查看分布式存储下的所有文章">分布式存储</a> (13)
+		<ul class="children">
+	<li class="cat-item cat-item-43"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/%e5%ad%98%e5%82%a8/%e5%88%86%e5%b8%83%e5%bc%8f%e5%ad%98%e5%82%a8/drbd/" title="查看DRBD下的所有文章">DRBD</a> (4)
+</li>
+		</ul>
+</li>
+	<li class="cat-item cat-item-209"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/%e5%ad%98%e5%82%a8/%e5%ad%98%e5%82%a8%e4%b8%9a%e7%95%8c/" title="查看存储业界下的所有文章">存储业界</a> (2)
+</li>
+	</ul>
+</li>
+	<li class="cat-item cat-item-13"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/%e5%ae%9e%e7%94%a8%e8%84%9a%e6%9c%ac/" title="查看实用脚本下的所有文章">实用脚本</a> (6)
+</li>
+	<li class="cat-item cat-item-47"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/%e5%bb%ba%e7%ab%99%e6%8a%80%e6%9c%af/" title="查看建站技术下的所有文章">建站技术</a> (8)
+</li>
+	<li class="cat-item cat-item-128"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/%e6%95%b0%e6%8d%ae%e5%ba%93/" title="查看数据库下的所有文章">数据库</a> (2)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/%e7%ae%97%e6%b3%95%e6%95%b0%e6%8d%ae%e7%bb%93%e6%9e%84/" title="查看算法数据结构下的所有文章">算法数据结构</a> (12)
+</li>
+	<li class="cat-item cat-item-183"><a href="http://shentar.me/%E5%88%86%E7%B1%BB/%e8%bd%af%e4%bb%b6%e6%8a%80%e6%9c%af/%e8%af%ad%e8%a8%80%e5%9f%ba%e7%a1%80/" title="查看语言基础下的所有文章">语言基础</a> (8)
+</li>
+</ul>
+</li>
+		</ul>
+</li>		<li id="recent-posts-3" class="widgetcontainer widget_recent_entries">		<h3 class="widgettitle">近期文章</h3>
+		<ul>
+					<li>
+				<a href="http://shentar.me/%e5%ad%98%e5%82%a8%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e4%b9%8b%e7%a1%ac%e7%9b%98%e6%8e%a5%e5%8f%a3%e7%ae%80%e8%bf%b0/">存储基础知识之——硬盘接口简述</a>
+						</li>
+					<li>
+				<a href="http://shentar.me/%e5%af%b9%e6%af%94%e4%b8%80%e4%b8%8b%e5%ae%b6%e9%87%8c%e4%b8%a4%e5%8f%b0%e7%94%b5%e8%84%91%e7%9a%84%e6%80%a7%e8%83%bd/">升级到至强E5440后，与i5 CPU笔记本性能对比</a>
+						</li>
+					<li>
+				<a href="http://shentar.me/%e8%bd%ac-%e5%88%86%e5%b8%83%e5%bc%8f%e5%ad%98%e5%82%a8%e7%b3%bb%e7%bb%9f%ef%bc%88glusterfs%ef%bc%8cswift%ef%bc%8ccassandra%ef%bc%89%e8%ae%be%e8%ae%a1%e5%af%b9%e6%af%94/">[转] 分布式存储系统(GlusterFS, Swift, Cassandra)设计对比</a>
+						</li>
+					<li>
+				<a href="http://shentar.me/%e5%ad%98%e5%82%a8%e5%9f%ba%e7%a1%80%e7%9f%a5%e8%af%86%e4%b9%8b%e7%a3%81%e7%9b%98%e9%98%b5%e5%88%97%e5%8e%9f%e7%90%86%e5%8f%8a%e6%93%8d%e4%bd%9c%e5%ae%9e%e6%88%98/">存储基础知识之——磁盘阵列原理及操作实战</a>
+						</li>
+					<li>
+				<a href="http://shentar.me/%e4%ba%91%e5%ad%98%e5%82%a8%e4%b8%ad%e7%9a%84http%e9%89%b4%e6%9d%83%e7%ae%97%e6%b3%95%e5%88%86%e6%9e%90/">云存储中的HTTP鉴权算法分析</a>
+						</li>
+					<li>
+				<a href="http://shentar.me/%e4%bb%8e%e4%b8%80%e4%b8%aa%e5%85%b8%e5%9e%8b%e7%9a%84%e5%86%85%e5%ad%98%e8%b6%8a%e7%95%8c%e8%ae%bf%e9%97%ae%e9%97%ae%e9%a2%98%e5%88%86%e6%9e%90linux%e7%9a%84%e8%bf%9b%e7%a8%8b%e5%86%85%e5%ad%98/">从一个非典型的内存越界访问问题看Linux的进程内存布局</a>
+						</li>
+					<li>
+				<a href="http://shentar.me/%e7%b2%be%e9%80%8985%e6%9d%a1linux%e7%b3%bb%e7%bb%9f%e7%ae%a1%e7%90%86%e5%91%98%e7%9f%a5%e8%af%86%e7%82%b9/">精选85条Linux系统管理员知识点</a>
+						</li>
+					<li>
+				<a href="http://shentar.me/%e8%bd%ac-%e4%b8%80%e5%8f%a5%e8%af%9d%e6%80%bb%e7%bb%93gof-23%e7%a7%8d%e8%ae%be%e8%ae%a1%e6%a8%a1%e5%bc%8f/">[转] 一句话总结GoF 23种设计模式</a>
+						</li>
+				</ul>
+		</li><li id="archives-2" class="widgetcontainer widget_archive"><h3 class="widgettitle">归档</h3>
+		<ul>
+			<li><a href="http://shentar.me/2014/02/">2014年二月</a>&nbsp;(5)</li>
+	<li><a href="http://shentar.me/2013/12/">2013年十二月</a>&nbsp;(5)</li>
+	<li><a href="http://shentar.me/2013/11/">2013年十一月</a>&nbsp;(3)</li>
+	<li><a href="http://shentar.me/2013/10/">2013年十月</a>&nbsp;(13)</li>
+	<li><a href="http://shentar.me/2013/09/">2013年九月</a>&nbsp;(13)</li>
+	<li><a href="http://shentar.me/2013/08/">2013年八月</a>&nbsp;(13)</li>
+	<li><a href="http://shentar.me/2013/07/">2013年七月</a>&nbsp;(9)</li>
+	<li><a href="http://shentar.me/2013/06/">2013年六月</a>&nbsp;(8)</li>
+	<li><a href="http://shentar.me/2013/05/">2013年五月</a>&nbsp;(1)</li>
+	<li><a href="http://shentar.me/2013/03/">2013年三月</a>&nbsp;(3)</li>
+	<li><a href="http://shentar.me/2013/01/">2013年一月</a>&nbsp;(1)</li>
+	<li><a href="http://shentar.me/2012/09/">2012年九月</a>&nbsp;(12)</li>
+	<li><a href="http://shentar.me/2012/08/">2012年八月</a>&nbsp;(3)</li>
+		</ul>
+</li><li id="calendar-3" class="widgetcontainer widget_calendar"><div id="calendar_wrap"><table id="wp-calendar">
+	<caption>2014年三月</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="星期日">日</th>
+		<th scope="col" title="星期一">一</th>
+		<th scope="col" title="星期二">二</th>
+		<th scope="col" title="星期三">三</th>
+		<th scope="col" title="星期四">四</th>
+		<th scope="col" title="星期五">五</th>
+		<th scope="col" title="星期六">六</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="http://shentar.me/2014/02/" title="查看2014年二月的文章">« 二</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next" class="pad">&nbsp;</td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="6" class="pad">&nbsp;</td><td id="today">1</td>
+	</tr>
+	<tr>
+		<td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td>
+	</tr>
+	<tr>
+		<td>9</td><td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td>
+	</tr>
+	<tr>
+		<td>16</td><td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td>
+	</tr>
+	<tr>
+		<td>23</td><td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td>
+	</tr>
+	<tr>
+		<td>30</td><td>31</td>
+		<td class="pad" colspan="5">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></li><li id="rss-links-2" class="widgetcontainer widget_rss-links"><h3 class="widgettitle">内容聚合</h3>
+			<ul>
+				<li><a href="http://shentar.me/feed/" title="忘我的追寻 Posts RSS feed" rel="alternate nofollow" type="application/rss+xml">最近50篇文章</a></li>
+				<li><a href="http://shentar.me/comments/feed/" title="忘我的追寻 Comments RSS feed" rel="alternate nofollow" type="application/rss+xml">最新评论</a></li>
+			</ul>
+</li><li id="linkcat-108" class="widgetcontainer widget_links"><h3 class="widgettitle">Wordpress</h3>
+
+	<ul class="xoxo blogroll">
+<li><a href="http://planet.wordpress.org/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://planet.wordpress.org']);">WordPress Planet</a></li>
+<li><a href="http://wordpress.org/support/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://wordpress.org']);">Support Forum</a></li>
+<li><a href="http://wordpress.org/extend/themes/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://wordpress.org']);">Themes</a></li>
+<li><a href="http://wordpress.org/extend/ideas/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://wordpress.org']);">Suggest Ideas</a></li>
+<li><a href="http://wordpress.org/news/" target="" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://wordpress.org']);">WordPress Blog</a></li>
+<li><a href="http://www.shentar.me/wp-admin/" title="Meta" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://www.shentar.me']);">Meta</a></li>
+<li><a href="http://wordpress.org/extend/plugins/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://wordpress.org']);">Plugins</a></li>
+<li><a href="http://codex.wordpress.org/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://codex.wordpress.org']);">Documentation</a></li>
+
+	</ul>
+</li>
+<li id="linkcat-110" class="widgetcontainer widget_links"><h3 class="widgettitle">博客</h3>
+
+	<ul class="xoxo blogroll">
+<li><a href="http://www.valleytalk.org/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://www.valleytalk.org']);">弯曲评论</a></li>
+<li><a href="http://www.yunkeji.com/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://www.yunkeji.com']);">孕峰</a></li>
+<li><a href="http://coolshell.cn/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://coolshell.cn']);">酷壳</a></li>
+<li><a href="http://www.cnblogs.com/D-Tec/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://www.cnblogs.com']);">D-Tec</a></li>
+<li><a href="http://blog.yufeng.info/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://blog.yufeng.info']);">系统技术非业余研究</a></li>
+<li><a href="http://rdc.taobao.com/blog/cs/?from=Shentar" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://rdc.taobao.com']);">淘宝核心系统团队</a></li>
+<li><a href="http://blog.linezing.com/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://blog.linezing.com']);">量子恒道</a></li>
+<li><a href="http://www.wzxue.com/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://www.wzxue.com']);">麦子迈</a></li>
+<li><a href="http://www.alidata.org/archives" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://www.alidata.org']);">阿里集团数据平台</a></li>
+<li><a href="http://way4ever.com/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://way4ever.com']);">Way Forever</a></li>
+<li><a href="http://www.williamlong.info/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://www.williamlong.info']);">月光博客</a></li>
+<li><a href="https://tumutanzi.com/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','']);">土木坛子</a></li>
+<li><a href="http://www.ruanyifeng.com/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://www.ruanyifeng.com']);">阮一峰</a></li>
+
+	</ul>
+</li>
+<li id="linkcat-109" class="widgetcontainer widget_links"><h3 class="widgettitle">常用</h3>
+
+	<ul class="xoxo blogroll">
+<li><a href="https://skydrive.live.com/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','']);">SkyDrive</a></li>
+<li><a href="https://drive.google.com/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','']);">Google 云端硬盘/文档</a></li>
+<li><a href="http://movie.douban.com/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://movie.douban.com']);">豆瓣电影</a></li>
+<li><a href="https://www.google.com/calendar/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','']);">Google 日历</a></li>
+<li><a href="http://rd.shentar.me/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://rd.shentar.me']);">RSS阅读器</a></li>
+<li><a href="http://news.shentar.me/" target="_top" onclick="javascript:_gaq.push(['_trackEvent','outbound-blogroll','http://news.shentar.me']);">一手存储分享</a></li>
+
+	</ul>
+</li>
+
+				</ul>
+
+		</div><!-- #secondary .aside -->
+
+				
+		</div><!-- #main -->
+    	
+    	<div id="footer">	
+        	
+        	    
+	<div id="siteinfo">        
+
+   			Copyright © 2012 - <span class="the-year">2014</span> 转载<a target="_top" href="http://shentar.me/"><b>本站</b></a>原创内容请注明出处
+
+	</div><!-- #siteinfo -->
+	
+   	        	
+		</div><!-- #footer -->
+    	
+	</div><!-- #wrapper .hfeed -->
+    
+    
+    
+    
+
+
+
+
+<div id="full" style="width: 88px; height: 88px; position: fixed; right: 0px; bottom: 0px; margin-left: 0px; margin-bottom: 0px; z-index: 100; text-align: center; cursor: pointer; display: block;"> <a><img src="totop2.png" alt="返回顶部" border="0" width="55px"></a> </div>
+
+
+<!-- Baidu Button BEGIN -->
+
+
+
+<!-- Baidu Button END -->
+
+
+
+
+
+
+<iframe style="position: absolute; top: -100px; left: -100px; z-index: -10; border: medium none; visibility: hidden; width: 1px; height: 1px;" src="index_4.html"></iframe><iframe src="index_5.html" style="position: absolute; width: 1px; height: 1px; top: 0pt; left: 0pt; visibility: hidden;"></iframe><sfmsg data="{&quot;imageCount&quot;:0,&quot;ip&quot;:&quot;1.1.1.1&quot;}" id="sfMsgId"></sfmsg></body>
+</html>

@@ -1,0 +1,1658 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-CN" xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	
+	<title>  （原创）RHEL/CentOS 5.x使用第三方软件库（EPEL与RPMForge、RPMFusion软件库）</title>
+	
+			
+			<link rel="alternate" type="application/rss+xml" title="服务器运维与网站架构|Linux运维|X研究 » （原创）RHEL/CentOS 5.x使用第三方软件库（EPEL与RPMForge、RPMFusion软件库） 评论 Feed" href="http://www.ha97.com/2626.html/feed">
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.ha97.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.ha97.com/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="服务器运维与网站架构|Linux运维|X研究" href="http://www.ha97.com/">
+<link rel="start" title="LNMPW on VPS！" href="http://www.ha97.com/1.html">
+<link rel="prev" title="RHEL/CentOS可用的第三方软件库详解" href="http://www.ha97.com/2625.html">
+<link rel="next" title="RHEL/CentOS 5.x里安装多种解码器打造Linux的全能播放器" href="http://www.ha97.com/2627.html">
+<meta name="generator" content="WordPress 3.2.1">
+<link rel="canonical" href="http://www.ha97.com/2626.html">
+<link rel="shortlink" href="http://www.ha97.com/?p=2626">
+	
+	
+	<link rel="shortcut icon" type="image/ico" href="favicon.gif">
+	<link rel="alternate" type="application/rss+xml" title="RSS 2.0" href="http://www.ha97.com/feed">
+	<link rel="alternate" type="text/xml" title="RSS .92" href="http://www.ha97.com/feed/rss">
+	<link rel="alternate" type="application/atom+xml" title="Atom 0.3" href="http://www.ha97.com/feed/atom">
+	<link rel="pingback" href="http://www.ha97.com/xmlrpc.php">		
+	<link rel="shortcut icon" href="favicon.ico"> 
+   
+		<link rel="archives" title="2014 年二月" href="http://www.ha97.com/date/2014/02">
+	<link rel="archives" title="2014 年一月" href="http://www.ha97.com/date/2014/01">
+	<link rel="archives" title="2013 年十二月" href="http://www.ha97.com/date/2013/12">
+	<link rel="archives" title="2013 年十月" href="http://www.ha97.com/date/2013/10">
+	<link rel="archives" title="2013 年九月" href="http://www.ha97.com/date/2013/09">
+	<link rel="archives" title="2013 年七月" href="http://www.ha97.com/date/2013/07">
+	<link rel="archives" title="2013 年六月" href="http://www.ha97.com/date/2013/06">
+	<link rel="archives" title="2013 年三月" href="http://www.ha97.com/date/2013/03">
+	<link rel="archives" title="2013 年二月" href="http://www.ha97.com/date/2013/02">
+	<link rel="archives" title="2013 年一月" href="http://www.ha97.com/date/2013/01">
+	<link rel="archives" title="2012 年十二月" href="http://www.ha97.com/date/2012/12">
+	<link rel="archives" title="2012 年十一月" href="http://www.ha97.com/date/2012/11">
+	<link rel="archives" title="2012 年十月" href="http://www.ha97.com/date/2012/10">
+	<link rel="archives" title="2012 年九月" href="http://www.ha97.com/date/2012/09">
+	<link rel="archives" title="2012 年八月" href="http://www.ha97.com/date/2012/08">
+	<link rel="archives" title="2012 年七月" href="http://www.ha97.com/date/2012/07">
+	<link rel="archives" title="2012 年六月" href="http://www.ha97.com/date/2012/06">
+	<link rel="archives" title="2012 年五月" href="http://www.ha97.com/date/2012/05">
+	<link rel="archives" title="2012 年四月" href="http://www.ha97.com/date/2012/04">
+	<link rel="archives" title="2012 年三月" href="http://www.ha97.com/date/2012/03">
+	<link rel="archives" title="2012 年二月" href="http://www.ha97.com/date/2012/02">
+	<link rel="archives" title="2012 年一月" href="http://www.ha97.com/date/2012/01">
+	<link rel="archives" title="2011 年十二月" href="http://www.ha97.com/date/2011/12">
+	<link rel="archives" title="2011 年十一月" href="http://www.ha97.com/date/2011/11">
+	<link rel="archives" title="2011 年十月" href="http://www.ha97.com/date/2011/10">
+	<link rel="archives" title="2011 年八月" href="http://www.ha97.com/date/2011/08">
+	<link rel="archives" title="2011 年七月" href="http://www.ha97.com/date/2011/07">
+	<link rel="archives" title="2011 年六月" href="http://www.ha97.com/date/2011/06">
+	<link rel="archives" title="2011 年五月" href="http://www.ha97.com/date/2011/05">
+	<link rel="archives" title="2011 年四月" href="http://www.ha97.com/date/2011/04">
+	<link rel="archives" title="2011 年三月" href="http://www.ha97.com/date/2011/03">
+	<link rel="archives" title="2011 年二月" href="http://www.ha97.com/date/2011/02">
+	<link rel="archives" title="2011 年一月" href="http://www.ha97.com/date/2011/01">
+	<link rel="archives" title="2010 年十二月" href="http://www.ha97.com/date/2010/12">
+	<link rel="archives" title="2010 年十一月" href="http://www.ha97.com/date/2010/11">
+	<link rel="archives" title="2010 年十月" href="http://www.ha97.com/date/2010/10">
+	<link rel="archives" title="2010 年九月" href="http://www.ha97.com/date/2010/09">
+	<link rel="archives" title="2010 年八月" href="http://www.ha97.com/date/2010/08">
+	<link rel="archives" title="2010 年七月" href="http://www.ha97.com/date/2010/07">
+	<link rel="archives" title="2010 年六月" href="http://www.ha97.com/date/2010/06">
+	<link rel="archives" title="2010 年五月" href="http://www.ha97.com/date/2010/05">
+	<link rel="archives" title="2010 年四月" href="http://www.ha97.com/date/2010/04">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+	<div style="display: none;" id="tesloading">正在加载...</div> 
+	
+	
+	<div id="header-aw">
+		<div id="headin-aw">
+			<div class="awblog aw-f"><a href="http://www.ha97.com/" title="服务器运维与网站架构|Linux运维|X研究">服务器运维与网站架构|Linux运维|X研究</a></div>
+			<div class="description aw-f"><a href="http://www.ha97.com/" title="let's face reality，loyalty to an ideal！">let's face reality，loyalty to an ideal！</a></div>
+			<ul id="tesnavlist" class="clearfix">
+			<li><a href="http://www.ha97.com/" title="www.ha97.com">首页</a></li>
+			<li><a href="http://www.ha97.com/category/linux" title="Linux">Linux</a></li>
+		      <li><a href="http://www.ha97.com/category/web-server/nginx" title="Nginx">Nginx</a></li>
+		      <li><a href="http://www.ha97.com/category/security" title="Security">Security</a></li>
+			<li><a href="http://www.ha97.com/category/shell" title="Shell">Shell</a></li>
+		      <li><a href="http://www.ha97.com/category/%E6%9C%8D%E5%8A%A1%E5%99%A8%E6%9E%B6%E6%9E%84" title="服务器架构">服务器架构</a></li>
+		      <li><a href="http://www.ha97.com/category/%E4%BA%92%E8%81%94%E7%BD%91" title="互联网研究、网站运营、IT评论">互联网</a></li>
+			<li><a href="http://www.ha97.com/book/lfs-book-6.6" title="LFS6.6中文手册，DIY定制你的Linux系统">LFS 6.6</a></li>
+		      <li><a href="http://www.ha97.com/book/vbird_linux" title="Linux经典教程，强烈推荐！">Linux经典</a></li>
+		      <li><a href="http://www.ha97.com/category/%E4%B8%AA%E4%BA%BA%E6%97%A5%E8%AE%B0" title="个人日记">个人日记</a></li>
+			<li class="fR"><a href="http://www.ha97.com/about" title="#">关于</a></li>
+		</ul>
+		</div>
+	</div>
+	<div id="wrapper" class="clearfix">
+		<div id="content">
+			<div id="content-aw">
+			<div class="nav clearfix">
+			<div class="prev-p">« <a href="http://www.ha97.com/2625.html" rel="prev">RHEL/CentOS可用的第三方软件库详解</a></div>
+			<div class="next-p"><a href="http://www.ha97.com/2627.html" rel="next">RHEL/CentOS 5.x里安装多种解码器打造Linux的全能播放器</a> »</div>
+		</div>
+		<div id="aw-page">
+			<div class="aw-tit clearfix"> 
+<div class="aw-cad">
+	<div class="aw-Y">2010-8</div>
+	<div class="aw-D">5</div>
+</div>
+<div class="aw-meta">	
+	<div><h2 class="aw-title" id="post-2626"><a href="http://www.ha97.com/2626.html" rel="bookmark" title="Permalink to （原创）RHEL/CentOS 5.x使用第三方软件库（EPEL与RPMForge、RPMFusion软件库）">（原创）RHEL/CentOS 5.x使用第三方软件库（EPEL与RPMForge、RPMFusion软件库）</a></h2></div>
+		<div class="meta-small">发表于: <a href="http://www.ha97.com/category/linux/rhelcentosfedora" title="查看 RHEL/CentOS/Fedora 中的全部文章" rel="category tag">RHEL/CentOS/Fedora</a>, <a href="http://www.ha97.com/category/%e4%b8%aa%e4%ba%ba%e6%97%a5%e8%ae%b0" title="查看 个人日记 中的全部文章" rel="category tag">个人日记</a>, <a href="http://www.ha97.com/category/%e5%8e%9f%e5%88%9b%e6%80%bb%e7%bb%93" title="查看 原创总结 中的全部文章" rel="category tag">原创总结</a>  |  作者:  <a href="http://www.ha97.com/author/admin" title="由 谋万世全局者 发布" rel="author">谋万世全局者</a>	</div>
+		<div class="meta-small">标签: <a href="http://www.ha97.com/tag/centos" rel="tag">centos</a>,<a href="http://www.ha97.com/tag/epel" rel="tag">EPEL</a>,<a href="http://www.ha97.com/tag/rhel" rel="tag">RHEL</a>,<a href="http://www.ha97.com/tag/rpmforge" rel="tag">RPMForge</a>,<a href="http://www.ha97.com/tag/rpmfusion" rel="tag">RPMFusion</a>,<a href="http://www.ha97.com/tag/%e5%8e%9f%e5%88%9b" rel="tag">原创</a>,<a href="http://www.ha97.com/tag/%e7%ac%ac%e4%b8%89%e6%96%b9" rel="tag">第三方</a>,<a href="http://www.ha97.com/tag/%e8%bd%af%e4%bb%b6%e5%ba%93" rel="tag">软件库</a></div>
+			
+		
+</div>
+</div>			<div class="post clearfix">
+				<p><strong>PS：在CentOS下运行yum install flash-plugin或yum install mplayer的时候，提示库里没有找到这个软件？为什么会这样？因为CentOS是RHEL编译过来的，去掉了所有关于版权问题的东西。因此，在没有使用第三方软件库的情况下，很多软件无法用yum install来直接安装。</strong></p>
+<p>EPEL(Extra Packages for <a title="Enterprise" href="http://www.ha97.com/tag/enterprise">Enterprise</a> <a title="Linux" href="http://www.ha97.com/category/linux">Linux</a> )软件库提供为 EL4 及 EL5 重新编译的 <a title="Fedora" href="http://www.ha97.com/tag/fedora">Fedora</a> 组件。这个软件库在不替换系统组件方面下了功夫。在某些情况下它尝试直接针对 CentOS 兼容性的问题，但坚决否定软件库间的兼容性是目标之一。当它与其它第三方软件库混合使用时，问题可能会出现。故此，当你使用 EPEL 时，尤其是当你亦会运用其它件库的组件时，请确保你使用 yum 的 Priorities 插件。</p>
+<p><span style="color: rgb(255, 0, 0);"><a title="RPMForge" href="http://www.ha97.com/tag/rpmforge">RPMForge</a>库现在已经拥有超过10000种的CentOS的软件包，被CentOS社区认为是最安全也是最稳定的一个第三方软件库。</span></p>
+<p><strong>下面，偶就来讲解下如何使用EPEL与RPMForge、<a title="RPMFusion" href="http://www.ha97.com/tag/rpmfusion">RPMFusion</a>软件仓库：</strong></p>
+<p><strong>一、安装yum-priorities插件。</strong></p>
+<p>这个插件是用来设置yum在调用软件源时的顺序的。因为官方提供的软件源，都是比较稳定和被推荐使用的。因此，官方源的顺序要高于第三方源的顺序。如何保证这个顺序，就需要安装yum-priorities这插件了。</p>
+<p>[root@CentOS ~]# yum install yum-priorities #安装yum-priorities</p>
+<p><strong>安装完后需要设置/etc/yum.repos.d/ 目录下的.repo相关文件（如CentOS-Base.repo），在这些文件中插入顺序指令：priority=N （N为1到99的正整数，数值越小越优先）</strong><br>
+<span id="more-2626"></span><br>
+一般的配置是这样的：</p>
+<blockquote><p>[base], [addons], [updates], [extras] … priority=1<br>
+[CentOSplus],[contrib] … priority=2<br>
+其他第三的软件源为：priority=N （推荐N&gt;10）</p></blockquote>
+<p>如我的CentOS-Base.repo配置为：</p>
+<blockquote><p># CentOS-Base.repo<br>
+#<br>
+# The mirror <a title="system" href="http://www.ha97.com/tag/system">system</a> uses the connecting IP address of the client and the<br>
+# <a title="update" href="http://www.ha97.com/tag/update">update</a> status of each mirror to pick mirrors that are updated to and<br>
+# geographically close to the client. You should use this for CentOS updates<br>
+# unless you are manually picking other mirrors.<br>
+#<br>
+# If the mirrorlist= does not work for you, as a fall back you can try the<br>
+# remarked out baseurl= line instead.<br>
+#<br>
+#</p>
+<p>[base]<br>
+name=CentOS-$releasever – Base<br>
+mirrorlist=http://mirrorlist.CentOS.org/?release=$releasever&amp;arch=$basearch&amp;repo=os<br>
+#baseurl=http://mirror.CentOS.org/CentOS/$releasever/os/$basearch/<br>
+gpgcheck=1<br>
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br>
+priority=1</p>
+<p>#released updates<br>
+[updates]<br>
+name=CentOS-$releasever – Updates<br>
+mirrorlist=http://mirrorlist.CentOS.org/?release=$releasever&amp;arch=$basearch&amp;repo=updates<br>
+#baseurl=http://mirror.CentOS.org/CentOS/$releasever/updates/$basearch/<br>
+gpgcheck=1<br>
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br>
+priority=1</p>
+<p>#packages used/produced in the build but not released<br>
+[addons]<br>
+name=CentOS-$releasever – Addons<br>
+mirrorlist=http://mirrorlist.CentOS.org/?release=$releasever&amp;arch=$basearch&amp;repo=addons<br>
+#baseurl=http://mirror.CentOS.org/CentOS/$releasever/addons/$basearch/<br>
+gpgcheck=1<br>
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br>
+priority=1</p>
+<p>#additional packages that may be useful<br>
+[extras]<br>
+name=CentOS-$releasever – Extras<br>
+mirrorlist=http://mirrorlist.CentOS.org/?release=$releasever&amp;arch=$basearch&amp;repo=extras<br>
+#baseurl=http://mirror.CentOS.org/CentOS/$releasever/extras/$basearch/<br>
+gpgcheck=1<br>
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br>
+priority=1</p>
+<p>#additional packages that extend functionality of existing packages<br>
+[CentOSplus]<br>
+name=CentOS-$releasever – Plus<br>
+mirrorlist=http://mirrorlist.CentOS.org/?release=$releasever&amp;arch=$basearch&amp;repo=CentOSplus<br>
+#baseurl=http://mirror.CentOS.org/CentOS/$releasever/CentOSplus/$basearch/<br>
+gpgcheck=1<br>
+enabled=0<br>
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br>
+priority=2</p>
+<p>#contrib – packages by CentOS Users<br>
+[contrib]<br>
+name=CentOS-$releasever – Contrib<br>
+mirrorlist=http://mirrorlist.CentOS.org/?release=$releasever&amp;arch=$basearch&amp;repo=contrib<br>
+#baseurl=http://mirror.CentOS.org/CentOS/$releasever/contrib/$basearch/<br>
+gpgcheck=1<br>
+enabled=0<br>
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5<br>
+priority=2</p></blockquote>
+<p><strong>二、下载与安装相应EPEL的rpm文件包</strong></p>
+<p>1，下载与安装EPEL的rpm文件包</p>
+<p>32位系统</p>
+<blockquote><p>[root@CentOS ~]# rpm -ivh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm</p></blockquote>
+<p>64位系统</p>
+<blockquote><p>[root@CentOS ~]# rpm -ivh http://download.fedora.redhat.com/pub/epel/5/x86_64/epel-release-5-4.noarch.rpm</p></blockquote>
+<p>如果您不清楚您的系统内核，请使用 uname -a 命令来查看您的内核信息。</p>
+<p>2，导入DAG的PGP Key</p>
+<p>[root@CentOS ~]# rpm –import /etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL</p>
+<p>3，设置/etc/yum.repos.d/epel.repo文件中源的级别，就是添加priority=11这句。</p>
+<p>如我的epel.repo文件内容：</p>
+<blockquote><p>[epel]<br>
+name=Extra Packages for Enterprise Linux 5 – $basearch<br>
+#baseurl=http://download.fedoraproject.org/pub/epel/5/$basearch<br>
+mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-5&amp;arch=$basearch<br>
+failovermethod=priority<br>
+enabled=1<br>
+gpgcheck=1<br>
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL<br>
+priority=11</p>
+<p>[epel-debuginfo]<br>
+name=Extra Packages for Enterprise Linux 5 – $basearch – Debug<br>
+#baseurl=http://download.fedoraproject.org/pub/epel/5/$basearch/debug<br>
+mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-debug-5&amp;arch=$basearch<br>
+failovermethod=priority<br>
+enabled=0<br>
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL<br>
+gpgcheck=1</p>
+<p>[epel-source]<br>
+name=Extra Packages for Enterprise Linux 5 – $basearch – Source<br>
+#baseurl=http://download.fedoraproject.org/pub/epel/5/SRPMS<br>
+mirrorlist=http://mirrors.fedoraproject.org/mirrorlist?repo=epel-source-5&amp;arch=$basearch<br>
+failovermethod=priority<br>
+enabled=0<br>
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL<br>
+gpgcheck=1</p></blockquote>
+<p><strong>三、下载与安装相应rpmforge的rpm文件包</strong></p>
+<p>1，下载rpmforge的rpm文件包</p>
+<p>32位系统</p>
+<blockquote><p>[root@CentOS ~]# wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el5.rf.i386.rpm</p></blockquote>
+<p>64位系统</p>
+<blockquote><p>[root@CentOS ~]# wget http://pkgs.repoforge.org/rpmforge-release/rpmforge-release-0.5.2-2.el5.rf.x86_64.rpm</p></blockquote>
+<p>2，安装DAG的PGP Key</p>
+<blockquote><p>[root@CentOS ~]# rpm –import http://dag.wieers.com/rpm/packages/RPM-GPG-KEY.dag.txt</p></blockquote>
+<p>3，验证rpmforge的rpm文件包</p>
+<blockquote><p>[root@CentOS ~]# rpm -K rpmforge-release-0.5.1-1.el5.rf.*.rpm</p></blockquote>
+<p>4，安装rpmforge的rpm文件包</p>
+<blockquote><p>[root@CentOS ~]# rpm -i rpmforge-release-0.5.1-1.el5.rf.*.rpm</p></blockquote>
+<p>5，设置/etc/yum.repos.d/rpmforge.repo文件中源的级别，就是添加priority=12这句。</p>
+<p>如我的rpmforge.repo文件内容：</p>
+<blockquote><p>### Name: RPMforge RPM Repository for Red Hat Enterprise 5 – dag<br>
+### URL: http://rpmforge<a title=".net" href="http://www.ha97.com/category/%e7%bc%96%e7%a8%8b%e5%bc%80%e5%8f%91/net">.net</a>/<br>
+[rpmforge]<br>
+name = Red Hat Enterprise $releasever – RPMforge.net – dag<br>
+baseurl = http://apt.sw.be/redhat/el5/en/$basearch/rpmforge<br>
+mirrorlist = http://apt.sw.be/redhat/el5/en/mirrors-rpmforge<br>
+#mirrorlist = file:///etc/yum.repos.d/mirrors-rpmforge<br>
+enabled = 1<br>
+protect = 0<br>
+gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag<br>
+gpgcheck = 1<br>
+priority=12</p></blockquote>
+<p><strong>四、下载与安装相应rpmfusion的rpm文件包</strong></p>
+<p><span style="color: rgb(255, 0, 0);">（CentOS官方说这个软件库里面的软件稳定性不如rpmforge，选用！rpmfusion官方站：http://rpmfusion.org）</span></p>
+<blockquote><p>[root@CentOS ~]# rpm -Uvh http://download1.rpmfusion.org/free/el/updates/<a title="testing" href="http://www.ha97.com/tag/testing">testing</a>/5/i386/rpmfusion-free-release-5-0.1.noarch.rpm</p>
+<p>[root@CentOS ~]# rpm -Uvh http://download1.rpmfusion.org/nonfree/el/updates/testing/5/i386/rpmfusion-nonfree-release-5-0.1.noarch.rpm</p></blockquote>
+<p><strong>五、测试</strong></p>
+<p>1，测试升级</p>
+<p>[root@CentOS ~]# yum check-update</p>
+<p>输出信息应该会有以下两行：</p>
+<p>Loading “priorities” plugin<br>
+…<br>
+XX packages excluded due to repository priority protections</p>
+<p>2，安装下mplayer播放器试试，如果安装成功了就没有问题了。</p>
+<p>[root@CentOS ~]# yum install mplayer</p>
+<p><strong>PS：以上配置在RHEL/CentOS 5.X所有系列都可以使用！由本人验证总结整理。</strong></p>
+<p>参考文档：http://wiki.centos.org/zh/AdditionalResources/Repositories/RPMForge</p>							</div>
+
+			<p class="postendmeta">
+			<a href="http://www.ha97.com/2626.html" rel="bookmark" title="（原创）RHEL/CentOS 5.x使用第三方软件库（EPEL与RPMForge、RPMFusion软件库）" class="permalink">永久链接</a> : http://www.ha97.com/2626.html			</p>
+		</div>
+	
+<!-- You can start editing here. -->
+
+
+	
+	
+	
+<!-- You can start editing here. -->
+<div class="commentbar clearfix">
+	<div class="fL">本文相关评论 -
+	才 34 条评论 
+	</div><div class="fR"><a href="http://www.ha97.com/2626.html/feed"><abbr title="Really Simple Syndication">RSS</abbr> for this comments</a> 
+| <a href="http://www.ha97.com/2626.html/trackback">Trackback <acronym title="Uniform Resource Identifier">URI</acronym></a>
+</div>
+</div>
+<div class="commhead">
+		<span class="comm-func"> ( <a href="#" onclick="return _$s();">展开所有评论</a> | <a href="#" onclick="return _$h();">收起所有评论</a> ) 	<a href="#addcomment" onclick="return _$ff()" title="留下评论">立刻发表评论 »</a></span>
+	</div>
+	
+	
+	
+	
+
+ 
+
+
+<div class="commentlist">
+			<div id="div-comment-282" class="clearfix comment">
+				<a target="_blank" name="comment-282" id="comment-282"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-282">
+					</div>
+					<cite>小马哥<a target="_top" href="#comment-282"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-08-18 11:47:33 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="67b2e74892a8289c47d1d6c9de15dc41" class="avatar avatar-32 photo" height="32" width="32">						 <img src="firefox.png" title="Firefox 3.6.3" style="border: 0px none; vertical-align: middle;" alt="Firefox 3.6.3"> Firefox 3.6.3  <img src="linuxmint.png" title="Linux Mint 9" style="border: 0px none; vertical-align: middle;" alt="Linux Mint 9"> Linux Mint 9<p>呵，这个是我看到的总结得最全面的～</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-282", 282, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+			<div id="div-comment-314" class="clearfix comment odd">
+				<a target="_blank" name="comment-314" id="comment-314"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-314">
+					</div>
+					<cite><a target="_top" href="http://www.ha97.com/" rel="external nofollow" class="url">谋万世全局者</a><a target="_top" href="#comment-314"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-08-19 11:41:25 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2a413e9c2390a30926594d19ba1d968e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="chrome.png" title="Google Chrome 5.0.375.126" style="border: 0px none; vertical-align: middle;" alt="Google Chrome 5.0.375.126"> Google Chrome 5.0.375.126  <img src="linux.png" title="GNU/Linux" style="border: 0px none; vertical-align: middle;" alt="GNU/Linux"> GNU/Linux<p>嗯，就是看到网上的都不全，才整理总结的。也方便自己，那些长长的网址偶一般不会去记的～～</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-314", 314, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+					
+
+			</div>
+			<div id="div-comment-375" class="clearfix comment">
+				<a target="_blank" name="comment-375" id="comment-375"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-375">
+					</div>
+					<cite><a target="_top" href="http://blog.dengruo.com/" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-commentauthor/http://blog.dengruo.com']);" rel="external nofollow" class="url">若</a><a target="_top" href="#comment-375"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-08-23 16:22:47 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="3d16e7b94c8b9e364d8546a69382a1a0" class="avatar avatar-32 photo" height="32" width="32">						 <img src="chrome.png" title="Google Chrome 5.0.375.125" style="border: 0px none; vertical-align: middle;" alt="Google Chrome 5.0.375.125"> Google Chrome 5.0.375.125  <img src="win-4.png" title="Windows 7" style="border: 0px none; vertical-align: middle;" alt="Windows 7"> Windows 7<p>总算可以不用去看鸟语了，</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-375", 375, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+			<div id="div-comment-397" class="clearfix comment odd">
+				<a target="_blank" name="comment-397" id="comment-397"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-397">
+					</div>
+					<cite><a target="_top" href="http://www.ha97.com/" rel="external nofollow" class="url">谋万世全局者</a><a target="_top" href="#comment-397"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-08-24 13:37:45 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2a413e9c2390a30926594d19ba1d968e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="chrome.png" title="Google Chrome 5.0.375.127" style="border: 0px none; vertical-align: middle;" alt="Google Chrome 5.0.375.127"> Google Chrome 5.0.375.127  <img src="linux.png" title="GNU/Linux" style="border: 0px none; vertical-align: middle;" alt="GNU/Linux"> GNU/Linux<p>英文还是要学好的，最好、最新的技术资料还是英文的～～</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-397", 397, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+			<div id="div-comment-692" class="clearfix comment">
+				<a target="_blank" name="comment-692" id="comment-692"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-692">
+					</div>
+					<cite>明<a target="_top" href="#comment-692"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-09-08 12:47:45 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2b6a17f70b90f7134a305a676a8088ba" class="avatar avatar-32 photo" height="32" width="32">						 <img src="maxthon.png" title="Maxthon 2.0" style="border: 0px none; vertical-align: middle;" alt="Maxthon 2.0"> Maxthon 2.0  <img src="win-4.png" title="Windows 7" style="border: 0px none; vertical-align: middle;" alt="Windows 7"> Windows 7<p>正困扰第三方仓库会不会造成兼容问题，这篇文章对我很有帮助，感谢“谋万世全局者”</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-692", 692, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+			<div id="div-comment-702" class="clearfix comment odd">
+				<a target="_blank" name="comment-702" id="comment-702"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-702">
+					</div>
+					<cite><a target="_top" href="http://www.ha97.com/" rel="external nofollow" class="url">谋万世全局者</a><a target="_top" href="#comment-702"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-09-08 17:09:21 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2a413e9c2390a30926594d19ba1d968e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="firefox.png" title="Firefox 3.0.6" style="border: 0px none; vertical-align: middle;" alt="Firefox 3.0.6"> Firefox 3.0.6  <img src="suse.png" title="openSUSE" style="border: 0px none; vertical-align: middle;" alt="openSUSE"> openSUSE<p>不客气～～</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-702", 702, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+					
+
+			</div>
+					
+
+			</div>
+					
+
+			</div>
+			<div id="div-comment-693" class="clearfix comment">
+				<a target="_blank" name="comment-693" id="comment-693"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-693">
+					</div>
+					<cite>明<a target="_top" href="#comment-693"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-09-08 12:51:52 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2b6a17f70b90f7134a305a676a8088ba" class="avatar avatar-32 photo" height="32" width="32">						 <img src="maxthon.png" title="Maxthon 2.0" style="border: 0px none; vertical-align: middle;" alt="Maxthon 2.0"> Maxthon 2.0  <img src="win-4.png" title="Windows 7" style="border: 0px none; vertical-align: middle;" alt="Windows 7"> Windows 7<p>正困扰第三方仓库会不会造成兼容性问题的时候，这篇文章解决了我的疑惑。感谢～</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-693", 693, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+			<div id="div-comment-703" class="clearfix comment odd">
+				<a target="_blank" name="comment-703" id="comment-703"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-703">
+					</div>
+					<cite><a target="_top" href="http://www.ha97.com/" rel="external nofollow" class="url">谋万世全局者</a><a target="_top" href="#comment-703"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-09-08 17:09:38 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2a413e9c2390a30926594d19ba1d968e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="firefox.png" title="Firefox 3.0.6" style="border: 0px none; vertical-align: middle;" alt="Firefox 3.0.6"> Firefox 3.0.6  <img src="suse.png" title="openSUSE" style="border: 0px none; vertical-align: middle;" alt="openSUSE"> openSUSE<p>欢迎常来～～</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-703", 703, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+					
+
+			</div>
+			<div id="div-comment-767" class="clearfix comment">
+				<a target="_blank" name="comment-767" id="comment-767"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-767">
+					</div>
+					<cite>fofa<a target="_top" href="#comment-767"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-09-14 21:10:56 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="99be7316d474cc8a0a22493fa6479563" class="avatar avatar-32 photo" height="32" width="32">						 <img src="firefox.png" title="Firefox 3.6.8" style="border: 0px none; vertical-align: middle;" alt="Firefox 3.6.8"> Firefox 3.6.8  <img src="linux.png" title="GNU/Linux" style="border: 0px none; vertical-align: middle;" alt="GNU/Linux"> GNU/Linux<p>谢谢分享！整理得很好！</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-767", 767, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+			<div id="div-comment-782" class="clearfix comment odd">
+				<a target="_blank" name="comment-782" id="comment-782"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-782">
+					</div>
+					<cite><a target="_top" href="http://www.ha97.com/" rel="external nofollow" class="url">谋万世全局者</a><a target="_top" href="#comment-782"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-09-14 23:17:04 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2a413e9c2390a30926594d19ba1d968e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="firefox.png" title="Firefox 3.6.9" style="border: 0px none; vertical-align: middle;" alt="Firefox 3.6.9"> Firefox 3.6.9  <img src="centos.png" title="CentOS 5" style="border: 0px none; vertical-align: middle;" alt="CentOS 5"> CentOS 5<p>不客气，欢迎常来~~</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-782", 782, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+					
+
+			</div>
+			<div id="div-comment-792" class="clearfix comment">
+				<a target="_blank" name="comment-792" id="comment-792"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-792">
+					</div>
+					<cite>msg7086<a target="_top" href="#comment-792"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-09-16 17:31:11 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="bcb5f2c65f64d89774843af08ac7bdca" class="avatar avatar-32 photo" height="32" width="32">						 <img src="opera-2.png" title="Opera 10.60" style="border: 0px none; vertical-align: middle;" alt="Opera 10.60"> Opera 10.60  <img src="win-4.png" title="Windows 7" style="border: 0px none; vertical-align: middle;" alt="Windows 7"> Windows 7<p>好文，非常有用。mark了</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-792", 792, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+			<div id="div-comment-828" class="clearfix comment odd">
+				<a target="_blank" name="comment-828" id="comment-828"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-828">
+					</div>
+					<cite><a target="_top" href="http://www.ha97.com/" rel="external nofollow" class="url">谋万世全局者</a><a target="_top" href="#comment-828"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-09-21 17:52:44 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2a413e9c2390a30926594d19ba1d968e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="firefox.png" title="Firefox 3.6.10" style="border: 0px none; vertical-align: middle;" alt="Firefox 3.6.10"> Firefox 3.6.10  <img src="ubuntu-2.png" title="Ubuntu 10.04" style="border: 0px none; vertical-align: middle;" alt="Ubuntu 10.04"> Ubuntu 10.04<p>总结的，方便自己方便大家～～</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-828", 828, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+					
+
+			</div>
+			<div id="div-comment-859" class="clearfix comment">
+				<a target="_blank" name="comment-859" id="comment-859"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-859">
+					</div>
+					<cite>东方骆驼<a target="_top" href="#comment-859"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-09-25 11:08:11 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="6f30ad70ac556ee939eb52ea3121166e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="theworld.png" title="TheWorld Browser" style="border: 0px none; vertical-align: middle;" alt="TheWorld Browser"> TheWorld Browser  <img src="win-2.png" title="Windows XP" style="border: 0px none; vertical-align: middle;" alt="Windows XP"> Windows XP<p>楼主，我按照你的方法做，RPMForge依旧无法使用，有几点疑点忘解答<br>
+1.不清楚为什么安装RPMForge包后，我的 yum就无法使用，提示（Segmentation fault），但安装RPMForge包之前是好的<br>
+2.所有步骤都按照你的做的，就是无法用</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-859", 859, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+			<div id="div-comment-894" class="clearfix comment odd">
+				<a target="_blank" name="comment-894" id="comment-894"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-894">
+					</div>
+					<cite><a target="_top" href="http://www.ha97.com/" rel="external nofollow" class="url">谋万世全局者</a><a target="_top" href="#comment-894"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-09-29 10:05:16 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2a413e9c2390a30926594d19ba1d968e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="firefox.png" title="Firefox 3.6.10" style="border: 0px none; vertical-align: middle;" alt="Firefox 3.6.10"> Firefox 3.6.10  <img src="win-4.png" title="Windows 7" style="border: 0px none; vertical-align: middle;" alt="Windows 7"> Windows 7<p>偶使用这个源没有遇到过这个提示哦，你把你的源配置文件发上来看看~~</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-894", 894, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+					
+
+			</div>
+			<div id="div-comment-2104" class="clearfix comment">
+				<a target="_blank" name="comment-2104" id="comment-2104"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-2104">
+					</div>
+					<cite>weatny<a target="_top" href="#comment-2104"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2010-12-29 00:35:31 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="9d2c7de04db17130e04f24fbf792e2a6" class="avatar avatar-32 photo" height="32" width="32">						 <img src="firefox.png" title="Firefox 3.0.18" style="border: 0px none; vertical-align: middle;" alt="Firefox 3.0.18"> Firefox 3.0.18  <img src="centos.png" title="CentOS 5" style="border: 0px none; vertical-align: middle;" alt="CentOS 5"> CentOS 5<p>[weatny@weatny ~]$ sudo yum install mplayer<br>
+[sudo] password for weatny:<br>
+Loaded plugins: fastestmirror, priorities<br>
+Loading mirror speeds from cached hostfile<br>
+Could not retrieve mirrorlist <a target="_top" href="http://mirrors.fedoraproject.org/mirrorlist?repo=epel-5&amp;arch=i386" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-comment/http://mirrors.fedoraproject.org/mirrorlist?repo=epel-5&amp;arch=i386']);" rel="nofollow">http://mirrors.fedoraproject.org/mirrorlist?repo=epel-5&amp;arch=i386</a> error was<br>
+[Errno 4] IOError:<br>
+Error: Cannot find a valid baseurl for repo: epel<br>
+搂住看看怎么回事啊》现在什么软件都装不上了</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-2104", 2104, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+			<div id="div-comment-3097" class="clearfix comment odd">
+				<a target="_blank" name="comment-3097" id="comment-3097"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-3097">
+					</div>
+					<cite><a target="_top" href="http://www.ha97.com/" rel="external nofollow" class="url">谋万世全局者</a><a target="_top" href="#comment-3097"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-02-12 17:09:39 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2a413e9c2390a30926594d19ba1d968e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="chrome.png" title="Google Chrome 9.0.597.98" style="border: 0px none; vertical-align: middle;" alt="Google Chrome 9.0.597.98"> Google Chrome 9.0.597.98  <img src="win-4.png" title="Windows 7" style="border: 0px none; vertical-align: middle;" alt="Windows 7"> Windows 7<p>这个错误应该是暂时性的，多试一下应该就可以~~</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-3097", 3097, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+					
+
+			</div>
+			<div id="div-comment-2204" class="clearfix comment">
+				<a target="_blank" name="comment-2204" id="comment-2204"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-2204">
+					</div>
+					<cite>wisfern<a target="_top" href="#comment-2204"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-01-04 23:29:36 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="eeb6de980ddcfea4614bbb09e4a68865" class="avatar avatar-32 photo" height="32" width="32">						 <img src="maxthon.png" title="Maxthon 2.0" style="border: 0px none; vertical-align: middle;" alt="Maxthon 2.0"> Maxthon 2.0  <img src="win-4.png" title="Windows 7" style="border: 0px none; vertical-align: middle;" alt="Windows 7"> Windows 7<p>总结得不错，收藏了。</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-2204", 2204, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+			<div id="div-comment-3098" class="clearfix comment odd">
+				<a target="_blank" name="comment-3098" id="comment-3098"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-3098">
+					</div>
+					<cite><a target="_top" href="http://www.ha97.com/" rel="external nofollow" class="url">谋万世全局者</a><a target="_top" href="#comment-3098"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-02-12 17:10:46 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2a413e9c2390a30926594d19ba1d968e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="chrome.png" title="Google Chrome 9.0.597.98" style="border: 0px none; vertical-align: middle;" alt="Google Chrome 9.0.597.98"> Google Chrome 9.0.597.98  <img src="win-4.png" title="Windows 7" style="border: 0px none; vertical-align: middle;" alt="Windows 7"> Windows 7<p>欢迎常来~~</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-3098", 3098, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+					
+
+			</div>
+			<div id="div-comment-3019" class="clearfix comment">
+				<a target="_blank" name="comment-3019" id="comment-3019"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-3019">
+					</div>
+					<cite>卡卡卡<a target="_top" href="#comment-3019"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-02-11 15:32:05 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="db944c22a15e43ea1f4081572e4327ce" class="avatar avatar-32 photo" height="32" width="32">						 <img src="opera-2.png" title="Opera 11.01" style="border: 0px none; vertical-align: middle;" alt="Opera 11.01"> Opera 11.01  <img src="linux.png" title="GNU/Linux" style="border: 0px none; vertical-align: middle;" alt="GNU/Linux"> GNU/Linux<p>学习了</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-3019", 3019, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+			<div id="div-comment-3099" class="clearfix comment odd">
+				<a target="_blank" name="comment-3099" id="comment-3099"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-3099">
+					</div>
+					<cite><a target="_top" href="http://www.ha97.com/" rel="external nofollow" class="url">谋万世全局者</a><a target="_top" href="#comment-3099"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-02-12 17:10:55 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2a413e9c2390a30926594d19ba1d968e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="chrome.png" title="Google Chrome 9.0.597.98" style="border: 0px none; vertical-align: middle;" alt="Google Chrome 9.0.597.98"> Google Chrome 9.0.597.98  <img src="win-4.png" title="Windows 7" style="border: 0px none; vertical-align: middle;" alt="Windows 7"> Windows 7<p>~~</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-3099", 3099, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+					
+
+			</div>
+			<div id="div-comment-3693" class="clearfix comment">
+				<a target="_blank" name="comment-3693" id="comment-3693"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-3693">
+					</div>
+					<cite><a target="_top" href="http://amoblin.appspot.com/" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-commentauthor/http://amoblin.appspot.com']);" rel="external nofollow" class="url">amoblin</a><a target="_top" href="#comment-3693"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-04-08 11:25:10 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="1d2f68240b8b6381ca7735fe396c5a25" class="avatar avatar-32 photo" height="32" width="32">						 <img src="chrome.png" title="Google Chrome 7.0.517.44" style="border: 0px none; vertical-align: middle;" alt="Google Chrome 7.0.517.44"> Google Chrome 7.0.517.44  <img src="linux.png" title="GNU/Linux x64" style="border: 0px none; vertical-align: middle;" alt="GNU/Linux x64"> GNU/Linux x64<p>好文，不过貌似还有一个叫做webtatic的第三方源也不错~</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-3693", 3693, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+			<div id="div-comment-4580" class="clearfix comment odd">
+				<a target="_blank" name="comment-4580" id="comment-4580"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-4580">
+					</div>
+					<cite><a target="_top" href="http://www.ha97.com/" rel="external nofollow" class="url">谋万世全局者</a><a target="_top" href="#comment-4580"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-06-09 17:25:38 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2a413e9c2390a30926594d19ba1d968e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="firefox.png" title="Firefox 3.5.8" style="border: 0px none; vertical-align: middle;" alt="Firefox 3.5.8"> Firefox 3.5.8  <img src="solaris.png" title="Solaris" style="border: 0px none; vertical-align: middle;" alt="Solaris"> Solaris<p>这个源没用过，看了一下，貌似更新很快。测试下是否靠谱~~</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-4580", 4580, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+					
+
+			</div>
+			<div id="div-comment-4457" class="clearfix comment">
+				<a target="_blank" name="comment-4457" id="comment-4457"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-4457">
+					</div>
+					<cite>huayi2<a target="_top" href="#comment-4457"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-06-06 16:08:00 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="c0003419824b9ad631b79fd2dbe29f61" class="avatar avatar-32 photo" height="32" width="32">						 <img src="firefox.png" title="Firefox 3.6.9" style="border: 0px none; vertical-align: middle;" alt="Firefox 3.6.9"> Firefox 3.6.9  <img src="red-hat.png" title="Red Hat Enterprise Linux 6 x64" style="border: 0px none; vertical-align: middle;" alt="Red Hat Enterprise Linux 6 x64"> Red Hat Enterprise Linux 6 x64<p>写的真详细， 我这个说明添加成功 RHEL 6. 试用版。<br>
+我没有安装yum-priorities插件，也没设置软件源级别</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-4457", 4457, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+			<div id="div-comment-4583" class="clearfix comment odd">
+				<a target="_blank" name="comment-4583" id="comment-4583"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-4583">
+					</div>
+					<cite><a target="_top" href="http://www.ha97.com/" rel="external nofollow" class="url">谋万世全局者</a><a target="_top" href="#comment-4583"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-06-09 17:27:51 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2a413e9c2390a30926594d19ba1d968e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="firefox.png" title="Firefox 3.5.8" style="border: 0px none; vertical-align: middle;" alt="Firefox 3.5.8"> Firefox 3.5.8  <img src="solaris.png" title="Solaris" style="border: 0px none; vertical-align: middle;" alt="Solaris"> Solaris<p>设置下软件源级别比较好~~</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-4583", 4583, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+			<div id="div-comment-4829" class="clearfix comment odd">
+				<a target="_blank" name="comment-4829" id="comment-4829"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-4829">
+					</div>
+					<cite>saucerman<a target="_top" href="#comment-4829"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-06-19 21:49:05 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="fd07ba71c158dbce9b0cf9f4f1f43d42" class="avatar avatar-32 photo" height="32" width="32">						 <img src="theworld.png" title="TheWorld Browser" style="border: 0px none; vertical-align: middle;" alt="TheWorld Browser"> TheWorld Browser  <img src="win-2.png" title="Windows XP" style="border: 0px none; vertical-align: middle;" alt="Windows XP"> Windows XP<p>能不能说一下在RHEL6中是怎么弄得，我配置完后好像没有发现rpmfusion有rpm包可用</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-4829", 4829, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+			<div id="div-comment-5182" class="clearfix comment">
+				<a target="_blank" name="comment-5182" id="comment-5182"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-5182">
+					</div>
+					<cite><a target="_top" href="http://www.ha97.com/" rel="external nofollow" class="url">谋万世全局者</a><a target="_top" href="#comment-5182"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-07-03 12:26:38 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2a413e9c2390a30926594d19ba1d968e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="chrome.png" title="Google Chrome 12.0.742.112" style="border: 0px none; vertical-align: middle;" alt="Google Chrome 12.0.742.112"> Google Chrome 12.0.742.112  <img src="win-4.png" title="Windows 7" style="border: 0px none; vertical-align: middle;" alt="Windows 7"> Windows 7<p>一样的，关键是你找到RHEL6的yum源就可以。可以参考：http://www.ha97.com/4052.html</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-5182", 5182, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+					
+
+			</div>
+					
+
+			</div>
+			<div id="div-comment-5083" class="clearfix comment">
+				<a target="_blank" name="comment-5083" id="comment-5083"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-5083">
+					</div>
+					<cite>打杂<a target="_top" href="#comment-5083"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-06-29 22:48:34 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="f6305fa41399ad3f0866c899489a2a2a" class="avatar avatar-32 photo" height="32" width="32">						 <img src="msie7.png" title="Internet Explorer 8.0" style="border: 0px none; vertical-align: middle;" alt="Internet Explorer 8.0"> Internet Explorer 8.0  <img src="win-4.png" title="Windows 7" style="border: 0px none; vertical-align: middle;" alt="Windows 7"> Windows 7<p>不错！！！真的不错！</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-5083", 5083, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+			<div id="div-comment-5178" class="clearfix comment">
+				<a target="_blank" name="comment-5178" id="comment-5178"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-5178">
+					</div>
+					<cite><a target="_top" href="http://www.ha97.com/" rel="external nofollow" class="url">谋万世全局者</a><a target="_top" href="#comment-5178"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-07-03 12:21:39 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="2a413e9c2390a30926594d19ba1d968e" class="avatar avatar-32 photo" height="32" width="32">						 <img src="chrome.png" title="Google Chrome 12.0.742.112" style="border: 0px none; vertical-align: middle;" alt="Google Chrome 12.0.742.112"> Google Chrome 12.0.742.112  <img src="win-4.png" title="Windows 7" style="border: 0px none; vertical-align: middle;" alt="Windows 7"> Windows 7<p>呵，欢迎常来~~</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-5178", 5178, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+			<div id="div-comment-5576" class="clearfix comment">
+				<a target="_blank" name="comment-5576" id="comment-5576"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-5576">
+					</div>
+					<cite>电线杆儿<a target="_top" href="#comment-5576"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-07-19 02:31:45 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="dfb84468d122550f5cf893466266b6d9" class="avatar avatar-32 photo" height="32" width="32">						 <img src="firefox.png" title="Firefox 3.6.9" style="border: 0px none; vertical-align: middle;" alt="Firefox 3.6.9"> Firefox 3.6.9  <img src="centos.png" title="CentOS 6" style="border: 0px none; vertical-align: middle;" alt="CentOS 6"> CentOS 6<p>不知道在centos 6 这样做是不是可行！</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-5576", 5576, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+			<div id="div-comment-7181" class="clearfix comment">
+				<a target="_blank" name="comment-7181" id="comment-7181"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-7181">
+					</div>
+					<cite><a target="_top" href="http://www.zctech.net/?p=229" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-commentauthor/http://www.zctech.net/?p=229']);" rel="external nofollow" class="url">dell n4010 成功装上 CentOS 6 » 诚道艰辛</a><a target="_top" href="#comment-7181"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2011-10-08 17:48:31 						
+					</div>					
+					<div class="content clearfix">
+													 <img src="wordpress.png" title="WordPress 3.2.1" style="border: 0px none; vertical-align: middle;" alt="WordPress 3.2.1"> WordPress 3.2.1<p>[...] 4、可以联网后，源可以考虑使用中科大的，修改CentOS-Base.repo记录，并装yum-priorities插件和相应版本的epel以便装rpm-fusion和rpmforge源，可以参考 <a target="_top" href="http://www.ha97.com/2626.html%EF%BC%8C%E5%BC%80%E5%A7%8B%E6%9B%B4%E6%96%B0%E7%B3%BB%E7%BB%9F" rel="nofollow">http://www.ha97.com/2626.html，开始更新系统</a> [...]</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-7181", 7181, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+			<div id="div-comment-80498" class="clearfix comment">
+				<a target="_blank" name="comment-80498" id="comment-80498"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-80498">
+					</div>
+					<cite><a target="_top" href="http://relay.programfan.info/linux%e4%bd%bf%e7%94%a8/centos-linux%e5%88%a9%e7%94%a8ntfs-3g%e6%8c%82%e8%bd%bd%e8%af%bb%e5%86%99windows%e7%9a%84ntfs%e5%88%86%e5%8c%ba/" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-commentauthor/http://relay.programfan.info/linux%e4%bd%bf%e7%94%a8/centos-linux%e5%88%a9%e7%94%a8ntfs-3g%e6%8c%82%e8%bd%bd%e8%af%bb%e5%86%99windows%e7%9a%84ntfs%e5%88%86%e5%8c%ba/']);" rel="external nofollow" class="url">新溪转发博客 » CentOS Linux利用ntfs-3g挂载读写Windows的ntfs分区</a><a target="_top" href="#comment-80498"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2012-12-10 12:09:34 						
+					</div>					
+					<div class="content clearfix">
+													 <img src="wordpress.png" title="WordPress 3.3.1" style="border: 0px none; vertical-align: middle;" alt="WordPress 3.3.1"> WordPress 3.3.1<p>[...] 请确定你已经安装了rpmforge软件库的源。请参考：RHEL/CentOS 5.5使用第三方软件库 [...]</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-80498", 80498, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+			<div id="div-comment-113663" class="clearfix comment">
+				<a target="_blank" name="comment-113663" id="comment-113663"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-113663">
+					</div>
+					<cite>fenger<a target="_top" href="#comment-113663"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2013-02-26 11:18:30 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="ded67760275a9cfa3999db164e422047" class="avatar avatar-32 photo" height="32" width="32">						 <img src="chrome.png" title="Google Chrome 25.0.1364.97" style="border: 0px none; vertical-align: middle;" alt="Google Chrome 25.0.1364.97"> Google Chrome 25.0.1364.97  <img src="linux.png" title="GNU/Linux" style="border: 0px none; vertical-align: middle;" alt="GNU/Linux"> GNU/Linux<p>膜拜</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-113663", 113663, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+			<div id="div-comment-142750" class="clearfix comment">
+				<a target="_blank" name="comment-142750" id="comment-142750"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-142750">
+					</div>
+					<cite><a target="_top" href="http://www.singlex.net/" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-commentauthor/http://www.singlex.net']);" rel="external nofollow" class="url">SingleX</a><a target="_top" href="#comment-142750"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2013-07-06 19:31:08 						
+					</div>					
+					<div class="content clearfix">
+							<img alt="" src="13987ccc880868c6d3827e76d5d6adcd" class="avatar avatar-32 photo" height="32" width="32">						 <img src="firefox.png" title="Firefox 17.0" style="border: 0px none; vertical-align: middle;" alt="Firefox 17.0"> Firefox 17.0  <img src="linux.png" title="GNU/Linux" style="border: 0px none; vertical-align: middle;" alt="GNU/Linux"> GNU/Linux<p>前几天安装的CentOS6.4，参考博主配置成功来，谢谢！～会常来学习</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-142750", 142750, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+			<div id="div-comment-173001" class="clearfix comment">
+				<a target="_blank" name="comment-173001" id="comment-173001"></a>
+				<div class="title clearfix">
+					<div class="collapseicon" style="float: left;" id="ment-173001">
+					</div>
+					<cite><a target="_top" href="http://www.nobsu.net/?p=79" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-commentauthor/http://www.nobsu.net/?p=79']);" rel="external nofollow" class="url">CentOS Linux利用ntfs-3g挂载读写Windows的ntfs分区 | 代码与摇滚</a><a target="_top" href="#comment-173001"></a></cite> 
+									
+				</div>
+				<div class="body">
+					<div class="commmeta">
+						2013-11-18 10:30:33 						
+					</div>					
+					<div class="content clearfix">
+													 <img src="wordpress.png" title="WordPress 3.7.1" style="border: 0px none; vertical-align: middle;" alt="WordPress 3.7.1"> WordPress 3.7.1<p>[...] 请确定你已经安装了rpmforge软件库的源。请参考：RHEL/CentOS 5.5使用第三方软件库 [...]</p>
+					</div>
+					<div class="reply">
+						 
+						<a target="_top" href="#" onclick='moveAddCommentBelow("div-comment-173001", 173001, true); return false;'>回复他(她)</a>
+											</div>
+				</div>
+					
+
+			</div>
+</div>
+
+<div id="addcomment" class="comment clearfix">
+<a id="addcommentanchor" name="addcommentanchor"></a>
+	
+	
+	
+
+	
+	
+<form action="http://www.ha97.com/wp-comments-post.php" method="post" id="commentform">
+<div class="add">
+	<div id="reroot" style="display: none;">
+		<a href="#" onclick="reRoot(); return false;">评论原文</a>
+	</div>
+	
+		<div class="clearfix formr">
+	<label>
+		昵称 *
+	</label>
+	<div>
+		<input name="author" id="author" class="textarea" value="" size="28" tabindex="1" type="text">
+	</div>
+	</div>
+		
+	<div class="clearfix formr">	
+	<label>
+		电子邮件 *
+	</label>
+	<div>
+		<input name="email" id="email" value="" size="28" tabindex="2" type="text">
+	</div>
+	</div>		
+		
+	<div class="clearfix formr">
+	<label>
+		网站/博客
+	</label>
+	<div>
+		<input name="url" id="url" value="" size="28" tabindex="3" type="text">	
+	</div>
+	</div>
+		<textarea name="comment" id="comment" cols="60" rows="10" tabindex="4"></textarea>
+	<div>
+		<input name="comment_post_ID" value="2626" type="hidden">
+		<input name="redirect_to" value="/2626.html" type="hidden">
+		<input name="submit" id="submit" class="p" tabindex="5" value="发表" type="submit">
+	</div>
+</div>
+
+<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="ed622dbb36" type="hidden"></p><input id="comment_reply_ID" name="comment_reply_ID" value="0" type="hidden"></form>
+</div>
+			<div class="nav clearfix">
+			<div class="prev-p">« <a href="http://www.ha97.com/2625.html" rel="prev">RHEL/CentOS可用的第三方软件库详解</a></div>
+			<div class="next-p"><a href="http://www.ha97.com/2627.html" rel="next">RHEL/CentOS 5.x里安装多种解码器打造Linux的全能播放器</a> »</div>
+		</div>
+		</div> <!-- /content-aw -->
+	</div> <!-- /content -->
+
+<div id="sidebar">
+<ul>
+	<li id="search-3" class="widget widget_search"><h2 class="widgettitle">站内搜索</h2>
+<form method="get" action="http://www.ha97.com/index.php">
+<input value="" size="16" name="s" id="s" type="text">
+<input class="p" value="Search" type="submit">
+</form></li>
+<li id="pages-4" class="widget widget_pages"><h2 class="widgettitle">页面</h2>
+		<ul>
+			<li class="page_item page-item-847"><a href="http://www.ha97.com/nginx_download" title="Nginx_download">Nginx_download</a></li>
+<li class="page_item page-item-2"><a href="http://www.ha97.com/about" title="关于博主">关于博主</a></li>
+<li class="page_item page-item-2057"><a href="http://www.ha97.com/tags" title="标签云">标签云</a></li>
+<li class="page_item page-item-1123"><a href="http://www.ha97.com/subscriptions" title="订阅本站">订阅本站</a></li>
+		</ul>
+		</li>
+<li id="text-3" class="widget widget_text"><h2 class="widgettitle">我的腾讯微博</h2>
+			<div class="textwidget"><iframe style="" src="index_1.html" frameborder="0" height="552" scrolling="no" width="238"></iframe></div>
+		</li>
+<li id="meta-3" class="widget widget_meta"><h2 class="widgettitle">功能</h2>
+			<ul>
+			<li><a href="http://www.ha97.com/wp-login.php?action=register">注册</a></li>			<li><a href="http://www.ha97.com/wp-login.php">登录</a></li>
+			<li><a href="http://www.ha97.com/feed" title="使用 RSS 2.0 订阅本站点内容">文章 <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://www.ha97.com/comments/feed" title="使用 RSS 订阅本站点的所有文章的近期评论">评论 <abbr title="Really Simple Syndication">RSS</abbr></a></li>
+			<li><a href="http://wordpress.org/" title="基于 WordPress，一个优美、先进的个人信息发布平台。">WordPress.org</a></li>
+						</ul>
+</li>
+		<li id="recent-posts-3" class="widget widget_recent_entries">		<h2 class="widgettitle">近期文章</h2>
+		<ul>
+				<li><a href="http://www.ha97.com/5562.html" title="奇人奇书：冯道《荣枯鉴》文白对照">奇人奇书：冯道《荣枯鉴》文白对照</a></li>
+				<li><a href="http://www.ha97.com/5557.html" title="（原创）MySQL 5.6导入SQL报错解决方法：ERROR 1064 (42000): ~~’TYPE=MyISAM’">（原创）MySQL 5.6导入SQL报错解决方法：ERROR 1064 (42000): ~~’TYPE=MyISAM’</a></li>
+				<li><a href="http://www.ha97.com/5550.html" title="（原创）WordPress用SQL语句批量删除垃圾评论的方法">（原创）WordPress用SQL语句批量删除垃圾评论的方法</a></li>
+				<li><a href="http://www.ha97.com/5529.html" title="淘宝技术10年发展简史">淘宝技术10年发展简史</a></li>
+				<li><a href="http://www.ha97.com/5527.html" title="知命与努力">知命与努力</a></li>
+				<li><a href="http://www.ha97.com/5525.html" title="梁启超与胡适">梁启超与胡适</a></li>
+				<li><a href="http://www.ha97.com/5524.html" title="梁启超为何反对“暴力革命”？">梁启超为何反对“暴力革命”？</a></li>
+				<li><a href="http://www.ha97.com/5521.html" title="梁启超：中国公共财政的启蒙者与先驱">梁启超：中国公共财政的启蒙者与先驱</a></li>
+				<li><a href="http://www.ha97.com/5517.html" title="（总结）BackTrack5/Ubuntu中root不能使用tab键来补全命令的解决方法">（总结）BackTrack5/Ubuntu中root不能使用tab键来补全命令的解决方法</a></li>
+				<li><a href="http://www.ha97.com/5432.html" title="x86服务器新主流：Intel Xeon E5-2600系列架构与性能详解">x86服务器新主流：Intel Xeon E5-2600系列架构与性能详解</a></li>
+				<li><a href="http://www.ha97.com/5428.html" title="（原创）Linux文件系统只读Read-only file system的快速解决方法">（原创）Linux文件系统只读Read-only file system的快速解决方法</a></li>
+				<li><a href="http://www.ha97.com/5424.html" title="潘恩与切·格瓦拉：超越左与右">潘恩与切·格瓦拉：超越左与右</a></li>
+				<li><a href="http://www.ha97.com/5419.html" title="Oracle数据库如何授权收费（Database Licensing）">Oracle数据库如何授权收费（Database Licensing）</a></li>
+				<li><a href="http://www.ha97.com/5416.html" title="托马斯·潘恩：一位伟大的理想主义思想家、美国体制之父">托马斯·潘恩：一位伟大的理想主义思想家、美国体制之父</a></li>
+				<li><a href="http://www.ha97.com/5412.html" title="改变世界历史进程的16部经典书籍">改变世界历史进程的16部经典书籍</a></li>
+				</ul>
+		</li>
+<li id="recent-comments-4" class="widget widget_recent_comments"><h2 class="widgettitle">近期评论</h2>
+<ul id="recentcomments"><li class="recentcomments"><a href="http://www.nobsu.net/?p=79" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-commentauthor/http://www.nobsu.net/?p=79']);" rel="external nofollow" class="url">CentOS Linux利用ntfs-3g挂载读写Windows的ntfs分区 | 代码与摇滚</a> 发表在《<a href="http://www.ha97.com/2626.html/comment-page-1#comment-173001">（原创）RHEL/CentOS 5.x使用第三方软件库（EPEL与RPMForge、RPMFusion软件库）</a>》</li><li class="recentcomments"><a href="http://fancyseeker.com/?p=314" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-commentauthor/http://fancyseeker.com/?p=314']);" rel="external nofollow" class="url">CentOS/Fedora下SVN+Apache服务器配置 | FancySeeker</a> 发表在《<a href="http://www.ha97.com/4467.html/comment-page-1#comment-172915">（总结）CentOS Linux搭建SVN Server配置详解</a>》</li><li class="recentcomments">刀尖红叶 发表在《<a href="http://www.ha97.com/4176.html/comment-page-1#comment-172692">国内数据库技术大牛：牛新庄博士自传（附：项目经验）</a>》</li><li class="recentcomments"><a href="http://www.elesos.com/" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-commentauthor/http://www.elesos.com']);" rel="external nofollow" class="url">elesos</a> 发表在《<a href="http://www.ha97.com/about/comment-page-2#comment-172221">关于博主</a>》</li><li class="recentcomments"><a href="http://www.elesos.com/" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-commentauthor/http://www.elesos.com']);" rel="external nofollow" class="url">elesos</a> 发表在《<a href="http://www.ha97.com/about/comment-page-2#comment-172220">关于博主</a>》</li><li class="recentcomments">liuchangsheng 发表在《<a href="http://www.ha97.com/2590.html/comment-page-1#comment-171415">《Linux命令详解词典》PDF电子版</a>》</li><li class="recentcomments"><a href="http://www.cszhi.com/" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-commentauthor/http://www.cszhi.com']);" rel="external nofollow" class="url">csz</a> 发表在《<a href="http://www.ha97.com/5428.html/comment-page-1#comment-165278">（原创）Linux文件系统只读Read-only file system的快速解决方法</a>》</li><li class="recentcomments"><a href="http://no/" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-commentauthor/http://no']);" rel="external nofollow" class="url">nobody</a> 发表在《<a href="http://www.ha97.com/5428.html/comment-page-1#comment-164134">（原创）Linux文件系统只读Read-only file system的快速解决方法</a>》</li><li class="recentcomments">ck 发表在《<a href="http://www.ha97.com/5095.html/comment-page-1#comment-160696">系统吞吐量（TPS）、用户并发量、性能测试概念和公式</a>》</li></ul></li>
+<li id="tag_cloud-3" class="widget widget_tag_cloud"><h2 class="widgettitle">标签</h2>
+<div class="tagcloud"><a href="http://www.ha97.com/tag/2010" class="tag-link-391" title="21 个话题" style="font-size: 11.2558pt;">2010</a>
+<a href="http://www.ha97.com/tag/apache" class="tag-link-22" title="27 个话题" style="font-size: 12.4496pt;">Apache</a>
+<a href="http://www.ha97.com/tag/centos" class="tag-link-20" title="42 个话题" style="font-size: 14.4031pt;">centos</a>
+<a href="http://www.ha97.com/tag/chrome" class="tag-link-664" title="13 个话题" style="font-size: 9.1938pt;">Chrome</a>
+<a href="http://www.ha97.com/tag/debian" class="tag-link-220" title="11 个话题" style="font-size: 8.43411pt;">Debian</a>
+<a href="http://www.ha97.com/tag/google" class="tag-link-60" title="40 个话题" style="font-size: 14.186pt;">Google</a>
+<a href="http://www.ha97.com/tag/linux" class="tag-link-3" title="213 个话题" style="font-size: 22pt;">Linux</a>
+<a href="http://www.ha97.com/tag/mysql" class="tag-link-24" title="46 个话题" style="font-size: 14.8372pt;">mysql</a>
+<a href="http://www.ha97.com/tag/nginx" class="tag-link-37" title="51 个话题" style="font-size: 15.3798pt;">Nginx</a>
+<a href="http://www.ha97.com/tag/oracle" class="tag-link-25" title="19 个话题" style="font-size: 10.8217pt;">oracle</a>
+<a href="http://www.ha97.com/tag/php" class="tag-link-23" title="32 个话题" style="font-size: 13.2093pt;">PHP</a>
+<a href="http://www.ha97.com/tag/redhat" class="tag-link-107" title="11 个话题" style="font-size: 8.43411pt;">RedHat</a>
+<a href="http://www.ha97.com/tag/rhel" class="tag-link-106" title="23 个话题" style="font-size: 11.6899pt;">RHEL</a>
+<a href="http://www.ha97.com/tag/server" class="tag-link-16" title="11 个话题" style="font-size: 8.43411pt;">server</a>
+<a href="http://www.ha97.com/tag/shell" class="tag-link-35" title="24 个话题" style="font-size: 11.907pt;">Shell</a>
+<a href="http://www.ha97.com/tag/ubuntu" class="tag-link-21" title="10 个话题" style="font-size: 8pt;">ubuntu</a>
+<a href="http://www.ha97.com/tag/vps" class="tag-link-29" title="10 个话题" style="font-size: 8pt;">VPS</a>
+<a href="http://www.ha97.com/tag/web" class="tag-link-36" title="26 个话题" style="font-size: 12.2326pt;">Web</a>
+<a href="http://www.ha97.com/tag/windows" class="tag-link-5" title="11 个话题" style="font-size: 8.43411pt;">Windows</a>
+<a href="http://www.ha97.com/tag/wordpress" class="tag-link-91" title="28 个话题" style="font-size: 12.5581pt;">WordPress</a>
+<a href="http://www.ha97.com/tag/yum" class="tag-link-158" title="11 个话题" style="font-size: 8.43411pt;">yum</a>
+<a href="http://www.ha97.com/tag/%e4%b8%8b%e8%bd%bd" class="tag-link-188" title="26 个话题" style="font-size: 12.2326pt;">下载</a>
+<a href="http://www.ha97.com/tag/%e4%ba%92%e8%81%94%e7%bd%91" class="tag-link-40" title="15 个话题" style="font-size: 9.73643pt;">互联网</a>
+<a href="http://www.ha97.com/tag/%e4%bc%98%e5%8c%96" class="tag-link-221" title="16 个话题" style="font-size: 10.062pt;">优化</a>
+<a href="http://www.ha97.com/tag/%e5%85%a8%e7%90%83" class="tag-link-125" title="16 个话题" style="font-size: 10.062pt;">全球</a>
+<a href="http://www.ha97.com/tag/%e5%8e%9f%e5%88%9b" class="tag-link-257" title="20 个话题" style="font-size: 11.0388pt;">原创</a>
+<a href="http://www.ha97.com/tag/%e5%8f%82%e6%95%b0" class="tag-link-213" title="13 个话题" style="font-size: 9.1938pt;">参数</a>
+<a href="http://www.ha97.com/tag/%e5%91%bd%e4%bb%a4" class="tag-link-31" title="34 个话题" style="font-size: 13.4264pt;">命令</a>
+<a href="http://www.ha97.com/tag/%e5%9b%bd%e5%86%85" class="tag-link-554" title="11 个话题" style="font-size: 8.43411pt;">国内</a>
+<a href="http://www.ha97.com/tag/%e5%ae%89%e8%a3%85" class="tag-link-267" title="14 个话题" style="font-size: 9.51938pt;">安装</a>
+<a href="http://www.ha97.com/tag/%e5%b7%a5%e5%85%b7" class="tag-link-113" title="17 个话题" style="font-size: 10.3876pt;">工具</a>
+<a href="http://www.ha97.com/tag/%e5%b8%b8%e7%94%a8" class="tag-link-884" title="18 个话题" style="font-size: 10.6047pt;">常用</a>
+<a href="http://www.ha97.com/tag/%e5%bc%80%e6%ba%90" class="tag-link-117" title="12 个话题" style="font-size: 8.75969pt;">开源</a>
+<a href="http://www.ha97.com/tag/%e6%80%bb%e7%bb%93" class="tag-link-431" title="88 个话题" style="font-size: 17.876pt;">总结</a>
+<a href="http://www.ha97.com/tag/%e6%95%b0%e6%8d%ae%e5%ba%93" class="tag-link-308" title="11 个话题" style="font-size: 8.43411pt;">数据库</a>
+<a href="http://www.ha97.com/tag/%e6%96%b9%e6%b3%95" class="tag-link-535" title="21 个话题" style="font-size: 11.2558pt;">方法</a>
+<a href="http://www.ha97.com/tag/%e6%9c%8d%e5%8a%a1%e5%99%a8" class="tag-link-17" title="19 个话题" style="font-size: 10.8217pt;">服务器</a>
+<a href="http://www.ha97.com/tag/%e6%9e%b6%e6%9e%84" class="tag-link-19" title="29 个话题" style="font-size: 12.7752pt;">架构</a>
+<a href="http://www.ha97.com/tag/%e7%b3%bb%e7%bb%9f" class="tag-link-30" title="15 个话题" style="font-size: 9.73643pt;">系统</a>
+<a href="http://www.ha97.com/tag/%e7%bb%8f%e5%85%b8" class="tag-link-86" title="18 个话题" style="font-size: 10.6047pt;">经典</a>
+<a href="http://www.ha97.com/tag/%e8%84%9a%e6%9c%ac" class="tag-link-744" title="19 个话题" style="font-size: 10.8217pt;">脚本</a>
+<a href="http://www.ha97.com/tag/%e8%85%be%e8%ae%af" class="tag-link-471" title="14 个话题" style="font-size: 9.51938pt;">腾讯</a>
+<a href="http://www.ha97.com/tag/%e8%a7%a3%e5%86%b3%e6%96%b9%e6%b3%95" class="tag-link-284" title="14 个话题" style="font-size: 9.51938pt;">解决方法</a>
+<a href="http://www.ha97.com/tag/%e8%af%a6%e8%a7%a3" class="tag-link-176" title="58 个话题" style="font-size: 15.9225pt;">详解</a>
+<a href="http://www.ha97.com/tag/%e9%85%8d%e7%bd%ae" class="tag-link-184" title="20 个话题" style="font-size: 11.0388pt;">配置</a></div>
+</li>
+<li id="views-3" class="widget widget_views"><h2 class="widgettitle">博文浏览排名</h2>
+<ul>
+<li><a href="http://www.ha97.com/3710.html" title="RedHat Enterprise Linux (RHEL) 6正式版发布下载（很快）">RedHat Enterprise Linux (RHEL) 6正式版发布下载（很快）</a> - 49,662 views</li><li><a href="http://www.ha97.com/3363.html" title="最流行最好玩的十大经典单机游戏排行榜">最流行最好玩的十大经典单机游戏排行榜</a> - 40,728 views</li><li><a href="http://www.ha97.com/2673.html" title="（原创）Oracle 9i所有版本的最新下载地址（已验证！）">（原创）Oracle 9i所有版本的最新下载地址（已验证！）</a> - 39,443 views</li><li><a href="http://www.ha97.com/4782.html" title="（分享）RedHat Enterprise Linux (RHEL) 6.3正式版发布下载">（分享）RedHat Enterprise Linux (RHEL) 6.3正式版发布下载</a> - 29,321 views</li><li><a href="http://www.ha97.com/4467.html" title="（总结）CentOS Linux搭建SVN Server配置详解">（总结）CentOS Linux搭建SVN Server配置详解</a> - 25,775 views</li><li><a href="http://www.ha97.com/5095.html" title="系统吞吐量（TPS）、用户并发量、性能测试概念和公式">系统吞吐量（TPS）、用户并发量、性能测试概念和公式</a> - 24,952 views</li><li><a href="http://www.ha97.com/951.html" title="（总结）推荐Google的DNS解析服务器8.8.8.8">（总结）推荐Google的DNS解析服务器8.8.8.8</a> - 21,732 views</li><li><a href="http://www.ha97.com/5070.html" title="（分享）VMware Workstation 9.0正式版下载（带序列号）">（分享）VMware Workstation 9.0正式版下载（带序列号）</a> - 20,524 views</li><li><a href="http://www.ha97.com/3898.html" title="英国BBC科教片《21世纪性爱指南》全集下载">英国BBC科教片《21世纪性爱指南》全集下载</a> - 17,800 views</li><li><a href="http://www.ha97.com/4004.html" title="（总结）Nginx 502 Bad Gateway错误触发条件与解决方法">（总结）Nginx 502 Bad Gateway错误触发条件与解决方法</a> - 16,756 views</li></ul>
+</li>
+<li id="categories-3" class="widget widget_categories"><h2 class="widgettitle">分类目录</h2>
+		<ul>
+	<li class="cat-item cat-item-652"><a href="http://www.ha97.com/category/apple" title="查看 Apple 下的所有文章">Apple</a> (3)
+</li>
+	<li class="cat-item cat-item-380"><a href="http://www.ha97.com/category/browser" title="查看 Browser 下的所有文章">Browser</a> (20)
+<ul class="children">
+	<li class="cat-item cat-item-382"><a href="http://www.ha97.com/category/browser/google-chrome" title="查看 Google Chrome 下的所有文章">Google Chrome</a> (15)
+</li>
+	<li class="cat-item cat-item-381"><a href="http://www.ha97.com/category/browser/mozilla-firefox" title="查看 Mozilla Firefox 下的所有文章">Mozilla Firefox</a> (7)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://www.ha97.com/category/database" title="查看 DataBase 下的所有文章">DataBase</a> (95)
+<ul class="children">
+	<li class="cat-item cat-item-78"><a href="http://www.ha97.com/category/database/db2" title="查看 DB2 下的所有文章">DB2</a> (1)
+</li>
+	<li class="cat-item cat-item-71"><a href="http://www.ha97.com/category/database/mysql-database" title="查看 MySQL 下的所有文章">MySQL</a> (54)
+</li>
+	<li class="cat-item cat-item-77"><a href="http://www.ha97.com/category/database/oracle-database" title="查看 Oracle 下的所有文章">Oracle</a> (21)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-60"><a href="http://www.ha97.com/category/google" title="查看 Google 下的所有文章">Google</a> (54)
+</li>
+	<li class="cat-item cat-item-1565"><a href="http://www.ha97.com/category/hadoop" title="查看 Hadoop 下的所有文章">Hadoop</a> (2)
+</li>
+	<li class="cat-item cat-item-194"><a href="http://www.ha97.com/category/idc" title="查看 IDC 下的所有文章">IDC</a> (11)
+</li>
+	<li class="cat-item cat-item-10"><a href="http://www.ha97.com/category/it%e7%b2%be%e8%8b%b1" title="查看 IT精英 下的所有文章">IT精英</a> (32)
+</li>
+	<li class="cat-item cat-item-3"><a href="http://www.ha97.com/category/linux" title="查看 Linux 下的所有文章">Linux</a> (411)
+<ul class="children">
+	<li class="cat-item cat-item-1527"><a href="http://www.ha97.com/category/linux/android-linux" title="查看 Android 下的所有文章">Android</a> (3)
+</li>
+	<li class="cat-item cat-item-88"><a href="http://www.ha97.com/category/linux/debianubuntumint" title="查看 Debian/Ubuntu/Mint 下的所有文章">Debian/Ubuntu/Mint</a> (18)
+</li>
+	<li class="cat-item cat-item-210"><a href="http://www.ha97.com/category/linux/gentooarchslackware" title="查看 Gentoo/Arch/Slackware 下的所有文章">Gentoo/Arch/Slackware</a> (15)
+</li>
+	<li class="cat-item cat-item-56"><a href="http://www.ha97.com/category/linux/lfsalfsblfsclfs" title="查看 LFS/ALFS/BLFS/CLFS 下的所有文章">LFS/ALFS/BLFS/CLFS</a> (5)
+</li>
+	<li class="cat-item cat-item-87"><a href="http://www.ha97.com/category/linux/rhelcentosfedora" title="查看 RHEL/CentOS/Fedora 下的所有文章">RHEL/CentOS/Fedora</a> (46)
+</li>
+	<li class="cat-item cat-item-89"><a href="http://www.ha97.com/category/linux/slessledopensuse" title="查看 SLES/SLED/openSUSE 下的所有文章">SLES/SLED/openSUSE</a> (2)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-61"><a href="http://www.ha97.com/category/microsoft" title="查看 MicroSoft 下的所有文章">MicroSoft</a> (38)
+<ul class="children">
+	<li class="cat-item cat-item-62"><a href="http://www.ha97.com/category/microsoft/office" title="查看 Office 下的所有文章">Office</a> (1)
+</li>
+	<li class="cat-item cat-item-5"><a href="http://www.ha97.com/category/microsoft/windows" title="查看 Windows 下的所有文章">Windows</a> (32)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-12"><a href="http://www.ha97.com/category/security" title="查看 Security 下的所有文章">Security</a> (111)
+</li>
+	<li class="cat-item cat-item-298"><a href="http://www.ha97.com/category/seo" title="查看 SEO 下的所有文章">SEO</a> (22)
+</li>
+	<li class="cat-item cat-item-685"><a href="http://www.ha97.com/category/server-application" title="查看 Server Application 下的所有文章">Server Application</a> (3)
+</li>
+	<li class="cat-item cat-item-35"><a href="http://www.ha97.com/category/shell" title="查看 Shell 下的所有文章">Shell</a> (61)
+</li>
+	<li class="cat-item cat-item-58"><a href="http://www.ha97.com/category/tools" title="查看 Tools 下的所有文章">Tools</a> (68)
+</li>
+	<li class="cat-item cat-item-72"><a href="http://www.ha97.com/category/unix" title="查看 UNIX 下的所有文章">UNIX</a> (167)
+<ul class="children">
+	<li class="cat-item cat-item-74"><a href="http://www.ha97.com/category/unix/aix" title="查看 AIX 下的所有文章">AIX</a> (1)
+</li>
+	<li class="cat-item cat-item-55"><a href="http://www.ha97.com/category/unix/bsd" title="查看 BSD 下的所有文章">BSD</a> (18)
+</li>
+	<li class="cat-item cat-item-75"><a href="http://www.ha97.com/category/unix/mac-os-x" title="查看 Mac OS X 下的所有文章">Mac OS X</a> (3)
+</li>
+	<li class="cat-item cat-item-76"><a href="http://www.ha97.com/category/unix/sco-unix" title="查看 SCO UNIX 下的所有文章">SCO UNIX</a> (2)
+</li>
+	<li class="cat-item cat-item-73"><a href="http://www.ha97.com/category/unix/solaris" title="查看 Solaris 下的所有文章">Solaris</a> (9)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-29"><a href="http://www.ha97.com/category/vps" title="查看 VPS 下的所有文章">VPS</a> (14)
+</li>
+	<li class="cat-item cat-item-36"><a href="http://www.ha97.com/category/web" title="查看 Web 下的所有文章">Web</a> (153)
+</li>
+	<li class="cat-item cat-item-64"><a href="http://www.ha97.com/category/web-server" title="查看 Web Server 下的所有文章">Web Server</a> (129)
+<ul class="children">
+	<li class="cat-item cat-item-22"><a href="http://www.ha97.com/category/web-server/apache" title="查看 Apache 下的所有文章">Apache</a> (47)
+</li>
+	<li class="cat-item cat-item-68"><a href="http://www.ha97.com/category/web-server/iis" title="查看 IIS 下的所有文章">IIS</a> (4)
+</li>
+	<li class="cat-item cat-item-66"><a href="http://www.ha97.com/category/web-server/lighttpd" title="查看 Lighttpd 下的所有文章">Lighttpd</a> (7)
+</li>
+	<li class="cat-item cat-item-37"><a href="http://www.ha97.com/category/web-server/nginx" title="查看 Nginx 下的所有文章">Nginx</a> (68)
+</li>
+	<li class="cat-item cat-item-1790"><a href="http://www.ha97.com/category/web-server/resin" title="查看 Resin 下的所有文章">Resin</a> (2)
+</li>
+	<li class="cat-item cat-item-67"><a href="http://www.ha97.com/category/web-server/tomcat" title="查看 Tomcat 下的所有文章">Tomcat</a> (11)
+</li>
+	<li class="cat-item cat-item-70"><a href="http://www.ha97.com/category/web-server/weblogic" title="查看 WebLogic 下的所有文章">WebLogic</a> (1)
+</li>
+	<li class="cat-item cat-item-69"><a href="http://www.ha97.com/category/web-server/websphere" title="查看 WebSphere 下的所有文章">WebSphere</a> (1)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-91"><a href="http://www.ha97.com/category/wordpress" title="查看 WordPress 下的所有文章">WordPress</a> (38)
+</li>
+	<li class="cat-item cat-item-15"><a href="http://www.ha97.com/category/%e4%b8%aa%e4%ba%ba%e6%97%a5%e8%ae%b0" title="查看 个人日记 下的所有文章">个人日记</a> (322)
+</li>
+	<li class="cat-item cat-item-42"><a href="http://www.ha97.com/category/%e4%b9%a6%e8%af%84%e5%bd%b1%e8%af%84" title="查看 书评影评 下的所有文章">书评影评</a> (9)
+</li>
+	<li class="cat-item cat-item-40"><a href="http://www.ha97.com/category/%e4%ba%92%e8%81%94%e7%bd%91" title="查看 互联网 下的所有文章">互联网</a> (221)
+</li>
+	<li class="cat-item cat-item-14"><a href="http://www.ha97.com/category/%e4%ba%ba%e6%96%87%e5%8e%86%e5%8f%b2" title="查看 人文历史 下的所有文章">人文历史</a> (62)
+</li>
+	<li class="cat-item cat-item-39"><a href="http://www.ha97.com/category/%e4%ba%ba%e7%94%9f%e7%99%be%e6%80%81" title="查看 人生百态 下的所有文章">人生百态</a> (98)
+</li>
+	<li class="cat-item cat-item-41"><a href="http://www.ha97.com/category/%e4%bd%9b%e9%81%93%e6%98%93%e5%ad%a6" title="查看 佛道易学 下的所有文章">佛道易学</a> (10)
+</li>
+	<li class="cat-item cat-item-13"><a href="http://www.ha97.com/category/%e5%88%9b%e4%b8%9a%e6%8a%95%e8%b5%84" title="查看 创业投资 下的所有文章">创业投资</a> (76)
+</li>
+	<li class="cat-item cat-item-154"><a href="http://www.ha97.com/category/%e5%8e%9f%e5%88%9b%e6%80%bb%e7%bb%93" title="查看 原创总结 下的所有文章">原创总结</a> (125)
+</li>
+	<li class="cat-item cat-item-564"><a href="http://www.ha97.com/category/%e5%a4%96%e6%96%87%e7%bf%bb%e8%af%91" title="查看 外文翻译 下的所有文章">外文翻译</a> (72)
+</li>
+	<li class="cat-item cat-item-11"><a href="http://www.ha97.com/category/%e5%a5%87%e9%97%bb%e5%bc%82%e4%ba%8b" title="查看 奇闻异事 下的所有文章">奇闻异事</a> (29)
+</li>
+	<li class="cat-item cat-item-921"><a href="http://www.ha97.com/category/%e5%bc%80%e6%ba%90%e4%b8%96%e7%95%8c" title="查看 开源世界 下的所有文章">开源世界</a> (42)
+</li>
+	<li class="cat-item cat-item-8"><a href="http://www.ha97.com/category/%e6%97%a7%e6%96%87%e5%ad%98%e6%a1%a3" title="查看 旧文存档 下的所有文章">旧文存档</a> (198)
+</li>
+	<li class="cat-item cat-item-4"><a href="http://www.ha97.com/category/%e6%9c%8d%e5%8a%a1%e5%99%a8%e6%9e%b6%e6%9e%84" title="查看 服务器架构 下的所有文章">服务器架构</a> (75)
+</li>
+	<li class="cat-item cat-item-1"><a href="http://www.ha97.com/category/%e6%9c%aa%e5%88%86%e7%b1%bb" title="查看 未分类 下的所有文章">未分类</a> (5)
+</li>
+	<li class="cat-item cat-item-1053"><a href="http://www.ha97.com/category/%e6%b8%b8%e6%88%8f%e7%a0%94%e7%a9%b6" title="查看 游戏研究 下的所有文章">游戏研究</a> (42)
+</li>
+	<li class="cat-item cat-item-9"><a href="http://www.ha97.com/category/%e7%a7%91%e6%8a%80%e8%b5%84%e8%ae%af" title="查看 科技资讯 下的所有文章">科技资讯</a> (51)
+</li>
+	<li class="cat-item cat-item-38"><a href="http://www.ha97.com/category/%e7%bb%8f%e6%b5%8e%e7%ae%a1%e7%90%86" title="查看 经济管理 下的所有文章">经济管理</a> (26)
+</li>
+	<li class="cat-item cat-item-59"><a href="http://www.ha97.com/category/%e7%bc%96%e7%a8%8b%e5%bc%80%e5%8f%91" title="查看 编程开发 下的所有文章">编程开发</a> (111)
+<ul class="children">
+	<li class="cat-item cat-item-102"><a href="http://www.ha97.com/category/%e7%bc%96%e7%a8%8b%e5%bc%80%e5%8f%91/net" title="查看 .NET 下的所有文章">.NET</a> (1)
+</li>
+	<li class="cat-item cat-item-231"><a href="http://www.ha97.com/category/%e7%bc%96%e7%a8%8b%e5%bc%80%e5%8f%91/htmlcss" title="查看 HTML/CSS 下的所有文章">HTML/CSS</a> (31)
+</li>
+	<li class="cat-item cat-item-79"><a href="http://www.ha97.com/category/%e7%bc%96%e7%a8%8b%e5%bc%80%e5%8f%91/java" title="查看 Java 下的所有文章">Java</a> (5)
+</li>
+	<li class="cat-item cat-item-23"><a href="http://www.ha97.com/category/%e7%bc%96%e7%a8%8b%e5%bc%80%e5%8f%91/php" title="查看 PHP 下的所有文章">PHP</a> (49)
+</li>
+</ul>
+</li>
+	<li class="cat-item cat-item-203"><a href="http://www.ha97.com/category/%e7%bd%91%e7%bb%9c%e5%ba%94%e7%94%a8" title="查看 网络应用 下的所有文章">网络应用</a> (14)
+</li>
+	<li class="cat-item cat-item-47"><a href="http://www.ha97.com/category/%e8%99%9a%e6%8b%9f%e5%8c%96%e4%b8%8e%e4%ba%91%e8%ae%a1%e7%ae%97" title="查看 虚拟化与云计算 下的所有文章">虚拟化与云计算</a> (30)
+</li>
+	<li class="cat-item cat-item-127"><a href="http://www.ha97.com/category/%e8%b5%84%e6%ba%90%e5%88%86%e4%ba%ab" title="查看 资源分享 下的所有文章">资源分享</a> (125)
+</li>
+	<li class="cat-item cat-item-748"><a href="http://www.ha97.com/category/%e8%bf%90%e7%bb%b4%e7%bb%8f%e9%aa%8c" title="查看 运维经验 下的所有文章">运维经验</a> (36)
+</li>
+	<li class="cat-item cat-item-34"><a href="http://www.ha97.com/category/%e9%9a%8f%e7%ac%94%e6%9d%82%e8%ae%b0" title="查看 随笔杂记 下的所有文章">随笔杂记</a> (42)
+</li>
+	<li class="cat-item cat-item-7"><a href="http://www.ha97.com/category/%e9%9b%86%e7%be%a4%e4%b8%8e%e8%b4%9f%e8%bd%bd%e5%9d%87%e8%a1%a1" title="查看 集群与负载均衡 下的所有文章">集群与负载均衡</a> (8)
+</li>
+	<li class="cat-item cat-item-57"><a href="http://www.ha97.com/category/%e9%a1%b9%e7%9b%ae%e7%ae%a1%e7%90%86" title="查看 项目管理 下的所有文章">项目管理</a> (9)
+</li>
+		</ul>
+</li>
+<li id="archives-3" class="widget widget_archive"><h2 class="widgettitle">文章归档</h2>
+		<ul>
+			<li><a href="http://www.ha97.com/date/2014/02" title="2014 年二月">2014 年二月</a>&nbsp;(1)</li>
+	<li><a href="http://www.ha97.com/date/2014/01" title="2014 年一月">2014 年一月</a>&nbsp;(2)</li>
+	<li><a href="http://www.ha97.com/date/2013/12" title="2013 年十二月">2013 年十二月</a>&nbsp;(6)</li>
+	<li><a href="http://www.ha97.com/date/2013/10" title="2013 年十月">2013 年十月</a>&nbsp;(2)</li>
+	<li><a href="http://www.ha97.com/date/2013/09" title="2013 年九月">2013 年九月</a>&nbsp;(5)</li>
+	<li><a href="http://www.ha97.com/date/2013/07" title="2013 年七月">2013 年七月</a>&nbsp;(1)</li>
+	<li><a href="http://www.ha97.com/date/2013/06" title="2013 年六月">2013 年六月</a>&nbsp;(1)</li>
+	<li><a href="http://www.ha97.com/date/2013/03" title="2013 年三月">2013 年三月</a>&nbsp;(2)</li>
+	<li><a href="http://www.ha97.com/date/2013/02" title="2013 年二月">2013 年二月</a>&nbsp;(1)</li>
+	<li><a href="http://www.ha97.com/date/2013/01" title="2013 年一月">2013 年一月</a>&nbsp;(2)</li>
+	<li><a href="http://www.ha97.com/date/2012/12" title="2012 年十二月">2012 年十二月</a>&nbsp;(4)</li>
+	<li><a href="http://www.ha97.com/date/2012/11" title="2012 年十一月">2012 年十一月</a>&nbsp;(10)</li>
+	<li><a href="http://www.ha97.com/date/2012/10" title="2012 年十月">2012 年十月</a>&nbsp;(2)</li>
+	<li><a href="http://www.ha97.com/date/2012/09" title="2012 年九月">2012 年九月</a>&nbsp;(5)</li>
+	<li><a href="http://www.ha97.com/date/2012/08" title="2012 年八月">2012 年八月</a>&nbsp;(12)</li>
+	<li><a href="http://www.ha97.com/date/2012/07" title="2012 年七月">2012 年七月</a>&nbsp;(21)</li>
+	<li><a href="http://www.ha97.com/date/2012/06" title="2012 年六月">2012 年六月</a>&nbsp;(23)</li>
+	<li><a href="http://www.ha97.com/date/2012/05" title="2012 年五月">2012 年五月</a>&nbsp;(21)</li>
+	<li><a href="http://www.ha97.com/date/2012/04" title="2012 年四月">2012 年四月</a>&nbsp;(7)</li>
+	<li><a href="http://www.ha97.com/date/2012/03" title="2012 年三月">2012 年三月</a>&nbsp;(2)</li>
+	<li><a href="http://www.ha97.com/date/2012/02" title="2012 年二月">2012 年二月</a>&nbsp;(1)</li>
+	<li><a href="http://www.ha97.com/date/2012/01" title="2012 年一月">2012 年一月</a>&nbsp;(2)</li>
+	<li><a href="http://www.ha97.com/date/2011/12" title="2011 年十二月">2011 年十二月</a>&nbsp;(5)</li>
+	<li><a href="http://www.ha97.com/date/2011/11" title="2011 年十一月">2011 年十一月</a>&nbsp;(6)</li>
+	<li><a href="http://www.ha97.com/date/2011/10" title="2011 年十月">2011 年十月</a>&nbsp;(5)</li>
+	<li><a href="http://www.ha97.com/date/2011/08" title="2011 年八月">2011 年八月</a>&nbsp;(2)</li>
+	<li><a href="http://www.ha97.com/date/2011/07" title="2011 年七月">2011 年七月</a>&nbsp;(27)</li>
+	<li><a href="http://www.ha97.com/date/2011/06" title="2011 年六月">2011 年六月</a>&nbsp;(24)</li>
+	<li><a href="http://www.ha97.com/date/2011/05" title="2011 年五月">2011 年五月</a>&nbsp;(37)</li>
+	<li><a href="http://www.ha97.com/date/2011/04" title="2011 年四月">2011 年四月</a>&nbsp;(28)</li>
+	<li><a href="http://www.ha97.com/date/2011/03" title="2011 年三月">2011 年三月</a>&nbsp;(19)</li>
+	<li><a href="http://www.ha97.com/date/2011/02" title="2011 年二月">2011 年二月</a>&nbsp;(1)</li>
+	<li><a href="http://www.ha97.com/date/2011/01" title="2011 年一月">2011 年一月</a>&nbsp;(14)</li>
+	<li><a href="http://www.ha97.com/date/2010/12" title="2010 年十二月">2010 年十二月</a>&nbsp;(3)</li>
+	<li><a href="http://www.ha97.com/date/2010/11" title="2010 年十一月">2010 年十一月</a>&nbsp;(17)</li>
+	<li><a href="http://www.ha97.com/date/2010/10" title="2010 年十月">2010 年十月</a>&nbsp;(24)</li>
+	<li><a href="http://www.ha97.com/date/2010/09" title="2010 年九月">2010 年九月</a>&nbsp;(100)</li>
+	<li><a href="http://www.ha97.com/date/2010/08" title="2010 年八月">2010 年八月</a>&nbsp;(119)</li>
+	<li><a href="http://www.ha97.com/date/2010/07" title="2010 年七月">2010 年七月</a>&nbsp;(184)</li>
+	<li><a href="http://www.ha97.com/date/2010/06" title="2010 年六月">2010 年六月</a>&nbsp;(157)</li>
+	<li><a href="http://www.ha97.com/date/2010/05" title="2010 年五月">2010 年五月</a>&nbsp;(154)</li>
+	<li><a href="http://www.ha97.com/date/2010/04" title="2010 年四月">2010 年四月</a>&nbsp;(42)</li>
+		</ul>
+</li>
+<li id="calendar-3" class="widget widget_calendar"><h2 class="widgettitle">日历</h2>
+<div id="calendar_wrap"><table id="wp-calendar">
+	<caption>2014 年三月</caption>
+	<thead>
+	<tr>
+		<th scope="col" title="星期一">一</th>
+		<th scope="col" title="星期二">二</th>
+		<th scope="col" title="星期三">三</th>
+		<th scope="col" title="星期四">四</th>
+		<th scope="col" title="星期五">五</th>
+		<th scope="col" title="星期六">六</th>
+		<th scope="col" title="星期日">日</th>
+	</tr>
+	</thead>
+
+	<tfoot>
+	<tr>
+		<td colspan="3" id="prev"><a href="http://www.ha97.com/date/2014/02" title="查看 2014 年二月的文章">« 二</a></td>
+		<td class="pad">&nbsp;</td>
+		<td colspan="3" id="next" class="pad">&nbsp;</td>
+	</tr>
+	</tfoot>
+
+	<tbody>
+	<tr>
+		<td colspan="5" class="pad">&nbsp;</td><td id="today">1</td><td>2</td>
+	</tr>
+	<tr>
+		<td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td>
+	</tr>
+	<tr>
+		<td>10</td><td>11</td><td>12</td><td>13</td><td>14</td><td>15</td><td>16</td>
+	</tr>
+	<tr>
+		<td>17</td><td>18</td><td>19</td><td>20</td><td>21</td><td>22</td><td>23</td>
+	</tr>
+	<tr>
+		<td>24</td><td>25</td><td>26</td><td>27</td><td>28</td><td>29</td><td>30</td>
+	</tr>
+	<tr>
+		<td>31</td>
+		<td class="pad" colspan="6">&nbsp;</td>
+	</tr>
+	</tbody>
+	</table></div></li>
+<li id="linkcat-3" class="widget widget_links"><h2 class="widgettitle">Linux</h2>
+
+	<ul class="xoxo blogroll">
+<li><a href="http://www.centos.org/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.centos.org/']);">CentOS</a></li>
+<li><a href="http://www.linuxforum.net/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.linuxforum.net/']);">China Linux Forum</a></li>
+<li><a href="http://www.chinaunix.net/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.chinaunix.net/']);">ChinaUnix</a></li>
+<li><a href="http://www.debian.org/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.debian.org/']);">Debian</a></li>
+<li><a href="http://www.gentoo.org/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.gentoo.org/']);">Gentoo</a></li>
+<li><a href="http://www.gnu.org/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.gnu.org/']);">GNU</a></li>
+<li><a href="http://www.kernel.org/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.kernel.org/']);">Linux Kernel</a></li>
+<li><a href="http://www.linuxsir.org/bbs/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.linuxsir.org/bbs/']);">LinuxSir</a></li>
+<li><a href="http://www.oschina.net/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.oschina.net/']);">开源中国社区</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-376" class="widget widget_links"><h2 class="widgettitle">常用网站</h2>
+
+	<ul class="xoxo blogroll">
+<li><a href="https://www.google.com/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/https://www.google.com/']);">Google SSL</a></li>
+<li><a href="http://www.mysql.com/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.mysql.com/']);">MySQL</a></li>
+<li><a href="http://www.php.net/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.php.net/']);">PHP</a></li>
+<li><a href="http://sourceforge.net/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://sourceforge.net/']);">SourceForge</a></li>
+<li><a href="http://www.wikipedia.org/" target="" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.wikipedia.org/']);">wikipedia</a></li>
+<li><a href="http://www.douban.com/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.douban.com/']);">豆瓣</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-215" class="widget widget_links"><h2 class="widgettitle">技术blog</h2>
+
+	<ul class="xoxo blogroll">
+<li><a href="http://www.dbanotes.net/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.dbanotes.net/']);">DBA Notes</a></li>
+<li><a href="http://blog.s135.com/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://blog.s135.com/']);">张宴博客</a></li>
+<li><a href="http://www.ha97.com/" target="_top">服务器运维与架构</a></li>
+<li><a href="http://baoz.net/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://baoz.net/']);">素包子</a></li>
+<li><a href="http://www.opsers.org/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.opsers.org/']);">羽飞博客</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-214" class="widget widget_links"><h2 class="widgettitle">技术手册</h2>
+
+	<ul class="xoxo blogroll">
+<li><a href="http://www.ha97.com/book/lfs-book-6.6/" target="_top">LFS 6.6中文手册</a></li>
+<li><a href="http://wiki.nginx.org/NginxChs" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://wiki.nginx.org/NginxChs']);">Nginx中文维基</a></li>
+<li><a href="http://www.ha97.com/book/unixtoolbox_zh_CN.html" target="_top">Unix Toolbox中文版</a></li>
+<li><a href="http://www.ha97.com/book/OpenSource_Guide/" target="_top">开源世界旅行手册</a></li>
+<li><a href="http://www.ha97.com/book/vbird_linux/" target="_top">鸟哥的Linux私房菜（简体版）</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-9" class="widget widget_links"><h2 class="widgettitle">科技资讯</h2>
+
+	<ul class="xoxo blogroll">
+<li><a href="http://www.engadget.com/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.engadget.com/']);">Engadget</a></li>
+<li><a href="http://gigaom.com/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://gigaom.com/']);">GigaOM</a></li>
+<li><a href="http://solidot.org/" target="_top" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://solidot.org/']);">奇客的资讯</a></li>
+
+	</ul>
+</li>
+
+<li id="linkcat-2" class="widget widget_links"><h2 class="widgettitle">链接表</h2>
+
+	<ul class="xoxo blogroll">
+<li><a href="http://www.nsfocus.net/" target="" onclick="javascript:_gaq.push(['_trackPageview','/yoast-ga/outbound-blogroll/http://www.nsfocus.net']);">绿盟科技</a></li>
+
+	</ul>
+</li>
+
+</ul>
+</div>	</div><!--wrapper-->
+
+
+<div id="footer-aw" class="clearfix">
+	<div class="ft-s ss">
+		<h2>日志存档</h2>
+		<ul>
+			<li><a href="http://www.ha97.com/date/2014/02" title="2014 年二月">2014 年二月</a></li>
+	<li><a href="http://www.ha97.com/date/2014/01" title="2014 年一月">2014 年一月</a></li>
+	<li><a href="http://www.ha97.com/date/2013/12" title="2013 年十二月">2013 年十二月</a></li>
+	<li><a href="http://www.ha97.com/date/2013/10" title="2013 年十月">2013 年十月</a></li>
+	<li><a href="http://www.ha97.com/date/2013/09" title="2013 年九月">2013 年九月</a></li>
+	<li><a href="http://www.ha97.com/date/2013/07" title="2013 年七月">2013 年七月</a></li>
+	<li><a href="http://www.ha97.com/date/2013/06" title="2013 年六月">2013 年六月</a></li>
+	<li><a href="http://www.ha97.com/date/2013/03" title="2013 年三月">2013 年三月</a></li>
+	<li><a href="http://www.ha97.com/date/2013/02" title="2013 年二月">2013 年二月</a></li>
+	<li><a href="http://www.ha97.com/date/2013/01" title="2013 年一月">2013 年一月</a></li>
+	<li><a href="http://www.ha97.com/date/2012/12" title="2012 年十二月">2012 年十二月</a></li>
+	<li><a href="http://www.ha97.com/date/2012/11" title="2012 年十一月">2012 年十一月</a></li>
+	<li><a href="http://www.ha97.com/date/2012/10" title="2012 年十月">2012 年十月</a></li>
+	<li><a href="http://www.ha97.com/date/2012/09" title="2012 年九月">2012 年九月</a></li>
+	<li><a href="http://www.ha97.com/date/2012/08" title="2012 年八月">2012 年八月</a></li>
+	<li><a href="http://www.ha97.com/date/2012/07" title="2012 年七月">2012 年七月</a></li>
+	<li><a href="http://www.ha97.com/date/2012/06" title="2012 年六月">2012 年六月</a></li>
+	<li><a href="http://www.ha97.com/date/2012/05" title="2012 年五月">2012 年五月</a></li>
+	<li><a href="http://www.ha97.com/date/2012/04" title="2012 年四月">2012 年四月</a></li>
+	<li><a href="http://www.ha97.com/date/2012/03" title="2012 年三月">2012 年三月</a></li>
+	<li><a href="http://www.ha97.com/date/2012/02" title="2012 年二月">2012 年二月</a></li>
+	<li><a href="http://www.ha97.com/date/2012/01" title="2012 年一月">2012 年一月</a></li>
+	<li><a href="http://www.ha97.com/date/2011/12" title="2011 年十二月">2011 年十二月</a></li>
+	<li><a href="http://www.ha97.com/date/2011/11" title="2011 年十一月">2011 年十一月</a></li>
+	<li><a href="http://www.ha97.com/date/2011/10" title="2011 年十月">2011 年十月</a></li>
+	<li><a href="http://www.ha97.com/date/2011/08" title="2011 年八月">2011 年八月</a></li>
+	<li><a href="http://www.ha97.com/date/2011/07" title="2011 年七月">2011 年七月</a></li>
+	<li><a href="http://www.ha97.com/date/2011/06" title="2011 年六月">2011 年六月</a></li>
+	<li><a href="http://www.ha97.com/date/2011/05" title="2011 年五月">2011 年五月</a></li>
+	<li><a href="http://www.ha97.com/date/2011/04" title="2011 年四月">2011 年四月</a></li>
+	<li><a href="http://www.ha97.com/date/2011/03" title="2011 年三月">2011 年三月</a></li>
+	<li><a href="http://www.ha97.com/date/2011/02" title="2011 年二月">2011 年二月</a></li>
+	<li><a href="http://www.ha97.com/date/2011/01" title="2011 年一月">2011 年一月</a></li>
+	<li><a href="http://www.ha97.com/date/2010/12" title="2010 年十二月">2010 年十二月</a></li>
+	<li><a href="http://www.ha97.com/date/2010/11" title="2010 年十一月">2010 年十一月</a></li>
+	<li><a href="http://www.ha97.com/date/2010/10" title="2010 年十月">2010 年十月</a></li>
+	<li><a href="http://www.ha97.com/date/2010/09" title="2010 年九月">2010 年九月</a></li>
+	<li><a href="http://www.ha97.com/date/2010/08" title="2010 年八月">2010 年八月</a></li>
+	<li><a href="http://www.ha97.com/date/2010/07" title="2010 年七月">2010 年七月</a></li>
+	<li><a href="http://www.ha97.com/date/2010/06" title="2010 年六月">2010 年六月</a></li>
+	<li><a href="http://www.ha97.com/date/2010/05" title="2010 年五月">2010 年五月</a></li>
+	<li><a href="http://www.ha97.com/date/2010/04" title="2010 年四月">2010 年四月</a></li>
+		</ul>
+	</div>
+		
+	<div class="ft-s">
+		<h2>博主站点</h2>
+		<ul>
+		<li><a href="http://www.webnginx.com/" hreflang="zh-CN" title="WebNginx">WebNginx</a></li>
+		<li><a href="http://www.168pc.cn/" hreflang="zh-CN" title="IT大观园">IT大观园</a></li>
+		<li><a href="http://www.ha97.com/" title="服务器运维与架构">服务器运维与架构</a></li>
+		</ul>
+	</div>
+		
+</div>
+
+<div class="copyright">
+	<a href="http://www.webnginx.com/">Powered by WebNginx 3.2.1</a> - <a href="http://www.ha97.com/" title="服务器运维与架构|网站架构">服务器运维与架构</a> by <a href="http://www.ha97.com/about">博客教主</a> <a href="http://www.ha97.com/google-sitemap.xml">Google地图</a> <a href="http://www.ha97.com/sitemap.html">百度地图</a> 
+<a href="http://exp.jiankongbao.com/load.php?host_id=8114" target="_top"><img src="loadtrace_logo1.gif" style="border: 0pt none;"></a>
+
+	- 0.73 秒</div>
+	
+
+
+
+
+		
+
+
+<img src="10k.jpg" style="display: none; height: 0pt; width: 0pt;"></body>
+</html>
