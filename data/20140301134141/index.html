@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    <meta charset="utf-8">
+    <title>Vimpulse - Tips - Open wiki - Gitorious</title>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+      
+      
+      
+      
+      
+    
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    
+  
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+    <div class="page-wrapper">
+      <div class="page-content">
+        <div class="gts-masthead navbar">
+          <div class="navbar-inner">
+            <div class="container">
+              <a href="https://gitorious.org/" class="gts-logo"><img src="gitorious2013.png" alt="Gitorious" title="Gitorious"></a>
+              <ul class="nav">
+                <li>
+                  <a href="https://gitorious.org/activities">Activities</a>
+                </li>
+                <li>
+                  <a href="https://gitorious.org/projects">Projects</a>
+                </li>
+                <li>
+                  <a href="https://gitorious.org/groups">Teams</a>
+                </li>
+                <li>
+                  <a href="https://gitorious.org/about">About</a>
+                </li>
+              </ul>
+              <div class="pull-right">
+                <form action="https://gitorious.org/search" class="navbar-search pull-left" method="get">
+                  <input placeholder="Search" class="search-query span2" name="q" type="search">
+                </form>
+                <div class="pull-right btn-group login_button">
+                  <a href="https://gitorious.org/login" class="btn btn-inverse">
+                    <i class="icon-user icon-white"></i> Sign in
+                  </a>
+                </div>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+          
+
+
+
+<div class="gts-site-header" data-gts-env-project-view-state-path="/users/view_state/project/vimpulse.json"><div class="container">
+  <h2>
+    <a href="https://gitorious.org/vimpulse">Vimpulse</a>
+  </h2>
+  <ul class="gts-project-links">
+</ul>
+
+  <div class="gts-markup">
+    <p>Vimpulse is an add-on for the <a href="http://www.gnu.org/software/emacs/">Emacs</a> text editor. Vimpulse makes Emacs emulate the <a href="http://www.vim.org/">Vim</a> editor’s most useful features, including Visual mode.</p>
+  </div>
+  <ul class="nav nav-tabs gts-header-nav gts-pjax" data-gts-active="wiki">
+    <li><a href="https://gitorious.org/vimpulse">Activities</a></li><li><a href="https://gitorious.org/vimpulse/merge_requests">Merge Requests <span class="count">(0)</span></a></li><li class="active"><a href="https://gitorious.org/vimpulse/pages/Home">Wiki</a></li><li><a href="https://gitorious.org/vimpulse/community">Community</a></li>
+    <li class="gts-project-admin-ph gts-placeholder"></li>
+  </ul>
+</div></div>
+
+
+<div class="container" id="gts-pjax-container">
+    <p class="pull-right" style="margin-bottom: -1px;">
+    <a class="btn btn-primary" href="https://gitorious.org/vimpulse/pages/Tips/edit">
+      <i class="icon icon-pencil"></i>
+      Edit page
+    </a>
+  </p>
+  <ul class="nav nav-tabs">
+    <li class="active"><a href="https://gitorious.org/vimpulse/pages/Tips">Tips</a></li><li><a href="https://gitorious.org/vimpulse/pages/Tips/history">History</a></li><li><a href="https://gitorious.org/vimpulse/pages/git_access">Git access</a></li><li><a href="https://gitorious.org/vimpulse/pages">Wiki index</a></li>
+  </ul>
+
+  <div class="pull-right" style="margin: 0pt 0pt 20px 20px;">
+    <ul class="nav nav-list well gts-toc"><li class="nav-header">Table of contents</li>
+ <li><a href="#Comment/uncomment+Visual+selection+with+%60,c%60">Comment/uncomment Visual selection with <code>,c</code></a> </li>
+ <li><a href="#S-expression+text+objects">S-expression text objects</a> </li>
+ <li><a href="#Fill+Visual+Block+selection+with+increasing+numbers">Fill Visual Block selection with increasing numbers</a> </li>
+ <li><a href="#Exit+Insert+mode+with+Tab">Exit Insert mode with Tab</a> </li>
+ <li><a href="#Disable+vi+keys+in+the+minibuffer">Disable vi keys in the minibuffer</a> </li>
+ <li><a href="#Optimize+your+non-English+keyboard">Optimize your non-English keyboard</a> </li>
+ </ul>
+  </div>
+  <div class="gts-markup">
+    <div><h1 id="Comment/uncomment+Visual+selection+with+`,c`">Comment/uncomment Visual selection with <code>,c</code>
+</h1>
+
+<pre><code>(vimpulse-vmap ",c" 'comment-dwim)
+</code></pre>
+
+<h1 id="S-expression+text+objects">S-expression text objects</h1>
+
+<pre><code>(vimpulse-define-text-object vimpulse-sexp (arg)  
+  "Select a S-expression."  
+  :keys '("ae" "ie")  
+  (vimpulse-inner-object-range  
+   arg  
+   'backward-sexp  
+   'forward-sexp))
+</code></pre>
+
+<h1 id="Fill+Visual+Block+selection+with+increasing+numbers">Fill Visual Block selection with increasing numbers</h1>
+
+<pre><code>(require 'rect)  
+(defun my-sequence-rectangle (first incr format)  
+  "Insert increasing numbers at beginning of each line."  
+  (interactive  
+   (list (if current-prefix-arg  
+             (prefix-numeric-value current-prefix-arg)  
+           (string-to-number  
+            (read-string "Start value: (0) " nil nil "0")))  
+         (string-to-number  
+          (read-string "Increment: (1) " nil nil "1"))  
+         (read-string "Format: (%d) ")))  
+  (when (= (length format) 0)  
+    (setq format "%d"))  
+  (apply-on-rectangle  
+   (lambda (start-col end-col count-var)  
+     (move-to-column start-col)  
+     (insert (format format (eval count-var)))  
+     (set count-var (+ (eval count-var) incr)))  
+   (region-beginning) (region-end) 'first)  
+  (deactivate-mark))  
+(vimpulse-vmap (kbd "M-n") 'my-sequence-rectangle)
+</code></pre>
+
+<h1 id="Exit+Insert+mode+with+Tab">Exit Insert mode with Tab</h1>
+
+<pre><code>(vimpulse-map [(tab)] 'viper-intercept-ESC-key)  
+(vimpulse-imap [(tab)] 'viper-intercept-ESC-key)  
+(vimpulse-vmap [(tab)] 'viper-intercept-ESC-key)
+</code></pre>
+
+<h1 id="Disable+vi+keys+in+the+minibuffer">Disable vi keys in the minibuffer</h1>
+
+<pre><code>(remove-hook 'minibuffer-setup-hook 'viper-minibuffer-setup-sentinel)  
+(defadvice viper-set-minibuffer-overlay (around vimpulse activate) nil)  
+(define-key minibuffer-local-map (kbd "ESC") 'abort-recursive-edit)
+</code></pre>
+
+<h1 id="Optimize+your+non-English+keyboard">Optimize your non-English keyboard</h1>
+
+<pre><code>;; For example, on a Norwegian keyboard:  
+(vimpulse-map (kbd "¤") 'viper-goto-eol)  
+(vimpulse-map (kbd "æ") 'viper-ket-function)  
+(vimpulse-map (kbd "Æ") 'viper-forward-paragraph)  
+(vimpulse-map (kbd "ø") 'viper-goto-mark-and-skip-white)  
+(vimpulse-map (kbd "Ø") 'viper-register-macro)  
+(vimpulse-map (kbd "å") 'backward-up-list)  
+(vimpulse-map (kbd "æ") 'beginning-of-defun)  
+(vimpulse-map (kbd "Å") 'viper-backward-paragraph)
+</code></pre></div>
+  </div>
+    <p class="muted">
+      Last edited by Vegard Øye
+      12 Mar 23:52
+    </p>
+</div>
+
+      </div>
+    </div>
+    <div class="footer">
+      
+<div class="container">
+  <p class="pull-right gts-powered-by">
+    <a href="http://getgitorious.com/">
+      <img alt="Powered by Gitorious" src="poweredby.png" title="Powered by Gitorious">
+    </a>
+  </p>
+  <div class="row-fluid">
+      <div class="span3">
+        <ul>
+          <li><a href="https://gitorious.org/about">About Gitorious</a></li>
+          <li><a href="http://groups.google.com/group/gitorious">Discussion group</a></li>
+          <li><a href="http://blog.gitorious.org/">Blog</a></li>
+        </ul>
+      </div>
+      <div class="span3">
+        <ul>
+          <li><a href="http://en.gitorious.org/tos">Terms of Service</a></li>
+          <li><a href="http://en.gitorious.org/privacy_policy">Privacy Policy</a></li>
+          <li><a href="http://gitorious.com/">Professional Gitorious Services</a></li>
+        </ul>
+      </div>
+      <div class="span3">
+        <ul>
+          <li><a href="http://en.gitorious.org/security">Security</a></li>
+        </ul>
+      </div>
+  </div>
+  <p>
+    Gitorious is free software licensed under
+    the <a href="http://www.gnu.org/licenses/agpl-3.0.html">GNU Affero
+      General Public License (AGPL)</a> unless noted otherwise.
+  </p>
+  <p class="gts-com-plug">
+    <a href="http://gitorious.com/">Professional Gitorious services</a> - Git
+    hosting at your company, custom features, support and more.
+    <a href="http://gitorious.com/">gitorious.com</a>.
+  </p>
+</div>
+
+    </div>
+    
+      
+      
+      
+      
+      
+    
+    
+    
+  
+
+</body>
+</html>

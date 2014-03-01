@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Emacs setup for Python development (tutorial for beginners)</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="author" href="https://plus.google.com/109681304217886469166/about">
+<link rel="pingback" href="http://caisah.info/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="http://caisah.info/wp-content/themes/twentytwelve/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.4.24 - http://yoast.com/wordpress/seo/ -->
+<link rel="canonical" href="http://caisah.info/emacs-for-python/">
+<link rel="author" href="https://plus.google.com/109681304217886469166/about">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Emacs setup for Python development (tutorial for beginners)">
+<meta property="og:description" content="Last week I decided it was time to switch to a more serious text editor. I already had my research done so all I had to do is start using Emacs. I knew that it will have a steep learning curve so I was prepared for what was to come. Of course in a few …">
+<meta property="og:url" content="http://caisah.info/emacs-for-python/">
+<meta property="og:site_name" content="caisah">
+<meta property="article:tag" content="emacs">
+<meta property="article:tag" content="emacs 24">
+<meta property="article:tag" content="python">
+<meta property="article:tag" content="tutorial">
+<meta property="article:tag" content="ubuntu">
+<meta property="article:tag" content="windows">
+<meta property="article:section" content="Coding">
+<meta property="article:section" content="OS">
+<meta property="article:published_time" content="2013-04-24T19:05:54+00:00">
+<meta property="article:modified_time" content="2013-05-01T20:05:37+00:00">
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="caisah » Feed" href="http://caisah.info/feed/">
+<link rel="alternate" type="application/rss+xml" title="caisah » Comments Feed" href="http://caisah.info/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="caisah » Emacs text-editor setup for Python development plus a total beginner’s guide Comments Feed" href="http://caisah.info/emacs-for-python/feed/">
+
+
+
+<!--[if lt IE 9]>
+<link rel='stylesheet' id='twentytwelve-ie-css'  href='http://caisah.info/wp-content/themes/twentytwelve/css/ie.css?ver=20121010' type='text/css' media='all' />
+<![endif]-->
+
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://caisah.info/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://caisah.info/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 3.8.1">
+<link rel="shortlink" href="http://caisah.info/?p=57">
+
+	
+	
+<!-- Google Analytics Tracking by Google Analyticator 6.4.7.3: http://www.videousermanuals.com/google-analyticator/ -->
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-57 single-format-standard custom-background custom-font-enabled single-author">
+<div id="page" class="hfeed site">
+	<header id="masthead" class="site-header" role="banner">
+		<hgroup>
+			<h1 class="site-title"><a href="http://caisah.info/" title="caisah" rel="home">caisah</a></h1>
+			<h2 class="site-description">Rants of a Techie guy</h2>
+		</hgroup>
+		
+		
+		<nav id="site-navigation" class="main-navigation" role="navigation">
+			<h3 class="menu-toggle">Menu</h3>
+			<a class="assistive-text" href="#content" title="Skip to content">Skip to content</a>
+			<div class="menu-main-menu-container"><ul id="menu-main-menu" class="nav-menu"><li id="menu-item-11" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-11"><a href="http://caisah.info/">Home</a></li>
+<li id="menu-item-14" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-14"><a href="http://caisah.info/category/coding/">Coding</a></li>
+<li id="menu-item-15" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-15"><a href="http://caisah.info/category/operating-system/">OS</a></li>
+<li id="menu-item-16" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-16"><a href="http://caisah.info/category/rants/">Rants</a></li>
+<li id="menu-item-10" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-10"><a href="http://caisah.info/about-me/">About</a></li>
+</ul></div>		</nav><!-- #site-navigation -->
+	</header><!-- #masthead -->
+
+	<div id="main" class="wrapper">
+	<div id="primary" class="site-content">
+		<div id="content" role="main">
+
+			
+				
+	<article id="post-57" class="post-57 post type-post status-publish format-standard hentry category-coding category-operating-system tag-emacs tag-emacs-24 tag-python tag-tutorial tag-ubuntu tag-windows">
+				<header class="entry-header">
+									<h1 class="entry-title">Emacs text-editor setup for Python development plus a total beginner’s guide</h1>
+										<div class="comments-link">
+					<a href="http://caisah.info/emacs-for-python/#comments" title="Comment on Emacs text-editor setup for Python development plus a total beginner’s guide">27 Replies</a>				</div><!-- .comments-link -->
+					</header><!-- .entry-header -->
+
+				<div class="entry-content">
+			<p>Last week I decided it was time to switch to a more <em>serious</em> text editor. I already had my research done so all I had to do is start using <a href="https://www.gnu.org/software/emacs/" target="_top">Emacs</a>. I knew that it will have a steep learning curve so I was prepared for what was to come. Of course in a few days, all I could get were a few information, but it got me to the stage where I can customize it and use it on a regular basis. Long story short I’m not an expert but I got things done.</p>
+<p>I’ll split this article into 2 parts. The first one is for people who use Emacs but only need a list of packages, and the second is for newbies.</p>
+<h2><span id="more-57"></span></h2>
+<h2>I. Python specific packages for people already familiar to Emacs</h2>
+<p><span style="font-size: 1rem; line-height: 1.71429;">I had a little help from <a href="http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide/" target="_top">Jessica Hamrick</a> and <a href="http://www.johndcook.com/blog/2013/01/29/python-emacs-setup/" target="_top">John D. Cook</a>&nbsp;so here is the list of the packages to install or activate:</span></p>
+<ul>
+<li><a href="https://github.com/fgallina/python.el" target="_top">python.el</a>&nbsp;(this is the default python mode so you have to do nothing);</li>
+<li><span style="line-height: 14px;"><a href="http://emacswiki.org/emacs/InteractivelyDoThings" target="_top">ido-settings.el</a>;<br>
+</span></li>
+<li><a href="https://github.com/auto-complete/auto-complete" target="_top">auto-complete</a>;</li>
+<li><a href="http://www.emacswiki.org/LineNumbers" target="_top">linum-mode</a>;</li>
+<li><a href="https://github.com/tkf/emacs-jedi" target="_top">jedi.el</a>;</li>
+<li><a href="https://github.com/lunaryorn/flycheck" target="_top">flycheck</a> (aka “Flymake done right”);</li>
+<li><a href="https://github.com/capitaomorte/autopair" target="_top">autopair</a>;</li>
+<li>optional <a href="http://ipython.org/" target="_top">ipython</a>;<span>&nbsp;</span></li>
+</ul>
+<p><span style="line-height: 24px;">If you have any other suggestions feel free to add them in the comments. There was also a <a href="https://plus.google.com/u/0/107357401349156916755/posts/gYF1xbrYq4i">discussion on G+ Python Group.</a></span></p>
+<h2></h2>
+<h2>II. How to customize Emacs(24) for Python – a total beginner’s tutorial</h2>
+<h3>Learn how to use the shortcuts</h3>
+<p>If you don’t already know this, Emacs is optimized for keyboard use. So you won’t need the mouse. <img src="icon_smile.gif" alt=":)" class="wp-smiley"><br>
+A common subject of misunderstanding for newcomers is the keyboard shortcuts usage. All you have to know is how to read them(the <em>shortcuts</em>). So <strong>C-h</strong>&nbsp;is&nbsp;<strong>Ctrl+h</strong> and <strong>M-x</strong> is <strong>Alt(Command)+x</strong>. (<strong>M</strong> stands for meta). For example, a command like <strong>C-h t</strong> is <strong>Ctrl+h</strong> followed by<strong> t</strong> and <strong>RET</strong>urn(Enter). <strong>M-x quit-window</strong> means you have to press <strong>Alt(Command)+x</strong> and type <strong>quit-window</strong> after that, followed by<strong> RET</strong>(Enter).</p>
+<h3>Read the Emacs tutorial</h3>
+<p>Emacs has a great tutorial that teaches you how to navigate and some other basic things. Don’t <em>try to be smart</em> and skip it. It was written/improved over the years and it is a must for all Emacs newbies.<br>
+So press <span class="code">C-h t</span> and read it!</p>
+<h3>Learn about Emacs customization</h3>
+<p>Emacs customization file is named <strong>.emacs</strong> and it’s being located in the <strong>/home/[your-name]</strong> folder(aka your<strong> home folder</strong>) on Ubuntu or other Gnu/Linux OS. There is also a <strong>.emacs.d</strong> folder where all the&nbsp;packages&nbsp;are being installed.</p>
+<p>For Windows <a href="https://www.gnu.org/software/emacs/windows/Installing-Emacs.html" target="_top">I cite from the official website</a>:</p>
+<blockquote><p>On Windows, the .emacs file may be called _emacs for backward compatibility with DOS and FAT filesystems where filenames could not start with a dot. Some users prefer to continue using such a name, because Explorer cannot create a file with a name starting with a dot, even though the filesystem and most other programs can handle it. In Emacs 22 and later, the init file may also be called&nbsp;.emacs.d/init.el. Many of the other files that are created by lisp packages are now stored in the&nbsp;.emacs.d&nbsp;directory too, so this keeps all your Emacs related files in one place.</p>
+<p>All the files mentioned above should go in your&nbsp;HOME&nbsp;directory. The&nbsp;HOME&nbsp;directory is determined by following the steps below:</p>
+<ol start="1" type="1">
+<li>If the environment variable&nbsp;HOME is set, use the directory it indicates.</li>
+<li>If the registry entry&nbsp;<code>HKCU\SOFTWARE\GNU\Emacs\HOME</code>&nbsp;is set, use the directory it indicates.</li>
+<li>If the registry entry&nbsp;<code>HKLM\SOFTWARE\GNU\Emacs\HOME</code>&nbsp;is set, use the directory it indicates. Not recommended, as it results in users sharing the same HOME directory.</li>
+<li>If&nbsp;C:\.emacs&nbsp;exists, then use&nbsp;C:/. This is for backward compatibility, as previous versions defaulted to&nbsp;C:/&nbsp;if&nbsp;HOME&nbsp;was not set.</li>
+<li>Use the user’s AppData directory, usually a directory called&nbsp;Application Data&nbsp;under the user’s profile directory, the location of which varies according to Windows version and whether the computer is part of a domain.</li>
+</ol>
+<p>Within Emacs, &lt;~&gt; at the beginning of a file name is expanded to your&nbsp;HOME&nbsp;directory, so you can always find your .emacs file with&nbsp;<kbd>C-x C-f ~/.emacs</kbd>.</p></blockquote>
+<h3>Add package archive links</h3>
+<p>For those used with Ubuntu this may seem familiar. Basically you add the links for package installation.<br>
+Add to your <strong>.emacs</strong> file the following lines:</p>
+<pre style="" class="wp-code-highlight prettyprint prettyprinted"><span class="pun">(</span><span class="kwd">require</span><span class="pln"> </span><span class="str">'package)
+(setq package-archives '</span><span class="pun">((</span><span class="str">"gnu"</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> </span><span class="str">"http://elpa.gnu.org/packages/"</span><span class="pun">)</span><span class="pln">
+                         </span><span class="pun">(</span><span class="str">"marmalade"</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> </span><span class="str">"http://marmalade-repo.org/packages/"</span><span class="pun">)</span><span class="pln">
+                         </span><span class="pun">(</span><span class="str">"melpa"</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> </span><span class="str">"http://melpa.milkbox.net/packages/"</span><span class="pun">)))</span></pre>
+<p>These are the links to <a href="http://emacswiki.org/emacs/ELPA" target="_top">Elpa</a>, <a href="http://marmalade-repo.org/" target="_top">Marmelade</a> and <a href="http://melpa.milkbox.net/" target="_top">Melpa</a>.</p>
+<p>Now you can see a list of packages by using <span class="code">M-x&nbsp;package-list-packages</span>.</p>
+<p>If you wand to install a new package type <span class="code">M-x&nbsp;package-install RET</span>, and type the name of the package. If you don’t remember the exact name of the package you wanted to install press TAB (<span class="code">M-x&nbsp;package-install RET</span> and <span class="code">TAB</span> afterwards). You will be prompted a window with all the possible &nbsp;completions. [You can use <span class="code">TAB</span> anytime you don't know what to type next.]</p>
+<h3>Choose your Emacs theme</h3>
+<p>Use <span class="code"> M-x customize-themes</span> and try some themes. Chose one you like. If you don’t like any of the default ones, you can also install your theme using <span class="code">package</span>.</p>
+<p>Some popular themes are <a href="https://github.com/bbatsov/zenburn-emacs" target="_top">Zenburn themes</a>. To install them, press <span class="code">M-x package-install zenburn-theme</span> (First <span class="code">M-x Package-install</span>, press Enter and then <span class="code">zenburn-theme</span>. From now on this will be the preferred way of writing composed key shortcuts.) To load it automatically on Emacs startup, add this to your <strong>.emacs</strong> file:</p>
+<pre style="" class="wp-code-highlight prettyprint prettyprinted"><span class="pun">(</span><span class="pln">load</span><span class="pun">-</span><span class="pln">theme </span><span class="str">'zenburn t)</span></pre>
+<p><strong><em>[later edit]</em></strong> If you have problems loading the theme <a href="http://caisah.info/emacs-for-python/#comment-42">take a look at Santiago’s comment</a>.</p>
+<h3>Set Emacs to start fullscreen</h3>
+<p>By default Emacs starts in a minimized window. To change this add the following lines to the <strong>.emacs</strong> file:</p>
+<pre style="" class="wp-code-highlight prettyprint prettyprinted"><span class="pun">(</span><span class="pln">defun toggle</span><span class="pun">-</span><span class="pln">fullscreen </span><span class="pun">()</span><span class="pln">
+  </span><span class="pun">(</span><span class="pln">interactive</span><span class="pun">)</span><span class="pln">
+  </span><span class="pun">(</span><span class="pln">x</span><span class="pun">-</span><span class="pln">send</span><span class="pun">-</span><span class="pln">client</span><span class="pun">-</span><span class="pln">message </span><span class="kwd">nil</span><span class="pln"> </span><span class="lit">0</span><span class="pln"> </span><span class="kwd">nil</span><span class="pln"> </span><span class="str">"_NET_WM_STATE"</span><span class="pln"> </span><span class="lit">32</span><span class="pln">
+	    		 </span><span class="str">'(2 "_NET_WM_STATE_MAXIMIZED_VERT" 0))
+  (x-send-client-message nil 0 nil "_NET_WM_STATE" 32
+	    		 '</span><span class="pun">(</span><span class="lit">2</span><span class="pln"> </span><span class="str">"_NET_WM_STATE_MAXIMIZED_HORZ"</span><span class="pln"> </span><span class="lit">0</span><span class="pun">))</span><span class="pln">
+</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">(</span><span class="pln">toggle</span><span class="pun">-</span><span class="pln">fullscreen</span><span class="pun">)</span></pre>
+<h3>Set Emacs to save buffers on exit</h3>
+<p>Emacs starts a new session every time you open it. To remember your buffers(files) after restart add the following to your <strong>.emacs</strong> file:</p>
+<pre style="" class="wp-code-highlight prettyprint prettyprinted"><span class="pun">(</span><span class="kwd">require</span><span class="pln"> </span><span class="str">'desktop)
+  (desktop-save-mode 1)
+  (defun my-desktop-save ()
+    (interactive)
+    ;; Don'</span><span class="pln">t call desktop</span><span class="pun">-</span><span class="pln">save</span><span class="pun">-</span><span class="kwd">in</span><span class="pun">-</span><span class="pln">desktop</span><span class="pun">-</span><span class="pln">dir</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">as</span><span class="pln"> it prints a message</span><span class="pun">.</span><span class="pln">
+    </span><span class="pun">(</span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="pln">eq </span><span class="pun">(</span><span class="pln">desktop</span><span class="pun">-</span><span class="pln">owner</span><span class="pun">)</span><span class="pln"> </span><span class="pun">(</span><span class="pln">emacs</span><span class="pun">-</span><span class="pln">pid</span><span class="pun">))</span><span class="pln">
+        </span><span class="pun">(</span><span class="pln">desktop</span><span class="pun">-</span><span class="pln">save desktop</span><span class="pun">-</span><span class="pln">dirname</span><span class="pun">)))</span><span class="pln">
+  </span><span class="pun">(</span><span class="pln">add</span><span class="pun">-</span><span class="pln">hook </span><span class="str">'auto-save-hook '</span><span class="kwd">my</span><span class="pun">-</span><span class="pln">desktop</span><span class="pun">-</span><span class="pln">save</span><span class="pun">)</span></pre>
+<h3>Enable ido-mode</h3>
+<p><a href="http://emacswiki.org/emacs/InteractivelyDoThings" target="_top">Ido-mode(</a>InteractivelyDoThings) is installed by default. It helps you with auto-completion when you want to change between buffers and other things. If you want to find out more read the docs. <img src="icon_biggrin.gif" alt=":D" class="wp-smiley"><br>
+To enable it add these lines to your <strong>.emacs</strong> file:</p>
+<pre style="" class="wp-code-highlight prettyprint prettyprinted"><span class="pun">(</span><span class="kwd">require</span><span class="pln"> </span><span class="str">'ido)
+(ido-mode t)</span></pre>
+<h3>Color your shell text</h3>
+<p>If you use Emacs there is a very high probability you use your terminal often(or you intend to do). If you want your Emacs terminal emulator to have some colors add to your <strong>.emacs</strong> file the line:</p>
+<pre style="" class="wp-code-highlight prettyprint prettyprinted"><span class="pun">(</span><span class="pln">add</span><span class="pun">-</span><span class="pln">hook </span><span class="str">'shell-mode-hook '</span><span class="pln">ansi</span><span class="pun">-</span><span class="pln">color</span><span class="pun">-</span><span class="kwd">for</span><span class="pun">-</span><span class="pln">comint</span><span class="pun">-</span><span class="pln">mode</span><span class="pun">-</span><span class="pln">on</span><span class="pun">)</span></pre>
+<p>To open your terminal in a new buffer type: <span class="code">M-x term</span>. It is worth mentioning that Emacs supports multiple different shells. Read <a href="http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/" target="_top">this article from Mastering Emacs</a> to find out more about it.</p>
+<h3>Install el-get</h3>
+<p><a href="https://github.com/dimitri/el-get" target="_top">El-get</a> is similar to <span class="code">package.el</span>(<em>package</em>) except for the fact that it automatically installs all the dependencies. So you don’t have to care about anything else when you install a package.<br>
+To install it, change to your scratch buffer by typing <span class="code">C-x b scratch</span> RET. Paste this code in by yanking (type <span class="code">C-y</span>):</p>
+<pre style="" class="wp-code-highlight prettyprint prettyprinted"><span class="pun">;;</span><span class="pln"> </span><span class="typ">So</span><span class="pln"> the idea </span><span class="kwd">is</span><span class="pln"> that you copy</span><span class="pun">/</span><span class="pln">paste </span><span class="kwd">this</span><span class="pln"> code </span><span class="kwd">into</span><span class="pln"> your </span><span class="pun">*</span><span class="pln">scratch</span><span class="pun">*</span><span class="pln"> buffer</span><span class="pun">,</span><span class="pln">
+</span><span class="pun">;;</span><span class="pln"> hit C</span><span class="pun">-</span><span class="pln">j</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">and</span><span class="pln"> you have a working developper edition of el</span><span class="pun">-</span><span class="kwd">get</span><span class="pun">.</span><span class="pln">
+</span><span class="pun">(</span><span class="pln">url</span><span class="pun">-</span><span class="pln">retrieve
+ </span><span class="str">"https://raw.github.com/dimitri/el-get/master/el-get-install.el"</span><span class="pln">
+ </span><span class="pun">(</span><span class="kwd">lambda</span><span class="pln"> </span><span class="pun">(</span><span class="pln">s</span><span class="pun">)</span><span class="pln">
+   </span><span class="pun">(</span><span class="kwd">let</span><span class="pln"> </span><span class="pun">(</span><span class="pln">el</span><span class="pun">-</span><span class="kwd">get</span><span class="pun">-</span><span class="pln">master</span><span class="pun">-</span><span class="pln">branch</span><span class="pun">)</span><span class="pln">
+     </span><span class="pun">(</span><span class="kwd">goto</span><span class="pun">-</span><span class="kwd">char</span><span class="pln"> </span><span class="pun">(</span><span class="pln">point</span><span class="pun">-</span><span class="pln">max</span><span class="pun">))</span><span class="pln">
+     </span><span class="pun">(</span><span class="kwd">eval</span><span class="pun">-</span><span class="kwd">print</span><span class="pun">-</span><span class="kwd">last</span><span class="pun">-</span><span class="pln">sexp</span><span class="pun">))))</span></pre>
+<p>Hit <span class="code">C-j</span> to execute.<br>
+Add these lines to your <strong>.emacs</strong> file:</p>
+<pre style="" class="wp-code-highlight prettyprint prettyprinted"><span class="pun">(</span><span class="pln">add</span><span class="pun">-</span><span class="pln">to</span><span class="pun">-</span><span class="pln">list </span><span class="str">'load-path "~/.emacs.d/el-get/el-get")
+(unless (require '</span><span class="pln">el</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> </span><span class="kwd">nil</span><span class="pln"> </span><span class="str">'noerror)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (let (el-get-master-branch)
+      (goto-char (point-max))
+      (eval-print-last-sexp))))
+(el-get '</span><span class="pln">sync</span><span class="pun">)</span></pre>
+<p>You’re done. To list all the packages <span class="code">M-x el-get-list-packages</span>. If you want to install something from <em>el-get</em> repo just <span class="code">M-x el-get-install</span> and type the name of the package.</p>
+<h3>Install Jedi.el</h3>
+<p><a href="https://github.com/tkf/emacs-jedi" target="_top">Jedi.el </a>is a Python auto-completion package for Emacs.<br>
+To install it you first have to install <a href="http://www.virtualenv.org/en/latest/" target="_top">virtualenv</a>. If ou are on Ubuntu:</p>
+<pre style="" class="wp-code-highlight prettyprint prettyprinted"><span class="pln">sudo apt</span><span class="pun">-</span><span class="kwd">get</span><span class="pln"> install python</span><span class="pun">-</span><span class="pln">virtualenv</span></pre>
+<p>If you use Windows check the documentation or first <a href="http://stackoverflow.com/questions/4750806/how-to-install-pip-on-windows" target="_top">install pip</a> and after that</p>
+<pre style="" class="wp-code-highlight prettyprint prettyprinted"><span class="pln">pip install virtualenv</span></pre>
+<p><strong>Now you can install Jedi</strong> using <em>el-get</em>: <span class="code">M-x el-get-install jedi</span><br>
+To enable Jedi add to your <strong>.emacs</strong> file:</p>
+<pre style="" class="wp-code-highlight prettyprint prettyprinted"><span class="pun">(</span><span class="pln">add</span><span class="pun">-</span><span class="pln">hook </span><span class="str">'python-mode-hook '</span><span class="kwd">auto</span><span class="pun">-</span><span class="pln">complete</span><span class="pun">-</span><span class="pln">mode</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">(</span><span class="pln">add</span><span class="pun">-</span><span class="pln">hook </span><span class="str">'python-mode-hook '</span><span class="pln">jedi</span><span class="pun">:</span><span class="pln">ac</span><span class="pun">-</span><span class="pln">setup</span><span class="pun">)</span></pre>
+<p>If you encounter any problems follow the instructions from the <a href="http://tkf.github.io/emacs-jedi/#troubleshooting" target="_top">troubleshooting section</a>. Jedi has a very good documentation and the developer behind this project is very helpful.</p>
+<h3>Install Flycheck</h3>
+<p><a href="https://github.com/lunaryorn/flycheck" target="_top">Flycheck</a> (aka “Flymake done right”) is a modern on-the-fly syntax checking extension for GNU Emacs 24.<br>
+<strong>Install it using</strong> <em>package</em>: <span class="code">M-x package-install flycheck</span>.<br>
+Add to your <strong>.emacs</strong> file:</p>
+<pre style="" class="wp-code-highlight prettyprint prettyprinted"><span class="pun">(</span><span class="pln">add</span><span class="pun">-</span><span class="pln">hook </span><span class="str">'after-init-hook #'</span><span class="kwd">global</span><span class="pun">-</span><span class="pln">flycheck</span><span class="pun">-</span><span class="pln">mode</span><span class="pun">)</span></pre>
+<h3>Install Autopair</h3>
+<p><a href="https://github.com/capitaomorte/autopair" target="_top">Autopair</a> is an extension to the Emacs text editor that automatically pairs braces and quotes.<br>
+<strong">Install it using <em>package</em>: <span class="code">M-x package-install autopair</span>.<br>
+Add to your <strong>.emacs</strong> file:</strong"></p>
+<pre style="" class="wp-code-highlight prettyprint prettyprinted"><span class="pun">(</span><span class="kwd">require</span><span class="pln"> </span><span class="str">'autopair)
+(autopair-global-mode) ;; to enable in all buffers</span></pre>
+<hr>
+<p>Horray! You’re done.<br>
+This is <a href="https://github.com/caisah/caisah-emacs" target="_top">my personal Emacs configuration kept up to date</a>.<br>
+If you get in any trouble, your package doesn’t work, you don’t know how to use it or customize it, check the documentation. If that doesn’t help search or ask <a href="http://stackoverflow.com/" target="_top">StackOverflow.</a> Someone will help you eventually or you will be able to solve the problem by yourself after reading a few answers.</p>
+<p>If you are using <a href="http://www.sublimetext.com/" target="_top">Sublime Text</a> and you think that is a powerful text editor, think twice. <a href="https://www.quora.com/Text-Editors/Why-use-emacs-over-sublime-text" target="_top">Read the answers from Quora</a>. Also support the community and spread the knowledge.</p>
+<p>Here is a list of communities and resources dedicated to Emacs:<br>
+<a href="https://plus.google.com/communities/114815898697665598016" target="_top">Google plus</a><br>
+<a href="http://emacswiki.org/" target="_top">Emacs WIKI</a><br>
+<a href="https://www.quora.com/Emacs" target="_top">Quora</a><br>
+<a href="http://stackoverflow.com/questions/tagged/emacs" target="_top">StackOverflow</a></p>
+					</div><!-- .entry-content -->
+		
+		<footer class="entry-meta">
+			This entry was posted in <a href="http://caisah.info/category/coding/" title="View all posts in Coding" rel="category tag">Coding</a>, <a href="http://caisah.info/category/operating-system/" title="View all posts in OS" rel="category tag">OS</a> and tagged <a href="http://caisah.info/tag/emacs/" rel="tag">emacs</a>, <a href="http://caisah.info/tag/emacs-24/" rel="tag">emacs 24</a>, <a href="http://caisah.info/tag/python/" rel="tag">python</a>, <a href="http://caisah.info/tag/tutorial/" rel="tag">tutorial</a>, <a href="http://caisah.info/tag/ubuntu/" rel="tag">ubuntu</a>, <a href="http://caisah.info/tag/windows/" rel="tag">windows</a> <span class="by-author"> by <span class="author vcard"><a class="url fn n" href="http://caisah.info/author/admin/" title="View all posts by caisah" rel="author">caisah</a></span></span>.			<span class="posted_on"><time class="entry-date" datetime="2013-04-24T19:05:54+00:00" pubdate="">Apr 24 2013</time></span>								</footer><!-- .entry-meta -->
+	</article><!-- #post -->
+
+				<nav class="nav-single">
+					<h3 class="assistive-text">Post navigation</h3>
+					<span class="nav-previous"><a href="http://caisah.info/how-to-add-python-to-windows-path/" rel="prev"><span class="meta-nav">←</span> How to add Python to Windows PATH in Win7</a></span>
+					<span class="nav-next"><a href="http://caisah.info/emacs-for-sicp-scheme/" rel="next">How to get your environment ready for SICP (Structure and Interpretation of Computer Programs) course and Configure Emacs for Scheme programming <span class="meta-nav">→</span></a></span>
+				</nav><!-- .nav-single -->
+
+				
+<div id="comments" class="comments-area">
+
+	
+			<h2 class="comments-title">
+			27 thoughts on “<span>Emacs text-editor setup for Python development plus a total beginner’s guide</span>”		</h2>
+
+		<ol class="commentlist">
+				<li class="comment even thread-even depth-1" id="li-comment-19">
+		<article id="comment-19" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="a7f4f9dcbbf1d46d660b0a6c98435751" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://www.johndcook.com/" rel="external nofollow" class="url">John</a></b> </cite><a href="http://caisah.info/emacs-for-python/#comment-19"><time datetime="2013-04-24T19:16:48+00:00">April 24, 2013 at 7:16 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>You’ve jumped into the deep end after only a week! After I’d been using Emacs for a week I was still trying to remember how to move the cursor around. <img src="icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=19#respond" onclick='return addComment.moveForm("comment-19", "19", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-20">
+		<article id="comment-20" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="641da4b2070cdc63950d11fa3cddcbc5" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://caisah.info/" rel="external nofollow" class="url">caisah</a></b> <span>Post author</span></cite><a href="http://caisah.info/emacs-for-python/#comment-20"><time datetime="2013-04-24T19:36:12+00:00">April 24, 2013 at 7:36 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p> <img src="icon_smile.gif" alt=":)" class="wp-smiley">  That is all I’ve done for a whole week. I wanted to get the basics so I could use it every day ASAP. I’m also looking forward to reading the book, but given the tight schedule I’m on, I don’t know if that’s something I’ll be able to do soon. Thanks for the comment and the blog post <img src="icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=20#respond" onclick='return addComment.moveForm("comment-20", "20", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-21">
+		<article id="comment-21" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="092fbda0a6ae59f1ed3072ceee6600d9" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://hairysun.com/" rel="external nofollow" class="url">matt harrison</a></b> </cite><a href="http://caisah.info/emacs-for-python/#comment-21"><time datetime="2013-04-24T23:09:57+00:00">April 24, 2013 at 11:09 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Nice! Might want to check out smartparens instead of autopair.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=21#respond" onclick='return addComment.moveForm("comment-21", "21", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-26">
+		<article id="comment-26" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="641da4b2070cdc63950d11fa3cddcbc5" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://caisah.info/" rel="external nofollow" class="url">caisah</a></b> <span>Post author</span></cite><a href="http://caisah.info/emacs-for-python/#comment-26"><time datetime="2013-04-25T07:42:03+00:00">April 25, 2013 at 7:42 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>I will give it a look in the near future. Thanks for the suggestion.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=26#respond" onclick='return addComment.moveForm("comment-26", "26", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-22">
+		<article id="comment-22" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="a7f4f9dcbbf1d46d660b0a6c98435751" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://www.johndcook.com/" rel="external nofollow" class="url">John</a></b> </cite><a href="http://caisah.info/emacs-for-python/#comment-22"><time datetime="2013-04-25T00:25:21+00:00">April 25, 2013 at 12:25 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>I could never get el-get to work on Windows. But <a href="https://github.com/jorgenschaefer/elpy" rel="nofollow">elpy</a> works just fine, Windows and Linux. Elpy installs with the Emacs 24 package manager without requiring el-get.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=22#respond" onclick='return addComment.moveForm("comment-22", "22", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-25">
+		<article id="comment-25" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="641da4b2070cdc63950d11fa3cddcbc5" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://caisah.info/" rel="external nofollow" class="url">caisah</a></b> <span>Post author</span></cite><a href="http://caisah.info/emacs-for-python/#comment-25"><time datetime="2013-04-25T07:38:45+00:00">April 25, 2013 at 7:38 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>I see… I guess it’s ok. If I haven’t tried it I can’t say anything about it.</p>
+<p>Anyway I think  whatever makes your life easier it’s fine. <img src="icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=25#respond" onclick='return addComment.moveForm("comment-25", "25", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-23">
+		<article id="comment-23" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="f1185fde542f0e4fe4f569624a965fc1" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn">Adam</b> </cite><a href="http://caisah.info/emacs-for-python/#comment-23"><time datetime="2013-04-25T05:27:08+00:00">April 25, 2013 at 5:27 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Is that actually font that you use in emacs? it looks nice</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=23#respond" onclick='return addComment.moveForm("comment-23", "23", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-27">
+		<article id="comment-27" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="641da4b2070cdc63950d11fa3cddcbc5" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://caisah.info/" rel="external nofollow" class="url">caisah</a></b> <span>Post author</span></cite><a href="http://caisah.info/emacs-for-python/#comment-27"><time datetime="2013-04-25T07:43:12+00:00">April 25, 2013 at 7:43 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Unfortunately not. But you can customize it to use whatever font you want.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=27#respond" onclick='return addComment.moveForm("comment-27", "27", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-3" id="li-comment-37">
+		<article id="comment-37" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="21b38b70ecbf7c337e324c2bd62040f6" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn">ricky</b> </cite><a href="http://caisah.info/emacs-for-python/#comment-37"><time datetime="2013-04-25T20:04:38+00:00">April 25, 2013 at 8:04 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Do you know what color schema/font you’re using for your site can be ported into emacs/is available?</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=37#respond" onclick='return addComment.moveForm("comment-37", "37", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-4" id="li-comment-38">
+		<article id="comment-38" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="641da4b2070cdc63950d11fa3cddcbc5" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://caisah.info/" rel="external nofollow" class="url">caisah</a></b> <span>Post author</span></cite><a href="http://caisah.info/emacs-for-python/#comment-38"><time datetime="2013-04-25T20:18:17+00:00">April 25, 2013 at 8:18 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>The font is one of these: <em>Consolas, Monaco, Lucida Console, monospace</em> for the code (don’t know what you have installed. I have monospace <img src="icon_smile.gif" alt=":)" class="wp-smiley">  ) and one of: <em>Open Sans, Helvetica, Arial, sans-serif</em> for the article text.<br>
+The colors are:</p>
+<ul>
+<li>background: #666</li>
+<li>yellow: #f0e68c</li>
+<li>pink: #ffa0a0</li>
+<li>green: #98fb98 </li>
+<li>red: #cd5c5c</li>
+</ul>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=38#respond" onclick='return addComment.moveForm("comment-38", "38", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-24">
+		<article id="comment-24" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="a3e13192ed3256b027fd0a79c3c44382" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn">Kevin Chabreck</b> </cite><a href="http://caisah.info/emacs-for-python/#comment-24"><time datetime="2013-04-25T05:56:19+00:00">April 25, 2013 at 5:56 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Awesome post! I’ve been using Emacs for years, and a good number of these packages are new to me. Thanks for sharing your knowledge.</p>
+<p>Additionally, if you haven’t done so yet, I heavily recommend writing some Emacs commands. This was a mind-blowing feature for me when I discovered it, and I use many of my custom commands as much or more often than the default shortcuts.</p>
+<p>For example, adding the following code to your .emacs file will define a function that inserts the current date at the cursor position.<br>
+<code>(defun insert-date ()<br>
+    (interactive)<br>
+    (insert (format-time-string "%m/%d/%Y")))</code></p>
+<p>It can be bound to a key sequence (I chose Ctrl-c, d) with this line of code (also placed in .emacs):<br>
+<code>(global-set-key (kbd "C-c d") 'insert-date)</code></p>
+<p>Hope this is helpful to someone, and thanks again for the informative post. A word of warning, though: Tweaking your Emacs environment is much, much more addictive than it seems.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=24#respond" onclick='return addComment.moveForm("comment-24", "24", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-28">
+		<article id="comment-28" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="641da4b2070cdc63950d11fa3cddcbc5" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://caisah.info/" rel="external nofollow" class="url">caisah</a></b> <span>Post author</span></cite><a href="http://caisah.info/emacs-for-python/#comment-28"><time datetime="2013-04-25T07:50:42+00:00">April 25, 2013 at 7:50 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Ooo, thanks for the suggestion. I have to start learning some elisp. It’s definitely one of my priorities now. Ass for the addiction you were mentioning, you are most certainly right. I feel a constant urge to tinkering it. <img src="icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+<p>Thanks for dropping by and for the comment. I’m glad this post helped you.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=28#respond" onclick='return addComment.moveForm("comment-28", "28", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-29">
+		<article id="comment-29" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="0124084762fedd7210d08c64c57ce688" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://giuliofidente.com/" rel="external nofollow" class="url">Giulio Fidente</a></b> </cite><a href="http://caisah.info/emacs-for-python/#comment-29"><time datetime="2013-04-25T09:38:06+00:00">April 25, 2013 at 9:38 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>I’ve attempted something similar but without installing any external package and by documenting the config inline so that one could pick only what needed:</p>
+<p><a href="http://giuliofidente.com/2013/04/getting-to-know-and-use-emacs-better.html" rel="nofollow">http://giuliofidente.com/2013/04/getting-to-know-and-use-emacs-better.html</a></p>
+<p>In there I tried to address also other issues like saving the backup files out of the working dir, show the line numbers, highlight long lines.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=29#respond" onclick='return addComment.moveForm("comment-29", "29", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-30">
+		<article id="comment-30" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="641da4b2070cdc63950d11fa3cddcbc5" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://caisah.info/" rel="external nofollow" class="url">caisah</a></b> <span>Post author</span></cite><a href="http://caisah.info/emacs-for-python/#comment-30"><time datetime="2013-04-25T09:49:32+00:00">April 25, 2013 at 9:49 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thanks for the link. Some useful information, especially for beginners, like me.:)</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=30#respond" onclick='return addComment.moveForm("comment-30", "30", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1" id="li-comment-31">
+		<article id="comment-31" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="3dcc88b2cfa3c0a95fcecd1c91c0de0a" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn">milan</b> </cite><a href="http://caisah.info/emacs-for-python/#comment-31"><time datetime="2013-04-25T09:51:34+00:00">April 25, 2013 at 9:51 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>I have an issue following your beginner part, first step. After adding the:</p>
+<p><code>(require 'package)<br>
+(setq package-archives '(("gnu" . "http://elpa.gnu.org/packages/")<br>
+                         ("marmalade" . "http://marmalade-repo.org/packages/")<br>
+                         ("melpa" . "http://melpa.milkbox.net/packages/")))</code></p>
+<p>to .emacs (I had to create .emacs as it wasn’t there), starting the emacs gives the following error:</p>
+<p><code>Warning (initialization): An error occurred while loading `/home/milan/.emacs':</code></p><code>
+<p>File error: Cannot open load file, package</p>
+</code><p><code>To ensure normal operation, you should investigate and remove the<br>
+cause of the error in your initialization file.  Start Emacs with<br>
+the `--debug-init' option to view a complete error backtrace.</code></p>
+<p>Running emacs with debug-init shows the following:<br>
+<code>Debugger entered--Lisp error: (file-error "Cannot open load file" "package")<br>
+  require(package)<br>
+  eval-buffer(# nil "/home/milan/.emacs" nil t)  ; Reading at buffer position 37<br>
+  load-with-code-conversion("/home/milan/.emacs" "/home/milan/.emacs" t t)<br>
+  load("~/.emacs" t t)<br>
+  #[nil "\205\264...</code></p><code>
+</code><p><code>  command-line()<br>
+  normal-top-level()</code></p>
+<p>Thanks,</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=31#respond" onclick='return addComment.moveForm("comment-31", "31", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-32">
+		<article id="comment-32" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="641da4b2070cdc63950d11fa3cddcbc5" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://caisah.info/" rel="external nofollow" class="url">caisah</a></b> <span>Post author</span></cite><a href="http://caisah.info/emacs-for-python/#comment-32"><time datetime="2013-04-25T10:44:31+00:00">April 25, 2013 at 10:44 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Make sure you have Emacs 24+ version installed. </p>
+<p>Try installing Marmalade first to see if it works. <a href="http://marmalade-repo.org/" target="_top" rel="nofollow">Here is the official site</a>.</p>
+<p>If it doesn’t work <a href="http://stackoverflow.com/questions/8161576/elpa-marmalade-reports-cannot-open-load-file-for-emacs-d-elpa-archives-pkg" target="_top" rel="nofollow">here is possible fix for the same problem</a>.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=32#respond" onclick='return addComment.moveForm("comment-32", "32", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment even thread-odd thread-alt depth-1" id="li-comment-33">
+		<article id="comment-33" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="3f552c3cf26fed0e14028efafb7200af" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://www.jesshamrick.com/" rel="external nofollow" class="url">Jess Hamrick</a></b> </cite><a href="http://caisah.info/emacs-for-python/#comment-33"><time datetime="2013-04-25T15:34:50+00:00">April 25, 2013 at 3:34 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Glad you found my post useful! I’m impressed you were able to get everything up and running after only using Emacs for a week — I definitely wasn’t competent enough to start installing plugins after a week <img src="icon_smile.gif" alt=":-)" class="wp-smiley"> </p>
+<p>Thanks for the tip about jedi.el; I’ve only used autocomplete.el but it doesn’t always work so well on it’s own for Python. Though, it looks like jedi.el is maybe integrated into Emacs IPython Notebook (written by the same guy), which I do use (and I highly recommend!), so maybe I have unknowingly used it. Anyway, I will have to give it a try!</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=33#respond" onclick='return addComment.moveForm("comment-33", "33", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="li-comment-35">
+		<article id="comment-35" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="641da4b2070cdc63950d11fa3cddcbc5" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://caisah.info/" rel="external nofollow" class="url">caisah</a></b> <span>Post author</span></cite><a href="http://caisah.info/emacs-for-python/#comment-35"><time datetime="2013-04-25T19:14:47+00:00">April 25, 2013 at 7:14 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thanks for the comment and the blog post. Is the first one I found about customizing Emacs for Python and it also inspired me to write this one. <img src="icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=35#respond" onclick='return addComment.moveForm("comment-35", "35", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment even depth-3" id="li-comment-39">
+		<article id="comment-39" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="3f552c3cf26fed0e14028efafb7200af" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://www.jesshamrick.com/" rel="external nofollow" class="url">Jess Hamrick</a></b> </cite><a href="http://caisah.info/emacs-for-python/#comment-39"><time datetime="2013-04-26T15:50:31+00:00">April 26, 2013 at 3:50 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Yeah, when I was trying to get Emacs customized for Python myself there was a distinct lack of any recent guides — the stuff on emacswiki was somewhat outdated, and while I found a few blog posts they were from a few years ago and enough things had changed that I had to do a fair amount of fiddling on my own to get stuff to work. I’m glad my post is inspiring people to write their own guides on how to set this stuff up; it’s not always straightforward and as long as people keep writing stuff, there will be recent relevant information for others <img src="icon_smile.gif" alt=":-)" class="wp-smiley"> </p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=39#respond" onclick='return addComment.moveForm("comment-39", "39", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-34">
+		<article id="comment-34" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="706115be20d278dd888133cd3052e97a" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="https://github.com/tkf" rel="external nofollow" class="url">Takafumi</a></b> </cite><a href="http://caisah.info/emacs-for-python/#comment-34"><time datetime="2013-04-25T18:56:32+00:00">April 25, 2013 at 6:56 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Jedi.el author here.  It’s nice to see my plugin in a blog post.</p>
+<p>If you are using IPython, my another plugin called EIN (<a href="https://github.com/tkf/emacs-ipython-notebook" rel="nofollow">https://github.com/tkf/emacs-ipython-notebook</a>) could be useful too.  You can get richer interaction with IPython’s features than the plain inferior-python-mode.</p>
+<p>pydoc-info (<a href="https://bitbucket.org/jonwaltman/pydoc-info/" rel="nofollow">https://bitbucket.org/jonwaltman/pydoc-info/</a>) is also useful.  I don’t know if you can call it for beginners because it is for people who want to stay in Emacs.  You can jump to texinfo version of Python documentation from Python buffers.  You don’t need to open browser to quickly look up something in the Python reference.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=34#respond" onclick='return addComment.moveForm("comment-34", "34", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-36">
+		<article id="comment-36" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="641da4b2070cdc63950d11fa3cddcbc5" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://caisah.info/" rel="external nofollow" class="url">caisah</a></b> <span>Post author</span></cite><a href="http://caisah.info/emacs-for-python/#comment-36"><time datetime="2013-04-25T19:18:16+00:00">April 25, 2013 at 7:18 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thanks for dropping by <img src="icon_smile.gif" alt=":)" class="wp-smiley">  I will definitely take a look at the other suggested plugins. In the meantime keep up the good work and thank you for the time invested in writing, maintaining and supporting these packages.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=36#respond" onclick='return addComment.moveForm("comment-36", "36", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-42">
+		<article id="comment-42" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="f1e564869f8fdf3ef2c3920cc113423b" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://www.sanarias.com/" rel="external nofollow" class="url">santiaago</a></b> </cite><a href="http://caisah.info/emacs-for-python/#comment-42"><time datetime="2013-05-01T11:36:18+00:00">May 1, 2013 at 11:36 am</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thank you for this post! It is really great!</p>
+<p>I got an error when putting the <code>(load-theme 'zenburn t)</code> in .emacs. (I just moved from a 23 version to 24)<br>
+I had to add <code>(package-initialize)</code>  just after <code>(require 'package)</code> to make it work.</p>
+<p>Here is where I found the solution to my problem:<br>
+<a href="https://github.com/bbatsov/zenburn-emacs/issues/51" rel="nofollow">https://github.com/bbatsov/zenburn-emacs/issues/51</a></p>
+<p>cheers.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=42#respond" onclick='return addComment.moveForm("comment-42", "42", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-43">
+		<article id="comment-43" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="641da4b2070cdc63950d11fa3cddcbc5" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://caisah.info/" rel="external nofollow" class="url">caisah</a></b> <span>Post author</span></cite><a href="http://caisah.info/emacs-for-python/#comment-43"><time datetime="2013-05-01T19:58:51+00:00">May 1, 2013 at 7:58 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thanks for the tip! I’ll add it to the article.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=43#respond" onclick='return addComment.moveForm("comment-43", "43", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-even depth-1" id="li-comment-231">
+		<article id="comment-231" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="eeff3312ae9bffb79eadcc494a80362d" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://aprendiendodeandroidymas.com/" rel="external nofollow" class="url">Gabriel</a></b> </cite><a href="http://caisah.info/emacs-for-python/#comment-231"><time datetime="2013-06-12T16:26:18+00:00">June 12, 2013 at 4:26 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thank !!! This is an excellent post !!!</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=231#respond" onclick='return addComment.moveForm("comment-231", "231", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-232">
+		<article id="comment-232" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="641da4b2070cdc63950d11fa3cddcbc5" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://caisah.info/" rel="external nofollow" class="url">caisah</a></b> <span>Post author</span></cite><a href="http://caisah.info/emacs-for-python/#comment-232"><time datetime="2013-06-12T19:46:28+00:00">June 12, 2013 at 7:46 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Thank you.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=232#respond" onclick='return addComment.moveForm("comment-232", "232", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1" id="li-comment-234">
+		<article id="comment-234" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="f3833ec25da4054815b7eb5a98ff0e0a" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn">Anton</b> </cite><a href="http://caisah.info/emacs-for-python/#comment-234"><time datetime="2013-08-23T21:48:33+00:00">August 23, 2013 at 9:48 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>Hi,<br>
+I’m getting an error message about autopair. I followed most of your install instructions, though I confess I was sort of trying to follow the instructions for Jessica Hamricks tutorial but using the package managers instead of installing from source. I then replaced my .emacs with the one you have on github in order to get things sorted and I get the following:</p>
+<p>Debugger entered–Lisp error: (file-error “Cannot open load file” “autopair”)<br>
+  require(autopair)<br>
+  eval-buffer(# nil “/home/anton/.emacs” nil t)  ; Reading at buffer position 3136<br>
+  load-with-code-conversion(“/home/anton/.emacs” “/home/anton/.emacs” t t)<br>
+  load(“~/.emacs” t t)<br>
+  #[0 “\205\262</p>
+<p>Here is the contents of my ~/.emacs.d/</p>
+<p>anton@antt-hp:~$ ls .emacs.d/<br>
+ac-comphist.dat  auto-save-list  el-get  elpa<br>
+anton@antt-hp:~$ ls .emacs.d/el<br>
+el-get/ elpa/<br>
+anton@antt-hp:~$ ls .emacs.d/el-get/<br>
+auto-complete  ctable  deferred  el-get  epc  fuzzy  jedi  popup  python-mode  rope  ropemacs  ropemode<br>
+anton@antt-hp:~$ ls .emacs.d/elpa/<br>
+archives  autopair-20121123.1829  dash-20130819.1125  f-20130821.2204  flycheck-20130822.1252  ipython-2927  multi-term-20130108.2305  pkg-info-20130817.2334  python-mode-6.0.10  s-20130820.1601</p>
+<p>Any ideas?<br>
+Thanks, Anton</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=234#respond" onclick='return addComment.moveForm("comment-234", "234", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	<ol class="children">
+	<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="li-comment-235">
+		<article id="comment-235" class="comment">
+			<header class="comment-meta comment-author vcard">
+				<img alt="" src="641da4b2070cdc63950d11fa3cddcbc5" class="avatar avatar-44 photo" height="44" width="44"><cite><b class="fn"><a href="http://caisah.info/" rel="external nofollow" class="url">caisah</a></b> <span>Post author</span></cite><a href="http://caisah.info/emacs-for-python/#comment-235"><time datetime="2013-08-23T22:47:20+00:00">August 23, 2013 at 10:47 pm</time></a>			</header><!-- .comment-meta -->
+
+			
+			<section class="comment-content comment">
+				<p>I don’t know what the problem is but you should try to reinstall the package:  <code>M-x el-get-install autopair</code>.</p>
+<p>If it doesn’t work, uninstall it and try  <em>smartparens</em> instead.</p>
+							</section><!-- .comment-content -->
+
+			<div class="reply">
+				<a class="comment-reply-link" href="http://caisah.info/emacs-for-python/?replytocom=235#respond" onclick='return addComment.moveForm("comment-235", "235", "respond", "57")'>Reply</a> <span>↓</span>			</div><!-- .reply -->
+		</article><!-- #comment-## -->
+	</li><!-- #comment-## -->
+</ol><!-- .children -->
+</li><!-- #comment-## -->
+		</ol><!-- .commentlist -->
+
+		
+		
+	
+									<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://caisah.info/emacs-for-python/#respond" style="display: none;">Cancel reply</a></small></h3>
+									<form action="http://caisah.info/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name <span class="required">*</span></label> <input id="author" name="author" value="" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-email"><label for="email">Email <span class="required">*</span></label> <input id="email" name="email" value="" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" value="" size="30" type="text"></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" id="submit" value="Post Comment" type="submit">
+							<input name="comment_post_ID" value="57" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="f9c94c09b9" type="hidden"></p>					</form>
+							</div><!-- #respond -->
+			
+</div><!-- #comments .comments-area -->
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+			<div id="secondary" class="widget-area" role="complementary">
+			<aside id="search-2" class="widget widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="searchform" action="http://caisah.info/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input value="" name="s" id="s" type="text">
+					<input id="searchsubmit" value="Search" type="submit">
+				</div>
+			</form></aside><aside id="cnss_widget-2" class="widget widget_cnss_widget"><h3 class="widget-title">Social Stuff</h3><table class="cnss-social-icon" style="width: 168px;" border="0" cellpadding="0" cellspacing="0"><tbody><tr><td style="width: 42px;"><a target="_top" title="Twitter" href="https://twitter.com/caisah_"><img src="1357125796_32x32-square-74-tw.png" border="0" height="32" width="32"></a></td><td style="width: 42px;"><a target="_top" title="Linkedin" href="http://www.linkedin.com/in/caisah"><img src="1357125704_32x32-square-74-li.png" border="0" height="32" width="32"></a></td><td style="width: 42px;"><a target="_top" title="Google Plus" href="https://plus.google.com/109681304217886469166?rel=author"><img src="1357125765_32x32-square-74-gp.png" border="0" height="32" width="32"></a></td><td style="width: 42px;"><a target="_top" title="RSS" href="http://feeds.feedburner.com/Caisah"><img src="1357125832_32x32-square-74-rss.png" border="0" height="32" width="32"></a></td></tr></tbody></table></aside>		</div><!-- #secondary -->
+		<!--WP Code Highlight_start-->
+	
+	
+	<!--WP Code Highlight_end-->
+	</div><!-- #main .wrapper -->
+	<footer id="colophon" role="contentinfo">
+		<div class="site-info">
+						<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform">Proudly powered by WordPress</a>
+		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+
+</body>
+</html>

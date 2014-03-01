@@ -1,0 +1,489 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML+RDFa 1.0//EN" "http://www.w3.org/MarkUp/DTD/xhtml-rdfa-1.dtd">
+<html xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:sioct="http://rdfs.org/sioc/types#" xmlns:sioc="http://rdfs.org/sioc/ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:og="http://ogp.me/ns#" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:dc="http://purl.org/dc/terms/" xmlns:content="http://purl.org/rss/1.0/modules/content/" dir="ltr" version="XHTML+RDFa 1.0" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml" class="js">
+<head profile="http://www.w3.org/1999/xhtml/vocab">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  
+<link rel="shortcut icon" href="favicon_0.ico" type="image/vnd.microsoft.icon">
+<meta name="keywords" content="PhD,python,programming">
+<meta name="description" content="I've started tinkering with Emacs again!&nbsp; Some cool add-ons which have
+gotten me excited about Emacs again:
+
+-   Get the [latest version of Emacs from this Ubuntu PPA](https://launchpad.net/~cassou/+archive/emacs).
+-   Ubuntu packages to install: ">
+<meta about="/setting_up_emacs_for_python_development" property="sioc:num_replies" content="0" datatype="xsd:integer">
+<link rel="shortlink" href="http://jack-kelly.com/node/1479">
+<meta name="Generator" content="Drupal 7 (http://drupal.org)">
+<link rel="canonical" href="http://jack-kelly.com/setting_up_emacs_for_python_development">
+<meta content="Setting up Emacs for Python development" about="/setting_up_emacs_for_python_development" property="dc:title">
+  <title>Setting up Emacs for Python development | Jack Kelly</title>
+  
+
+
+
+
+
+<!--[if lte IE 7]>
+<link type="text/css" rel="stylesheet" href="http://jack-kelly.com/themes/bartik/css/ie.css?mx2m53" media="all" />
+<![endif]-->
+
+<!--[if IE 6]>
+<link type="text/css" rel="stylesheet" href="http://jack-kelly.com/themes/bartik/css/ie6.css?mx2m53" media="all" />
+<![endif]-->
+  
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="html not-front not-logged-in one-sidebar sidebar-first page-node page-node- page-node-1479 node-type-blog"><div style="position: static;"><iframe src="index_1.html" allowtransparency="true" transparency="true" style="border: 0pt none; left: 0pt; top: 0pt; position: absolute; z-index: 100000; display: none;" id="a2apage_sm_ifr" frameborder="0" height="1" width="1"></iframe><div id="a2apage_dropdown" class="a2a_menu" style="display: none;"><div class="a2a_menu_inside"><div id="a2apage_title_container" class="a2a_menu_title_container" style="display: none;"><input value="" id="a2apage_title" class="a2a_menu_title"></div><div class="a2apage_wide a2a_wide"><div class="a2a_tabs a2a_tabs_default"><div id="a2apage_DEFAULT" class="a2a_tab_selected" style="margin-right: 1px;"><span class="a2a_i_a2a">分享</span></div></div><div class="a2a_tabs"><div title="通过电子邮件分享" id="a2apage_EMAIL" style="margin-right: 1px;"><span class="a2a_i_email_bw">电子邮件</span></div></div></div><div class="a2a_clear"></div><div id="a2apage_find_container" class="a2a_menu_find_container"><input value="" id="a2apage_find" class="a2a_menu_find" onclick="a2a.focus_find()" onkeyup="a2a.do_find()" autocomplete="off" onfocus="a2a['page'].find_focused=true;a2a.onMouseOver_stay()" title="快速查找您使用的服务" type="text"><span id="a2apage_find_icon" class="a2a_i_find" onclick="a2a.focus_find()"></span></div><div id="a2apage_cols_container" class="a2a_cols_container"><div class="a2a_col1" id="a2apage_col1"><a target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_qq"><span style="background-image: url('favicon.ico');">QQ</span></a><a target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_sina_weibo"><span style="background-image: url('miniblog_icon_str16.png');">Sina Weibo</span></a><a target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_facebook"><span class="a2a_i_facebook">Facebook</span></a><a target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_twitter"><span class="a2a_i_twitter">Twitter</span></a><a target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_google_plus"><span class="a2a_i_google_plus">Google+</span></a><a target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_pinterest"><span class="a2a_i_pinterest">Pinterest</span></a><a target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_linkedin"><span class="a2a_i_linkedin">LinkedIn</span></a><a target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_stumbleupon"><span class="a2a_i_stumbleupon">StumbleUpon</span></a><a target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_reddit"><span class="a2a_i_reddit">Reddit</span></a><a target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_google_bookmarks"><span class="a2a_i_google">Google Bookmarks</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_wordpress"><span class="a2a_i_wordpress">WordPress</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_tumblr"><span class="a2a_i_tumblr">Tumblr</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_delicious"><span class="a2a_i_delicious">Delicious</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_digg"><span class="a2a_i_digg">Digg</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_myspace"><span class="a2a_i_myspace">MySpace</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_yahoo_bookmarks"><span class="a2a_i_yahoo">Yahoo Bookmarks</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_bebo"><span class="a2a_i_bebo">Bebo</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_mister_wong"><span class="a2a_i_mister-wong">Mister-Wong</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_app_net"><span class="a2a_i_app_net">App.net</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_wanelo"><span class="a2a_i_wanelo">Wanelo</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_orkut"><span class="a2a_i_orkut">Orkut</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_xing"><span class="a2a_i_xing">XING</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_buffer"><span class="a2a_i_buffer">Buffer</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_evernote"><span class="a2a_i_evernote">Evernote</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_whatsapp"><span class="a2a_i_whatsapp">WhatsApp</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_mendeley"><span class="a2a_i_mendeley">Mendeley</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_pocket"><span class="a2a_i_pocket">Pocket</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_vk"><span class="a2a_i_vk">VK</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_pinboard"><span class="a2a_i_pinboard">Pinboard</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_springpad"><span class="a2a_i_springpad">Springpad</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_flipboard"><span class="a2a_i_flipboard">Flipboard</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_arto"><span class="a2a_i_arto">Arto</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_aim"><span class="a2a_i_aim">AIM</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_yahoo_messenger"><span class="a2a_i_yim">Yahoo Messenger</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_plurk"><span class="a2a_i_plurk">Plurk</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_diaspora"><span class="a2a_i_diaspora">Diaspora</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_blogger_post"><span class="a2a_i_blogger">Blogger Post</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_typepad_post"><span class="a2a_i_typepad">TypePad Post</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_box_net"><span class="a2a_i_box">Box.net</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_kindle_it"><span class="a2a_i_kindle">Kindle It</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_baidu"><span class="a2a_i_baidu">Baidu</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_netlog"><span class="a2a_i_netlog">Netlog</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_citeulike"><span class="a2a_i_citeulike">CiteULike</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_jumptags"><span class="a2a_i_jumptags">Jumptags</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_funp"><span class="a2a_i_funp">FunP</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_instapaper"><span class="a2a_i_instapaper">Instapaper</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_phonefavs"><span class="a2a_i_phonefavs">PhoneFavs</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_xerpi"><span class="a2a_i_xerpi">Xerpi</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_netvouz"><span class="a2a_i_netvouz">Netvouz</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_diigo"><span class="a2a_i_diigo">Diigo</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_bibsonomy"><span class="a2a_i_bibsonomy">BibSonomy</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_blogmarks"><span class="a2a_i_blogmarks">BlogMarks</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_startaid"><span class="a2a_i_startaid">StartAid</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_khabbr"><span class="a2a_i_khabbr">Khabbr</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_meneame"><span class="a2a_i_meneame">Meneame</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_yoolink"><span class="a2a_i_yoolink">Yoolink</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_bookmarks_fr"><span class="a2a_i_bookmarks_fr">Bookmarks.fr</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_technotizie"><span class="a2a_i_technotizie">Technotizie</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_newsvine"><span class="a2a_i_newsvine">NewsVine</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_friendfeed"><span class="a2a_i_friendfeed">FriendFeed</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_protopage_bookmarks"><span class="a2a_i_protopage">Protopage Bookmarks</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_blinklist"><span class="a2a_i_blinklist">Blinklist</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_yigg"><span class="a2a_i_yigg">YiGG</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_webnews"><span class="a2a_i_webnews">Webnews</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_segnalo"><span class="a2a_i_segnalo">Segnalo</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_pusha"><span class="a2a_i_pusha">Pusha</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_youmob"><span class="a2a_i_youmob">YouMob</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_slashdot"><span class="a2a_i_slashdot">Slashdot</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_fark"><span class="a2a_i_fark">Fark</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_allvoices"><span class="a2a_i_allvoices">Allvoices</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_jamespot"><span class="a2a_i_jamespot">Jamespot</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_twiddla"><span class="a2a_i_twiddla">Twiddla</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_linkagogo"><span class="a2a_i_linkagogo">LinkaGoGo</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_nowpublic"><span class="a2a_i_nowpublic">NowPublic</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_livejournal"><span class="a2a_i_livejournal">LiveJournal</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_linkatopia"><span class="a2a_i_linkatopia">Linkatopia</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_buddymarks"><span class="a2a_i_buddymarks">BuddyMarks</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_viadeo"><span class="a2a_i_viadeo">Viadeo</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_wists"><span class="a2a_i_wists">Wists</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_sitejot"><span class="a2a_i_sitejot">SiteJot</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_dzone"><span class="a2a_i_dzone">DZone</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_care2_news"><span class="a2a_i_care2">Care2 News</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_bitty_browser"><span class="a2a_i_bitty">Bitty Browser</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_odnoklassniki"><span class="a2a_i_odnoklassniki">Odnoklassniki</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_mail_ru"><span class="a2a_i_mail_ru">Mail.Ru</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_symbaloo_feeds"><span class="a2a_i_symbaloo">Symbaloo Feeds</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_folkd"><span class="a2a_i_folkd">Folkd</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_newstrust"><span class="a2a_i_newstrust">NewsTrust</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_amazon_wish_list"><span class="a2a_i_amazon">Amazon Wish List</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_printfriendly"><span class="a2a_i_printfriendly">PrintFriendly</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_tuenti"><span class="a2a_i_tuenti">Tuenti</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_email"><span class="a2a_i_email">Email</span></a><a style="display: none;" target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_rediff"><span class="a2a_i_rediff">Rediff MyPage</span></a></div><div id="a2apage_2_col1" style="display: none;"><a target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_google_gmail"><span class="a2a_i_gmail">Google Gmail</span></a><a target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_yahoo_mail"><span class="a2a_i_yahoo">Yahoo Mail</span></a><a target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_outlook_com"><span class="a2a_i_outlook_com">Outlook.com</span></a><a target="_top" href="http://jack-kelly.com/" class="a2a_i" rel="nofollow" id="a2apage_aol_mail"><span class="a2a_i_aol">AOL Mail</span></a><a target="_top" href="http://jack-kelly.com/" class="a2a_i a2a_emailer" rel="nofollow" id="a2apage_any_email"><span class="a2a_i_email">Any email</span></a><a target="" href="http://jack-kelly.com/" class="a2a_i a2a_emailer a2a_email_client" rel="nofollow" id="a2apage_email_client"><span class="a2a_i_outlook">&nbsp;</span><span class="a2a_i_windows_mail">&nbsp;</span><span class="a2a_i_apple_mail">&nbsp;</span><span class="a2a_i_thunderbird">&nbsp;</span></a></div><div class="a2a_clear"></div></div><div class="a2apage_wide a2a_wide"><a href="http://jack-kelly.com/setting_up_emacs_for_python_development" id="a2apage_show_more_less" class="a2a_menu_show_more_less" title="显示全部/展开"><span class="a2a_i_darr"></span></a></div><div class="a2a_menu_powered_by" id="a2apage_powered_by">By <a href="http://www.addtoany.com/" target="_top" title="Share Buttons">AddToAny</a></div></div></div></div><div style="display: none;" id="MathJax_Message"></div><div class="ccc-left ccc-dark" id="cccwr"><div id="ccc-state" class="ccc-go"><div style="display: block;" class="ccc-triangle" id="ccc-icon"><button><span>Cookie Control</span></button></div><div style="display: none;" class="ccc-widget"><div class="ccc-outer"><div class="ccc-inner"><h2>Cookie Control</h2><div class="ccc-content"><p class="ccc-intro"><p>This site uses cookies to store information on your computer. Some of these cookies are essential to make our site work and others help us to improve by giving us some insight into how the site is being used.</p></p><div class="ccc-expanded"><p>Some cookies on this site are essential, and the site won't work as expected without them. These cookies are set when you submit a form, login or interact with the site by doing something that goes beyond clicking on simple links.</p><p>We also use some non-essential cookies to anonymously track visitors or enhance your experience of the site. If you're not happy with this, we won't set these cookies but some nice features of the site may be unavailable.</p><p>By using our site you accept the terms of our <a href="http://jack-kelly.com/privacy_policy">Privacy Policy</a>.</p></div><div id="ccc-cookies-switch" style=""><a id="cctoggle" href="#" style="" name="cctoggle"><span class="cctoggle-text-on" id="cctoggle-text">Cookies are on</span></a></div><div id="ccc-implicit-warning">(One cookie will be set to store your preference)</div><div id="ccc-explicit-checkbox"><label><input id="cchide-popup" name="ccc-hide-popup" value="Y" type="checkbox"> Do not ask me again<br></label> (Ticking this sets a cookie to hide this popup if you then hit close. This will not store any personal information)</div><p class="ccc-about"><small><a href="http://www.civicuk.com/cookie-law" target="_top">About this tool</a></small></p><a class="ccc-icon" href="http://www.civicuk.com/cookie-law" target="_top" title="About Cookie Control">About Cookie Control</a><button class="ccc-close">Close</button></div></div></div><button class="ccc-expand">read more</button></div></div></div>
+  <div id="skip-link">
+    <a href="#main-content" class="element-invisible element-focusable">Skip to main content</a>
+  </div>
+    <div id="page-wrapper"><div id="page">
+
+  <div id="header" class="without-secondary-menu"><div class="section clearfix">
+
+    
+          <div id="name-and-slogan">
+
+                              <div id="site-name">
+              <strong>
+                <a href="http://jack-kelly.com/" title="Home" rel="home"><span>Jack Kelly</span></a>
+              </strong>
+            </div>
+                  
+                  <div id="site-slogan">
+            Computer science Ph.D. student interested in machine learning; energy efficiency; open science/data; climate science; parenting          </div>
+        
+      </div> <!-- /#name-and-slogan -->
+    
+    
+    
+    
+  </div></div> <!-- /.section, /#header -->
+
+  
+  
+  <div id="main-wrapper" class="clearfix"><div id="main" class="clearfix">
+
+          <div id="breadcrumb"><h2 class="element-invisible">You are here</h2><div class="breadcrumb"><a href="http://jack-kelly.com/">Home</a> » <a href="http://jack-kelly.com/blog">Blogs</a> » <a href="http://jack-kelly.com/blog/1">Jack's blog</a></div></div>
+    
+          <div id="sidebar-first" class="column sidebar"><div class="section">
+          <div class="region region-sidebar-first">
+    <div id="block-search-form" class="block block-search">
+
+    
+  <div class="content">
+    <form action="http://jack-kelly.com/setting_up_emacs_for_python_development" method="post" id="search-block-form" accept-charset="UTF-8"><div><div class="container-inline">
+      <h2 class="element-invisible">Search form</h2>
+    <div class="form-item form-type-textfield form-item-search-block-form">
+  <label class="element-invisible" for="edit-search-block-form--2">Search </label>
+ <input title="Enter the terms you wish to search for." id="edit-search-block-form--2" name="search_block_form" value="" size="15" maxlength="128" class="form-text" type="text">
+</div>
+<div class="form-actions form-wrapper" id="edit-actions--2"><input id="edit-submit--2" name="op" value="Search" class="form-submit" type="submit"></div><input name="form_build_id" value="form-1H3rld-Td5cKx17LumiFkQ3ZbIom8lBfgjEDRl9kY2M" type="hidden">
+<input name="form_id" value="search_block_form" type="hidden">
+</div>
+</div></form>  </div>
+</div>
+<div id="block-system-main-menu" class="block block-system block-menu">
+
+    <h2>Main menu</h2>
+  
+  <div class="content">
+    <ul class="menu clearfix"><li class="first leaf"><a href="http://jack-kelly.com/blog" title="News and random thoughts">blog</a></li>
+<li class="leaf"><a href="http://jack-kelly.com/contact" title="Contact Jack">contact</a></li>
+<li class="collapsed"><a href="http://jack-kelly.com/filmmaking" title="filmmaking, video production &amp; timelapse">filmmaking &amp; web design</a></li>
+<li class="leaf"><a href="http://jack-kelly.com/about" title="Description of my PhD">about</a></li>
+<li class="last leaf"><a href="http://jack-kelly.com/academic_writing">Academic writing</a></li>
+</ul>  </div>
+</div>
+<div id="block-menu-menu-me-on-other-sites" class="block block-menu">
+
+    <h2>My profiles on other sites</h2>
+  
+  <div class="content">
+    <ul class="menu clearfix"><li class="first leaf"><a href="https://github.com/JackKelly" title="Some of my programs on the &quot;social coding&quot; site github">code on github</a></li>
+<li class="leaf"><a href="http://twitter.com/#%21/jack_kelly" title="">twitter</a></li>
+<li class="leaf"><a href="http://www.linkedin.com/in/jackkelly0" title="">linkedin</a></li>
+<li class="leaf"><a href="http://www.mendeley.com/groups/3295941/jack-kelly-s-disaggregation-library/" title="">disaggregation literature on Mendeley</a></li>
+<li class="leaf"><a href="https://www.zotero.org/jack_kelly/items" title="The reference library I maintain for my PhD. Contains items on smart meters, disaggregation, climate science and other things. I use the awesome Zotero to maintain my reference library.">complete reference library on zotero</a></li>
+<li class="leaf"><a href="http://www.flickr.com/photos/37816297@N06/" title="">flickr photos</a></li>
+<li class="last leaf"><a href="https://cosm.com/users/jack_kelly" title="">cosm (pachube)</a></li>
+</ul>  </div>
+</div>
+<div id="block-tagclouds-2" class="block block-tagclouds">
+
+    <h2>Categories</h2>
+  
+  <div class="content">
+    <span class="tagclouds-term"><a href="http://jack-kelly.com/taxonomy/term/133" class="tagclouds level1" title="">children</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/tags/climate_science" class="tagclouds level2" title="">climate science</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/taxonomy/term/121" class="tagclouds level4" title="">CurrentCost</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/tags/decc" class="tagclouds level1" title="">DECC</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/taxonomy/term/130" class="tagclouds level2" title="">disaggregation</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/tags/eclipse" class="tagclouds level1" title="">eclipse</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/taxonomy/term/124" class="tagclouds level1" title="">EcoManager</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/tags/filmmaking" class="tagclouds level2" title="">filmmaking</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/tags/green_diary" class="tagclouds level4" title="">green diary</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/tags/heating" class="tagclouds level2" title="">heating</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/tags/insulation" class="tagclouds level2" title="">insulation</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/tags/latex" class="tagclouds level2" title="">LaTeX</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/tags/linux" class="tagclouds level1" title="">linux</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/tags/notes" class="tagclouds level3" title="">notes</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/tags/phd" class="tagclouds level6" title="">PhD</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/tags/photography" class="tagclouds level1" title="">photography</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/taxonomy/term/113" class="tagclouds level3" title="">programming</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/taxonomy/term/111" class="tagclouds level1" title="">python</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/tags/smart_meters" class="tagclouds level4" title="">smart meters</a></span>
+<span class="tagclouds-term"><a href="http://jack-kelly.com/taxonomy/term/128" class="tagclouds level2" title="">student project</a></span>
+<div class="more-link"><a href="http://jack-kelly.com/tagclouds/chunk/2" title="more tags">More</a></div>  </div>
+</div>
+  </div>
+      </div></div> <!-- /.section, /#sidebar-first -->
+    
+    <div id="content" class="column"><div class="section">
+            <a id="main-content"></a>
+                    <h1 class="title" id="page-title">
+          Setting up Emacs for Python development        </h1>
+                          <div class="tabs">
+                  </div>
+                          <div class="region region-content">
+    <div id="block-system-main" class="block block-system">
+
+    
+  <div class="content">
+    <div id="node-1479" class="node node-blog node-promoted node-full clearfix" about="/setting_up_emacs_for_python_development" typeof="sioc:Post sioct:BlogPost">
+
+      
+      <div class="meta submitted">
+            <span property="dc:date dc:created" content="2012-06-28T16:02:20+01:00" datatype="xsd:dateTime" rel="sioc:has_creator">Submitted by <span class="username" xml:lang="" about="/user/1" typeof="sioc:UserAccount" property="foaf:name" datatype="">Jack</span> on Thu, 28/06/2012 - 16:02</span>    </div>
+  
+  <div class="content clearfix">
+    <div class="field field-name-body field-type-text-with-summary field-label-hidden"><div class="field-items"><div class="field-item even" property="content:encoded"><p>I've started tinkering with Emacs again!&nbsp; Some cool add-ons which have
+gotten me excited about Emacs again:</p>
+
+<ul>
+<li>Get the <a href="https://launchpad.net/%7Ecassou/+archive/emacs">latest version of Emacs from this Ubuntu PPA</a>.</li>
+<li>Ubuntu packages to install: <code>emacs24 autocutsel</code></li>
+<li>Basic <a href="http://www.doc.ic.ac.uk/%7Ewjk/UnixIntro/.emacs">.emacs</a> from Imperial</li>
+<li><a href="http://caisah.info/emacs-for-python/">A good, recent guide to installing Python tools in Emacs</a>. Some tweaks:
+
+<ul>
+<li><code>sudo apt-get install mercurial</code> (some packages are installed using <code>hg</code>)</li>
+<li>To use flycheck with Python: <code>sudo pip install --upgrade logilab-common pylint</code>.  Then disable warnings and conventions as per <a href="http://stackoverflow.com/a/19118976/732596">this SO post</a>.</li>
+<li>you can also install pymacs with <code>el-get-install pymacs</code> and <code>el-get-install ropemacs</code></li>
+</ul></li>
+</ul>
+
+<h2>Make errors into clickable links in iPython</h2>
+
+<ul>
+<li><code>cd /usr/share/emacs/24.3/lisp/progmodes</code></li>
+<li><code>sudo gunzip python.el.gz</code></li>
+<li><code>sudo gedit python.el</code></li>
+<li>Remove  <span class="geshifilter"><code class="text geshifilter-text">line-start (1+ (any " \t"))</code></span> from line 1609 </li>
+<li><code>sudo emacs -batch -f batch-byte-compile *.el</code></li>
+</ul>
+
+<h2>Some additional plug ins I still use:</h2>
+
+<ul>
+<li><a href="https://github.com/dimitri/el-get">el-get</a> package manager</li>
+<li><a href="http://www.emacswiki.org/RecentFiles">recently used files</a></li>
+<li><a href="https://github.com/magit/magit">magit</a> (better git support)</li>
+<li><a href="http://www.emacswiki.org/emacs/EightyColumnRule">80 column rule</a></li>
+<li><a href="http://www.emacswiki.org/cgi-bin/wiki/buffer-move.el">buffer move</a> (easily move buffers around)</li>
+<li><a href="http://www.emacswiki.org/emacs/FlySpell">FlySpell</a></li>
+<li><a href="https://github.com/flycheck/flycheck">FlyCheck</a> - "flymake done right". </li>
+<li><a href="http://www.emacswiki.org/emacs/PythonProgrammingInEmacs#toc5">setup emacs python mode to use ipython</a></li>
+<li><a href="https://github.com/tkf/emacs-jedi">emacs-jedi</a> (autocomplete, go-to-source etc)</li>
+<li><a href="http://www.emacswiki.org/cgi-bin/wiki/goto-last-change.el">goto-last-change</a></li>
+<li><a href="http://www.emacswiki.org/emacs/ShellMode#toc5">bash completion</a></li>
+<li><a href="http://sourceforge.net/projects/matlab-emacs/">matlab-emacs</a> - trying to install this with <code>el-get</code> failed.  So I checked out <code>matlab-emacs</code> into <code>.emacs.d</code> and added the two required lines to my <code>.emacs</code></li>
+<li><p><a href="http://rope.sourceforge.net/ropemacs.html">ropemacs</a> - refactoring, go to definition etc.</p>
+
+<ul>
+<li>Install the dependencies listed at the top of the <a href="http://rope.sourceforge.net/ropemacs.html">ropemacs</a> page (<a href="http://pymacs.progiciels-bpi.ca/pymacs.html#installation">here</a> are the instructions for installing pymacs)</li>
+<li><a href="http://www.saltycrane.com/blog/2010/05/my-emacs-python-environment/">here</a> (section "Edit ~/.emacs to use Ropemacs") are some important additions to <code>.emacs</code></li>
+<li><a href="http://stackoverflow.com/a/2855895">here's</a> a quick guide to using ropemacs</li>
+</ul></li>
+<li><p>Config .emacs for ipdb.  Code is <a href="http://jack-kelly.com/pedrokroger.net/2010/07/configuring-emacs-as-a-python-ide-2/">adapted from PedroKroger.net</a></p></li>
+</ul>
+
+<p></p><div class="geshifilter"><pre class="text geshifilter-text" style="font-family: monospace;">;;----------------------------------------------------------------------------
+;; ipdb
+;; from: pedrokroger.net/2010/07/configuring-emacs-as-a-python-ide-2/
+;; Highlight ipdb lines:
+(defun annotate-pdb ()
+  (interactive)
+  (highlight-lines-matching-regexp "import pdb")
+  (highlight-lines-matching-regexp "pdb.set_trace()"))
+&nbsp;
+(add-hook 'python-mode-hook 'annotate-pdb)
+&nbsp;
+;;----------
+;; Keybinding to add breakpoint:
+(defun python-add-breakpoint ()
+  (interactive)
+  (newline-and-indent)
+  (insert "import ipdb; ipdb.set_trace()")
+  (highlight-lines-matching-regexp "^[ ]*import ipdb; ipdb.set_trace()"))
+&nbsp;
+(define-key python-mode-map (kbd "C-c C-t") 'python-add-breakpoint)</pre></div><p></p>
+
+<h2>Notes for using Emacs with C++</h2>
+
+<ul>
+<li>FlyCheck: To get <code>clang</code> to work correctly on Ubuntu 13.10 for checking C++ I had to install clang-3.4 using <a href="http://llvm.org/apt/">these sources</a> because 13.04 currently ships with clang 3.2 which gives the error: <code>/usr/include/stdio.h:33:11: fatal error: 'stddef.h' file not found</code>.  The <a href="https://bugs.launchpad.net/ubuntu/+source/llvm-defaults/+bug/1242300">bug has been reported on launchpad</a>.</li>
+<li>Two candidates for autocompletion appear to be <a href="http://www.emacswiki.org/emacs/AutoComplete">AutoComplete</a> and <a href="http://company-mode.github.io/">company-mode</a>.</li>
+</ul>
+
+<h2>Some plug-ins I have used in the past but no longer use:</h2>
+
+<ul>
+<li><a href="http://www.plope.com/Members/chrism/flymake-mode">flymake config for Python</a> (i.e. enable on-the-fly checking of Python code) - I now use <a href="https://github.com/flycheck/flycheck">flycheck</a> instead.</li>
+<li>Many (if not all) of the extensions below could be installed using Emacs24's package manager <code>M-x list-packages</code></li>
+<li><a href="http://stackoverflow.com/a/2205968">color themes</a></li>
+<li><a href="http://www.emacswiki.org/emacs/IswitchBuffers">iSwitch buffers</a> (switch buffers by typing any part of the buffer name)</li>
+<li><a href="http://www.emacswiki.org/emacs/BrowseUrl">Browse URL</a>.  I set <code>(setq browse-url-browser-function 'browse-url-firefox)</code> and <code>(global-set-key "\C-c\C-u" 'browse-url-at-point)</code></li>
+<li><a href="https://github.com/tkf/emacs-ipython-notebook">Emacs IPython Notebook
+(EIN)</a>
+
+<ul>
+<li><a href="http://tkf.github.io/emacs-ipython-notebook/#ein:jedi-setup">tell emacs-jedi and EIN to work together</a></li>
+<li><a href="https://github.com/tkf/emacs-ipython-notebook/issues/86#issuecomment-11099988">set <code>ein:console-args</code> as per this commen</a></li>
+</ul></li>
+<li><a href="http://www.emacswiki.org/emacs/CollectionOfEmacsDevelopmentEnvironmentTools">Collection of Emacs Development Environment Tools
+(CEDET)</a>.&nbsp;
+<a href="http://cedet.sourceforge.net/speedbar.shtml">SpeedBar</a> is
+especially cool. (CEDET is installed by default with ubuntu's emacs24 package, but you need to manually install CEDET to get the latest versions)</li>
+</ul>
+
+<h2>Some commands</h2>
+
+<ul>
+<li><code>M-q</code> reformat comment test.  From <a href="http://stackoverflow.com/a/2214213">SO</a>.</li>
+<li><a href="http://tkf.github.io/emacs-jedi/#keybinds">emacs-jedi keybinds</a></li>
+<li><a href="http://tkf.github.io/emacs-ipython-notebook/#commands-keybinds">EIN keybinds</a> (also see the <a href="https://github.com/tkf/emacs-ipython-notebook/wiki/Screenshots">screenshots</a> for more examples)</li>
+<li><code>C-z</code> undo (or <code>C-_</code>)</li>
+<li><code>C-g C-_</code> or <code>C-g C-z</code> redo</li>
+<li><code>C-c C-u</code> browse URL</li>
+<li>If you modify <code>.emacs</code>, you don't need to restart Emacs for the changes to take effect.  See <a href="http://stackoverflow.com/questions/2580650/how-can-i-reload-emacs-after-changing-it">this SO post</a>.</li>
+<li><a href="http://stackoverflow.com/a/5399339/732596">reload changes recursively in IPython</a></li>
+<li><a href="http://daemianmack.com/magit-cheatsheet.html">magit cheat sheet</a></li>
+<li><a href="http://twistedmatrix.com/documents/current/core/howto/debug-with-emacs.html">debugging Python in Emacs</a></li>
+<li><code>C-&lt;number&gt;-x tab</code> rigidly indent region by <number> spaces.  e.g. <code>C-4-x tab</code> or <code>C-minus-4-x tab</code></number></li>
+<li><code>C-x C-v RET</code> reload file</li>
+<li><code>C-c C-t</code> insert <code>import ipdb; ipdb.set_trace()</code></li>
+<li><code>M-%</code> <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Query-Replace.html">incremental search and replace</a></li>
+<li><code>M-=</code> show word and character count</li>
+</ul>
+
+<hr>
+
+<h3>Alternative editors</h3>
+
+<ul>
+<li><a href="http://code.google.com/p/spyderlib/">spyder</a> (scientific dev environment)</li>
+</ul>
+
+<hr>
+
+<h3>Update 2nd July 2012</h3>
+
+<p>I've gone back to using <a href="http://pydev.org/">PyDev</a>&nbsp;(an
+<a href="http://www.eclipse.org/">Eclipse</a> plug-in) for my Python development.
+&nbsp;I do enjoy Emacs but PyDev is simply too pleasurable and powerful to
+ignore. &nbsp;Plus <a href="http://pydev.blogspot.co.uk/">PyDev appears to be receiving increasing amounts of
+development effort</a>, in contrast to some
+of the Emacs tools I experimented with. &nbsp; And Eclipse offers enough
+configuration options to mean that I can get Eclipse to feel pretty
+"Emacs-like". &nbsp;The notes below are only about two thirds complete but
+they might still be useful...</p>
+
+<hr>
+
+<p>So, I've settled on using Python 2.7 for the development of my
+disaggregation system. &nbsp;I'm very happy with Python so far. &nbsp;The more I
+learn about Python, the more excited I get; which is the oposite to the
+situation I experienced with MATLAB: the more I learnt about MATLAB, the
+more repulsed I became.</p>
+
+<p>So, the next question becomes: which IDE to develop in? &nbsp;I spent a few
+days using the Eclipse plugin PyDev but several things started to bug
+me; notably the fact that <a href="https://sourceforge.net/tracker/?func=detail&amp;aid=3049914&amp;group_id=85796&amp;atid=577329">the interactive console doesn't respect the
+correct Eclipse
+keybindings</a>.
+&nbsp;Plus Eclipse requires lots of messing about with the mouse which can
+slow you down a bit. &nbsp;So I started thinking seriously about using my old
+friend Emacs to develop Python in. &nbsp;Pedro produced an&nbsp;<em>excellent</em> <a href="http://pedrokroger.com/2010/07/configuring-emacs-as-a-python-ide-2/">blog
+post</a>
+describing how to install a bunch of add-ons to Emacs to make it a
+powerful Python IDE. &nbsp;Unfortunately things have changed a bit since 2010
+when that blog post was produced. &nbsp;Hence this blog post is a list of
+modifications to Pedro's blog post to bring it up to date. &nbsp;I certainly
+don't intend to replicate Pedro's excellent work; I'm just producing a
+"diff" to bring his blog post up to date. There's also <a href="http://hide1713.wordpress.com/2009/01/30/setup-perfect-python-environment-in-emacs/">some good notes
+on vanguard33's
+blog</a>.</p>
+
+<ol>
+<li>Install iPython</li>
+<li>Install <a href="https://launchpad.net/python-mode">python-mode</a> into
+<code>~/.emacs.d/</code> as per the instructions in
+the <code>README</code> and <code>INSTALL</code> files</li>
+<li>Don't bother manually putting <code>(setq py-shell-name "ipython")</code> into your <code>~/.emacs</code>
+file. Instead, in emacs, type
+<code>M-x customize-variable py-shell-name</code> and
+change it to <code>ipython</code></li>
+<li><code>easy_install rope ropemacs</code>. Modify
+<code>.emacs</code> to get ropemacs to work as
+described in the <a href="https://bitbucket.org/agr/ropemacs">ropemacs
+readme</a>. Install
+<a href="https://github.com/pinard/Pymacs">Pymacs</a> (there's a bug in the
+install at the time of writing; to get the install to work follow
+the step described in the bug report <a href="https://github.com/pinard/Pymacs/pull/29">fix install of Pymacs on
+Python 2.7 (issue #28)</a>).
+You might also need to add <code>(setq py-load-pymacs-p 'nil)</code> to your <code>.emacs</code></li>
+<li><a href="https://github.com/magit/magit">Magit is now hosted on github</a>.</li>
+</ol>
+
+<h3>Useful resources</h3>
+
+<ul>
+<li><a href="http://emacswiki.org/emacs/PythonProgrammingInEmacs">emacswiki.org/emacs/PythonProgrammingInEmacs</a></li>
+</ul>
+
+<h3>Tools I tinkered with but am not using</h3>
+
+<p><a href="http://gabrielelanaro.github.com/emacs-for-python/">emacs-for-python</a>
+looks like a quick and easy way to install lots of useful stuff. But I
+decided to install individual packages.</p>
+
+<p><strong>ipython.el</strong>:&nbsp; I'm not certain if&nbsp;<code>ipython.el</code>&nbsp;is required or not (the latest version can be found
+in&nbsp;the <a href="https://github.com/ipython/ipython/tree/master/docs/emacs">ipython repository on
+github</a>).
+There's lots of discussion about <code>ipython.el</code>
+on
+<a href="http://stackoverflow.com/questions/8226493/ipython-emacs-integration">StackOverflow</a>
+and <a href="https://github.com/ipython/ipython/pull/1015">github</a>.&nbsp;There's also
+some discussion in the <a href="https://github.com/ipython/ipython/blob/master/docs/source/config/editors.txt#L40">ipython editors.txt
+file</a>
+(which I need to read). <a href="http://pedrokroger.com/2010/07/configuring-emacs-as-a-python-ide-2/#comment-1030">this recent comment by Andreas
+Röhler</a>
+suggests that <code>ipython.el</code> should no longer be
+necessary. My assumption for the time being is that <code>ipython.el</code> is not required.</p>
+
+<h4>Autocompletion</h4>
+
+<p>The <a href="http://www.emacswiki.org/emacs/Anything">anything</a> project has been
+superceded by the <a href="https://github.com/emacs-helm/helm">helm</a> project.
+You can get the files using something like
+<code>cd ~/.emacs.d; git clone git://github.com/emacs-helm/helm.git</code> and then read the <code>README.md</code> file. There is also
+a&nbsp;<a href="https://github.com/emacs-helm/helm-ipython">helm-ipython</a>&nbsp;project.
+<strong>HOWEVER</strong>, helm-python requires ipython.el (I submitted <a href="https://github.com/emacs-helm/helm-ipython/issues/2">a bug
+report</a>); and I'm
+fairly sure that ipython.el is now redundant.</p>
+
+<p><a href="https://github.com/m2ym/auto-complete/">auto-complete</a> works pretty
+well. I grabbed the latest <a href="https://github.com/m2ym/auto-complete/">auto-complete from
+github</a>. Before installing, it's
+necessary to also grab <a href="https://github.com/m2ym/popup-el">popul-el</a> and
+<a href="https://github.com/m2ym/fuzzy-el">fuzzy-el</a> and put these two files in
+the <code>auto-complete</code> directory prior to
+installing. (It looks like the author has split fuzzy-el and popup-el
+from auto-complete but hasn't updated the documentation yet.) I like
+autocomplete to only offer help when I explicitly ask for help so I
+added <code>(ac-set-trigger-key "TAB") (setq ac-auto-start nil)</code> to my <code>.emacs</code></p>
+</div></div></div><div class="field field-name-field-tags field-type-taxonomy-term-reference field-label-above clearfix"><h3 class="field-label">tags: </h3><ul class="links"><li class="taxonomy-term-reference-0"><a href="http://jack-kelly.com/tags/phd" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">PhD</a></li><li class="taxonomy-term-reference-1"><a href="http://jack-kelly.com/taxonomy/term/111" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">python</a></li><li class="taxonomy-term-reference-2"><a href="http://jack-kelly.com/taxonomy/term/113" typeof="skos:Concept" property="rdfs:label skos:prefLabel" datatype="">programming</a></li></ul></div>  </div>
+
+      <div class="link-wrapper">
+      <ul class="links inline"><li class="addtoany first"><span>
+		<span class="a2a_kit a2a_target addtoany_list" id="da2a_1">
+			<a class="a2a_dd addtoany_share_save" href="http://www.addtoany.com/share_save#url=http%3A%2F%2Fjack-kelly.com%2Fsetting_up_emacs_for_python_development&amp;title=Setting%20up%20Emacs%20for%20Python%20development&amp;description=I%27ve%20started%20tinkering%20with%20Emacs%20again%21%C2%A0%20Some%20cool%20add-ons%20which%20have%0Agotten%20me%20excited%20about%20Emacs%20again%3A%0A%0A-%20%20%20Get%20the%20%5Blatest%20version%20of%20Emacs%20from%20this%20Ubuntu%20PPA%5D%28https%3A%2F%2Flaunchpad.net%2F%7Ecassou%2F%2Barchive%2Femacs%29.%0A-%20%20%20Ubuntu%20packages%20to%20install%3A%20"><img src="share_save_171_16.png" alt="Share/Save" height="16" width="171"></a>
+		</span>
+		
+		</span></li>
+<li class="blog_usernames_blog last"><a href="http://jack-kelly.com/blog/1" title="Read Jack's latest blog entries.">Jack's blog</a></li>
+</ul>    </div>
+  
+  <div id="comments" class="comment-wrapper">
+  
+  
+      <h2 class="title comment-form">Add new comment</h2>
+    <form class="comment-form user-info-from-cookie user-info-from-cookie-processed" action="http://jack-kelly.com/comment/reply/1479" method="post" id="comment-form" accept-charset="UTF-8"><div><div class="form-item form-type-textfield form-item-name">
+  <label for="edit-name">Your name </label>
+ <input id="edit-name" name="name" value="" size="30" maxlength="60" class="form-text" type="text">
+</div>
+<div class="form-item form-type-textfield form-item-mail">
+  <label for="edit-mail">E-mail </label>
+ <input id="edit-mail" name="mail" value="" size="30" maxlength="64" class="form-text" type="text">
+<div class="description">The content of this field is kept private and will not be shown publicly.</div>
+</div>
+<div class="form-item form-type-textfield form-item-homepage">
+  <label for="edit-homepage">Homepage </label>
+ <input id="edit-homepage" name="homepage" value="" size="30" maxlength="255" class="form-text" type="text">
+</div>
+<div class="field-type-text-long field-name-comment-body field-widget-text-textarea form-wrapper" id="edit-comment-body"><div id="comment-body-add-more-wrapper"><div class="text-format-wrapper"><div class="form-item form-type-textarea form-item-comment-body-und-0-value">
+  <label for="edit-comment-body-und-0-value">Comment <span class="form-required" title="This field is required.">*</span></label>
+ <div class="form-textarea-wrapper resizable textarea-processed resizable-textarea"><textarea class="text-full form-textarea required" id="edit-comment-body-und-0-value" name="comment_body[und][0][value]" cols="60" rows="5"></textarea><div class="grippie"></div></div>
+</div>
+<fieldset class="filter-wrapper form-wrapper" id="edit-comment-body-und-0-format"><div class="fieldset-wrapper"><div class="filter-help form-wrapper" id="edit-comment-body-und-0-format-help"><p><a href="http://jack-kelly.com/filter/tips" target="_top">More information about text formats</a></p></div><div class="form-item form-type-select form-item-comment-body-und-0-format">
+  <label for="edit-comment-body-und-0-format--2">Text format </label>
+ <select class="filter-list wysiwyg form-select" id="edit-comment-body-und-0-format--2" name="comment_body[und][0][format]"><option value="1" selected="selected">Filtered HTML</option><option value="4">Plain text</option></select>
+</div>
+<div class="filter-guidelines form-wrapper filter-guidelines-processed" id="edit-comment-body-und-0-format-guidelines"><div style="display: block;" class="filter-guidelines-item filter-guidelines-1"><h3 style="display: none;">Filtered HTML</h3><ul class="tips"><li>Web page addresses and e-mail addresses turn into links automatically.</li><li>Allowed HTML tags: &lt;a&gt; &lt;p&gt; &lt;span&gt; &lt;div&gt; &lt;h3&gt; &lt;h4&gt; &lt;h5&gt; &lt;h6&gt; &lt;img&gt; &lt;map&gt; &lt;area&gt; &lt;hr&gt; &lt;br&gt; &lt;br /&gt; &lt;ul&gt; &lt;ol&gt; &lt;li&gt; &lt;dl&gt; &lt;dt&gt; &lt;dd&gt; &lt;table&gt; &lt;tr&gt; &lt;td&gt; &lt;em&gt; &lt;b&gt; &lt;u&gt; &lt;i&gt; &lt;strong&gt; &lt;del&gt; &lt;ins&gt; &lt;sub&gt; &lt;sup&gt; &lt;quote&gt; &lt;blockquote&gt; &lt;pre&gt; &lt;address&gt; &lt;code&gt; &lt;cite&gt; &lt;embed&gt; &lt;object&gt; &lt;param&gt; &lt;strike&gt; &lt;caption&gt; &lt;tbody&gt; &lt;!--break--&gt;</li><li>Lines and paragraphs break automatically.</li></ul></div><div style="display: none;" class="filter-guidelines-item filter-guidelines-4"><h3 style="display: none;">Plain text</h3><ul class="tips"><li>No HTML tags allowed.</li><li>Web page addresses and e-mail addresses turn into links automatically.</li><li>Lines and paragraphs break automatically.</li></ul></div></div></div></fieldset>
+</div>
+</div></div><input name="form_build_id" value="form-RoB9Xa6t_51TDgAHMMLl4LhMp2ZtoZ-O7V2XJzfrJe8" type="hidden">
+<input name="form_id" value="comment_node_blog_form" type="hidden">
+<div class="form-item form-type-checkbox form-item-notify">
+ <input id="edit-notify" name="notify" value="1" checked="checked" class="form-checkbox" type="checkbox">  <label class="option" for="edit-notify">Notify me when new comments are posted </label>
+
+</div>
+<input name="notify_type" value="1" type="hidden">
+<input class="mollom-content-id" name="mollom[contentId]" value="" type="hidden">
+<input class="mollom-captcha-id" name="mollom[captchaId]" value="140301d9256f2126f6" type="hidden">
+<div class="form-item form-type-textfield form-item-mollom-captcha">
+  <label for="edit-mollom-captcha">Word verification <span class="form-required" title="This field is required.">*</span></label>
+ <span class="field-prefix"><span class="mollom-captcha-content mollom-image-captcha"><img typeof="foaf:Image" src="140301d9256f2126f6.png" alt="Type the characters you see in this picture."></span> (<a href="#" class="mollom-switch-captcha mollom-audio-captcha">verify using audio</a>)</span> <input autocomplete="off" id="edit-mollom-captcha" name="mollom[captcha]" value="" size="10" maxlength="128" class="form-text required" type="text">
+<div class="description">Type the characters you see in the picture above; if you can't read them, submit the form and a new image will be generated. Not case sensitive.</div>
+</div>
+<div style="display: none;"><div class="form-item form-type-textfield form-item-mollom-homepage">
+ <input autocomplete="off" id="edit-mollom-homepage" name="mollom[homepage]" value="" size="60" maxlength="128" class="form-text" type="text">
+</div>
+</div><div class="form-actions form-wrapper" id="edit-actions"><input id="edit-submit" name="op" value="Save" class="form-submit" type="submit"><input id="edit-preview" name="op" value="Preview" class="form-submit" type="submit"></div></div></form>  </div>
+
+</div>
+  </div>
+</div>
+  </div>
+      
+    </div></div> <!-- /.section, /#content -->
+
+    
+  </div></div> <!-- /#main, /#main-wrapper -->
+
+  
+  <div id="footer-wrapper"><div class="section">
+
+    
+    
+  </div></div> <!-- /.section, /#footer-wrapper -->
+
+</div></div> <!-- /#page, /#page-wrapper -->
+  
+
+
+
+
+
+
+</body>
+</html>

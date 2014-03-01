@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<meta charset="utf-8">
+<title>Setting up Emacs as Ruby development environment on OSX</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Updates from codemancers team about agile, tdd, ruby, rails and javascript">
+<meta name="keywords" content="web,mobile,rails,ios,html5,backbone,ember,tdd,agile">
+<meta name="author" content="">
+<link href="http://crypt.codemancers.com/feed.xml" type="application/atom+xml" rel="alternate" title="crypt.codemancers.com » All posts">
+
+<link rel="shortcut icon" href="favicon.ico">
+<!-- CSS -->
+
+<!-- Le HTML5 shim, for IE6-8 support of HTML5 elements --><!--[if lt IE 9]>
+    <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]--><!-- Start Visual Website Optimizer Asynchronous Code --><!-- End Visual Website Optimizer Asynchronous Code -->
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+    <header><div class="container">
+    <a href="http://www.codemancers.com/" id="logo" class="logo"><img src="logo.svg" alt="Codemancers "></a>
+    <button class="navbar-toggle" type="button">
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+      <span class="icon-bar"></span>
+    </button>
+    <ul class="nav">
+<li>
+        <a href="http://codemancers.com/open_source/index.html">Open Source</a>
+      </li>
+      <li>
+        <a href="http://codemancers.com/blog">Blog</a>
+      </li>
+      <li class="active">
+        <a href="http://crypt.codemancers.com/">Engineering Blog</a>
+      </li>
+      <li>
+        <a href="http://codemancers.com/hire_us/index.html">Hire Us</a>
+      </li>
+    </ul>
+</div>
+</header><div class="container">
+      <div class="post-content">
+        <h2><a href="http://crypt.codemancers.com/posts/2013-09-26-setting-up-emacs-as-development-environment-on-osx/">Setting up Emacs as Ruby development environment on OSX</a></h2>
+
+<div class="meta">
+  <span class="avatar">
+    <span class="img hemant"></span>
+  </span>
+
+  <div>
+    <span class="name">Hemant&nbsp;</span> -
+    <span>October 17, 2013</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+    <span><a href="http://crypt.codemancers.com/tags/emacs.html" rel="tag">emacs</a>, <a href="http://crypt.codemancers.com/tags/osx.html" rel="tag">osx</a>, <a href="http://crypt.codemancers.com/tags/ruby.html" rel="tag">ruby</a>, <a href="http://crypt.codemancers.com/tags/rails.html" rel="tag">rails</a></span>
+  </div>
+</div>
+
+        <br><p>Learning and setting up Emacs can be intimidating and while some folks
+find much use in using a pre-configured setup like - Emacs Prelude,
+I personally think it is better that someone new to Emacs installs
+each and every module himself and learns from it. I am assuming
+OSX as development environment here but the instructions should
+work well enough on Linux as well.</p>
+
+<ol>
+<li>
+    <p><strong>Install Emacs</strong> : Install Emacs using Homebrew. I personally do not recommend
+using <a href="http://emacsformacosx.com/">Emacs for OSX</a> distribution.
+You can find out <a href="http://struct.tumblr.com/post/46754394733/emacs-24-use-homebrew-instead-of-emacsformacosx">why here</a>.</p>
+
+    <pre><code> brew install emacs --use-git-head --cocoa --srgb
+</code></pre>
+
+    <p>There is a bug in Emacs HEAD that prevents it to be working with Cask and thus
+ try not to use Emacs HEAD.</p>
+  </li>
+  <li>
+    <p><strong>Install a Package Manager</strong> : I use pallet for managing various packages. Think of pallet as Bundler/Maven for Emacs.
+Follow instructions available in section <a href="https://github.com/rdallasgray/pallet">For newly installed Emacs</a>. Once you have pallet installed each
+package you install via <code>package-install</code> command will automatically update the <code>Cask</code>
+and you can checkin the file in version control system and carry it around.</p>
+
+    <p>Sometimes you have to install a package directly from git. I personally use <a href="http://blogs.atlassian.com/2013/05/alternatives-to-git-submodule-git-subtree/">Git Subtrees</a> for adding packages from git. Feel free to use <code>submodules</code> or directly copying files as well.</p>
+  </li>
+  <li>
+    <p><strong>Structuring your Customization</strong> : Over last couple of years I personally have been using following style
+of structuring my emacs setup.</p>
+
+    <pre><code> .emacs.d/
+   init.el -&gt; The real .emacs file.
+   custom/
+     01ruby.el
+     02org.el
+     03auto-complete.el
+     04web-mode.el
+</code></pre>
+  </li>
+  <li>
+    <p><strong>The .emacs file</strong> :  Contents of <code>init.el</code> looks something like this:</p>
+
+    <pre><code> (require 'cask "~/.cask/cask.el")
+ (cask-initialize)
+ (require 'pallet)
+ (add-to-list 'load-path "~/.emacs.d/custom")
+ (add-to-list 'load-path "~/.emacs.d/other_paths)
+ ..
+ ..
+ (load "00common-setup.el")
+ (load "01ruby.el")
+ (load "02org.el")
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Global Config</strong> : I use a lot of global configuration stuff which isn’t mode specific, some important ones are:</p>
+
+    <pre><code> ;; Navigate between windows using Alt-1, Alt-2, Shift-left, shift-up, shift-right
+ (windmove-default-keybindings)
+
+ ;; Enable copy and pasting from clipboard
+ (setq x-select-enable-clipboard t)
+</code></pre>
+
+    <p>You can see complete file on, <a href="https://gist.github.com/gnufied/7160310">00common-setup.el</a>. If you are completely
+ new to Emacs you should use <code>C-h t</code> (That is press Control-h and then t) to launch inbuilt Emacs tutorial from within Emacs.</p>
+  </li>
+</ol>
+<h3 id="packages-you-need">Packages You need</h3>
+
+<p>For complete list of package see my <a href="https://gist.github.com/gnufied/7160410">Caskfile</a>. Also
+some packages I use straight from git and hence may not be listed in Caskfile. With that
+out of the way, I will try to cover most important packages I love and use everyday:</p>
+
+<ol>
+<li>
+    <p><strong>auto-complete</strong> : You can install it via <code>package-install</code> and below is my
+configuration of <code>auto-complete</code> mode:</p>
+
+    <pre><code> (require 'auto-complete-config)
+ (add-to-list 'ac-dictionary-directories
+     "~/.emacs.d/.cask/24.3.50.1/elpa/auto-complete-20130724.1750/dict")
+ (ac-config-default)
+ (setq ac-ignore-case nil)
+ (add-to-list 'ac-modes 'enh-ruby-mode)
+ (add-to-list 'ac-modes 'web-mode)
+</code></pre>
+
+    <p>It gives me access to all powerful auto-completion system for Emacs. Below
+ is a screenshot.</p>
+
+    <p><a href="http://crypt.codemancers.com/assets/images/emacs/auto-complete.png"><img src="auto-complete.png" alt="Emacs auto-complete"></a></p>
+  </li>
+  <li>
+    <p><strong>ag</strong> : You should use <a href="https://github.com/ggreer/the_silver_searcher">silver searcher</a> and corresponding Emacs mode <a href="https://github.com/Wilfred/ag.el">ag</a>. They beat likes of <code>ack</code> or
+<code>grep</code> hands down.</p>
+  </li>
+  <li>
+    <p><strong>enh-ruby-mode</strong> : Personally I am big fan of <a href="https://github.com/zenspider/enhanced-ruby-mode">Enhanced Ruby Mode</a>. It gives you better syntax highligting,
+better indentation schemes and code intelligence without running <code>flymake</code> kind of thing.</p>
+
+    <p><a href="http://crypt.codemancers.com/assets/images/emacs/enh-ruby-mode.png"><img src="enh-ruby-mode.png" alt="enhanced ruby mode"></a></p>
+
+    <p>You can see rest of my enh-ruby-mode specific configuration in file <a href="https://gist.github.com/gnufied/7160799">01ruby.el</a>. You will notice that I have included
+ a mini <code>rspec-mode</code> there , which allows me to run specs of a complete file or
+ just spec under the cursor.</p>
+  </li>
+  <li>
+    <p><strong>smartparens</strong> : <a href="https://github.com/Fuco1/smartparens">smartparens</a> mode is too much of a moving target and hence I always use it from git. My <code>smartparens</code> configuration is:</p>
+
+    <pre><code> (require 'smartparens-config)
+ (require 'smartparens-ruby)
+ (smartparens-global-mode)
+ (show-smartparens-global-mode t)
+ (sp-with-modes '(rhtml-mode)
+   (sp-local-pair "&lt;" "&gt;")
+   (sp-local-pair "&lt;%" "%&gt;"))
+</code></pre>
+
+    <p>SmartParens mode is many things. It automatically inserts closing parethesis, tags, end’s
+ depending on major-mode. Highlights them, allows you to move between them. Allows you to
+ wrap existing texts. However you may not even have to go through their documentation, it
+ mostly just works.</p>
+  </li>
+  <li>
+    <p><strong>Projectile Mode</strong> : <a href="https://github.com/bbatsov/projectile">Projectile</a> is one among
+many ways of handling projects in Emacs. My projectile configuration looks like:</p>
+
+    <pre><code> (require 'grizzl)
+ (projectile-global-mode)
+ (setq projectile-enable-caching t)
+ (setq projectile-completion-system 'grizzl)
+ ;; Press Command-p for fuzzy find in project
+ (global-set-key (kbd "s-p") 'projectile-find-file)
+ ;; Press Command-b for fuzzy switch buffer
+ (global-set-key (kbd "s-b") 'projectile-switch-to-buffer)
+</code></pre>
+
+    <p><a href="http://crypt.codemancers.com/posts/2013-09-26-setting-up-emacs-as-development-environment-on-osx/assets/images/emacs/emacs4.gif"><img src="emacs4.gif" alt="It allows me to do:"></a></p>
+  </li>
+  <li>
+    <p><strong>Rainbow Mode</strong> : Add color to your css/scss. Check screenshot below:</p>
+
+    <p><a href="http://crypt.codemancers.com/assets/images/emacs/rainbow-mode.png"><img src="rainbow-mode.png" alt="Add color"></a></p>
+  </li>
+  <li>
+    <p><strong>Robe Mode</strong> : <a href="https://github.com/dgutov/robe">Robe mode</a> is what makes Emacs full featured IDE even comparable to likes of RubyMine etc.</p>
+
+    <p><a href="http://crypt.codemancers.com/posts/2013-09-26-setting-up-emacs-as-development-environment-on-osx/assets/images/emacs/robe3.gif"><img src="robe3.gif" alt="Robe mode:"></a></p>
+
+    <p>Robe can also integrate with <code>auto-complete</code> mode to provide more intelligent auto-completion.
+ I personally do not use that feature because it makes things slower.</p>
+  </li>
+  <li>
+    <p><strong>Highlight indentation for Emacs</strong> : <a href="https://github.com/antonj/Highlight-Indentation-for-Emacs">Highlight Indentation mode</a> allows
+you to see indentation guides. My setup for the mode is:</p>
+
+    <pre><code> (require 'highlight-indentation)
+ (add-hook 'enh-ruby-mode-hook
+           (lambda () (highlight-indentation-current-column-mode)))
+
+ (add-hook 'coffee-mode-hook
+           (lambda () (highlight-indentation-current-column-mode)))
+</code></pre>
+  </li>
+  <li>
+    <p><strong>Yasnippet</strong> : <a href="https://code.google.com/p/yasnippet/">Yasnippet</a> is Emacs snippet
+library. Out of box it won’t work with <code>enh-ruby-mode</code> because it searches for <code>ruby-mode</code>.
+You can make it work by copying <code>ruby-mode</code> snippets to <code>enh-ruby-mode</code> folder.</p>
+  </li>
+  <li>
+    <p><strong>Flyspell</strong> : If you are like me, you make lot of typos in code comments, strings etc.
+Using <code>Flyspell</code> mode you need not worry about it - interfering with programming language keywords
+etc. My setup for <code>Flyspell</code> is :</p>
+
+    <pre><code>(require 'flyspell)
+(setq flyspell-issue-message-flg nil)
+(add-hook 'enh-ruby-mode-hook
+          (lambda () (flyspell-prog-mode)))
+
+(add-hook 'web-mode-hook
+          (lambda () (flyspell-prog-mode)))
+;; flyspell mode breaks auto-complete mode without this.
+(ac-flyspell-workaround)
+</code></pre>
+
+    <p>If you are on OSX you may have to run <code>brew install ispell</code> to make it work.</p>
+  </li>
+  <li>
+    <p><strong>Rinari</strong> : With Projectile mode, I am finding less and less use of this mode. But this
+is your canonical rails mode for Emacs. Get it via <code>package-install</code> or <a href="https://github.com/eschulte/rinari">Rinari Github repo</a>.</p>
+  </li>
+  <li>
+    <p><strong>dash-at-point</strong> : If you are on OSX you should totally use <a href="http://kapeli.com/dash">Dash</a>.
+Using <a href="https://github.com/stanaka/dash-at-point">dash-at-point</a> you can view documentation of methods, classes etc right from Emacs.</p>
+  </li>
+  <li>
+    <p><strong>multiple-cursors</strong> : <a href="https://github.com/magnars/multiple-cursors.el">Multiple Cursors</a>
+is Emacs answer to multi-line editing feature of Sublime etc. Anything I can add here is
+probably better covered in this <a href="http://emacsrocks.com/e13.html">Emacs Rocks</a> screencast.</p>
+  </li>
+  <li>
+    <p><strong>textmate.el</strong> : <a href="https://github.com/defunkt/textmate.el">textmate.el</a> allows me to quickly
+move between methods in a file, independent of programming language mode (and without ctags). It has many other utilities.</p>
+  </li>
+  <li>
+    <p><strong>WebMode</strong> : For a long time Emacs users were mostly stuck with half-assed multi-language
+mode when editing html templates. <a href="http://web-mode.org/">WebMode</a> is like breath of fresh air
+for those who mix - ruby/js/css/coffee in their HTML!</p>
+  </li>
+</ol>
+<p>Apart from aforementioned modes, I still use too many other modes - sometimes even unknowingly! Some modes that
+deserve honourable mention but I don’t use them is - <a href="https://github.com/magit/magit">Magit</a>,
+<a href="http://emacsrocks.com/e09.html">Expand Region</a>. If you do lot of Javascript then have a look at - <a href="http://emacsrocks.com/e11.html">Swank-js</a>. If you are coming from Vim and looking for
+decent nerdtree replacement, you can try <a href="https://github.com/zk/emacs-dirtree">Dirtree</a> or ECB or <a href="https://github.com/sabof/project-explorer">Project explorer</a>.</p>
+
+<p>Learning Emacs in a way is - as deep as you are willing go. For resources I recommend:</p>
+
+<ul>
+<li><a href="http://www.emacswiki.org/">EmacsWiki</a></li>
+  <li><a href="http://www.reddit.com/r/emacs">Emacs Reddit</a></li>
+  <li><a href="http://www.masteringemacs.org/">Mastering Emacs</a></li>
+  <li><a href="http://emacsmovies.org/">Emacs Movies</a></li>
+</ul>
+<div class="thank-you">
+I hope you enjoyed this article and if you want to keep updated with latest stuff we are building or blogging about, follow us on twitter <a href="https://twitter.com/codemancershq" target="_top">@codemancershq</a>.
+</div>
+        <div class="share-post">
+          <a class="icon-g" href="https://plusone.google.com/_/+1/confirm?hl=en&amp;url=http://crypt.codemancers.com/posts/2013-09-26-setting-up-emacs-as-development-environment-on-osx/"></a>
+          <a class="icon-f" href="https://facebook.com/sharer.php?u=http://crypt.codemancers.com/posts/2013-09-26-setting-up-emacs-as-development-environment-on-osx/"></a>
+          <a class="icon-t" href="https://twitter.com/share?text=Setting%20up%20Emacs%20as%20Ruby%20development%20environment%20on%20OSX&amp;url=http://crypt.codemancers.com/posts/2013-09-26-setting-up-emacs-as-development-environment-on-osx/&amp;via=codemancershq"></a>
+        </div>
+      </div>
+      <div class="comments-container">
+        <div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="index_1.html" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 2860px ! important;" title="Disqus" tabindex="0" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" scrolling="no" width="100%"></iframe></div>
+
+
+
+      </div>
+    </div>
+    <footer><span class="footer-logo"><img src="logo-symbol.svg" alt=""></span>
+  <section class="light-bg"><div class="container">
+      <div class="col-md-8 col-sm-8">
+        <h4>You may also be interested in</h4>
+        <ul>
+<li>
+              <a href="http://crypt.codemancers.com/posts/2013-09-22-isolate-namespace-in-rails-engines/">Isolate Namespace in Rails Engines - A hack in itself</a>
+            </li>
+          
+            <li>
+              <a href="http://crypt.codemancers.com/posts/2013-09-05-setting-up-source-maps-for-coffeescript-in-rails/">Setting up Source Maps for CoffeeScript in Rails</a>
+            </li>
+          
+            <li>
+              <a href="http://crypt.codemancers.com/posts/2013-07-12-redefine-rake-routes-to-add-your-own-custom-tag-in-Rails/">Redefine rake routes to add your own custom tag in Rails</a>
+            </li>
+          
+            <li>
+              <a href="http://crypt.codemancers.com/posts/2013-07-05-non-native-fullscreen-for-osx-on-emacs-24-dot-3/">Non native fullscreen for OSX on emacs 24.3</a>
+            </li>
+          
+            <li>
+              <a href="http://crypt.codemancers.com/posts/2013-06-10-introducing-invoker/">Introducing Invoker - Manage processes in development envionment</a>
+            </li>
+          
+            <li>
+              <a href="http://crypt.codemancers.com/posts/2013-05-30-how-to-write-a-gem/">All you need to know about writing a mountable Rails Gem with rspec</a>
+            </li>
+          
+        </ul>
+</div>
+      <div class="col-md-4 col-sm-4">
+        <h4>Popular Tags</h4>
+        <div class="tag-cloud">
+          
+            <a class="tag3" href="http://crypt.codemancers.com/tags/gems.html">gems</a>
+          
+            <a class="tag3" href="http://crypt.codemancers.com/tags/profiling.html">profiling</a>
+          
+            <a class="tag3" href="http://crypt.codemancers.com/tags/dtrace.html">dtrace</a>
+          
+            <a class="tag3" href="http://crypt.codemancers.com/tags/tips.html">tips</a>
+          
+            <a class="tag3" href="http://crypt.codemancers.com/tags/code-walkthrough.html">code-walkthrough</a>
+          
+            <a class="tag3" href="http://crypt.codemancers.com/tags/git.html">git</a>
+          
+            <a class="tag3" href="http://crypt.codemancers.com/tags/rspec.html">rspec</a>
+          
+            <a class="tag4" href="http://crypt.codemancers.com/tags/osx.html">osx</a>
+          
+            <a class="tag4" href="http://crypt.codemancers.com/tags/emacs.html">emacs</a>
+          
+            <a class="tag6" href="http://crypt.codemancers.com/tags/ruby.html">ruby</a>
+          
+            <a class="tag6" href="http://crypt.codemancers.com/tags/rails.html">rails</a>
+          
+        </div>
+      </div>
+    </div>
+  </section><section class="copyright"><div class="container">
+      <div class="col-md-4 col-sm-4 social">
+        <a href="https://github.com/code-mancers" target="_top" class="github">github</a>
+        <a href="https://twitter.com/codemancershq" target="_top" class="twitter">twitter</a>
+        <a href="http://www.linkedin.com/company/codemancers" target="_top" class="linkedin">linkedin</a>
+        <a href="https://www.facebook.com/CodemancersPrivateLimited" target="_top" class="facebook">facebook</a>
+      </div>
+      <div class="col-md-8 col-sm-8  align-right">© 2013 - <a href="http://www.codemancers.com/">Codemancers Technologies Private Limited</a>
+</div>
+    </div>
+  </section></footer>
+
+
+</body>
+</html>

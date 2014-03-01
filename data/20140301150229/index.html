@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>why I run shells inside Emacs | snarfed.org</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+<link rel="pingback" href="https://snarfed.org/w/xmlrpc.php">
+<!--[if lt IE 9]>
+<script src="https://snarfed.org/w/wp-content/themes/ryu/js/html5.js" type="text/javascript"></script>
+<![endif]-->
+
+<link rel="alternate" type="application/rss+xml" title="snarfed.org » Feed" href="https://snarfed.org/feed">
+<link rel="alternate" type="application/rss+xml" title="snarfed.org » Comments Feed" href="https://snarfed.org/comments/feed">
+<link rel="alternate" type="application/rss+xml" title="snarfed.org » why I run shells inside Emacs Comments Feed" href="https://snarfed.org/why_i_run_shells_inside_emacs/feed">
+
+
+<link rel="prev" title="Emacs Lisp for flowed text email" href="https://snarfed.org/emacs_lisp_for_flowed_text_email">
+<link rel="next" title="automatically close completions in Emacs shell (comint) mode" href="https://snarfed.org/automatically_close_completions_in_emacs_shell_comint_mode">
+
+<link rel="canonical" href="https://snarfed.org/why_i_run_shells_inside_emacs">
+<link rel="shortlink" href="http://wp.me/P3EDAq-Lg">
+<link rel="shortcut icon" href="ryan_profile_square_thumb.jpg">
+<link rel="apple-touch-icon-precomposed" href="https://snarfed.org/ryan_profile_square_thumb.jpg">
+<meta name="mobile-web-app-capable" content="yes">
+
+<link rel="openid2.provider" href="https://www.google.com/accounts/o8/ud?source=profiles">
+<link rel="openid2.local_id" href="http://www.google.com/profiles/heaven">
+<link href="https://plus.google.com/103651231634018158746" rel="publisher">
+<meta property="fb:admins" content="212038">
+
+
+
+<!-- <meta name="NextGEN" version="2.0.40" /> -->
+	
+	
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="why I run shells inside Emacs">
+<meta property="og:url" content="https://snarfed.org/why_i_run_shells_inside_emacs">
+<meta property="og:description" content="[Mental context switches]( are evil. Some people handle them better than others, but not me. I handle them worse. I feel it, almost physically, when context switches whittle down my precious [flow]...">
+<meta property="article:published_time" content="2011-05-27T20:08:40+00:00">
+<meta property="article:modified_time" content="2013-06-27T07:25:33+00:00">
+<meta property="article:author" content="https://snarfed.org/author/ryan">
+<meta property="og:site_name" content="snarfed.org">
+<meta property="og:image" content="/cat_bubbles.jpg">
+<meta property="og:image" content="/gnu.jpg">
+<meta property="og:image" content="/terminal.jpg">
+<meta name="twitter:site" content="@snarfed_org">
+<meta name="twitter:image" content="/cat_bubbles.jpg?w=240">
+<meta name="twitter:card" content="summary">
+<link rel="http://webmention.org/" href="https://snarfed.org/w/?webmention=endpoint">
+<link rel="webmention" href="https://snarfed.org/w/?webmention=endpoint">
+
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="page page-id-2930 page-template-default h-entry hentry h-as-page">
+
+
+<div id="page" class="site">
+		<div id="widgets-wrapper" class="toppanel hide">
+		<div id="secondary" role="complementary" class="wrap clear one">
+		<div id="top-sidebar-one" class="widget-area" role="complementary">
+		<aside id="text-2" class="widget widget_text">			<div class="textwidget"><div class="h-card vcard">
+<div id="my-header">
+I'm <a id="my-name" href="https://snarfed.org/about" class="p-name fn">Ryan Barrett</a>.<br>
+I <a href="https://snarfed.org/house">live</a>, <a href="https://snarfed.org/resume">work</a>, and <a href="https://snarfed.org/pictures">play</a> in
+ <span class="p-locality locality">San Francisco</span><abbr class="p-region region" style="display: none;">California</abbr>.<br>
+I <a href="https://snarfed.org/software">code</a>, <a href="https://snarfed.org/tag/essay">write</a>, and post <a href="https://snarfed.org/pictures">pictures</a> here.
+</div>
+
+<img class="u-photo photo" src="ryan_profile_square_thumb.jpg" style="display: none;">
+<a href="mailto:public@ryanb.org" rel="me" class="u-email" style="display: none;">public@ryanb.org</a>
+
+<ul id="my-icons">
+  <li class="home-link">
+    <a href="https://snarfed.org/" class="genericon url u-url" title="Home">
+      <span class="screen-reader-text">Home</span>
+    </a>
+  </li>
+  <li class="search-trigger">
+    <a href="#" class="genericon" title="Search">
+      <span class="screen-reader-text">Search</span>
+    </a>
+  </li>
+  <li class="archives-link">
+    <a href="https://snarfed.org/archive" class="genericon" title="Archives">
+      <span class="screen-reader-text">Archives</span>
+    </a>
+  </li>
+  <li class="twitter-link">
+    <a rel="me" href="https://twitter.com/schnarfed" class="genericon" title="Twitter" target="_top">
+      <span class="screen-reader-text">Twitter</span>
+    </a>
+  </li>
+  <li class="facebook-link">
+    <a rel="me" href="https://www.facebook.com/snarfed.org" class="genericon" title="Facebook" target="_top">
+      <span class="screen-reader-text">Facebook</span>
+    </a>
+  </li>
+  <li class="google-link">
+    <a rel="me" href="https://plus.google.com/+RyanBarrett" class="genericon" title="Google+" target="_top">
+      <span class="screen-reader-text">Google+</span>
+    </a>
+  </li>
+  <li class="github-link">
+    <a rel="me" href="https://github.com/snarfed" class="genericon" title="GitHub" target="_top">
+      <span class="screen-reader-text">GitHub</span>
+    </a>
+  </li>
+  <li class="feed-link">
+    <a href="https://snarfed.org/feed" class="genericon" title="RSS Feed">
+      <span class="screen-reader-text">RSS Feed</span>
+    </a>
+  </li>
+</ul>
+</div>
+</div>
+		</aside>	</div><!-- #first .widget-area -->
+	
+	
+	
+	</div><!-- #secondary -->	</div>
+	
+	
+	<div id="search-wrapper" class="toppanel hide">
+		
+<form method="get" id="searchform" class="searchform" action="https://snarfed.org/" role="search">
+	<label for="s" class="screen-reader-text">Search</label>
+	<input class="field" name="s" value="" id="s" placeholder="Search …" type="search">
+	<input class="submit" id="searchsubmit" value="Search" type="submit">
+</form>	</div>
+
+	<div id="triggers-wrapper">
+		<ul class="triggers clear">
+						<li class="widgets-trigger">
+				<a href="#" class="genericon" title="Widgets">
+					<span class="screen-reader-text">Widgets</span>
+				</a>
+			</li>
+			
+			
+			<li class="search-trigger">
+				<a href="#" class="genericon" title="Search">
+					<span class="screen-reader-text">Search</span>
+				</a>
+			</li>
+		</ul>
+	</div>
+
+	<header id="masthead" class="site-header" role="banner">
+		<div class="wrap">
+			
+							<a class="site-logo" href="https://snarfed.org/" title="snarfed.org" rel="home">
+					<img src="copy-cropped-iraq_bar.jpg" alt="" class="no-grav header-image" height="213" width="1500">
+				</a>
+			
+			<hgroup>
+				<h1 class="site-title"><a href="https://snarfed.org/" title="snarfed.org" rel="home">snarfed.org</a></h1>
+				<h2 class="site-description">Ryan Barrett's blog</h2>
+			</hgroup>
+		</div><!-- .wrap -->
+
+			</header><!-- #masthead -->
+
+	<div id="main" class="site-main">
+	<div id="primary" class="content-area">
+		<div id="content" class="site-content" role="main">
+
+			
+				
+<article id="post-2930" class="post-2930 page type-page status-publish">
+	<div class="entry-wrap wrap clear">
+				<header class="entry-header">
+			<h1 class="entry-title"><span class="p-name">why I run shells inside Emacs</span></h1>			<div class="entry-meta"><span class="entry-date"><a class="u-url" href="https://snarfed.org/why_i_run_shells_inside_emacs" title="6:08am" rel="bookmark"><time class="dt-published" datetime="2011-05-27T06:08:40-08:00">5/27/2011</time></a></span><span class="entry-modified-date">updated <a class="u-url" href="https://snarfed.org/why_i_run_shells_inside_emacs" title="12:25am" rel="bookmark"><time class="dt-updated" datetime="2013-06-27T00:25:33-08:00">6/27/2013</time></a></span><span class="author p-author h-card vcard"> <img id="grav-947b5f3f323da0ef785b6f02d9c265d6-0" alt="" src="947b5f3f323da0ef785b6f02d9c265d6" class="u-photo avatar avatar-96 photo grav-hashed grav-hijack" height="96" width="96"><a class="u-url url fn n p-name" href="http://snarfed.org/" title="Ryan Barrett" rel="author">Ryan Barrett</a></span>
+								<span class="comments-link"><a href="https://snarfed.org/why_i_run_shells_inside_emacs#comments" title="Comment on why I run shells inside Emacs">7 Comments</a></span>
+				
+							</div><!-- .entry-meta -->
+		</header><!-- .entry-header -->
+
+		<div class="entry-content clear">
+			<div class="e-content"><p class="right"><a href="http://cheezburger.com/View/1666431232">
+  <img class="shadow" src="cat_bubbles.jpg"></a></p>
+
+<p><a href="http://joelonsoftware.com/articles/fog0000000022.html">Mental context switches</a>
+are evil. Some people handle them better than others, but not me. I handle them
+worse. I feel it, almost physically, when context switches whittle down my
+precious <a href="http://en.wikipedia.org/wiki/Flow_%28psychology%29">flow</a> piece by piece.
+It hurts!</p>
+
+<p>Even something as small as switching between
+<a href="http://gnu.org/software/emacs/">Emacs</a> and the shell can hurt, especially when
+I do it thousands of times a day. The physical movement isn’t so bad; it’s that
+they have different key bindings, different clipboards, and myriad deeper
+differences in behavior. What’s worse, only <em>some</em> parts are different, so my
+muscle memory is constantly seduced into a false sense of familiarity, only to
+have the rug yanked out from under it seconds later.</p>
+
+<p>I <a href="https://snarfed.org/emacs_keybindings_in_gnu_screens_copy-scrollback_mode">put</a>
+<a href="https://snarfed.org/control_arrow_keys_in_rxvt_tcsh_and_emacs">together</a>
+<a href="https://snarfed.org/minimal_emacs_for_fast_startup">various</a>
+<a href="https://snarfed.org/synchronizing_gnu_screens_paste_buffer_and_the_x_selection">hacks</a> to bring
+Emacs and my shell closer together, with some success, but it always felt like a
+chronic disease. Curing it completely was never on the table; I could only hope
+to manage it.</p>
+
+<p><a href="http://gnu.org/software/emacs/">
+  <img class="left" src="gnu.jpg"></a></p>
+
+<p>The holy grail, of course, was running shells <em>inside</em> Emacs. I had high hopes
+when I <a href="https://snarfed.org/why_i_dont_run_shells_inside_emacs">tried it eight years ago</a>, but it
+didn’t work out. I tried it again recently though, and it’s still early days,
+but we’re pretty happy together this time. I think we might go the distance!</p>
+
+<p>Here are a few remaining rough edges:</p>
+
+<ul>
+<li>If I enter multiple commands with newlines between them, the prompt is
+reprinted as soon as the <em>first</em> command finishes. This is misleading, since
+the rest are still running. (This still happens if I put <code>;</code>s or <code>\</code> line
+continuations between them.)</li>
+<li>If I start my shells in my <code>.emacs</code>, they don’t parse the
+<code>^[[K</code> ANSI color codes in output like <code>ls -l</code>'s. (This is with
+<code>ansi-color-for-comint-mode</code> on). However, if I start them after emacs has
+booted, they parse fine. Huh?</li>
+<li>Optimize <a href="http://www.gnu.org/software/tramp/">TRAMP</a>. It's decently fast right
+now, but I'm sure I could make it even faster!</li>
+</ul>
+
+<p>Here are some things I did manage to tweak:</p>
+
+<ul>
+<li>Make shell buffer contents read only by setting the <code>read-only</code>
+<a href="http://www.gnu.org/software/emacs/manual/html_node/elisp/Special-Properties.html#index-local_002dmap-_0040r_007b_0028text-property_0029_007d-2718">text property</a>.</li>
+<li>Use <code>dirtrack-mode</code>, which keeps track of the current directory and handles
+completion better than the
+<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Tracking.html">default mechanism</a>.</li>
+<li>...but <em>don't</em> use it in ssh shells to remote machines, since it doesn't work.
+It complains e.g. <code>Warning (emacs): Directory ~/gallery/ does not exist.</code>
+<img class="right" src="terminal.jpg"></li>
+<li>Instead, run long-lived ssh shells via
+<a href="http://www.gnu.org/software/tramp/">TRAMP</a>, and add the hook described in
+<a href="http://comments.gmane.org/gmane.emacs.bugs/39082">this thread</a> to make
+completion work on remote hosts.</li>
+<li>Speaking of TRAMP, I use
+<a href="http://www.linux.com/archive/feed/54498">OpenSSH 4.0's awesome ControlMaster feature</a>
+to optimize its ssh connections. Just add <code>ControlMaster auto</code> in <code>~/.ssh/config</code>
+and you're good to go!</li>
+<li>Use <code>ansi-color-for-comint-mode-on</code> to render ANSI color codes.</li>
+<li>When I type or paste a newline at the prompt, it scrolls halfway up the
+screen. Prevent this by setting <code>scroll-conservatively</code> to something like
+<code>10</code>.</li>
+<li><code>emacsclient</code> inside <code>shell-mode</code> works as expected. Woot! Set
+<code>display-buffer-reuse-frames</code> to <code>t</code> to make sure Emacs doesn't bury (switch
+away from) shell buffers when I run it.</li>
+<li>Extend the SSH shells
+<a href="https://snarfed.org/emacsclient_in_tramp_remote_shells">so that emacsclient opens remote files in the local Emacs</a>
+via TRAMP.</li>
+<li>Use <code>protect-buffer-from-kill-mode</code> to prevent accidentally closing shell buffers.</li>
+<li><a href="https://snarfed.org/automatically_close_completions_in_emacs_shell_comint_mode">Make the completions buffer automatically close</a>
+when I'm done with it.</li>
+<li>When I
+<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Shell-Ring.html#index-comint_002ddynamic_002dlist_002dinput_002dring-3660">search over command history</a>
+and press the Enter key, run the selected command immediately. Also, suppress
+the annoying "History item: X" messages.</li>
+<li>When I press enter in the middle of multi-line input, include <em>every line</em> of
+the input, not just up to the line point is on. (Requires <code>comint-eol-on-send</code>
+to be non-nil.)</li>
+</ul>
+
+<p>Here's the code in <a href="https://snarfed.org/dotfiles/.emacs">my .emacs</a>:</p>
+
+<pre><code>(defvar my-local-shells
+  '("*shell0*" "*shell1*" "*shell2*" "*shell3*" "*music*"))
+(defvar my-remote-shells
+  '("*snarfed*" "*heaven0*" "*heaven1*" "*heaven2*" "*heaven3*"))
+(defvar my-shells (append my-local-shells my-remote-shells))
+
+(require 'tramp)
+
+(custom-set-variables
+ '(tramp-default-method "ssh")          ; uses ControlMaster
+ '(comint-scroll-to-bottom-on-input t)  ; always insert at the bottom
+ '(comint-scroll-to-bottom-on-output nil) ; always add output at the bottom
+ '(comint-scroll-show-maximum-output t) ; scroll to show max possible output
+ ;; '(comint-completion-autolist t)     ; show completion list when ambiguous
+ '(comint-input-ignoredups t)           ; no duplicates in command history
+ '(comint-completion-addsuffix t)       ; insert space/slash after file completion
+ '(comint-buffer-maximum-size 20000)    ; max length of the buffer in lines
+ '(comint-prompt-read-only nil)         ; if this is t, it breaks shell-command
+ '(comint-get-old-input (lambda () "")) ; what to run when i press enter on a
+                                        ; line above the current prompt
+ '(comint-input-ring-size 5000)         ; max shell history size
+ '(protect-buffer-bury-p nil)
+)
+
+(setenv "PAGER" "cat")
+
+;; truncate buffers continuously
+(add-hook 'comint-output-filter-functions 'comint-truncate-buffer)
+
+(defun make-my-shell-output-read-only (text)
+  "Add to comint-output-filter-functions to make stdout read only in my shells."
+  (if (member (buffer-name) my-shells)
+      (let ((inhibit-read-only t)
+            (output-end (process-mark (get-buffer-process (current-buffer)))))
+        (put-text-property comint-last-output-start output-end 'read-only t))))
+(add-hook 'comint-output-filter-functions 'make-my-shell-output-read-only)
+
+(defun my-dirtrack-mode ()
+  "Add to shell-mode-hook to use dirtrack mode in my shell buffers."
+  (when (member (buffer-name) my-shells)
+    (shell-dirtrack-mode 0)
+    (set-variable 'dirtrack-list '("^.*[^ ]+:\\(.*\\)&gt;" 1 nil))
+    (dirtrack-mode 1)))
+(add-hook 'shell-mode-hook 'my-dirtrack-mode)
+
+; interpret and use ansi color codes in shell output windows
+(add-hook 'shell-mode-hook 'ansi-color-for-comint-mode-on)
+
+(defun set-scroll-conservatively ()
+  "Add to shell-mode-hook to prevent jump-scrolling on newlines in shell buffers."
+  (set (make-local-variable 'scroll-conservatively) 10))
+(add-hook 'shell-mode-hook 'set-scroll-conservatively)
+
+;; i think this is wrong, and it buries the shell when you run emacsclient from
+;; it. temporarily removing.
+;; (defun unset-display-buffer-reuse-frames ()
+;;   "Add to shell-mode-hook to prevent switching away from the shell buffer
+;; when emacsclient opens a new buffer."
+;;   (set (make-local-variable 'display-buffer-reuse-frames) t))
+;; (add-hook 'shell-mode-hook 'unset-display-buffer-reuse-frames)
+
+;; make it harder to kill my shell buffers
+(require 'protbuf)
+(add-hook 'shell-mode-hook 'protect-process-buffer-from-kill-mode)
+
+(defun make-comint-directory-tracking-work-remotely ()
+  "Add this to comint-mode-hook to make directory tracking work
+while sshed into a remote host, e.g. for remote shell buffers
+started in tramp. (This is a bug fix backported from Emacs 24:
+http://comments.gmane.org/gmane.emacs.bugs/39082"
+  (set (make-local-variable 'comint-file-name-prefix)
+       (or (file-remote-p default-directory) "")))
+(add-hook 'comint-mode-hook 'make-comint-directory-tracking-work-remotely)
+
+(defun enter-again-if-enter ()
+  "Make the return key select the current item in minibuf and shell history isearch.
+An alternate approach would be after-advice on isearch-other-meta-char."
+  (when (and (not isearch-mode-end-hook-quit)
+             (equal (this-command-keys-vector) [13])) ; == return
+    (cond ((active-minibuffer-window) (minibuffer-complete-and-exit))
+          ((member (buffer-name) my-shells) (comint-send-input)))))
+(add-hook 'isearch-mode-end-hook 'enter-again-if-enter)
+
+(defadvice comint-previous-matching-input
+    (around suppress-history-item-messages activate)
+  "Suppress the annoying 'History item : NNN' messages from shell history isearch.
+If this isn't enough, try the same thing with
+comint-replace-by-expanded-history-before-point."
+  (let ((old-message (symbol-function 'message)))
+    (unwind-protect
+      (progn (fset 'message 'ignore) ad-do-it)
+    (fset 'message old-message))))
+
+(defadvice comint-send-input (around go-to-end-of-multiline activate)
+  "When I press enter, jump to the end of the *buffer*, instead of the end of
+the line, to capture multiline input. (This only has effect if
+`comint-eol-on-send' is non-nil."
+  (flet ((end-of-line () (end-of-buffer)))
+    ad-do-it))
+
+;; not sure why, but comint needs to be reloaded from the source (*not*
+;; compiled) elisp to make the above advise stick.
+(load "comint.el.gz")
+
+;; for other code, e.g. emacsclient in TRAMP ssh shells and automatically
+;; closing completions buffers, see the links above.
+</code></pre>
+</div>					</div><!-- .entry-content -->
+	</div><!-- .entry-wrap -->
+</article><!-- #post-## -->
+				
+<div id="comments" class="comments-area">
+	<div class="comments-wrap wrap">
+
+					<h2 class="comments-title">
+				7 thoughts on “<span>why I run shells inside Emacs</span>”			</h2>
+
+			
+			<ol class="comment-list">
+					<li class="comment even thread-even depth-1 p-comment h-entry" id="li-comment-42462">
+		<article id="comment-42462" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<span class="comment-author-avatar"><img id="grav-ad516503a11cd5ca435acc9bb6523536-0" alt="" src="ad516503a11cd5ca435acc9bb6523536" class="u-photo avatar avatar-48 photo avatar-default grav-hashed grav-hijack" height="48" width="48"></span>
+					<cite class="fn genericon"><a href="http://webweavertech.com/ovidiu/weblog/" rel="external nofollow" class="u-url url">Ovidiu Predescu</a></cite> <span class="says">says:</span>				</div><!-- .comment-author .vcard -->
+			</footer>
+
+			<div class="comment-content">
+				<div class="e-content p-name p-summary"><p>This is great, I’ll give it a shot! I’ve been avoiding using the terminal inside emacs because of a lot of small quirks I couldn’t quite get used to.</p>
+</div>							</div>
+
+			<div class="comment-meta commentmetadata">
+				<a href="https://snarfed.org/why_i_run_shells_inside_emacs#comment-42462"><time datetime="2011-06-17T13:22:12+00:00">
+				6/17/2011 at 1:22pm				</time></a>
+											</div><!-- .comment-meta .commentmetadata -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1 p-comment h-entry" id="li-comment-84400">
+		<article id="comment-84400" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<span class="comment-author-avatar"><img id="grav-ad516503a11cd5ca435acc9bb6523536-1" alt="" src="ad516503a11cd5ca435acc9bb6523536" class="u-photo avatar avatar-48 photo avatar-default grav-hashed grav-hijack" height="48" width="48"></span>
+					<cite class="fn genericon"><a href="http://draketo.de/" rel="external nofollow" class="u-url url">Arne Babenhauserheid</a></cite> <span class="says">says:</span>				</div><!-- .comment-author .vcard -->
+			</footer>
+
+			<div class="comment-content">
+				<div class="e-content p-name p-summary"><p>This is super cool! It finally makes my shell recognize my .bashrc!</p>
+
+<p>Thank you very much for sharing!</p>
+</div>							</div>
+
+			<div class="comment-meta commentmetadata">
+				<a href="https://snarfed.org/why_i_run_shells_inside_emacs#comment-84400"><time datetime="2012-02-09T09:16:38+00:00">
+				2/9/2012 at 9:16am				</time></a>
+											</div><!-- .comment-meta .commentmetadata -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1 p-comment h-entry" id="li-comment-146422">
+		<article id="comment-146422" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<span class="comment-author-avatar"><img id="grav-ad516503a11cd5ca435acc9bb6523536-2" alt="" src="ad516503a11cd5ca435acc9bb6523536" class="u-photo avatar avatar-48 photo avatar-default grav-hashed grav-hijack" height="48" width="48"></span>
+					<cite class="fn genericon">Le Wang</cite> <span class="says">says:</span>				</div><!-- .comment-author .vcard -->
+			</footer>
+
+			<div class="comment-content">
+				<div class="e-content p-name p-summary"><p>Do you still run your shells in Emacs?</p>
+</div>							</div>
+
+			<div class="comment-meta commentmetadata">
+				<a href="https://snarfed.org/why_i_run_shells_inside_emacs#comment-146422"><time datetime="2012-08-12T17:59:25+00:00">
+				8/12/2012 at 5:59pm				</time></a>
+											</div><!-- .comment-meta .commentmetadata -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment byuser comment-author-ryan bypostauthor odd alt thread-odd thread-alt depth-1 p-comment h-entry" id="li-comment-146481">
+		<article id="comment-146481" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<span class="comment-author-avatar"><img id="grav-947b5f3f323da0ef785b6f02d9c265d6-1" alt="" src="947b5f3f323da0ef785b6f02d9c265d6_001.dat" class="u-photo avatar avatar-48 photo grav-hashed grav-hijack" height="48" width="48"></span>
+					<cite class="fn genericon"><a href="http://snarfed.org/" rel="external nofollow" class="u-url url">ryan</a></cite> <span class="says">says:</span>				</div><!-- .comment-author .vcard -->
+			</footer>
+
+			<div class="comment-content">
+				<div class="e-content p-name p-summary"><p>definitely!</p>
+</div>							</div>
+
+			<div class="comment-meta commentmetadata">
+				<a href="https://snarfed.org/why_i_run_shells_inside_emacs#comment-146481"><time datetime="2012-08-12T21:48:32+00:00">
+				8/12/2012 at 9:48pm				</time></a>
+											</div><!-- .comment-meta .commentmetadata -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1 p-comment h-entry" id="li-comment-149684">
+		<article id="comment-149684" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<span class="comment-author-avatar"><img id="grav-ad516503a11cd5ca435acc9bb6523536-3" alt="" src="ad516503a11cd5ca435acc9bb6523536" class="u-photo avatar avatar-48 photo avatar-default grav-hashed grav-hijack" height="48" width="48"></span>
+					<cite class="fn genericon">zw963</cite> <span class="says">says:</span>				</div><!-- .comment-author .vcard -->
+			</footer>
+
+			<div class="comment-content">
+				<div class="e-content p-name p-summary"><p>Thanks for you post.</p>
+
+<p>I have know so many knowledge.</p>
+
+<p>I like sh-mode in Emacs 24..</p>
+
+<p>But, if use alias to jump in sh-mode,</p>
+
+<p>will cause TAB auto-complete is stop work.</p>
+
+<p>Must reeval some function , so cont work.</p>
+
+<p>just this point is agonized</p>
+</div>							</div>
+
+			<div class="comment-meta commentmetadata">
+				<a href="https://snarfed.org/why_i_run_shells_inside_emacs#comment-149684"><time datetime="2012-08-21T12:27:49+00:00">
+				8/21/2012 at 12:27pm				</time></a>
+											</div><!-- .comment-meta .commentmetadata -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment odd alt thread-odd thread-alt depth-1 p-comment h-entry" id="li-comment-527247">
+		<article id="comment-527247" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<span class="comment-author-avatar"><img id="grav-ad516503a11cd5ca435acc9bb6523536-4" alt="" src="ad516503a11cd5ca435acc9bb6523536" class="u-photo avatar avatar-48 photo avatar-default grav-hashed grav-hijack" height="48" width="48"></span>
+					<cite class="fn genericon">Anonymous</cite> <span class="says">says:</span>				</div><!-- .comment-author .vcard -->
+			</footer>
+
+			<div class="comment-content">
+				<div class="e-content p-name p-summary"><p>the history messages thing is fixed on trunk: <a href="http://debbugs.gnu.org/cgi/bugreport.cgi?bug=13223" rel="nofollow">http://debbugs.gnu.org/cgi/bugreport.cgi?bug=13223</a></p>
+</div>							</div>
+
+			<div class="comment-meta commentmetadata">
+				<a href="https://snarfed.org/why_i_run_shells_inside_emacs#comment-527247"><time datetime="2013-05-01T07:04:46+00:00">
+				5/1/2013 at 7:04am				</time></a>
+											</div><!-- .comment-meta .commentmetadata -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+	<li class="comment even thread-even depth-1 p-comment h-entry" id="li-comment-631205">
+		<article id="comment-631205" class="comment">
+			<footer>
+				<div class="comment-author vcard">
+					<span class="comment-author-avatar"><img id="grav-ad516503a11cd5ca435acc9bb6523536-5" alt="" src="ad516503a11cd5ca435acc9bb6523536" class="u-photo avatar avatar-48 photo avatar-default grav-hashed grav-hijack" height="48" width="48"></span>
+					<cite class="fn genericon">yop</cite> <span class="says">says:</span>				</div><!-- .comment-author .vcard -->
+			</footer>
+
+			<div class="comment-content">
+				<div class="e-content p-name p-summary"><p>thank you thank you thank you!</p>
+</div>							</div>
+
+			<div class="comment-meta commentmetadata">
+				<a href="https://snarfed.org/why_i_run_shells_inside_emacs#comment-631205"><time datetime="2013-05-24T05:22:19+00:00">
+				5/24/2013 at 5:22am				</time></a>
+											</div><!-- .comment-meta .commentmetadata -->
+		</article><!-- #comment-## -->
+
+	</li><!-- #comment-## -->
+			</ol><!-- .comment-list -->
+
+			
+		
+		
+										<div id="respond" class="comment-respond">
+				<h3 id="reply-title" class="comment-reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="https://snarfed.org/why_i_run_shells_inside_emacs#respond" style="display: none;">Cancel reply</a></small></h3>
+									<form action="https://snarfed.org/w/wp-comments-post.php" method="post" id="commentform" class="comment-form">
+																			<p class="comment-notes">Your email address will not be published.</p>							<p class="comment-form-author"><label for="author">Name</label> <input id="author" name="author" value="" size="30" type="text"></p>
+<p class="comment-form-email"><label for="email">Email</label> <input id="email" name="email" value="" size="30" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label> <input id="url" name="url" value="" size="30" type="text"></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label> <textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; </code></p>						<p class="form-submit">
+							<input name="submit" id="submit" value="Post Comment" type="submit">
+							<input name="comment_post_ID" value="2930" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="20f855f1d8" type="hidden"></p>					</form>
+							</div><!-- #respond -->
+			
+	</div><!-- .comments-wrap -->
+</div><!-- #comments -->
+			
+		</div><!-- #content -->
+	</div><!-- #primary -->
+
+
+	</div><!-- #main -->
+
+	<footer id="colophon" class="site-footer" role="contentinfo">
+		<div class="site-info wrap">
+						<a href="http://wordpress.org/" title="A Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress</a>
+			<span class="sep"> | </span>
+			Theme: Ryu by <a href="http://theme.wordpress.com/" rel="designer">WordPress.com</a>.		</div><!-- .site-info -->
+	</footer><!-- #colophon -->
+</div><!-- #page -->
+
+
+
+
+
+
+
+
+	<div style="display: none;">
+	<div class="grofile-hash-map-947b5f3f323da0ef785b6f02d9c265d6">
+	</div>
+	<div class="grofile-hash-map-d41d8cd98f00b204e9800998ecf8427e">
+	</div>
+	</div>
+
+	
+	<img id="wpstats" src="g.gif" alt="">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>

@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Editing JavaScript in Emacs — Edward O’Connor</title>
+<link rel="shortcut icon" href="favicon.ico">
+<meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0;">
+<link rel="alternate" type="application/atom+xml" title="Atom feed" href="http://edward.oconnor.cx/feed">
+
+
+
+
+<link rel="pingback" href="http://edward.oconnor.cx/pingback">
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<div id="content">
+<div id="primary">
+<div class="hentry">
+<div class="header">
+<h1><a rel="bookmark" class="entry-title" href="http://edward.oconnor.cx/2005/09/editing-javascript-in-emacs">Editing JavaScript in Emacs</a></h1>
+<address class="author vcard">
+  by <a href="http://edward.oconnor.cx/" class="fn url">Edward O’Connor</a>
+on <abbr class="published updated" title="2005-09-26T23:52:19-05:00">27 September 2005</abbr>
+</address>
+</div> <!-- .header -->
+
+<div class="entry-content">
+<ins datetime="2008-01-29T15:19:48-08:00">
+        <p>
+          Let’s skip right to the chase: <em>I recommend using
+          Steve Yegge’s <a href="http://edward.oconnor.cx/2008/04/js2-mode">js2
+          mode</a>.</em>
+        </p>
+        <p>
+          If you want to read about the other options and how they
+          compared with one another in September 2005, read on!
+        </p>
+        <p>
+          You may also be interested in other things I’ve written
+          <a href="http://edward.oconnor.cx/tags/emacs">about Emacs</a> or <a href="http://edward.oconnor.cx/tags/javascript">on JavaScript</a>.
+        </p>
+      </ins>
+
+      <p>
+        If you find yourself doing substantial hacking on complicated
+        websites, you’ll probably find yourself needing a decent
+        major mode for editing JavaScript. There are <em>at least
+        <strong>six</strong></em> different JavaScript major modes out
+        there — <strong>which one should you use?</strong>
+        Let’s take a look at them!
+      </p>
+
+      <h3>A survey of the various JavaScript major modes</h3>
+
+      <p>
+        <a class="pathname" href="http://savannah.gnu.org/cgi-bin/viewcvs/emacs/emacs/lisp/generic-x.el?rev=HEAD&amp;content-type=text/vnd.viewcvs-markup">generic-x.el</a> (which comes with Emacs)
+        contains <code>javascript-generic-mode</code>, which
+        doesn’t handle indentation well, and fails to correctly
+        highlight C-style (<code>/* … */</code>) comments. But
+        it’s fine for short-term use: since it ships with Emacs,
+        it’s already there when you need it.
+      </p>
+
+      <p>
+        To enable it, add <code class="language-elisp">(<span class="keyword">require</span> 'generic-x)</code> to <code class="pathname">~/.emacs</code>. This will automatically
+        associate files with <code>.js</code> extensions with
+        <code>javascript-generic-mode</code>.
+      </p>
+
+      <p>
+        <a href="http://www.brigadoon.de/peter/">Peter Kruse</a>’s
+        <a class="pathname" href="http://www.brigadoon.de/peter/javascript-mode.el">javascript-mode.el</a> is antiquated. It
+        hasn’t been updated in many years, and relies on
+        <code>hilit19</code>, an obsolete syntax highlighting library.
+        <em>Definitely not recommended.</em>
+      </p>
+
+      <p>
+        <strong>My recommendation:</strong> <a href="http://www.brgeight.se/">Karl Landström</a>’s
+        <a class="pathname" href="http://www.brgeight.se/downloads/emacs/javascript.el">javascript.el</a>
+        appears to be the nicest JavaScript mode out there. It handles
+        indentation well, and both C- and C++-style (<code>//
+        …</code>) comments. A winner! To use, place <code class="pathname">javascript.el</code> in a directory inside
+        <code>load-path</code> and add the following to your <code class="pathname">~/.emacs</code>:
+      </p>
+
+      <pre><code class="language-elisp">(autoload 'javascript-mode <span class="string">"javascript"</span> nil t)
+(add-to-list 'auto-mode-alist '(<span class="string">"\\.js\\'"</span> . javascript-mode))</code></pre>
+
+      <p>
+        <a href="http://joost.zeekat.nl/">Joost Diepenmaat</a> has a <a href="http://joost.zeekat.nl/wp-content/javascript.el">slight
+        tweak of Karl’s mode</a> which <q cite="http://joost.zeekat.nl/wp-content/javascript.el">contains
+        a few font-lock fixes for quoted strings and regular
+        expressions.</q> I haven’t tried it myself.
+      </p>
+
+      <p>
+        There’s also <a class="pathname" href="http://www.emacswiki.org/cgi-bin/emacs/ecmascript-mode.el">ecmascript-mode.el</a>,
+        which is a derived mode from <code>java-mode</code>. It
+        doesn’t appear to do anything that <code class="pathname">javascript.el</code> doesn’t do, and it
+        unconditionally makes <code>font-lock-builtin-face</code> bold,
+        regardless of your personal settings. Thanks to krupan and
+        Mathias for the link.
+      </p>
+
+      <p>
+        <a href="http://edward.oconnor.cx/2006/02/mozrepl">MozRepl</a> comes with its own <a class="pathname" href="http://repo.hyperstruct.net/mozrepl/chrome/content/js-mode.el">js-mode.el</a>, which appears to be a very
+        minimal variant on <code>cc-mode</code>. Thanks to RetroJ for
+        pointing this out.
+        </p>
+
+      <p>
+        In addition to all of the above, there’s <a href="http://cvs.xemacs.org/viewcvs.cgi/XEmacs/packages/xemacs-packages/prog-modes/javascript-mode.el?rev=1.12&amp;content-type=text/vnd.viewcvs-markup">the
+        <code class="pathname">javascript-mode.el</code> which comes
+        with XEmacs</a>, which I’m told works in Emacs as well
+        (and is even bundled with Aquamacs). Thanks to Reed and Xah for
+        the link.
+      </p>
+
+      <h3>Robustness tip: simple failover</h3>
+
+      <p>
+        Say you’ve installed <code class="pathname">javascript.el</code> on machine A but not on
+        machine B. Ideally, your <code class="pathname">~/.emacs</code>
+        file should detect if <code class="pathname">javascript.el</code> is installed: if it is, it
+        should use it, but if it isn’t, it should fall back on
+        <code>javascript-generic-mode</code> from <code class="pathname">generic-x.el</code>. This is pretty easy stuff.
+        First, <code>require</code> <code>generic-x</code> as above.
+        Then check for the presence of <code class="pathname">javascript.el</code>, and configure it if
+        it’s present:
+      </p>
+
+      <pre><code class="language-elisp">(<span class="keyword">require</span> 'generic-x)
+
+(<span class="keyword">when</span> (locate-library <span class="string">"javascript"</span>)
+  (autoload 'javascript-mode <span class="string">"javascript"</span> nil t)
+  (add-to-list 'auto-mode-alist '(<span class="string">"\\.js\\'"</span> . javascript-mode)))</code></pre>
+
+      <p>
+        This way, you can copy your <code class="pathname">~/.emacs</code> file to some other machine, and
+        you know it won’t break.
+      </p>
+</div>
+
+<dl class="entry-meta">
+
+<dt>Related links</dt>
+<dd>
+<ul>
+<li><a href="http://edward.oconnor.cx/2006/02/mozrepl" rel="related">MozRepl — rapid JavaScript development with Emacs and Mozilla</a></li>
+<li><a href="http://edward.oconnor.cx/2006/03/json.el" rel="related">Introducing json.el</a></li>
+<li><a href="http://www.emacswiki.org/cgi-bin/wiki/JavaScriptMode" rel="related">The EmacsWiki’s (fairly disorganized) page on JavaScriptMode</a></li>
+</ul>
+</dd>
+<dt>Tags</dt>
+<dd>
+<a href="http://edward.oconnor.cx/tags/elisp" rel="tag">elisp</a>
+<a href="http://edward.oconnor.cx/tags/emacs" rel="tag">emacs</a>
+<a href="http://edward.oconnor.cx/tags/emacs-lisp" rel="tag">emacs lisp</a>
+<a href="http://edward.oconnor.cx/tags/javascript" rel="tag">javascript</a>
+</dd>
+
+<dt>Pingbacks</dt>
+<dd>
+<ul>
+<li><a href="http://linuxtnt.wordpress.com/2007/07/22/emacs-and-javascript/" rel="nofollow">Emacs and Javascript « Linux tips &amp; tricks</a></li>
+</ul>
+</dd>
+
+<dt>Rights</dt>
+<dd class="entry-rights">
+<p>
+        Copyright © 2005 – 2007 <a href="http://edward.oconnor.cx/" rel="me">Edward O’Connor</a>.
+      </p>
+      <p>
+        This work is licensed to you under version 2 of the <a href="http://www.gnu.org/">GNU</a> <a href="http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt">General
+        Public License</a>.
+
+        Alternatively, you may choose to receive this work under any
+        other license that grants the right to use, copy, modify, and/or
+        distribute the work, as long as that license imposes the
+        restriction that derivative works have to grant the same rights
+        and impose the same restriction.
+
+        For example, you may choose to receive this work under the <a href="http://www.gnu.org/">GNU</a> <a href="http://www.gnu.org/licenses/fdl.txt">Free Documentation
+        License</a>, the <a href="http://creativecommons.org/">CreativeCommons</a> <a href="http://creativecommons.org/licenses/sa/1.0/">ShareAlike</a>
+        License, the XEmacs manual license, or <a href="http://www.emacswiki.org/OLD">similar licenses</a>.
+      </p>
+</dd>
+</dl>
+</div> <!-- .hentry -->
+
+<div id="comments">
+<h3>Comments</h3>
+
+<ol>
+<li id="comment-1e1ffaf1c65c065632ac1c81876c0a08" class="">
+<div class="gravatar">
+<a href="http://offby1.atm01.sea.blarg.net/" rel="nofollow"><img src="avatar.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>
+        Here's how I do thus and such only if a particular library is
+        available:
+      </p>
+      <pre><code class="elisp">(defmacro with-library (symbol &amp;#38;rest body)
+  ;(declare (indent 1))
+  `(condition-case nil
+       (progn
+         (require ',symbol)
+         ,@body)
+
+     (error (message  "I guess we don't have %s available." ',symbol)
+            nil)))</code></pre>
+      <p>so your example would become</p>
+      <pre><code class="elisp">(with-library javascript-mode
+  (add-to-list 'auto-mode-alist '("\\.js\\'" . javascript-mode)))</code></pre></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://offby1.atm01.sea.blarg.net/">Eric Hanchrow</a></cite>,
+<abbr title="2005-10-13T00:38:03-05:00"><a href="#comment-1e1ffaf1c65c065632ac1c81876c0a08">13 October 2005</a></abbr>
+</p>
+</li>
+
+<li id="comment-ae5486d1f823eeac8498e27524e720b6" class=" author-comment alternate">
+<div class="gravatar">
+<a href="http://edward.oconnor.cx/" rel="nofollow"><img src="avatar_001.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>
+        Thanks, Eric.
+      </p>
+      <p>
+        Two things: Using <code>locate-library</code> with autoloads
+        instead of <code>require</code> means that the library is only
+        loaded when I actually go to use it. But, in the cases where you
+        want to use <code>require</code>, it takes an optional
+        <code>NOERROR</code> argument, so you don’t need your
+        <code>condition-case</code> wrapper.
+      </p>
+      <p>
+        Emacs is hard. Let’s go shopping! :)
+      </p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://edward.oconnor.cx/">hober</a></cite>,
+<abbr title="2005-10-13T18:21:07-05:00"><a href="#comment-ae5486d1f823eeac8498e27524e720b6">13 October 2005</a></abbr>
+</p>
+</li>
+
+<li id="comment-c1fade09995b06f5f89f7a6b04b126f4" class="">
+<div class="gravatar">
+<img src="avatar_002.php" alt="krupan" height="80" width="80">
+</div>
+<blockquote><p>
+        When I copy and pasted your code snippet, the <code>'</code>
+        characters all came out as the string <code>\u2018</code>.
+        What's up with that?
+      </p></blockquote>
+<p class="source">
+—
+<cite>krupan</cite>,
+<abbr title="2006-01-09T02:06:03-05:00"><a href="#comment-c1fade09995b06f5f89f7a6b04b126f4">9 January 2006</a></abbr>
+</p>
+</li>
+
+<li id="comment-d89f4fa60a595fed93c9bd91cc5d7a63" class=" alternate">
+<div class="gravatar">
+<img src="avatar_002.php" alt="krupan" height="80" width="80">
+</div>
+<blockquote><p>
+        Oooo, I just found <code>ecmascript-mode</code>. It claims to be
+        based on <code>java-mode</code>, and it highlights a lot more
+        keywords that the above mentioned modes:
+      </p>
+      <pre><a href="http://www.emacswiki.org/cgi-bin/wiki/ECMAScriptMode">http://www.emacswiki.org/cgi-bin/wiki/ECMAScriptMode</a></pre></blockquote>
+<p class="source">
+—
+<cite>krupan</cite>,
+<abbr title="2006-01-09T02:32:39-05:00"><a href="#comment-d89f4fa60a595fed93c9bd91cc5d7a63">9 January 2006</a></abbr>
+</p>
+</li>
+
+<li id="comment-63b841ea2895a3c9646c0b5d50041708" class="">
+<div class="gravatar">
+<img src="avatar_003.php" alt="Mathias" height="80" width="80">
+</div>
+<blockquote><p>
+      A fallback can also be to use <code>java-mode</code>. It indents
+      correctly most of the time, anyway.
+    </p></blockquote>
+<p class="source">
+—
+<cite>Mathias</cite>,
+<abbr title="2006-01-09T12:35:44-05:00"><a href="#comment-63b841ea2895a3c9646c0b5d50041708">9 January 2006</a></abbr>
+</p>
+</li>
+
+<li id="comment-61c2eb4046fa4810a8277544ca96f1c8" class=" author-comment alternate">
+<div class="gravatar">
+<a href="http://edward.oconnor.cx/" rel="nofollow"><img src="avatar_001.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>
+      krupan — re: <code>\u2018</code>, it appears to be a
+      mis-feature of WordPress, which I’ll attempt to track down and
+      kill. Thanks for the heads-up!
+    </p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://edward.oconnor.cx/">hober</a></cite>,
+<abbr title="2006-01-09T17:09:11-05:00"><a href="#comment-61c2eb4046fa4810a8277544ca96f1c8">9 January 2006</a></abbr>
+</p>
+</li>
+
+<li id="comment-824e3a3c55b4c46832c57541a32bf548" class="">
+<div class="gravatar">
+<a href="http://freebsd.amazingdev.com/blog" rel="nofollow"><img src="avatar_004.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>
+        The link for <code>javascript.el</code> seems to have changed.
+        It is now:
+      </p>
+
+      <pre><a href="http://web.comhem.se/%7Eu83406637/emacs/javascript.el">http://web.comhem.se/~u83406637/emacs/javascript.el</a></pre></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://freebsd.amazingdev.com/blog">Jonathan Arnold</a></cite>,
+<abbr title="2006-02-27T22:50:31-05:00"><a href="#comment-824e3a3c55b4c46832c57541a32bf548">28 February 2006</a></abbr>
+</p>
+</li>
+
+<li id="comment-77faf438e745c47a0031dac7bb2091da" class=" author-comment alternate">
+<div class="gravatar">
+<a href="http://edward.oconnor.cx/" rel="nofollow"><img src="avatar_001.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>
+        Thanks, Jonathan, I've updated the article's link to
+        <code>javascript.el</code>.
+      </p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://edward.oconnor.cx/">hober</a></cite>,
+<abbr title="2006-02-27T23:02:36-05:00"><a href="#comment-77faf438e745c47a0031dac7bb2091da">28 February 2006</a></abbr>
+</p>
+</li>
+
+<li id="comment-b77a574dff4055a9474685334dd7980a" class="">
+<div class="gravatar">
+<img src="avatar_005.php" alt="Reed Sheridan" height="80" width="80">
+</div>
+<blockquote><p>
+        I had been using the javascript mode from Xemacs in GNU Emacs.
+      </p>
+      <pre><a href="http://cvs.xemacs.org/viewcvs.cgi/XEmacs/packages/xemacs-packages/prog-modes/javascript-mode.el?rev=1.12&amp;#38;content-type=text/vnd.viewcvs-markup">http://cvs.xemacs.org/viewcvs.cgi/XEmacs/packages/xemacs-packages/prog-modes/javascript-mode.el?rev=1.12&amp;#38;content-type=text/vnd.viewcvs-markup</a></pre>
+      <p>
+        I might have had to tweak something to get it to work, I don't
+        remember, but I think it basically works in GNU Emacs. It's not
+        as nice as <code>javascript.el</code>, but it has the advantage
+        that there's a javascript-shell mode.
+      </p></blockquote>
+<p class="source">
+—
+<cite>Reed Sheridan</cite>,
+<abbr title="2006-06-24T08:35:22-05:00"><a href="#comment-b77a574dff4055a9474685334dd7980a">24 June 2006</a></abbr>
+</p>
+</li>
+
+<li id="comment-6c8a22a9ab427a5493b203ef49b9e81c" class=" alternate">
+<div class="gravatar">
+<img src="avatar_006.php" alt="kanat" height="80" width="80">
+</div>
+<blockquote><p>
+        All links to Karl's page are broken as of today (Nov 15, 06). If
+        you also can't access Karl's link, try the internet archive
+        "Wayback Machine" page for it:
+      </p>
+
+      <pre><a href="http://web.archive.org/web/*/http://web.comhem.se/%7Eu83406637/emacs/javascript.el">http://web.archive.org/web/*/http://web.comhem.se/~u83406637/emacs/javascript.el</a></pre>
+
+      <p>
+        There is a Mar 21 2006 entry (which states (C) 2005 in the
+        file).
+      </p></blockquote>
+<p class="source">
+—
+<cite>kanat</cite>,
+<abbr title="2006-11-15T16:16:33-05:00"><a href="#comment-6c8a22a9ab427a5493b203ef49b9e81c">15 November 2006</a></abbr>
+</p>
+</li>
+
+<li id="comment-c73b1df9346a1f3d780250915f568504" class=" author-comment">
+<div class="gravatar">
+<a href="http://edward.oconnor.cx/" rel="nofollow"><img src="avatar_001.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>Reed, kanat: thanks for the links! I've updated the post.</p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://edward.oconnor.cx/">hober</a></cite>,
+<abbr title="2006-12-05T13:35:28-05:00"><a href="#comment-c73b1df9346a1f3d780250915f568504">5 December 2006</a></abbr>
+</p>
+</li>
+
+<li id="comment-dc115a71640d6312563a111d6c8bd90d" class=" alternate">
+<div class="gravatar">
+<a href="http://web.comhem.se/%7Eu34308910/" rel="nofollow"><img src="avatar_007.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>My page has moved from</p>
+      <pre><a href="http://web.comhem.se/%7Eu83406637/">http://web.comhem.se/~u83406637/</a></pre>
+      <p>to</p>
+      <pre><a href="http://web.comhem.se/%7Eu34308910/">http://web.comhem.se/~u34308910/</a></pre></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://web.comhem.se/%7Eu34308910/">Karl Landström</a></cite>,
+<abbr title="2006-12-23T08:29:27-05:00"><a href="#comment-dc115a71640d6312563a111d6c8bd90d">23 December 2006</a></abbr>
+</p>
+</li>
+
+<li id="comment-5c6fbb3cd014924af08bd969cc545962" class="">
+<div class="gravatar">
+<a href="http://jb.rouquier.free.fr/" rel="nofollow"><img src="avatar_008.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>
+        Is it right that the string "\.js\’" should
+        instead read "\.js$" in the line
+      </p>
+      <pre><code class="elisp">(add-to-list ‘auto-mode-alist ‘("\.js\’" . javascript-mode)))</code></pre>
+      <p>?</p>
+      <p>My comment won't be useful anymore if you update your code, so you can delete it.</p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://jb.rouquier.free.fr/">Jean-Baptiste Rouquier</a></cite>,
+<abbr title="2007-01-12T17:48:27-05:00"><a href="#comment-5c6fbb3cd014924af08bd969cc545962">12 January 2007</a></abbr>
+</p>
+</li>
+
+<li id="comment-de72044e2f9a5a452c41ac1b2dd2bebc" class=" author-comment alternate">
+<div class="gravatar">
+<a href="http://edward.oconnor.cx/" rel="nofollow"><img src="avatar_001.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>
+        Jean-Baptiste: Sorry, WordPress was nuking some backslashes.
+        Generally speaking, <code>\\'</code> is preferred to
+        <code>$</code> in <code>`auto-mode-alist'</code> forms —
+        <code>$</code> breaks with Sufficiently Weird filenames.
+      </p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://edward.oconnor.cx/">hober</a></cite>,
+<abbr title="2007-01-16T13:11:26-05:00"><a href="#comment-de72044e2f9a5a452c41ac1b2dd2bebc">16 January 2007</a></abbr>
+</p>
+</li>
+
+<li id="comment-9c6dc9202dbca0e6f44fe7fc2af221dc" class="">
+<div class="gravatar">
+<img src="avatar_009.php" alt="RetroJ" height="80" width="80">
+</div>
+<blockquote><p>
+        There is also a <code>js-mode</code> that is packaged with
+        MozRepl. That said, I have yet to find a satisfactory mode for
+        editing javascript, and I'm starting to believe that the world
+        needs a truly good <code>ecmascript-mode</code>, built from the
+        ground up, according to the spec. (unfortunately that name is
+        taken) Once a good <code>ecmascript-mode</code> was completed,
+        <code>javascript-mode</code> and <code>actionscript-mode</code>
+        could be trivially derived from it. The universal lack of
+        support for many perfectly valid javascript constructs, like
+        anonymous objects, nested functions, functions as parameters to
+        functions, &amp;#38;c., makes me wonder if deriving from
+        <code>cc-mode</code> is a poor choice and the fatal flaw in all
+        of the existing modes.
+    </p></blockquote>
+<p class="source">
+—
+<cite>RetroJ</cite>,
+<abbr title="2007-02-28T23:14:00-05:00"><a href="#comment-9c6dc9202dbca0e6f44fe7fc2af221dc">1 March 2007</a></abbr>
+</p>
+</li>
+
+<li id="comment-d5dd659ce75e0c6fc4bd948e27524c10" class=" alternate">
+<div class="gravatar">
+<a href="http://www.panremmus.co.uk/" rel="nofollow"><img src="avatar_010.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>Some gresat examples, thanks
+</p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://www.panremmus.co.uk/">Cardiff</a></cite>,
+<abbr title="2007-07-31T06:11:31+00:00"><a href="#comment-d5dd659ce75e0c6fc4bd948e27524c10">31 July 2007</a></abbr>
+</p>
+</li>
+
+<li id="comment-6acd3bfaefd45fb2843a2e738bd0c11c" class="">
+<div class="gravatar">
+<a href="http://bendohmv.vineyard.net/" rel="nofollow"><img src="avatar_011.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>I think I'm using your color-theme... Very nice.
+</p>
+<p>I tried out Karl Landström’s javascript.el and it is very nice, but one bug that annoyed me to no end was the lack of word-boundary acknowledgment in the keyword regular expressions. This meant that words like "input" and "undo" were -partially- hilited, and it also affected the indenting of my "initialize" methods (a result of js-indent-operator-re not looking at word boundaries.) I fixed this by affixing word-boundary sequences to both ends of the strings returned by the calls to regexp-opt. 
+</p>
+<p>I.e., wherever there is a 
+</p>
+<pre><code>(regexp-opt '(STRINGS) 'words)
+</code></pre><p>in the code, update it to
+</p>
+<pre><code>(concat "\\b" (regexp-opt '(STRINGS) 'words) "\\b")
+</code></pre><p>Good stuff.
+</p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://bendohmv.vineyard.net/">Bendoh</a></cite>,
+<abbr title="2007-08-29T14:46:23+00:00"><a href="#comment-6acd3bfaefd45fb2843a2e738bd0c11c">29 August 2007</a></abbr>
+</p>
+</li>
+
+<li id="comment-3e4694ba865dea25a2d43fdcc326960f" class=" author-comment alternate">
+<div class="gravatar">
+<a href="http://edward.oconnor.cx/" rel="nofollow"><img src="avatar_001.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>Did you send Karl a patch, Bendoh? I bet he'd gladly apply it.
+</p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://edward.oconnor.cx/">Edward O'Connor</a></cite>,
+<abbr title="2007-08-29T15:23:16+00:00"><a href="#comment-3e4694ba865dea25a2d43fdcc326960f">29 August 2007</a></abbr>
+</p>
+</li>
+
+<li id="comment-438d535655a2448c4551b81490627de7" class="">
+<div class="gravatar">
+<a href="http://bendoh.vineyard.net/" rel="nofollow"><img src="avatar_011.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>Gotcha. Sent it.
+</p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://bendoh.vineyard.net/">Bendoh</a></cite>,
+<abbr title="2007-08-29T16:09:37+00:00"><a href="#comment-438d535655a2448c4551b81490627de7">29 August 2007</a></abbr>
+</p>
+</li>
+
+<li id="comment-7deaf126a739413b416f9fcc09f32300" class=" alternate">
+<div class="gravatar">
+<a href="http://bendoh.vineyard.net/" rel="nofollow"><img src="avatar_011.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>It seems that I jumped the gun:
+</p>
+<p>this problem is addressed in <a href="http://web.comhem.se/%7Eu34308910/emacs.html" rel="nofollow">http://web.comhem.se/~u34308910/emacs.html</a>
+</p>
+<p>Silly me.
+</p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://bendoh.vineyard.net/">Bendoh</a></cite>,
+<abbr title="2007-08-29T19:59:59+00:00"><a href="#comment-7deaf126a739413b416f9fcc09f32300">29 August 2007</a></abbr>
+</p>
+</li>
+
+<li id="comment-49c56125baf642ad81246f18c585c21f" class="">
+<div class="gravatar">
+<img src="avatar_012.php" alt="Hunter" height="80" width="80">
+</div>
+<blockquote><p>Has anybody noticed a problem with regular expressions in javascript.el where ' and " aren't treated properly? For instance:
+</p>
+<p><code>var foo = /[a-zA-Z']+/.test("some'string");</code>
+</p>
+<p>The ' in the regular expression starts javascript.el thinking there is an unterminated string constant.
+</p>
+<p>I'm still learning elisp, and I haven't been able to figure this one out.
+</p></blockquote>
+<p class="source">
+—
+<cite>Hunter</cite>,
+<abbr title="2007-11-06T11:13:50+00:00"><a href="#comment-49c56125baf642ad81246f18c585c21f">6 November 2007</a></abbr>
+</p>
+</li>
+
+<li id="comment-a5bdc6c8091e8d366e853ef6fe61407a" class=" alternate">
+<div class="gravatar">
+<a href="http://blog.blowery.org/" rel="nofollow"><img src="avatar_013.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>Looks like Karl's page disappeared again. :(  Anyone have a current mirror? We should just put this thing up in Google Code or Sourceforge and let everyone hack on it...
+</p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://blog.blowery.org/">Ben Lowery</a></cite>,
+<abbr title="2007-11-14T20:07:58+00:00"><a href="#comment-a5bdc6c8091e8d366e853ef6fe61407a">14 November 2007</a></abbr>
+</p>
+</li>
+
+<li id="comment-29d9c769f273da24c1d6d7a040a22392" class="">
+<div class="gravatar">
+<a href="http://www.ocf.berkeley.edu/%7Ebrandon" rel="nofollow"><img src="avatar_014.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>It would be nice if there was a javascript+HTML mode, so that code fragments inside [HTML_REMOVED]lt;script[HTML_REMOVED]gt; tags would be easier to edit.
+</p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://www.ocf.berkeley.edu/%7Ebrandon">brandon</a></cite>,
+<abbr title="2007-11-15T02:33:31+00:00"><a href="#comment-29d9c769f273da24c1d6d7a040a22392">15 November 2007</a></abbr>
+</p>
+</li>
+
+<li id="comment-f2e4d06ec2c720fe2316b1635994f8b6" class=" alternate">
+<div class="gravatar">
+<img src="avatar_015.php" alt="Ben Stock" height="80" width="80">
+</div>
+<blockquote><p>The current version of javascript.el can be found <a href="http://www.brgeight.se/" rel="nofollow">here</a>.
+</p>
+<p>It also seems there is a modified version with (apparently) better handling of regex expression highlighting <a href="http://joost.zeekat.nl/wp-content/javascript.el" rel="nofollow">here</a>.
+</p></blockquote>
+<p class="source">
+—
+<cite>Ben Stock</cite>,
+<abbr title="2007-12-22T19:16:15+00:00"><a href="#comment-f2e4d06ec2c720fe2316b1635994f8b6">22 December 2007</a></abbr>
+</p>
+</li>
+
+<li id="comment-6efe329d9bee9318e0cb2ea66bb6220a" class=" author-comment">
+<div class="gravatar">
+<a href="http://edward.oconnor.cx/" rel="nofollow"><img src="avatar_001.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>Thanks Ben! I've updated the post to reflect the new URL.
+</p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://edward.oconnor.cx/">Edward O'Connor</a></cite>,
+<abbr title="2007-12-31T22:49:37+00:00"><a href="#comment-6efe329d9bee9318e0cb2ea66bb6220a">31 December 2007</a></abbr>
+</p>
+</li>
+
+<li id="comment-8e7c5616debf3452641a696e1185f1cc" class=" alternate">
+<div class="gravatar">
+<a href="http://alexyule.com/" rel="nofollow"><img src="avatar_016.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>Can't believe noone has posted a link to this yet, but <a href="http://steve-yegge.blogspot.com/2008/03/js2-mode-new-javascript-mode-for-emacs.html" rel="nofollow">Steve Yegge went and wrote</a> a mega-super-awesome js2-mode a few months ago, complete with a non-heuristic recursive parser ported from Rhino. Sweeet! Find it here: <a href="http://code.google.com/p/js2-mode/" rel="nofollow">&lt;http://code.google.com/p/js2-mode/</a>&gt;
+</p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://alexyule.com/">Alex Yule</a></cite>,
+<abbr title="2008-07-29T19:52:09+00:00"><a href="#comment-8e7c5616debf3452641a696e1185f1cc">29 July 2008</a></abbr>
+</p>
+</li>
+
+<li id="comment-9e735b076ee1a1961d9e94e2e28f8388" class=" author-comment">
+<div class="gravatar">
+<a href="http://edward.oconnor.cx/" rel="nofollow"><img src="avatar_001.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>Thanks for pointing that out, Alex. I've been planning to update this post  <a href="http://edward.oconnor.cx/2008/04/js2-mode" rel="nofollow">for months</a>, but hadn't gotten around to it.
+</p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://edward.oconnor.cx/">Edward O'Connor</a></cite>,
+<abbr title="2008-08-01T00:00:33+00:00"><a href="#comment-9e735b076ee1a1961d9e94e2e28f8388">1 August 2008</a></abbr>
+</p>
+</li>
+
+<li id="comment-0ba2aaf87ca609f67d90d16c49352240" class=" alternate">
+<div class="gravatar">
+<img src="avatar_017.php" alt="Matthew Flaschen" height="80" width="80">
+</div>
+<blockquote><p>This is a bit late, but why not:</p>
+  <pre>(cond ((locate-library "javascript")
+          (autoload 'javascript-mode "javascript" nil t)
+          (add-to-list 'auto-mode-alist '("\.js\'" . javascript-mode)))
+         ((locate-library "generic-x")
+          (require 'generic-x)))</pre>
+  <p>That way, there is no need to unconditionally load generic-x</p></blockquote>
+<p class="source">
+—
+<cite>Matthew Flaschen</cite>,
+<abbr title="2009-03-09T23:19:34+00:00"><a href="#comment-0ba2aaf87ca609f67d90d16c49352240">9 March 2009</a></abbr>
+</p>
+</li>
+
+<li id="comment-548de2b745cf151793e5f3cd89d8af64" class=" author-comment">
+<div class="gravatar">
+<a href="http://edward.oconnor.cx/" rel="nofollow"><img src="avatar_001.php" alt="" height="80" width="80"></a>
+</div>
+<blockquote><p>Matthew,
+</p>
+<p>But <code>generic-x</code> contains many other goodies! I recommend everyone load it.
+</p></blockquote>
+<p class="source">
+—
+<cite><a rel="nofollow" href="http://edward.oconnor.cx/">Edward O'Connor</a></cite>,
+<abbr title="2009-04-08T18:10:54+00:00"><a href="#comment-548de2b745cf151793e5f3cd89d8af64">8 April 2009</a></abbr>
+</p>
+</li>
+
+</ol>
+
+<form action="http://edward.oconnor.cx/comment/2005/09/editing-javascript-in-emacs" method="post">
+<fieldset>
+<legend>Add a comment</legend>
+
+<p id="comment-status">
+  <img src="throbber.gif" alt="Posting...">
+  <span class="output"></span>
+</p>
+
+<div>
+<input id="name" name="name" value="" placeholder="John Doe" type="text">
+<label for="name">Your name (<em>required</em>)</label>
+</div>
+
+<div>
+<input id="email" name="email" value="" placeholder="foobar@gmail.com" type="text">
+<label for="email">
+Email address (<em>required</em>, won’t be shared)
+</label>
+</div>
+
+<div>
+<input id="url" name="url" value="" placeholder="http://example.com/" type="text">
+<label for="url">Your website's URL</label>
+</div>
+
+<div>
+<input id="irc-nick" name="irc-nick" value="" type="text">
+<label for="irc-nick">
+What's my IRC nick?
+(<em>required</em>, it’s <samp>hober</samp>)
+</label>
+</div>
+
+<div class="editor">
+<textarea id="comment-content" name="content" placeholder="Something positive, insightful, and awesome" rows="8" cols="72"></textarea>
+<div id="preview"></div>
+<label for="comment-content">Use <a href="http://daringfireball.net/projects/markdown/syntax">Markdown</a>
+for formatting. Live preview powered
+by <a href="http://www.attacklab.net/showdown-gui.html">showdown</a>.
+</label>
+</div>
+
+<div>
+<button type="button" id="comment-submit">Post</button>
+<label for="comment-submit">
+By posting, you place your comment
+under <a href="http://creativecommons.org/licenses/by-sa/3.0/" rel="license">CC BY-SA 3.0</a>.
+</label>
+</div>
+</fieldset>
+</form>
+</div> <!-- #comments -->
+</div> <!-- #primary -->
+</div> <!-- #content -->
+
+
+</body>
+</html>

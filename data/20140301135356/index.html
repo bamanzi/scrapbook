@@ -1,0 +1,1001 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="en-US" xmlns="http://www.w3.org/1999/xhtml">
+<head profile="http://gmpg.org/xfn/11">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<title>Setting up Emacs as a Javascript editing environment for Fun or Profit «  Deadpan Sincerity</title>
+
+
+
+<link rel="pingback" href="http://blog.deadpansincerity.com/xmlrpc.php">
+
+
+
+
+
+
+<link rel="alternate" type="application/rss+xml" title="Deadpan Sincerity » Feed" href="http://blog.deadpansincerity.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="Deadpan Sincerity » Comments Feed" href="http://blog.deadpansincerity.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Deadpan Sincerity » Setting up Emacs as a Javascript editing environment for Fun or Profit Comments Feed" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/feed/">
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.deadpansincerity.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.deadpansincerity.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="Announcing Pony Mode – a Django editing mode for Emacs" href="http://blog.deadpansincerity.com/2011/05/announcing-pony-mode-a-django-editing-mode-for-emacs/">
+<link rel="next" title="Mercurial Hook to ensure issue references in Trac/Redmine" href="http://blog.deadpansincerity.com/2011/06/mercurial-hook-to-ensure-issue-references-in-tracredmine/">
+<meta name="generator" content="WordPress 3.6">
+<link rel="canonical" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/">
+<link rel="shortlink" href="http://blog.deadpansincerity.com/?p=454">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-454 single-format-standard">
+<div id="page">
+
+
+<div id="header">
+<ul id="headerNav">
+
+  <li>
+    <a href="http://www.deadpansincerity.com/">
+      home
+    </a>
+  </li>
+
+  <li class="active">
+    <a href="http://blog.deadpansincerity.com/">
+      blog
+    </a>
+  </li>
+
+  <li>
+    <a href="http://www.deadpansincerity.com/about/">
+      about
+    </a>
+  </li>
+
+  <li>
+    <a href="http://www.deadpansincerity.com/projects/">
+      projects
+    </a>
+  </li>
+
+</ul>
+</div>
+
+<div id="nav">
+<h1 id="logo" class="contenttitle">
+  deadpan <br>sincerity
+</h1>
+<h2>
+  the weblog of <br>
+  david miller
+</h2>
+
+
+<p>
+e: david at deadpansincerity.com<br>
+p: 07854 880 883<br>
+t: @thatdavidmiller
+</p>
+	<div id="sidebar" role="complementary">
+		<ul>
+						<li>
+				<form role="search" method="get" id="searchform" class="searchform" action="http://blog.deadpansincerity.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input value="" name="s" id="s" type="text">
+					<input id="searchsubmit" value="Search" type="submit">
+				</div>
+			</form>			</li>
+
+			<!-- Author information is disabled per default. Uncomment and fill in your details if you want to use it.
+			<li><h2>Author</h2>
+			<p>A little something about you, the author. Nothing lengthy, just an overview.</p>
+			</li>
+			-->
+
+					</ul>
+		<ul role="navigation">
+			
+			<li><h2 id="archiveLegend">Archives</h2>
+				<ul id="archive">
+					<li><a href="http://blog.deadpansincerity.com/2012/" title="2012">2012</a></li>
+	<li><a href="http://blog.deadpansincerity.com/2011/" title="2011">2011</a></li>
+	<li><a href="http://blog.deadpansincerity.com/2010/" title="2010">2010</a></li>
+	<li><a href="http://blog.deadpansincerity.com/2009/" title="2009">2009</a></li>
+	<li><a href="http://blog.deadpansincerity.com/2008/" title="2008">2008</a></li>
+				</ul>
+			</li>
+<li>
+<h2 id="categoryLegend">Categories</h2>
+<ul id="categories">
+
+				<li class="cat-item cat-item-135"><a href="http://blog.deadpansincerity.com/category/correspondence/" title="View all posts filed under Correspondence">Correspondence</a>
+</li>
+	<li class="cat-item cat-item-6"><a href="http://blog.deadpansincerity.com/category/fascination/" title="View all posts filed under fascination">fascination</a>
+</li>
+	<li class="cat-item cat-item-7"><a href="http://blog.deadpansincerity.com/category/favourite-things/" title="View all posts filed under favourite things">favourite things</a>
+</li>
+	<li class="cat-item cat-item-77"><a href="http://blog.deadpansincerity.com/category/somethings-burning/" title="View all posts filed under something's burning">something's burning</a>
+</li>
+	<li class="cat-item cat-item-64"><a href="http://blog.deadpansincerity.com/category/technical/" title="View all posts filed under technical">technical</a>
+</li>
+	<li class="cat-item cat-item-5"><a href="http://blog.deadpansincerity.com/category/the-internet/" title="View all posts filed under the internet">the internet</a>
+</li>
+	<li class="cat-item cat-item-3"><a href="http://blog.deadpansincerity.com/category/wishful-thinking/" title="View all posts filed under wishful thinking">wishful thinking</a>
+</li>
+           </ul>
+          </li>
+			<li>
+				<a href="http://blog.deadpansincerity.com/feed/">Subscribe</a>
+			</li>
+		</ul>
+		<ul>
+			
+					</ul>
+	</div>
+
+</div>
+
+
+	<div id="content" class="widecolumn" role="main">
+
+	
+
+		<div class="post-454 post type-post status-publish format-standard hentry category-favourite-things category-technical tag-editing tag-emacs tag-flymake tag-javascript tag-js tag-jslint tag-node tag-nodejs tag-yasnippet" id="post-454">
+
+			<div class="postHeading single_post">
+				<h2><p class="postTitle"><span>Setting up Emacs</span></p><p class="postTitle"><span>as a Javascript</span></p><p class="postTitle"><span>editing</span></p><p class="postTitle"><span>environment for</span></p><p class="postTitle"><span>Fun or Profit</span></p></h2>
+
+
+				<small class="postDate">May 29th, 2011 <!-- by david miller --></small>
+				</div>
+
+
+<!--			<h2 class="postTitle"><span>Setting up Emacs as a Javascript editing environment for Fun or Profit</span></h2> -->
+
+			<div class="entry">
+				<p>I’ve been doing a lot of Javascript lately, which has naturally led to a whole lot of trips down the .emacs rabbit-hole</p>
+<p>So, here are the steps you need to turn OOTB Emacs into the perfect environment for working on Javascript:</p>
+<h2>Auto-completion</h2>
+<p></p><div id="attachment_479" class="wp-caption aligncenter" style="width: 386px;"><a href="http://blog.deadpansincerity.com/wp-content/uploads/2011/05/ac.png"><img src="ac.png" alt="" title="Emacs Auto completing" class="size-full wp-image-479" height="224" width="376"></a><p class="wp-caption-text">Fizzing!</p></div><br>
+<br \=""><p></p>
+<p>First up, you’re going to want decent auto-completion, so install the straightforwardly named <a href="http://cx4a.org/software/auto-complete/">auto-complete-mode</a>. Due to some mode-name aliasing that goes on in the Emacs23 javascript mode, You’ll need to make sure it can find the relevant Javascript dictionary so</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(122, 8, 116); font-weight: bold;">cd</span> path<span style="color: rgb(0, 0, 0); font-weight: bold;">/</span>to<span style="color: rgb(0, 0, 0); font-weight: bold;">/</span>auto-complete<span style="color: rgb(0, 0, 0); font-weight: bold;">/</span>dict
+<span style="color: rgb(194, 12, 185); font-weight: bold;">ln</span> <span style="color: rgb(102, 0, 51);">-s</span> javascript-mode js-mode</pre></td></tr></tbody></table></div>
+
+<p>and then add to your .emacs:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(102, 204, 102);">(</span>add-to-<span style="color: rgb(177, 177, 0);">list</span> 'load-path <span style="color: rgb(255, 0, 0);">"~/path-to/auto-complete"</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">; Load the default configuration</span>
+<span style="color: rgb(102, 204, 102);">(</span>require 'auto-complete-config<span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">; Make sure we can find the dictionaries</span>
+<span style="color: rgb(102, 204, 102);">(</span>add-to-<span style="color: rgb(177, 177, 0);">list</span> 'ac-dictionary-directories <span style="color: rgb(255, 0, 0);">"~/emacs/auto-complete/dict"</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">; Use dictionaries by default</span>
+<span style="color: rgb(102, 204, 102);">(</span>setq-default ac-sources <span style="color: rgb(102, 204, 102);">(</span>add-to-<span style="color: rgb(177, 177, 0);">list</span> 'ac-sources 'ac-source-dictionary<span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(102, 204, 102);">(</span>global-auto-complete-mode t<span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">; Start auto-completion after 2 characters of a word</span>
+<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> ac-auto-start <span style="color: rgb(204, 102, 204);">2</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">; case sensitivity is important when finding matches</span>
+<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> ac-ignore-<span style="color: rgb(177, 177, 0);">case</span> <span style="color: rgb(177, 177, 0);">nil</span><span style="color: rgb(102, 204, 102);">)</span></pre></td></tr></tbody></table></div>
+
+<p>You now have auto-completion for all variable names in all open Javascript buffers, as well as for standard syntax words (setTimeout, parseInt, onFocus etc).</p>
+<h2>Snippeting</h2>
+<p>Not content with that, we’ll also want some kind of intelligent snippet package right – how many times do you really want to type all those semicolons and curly braces? Once is good for me.</p>
+<p>The excellent <a href="http://code.google.com/p/yasnippet/">Yasnippet</a> provides this (check out the <a href="http://www.youtube.com/watch%3Fv%3D76Ygeg9miao">youtube demo</a> if you’ve not come across it before)</p>
+<p>Once you’ve got that downloaded and installed, you’ll want some Javascript snippets to load in, the ones I use, for standard Javascript and jQuery can be downloaded from <a href="https://github.com/davidmiller/yasnips/raw/master/jsnips.tgz">here</a>, and then the directory provided by that tarfile needs to go in yasnippet/snippets/text-mode</p>
+<p>So for our .emacs:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(102, 204, 102);">(</span>add-to-<span style="color: rgb(177, 177, 0);">list</span> 'load-path <span style="color: rgb(255, 0, 0);">"~/path/to/yasnippet"</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">;; Load the library</span>
+<span style="color: rgb(102, 204, 102);">(</span>require 'yasnippet<span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(102, 204, 102);">(</span>yas/initialize<span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">;; Load the snippet files themselves</span>
+<span style="color: rgb(102, 204, 102);">(</span>yas/load-directory <span style="color: rgb(255, 0, 0);">"~/path/to/yasnippet/snippets/text-mode"</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">;; Let's have snippets in the auto-complete dropdown</span>
+<span style="color: rgb(102, 204, 102);">(</span>add-to-<span style="color: rgb(177, 177, 0);">list</span> 'ac-sources 'ac-source-yasnippet<span style="color: rgb(102, 204, 102);">)</span></pre></td></tr></tbody></table></div>
+
+<h2>Syntax Checking</h2>
+<div id="attachment_484" class="wp-caption alignright" style="width: 136px;"><a href="http://blog.deadpansincerity.com/wp-content/uploads/2011/05/syntax.png"><img src="syntax.png" alt="" title="whoops..." class="size-full wp-image-484" height="79" width="126"></a><p class="wp-caption-text">Whoops...</p></div>
+<p>One of the problems with Javascript programming is that the feedback loop for syntax errors is *slow* – if you’re working with the web you have to wait for a whole pageload. So we’ll want on-the-fly error checking.</p>
+<p><a href="http://keturn.net/">Kevin Turner</a> originally wrote <a href="https://github.com/keturn/lintnode#readme">Lintnode</a>, which runs a lighthweight node.js server that passes your file to <a href="http://www.crockford.com/">Douglas Crockford’s</a> <a href="http://www.jslint.com/">JSLint</a> to integrate with <a href="http://www.emacswiki.org/emacs/FlyMake">Flymake</a> – the Emacs solution for on-the-fly syntax checking. The fork I’m currently maintaining at <a href="https://github.com/davidmiller/lintnode">Github</a> contains some enhancements such as automatic initialization and JSLint options passed from Emacs that the original has yet to merge in. Given that JSLint frequently complains about things that you might like it to er, not complain about, the ability to change the options with the lintnode-jslint-excludes variable makes this far more useable.</p>
+<p>So:</p>
+<p>Install <a href="http://nodejs.org/">node.js</a> and <a href="http://npmjs.org/">npm</a> (The package manager for node)</p>
+<p>Get lintnode and the dependencies</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="bash" style="font-family: monospace;"><span style="color: rgb(194, 12, 185); font-weight: bold;">git clone</span> https:<span style="color: rgb(0, 0, 0); font-weight: bold;">//</span>github.com<span style="color: rgb(0, 0, 0); font-weight: bold;">/</span>davidmiller<span style="color: rgb(0, 0, 0); font-weight: bold;">/</span>lintnode.git
+<span style="color: rgb(122, 8, 116); font-weight: bold;">cd</span> lintnode
+npm <span style="color: rgb(194, 12, 185); font-weight: bold;">install</span> express connect-form haml underscore</pre></td></tr></tbody></table></div>
+
+<p>Then we need this in our .emacs:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(102, 204, 102);">(</span>add-to-<span style="color: rgb(177, 177, 0);">list</span> 'load-path <span style="color: rgb(255, 0, 0);">"~/path/to/lintnode"</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(102, 204, 102);">(</span>require 'flymake-jslint<span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">;; Make sure we can find the lintnode executable</span>
+<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> lintnode-location <span style="color: rgb(255, 0, 0);">"~/path/to/lintnode"</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">;; JSLint can be... opinionated</span>
+<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> lintnode-jslint-excludes <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">list</span> 'nomen 'undef 'plusplus 'onevar 'white<span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">;; Start the server when we first open a js file and start checking</span>
+<span style="color: rgb(102, 204, 102);">(</span>add-hook 'js-mode-hook
+          <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">lambda</span> <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(102, 204, 102);">)</span>
+            <span style="color: rgb(102, 204, 102);">(</span>lintnode-hook<span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span></pre></td></tr></tbody></table></div>
+
+<p>Syntax errors will now be given a red background without having to leave the comfort of Emacs.</p>
+<p>Even better, if we install the <a href="http://www.emacswiki.org/emacs/FlymakeCursor">Flymake Cursor</a> package, we get the error message in the minibuffer when the cursor is on a line with an error.</p>
+<div id="attachment_485" class="wp-caption aligncenter" style="width: 351px;"><a href="http://blog.deadpansincerity.com/wp-content/uploads/2011/05/modeline.png"><img src="modeline.png" alt="" title="modeline" class="size-full wp-image-485" height="153" width="341"></a><p class="wp-caption-text">Easy Mistake!</p></div>
+<p>Get the source from http://www.emacswiki.org/emacs/flymake-cursor.el and then add to your .emacs:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(102, 204, 102);">(</span>add-to-<span style="color: rgb(177, 177, 0);">list</span> 'load-path <span style="color: rgb(255, 0, 0);">"~/emacs/minor-modes"</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">;; Nice Flymake minibuffer messages</span>
+<span style="color: rgb(102, 204, 102);">(</span>require 'flymake-cursor<span style="color: rgb(102, 204, 102);">)</span></pre></td></tr></tbody></table></div>
+
+<p><b>Edit:</b></p>
+<p>As Jesse and Magnar point out in the comments, it’s probably a better idea to not exclude ‘undef from the jslint errors, but rather to declare global variables at the top of your .js file</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="javascript" style="font-family: monospace;"> <span style="color: rgb(0, 102, 0); font-style: italic;">/*global $ */</span></pre></td></tr></tbody></table></div>
+
+<p>This way you can let jslint know about other libraries you are using, but still get the checks for undefined variables in your own code.</p>
+<h2>Code folding</h2>
+<div id="attachment_486" class="wp-caption aligncenter" style="width: 484px;"><a href="http://blog.deadpansincerity.com/wp-content/uploads/2011/05/hideshow.png"><img src="hideshow.png" alt="" title="hideshow" class="size-full wp-image-486" height="144" width="474"></a><p class="wp-caption-text">Underscore outline</p></div>
+<p>Especially if you’re dealing with large projects, the ability to hide portions of code can be great for maintaining focus. Emacs comes with this built in, but you have to enable it, so returning to our .emacs:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(102, 204, 102);">(</span>add-hook 'js-mode-hook
+          <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">lambda</span> <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(102, 204, 102);">)</span>
+            <span style="color: rgb(128, 128, 128); font-style: italic;">;; Scan the file for nested code blocks</span>
+            <span style="color: rgb(102, 204, 102);">(</span>imenu-add-menubar-index<span style="color: rgb(102, 204, 102);">)</span>
+            <span style="color: rgb(128, 128, 128); font-style: italic;">;; Activate the folding mode</span>
+            <span style="color: rgb(102, 204, 102);">(</span>hs-minor-mode t<span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span></pre></td></tr></tbody></table></div>
+
+<p>This means that when your cursor is in the function…</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="javascript" style="font-family: monospace;"><span style="color: rgb(0, 0, 102); font-weight: bold;">var</span> Foo <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(204, 0, 0);">42</span><span style="color: rgb(51, 153, 51);">;</span>
+addFoo <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">function</span><span style="color: rgb(0, 153, 0);">(</span>num<span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(0, 153, 0);">{</span>
+    <span style="color: rgb(0, 102, 0); font-style: italic;">// Let's add the meaning of life to</span>
+    <span style="color: rgb(0, 102, 0); font-style: italic;">// our `num` - it'll be fun!</span>
+    <span style="color: rgb(0, 0, 102); font-weight: bold;">var</span> meaningful<span style="color: rgb(51, 153, 51);">;</span>
+    meaningful <span style="color: rgb(51, 153, 51);">=</span> num <span style="color: rgb(51, 153, 51);">+</span> Foo<span style="color: rgb(51, 153, 51);">;</span>
+<span style="color: rgb(0, 153, 0);">}</span><span style="color: rgb(51, 153, 51);">;</span></pre></td></tr></tbody></table></div>
+
+<p>… and you M-x hs-hide-block, the function turns into:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="javascript" style="font-family: monospace;">Var Foo <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(204, 0, 0);">42</span><span style="color: rgb(51, 153, 51);">;</span>
+addFoo <span style="color: rgb(51, 153, 51);">=</span> <span style="color: rgb(0, 0, 102); font-weight: bold;">function</span><span style="color: rgb(0, 153, 0);">(</span>num<span style="color: rgb(0, 153, 0);">)</span><span style="color: rgb(0, 153, 0);">{</span>...<span style="color: rgb(0, 153, 0);">}</span><span style="color: rgb(51, 153, 51);">;</span></pre></td></tr></tbody></table></div>
+
+<p>To my taste the default keybinding of C-c @ C-h to hide blocks is somewhat perverse, so I’d recommend this in your .emacs:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(128, 128, 128); font-style: italic;">;; Show-hide</span>
+<span style="color: rgb(102, 204, 102);">(</span>global-set-key <span style="color: rgb(102, 204, 102);">(</span>kbd <span style="color: rgb(255, 0, 0);">""</span><span style="color: rgb(102, 204, 102);">)</span> 'hs-show-block<span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(102, 204, 102);">(</span>global-set-key <span style="color: rgb(102, 204, 102);">(</span>kbd <span style="color: rgb(255, 0, 0);">""</span><span style="color: rgb(102, 204, 102);">)</span> 'hs-show-all<span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(102, 204, 102);">(</span>global-set-key <span style="color: rgb(102, 204, 102);">(</span>kbd <span style="color: rgb(255, 0, 0);">""</span><span style="color: rgb(102, 204, 102);">)</span> 'hs-hide-block<span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(102, 204, 102);">(</span>global-set-key <span style="color: rgb(102, 204, 102);">(</span>kbd <span style="color: rgb(255, 0, 0);">""</span><span style="color: rgb(102, 204, 102);">)</span> 'hs-hide-all<span style="color: rgb(102, 204, 102);">)</span></pre></td></tr></tbody></table></div>
+
+<p>YMMV.</p>
+<h2>Javascript Console</h2>
+<p>Having a REPL for the language you’re working with close to hand is basically required for me to enjoy working with it. Now that we’ve installed node.js, though, we can have us a Javascript console inside Emacs with <a href="http://js-comint-el.sourceforge.net/">js-comint</a>…</p>
+<p>Once you’ve grabbed the file, your .emacs should have:</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="lisp" style="font-family: monospace;"><span style="color: rgb(102, 204, 102);">(</span>add-to-<span style="color: rgb(177, 177, 0);">list</span> 'load-path <span style="color: rgb(255, 0, 0);">"~/path/to/js-comint"</span><span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(102, 204, 102);">(</span>require 'js-comint<span style="color: rgb(102, 204, 102);">)</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;">;; Use node as our repl</span>
+<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> inferior-js-program-command <span style="color: rgb(255, 0, 0);">"node"</span><span style="color: rgb(102, 204, 102);">)</span>
+&nbsp;
+<span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">setq</span> inferior-js-mode-hook
+      <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">lambda</span> <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(102, 204, 102);">)</span>
+        <span style="color: rgb(128, 128, 128); font-style: italic;">;; We like nice colors</span>
+        <span style="color: rgb(102, 204, 102);">(</span>ansi-color-for-comint-mode-on<span style="color: rgb(102, 204, 102);">)</span>
+        <span style="color: rgb(128, 128, 128); font-style: italic;">;; Deal with some prompt nonsense</span>
+        <span style="color: rgb(102, 204, 102);">(</span>add-to-<span style="color: rgb(177, 177, 0);">list</span> 'comint-preoutput-filter-functions
+                     <span style="color: rgb(102, 204, 102);">(</span><span style="color: rgb(177, 177, 0);">lambda</span> <span style="color: rgb(102, 204, 102);">(</span>output<span style="color: rgb(102, 204, 102);">)</span>
+                       <span style="color: rgb(102, 204, 102);">(</span>replace-regexp-in-string <span style="color: rgb(255, 0, 0);">".*1G<span style="color: rgb(0, 0, 153); font-weight: bold;">\.</span><span style="color: rgb(0, 0, 153); font-weight: bold;">\.</span><span style="color: rgb(0, 0, 153); font-weight: bold;">\.</span>.*5G"</span> <span style="color: rgb(255, 0, 0);">"..."</span>
+                     <span style="color: rgb(102, 204, 102);">(</span>replace-regexp-in-string <span style="color: rgb(255, 0, 0);">".*1G.*3G"</span> <span style="color: rgb(255, 0, 0);">"&amp;gt;"</span> output<span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span><span style="color: rgb(102, 204, 102);">)</span></pre></td></tr></tbody></table></div>
+
+<p>You can then run a Javascript REPL with M-x run-js and also send portions of files by selecting them and then running M-x send-region. Neat.</p>
+<h2>By way of conclusion</h2>
+<p>There are a few other tweaks that make my Javascripting just that little bit nicer, but they’re more personal Emacs setup than anything specific to Javascript. So, there you have it, the perfect Javascript editing environment.</p>
+<p>Love regards etc</p>
+
+								<p class="tags">Tags: <a href="http://blog.deadpansincerity.com/tag/editing/" rel="tag">editing</a>, <a href="http://blog.deadpansincerity.com/tag/emacs/" rel="tag">emacs</a>, <a href="http://blog.deadpansincerity.com/tag/flymake/" rel="tag">flymake</a>, <a href="http://blog.deadpansincerity.com/tag/javascript/" rel="tag">Javascript</a>, <a href="http://blog.deadpansincerity.com/tag/js/" rel="tag">js</a>, <a href="http://blog.deadpansincerity.com/tag/jslint/" rel="tag">jslint</a>, <a href="http://blog.deadpansincerity.com/tag/node/" rel="tag">node</a>, <a href="http://blog.deadpansincerity.com/tag/nodejs/" rel="tag">nodejs</a>, <a href="http://blog.deadpansincerity.com/tag/yasnippet/" rel="tag">yasnippet</a></p>
+				<p class="postmetadata alt">
+					<small>
+						This entry was posted
+												on Sunday, May 29th, 2011 at 6:21 pm						and is filed under <a href="http://blog.deadpansincerity.com/category/favourite-things/" title="View all posts in favourite things" rel="category tag">favourite things</a>, <a href="http://blog.deadpansincerity.com/category/technical/" title="View all posts in technical" rel="category tag">technical</a>.
+						You can follow any responses to this entry through the <a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/feed/">RSS 2.0</a> feed.
+
+													You can <a href="#respond">leave a response</a>, or <a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/trackback/" rel="trackback">trackback</a> from your own site.
+
+						
+					</small>
+				</p>
+
+		<div class="navigation">
+			<div class="alignleft">« <a href="http://blog.deadpansincerity.com/2011/05/announcing-pony-mode-a-django-editing-mode-for-emacs/" rel="prev">Announcing Pony Mode – a Django editing mode for Emacs</a></div>
+			<div class="alignright"><a href="http://blog.deadpansincerity.com/2011/06/mercurial-hook-to-ensure-issue-references-in-tracredmine/" rel="next">Mercurial Hook to ensure issue references in Trac/Redmine</a> »</div>
+		</div>
+
+
+			</div>
+		</div>
+
+	
+<!-- You can start editing here. -->
+
+	<h3 id="comments">37 Responses to “Setting up Emacs as a Javascript editing environment for Fun or Profit”</h3>
+
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+
+	<ol class="commentlist">
+			<li class="comment even thread-even depth-1" id="comment-472">
+				<div id="div-comment-472" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="fc2e9b0a5c1fef22ff1a378ebb4ee2d5" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn"><a href="http://blog-jonnay.tumblr.com/" rel="external nofollow" class="url">Jonathan Arkell</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-472">
+			May 31, 2011 at 8:18 pm</a>		</div>
+
+		<p>Thanks for this.  That setup for js-comint is going to be particularly handy.</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=472#respond" onclick='return addComment.moveForm("div-comment-472", "472", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-479">
+				<div id="div-comment-479" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="100ba42f218d0e0d42041b46fdc019e2" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn"><a href="http://www.cfr.org/" rel="external nofollow" class="url">Tom Davey</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-479">
+			June 3, 2011 at 5:29 am</a>		</div>
+
+		<p>Wow, awesome. What a great tutorial. You are a graceful and lucid writer. </p>
+<p>Curious: why not use Yegge’s js2-mode or the older Javascript major modes? </p>
+<p>Thanks again for this,<br>
+Tom Davey</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=479#respond" onclick='return addComment.moveForm("div-comment-479", "479", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-482">
+				<div id="div-comment-482" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="ad14d3e1658b22572438410074259891" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">david miller</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-482">
+			June 4, 2011 at 8:58 am</a>		</div>
+
+		<p>@Tom js2 has some great features, but I tend to use Emacs 23′s built in js-mode (The natural successor to the old espresso-mode)…<br>
+js2 never really got indentation right. only thing that’s even usable is the bouncing indentation setup, which overrides TAB &amp; means that I can’t then use default Yasnippet keys for expansion…<br>
+It’s also really, really big for an editing mode – not sure I really want a recursive-descent parser running every 3 seconds when I’m editing a js file on a remote server over ssh :)<br>
+I keep meaning to pull a bunch of the better smallish features out of it and bind them with hooks but haven’t gotten around to it</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=482#respond" onclick='return addComment.moveForm("div-comment-482", "482", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-528">
+				<div id="div-comment-528" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="4b352dbafb1792c956714dbc6838dc70" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">bob</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-528">
+			July 11, 2011 at 2:17 pm</a>		</div>
+
+		<p>Pleased with myself – finally set up most everything :)<br>
+Thanks for the guide. </p>
+<p>One thing though…</p>
+<p>If I’m wrapping a script in jquery’s “$(document).ready()” then lintnode, understandably, flags the error:<br>
+“$.” is not defined.<br>
+Fair enough… $ really hasn’t been defined yet. </p>
+<p>Is there a way that we can lintnode or flymake to not flag the error?</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=528#respond" onclick='return addComment.moveForm("div-comment-528", "528", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2 parent" id="comment-531">
+				<div id="div-comment-531" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="ad14d3e1658b22572438410074259891" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">david miller</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-531">
+			July 12, 2011 at 9:08 am</a>		</div>
+
+		<p>Yeah, that can come up a lot – if you’re using <a href="https://github.com/davidmiller/lintnode" rel="nofollow"> this</a> version of lintnode then you can pass the –exclude option to turn off specific JSLint warnings  [1] – so you’d want –exclude undef.</p>
+<p>You can set these from within Emacs – I use this in my ~/.emacs</p>
+<p>(setq lintnode-jslint-excludes (list ‘nomen ‘undef ‘plusplus ‘onevar ‘white))</p>
+<p>[1] <a href="http://www.jslint.com/lint.html#options" rel="nofollow">http://www.jslint.com/lint.html#options</a></p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=531#respond" onclick='return addComment.moveForm("div-comment-531", "531", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-3" id="comment-611">
+				<div id="div-comment-611" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="7c4453ccef88852995d6b191307aab27" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn"><a href="http://emacsrocks.com/" rel="external nofollow" class="url">Magnar</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-611">
+			December 1, 2011 at 7:41 pm</a>		</div>
+
+		<p>You definitely do not want to turn off warnings about undefined variables, since that is the most important part about using jslint.</p>
+<p>Unintended global variables is the biggest of headaches (especially in node, where it is an absolute disaster, see <a href="http://blog.meloncard.com/post/12175941935/how-one-missing-var-ruined-our-launch" rel="nofollow">http://blog.meloncard.com/post/12175941935/how-one-missing-var-ruined-our-launch</a>).</p>
+<p>Instead, you can declare $ at the top of your file: /*global $ */</p>
+<p>In js2-mode you can also declare them in the js2-global-externs list.</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=611#respond" onclick='return addComment.moveForm("div-comment-611", "611", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even depth-2 parent" id="comment-568">
+				<div id="div-comment-568" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="6857b384d1b409b6e3b1bb19973473bf" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Jesse Proulx</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-568">
+			September 1, 2011 at 5:35 pm</a>		</div>
+
+		<p>At the top of your JS files you can add a comment that JSLint will read for option switches and variables declared outside of your script, like so:</p>
+<p>/*jslint browser: true */<br>
+/*global $,console */</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=568#respond" onclick='return addComment.moveForm("div-comment-568", "568", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-3 parent" id="comment-614">
+				<div id="div-comment-614" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="ad14d3e1658b22572438410074259891" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">david miller</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-614">
+			December 9, 2011 at 1:04 pm</a>		</div>
+
+		<p>@jesse<br>
+@Magnar </p>
+<p>I didn’t know about the /*global */ directive – thanks!</p>
+<p>Edited the post to suggest this :)</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=614#respond" onclick='return addComment.moveForm("div-comment-614", "614", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-4" id="comment-1115">
+				<div id="div-comment-1115" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="4740618b62a89362864b44dfe7bdfdbd" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn"><a href="http://linmagazine.co.il/" rel="external nofollow" class="url">Uri</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-1115">
+			February 5, 2013 at 11:19 am</a>		</div>
+
+		<p>Both jslint and jshint support rc files you can keep in your projects, and thus avoid adding these indicators in source files. e.g. .jslintrc or .jshintrc</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=1115#respond" onclick='return addComment.moveForm("div-comment-1115", "1115", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1 parent" id="comment-553">
+				<div id="div-comment-553" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="46267d8749aedf3d4c28a0f39c7f7a2e" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">thorarinn</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-553">
+			August 3, 2011 at 3:05 pm</a>		</div>
+
+		<p>Pardon my ignorance, but I can’t seem to get the syntax-checking part to work properly: I’ve set up node as well as your fork of Lintnode, using the same settings in my .emacs, but when I run flymake-start-syntax-check on my js files, it’s all red. I’m using jQuery, but shouldn’t that be ok if I exclude undef in the .emacs setup like you did?</p>
+<p>This seems like such a cool addition to my js dev setup that I really want to make it click :)</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=553#respond" onclick='return addComment.moveForm("div-comment-553", "553", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-562">
+				<div id="div-comment-562" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="ad14d3e1658b22572438410074259891" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">david miller</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-562">
+			August 17, 2011 at 4:49 pm</a>		</div>
+
+		<p>Tough to debug via comments, if you drop the relevant sections of your .emacs into the <a href="https://github.com/davidmiller/lintnode/issues" rel="nofollow">github repo issues</a> I’ll take a look…</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=562#respond" onclick='return addComment.moveForm("div-comment-562", "562", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1" id="comment-554">
+				<div id="div-comment-554" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="46267d8749aedf3d4c28a0f39c7f7a2e" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">thorarinn</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-554">
+			August 3, 2011 at 3:06 pm</a>		</div>
+
+		<p>… and thanks a lot for the guide!</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=554#respond" onclick='return addComment.moveForm("div-comment-554", "554", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-559">
+				<div id="div-comment-559" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="5f76f3f48620a8a13e106769fafda6f3" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">tortuga</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-559">
+			August 14, 2011 at 8:13 pm</a>		</div>
+
+		<p>Great blog!<br>
+Really thanks for sharing this post! : )<br>
+You make me set up a great emacs js env. in few minutes!</p>
+<p>a small note: You didn’t yank your latest  “))”<br>
+to close your (setq inferior-js-mode-hook<br>
+and  &gt; has replaced the   &gt;</p>
+<p>Bye and still thanks,</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=559#respond" onclick='return addComment.moveForm("div-comment-559", "559", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-2" id="comment-560">
+				<div id="div-comment-560" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="5f76f3f48620a8a13e106769fafda6f3" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">tortuga</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-560">
+			August 14, 2011 at 8:14 pm</a>		</div>
+
+		<p>gt  instead of  &gt;<br>
+bye</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=560#respond" onclick='return addComment.moveForm("div-comment-560", "560", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-569">
+				<div id="div-comment-569" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="6857b384d1b409b6e3b1bb19973473bf" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Jesse Proulx</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-569">
+			September 1, 2011 at 5:51 pm</a>		</div>
+
+		<p>An alternative to lintnode is to run a standalone version of V8, like so: <a href="https://github.com/valeryz/jslint-v8" rel="nofollow">https://github.com/valeryz/jslint-v8</a></p>
+<p>This removes the overhead of running a node server application just for syntax checking, but still has the speed of the node.js internal engine.</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=569#respond" onclick='return addComment.moveForm("div-comment-569", "569", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-573">
+				<div id="div-comment-573" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="ad14d3e1658b22572438410074259891" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">david miller</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-573">
+			September 10, 2011 at 5:04 pm</a>		</div>
+
+		<p>That looks pretty good actually – thanks. </p>
+<p>Lintnode can be somewhat flaky, I’ll certainly check it out…</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=573#respond" onclick='return addComment.moveForm("div-comment-573", "573", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1 parent" id="comment-570">
+				<div id="div-comment-570" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="02cf53c77dd2f452269eb88084c8f45d" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Murph</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-570">
+			September 9, 2011 at 5:40 pm</a>		</div>
+
+		<p>Are you not bothered by the way js-mode indents inlined var declarations? eg</p>
+<p>var foo = {},<br>
+bar = ”,<br>
+baz,<br>
+bat;</p>
+<p>Kinda sucks… and not only that, but even if you manually space the variables, the syntax highlighting doesn’t recognize them.</p>
+<p>I found a bug report on the emacs list for this issue from April, but nothing else. I’m new to emacs and have no idea how to fix it, other than to switch to the modified js2-mode, which I don’t want to do.</p>
+<p>Great guide, though. I tried getting js-comint working with Node yesterday and failed. It was invoking the REPL but not sending the region. Going to follow the guide step by step and see if I can fix it. Thanks</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=570#respond" onclick='return addComment.moveForm("div-comment-570", "570", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-2 parent" id="comment-571">
+				<div id="div-comment-571" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="02cf53c77dd2f452269eb88084c8f45d" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Murph</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-571">
+			September 9, 2011 at 6:02 pm</a>		</div>
+
+		<p>So following up myself, when I set up the Node REPL, I get some functionality but it continues to be buggy. If I write a function and highlight it and run M-x js-send-region, I get ‘…’ printed from Node. Likewise if I place the pointer after that function and do M-x js-send-last-sexp. Does anyone else have these problems?</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=571#respond" onclick='return addComment.moveForm("div-comment-571", "571", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-3 parent" id="comment-572">
+				<div id="div-comment-572" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="02cf53c77dd2f452269eb88084c8f45d" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Murph</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-572">
+			September 9, 2011 at 6:12 pm</a>		</div>
+
+		<p>Testing it some more, it seems like js-send-region only works for me if the region is one line. Otherwise it seems the region does not get read into the Node REPL and the REPL prints out ‘…’ . Would love a fix; being able to use inferior shells is one of the major reasons I’m trying to switch to Emacs.</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=572#respond" onclick='return addComment.moveForm("div-comment-572", "572", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-4 parent" id="comment-575">
+				<div id="div-comment-575" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="b7fcef2f495e447cc7f754bc46c6de07" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">GraemeA</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-575">
+			September 14, 2011 at 8:42 am</a>		</div>
+
+		<p>I’ve been looking at this – my impression is that some multiline functions work Ok with js-send-region, but it seems that blank lines confuse it.</p>
+<p>Also, embedded tab character in the region causes problems.</p>
+<p>I’m working on overriding comint-input-sender to strip out the problematic characters (this seems to be the approved way of altering input to comint) – no success yet.</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=575#respond" onclick='return addComment.moveForm("div-comment-575", "575", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment even depth-5" id="comment-1067">
+				<div id="div-comment-1067" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="0fbfc443f55c841442839df3e5d1b76a" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Cheeso</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-1067">
+			April 17, 2012 at 12:42 am</a>		</div>
+
+		<p>To avoid the problem, You can just strip empty lines from the text before sending it to the shell.  This is done in jsshell, <a href="http://marmalade-repo.org/packages/jsshell-bundle" rel="nofollow">http://marmalade-repo.org/packages/jsshell-bundle</a> , which is like js-comint but runs only on Windows and requires cscript.exe.   This module has a defun called jsshell–squish-jscode  to accomplish this task.</p>
+
+		<div class="reply">
+					</div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-574">
+				<div id="div-comment-574" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="ad14d3e1658b22572438410074259891" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">david miller</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-574">
+			September 10, 2011 at 5:09 pm</a>		</div>
+
+		<p>&gt;&gt; other than to switch to the modified js2-mode, which I don’t want to do.<br>
+Quite :)</p>
+<p>Was planning on looking into modifying indent behaviour to fix a bug in another project of mine, once I’ve figured out how that works, I may see if I can pull some of those indentation/highlighting bits out as a mode-hook.</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=574#respond" onclick='return addComment.moveForm("div-comment-574", "574", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-609">
+				<div id="div-comment-609" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="61431b0c555f8ec15ecae083a452f518" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Luca Lenardi</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-609">
+			November 3, 2011 at 10:46 pm</a>		</div>
+
+		<p>Hi! And first of all thanks a lot for this wonderful (and useful) post.</p>
+<p>Just an open question: did you came up with something for in-emacs documentation? It could be something like pylookup for the emacs python environment. Probably the point is getting the documentation in the correct format. Any idea?</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=609#respond" onclick='return addComment.moveForm("div-comment-609", "609", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor odd alt depth-2" id="comment-616">
+				<div id="div-comment-616" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="ad14d3e1658b22572438410074259891" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">david miller</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-616">
+			December 9, 2011 at 1:20 pm</a>		</div>
+
+		<p>I don’t use anything for JS within Emacs – the nicest solution I know of is Eldoc mode <a href="http://www.emacswiki.org/emacs-fr/ElDoc" rel="nofollow">http://www.emacswiki.org/emacs-fr/ElDoc</a> which works pretty well for Lisp and Python… </p>
+<p>Don’t know of anything that does this at present though…</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=616#respond" onclick='return addComment.moveForm("div-comment-616", "616", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-610">
+				<div id="div-comment-610" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="0e1e219bccb126482d66fee5c19037b5" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Jan Gloser</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-610">
+			November 26, 2011 at 1:46 am</a>		</div>
+
+		<p>Thanks a lot, man.</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=610#respond" onclick='return addComment.moveForm("div-comment-610", "610", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-even depth-1 parent" id="comment-613">
+				<div id="div-comment-613" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="5f49f93b297673e3c15224186d322914" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">basementdad</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-613">
+			December 8, 2011 at 4:24 pm</a>		</div>
+
+		<p>Hi, in your $.get and $.post snippets are errors. They contain a “}” too much before the semicolon. Except that, thanks for the snippets. Awesome stuff.</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=613#respond" onclick='return addComment.moveForm("div-comment-613", "613", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment byuser comment-author-admin bypostauthor even depth-2" id="comment-615">
+				<div id="div-comment-615" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="ad14d3e1658b22572438410074259891" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">david miller</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-615">
+			December 9, 2011 at 1:11 pm</a>		</div>
+
+		<p>Thanks for the heads-up – in practice I tend not to use $.get &amp; $.post very often – updated the tarball to fix that though</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=615#respond" onclick='return addComment.moveForm("div-comment-615", "615", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1068">
+				<div id="div-comment-1068" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="e7e3b4065a7fd4a1e7cb210e73cb13ab" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Srinivas Y</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-1068">
+			April 27, 2012 at 10:01 am</a>		</div>
+
+		<p>how did you resolve the tab conflict in both autocomplete and yasnippet.</p>
+<p>autocomplete works fine but snippet doesn’t work. am i missing something here. When i type fun and hit tab it auto-completes to function rather than expanding the snippet. </p>
+<p>btw thanks for the superb article…helped me setting up my emacs.</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=1068#respond" onclick='return addComment.moveForm("div-comment-1068", "1068", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-1073">
+				<div id="div-comment-1073" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="e5ab5db401198485d4569199f9994a7d" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">wvxvw</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-1073">
+			June 5, 2012 at 11:13 pm</a>		</div>
+
+		<p>Something quick. This might be new feature, but you would want to update it, probably. I was following your explanation and found that I also must provide some values to lintnode-jslint-set otherwise node server will not launch from flymake-jslint.</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=1073#respond" onclick='return addComment.moveForm("div-comment-1073", "1073", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1080">
+				<div id="div-comment-1080" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="3d40eb333a177267e3456a06e5fd39ff" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">luquet</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-1080">
+			October 22, 2012 at 12:47 pm</a>		</div>
+
+		<p>thks</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=1080#respond" onclick='return addComment.moveForm("div-comment-1080", "1080", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="pingback even thread-even depth-1" id="comment-1113">
+				<div id="div-comment-1113" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://blowery.org/2012/11/16/linkage-october-18th-2012-to-november-16th-2012/" rel="external nofollow" class="url">Linkage: October 18th, 2012 to November 16th, 2012 | ben lowery</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-1113">
+			November 16, 2012 at 4:00 pm</a>		</div>
+
+		<p>[...] Setting up Emacs as a Javascript editing environment for Fun or Profit « Deadpan Sincerity [...]</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=1113#respond" onclick='return addComment.moveForm("div-comment-1113", "1113", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment odd alt thread-odd thread-alt depth-1" id="comment-1123">
+				<div id="div-comment-1123" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="b19e2e8fa3505b0c13f5f8aba31dab95" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">Marius</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-1123">
+			April 11, 2013 at 8:04 pm</a>		</div>
+
+		<p>Thanks for a great article!</p>
+<p>I wondered about one thing: Have you managed to combine comint and js-mode, to get auto-completion (and syntax highlighting) in the interpreter?</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=1123#respond" onclick='return addComment.moveForm("div-comment-1123", "1123", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1" id="comment-1125">
+				<div id="div-comment-1125" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="a3c7a5da904c5574884279714ac05445" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn"><a href="http://gagstan.com/gag/2343" rel="external nofollow" class="url">The greatest source of fun out there! The Kingdom of laughter!</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-1125">
+			April 21, 2013 at 2:46 pm</a>		</div>
+
+		<p>Fantastic web page. Many helpful tips here. I am submitting the idea to a few pals ans as well revealing around delicious. And definitely, thank you on your hard work!</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=1125#respond" onclick='return addComment.moveForm("div-comment-1125", "1125", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="pingback odd alt thread-odd thread-alt depth-1" id="comment-1137">
+				<div id="div-comment-1137" class="comment-body">
+				<div class="comment-author vcard">
+						<cite class="fn"><a href="http://www.godtic.com/blog/2012/12/26/configurando-emacs-como-el-mejor-entorno-de-desarrollo-para-javascript/" rel="external nofollow" class="url">Configurando Emacs como el mejor entorno de desarrollo para JavaScript | GodTIC</a></cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-1137">
+			July 14, 2013 at 8:27 pm</a>		</div>
+
+		<p>[...] todo esto tendremos Emacs listo para programar JavaScript. Por cierto, en esta web encontré gran parte de la información necesaria para escribir este [...]</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=1137#respond" onclick='return addComment.moveForm("div-comment-1137", "1137", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+		<li class="comment even thread-even depth-1 parent" id="comment-1152">
+				<div id="div-comment-1152" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="f0e95b502b0fa68024da4a5e40bebe23" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">ari</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-1152">
+			September 24, 2013 at 1:29 am</a>		</div>
+
+		<p>Thanks for the fantastic article.  I’ve been able to get some of it working but have run into some trouble getting flymake up.</p>
+<p>After following your directions, I try to visit a .js file and get the following:</p>
+<p>File mode specification error: (file-error “Searching for program” “no such file or directory” “node”)</p>
+<p>If I add the .nvm directory where node lives to my load-path I then get the following error:</p>
+<p>Flymake: Configuration error has occurred while running (curl –form source=&lt;pendingAccounts.test_flymake.js –form filename=pendingAccounts.test_flymake.js –proxy <a href="http://127.0.0.1:3003/jslint" rel="nofollow">http://127.0.0.1:3003/jslint</a>). Flymake will be switched OFF.</p>
+<p>(where pendingAccounts.test.js is the name of the file I'm trying to visit).</p>
+<p>For what it's worth, for the next moth or so we'll still be on node 0.6.21</p>
+<p>I've started tracking this down (in pauses at work – it'll take a bit) but I wanted to post where I'm at in case it helps someone or if the solution is known.</p>
+<p>And thanks again!  Viva emacs!</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=1152#respond" onclick='return addComment.moveForm("div-comment-1152", "1152", "respond", "454")'>Reply</a>		</div>
+				</div>
+		<ul class="children">
+		<li class="comment odd alt depth-2" id="comment-1153">
+				<div id="div-comment-1153" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="f0e95b502b0fa68024da4a5e40bebe23" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">ari</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-1153">
+			September 26, 2013 at 11:54 pm</a>		</div>
+
+		<p>Hmmm.  Maybe we need to start jslint first?</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=1153#respond" onclick='return addComment.moveForm("div-comment-1153", "1153", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+		<li class="comment even thread-odd thread-alt depth-1" id="comment-1154">
+				<div id="div-comment-1154" class="comment-body">
+				<div class="comment-author vcard">
+			<img alt="" src="f0e95b502b0fa68024da4a5e40bebe23" class="avatar avatar-32 photo" height="32" width="32">			<cite class="fn">ari</cite> <span class="says">says:</span>		</div>
+		
+		<div class="comment-meta commentmetadata"><a href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/comment-page-1/#comment-1154">
+			September 27, 2013 at 12:03 am</a>		</div>
+
+		<p>Oh snap.  I think it has to do with the ancient version of node we’re using here at the ol’ office: 0.6.21</p>
+<p>I’ma give up for a while and let the browser tell me when I typo..  We’re supposed to upgrade soon.</p>
+
+		<div class="reply">
+			<a class="comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/?replytocom=1154#respond" onclick='return addComment.moveForm("div-comment-1154", "1154", "respond", "454")'>Reply</a>		</div>
+				</div>
+		</li><!-- #comment-## -->
+	</ol>
+
+	<div class="navigation">
+		<div class="alignleft"></div>
+		<div class="alignright"></div>
+	</div>
+ 
+
+
+<div id="respond">
+
+<h3>Leave a Reply</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://blog.deadpansincerity.com/2011/05/setting-up-emacs-as-a-javascript-editing-environment-for-fun-and-profit/#respond" style="display: none;">Click here to cancel reply.</a></small>
+</div>
+
+
+<form action="http://blog.deadpansincerity.com/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input name="author" id="author" value="" size="22" tabindex="1" aria-required="true" type="text">
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input name="email" id="email" value="" size="22" tabindex="2" aria-required="true" type="text">
+<label for="email"><small>Mail (will not be published) (required)</small></label></p>
+
+<p><input name="url" id="url" value="" size="22" tabindex="3" type="text">
+<label for="url"><small>Website</small></label></p>
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" id="submit" tabindex="5" value="Submit Comment" type="submit">
+<input name="comment_post_ID" value="454" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p>
+<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="0c824df08d" type="hidden"></p>
+</form>
+
+</div>
+
+
+	
+	</div>
+
+
+<hr>
+<div id="footer" role="contentinfo">
+</div>
+</div>
+
+		
+
+
+
+
+
+</body>
+</html>

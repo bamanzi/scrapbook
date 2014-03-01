@@ -1,0 +1,128 @@
+/* ::::: http://edward.oconnor.cx/css/layout-1c.css ::::: */
+
+/* ::::: http://edward.oconnor.cx/css/layout-basic.css ::::: */
+
+body { margin: 0pt; padding: 0pt; }
+a { border-width: 0pt 0pt 1px; border-style: dotted; }
+@media print {
+  a { border-width: 0pt; }
+}
+h1 a, h2 a, h3 a.entry-title, #logo a { border-width: 0pt; }
+@media print {
+  #header, #footer { display: none; }
+}
+.hentry { clear: left; }
+@media print {
+  .aside { border: medium none; }
+}
+fieldset, form, h1, h2, h3, h4, h5, h6, html { margin: 0pt; padding: 0pt; }
+h1 { margin-top: 1.3125em; }
+.hentry .header .author { margin: 0pt; padding: 0pt; }
+h3 { clear: left; }
+.entry-rights p { padding: 0pt; margin: 0pt; }
+dl.entry-meta { clear: both; }
+dl.entry-meta dd { margin-bottom: 1.3125em; }
+dl.entry-meta dd ul, dl.entry-meta dd ol { margin: 0pt; padding: 0pt; list-style-type: none; }
+p, ul, ol { margin: 1.3125em 0pt; }
+ul, ol { padding: 0pt; }
+legend { padding: 0pt 0pt 0.65625em; }
+@media print {
+  p, pre { margin: 0.65625em 0pt; }
+  blockquote { margin: 0.65625em 2.5em; }
+}
+#header p, li { margin: 0pt; }
+dl { margin: 1.3125em 0pt; }
+dl dl, dd { margin: 0pt; }
+dl dt { margin: 0pt; }
+dl dd { margin: 0pt 0pt 0pt 2.5em; }
+blockquote, .source { margin: 0pt 3em; padding: 0pt; }
+#comments ol { margin: 0pt; padding: 0pt; }
+#comments ol li { min-height: 80px; margin: 0.65625em 0pt; padding: 0.65625em; border-width: 20px 1px 1px; border-style: solid; }
+#comments ol li blockquote, #comments ol li .source { margin: 0pt 0pt 0pt 100px; }
+#comments ol li blockquote p { margin: 0pt 0pt 1.3125em; }
+ol.hfeed, #comments ol { list-style-type: none; }
+.gravatar { float: left; margin: 0pt 18px 0pt 0pt; padding: 0pt; }
+a img { border: 0pt none; }
+#comments ol li { clear: left; }
+fieldset { border: 0pt none; }
+#comments fieldset { border: 1px solid transparent; }
+#comments form { clear: both; }
+#comments, #comments fieldset { margin: 1.3125em 0pt; }
+abbr { border: 0pt none; }
+pre { font-size: 1em; line-height: 1.3125; padding: 1.3125em 0.5em; overflow: auto; margin: 0pt; border-width: 0pt 0.5em; border-style: solid; }
+@media print {
+  pre { border-width: 0pt; }
+}
+ins, del { display: block; margin: 0.65625em 0pt; padding: 1.3125em 1em; clear: left; }
+@media print {
+  ins, del { border: medium none; }
+}
+input, textarea { border-width: 1px; border-style: solid; }
+input, textarea, #preview { padding: 1px 5px; margin: 3px 0.5em 3px 0pt; }
+textarea, #preview { width: 19em; float: left; max-height: 14em; }
+textarea { padding-top: 1.3125em; }
+#preview { overflow: auto; }
+.editor label { clear: both; display: block; margin-bottom: 0.65625em; }
+#comment-status { margin: -2.625em 0pt 0pt; }
+#comment-status img { visibility: hidden; }
+@media print {
+  #comments form { display: none; }
+}
+#content { max-width: 98%; width: 40em; margin: 0pt auto; }
+/* ::::: http://edward.oconnor.cx/css/typography.css ::::: */
+
+body { text-rendering: optimizelegibility; font-size: 131.25%; }
+@media print {
+  body { font-size: 75%; }
+}
+h1, h2 { font-size: 3em; line-height: 1.3125; }
+h3, #comments legend { font-size: 2.25em; line-height: 1.167; letter-spacing: 0.1ex; }
+h5, dl.entry-meta dt { font-size: 1.3125em; line-height: 2; letter-spacing: 0.3ex; }
+.hentry .footer, #header .nav, comments li.troll blockquote blockquote, input, address, #blockquote, dd, dl, dt, li, ol, p, pre, ul, textarea, #preview { font-size: 1em; line-height: 1.3125; }
+button, hr { font-size: 1em; line-height: 1; }
+#home-page .blog-meta, .hentry .header .author, .hentry .header address, .include-link, #header .nav form input, h1 code, h2 code, h3 code, h4 code, .hreview .figure .adr, .aside { font-size: 0.875em; line-height: 1.5; }
+ins, a { text-decoration: none; }
+pre.lyrics .ship, .chat q, #header .nav input, address, cite, dfn, em, var { font-style: normal; }
+.hentry .header address, .hentry .header .author, pre.lyrics, pre.verse, p.more, #header .nav, .art, .album, .book, .chat .emote, .chat .emote cite, .chat .emote q, .chat .context, .court-case, .movie, .poem, .publication, .ship, .tv-show, [lang]:not([lang^="en"]), ins em, del em { font-style: italic; }
+.entry-summary, #secondary, #header, h1, h2, h3, h4, h5, h6, .figure pre, .figure th, .figure td { text-align: left; }
+.hentry .footer, .include-link, #comment-status, p.more, .source { text-align: right; }
+.lettering, .personae dt, .finis, dl.entry-meta dt { font-variant: small-caps; }
+#home-page #header h1, body, input, textarea, #comments blockquote { font-family: "DejaVu Sans",Calibri,"Bitstream Vera Sans",Verdana,sans-serif; font-size-adjust: 0.55; }
+#logo, h1, h2, h3, h4, h5, h6, dl.entry-meta dt, #comments legend { font-family: "DejaVu Serif Condensed",Cambria,"Bitstream Vera",Georgia,"Times New Roman",serif; font-weight: bold; font-size-adjust: none; }
+code, kbd, pre, pre code, samp, .domain-name, .email-address, .hostname, .ip-adddress, .irc-channel, .media-type, .newsgroup, .nick, .pace, .pathname, .smilie, .ssid, .uri { font-family: "DejaVu Sans Mono",Consolas,"Bitstream Vera Sans Mono","Andale Mono","Lucida Console",Monaco,"Courier New",monospace; font-size-adjust: 0.55; }
+pre.verse, pre.lyrics, .personae dt, .finis, blockquote, q, .hentry .header .author, .hentry .header address { font-family: "DejaVu Serif",Cambria,"Bitstream Vera",Georgia,"Times New Roman",serif; font-size-adjust: none; }
+q { font-style: italic; }
+code, kbd, samp, .domain-name, .email-address, .hostname, .ip-adddress, .irc-channel, .media-type, .newsgroup, .nick, .pace, .pathname, .smilie, .uri { line-height: 1; }
+pre code, pre samp { line-height: 1.3125; }
+/* ::::: http://edward.oconnor.cx/css/color-dark-on-light.css ::::: */
+
+body { background-color: rgb(255, 255, 255); color: rgb(0, 0, 0); }
+h1 a, h2 a, h3 a.entry-title { color: rgb(0, 0, 0); }
+a { border-color: rgb(204, 204, 204); }
+a, pre.email a, pre.lettering a, pre.lyrics a, pre.verse a { color: rgb(153, 51, 51); }
+h1 a:hover, h2 a:hover, h3 a.entry-title:hover { color: rgb(153, 51, 51); }
+pre a { color: rgb(255, 255, 204); }
+.source { color: rgb(51, 51, 51); }
+em, strong { background-color: rgb(255, 250, 201); }
+ins, em ins, ins em { background-color: rgb(221, 255, 221); border-color: rgb(0, 170, 0); }
+pre, pre code { background-color: rgb(0, 0, 0); border-color: rgb(17, 17, 17); color: rgb(204, 204, 204); }
+#home-page .blog-meta, .hentry .header .author, .hentry .updated { color: rgb(153, 153, 153); }
+.entry-rights, .entry-summary { color: rgb(51, 51, 51); }
+code { color: inherit; }
+a code, pre code { color: inherit; }
+code.pathname { color: inherit; }
+pre code .keyword { color: rgb(70, 130, 180); }
+pre code .string { color: rgb(255, 250, 205); }
+pre.verse code .keyword, code .keyword { color: inherit; }
+pre.verse code .string, code .string { color: inherit; }
+#comments ol li { background-color: rgb(255, 255, 255); border-color: rgb(153, 153, 153); }
+#comments ol li.alternate { background-color: rgb(204, 204, 204); border-color: rgb(51, 51, 51); }
+#comments ol li.author-comment { background-color: rgb(204, 255, 204); border-color: rgb(51, 102, 51); }
+label, .legalese { color: rgb(51, 51, 51); }
+input, textarea { border-color: rgb(153, 153, 153); }
+#preview { background-color: rgb(238, 238, 238); }
+#comment-status {  }
+@media print {
+  * { background-color: inherit; border-color: transparent; color: rgb(0, 0, 0); }
+  .aside { border-color: rgb(0, 0, 0); }
+}

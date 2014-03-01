@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en-US" prefix="og: http://ogp.me/ns#" class=" js csstransforms3d csstransitions">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<div class="fit-vids-style">­</div>
+
+
+
+<meta charset="UTF-8">
+
+
+<link rel="pingback" href="http://pedrokroger.net/xmlrpc.php">
+
+<!-- This site is optimized with the Yoast WordPress SEO plugin v1.4.24 - http://yoast.com/wordpress/seo/ -->
+<title>Configuring Emacs as a Python IDE - Pedro Kroger</title>
+<link rel="canonical" href="http://pedrokroger.net/configuring-emacs-python-ide/">
+<meta property="og:locale" content="en_US">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Configuring Emacs as a Python IDE - Pedro Kroger">
+<meta property="og:description" content="Emacs is a huge beast. It can read email, play tetris, act as a file manager, display google maps, and even edit videos. It has support for many, many programming languages and has many features to programming. Unfortunately, emacs doesn’t have a full programming environment for python out-of-the-box. In this post I’ll show how to …">
+<meta property="og:url" content="http://pedrokroger.net/configuring-emacs-python-ide/">
+<meta property="og:site_name" content="Pedro Kroger">
+<meta property="article:section" content="Emacs">
+<meta property="article:section" content="Python">
+<meta property="article:published_time" content="2010-07-15T14:34:54+00:00">
+<meta property="article:modified_time" content="2014-01-23T19:05:40+00:00">
+<meta property="og:image" content="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-python-lambda-mode1.png">
+<meta property="og:image" content="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-ipyhon1.png">
+<meta property="og:image" content="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-python-code-completion-11.png">
+<meta property="og:image" content="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-python-code-completion-21.png">
+<meta property="og:image" content="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-python-documentation-11.png">
+<meta property="og:image" content="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-python-documentation-21.png">
+<meta property="og:image" content="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-python-documentation-31.png">
+<meta property="og:image" content="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-pep81.png">
+<meta property="og:image" content="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-pylint1.png">
+<meta property="og:image" content="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-python-nose1.png">
+<meta property="og:image" content="http://pedrokroger.net/wp-content/uploads/2010/07/debugging-ipdb-emacs1.png">
+<!-- / Yoast WordPress SEO plugin. -->
+
+<link rel="alternate" type="application/rss+xml" title="Pedro Kroger » Feed" href="http://feeds.feedburner.com/pedrokroger">
+<link rel="alternate" type="application/rss+xml" title="Pedro Kroger » Comments Feed" href="http://pedrokroger.net/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="Pedro Kroger » Configuring Emacs as a Python IDE Comments Feed" href="http://pedrokroger.net/configuring-emacs-python-ide/feed/">
+
+
+<!--[if IE]>
+<link rel='stylesheet' id='mailchimpSF_ie_css-css'  href='http://pedrokroger.net/wp-content/plugins/mailchimp/css/ie.css?ver=3.8.1' type='text/css' media='all' />
+<![endif]-->
+
+
+
+
+<!--[if lt IE 9]>
+<link href="http://pedrokroger.net/wp-content/themes/canvas/css/non-responsive.css" rel="stylesheet" type="text/css" />
+<style type="text/css">.col-full, #wrapper { width: 960px; max-width: 960px; } #inner-wrapper { padding: 0; } body.full-width #header, #nav-container, body.full-width #content, body.full-width #footer-widgets, body.full-width #footer { padding-left: 0; padding-right: 0; } body.fixed-mobile #top, body.fixed-mobile #header-container, body.fixed-mobile #footer-container, body.fixed-mobile #nav-container, body.fixed-mobile #footer-widgets-container { min-width: 960px; padding: 0 1em; } body.full-width #content { width: auto; padding: 0 1em;}</style>
+<![endif]-->
+
+
+
+
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://pedrokroger.net/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://pedrokroger.net/wp-includes/wlwmanifest.xml"> 
+<meta name="generator" content="WordPress 3.8.1">
+<link rel="shortlink" href="http://pedrokroger.net/?p=134">
+
+
+
+
+<!-- Theme version -->
+<meta name="generator" content="Canvas 5.5.1">
+<meta name="generator" content="WooFramework 5.5.5">
+
+<!-- Custom CSS Styling -->
+
+<!-- Options Panel Custom CSS -->
+
+
+
+<!-- Woo Shortcodes CSS -->
+
+
+<!-- Custom Stylesheet -->
+
+
+<!-- Google Webfonts -->
+
+
+<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+
+<!--  Mobile viewport scale -->
+<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" name="viewport">
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-134 single-format-standard chrome alt-style-default has-lightbox two-col-left width-960 two-col-left-960">
+<div id="wrapper">
+
+	<div id="inner-wrapper">
+
+	<h3 class="nav-toggle icon"><a href="#navigation">Navigation</a></h3>
+
+	<header id="header" class="col-full">
+
+		<div id="logo">
+<span class="site-title"><a href="http://pedrokroger.net/">Pedro Kroger</a></span>
+<span class="site-description">Programming, Music, and Bootstrapping</span>
+</div>
+
+	</header>
+	<nav id="navigation" class="col-full" role="navigation">
+
+	<section class="menus">
+
+		<a href="http://pedrokroger.net/" class="nav-home"><span>Home</span></a>
+
+	<h3>Main Menu</h3><ul id="main-nav" class="nav fl"><li id="menu-item-567" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-567"><a href="http://pedrokroger.net/">Home</a></li>
+<li id="menu-item-464" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-464"><a href="http://pedrokroger.net/compositions/">Compositions</a></li>
+<li id="menu-item-463" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-463"><a href="http://pedrokroger.net/publications/">Publications</a></li>
+<li id="menu-item-462" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-462"><a href="http://pedrokroger.net/python-quick-reference/">Python Quick Reference</a></li>
+<li id="menu-item-537" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-537"><a href="http://musicforgeeksandnerds.com/">Music for Geeks &amp; Nerds</a></li>
+<li id="menu-item-564" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-564"><a href="http://pedrokroger.net/about/">About</a></li>
+</ul>	<ul class="rss fr">
+						<li class="sub-rss"><a href="http://feeds.feedburner.com/pedrokroger"></a></li>
+			</ul>
+	
+	</section><!-- /.menus -->
+
+	<a href="#top" class="nav-close"><span>Return to Content</span></a>
+
+</nav>
+       
+    <!-- #content Starts -->
+	    <div id="content" class="col-full">
+    
+    	<div id="main-sidebar-container">    
+
+            <!-- #main Starts -->
+                        <section id="main">                       
+<article class="post-134 post type-post status-publish format-standard hentry category-emacs category-python">
+	<header>
+	<h1 class="title">Configuring Emacs as a Python IDE</h1>	</header>
+<div class="post-meta"><span class="small">By</span> <span class="author vcard"><span class="fn"><a href="http://pedrokroger.net/author/kroger/" title="Posts by Pedro Kroger" rel="author">Pedro Kroger</a></span></span> <span class="small">on</span> <abbr class="date time published" title="2010-07-15T14:34:54-0500">July 15, 2010</abbr>  <span class="small">in</span> <span class="categories"><a href="http://pedrokroger.net/category/emacs/" title="View all items in Emacs">Emacs</a>, <a href="http://pedrokroger.net/category/python/" title="View all items in Python">Python</a></span>  </div>
+	<section class="entry">
+<div class="woo-sc-box alert   ">This post is old and out-of-date. Most of the techniques here will not work with new Emacs versions. I’ll leave this post as a historical reference and in the hope it can still be useful to some people.</div>
+<div class="woo-sc-box note   ">There is a <a href="http://science.webhostinggeeks.com/konfigurisanje-emacs">translation</a> of this post in Serbo-Croatian language (thanks to Anja Skrba).</div>
+<p>Emacs is a huge beast. It can <a href="http://www.gnu.org/software/emacs/tour/">read email, play tetris, act as a file manager</a>, <a href="http://julien.danjou.info/blog/2010.html">display google maps</a>, and even <a href="http://1010.co.uk/gneve.html">edit videos</a>. It has support for many, many programming languages and has many <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Building.html">features</a> to <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Maintaining.html">programming</a>. Unfortunately, emacs doesn’t have a full programming environment for python out-of-the-box.</p>
+<p>In this post I’ll show how to configure emacs to write Python programs. We want to have not only basics things like syntax highlighting, but also code completion, easy access to Python’s documentation, ability to check for common mistakes, run unit tests, debugging, and a good interactive programming environment.</p>
+<p><!-- more --></p>
+<p>This setup is based on <a href="http://ipython.scipy.org/moin/Documentation">ipython</a> and <a href="https://launchpad.net/python-mode">python-mode</a>, but it’s also possible to use <a href="http://rope.sourceforge.net/">rope</a>, <a href="http://rope.sourceforge.net/ropemacs.html">ropemacs</a>, and the <a href="http://cx4a.org/software/auto-complete/">auto complete mode</a> as we can see <a href="http://www.saltycrane.com/blog/2010/05/my-emacs-python-environment/">here</a>. I didn’t have much luck with ropemacs in the past but I’ll try it again in the future.</p>
+<h2>Tools installation and configuration</h2>
+<p>First we should install the tools we need.</p>
+<ul>
+<li><strong>python-mode</strong>. There are two python modes; <code>python.el</code> and&nbsp;<code>python-mode.el</code>. Although <code>python.el</code> comes with GNU Emacs 22, I&nbsp;recommend you use <code>python-mode.el</code> since it has support for&nbsp;ipython. (There’s some <a href="http://mail.python.org/pipermail/python-mode/2009-January/000514.html">talk</a> about merging the two modes, but I&nbsp;don’t know it’s current status). Download and install&nbsp;<a href="https://launchpad.net/python-mode">python-mode</a> and put the following in your <code>.emacs</code>:
+<div><div id="highlighter_808399" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">(require 'python-mode)</code></div><div class="line number2 index1 alt1"><code class="plain plain">(add-to-list 'auto-mode-alist '("\.py\'" . python-mode))</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><strong>ipython</strong>. Ipython is a powerful python shell with advanced features and nice code completion. Check [ipython's&nbsp;website]for documentation and screencasts. If you’re using debian or ubuntu, install it with:
+<div><div id="highlighter_991800" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">sudo apt-get install ipython</code></div></div></td></tr></tbody></table></div></div>
+</li>
+</ul>
+<p>To configure ipython, edit <code>~/.ipython/ipy_user_conf.py</code> and add your options. I like to use <code>ipy_greedycompleter</code> so it will complete things like “foo”.TAB.</p>
+<ul>
+<li><strong>ipython.el</strong>. It allows you to use python-mode with ipython.&nbsp;Download and install <a href="http://ipython.scipy.org/dist/ipython.el">ipython.el</a> and put the following in your&nbsp;<code>.emacs</code>:
+<div><div id="highlighter_416060" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">(require 'ipython)</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><strong>lambda-mode</strong>. This is only for aesthetics. When you install&nbsp;<code>lambda-mode.el</code> it will display a lambda character (λ) when you type&nbsp;<code>lambda</code>:</li>
+</ul>
+<p><a rel="lightbox" href="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-python-lambda-mode1.png"><img class="alignnone size-full wp-image-147" alt="emacs-python-lambda-mode" src="emacs-python-lambda-mode1.png" height="23" width="302"></a></p>
+<p>The full name “lambda” will still be there, emacs is only displaying it differently. I like lambda-mode because it makes the code look shorter, neater, and cooler. Download and install <a href="http://dishevelled.net/elisp/lambda-mode.el">lambda-mode.el</a> and put the following in your <code>.emacs</code>:</p>
+<div><div id="highlighter_328913" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">(require 'lambda-mode)</code></div><div class="line number2 index1 alt1"><code class="plain plain">(add-hook 'python-mode-hook #'lambda-mode 1)</code></div></div></td></tr></tbody></table></div></div>
+<p>I had to set the variable <code>lambda-symbol</code> to the following, but YMMV:</p>
+<div><div id="highlighter_210209" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">(setq lambda-symbol (string (make-char 'greek-iso8859-7 107)))</code></div></div></td></tr></tbody></table></div></div>
+<p>There are other ways to have pretty lambdas and pretty symbols in emacs, check the <a href="http://www.emacswiki.org/emacs/PrettySymbol">Emacs Wiki</a> page to see which one you prefer.</p>
+<ul>
+<li><strong>anything</strong>. We will use <a href="http://www.emacswiki.org/emacs/Anything">anything</a> for code completion. Download and&nbsp;install <a href="http://www.emacswiki.org/emacs/download/anything.el">anything.el</a>, <a href="http://www.emacswiki.org/emacs/download/anything-ipython.el">anything-ipython.el</a>, and <a href="http://www.emacswiki.org/cgi-bin/emacs/download/anything-show-completion.el">anything-show-completion.el</a>, and add the following to your <code>.emacs</code>:
+<div><div id="highlighter_760849" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">(require 'anything) (require 'anything-ipython)</code></div><div class="line number2 index1 alt1"><code class="plain plain">(when (require 'anything-show-completion nil t)</code></div><div class="line number3 index2 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;</code><code class="plain plain">(use-anything-show-completion 'anything-ipython-complete</code></div><div class="line number4 index3 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">'(length initial-pattern)))</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><strong>Change comint keys</strong>. Comint is a minor-mode to deal with interpreter commands in an emacs buffer. It’s used by many modes, including ipython. Comint uses M-p and M-nto cycle backwards and forward through input history. I prefer to use the up and down arrow keys:
+<div><div id="highlighter_395706" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">(require 'comint)</code></div><div class="line number2 index1 alt1"><code class="plain plain">(define-key comint-mode-map (kbd "M-") 'comint-next-input)</code></div><div class="line number3 index2 alt2"><code class="plain plain">(define-key comint-mode-map (kbd "M-") 'comint-previous-input)</code></div><div class="line number4 index3 alt1"><code class="plain plain">(define-key comint-mode-map [down] 'comint-next-matching-input-from-input)</code></div><div class="line number5 index4 alt2"><code class="plain plain">(define-key comint-mode-map [up] 'comint-previous-matching-input-from-input)</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><strong>pylookup</strong>. We will use <a href="http://taesoo.org/Opensource/Pylookup">pylookup</a> to search python’s documentation within emacs. First install the python documentation locally. If you use debian or ubuntu you can install it with one command:
+<div><div id="highlighter_403386" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">apt-get install python2.6-doc</code></div></div></td></tr></tbody></table></div></div>
+</li>
+</ul>
+<p>If the python documentation is not available as a package for your system, download it from&nbsp;the <a href="http://docs.python.org/download.html">python website</a> and unzip it somewhere in your computer. Then download <a href="http://taesoo.org/Opensource/Pylookup">pylookup</a> and follow the instructions in the README file. Run pylookup.py to index the database by running:</p>
+<div><div id="highlighter_196813" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">./pylookup.py -u <a href="file:///usr/share/doc/python2.6-doc/html">file:///usr/share/doc/python2.6-doc/html</a></code></div></div></td></tr></tbody></table></div></div>
+<p>This command will generate a database file (<code>pylookup.db</code>). Naturally, you need to put the correct path for the python documentation. Next you need to add the following to your <code>.emacs</code>. Again, replace the values to match your system.</p>
+<div><div id="highlighter_136497" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">(autoload 'pylookup-lookup "pylookup")</code></div><div class="line number2 index1 alt1"><code class="plain plain">(autoload 'pylookup-update "pylookup")</code></div><div class="line number3 index2 alt2"><code class="plain plain">(setq pylookup-program "~/.emacs.d/pylookup/pylookup.py")</code></div><div class="line number4 index3 alt1"><code class="plain plain">(setq pylookup-db-file "~/.emacs.d/pylookup/pylookup.db")</code></div><div class="line number5 index4 alt2"><code class="plain plain">(global-set-key "C-ch" 'pylookup-lookup)</code></div></div></td></tr></tbody></table></div></div>
+<ul>
+<li><strong>autopair</strong>. A common feature in modern editors is to insert pairs of matching elements such as parenthesis, quotes, and braces. There are many ways to do this in emacs and installing <a href="http://autopair.googlecode.com/svn/trunk/autopair.el">autopair.el</a> is probably the easiest one. You can configure it to work in all modes and exclude the modes you don’t to have it activated. For instance, I have it configured to work globally, except in the lisp-mode, where I use <a href="http://www.emacswiki.org/emacs/ParEdit">paredit</a>:
+<div><div id="highlighter_677493" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">(autoload 'autopair-global-mode "autopair" nil t)</code></div><div class="line number2 index1 alt1"><code class="plain plain">(autopair-global-mode)</code></div><div class="line number3 index2 alt2"><code class="plain plain">(add-hook 'lisp-mode-hook #'(lambda () (setq autopair-dont-activate t)))</code></div></div></td></tr></tbody></table></div></div>
+</li>
+</ul>
+<p>I also have the following to in my <code>.emacs</code> to make autopair work with python single and triple quotes:</p>
+<div><div id="highlighter_577348" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">(add-hook 'python-mode-hook</code></div><div class="line number2 index1 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">#'(lambda () (push '(?' . ?')</code></div><div class="line number3 index2 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">(getf autopair-extra-pairs :code))</code></div><div class="line number4 index3 alt1"><code class="plain spaces">&nbsp;</code><code class="plain plain">(setq autopair-handle-action-fns</code></div><div class="line number5 index4 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">(list #'autopair-default-handle-action</code></div><div class="line number6 index5 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">#'autopair-python-triple-quote-action))))</code></div></div></td></tr></tbody></table></div></div>
+<ul>
+<li><strong>pep8 and pylint</strong>. These scripts are good to check your program for style errors and common mistakes. Install pylint and pep8:apt-get install pylint pep8</li>
+</ul>
+<p>and download and install <a href="http://gist.github.com/raw/302847/3331473995b55cc578e7d63dd82474749367c29c/python-pep8.el">python-pep8.el</a> and <a href="http://gist.github.com/raw/302848/60961ad1134e7bec5d836857fb67109245548dad/python-pylint.el">python-pylint.el</a> to integrate them with emacs and add the following to your <code>.emacs</code>:</p>
+<div><div id="highlighter_794652" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">(require 'python-pep8)</code></div><div class="line number2 index1 alt1"><code class="plain plain">(require 'python-pylint)</code></div></div></td></tr></tbody></table></div></div>
+<ul>
+<li><strong>delete trailing space</strong>. When you type the return key in python-mode it’ll&nbsp;invoke <code>py-newline-and-indent</code>. As the manual says, it “deletes the whitespace before&nbsp;point, inserts a newline, and takes an educated guess as to how you want the new line indented.” This is great and I love this feature, but one unintended consequence is that you may end up with blank lines with trailing spaces. Python doesn’t care, but the pep8 tool will complain. Put the following in your <code>.emacs</code> to delete the trailing spaces when saving a file:
+<div><div id="highlighter_28951" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">(add-hook 'before-save-hook 'delete-trailing-whitespace)</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><strong>ipdb package</strong>. The <a href="http://pypi.python.org/pypi/ipdb">ipdb package</a> makes it easy to set&nbsp;breakpoints in the ipdb debugger. It’s easy to install it using&nbsp;<code>easy_install</code> (duh :-P):
+<div><div id="highlighter_563341" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">easy_install ipdb</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><strong>reimport package</strong>. <a href="http://code.google.com/p/reimport/">reimport</a> is a replacement for Python’s&nbsp;<code>reload</code> function that reloads all modules and sub-modules&nbsp;consistently. It’s useful for long-running programs and&nbsp;interactive development. Install it with <code>easy_install</code>:
+<div><div id="highlighter_553716" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">sudo easy_install reimport</code></div></div></td></tr></tbody></table></div></div>
+</li>
+<li><strong>Templates.</strong> <a href="http://code.google.com/p/yasnippet/">Yasnippet</a> is a textmate-like templates for emacs.&nbsp;<a href="http://yasnippet.googlecode.com/files/yasnippet-bundle-0.6.1c.el.tgz">Download Yasnippet</a> and pet the following in your <code>.emacs</code>:
+<div><div id="highlighter_537619" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">(require 'yasnippet-bundle)</code></div><div class="line number2 index1 alt1"><code class="plain plain">(yas/initialize)</code></div><div class="line number3 index2 alt2"><code class="plain plain">(yas/load-directory "~/.emacs.d/my-snippets/")</code></div></div></td></tr></tbody></table></div></div>
+</li>
+</ul>
+<p>You can also install <a href="http://www.emacswiki.org/emacs/FlyMake">flymake</a> to check the syntax on the fly. I find&nbsp;it distracting, so I don’t use it.</p>
+<p>All right, these are the tools we need! Now we can go on and use these&nbsp;features.</p>
+<h2>Using python-mode</h2>
+<p>So now we’re ready to go. Open a python file, say <code>test.py</code>, type <code>C-c&nbsp;!</code> (<code>py-shell</code>) to start the python interpreter. Go back to <code>test.py&nbsp;</code>(with <code>C-x o</code>) and type <code>C-c C-c</code> (<code>pt-execute-buffer</code>) to send the&nbsp;whole buffer to the interpreter. In the following picture we can see&nbsp;how it works; it’s neat to be able to write code in one file and test&nbsp;it in the interpreter without the whole edit-compile-run-test cycle:</p>
+<p><a rel="lightbox" href="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-ipyhon1.png"><img class="alignnone size-full wp-image-139" alt="emacs-ipyhon" src="emacs-ipyhon1.png" height="386" width="540"></a></p>
+<h2>Code completion</h2>
+<p>Code completion is very useful and I find a must to be able to&nbsp;complete methods for both built-in and user-defined classes. For&nbsp;instance, if you type “os.path.” and <code>M-tab</code> emacs will show all&nbsp;methods available in os.path:</p>
+<p><a rel="lightbox" href="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-python-code-completion-11.png"><img class="alignnone size-full wp-image-142" alt="emacs-python-code-completion-1" src="emacs-python-code-completion-11.png" height="500" width="540"></a></p>
+<p>This completion method uses <a href="http://www.emacswiki.org/emacs/Anything">anything</a> and you can use <code>C-n</code> and <code>C-p&nbsp;</code>to navigate through the completion items (when you’re done type&nbsp;return). This works for used-defined methods and functions too:</p>
+<p><a rel="lightbox" href="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-python-code-completion-21.png"><img class="alignnone size-full wp-image-143" alt="emacs-python-code-completion-2" src="emacs-python-code-completion-21.png" height="481" width="540"></a></p>
+<h2>Access to documentation</h2>
+<p>Python has excellent&nbsp;documentation and it’s a huge bust in&nbsp;productivity to be able to access the documentation without leaving&nbsp;the editor. By using pylookup we can type <code>C-c h</code> to search any term&nbsp;in the python documentation. For instance, if we type&nbsp;”os.path.basename” and then <code>C-c h</code> to invoke the documentation,&nbsp;pylookup will open the documentation page for <code>os.path.basename</code> using&nbsp;the default browser configured in emacs (usually firefox):</p>
+<p><a rel="lightbox" href="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-python-documentation-11.png"><img class="alignnone size-full wp-image-144" alt="emacs-python-documentation-1" src="emacs-python-documentation-11.png" height="542" width="744"></a></p>
+<p>However, many people prefer to use <a href="http://emacs-w3m.namazu.org/">w3m inside emacs</a> to browse&nbsp;technical documentation. With w3m we can read the documentation&nbsp;without leaving emacs, making it easy to copy code snippets and not&nbsp;needing to switch to an external program (to much switching can kill&nbsp;focus). Here’s the same documentation in the above picture but using&nbsp;w3m this time:</p>
+<p><a rel="lightbox" href="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-python-documentation-21.png"><img class="alignnone size-full wp-image-145" alt="emacs-python-documentation-2" src="emacs-python-documentation-21.png" height="386" width="720"></a></p>
+<p>If you search for something with more than one possible&nbsp;answer,&nbsp;pylookup will ask you to choose among some possibilities, for&nbsp;instance, if I search for “print” I’ll get many options to choose&nbsp;from:</p>
+<p><a rel="lightbox" href="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-python-documentation-31.png"><img class="alignnone size-full wp-image-146" alt="emacs-python-documentation-3" src="emacs-python-documentation-31.png" height="291" width="684"></a></p>
+<h2>Code quality</h2>
+<p>The <a href="http://github.com/jcrocholl/pep8">pep8 script</a> checks if your code follow the <a href="http://www.python.org/dev/peps/pep-0008/">PEP8 style guide</a>.&nbsp;You can run it inside emacs by typing <code>M-x pep8</code>. The key M-x ` will&nbsp;jump to the place in the source code where the next error occurs:</p>
+<p><a rel="lightbox" href="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-pep81.png"><img class="alignnone size-full wp-image-140" alt="emacs-pep8" src="emacs-pep81.png" height="424" width="738"></a></p>
+<p>You can run pylint inside emacs with <code>M-x pylint</code>, it behaves in asimilar way to pep8:</p>
+<p><a rel="lightbox" href="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-pylint1.png"><img class="alignnone size-full wp-image-141" alt="emacs-pylint" src="emacs-pylint1.png" height="310" width="657"></a></p>
+<h2>Unit tests</h2>
+<p>It’s possible to run unit tests inside emacs if we use the&nbsp;<a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Compilation-Mode.html">compilation mode</a>. Type M-x compile and replace what will appear&nbsp;(most likely “make -k”) with your favorite python program to run unit&nbsp;tests. As with pep8 and pylint (they both use the compilation mode),&nbsp;you can type M-x to navigate to the next error. In the following&nbsp;screenshot we can see that<code>test_square_of_100_is_1000</code> is not&nbsp;correct:</p>
+<p><a rel="lightbox" href="http://pedrokroger.net/wp-content/uploads/2010/07/emacs-python-nose1.png"><img class="alignnone size-full wp-image-148" alt="emacs-python-nose" src="emacs-python-nose1.png" height="500" width="738"></a></p>
+<h2>Debugging</h2>
+<p>There are <a href="http://aymanh.com/python-debugging-techniques">many ways</a> to debug python code. I like to use ipdb,&nbsp;ipython’s debugger, because it has advanced features like code&nbsp;completion and syntax highlighting. With the <code>-pdb</code> flag Ipython will&nbsp;go directly to the debugger when an exception is raised, instead of&nbsp;just printing a stack trace. (you may want to edit&nbsp;<code>~/.ipython/ipythonrc</code> to make the change permanent).</p>
+<p>To set breakpoints in the regular python debugger, you need to add the&nbsp;following lines to your code:</p>
+<div><div id="highlighter_472211" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">import pdb; pdb.set_trace()</code></div></div></td></tr></tbody></table></div></div>
+<p>With the <a href="http://pypi.python.org/pypi/ipdb">ipdb package</a> we can set breakpoints in a similar way if&nbsp;using ipdb:</p>
+<div><div id="highlighter_441824" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">import ipdb; ipdb.set_trace()</code></div></div></td></tr></tbody></table></div></div>
+<p>I like to make emacs highlight the lines that set breakpoints, so I&nbsp;can easily visualize where the breakpoints are and remember to remove&nbsp;them from the code after I’m done debugging. I use the following code&nbsp;to accomplish that:</p>
+<div><div id="highlighter_447814" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">(defun annotate-pdb ()</code></div><div class="line number2 index1 alt1"><code class="plain spaces">&nbsp;&nbsp;</code><code class="plain plain">(interactive)</code></div><div class="line number3 index2 alt2"><code class="plain spaces">&nbsp;&nbsp;</code><code class="plain plain">(highlight-lines-matching-regexp "import pdb")</code></div><div class="line number4 index3 alt1"><code class="plain spaces">&nbsp;&nbsp;</code><code class="plain plain">(highlight-lines-matching-regexp "pdb.set_trace()"))</code></div><div class="line number5 index4 alt2">&nbsp;</div><div class="line number6 index5 alt1"><code class="plain plain">(add-hook 'python-mode-hook 'annotate-pdb)</code></div></div></td></tr></tbody></table></div></div>
+<p>Notice in the following screenshot how the line that sets the&nbsp;breakpoint is highlighted and the program execution stopped at the&nbsp;breakpoint. I used the command <strong>n</strong> (next) to advance to the next&nbsp;statement:</p>
+<p><a rel="lightbox" href="http://pedrokroger.net/wp-content/uploads/2010/07/debugging-ipdb-emacs1.png"><img class="alignnone size-full wp-image-138" alt="debugging-ipdb-emacs" src="debugging-ipdb-emacs1.png" height="493" width="720"></a></p>
+<p>I have a function to add breakpoints mapped to <code>C-c C-t</code> so I can set&nbsp;breakpoints easily:</p>
+<div><div id="highlighter_674788" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">(defun python-add-breakpoint ()</code></div><div class="line number2 index1 alt1"><code class="plain spaces">&nbsp;&nbsp;</code><code class="plain plain">(interactive)</code></div><div class="line number3 index2 alt2"><code class="plain spaces">&nbsp;&nbsp;</code><code class="plain plain">(py-newline-and-indent)</code></div><div class="line number4 index3 alt1"><code class="plain spaces">&nbsp;&nbsp;</code><code class="plain plain">(insert "import ipdb; ipdb.set_trace()")</code></div><div class="line number5 index4 alt2"><code class="plain spaces">&nbsp;&nbsp;</code><code class="plain plain">(highlight-lines-matching-regexp "^[ ]*import ipdb; ipdb.set_trace()"))</code></div><div class="line number6 index5 alt1">&nbsp;</div><div class="line number7 index6 alt2"><code class="plain plain">(define-key py-mode-map (kbd "C-c C-t") 'python-add-breakpoint)</code></div></div></td></tr></tbody></table></div></div>
+<h2>Templates</h2>
+<p>For textmate-like templates I use <a href="http://code.google.com/p/yasnippet/">Yasnippet</a> (be sure to watch its&nbsp;<a href="http://www.youtube.com/watch?v=76Ygeg9miao">demo</a>). With it you can define templates easily and quickly to fill&nbsp;things for you, like a new-style class with documentation and an&nbsp;<code>__init__</code> method. Python doesn’t have much boilerplate, but using&nbsp;yasnippet can help you to write code even faster.</p>
+<h2>Finding your way in the source code</h2>
+<p>Emacs allows us to navigate through source code by using <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Tags.html">tags</a>. When&nbsp;you see a function call you can jump to its definition with <code>M-.&nbsp;</code>(<code>find-tag</code>) and jump back with <code>M-*</code> (<code>pop-tag-mark</code>). Another useful&nbsp;command is <code>tags-query-replace</code>, to rename functions, methods, etc. To&nbsp;use it we need to generate a TAGS file. Emacs comes with the e<code>tags&nbsp;</code>command but I recommend <a href="http://ctags.sourceforge.net/">exuberant tags</a>:</p>
+<div><div id="highlighter_158113" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">sudo apt-get install exuberant-ctags</code></div></div></td></tr></tbody></table></div></div>
+<p>Usually I put the following code in a Makefile to generate a TAGS file&nbsp;for a project:</p>
+<div><div id="highlighter_457210" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">ctags-exuberant -e -R --languages=python --exclude="__init__.py"</code></div></div></td></tr></tbody></table></div></div>
+<h2>Dealing with multiple files</h2>
+<p>As we have seen, we can program in an interactive style in python-mode&nbsp;by sending the buffer to the python interpreter with <code>C-c C-c</code>. This&nbsp;works well for single file scripts and libraries, but no so well for&nbsp;more complex modules with sub-modules. For instance, if you open&nbsp;<code>file4.py</code> in the <code>mainmodule</code> bellow and execute it with <code>C-c C-c&nbsp;</code>it’ll fail if it depends on other submodules.</p>
+<div><div id="highlighter_722493" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div><div class="line number4 index3 alt1">4</div><div class="line number5 index4 alt2">5</div><div class="line number6 index5 alt1">6</div><div class="line number7 index6 alt2">7</div><div class="line number8 index7 alt1">8</div><div class="line number9 index8 alt2">9</div><div class="line number10 index9 alt1">10</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">mainmodule</code></div><div class="line number2 index1 alt1"><code class="plain plain">|--- __init__.py</code></div><div class="line number3 index2 alt2"><code class="plain plain">|--- submodule1</code></div><div class="line number4 index3 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">|--- __init__.py</code></div><div class="line number5 index4 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">|--- file1.py</code></div><div class="line number6 index5 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">|--- file2.py</code></div><div class="line number7 index6 alt2"><code class="plain plain">|--- submodule2</code></div><div class="line number8 index7 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">|--- __init__.py</code></div><div class="line number9 index8 alt2"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">|--- file3.py</code></div><div class="line number10 index9 alt1"><code class="plain spaces">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</code><code class="plain plain">|--- file4.py</code></div></div></td></tr></tbody></table></div></div>
+<p>We can define a master file using the <code>pt-master-file</code> variable;&nbsp;python-mode will execute the file set in the variable instead of the&nbsp;current buffer’s file. This variable can be set as a <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html#Specifying-File-Variables">file variable</a>,&nbsp;but I prefer not to pollute every single freaking .py file in a module&nbsp;with a file variable, so I use a <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Directory-Variables.html">directory variable</a> instead. Another&nbsp;advantage of using directory variables in this case is that each&nbsp;member of a team can set the <code>pt-master-file</code> to reflect their file&nbsp;system&nbsp;layout. Create a file called <code>.dir-locals.el</code> in <code>mainmodule</code>‘s&nbsp;root with the following content:</p>
+<div><div id="highlighter_706569" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">((python-mode . ((py-master-file . "/path/to/interactivetest.py")</code></div><div class="line number2 index1 alt1"><code class="plain spaces">&nbsp;</code><code class="plain plain">(tags-file-name . "/path/to/TAGS"))))</code></div></div></td></tr></tbody></table></div></div>
+<p>(Note that I also define the tags’ filename, so emacs’ll automatically&nbsp;load it when I read a python file located in this directory.)</p>
+<p>To make this work I use a master file called <code>interactivetest.py</code> in&nbsp;the module’s root to re-import the module with the <a href="http://code.google.com/p/reimport/">reimport</a> package.&nbsp;This file is not really part of the module and I don’t even check it&nbsp;under version control. Now, every time we hit <code>C-c C-c</code>, regardless of&nbsp;what file we are changing, python-mode will execute&nbsp;<code>interactivetest.py</code> again, and update the whole module. For instance,&nbsp;this is what I have in the <code>interactivetest.py</code> for my aristoxenus&nbsp;library:</p>
+<div><div id="highlighter_229166" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div><div class="line number3 index2 alt2">3</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">import reimport</code></div><div class="line number2 index1 alt1"><code class="plain plain">import aristoxenus</code></div><div class="line number3 index2 alt2"><code class="plain plain">reimport.reimport(aristoxenus)</code></div></div></td></tr></tbody></table></div></div>
+<p>But I may add a few things in the <code>interactivetest.py</code> file to make&nbsp;testing things interactively&nbsp;easier and to be able to save it between&nbsp;coding sessions:</p>
+<div><div id="highlighter_864064" class="syntaxhighlighter  plain"><table border="0" cellpadding="0" cellspacing="0"><tbody><tr><td class="gutter"><div class="line number1 index0 alt2">1</div><div class="line number2 index1 alt1">2</div></td><td class="code"><div class="container"><div class="line number1 index0 alt2"><code class="plain plain">from aristoxenus.parse import humdrum</code></div><div class="line number2 index1 alt1"><code class="plain plain">foo = humdrum.parse_string("**kernn4C")</code></div></div></td></tr></tbody></table></div></div>
+<p>Of course this is not a substitute for unit tests, but it’s nice to&nbsp;have <code>foo</code> available in the REPL so I can inspect it and quickly see&nbsp;what’s going on.</p>
+<h2>Conclusion</h2>
+<p>As you can see, we can have a nice programming environment for python&nbsp;in emacs. It may look like a lot of work, but in reality we only need&nbsp;to download and configure already existing packages. However, it would&nbsp;be nice to have a full-fledged development environment for python like&nbsp;<a href="http://common-lisp.net/project/slime/">slime</a>.</p>
+<p>I didn’t mention many things like the <a href="http://ecb.sourceforge.net/">emacs code browser</a>, the&nbsp;<a href="http://philjackson.github.com/magit/">git interface</a>, and the <a href="http://www.emacswiki.org/emacs/EmacsLispScreen">window session manager</a>. They are not&nbsp;particularly specific to python, but they contribute to turn emacs&nbsp;into a powerful tool for development. Maybe I’ll mention then in&nbsp;another post.</p>
+<p>I intend to make a screencast in the future showing these features, so&nbsp;stay tuned. Meanwhile, what do you use to develop python code?</p>
+<p><!-- Links --></p>
+	</section><!-- /.entry -->
+	<div class="fix"></div>
+<div class="post-utility"></div>
+</article><!-- /.post -->
+	        <div class="post-entries">
+	            <div class="nav-prev fl"><a href="http://pedrokroger.net/python-videos/" rel="prev"><i class="icon-angle-left"></i> Python Videos</a></div>
+	            <div class="nav-next fr"><a href="http://pedrokroger.net/python-quick-reference/" rel="next">The Python Quick Reference <i class="icon-angle-right"></i></a></div>
+	            <div class="fix"></div>
+	        </div>
+
+		
+<div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="index_1.html" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 10576px ! important;" title="Disqus" tabindex="0" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" scrolling="no" width="100%"></iframe></div>
+
+
+
+
+
+
+     
+            </section><!-- /#main -->
+                
+            <aside id="sidebar">
+<div id="text-3" class="widget widget_text"><h3>Modern Python Development with PyCharm</h3>			<div class="textwidget"><div class="pycharm-sidebar">Become more productive with the best Python IDE. <a href="http://pedrokroger.net/pycharm-book/">Learn more...</a></div>
+<br>
+<a href="http://pedrokroger.net/pycharm-book/">
+<img src="pycharm-book-cover.png">
+</a>
+
+</div>
+		</div><div id="woo_blogauthorinfo-2" class="widget widget_woo_blogauthorinfo"><h3>Dr. Pedro Kroger</h3><span class="left"><img alt="" src="4b4685779b80e8bd5ad33480055c2c17" class="avatar avatar-116 photo" height="116" width="116"></span>
+<p>I’m a programmer, classical composer, bootstrapper, and class clown who loves teaching and traveling. I have lived in Brazil, USA, Italy, and now I live in London, UK. <a href="http://pedrokroger.net/about/">more ...</a></p>
+<div class="fix"></div>
+</div>
+		<div id="woo_tabs-3" class="widget widget_woo_tabs"> 		<div id="tabs">
+
+            <ul class="wooTabs">
+                                <li class="popular"><a class="selected" href="#tab-pop">Popular</a></li>                <li class="latest"><a href="#tab-latest">Latest</a></li>                                            </ul>
+
+            <div class="clear"></div>
+
+            <div class="boxes box inside">
+
+	            
+                                <ul style="display: block;" id="tab-pop" class="list">
+                    	<li>
+				<a title="Choosing the Best Python IDE" href="http://pedrokroger.net/choosing-best-python-ide/">Choosing the Best Python IDE</a>
+		<span class="meta">February 5, 2014</span>
+		<div class="fix"></div>
+	</li>
+		<li>
+				<a title="How I Made $6,000 in 7 Days with my Ebook" href="http://pedrokroger.net/how-made-6000-7-days-with-ebook/">How I Made $6,000 in 7 Days with my Ebook</a>
+		<span class="meta">December 16, 2013</span>
+		<div class="fix"></div>
+	</li>
+		<li>
+				<a title="How to Get Started with PyCharm and Have a Productive Python IDE" href="http://pedrokroger.net/getting-started-pycharm-python-ide/">How to Get Started with PyCharm and Have a Productive Python IDE</a>
+		<span class="meta">January 28, 2014</span>
+		<div class="fix"></div>
+	</li>
+		<li>
+				<a title="Using Sphinx to Write Technical Books" href="http://pedrokroger.net/using-sphinx-write-technical-books/">Using Sphinx to Write Technical Books</a>
+		<span class="meta">October 10, 2012</span>
+		<div class="fix"></div>
+	</li>
+		<li style="border-bottom: 0px none;">
+				<a title="SICP in Python" href="http://pedrokroger.net/sicp-python/">SICP in Python</a>
+		<span class="meta">August 31, 2011</span>
+		<div class="fix"></div>
+	</li>
+	                </ul>
+                                                <ul style="display: none;" id="tab-latest" class="list">
+                    	<li>
+				<a title="Choosing the Best Python IDE" href="http://pedrokroger.net/choosing-best-python-ide/">Choosing the Best Python IDE</a>
+		<span class="meta">February 5, 2014</span>
+		<div class="fix"></div>
+	</li>
+		<li>
+				<a title="How to Get Started with PyCharm and Have a Productive Python IDE" href="http://pedrokroger.net/getting-started-pycharm-python-ide/">How to Get Started with PyCharm and Have a Productive Python IDE</a>
+		<span class="meta">January 28, 2014</span>
+		<div class="fix"></div>
+	</li>
+		<li>
+				<a title="How I Made $6,000 in 7 Days with my Ebook" href="http://pedrokroger.net/how-made-6000-7-days-with-ebook/">How I Made $6,000 in 7 Days with my Ebook</a>
+		<span class="meta">December 16, 2013</span>
+		<div class="fix"></div>
+	</li>
+		<li>
+				<a title="Converting MIDI Files to MP3 on the Mac OS" href="http://pedrokroger.net/converting-midi-files-mp3-mac-os/">Converting MIDI Files to MP3 on the Mac OS</a>
+		<span class="meta">August 12, 2013</span>
+		<div class="fix"></div>
+	</li>
+		<li style="border-bottom: 0px none;">
+				<a title="How Does Pascal’s Triangle Sound?" href="http://pedrokroger.net/pascals-triangle-sound/">How Does Pascal’s Triangle Sound?</a>
+		<span class="meta">May 7, 2013</span>
+		<div class="fix"></div>
+	</li>
+	                </ul>
+                                                
+            </div><!-- /.boxes -->
+
+        </div><!-- /wooTabs -->
+
+        </div>         <div id="text-2" class="widget widget_text"><h3>Music For Geeks And Nerds</h3>			<div class="textwidget">Learn more about music with Python and a little bit of math. <a href="http://musicforgeeksandnerds.com/">Get your copy</a>
+
+<a href="http://musicforgeeksandnerds.com/"><img src="cover.png"></a>
+
+</div>
+		</div></aside><!-- /#sidebar -->
+
+		</div><!-- /#main-sidebar-container -->         
+
+		
+    </div><!-- /#content -->
+	
+	<footer id="footer" class="col-full">
+
+		
+		<div id="copyright" class="col-left">
+			<p>© 2014 Pedro Kroger. All Rights Reserved. </p>		</div>
+
+		<div id="credit" class="col-right">
+			<p></p><p></p><p></p>		</div>
+
+	</footer>
+
+	
+	</div><!-- /#inner-wrapper -->
+
+</div><!-- /#wrapper -->
+
+<div class="fix"></div><!--/.fix-->
+
+
+
+
+
+<!-- Woo Tabs Widget -->
+
+
+
+
+
+
+
+
+</body>
+</html>

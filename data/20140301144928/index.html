@@ -1,0 +1,1052 @@
+<!DOCTYPE html>
+<html lang="en" class="js video no-maskImage placeholder">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta charset="utf-8">
+  <title>Emacs as a Python IDE - Jessica Hamrick</title>
+  <meta name="author" content="Jessica Hamrick">
+
+  
+  <meta name="description" content="As I mentioned in last week’s post, I am a heavy Emacs user and find
+it invaluable as an environment for my research. In particular, I use …">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,maximum-scale=1">
+
+  
+  <link rel="canonical" href="http://www.jesshamrick.com/2012/09/18/emacs-as-a-python-ide">
+  <link href="favicon.png" rel="icon">
+  
+  <link href="http://www.jesshamrick.com/atom.xml" rel="alternate" title="Jessica Hamrick" type="application/atom+xml">
+  
+  
+  
+  
+  <!--Fonts from Google"s Web font directory at http://google.com/webfonts -->
+
+
+
+
+
+
+
+
+  
+  
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body data-twttr-rendered="true">
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+  <li><a href="http://www.jesshamrick.com/atom.xml" rel="subscribe-rss" title="subscribe via RSS">RSS</a></li>
+  
+</ul>
+  
+<form action="http://google.com/search" method="get">
+  <fieldset role="search">
+    <input name="q" value="site:www.jesshamrick.com" type="hidden">
+    <input value="" class="search" name="q" results="0" placeholder="Search" type="text">
+  </fieldset>
+</form>
+  
+<fieldset class="mobile-nav"><select><option value="">Navigate…</option><option value="http://www.jesshamrick.com/">» Home</option><option value="http://www.jesshamrick.com/jessica-hamrick-cv.pdf">» CV</option><option value="http://www.jesshamrick.com/publications">» Publications</option><option value="http://www.jesshamrick.com/blog">» Blog</option><option value="http://www.jesshamrick.com/blog/archives">» Archives</option><option value="http://www.jesshamrick.com/atom.xml">» RSS</option></select></fieldset><ul class="main-navigation">
+  <li><a href="http://www.jesshamrick.com/">Home</a></li>
+  <li><a href="http://www.jesshamrick.com/jessica-hamrick-cv.pdf">CV</a></li>
+  <li><a href="http://www.jesshamrick.com/publications">Publications</a></li>
+  <li><a href="http://www.jesshamrick.com/blog">Blog</a></li>
+  <li><a href="http://www.jesshamrick.com/blog/archives">Archives</a></li>
+</ul>
+
+</nav>
+  <header role="banner"><!-- <hgroup> -->
+<!--   <h1><a href="">Emacs as a Python IDE</a></h1> -->
+<!-- </hgroup> -->
+
+</header>
+  <div id="main">
+    <div id="content">
+      <div>
+<article class="hentry" role="article">
+  
+  <header>
+    
+      <h1 class="entry-title">Emacs as a Python IDE</h1>
+    
+    
+      <p class="meta">
+        
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-18T00:00:00-07:00" pubdate="" data-updated="true">Sep 18<span>th</span>, 2012</time>
+        
+      </p>
+    
+  </header>
+
+
+<div class="entry-content"><p>As I mentioned in last week’s post, I am a heavy Emacs user and find
+it invaluable as an environment for my research. In particular, I use
+Emacs most for data analysis and modeling in Python, including an
+interface to IPython, which allows me to quickly switch between
+writing and running snippets of code. This proves to be a great
+replacement MATLAB, at least in my opinion.</p>
+
+<p>I frequently get requests for my .emacs configuration file or
+questions about how I have such an environment set up. As such, in
+this post I’m going to document how to set up your Emacs configuration
+to support rapid Python development, including the plugins I have
+installed and the keyboard shortcuts I use most often.</p>
+
+<p>Note that I am running GNU Emacs 23.3.1 (x86_64-pc-linux-gnu, GTK
+Version 2.24.5). I have never tried running it under OSX or Windows,
+so I can’t guarantee that these instructions will transfer, but you
+are welcome to try. If you run into any inconsistencies, feel free to
+send them to me and I will update this post accordingly!</p>
+
+<p>Also, if you are new to Emacs, please read my <a href="http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/">beginner’s guide</a>
+first, as I will be assuming familiarity with basic Emacs
+functionality and terminology. I will also assume you can at least
+read and understand LISP to some extent (but you don’t necessarily
+have to be able to write it).</p>
+
+<!-- more -->
+
+
+<h2>Overall Goal</h2>
+
+<p>In this tutorial, we’re going to be installing several Emacs plugins
+and modifying the Emacs initialization file, which is typically found
+at <code>~/.emacs</code>. Here are my .emacs and configuration files that it
+includes (note these are NOT the same as the actual plugins: I just
+like to divide my configuration so into bite-sized chunks so it’s
+easier to manage):</p>
+
+<ul>
+<li>.emacs</li>
+<li>ido-settings.el</li>
+<li>auto-complete-settings.el</li>
+<li>fill-column-indicator-settings.el</li>
+<li>python-settings.el</li>
+<li>ui-settings.el</li>
+<li>window-settings.el</li>
+<li>cursor-settings.el</li>
+<li>text-settings.el</li>
+<li>color-theme-settings.el</li>
+</ul>
+
+
+<p>You can find a zip of all these <code>.el</code> files (excluding the .emacs)
+<a href="http://www.jesshamrick.com/emacs-settings.zip">here</a>. EDIT: The most recent version of my emacs configuration
+(which might not necessarily be consistent with this post) can be
+found <a href="https://github.com/jhamrick/emacs">here</a>.</p>
+
+<p>If you choose to install these configuration files, place the .emacs
+in the root of your home directory (<code>~/.emacs</code>) and put the other
+files in <code>~/.emacs.d/settings</code>.</p>
+
+<p>A note about installing plugins: I’ve found that installing plugins
+from the Ubuntu repositories to be a bad idea because different
+versions don’t always play nicely with one another. It’s better to
+install the most recent version from source, and that’s what I’ve done
+for this tutorial. If you download and install the plugin versions (as
+I’ve indicated via the directories that I install them into), this
+<em>should</em> all work. Note that you may have to actually compile some of
+the plugins as well (if there’s a Makefile, run <code>make; sudo make
+install</code> and if there’s a setup.py file, run <code>sudo python setup.py
+install</code>. If there’s both, run the Makefile first and then run the
+Python setup).</p>
+
+<p>Here is the list of plugins we’ll be going through/installing:</p>
+
+<ul>
+<li><a href="http://emacswiki.org/emacs/InteractivelyDoThings">Interactively Do Things</a> (included by default)</li>
+<li><a href="http://emacswiki.org/emacs/AutoComplete">Auto-complete</a> (version 1.3.1)</li>
+<li><a href="http://www.emacswiki.org/FillColumnIndicator">Fill column indicator</a> (version 1.83)</li>
+<li><a href="http://ipython.org/">IPython</a> (version 0.14)</li>
+<li><a href="https://launchpad.net/python-mode">Python mode</a> (version 6.0.11)</li>
+<li><a href="http://pymacs.progiciels-bpi.ca/pymacs.html">Pymacs</a> (version 0.25)</li>
+<li><a href="http://rope.sourceforge.net/ropemacs.html">Ropemacs</a> (version 0.7)</li>
+<li><a href="http://www.emacswiki.org/cgi-bin/wiki/highlight-current-line.el">Highlight current line</a> (version 0.57)</li>
+<li><a href="http://download.savannah.gnu.org/releases/color-theme/">Color theme</a> (version 6.6.0)</li>
+</ul>
+
+
+<h2>Non-Python Environment</h2>
+
+<p>There are several plugins that I use which aren’t related to Python
+coding, but are nonetheless very valuable: <code>ido-mode</code> (i.e.,
+“Interactively Do Things”), general auto-completion, and the fill
+column indicator.</p>
+
+<h3>Interactively Do Things</h3>
+
+<p><a href="http://emacswiki.org/emacs/InteractivelyDoThings">“Interactively Do Things”</a> (a.k.a. ido) is a plugin that should
+be included in Emacs by default; however, it is not typically enabled
+by default. You can enable it by running <code>M-x ido-mode</code> in Emacs, or
+by adding the following lines to your .emacs customization file:</p>
+
+<figure class="code"><figcaption><span>Interactively Do Things</span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+</pre></td><td class="code"><pre><code class="scheme"><span class="line"><span class="p">(</span><span class="nf">require</span> <span class="ss">'ido</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">ido-mode</span> <span class="nv">t</span><span class="p">)</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>Ido is handy because it makes switching between buffers,
+opening/closing files, etc., extremely easy to do. Here’s a few
+screenshots of what it looks like to switch buffers; notice that it
+lists in the minibuffer all the different buffers you could switch to:</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/ido-switch-buffers.png"><img src="ido-switch-buffers.png" alt=""></a></p>
+
+<p>The *scratch* buffer is bolded, which means it’s the default. Let’s
+say I want to switch to *Messages*, though. As I start typing the
+name, the list of buffers in the minibuffer is updated to show only
+those that match what you’re typing (filtering) by:</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/ido-switch-buffers-messages.png"><img src="ido-switch-buffers-messages.png" alt=""></a></p>
+
+<p>I could, at this point, simply press enter and it would switch to the
+*Messages* buffer. You get similar functionality when searching for
+files, killing buffers, etc. Saves a lot of time, not having to
+remember buffer names exactly and not having to fully type them out!</p>
+
+<p>There’s a lot more to ido that I’m not going to go into; I encourage
+you to read through the documentation and find out more about it.</p>
+
+<h3>Auto Complete</h3>
+
+<p><a href="http://emacswiki.org/emacs/AutoComplete">Auto complete</a> is another handy plugin which keeps track of
+recent things you’ve typed and will offer to auto complete them for
+you. Let’s say I’m editing a python file:</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/auto-complete-1.png"><img src="auto-complete-1.png" alt=""></a></p>
+
+<p>And now I want to print out one of the arrays I just created. As I
+start to type, a list pops up with suggestions:</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/auto-complete-2.png"><img src="auto-complete-2.png" alt=""></a></p>
+
+<p>I can use the arrow keys to highlight the selection I want and press
+enter to choose it.</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/auto-complete-3.png"><img src="auto-complete-3.png" alt=""></a></p>
+
+<p>The variable name is completed and I don’t have to type the rest,
+similar to the auto-completion behavior you’d see in Eclipse or
+another popular IDE. This is useful even if you don’t have competing
+variable names — if you have particularly long names, auto-complete
+will remember them, too, and you will only need to type the first few
+characters.</p>
+
+<p>To enable auto complete, <a href="http://cx4a.org/software/auto-complete/#Latest_Stable">download it</a>, install the files into
+<code>~/.emacs.d/auto-complete-1.3.1/</code>, and add the following lines to your
+.emacs:</p>
+
+<figure class="code"><figcaption><span>Auto Complete</span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+</pre></td><td class="code"><pre><code class="scheme"><span class="line"><span class="p">(</span><span class="nf">add-to-list</span> <span class="ss">'load-path</span> <span class="s">"~/.emacs.d/auto-complete-1.3.1"</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">require</span> <span class="ss">'auto-complete</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">add-to-list</span> <span class="ss">'ac-dictionary-directories</span> <span class="s">"~/.emacs.d/ac-dict"</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">require</span> <span class="ss">'auto-complete-config</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">ac-config-default</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">global-auto-complete-mode</span> <span class="nv">t</span><span class="p">)</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<h3>Fill-Column Indicator</h3>
+
+<p>It is good coding etiquette to keep lines short (e.g., no longer than
+72 characters — this is because some people use 80 character
+terminals, and constantly scrolling to the left/right is very
+annoying!). It’s furthermore just nice coding style to have lines a
+consistent length.</p>
+
+<p>To let myself know when I’m running over line length, I have the
+<a href="http://www.emacswiki.org/FillColumnIndicator">fill column indicator</a> plugin installed. This draws a line on the
+right side of the screen, indicating the “fill column” (which is just
+another way of saying “the ideal maximum line length”). If my text
+runs past this line, I know I need to do some formatting to make it
+span multiple lines (if I’m just writing text, I will use <code>M-q</code> to
+wrap it).</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/fci-mode.png"><img src="fci-mode.png" alt=""></a></p>
+
+<p>To enable this plugin, <a href="http://www.emacswiki.org/emacs/fill-column-indicator.el">download it</a> and install the file in the
+<code>~/.emacs.d/fill-column-indicator-1.83/</code> directory, then add the
+following to your .emacs:</p>
+
+<figure class="code"><figcaption><span>Fill Column Indicator</span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+</pre></td><td class="code"><pre><code class="scheme"><span class="line"><span class="p">(</span><span class="nf">add-to-list</span> <span class="ss">'load-path</span> <span class="s">"~/.emacs.d/fill-column-indicator-1.83"</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">require</span> <span class="ss">'fill-column-indicator</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">define-globalized-minor-mode</span>
+</span><span class="line"> <span class="nv">global-fci-mode</span> <span class="nv">fci-mode</span> <span class="p">(</span><span class="k">lambda </span><span class="p">()</span> <span class="p">(</span><span class="nf">fci-mode</span> <span class="mi">1</span><span class="p">)))</span>
+</span><span class="line"><span class="p">(</span><span class="nf">global-fci-mode</span> <span class="nv">t</span><span class="p">)</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<h2>Python Environment</h2>
+
+<p>Ok, moving on to the actual Python configuration now! First off,
+you’ll (of course) need to have Python installed. I’m currently
+running 2.7. You’ll also want to install <a href="http://ipython.org/">IPython</a> and I recommend
+you avoid the version in the Ubuntu repositories because it’s out of
+date. You can download a newer version <a href="http://ipython.org/download.html">here</a>; I am currently
+running a development version of 0.14.</p>
+
+<p>Second, you’ll need to actually <a href="https://launchpad.net/python-mode">download</a> the <code>python-mode</code>
+plugin and install the files into
+<code>~/.emacs.d/python-mode-6.0.11/</code>. Add the following to your .emacs:</p>
+
+<figure class="code"><figcaption><span>Python</span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+</pre></td><td class="code"><pre><code class="scheme"><span class="line"><span class="c1">; python-mode</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">py-install-directory</span> <span class="s">"~/.emacs.d/python-mode-6.0.11"</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">add-to-list</span> <span class="ss">'load-path</span> <span class="nv">py-install-directory</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">require</span> <span class="ss">'python-mode</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; use IPython</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq-default</span> <span class="nv">py-shell-name</span> <span class="s">"ipython"</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq-default</span> <span class="nv">py-which-bufname</span> <span class="s">"IPython"</span><span class="p">)</span>
+</span><span class="line"><span class="c1">; use the wx backend, for both mayavi and matplotlib</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">py-python-command-args</span>
+</span><span class="line">  <span class="o">'</span><span class="p">(</span><span class="s">"--gui=wx"</span> <span class="s">"--pylab=wx"</span> <span class="s">"-colors"</span> <span class="s">"Linux"</span><span class="p">))</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">py-force-py-shell-name-p</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; switch to the interpreter after executing code</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">py-shell-switch-buffers-on-execute-p</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">py-switch-buffers-on-execute-p</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="c1">; don't split windows</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">py-split-windows-on-execute-p</span> <span class="nv">nil</span><span class="p">)</span>
+</span><span class="line"><span class="c1">; try to automagically figure out indentation</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">py-smart-indentation</span> <span class="nv">t</span><span class="p">)</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>Now open up a Python file and hit <code>C-c !</code>. Another window will be
+created, and in it should be an IPython interpreter:</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/ipython1.png"><img src="ipython1.png" alt=""></a></p>
+
+<p>(I’m not entirely sure what’s up with the multiple <code>In</code> prompts at the
+beginning, but it doesn’t seem to matter so I haven’t bothered to
+investigate it as of yet.)</p>
+
+<p>Not only can you run IPython inside of Emacs, but you can actually
+send code from the file you’re editing to the interpreter. To evaluate
+a snippet of code, first select a region:</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/ipython-region.png"><img src="ipython-region.png" alt=""></a></p>
+
+<p>Then hit <code>C-c |</code> to send it to IPython:</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/ipython-evaluate-region.png"><img src="ipython-evaluate-region.png" alt=""></a></p>
+
+<p>Now that the code’s been executed, you can refer to it in the IPython
+environment:</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/ipython-local-environment.png"><img src="ipython-local-environment.png" alt=""></a></p>
+
+<p>You can also send an entire buffer at once with <code>C-c C-c</code>:</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/ipython-evaluate-buffer.png"><img src="ipython-evaluate-buffer.png" alt=""></a></p>
+
+<p><code>python-mode</code> also offers integration with IPython for tab
+completion. So, if you can’t quite remember the name of a function,
+just type what you can think of into the interpreter and press
+TAB. For example, if I type <code>np.array</code> and then TAB, a new buffer is
+created and shows the possible completions:</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/ipython-completions.png"><img src="ipython-completions.png" alt=""></a></p>
+
+<p>I actually dislike this behavior, however: my coding style is to have
+two windows open at once and to rapidly switch between them with <code>C-c
+o</code>. To have Emacs open a second window (or use an existing second
+window) and to maintain focus in the IPython interpreter, I’ve
+commented out the following lines in the <code>ipython-complete</code> function
+of <code>~/.emacs.d/python-mode-6.0.11/python-mode.el</code>:</p>
+
+<figure class="code"><figcaption><span></span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="scheme"><span class="line"><span class="p">(</span><span class="nf">with-output-to-temp-buffer</span> <span class="s">"*IPython Completions*"</span>
+</span><span class="line"> <span class="p">(</span><span class="nf">display-completion-list</span>
+</span><span class="line"> <span class="p">(</span><span class="nf">all-completions</span> <span class="nv">pattern</span> <span class="nv">completions</span><span class="p">)))</span>
+</span><span class="line"><span class="c1">;; (set-buffer "*IPython Completions*")</span>
+</span><span class="line"><span class="c1">;; (switch-to-buffer "*IPython Completions*")</span>
+</span><span class="line"><span class="c1">;; (goto-char (point-min))</span>
+</span><span class="line"><span class="c1">;; (when</span>
+</span><span class="line"><span class="c1">;;  (search-forward (car (all-completions pattern completions)))</span>
+</span><span class="line"><span class="c1">;;  (forward-word -1)</span>
+</span><span class="line"><span class="c1">;;  (delete-other-windows)</span>
+</span><span class="line"><span class="c1">;;  (word-at-point))</span>
+</span><span class="line"><span class="p">)</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>This leads to behavior that instead looks like this:</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/ipython-better-completions.png"><img src="ipython-better-completions.png" alt=""></a></p>
+
+<h3>Pymacs and ropemacs</h3>
+
+<p>Another handy set of plugins are <a href="http://pymacs.progiciels-bpi.ca/pymacs.html">Pymacs</a> and <a href="http://rope.sourceforge.net/ropemacs.html">ropemacs</a>. To
+be honest, I don’t use them as much as I should — I’m hoping this
+post will re-familiarize me with the basic commands and I’ll start
+using them more!</p>
+
+<p>Anyway, you probably don’t really need to worry about what Pymacs is:
+it’s an interface between Python and Emacs LISP, but we won’t be
+directly using that. What it’s necessary for is rope, which is a
+non-Emacs-specific Python refactoring library. Ropemacs is just the
+Emacs plugin for rope.</p>
+
+<p>To install, first install rope itself:</p>
+
+<p><code>sudo aptitude install python-rope</code></p>
+
+<p>Now download the <a href="https://github.com/pinard/Pymacs/tree/v0.25">Pymacs code</a> and install it into
+<code>~/.emacs.d/pymacs-0.25/</code>. Download the <a href="https://bitbucket.org/agr/ropemacs">ropemacs code</a> and
+install it into <code>~/.emacs.d/ropemacs-0.7/</code>. Add the following to your
+.emacs:</p>
+
+<figure class="code"><figcaption><span>Pymacs and Ropemacs</span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+</pre></td><td class="code"><pre><code class="scheme"><span class="line"><span class="c1">; pymacs</span>
+</span><span class="line"><span class="p">(</span><span class="nf">add-to-list</span> <span class="ss">'load-path</span> <span class="s">"~/.emacs.d/pymacs-0.25"</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">autoload</span> <span class="ss">'pymacs-apply</span> <span class="s">"pymacs"</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">autoload</span> <span class="ss">'pymacs-call</span> <span class="s">"pymacs"</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">autoload</span> <span class="ss">'pymacs-eval</span> <span class="s">"pymacs"</span> <span class="nv">nil</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">autoload</span> <span class="ss">'pymacs-exec</span> <span class="s">"pymacs"</span> <span class="nv">nil</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">autoload</span> <span class="ss">'pymacs-load</span> <span class="s">"pymacs"</span> <span class="nv">nil</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">autoload</span> <span class="ss">'pymacs-autoload</span> <span class="s">"pymacs"</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; ropemacs</span>
+</span><span class="line"><span class="p">(</span><span class="nf">require</span> <span class="ss">'pymacs</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">pymacs-load</span> <span class="s">"ropemacs"</span> <span class="s">"rope-"</span><span class="p">)</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+
+<p>There’s a lot that you can do with ropemacs — if you’re interested in
+finding out more, read the README that’s included in the source — but
+here’s a taste to get started. The first time you run a ropemacs
+command in an instance of Emacs, you will be prompted to specify your
+rope project folder. If you only have one folder for your project,
+just select that; if you have a whole module, choose the root module
+directory.</p>
+
+<p>Ok, first, better autocompletion: where auto-complete will only keep
+track of what you have recently typed, ropemacs can actually look up
+method and variable names from a module. Use <code>M-/</code> to bring up a list
+of completions in the minibuffer (note again the helpfulness of
+<code>ido-mode</code>, too!):</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/ropemacs-completion.png"><img src="ropemacs-completion.png" alt=""></a></p>
+
+<p>(Note that it’s not perfect; it seems to have trouble, for example,
+finding the correct completions of <code>np.random.n</code>. IPython doesn’t have
+this trouble, probably because ropemacs doesn’t actually import the
+module and so does not correctly obtain all the attributes.)</p>
+
+<p>You can also look up documentation of an attribute if the point is
+over it with <code>C-c d</code>:</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/ropemacs-documentation.png"><img src="ropemacs-documentation.png" alt=""></a></p>
+
+<p>And you can rename attributes/refactor code in not just a file, but
+your entire project. For example, to rename <code>data</code> to <code>arr</code>, hit <code>C-c
+r r</code> and when the point is over the attribute you want to rename. Then
+type in the new name:</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/ropemacs-rename.png"><img src="ropemacs-rename.png" alt=""></a></p>
+
+<p>Hit enter, and you will be presented with a list of options (you can
+read about what they all do in the documentation). We just want
+“perform” here, so press enter again.</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/ropemacs-perform.png"><img src="ropemacs-perform.png" alt=""></a></p>
+
+<p>Voila, all instances of <code>data</code> are now renamed to <code>arr</code>!</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/ropemacs-rename-finished.png"><img src="ropemacs-rename-finished.png" alt=""></a></p>
+
+<p>This is more powerful than just a simple find-and-replace: for
+example, if you have a variable named <code>data</code> and another variable
+named <code>data_array</code>, you can’t just find-and-replace <code>data</code> with
+something else, because it will likely affect <code>data_array</code> as well!</p>
+
+<h2>Aesthetics</h2>
+
+<p>For the final part of this post, I’m just going to give you my elisp
+code for more aesthetic modifications. A fair amount of it is just the
+color scheme, but there are a few other useful options that I usually
+want to have set (like disabling the menu bar, scroll bar, and tool
+bar). I’ve tried to document it well, but am happy to clarify anything
+if it’s not obvious! Here’s a screenshot of how my typical Python
+Emacs environment looks:</p>
+
+<p><a href="http://www.jesshamrick.com/images/emacs-python/python-ide.png"><img src="python-ide.png" alt=""></a></p>
+
+<p>You’ll notice that the current line (where the point is) is
+highlighted; to acheive this affect you’ll need to install the
+<a href="http://www.emacswiki.org/cgi-bin/wiki/highlight-current-line.el">highlight current line</a> plugin to the
+<code>~/.emacs.d/highlight-current-line-0.57/</code> directory and use the
+configuration below in the “cursor” section.</p>
+
+<p>For the base color them, you’ll need the <a href="http://download.savannah.gnu.org/releases/color-theme/">color theme</a>
+plugin. Install it to <code>~/.emacs.d/color-theme-6.6.0/</code> and, again, use
+the configuration below in the “color theme” section.</p>
+
+<figure class="code"><figcaption><span>Interface</span></figcaption><div class="highlight"><table><tbody><tr><td class="gutter"><pre class="line-numbers"><span class="line-number">1</span>
+<span class="line-number">2</span>
+<span class="line-number">3</span>
+<span class="line-number">4</span>
+<span class="line-number">5</span>
+<span class="line-number">6</span>
+<span class="line-number">7</span>
+<span class="line-number">8</span>
+<span class="line-number">9</span>
+<span class="line-number">10</span>
+<span class="line-number">11</span>
+<span class="line-number">12</span>
+<span class="line-number">13</span>
+<span class="line-number">14</span>
+<span class="line-number">15</span>
+<span class="line-number">16</span>
+<span class="line-number">17</span>
+<span class="line-number">18</span>
+<span class="line-number">19</span>
+<span class="line-number">20</span>
+<span class="line-number">21</span>
+<span class="line-number">22</span>
+<span class="line-number">23</span>
+<span class="line-number">24</span>
+<span class="line-number">25</span>
+<span class="line-number">26</span>
+<span class="line-number">27</span>
+<span class="line-number">28</span>
+<span class="line-number">29</span>
+<span class="line-number">30</span>
+<span class="line-number">31</span>
+<span class="line-number">32</span>
+<span class="line-number">33</span>
+<span class="line-number">34</span>
+<span class="line-number">35</span>
+<span class="line-number">36</span>
+<span class="line-number">37</span>
+<span class="line-number">38</span>
+<span class="line-number">39</span>
+<span class="line-number">40</span>
+<span class="line-number">41</span>
+<span class="line-number">42</span>
+<span class="line-number">43</span>
+<span class="line-number">44</span>
+<span class="line-number">45</span>
+<span class="line-number">46</span>
+<span class="line-number">47</span>
+<span class="line-number">48</span>
+<span class="line-number">49</span>
+<span class="line-number">50</span>
+<span class="line-number">51</span>
+<span class="line-number">52</span>
+<span class="line-number">53</span>
+<span class="line-number">54</span>
+<span class="line-number">55</span>
+<span class="line-number">56</span>
+<span class="line-number">57</span>
+<span class="line-number">58</span>
+<span class="line-number">59</span>
+<span class="line-number">60</span>
+<span class="line-number">61</span>
+<span class="line-number">62</span>
+<span class="line-number">63</span>
+<span class="line-number">64</span>
+<span class="line-number">65</span>
+<span class="line-number">66</span>
+<span class="line-number">67</span>
+<span class="line-number">68</span>
+<span class="line-number">69</span>
+<span class="line-number">70</span>
+<span class="line-number">71</span>
+<span class="line-number">72</span>
+<span class="line-number">73</span>
+<span class="line-number">74</span>
+<span class="line-number">75</span>
+<span class="line-number">76</span>
+<span class="line-number">77</span>
+<span class="line-number">78</span>
+<span class="line-number">79</span>
+<span class="line-number">80</span>
+<span class="line-number">81</span>
+<span class="line-number">82</span>
+<span class="line-number">83</span>
+<span class="line-number">84</span>
+<span class="line-number">85</span>
+<span class="line-number">86</span>
+<span class="line-number">87</span>
+<span class="line-number">88</span>
+<span class="line-number">89</span>
+<span class="line-number">90</span>
+<span class="line-number">91</span>
+<span class="line-number">92</span>
+<span class="line-number">93</span>
+<span class="line-number">94</span>
+<span class="line-number">95</span>
+<span class="line-number">96</span>
+<span class="line-number">97</span>
+<span class="line-number">98</span>
+<span class="line-number">99</span>
+<span class="line-number">100</span>
+<span class="line-number">101</span>
+<span class="line-number">102</span>
+<span class="line-number">103</span>
+<span class="line-number">104</span>
+<span class="line-number">105</span>
+<span class="line-number">106</span>
+<span class="line-number">107</span>
+<span class="line-number">108</span>
+<span class="line-number">109</span>
+<span class="line-number">110</span>
+<span class="line-number">111</span>
+<span class="line-number">112</span>
+<span class="line-number">113</span>
+<span class="line-number">114</span>
+<span class="line-number">115</span>
+<span class="line-number">116</span>
+<span class="line-number">117</span>
+<span class="line-number">118</span>
+<span class="line-number">119</span>
+<span class="line-number">120</span>
+<span class="line-number">121</span>
+<span class="line-number">122</span>
+<span class="line-number">123</span>
+<span class="line-number">124</span>
+<span class="line-number">125</span>
+<span class="line-number">126</span>
+<span class="line-number">127</span>
+<span class="line-number">128</span>
+<span class="line-number">129</span>
+<span class="line-number">130</span>
+<span class="line-number">131</span>
+<span class="line-number">132</span>
+<span class="line-number">133</span>
+<span class="line-number">134</span>
+<span class="line-number">135</span>
+<span class="line-number">136</span>
+<span class="line-number">137</span>
+<span class="line-number">138</span>
+<span class="line-number">139</span>
+<span class="line-number">140</span>
+<span class="line-number">141</span>
+<span class="line-number">142</span>
+<span class="line-number">143</span>
+<span class="line-number">144</span>
+<span class="line-number">145</span>
+<span class="line-number">146</span>
+<span class="line-number">147</span>
+<span class="line-number">148</span>
+<span class="line-number">149</span>
+<span class="line-number">150</span>
+<span class="line-number">151</span>
+<span class="line-number">152</span>
+<span class="line-number">153</span>
+<span class="line-number">154</span>
+<span class="line-number">155</span>
+<span class="line-number">156</span>
+<span class="line-number">157</span>
+<span class="line-number">158</span>
+</pre></td><td class="code"><pre><code class="scheme"><span class="line"><span class="c1">;--------------------;</span>
+</span><span class="line"><span class="c1">;;; User Interface ;;;</span>
+</span><span class="line"><span class="c1">;--------------------;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; always use spaces, not tabs, when indenting</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">indent-tabs-mode</span> <span class="nv">nil</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; ignore case when searching</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">case-fold-search</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; require final newlines in files when they are saved</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">require-final-newline</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; window modifications</span>
+</span><span class="line"><span class="p">(</span><span class="nf">global-set-key</span> <span class="p">(</span><span class="nf">kbd</span> <span class="s">"S-C-"</span><span class="p">)</span> <span class="ss">'shrink-window-horizontally</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">global-set-key</span> <span class="p">(</span><span class="nf">kbd</span> <span class="s">"S-C-"</span><span class="p">)</span> <span class="ss">'enlarge-window-horizontally</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">global-set-key</span> <span class="p">(</span><span class="nf">kbd</span> <span class="s">"S-C-"</span><span class="p">)</span> <span class="ss">'shrink-window</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">global-set-key</span> <span class="p">(</span><span class="nf">kbd</span> <span class="s">"S-C-"</span><span class="p">)</span> <span class="ss">'enlarge-window</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; set the keybinding so that you can use f4 for goto line</span>
+</span><span class="line"><span class="p">(</span><span class="nf">global-set-key</span> <span class="nv">&amp;</span><span class="o">#</span><span class="mi">91</span><span class="c1">;f4&amp;#93; 'goto-line)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">;----------------------;</span>
+</span><span class="line"><span class="c1">;;; Windows &amp; Frames ;;;</span>
+</span><span class="line"><span class="c1">;----------------------;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; language</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">current-language-environment</span> <span class="s">"English"</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; don't show the startup screen</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">inhibit-startup-screen</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="c1">; don't show the menu bar</span>
+</span><span class="line"><span class="p">(</span><span class="nf">menu-bar-mode</span> <span class="nv">nil</span><span class="p">)</span>
+</span><span class="line"><span class="c1">; don't show the tool bar</span>
+</span><span class="line"><span class="p">(</span><span class="nf">require</span> <span class="ss">'tool-bar</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">tool-bar-mode</span> <span class="nv">nil</span><span class="p">)</span>
+</span><span class="line"><span class="c1">; don't show the scroll bar</span>
+</span><span class="line"><span class="p">(</span><span class="nf">scroll-bar-mode</span> <span class="nv">nil</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; number of characters until the fill column</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">fill-column</span> <span class="mi">70</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; specify the fringe width for windows -- this sets both the left and</span>
+</span><span class="line"><span class="c1">; right fringes to 10</span>
+</span><span class="line"><span class="p">(</span><span class="nf">require</span> <span class="ss">'fringe</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">fringe-mode</span> <span class="mi">10</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; lines which are exactly as wide as the window (not counting the</span>
+</span><span class="line"><span class="c1">; final newline character) are not continued. Instead, when point is</span>
+</span><span class="line"><span class="c1">; at the end of the line, the cursor appears in the right fringe.</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">overflow-newline-into-fringe</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; each line of text gets one line on the screen (i.e., text will run</span>
+</span><span class="line"><span class="c1">; off the left instead of wrapping around onto a new line)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">truncate-lines</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="c1">; truncate lines even in partial-width windows</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">truncate-partial-width-windows</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; display line numbers to the right of the window</span>
+</span><span class="line"><span class="p">(</span><span class="nf">global-linum-mode</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="c1">; show the current line and column numbers in the stats bar as well</span>
+</span><span class="line"><span class="p">(</span><span class="nf">line-number-mode</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">column-number-mode</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">;------------;</span>
+</span><span class="line"><span class="c1">;;; Cursor ;;;</span>
+</span><span class="line"><span class="c1">;------------;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; highlight the current line</span>
+</span><span class="line"><span class="p">(</span><span class="nf">require</span> <span class="ss">'highlight-current-line</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">global-hl-line-mode</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">highlight-current-line-globally</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">highlight-current-line-high-faces</span> <span class="nv">nil</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">highlight-current-line-whole-line</span> <span class="nv">nil</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">hl-line-face</span> <span class="p">(</span><span class="k">quote </span><span class="nv">highlight</span><span class="p">))</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; don't blink the cursor</span>
+</span><span class="line"><span class="p">(</span><span class="nf">blink-cursor-mode</span> <span class="nv">nil</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; make sure transient mark mode is enabled (it should be by default,</span>
+</span><span class="line"><span class="c1">; but just in case)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">transient-mark-mode</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; turn on mouse wheel support for scrolling</span>
+</span><span class="line"><span class="p">(</span><span class="nf">require</span> <span class="ss">'mwheel</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">mouse-wheel-mode</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">;-------------------------;</span>
+</span><span class="line"><span class="c1">;;; Syntax Highlighting ;;;</span>
+</span><span class="line"><span class="c1">;-------------------------;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; text decoration</span>
+</span><span class="line"><span class="p">(</span><span class="nf">require</span> <span class="ss">'font-lock</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">font-lock-maximum-decoration</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">global-font-lock-mode</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">global-hi-lock-mode</span> <span class="nv">nil</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">jit-lock-contextually</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">jit-lock-stealth-verbose</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; if there is size information associated with text, change the text</span>
+</span><span class="line"><span class="c1">; size to reflect it</span>
+</span><span class="line"><span class="p">(</span><span class="nf">size-indication-mode</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; highlight parentheses when the cursor is next to them</span>
+</span><span class="line"><span class="p">(</span><span class="nf">require</span> <span class="ss">'paren</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">show-paren-mode</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">;-----------------;</span>
+</span><span class="line"><span class="c1">;;; Color Theme ;;;</span>
+</span><span class="line"><span class="c1">;-----------------;</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; use the "Subtle Hacker" color theme as a base for the custom scheme</span>
+</span><span class="line"><span class="p">(</span><span class="nf">require</span> <span class="ss">'color-theme</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">color-theme-initialize</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">color-theme-is-global</span> <span class="nv">t</span><span class="p">)</span>
+</span><span class="line"><span class="p">(</span><span class="nf">color-theme-subtle-hacker</span><span class="p">)</span>
+</span><span class="line">
+</span><span class="line"><span class="p">(</span><span class="nf">custom-set-faces</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">default</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:overline</span> <span class="nv">nil</span> <span class="nv">:inherit</span> <span class="nv">nil</span> <span class="nv">:stipple</span> <span class="nv">nil</span> <span class="nv">:background</span> <span class="s">"gray2"</span>
+</span><span class="line">                <span class="nv">:foreground</span> <span class="s">"#FFF991"</span> <span class="nv">:inverse-video</span> <span class="nv">nil</span> <span class="nv">:box</span> <span class="nv">nil</span>
+</span><span class="line">                <span class="nv">:strike-through</span> <span class="nv">nil</span> <span class="nv">:underline</span> <span class="nv">nil</span>
+</span><span class="line">                <span class="nv">:slant</span> <span class="nv">normal</span> <span class="nv">:weight</span> <span class="nv">normal</span> <span class="nv">:height</span> <span class="mi">83</span> <span class="nv">:width</span> <span class="nv">normal</span>
+</span><span class="line">                <span class="nv">:foundry</span> <span class="s">"unknown"</span> <span class="nv">:family</span> <span class="s">"DejaVu Sans Mono"</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">border</span> <span class="p">((</span><span class="nf">t</span> <span class="nv">nil</span><span class="p">)))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">cursor</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:background</span> <span class="s">"firebrick1"</span> <span class="nv">:foreground</span> <span class="s">"black"</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">font-lock-comment-delimiter-face</span>
+</span><span class="line">    <span class="p">((</span><span class="nf">default</span> <span class="p">(</span><span class="nf">:inherit</span> <span class="nv">font-lock-comment-face</span> <span class="nv">:weight</span> <span class="nv">ultra-bold</span><span class="p">))</span>
+</span><span class="line">    <span class="p">(((</span><span class="nf">class</span> <span class="nv">color</span><span class="p">)</span> <span class="p">(</span><span class="nf">min-colors</span> <span class="mi">16</span><span class="p">))</span> <span class="nv">nil</span><span class="p">)))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">font-lock-comment-face</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:foreground</span> <span class="s">"lime green"</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">font-lock-doc-face</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:foreground</span> <span class="s">"tomato"</span> <span class="nv">:slant</span> <span class="nv">italic</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">font-lock-function-name-face</span>
+</span><span class="line">    <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:foreground</span> <span class="s">"deep sky blue"</span> <span class="nv">:underline</span> <span class="nv">t</span> <span class="nv">:weight</span> <span class="nv">bold</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">font-lock-keyword-face</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:foreground</span> <span class="s">"gold"</span> <span class="nv">:weight</span> <span class="nv">bold</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">font-lock-string-face</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:foreground</span> <span class="s">"tomato"</span> <span class="nv">:slant</span> <span class="nv">italic</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">fringe</span> <span class="p">((</span><span class="nf">nil</span> <span class="p">(</span><span class="nf">:background</span> <span class="s">"black"</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">highlight</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:background</span> <span class="s">"khaki1"</span> <span class="nv">:foreground</span> <span class="s">"black"</span>
+</span><span class="line">                  <span class="nv">:box</span> <span class="p">(</span><span class="nf">:line-width</span> <span class="mi">-1</span> <span class="nv">:color</span> <span class="s">"firebrick1"</span><span class="p">)))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">highlight-current-line-face</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:inherit</span> <span class="nv">highlight</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">lazy-highlight</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:background</span> <span class="s">"paleturquoise"</span> <span class="nv">:foreground</span> <span class="s">"black"</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">link</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:foreground</span> <span class="s">"DodgerBlue3"</span> <span class="nv">:underline</span> <span class="nv">t</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">menu</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:background</span> <span class="s">"gray2"</span> <span class="nv">:foreground</span> <span class="s">"#FFF991"</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">minibuffer-prompt</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:foreground</span> <span class="s">"royal blue"</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">mode-line</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:background</span> <span class="s">"dark olive green"</span>
+</span><span class="line">                  <span class="nv">:foreground</span> <span class="s">"dark blue"</span>
+</span><span class="line">                  <span class="nv">:box</span> <span class="p">(</span><span class="nf">:line-width</span> <span class="mi">-1</span> <span class="nv">:color</span> <span class="s">"gray75"</span><span class="p">)</span>
+</span><span class="line">                  <span class="nv">:weight</span> <span class="nv">bold</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">mode-line-buffer-id</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:background</span> <span class="s">"dark olive green"</span> <span class="nv">:foreground</span> <span class="s">"beige"</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">mode-line-highlight</span> <span class="p">((((</span><span class="nf">class</span> <span class="nv">color</span><span class="p">)</span> <span class="p">(</span><span class="nf">min-colors</span> <span class="mi">88</span><span class="p">))</span> <span class="nv">nil</span><span class="p">)))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">mode-line-inactive</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:background</span> <span class="s">"dark olive green"</span>
+</span><span class="line">                           <span class="nv">:foreground</span> <span class="s">"dark khaki"</span> <span class="nv">:weight</span> <span class="nv">light</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">mouse</span> <span class="p">((</span><span class="nf">t</span> <span class="p">(</span><span class="nf">:background</span> <span class="s">"Grey"</span> <span class="nv">:foreground</span> <span class="s">"black"</span><span class="p">))))</span>
+</span><span class="line"> <span class="o">'</span><span class="p">(</span><span class="nv">trailing-whitespace</span> <span class="p">((((</span><span class="nf">class</span> <span class="nv">color</span><span class="p">)</span> <span class="p">(</span><span class="nf">background</span> <span class="nv">dark</span><span class="p">))</span>
+</span><span class="line">                          <span class="p">(</span><span class="nf">:background</span> <span class="s">"firebrick1"</span><span class="p">)))))</span>
+</span><span class="line">
+</span><span class="line"><span class="c1">; make sure the frames have the dark background mode by default</span>
+</span><span class="line"><span class="p">(</span><span class="nf">setq</span> <span class="nv">default-frame-alist</span> <span class="p">(</span><span class="k">quote </span><span class="p">(</span>
+</span><span class="line">  <span class="p">(</span><span class="nf">frame-background-mode</span> <span class="o">.</span> <span class="nv">dark</span><span class="p">)</span>
+</span><span class="line"><span class="p">)))</span>
+</span></code></pre></td></tr></tbody></table></div></figure>
+
+</div>
+
+
+  <footer>
+    <p class="meta">
+      
+  
+
+<span class="byline author vcard">Posted by <span class="fn">Jessica Hamrick</span></span>
+
+      
+
+
+
+
+
+
+
+
+  
+
+
+<time datetime="2012-09-18T00:00:00-07:00" pubdate="" data-updated="true">Sep 18<span>th</span>, 2012</time>
+      
+
+<span class="categories">
+  
+    <a class="category" href="http://www.jesshamrick.com/category/programming/">Programming</a>, <a class="category" href="http://www.jesshamrick.com/category/software/">Software</a>
+  
+</span>
+
+
+    </p>
+    
+      <div class="sharing">
+  
+  <iframe style="width: 106px; height: 20px;" data-twttr-rendered="true" title="Twitter Tweet Button" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" src="index_1.html" allowtransparency="true" id="twitter-widget-0" frameborder="0" scrolling="no"></iframe>
+  
+  
+  <div id="___plusone_0" style="text-indent: 0pt; margin: 0pt; padding: 0pt; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 90px; height: 20px;"><iframe title="+1" data-gapiattached="true" src="index_2.html" name="I1_1393656397346" id="I1_1393656397346" vspace="0" tabindex="0" style="position: static; top: 0pt; width: 90px; margin: 0px; border-style: none; left: 0pt; visibility: visible; height: 20px;" marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe></div>
+  
+  
+    <div fb-iframe-plugin-query="app_id=212934732101925&amp;href=http%3A%2F%2Fwww.jesshamrick.com%2F2012%2F09%2F18%2Femacs-as-a-python-ide%2F&amp;locale=en_US&amp;sdk=joey&amp;send=true&amp;show_faces=false&amp;width=450" fb-xfbml-state="rendered" class="fb-like fb_iframe_widget" data-send="true" data-width="450" data-show-faces="false"><span style="vertical-align: bottom; width: 450px; height: 20px;"><iframe class="" src="index_3.html" style="border: medium none; visibility: visible; width: 450px; height: 20px;" title="fb:like Facebook Social Plugin" allowtransparency="true" name="f273f900fe83f52" frameborder="0" height="1000px" scrolling="no" width="450px"></iframe></span></div>
+  
+</div>
+
+    
+    <p class="meta">
+      
+        <a class="basic-alignment left" href="http://www.jesshamrick.com/2012/09/10/absolute-beginners-guide-to-emacs/" title="Previous Post: Absolute Beginner's Guide to Emacs">« Absolute Beginner's Guide to Emacs</a>
+      
+      
+        <a class="basic-alignment right" href="http://www.jesshamrick.com/2013/03/31/macs-and-emacs/" title="Next Post: Macs and Emacs">Macs and Emacs »</a>
+      
+    </p>
+  </footer>
+</article>
+
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite"><iframe verticalscrolling="no" horizontalscrolling="no" src="index_4.html" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 8076px ! important;" title="Disqus" tabindex="0" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" scrolling="no" width="100%"></iframe><iframe src="index_5.html" style="width: 612px ! important; border: medium none ! important; overflow: hidden ! important; top: 0pt ! important; min-width: 612px ! important; max-width: 612px ! important; position: fixed ! important; z-index: 2147483646 ! important; height: 29px ! important; min-height: 29px ! important; max-height: 29px ! important; display: none ! important;" title="Disqus" tabindex="0" allowtransparency="true" data-disqus-uid="indicator-north" id="dsq-indicator-north" frameborder="0" scrolling="no"></iframe><iframe src="index_6.html" style="width: 612px ! important; border: medium none ! important; overflow: hidden ! important; bottom: 0pt ! important; min-width: 612px ! important; max-width: 612px ! important; position: fixed ! important; z-index: 2147483646 ! important; height: 29px ! important; min-height: 29px ! important; max-height: 29px ! important; display: none ! important;" title="Disqus" tabindex="0" allowtransparency="true" data-disqus-uid="indicator-south" id="dsq-indicator-south" frameborder="0" scrolling="no"></iframe></div>
+  </section>
+
+</div>
+
+<aside class="sidebar thirds">
+  
+    <section class="first odd" id="aside-icons">
+<span class="icon-stack icon-large">
+  <a href="mailto:jhamrick@berkeley.edu">
+    <i class="icon-circle icon-stack-base "></i>
+    <i class="icon-envelope icon-light "></i>
+  </a>
+</span>
+<span class="icon-stack icon-large">
+  <a href="http://twitter.com/#%21/jhamrick">
+    <i class="icon-circle icon-stack-base "></i>
+    <i class="icon-twitter icon-light "></i>
+  </a>
+</span>
+<span class="icon-stack icon-large">
+  <a href="https://alpha.app.net/jhamrick">
+    <i class="icon-adn icon-stack-base"></i>
+  </a>
+</span>
+<span class="icon-stack icon-large">
+  <a href="https://github.com/jhamrick">
+    <i class="icon-github icon-stack-base"></i>
+  </a>
+</span>
+<span class="icon-stack icon-large">
+  <a href="http://www.linkedin.com/pub/jess-hamrick/11/b08/4ba/">
+    <i class="icon-circle icon-stack-base "></i>
+    <i class="icon-linkedin icon-light"></i>
+  </a>
+</span>
+</section>
+<section class="recent-posts even">
+  <h1>Recent Posts</h1>
+  <ul id="recent_posts" class="icons-ul">
+    
+      <li class="post">
+        <i class="icon-li icon-double-angle-right"></i>
+        <a href="http://www.jesshamrick.com/2013/09/26/instaling-64-bit-panda3d-for-python-27-on-osx/">Installing 64-bit Panda3D for Python 2.7 on OSX</a>
+      </li>
+    
+      <li class="post">
+        <i class="icon-li icon-double-angle-right"></i>
+        <a href="http://www.jesshamrick.com/2013/04/17/rewriting-python-docstrings-with-a-metaclass">Rewriting Python docstrings with a metaclass</a>
+      </li>
+    
+      <li class="post">
+        <i class="icon-li icon-double-angle-right"></i>
+        <a href="http://www.jesshamrick.com/2013/04/13/on-collecting-data/">On collecting data</a>
+      </li>
+    
+      <li class="post">
+        <i class="icon-li icon-double-angle-right"></i>
+        <a href="http://www.jesshamrick.com/2013/04/07/switching-to-octopress/">Switching to Octopress</a>
+      </li>
+    
+      <li class="post">
+        <i class="icon-li icon-double-angle-right"></i>
+        <a href="http://www.jesshamrick.com/2013/04/03/why-is-making-a-git-commit-so-complicated/">Why is making a git commit so complicated?</a>
+      </li>
+    
+  </ul>
+</section>
+<section class="category-list odd">
+  <h1>Categories</h1>
+    <ul id="category-list"><li><a href="http://www.jesshamrick.com/category/general/">General (4)</a></li><li><a href="http://www.jesshamrick.com/category/programming/">Programming (13)</a></li><li><a href="http://www.jesshamrick.com/category/sipb/">SIPB (3)</a></li><li><a href="http://www.jesshamrick.com/category/software/">Software (8)</a></li></ul>
+</section>
+<section class="tag-cloud first even">
+  <h1>Tag Cloud</h1>
+    <span id="tag-cloud"><a href="http://www.jesshamrick.com/tag/android" style="font-size: 90%;">android</a> <a href="http://www.jesshamrick.com/tag/array-computation" style="font-size: 90%;">array computation</a> <a href="http://www.jesshamrick.com/tag/berkeley" style="font-size: 90%;">berkeley</a> <a href="http://www.jesshamrick.com/tag/blogging" style="font-size: 90%;">blogging</a> <a href="http://www.jesshamrick.com/tag/classes" style="font-size: 90%;">classes</a> <a href="http://www.jesshamrick.com/tag/cocoa" style="font-size: 90%;">cocoa</a> <a href="http://www.jesshamrick.com/tag/code" style="font-size: 131.25%;">code</a> <a href="http://www.jesshamrick.com/tag/computer-science" style="font-size: 90%;">computer science</a> <a href="http://www.jesshamrick.com/tag/data" style="font-size: 90%;">data</a> <a href="http://www.jesshamrick.com/tag/docstring" style="font-size: 90%;">docstring</a> <a href="http://www.jesshamrick.com/tag/education" style="font-size: 103.75%;">education</a> <a href="http://www.jesshamrick.com/tag/elitism" style="font-size: 90%;">elitism</a> <a href="http://www.jesshamrick.com/tag/emacs" style="font-size: 117.5%;">emacs</a> <a href="http://www.jesshamrick.com/tag/email" style="font-size: 90%;">email</a> <a href="http://www.jesshamrick.com/tag/experiment" style="font-size: 90%;">experiment</a> <a href="http://www.jesshamrick.com/tag/for-loops" style="font-size: 90%;">for loops</a> <a href="http://www.jesshamrick.com/tag/git" style="font-size: 90%;">git</a> <a href="http://www.jesshamrick.com/tag/gmail" style="font-size: 90%;">gmail</a> <a href="http://www.jesshamrick.com/tag/gpg" style="font-size: 90%;">gpg</a> <a href="http://www.jesshamrick.com/tag/guide" style="font-size: 117.5%;">guide</a> <a href="http://www.jesshamrick.com/tag/gutenbach" style="font-size: 90%;">gutenbach</a> <a href="http://www.jesshamrick.com/tag/hackathon" style="font-size: 90%;">hackathon</a> <a href="http://www.jesshamrick.com/tag/hacking" style="font-size: 117.5%;">hacking</a> <a href="http://www.jesshamrick.com/tag/homebrew" style="font-size: 90%;">homebrew</a> <a href="http://www.jesshamrick.com/tag/imap" style="font-size: 90%;">imap</a> <a href="http://www.jesshamrick.com/tag/inheritance" style="font-size: 103.75%;">inheritance</a> <a href="http://www.jesshamrick.com/tag/instances" style="font-size: 90%;">instances</a> <a href="http://www.jesshamrick.com/tag/internet" style="font-size: 90%;">internet</a> <a href="http://www.jesshamrick.com/tag/ipython" style="font-size: 103.75%;">ipython</a> <a href="http://www.jesshamrick.com/tag/ipython-notebook" style="font-size: 90%;">ipython notebook</a> <a href="http://www.jesshamrick.com/tag/knitting" style="font-size: 90%;">knitting</a> <a href="http://www.jesshamrick.com/tag/list-comprehensions" style="font-size: 90%;">list comprehensions</a> <a href="http://www.jesshamrick.com/tag/matlab" style="font-size: 90%;">matlab</a> <a href="http://www.jesshamrick.com/tag/matplotlib" style="font-size: 90%;">matplotlib</a> <a href="http://www.jesshamrick.com/tag/metaclass" style="font-size: 90%;">metaclass</a> <a href="http://www.jesshamrick.com/tag/mit" style="font-size: 103.75%;">MIT</a> <a href="http://www.jesshamrick.com/tag/mitex" style="font-size: 90%;">MITeX</a> <a href="http://www.jesshamrick.com/tag/numpy" style="font-size: 145%;">numpy</a> <a href="http://www.jesshamrick.com/tag/octopress" style="font-size: 90%;">octopress</a> <a href="http://www.jesshamrick.com/tag/offlineimap" style="font-size: 90%;">offlineimap</a> <a href="http://www.jesshamrick.com/tag/os-x" style="font-size: 90%;">OS X</a> <a href="http://www.jesshamrick.com/tag/osx" style="font-size: 90%;">osx</a> <a href="http://www.jesshamrick.com/tag/panda3d" style="font-size: 90%;">panda3d</a> <a href="http://www.jesshamrick.com/tag/pandas" style="font-size: 90%;">pandas</a> <a href="http://www.jesshamrick.com/tag/pyplot" style="font-size: 90%;">pyplot</a> <a href="http://www.jesshamrick.com/tag/python" style="font-size: 200%;">python</a> <a href="http://www.jesshamrick.com/tag/scientific-programming" style="font-size: 131.25%;">scientific programming</a> <a href="http://www.jesshamrick.com/tag/sipb" style="font-size: 117.5%;">SIPB</a> <a href="http://www.jesshamrick.com/tag/sql" style="font-size: 90%;">sql</a> <a href="http://www.jesshamrick.com/tag/sqlite" style="font-size: 90%;">sqlite</a> <a href="http://www.jesshamrick.com/tag/sup" style="font-size: 90%;">sup</a> <a href="http://www.jesshamrick.com/tag/teaching" style="font-size: 117.5%;">teaching</a> <a href="http://www.jesshamrick.com/tag/technology" style="font-size: 131.25%;">technology</a> <a href="http://www.jesshamrick.com/tag/thunderbird" style="font-size: 90%;">thunderbird</a> <a href="http://www.jesshamrick.com/tag/tutorial" style="font-size: 117.5%;">tutorial</a> <a href="http://www.jesshamrick.com/tag/version-control" style="font-size: 90%;">version control</a> <a href="http://www.jesshamrick.com/tag/wordpress" style="font-size: 90%;">wordpress</a> </span>
+</section>
+
+  
+</aside>
+
+
+    <span class="toggle-sidebar"></span></div>
+  </div>
+  <footer role="contentinfo"><p>
+  Copyright © 2014 - Jessica Hamrick -
+  <span class="credit">Powered by <a href="http://octopress.org/">Octopress</a></span>
+</p>
+
+</footer>
+  
+
+
+
+
+
+<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"><div><iframe src="index_7.html" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0" scrolling="no"></iframe><iframe src="index_8.html" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0" scrolling="no"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"><div><iframe src="index_9.html" style="display: none;" allowtransparency="true" name="f1f5cead17f8894" frameborder="0" scrolling="no"></iframe></div></div></div>
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+<iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="index_10.html" id="oauth2relay1587161263" name="oauth2relay1587161263"></iframe></body>
+</html>

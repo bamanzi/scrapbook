@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns#" id="viget-com" class=" js no-touch history csscolumns cssgradients csstransforms" style="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1">
+
+	<title>Emacs 24 Rails Development Environment - From *scratch* to Productive in 5 Minutes | Viget</title>
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+			
+	
+	
+
+			
+	
+	<meta name="twitter:card" content="summary">
+	<meta name="twitter:site" content="@viget">
+	<meta name="twitter:creator" content="@viget">
+	<meta property="og:type" content="website">
+	<meta property="og:url" content="http://viget.com/extend/emacs-24-rails-development-environment-from-scratch-to-productive-in-5-minu">
+			<meta property="og:title" content="Emacs 24 Rails Development Environment - From *scratch* to Productive in 5 Minutes | Viget">
+					<meta property="oq:description" content="I'm a big fan of Emacs.  My fellow employees at Viget enjoy a number of different editors including [Textmate](http://macromates.com) and [Vim](http://code.google.com/p/macvim/).  I strongly believe that everyone should use an editor they feel">
+		<meta name="twitter:description" content="I'm a big fan of Emacs.  My fellow employees at Viget enjoy a number of different editors including [Textmate](http://macromates.com) and [Vim](http://code.google.com/p/macvim/).  I strongly believe that everyone should use an editor they feel">
+	
+	<link href="http://feeds.feedburner.com/Viget" rel="alternate" type="application/rss+xml" title="Viget Blogs Feed">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body data-twttr-rendered="true" class="page-blog-extend page-blog-post page-blog page-tertiary page" data-page="blog">
+
+	
+				
+			
+
+	
+	
+	
+	
+
+	<!-- ClickTale Top part -->
+	
+	<!-- ClickTale end of Top part -->
+
+	<div class=" fb_reset" id="fb-root"><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"><div><iframe src="index_1.html" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_http" allowtransparency="true" name="fb_xdm_frame_http" frameborder="0" scrolling="no"></iframe><iframe src="index_2.html" style="border: medium none;" tab-index="-1" title="Facebook Cross Domain Communication Frame" aria-hidden="true" id="fb_xdm_frame_https" allowtransparency="true" name="fb_xdm_frame_https" frameborder="0" scrolling="no"></iframe></div></div><div style="position: absolute; top: -10000px; height: 0pt; width: 0pt;"><div></div></div></div>
+
+	<div role="main">
+		
+				<section class="content-primary content">
+					<div class="wrapper">
+						
+	<header class="content-primary-header header">
+		<h1><span class="left">Your friends at Viget present</span> <a href="http://viget.com/extend"><span class="visuallyhidden">Extend,</span></a> <span class="right">a Code &amp; Technology Blog</span></h1>
+	</header>
+
+
+						<section class="section-blog-wrapper section row stickem-container">
+							<div class="col-10 col">
+								<article class="article-blog-post article hentry row">
+									<div class="article-blog-post-wrapper wrapper col-8 col right">
+										<header class="header-blog-post header">
+											<h1 class="entry-title"><a href="http://viget.com/extend/emacs-24-rails-development-environment-from-scratch-to-productive-in-5-minu" rel="bookmark">Emacs 24 Rails Development Environment - From *scratch* to Productive in 5 Minutes</a></h1>
+											<div class="blog-post-meta clear">
+												<span class="breadcrumbs">
+													<a href="http://viget.com/extend">Extend</a> //
+												</span>
+												<time class="published" datetime="2011-01-18T15:23:00-05:00" pubdate="">Jan 18, 2011</time>
+												<a href="http://viget.com/extend/emacs-24-rails-development-environment-from-scratch-to-productive-in-5-minu#disqus_thread" class="comment-count" data-disqus-identifier="2128">27</a>
+											</div>
+										</header>
+
+										
+										<div class="entry-content wysiwyg">
+											
+													
+													<p>I’m a big fan of Emacs.  My fellow employees at Viget enjoy a number of different editors including <a href="http://macromates.com/">Textmate</a> and <a href="http://code.google.com/p/macvim/">Vim</a>.  I strongly believe that everyone should use an editor they feel productive in and most importantly, an editor they enjoy.  So, I have no interest in engaging in any kind of editor <a href="http://en.wikipedia.org/wiki/Editor_war">holy war</a> here.</p>
+
+<p>I’d like to show you how you can go from a default installation of Emacs HEAD (24) to a workable Rails development environment in only a few minutes.  I will make the following assumptions:</p>
+
+<ol>
+<li>You are running Mac OSX 10.6</li>
+<li>You have Xcode (&lt; 4 beta) installed</li>
+<li>You have homebrew installed and working</li>
+<li>You have installed git using homebrew</li>
+<li>You are using rvm to manage your rubies and have a default configured.</li>
+<li>You have a basic understanding of Emacs</li>
+</ol>
+
+<p>These instructions could likely be tweaked for different systems without too much fuss.</p>
+
+<p>Let’s begin!</p>
+
+<h1>Installing Emacs HEAD</h1>
+
+<p>To do this we’ll use <a href="https://github.com/mxcl/homebrew">homebrew</a>, observe:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pln">$ brew install emacs </span><span class="pun">--</span><span class="pln">cocoa </span><span class="pun">--</span><span class="kwd">use</span><span class="pun">-</span><span class="pln">git</span><span class="pun">-</span><span class="pln">head </span><span class="pun">--</span><span class="pln">HEAD</span></code></li><li class="L1"><code><span class="pln">$ mv </span><span class="pun">/</span><span class="pln">usr</span><span class="pun">/</span><span class="kwd">local</span><span class="pun">/</span><span class="typ">Cellar</span><span class="pun">/</span><span class="pln">emacs</span><span class="pun">/</span><span class="pln">HEAD</span><span class="pun">/</span><span class="typ">Emacs</span><span class="pun">.</span><span class="pln">app </span><span class="pun">/</span><span class="typ">Applications</span><span class="pun">/</span></code></li><li class="L2"><code><span class="pln">$ mkdir </span><span class="pun">~</span><span class="str">/.emacs.d</span></code></li><li class="L3"><code><span class="str">$ echo ";; emacs configuration" &gt; ~/</span><span class="pun">.</span><span class="pln">emacs</span><span class="pun">.</span><span class="pln">d</span><span class="pun">/</span><span class="pln">init</span><span class="pun">.</span><span class="pln">el</span></code></li></ol></pre>
+
+<p>This will leave you will a fresh copy of Emacs and a blank configuration file.</p>
+
+<h1>Configuring The Basics</h1>
+
+<p>At the risk of editorializing I’ll say that Emacs doesn’t have the most desirable configuration defaults.  That’s ok!  It only takes a few lines of elisp to make a more pleasant experience.</p>
+
+<p>So, go ahead and launch Emacs like you would any other application.  You will be presented with the illustrious Emacs logo and some instructions on how to use the editor.  If you are new to Emacs consider taking the Emacs tutorial presented in the default splash screen.  Otherwise:</p>
+
+<p>Navigate (C-x C-f) to ~/.emacs.d/init.el  and insert the following after our singular comment at the top:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pun">(</span><span class="pln">push </span><span class="str">"/usr/local/bin"</span><span class="pln"> </span><span class="kwd">exec</span><span class="pun">-</span><span class="pln">path</span><span class="pun">)</span></code></li><li class="L1"><code></code></li><li class="L2"><code><span class="pun">(</span><span class="pln">setq make</span><span class="pun">-</span><span class="pln">backup</span><span class="pun">-</span><span class="pln">files </span><span class="kwd">nil</span><span class="pun">)</span></code></li><li class="L3"><code><span class="pun">(</span><span class="pln">setq </span><span class="kwd">auto</span><span class="pun">-</span><span class="pln">save</span><span class="pun">-</span><span class="kwd">default</span><span class="pln"> </span><span class="kwd">nil</span><span class="pun">)</span></code></li><li class="L4"><code><span class="pun">(</span><span class="pln">setq</span><span class="pun">-</span><span class="kwd">default</span><span class="pln"> tab</span><span class="pun">-</span><span class="pln">width </span><span class="lit">2</span><span class="pun">)</span></code></li><li class="L5"><code><span class="pun">(</span><span class="pln">setq</span><span class="pun">-</span><span class="kwd">default</span><span class="pln"> indent</span><span class="pun">-</span><span class="pln">tabs</span><span class="pun">-</span><span class="pln">mode </span><span class="kwd">nil</span><span class="pun">)</span></code></li><li class="L6"><code><span class="pun">(</span><span class="pln">setq inhibit</span><span class="pun">-</span><span class="pln">startup</span><span class="pun">-</span><span class="pln">message t</span><span class="pun">)</span></code></li><li class="L7"><code></code></li><li class="L8"><code><span class="pun">(</span><span class="pln">fset </span><span class="str">'yes-or-no-p '</span><span class="pln">y</span><span class="pun">-</span><span class="kwd">or</span><span class="pun">-</span><span class="pln">n</span><span class="pun">-</span><span class="pln">p</span><span class="pun">)</span></code></li><li class="L9"><code></code></li><li class="L0"><code><span class="pun">(</span><span class="kwd">delete</span><span class="pun">-</span><span class="pln">selection</span><span class="pun">-</span><span class="pln">mode t</span><span class="pun">)</span></code></li><li class="L1"><code><span class="pun">(</span><span class="pln">scroll</span><span class="pun">-</span><span class="pln">bar</span><span class="pun">-</span><span class="pln">mode </span><span class="pun">-</span><span class="lit">1</span><span class="pun">)</span></code></li><li class="L2"><code><span class="pun">(</span><span class="pln">tool</span><span class="pun">-</span><span class="pln">bar</span><span class="pun">-</span><span class="pln">mode </span><span class="pun">-</span><span class="lit">1</span><span class="pun">)</span></code></li><li class="L3"><code><span class="pun">(</span><span class="pln">blink</span><span class="pun">-</span><span class="pln">cursor</span><span class="pun">-</span><span class="pln">mode t</span><span class="pun">)</span></code></li><li class="L4"><code><span class="pun">(</span><span class="pln">show</span><span class="pun">-</span><span class="pln">paren</span><span class="pun">-</span><span class="pln">mode t</span><span class="pun">)</span></code></li><li class="L5"><code><span class="pun">(</span><span class="pln">column</span><span class="pun">-</span><span class="pln">number</span><span class="pun">-</span><span class="pln">mode t</span><span class="pun">)</span></code></li><li class="L6"><code><span class="pun">(</span><span class="kwd">set</span><span class="pun">-</span><span class="pln">fringe</span><span class="pun">-</span><span class="pln">style </span><span class="pun">-</span><span class="lit">1</span><span class="pun">)</span></code></li><li class="L7"><code><span class="pun">(</span><span class="pln">tooltip</span><span class="pun">-</span><span class="pln">mode </span><span class="pun">-</span><span class="lit">1</span><span class="pun">)</span></code></li></ol></pre>
+
+<p>The most important bit of configuration is the first line.  We are pushing “/usr/local/bin” onto the exec-path list giving Emacs the ability to use git (presuming it’s installed via hombrew and the binary resides in /usr/local/bin).</p>
+
+<p>In the interest of aesthetics I will add two additional lines to our configuration:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pun">(</span><span class="kwd">set</span><span class="pun">-</span><span class="pln">frame</span><span class="pun">-</span><span class="pln">font </span><span class="str">"Menlo-16"</span><span class="pun">)</span></code></li><li class="L1"><code><span class="pun">(</span><span class="pln">load</span><span class="pun">-</span><span class="pln">theme </span><span class="str">'tango)</span></code></li></ol></pre>
+
+<p>The first line changes the default font while the second line uses one of Emacs 24’s new features: <a href="http://emacs-fu.blogspot.com/2010/12/color-theming-with-emacs-24.html">built-in themes</a>.</p>
+
+<h1>ELPA &amp; el-get</h1>
+
+<p>Emacs 24 comes with <a href="http://tromey.com/elpa/">ELPA</a> package management built-in, however, the default repository of libraries excludes many we will need.  So we’ll configure Emacs to use the <a href="http://tromey.com/elpa/">tromey</a> repository.</p>
+
+<p><a href="http://github.com/dimitri/el-get">el-get</a> is a new package management library written by <a href="http://blog.tapoueh.org/">Dimitri Fontaine</a>.  It’s great.  It’s also fundamental in making our quick configuration possible.</p>
+
+<p>Install el-get in the following manner:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pln">$ cd </span><span class="pun">~</span><span class="str">/.emacs.d</span></code></li><li class="L1"><code><span class="str">$ mkdir el-get</span></code></li><li class="L2"><code><span class="str">$ cd el-get</span></code></li><li class="L3"><code><span class="str">$ git clone git:/</span><span class="pun">/</span><span class="pln">github</span><span class="pun">.</span><span class="pln">com</span><span class="pun">/</span><span class="pln">dimitri</span><span class="pun">/</span><span class="pln">el</span><span class="pun">-</span><span class="kwd">get</span><span class="pun">.</span><span class="pln">git</span></code></li></ol></pre>
+
+<p>We can now add the following lines to our configuration to load ELPA w/ an alternate repository and el-get.</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pun">(</span><span class="kwd">require</span><span class="pln"> </span><span class="str">'package)</span></code></li><li class="L1"><code><span class="str">(setq package-archives (cons '</span><span class="pun">(</span><span class="str">"tromey"</span><span class="pln"> </span><span class="pun">.</span><span class="pln"> </span><span class="str">"http://tromey.com/elpa/"</span><span class="pun">)</span><span class="pln"> </span><span class="kwd">package</span><span class="pun">-</span><span class="pln">archives</span><span class="pun">))</span></code></li><li class="L2"><code><span class="pun">(</span><span class="kwd">package</span><span class="pun">-</span><span class="pln">initialize</span><span class="pun">)</span></code></li><li class="L3"><code></code></li><li class="L4"><code><span class="pun">(</span><span class="pln">add</span><span class="pun">-</span><span class="pln">to</span><span class="pun">-</span><span class="pln">list </span><span class="str">'load-path "~/.emacs.d/el-get/el-get")</span></code></li><li class="L5"><code><span class="str">(require '</span><span class="pln">el</span><span class="pun">-</span><span class="kwd">get</span><span class="pun">)</span></code></li></ol></pre>
+
+<p>At this point it’s a good idea to evaluate the init.el buffer and refresh the elpa package list, in Emacs:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pun">(</span><span class="pln">M</span><span class="pun">-</span><span class="pln">x</span><span class="pun">)</span><span class="pln"> </span><span class="kwd">eval</span><span class="pun">-</span><span class="pln">buffer</span></code></li><li class="L1"><code><span class="pun">(</span><span class="pln">M</span><span class="pun">-</span><span class="pln">x</span><span class="pun">)</span><span class="pln"> </span><span class="kwd">package</span><span class="pun">-</span><span class="pln">refresh</span><span class="pun">-</span><span class="pln">contents</span></code></li></ol></pre>
+
+<h1>Package Installation</h1>
+
+<p>el-get can use a number of package retrieval protocols.  Most relevant to us: ELPA and git.  Drop the following configuration in your init.el:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pun">(</span><span class="pln">setq el</span><span class="pun">-</span><span class="kwd">get</span><span class="pun">-</span><span class="pln">sources</span></code></li><li class="L1"><code><span class="pln">      </span><span class="str">'((:name ruby-mode </span></code></li><li class="L2"><code><span class="str">               :type elpa</span></code></li><li class="L3"><code><span class="str">               :load "ruby-mode.el")</span></code></li><li class="L4"><code><span class="str">        (:name inf-ruby  :type elpa)</span></code></li><li class="L5"><code><span class="str">        (:name ruby-compilation :type elpa)</span></code></li><li class="L6"><code><span class="str">        (:name css-mode :type elpa)</span></code></li><li class="L7"><code><span class="str">        (:name textmate</span></code></li><li class="L8"><code><span class="str">               :type git</span></code></li><li class="L9"><code><span class="str">               :url "git://github.com/defunkt/textmate.el"</span></code></li><li class="L0"><code><span class="str">               :load "textmate.el")</span></code></li><li class="L1"><code><span class="str">        (:name rvm</span></code></li><li class="L2"><code><span class="str">               :type git</span></code></li><li class="L3"><code><span class="str">               :url "http://github.com/djwhitt/rvm.el.git"</span></code></li><li class="L4"><code><span class="str">               :load "rvm.el"</span></code></li><li class="L5"><code><span class="str">               :compile ("rvm.el")</span></code></li><li class="L6"><code><span class="str">               :after (lambda() (rvm-use-default)))</span></code></li><li class="L7"><code><span class="str">        (:name rhtml</span></code></li><li class="L8"><code><span class="str">               :type git</span></code></li><li class="L9"><code><span class="str">               :url "https://github.com/eschulte/rhtml.git"</span></code></li><li class="L0"><code><span class="str">               :features rhtml-mode)</span></code></li><li class="L1"><code><span class="str">        (:name yaml-mode </span></code></li><li class="L2"><code><span class="str">               :type git</span></code></li><li class="L3"><code><span class="str">               :url "http://github.com/yoshiki/yaml-mode.git"</span></code></li><li class="L4"><code><span class="str">               :features yaml-mode)))</span></code></li><li class="L5"><code><span class="str">(el-get '</span><span class="pln">sync</span><span class="pun">)</span></code></li></ol></pre>
+
+<p>Now evaluate the buffer again:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pun">(</span><span class="pln">M</span><span class="pun">-</span><span class="pln">x</span><span class="pun">)</span><span class="pln"> </span><span class="kwd">eval</span><span class="pun">-</span><span class="pln">buffer</span></code></li></ol></pre>
+
+<p>This will start pulling down and compiling our list of packages.</p>
+
+<p>At this point you have all you need to hack on Ruby and Rails applications.  There is, however, some simple configuration that will further enhance your Rails development experience.</p>
+
+<h1>Customizing Ruby and ERB Modes</h1>
+
+<p>If we look carefully at our previous el-get package list code, we notice that the entry for rvm has an :after parameter.  This parameter takes whatever function passed and executes it after the package is loaded.  This is the perfect place to add per-mode hooks to our configuration.  In the instance of rvm  the rvm-use-default command is run after the rvm library loads.</p>
+
+<p>In the interest of keeping line length to a minimum, I will create hook functions for each mode I want to configure post-load.  Insert the following functions into your init.el above the previous el-get-sources definition:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pun">(</span><span class="pln">defun ruby</span><span class="pun">-</span><span class="pln">mode</span><span class="pun">-</span><span class="pln">hook </span><span class="pun">()</span></code></li><li class="L1"><code><span class="pln">  </span><span class="pun">(</span><span class="pln">autoload </span><span class="str">'ruby-mode "ruby-mode" nil t)</span></code></li><li class="L2"><code><span class="str">  (add-to-list '</span><span class="kwd">auto</span><span class="pun">-</span><span class="pln">mode</span><span class="pun">-</span><span class="pln">alist </span><span class="str">'("Capfile" . ruby-mode))</span></code></li><li class="L3"><code><span class="str">  (add-to-list '</span><span class="kwd">auto</span><span class="pun">-</span><span class="pln">mode</span><span class="pun">-</span><span class="pln">alist </span><span class="str">'("Gemfile" . ruby-mode))</span></code></li><li class="L4"><code><span class="str">  (add-to-list '</span><span class="kwd">auto</span><span class="pun">-</span><span class="pln">mode</span><span class="pun">-</span><span class="pln">alist </span><span class="str">'("Rakefile" . ruby-mode))</span></code></li><li class="L5"><code><span class="str">  (add-to-list '</span><span class="kwd">auto</span><span class="pun">-</span><span class="pln">mode</span><span class="pun">-</span><span class="pln">alist </span><span class="str">'("\\.rake\\'" . ruby-mode))</span></code></li><li class="L6"><code><span class="str">  (add-to-list 'auto-mode-alist '("</span><span class="pln">\\</span><span class="pun">.</span><span class="pln">rb\\</span><span class="str">'" . ruby-mode))</span></code></li><li class="L7"><code><span class="str">  (add-to-list '</span><span class="kwd">auto</span><span class="pun">-</span><span class="pln">mode</span><span class="pun">-</span><span class="pln">alist </span><span class="str">'("\\.ru\\'" . ruby-mode))</span></code></li><li class="L8"><code><span class="str">  (add-hook 'ruby-mode-hook '(lambda ()</span></code></li><li class="L9"><code><span class="str">                               (setq ruby-deep-arglist t)</span></code></li><li class="L0"><code><span class="str">                               (setq ruby-deep-indent-paren nil)</span></code></li><li class="L1"><code><span class="str">                               (setq c-tab-always-indent nil)</span></code></li><li class="L2"><code><span class="str">                               (require 'inf-ruby)</span></code></li><li class="L3"><code><span class="str">                               (require 'ruby-compilation))))</span></code></li><li class="L4"><code><span class="str">(defun rhtml-mode-hook ()</span></code></li><li class="L5"><code><span class="str">  (autoload 'rhtml-mode "</span><span class="pln">rhtml</span><span class="pun">-</span><span class="pln">mode</span><span class="str">" nil t)</span></code></li><li class="L6"><code><span class="str">  (add-to-list 'auto-mode-alist '("</span><span class="pln">\\</span><span class="pun">.</span><span class="pln">erb\\</span><span class="str">'" . rhtml-mode))</span></code></li><li class="L7"><code><span class="str">  (add-to-list '</span><span class="kwd">auto</span><span class="pun">-</span><span class="pln">mode</span><span class="pun">-</span><span class="pln">alist </span><span class="str">'("\\.rjs\\'" . rhtml-mode))</span></code></li><li class="L8"><code><span class="str">  (add-hook 'rhtml-mode '(lambda ()</span></code></li><li class="L9"><code><span class="str">                           (define-key rhtml-mode-map (kbd "</span><span class="pln">M</span><span class="pun">-</span><span class="pln">s</span><span class="str">") 'save-buffer))))</span></code></li><li class="L0"><code></code></li><li class="L1"><code><span class="str">(defun yaml-mode-hook ()</span></code></li><li class="L2"><code><span class="str">  (autoload 'yaml-mode "</span><span class="pln">yaml</span><span class="pun">-</span><span class="pln">mode</span><span class="str">" nil t)</span></code></li><li class="L3"><code><span class="str">  (add-to-list 'auto-mode-alist '("</span><span class="pln">\\</span><span class="pun">.</span><span class="pln">yml$</span><span class="str">" . yaml-mode))</span></code></li><li class="L4"><code><span class="str">  (add-to-list 'auto-mode-alist '("</span><span class="pln">\\</span><span class="pun">.</span><span class="pln">yaml$</span><span class="str">" . yaml-mode)))</span></code></li><li class="L5"><code></code></li><li class="L6"><code><span class="str">(defun css-mode-hook ()</span></code></li><li class="L7"><code><span class="str">  (autoload 'css-mode "</span><span class="pln">css</span><span class="pun">-</span><span class="pln">mode</span><span class="str">" nil t)</span></code></li><li class="L8"><code><span class="str">  (add-hook 'css-mode-hook '(lambda ()</span></code></li><li class="L9"><code><span class="str">                              (setq css-indent-level 2)</span></code></li><li class="L0"><code><span class="str">                              (setq css-indent-offset 2))))</span></code></li></ol></pre>
+
+<p>Now we can add :after parameters to ruby-mode, rhtml-mode, yaml-mode, and css-mode.  Now our el-get package list looks more like this:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pun">(</span><span class="pln">setq el</span><span class="pun">-</span><span class="kwd">get</span><span class="pun">-</span><span class="pln">sources</span></code></li><li class="L1"><code><span class="pln">      </span><span class="str">'((:name ruby-mode </span></code></li><li class="L2"><code><span class="str">               :type elpa</span></code></li><li class="L3"><code><span class="str">               :load "ruby-mode.el"</span></code></li><li class="L4"><code><span class="str">               :after (lambda () (ruby-mode-hook)))</span></code></li><li class="L5"><code><span class="str">        (:name inf-ruby  :type elpa)</span></code></li><li class="L6"><code><span class="str">        (:name ruby-compilation :type elpa)</span></code></li><li class="L7"><code><span class="str">        (:name css-mode </span></code></li><li class="L8"><code><span class="str">               :type elpa </span></code></li><li class="L9"><code><span class="str">               :after (lambda () (css-mode-hook)))</span></code></li><li class="L0"><code><span class="str">        (:name textmate</span></code></li><li class="L1"><code><span class="str">               :type git</span></code></li><li class="L2"><code><span class="str">               :url "git://github.com/defunkt/textmate.el"</span></code></li><li class="L3"><code><span class="str">               :load "textmate.el")</span></code></li><li class="L4"><code><span class="str">        (:name rvm</span></code></li><li class="L5"><code><span class="str">               :type git</span></code></li><li class="L6"><code><span class="str">               :url "http://github.com/djwhitt/rvm.el.git"</span></code></li><li class="L7"><code><span class="str">               :load "rvm.el"</span></code></li><li class="L8"><code><span class="str">               :compile ("rvm.el")</span></code></li><li class="L9"><code><span class="str">               :after (lambda() (rvm-use-default)))</span></code></li><li class="L0"><code><span class="str">        (:name rhtml</span></code></li><li class="L1"><code><span class="str">               :type git</span></code></li><li class="L2"><code><span class="str">               :url "https://github.com/eschulte/rhtml.git"</span></code></li><li class="L3"><code><span class="str">               :features rhtml-mode</span></code></li><li class="L4"><code><span class="str">               :after (lambda () (rhtml-mode-hook)))</span></code></li><li class="L5"><code><span class="str">        (:name yaml-mode </span></code></li><li class="L6"><code><span class="str">               :type git</span></code></li><li class="L7"><code><span class="str">               :url "http://github.com/yoshiki/yaml-mode.git"</span></code></li><li class="L8"><code><span class="str">               :features yaml-mode</span></code></li><li class="L9"><code><span class="str">               :after (lambda () (yaml-mode-hook)))))</span></code></li></ol></pre>
+
+<p>We’ve now got file extension detection and nice ruby indentation.  At this point, you are finished.  You can now develop your Ruby and Rails application in Emacs!</p>
+
+<h1>Bonus Round</h1>
+
+<p>The experienced Emacs Rails developer will notice that I haven’t included <a href="http://github.com/eschulte/rinari">rinari</a>.  While rinari is a great library filled will all manner of helpful shortcuts, I never found myself using any of them save for one: running a single test buffer.  Using functionality from the <a href="http://github.com/defunkt/textmate.el">textmate.el</a> library, I wrote two simple functions for the purpose of running a single test buffer:</p>
+
+<pre class="prettyprint linenums"><ol class="linenums"><li class="L0"><code><span class="pun">(</span><span class="pln">defun </span><span class="kwd">is</span><span class="pun">-</span><span class="pln">rails</span><span class="pun">-</span><span class="pln">project </span><span class="pun">()</span></code></li><li class="L1"><code><span class="pln">  </span><span class="pun">(</span><span class="kwd">when</span><span class="pln"> </span><span class="pun">(</span><span class="pln">textmate</span><span class="pun">-</span><span class="pln">project</span><span class="pun">-</span><span class="pln">root</span><span class="pun">)</span></code></li><li class="L2"><code><span class="pln">    </span><span class="pun">(</span><span class="pln">file</span><span class="pun">-</span><span class="pln">exists</span><span class="pun">-</span><span class="pln">p </span><span class="pun">(</span><span class="pln">expand</span><span class="pun">-</span><span class="pln">file</span><span class="pun">-</span><span class="pln">name </span><span class="str">"config/environment.rb"</span><span class="pln"> </span><span class="pun">(</span><span class="pln">textmate</span><span class="pun">-</span><span class="pln">project</span><span class="pun">-</span><span class="pln">root</span><span class="pun">)))))</span></code></li><li class="L3"><code></code></li><li class="L4"><code><span class="pun">(</span><span class="pln">defun run</span><span class="pun">-</span><span class="pln">rails</span><span class="pun">-</span><span class="pln">test</span><span class="pun">-</span><span class="kwd">or</span><span class="pun">-</span><span class="pln">ruby</span><span class="pun">-</span><span class="pln">buffer </span><span class="pun">()</span></code></li><li class="L5"><code><span class="pln">  </span><span class="pun">(</span><span class="pln">interactive</span><span class="pun">)</span></code></li><li class="L6"><code><span class="pln">  </span><span class="pun">(</span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">is</span><span class="pun">-</span><span class="pln">rails</span><span class="pun">-</span><span class="pln">project</span><span class="pun">)</span></code></li><li class="L7"><code><span class="pln">      </span><span class="pun">(</span><span class="pln">let</span><span class="pun">*</span><span class="pln"> </span><span class="pun">((</span><span class="pln">path </span><span class="pun">(</span><span class="pln">buffer</span><span class="pun">-</span><span class="pln">file</span><span class="pun">-</span><span class="pln">name</span><span class="pun">))</span></code></li><li class="L8"><code><span class="pln">             </span><span class="pun">(</span><span class="pln">filename </span><span class="pun">(</span><span class="pln">file</span><span class="pun">-</span><span class="pln">name</span><span class="pun">-</span><span class="pln">nondirectory path</span><span class="pun">))</span></code></li><li class="L9"><code><span class="pln">             </span><span class="pun">(</span><span class="pln">test</span><span class="pun">-</span><span class="pln">path </span><span class="pun">(</span><span class="pln">expand</span><span class="pun">-</span><span class="pln">file</span><span class="pun">-</span><span class="pln">name </span><span class="str">"test"</span><span class="pln"> </span><span class="pun">(</span><span class="pln">textmate</span><span class="pun">-</span><span class="pln">project</span><span class="pun">-</span><span class="pln">root</span><span class="pun">)))</span></code></li><li class="L0"><code><span class="pln">             </span><span class="pun">(</span><span class="pln">command </span><span class="pun">(</span><span class="pln">list ruby</span><span class="pun">-</span><span class="pln">compilation</span><span class="pun">-</span><span class="pln">executable </span><span class="str">"-I"</span><span class="pln"> test</span><span class="pun">-</span><span class="pln">path path</span><span class="pun">)))</span></code></li><li class="L1"><code><span class="pln">        </span><span class="pun">(</span><span class="pln">pop</span><span class="pun">-</span><span class="pln">to</span><span class="pun">-</span><span class="pln">buffer </span><span class="pun">(</span><span class="pln">ruby</span><span class="pun">-</span><span class="pln">compilation</span><span class="pun">-</span><span class="kwd">do</span><span class="pln"> filename command</span><span class="pun">)))</span></code></li><li class="L2"><code><span class="pln">    </span><span class="pun">(</span><span class="pln">ruby</span><span class="pun">-</span><span class="pln">compilation</span><span class="pun">-</span><span class="kwd">this</span><span class="pun">-</span><span class="pln">buffer</span><span class="pun">)))</span></code></li></ol></pre>
+
+<p>This function determines if you are in a rails project or not.  If in a Rails project the function assumes the buffer you are running is a test file, it then runs that file and outputs the results in a separate buffer.  If not in a rails project, the function assumes that you are simply wanting to run any Ruby buffer, it does so outputting the results in a separate buffer.  To my knowledge this function will not work with specs, however, it should be relatively trivial to make it do so.</p>
+
+<p>Now, bind run-rails-test-or-ruby-buffer to a key combination (I use M-r) and you’ll be able to run Ruby files and Rails tests with minimal fuss.  If you use rvm and/or gemsets like I do, you’ll want to use the command (M-x) rvm-use within a project, selecting the project’s Ruby version and gemset before running any tests or files in Emacs.</p>
+
+<p>I hope you enjoyed configuring Emacs with me as much as I did.  This configuration is one that could grow into a more mature and full-featured one, but as it is, will enable you to start hacking on Rails projects immediately.  Please leave any questions you might have in the comments below.  Thanks!</p>
+
+<p>Gist of the full init.el: <a href="https://gist.github.com/785133">https://gist.github.com/785133</a></p>
+
+												
+										</div>
+
+																					<div id="blog-newsletter-signup">
+												<hr class="chevrons">
+
+												<section class="section centered">
+													<header class="section-header header">
+														<h1>Get More From Viget</h1>
+														<p class="emphasize">Subscribe to get our monthly newsletter and occasional special announcements.</p>
+													</header>
+
+													<div class="section-content section">
+														<form action="http://vl.createsend.com/t/r/s/bkish/" method="post" class="form inline-form" id="blog-newsletter-form">
+															<ul>
+																<li>
+																	<label class="visuallyhidden" for="newsletter-email">Email Address</label>
+																	<input class="text-field required email" required="required" placeholder="Your email address" name="cm-bkish-bkish" id="newsletter-email" type="email">
+																</li>
+																<li>
+																	<button type="submit" class="submit-button bold-button button">Subscribe</button>
+																</li>
+															</ul>
+														</form>
+													</div>
+												</section>
+
+												<hr class="chevrons">
+											</div>
+										
+																					<div class="entry-comments">
+												<div id="disqus_thread"><iframe verticalscrolling="no" horizontalscrolling="no" src="index_3.html" style="width: 100% ! important; border: medium none ! important; overflow: hidden ! important; height: 7072px ! important;" title="Disqus" tabindex="0" allowtransparency="true" data-disqus-uid="2" id="dsq-2" frameborder="0" scrolling="no" width="100%"></iframe></div>
+												
+												
+											</div>
+																			</div>
+									<aside class="aside-blog-post aside col-2 col stickem">
+										
+											<section class="section-author section author vcard clear">
+																									
+														<figure class="photo-frame-no-border photo-frame photo-with-flag encircle">
+															<img src="mswasey_130_130gray.jpg" alt="Matt Swasey" class="photo">
+																															<span class="flag">Viget Alum</span>
+																													</figure>
+													
+																								<div class="author-meta">
+													<span class="fn">Matt Swasey</span>
+																											<span class="role">Former Developer</span>
+																																						</div>
+											</section>
+										
+
+										<div class="big-screen-hide">
+											<hr class="chevrons">
+
+																							<nav class="quick-pagination navigation">
+													<ul class="clear">
+																													<li><a href="http://viget.com/extend/quickly-converting-to-html5-video" class="ir arrow-prev arrow" rel="prev" data-track-event="Extend Post,Previous Post">Previous</a></li>
+																																											<li><a href="http://viget.com/extend/paperclip-custom-interpolation" class="ir arrow-next arrow" rel="next" data-track-event="Extend Post,Next Post">Next</a></li>
+																											</ul>
+																											<p><b>Next Post</b> <a href="http://viget.com/extend/paperclip-custom-interpolation" data-track-event="Extend Post,Next Post">Paperclip Custom Interpolations</a></p>
+																									</nav>
+																					</div>
+
+										<hr class="chevrons">
+
+										<div class="social-sharing-widget">
+	<div class="widget-header clear">
+		<span class="icon-facebook icon ir">Facebook</span>
+		<span class="icon-twitter icon ir">Twitter</span>
+		<span class="icon-googleplus icon ir">Google+</span>
+		
+	</div>
+	<div class="widget-body">
+		<ul class="vertical clear">
+			<li>
+				
+
+				<div fb-iframe-plugin-query="app_id=&amp;height=21&amp;href=http%3A%2F%2Fviget.com%2Fextend%2Femacs-24-rails-development-environment-from-scratch-to-productive-in-5-minu&amp;layout=button_count&amp;locale=en_US&amp;sdk=joey&amp;send=false&amp;show_faces=false&amp;width=100" fb-xfbml-state="parsed" class="fb-like fb_iframe_widget" data-href="http://viget.com/extend/emacs-24-rails-development-environment-from-scratch-to-productive-in-5-minu" data-send="false" data-layout="button_count" data-width="100" data-height="21" data-show-faces="false"><span style="vertical-align: top; width: 0px; height: 0px;"><iframe src="index_4.html" style="border: medium none; visibility: hidden;" title="fb:like Facebook Social Plugin" allowtransparency="true" name="f2d2b2ef9859626" frameborder="0" height="21px" scrolling="no" width="100px"></iframe></span></div>
+			</li>
+			<li>
+				<iframe style="width: 106px; height: 20px;" data-twttr-rendered="true" title="Twitter Tweet Button" class="twitter-share-button twitter-tweet-button twitter-count-horizontal" src="index_5.html" allowtransparency="true" id="twitter-widget-0" frameborder="0" scrolling="no"></iframe>
+				
+			</li>
+			<li>
+				<div id="___plusone_0" style="text-indent: 0pt; margin: 0pt; padding: 0pt; background: none repeat scroll 0% 0% transparent; border-style: none; float: none; line-height: normal; font-size: 1px; vertical-align: baseline; display: inline-block; width: 120px; height: 20px;"><iframe title="+1" data-gapiattached="true" src="index_6.html" name="I1_1393656998797" id="I1_1393656998797" vspace="0" tabindex="0" style="position: static; top: 0pt; width: 120px; margin: 0px; border-style: none; left: 0pt; visibility: visible; height: 20px;" marginwidth="0" marginheight="0" hspace="0" frameborder="0" scrolling="no" width="100%"></iframe></div>
+				
+			</li>
+			
+		</ul>
+	</div>
+</div>
+
+									</aside>
+								</article>
+							</div>
+							<aside class="aside col-2 col">
+								
+	<section class="section-blog-navigation section-blog-module section">
+		<header class="section-header header">
+			<h1>Extend is…</h1>
+			<a href="http://feeds.feedburner.com/VigetExtend" class="light-rss-button rss-button button ir" rel="alternate" type="application/rss+xml" data-track-event="Extend Post,RSS">RSS</a>
+		</header>
+		<div class="section-content section">
+			<p class="blog-description">A <b>Code &amp; Technology</b> blog—our thirty foot view. Primarily written by/for Ruby, iOS, and front-end developers.</p>
+
+			<form class="search-form form" id="search-form" method="post" action="http://viget.com/">
+<div class="hiddenFields">
+<input name="ACT" value="33" type="hidden">
+<input name="params" value="eyJyZXN1bHRfcGFnZSI6ImV4dGVuZFwvc2VhcmNoIn0" type="hidden">
+<input name="site_id" value="1" type="hidden">
+</div>
+
+
+				<ul>
+					<li>
+						<label for="keywords">Search</label>
+						<input value="" class="text-field" name="keywords" id="keywords" type="text">
+					</li>
+					<li>
+						<input name="category[]" value="126" type="hidden">
+						<button type="submit" class="ir">Submit</button>
+					</li>
+				</ul>
+			</form>
+		</div>
+	</section>
+
+	<hr class="chevrons">
+
+	<section class="section-more-blogs section-blog-module section">
+		<header class="section-header header">
+			<h1>More Viget Blogs</h1>
+		</header>
+		<div class="section-content section">
+			<ul class="grouping-blog-links grouping">
+				<li><a href="http://viget.com/advance" data-track-event="Extend Post, More Viget Blogs Click,Advance"><img src="logo-dark.png" alt="Advance: Strategy &amp; Process"></a></li>
+				<li><a href="http://viget.com/extend" data-track-event="Extend Post, More Viget Blogs Click,Extend"><img src="logo-dark_001.png" alt="Extend: Code &amp; Technology"></a></li>
+				<li><a href="http://viget.com/flourish" data-track-event="Extend Post, More Viget Blogs Click,Flourish"><img src="logo-dark_002.png" alt="Flourish: Viget News &amp; Culture"></a></li>
+				<li><a href="http://viget.com/inspire" data-track-event="Extend Post, More Viget Blogs Click,Inspire"><img src="logo-dark_003.png" alt="Inspire: Design &amp; Interactive"></a></li>
+			</ul>
+		</div>
+	</section>
+
+			<hr class="chevrons">
+
+		<section class="section-hiring section-blog-module section">
+			<header class="section-header header">
+				<h1>We’re Hiring</h1>
+			</header>
+			<div class="section-content section">
+				<ul class="grouping-blog-links grouping">
+					
+	
+		<li><a href="http://viget.com/about/careers/technical-development-project-manager">Technical/Development Project Manager</a></li>
+	
+		<li><a href="http://viget.com/about/careers/summer-2014-developer-intern">Rails Developer Intern</a></li>
+	
+		<li><a href="http://viget.com/about/careers/ruby-on-rails-developer">Ruby On Rails Developer</a></li>
+	
+		<li><a href="http://viget.com/about/careers/ios-developer">iOS Developer</a></li>
+	
+		<li><a href="http://viget.com/about/careers/development-director">Development Director</a></li>
+	
+
+				</ul>
+			</div>
+		</section>
+	
+
+							</aside>
+						</section>
+
+					</div>
+				</section>
+			
+	</div>
+
+	
+			<nav class="anchored-navigation navigation">
+			<ul>
+									<li><a href="http://viget.com/extend/quickly-converting-to-html5-video" class="anchor-prev anchor" rel="prev" data-track-event="Extend Post,Previous Post"><span class="title">Quickly Converting to HTML5 Video</span></a></li>
+													<li><a href="http://viget.com/extend/paperclip-custom-interpolation" class="anchor-next anchor" rel="next" data-track-event="Extend Post,Next Post"><span class="title">Paperclip Custom Interpolations</span></a></li>
+							</ul>
+		</nav>
+	
+	<header class="global-header" id="global-header" role="banner">
+		<div class="wrapper clear">
+							<a href="http://viget.com/" class="logo ir" rel="home">Viget</a>
+				<nav class="nav-primary nav">
+					<ul class="clear">
+						<li class="nav-item-about nav-item"><a href="http://viget.com/about" data-track-event="Top Nav,About">About</a></li>
+						<li class="nav-item-work nav-item"><a href="http://viget.com/work" data-track-event="Top Nav,Work">Work</a></li>
+						<li class="nav-item-blogs nav-item-current nav-item"><a href="http://viget.com/blogs" data-track-event="Top Nav, Blogs">Blogs</a></li>
+						<li class="nav-item-contact nav-item"><a href="http://viget.com/contact" data-track-event="Top Nav, Contact">Contact</a></li>
+					</ul>
+				</nav>
+			
+			
+			<a href="#global-footer" class="button-nav-jump-link button ir">Skip to navigation</a>
+		</div>
+
+			</header>
+
+	
+	
+	<footer class="global-footer" id="global-footer">
+		
+			<nav class="nav-primary nav">
+				<div class="wrapper">
+					<ul class="row">
+						<li class="col-2 col-offset-2 col">
+							<h1><a href="http://viget.com/about" data-track-event="Footer,About,About">About</a></h1>
+							<ul>
+								<li><a href="http://viget.com/about#locations" data-track-event="Footer,About,Locations">Locations</a></li>
+								<li><a href="http://viget.com/about#team" data-track-event="Footer,About,Team">Team</a></li>
+								<li><a href="http://viget.com/about#careers" data-track-event="Footer,About,Careers">Careers</a></li>
+							</ul>
+						</li>
+						<li class="col-2 col">
+							<h1><a href="http://viget.com/work" data-track-event="Footer,Work,Work">Work</a></h1>
+							<ul>
+								<li><a href="http://viget.com/work#portfolio" data-track-event="Footer,Work,Portfolio">Portfolio</a></li>
+								<li><a href="http://viget.com/work#services" data-track-event="Footer,Work,Services">Services</a></li>
+							</ul>
+						</li>
+						<li class="col-2 col">
+							<h1><a href="http://viget.com/blogs" data-track-event="Footer,Blogs,Blogs">Blogs</a></h1>
+							<ul>
+								<li><a href="http://viget.com/advance" data-track-event="Footer,Blogs,Advance">Advance</a></li>
+								<li><a href="http://viget.com/inspire" data-track-event="Footer,Blogs,Inspire">Inspire</a></li>
+								<li><a href="http://viget.com/extend" data-track-event="Footer,Blogs,Extend">Extend</a></li>
+								<li><a href="http://viget.com/flourish" data-track-event="Footer,Blogs,Flourish">Flourish</a></li>
+							</ul>
+						</li>
+						<li class="col-2 col">
+							<h1><a href="http://viget.com/contact" data-track-event="Footer,Contact,Contact">Contact</a></h1>
+							<ul>
+								<li><a href="http://viget.com/contact#send-message" data-track-event="Footer,Contact,Send a Message">Send a Message</a></li>
+								<li><a href="http://viget.com/contact#find-us" data-track-event="Footer,Contact,Find Us">Find Us</a></li>
+							</ul>
+						</li>
+						<li class="col-2 col">
+							<h1><a href="http://viget.com/more" data-track-event="Footer,More,More">More</a></h1>
+							<ul>
+								<li><a href="http://www.pointlesscorp.com/" rel="external" data-track-event="Footer,More,Pointless Corp.">Pointless Corp.</a></li>
+								<li><a href="http://speakerrate.com/" rel="external" data-track-event="Footer,More,SpeakerRate">SpeakerRate</a></li>
+								<li><a href="http://www.teamviget.com/" rel="external" data-track-event="Footer,More,TeamViget">Team Viget</a></li>
+								<li><a href="http://www.sayviget.com/" rel="external" data-track-event="Footer,More,Say Viget">Say “Viget”</a></li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</nav>
+
+			<div class="chevrons">
+				<div class="wrapper clear">
+					<div class="row">
+						<div class="social-connections col-4 col-offset-2 col">
+							<p>Connect with us</p>
+							<ul class="clear">
+								<li><a href="http://twitter.com/viget" class="icon-twitter icon ir" rel="external" title="@viget" data-track-social="Twitter,Outbound Click,Footer">Twitter</a></li>
+								<li><a href="http://www.flickr.com/photos/viget" class="icon-flickr icon ir" rel="external" title="Flickr" data-track-social="Flickr,Outbound Click,Footer">Flickr</a></li>
+								<li><a href="http://vimeo.com/viget" class="icon-vimeo icon ir" rel="external" title="Vimeo" data-track-social="Vimeo,Outbound Click,Footer">Vimeo</a></li>
+								<li><a href="http://www.linkedin.com/company/viget-labs" class="icon-linkedin icon ir" rel="external" title="LinkedIn" data-track-social="LinkedIn,Outbound Click,Footer">LinkedIn</a></li>
+								<li><a href="http://www.facebook.com/vigetlabs" class="icon-facebook icon ir" rel="external" title="Facebook" data-track-social="Facebook,Outbound Click,Footer">Facebook</a></li>
+							</ul>
+						</div>
+
+						<form action="http://vl.createsend.com/t/r/s/bkish/" method="post" class="form-email-updates col-4 col" data-track-event="Footer,Email Subscription" data-track-email="cm-bkish-bkish">
+							<ul>
+								<li>
+									<label class="visuallyhidden" for="cm-bkish-bkish">Get Email Updates</label>
+									<input required="required" placeholder="Get Email Updates (Monthly or so)" name="cm-bkish-bkish" id="cm-bkish-bkish" type="email">
+								</li>
+								<li>
+									<button type="submit" class="ir">Submit</button>
+								</li>
+							</ul>
+						</form>
+					</div>
+				</div>
+			</div>
+		
+		<div class="vcard">
+			<div class="wrapper">
+				<div class="clear">
+					<span class="fn org"><a href="http://viget.com/" class="url logo ir">Viget</a></span>
+					<ul class="grouping-locations grouping">
+						<li>Falls Church, VA</li>
+						<li>Durham, NC</li>
+						<li>Boulder, CO</li>
+					</ul>
+				</div>
+				<ul class="grouping-contact grouping">
+					<li><a href="tel:+17038910670" class="tel-button bold-button button tel">703.891.0670</a></li>
+					<li><a href="tel:+17038320341" class="fax-button bold-button button fax">703.832.0341</a></li>
+					<li><a href="mailto:info@viget.com" class="email-button bold-button button email">info@viget.com</a></li>
+				</ul>
+				<p class="note">Strategy, Design, &amp; Development. Vigorous since 1999.</p>
+			</div>
+		</div>
+
+		<p role="contentinfo">© 1999–2014 Viget Labs, LLC. <a href="http://viget.com/terms-conditions">Terms &amp; Conditions</a> : <a href="http://viget.com/privacy-policy">Privacy Policy</a></p>
+	</footer>
+
+	
+
+			
+	
+	
+			<!-- Disqus -->
+			
+			<!-- End Disqus -->
+		
+
+			
+				
+			
+	
+	<!-- KISSmetrics -->
+	
+	<!-- End KISSmetrics -->
+
+	<!--[if lt IE 7]>
+		<script src='//ajax.googleapis.com/ajax/libs/chrome-frame/1.0.3/CFInstall.min.js'></script>
+		<script>
+			window.attachEvent( 'onload', function() {
+				CFInstall.check({ mode: 'overlay' });
+			});
+		</script>
+	<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		
+
+		
+			
+			
+			
+		
+
+		
+			
+			
+			
+		
+
+		
+		
+			
+
+			
+			
+			
+
+			
+
+			
+
+			
+
+		
+	<iframe tabindex="-1" style="width: 1px; height: 1px; position: absolute; top: -100px;" src="index_7.html" id="oauth2relay1503276172" name="oauth2relay1503276172"></iframe><iframe style="position: absolute; top: -100px; left: -100px; z-index: -10; border: medium none; visibility: hidden; width: 1px; height: 1px;" src="index_8.html"></iframe><iframe src="index_9.html" style="position: absolute; width: 1px; height: 1px; top: 0pt; left: 0pt; visibility: hidden;"></iframe><sfmsg data="{&quot;imageCount&quot;:0,&quot;ip&quot;:&quot;1.1.1.1&quot;}" id="sfMsgId"></sfmsg></body>
+</html>

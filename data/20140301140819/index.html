@@ -1,0 +1,785 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+    
+    <meta content="360doc" name="classification">
+    
+    <link rel="alternate" media="only screen and (max-width: 640px)" href="http://www.360doc.cn/article/3272529_65893624.html">
+    <meta content="emacs:emacs23下搭建python开发环境 [杂乱的维基]" name="keywords">
+    <meta content="emacs:emacs23下搭建python开发环境 [杂乱的维基]" name="description">
+    <meta name="mobile-agent" content="format=html5;url=http://www.360doc.cn/article/3272529_65893624.html">
+
+    <meta content="www.360doc.com" name="author">
+
+    <title>
+        emacs:emacs23下搭建python开发环境 [杂乱的维基]
+    </title>
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+    
+    
+    
+    
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body style="font-family: Arial,Helvetica,sans-serif;" onmouseup="setDragEnd()" onmousemove="DragDiv();" onclick="delAllDiv(event)"><iframe src="index_1.html" style="display: none;" frameborder="0"></iframe><div style="display: block;" id="bdshare_s"><iframe src="index_5.html" id="bdsIfr" style="position: absolute; display: none; z-index: 9999;" frameborder="0"></iframe><div style="display: none;" id="bdshare_l"><div id="bdshare_l_c"><h6>分享到</h6><ul><li><a href="#" class="bds_mshare mshare">一键分享</a></li><li><a href="#" class="bds_qzone qqkj">QQ空间</a></li><li><a href="#" class="bds_tsina xlwb">新浪微博</a></li><li><a href="#" class="bds_bdysc bdysc">百度云收藏</a></li><li><a href="#" class="bds_renren rrw">人人网</a></li><li><a href="#" class="bds_tqq txwb">腾讯微博</a></li><li><a href="#" class="bds_bdxc bdxc">百度相册</a></li><li><a href="#" class="bds_kaixin001 kxw">开心网</a></li><li><a href="#" class="bds_tqf txpy">腾讯朋友</a></li><li><a href="#" class="bds_tieba bdtb">百度贴吧</a></li><li><a href="#" class="bds_douban db">豆瓣网</a></li><li><a href="#" class="bds_tsohu shwb">搜狐微博</a></li><li><a href="#" class="bds_bdhome bdhome">百度新首页</a></li><li><a href="#" class="bds_sqq sqq">QQ好友</a></li><li><a href="#" class="bds_thx thx">和讯微博</a></li><li><a href="#" class="bds_more">更多...</a></li></ul><p><a href="#" class="goWebsite">百度分享</a></p></div></div></div>
+    <span id="LayerLogin"></span>
+    <div class="mainnav">
+        <div class="mainnav1">
+            <div class="lf360" style="padding-top: 5px; padding-left: 10px; position: relative;">
+                <a href="http://www.360doc.com/index.html">
+                    <img src="sy-8.gif"></a>
+            </div>
+            <div style="position: absolute; padding-top: 12px; padding-left: 4px; width: 525px;">
+                <table border="0" height="34" cellpadding="0" cellspacing="0">
+                    <tbody>
+                        <tr>
+                            <td style="width: 110px;"></td>
+                            <td class="  navwz1" width="100px">
+                                <a href="http://www.360doc.com/index.html">首&nbsp;页</a>
+                            </td>
+                            <td class="  navwz1" width="100px">
+                                <a href="http://www.360doc.com/readroom.html">阅览室</a>
+                            </td>
+                            <td class="  navwz1" width="88px">
+                                <a href="http://www.360doc.com/weekstar.html">馆友</a>
+                            </td>
+                            <td class="  navwz1" width="132px">
+                                <a href="http://www.360doc.com/my360doc.aspx">我的图书馆</a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="rt360" style="padding-top: 18px; width: 200px;" id="outerdiv"><div class="denglbj lan2">                  <div style="width: 43px; float: left; text-align: center;"><a href="javascript:void(0)" onclick="loginnew()">登录</a></div>         <div style="width: 1px; float: left;"></div>         <div style="width: 46px; float: left; text-align: center; margin-left: 1px;" id="regdiv"><a href="http://www.360doc.com/register.aspx?refer=80" target="_top">注册</a></div>         <div class="boxwid xinngdui" id="bfdiv"><a href="#"><img id="imgbfabc" src="5.gif"></a>                        </div>        <div style="position: absolute; margin-left: 35px; width: 96px; display: none; z-index: 200000;" id="func">        <div class="tugduo rt360" id="divfunc" style="cursor: pointer;"><img id="imgfunc" src="4.gif" height="27" width="41"></div>        <div class="tipzhu  rt360 hui2" id="layerdiv" onclick="clolayer()"><ul><li><a href="http://www.360doc.com/advice.html" target="_top">留言交流</a></li><li><a href="http://www.360doc.com/helpnew.html" target="_top">网文摘手</a></li><li><a href="http://www.360doc.com/mobilapp.htm" target="_top">手机客户端</a></li><li style="border: medium none;"><a href="http://www.360doc.com/help.html" target="_top">帮助</a></li></ul></div>           </div>                </div></div>
+            <div class=" rt360" style="padding-top: 17px; padding-right: 0px;">
+                <div class="lf360 serch">
+                    <input id="txtSearchword" onkeyup="showIntelliSense()" name="input2" class="serchpt" value="搜文章 找馆友" onblur="if(!this.value) {this.value='搜文章 找馆友';this.style.color='#b2b2b2';}" onfocus="if(this.value=='搜文章 找馆友') this.value='';this.style.color='#272727'" onkeydown="ongosearch()" onpaste="showIntelliSense1();" type="text">
+                </div>
+                <div class="lf360 ssuo" style="position: relative;">
+                    <a href="javascript:gosearch();" id="searchlinkid"></a>
+                </div>
+                <div id="divsearch" style="position: absolute; margin-top: 25px; margin-left: 1px; z-index: 100; display: block;">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="navxt">
+    </div>
+    <div class="both">
+    </div>
+    <div class="mainzt">
+        <table class="index_main" border="0" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td align="left" valign="top" width="727px">
+                        <div id="ADAboveArtContent"><iframe marginwidth="0" marginheight="0" src="index_7.html" frameborder="0" height="90" scrolling="no" width="728"></iframe></div>
+                        <div style="height: 7px;">
+                        </div>
+                        <table class="mainbj6" id="docArtClass" border="0" cellpadding="0" cellspacing="0">
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <table style="width: 100%; text-align: center;" border="0" cellpadding="0" cellspacing="0">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <table style="width: 100%; text-align: left;" border="0" cellpadding="0" cellspacing="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td class="biaoti">
+                                                                        <div class="biaoti2 lf360">
+                                                                            emacs:emacs23下搭建python开发环境 [杂乱的维基]
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="height: 32px;">
+                                                                        <div class="wztopxx">
+                                                                            <div style="float: left;">
+                                                                                <table cellpadding="0" cellspacing="0">
+                                                                                    <tbody>
+                                                                                        <tr>
+                                                                                            <td>收藏人：<span class="name" onclick="wzhitnew(1);"><a href="http://www.360doc.com/userhome/3272529" target="_top">不打酱油</a></span>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div class="btzctsg" id="spanfollowstatus"><div class="gzbt1"><a onclick="gzuser(3272529);wzhitnew(2);" href="javascript:void(0)"></a></div></div>
+                                                                                                
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                2010-11-02&nbsp;|&nbsp;阅：<span id="360doc_Readnum">1189</span>&nbsp;&nbsp;<span style="position: relative;">转：<span onclick="wzhitnew(3)" id="360doc_saverNum"><span style="cursor: pointer;" onclick="javascript:ShowSaverUser();">5</span></span><span id="360doc_saverUser"><div id="sameArtOuter" style="display: none; position: absolute; height: 305px; width: 144px; left: 0px; margin-top: 15px; z-index: 100000;" class="box_6"><div id="sameArt" style="overflow-y: auto; height: 300px; overflow-x: hidden; z-index: 100; right: 0px; margin-top: -10px;" onclick="event.cancelBubble=true;"></div></div></span></span>&nbsp;&nbsp;|&nbsp;&nbsp;<a href="#" onclick=" setTimeout(showShareLayer, 10);wzhitnew(4);">分享</a>&nbsp;
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <a href="#" onclick="  setTimeout(showShareLayer, 10);wzhitnew(5);">
+                                                                                                    <img style="cursor: pointer;" src="tb10.gif"></a><div class="fenxiang" id="fenxiangLayer" style="display: none; border: medium none; width: 110px;"><div style="border: 1px solid rgb(203, 203, 203); height: 270px; width: 108px;"><div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare share-bar-btn"><table style="background-color: rgb(255, 255, 255);" width="108" cellpadding="0" cellspacing="0"><tbody><tr><td width="12"></td><td onclick="shareWeixin();wzhitnew(65);" height="29"><a href="javascript:void(0);"><div class="bds_weixin">&nbsp;&nbsp;&nbsp;&nbsp;微信朋友圈</div></a></td></tr><tr><td width="12"></td><td onclick="wzhitnew(6);" height="29"><a class="bds_qzone" href="javascript:void(0);" title="分享到QQ空间">&nbsp;&nbsp;&nbsp;&nbsp;腾讯空间</a></td></tr><tr><td width="12"></td><td onclick="wzhitnew(9);" height="29"><a class="bds_tsina" href="javascript:void(0);" title="分享到新浪微博">&nbsp;&nbsp;&nbsp;&nbsp;新浪微博</a></td></tr><tr><td width="12"></td><td onclick="wzhitnew(10);" height="29"><a class="bds_tqq" href="javascript:void(0);" title="分享到腾讯微博">&nbsp;&nbsp;&nbsp;&nbsp;腾讯微博</a></td></tr><tr><td width="12"></td><td onclick="wzhitnew(7);" height="29"><a class="bds_renren" href="javascript:void(0);" title="分享到人人网">&nbsp;&nbsp;&nbsp;&nbsp;人人网</a></td></tr><tr><td width="12"></td><td onclick="wzhitnew(8);" height="29"><a class="bds_kaixin001" href="javascript:void(0);" title="分享到开心网">&nbsp;&nbsp;&nbsp;&nbsp;开心网</a></td></tr><tr><td width="12"></td><td onclick="wzhitnew(11);" height="29"><a class="bds_tsohu" href="javascript:void(0);" title="分享到搜狐微博">&nbsp;&nbsp;&nbsp;&nbsp;搜狐微博</a></td></tr><tr><td width="12"></td><td height="29"><a href="javascript:void(0);" onclick="showdivemail();wzhitnew(12);"><div class="bds_py">&nbsp;&nbsp;&nbsp;&nbsp;推荐给朋友</div></a></td></tr><tr><td width="12"></td><td height="29"><a href="javascript:void(0);"><div class="bds_jubao" onclick="showAlertLayer();wzhitnew(13);">&nbsp;&nbsp;&nbsp;&nbsp;举报</div></a></td></tr></tbody></table></div></div></div>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div style="position: relative;">
+                                                                                                    &nbsp;&nbsp;|&nbsp;&nbsp;<span id="docsource">&nbsp;&nbsp;<a onclick="wzhitnew(14);" href="http://www.quhuashuai.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83" target="_top">来源</a></span>
+                                                                                                </div>
+                                                                                                <div class="sekuaibox" style="display: none;" id="zihaoboxID">
+                                                                                                    <div style="padding-top: 10px; padding-left: 5px;">
+                                                                                                        <div class="lf360 danxunbt">
+                                                                                                            <input id="artdocfont3" onclick="ChangeArtSize(3, this); wzhitnew(15); " name="radio" value="1" type="radio">
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunwz" onclick="ChangeArtSize(3,this);wzhitnew(15); " style="cursor: pointer;">
+                                                                                                            大
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunbt">
+                                                                                                            <input id="artdocfont2" onclick="ChangeArtSize(2, this); wzhitnew(16); " name="radio" value="2" type="radio">
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunwz" onclick="ChangeArtSize(2,this);wzhitnew(16); " style="cursor: pointer;">
+                                                                                                            中
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunbt">
+                                                                                                            <input id="artdocfont1" onclick="ChangeArtSize(1, this); wzhitnew(17); " name="radio" value="3" type="radio">
+                                                                                                        </div>
+                                                                                                        <div class="lf360 danxunwz" onclick="ChangeArtSize(1,this);wzhitnew(17); " style="cursor: pointer;">
+                                                                                                            小
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div class="sekuaibox" style="margin-left: 87px; display: none;" id="sekuaiboxID">
+                                                                                                    <div style="padding-top: 10px; padding-left: 5px;">
+                                                                                                        <img src="cr1.gif" id="docArtC1" onclick="ChangeArtClass(1,this);wzhitnew(18);" style="cursor: pointer;"><img src="cr2.gif" id="docArtC2" onclick="ChangeArtClass(2,this);wzhitnew(19);" style="cursor: pointer;"><img src="cr3.gif" id="docArtC3" onclick="ChangeArtClass(3,this);wzhitnew(20);" style="cursor: pointer;"><img src="cr4.gif" id="docArtC4" onclick="ChangeArtClass(4,this);wzhitnew(21);" style="cursor: pointer;"><img src="cr5.gif" id="docArtC5" onclick="ChangeArtClass(5,this);wzhitnew(22);" style="cursor: pointer;"><img src="cr6-1.gif" id="docArtC6" onclick="ChangeArtClass(6,this);wzhitnew(23);" style="cursor: pointer;">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div style="padding-left: 15px;">
+                                                                                                    <a href="javascript:void(0)">
+                                                                                                        <img src="wz1.gif"></a>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td>
+                                                                                                <div style="padding-left: 10px;">
+                                                                                                    <a href="javascript:void(0)">
+                                                                                                        <img src="wz2.gif"></a>
+                                                                                                </div>
+                                                                                            </td>
+                                                                                            <td></td>
+                                                                                        </tr>
+                                                                                    </tbody>
+                                                                                </table>
+                                                                            </div>
+                                                                            <div id="resavelayer1" class="rt360"><div class="zswdbt"><a href="javascript:void(0);" onclick="SaveArt();wzhitnew(24);"></a></div></div>
+                                                                            <table style="text-align: center; margin: 0px auto;" cellpadding="0" cellspacing="0">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td>
+                                                                                            <div id="AlertArt1" style="display: none; position: absolute;">
+                                                                                            </div>
+                                                                                            <div id="SendToFriends1" style="display: none; position: absolute;">
+                                                                                            </div>
+                                                                                            <div class="lf360 zcbutton" style="margin-left: 100px;">
+                                                                                            </div>
+                                                                                            <div class="lf360">
+                                                                                                &nbsp;&nbsp;
+                                                                                            </div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>
+                                                        
+                                                        <table class="wenzhangcss" border="0" width="100%" cellpadding="0" cellspacing="0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div class="xiantao">
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="height: 200px;" align="left" valign="top" width="670px">
+                                                                        <span id="articlecontent" onmousedown="newhighlight = true;" onmouseup="NewHighlight(event)">
+                                                                            <table>
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td width="670px">
+                                                                                            <div class="dokuwiki">
+<div class="stylehead">
+<div class="header">
+<div class="logo">
+<a href="http://www.quhuashuai.com/wiki/" name="dokuwiki__top" id="dokuwiki__top" accesskey="h" title="[ALT+H]">杂乱的维基</a>      </div>
+<div class="tagline">
+</div>
+<div class="pagename">
+[[<a href="http://www.quhuashuai.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83?do=backlink">emacs:emacs23下搭建python开发环境</a>]]
+</div>
+</div>
+<div class="bar" id="bar__top">
+<div class="bar-left" id="bar__topleft">
+<form class="button btn_source" method="post" action="http://www.360doc.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">
+    <div class="no"><input name="do" value="edit" type="hidden"><input name="rev" value="" type="hidden"><input value="Show pagesource" class="button" accesskey="v" title="Show pagesource [alt+v]" type="submit"></div>
+</form>
+<form class="button btn_revs" method="get" action="http://www.360doc.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">
+    <div class="no"><input name="do" value="revisions" type="hidden"><input value="Old revisions" class="button" accesskey="o" title="Old revisions [alt+o]" type="submit"></div>
+</form>
+</div>
+<div class="bar-right" id="bar__topright">
+<form class="button btn_recent" method="get" action="http://www.360doc.com/wiki/">
+    <div class="no"><input name="do" value="recent" type="hidden"><input value="Recent changes" class="button" accesskey="r" title="Recent changes [alt+r]" type="submit"></div>
+</form>
+<form action="http://www.360doc.com/wiki/" accept-charset="utf-8" class="search" id="dw__search">
+    <div class="no"><input name="do" value="search" type="hidden"><input value="" id="qsearch__in" accesskey="f" name="id" class="edit" title="[ALT+F]" type="text"><input value="Search" class="button" title="Search" type="submit"></div>
+</form>
+&nbsp;
+</div>
+</div>
+<div class="breadcrumbs">
+<span class="bchead">Trace:</span> <span class="bcsep">»</span> <span class="curid"><a href="http://www.quhuashuai.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83" class="breadcrumbs" title="emacs:emacs23下搭建python开发环境">emacs23下搭建python开发环境</a></span>          </div>
+</div>
+<div id="sidebar">
+<ul>
+    <li class="level1">
+    <div class="li"> <a href="http://www.quhuashuai.com/wiki/start" class="wikilink1" title="start">维基首页</a></div>
+    </li>
+</ul>
+<ul>
+    <li class="level1">
+    <div class="li"> <strong>维基导航</strong></div>
+    <ul>
+        <li class="level2">
+        <div class="li"> <a href="http://www.quhuashuai.com/wiki/emacs:emacs" class="wikilink2" title="emacs:emacs" rel="nofollow">Emacs学习</a></div>
+        </li>
+        <li class="level2">
+        <div class="li"> <a href="http://www.quhuashuai.com/wiki/emacs:vim" class="wikilink2" title="emacs:vim" rel="nofollow">Vim学习</a></div>
+        </li>
+        <li class="level2">
+        <div class="li"> <a href="http://www.quhuashuai.com/wiki/emacs:linux" class="wikilink2" title="emacs:linux" rel="nofollow">Linux应用</a></div>
+        </li>
+        <li class="level2">
+        <div class="li"> <a href="http://www.quhuashuai.com/wiki/emacs:coding" class="wikilink2" title="emacs:coding" rel="nofollow">编程学习</a></div>
+        </li>
+        <li class="level2">
+        <div class="li"> <a href="http://www.quhuashuai.com/wiki/emacs:finance" class="wikilink2" title="emacs:finance" rel="nofollow">金融数学</a></div>
+        </li>
+    </ul>
+    </li>
+</ul>
+<ul>
+    <li class="level1">
+    <div class="li"> <a href="http://www.quhuashuai.com/" class="urlextern" title="http://www.quhuashuai.com" rel="nofollow">个人网站</a></div>
+    </li>
+</ul>
+<ul>
+    <li class="level1">
+    <div class="li"> <a href="mailto:mail:quhuashuai@gmail.com" class="mail jsnocheck" title="mail:quhuashuai@gmail.com">邮件联系我</a></div>
+    </li>
+</ul>
+</div>
+<div class="page_with_sidebar">
+<div class="toc">
+<div style="cursor: pointer;" class="tocheader toctoggle" id="toc__header"><span style="cursor: pointer;" class="toc_close" id="toc__toggle"><span>−</span></span>Table of Contents</div>
+<div id="toc__inside">
+<ul class="toc">
+    <li class="level1">
+    <div class="li"><span class="li"><a href="http://www.quhuashuai.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83#emacs23%E4%B8%8Bpython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83%E7%9A%84%E6%90%AD%E5%BB%BA" class="toc">Emacs23下Python开发环境的搭建</a></span></div>
+    <ul class="toc">
+        <li class="level2">
+        <div class="li"><span class="li"><a href="http://www.quhuashuai.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83#%E5%8A%9F%E8%83%BD%E5%AE%9E%E7%8E%B0" class="toc">1. 功能实现</a></span></div>
+        </li>
+        <li class="level2">
+        <div class="li"><span class="li"><a href="http://www.quhuashuai.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83#%E6%8F%92%E4%BB%B6%E5%87%86%E5%A4%87" class="toc">2. 插件准备</a></span></div>
+        </li>
+        <li class="level2">
+        <div class="li"><span class="li"><a href="http://www.quhuashuai.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83#%E5%AE%89%E8%A3%85%E8%BF%87%E7%A8%8B" class="toc">3. 安装过程</a></span></div>
+        </li>
+        <li class="level2">
+        <div class="li"><span class="li"><a href="http://www.quhuashuai.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83#%E6%96%87%E4%BB%B6%E9%85%8D%E7%BD%AE_%E8%BF%99%E9%87%8C%E4%BD%BF%E7%94%A8%E7%9A%84lisp_directory%E4%B8%BA_usr_share_emacs_site-lisp_site-start.d" class="toc">4. 文件配置((这里使用的lisp directory为/usr/share/emacs/site-lisp/site-start.d))</a></span></div>
+        </li>
+        <li class="level2">
+        <div class="li"><span class="li"><a href="http://www.quhuashuai.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95" class="toc">5. 使用方法</a></span></div>
+        </li>
+    </ul>
+    </li>
+</ul>
+</div>
+</div>
+<h1><a name="emacs23下python开发环境的搭建" id="emacs23下python开发环境的搭建">Emacs23下Python开发环境的搭建</a></h1>
+<div class="level1">
+<p>
+<em>文章来源</em>：<a href="http://www.newsmth.net/bbscon.php?bid=573&amp;id=63615&amp;ftype=3&amp;num=1282" class="urlextern" title="http://www.newsmth.net/bbscon.php?bid=573&amp;id=63615&amp;ftype=3&amp;num=1282" rel="nofollow">水木社区Emacs版</a>
+</p>
+</div>
+<h2><a name="功能实现" id="功能实现">1. 功能实现</a></h2>
+<div class="level2">
+<ul>
+    <li class="level1">
+    <div class="li"> 编辑（emacs）</div>
+    </li>
+    <li class="level1">
+    <div class="li"> 调试（Pydb）</div>
+    </li>
+    <li class="level1">
+    <div class="li"> 代码补全（Pymacs＋Pycomplete）</div>
+    </li>
+    <li class="level1">
+    <div class="li"> 可以tab补全的python shell（ipython）</div>
+    </li>
+    <li class="level1">
+    <div class="li"> 测试（doctest）</div>
+    </li>
+    <li class="level1">
+    <div class="li"> 代码检查（pylint＋flymake）</div>
+    </li>
+</ul>
+</div>
+<h2><a name="插件准备" id="插件准备">2. 插件准备</a></h2>
+<div class="level2">
+<ul>
+    <li class="level1">
+    <div class="li"> python-mode-1.0.tar.gz(<a href="http://sourceforge.net/project/showfiles.php?group_id=86916" class="urlextern" title="http://sourceforge.net/project/showfiles.php?group_id=86916" rel="nofollow">http://sourceforge.net/project/showfiles.php?group_id=86916</a>):虽然emacs自带python.el的扩展，但是我觉得这个可能要全一些，里面还有pycompelte.el和doctest.el两个插件</div>
+    </li>
+    <li class="level1">
+    <div class="li"> pymacs(<a href="http://pymacs.progiciels-bpi.ca/archives/Pymacs.tar.gz" class="urlextern" title="http://pymacs.progiciels-bpi.ca/archives/Pymacs.tar.gz" rel="nofollow">http://pymacs.progiciels-bpi.ca/archives/Pymacs.tar.gz</a>):让Python和emacs lisp交互的插件</div>
+    </li>
+    <li class="level1">
+    <div class="li"> pylint（<a href="http://www.logilab.org/857" class="urlextern" title="http://www.logilab.org/857" rel="nofollow">http://www.logilab.org/857</a>）：python代码检查的工具，很强大（可以和flymake搭档进行语法的即时检查），需要另外两个python模块才能运行：logilab-astng和logilab-common才能运行，这两个模块和pylint在同一个网站下载</div>
+    </li>
+    <li class="level1">
+    <div class="li"> ipython（<a href="http://ipython.scipy.org/" class="urlextern" title="http://ipython.scipy.org" rel="nofollow">http://ipython.scipy.org</a>）:一个比python自带的shell功能更强大的shell，可以tab补全和语义感知,添加pyreadline模块之后可以记录history</div>
+    </li>
+    <li class="level1">
+    <div class="li"> pydb(<a href="http://bashdb.sourceforge.net/pydb/" class="urlextern" title="http://bashdb.sourceforge.net/pydb/" rel="nofollow">http://bashdb.sourceforge.net/pydb/</a>):可以和emacs结合的pydb工具，同时还可以下载bashdb进行shell脚本的调试</div>
+    </li>
+</ul>
+</div>
+<h2><a name="安装过程" id="安装过程">3. 安装过程</a></h2>
+<div class="level2">
+<p>
+<strong>如果使用Archlinux的话，可以直接通过yaourt查找这些插件，都可以直接安装的。</strong>
+</p>
+<ul>
+    <li class="level1">
+    <div class="li"> 分别解压pymacs,pylint,ipython,loglab-astng,logilab-common安装，安装命令都是：</div>
+    </li>
+</ul>
+<p>
+<code>python setup.py install</code>
+</p>
+<ul>
+    <li class="level1">
+    <div class="li"> 安装pydb，我在gentoo上安装的时候它总是和emacs关联，导致安装失败，不得不修改Makefile文件，然后手动把*.el文件拷贝到 emacs的lisp目录里（bashdb也是同样的安装方法）</div>
+    </li>
+</ul>
+<p>
+<code> ./configure &amp; make &amp; make install</code>
+</p>
+<ul>
+    <li class="level1">
+    <div class="li"> 解压python-mode-1.0.tar.gz，把所有的.el文件copy到lisp directory</div>
+    </li>
+    <li class="level1">
+    <div class="li"> 另外把pymacs里的pymacs.el、pylint里的pylint.el以及pydb里emacs目录下的.el文件（假如你和我一样出现同样的问题，否则安装pydb的时候那些el文件已经被安装）拷贝到lisp directory</div>
+    </li>
+    <li class="level1">
+    <div class="li"> 下载<a href="http://att.newsmth.net/att.php?s.573.63615.3.1282.4704.el" class="urlextern" title="http://att.newsmth.net/att.php?s.573.63615.3.1282.4704.el" rel="nofollow">py-complete.el</a>放到lisp direcotry</div>
+    </li>
+    <li class="level1">
+    <div class="li"> 把pymacs下的pycomplete.py 放入python默认的模块路径下面，例如：/usr/lib/python2.4/site-packages</div>
+    </li>
+    <li class="level1">
+    <div class="li"> 下载<a href="http://att.newsmth.net/att.php?s.573.63615.3.1282.126911" class="urlextern" title="http://att.newsmth.net/att.php?s.573.63615.3.1282.126911" rel="nofollow">epylint</a>,放在/usr/bin or /usr/local/bin目录下，记得chmod +x 加上执行权限,这样就可以配合flymake进行即使语法检查了</div>
+    </li>
+</ul>
+<p>
+<em>注意：pymacs可能和python2.5不兼容，我原来装的是2.5后来因为pamacs用不了，不得不换回2.4</em>
+</p>
+</div>
+<h2><a name="文件配置_这里使用的lisp_directory为_usr_share_emacs_site-lisp_site-start.d" id="文件配置_这里使用的lisp_directory为_usr_share_emacs_site-lisp_site-start.d">4. 文件配置((这里使用的lisp directory为/usr/share/emacs/site-lisp/site-start.d))</a></h2>
+<div class="level2">
+<pre class="code lisp"><span class="co1">;;这里路径换为你自己的lisp目录，可以使用emacs-lisp-byte-compile命令编译之后再加载</span><br><span class="br0">(</span>load <span class="st0">"/usr/share/emacs/site-lisp/site-start.d/python-mode.el"</span><span class="br0">)</span><br><span class="br0">(</span>add<span class="sy0">-</span>to<span class="sy0">-</span><span class="kw1">list</span> 'load<span class="sy0">-</span>path <span class="st0">"/usr/share/emacs/site-lisp/site-start.d/pymacs.el"</span><span class="br0">)</span><br>&nbsp;<br><span class="co1">;;load pydb</span><br><span class="br0">(</span>require 'pydb<span class="br0">)</span><br><span class="br0">(</span>autoload 'pydb <span class="st0">"pydb"</span> <span class="st0">"Python Debugger mode via GUD and pydb"</span> t<span class="br0">)</span><br>&nbsp;<br><span class="co1">;;load pymacs</span><br><span class="br0">(</span>autoload 'pymacs<span class="sy0">-</span>load <span class="st0">"pymacs"</span> <span class="kw1">nil</span> t<span class="br0">)</span><br><span class="br0">(</span>autoload 'pymacs<span class="sy0">-</span><span class="kw1">eval</span> <span class="st0">"pymacs"</span> <span class="kw1">nil</span> t<span class="br0">)</span><br><span class="br0">(</span>autoload 'pymacs<span class="sy0">-</span><span class="kw1">apply</span> <span class="st0">"pymacs"</span><span class="br0">)</span><br><span class="br0">(</span>autoload 'pymacs<span class="sy0">-</span>call <span class="st0">"pymacs"</span><span class="br0">)</span><br>&nbsp;<br><span class="br0">(</span>require 'pycomplete<span class="br0">)</span><br><span class="br0">(</span>autoload 'py<span class="sy0">-</span>complete<span class="sy0">-</span>init <span class="st0">"py-complete"</span><span class="br0">)</span><br><span class="br0">(</span>add<span class="sy0">-</span>hook 'python<span class="sy0">-</span>mode<span class="sy0">-</span>hook 'py<span class="sy0">-</span>complete<span class="sy0">-</span>init<span class="br0">)</span><br><span class="br0">(</span>autoload 'jython<span class="sy0">-</span>mode <span class="st0">"python-mode"</span> <span class="st0">"Python editing mode."</span> t<span class="br0">)</span><br><span class="br0">(</span>autoload 'py<span class="sy0">-</span>shell <span class="st0">"python-mode"</span> <span class="st0">"Start an interactive Python interpreter in another window."</span> t<span class="br0">)</span><br><span class="br0">(</span>autoload 'doctest<span class="sy0">-</span>mode <span class="st0">"doctest-mode"</span> <span class="st0">"Editing mode for Python Doctest examples."</span> t<span class="br0">)</span><br><span class="br0">(</span>autoload 'py<span class="sy0">-</span>complete <span class="st0">"pycomplete"</span> <span class="st0">"Complete a symbol at point using Pymacs."</span> t<span class="br0">)</span><br><span class="br0">(</span>add<span class="sy0">-</span>to<span class="sy0">-</span><span class="kw1">list</span> 'auto<span class="sy0">-</span>mode<span class="sy0">-</span>alist '<span class="br0">(</span><span class="st0">"<span class="es0">\\</span>.py$"</span> . python<span class="sy0">-</span>mode<span class="br0">)</span><span class="br0">)</span><br><span class="br0">(</span>add<span class="sy0">-</span>to<span class="sy0">-</span><span class="kw1">list</span> 'auto<span class="sy0">-</span>mode<span class="sy0">-</span>alist '<span class="br0">(</span><span class="st0">"<span class="es0">\\</span>.doctest$"</span> . doctest<span class="sy0">-</span>mode<span class="br0">)</span><span class="br0">)</span><br><span class="br0">(</span>add<span class="sy0">-</span>to<span class="sy0">-</span><span class="kw1">list</span> 'interpreter<span class="sy0">-</span>mode<span class="sy0">-</span>alist '<span class="br0">(</span><span class="st0">"python"</span> . python<span class="sy0">-</span>mode<span class="br0">)</span><span class="br0">)</span><br><span class="br0">(</span>add<span class="sy0">-</span>to<span class="sy0">-</span><span class="kw1">list</span> 'interpreter<span class="sy0">-</span>mode<span class="sy0">-</span>alist '<span class="br0">(</span><span class="st0">"jython"</span> . jython<span class="sy0">-</span>mode<span class="br0">)</span><span class="br0">)</span><br>&nbsp;<br><span class="co1">;;define some keys</span><br><span class="br0">(</span>require 'comint<span class="br0">)</span><br><span class="br0">(</span>define<span class="sy0">-</span>key comint<span class="sy0">-</span>mode<span class="sy0">-</span>map <span class="br0">[</span><span class="br0">(</span>meta p<span class="br0">)</span><span class="br0">]</span><br>  'comint<span class="sy0">-</span>previous<span class="sy0">-</span>matching<span class="sy0">-</span>input<span class="sy0">-</span>from<span class="sy0">-</span>input<span class="br0">)</span><br><span class="br0">(</span>define<span class="sy0">-</span>key comint<span class="sy0">-</span>mode<span class="sy0">-</span>map <span class="br0">[</span><span class="br0">(</span>meta n<span class="br0">)</span><span class="br0">]</span><br>  'comint<span class="sy0">-</span>next<span class="sy0">-</span>matching<span class="sy0">-</span>input<span class="sy0">-</span>from<span class="sy0">-</span>input<span class="br0">)</span><br><span class="br0">(</span>define<span class="sy0">-</span>key comint<span class="sy0">-</span>mode<span class="sy0">-</span>map <span class="br0">[</span>up<span class="br0">]</span><br>  'comint<span class="sy0">-</span>next<span class="sy0">-</span>input<span class="br0">)</span><br><span class="br0">(</span>define<span class="sy0">-</span>key comint<span class="sy0">-</span>mode<span class="sy0">-</span>map <span class="br0">[</span>down<span class="br0">]</span><br>  'comint<span class="sy0">-</span>previous<span class="sy0">-</span>input<span class="br0">)</span><br>&nbsp;<br><span class="co1">;;set ipython as the shell</span><br><span class="br0">(</span><span class="kw1">setq</span> ipython<span class="sy0">-</span>command <span class="st0">"/usr/bin/ipython"</span><span class="br0">)</span><br><span class="br0">(</span>require 'ipython<span class="br0">)</span><br>&nbsp;<br><span class="br0">(</span>load<span class="sy0">-</span>library <span class="st0">"pylint"</span><span class="br0">)</span><br><span class="co1">;; use flymake with pylint</span><br><span class="br0">(</span>when <span class="br0">(</span>load <span class="st0">"flymake"</span> t<span class="br0">)</span><br><span class="br0">(</span><span class="kw1">defun</span> flymake<span class="sy0">-</span>pylint<span class="sy0">-</span>init <span class="br0">(</span><span class="br0">)</span><br>    <span class="br0">(</span><span class="kw1">let</span><span class="sy0">*</span> <span class="br0">(</span><span class="br0">(</span>temp<span class="sy0">-</span>file <span class="br0">(</span>flymake<span class="sy0">-</span>init<span class="sy0">-</span>create<span class="sy0">-</span>temp<span class="sy0">-</span>buffer<span class="sy0">-</span>copy<br>                       'flymake<span class="sy0">-</span>create<span class="sy0">-</span>temp<span class="sy0">-</span>inplace<span class="br0">)</span><span class="br0">)</span><br>           <span class="br0">(</span>local<span class="sy0">-</span>file <span class="br0">(</span>file<span class="sy0">-</span>relative<span class="sy0">-</span><span class="kw1">name</span><br>                        temp<span class="sy0">-</span>file<br>                        <span class="br0">(</span>file<span class="sy0">-</span>name<span class="sy0">-</span>directory buffer<span class="sy0">-</span>file<span class="sy0">-</span><span class="kw1">name</span><span class="br0">)</span><span class="br0">)</span><span class="br0">)</span><span class="br0">)</span><br>      <span class="br0">(</span><span class="kw1">list</span> <span class="st0">"epylint"</span> <span class="br0">(</span><span class="kw1">list</span> local<span class="sy0">-</span>file<span class="br0">)</span><span class="br0">)</span><span class="br0">)</span><span class="br0">)</span><br>&nbsp;<br><span class="br0">(</span>add<span class="sy0">-</span>to<span class="sy0">-</span><span class="kw1">list</span> 'flymake<span class="sy0">-</span>allowed<span class="sy0">-</span>file<span class="sy0">-</span>name<span class="sy0">-</span>masks<br>               '<span class="br0">(</span><span class="st0">"<span class="es0">\\</span>.py<span class="es0">\\</span>'"</span> flymake<span class="sy0">-</span>pylint<span class="sy0">-</span>init<span class="br0">)</span><span class="br0">)</span><span class="br0">)</span></pre>
+</div>
+<h2><a name="使用方法" id="使用方法">5. 使用方法</a></h2>
+<div class="level2">
+<ul>
+    <li class="level1">
+    <div class="li"> pydb的使用和gdb的一样，快捷键仍然生效</div>
+    </li>
+    <li class="level1">
+    <div class="li"> 按键M-i可以补全代码，另外通过C－tab也可调用hippe-expand进行代码补全</div>
+    </li>
+    <li class="level1">
+    <div class="li"> ipython里面tab键可进行补全</div>
+    </li>
+    <li class="level1">
+    <div class="li"> F1调用pylint进行代码检查，假如绑定flymake的话，可通过C-x `移动到下一个错误的地方</div>
+    </li>
+</ul>
+</div>
+</div>
+<div class="clearer">&nbsp;</div>
+<div class="stylefoot">
+<div class="meta">
+<div class="user">
+</div>
+<div class="doc">
+emacs/emacs23下搭建python开发环境.txt · Last modified: 2008/11/01 20:57 by huashuai      </div>
+</div>
+<div class="bar" id="bar__bottom">
+<div class="bar-left" id="bar__bottomleft">
+<form class="button btn_source" method="post" action="http://www.360doc.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">
+    <div class="no"><input name="do" value="edit" type="hidden"><input name="rev" value="" type="hidden"><input value="Show pagesource" class="button" accesskey="v" title="Show pagesource [alt+v]" type="submit"></div>
+</form>
+<form class="button btn_revs" method="get" action="http://www.360doc.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">
+    <div class="no"><input name="do" value="revisions" type="hidden"><input value="Old revisions" class="button" accesskey="o" title="Old revisions [alt+o]" type="submit"></div>
+</form>
+</div>
+<div class="bar-right" id="bar__bottomright">
+<form class="button btn_login" method="get" action="http://www.360doc.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">
+    <div class="no"><input name="do" value="login" type="hidden"><input name="sectok" value="64282585a20c4ea0e1bef26fec7baf97" type="hidden"><input value="Login" class="button" title="Login" type="submit"></div>
+</form>
+<form class="button btn_index" method="get" action="http://www.360doc.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83">
+    <div class="no"><input name="do" value="index" type="hidden"><input value="Index" class="button" accesskey="x" title="Index [alt+x]" type="submit"></div>
+</form>
+<a class="nolink" href="http://www.quhuashuai.com/wiki/emacs:emacs23%E4%B8%8B%E6%90%AD%E5%BB%BApython%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83#dokuwiki__top"><input class="button" value="Back to top" title="Back to top" type="button"></a>&nbsp;
+</div>
+</div>
+</div>
+</div>
+<div class="footerinc">
+<a href="http://www.quhuashuai.com/wiki/feed.php" title="Recent changes RSS feed"><img src="6463870_1.png" alt="Recent changes rss feed" height="15" width="80"></a>
+<a href="http://creativecommons.org/licenses/by-nc-sa/2.0/" rel="license" title="Creative Commons License"><img src="6463870_2.gif" alt="Creative commons license" height="15" width="80"></a>
+<a href="https://www.paypal.com/xclick/business=andi%40splitbrain.org&amp;item_name=DokuWiki+Donation&amp;no_shipping=1&amp;no_note=1&amp;tax=0&amp;currency_code=EUR&amp;lc=US" title="Donate"><img src="6463870_3.gif" alt="Donate" height="15" width="80"></a>
+<a href="http://www.php.net/" title="Powered by PHP"><img src="6463870_4.gif" alt="Powered by php" height="15" width="80"></a>
+<a href="http://validator.w3.org/check/referer" title="Valid XHTML 1.0"><img src="6463870_5.png" alt="Valid xhtml 1.0" height="15" width="80"></a>
+<a href="http://jigsaw.w3.org/css-validator/check/referer" title="Valid CSS"><img src="6463870_6.png" alt="Valid css" height="15" width="80"></a>
+<a href="http://wiki.splitbrain.org/wiki:dokuwiki" title="Driven by DokuWiki"><img src="6463870_7.png" alt="Driven by dokuwiki" height="15" width="80"></a>
+</div>
+<div class="no"><img src="6463870_8" alt="" height="1" width="1"></div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                            <div id="viewerPlaceHolder" style="width: 717px; height: 700px; display: none;">
+                                                                            </div>
+                                                                        </span>
+                                                                        <table>
+                                                                            <tbody>
+                                                                                <tr>
+                                                                                    <td></td>
+                                                                                </tr>
+                                                                            </tbody>
+                                                                        </table>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left">
+                                                                        <div style="height: 28px;">
+                                                                            <div style="font-size: 14px; color: rgb(121, 123, 122); float: left;">
+                                                                                来自：<span class="name" onclick="wzhitnew(59)"><a href="http://www.360doc.com/userhome/3272529" target="_top">不打酱油</a></span>&nbsp;&gt;&nbsp;<span id="cname" onclick="wzhitnew(60)"><a href="http://www.360doc.com/userhome.aspx?userid=3272529&amp;cid=2" target="_top">《我的图书馆》</a></span>
+                                                                            </div>
+                                                                            <div style="float: left;">
+                                                                                <div class="btzctsg" id="spanfollowstatus1"><div class="gzbt1"><a onclick="gzuser(3272529);wzhitnew(61);" href="javascript:void(0)"></a></div></div>
+                                                                                
+                                                                            </div>
+                                                                        </div>
+                                                                        <div>
+                                                                            <div class="modlist lf360 list" style="padding-top: 0px;">
+                                                                                <ul>
+                                                                                    <div id="lastart"><div class="shangyp">上一篇：<a href="http://www.360doc.com/content/10/1101/11/3272529_65662771.shtml" target="_top" onclick="wzhitnew(57);">LANG, LC_CTYPE, and LC_ALL</a></div></div>
+                                                                                    <div id="nextart">下一篇：<a href="http://www.360doc.com/content/10/1105/19/3272529_66919796.shtml" target="_top" onclick="wzhitnew(58);">Emacs/自定义Emacs工具栏 - 站长百科</a></div>
+                                                                                </ul>
+                                                                            </div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td align="left">
+                                                                        <div style="padding-top: 12px;">
+                                                                            
+                                                                            <div id="BAIDU_DUP_wrapper_u1350774_0"><iframe style="" src="index_10.html" marginwidth="0" marginheight="0" allowtransparency="true" align="center,center" frameborder="0" height="120" scrolling="no" width="650"></iframe></div>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td style="text-align: left;">
+                                                                        <div style="padding-top: 15px; width: 670px;">
+                                                                            <table style="width: 670px;" cellpadding="0" cellspacing="0">
+                                                                                <tbody>
+                                                                                    <tr>
+                                                                                        <td width="157"></td>
+                                                                                        <td width="314">
+                                                                                            <div class=" lf360" style="cursor: pointer;">
+                                                                                                <div class="zscbt">
+                                                                                                    <a href="javascript:void(0);" onclick="SaveArt();wzhitnew(26);"></a>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                            <div style="margin-left: 10px; cursor: pointer;" class="lf360 xhmainbox" id="sendflowerdiv" onclick='Showflowerlayer("sendedLayer1");wzhitnew(27)'>
+                                                                                                
+                                                                                                <div id="flowimg2" class="lf360">
+                                                                                                    <div style="padding-left: 16px; padding-top: 12px;">
+                                                                                                        <img id="flowimg3" src="huahua.gif">
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                <div id="flowimg5" class=" lf360 xianhua">
+                                                                                                    献花(<span id="articleflowernum">0</span>)<div id="flowernumadd" class="addtionone">
+                                                                                                        +1
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                                
+                                                                                            </div>
+                                                                                        </td>
+                                                                                        <td style="vertical-align: bottom; font-size: 12px;" width="197">
+                                                                                            <div class="rt360" id="sharediv2"><table style="vertical-align: text-bottom;" border="0" cellpadding="0" cellspacing="0"> <tbody><tr><td><div style="height: 20px; width: 126px;"><div style="float: left;"><span style="font-size: 12px; line-height: 16px; color: rgb(149, 149, 149);">分享：</span></div><div style="float: left; width: 22px;"><span onclick="shareWeixin();wzhitnew(64);"><a title="分享到微信" href="javascript:void(0);"><img src="weixin.gif"></a></span></div><div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare share-bar-btn2" style="float: left;"><span onclick="wzhitnew(28);"><a class="bds_qzone" title="分享到QQ空间" href="javascript:void(0);"></a></span><span onclick="wzhitnew(31);"><a class="bds_tsina" title="分享到新浪微博" href="javascript:void(0);"></a></span><span onclick="wzhitnew(32);"><a class="bds_tqq" title="分享到腾讯微博" href="javascript:void(0);"></a></span></div></div></td><td width="24"><a><img style="cursor: pointer;" src="tb10.gif" onclick="setTimeout(showShareLayer2, 10);wzhitnew(34);"></a><div id="fenxiangLayer1" class="fenxiang" style="margin-left: -100px; margin-top: 5px; display: none; z-index: 1000;"><div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare share-bar-btn"><table style="background-color: rgb(255, 255, 255);" width="108" cellpadding="0" cellspacing="0"><tbody><tr><td width="12"></td><td onclick="wzhitnew(29);" height="29"><a class="bds_renren" href="javascript:void(0);" title="分享到人人网">&nbsp;&nbsp;&nbsp;&nbsp;人人网</a></td></tr><tr><td width="12"></td><td onclick="wzhitnew(30);" height="29"><a class="bds_kaixin001" href="javascript:void(0);" title="分享到开心网">&nbsp;&nbsp;&nbsp;&nbsp;开心网</a></td></tr><tr><td width="12"></td><td onclick="wzhitnew(33);" height="29"><a class="bds_tsohu" href="javascript:void(0);" title="分享到搜狐微博">&nbsp;&nbsp;&nbsp;&nbsp;搜狐微博</a></td></tr><tr><td width="12"></td><td height="29"><a href="javascript:void(0);" onclick="showdivemail1();wzhitnew(35);"><div class="bds_py">&nbsp;&nbsp;&nbsp;&nbsp;推荐给朋友</div></a></td></tr><tr><td width="12"></td><td height="29"><a href="javascript:void(0);"><div class="bds_jubao" onclick="showAlertLayer1();wzhitnew(36);">&nbsp;&nbsp;&nbsp;&nbsp;举报</div></a></td></tr></tbody></table></div></div></td></tr></tbody></table><div id="AlertArt2" style="display: none; position: absolute;"></div><div id="SendToFriends2" style="display: none; position: absolute; z-index: 1000;"></div></div>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                </tbody>
+                                                                            </table>
+                                                                        </div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td height="10"></td>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <div class="lswzbox" style="padding-top: 10px;">
+                            <div>
+                                <table cellpadding="0" cellspacing="0">
+                                    <tbody>
+                                        <tr>
+                                            <td valign="top" width="330">
+                                                <div class="lswz" style="height: 300px;">
+                                                    <div class="lstwtop">
+                                                        <div class="lswztit">
+                                                            <div class=" lf360">
+                                                                <div class="titwx1">
+                                                                    类似文章
+                                                                </div>
+                                                            </div>
+                                                            <div class="rt360" style="padding-top: 5px; padding-right: 9px;">
+                                                                <a href="http://www.360doc.com/relevant/65893624_more.shtml" target="_top" onclick="wzhitnew(38)">更多</a>
+                                                            </div>
+                                                        </div>
+                                                        <div class="modlist2 list">
+                                                            <ul>
+                                                                
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/12/0817/02/10522332_230599250.shtml" target="_top" onclick="wzhitnew(37)">Emacs Lisp 功能扩展集锦</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/11/0627/19/6986090_129957947.shtml" target="_top" onclick="wzhitnew(37)">通天塔导游</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/11/1201/20/7936054_168985672.shtml" target="_top" onclick="wzhitnew(37)">创业三部曲之一——学技术</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/05/1222/13/1894_47924.shtml" target="_top" onclick="wzhitnew(37)">各种程序设计语言介绍</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/06/1218/11/8411_297888.shtml" target="_top" onclick="wzhitnew(37)">一起来 - 程序员的编辑器——VIM</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/09/0314/13/88264_2805232.shtml" target="_top" onclick="wzhitnew(37)">介绍Python程序员常用的IDE和其它开发工...</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/10/0327/12/155970_20456368.shtml" target="_top" onclick="wzhitnew(37)">Ubuntu中文论坛 ? 查看主题 - 使用org-m...</a></span></li>
+                                                                    
+                                                                        <li style="height: 30px; line-height: 30px;"><span>
+                                                                            <a href="http://www.360doc.com/content/10/0327/12/155970_20455166.shtml" target="_top" onclick="wzhitnew(37)">使用org-mode来GTD（1）— 入门 | YIFEI...</a></span></li>
+                                                                    
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td valign="top" width="330">
+                                                <div class="lswz" style="margin-left: 9px; height: 300px;">
+                                                    <div class="lstwtop">
+                                                        <div class="lswztit">
+                                                            <div class=" lf360">
+                                                                <div class="titwx1">
+                                                                    热门推广
+                                                                </div>
+                                                            </div>
+                                                            <div class="rt360" style="padding-top: 5px; padding-right: 9px;">
+                                                            </div>
+                                                        </div>
+                                                        <div class="modlist2 list" style="width: 300px; overflow: hidden;">
+                                                            
+                                                            <div style="display: none;">-</div> <div id="sogou_ad_div_1" style="height: 242px;"><iframe style="" id="starIframe1" src="index_13.html" marginwidth="0" marginheight="0" allowtransparency="true" align="center,center" frameborder="0" height="242" scrolling="no" width="298"></iframe></div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div style="background-color: rgb(250, 250, 250); width: 670px; height: 317px; margin-top: 10px;">
+                                    <div style="padding-top: 7px; padding-left: 12px; height: 182px;"> <div style="height: 30px;"><div class="titwx3 lf360">猜你喜欢</div><div class=" rt360" style="padding-right: 18px;"><img onclick='changefiveart("19999","19999");wzhitnew(62);' src="hyz.gif" style="cursor: pointer;" height="24" width="76"></div></div><table cellpadding="0" cellspacing="0"><tbody><tr id="fivearttdid"><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/12/1214/20/5846940_254073900.shtml" target="_top"><img src="5846940_201308281738500415.jpg" height="86" width="114"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/12/1214/20/5846940_254073900.shtml" target="_top">天地自然有大美 秋色宜人最销魂</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/12/1114/08/1720781_247733388.shtml" target="_top"><img src="247733388_201310011426270593.jpg" height="86" width="114"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/12/1114/08/1720781_247733388.shtml" target="_top">可让爱爱时间大大延长的药酒</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/13/0123/12/7926025_261923193.shtml" target="_top"><img src="7926025_201308281736570853.jpg" height="86" width="114"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/13/0123/12/7926025_261923193.shtml" target="_top">2013年10大开运方法</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/11/0918/21/7742334_149328445.shtml" target="_top"><img src="149328445_201312311450590747.jpg" height="86" width="114"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/11/0918/21/7742334_149328445.shtml" target="_top">忽然很想跟自己说声对不起</a></div></td><td valign="top" width="131"><div><a onclick="wzhitnew(39);" href="http://www.360doc.com/content/13/0616/14/12515288_293254495.shtml" target="_top"><img src="293254495_201309302326190936.jpg" height="86" width="114"></a></div><div class="lan twentit"><a onclick="wzhitnew(40);" href="http://www.360doc.com/content/13/0616/14/12515288_293254495.shtml" target="_top">英语所有介词的图解</a></div></td></tr></tbody></table></div>
+                                    <div style="padding-left: 12px;">
+                                        <iframe marginwidth="0" marginheight="0" src="index_15.html" frameborder="0" height="100" scrolling="no" width="650"></iframe>
+                                    </div>
+                                    <div style="display: none;" id="adabtest">
+                                    </div>
+
+                                </div>
+
+                                <div id="Reflction" style="padding-top: 15px; padding-left: 15px;">
+                                    <div style="display: none;" id="360docRefTN"></div>
+                                    <div id="360docRefCT"></div>
+                                    <div style="display: none;" id="360docRefPB" align="center"></div>
+                                </div>
+                                <a name="sf"></a>
+                                
+                                <div id="ReflectionPart"><div style="height: 206px; margin: 0px;"><div class="plbox"><div class="plmain"><div class="titwx" style="height: 23px;">发表评论：</div><div class="deluwx">您好，请&nbsp;<span><a href="javascript:void(0);" onclick="ReflectionLoginform();wzhitnew(45);">登录</a></span>&nbsp;或者&nbsp;<span><a href="http://www.360doc.com/register.aspx?refer=53&amp;reurl=showweb/0/0/65893624.aspx" onclick="InsertLogData(4);wzhitnew(46);">注册</a></span>&nbsp;后再进行评论 </div><div class=" rt360"><div style="float: left; color: rgb(149, 149, 149); width: 90px;"><div style="padding-top: 4px;">其它帐号登录：</div></div><div style="float: left; width: 70px;"><img onclick="toSNSLogin('smb');wzhitnew(47);" style="cursor: pointer;" src="tb25.gif">&nbsp;&nbsp;&nbsp;<img onclick="toSNSLogin('qq');wzhitnew(48);" style="cursor: pointer;" src="tb26.gif">&nbsp;&nbsp;&nbsp;<img onclick="toSNSLogin('rr');wzhitnew(49);" style="cursor: pointer;" src="tb27.gif"></div> </div> </div></div></div></div>
+                            </div>
+                        </div>
+                    </td>
+                    <td align="center" valign="top" width="18px"></td>
+                    <td align="left" valign="top" width="252px">
+                        
+
+
+<div style="height: 98px;" id="artrightad1"><iframe marginwidth="0" id="Iframeadabtest" marginheight="0" src="index_17.html" allowtransparency="true" frameborder="0" height="90" scrolling="no" width="250"></iframe></div>
+
+
+    <div class="remenwz" style="height: 219px;"><div class="rementop"><div class="titwx" style="padding-top: 10px; padding-left: 24px;">最新文章</div></div><div class="modlist3 list" style="padding-left: 15px;"><ul><li><span><a href="http://www.360doc.com/content/10/1116/20/3272529_69930733.shtml" target="_top" onclick="wzhitnew(51)">linux find命令-exec参数的使用...</a></span></li><li><span><a href="http://www.360doc.com/content/10/1116/19/3272529_69924735.shtml" target="_top" onclick="wzhitnew(51)">Linux Find 命令精通指南</a></span></li><li><span><a href="http://www.360doc.com/content/10/1114/10/3272529_69208143.shtml" target="_top" onclick="wzhitnew(51)">Linux像老婆，Windows像妓女 ，...</a></span></li><li><span><a href="http://www.360doc.com/content/10/1114/10/3272529_69207152.shtml" target="_top" onclick="wzhitnew(51)">Uninstall Matlab（Linux）</a></span></li><li><span><a href="http://www.360doc.com/content/10/1114/10/3272529_69206734.shtml" target="_top" onclick="wzhitnew(51)">MATLAB Warning: Could not que...</a></span></li><li><span><a href="http://www.360doc.com/content/10/1114/08/3272529_69192780.shtml" target="_top" onclick="wzhitnew(51)">emacs vim</a></span></li></ul> <div class=" rt360" style="padding-right: 23px;"><a href="http://www.360doc.com/userhome/3272529" target="_top" onclick="wzhitnew(52);">更多</a></div></div></div>
+
+
+<div class="both" style="padding-top: 10px; height: 260px;">
+   <iframe src="index_20.html" id="ifartad1" frameborder="0" height="250px" scrolling="no" width="250px"></iframe>
+    <div style="height: 10px;">
+    </div>
+</div>
+
+<div class="remenwz">
+    <div class="rementop">
+        <div class="titwx" style="padding-top: 10px; padding-left: 24px;">
+            热门文章</div>
+    </div>
+    <div class="modlist3 list" style="padding-left: 15px;">
+        <ul>
+            
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0206/19/0_350256074.shtml" target="_top" onclick="wzhitnew(55)">新县委书记在全县领导干部见面...</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/13/1001/12/0_318365102.shtml" target="_top" onclick="wzhitnew(55)">揭密武汉精武鸭脖配方(附麻辣烫...</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0101/18/0_341758874.shtml" target="_top" onclick="wzhitnew(55)">男人女人</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/13/1201/16/0_333663761.shtml" target="_top" onclick="wzhitnew(55)">科学预测未来可能发生的事视频...</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/13/1123/13/0_331526777.shtml" target="_top" onclick="wzhitnew(55)">小人书连环画 人物传记 36册</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/13/1212/15/0_336612035.shtml" target="_top" onclick="wzhitnew(55)">人体细胞修复的卫士——大枣</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0131/22/0_349083295.shtml" target="_top" onclick="wzhitnew(55)">中层干部要有几手</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/13/1013/19/0_321199396.shtml" target="_top" onclick="wzhitnew(55)">盘点各类顶尖电影。你不能不看。</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0128/07/0_348459943.shtml" target="_top" onclick="wzhitnew(55)">男性福音：中老年阳痿不举变猛...</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/13/1210/19/0_336157549.shtml" target="_top" onclick="wzhitnew(55)">烫面玉米发糕</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/13/1128/21/0_333037558.shtml" target="_top" onclick="wzhitnew(55)">怎样下载优酷网的视频</a></span></li>
+                
+                    <li><span>
+                        <a href="http://www.360doc.com/content/14/0117/16/0_345992910.shtml" target="_top" onclick="wzhitnew(55)">如何做人（幽默风趣的图片）</a></span></li>
+                
+        </ul>
+        <div class=" rt360" style="padding-right: 23px;">
+            <a href="http://www.360doc.com/readroom.html" target="_top" onclick="wzhitnew(56)">更多&gt;&gt;</a></div>
+    </div>
+</div>
+
+<div class="both" style="padding-top: 10px;">
+    <iframe src="index_21.html" id="ifartad2" frameborder="0" height="250px" scrolling="no" width="250px"></iframe>
+</div>
+<br>
+
+
+<div style="display: none;">-</div> <div id="sogou_ad_div_2" style="height: 328px;"><iframe style="" id="starIframe2" src="index_26.html" marginwidth="0" marginheight="0" allowtransparency="true" align="center,center" frameborder="0" height="328" scrolling="no" width="250"></iframe></div>
+
+
+                        <div class="both" id="divad5" style="padding-top: 11px;">
+                            <div id="divad4" style="">
+                                <div>
+                                    <iframe src="index_28.html" id="ifartad" frameborder="0" height="250px" scrolling="no" width="250px"></iframe>
+                                </div>
+                                <div class="ggwz">
+                                    <a href="javascript:void(0);" onclick="closead(2);">关闭</a>
+                                </div>
+                                <div style="height: 13px;">
+                                </div>
+                            </div>
+                            <div style="clear: both;" id="divad6">
+                                <div>
+                                    
+                                    <div id="BAIDU_DUP_wrapper_u1324965_0"><iframe style="" src="index_29.html" marginwidth="0" marginheight="0" allowtransparency="true" align="center,center" frameborder="0" height="250" scrolling="no" width="250"></iframe></div>
+                                </div>
+                                <div class="ggwz">
+                                    <a href="javascript:void(0);" onclick="closead(3);">关闭</a>
+                                </div>
+                                <div style="height: 13px;">
+                                </div>
+                            </div>
+
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
+
+    
+    
+
+    
+
+    
+    <!-- Baidu Button END -->
+    
+
+
+
+
+<div style="left: 766px; display: block;" id="goTop2"><div id="goTop"><a href="#" id="go_top"></a></div><div id="goTop1"><a href="javascript:void(0);" id="go_top1"></a></div></div></body>
+</html>

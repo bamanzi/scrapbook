@@ -1,0 +1,547 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html lang="zh-cn" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+<title>Emacs中打造强大的Python IDE - CoderZh - 博客园</title>
+
+
+
+<link title="RSS" type="application/rss+xml" rel="alternate" href="http://www.cnblogs.com/coderzh/rss">
+<link title="RSD" type="application/rsd+xml" rel="EditURI" href="http://www.cnblogs.com/coderzh/rsd.xml">
+<link type="application/wlwmanifest+xml" rel="wlwmanifest" href="http://www.cnblogs.com/coderzh/wlwmanifest.xml">
+  
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<a name="top"></a>
+
+<div id="home">
+<div id="header">
+	<div id="blogTitle">
+		
+<!--done-->
+<div class="title"><a id="Header1_HeaderTitle" class="headermaintitle" href="http://www.cnblogs.com/coderzh/">CoderZh的技术博客</a></div>
+<div class="subtitle">准备回归博客园了</div>
+
+
+
+		
+	</div><!--end: blogTitle 博客的标题和副标题 -->
+	<div id="navigator">
+		
+<ul id="navList">
+<li id="nav_sitehome"><a id="MyLinks1_HomeLink" class="menu" href="http://www.cnblogs.com/">博客园</a></li>
+<li id="nav_myhome"><a id="MyLinks1_MyHomeLink" class="menu" href="http://www.cnblogs.com/coderzh/">首页</a></li>
+<li id="nav_q"><a class="menu" href="http://q.cnblogs.com/">博问</a></li>
+<li id="nav_ing"><a class="menu" href="http://home.cnblogs.com/ing/">闪存</a></li>
+<li id="nav_newpost"></li>
+<li id="nav_contact"><a id="MyLinks1_ContactLink" class="menu" rel="nofollow" href="http://space.cnblogs.com/msg/send/CoderZh">联系</a></li>
+<li id="nav_rss"><a id="MyLinks1_Syndication" class="menu" href="http://www.cnblogs.com/coderzh/rss">订阅</a>
+<!--<a id="MyLinks1_XMLLink" class="aHeaderXML" href="http://www.cnblogs.com/coderzh/rss"><img src="http://www.cnblogs.com/images/xml.gif" alt="订阅" /></a>--></li>
+<li id="nav_admin"><a id="MyLinks1_Admin" class="menu" rel="nofollow" href="http://i.cnblogs.com/">管理</a></li>
+</ul>
+
+		<div class="blogStats">
+			
+			
+<!--done-->
+随笔-215&nbsp;
+文章-10&nbsp;
+评论-1880&nbsp;
+
+			
+		</div><!--end: blogStats -->
+	</div><!--end: navigator 博客导航栏 -->
+</div><!--end: header 头部 -->
+<div id="main">
+	<div id="mainContent">
+	<div class="forFlow">
+		
+
+<!--done-->
+<div id="topics">
+	<div class="post">
+		<h1 class="postTitle">
+			<a id="cb_post_title_url" class="postTitle2" href="http://www.cnblogs.com/coderzh/archive/2009/12/26/emacspythonide.html">Emacs中打造强大的Python IDE</a>
+		</h1>
+		<div class="clear"></div>
+		<div class="postBody">
+			<div id="cnblogs_post_body"><p>本文将介绍，在Emacs中，通过各种扩展，打造强大的Python IDE环境，包括<span style="color: rgb(0, 0, 255);">Snippet工具，智能提示，自动补全，重构工具，调试以及GAE的调试</span>，等等。以下各工具的安装前提是你对Emacs的配置文件有一定的了解，所有相关的el文件都必须放在load_path能够加载的地方。</p>
+<h4><span><a target="_top" href="http://code.google.com/p/yasnippet/">1. YASnippet</a> </span></h4>
+<p>snippet工具，可自定义一些模板，必不可少的好东西！看了下面这个很酷的演示动画就明白了：<br>
+</p>
+<p><a target="_top" href="http://yasnippet.googlecode.com/files/yasnippet.avi">http://yasnippet.googlecode.com/files/yasnippet.avi<br>
+</a></p>
+<p>安装方法：<br>
+</p>
+<div class="cnblogs_code"><div><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><span style="color: rgb(0, 0, 0);">(</span><span style="color: rgb(0, 0, 255);">require</span><span style="color: rgb(0, 0, 0);">&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">yasnippet)<br>(yas/initialize)<br>(yas/load-directory&nbsp;"~/.emacs.d/plugins/yasnippet-0.6.1c/snippets")</span></div></div><h4><a target="_top" href="http://www.emacswiki.org/emacs/AutoComplete"><br>2. AutoComplete</a></h4><p>自动完成工具，会像VS里一样，弹出一个列表框让你去选择。</p><p><img alt="" src="autocompletescreenshot.png" height="327" width="298">'<br></p><p>安装方法：</p><div class="cnblogs_code" onclick="cnblogs_code_show('af09c201-90fc-4bbd-95f8-878f5b7405e9')"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="copycode.gif" alt="复制代码"></a></span></div><img src="contractedblock.gif" class="code_img_closed" id="code_img_closed_af09c201-90fc-4bbd-95f8-878f5b7405e9" style="display: none;" alt=""><div id="cnblogs_code_open_af09c201-90fc-4bbd-95f8-878f5b7405e9"><div><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><span style="color: rgb(0, 0, 0);">(</span><span style="color: rgb(0, 0, 255);">require</span><span style="color: rgb(0, 0, 0);">&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">auto-complete)<br>(require&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0);">auto</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">complete</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">config)<br>(global</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">auto</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">complete</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">mode&nbsp;t)<br>(setq</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">default&nbsp;ac</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">sources&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">(ac-source-words-in-same-mode-buffers))<br>(add-hook&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0);">emacs</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">lisp</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">mode</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">hook&nbsp;(lambda&nbsp;()&nbsp;(add</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">to</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">list&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">ac-sources&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0);">ac</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">source</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">symbols)))<br>(add</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">hook&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">auto-complete-mode-hook&nbsp;(lambda&nbsp;()&nbsp;(add-to-list&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0);">ac</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">sources&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">ac-source-filename)))<br>(set-face-background&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0);">ac</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">candidate</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">face&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0); font-weight: bold;">lightgray</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0);">)<br>(set</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">face</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">underline&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">ac-candidate-face&nbsp;"darkgray")<br>(set-face-background&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0);">ac</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">selection</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">face&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0); font-weight: bold;">steelblue</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0);">) ;;; </span><strong><span style="color: rgb(0, 128, 0);">设置比上面截图中更好看的背景颜色</span></strong><span style="color: rgb(0, 0, 0);"><br>(define</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">key&nbsp;ac</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">completing</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 255);">map</span><span style="color: rgb(0, 0, 0);">&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0); font-weight: bold;">\M-n</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0);">&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">ac-next)&nbsp;&nbsp;;;;&nbsp;</span><span style="color: rgb(0, 128, 0); font-weight: bold;">列表中通过按M-n来向下移动</span><span style="color: rgb(0, 0, 0); font-weight: bold;"><br>(define-key&nbsp;ac-completing-map&nbsp;"\M-p"&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0);">ac</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">previous)<br>(setq&nbsp;ac</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">auto</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">start&nbsp;</span><span style="color: rgb(128, 0, 0);">2</span><span style="color: rgb(0, 0, 0);">)<br>(setq&nbsp;ac</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">dwim&nbsp;t)<br>(define</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">key&nbsp;ac</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">mode</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 255);">map</span><span style="color: rgb(0, 0, 0);">&nbsp;(kbd&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0); font-weight: bold;">M-TAB</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0);">)&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">auto-complete)</span></div></div><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="copycode.gif" alt="复制代码"></a></span></div></div><h4><span><a target="_top" href="http://rope.sourceforge.net/ropemacs.html"><br>3. Rope and Ropemacs</a>     </span></h4><p>非常棒的重构工具，比如rename,move,extract method等等。还有非常好用的goto difinition(跳到定义)，show documents(显示文档)等等。安装Ropemacs前，必须先安装<a target="_top" external="" href="http://rope.sf.net/">rope</a>和<a target="_top" external="" href="http://pymacs.progiciels-bpi.ca/pymacs.html">pymacs</a> 。</p><p><strong></strong><a target="_top" href="http://rope.sf.net/"><strong>rope</strong></a>的安装方法：</p><div class="cnblogs_code"><div><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><span style="color: rgb(0, 0, 0);">python&nbsp;setup.py install</span></div></div><p><strong></strong><a target="_top" href="http://pymacs.progiciels-bpi.ca/pymacs.html"><strong>pymacs</strong></a>的安装方法：<br></p><div class="cnblogs_code"><div><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><span style="color: rgb(0, 0, 0);">python&nbsp;setup.py&nbsp;install</span></div></div><p>.emacs中：</p><div class="cnblogs_code"><div><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><span style="color: rgb(0, 0, 0);">(autoload&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">pymacs-apply&nbsp;"pymacs")<br>(autoload&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0);">pymacs</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">call&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0); font-weight: bold;">pymacs</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0);">)<br>(autoload&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">pymacs-eval&nbsp;"pymacs"&nbsp;nil&nbsp;t)<br>(autoload&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0);">pymacs</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 255);">exec</span><span style="color: rgb(0, 0, 0);">&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0); font-weight: bold;">pymacs</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0);">&nbsp;nil&nbsp;t)<br>(autoload&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">pymacs-load&nbsp;"pymacs"&nbsp;nil&nbsp;t)</span></div></div><p><strong><a target="_top" href="http://rope.sourceforge.net/ropemacs.html">Ropmacs</a></strong>的安装方法：<br></p><div class="cnblogs_code"><div><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><span style="color: rgb(0, 0, 0);">python&nbsp;setup.py&nbsp;install</span></div></div><p>.emacs中：<br></p><div class="cnblogs_code"><div><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><span style="color: rgb(0, 0, 0);">(pymacs</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">load&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0); font-weight: bold;">ropemacs</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0);">&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0); font-weight: bold;">rope-</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0);">)<br>(setq&nbsp;ropemacs</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">enable</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">autoimport&nbsp;t)</span></div></div><h4><a target="_top" href="http://www.rwdev.eu/articles/emacspyeng"><br>4. pycomplete</a><br></h4><p>一个更加强大的智能提示工具，比如，输入time.cl 然后按TAB键，会列出time模块所有cl开头的函数名。在调用函数时，还会在mini buffer中提示函数的参数类型。这个东西需要先安装pymacs。<br></p><p>安装方法：<br></p><p>1. 拷贝 <a target="_top" href="http://www.rwdev.eu/python/pycomplete/python-mode.el">python-mode.el</a> and <a target="_top" href="http://www.rwdev.eu/python/pycomplete/pycomplete.el">pycomplete.el</a> 到Emacs的load_path中。</p><p>2. 拷贝  <a target="_top" href="http://www.rwdev.eu/python/pycomplete/pycomplete.py">pycomplete.py</a> 到<cite>PYTHONPATH</cite> (比如： c:/<cite>python25/Lib/site-packages</cite>)<br></p><p>3. .emacs中添加：<br></p><div class="cnblogs_code" onclick="cnblogs_code_show('b63ff589-0b0f-4325-8fd6-8790b097202d')"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="copycode.gif" alt="复制代码"></a></span></div><img src="contractedblock.gif" class="code_img_closed" id="code_img_closed_b63ff589-0b0f-4325-8fd6-8790b097202d" style="display: none;" alt=""><div id="cnblogs_code_open_b63ff589-0b0f-4325-8fd6-8790b097202d"><div><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><span style="color: rgb(0, 0, 0);">(</span><span style="color: rgb(0, 0, 255);">require</span><span style="color: rgb(0, 0, 0);">&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">pycomplete)<br>(setq&nbsp;auto-mode-alist&nbsp;(cons&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0);">(</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0); font-weight: bold;">\\.py$</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0);">&nbsp;</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">&nbsp;python</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">mode)&nbsp;auto</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">mode</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">alist))<br>(autoload&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">python-mode&nbsp;"python-mode"&nbsp;"Python&nbsp;editing&nbsp;mode."&nbsp;t)<br>(setq&nbsp;interpreter-mode-alist(cons&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0);">(</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0); font-weight: bold;">python</span><span style="color: rgb(0, 0, 0); font-weight: bold;">"</span><span style="color: rgb(0, 0, 0);">&nbsp;</span><span style="color: rgb(0, 0, 0);">.</span><span style="color: rgb(0, 0, 0);">&nbsp;python</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">mode)<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;interpreter</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">mode</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">alist))</span></div></div><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="copycode.gif" alt="复制代码"></a></span></div></div><p><br></p><h4>5. pdb调试<br></h4><p>在Emacs中，通过M-x pdb可调出pdb对python代码进行调试。但是发现在Windows系统中，总进入不了调试模式。主要原因有：</p><p>1. windows中，找不到pdb.py位置。需自己制定pdb的路径。可以通过下面的方法设置pdb的路径：</p><div class="cnblogs_code" onclick="cnblogs_code_show('5223831d-7326-4397-84e7-3797b11b65ec')"><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="copycode.gif" alt="复制代码"></a></span></div><img src="contractedblock.gif" class="code_img_closed" id="code_img_closed_5223831d-7326-4397-84e7-3797b11b65ec" style="display: none;" alt=""><div id="cnblogs_code_open_5223831d-7326-4397-84e7-3797b11b65ec"><div><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><span style="color: rgb(0, 0, 0);">;;&nbsp;pdb&nbsp;setup</span><span style="color: rgb(0, 0, 0);">,</span><span style="color: rgb(0, 0, 0);">&nbsp;note&nbsp;the&nbsp;python&nbsp;version<br>(setq&nbsp;pdb</span><span style="color: rgb(0, 0, 0);">-</span><span style="color: rgb(0, 0, 0);">path&nbsp;</span><span style="color: rgb(0, 0, 0); font-weight: bold;">'</span><span style="color: rgb(0, 0, 0); font-weight: bold;">c:/python25/Lib/pdb.py<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;gud-pdb-command-name&nbsp;(symbol-name&nbsp;pdb-path))<br>&nbsp;(defadvice&nbsp;pdb&nbsp;(before&nbsp;gud-query-cmdline&nbsp;activate)<br>&nbsp;&nbsp;&nbsp;"Provide&nbsp;a&nbsp;better&nbsp;default&nbsp;command&nbsp;line&nbsp;when&nbsp;called&nbsp;interactively."<br>&nbsp;&nbsp;&nbsp;(interactive<br>&nbsp;&nbsp;&nbsp;&nbsp;(list&nbsp;(gud-query-cmdline&nbsp;pdb-path<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;(file-name-nondirectory&nbsp;buffer-file-name)))))</span></div></div><div class="cnblogs_code_toolbar"><span class="cnblogs_code_copy"><a href="javascript:void(0);" onclick="copyCnblogsCode(this)" title="复制代码"><img src="copycode.gif" alt="复制代码"></a></span></div></div><p><br>2. windows中，调用pdb时，未使用<span style="color: red;">python -i</span> 参数。 <br></p><p>针对上面两个问题，我的解决办法是，不设置pdb具体路径，M-x pdb 回车后，出现下面命令:</p><div class="cnblogs_code"><div><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><span style="color: rgb(0, 0, 0);">Run&nbsp;pdb&nbsp;(like&nbsp;this):&nbsp;pdb&nbsp;</span></div></div><p>然后手动修改一下：<br></p><div class="cnblogs_code"><div><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><span style="color: rgb(0, 0, 0);">Run&nbsp;pdb&nbsp;(like&nbsp;this):&nbsp;</span><span style="color: red;">python&nbsp;</span><span style="color: red;">-</span><span style="color: red;">i&nbsp;</span><span style="color: red;">-</span><span style="color: red;">m</span><span style="color: rgb(0, 0, 0);">&nbsp;pdb&nbsp;test.py</span></div></div><p>这样就搞定了。<br></p><h4>6. 如何调试GAE程序</h4><p>GAE是一个Web应用，需要跨线程进行调试，而pdb本身对线程调试支持不好。使用pdb进行线程调试时，只有在需要调试的地方插入下面代码：</p><div class="cnblogs_code"><div><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><span style="color: rgb(0, 0, 255);">import</span><span style="color: rgb(0, 0, 0);">&nbsp;pdb<br>pdb.set_trace()</span></div></div><p>然后直接运行被调试代码，而不是通过python pdb来执行，就可以多线程代码进行调试了。</p><p>但是Google App Engine这样的Web应用，使用这个方法还是不能调试，和stdin和stdout有关，最后找到一个很好的解决方法：</p><div class="cnblogs_code"><div><!--<br/ /><br/ />Code highlighting produced by Actipro CodeHighlighter (freeware)<br/ />http://www.CodeHighlighter.com/<br/ /><br/ />--><span style="color: rgb(0, 0, 255);">def</span><span style="color: rgb(0, 0, 0);">&nbsp;set_trace():<br>&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: rgb(0, 0, 255);">import</span><span style="color: rgb(0, 0, 0);">&nbsp;pdb,&nbsp;sys<br>&nbsp;&nbsp;&nbsp;&nbsp;debugger&nbsp;</span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);">&nbsp;pdb.Pdb(stdin</span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);">sys.</span><span style="color: rgb(128, 0, 128);">__stdin__</span><span style="color: rgb(0, 0, 0);">,<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;stdout</span><span style="color: rgb(0, 0, 0);">=</span><span style="color: rgb(0, 0, 0);">sys.</span><span style="color: rgb(128, 0, 128);">__stdout__</span><span style="color: rgb(0, 0, 0);">)<br>&nbsp;&nbsp;&nbsp;&nbsp;debugger.set_trace(sys._getframe().f_back)</span></div></div><p><br>在任何需要调试的地方，调用上面的set_trace()函数。<br></p><p><span style="color: rgb(0, 0, 255);">如果你还有更好玩的东西，一定要告诉我！</span><br></p><p>参考文档：<br></p><p><a target="_top" href="http://www.emacswiki.org/emacs/PythonMode">http://www.emacswiki.org/emacs/PythonMode</a><br></p><p><a target="_top" href="http://www.enigmacurry.com/2008/05/09/emacs-as-a-powerful-python-ide/">http://www.enigmacurry.com/2008/05/09/emacs-as-a-powerful-python-ide/</a>&nbsp;</p><p><a target="_top" href="http://jjinux.blogspot.com/2008/05/python-debugging-google-app-engine-apps.html">http://jjinux.blogspot.com/2008/05/python-debugging-google-app-engine-apps.html&nbsp;</a></p></div><div id="MySignature"><div id="MySignature">
+<p style="border: 1px dashed rgb(224, 224, 224); padding: 10px 10px 10px 60px; background-color: rgb(255, 254, 238); background-image: url('o_info.png'); background-repeat: no-repeat; background-attachment: scroll; background-position: 1% 50%; -moz-background-inline-policy: -moz-initial; font-family: 微软雅黑;" id="LyjSignature">作者：<a target="_top" href="http://coderzh.cnblogs.com/">CoderZh</a>（<a target="_top" href="http://coderzh.cnblogs.com/">CoderZh的技术博客 - 博客园</a>）<br>微博：<a target="_top" href="http://t.sina.com.cn/coderzh">http://t.sina.com.cn/coderzh</a>
+<br>出处：<a target="_top" href="http://coderzh.cnblogs.com/">http://coderzh.cnblogs.com</a><br>
+文章版权归本人所有，欢迎转载，但未经作者同意必须保留此段声明，且在文章页面明显位置给出原文连接，否则保留追究法律责任的权利。 </p>
+</div></div>
+<div class="clear"></div>
+<div id="blog_post_info_block">
+<div id="blog_post_info"><div id="BlogPostCategory">分类: <a href="http://www.cnblogs.com/coderzh/category/225744.html">Emacs</a>, <a href="http://www.cnblogs.com/coderzh/category/133952.html">Python</a></div>
+<div id="EntryTag">标签: <a href="http://www.cnblogs.com/coderzh/tag/Emacs/">Emacs</a></div>
+<div id="green_channel">
+绿色通道：
+<a href="javascript:void(0);" id="green_channel_digg" onclick="DiggIt(cb_entryId,cb_blogId,1);green_channel_success(this,'谢谢推荐！');">好文要顶</a>
+<a id="green_channel_follow" onclick="c_follow();" href="javascript:void(0);">关注我</a>
+<a id="green_channel_favorite" onclick="AddToWz(cb_entryId);return false;" href="javascript:void(0);">收藏该文</a><a id="green_channel_contact" href="http://space.cnblogs.com/msg/send/CoderZh" target="_top">与我联系</a>
+<a id="green_channel_weibo" href="javascript:void(0);" title="分享至新浪微博" onclick="ShareToTsina()"><img src="icon_weibo_24.png" alt=""></a>
+</div>
+<div id="author_profile">
+<div id="author_profile_info" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/coderzh/" target="_top"><img src="u16913.jpg" class="author_avatar" alt=""></a>
+<div id="author_profile_detail" class="author_profile_info">
+<a href="http://home.cnblogs.com/u/coderzh/">CoderZh</a><br>
+<a href="http://home.cnblogs.com/u/coderzh/followees">关注 - 10</a><br>
+<a href="http://home.cnblogs.com/u/coderzh/followers">粉丝 - 386</a>
+</div>
+</div>
+<div class="clear"></div>
+<div id="author_profile_honor"></div>
+<div id="author_profile_follow">
+    <a href="javascript:void(0);" onclick="c_follow();return false;">+加关注</a>
+</div>
+</div>
+<div id="div_digg">										
+	<div class="diggit" onclick="votePost(cb_entryId,'Digg')"> 
+		<span class="diggnum" id="digg_count">1</span>
+	</div>
+	<div class="buryit" onclick="votePost(cb_entryId,'Bury')"> 
+		<span class="burynum" id="bury_count">0</span>
+	</div>
+	<div class="clear"></div>	
+	<div class="diggword" id="digg_tips">
+    (请您对文章做出评价)
+    </div>	
+</div>
+</div>
+<div class="clear"></div>
+<div id="post_next_prev"><a href="http://www.cnblogs.com/coderzh/archive/2009/12/26/1632809.html" class="p_n_p_prefix">« </a> 上一篇：<a href="http://www.cnblogs.com/coderzh/archive/2009/12/26/1632809.html" title="发布于2009-12-26 14:34">最常用的Emacs的基本操作</a><br><a href="http://www.cnblogs.com/coderzh/archive/2010/01/01/1637239.html" class="p_n_p_prefix">» </a> 下一篇：<a href="http://www.cnblogs.com/coderzh/archive/2010/01/01/1637239.html" title="发布于2010-01-01 00:10">2010年01月01日0时0分 - 总结我的2009</a><br></div>
+</div>
+
+
+		</div>
+		<div class="postDesc">posted @ <span id="post-date">2009-12-26 16:00</span> <a href="http://www.cnblogs.com/coderzh/">CoderZh</a> 阅读(<span id="post_view_count">22247</span>) 评论(<span id="post_comment_count">4</span>)  <a href="http://i.cnblogs.com/EditPosts.aspx?postid=1632852" rel="nofollow">编辑</a> <a href="#" onclick="AddToWz(1632852);return false;">收藏</a></div>
+	</div>
+	
+	
+</div><!--end: topics 文章、评论容器-->
+<a name="!comments"></a><div id="blog-comments-placeholder"><div id="comments_pager_top"></div>
+<!--done-->
+<div class="feedback_area_title">评论列表</div>
+<div class="feedbackNoItems"></div>
+	
+
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1924937,'NXIE09UGnlF+zsAr68b2TOoad0OGgZKXwpixphW5ek24EnkuYYc+9w==')">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1924937,'NXIE09UGnlF+zsAr68b2TOoad0OGgZKXwpixphW5ek24EnkuYYc+9w==')">引用</a></span>
+				</div>
+				<a href="#1924937" class="layer">#1楼</a><a name="1924937" id="comment_anchor_1924937"></a>  <span class="comment_date">2010-09-27 10:11</span> <a id="a_comment_author_1924937" href="http://www.cnblogs.com/applelure/" target="_top">live-evil</a> <a href="http://space.cnblogs.com/msg/send/live-evil" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1924937" class="blog_comment_body">为什么windows下调试,总是提示找不到文件?<br><br>相关信息:<br>Current directory is j:/py/<br><br>Searching for program: no such file or directory ,python.</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1924937,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1924937,'Bury',this)">反对(0)</a></div><span id="comment_1924937_avatar" style="display: none;">http://pic.cnitblog.com/face/u22245.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1924949,'NXIE09UGnlF+zsAr68b2TOoad0OGgZKXwpixphW5ek24EnkuYYc+9w==')">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1924949,'NXIE09UGnlF+zsAr68b2TOoad0OGgZKXwpixphW5ek24EnkuYYc+9w==')">引用</a></span>
+				</div>
+				<a href="#1924949" class="layer">#2楼</a><a name="1924949" id="comment_anchor_1924949"></a>  <span class="comment_date">2010-09-27 10:16</span> <a id="a_comment_author_1924949" href="http://www.cnblogs.com/applelure/" target="_top">live-evil</a> <a href="http://space.cnblogs.com/msg/send/live-evil" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1924949" class="blog_comment_body">还有目前GAE调试是用log方式,也不错...</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1924949,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1924949,'Bury',this)">反对(0)</a></div><span id="comment_1924949_avatar" style="display: none;">http://pic.cnitblog.com/face/u22245.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(1925130,'SqP/dgemv/Q9liI/gPScSuOSseSMvqVxASwtb+18PkFlAzXVvwZy3g==')">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(1925130,'SqP/dgemv/Q9liI/gPScSuOSseSMvqVxASwtb+18PkFlAzXVvwZy3g==')">引用</a></span>
+				</div>
+				<a href="#1925130" class="layer">#3楼</a><a name="1925130" id="comment_anchor_1925130"></a>[<span class="louzhu">楼主</span>]  <span class="comment_date">2010-09-27 12:21</span> <a id="a_comment_author_1925130" href="http://www.cnblogs.com/coderzh/" target="_top">CoderZh</a> <a href="http://space.cnblogs.com/msg/send/CoderZh" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_1925130" class="blog_comment_body"><fieldset class="comment_quote"><legend><a href="#1924949" title="查看引用原文">引用</a></legend>live-evil：还有目前GAE调试是用log方式,也不错...</fieldset><br>是的是的。log方式是最简单直接也很有效的方法。</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(1925130,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(1925130,'Bury',this)">反对(0)</a></div><span id="comment_1925130_avatar" style="display: none;">http://pic.cnitblog.com/face/u16913.jpg</span>
+			</div>
+		</div>
+	
+		<div class="feedbackItem">
+			<div class="feedbackListSubtitle">
+				<div class="feedbackManage">
+					&nbsp;&nbsp;<span class="comment_actions"><a href="javascript:void(0);" onclick="return ReplyComment(2729881,'ddKRqICkBtlTdG2zzsLITJHLgOgYPqd1J7l/BMP6gTtuIh8co8eulQ==')">回复</a><a href="javascript:void(0);" onclick="return QuoteComment(2729881,'ddKRqICkBtlTdG2zzsLITJHLgOgYPqd1J7l/BMP6gTtuIh8co8eulQ==')">引用</a></span>
+				</div>
+				<a href="#2729881" class="layer">#4楼</a><a name="2729881" id="comment_anchor_2729881"></a><span id="comment-maxId" style="display: none;">2729881</span><span id="comment-maxDate" style="display: none;">2013/7/18 11:13:31</span>  <span class="comment_date">2013-07-18 11:13</span> <a id="a_comment_author_2729881" href="http://home.cnblogs.com/u/389889/" target="_top">AndrewDong</a> <a href="http://space.cnblogs.com/msg/send/AndrewDong" title="发送站内短消息" class="sendMsg2This">&nbsp;</a>
+			</div>
+			<div class="feedbackCon">
+				<div id="comment_body_2729881" class="blog_comment_body">好文， 在macbook下配emacs没问题</div><div class="comment_vote"><a href="javascript:void(0);" class="comment_digg" onclick="return voteComment(2729881,'Digg',this)">支持(0)</a><a href="javascript:void(0);" class="comment_bury" onclick="return voteComment(2729881,'Bury',this)">反对(0)</a></div>
+			</div>
+		</div>
+	<div id="comments_pager_bottom"></div></div>
+<div id="comment_form" class="commentform">
+<a name="commentform"></a>
+<div id="divCommentShow"></div>
+<div id="comment_nav"><span id="span_refresh_tips"></span><a href="javascript:void(0);" id="lnk_RefreshComments" onclick="return RefreshCommentList();">刷新评论</a><a href="#" onclick="return RefreshPage();">刷新页面</a><a href="#top">返回顶部</a></div>
+<div id="comment_form_container"><div id="commentform_title">发表评论</div>
+<span id="tip_comment" style="color: Red;"></span>
+<p>
+昵称：<input id="tbCommentAuthor" class="author" disabled="disabled" size="50" value="巴蛮子" type="text">
+</p>
+<div class="commentbox_main">
+<div class="commentbox_title">
+<div class="commentbox_title_left">评论内容：</div>
+<div class="commentbox_title_right">
+<img id="ubb_quote" class="comment_icon" src="quote.gif" alt="引用" title="添加引用" onclick="insertUBB('tbCommentBody','quote')">
+<img id="ubb_bold" class="comment_icon" src="b.png" alt="粗体" title="添加粗体" onclick="insertUBB('tbCommentBody','b')">
+<img id="ubb_url" class="comment_icon" src="lk.png" alt="链接" title="添加链接" onclick="insertUbbUrl('tbCommentBody')">
+<img id="ubb_indent" class="comment_icon" src="indent.png" alt="缩进" title="添加首行缩进" onclick="insertIndent('tbCommentBody')">
+<img id="ubb_code" class="comment_icon" src="insertcode.gif" alt="代码" title="添加代码" onclick="insertUbbCode()">
+<img id="ubb_img" class="comment_icon" src="img.gif" alt="图片" title="上传图片" onclick="OpenImageUploadWindow();">
+</div>
+</div>
+<div class="clear"></div>
+<textarea id="tbCommentBody" class="comment_textarea" rows="20" cols="50"></textarea>
+</div>
+<p id="commentbox_opt">
+<input id="btn_comment_submit" class="comment_btn" value="提交评论" type="button">
+<span id="span_comment_canceledit" style="display: none;"><a href="javascript:void(0);" onclick="return CancelCommentEdit()">不改了</a></span>
+<a href="javascript:void(0);" onclick="return logout();">注销</a>
+        <a id="commentbox_opt_sub" href="javascript:void(0);" title="订阅后有新评论时会邮件通知您" onclick="commentManager.Subscribe()">订阅评论</a>
+</p>
+<p>
+[使用Ctrl+Enter键快速提交]
+</p>
+<div style="display: none;">
+<span id="comment_edit_id"></span><span id="span_parentcomment_id"></span>
+<span id="span_parent_id"></span>
+<span id="span_comment_replyto"></span>
+<span id="span_comment_posted"></span>
+</div>
+</div>
+<div class="ad_text_commentbox" id="ad_text_under_commentbox"><a href="http://job.cnblogs.com/" target="_top">程序员找工作，就在博客园招聘频道</a></div>
+<div id="site_nav_under"><a href="http://www.cnblogs.com/" target="_top" title="程序员的网上家园">博客园首页</a><a href="http://q.cnblogs.com/" target="_top" title="程序员问答社区">博问</a><a href="http://news.cnblogs.com/" target="_top" title="IT新闻">新闻</a><a href="http://home.cnblogs.com/ing/" target="_top">闪存</a><a href="http://job.cnblogs.com/" target="_top">程序员招聘</a><a href="http://kb.cnblogs.com/" target="_top">知识库</a></div>
+<div id="ad_under_post_holder">
+
+<div id="google_ad_c1" class="c_ad_block">
+    <!-- cnblogs_blogpost_C1_sitehome -->
+    <div id="div-gpt-ad-1346480159711-0" style="width: 300px; height: 250px;">
+    
+    <div style="border: 0pt none;" id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__container__"><iframe src="index_1.html" style="border: 0pt none; vertical-align: bottom;" marginheight="0" marginwidth="0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0" id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0" frameborder="0" height="250" scrolling="no" width="300"></iframe></div><iframe src="index_2.html" style="border: 0pt none; vertical-align: bottom; visibility: hidden; display: none;" marginheight="0" marginwidth="0" name="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__hidden__" id="google_ads_iframe_/1090369/cnblogs_blogpost_C1_sitehome_0__hidden__" frameborder="0" height="0" scrolling="no" width="0"></iframe></div>
+</div>
+<div id="blog_news_kb"><div class="itnews c_ad_block"><b>最新IT新闻</b>:<br> ·  <a href="http://news.cnblogs.com/n/201737/" target="_top">微软放大招，欲推免费版 Windows 8.1？</a><br> ·  <a href="http://news.cnblogs.com/n/201736/" target="_top">谷歌搜索引擎正式推出饭店菜单搜索功能</a><br> ·  <a href="http://news.cnblogs.com/n/201735/" target="_top">魁北克省要求店主将Facebook页面内容翻译成法语</a><br> ·  <a href="http://news.cnblogs.com/n/201734/" target="_top">世纪佳缘CEO吴琳光：线下收入两年后超线上</a><br> ·  <a href="http://news.cnblogs.com/n/201733/" target="_top">苹果下周将发布汽车版iOS 欲引领智能汽车革命</a><br>» <a href="http://news.cnblogs.com/" title="IT新闻" target="_top">更多新闻...</a></div><div class="itnews c_ad_block" id="kb_block"><b>最新知识库文章</b>:<br><div id="kb_recent"> ·  <a href="http://kb.cnblogs.com/page/191521/" target="_top">指尖上的浏览：如何理解用户的眼？</a><br> ·  <a href="http://kb.cnblogs.com/page/200929/" target="_top">Node.js 究竟是什么？</a><br> ·  <a href="http://kb.cnblogs.com/page/194376/" target="_top">Habya'a（临时拼凑的组件）与技术债务</a><br> ·  <a href="http://kb.cnblogs.com/page/200528/" target="_top">关于在线教育和线下教育的六个问题</a><br> ·  <a href="http://kb.cnblogs.com/page/199787/" target="_top">别错把需求当市场</a><br></div>» <a href="http://kb.cnblogs.com/" target="_top">更多知识库文章...</a></div></div></div>
+
+<div id="HistoryToday" class="c_ad_block"></div>
+
+
+</div>
+
+	</div><!--end: forFlow -->
+	</div><!--end: mainContent 主体内容容器-->
+
+	<div id="sideBar">
+		<div id="sideBarMain">
+			
+<!--done-->
+<div class="newsItem">
+<h3 class="catListTitle">公告</h3>
+	<div id="blog-news"><p>&nbsp;</p><p>&nbsp;</p>
+<ul><li><a href="https://twitter.com/coderzh" rel="nofollow" target="_top"><img style="border-width: medium; border-style: none; border-color: -moz-use-text-color;" alt="跟随我的推特" src="twitter.gif" align="absMiddle" border="0">&nbsp;跟随我的推特</a>&nbsp;</li><li><a href="http://t.sina.com.cn/coderzh" rel="nofollow" target="_top"><img alt="" src="sina.jpg" align="absMiddle" border="0">&nbsp;我的新浪微博</a>&nbsp;</li><li><a href="http://www.cnblogs.com/coderzh/rss" rel="nofollow" target="_top"><img style="border-width: medium; border-style: none; border-color: -moz-use-text-color;" alt="订阅我的博客" src="feed-icon32x32.png" align="absMiddle" border="0">&nbsp;订阅我的博客</a>&nbsp;</li><li><a href="http://feeds.feedburner.com/coderzh" rel="nofollow" target="_top"><img style="border-width: medium; border-style: none; border-color: -moz-use-text-color; margin-top: 3px;" src="feedburner-icon.gif" alt="" align="absMiddle" border="0">&nbsp;FeedBurner</a>&nbsp;</li><li><a href="http://www.douban.com/people/CoderZh/" target="_top"><img src="douban.jpg" alt="" align="absMiddle" height="32" width="32">&nbsp;我的豆瓣</a>&nbsp;</li><li><a href="http://blog.coderzh.com/" target="_top"><img alt="NancyBlog" src="logo.jpg" align="absMiddle" height="32" width="32">&nbsp;我的GAE博客</a>&nbsp;</li><li><a href="http://wiki.coderzh.com/" target="_top"><img alt="NancyWiki" src="nancywiki.png" align="absMiddle" height="32" width="32">&nbsp;我的NancyWiki</a>&nbsp;</li><li><a href="http://www.google.com/reader/view/feed/http://www.cnblogs.com/coderzh/rss" rel="nofollow" target="_top"><img alt="通过Google订阅本站" src="icon_subshot01_google.gif" align="absMiddle" border="0"></a></li><li><a href="http://www.xianguo.com/subscribe.php?url=http://www.cnblogs.com/coderzh/rss" rel="nofollow" target="_top"><img alt="通过鲜果订阅本站" src="icon_subshot01_xianguo.gif" align="absMiddle" border="0"></a></li><li><a href="http://www.zhuaxia.com/add_channel.php?url=http://www.cnblogs.com/coderzh/rss" target="_top"><img style="margin-bottom: 3px;" alt="抓虾" src="icon_subshot01_zhuaxia.gif" align="absMiddle" border="0" vspace="2"></a> </li></ul> <div class="vimiumReset vimiumHUD" style="right: 150px; opacity: 0; display: none;"></div> <div class="vimiumReset vimiumHUD" style="right: 150px; opacity: 0; display: none;"></div><div id="profile_block">昵称：<a href="http://home.cnblogs.com/u/coderzh/">CoderZh</a><br>园龄：<a href="http://home.cnblogs.com/u/coderzh/" title="入园时间：2006-08-04">7年6个月</a><br>粉丝：<a href="http://home.cnblogs.com/u/coderzh/followers/">386</a><br>关注：<a href="http://home.cnblogs.com/u/coderzh/followees/">10</a><div id="p_b_follow"><a href="javascript:void(0);" onclick="cnblogs.UserManager.FollowBlogger('3b5c360b-63cf-dd11-9e4d-001cf0cd104b')">+加关注</a></div></div></div>
+</div>
+
+			<div id="calendar"><div id="blog-calendar" style="display: none;"></div></div>
+			
+			<div id="leftcontentcontainer">
+				<div id="blog-sidecolumn">
+
+<div class="mySearch">
+<h3 class="catListTitle">搜索</h3>
+<div id="widget_my_zzk" class="div_my_zzk"><input value="" id="q" onkeydown="return zzk_go_enter(event);" class="input_my_zzk" type="text">&nbsp;<input onclick="zzk_go()" value="找找看" id="btnZzk" class="btn_my_zzk" type="button"></div>
+
+</div>
+
+
+<div class="catListPostCategory">
+<h3 class="catListTitle">随笔分类</h3>
+
+<ul>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_0" href="http://www.cnblogs.com/coderzh/category/242135.html">Agile(2)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_1" href="http://www.cnblogs.com/coderzh/category/238033.html">Android(3)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_2" href="http://www.cnblogs.com/coderzh/category/231715.html">ASP.NET(3)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_3" href="http://www.cnblogs.com/coderzh/category/105545.html">C#(20)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_4" href="http://www.cnblogs.com/coderzh/category/144185.html">C/C++(23)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_5" href="http://www.cnblogs.com/coderzh/category/225744.html">Emacs(2)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_6" href="http://www.cnblogs.com/coderzh/category/166086.html">Google App Engine(7)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_7" href="http://www.cnblogs.com/coderzh/category/171272.html">JAVA(4)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_8" href="http://www.cnblogs.com/coderzh/category/145344.html">Linux(1)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_9" href="http://www.cnblogs.com/coderzh/category/272901.html">Lua(2)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_10" href="http://www.cnblogs.com/coderzh/category/133952.html">Python(67)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_11" href="http://www.cnblogs.com/coderzh/category/144199.html">Ubuntu(9)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_12" href="http://www.cnblogs.com/coderzh/category/109492.html">VBS(4)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_13" href="http://www.cnblogs.com/coderzh/category/151315.html">安全性测试(10)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_14" href="http://www.cnblogs.com/coderzh/category/208456.html">测试生活感悟(7)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_15" href="http://www.cnblogs.com/coderzh/category/107865.html">程序人生(14)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_16" href="http://www.cnblogs.com/coderzh/category/173075.html">代码安全(3)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_17" href="http://www.cnblogs.com/coderzh/category/183698.html">单元测试(18)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_18" href="http://www.cnblogs.com/coderzh/category/123909.html">公告(12)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_19" href="http://www.cnblogs.com/coderzh/category/106344.html">每周总结(5)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_20" href="http://www.cnblogs.com/coderzh/category/100498.html">软件测试(30)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_21" href="http://www.cnblogs.com/coderzh/category/126216.html">设计模式</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_22" href="http://www.cnblogs.com/coderzh/category/129338.html">性能测试(9)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_0_Link_23" href="http://www.cnblogs.com/coderzh/category/68385.html">学习笔记(23)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catListPostArchive">
+<h3 class="catListTitle">随笔档案</h3>
+
+<ul>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_0" href="http://www.cnblogs.com/coderzh/archive/2011/05.html">2011年5月 (1)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_1" href="http://www.cnblogs.com/coderzh/archive/2011/03.html">2011年3月 (1)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_2" href="http://www.cnblogs.com/coderzh/archive/2011/01.html">2011年1月 (1)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_3" href="http://www.cnblogs.com/coderzh/archive/2010/12.html">2010年12月 (3)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_4" href="http://www.cnblogs.com/coderzh/archive/2010/11.html">2010年11月 (3)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_5" href="http://www.cnblogs.com/coderzh/archive/2010/10.html">2010年10月 (2)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_6" href="http://www.cnblogs.com/coderzh/archive/2010/09.html">2010年9月 (6)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_7" href="http://www.cnblogs.com/coderzh/archive/2010/08.html">2010年8月 (2)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_8" href="http://www.cnblogs.com/coderzh/archive/2010/07.html">2010年7月 (4)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_9" href="http://www.cnblogs.com/coderzh/archive/2010/06.html">2010年6月 (3)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_10" href="http://www.cnblogs.com/coderzh/archive/2010/05.html">2010年5月 (4)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_11" href="http://www.cnblogs.com/coderzh/archive/2010/04.html">2010年4月 (9)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_12" href="http://www.cnblogs.com/coderzh/archive/2010/03.html">2010年3月 (6)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_13" href="http://www.cnblogs.com/coderzh/archive/2010/02.html">2010年2月 (3)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_14" href="http://www.cnblogs.com/coderzh/archive/2010/01.html">2010年1月 (16)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_15" href="http://www.cnblogs.com/coderzh/archive/2009/12.html">2009年12月 (6)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_16" href="http://www.cnblogs.com/coderzh/archive/2009/11.html">2009年11月 (3)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_17" href="http://www.cnblogs.com/coderzh/archive/2009/10.html">2009年10月 (4)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_18" href="http://www.cnblogs.com/coderzh/archive/2009/09.html">2009年9月 (3)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_19" href="http://www.cnblogs.com/coderzh/archive/2009/08.html">2009年8月 (2)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_20" href="http://www.cnblogs.com/coderzh/archive/2009/07.html">2009年7月 (7)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_21" href="http://www.cnblogs.com/coderzh/archive/2009/06.html">2009年6月 (2)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_22" href="http://www.cnblogs.com/coderzh/archive/2009/04.html">2009年4月 (12)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_23" href="http://www.cnblogs.com/coderzh/archive/2009/03.html">2009年3月 (5)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_24" href="http://www.cnblogs.com/coderzh/archive/2009/02.html">2009年2月 (2)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_25" href="http://www.cnblogs.com/coderzh/archive/2009/01.html">2009年1月 (3)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_26" href="http://www.cnblogs.com/coderzh/archive/2008/12.html">2008年12月 (7)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_27" href="http://www.cnblogs.com/coderzh/archive/2008/11.html">2008年11月 (9)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_28" href="http://www.cnblogs.com/coderzh/archive/2008/09.html">2008年9月 (8)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_29" href="http://www.cnblogs.com/coderzh/archive/2008/08.html">2008年8月 (7)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_30" href="http://www.cnblogs.com/coderzh/archive/2008/07.html">2008年7月 (8)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_31" href="http://www.cnblogs.com/coderzh/archive/2008/06.html">2008年6月 (9)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_32" href="http://www.cnblogs.com/coderzh/archive/2008/05.html">2008年5月 (33)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_33" href="http://www.cnblogs.com/coderzh/archive/2008/04.html">2008年4月 (6)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_34" href="http://www.cnblogs.com/coderzh/archive/2008/02.html">2008年2月 (1)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_35" href="http://www.cnblogs.com/coderzh/archive/2007/12.html">2007年12月 (3)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_36" href="http://www.cnblogs.com/coderzh/archive/2007/11.html">2007年11月 (3)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_37" href="http://www.cnblogs.com/coderzh/archive/2007/10.html">2007年10月 (7)</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_1_Link_38" href="http://www.cnblogs.com/coderzh/archive/2007/09.html">2007年9月 (1)</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList">
+<h3 class="catListTitle"> 系列文章</h3>
+
+<ul>
+
+<li><a id="ctl01_CatList_LinkList_2_Link_0" href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">Python天天美味系列</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_2_Link_1" href="http://www.cnblogs.com/coderzh/archive/2010/04/30/security.html">攻击方式学习系列</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_2_Link_2" href="http://www.cnblogs.com/coderzh/archive/2010/09/11/thincilent.html">瘦客户端那些事</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_2_Link_3" href="http://www.cnblogs.com/coderzh/archive/2009/04/06/1426755.html">玩转gtest系列</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList">
+<h3 class="catListTitle">读书笔记</h3>
+
+<ul>
+
+<li><a id="ctl01_CatList_LinkList_3_Link_0" href="http://www.cnblogs.com/coderzh/archive/2008/06/10/1216962.html">Python网络编程</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_3_Link_1" href="http://www.cnblogs.com/coderzh/archive/2010/01/23/xUnit-Test-Patterns.html">xUnit Test Patterns</a> </li>
+
+<li><a id="ctl01_CatList_LinkList_3_Link_2" href="http://www.cnblogs.com/coderzh/archive/2009/07/18/1526082.html">卓有成效的程序员</a> </li>
+
+</ul>
+
+</div>
+
+<div class="catList">
+<h3 class="catListTitle">友情链接</h3>
+
+<ul>
+
+<li><a id="ctl01_CatList_LinkList_4_Link_0" rel="nofollow" href="http://pyzh.appspot.com/" target="_top">我的GAE生活博客</a> <a id="ctl01_CatList_LinkList_4_RssLink_0" href="http://blog.coderzh.com/atom">(rss)</a></li>
+
+</ul>
+
+</div>
+
+
+<div class="catListBlogRank">
+<h3 class="catListTitle">积分与排名</h3>
+<ul>
+	<li class="liScore">
+		积分 -	511604
+	</li>
+	<li class="liRank">
+		排名 -	128
+	</li>
+</ul>
+</div>
+
+
+
+<div class="catListComment">
+<h3 class="catListTitle">最新评论</h3>
+	<div id="RecentCommentsBlock"><ul>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/coderzh/archive/2009/06/28/1512654.html#2882117">1. Re:PyQt4学习资料汇总</a></li>
+    <li class="recent_comment_body">为什么我下载了运行后，点击操作管理按钮事件不触发呢<br>而且我做的简单例子使用同样的界面代码分离的方式，按钮事件都不起作用</li>
+    <li class="recent_comment_author">--飞鼠</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/coderzh/archive/2009/04/06/1426758.html#2881186">2. Re:玩转Google开源C++单元测试框架Google Test系列(gtest)之一 - 初识gtest</a></li>
+    <li class="recent_comment_body">@michelleliu改成这样// demo.cpp : Defines the entry point for the console application.//#include "stdafx.h"#include "iostream"#include using namespace std;int Foo(int a, int b) { if (a == 0 || b == 0)...</li>
+    <li class="recent_comment_author">--to be crazy</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/coderzh/archive/2009/06/28/1512654.html#2881166">3. Re:PyQt4学习资料汇总</a></li>
+    <li class="recent_comment_body">有很多东西要求教前辈，求加好友 QQ190712419</li>
+    <li class="recent_comment_author">--把酒祝东风</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/coderzh/archive/2009/06/13/1500042.html#2861825">4. Re:程序员的信仰</a></li>
+    <li class="recent_comment_body">你好，博主，我从事系统测试3年了，感觉没什么提高，想做测试开发，请问下有什么学习的方向呢？</li>
+    <li class="recent_comment_author">--孙大脸</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/coderzh/archive/2010/05/02/python-cookbook-pyspy.html#2853107">5. Re:Python天天美味(36) - 用Python实现Spy++</a></li>
+    <li class="recent_comment_body">Good job!</li>
+    <li class="recent_comment_author">--weiwei22844</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/coderzh/archive/2010/09/29/version-control.html#2846206">6. Re:关于版本控制软件</a></li>
+    <li class="recent_comment_body">有一款单机版的版本控制软件不错，相对svn，css有个优点，就是开发库完全在自己手里，对于个人的版本控制非常有用<br><a href="http://www.jasmineinfo.com/?repage=softinfo" target="_top">http://www.jasmineinfo.com/?repage=softinfo</a></li>
+    <li class="recent_comment_author">--极冰</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/coderzh/archive/2010/12/31/testing-topic.html#2823889">7. Re:Google Test交流与测试开发经验总结</a></li>
+    <li class="recent_comment_body">您好，slideshare被墙了，您能发一份ppt给我吗？<br>邮箱：1140914704爱特qq.com<br>谢谢。。。</li>
+    <li class="recent_comment_author">--loverszhaokai</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/coderzh/archive/2009/07/11/1521706.html#2821578">8. Re:C++代码覆盖率工具Coverage Validator</a></li>
+    <li class="recent_comment_body">Bullseye Coverage这款软件呢？</li>
+    <li class="recent_comment_author">--Alexia(minmin)</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/coderzh/archive/2009/04/06/1426755.html#2818184">9. Re:玩转Google开源C++单元测试框架Google Test系列(gtest)(总)</a></li>
+    <li class="recent_comment_body">感谢楼主教我展开宏定义......<br>话说我之前是靠人工看的，<br>我的天啊</li>
+    <li class="recent_comment_author">--zydingjun</li>
+    <li class="recent_comment_title"><a href="http://www.cnblogs.com/coderzh/archive/2009/06/28/1512654.html#2818082">10. Re:PyQt4学习资料汇总</a></li>
+    <li class="recent_comment_body">十分感谢！<br>77680314@qq.com</li>
+    <li class="recent_comment_author">--瘦夹鲁尼</li>
+</ul>
+</div>
+</div>
+
+<div class="catListView">
+<h3 class="catListTitle">阅读排行榜</h3>
+	<div id="TopViewPostsBlock"><ul><li><a href="http://www.cnblogs.com/coderzh/archive/2009/04/06/1426755.html">1. 玩转Google开源C++单元测试框架Google Test系列(gtest)(总)(104515)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/04/06/1426758.html">2. 玩转Google开源C++单元测试框架Google Test系列(gtest)之一 - 初识gtest(73944)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/04/06/1430364.html">3. 玩转Google开源C++单元测试框架Google Test系列(gtest)之二 - 断言(50287)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/04/06/1430396.html">4. 玩转Google开源C++单元测试框架Google Test系列(gtest)之三 - 事件机制(34454)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/04/08/1431297.html">5. 玩转Google开源C++单元测试框架Google Test系列(gtest)之四 - 参数化(28277)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/04/10/1432789.html">6. 玩转Google开源C++单元测试框架Google Test系列(gtest)之六 - 运行参数(26768)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/04/11/1433744.html">7. 玩转Google开源C++单元测试框架Google Test系列(gtest)之七 - 深入解析gtest(26728)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/06/28/1512654.html">8. PyQt4学习资料汇总(22350)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/12/26/emacspythonide.html">9. Emacs中打造强大的Python IDE(22247)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/04/12/1434155.html">10. 玩转Google开源C++单元测试框架Google Test系列(gtest)之八 - 打造自己的单元测试框架(21692)</a></li></ul></div>
+</div>
+
+<div class="catListFeedback">
+<h3 class="catListTitle">评论排行榜</h3>
+	<div id="TopFeedbackPostsBlock"><ul><li><a href="http://www.cnblogs.com/coderzh/archive/2009/06/28/1512654.html">1. PyQt4学习资料汇总(141)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2008/05/20/1203574.html">2. 开源Granados介绍 - SSH连接远程Linux服务器(C#)(63)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2008/09/06/1285500.html">3. (原创)攻击方式学习之(1) - 跨站式脚本(Cross-Site Scripting) (49)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2010/03/27/three-years-work-thinking.html">4. 三年之痒(44)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/12/25/nancyblog.html">5. NancyBlog - 我的Google App Engine Blog(42)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/04/05/1429858.html">6. CCNET+MSBuild+SVN实时构建的优化总结(37)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/06/13/1500042.html">7. 程序员的信仰(36)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2008/07/28/1255061.html">8. CoderZh首款Python联机对战游戏 - NancyTetris1.0倾情发布（一）(36)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2008/12/15/1355530.html">9. 代码安全系列(1) - Log的注入(35)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/03/29/1424344.html">10. 代码覆盖率浅谈(32)</a></li></ul></div>
+</div>
+
+<div class="catListView">
+<h3 class="catListTitle">推荐排行榜</h3>
+<div id="TopDiggPostsBlock"><ul><li><a href="http://www.cnblogs.com/coderzh/archive/2009/04/06/1426755.html">1. 玩转Google开源C++单元测试框架Google Test系列(gtest)(总)(14)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/07/18/1526082.html">2. 程序员的共鸣 - 读《卓有成效的程序员》(12)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2010/03/27/three-years-work-thinking.html">3. 三年之痒(9)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/07/26/1531633.html">4. 优美的测试代码 - 行为驱动开发(BDD)(7)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2008/07/08/pythoncookbook.html">5. Python天天美味(总)(6)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2010/11/30/goodby-google-app-engine.html">6. Google App Engine的14宗罪(6)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2010/06/24/AntiXSS.html">7. AntiXSS - 支持Html同时防止XSS攻击(5)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2010/05/02/python-cookbook-pyspy.html">8. Python天天美味(36) - 用Python实现Spy++(5)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/03/29/1424344.html">9. 代码覆盖率浅谈(5)</a></li><li><a href="http://www.cnblogs.com/coderzh/archive/2009/04/06/1426758.html">10. 玩转Google开源C++单元测试框架Google Test系列(gtest)之一 - 初识gtest(5)</a></li></ul></div>
+</div></div>
+			</div>
+			
+		</div><!--end: sideBarMain -->
+	</div><!--end: sideBar 侧边栏容器 -->
+	<div class="clear"></div>
+	</div><!--end: main -->
+	<div class="clear"></div>
+	<div id="footer">
+		
+<!--done-->
+Copyright ©2014 CoderZh
+	</div><!--end: footer -->
+</div><!--end: home 自定义的最大容器 -->
+<!--PageEndHtml Block Begin-->
+
+
+<a href="http://www.cnzz.com/stat/website.php?web_id=1076326" target="_top" title="站长统计">站长统计</a>
+<!--PageEndHtml Block End-->
+
+
+<iframe src="index_3.html" style="display: none; width: 0px; height: 0px;" name="google_osd_static_frame" id="google_osd_static_frame_7826769855202"></iframe></body>
+</html>
