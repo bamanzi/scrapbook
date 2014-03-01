@@ -42,6 +42,8 @@
 ### ### shell
 
   * [Running Shells in Emacs: An Overview | Mastering Emacs](http://bamanzi.github.io/scrapbook/data/20130519160623/) ([original url](http://www.masteringemacs.org/articles/2010/11/01/running-shells-in-emacs-overview/))
+  * [A Complete Guide to Mastering Eshell | Mastering Emacs](http://bamanzi.github.io/scrapbook/data/20140301203414/) ([original url](http://www.masteringemacs.org/articles/2010/12/13/complete-guide-mastering-eshell/))
+  * [EmacsWiki: Eshell Completion](http://bamanzi.github.io/scrapbook/data/20140301203356/) ([original url](http://www.emacswiki.org/emacs/EshellCompletion))
 
 ### ### dotemacs
 
@@ -61,10 +63,14 @@
 ### ### org-mode
 
   * [Org-mode Frequently Asked Questions](http://bamanzi.github.io/scrapbook/data/20120212203834/) ([original url](http://orgmode.org/worg/org-faq.html))
+  * [Publishing Org-mode files to HTML](http://bamanzi.github.io/scrapbook/data/20140301202406/) ([original url](http://orgmode.org/worg/org-tutorials/org-publish-html-tutorial.html))
+  * [Org ad hoc code, quick hacks and workarounds](http://bamanzi.github.io/scrapbook/data/20140301202850/) ([original url](http://orgmode.org/worg/org-hacks.html))
+  * [第 32 章 组织你的意念：Emacs org mode](http://bamanzi.github.io/scrapbook/data/20110307220112/) ([original url](http://i.linuxtoy.org/docs/guide/ch32.html))
 
 ### ### vi-emulation
 
   * [Vimpulse - Tips - Open wiki - Gitorious](http://bamanzi.github.io/scrapbook/data/20140301134141/) ([original url](https://gitorious.org/vimpulse/pages/Tips))
+  * [EMACS 对 vi:永无止境的圣战](http://bamanzi.github.io/scrapbook/data/20101114135512/) ([original url](http://www.cnbeta.com/articles/82688.htm))
 
 ### ### misc
 
@@ -78,6 +84,7 @@
   * [How To Set Emacs's User Interface to Modern Conventions](http://bamanzi.github.io/scrapbook/data/20110925164933/) ([original url](http://xahlee.org/emacs/emacs_make_modern.html))
   * [Great Emacs Features](http://bamanzi.github.io/scrapbook/data/20140301135148/) ([original url](http://c2.com/cgi/wiki?GreatEmacsFeatures))
   * [Pluskid's Emacs Wiki](http://bamanzi.github.io/scrapbook/data/20101226144126/) ([original url](http://lifegoo.pluskid.org/wiki/Emacs.html))
+  * [Emacs ＆ Unicode Tips](http://bamanzi.github.io/scrapbook/data/20140301203149/) ([original url](http://ergoemacs.org/emacs/emacs_n_unicode.html))
 
 ### ### programming
 
@@ -119,11 +126,11 @@
   * [Vim Cheat Sheat for Programmers by Michael Pohoreski](http://bamanzi.github.io/scrapbook/data/20110925162307/) ([original url](http://michael.peopleofhonoronly.com/vim/))
   * [Graphical vi-vim Cheat Sheet and Tutorial](http://bamanzi.github.io/scrapbook/data/20110925162521/) ([original url](http://www.viemu.com/a_vi_vim_graphical_cheat_sheet_tutorial.html))
   * [Best of Vim Tips 中文版](http://bamanzi.github.io/scrapbook/data/20110925164337/) ([original url](http://groups.google.com/group/Vim-cn/browse_thread/thread/5c25728e3eecbece?pli=1))
-  * [EMACS 对 vi:永无止境的圣战](http://bamanzi.github.io/scrapbook/data/20101114135512/) ([original url](http://www.cnbeta.com/articles/82688.htm))
   * [Coming Home to Vim / Steve Losh](http://bamanzi.github.io/scrapbook/data/20140301131825/) ([original url](http://stevelosh.com/blog/2010/09/coming-home-to-vim/))
   * [How I boosted my Vim » nvie.com](http://bamanzi.github.io/scrapbook/data/20140301132209/) ([original url](http://nvie.com/posts/how-i-boosted-my-vim/))
   * [Best of VIM Tips, gVIM's Key Features zzapper](http://bamanzi.github.io/scrapbook/data/20140301132331/) ([original url](http://www.rayninfo.co.uk/vimtips.html))
   * [Vim - 闲耘™.Wiki](http://bamanzi.github.io/scrapbook/data/20140301132503/) ([original url](https://hotoo.googlecode.com/svn-history/r297/vimwiki/Vim.html))
+  * [Vim Text Objects: The Definitive Guide | The Carbon Emitter](http://bamanzi.github.io/scrapbook/data/20140301203227/) ([original url](http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/))
 
 ### ### Vim Tips Featured 2010
 
