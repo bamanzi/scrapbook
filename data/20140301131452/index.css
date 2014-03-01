@@ -1,0 +1,59 @@
+/* ::::: http://lxml.de/style.css ::::: */
+
+body { font: 13px Arial,Verdana,Helvetica,sans-serif; text-align: center; }
+@media screen {
+  body { padding: 1em 1em 1em 21em; }
+  div.document, div.footer { width: 45em; background-color: white; }
+}
+@media print {
+  div.document, div.footer { width: auto; padding-left: 0px; }
+  div.sidemenu { display: none; }
+}
+div.document, div.footer { margin: 1em auto; color: rgb(34, 34, 34); }
+div.document { text-align: left; }
+div.footer { text-align: center; font-size: 70%; }
+div.contents.topic ul { margin-top: 0pt; }
+div.contents.topic ul > li { text-decoration: none; line-height: 1.2em; }
+div.sidemenu { position: absolute; top: 0pt; left: 0pt; width: 26em; font-size: 10px; text-align: left; border-right: medium groove gray; border-bottom: medium groove gray; padding-right: 1ex; background: url('python-xml.png') no-repeat scroll right top rgb(255, 250, 250); }
+html > body div.sidemenu { position: fixed; }
+div.sidemenu span.section.title { line-height: 1.2em; font-size: 130%; }
+div.sidemenu ul.menu.current li { color: rgb(204, 0, 0); font-size: 105%; }
+div.sidemenu ul.menu.current > li > a { color: rgb(204, 0, 0); }
+div.sidemenu ul.menu.current ul.submenu { display: block; }
+div.sidemenu ul.menu.foreign ul.submenu li { padding-top: 2px; padding-bottom: 2px; }
+div.sidemenu ul.menu.foreign li.menu:hover ul.submenu { display: block; position: absolute; border: medium groove rgb(153, 0, 0); padding: 1ex 1ex 1ex 3ex; margin-top: 0pt; margin-left: 4em; margin-right: -20em; color: rgb(153, 0, 0); background-color: white; }
+div.sidemenu ul.submenu { display: none; }
+div.sidemenu ul { line-height: 1em; margin: 1ex; padding-left: 1em; }
+h1.title { background: url('python-xml-title.png') no-repeat scroll 0% 0% transparent; padding: 20px 0pt 0pt 160px; height: 60px; font-size: 200%; }
+h1.title, h1 a, h2 a, h3 a { color: rgb(102, 102, 102); font-weight: bold; font-family: Helvetica,sans-serif; }
+@media screen {
+  div.section > h1:before { margin-left: -2ex; color: rgb(204, 0, 0); content: "»\" \" "; }
+}
+h1 { font-size: 150%; }
+h2 { font-size: 130%; }
+a, a:visited { background-color: transparent; font-weight: bold; color: Black; text-decoration: none; }
+p a:active, ul a:active { color: Red; }
+p a:hover, ul a:hover { text-decoration: underline; }
+p { text-align: justify; line-height: 1.5em; margin: 0.5em 0pt 0pt; }
+hr { clear: both; height: 1px; color: rgb(140, 172, 187); background-color: transparent; }
+ul { line-height: 1.5em; margin-left: 1em; }
+blockquote { font-family: Times,"Times New Roman",serif; font-style: italic; }
+pre { padding: 0.5em; border: 1px solid rgb(140, 172, 187); color: Black; background-color: rgb(240, 240, 240); font-family: "Courier New",Courier,monospace; }
+.syntax { background: none repeat scroll 0% 0% rgb(240, 240, 240); }
+.syntax .c { color: rgb(96, 160, 176); font-style: italic; }
+.syntax .k { color: rgb(0, 112, 32); font-weight: bold; }
+.syntax .o { color: rgb(102, 102, 102); }
+.syntax .gr { color: rgb(255, 0, 0); }
+.syntax .go { color: rgb(64, 64, 64); }
+.syntax .gp { color: rgb(198, 93, 9); font-weight: bold; }
+.syntax .gt { color: rgb(0, 64, 208); }
+.syntax .s { color: rgb(64, 112, 160); }
+.syntax .nb { color: rgb(0, 112, 32); }
+.syntax .nc { color: rgb(14, 132, 181); font-weight: bold; }
+.syntax .nf { color: rgb(6, 40, 126); }
+.syntax .nn { color: rgb(14, 132, 181); font-weight: bold; }
+.syntax .ow { color: rgb(0, 112, 32); font-weight: bold; }
+.syntax .mi { color: rgb(64, 160, 112); }
+.syntax .se { color: rgb(64, 112, 160); font-weight: bold; }
+.syntax .si { color: rgb(112, 160, 208); font-style: italic; }
+.syntax .bp { color: rgb(0, 112, 32); }

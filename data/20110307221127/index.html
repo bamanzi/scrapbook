@@ -1,0 +1,541 @@
+<!DOCTYPE HTML>
+<html lang="en-US" dir="ltr">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+<meta charset="UTF-8">
+<title>Debian Cleanup Tip #4: find broken packages and reinstall them | apt-get install debian-wizard</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+<link rel="pingback" href="http://raphaelhertzog.com/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="apt-get install debian-wizard » Feed" href="http://raphaelhertzog.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="apt-get install debian-wizard » Comments Feed" href="http://raphaelhertzog.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="apt-get install debian-wizard » Debian Cleanup Tip #4: find broken packages and reinstall them Comments Feed" href="http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/feed/">
+
+
+
+
+
+
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://raphaelhertzog.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://raphaelhertzog.com/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="apt-get install debian-wizard" href="http://raphaelhertzog.com/">
+<link rel="start" title="Happy to see someone willing to hack on debian-cd" href="http://raphaelhertzog.com/2005/03/19/happy-to-see-someone-willing-to-hack-on-debian-cd/">
+<link rel="prev" title="People behind Debian: Maximilian Attems, member of the kernel team" href="http://raphaelhertzog.com/2011/02/17/people-behind-debian-maximilian-attems-member-of-the-kernel-team/">
+<link rel="next" title="Discover my Debian DVD shop" href="http://raphaelhertzog.com/2011/02/21/discover-my-debian-dvd-shop/">
+<meta name="generator" content="WordPress 3.0.5">
+<link rel="canonical" href="http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/">
+<link rel="shortlink" href="http://raphaelhertzog.com/?p=1271">
+
+
+
+<!-- BTBuckets tag-->
+
+<!-- BTBuckets tag end -->
+<!-- Google Analytics Tracking by Google Analyticator 6.1.1: http://ronaldheft.com/code/analyticator/ -->
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-1271">
+<div id="wrapper" class="hfeed">
+	<div id="header">
+		<div id="masthead">
+			<div id="branding" role="banner">
+								<div id="site-title">
+					<span>
+						<a href="http://raphaelhertzog.com/" title="apt-get install debian-wizard" rel="home">apt-get install debian-wizard</a>
+					</span>
+				</div>
+				<div id="site-description">Insider infos, master your Debian/Ubuntu distribution</div>
+
+										<img src="blog-header-debian-revolution.png" alt="" height="198" width="940">
+								</div><!-- #branding -->
+
+			<div id="access" role="navigation">
+			  				<div class="skip-link screen-reader-text"><a href="#content" title="Skip to content">Skip to content</a></div>
+								<div class="menu-header"><ul id="menu-main-menu" class="menu"><li id="menu-item-473" class="menu-item menu-item-type-custom menu-item-473"><a href="http://raphaelhertzog.com/">Browse articles</a>
+<ul class="sub-menu">
+	<li id="menu-item-1468" class="menu-item menu-item-type-taxonomy current-post-ancestor current-menu-parent current-post-parent menu-item-1468"><a href="http://raphaelhertzog.com/category/doc/">Documentation</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1477" class="menu-item menu-item-type-taxonomy current-post-ancestor current-menu-parent current-post-parent menu-item-1477"><a href="http://raphaelhertzog.com/category/doc/users-doc/">User Documentation</a></li>
+		<li id="menu-item-1466" class="menu-item menu-item-type-taxonomy menu-item-1466"><a href="http://raphaelhertzog.com/category/doc/contributors-doc/">Contributor Documentation</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1470" class="menu-item menu-item-type-taxonomy menu-item-1470"><a href="http://raphaelhertzog.com/category/news/">News</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1467" class="menu-item menu-item-type-taxonomy menu-item-1467"><a href="http://raphaelhertzog.com/category/news/debian-news/">Debian News</a></li>
+		<li id="menu-item-1476" class="menu-item menu-item-type-taxonomy menu-item-1476"><a href="http://raphaelhertzog.com/category/news/ubuntu-news/">Ubuntu News</a></li>
+	</ul>
+</li>
+	<li id="menu-item-1473" class="menu-item menu-item-type-taxonomy menu-item-1473"><a href="http://raphaelhertzog.com/category/random/">Random</a>
+	<ul class="sub-menu">
+		<li id="menu-item-1469" class="menu-item menu-item-type-taxonomy menu-item-1469"><a href="http://raphaelhertzog.com/category/random/ideas/">Ideas</a></li>
+		<li id="menu-item-1471" class="menu-item menu-item-type-taxonomy menu-item-1471"><a href="http://raphaelhertzog.com/category/random/opinions/">Opinions</a></li>
+		<li id="menu-item-1472" class="menu-item menu-item-type-taxonomy menu-item-1472"><a href="http://raphaelhertzog.com/category/random/projects/">Projects</a></li>
+		<li id="menu-item-1474" class="menu-item menu-item-type-taxonomy menu-item-1474"><a href="http://raphaelhertzog.com/category/random/stories/">Stories of life</a></li>
+		<li id="menu-item-1475" class="menu-item menu-item-type-taxonomy menu-item-1475"><a href="http://raphaelhertzog.com/category/random/tips/">Tips and tricks</a></li>
+	</ul>
+</li>
+</ul>
+</li>
+<li id="menu-item-745" class="menu-item menu-item-type-custom menu-item-745"><a href="#">About</a>
+<ul class="sub-menu">
+	<li id="menu-item-471" class="menu-item menu-item-type-post_type menu-item-471"><a title="Learn more about this blog" href="http://raphaelhertzog.com/about-this-project/">About this blog</a></li>
+	<li id="menu-item-747" class="menu-item menu-item-type-post_type menu-item-747"><a title="Life of Raphaël Hertzog" href="http://raphaelhertzog.com/about-me/">About me</a></li>
+	<li id="menu-item-746" class="menu-item menu-item-type-post_type menu-item-746"><a href="http://raphaelhertzog.com/about-me/history/">My free software history</a></li>
+</ul>
+</li>
+<li id="menu-item-562" class="menu-item menu-item-type-post_type menu-item-562"><a href="http://raphaelhertzog.com/support-my-work/">Support my work</a></li>
+<li id="menu-item-472" class="menu-item menu-item-type-post_type menu-item-472"><a title="And join the Debian Supporters Guild" href="http://raphaelhertzog.com/email-newsletter/">Get the newsletter</a></li>
+<li id="menu-item-1312" class="menu-item menu-item-type-custom menu-item-1312"><a href="#">More stuff</a>
+<ul class="sub-menu">
+	<li id="menu-item-1465" class="menu-item menu-item-type-post_type menu-item-1465"><a title="Get my customized Debian DVD" href="http://raphaelhertzog.com/products/debian-cd-dvd/">Debian DVD with firmwares</a></li>
+	<li id="menu-item-1313" class="menu-item menu-item-type-post_type menu-item-1313"><a href="http://raphaelhertzog.com/support-debian-contributors/">Support Debian Contributors</a></li>
+	<li id="menu-item-1314" class="menu-item menu-item-type-post_type menu-item-1314"><a href="http://raphaelhertzog.com/flattr-foss/">Flattr Free and Open Source Software</a></li>
+</ul>
+</li>
+<li id="menu-item-452" class="menu-item menu-item-type-custom menu-item-452"><a href="#">Other sites</a>
+<ul class="sub-menu">
+	<li id="menu-item-453" class="menu-item menu-item-type-custom menu-item-453"><a href="http://raphaelhertzog.fr/">French Blog about Free Software</a></li>
+	<li id="menu-item-455" class="menu-item menu-item-type-custom menu-item-455"><a href="http://www.freexian.com/">My company (French)</a></li>
+	<li id="menu-item-454" class="menu-item menu-item-type-custom menu-item-454"><a href="http://ouaza.com/">Personal Website (French)</a></li>
+</ul>
+</li>
+</ul></div>			</div><!-- #access -->
+		</div><!-- #masthead -->
+	</div><!-- #header -->
+
+	<div id="main">
+
+		<div id="container">
+			<div id="content" role="main">
+			<div style="display: block;" id="greet_block"><div class="greet_block wpgb_cornered wpgb_shadowed"><div class="greet_text"><div class="greet_image"><a href="http://raphaelhertzog.com/feed/" rel="nofollow"><img src="rss_icon.png" alt="WP Greet Box icon"></a></div><div class="greet_block_close"><a id="greet_block_close" href="#">X</a></div>Hello there! If you are new here, you might want to learn more <a href="http://raphaelhertzog.com/about-this-project/" target="_top">about this blog</a> and then <a href="http://raphaelhertzog.com/email-newsletter/"><strong>subscribe to the newsletter</strong></a> to get great articles about Debian/Ubuntu. You can also keep up by subscribing to <a href="http://raphaelhertzog.com/feed/" rel="nofollow"><strong>the RSS feed</strong></a>.<div style="clear: both;"></div></div></div></div>
+
+				<div id="nav-above" class="navigation">
+					<div class="nav-previous"><a href="http://raphaelhertzog.com/2011/02/17/people-behind-debian-maximilian-attems-member-of-the-kernel-team/" rel="prev"><span class="meta-nav">←</span> People behind Debian: Maximilian Attems, member of the kernel team</a></div>
+					<div class="nav-next"><a href="http://raphaelhertzog.com/2011/02/21/discover-my-debian-dvd-shop/" rel="next">Discover my Debian DVD shop <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-above -->
+
+				<div id="post-1271" class="post-1271 post type-post hentry category-doc category-users-doc tag-cleanup tag-debian tag-debsums tag-howto tag-ubuntu">
+					<h1 class="entry-title">Debian Cleanup Tip #4: find broken packages and reinstall them</h1>
+
+					<div class="entry-meta">
+						<span class="meta-prep meta-prep-author">Posted on</span> <a href="http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/" title="10:00 am" rel="bookmark"><span class="entry-date">February 21, 2011</span></a> <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="http://raphaelhertzog.com/author/rhertzog/" title="View all posts by Raphaël Hertzog">Raphaël Hertzog</a></span>					</div><!-- .entry-meta -->
+
+					<div class="entry-content">
+						<p>Last week, we learned to <a href="http://raphaelhertzog.com/2011/02/14/debian-cleanup-tip-3-get-rid-of-third-party-packages/">get rid of third-party packages</a>, now we’re going one step further: we’ll verify if the files of the installed packages are still exactly like they were when they got installed.</p>
+<p>If you’re a tinkerer and hand-edit some files for some quick tests, or if you tend to re-install newer versions of some packages from the sources, you might have overwritten some packaged files and it would be good to be able to detect this (and remedy to the problem). <a href="http://packages.debian.org/stable/debsums">debsums</a> is the tool that makes it possible.</p>
+<h3>Use debsums to identify modified files</h3>
+<p><img src="laptop-investigation-300x225.jpg" alt="" title="Investigation in your laptop" class="alignleft size-medium wp-image-1422" height="225" width="300">I often use debsums when I take over the maintenance of a Debian server because I want to verify which files have been modified by the former administrator.</p>
+<p>Without any argument, debsums is very verbose, it will list every installed file (except configuration files) and tells whether it’s unmodified (“OK”) or not (“FAILED”).</p>
+<pre>$ sudo debsums
+/usr/bin/a2ps                                               OK
+[...]
+</pre>
+<p>With the <code>--all</code> option, it will verify all files including configuration files. With <code>--config</code> it will verify only the configuration files.</p>
+<p>With the <code>--changed</code> option, debsums will only list modified files among those inspected. The following invocation will thus list all files which have been modified on the system and which are not configuration files.</p>
+<pre>$ sudo debsums --changed
+/usr/lib/perl5/AptPkg/Config.pm
+/usr/lib/perl5/AptPkg.pm
+[...]
+</pre>
+<h3>Find out the package affected and reinstall it</h3>
+<p>debsums told me that <code>/usr/lib/perl5/AptPkg.pm</code> was modified. Indeed I remember having manually installed a modified version of that perl module for a quick test.</p>
+<p>I find out the affected package with <code>dpkg --search /usr/lib/perl5/AptPkg.pm</code>: it’s libapt-pkg-perl.</p>
+<p>Now I just have to reinstall this package to overwrite the modified files with the original ones:</p>
+<pre>$ sudo aptitude reinstall libapt-pkg-perl
+[...]
+# Or with apt-get
+$ sudo apt-get --reinstall install libapt-pkg-perl
+[...]
+</pre>
+<p>You might have to repeat the process until debsums no longer reports any modified file.</p>
+<blockquote><p>Do you want to read more tutorials like this one? <a href="http://raphaelhertzog.com/email-newsletter/">Click here to subscribe to my free newsletter</a>, you can opt to receive future articles by email.</p></blockquote>
+
+
+<div style="margin-left: 45px ! important;" class="shr-bookmarks shr-bookmarks-expand shr-bookmarks-center shr-bookmarks-bg-knowledge">
+<ul class="socials">
+		<li class="shr-facebook">
+			<a href="http://www.shareaholic.com/api/share/?title=Debian+Cleanup+Tip+%234%3A+find+broken+packages+and+reinstall+them&amp;link=http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/&amp;notes=%0D%0AIf%20you%27re%20a%20tinkerer%20and%20hand-edit%20some%20files%20for%20some%20quick%20tests%2C%20or%20if%20you%20tend%20to%20re-install%20newer%20versions%20of%20some%20packages%20from%20the%20sources%2C%20you%20might%20have%20overwritten%20some%20packaged%20files%20and%20it%20would%20be%20good%20to%20be%20able%20to%20detect%20this.%20This%20articles%20explains%20how%20you%20can%20achieve%20this.&amp;short_link=http://bit.ly/i5ubTW&amp;v=1&amp;apitype=1&amp;apikey=8afa39428933be41f8afdb8ea21a495c&amp;source=Shareaholic&amp;template=&amp;service=5&amp;tags=&amp;ctype=" rel="nofollow" title="Share this on Facebook" onclick="window.open(this.href,'sharer','toolbar=0,status=0,width=626,height=436'); return false;">&nbsp;</a>
+		</li>
+		<li class="shr-reddit">
+			<a target="_top" href="http://www.shareaholic.com/api/share/?title=Debian+Cleanup+Tip+%234%3A+find+broken+packages+and+reinstall+them&amp;link=http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/&amp;notes=%0D%0AIf%20you%27re%20a%20tinkerer%20and%20hand-edit%20some%20files%20for%20some%20quick%20tests%2C%20or%20if%20you%20tend%20to%20re-install%20newer%20versions%20of%20some%20packages%20from%20the%20sources%2C%20you%20might%20have%20overwritten%20some%20packaged%20files%20and%20it%20would%20be%20good%20to%20be%20able%20to%20detect%20this.%20This%20articles%20explains%20how%20you%20can%20achieve%20this.&amp;short_link=http://bit.ly/i5ubTW&amp;v=1&amp;apitype=1&amp;apikey=8afa39428933be41f8afdb8ea21a495c&amp;source=Shareaholic&amp;template=&amp;service=40&amp;tags=&amp;ctype=" rel="nofollow" class="external" title="Share this on Reddit">&nbsp;</a>
+		</li>
+		<li class="shr-identica">
+			<a target="_top" href="http://www.shareaholic.com/api/share/?title=TITLE&amp;link=PERMALINK&amp;notes=%0D%0AIf%20you%27re%20a%20tinkerer%20and%20hand-edit%20some%20files%20for%20some%20quick%20tests%2C%20or%20if%20you%20tend%20to%20re-install%20newer%20versions%20of%20some%20packages%20from%20the%20sources%2C%20you%20might%20have%20overwritten%20some%20packaged%20files%20and%20it%20would%20be%20good%20to%20be%20able%20to%20detect%20this.%20This%20articles%20explains%20how%20you%20can%20achieve%20this.&amp;short_link=http://bit.ly/i5ubTW&amp;v=1&amp;apitype=1&amp;apikey=8afa39428933be41f8afdb8ea21a495c&amp;source=Shareaholic&amp;template=&amp;service=205&amp;tags=&amp;ctype=" rel="nofollow" class="external" title="Post this to Identica">&nbsp;</a>
+		</li>
+		<li class="shr-twitter">
+			<a target="_top" href="http://www.shareaholic.com/api/share/?title=Debian+Cleanup+Tip+%234%3A+find+broken+packages+and+reinstall+them&amp;link=http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/&amp;notes=%0D%0AIf%20you%27re%20a%20tinkerer%20and%20hand-edit%20some%20files%20for%20some%20quick%20tests%2C%20or%20if%20you%20tend%20to%20re-install%20newer%20versions%20of%20some%20packages%20from%20the%20sources%2C%20you%20might%20have%20overwritten%20some%20packaged%20files%20and%20it%20would%20be%20good%20to%20be%20able%20to%20detect%20this.%20This%20articles%20explains%20how%20you%20can%20achieve%20this.&amp;short_link=http://bit.ly/i5ubTW&amp;v=1&amp;apitype=1&amp;apikey=8afa39428933be41f8afdb8ea21a495c&amp;source=Shareaholic&amp;template=%24%7Btitle%7D+-+%24%7Bshort_link%7D&amp;service=7&amp;tags=&amp;ctype=" rel="nofollow" class="external" title="Tweet This!">&nbsp;</a>
+		</li>
+		<li class="shr-stumbleupon">
+			<a target="_top" href="http://www.shareaholic.com/api/share/?title=Debian+Cleanup+Tip+%234%3A+find+broken+packages+and+reinstall+them&amp;link=http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/&amp;notes=%0D%0AIf%20you%27re%20a%20tinkerer%20and%20hand-edit%20some%20files%20for%20some%20quick%20tests%2C%20or%20if%20you%20tend%20to%20re-install%20newer%20versions%20of%20some%20packages%20from%20the%20sources%2C%20you%20might%20have%20overwritten%20some%20packaged%20files%20and%20it%20would%20be%20good%20to%20be%20able%20to%20detect%20this.%20This%20articles%20explains%20how%20you%20can%20achieve%20this.&amp;short_link=http://bit.ly/i5ubTW&amp;v=1&amp;apitype=1&amp;apikey=8afa39428933be41f8afdb8ea21a495c&amp;source=Shareaholic&amp;template=&amp;service=38&amp;tags=&amp;ctype=" rel="nofollow" class="external" title="Stumble upon something good? Share it on StumbleUpon">&nbsp;</a>
+		</li>
+		<li class="shr-digg">
+			<a target="_top" href="http://www.shareaholic.com/api/share/?title=Debian+Cleanup+Tip+%234%3A+find+broken+packages+and+reinstall+them&amp;link=http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/&amp;notes=%0D%0AIf%20you%27re%20a%20tinkerer%20and%20hand-edit%20some%20files%20for%20some%20quick%20tests%2C%20or%20if%20you%20tend%20to%20re-install%20newer%20versions%20of%20some%20packages%20from%20the%20sources%2C%20you%20might%20have%20overwritten%20some%20packaged%20files%20and%20it%20would%20be%20good%20to%20be%20able%20to%20detect%20this.%20This%20articles%20explains%20how%20you%20can%20achieve%20this.&amp;short_link=http://bit.ly/i5ubTW&amp;v=1&amp;apitype=1&amp;apikey=8afa39428933be41f8afdb8ea21a495c&amp;source=Shareaholic&amp;template=&amp;service=3&amp;tags=&amp;ctype=" rel="nofollow" class="external" title="Digg this!">&nbsp;</a>
+		</li>
+		<li class="shr-googlebuzz">
+			<a target="_top" href="http://www.shareaholic.com/api/share/?title=Debian+Cleanup+Tip+%234%3A+find+broken+packages+and+reinstall+them&amp;link=http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/&amp;notes=%0D%0AIf%20you%27re%20a%20tinkerer%20and%20hand-edit%20some%20files%20for%20some%20quick%20tests%2C%20or%20if%20you%20tend%20to%20re-install%20newer%20versions%20of%20some%20packages%20from%20the%20sources%2C%20you%20might%20have%20overwritten%20some%20packaged%20files%20and%20it%20would%20be%20good%20to%20be%20able%20to%20detect%20this.%20This%20articles%20explains%20how%20you%20can%20achieve%20this.&amp;short_link=http://bit.ly/i5ubTW&amp;v=1&amp;apitype=1&amp;apikey=8afa39428933be41f8afdb8ea21a495c&amp;source=Shareaholic&amp;template=&amp;service=257&amp;tags=&amp;ctype=" rel="nofollow" class="external" title="Post on Google Buzz">&nbsp;</a>
+		</li>
+		<li class="shr-linkedin">
+			<a target="_top" href="http://www.shareaholic.com/api/share/?title=Debian+Cleanup+Tip+%234%3A+find+broken+packages+and+reinstall+them&amp;link=http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/&amp;notes=%0D%0AIf%20you%27re%20a%20tinkerer%20and%20hand-edit%20some%20files%20for%20some%20quick%20tests%2C%20or%20if%20you%20tend%20to%20re-install%20newer%20versions%20of%20some%20packages%20from%20the%20sources%2C%20you%20might%20have%20overwritten%20some%20packaged%20files%20and%20it%20would%20be%20good%20to%20be%20able%20to%20detect%20this.%20This%20articles%20explains%20how%20you%20can%20achieve%20this.&amp;short_link=http://bit.ly/i5ubTW&amp;v=1&amp;apitype=1&amp;apikey=8afa39428933be41f8afdb8ea21a495c&amp;source=Shareaholic&amp;template=&amp;service=88&amp;tags=&amp;ctype=" rel="nofollow" class="external" title="Share this on LinkedIn">&nbsp;</a>
+		</li>
+		<li class="shr-mail">
+			<a target="_top" href="http://www.shareaholic.com/api/share/?title=Debian%20Cleanup%20Tip%20%234%3A%20find%20broken%20packages%20and%20reinstall%20them&amp;link=http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/&amp;notes=%0D%0AIf%20you%27re%20a%20tinkerer%20and%20hand-edit%20some%20files%20for%20some%20quick%20tests%2C%20or%20if%20you%20tend%20to%20re-install%20newer%20versions%20of%20some%20packages%20from%20the%20sources%2C%20you%20might%20have%20overwritten%20some%20packaged%20files%20and%20it%20would%20be%20good%20to%20be%20able%20to%20detect%20this.%20This%20articles%20explains%20how%20you%20can%20achieve%20this.&amp;short_link=http://bit.ly/i5ubTW&amp;v=1&amp;apitype=1&amp;apikey=8afa39428933be41f8afdb8ea21a495c&amp;source=Shareaholic&amp;template=&amp;service=201&amp;tags=&amp;ctype=" rel="nofollow" class="external" title="Email this to a friend?">&nbsp;</a>
+		</li>
+</ul><div style="clear: both;"></div></div>
+
+<p class="wp-flattr-button"><iframe allowtransparency="true" marginwidth="0" marginheight="0" border="0" class="FlattrButton" src="index_1.html" frameborder="0" height="20" scrolling="no" width="110"></iframe></p>											</div><!-- .entry-content -->
+
+					<div id="entry-author-info">
+						<div id="author-avatar">
+							<img alt="" src="e18b309867dcb66e83358b9a6297e54b" class="avatar avatar-60 photo" height="60" width="60">						</div><!-- #author-avatar -->
+						<div id="author-description">
+							<h2>About Raphaël Hertzog</h2>
+							I write software, books and documentation. I'm a Debian developer since 1998 and run my own company. I want to share my passion and knowledge of the Debian ecosystem.							<div id="author-link">
+								<a href="http://raphaelhertzog.com/author/rhertzog/">
+									View all posts by Raphaël Hertzog <span class="meta-nav">→</span>								</a>
+							</div><!-- #author-link	-->
+						</div><!-- #author-description -->
+					</div><!-- #entry-author-info -->
+
+					<div class="entry-utility">
+						This entry was posted in <a href="http://raphaelhertzog.com/category/doc/" title="View all posts in Documentation" rel="category tag">Documentation</a>, <a href="http://raphaelhertzog.com/category/doc/users-doc/" title="View all posts in User Documentation" rel="category tag">User Documentation</a> and tagged <a href="http://raphaelhertzog.com/tag/cleanup/" rel="tag">Cleanup</a>, <a href="http://raphaelhertzog.com/tag/debian/" rel="tag">Debian</a>, <a href="http://raphaelhertzog.com/tag/debsums/" rel="tag">debsums</a>, <a href="http://raphaelhertzog.com/tag/howto/" rel="tag">HOWTO</a>, <a href="http://raphaelhertzog.com/tag/ubuntu/" rel="tag">Ubuntu</a>. Bookmark the <a href="http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/" title="Permalink to Debian Cleanup Tip #4: find broken packages and reinstall them" rel="bookmark">permalink</a>.											</div><!-- .entry-utility -->
+				</div><!-- #post-## -->
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous"><a href="http://raphaelhertzog.com/2011/02/17/people-behind-debian-maximilian-attems-member-of-the-kernel-team/" rel="prev"><span class="meta-nav">←</span> People behind Debian: Maximilian Attems, member of the kernel team</a></div>
+					<div class="nav-next"><a href="http://raphaelhertzog.com/2011/02/21/discover-my-debian-dvd-shop/" rel="next">Discover my Debian DVD shop <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-below -->
+
+				
+			<div id="comments">
+
+
+			<h3 id="comments-title">3 Responses to <em>Debian Cleanup Tip #4: find broken packages and reinstall them</em></h3>
+
+
+			<ol class="commentlist">
+					<li class="comment even thread-even depth-1" id="li-comment-9548">
+		<div id="comment-9548">
+		<div class="comment-author vcard">
+			<img alt="" src="f3e95eb0a787c643f22557df8baf49ee" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn"><a href="http://slavino.sk/" rel="external nofollow" class="url">Slavko</a></cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/#comment-9548">
+			February 21, 2011 at 9:06 pm</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Hi,</p>
+<p>please and what about:</p>
+<p><code>debsums: no md5sums for binutils</code></p>
+<p>is it maintainer’s problem?</p>
+</div>
+
+		<div class="reply">
+			<a rel="nofollow" class="comment-reply-link" href="http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/?replytocom=9548#respond" onclick='return addComment.moveForm("comment-9548", "9548", "respond", "1271")'>Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	<ul class="children">
+	<li class="comment byuser comment-author-rhertzog bypostauthor odd alt depth-2" id="li-comment-9550">
+		<div id="comment-9550">
+		<div class="comment-author vcard">
+			<img alt="" src="e18b309867dcb66e83358b9a6297e54b_001.dat" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn"><a href="http://raphaelhertzog.com/" rel="external nofollow" class="url">Raphaël Hertzog</a></cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/#comment-9550">
+			February 21, 2011 at 9:52 pm</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Yes, it means the package doesn’t ship the “md5sums” file that debsums uses. The problem is partly resolved since recent versions of debsums generate those files on the fly while packages are installed.</p>
+<p>Try “dpkg-reconfigure debsums” and it will ask you if you want to create them automatically with apt-get.</p>
+</div>
+
+		<div class="reply">
+			<a rel="nofollow" class="comment-reply-link" href="http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/?replytocom=9550#respond" onclick='return addComment.moveForm("comment-9550", "9550", "respond", "1271")'>Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	<ul class="children">
+	<li class="comment even depth-3" id="li-comment-9590">
+		<div id="comment-9590">
+		<div class="comment-author vcard">
+			<img alt="" src="f3e95eb0a787c643f22557df8baf49ee" class="avatar avatar-40 photo" height="40" width="40">			<cite class="fn"><a href="http://slavino.sk/" rel="external nofollow" class="url">Slavko</a></cite> <span class="says">says:</span>		</div><!-- .comment-author .vcard -->
+		
+		<div class="comment-meta commentmetadata"><a href="http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/#comment-9590">
+			February 22, 2011 at 4:55 pm</a>		</div><!-- .comment-meta .commentmetadata -->
+
+		<div class="comment-body"><p>Thank you,<br>
+reinstalling some packages helps me, but one (dpkg installed) not. I will must to recretate it by my self <img src="icon_wink.gif" alt=";-)" class="wp-smiley"> </p>
+</div>
+
+		<div class="reply">
+			<a rel="nofollow" class="comment-reply-link" href="http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/?replytocom=9590#respond" onclick='return addComment.moveForm("comment-9590", "9590", "respond", "1271")'>Reply</a>		</div><!-- .reply -->
+	</div><!-- #comment-##  -->
+
+	</li>
+</ul>
+</li>
+</ul>
+</li>
+			</ol>
+
+
+
+								<div id="respond">
+				<h3 id="reply-title">Leave a Reply <small><a rel="nofollow" id="cancel-comment-reply-link" href="http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/#respond" style="display: none;">Cancel reply</a></small></h3>
+									<form action="http://raphaelhertzog.com/wp-comments-post.php" method="post" id="commentform">
+																			<p class="comment-notes">Your email address will not be published. Required fields are marked <span class="required">*</span></p>							<p class="comment-form-author"><label for="author">Name</label> <span class="required">*</span><input id="author" name="author" value="" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-email"><label for="email">Email</label> <span class="required">*</span><input id="email" name="email" value="" size="30" aria-required="true" type="text"></p>
+<p class="comment-form-url"><label for="url">Website</label><input id="url" name="url" value="" size="30" type="text"></p>
+												<p class="comment-form-comment"><label for="comment">Comment</label><textarea id="comment" name="comment" cols="45" rows="8" aria-required="true"></textarea></p>						<p class="form-allowed-tags">You may use these <abbr title="HyperText Markup Language">HTML</abbr> tags and attributes:  <code>&lt;a href="" title=""&gt; &lt;abbr title=""&gt; &lt;acronym title=""&gt; &lt;b&gt; &lt;blockquote cite=""&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=""&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=""&gt; &lt;strike&gt; &lt;strong&gt; &lt;pre lang="" line="" escaped=""&gt; </code></p>						<p class="form-submit">
+							<input name="submit" id="submit" value="Post Comment" type="submit">
+							<input name="comment_post_ID" value="1271" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+						</p>
+						<p style="display: none;"><input id="akismet_comment_nonce" name="akismet_comment_nonce" value="360211ebb0" type="hidden"></p>
+
+	<p style="clear: both;" class="subscribe-to-comments">
+	<input name="subscribe" id="subscribe" value="subscribe" style="width: auto;" checked="checked" type="checkbox">
+	<label for="subscribe">Notify me of followup comments via e-mail</label>
+	</p>
+
+
+<div><input id="wphc_value" name="wphc_value" value="1349413790" type="hidden"></div>					</form>
+							</div><!-- #respond -->
+						
+</div><!-- #comments -->
+
+
+			</div><!-- #content -->
+		</div><!-- #container -->
+
+
+		<div id="primary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+
+<li id="text-6" style="display: none;" class="widget-container widget_text">			<div class="textwidget"><iframe src="index_2.html" style="border: medium none; overflow: hidden; width: 220px; height: 288px;" allowtransparency="true" frameborder="0" scrolling="no"></iframe></div>
+		</li><li id="text-5" class="widget-container widget_text"><h3 class="widget-title">Make a donation</h3>			<div class="textwidget"><a href="http://raphaelhertzog.com/support-my-work/#donate">Why?</a> Let me work on Debian for
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<input name="cmd" value="_donations" type="hidden">
+<input name="business" value="raphael@ouaza.com" type="hidden">
+<input name="lc" value="US" type="hidden">
+<input name="item_name" value="Donation for Raphael Hertzog" type="hidden">
+<input name="item_number" value="support-RH-work" type="hidden">
+<select name="amount" style="">
+<option value="2.00">8 min - 2 €</option>
+<option value="5.00">20 min - 5 €</option>
+<option value="10.00">40 min - 10 €</option>
+<option value="15.00">1 hour - 15 €</option>
+<option value="30.00">2 hours - 30 €</option>
+<option value="60.00">4 hours - 60 €</option>
+<option value="120.00">1 day - 120 €</option>
+<option value="240.00">2 days - 240 €</option>
+<option value="600.00">1 week - 600 €</option>
+<option value="">other sum</option>
+</select>
+<input name="currency_code" value="EUR" type="hidden">
+<input name="no_note" value="0" type="hidden">
+<input name="cn" value="Message for Raphaël Hertzog (optional)" type="hidden">
+<input name="no_shipping" value="1" type="hidden">
+<input name="rm" value="1" type="hidden">
+<input name="return" value="http://RaphaelHertzog.com/support-my-work/thanks/" type="hidden">
+<input name="cancel_return" value="http://RaphaelHertzog.com/support-my-work/" type="hidden">
+<input name="currency_code" value="EUR" type="hidden">
+<input name="bn" value="PP-DonationsBF:btn_donateCC_LG.gif:NonHosted" type="hidden">
+<input src="x-click-but04.gif" name="submit" style="vertical-align: middle;" alt="PayPal - The safer, easier way to pay online!" type="image">
+<img alt="" src="pixel.gif" height="1" width="1" border="0">
+</form></div>
+		</li><li id="text-3" class="widget-container widget_text"><h3 class="widget-title">Email newsletter</h3>			<div class="textwidget">Join the <a href="http://raphaelhertzog.com/email-newsletter/">Debian Supporters Guild</a>, enter your <strong>email</strong> below and click “Join now”:
+<!-- Begin MailChimp Signup Form -->
+<!--[if IE]>
+<style type="text/css" media="screen">
+	#mc_embed_signup fieldset {position: relative;}
+	#mc_embed_signup legend {position: absolute; top: -1em; left: .2em;}
+</style>
+<![endif]--> 
+<!--[if IE 7]>
+<style type="text/css" media="screen">
+	.mc-field-group {overflow:visible;}
+</style>
+<![endif]-->
+
+
+
+
+<div id="mc_embed_signup">
+<form action="http://raphaelhertzog.us1.list-manage.com/subscribe/post?u=b99a97d0c10e2725105878641&amp;id=f968d78892" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" style="font: 12px Arial;">
+	<fieldset style="-moz-border-radius: 4px 4px 4px 4px; border: 0px none rgb(0, 0, 0); margin: 0em 0pt; background-color: rgb(255, 255, 255); color: rgb(51, 51, 51); text-align: left;">
+	
+<div class="mc-field-group" style="margin: 0pt 5%; clear: both; overflow: hidden;">
+<input value="" name="EMAIL" class="required email" id="mce-EMAIL" style="margin-right: 1.5em; padding: 0.2em 0.3em; width: 90%; float: left; z-index: 999;" type="text">
+</div>
+		<div id="mce-responses" style="float: left; top: -1.4em; padding: 0em 0.5em; overflow: hidden; width: 90%; margin: 0pt 5%; clear: both;">
+			<div class="response" id="mce-error-response" style="display: none; margin: 1em 0pt; padding: 1em 0.5em 0.5em 0pt; font-weight: bold; float: left; top: -1.5em; z-index: 1; width: 80%; background: none repeat scroll 0% 0% rgb(255, 238, 238); color: rgb(255, 0, 0);"></div>
+			<div class="response" id="mce-success-response" style="display: none; margin: 1em 0pt; padding: 1em 0.5em 0.5em 0pt; font-weight: bold; float: left; top: -1.5em; z-index: 1; width: 80%; color: rgb(82, 146, 20);"></div>
+		</div>
+		<div><input name="MORIGIN" value="rh.com-short" type="hidden"><input value="Join now" name="subscribe" id="mc-embedded-subscribe" class="btn" style="clear: both; width: auto; display: block; margin: 0.5em 0pt 0.5em 5%;" type="submit"></div>
+	</fieldset>	
+	<a href="#" id="mc_embed_close" class="mc_embed_close" style="display: none;">Close</a>
+</form>
+</div>
+
+<!--End mc_embed_signup--></div>
+		</li><li id="text-8" class="widget-container widget_text"><h3 class="widget-title">Debian DVD with firmware</h3>			<div class="textwidget"><p style="text-align: center;"><a href="http://raphaelhertzog.com/products/debian-cd-dvd/"><img src="debian-dvd-3d-shadow-150x150.png" alt="" title="Debian DVD with firmwares" height="150" width="150"></a></p></div>
+		</li><li id="text-4" class="widget-container widget_text"><h3 class="widget-title">Follow me</h3>			<div class="textwidget"><ul>
+<li>On <a href="http://twitter.com/raphaelhertzog">Twitter</a> or <a href="http://identi.ca/raphaelhertzog">Identi.ca</a></li>
+<li><a href="http://raphaelhertzog.com/email-newsletter/">Get updates by email</a></li>
+<li><a href="http://raphaelhertzog.com/feed/">Get updates by RSS</a></li>
+<li>On <a href="http://www.facebook.com/HertzogRaphael">Facebook</a></li>
+</ul></div>
+		</li><li id="text-7" style="display: none;" class="widget-container widget_text"><h3 class="widget-title">Discover my French book</h3>			<div class="textwidget"><a href="http://raphaelhertzog.fr/livre/cahier-admin-debian/"><img src="couverture-small.png" alt="Cahier de l'Admin Debian" height="164" width="140"></a></div>
+		</li>		<li id="recent-posts-2" class="widget-container widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+				<li><a href="http://raphaelhertzog.com/2011/03/07/debian-cleanup-tip-6-remove-automatically-installed-packages/" title="Debian Cleanup Tip #6: Remove automatically installed packages that are no longer needed">Debian Cleanup Tip #6: Remove automatically installed packages that are no longer needed</a></li>
+				<li><a href="http://raphaelhertzog.com/2011/03/04/official-debian-multi-arch-dvd-now-available/" title="Official Debian Multi-Arch DVD now available">Official Debian Multi-Arch DVD now available</a></li>
+				<li><a href="http://raphaelhertzog.com/2011/03/03/people-behind-debian-christian-perrier-translation-coordinator/" title="People behind Debian: Christian Perrier, translation coordinator">People behind Debian: Christian Perrier, translation coordinator</a></li>
+				<li><a href="http://raphaelhertzog.com/2011/03/01/5-free-software-to-support-with-flattr-2/" title="5 Free Software To Support With Flattr">5 Free Software To Support With Flattr</a></li>
+				<li><a href="http://raphaelhertzog.com/2011/02/28/debian-cleanup-tip-5-identify-cruft-that-can-be-removed-from-your-debian-system/" title="Debian Cleanup Tip #5: identify cruft that can be removed from your Debian system">Debian Cleanup Tip #5: identify cruft that can be removed from your Debian system</a></li>
+				</ul>
+		</li><li id="tag_cloud-3" class="widget-container widget_tag_cloud"><h3 class="widget-title">Tags</h3><div><a href="http://raphaelhertzog.com/tag/3-0-quilt/" class="tag-link-77" title="4 topics" style="font-size: 9.925pt;">3.0 (quilt)</a>
+<a href="http://raphaelhertzog.com/tag/announce/" class="tag-link-67" title="2 topics" style="font-size: 8pt;">Announce</a>
+<a href="http://raphaelhertzog.com/tag/apt/" class="tag-link-143" title="4 topics" style="font-size: 9.925pt;">APT</a>
+<a href="http://raphaelhertzog.com/tag/aptitude/" class="tag-link-172" title="3 topics" style="font-size: 9.05pt;">aptitude</a>
+<a href="http://raphaelhertzog.com/tag/blog/" class="tag-link-44" title="4 topics" style="font-size: 9.925pt;">Blog</a>
+<a href="http://raphaelhertzog.com/tag/cleanup/" class="tag-link-173" title="6 topics" style="font-size: 11.2375pt;">Cleanup</a>
+<a href="http://raphaelhertzog.com/tag/conffile/" class="tag-link-85" title="5 topics" style="font-size: 10.625pt;">conffile</a>
+<a href="http://raphaelhertzog.com/tag/cut/" class="tag-link-91" title="2 topics" style="font-size: 8pt;">CUT</a>
+<a href="http://raphaelhertzog.com/tag/debconf/" class="tag-link-9" title="2 topics" style="font-size: 8pt;">Debconf</a>
+<a href="http://raphaelhertzog.com/tag/debhelper/" class="tag-link-80" title="2 topics" style="font-size: 8pt;">debhelper</a>
+<a href="http://raphaelhertzog.com/tag/debian/" class="tag-link-10" title="119 topics" style="font-size: 22pt;">Debian</a>
+<a href="http://raphaelhertzog.com/tag/developers-reference/" class="tag-link-108" title="2 topics" style="font-size: 8pt;">developers-reference</a>
+<a href="http://raphaelhertzog.com/tag/dpkg/" class="tag-link-13" title="17 topics" style="font-size: 14.825pt;">dpkg</a>
+<a href="http://raphaelhertzog.com/tag/dpkg-deb/" class="tag-link-79" title="2 topics" style="font-size: 8pt;">dpkg-deb</a>
+<a href="http://raphaelhertzog.com/tag/dpkg-maintscript-helper/" class="tag-link-96" title="2 topics" style="font-size: 8pt;">dpkg-maintscript-helper</a>
+<a href="http://raphaelhertzog.com/tag/dpkg-source/" class="tag-link-76" title="7 topics" style="font-size: 11.675pt;">dpkg-source</a>
+<a href="http://raphaelhertzog.com/tag/dpl/" class="tag-link-14" title="2 topics" style="font-size: 8pt;">DPL</a>
+<a href="http://raphaelhertzog.com/tag/dsa/" class="tag-link-15" title="3 topics" style="font-size: 9.05pt;">DSA</a>
+<a href="http://raphaelhertzog.com/tag/dvd/" class="tag-link-195" title="3 topics" style="font-size: 9.05pt;">DVD</a>
+<a href="http://raphaelhertzog.com/tag/experimental/" class="tag-link-99" title="2 topics" style="font-size: 8pt;">experimental</a>
+<a href="http://raphaelhertzog.com/tag/flattr/" class="tag-link-66" title="12 topics" style="font-size: 13.5125pt;">Flattr</a>
+<a href="http://raphaelhertzog.com/tag/flattr-foss/" class="tag-link-75" title="9 topics" style="font-size: 12.55pt;">Flattr FOSS</a>
+<a href="http://raphaelhertzog.com/tag/free-software/" class="tag-link-68" title="2 topics" style="font-size: 8pt;">Free Software</a>
+<a href="http://raphaelhertzog.com/tag/funding/" class="tag-link-74" title="3 topics" style="font-size: 9.05pt;">Funding</a>
+<a href="http://raphaelhertzog.com/tag/git/" class="tag-link-23" title="2 topics" style="font-size: 8pt;">Git</a>
+<a href="http://raphaelhertzog.com/tag/howto/" class="tag-link-82" title="16 topics" style="font-size: 14.5625pt;">HOWTO</a>
+<a href="http://raphaelhertzog.com/tag/interview/" class="tag-link-124" title="9 topics" style="font-size: 12.55pt;">Interview</a>
+<a href="http://raphaelhertzog.com/tag/introduction/" class="tag-link-102" title="2 topics" style="font-size: 8pt;">Introduction</a>
+<a href="http://raphaelhertzog.com/tag/me/" class="tag-link-70" title="11 topics" style="font-size: 13.25pt;">Me</a>
+<a href="http://raphaelhertzog.com/tag/membership/" class="tag-link-65" title="2 topics" style="font-size: 8pt;">Membership</a>
+<a href="http://raphaelhertzog.com/tag/news-2/" class="tag-link-93" title="4 topics" style="font-size: 9.925pt;">News</a>
+<a href="http://raphaelhertzog.com/tag/opinion/" class="tag-link-83" title="2 topics" style="font-size: 8pt;">Opinion</a>
+<a href="http://raphaelhertzog.com/tag/packaging/" class="tag-link-64" title="14 topics" style="font-size: 14.125pt;">Packaging</a>
+<a href="http://raphaelhertzog.com/tag/programming/" class="tag-link-35" title="5 topics" style="font-size: 10.625pt;">Programming</a>
+<a href="http://raphaelhertzog.com/tag/reference/" class="tag-link-84" title="7 topics" style="font-size: 11.675pt;">Reference</a>
+<a href="http://raphaelhertzog.com/tag/release/" class="tag-link-92" title="7 topics" style="font-size: 11.675pt;">release</a>
+<a href="http://raphaelhertzog.com/tag/stable/" class="tag-link-98" title="2 topics" style="font-size: 8pt;">stable</a>
+<a href="http://raphaelhertzog.com/tag/stats/" class="tag-link-109" title="2 topics" style="font-size: 8pt;">Stats</a>
+<a href="http://raphaelhertzog.com/tag/synaptic/" class="tag-link-166" title="5 topics" style="font-size: 10.625pt;">synaptic</a>
+<a href="http://raphaelhertzog.com/tag/testing/" class="tag-link-89" title="3 topics" style="font-size: 9.05pt;">testing</a>
+<a href="http://raphaelhertzog.com/tag/ubuntu/" class="tag-link-63" title="33 topics" style="font-size: 17.1875pt;">Ubuntu</a>
+<a href="http://raphaelhertzog.com/tag/unstable/" class="tag-link-97" title="3 topics" style="font-size: 9.05pt;">unstable</a>
+<a href="http://raphaelhertzog.com/tag/vcs-pkg/" class="tag-link-40" title="3 topics" style="font-size: 9.05pt;">vcs-pkg</a>
+<a href="http://raphaelhertzog.com/tag/wallpaper/" class="tag-link-107" title="2 topics" style="font-size: 8pt;">wallpaper</a>
+<a href="http://raphaelhertzog.com/tag/wordpress/" class="tag-link-45" title="2 topics" style="font-size: 8pt;">WordPress</a></div>
+</li><li id="linkcat-46" class="widget-container widget_links"><h3 class="widget-title">Planets</h3>
+	<ul class="xoxo blogroll">
+<li><a href="http://planet.debian.org/" title="Planet Debian aggregates the blogs of all Debian contributors">Planet Debian</a></li>
+<li><a href="http://vcs-pkg.org/planet/" title="Software packaging with Version Control System">Planet vcs-pkg</a></li>
+
+	</ul>
+</li>
+<li id="archives-2" class="widget-container widget_archive"><h3 class="widget-title">Archives</h3>		<select name="archive-dropdown" onchange="document.location.href=this.options[this.selectedIndex].value;"> <option value="">Select Month</option> 	<option value="http://raphaelhertzog.com/2011/03/"> March 2011 </option>
+	<option value="http://raphaelhertzog.com/2011/02/"> February 2011 </option>
+	<option value="http://raphaelhertzog.com/2011/01/"> January 2011 </option>
+	<option value="http://raphaelhertzog.com/2010/12/"> December 2010 </option>
+	<option value="http://raphaelhertzog.com/2010/11/"> November 2010 </option>
+	<option value="http://raphaelhertzog.com/2010/10/"> October 2010 </option>
+	<option value="http://raphaelhertzog.com/2010/09/"> September 2010 </option>
+	<option value="http://raphaelhertzog.com/2010/08/"> August 2010 </option>
+	<option value="http://raphaelhertzog.com/2010/07/"> July 2010 </option>
+	<option value="http://raphaelhertzog.com/2010/06/"> June 2010 </option>
+	<option value="http://raphaelhertzog.com/2010/05/"> May 2010 </option>
+	<option value="http://raphaelhertzog.com/2010/01/"> January 2010 </option>
+	<option value="http://raphaelhertzog.com/2009/11/"> November 2009 </option>
+	<option value="http://raphaelhertzog.com/2009/10/"> October 2009 </option>
+	<option value="http://raphaelhertzog.com/2009/09/"> September 2009 </option>
+	<option value="http://raphaelhertzog.com/2009/05/"> May 2009 </option>
+	<option value="http://raphaelhertzog.com/2009/03/"> March 2009 </option>
+	<option value="http://raphaelhertzog.com/2008/12/"> December 2008 </option>
+	<option value="http://raphaelhertzog.com/2008/10/"> October 2008 </option>
+	<option value="http://raphaelhertzog.com/2008/07/"> July 2008 </option>
+	<option value="http://raphaelhertzog.com/2008/04/"> April 2008 </option>
+	<option value="http://raphaelhertzog.com/2008/03/"> March 2008 </option>
+	<option value="http://raphaelhertzog.com/2007/11/"> November 2007 </option>
+	<option value="http://raphaelhertzog.com/2007/10/"> October 2007 </option>
+	<option value="http://raphaelhertzog.com/2007/09/"> September 2007 </option>
+	<option value="http://raphaelhertzog.com/2007/08/"> August 2007 </option>
+	<option value="http://raphaelhertzog.com/2007/07/"> July 2007 </option>
+	<option value="http://raphaelhertzog.com/2007/04/"> April 2007 </option>
+	<option value="http://raphaelhertzog.com/2007/03/"> March 2007 </option>
+	<option value="http://raphaelhertzog.com/2007/01/"> January 2007 </option>
+	<option value="http://raphaelhertzog.com/2006/09/"> September 2006 </option>
+	<option value="http://raphaelhertzog.com/2006/06/"> June 2006 </option>
+	<option value="http://raphaelhertzog.com/2006/05/"> May 2006 </option>
+	<option value="http://raphaelhertzog.com/2006/04/"> April 2006 </option>
+	<option value="http://raphaelhertzog.com/2006/03/"> March 2006 </option>
+	<option value="http://raphaelhertzog.com/2006/02/"> February 2006 </option>
+	<option value="http://raphaelhertzog.com/2005/12/"> December 2005 </option>
+	<option value="http://raphaelhertzog.com/2005/10/"> October 2005 </option>
+	<option value="http://raphaelhertzog.com/2005/09/"> September 2005 </option>
+	<option value="http://raphaelhertzog.com/2005/07/"> July 2005 </option>
+	<option value="http://raphaelhertzog.com/2005/06/"> June 2005 </option>
+	<option value="http://raphaelhertzog.com/2005/03/"> March 2005 </option>
+ </select>
+</li><li id="advman-3" class="widget-container Advman_Widget"><h3 class="widget-title">Advertisement</h3>
+<ins style="display: inline-table; border: medium none; height: 600px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 160px;"><ins id="google_ads_frame1_anchor" style="display: block; border: medium none; height: 600px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 160px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="index_3.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" frameborder="0" height="600" scrolling="no" width="160"></iframe></ins></ins></li>			</ul>
+		</div><!-- #primary .widget-area -->
+
+	</div><!-- #main -->
+
+	<div id="footer" role="contentinfo">
+		<div id="colophon">
+
+
+
+			<div id="footer-widget-area" role="complementary">
+
+				<div id="first" class="widget-area">
+					<ul class="xoxo">
+						<li id="advman-4" class="widget-container Advman_Widget"><h3 class="widget-title"></h3><div style="margin-left: 100px;">
+<ins style="display: inline-table; border: medium none; height: 90px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 728px;"><ins id="google_ads_frame2_anchor" style="display: block; border: medium none; height: 90px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 728px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame2" marginheight="0" marginwidth="0" name="google_ads_frame" src="index_4.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" frameborder="0" height="90" scrolling="no" width="728"></iframe></ins></ins></div></li>					</ul>
+				</div><!-- #first .widget-area -->
+
+
+
+
+			</div><!-- #footer-widget-area -->
+
+			<div id="site-info">
+				<a href="http://raphaelhertzog.com/" title="apt-get install debian-wizard" rel="home">
+					apt-get install debian-wizard				</a>
+			</div><!-- #site-info -->
+
+			<div id="site-generator">
+								<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform" rel="generator">
+					Proudly powered by WordPress.				</a>
+			</div><!-- #site-generator -->
+
+		</div><!-- #colophon -->
+	</div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+
+		<!-- Advertising Manager v3.4.19 (0.371 seconds.) -->
+
+<!-- Dynamic page generated in 0.365 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2011-03-07 14:46:44 -->
+<!-- super cache --><div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; color: rgb(255, 255, 255); opacity: 0.9;"><p style="margin: 0pt; padding: 0pt; display: none;"></p><p style="margin: 0pt; padding: 0pt; color: rgb(255, 255, 153); display: none;"></p><p style="margin: 0pt; padding: 0pt; display: none;"></p></div></body>
+</html>

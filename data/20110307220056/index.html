@@ -1,0 +1,963 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+
+
+	
+	<title>
+  HTG Explains: Which Linux File System Should You Choose? - How-To Geek	</title>
+	<meta name="verify-v1" content="WiU7236KQY8e6jcxePbZscPXDuMvJ3b9ydseGd4G5AE=">
+    <meta http-equiv="EXPIRES" content="0">
+    <meta name="RESOURCE-TYPE" content="DOCUMENT">
+    <meta name="DISTRIBUTION" content="GLOBAL">
+    <meta name="AUTHOR" content="www.howtogeek.com">
+    <meta name="COPYRIGHT" content="Copyright (c) by HowToGeek.com">
+    <meta name="KEYWORDS" content="Windows, Windows Vista, Ubuntu, Programming, Networking, Firefox, Help, Solaris, Linux, Unix, VMware ,SQL Server, Oracle, MySQL, Analytics, Suse, Redhat, network security, firewall, postgresql,database, how to, how-to, howto, hints, tips, shell scripts, system administration ">
+    <meta name="DESCRIPTION" content="Computer Help from your Friendly How-To Geek">
+    <meta name="ROBOTS" content="INDEX, FOLLOW">
+    <meta name="REVISIT-AFTER" content="1 DAYS">
+    <meta name="RATING" content="GENERAL">
+	<link title="How-To Geek Search" type="application/opensearchdescription+xml" rel="search" href="http://www.howtogeek.com/public/search/opensearch.html">
+				<meta name="title" content="HTG Explains: Which Linux File System Should You Choose?">
+			<meta name="description" content="File systems are one of the layers beneath your operating system that you don’t think about—unless you’re faced with the plethora of options in Linux. Here’s how to make an educated decision on which file system to use.">
+			<meta property="og:image" content="http://http.cdnlayer.com/howtogeek/thumbcache/140/160/432bcd79eb7ae34f7546ea0a84e83e42/wp-content/uploads/2010/12/banner.jpg">
+			<link rel="image_src" href="http://http.cdnlayer.com/howtogeek/thumbcache/140/160/432bcd79eb7ae34f7546ea0a84e83e42/wp-content/uploads/2010/12/banner.jpg">
+			    	
+    	
+	<link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+		
+		
+		<!--[if lte IE 7]>
+	<link rel="stylesheet" type="text/css" href="http://http.cdnlayer.com/howtogeek/public/css/ie_hacks.css?1289724288" />
+	<![endif]-->
+	<!--[if lt IE 7]>
+	<link rel="stylesheet" type="text/css" href="http://http.cdnlayer.com/howtogeek/public/css/ie6_hacks.css?1289724288" />
+	<link rel="stylesheet" type="text/css" href="http://http.cdnlayer.com/howtogeek/public/css/ie_hacks.css?1289724288" />
+	<![endif]-->
+		<link rel="alternate" type="application/rss+xml" title="How-To Geek » HTG Explains: Which Linux File System Should You Choose? Comments Feed" href="http://www.howtogeek.com/howto/33552/htg-explains-which-linux-file-system-should-you-choose/feed/">
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://www.howtogeek.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://www.howtogeek.com/wp-includes/wlwmanifest.xml"> 
+<link rel="index" title="How-To Geek" href="http://www.howtogeek.com/">
+<link rel="start" title="Upgrade Ubuntu from Breezy to Dapper" href="http://www.howtogeek.com/howto/uncategorized/upgrade-breezy-to-dapper/">
+<link rel="prev" title="Awesome Safari Compass Icons Set" href="http://www.howtogeek.com/news/awesome-safari-compass-icons-set/2322/">
+<link rel="next" title="Settle into Orbit with the Voyage Theme for Chrome and Iron" href="http://www.howtogeek.com/news/settle-into-orbit-with-the-voyage-theme-for-chrome-and-iron/2325/">
+<meta name="generator" content="WordPress 2.9.2">
+<link rel="canonical" href="http://www.howtogeek.com/howto/33552/htg-explains-which-linux-file-system-should-you-choose/">
+
+		<link rel="alternate" type="application/rss+xml" title="the How-To Geek RSS Feed" href="http://feeds.howtogeek.com/HowToGeek">
+	
+
+
+<meta property="fb:page_id" content="65878196434">
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body>
+<center id="top728ad">
+<!-- begin ad tag -->
+
+<ins style="display: inline-table; border: medium none; height: 90px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 728px;"><ins id="google_ads_frame1_anchor" style="display: block; border: medium none; height: 90px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 728px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame1" marginheight="0" marginwidth="0" name="google_ads_frame" src="index_1.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" frameborder="0" height="90" scrolling="no" width="728"></iframe></ins></ins>
+
+<!-- end ad tag -->
+</center><div id="doc4" class="yui-t7">
+	<div id="hd" style="">
+		
+	</div>
+	<div id="bd">
+		<div class="yui-g" id="tophead">
+			<div class="header">
+					<div id="toplinkbar">
+						<div id="topbarleft">
+							<ul>
+								<li><a id="twitterlink" href="http://feeds.howtogeek.com/howtogeek"><img src="blank.gif" height="28px" width="84px" border="0"></a></li>
+								<li><a href="http://twitter.com/howtogeek"><img src="blank.gif" height="28px" width="70px" border="0"></a></li>
+							</ul>								
+						</div>						
+						
+						<div id="topbarright">
+							<ul>
+								<li><img src="blank.gif" height="28px" width="58px" border="0"></li>
+								<li><a href="http://sysadmingeek.com/"><img src="blank.gif" height="28px" width="35px" border="0"></a></li>
+								<li><a href="http://productivegeek.com/"><img src="blank.gif" height="28px" width="104px" border="0"></a></li>
+								<li><a href="http://www.howtogeek.com/"><img src="blank.gif" height="28px" width="81px" border="0"></a></li>
+							</ul>								
+						</div>
+					</div>
+					<div style="clear: both;"></div>
+					<div id="mainheader">
+						<h1 id="printH1">How-To Geek</h1>
+						<a href="http://www.howtogeek.com/" style="float: left;"><img id="mainLogo" src="blank.gif" alt="How-To Geek" title="How-To Geek" style="margin-left: 40px;" height="168" width="450" border="0"></a>
+						<div id="skyboxes">
+							<a title="Join the Discussion on our Forum" href="http://www.howtogeek.com/forum/"><img style="margin-left: 0px;" src="blank.gif" height="157" width="115" border="0"></a>
+							<a title="Check Out Our Massive Collection of Windows 7 Articles!" href="http://www.howtogeek.com/tag/windows-7/"><img style="margin-left: 9px;" src="blank.gif" height="157" width="115" border="0"></a>
+							<a title="Just Read the Best Articles" href="http://www.howtogeek.com/t/features/"><img style="margin-left: 9px;" src="blank.gif" height="157" width="115" border="0"></a>
+							<div style="clear: both;"></div>
+						</div>
+						<div style="clear: both;"></div>
+					</div>
+			</div>
+		</div>
+		<div class="yui-g">
+			<div class="menu">
+				<div id="mainnav">
+					<ul>
+						<li><a class="navbutton" id="menu-home" href="http://www.howtogeek.com/" title="How-To Geek Home"><img src="blank.gif" height="26px" width="62px" border="0"></a></li>
+						<li><a class="navbutton" id="menu-forum" href="http://www.howtogeek.com/forum/" title="Join the Discussion on Our Forum"><img src="blank.gif" height="26px" width="75px" border="0"></a></li>
+						<li><a class="navbutton" id="menu-features" href="http://www.howtogeek.com/t/features/" title="View Our Feature Articles"><img src="blank.gif" height="26px" width="88px" border="0"></a></li>
+						<li style="padding-right: 0px;"><a class="navbutton" id="menu-etc" href="http://www.howtogeek.com/news/" title="Random Geek Links and News"><img src="blank.gif" height="26px" width="52px" border="0"></a></li>
+					</ul>
+					<div style="clear: both;"></div>
+				</div>				
+											
+						
+				
+				<div id="menucat">
+					<ul>
+						<li><a class="menuicon" id="menu-win7" href="http://www.howtogeek.com/tag/windows-7/" title="View Articles about Windows 7"><img src="blank.gif" height="26px" width="33px" border="0"></a></li>
+						<li><a class="menuicon" id="menu-virus" href="http://www.howtogeek.com/tag/malware/" title="View Articles about Malware"><img src="blank.gif" height="26px" width="28px" border="0"></a></li>
+						<li><a class="menuicon" id="menu-vista" href="http://www.howtogeek.com/tag/windows-vista/" title="View Articles about Windows Vista"><img src="blank.gif" height="26px" width="30px" border="0"></a></li>
+						<li><a class="menuicon" id="menu-xp" href="http://www.howtogeek.com/tag/windows/" title="View Articles about Windows XP"><img src="blank.gif" height="26px" width="33px" border="0"></a></li>
+						<li><a class="menuicon" id="menu-office" href="http://www.howtogeek.com/tag/microsoft-office/" title="View Articles about Microsoft Office"><img src="blank.gif" height="26px" width="27px" border="0"></a></li>
+						<li><a class="menuicon" id="menu-web" href="http://www.howtogeek.com/tag/internet/" title="View Articles about Web Browsing"><img src="blank.gif" height="26px" width="29px" border="0"></a></li>
+						<li><a class="menuicon" id="menu-linux" href="http://www.howtogeek.com/tag/linux/" title="View Articles about Linux and Ubuntu"><img src="blank.gif" height="26px" width="26px" border="0"></a></li>
+						<li><a class="menuicon" id="menu-fun" href="http://www.howtogeek.com/tag/desktop-fun/" title="View Articles about Desktop Fun"><img src="blank.gif" height="26px" width="27px" border="0"></a></li>
+						<li><a class="menuicon" id="menu-misc" href="http://www.howtogeek.com/tag/the-geek-blog/" title="View Articles about Everything Else"><img src="blank.gif" height="26px" width="25px" border="0"></a></li>
+					</ul>
+					<div style="clear: both;"></div>
+				</div>
+				
+
+
+				<div id="menusearch" style="height: 28px; background: url(&quot;search-button.gif&quot;) no-repeat scroll right top transparent; padding-right: 25px;">
+					<!-- Google CSE Search Box Begins  -->
+					<form style="display: inline;" action="http://www.howtogeek.com/sitesearch/" id="searchbox_009481737823548119489:w5lekpyovpo">
+						<input name="cx" value="009481737823548119489:w5lekpyovpo" type="hidden">
+						<input name="cof" value="FORID:9" type="hidden">
+						<input value="" style="background: url(&quot;google_custom_search_watermark.gif&quot;) no-repeat scroll left center rgb(255, 255, 255);" name="q" size="17" type="text">
+					<input value="www.howtogeek.com/howto/33552/htg-explains-which-linux-file-system-should-you-choose/" name="siteurl" type="hidden"></form>
+					
+					<!-- Google CSE Search Box Ends -->
+					<div style="width: 25px; height: 28px;"></div>
+					<div style="clear: both;"></div>
+				</div>
+				
+				<div id="menulogin">
+					<div class="loginbox">
+													<a href="http://www.howtogeek.com/login/" title="Welcome! It's Time for Geekery!">Login</a> / <a href="http://www.howtogeek.com/register/" title="Create a How-To Geek Account">Signup</a>
+											 </div>
+				</div>
+					
+				
+
+			</div>
+		</div>
+		<div class="yui-g" id="headerpanel">
+		</div>
+<div class="yui-ge">
+	<div class="yui-u first">
+		<div class="content">
+		<h1 id="printHeader" style="display: none;">How-To Geek</h1>
+		<!-- abovepost -->
+					<div class="thepost" id="post-33552">
+				
+				<div style="width: 650px; margin-bottom: 10px; margin-top: -30px; min-height: 30px;">
+												
+<div class="tmnAdsenseContainer" style="width: 630px;"><div class="tmnAdsByGoogleCont" style="width: 630px; padding-bottom: 10px;">  <div style="width: 86px;" class="tmnAdsByGoogle">    <a style="float: right; color: rgb(0, 0, 0);" href="http://www.google.com/url?ct=abg&amp;q=https://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://www.howtogeek.com/howto/33552/htg-explains-which-linux-file-system-should-you-choose/%26hl%3Den%26client%3Dca-pub-1894578950532504%26adU%3DAdWords.google.com%26adT%3D%25E8%25B0%25B7%25E6%25AD%258C%25E5%2585%25B3%25E9%2594%25AE%25E5%25AD%2597%25E5%25B9%25BF%25E5%2591%258A%25E5%2585%258D%25E8%25B4%25B9%25E8%25AF%2595%25E7%2594%25A8%26adU%3DWebFonts.Fonts.com%26adT%3DFonts.com%2BWeb%2BFonts%26adU%3Dwww.AllwaySync.com%26adT%3DFiles%2B%2526amp%253B%2BFolders%2BBackup%26gl%3DCN&amp;usg=AFQjCNHraq5mO7EiNIbzvOPG0nXNHWGRgw" class="tmnAdsByGoogle">Ads by Google</a>  </div></div><div class="tmnAdsenseAdCont" style="width: 170px; margin-right: 55px; margin-bottom: 0px; font-family: arial;">  <div class="tmnAdsenseAdTitle" style="margin-bottom: 0px;">    <a class="tmnAdsenseAdTitle" href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BchNPKOR0Taz7MM-7kAWLi-3bBc_8hqICx7H71xXAjbcB0J0lEAEYASDymfQBKAM4AFC0sZYCYJ2h34HYBaAB_YDW_AOyARF3d3cuaG93dG9nZWVrLmNvbcgBAdoBXGh0dHA6Ly93d3cuaG93dG9nZWVrLmNvbS9ob3d0by8zMzU1Mi9odGctZXhwbGFpbnMtd2hpY2gtbGludXgtZmlsZS1zeXN0ZW0tc2hvdWxkLXlvdS1jaG9vc2Uv4AECqAMB6APwA-gD1wLoA68C6APgAfUDAgAARA&amp;num=1&amp;sig=AGiWqtwPhtnJMzvmLe0hc97rmrLs-gty6w&amp;client=ca-pub-1894578950532504&amp;adurl=https://www.google.com/appserve/fb/forms/cnawcoupon30/%3Futm_source%3Dkt_computer_text" style="font-size: 17px; color: rgb(0, 51, 113);">谷歌关键字广告免费试用</a>  </div>  <div class="tmnAdDescCont">    <span class="tmnAdsenseAdDesc" style="font-size: 12px; color: rgb(0, 0, 0);">开户即得350元免费广告费， 1分钟注册，马上获得优惠券！</span>    <div class="tmnAdsenseAdLink">      <a class="tmnAdsenseAdLink" href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BchNPKOR0Taz7MM-7kAWLi-3bBc_8hqICx7H71xXAjbcB0J0lEAEYASDymfQBKAM4AFC0sZYCYJ2h34HYBaAB_YDW_AOyARF3d3cuaG93dG9nZWVrLmNvbcgBAdoBXGh0dHA6Ly93d3cuaG93dG9nZWVrLmNvbS9ob3d0by8zMzU1Mi9odGctZXhwbGFpbnMtd2hpY2gtbGludXgtZmlsZS1zeXN0ZW0tc2hvdWxkLXlvdS1jaG9vc2Uv4AECqAMB6APwA-gD1wLoA68C6APgAfUDAgAARA&amp;num=1&amp;sig=AGiWqtwPhtnJMzvmLe0hc97rmrLs-gty6w&amp;client=ca-pub-1894578950532504&amp;adurl=https://www.google.com/appserve/fb/forms/cnawcoupon30/%3Futm_source%3Dkt_computer_text" style="font-size: 10px; color: rgb(0, 0, 0);">        <span>AdWords.google.com</span>      </a>    </div>  </div></div><div class="tmnAdsenseAdCont" style="width: 170px; margin-right: 55px; margin-bottom: 0px; font-family: arial;">  <div class="tmnAdsenseAdTitle" style="margin-bottom: 0px;">    <a class="tmnAdsenseAdTitle" href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BIh48KOR0Taz7MM-7kAWLi-3bBcjHqsQB4NbwjBPAjbcBsK4VEAIYAiDymfQBKAM4AFDEiauf-v____8BYJ2h34HYBaAB3N7C_wOyARF3d3cuaG93dG9nZWVrLmNvbcgBAdoBXGh0dHA6Ly93d3cuaG93dG9nZWVrLmNvbS9ob3d0by8zMzU1Mi9odGctZXhwbGFpbnMtd2hpY2gtbGludXgtZmlsZS1zeXN0ZW0tc2hvdWxkLXlvdS1jaG9vc2Uv4AECgAIBqAMB6APwA-gD1wLoA68C6APgAfUDAgAARA&amp;num=2&amp;sig=AGiWqtxY3KRHzbZq0Q8OZsbXPmf2lu6N9Q&amp;client=ca-pub-1894578950532504&amp;adurl=http://www.webfonts.fonts.com" style="font-size: 17px; color: rgb(0, 51, 113);">Fonts.com Web Fonts</a>  </div>  <div class="tmnAdDescCont">    <span class="tmnAdsenseAdDesc" style="font-size: 12px; color: rgb(0, 0, 0);">CSS @Font-Face Fonts - Free Trial - Easy Set Up</span>    <div class="tmnAdsenseAdLink">      <a class="tmnAdsenseAdLink" href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BIh48KOR0Taz7MM-7kAWLi-3bBcjHqsQB4NbwjBPAjbcBsK4VEAIYAiDymfQBKAM4AFDEiauf-v____8BYJ2h34HYBaAB3N7C_wOyARF3d3cuaG93dG9nZWVrLmNvbcgBAdoBXGh0dHA6Ly93d3cuaG93dG9nZWVrLmNvbS9ob3d0by8zMzU1Mi9odGctZXhwbGFpbnMtd2hpY2gtbGludXgtZmlsZS1zeXN0ZW0tc2hvdWxkLXlvdS1jaG9vc2Uv4AECgAIBqAMB6APwA-gD1wLoA68C6APgAfUDAgAARA&amp;num=2&amp;sig=AGiWqtxY3KRHzbZq0Q8OZsbXPmf2lu6N9Q&amp;client=ca-pub-1894578950532504&amp;adurl=http://www.webfonts.fonts.com" style="font-size: 10px; color: rgb(0, 0, 0);">        <span>WebFonts.Fonts.com</span>      </a>    </div>  </div></div><div class="tmnAdsenseAdCont" style="width: 170px; margin-right: 0px; margin-bottom: 0px; font-family: arial;">  <div class="tmnAdsenseAdTitle" style="margin-bottom: 0px;">    <a class="tmnAdsenseAdTitle" href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BQGKdKOR0Taz7MM-7kAWLi-3bBbfmregBq9mO4ALAjbcBgOIJEAMYAyDymfQBKAM4AFC9raq6BGCdod-B2AWgAemav_4DsgERd3d3Lmhvd3RvZ2Vlay5jb23IAQHaAVxodHRwOi8vd3d3Lmhvd3RvZ2Vlay5jb20vaG93dG8vMzM1NTIvaHRnLWV4cGxhaW5zLXdoaWNoLWxpbnV4LWZpbGUtc3lzdGVtLXNob3VsZC15b3UtY2hvb3NlL-ABAoACAdACAagDAegD8APoA9cC6AOvAugD4AH1AwIAAEQ&amp;num=3&amp;sig=AGiWqtxrRLoD-CKpfi3bfmC0VE8TRFAOvw&amp;client=ca-pub-1894578950532504&amp;adurl=http://allwaysync.com/index.html" style="font-size: 17px; color: rgb(0, 51, 113);">Files &amp; Folders Backup</a>  </div>  <div class="tmnAdDescCont">    <span class="tmnAdsenseAdDesc" style="font-size: 12px; color: rgb(0, 0, 0);">Sync Home &amp; Office PCs In 1 Step. UI In 30 Languages. Download Now!</span>    <div class="tmnAdsenseAdLink">      <a class="tmnAdsenseAdLink" href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=BQGKdKOR0Taz7MM-7kAWLi-3bBbfmregBq9mO4ALAjbcBgOIJEAMYAyDymfQBKAM4AFC9raq6BGCdod-B2AWgAemav_4DsgERd3d3Lmhvd3RvZ2Vlay5jb23IAQHaAVxodHRwOi8vd3d3Lmhvd3RvZ2Vlay5jb20vaG93dG8vMzM1NTIvaHRnLWV4cGxhaW5zLXdoaWNoLWxpbnV4LWZpbGUtc3lzdGVtLXNob3VsZC15b3UtY2hvb3NlL-ABAoACAdACAagDAegD8APoA9cC6AOvAugD4AH1AwIAAEQ&amp;num=3&amp;sig=AGiWqtxrRLoD-CKpfi3bfmC0VE8TRFAOvw&amp;client=ca-pub-1894578950532504&amp;adurl=http://allwaysync.com/index.html" style="font-size: 10px; color: rgb(0, 0, 0);">        <span>www.AllwaySync.com</span>      </a>    </div>  </div></div></div>										
+					<div style="clear: both;"></div>
+				</div>
+				
+				
+				<h2><a href="http://www.howtogeek.com/howto/33552/htg-explains-which-linux-file-system-should-you-choose/" rel="bookmark" title="Permanent Link: HTG Explains: Which Linux File System Should You Choose?">HTG Explains: Which Linux File System Should You Choose?</a> </h2>
+				
+				<ul class="sharinglinks">
+
+					<li class="fbShare">
+						<iframe src="index_2.html" style="border: medium none; overflow: hidden; width: 450px; height: 25px;" allowtransparency="true" frameborder="0" scrolling="no"></iframe>
+					</li>
+					
+										<li class="twitShare">
+						<a href="http://twitter.com/share" class="twitter-share-button" data-text="HTG Explains: Which Linux File System Should You Choose?" data-count="none">Tweet</a>
+					</li>					
+						
+									</ul>
+				<div style="clear: both; height: 5px;"></div>
+				
+				<div class="thecontent">
+					<!-- google_ad_section_start -->
+					<p><img class="alignnone size-full wp-image-37169" src="banner.jpg" alt="" height="250" width="640"></p>
+<p>File systems are one of the layers beneath your operating system that you don’t think about—unless you’re faced with the plethora of options in Linux. Here’s how to make an educated decision on which file system to use.</p>
+<p>The landscape of the Linux file system support is&nbsp;drastically&nbsp;different from Windows and OS X. In Windows and OS X you can find software that will add support for non-standard file systems, but both operating systems can only be installed on their native file system and third party support is added after the fact.</p>
+<p>Linux on the other hand has a vast array of supported file systems built into the kernel. But how are you supposed to know which file system to pick when installing? We will take a look at some of the most popular choices available and give you use cases to consider—the choice is ultimately up to you based on your needs.<br>
+<span id="more-33552"></span><br>
+<em>Image by&nbsp;<a href="http://www.flickr.com/photos/dijutaltim/4232353526/" target="_top">DijutalTim</a></em></p>
+<h3>What is Journaling?</h3>
+<p>Before we go to far down the rabbit hole talking about options, we need to first take a quick look at journaling. The only real thing you need to know about journaling is that every modern file system uses journaling in some form or another and on any desktop or laptop you are setting up with Linux you will want to use a journaling file system.</p>
+<p><img class="alignnone size-full wp-image-37145" src="journal.png" alt="" height="250" width="640"></p>
+<p>Journaling is only used when writing to a disk and it acts as a sort of punch clock for all writes. This fixes the problem of disk&nbsp;corruption&nbsp;when things are written to the hard drive and then the computer crashes or power is lost. Without a journal the operating system would have no way to know if the file was completely written to disk.</p>
+<p>With a journal the file is first written to the journal, punch-in, and then the journal writes the file to disk when ready. Once it has&nbsp;successfully&nbsp;written to the disk, it is removed from the journal, punch-out, and the operation is complete. If power is lost while being&nbsp;written to disk the file system can check the journal for all operations that have not yet been completed and remember where it left off.</p>
+<p>The biggest downside to journaling is that it sacrifices some performance in exchange for stability. There is more overhead to write a file to disk but file systems get around this overhead by not writing the full file to the journal. Instead only the file metadata, inode, or disk location is recorded before actually being written to disk.</p>
+<h3>File System Options</h3>
+<p>As we look at some of the major file systems available to Linux we are going to touch&nbsp;briefly&nbsp;on each one and give a couple suggestions for when you may or may not want to use the file system based on features. This in no way means these file systems cannot be used in other cases, these suggestions are just areas where each file system will excel.</p>
+<p><img class="alignnone size-full wp-image-37726" src="ext.png" alt="" height="200" width="600"></p>
+<p><strong><a href="http://en.wikipedia.org/wiki/Extended_file_system" target="_top">Ext</a></strong> stands for Extended file system and was the first created specifically for Linux. It has had four revisions and each one has added fairly significant features. The first version of Ext was a major upgrade from the Minix file system used at the time, but it lacks major features used in today’s computing.</p>
+<ul>
+<li>At this time you probably should not use Ext in any machine due to its limitation and age. It also is no longer supported in many distributions.</li>
+</ul>
+<p><strong><a href="http://en.wikipedia.org/wiki/Ext2" target="_top">Ext2</a></strong> is not a journaling file system, and when introduced was the first to allow for extended file attributes and 2 terabyte drives. Because Ext2 does not use a journal it has significantly less writes applied to the disk.</p>
+<ul>
+<li>Due to lower write requirements, and hence lower erases, it is ideal for flash memory especially on USB flash drives.</li>
+<li>Modern SSDs have a increased life span and additional features that can negate the need for using a non-journaling file systems.</li>
+</ul>
+<p><strong><a href="http://en.wikipedia.org/wiki/Ext3" target="_top">Ext3</a></strong> is basically just Ext2 with journaling. The aim of Ext3 was to be backwards compatible with Ext2 and therefore disks can be converted between the two without needing to format the drive. The&nbsp;problem&nbsp;with keeping&nbsp;compatibility&nbsp;is many of the limitations of Ext2 still exist in Ext3. The benefit of keeping backwards&nbsp;compatibility&nbsp;is the fact that most of the testing, bug fixes, and use cases for Ext2 also apply to Ext3 making it stable and fast.</p>
+<ul>
+<li>Use if you need to upgrade a previous Ext2 file system to have journaling.</li>
+<li>You will probably get the best database performance from Ext3 due to years of&nbsp;optimizations.</li>
+<li>Not the best choice for file servers because it lacks disk snapshots and file recovery is very difficult if deleted.</li>
+</ul>
+<p><strong><a href="http://en.wikipedia.org/wiki/Ext4" target="_top">Ext4</a></strong>, just like Ext3 before it, keeps backwards&nbsp;compatibility&nbsp;with its predecessors. As a matter of fact, you can mount Ext2 and Ext3 as an Ext4 file system in Linux and that alone can increase performance under certain conditions. You can also mount an Ext4 file system as Ext3 without ill effects.</p>
+<p>Ext4 reduces file fragmentation, allows for larger volumes and files, and employs delayed allocation which helps with flash memory life as well as fragmentation. Although it is used in other file systems, delayed allocation has potential for data loss and has come under some scrutiny.</p>
+<ul>
+<li>A better choice for SSDs than Ext3 and improves on general performance over both previous Ext versions. If this is your distro’s default supported file system, you should probably stick with it for any desktop or laptop you set up.</li>
+<li>It also shows promising performance numbers for database servers, but hasn’t been around as long as Ext3.</li>
+</ul>
+<p><img class="alignnone size-full wp-image-37723" src="not-btrfs.png" alt="" height="204" width="477"></p>
+<p><strong><a href="http://en.wikipedia.org/wiki/Btrfs" target="_top">BtrFS</a></strong>, pronounced “Butter” or “Better” FS,&nbsp;is being &nbsp;developed by Oracle and contains similar&nbsp;features&nbsp;found in ReiserFS. It stants for B-Tree File System and allows for drive pooling, on the fly snapshots,&nbsp;transparent&nbsp;compression, and online defragmentation. &nbsp;It is being specifically designed for enterprises but most every consumer distro has plans to move to it as the default file system eventually.</p>
+<p>Although it’s not stable in some distros, it will eventually be the default replacement for Ext4 and currently offers on-the-fly conversion from Ext3/4.&nbsp;It is also key to note that the principle developer for ext3/4, Theodore Ts’o, has said that BtrFS is the “way forward”.</p>
+<ul>
+<li>BtrFS makes a great server file system due to it’s performance, snapshots, and many other features.</li>
+<li>Oracle is also working on a replacement for NFS and CIFS called CRFS which boasts better performance and more features. Making it the best choice for a file server.</li>
+<li>The performance tests have shown it to lag behind Ext4 on flash memory such as SSDs, as a database server,&nbsp;and even certain cases of general system read/writes.</li>
+<li>Ubuntu 10.10 only allows you to install BtrFS if you use the text base alternate install CD and your /boot partition still requires an Ext file system.</li>
+</ul>
+<p><strong><a href="http://en.wikipedia.org/wiki/ReiserFS" target="_top">ReiserFS</a></strong> was a big leap forward for Linux file systems when it was introduced in 2001 and it included many new features that Ext would never be able to implement. ReiserFS was replaced by <a href="http://en.wikipedia.org/wiki/Reiser4" target="_top">Reiser4</a> in 2004 which improved on many of the features that were incomplete or lacking in the initial release. However Reiser4 development is very slow and it still does not have support in the main Linux kernel. ReiserFS is the only version currently available in many distributions.</p>
+<ul>
+<li>Has great performance for small files such as logs and is suited for databases and email servers.</li>
+<li>ReiserFS can be dynamically expanded but not shrunk and does not support FS level encryption.</li>
+<li>The future of Reiser4 is questionable and BtrFS is probably a better choice.</li>
+</ul>
+<p><img class="alignnone size-full wp-image-37719" src="silicon-graphics.png" alt="" height="136" width="500"></p>
+<p><strong><a href="http://en.wikipedia.org/wiki/XFS" target="_top">XFS</a></strong> was developed by Silicon Graphics in 1994 for their own operating system and was later ported to Linux in 2001. It is comparable to Ext4 is some&nbsp;regards&nbsp;because it also uses delayed allocation to help with file fragmentation and does not allow for mounted snapshots. XFS has shown itself to provide good performance with large files and has the ability to be resized, however you are not able to shrink an XFS volume.</p>
+<ul>
+<li>Good for a media file server because of constant throughput for large files.</li>
+<li>Most distributions require separate /boot partition because XFS and GRUB can be unpredictable</li>
+<li>Performance with small files is not as good as other file systems making it a poor choice for databases, email, and other servers that have a lot of logs.</li>
+<li>Not as well supported as Ext for personal computers and doesn’t have significant performance improvements or features over Ext3/4.</li>
+</ul>
+<p><img class="alignnone size-full wp-image-37718" src="ibm.png" alt="" height="158" width="351"></p>
+<p><strong><a href="http://en.wikipedia.org/wiki/JFS_file_system" target="_top">JFS</a></strong> was developed by IBM in 1990 and later ported to Linux. It boasts low CPU usage and good performance for both large and small files. JFS partitions can be dynamically resized but not shrunk like ReiserFS and XFS. It was extremely well planned and has support in most every major distribution, however its production testing on Linux servers isn’t as extensive as Ext as it was designed for AIX.</p>
+<ul>
+<li>Good performance for both large and small files and because of its low CPU usage is probably best for low powered servers and computers</li>
+<li>It does not have built in tools for drive pooling so it may not be as expandable as something like BtrFS but a netbook with only 1 hard drive may be a good option</li>
+<li>It also has fast disk checking compared to Ext but there have been some reports of disk corruption after long term use.</li>
+</ul>
+<p><img class="alignnone size-full wp-image-38111" src="oracle.png" alt="" height="105" width="432"></p>
+<p><strong>ZFS</strong> is worth a mention because it is also be being developed by Oracle and has similar features to Btrfs and ReiserFS. It was in the news in recent years when Apple was&nbsp;rumored&nbsp;to move to it as their default file system. Due to its licensing, Sun CDDL, it is not&nbsp;compatible&nbsp;to be included in the Linux kernel. It does however have support through Linux’s Filesystem in Userspace (FUSE) which makes using ZFS possible.</p>
+<ul>
+<li>Shows great performance in large disk arrays.</li>
+<li>Supports a lot of advanced features including drive pooling, snapshots, and dynamic disk striping.</li>
+<li>It may be difficult to install in Linux because it requires FUSE and might not be supported by your distribution.</li>
+</ul>
+<p><strong>Swap</strong> isn’t actually a file system. It is used as virtual memory and doesn’t have a file system structure. It cannot be mounted and read but is only used by the kernel to write memory pages to disk. It is typically only used when you either run out of physical memory or when you put your computer in hibernate but it is important to know what your partitioning tools mean when it asks for a swap space.</p>
+<p>To learn even more you can check out the Wikipedia page on <a href="http://en.wikipedia.org/wiki/Comparison_of_file_systems" target="_top">comparison of file systems</a>.</p>
+<h3>So Which One Should You Choose?</h3>
+<p>For a general use case on your laptop or desktop, you’ll probably want to stick with ext4 (if your distro uses it as the default), since it’s a modern file system that’s supported in most distributions—but if you’ve got a specific need, now you have more information to make your decision.</p>
+<hr>So now that you understand the differences between the file systems, which one would you choose?
+					<!-- google_ad_section_end -->
+				</div>
+				
+
+				
+
+				<div class="singlepostnav">
+					<ul>
+											</ul>
+				</div>
+				<div style="clear: both; height: 5px;"></div>
+
+				<div class="smalltext usertagline" style="float: left;">
+					<span class="date">This article was originally written on 12/10/10</span>
+					<span class="tags">Tagged with: <a href="http://www.howtogeek.com/tag/linux/" title="View all posts in Linux" rel="category tag">Linux</a></span>
+				</div>
+
+				<div style="clear: both;"></div>
+				
+				<div style="clear: both;"></div>
+				<div style="width: 650px; margin-bottom: 5px; margin-top: 5px;">
+						
+<div class="tmnAdsenseContainer" style="width: 630px;"><div class="tmnAdsByGoogleCont" style="width: 630px; padding-bottom: 10px;">  <div style="width: 86px;" class="tmnAdsByGoogle">    <a style="float: right; color: rgb(0, 0, 0);" href="http://www.google.com/url?ct=abg&amp;q=https://www.google.com/adsense/support/bin/request.py%3Fcontact%3Dabg_afc%26url%3Dhttp://www.howtogeek.com/howto/33552/htg-explains-which-linux-file-system-should-you-choose/%26hl%3Den%26client%3Dca-pub-1894578950532504%26adU%3DAdWords.google.com%26adT%3D%25E8%25B0%25B7%25E6%25AD%258C%25E5%2585%25B3%25E9%2594%25AE%25E5%25AD%2597%25E5%25B9%25BF%25E5%2591%258A%25E5%2585%258D%25E8%25B4%25B9%25E8%25AF%2595%25E7%2594%25A8%26adU%3DWebFonts.Fonts.com%26adT%3DFonts.com%2BWeb%2BFonts%26adU%3Dwww.AllwaySync.com%26adT%3DFile%2BCopy%2BProgram%2BFor%2BPCs%26gl%3DCN&amp;usg=AFQjCNGI1OcSdXheSGyeDoOB1ihEVUy-Bw" class="tmnAdsByGoogle">Ads by Google</a>  </div></div><div class="tmnAdsenseAdCont" style="width: 170px; margin-right: 55px; margin-bottom: 0px; font-family: arial;">  <div class="tmnAdsenseAdTitle" style="margin-bottom: 0px;">    <a class="tmnAdsenseAdTitle" href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=B8qrZNeR0TbHxNYv2kAXvvpXNBff3hqICx_T81xWX-46PDODrJRABGAEg8pn0ASgDOABQo86fzfr_____AWCdod-B2AWgAf2A1vwDsgERd3d3Lmhvd3RvZ2Vlay5jb23IAQHaAVxodHRwOi8vd3d3Lmhvd3RvZ2Vlay5jb20vaG93dG8vMzM1NTIvaHRnLWV4cGxhaW5zLXdoaWNoLWxpbnV4LWZpbGUtc3lzdGVtLXNob3VsZC15b3UtY2hvb3NlL-ABAsACBKgDAegD8APoA9cC6AOvAugD4AH1AwIAAEQ&amp;num=1&amp;sig=AGiWqtyHbleVePZsLROBrRknl4KPLaLRLQ&amp;client=ca-pub-1894578950532504&amp;adurl=https://www.google.com/appserve/fb/forms/cnawcoupon30/%3Futm_source%3Dpt_B2B-Text_category::Business%2520%26%2520Industrial" style="font-size: 17px; color: rgb(0, 51, 113);">谷歌关键字广告免费试用</a>  </div>  <div class="tmnAdDescCont">    <span class="tmnAdsenseAdDesc" style="font-size: 12px; color: rgb(0, 0, 0);">高达1000元免费广告费等你拿， 1分钟注册，马上获得优惠券！</span>    <div class="tmnAdsenseAdLink">      <a class="tmnAdsenseAdLink" href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=B8qrZNeR0TbHxNYv2kAXvvpXNBff3hqICx_T81xWX-46PDODrJRABGAEg8pn0ASgDOABQo86fzfr_____AWCdod-B2AWgAf2A1vwDsgERd3d3Lmhvd3RvZ2Vlay5jb23IAQHaAVxodHRwOi8vd3d3Lmhvd3RvZ2Vlay5jb20vaG93dG8vMzM1NTIvaHRnLWV4cGxhaW5zLXdoaWNoLWxpbnV4LWZpbGUtc3lzdGVtLXNob3VsZC15b3UtY2hvb3NlL-ABAsACBKgDAegD8APoA9cC6AOvAugD4AH1AwIAAEQ&amp;num=1&amp;sig=AGiWqtyHbleVePZsLROBrRknl4KPLaLRLQ&amp;client=ca-pub-1894578950532504&amp;adurl=https://www.google.com/appserve/fb/forms/cnawcoupon30/%3Futm_source%3Dpt_B2B-Text_category::Business%2520%26%2520Industrial" style="font-size: 10px; color: rgb(0, 0, 0);">        <span>AdWords.google.com</span>      </a>    </div>  </div></div><div class="tmnAdsenseAdCont" style="width: 170px; margin-right: 55px; margin-bottom: 0px; font-family: arial;">  <div class="tmnAdsenseAdTitle" style="margin-bottom: 0px;">    <a class="tmnAdsenseAdTitle" href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=Bep3eNeR0TbHxNYv2kAXvvpXNBcjHqsQB4NbwjBPAjbcBsK4VEAIYAiDymfQBKAM4AFDEiauf-v____8BYJ2h34HYBaAB3N7C_wOyARF3d3cuaG93dG9nZWVrLmNvbcgBAdoBXGh0dHA6Ly93d3cuaG93dG9nZWVrLmNvbS9ob3d0by8zMzU1Mi9odGctZXhwbGFpbnMtd2hpY2gtbGludXgtZmlsZS1zeXN0ZW0tc2hvdWxkLXlvdS1jaG9vc2Uv4AECgAIBqAMB6APwA-gD1wLoA68C6APgAfUDAgAARA&amp;num=2&amp;sig=AGiWqtxs5P3Fl2sMybjZ1ZHp4fGvbIjcEQ&amp;client=ca-pub-1894578950532504&amp;adurl=http://www.webfonts.fonts.com" style="font-size: 17px; color: rgb(0, 51, 113);">Fonts.com Web Fonts</a>  </div>  <div class="tmnAdDescCont">    <span class="tmnAdsenseAdDesc" style="font-size: 12px; color: rgb(0, 0, 0);">CSS @Font-Face Fonts - Free Trial - Easy Set Up</span>    <div class="tmnAdsenseAdLink">      <a class="tmnAdsenseAdLink" href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=Bep3eNeR0TbHxNYv2kAXvvpXNBcjHqsQB4NbwjBPAjbcBsK4VEAIYAiDymfQBKAM4AFDEiauf-v____8BYJ2h34HYBaAB3N7C_wOyARF3d3cuaG93dG9nZWVrLmNvbcgBAdoBXGh0dHA6Ly93d3cuaG93dG9nZWVrLmNvbS9ob3d0by8zMzU1Mi9odGctZXhwbGFpbnMtd2hpY2gtbGludXgtZmlsZS1zeXN0ZW0tc2hvdWxkLXlvdS1jaG9vc2Uv4AECgAIBqAMB6APwA-gD1wLoA68C6APgAfUDAgAARA&amp;num=2&amp;sig=AGiWqtxs5P3Fl2sMybjZ1ZHp4fGvbIjcEQ&amp;client=ca-pub-1894578950532504&amp;adurl=http://www.webfonts.fonts.com" style="font-size: 10px; color: rgb(0, 0, 0);">        <span>WebFonts.Fonts.com</span>      </a>    </div>  </div></div><div class="tmnAdsenseAdCont" style="width: 170px; margin-right: 0px; margin-bottom: 0px; font-family: arial;">  <div class="tmnAdsenseAdTitle" style="margin-bottom: 0px;">    <a class="tmnAdsenseAdTitle" href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=B6S3bNeR0TbHxNYv2kAXvvpXNBbfmregBy9WO4ALAjbcB0PcHEAMYAyDymfQBKAM4AFC9raq6BGCdod-B2AWgAemav_4DsgERd3d3Lmhvd3RvZ2Vlay5jb23IAQHaAVxodHRwOi8vd3d3Lmhvd3RvZ2Vlay5jb20vaG93dG8vMzM1NTIvaHRnLWV4cGxhaW5zLXdoaWNoLWxpbnV4LWZpbGUtc3lzdGVtLXNob3VsZC15b3UtY2hvb3NlL-ABAoACAdACAagDAegD8APoA9cC6AOvAugD4AH1AwIAAEQ&amp;num=3&amp;sig=AGiWqtyOwdNkikAeVqsAuDAxfZC0d750Kw&amp;client=ca-pub-1894578950532504&amp;adurl=http://allwaysync.com/index.html" style="font-size: 17px; color: rgb(0, 51, 113);">File Copy Program For PCs</a>  </div>  <div class="tmnAdDescCont">    <span class="tmnAdsenseAdDesc" style="font-size: 12px; color: rgb(0, 0, 0);">Sync Home &amp; Office PCs In 1 Step. UI In 30 Languages. Download Now!</span>    <div class="tmnAdsenseAdLink">      <a class="tmnAdsenseAdLink" href="http://googleads.g.doubleclick.net/aclk?sa=l&amp;ai=B6S3bNeR0TbHxNYv2kAXvvpXNBbfmregBy9WO4ALAjbcB0PcHEAMYAyDymfQBKAM4AFC9raq6BGCdod-B2AWgAemav_4DsgERd3d3Lmhvd3RvZ2Vlay5jb23IAQHaAVxodHRwOi8vd3d3Lmhvd3RvZ2Vlay5jb20vaG93dG8vMzM1NTIvaHRnLWV4cGxhaW5zLXdoaWNoLWxpbnV4LWZpbGUtc3lzdGVtLXNob3VsZC15b3UtY2hvb3NlL-ABAoACAdACAagDAegD8APoA9cC6AOvAugD4AH1AwIAAEQ&amp;num=3&amp;sig=AGiWqtyOwdNkikAeVqsAuDAxfZC0d750Kw&amp;client=ca-pub-1894578950532504&amp;adurl=http://allwaysync.com/index.html" style="font-size: 10px; color: rgb(0, 0, 0);">        <span>www.AllwaySync.com</span>      </a>    </div>  </div></div></div>					<div style="clear: both;"></div>
+				</div>				
+			
+				
+
+	
+								<div class="contsepnomargin"></div>
+				<div id="related-table">
+
+				<table id="featposttable" width="650px" border="0"><tbody><tr><td width="33%"><a href="http://www.howtogeek.com/howto/45271/how-to-get-amazing-color-from-photos-in-photoshop-gimp-and-paint.net/"><img src="sshot-291.png"></a></td><td width="33%"><a href="http://www.howtogeek.com/howto/44826/learn-to-adjust-contrast-like-a-pro-in-photoshop-gimp-and-paint.net/"><img src="sshot-262.png"></a></td><td width="33%"><a href="http://www.howtogeek.com/howto/44036/how-your-operating-system-got-its-name/"><img src="banner6.png"></a></td></tr><tr><td width="33%"><a href="http://www.howtogeek.com/howto/45271/how-to-get-amazing-color-from-photos-in-photoshop-gimp-and-paint.net/">How to Get Amazing Color from Photos in Photoshop, GIMP, and Paint.NET</a></td><td width="33%"><a href="http://www.howtogeek.com/howto/44826/learn-to-adjust-contrast-like-a-pro-in-photoshop-gimp-and-paint.net/">Learn To Adjust Contrast Like a Pro in Photoshop, GIMP, and Paint.NET</a></td><td width="33%"><a href="http://www.howtogeek.com/howto/44036/how-your-operating-system-got-its-name/">Have You Ever Wondered How Your Operating System Got Its Name?</a></td></tr></tbody></table></div>
+				<div class="contsep"></div>
+
+			</div>
+			
+<!-- You can start editing here. -->
+
+
+
+	<h3 id="comments">Comments <span id="commentnumber">(22)</span></h3>
+
+
+
+
+
+	<ol class="commentlist">
+	
+						<li class="comment-alt" id="comment-111044">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111044" title="">December 10, 2010 1:40 pm</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="b760d06a3c5a26c0707e5c1f67381546" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					Hatryst				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>NTFS <img src="icon_biggrin.gif" alt=":D" class="wp-smiley"> </p>
+			</div>
+					</li>
+						<li class="comment-def" id="comment-111047">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111047" title="">December 10, 2010 1:57 pm</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="386ad046dc567e4cb53e1e95e865bfef" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					Béranger				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>Write performance penalty for using unaligned partitions:<br>
+<a href="http://beranger.org/post/560877228/write-performance-penalty-for-using-unaligned" rel="nofollow">http://beranger.org/post/56087.....-unaligned</a></p>
+			</div>
+					</li>
+						<li class="comment-alt" id="comment-111049">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111049" title="">December 10, 2010 2:00 pm</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="c65f70aedc784dd865bd9ea6e9676551" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					Rich				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>SOS/ProDOS!</p>
+			</div>
+					</li>
+						<li class="comment-def" id="comment-111050">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111050" title="">December 10, 2010 2:00 pm</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="fd827f4d3fa9f7ad0687e0ceb85c4085" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					Rogerblue				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>NTFS = Poor<br>
+Ext4 = Amazing!</p>
+			</div>
+					</li>
+						<li class="comment-alt" id="comment-111054">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111054" title="">December 10, 2010 2:09 pm</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="ee8e1a3597cff12ef1ee10f803903527" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					geekx				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>fat16 <img src="icon_biggrin.gif" alt=":D" class="wp-smiley"> </p>
+			</div>
+					</li>
+						<li class="comment-def" id="comment-111068">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111068" title="">December 10, 2010 4:37 pm</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="7d3eab60f5529b1a01c380f707beb0f2" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					dave				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>nothing from Oracle, they might sue me to get it back.</p>
+			</div>
+					</li>
+						<li class="comment-alt" id="comment-111075">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111075" title="">December 10, 2010 6:14 pm</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="8d6c5fdadc9b0225a69de3a514a0132b" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					Sun				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>ayooo</p>
+			</div>
+					</li>
+						<li class="comment-def" id="comment-111079">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111079" title="">December 10, 2010 7:20 pm</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="618fdeed9939515b7bc71561829f76ff" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					Romel				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>Oracle = poor support<br>
+NTFS = A fine standard<br>
+EXT4 = Best of all<br>
+Fat32 = You want it for 4g pendrives and below</p>
+			</div>
+					</li>
+						<li class="comment-alt" id="comment-111080">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111080" title="">December 10, 2010 7:39 pm</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="cfb6fcc062024f05a5b7ca2c970b1528" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					David				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>One reason I have been sticking with ext3 is support for drivers in Windows to read my linux file systems in a dual boot situation. Does anybody know of ext4 support in any product, free or commercial, to read (and write to) linux file systems from Windows?<br>
+Thanks.</p>
+			</div>
+					</li>
+						<li class="comment-def" id="comment-111089">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111089" title="">December 10, 2010 10:49 pm</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="b3b653ec0a9d61b43e1820e081bcfbfd" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					Ernie				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>“You can also mount an Ext4 file system as Ext3 without ill effects.”</p>
+			</div>
+					</li>
+						<li class="comment-alt" id="comment-111095">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111095" title="">December 11, 2010 1:25 am</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="71ebcbf042ea4b1093bf430e0b2faead" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					Matt W				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>BTRFS is NOT owned by Oracle, they simply help code for it. It is FOSS, and as such, no single entity has any legal right or recourse to any action taken with it, unless it were “unopensourced”.<br>
+In short, don’t fear the corporation behind a FOSS project.</p>
+			</div>
+					</li>
+						<li class="comment-def" id="comment-111100">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111100" title="">December 11, 2010 2:31 am</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="54fba7bee55e8c0261315bd11ca66625" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					deepak				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>Ext4 for the system<br>
+Ext3 for the home folder, to make it accessible from Windows if required<br>
+NTFS for data, even though Linux fragments it into shreds, and journalling does not work – because NTFS data recovery is possible, while recovery from Ext3 is not so easy.</p>
+			</div>
+					</li>
+						<li class="comment-alt" id="comment-111109">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111109" title="">December 11, 2010 7:36 am</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="3a0116d8cf93f3ddab89a2ab98ffc830" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					Mastermind				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>agreed @ dave<br>
+I’d go for NTFS</p>
+<p>I WANT WINDOWS TO USE NTFS since im stuck with windows since all games work bets on it and since im a GAMAR</p>
+			</div>
+					</li>
+						<li class="comment-def" id="comment-111110">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111110" title="">December 11, 2010 7:37 am</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="3a0116d8cf93f3ddab89a2ab98ffc830" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					Mastermind				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>Whoops fail please replace all the NTFS by Ext4</p>
+			</div>
+					</li>
+						<li class="comment-alt" id="comment-111122">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111122" title="">December 11, 2010 9:59 am</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="599cb583eba26fbbf5f6adebf19cd9b2" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					Jack				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>NTFS still has a use, M$ compatibility if you dual boot, or transport USB attached drives to M$ machines.  </p>
+<p>Is there any open drivers to allow M$ to deal with EXT2/3/4 file systems?</p>
+<p>When putting backups on disks, so it really is light on I/O, I chose to use EXT2 rather than 3 or 4 because of the extra disk space available.  The cache adds to the file system overhead about 10% or so.  I wouldn’t do it on ‘hot’ drives, but for large data/backup store or archive drives, EXT2 gets my vote.</p>
+			</div>
+					</li>
+						<li class="comment-def" id="comment-111172">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111172" title="">December 12, 2010 12:20 am</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="6540726639b7bb6ca0509d1cad2a5d6f" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					SiRu				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>My God, never knew that so many file systems are available </p>
+<p> <img src="icon_biggrin.gif" alt=":D" class="wp-smiley"> </p>
+			</div>
+					</li>
+						<li class="comment-alt" id="comment-111204">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111204" title="">December 12, 2010 1:44 pm</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="8a63e3d4d6461a22195825ef703c0f8e" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					Rob				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>JFS is simply awesome for most HOME Computer uses.  It is FAST and uses low CPU.  It always ceases to amaze me that it is not mentioned more often.  I install it on all my laptops and home computers.  It has never failed me.</p>
+			</div>
+					</li>
+						<li class="comment-def" id="comment-111293">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111293" title="">December 13, 2010 11:30 am</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="35b24ab35fcf25209f8ab87f390bd9ef" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					i'm not an english major				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>Typo? </p>
+<p>The 1st P, 2nd line of “File System Options”  – “on each on”. Is that supppsed to be “on each one”?</p>
+<p>Other than that great article.</p>
+			</div>
+					</li>
+						<li class="comment-alt" id="comment-111431">
+	        	
+			<div class="commentmetadata date"><a href="#comment-111431" title="">December 14, 2010 4:30 am</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="8f7271e036c4c227eded10eb8312d0de" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					Gabriel				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>With the popularity of OSX, I sure would like to see a similar journaled filesystem for Windows.</p>
+			</div>
+					</li>
+						<li class="comment-def" id="comment-113221">
+	        	
+			<div class="commentmetadata date"><a href="#comment-113221" title="">December 28, 2010 4:47 pm</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="1968ef3f9c784b15712f5637fa825ed0" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					mo128				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>who said DOS. They’re right! DOS 3.x was the last version that fit on a single 1.44 floppy. Very fast <img src="icon_smile.gif" alt=":)" class="wp-smiley"> </p>
+			</div>
+					</li>
+						<li class="comment-alt" id="comment-113273">
+	        	
+			<div class="commentmetadata date"><a href="#comment-113273" title="">December 29, 2010 7:51 am</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="4741ecc388a192e35b85aa032c2427eb" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					krushna				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>Thank, informative article.</p>
+			</div>
+					</li>
+						<li class="comment-def" id="comment-115344">
+	        	
+			<div class="commentmetadata date"><a href="#comment-115344" title="">January 17, 2011 10:43 pm</a> </div>
+			<div id="commentauthor">
+				<div style="width: 50px; height: 50px; float: left;">
+					<img alt="" src="a929bc3fbaf3c2cf13c1ddccf4483b1d" class="avatar avatar-40 photo" height="40" width="40">   			</div>
+				<div style="padding-top: 10px; width: 300px;">
+					JuanSopa				</div>
+			</div>
+			
+			<div style="clear: both;"></div>
+			<div class="commenttext">
+			<p>It would have been nice if the cluster sizes were included in the reviews. I use XFS becuase I believe it uses the smallest clusters. 1KB only uses 1KB as opposed to NTFS where 1KB takes up 4KB. Of course I may be off a little but to know the cluster size I think is valid and important.</p>
+			</div>
+					</li>
+		
+	</ol>
+
+
+ 
+
+
+<div id="respond">
+
+<h3>Leave a Reply</h3>
+
+<div class="cancel-comment-reply">
+	<small><a rel="nofollow" id="cancel-comment-reply-link" href="http://www.howtogeek.com/howto/33552/htg-explains-which-linux-file-system-should-you-choose/#respond" style="display: none;">Click here to cancel reply.</a></small>
+</div>
+
+
+
+
+<form action="http://www.howtogeek.com/wp-comments-post.php" method="post" id="commentform">
+
+
+<p><input name="author" id="author" value="" size="22" tabindex="1" aria-required="true" type="text">
+<label for="author"><small>Name (required)</small></label></p>
+
+<p><input name="email" id="email" value="" size="22" tabindex="2" aria-required="true" type="text">
+<label for="email"><small>Email (required)</small></label></p>
+
+
+
+<!--<p><small><strong>XHTML:</strong> You can use these tags: <code>&lt;a href=&quot;&quot; title=&quot;&quot;&gt; &lt;abbr title=&quot;&quot;&gt; &lt;acronym title=&quot;&quot;&gt; &lt;b&gt; &lt;blockquote cite=&quot;&quot;&gt; &lt;cite&gt; &lt;code&gt; &lt;del datetime=&quot;&quot;&gt; &lt;em&gt; &lt;i&gt; &lt;q cite=&quot;&quot;&gt; &lt;strike&gt; &lt;strong&gt; </code></small></p>-->
+
+<p><textarea name="comment" id="comment" cols="100%" rows="10" tabindex="4"></textarea></p>
+
+<p><input name="submit" id="submit" tabindex="5" value="Submit Comment" type="submit">
+<input name="comment_post_ID" value="33552" id="comment_post_ID" type="hidden">
+<input name="comment_parent" id="comment_parent" value="0" type="hidden">
+</p>
+
+</form>
+
+</div>
+
+            			<div style="clear: both;"></div>
+			
+			
+
+
+
+
+      </div>
+    </div>
+    <div class="yui-u">
+		<div class="sidebar">
+	
+
+	<div style="width: 300px; min-height: 20px;">
+
+<div id="ns_ad3" style="min-width: 300px; min-height: 250px;">		
+<div id="ns_ad3" style="min-width: 300px; min-height: 250px;">		
+<!-- begin ad tag (tile=2) -->
+
+<ins style="display: inline-table; border: medium none; height: 250px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 300px;"><ins id="google_ads_frame4_anchor" style="display: block; border: medium none; height: 250px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 300px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame4" marginheight="0" marginwidth="0" name="google_ads_frame" src="index_3.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" frameborder="0" height="250" scrolling="no" width="300"></iframe></ins></ins>
+
+<!-- end ad tag -->
+</div>
+</div>
+
+</div>
+
+
+
+
+
+    			<div style="width: 298px; background-color: rgb(254, 255, 237); padding: 0px 0px 10px; border: 1px solid rgb(238, 238, 238); margin-bottom: 10px; margin-top: 10px;" align="center">
+				<img src="email-48.png" style="padding-right: 0px; padding-left: 10px;" align="left"><p style="color: rgb(51, 51, 51); font-size: 150%; font-weight: bold; padding-top: 12px; padding-bottom: 5px;">Daily Email Updates</p>
+				<p style="text-align: left; clear: both; padding-left: 10px; padding-right: 5px;">You can get our how-to articles in your inbox each day for free. Just enter your email below:</p><br>
+				<form action="http://www.aweber.com/scripts/addlead.pl" method="post">
+					<input value="1357186873" name="meta_web_form_id" type="hidden">
+					<input value="" name="meta_split_id" type="hidden">
+					<input value="howtogeek-daily" name="unit" type="hidden">
+					<input id="redirect_e4db1606a84c007a4b26df0e9b3a904c" value="http://www.howtogeek.com/thanks-for-subscribing/" name="redirect" type="hidden">
+					<input value="" name="meta_redirect_onlist" type="hidden">
+					<input value="belowarticle" name="meta_adtracking" type="hidden">
+					<input value="1" name="meta_message" type="hidden">
+					<input value="from" name="meta_required" type="hidden">
+					<input value="0" name="meta_forward_vars" type="hidden">
+					<table>
+						<tbody><tr>
+							<td colspan="2"><center></center></td>
+						</tr>
+						<tr>
+							<td style="padding: 4px;">Email:</td>
+							<td style="padding: 4px;"><input size="20" value="" name="from" style="width: 200px; font-size: 13px; height: 22px;" type="text"></td>
+						</tr>
+						<tr>
+							<td colspan="2"><center></center></td>
+						</tr>
+						<tr>
+							<td colspan="2" align="right"><input style="padding: 8px;" value="Subscribe!" name="submit" type="submit"></td>
+						</tr>
+					</tbody></table>
+				</form>
+			</div>		
+		<div class="htgauthorbox">
+			<h4><span>Meet the Author</span></h4>
+			<div class="htgauthorbio">
+				<p>Justin is a Linux and HTPC enthusiast who loves to try new projects. He isn't scared of bricking a cell phone in the name of freedom.</p>
+			</div>
+			<img src="rothgar-20.png" alt="">			<br style="clear: both;">
+		</div>
+
+		
+
+		<div class="htgsidelinksbox">
+			<p class="boxtitle">Recent Articles</p>
+			<ul class="rp">
+					<li><a href="http://www.howtogeek.com/howto/45271/how-to-get-amazing-color-from-photos-in-photoshop-gimp-and-paint.net/" title="How to Get Amazing Color from Photos in Photoshop, GIMP, and Paint.NET">How to Get Amazing Color from Photos in Photoshop, GIMP, and Paint.NET</a></li>
+	<li><a href="http://www.howtogeek.com/howto/45137/how-to-transfer-all-your-information-to-a-new-ps3-video-tutorial/" title="How to Transfer All Your Information to a New PS3: Video Tutorial">How to Transfer All Your Information to a New PS3: Video Tutorial</a></li>
+	<li><a href="http://www.howtogeek.com/howto/45241/geek-comic-for-march-7th-%e2%80%93-yeah-you-wish/" title="Geek Comic for March 7th – Yeah, You Wish">Geek Comic for March 7th – Yeah, You Wish</a></li>
+	<li><a href="http://www.howtogeek.com/howto/45189/how-to-attach-sticky-note-reminders-to-windows-and-applications/" title="How to Attach Sticky-Note Reminders to Windows and Applications">How to Attach Sticky-Note Reminders to Windows and Applications</a></li>
+	<li><a href="http://www.howtogeek.com/howto/45175/week-in-geek-blackhole-rat-trojan-targets-mac-os-x-edition/" title="Week in Geek: BlackHole RAT Trojan Targets Mac OS X Edition">Week in Geek: BlackHole RAT Trojan Targets Mac OS X Edition</a></li>
+			</ul>
+		</div>
+
+				<div class="htgsidelinksbox">
+			<p class="boxtitle">Related Articles</p>
+			<ul class="rp">
+				<li><a href="http://www.howtogeek.com/howto/38125/htg-explains-what-is-the-linux-fstab-and-how-does-it-work/" rel="bookmark" title="Permanent Link: HTG Explains: What is the Linux fstab and How Does It Work?">HTG Explains: What is the Linux fstab and How Does It Work?</a></li><li><a href="http://www.howtogeek.com/howto/ubuntu/change-ssh-welcome-banner-on-ubuntu/" rel="bookmark" title="Permanent Link: Change SSH Welcome Banner on Ubuntu">Change SSH Welcome Banner on Ubuntu</a></li><li><a href="http://www.howtogeek.com/howto/39595/the-20-best-how-to-geek-linux-articles-of-2010/" rel="bookmark" title="Permanent Link: The 20 Best How-To Geek Linux Articles of 2010">The 20 Best How-To Geek Linux Articles of 2010</a></li><li><a href="http://www.howtogeek.com/howto/27726/ask-the-readers-what-is-your-favorite-linux-system-poll/" rel="bookmark" title="Permanent Link: Ask the Readers: What is Your Favorite Linux System? [Poll]">Ask the Readers: What is Your Favorite Linux System? [Poll]</a></li><li><a href="http://www.howtogeek.com/howto/39694/month-in-geek-december-2010-edition/" rel="bookmark" title="Permanent Link: Month in Geek: December 2010 Edition">Month in Geek: December 2010 Edition</a></li>			</ul>
+		</div>
+		
+
+
+
+		<div style="clear: both;"></div>
+				<div style="width: 300px; min-height: 20px; margin-top: 30px;">
+			<div style="width: 160px; text-align: center; margin-left: auto; margin-right: auto;">
+				<!-- begin ad tag (tile=3) -->
+
+<ins style="display: inline-table; border: medium none; height: 600px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 160px;"><ins id="google_ads_frame5_anchor" style="display: block; border: medium none; height: 600px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 160px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame5" marginheight="0" marginwidth="0" name="google_ads_frame" src="index_4.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" frameborder="0" height="600" scrolling="no" width="160"></iframe></ins></ins>
+
+<!-- end ad tag -->				<div style="padding-top: 10px;"></div>
+			</div>
+			
+				<div style="clear: both;"></div>
+				
+														
+			
+			<div style="clear: both;"></div>
+		</div>
+				
+		
+</div>
+    </div>
+    
+</div>
+
+    <div class="yui-g">
+    	<div style="padding-top: 20px; margin-top: 210px; margin-bottom: 10px; min-height: 115px; text-align: center; width: 750px; margin-left: 15px;">
+				<div id="ns_ad8">
+					
+					<div style="padding-bottom: 15px; margin-left: 120px; width: 720px;">
+						<!-- begin ad tag -->
+
+<ins style="display: inline-table; border: medium none; height: 90px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 728px;"><ins id="google_ads_frame7_anchor" style="display: block; border: medium none; height: 90px; margin: 0pt; padding: 0pt; position: relative; visibility: visible; width: 728px;"><iframe allowtransparency="true" hspace="0" id="google_ads_frame7" marginheight="0" marginwidth="0" name="google_ads_frame" src="index_5.html" style="left: 0pt; position: absolute; top: 0pt;" vspace="0" frameborder="0" height="90" scrolling="no" width="728"></iframe></ins></ins>
+
+<!-- end ad tag -->					</div>
+					
+					<div style="clear: both;"></div>
+					<div style="width: 100%;">
+						<table id="featposttable" width="980px" border="0"><tbody><tr><td width="25%"><a href="http://www.howtogeek.com/howto/45271/how-to-get-amazing-color-from-photos-in-photoshop-gimp-and-paint.net/"><img src="sshot-291_001.png"></a></td><td width="25%"><a href="http://www.howtogeek.com/howto/45137/how-to-transfer-all-your-information-to-a-new-ps3-video-tutorial/"><img src="untitled"></a></td><td width="25%"><a href="http://www.howtogeek.com/howto/45241/geek-comic-for-march-7th-%e2%80%93-yeah-you-wish/"><img src="2.jpg"></a></td><td width="25%"><a href="http://www.howtogeek.com/howto/45189/how-to-attach-sticky-note-reminders-to-windows-and-applications/"><img src="image24.png"></a></td></tr><tr><td width="25%"><a href="http://www.howtogeek.com/howto/45271/how-to-get-amazing-color-from-photos-in-photoshop-gimp-and-paint.net/">How to Get Amazing Color from Photos in Photoshop, GIMP, and Paint.NET</a></td><td width="25%"><a href="http://www.howtogeek.com/howto/45137/how-to-transfer-all-your-information-to-a-new-ps3-video-tutorial/">How to Transfer All Your Information to a New PS3: Video Tutorial</a></td><td width="25%"><a href="http://www.howtogeek.com/howto/45241/geek-comic-for-march-7th-%e2%80%93-yeah-you-wish/">Geek Comic for March 7th – Yeah, You Wish</a></td><td width="25%"><a href="http://www.howtogeek.com/howto/45189/how-to-attach-sticky-note-reminders-to-windows-and-applications/">How to Attach Sticky-Note Reminders to Windows and Applications</a></td></tr></tbody></table>					</div>
+					<div style="clear: both;"></div>
+				
+			</div>
+    </div>
+    
+    
+
+		
+		
+		
+		
+		
+
+
+
+
+
+<div class="yui-g">
+		 
+  	  </div>
+	      </div>
+    
+<div id="ft">
+    <div style="width: 20%; float: left;">
+        <div style="font-size: 120%; font-weight: bold; color: rgb(85, 85, 85); padding-bottom: 10px;">Categories</div>
+        <ul id="popul2" class="bottomul2" style="margin-left: 0px;">
+        		<li><a href="http://www.howtogeek.com/tag/windows-7/">Windows 7</a></li>
+            <li><a href="http://www.howtogeek.com/tag/windows-vista/">Windows Vista</a></li>
+        		<li><a href="http://www.howtogeek.com/tag/windows/">Windows XP</a></li>
+        		<li><a href="http://www.howtogeek.com/tag/malware/">Malware &amp; Viruses</a></li>        		
+        		<li><a href="http://www.howtogeek.com/tag/microsoft-office/">Microsoft Office</a></li>
+        		<li><a href="http://www.howtogeek.com/tag/internet/">Web Browsing</a></li>
+        		<li><a href="http://www.howtogeek.com/tag/linux/">Linux</a></li>
+        		<li><a href="http://www.howtogeek.com/tag/desktop-fun/">Desktop Fun</a></li>
+        		<li><a href="http://www.howtogeek.com/tag/the-geek-blog/">Other...</a></li>
+        </ul>
+        <div style="clear: both;"></div>
+    </div>
+
+    <div style="width: 20%; float: left; border-left: 1px solid rgb(204, 204, 204); padding-left: 10px; height: 90px; margin-left: 10px;">
+        <div style="font-size: 120%; font-weight: bold; color: rgb(85, 85, 85); padding-bottom: 10px;">Getting Started</div>
+        <ul class="bottomul">
+        		<li><a href="http://www.howtogeek.com/t/features/">Feature Articles</a></li>           
+            <li><a href="http://www.howtogeek.com/forum/">Get Help on our Forums</a></li>                        
+            <li><a href="http://www.howtogeek.com/wiki/">How-To Geek Wiki</a></li>           
+            <li><a href="http://www.howtogeek.com/games/">How-To Geek Arcade</a></li>           
+            <li><a href="http://www.howtogeek.com/reviews/">How-To Geek Reviews</a></li>           
+            <li><a href="http://www.howtogeek.com/news/">How-To Geek ETC</a></li>           
+            <li><a href="http://toolsgeek.com/">ToolsGeek [Useful Online Tools]</a></li>
+        </ul>
+    </div>
+
+    <div style="width: 20%; float: left; border-left: 1px solid rgb(204, 204, 204); padding-left: 10px; margin-left: 10px;">
+        <div style="font-size: 120%; font-weight: bold; color: rgb(85, 85, 85); padding-bottom: 10px;">About How-To Geek</div>
+        <ul class="bottomul">
+            <li><a href="http://www.howtogeek.com/about/">About Us</a></li>
+            <li><a href="http://www.howtogeek.com/contact/">Contact Us</a></li>
+            <li><a href="http://www.techmedianetwork.com/advertisers.html">Advertising</a></li>
+            <li><a href="http://www.howtogeek.com/privacy-policy/">Privacy Policy</a></li>
+            <li><a href="http://www.howtogeek.com/disclaimers/">Disclaimers</a></li>
+            <li><a href="http://www.howtogeek.com/howto/the-geek-blog/how-to-geek-comment-policy/">Comment Policy</a></li>
+            <li><a href="http://www.howtogeek.com/resumes/">Write for How-To Geek</a></li>
+        </ul>
+    </div>
+    <div style="width: 25%; float: left; border-left: 1px solid rgb(204, 204, 204); padding-left: 10px; margin-left: 10px;">
+        <div style="font-size: 120%; font-weight: bold; color: rgb(85, 85, 85); padding-bottom: 10px;">What Is That Process?</div>
+  
+              
+                  <table id="proclistfoot"><tbody><tr>
+                  <td valign="top">
+                      <a href="http://www.howtogeek.com/howto/windows-vista/what-is-svchostexe-and-why-is-it-running/">svchost.exe</a><br>
+                      <a href="http://www.howtogeek.com/howto/windows-vista/what-is-juschedexe-and-why-is-it-running/">jusched.exe</a><br>
+                      <a href="http://www.howtogeek.com/howto/windows-vista/what-is-dwmexe-and-why-is-it-running/">dwm.exe</a><br>
+                      <a href="http://www.howtogeek.com/howto/windows-vista/what-is-ctfmonexe-and-why-is-it-running/">ctfmon.exe</a><br>
+                      <a href="http://www.howtogeek.com/howto/windows-vista/what-are-wmpnscfgexe-and-wmpnetwkexe-and-why-are-they-running/">wmpnetwk.exe</a><br>
+								      <a href="http://www.howtogeek.com/howto/6456/what-is-mdnsresponder.exe-bonjour-and-how-can-i-uninstall-or-remove-it/">mDNSResponder.exe</a>
+                      <a href="http://www.howtogeek.com/howto/windows-vista/what-is-dpupdchkexe-and-why-is-it-running/">Dpupdchk.exe</a><br>
+                      <a href="http://www.howtogeek.com/howto/windows-vista/what-is-adobe_updaterexe-and-why-is-it-running/">Adobe_Updater.exe</a><br>
+                      <a href="http://www.howtogeek.com/howto/28450/what-is-searchindexer.exe-and-why-is-it-running/">SearchIndexer.exe</a>
+                  </td>
+                  <td valign="top">
+                      <a href="http://www.howtogeek.com/howto/windows-vista/what-are-wmpnscfgexe-and-wmpnetwkexe-and-why-are-they-running/">wmpnscfg.exe</a><br>
+                      <a href="http://www.howtogeek.com/howto/windows-vista/what-is-rundll32exe-and-why-is-it-running/">rundll32.exe</a><br>
+                      <a href="http://www.howtogeek.com/wiki/Wfcrun32.exe">wfcrun32.exe</a><br>
+                      <a href="http://www.howtogeek.com/wiki/Ipoint.exe">Ipoint.exe</a><br>
+                      <a href="http://www.howtogeek.com/wiki/Itype.exe">Itype.exe</a><br>
+                      <a href="http://www.howtogeek.com/howto/30348/what-are-wlidsvc.exe-and-wlidsvcm.exe-and-why-are-they-running/">wlidsvc.exe</a>
+                      <a href="http://www.howtogeek.com/wiki/Wfica32.exe">Wfica32.exe</a><br>
+                      <a href="http://www.howtogeek.com/wiki/Mobsync.exe">Mobsync.exe</a><br>
+		      						<a href="http://www.howtogeek.com/howto/4996/what-is-conhost.exe-and-why-is-it-running/">conhost.exe</a><br>
+                  </td>
+                  </tr>
+                  </tbody></table>
+              
+        
+        <div style="clear: both;"></div>
+    </div>
+						
+				
+						
+<div style="clear: both;"></div><br>
+    <center style="color: rgb(85, 85, 85);">Copyright © 2006-2011 HowToGeek.com. All Rights Reserved.</center>
+</div>
+</div>
+
+
+                    
+<!-- Start Quantcast tag -->
+
+
+
+<!-- End Quantcast tag -->
+
+
+                                         
+                                             
+<!-- Begin comScore Tag -->
+
+
+
+
+<!-- End comScore Tag -->
+
+
+
+
+
+
+<!-- Dynamic page generated in 0.241 seconds. -->
+<!-- Cached page generated by WP-Super-Cache on 2011-03-07 08:27:30 -->
+<!-- super cache --></div><div style="position: absolute; z-index: 99999999; display: none; top: 0pt; right: 0pt; bottom: auto; left: auto; height: auto; width: auto; padding: 5px; background-color: rgb(0, 0, 0); font-size: 13px; line-height: 1.2; color: rgb(255, 255, 255); opacity: 0.9;"><p style="margin: 0pt; padding: 0pt; display: none;"></p><p style="margin: 0pt; padding: 0pt; color: rgb(255, 255, 153); display: none;"></p><p style="margin: 0pt; padding: 0pt; display: none;"></p></div><iframe id="outlineiframeshim" src="index_6.html" style="display: none; left: 0pt; top: 0pt; z-index: 999; position: absolute;" frameborder="0" scrolling="no"></iframe></body>
+</html>
