@@ -1,0 +1,1 @@
+<script language="JavaScript" type="text/javascript" src="http://www.csdn.net/ggmm/csdn_ggmm.js"></script><script type="text/javascript" src="http://cbjs.baidu.com/js/m.js"></script>

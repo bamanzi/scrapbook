@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CSDN Ad</title>
+    <style type="text/css">
+        body { margin:0px; padding:0px;}
+    </style>
+     <script src="http://static.blog.csdn.net/scripts/jquery.js" type="text/javascript"></script>
+</head>
+<body>
+    <div id="div1"><style type="text/css">
+ul { margin:0px; padding:0 4px 0 0; }
+ul, x:-moz-any-link, x:default { width:90%; }
+ul li { padding:3px 0px;}
+a { font-size:12px; text-decoration:none; color:#006699; }
+a:hover { color:#000; }
+</style>
+
+<ul>
+
+<li><a href="http://blog.csdn.net/mazhimazh/article/details/20038281" target="_blank">*  Java 7之基础 - 实现比较</a></li>
+
+
+<li><a href="http://blog.csdn.net/shulianghan/article/details/20009689" target="_blank">* 重构 之 总结代码的坏味道 Bad Smell (一) 重复代码 过长函数 过大的类 过长参数列 发散式变化 霰弹
+
+式修改</a></li>
+
+
+
+<li><a href="http://blog.csdn.net/dawanganban/article/details/20009241" target="_blank">* 是男人就下100层【第一层】——高仿微信界面（3）</a></li>
+
+
+<li><a href="http://blog.csdn.net/dawanganban/article/details/19977857" target="_blank">* Android菜鸟的成长笔记（26）——普通广播与有序广播</a></li>
+
+
+<li><a href="http://blog.csdn.net/shulianghan/article/details/19913755" target="_blank">* Android资源文件 - 使用资源存储字符串 颜色 尺寸 整型 布尔值 数组</a></li>
+
+
+<li><a href="http://blog.csdn.net/lycb_gz/article/details/20031595" target="_blank">* 华为MSTP负载均衡配置示例</a></li>
+
+</ul></div>
+<script type="text/javascript">
+    window.onload = function () {
+        if (document.domain != 'blog.csdn.net') {
+            document.domain = "csdn.net";
+        }
+        //这种给广告区域赋值的方式，对于有些JS广告不能完美的显示
+        //top.document.getElementById('ad_commend').innerHTML = document.getElementById('div1').innerHTML;
+
+        var h = document.body.offsetHeight + 2;
+        setTimeout(function () {
+            if (h > 800) h = document.getElementById('div1').offsetHeight + 4;
+            try { top.document.getElementById('ad_frm_1').style.height = h + 'px'; }
+            catch (err) { }
+        }, 100);
+    };
+    $(function() {
+        $("#div1 a").click(function() {
+            top._gaq.push(['_trackEvent', 'function', 'onclick', 'blog_articles_tuijianwenzhang']);
+        });
+    });
+</script>
+</body>
+</html>
