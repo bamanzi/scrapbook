@@ -178,7 +178,7 @@ attach(window, 'load', function() {
 </li>
 """
     
-    def item_to_html(itemid):
+    def write_item(itemid):
         itemdata = sbdata.DESC[itemid]
         if not itemdata:
             sys.stderr.write("ERROR: description for item %s not exist.\n" % itemid)
@@ -203,7 +203,7 @@ attach(window, 'load', function() {
                     sys.stderr.write("ERROR: seq for item %s not exist.\n" % itemid)
                 else:
                     for item in seq:
-                        item_to_html(item)
+                        write_item(item)
                     output.write((HTML_TMPL_END_FOLDER % itemdata).encode('utf-8'))
         else:  #site, bookmark, marked,
             try:
@@ -214,18 +214,18 @@ attach(window, 'load', function() {
 
     output.write(HTML_TMPL_HEADER)
     for item in sbdata.ROOT["li"]:
-        item_to_html(item)
+        write_item(item)
     output.write(HTML_TMPL_FOOTER)
 
 def scrapbook_to_markdown(sbdata, output):
     HTML_TMPL_HEADER = "# ScrapBook of my favorites articles downloaded from the Web\n"
     HTML_TMPL_FOOTER = ""
-    HTML_TMPL_BEGIN_FOLDER = "%(indent)s %(title)s\n"
-    HTML_TMPL_END_FOLDER   = "\n"
-    HTML_TMPL_ITEM         = "  * [%(title)s](http://bamanzi.github.io/scrapbook/data/%(id)s/)] [original url](%(source)s)\n"
+    HTML_TMPL_BEGIN_FOLDER = "\n%(indent)s %(indent)s %(title)s\n\n"
+    HTML_TMPL_END_FOLDER   = ""
+    HTML_TMPL_ITEM         = "  * [%(title)s](http://bamanzi.github.io/scrapbook/data/%(id)s/) ([original url](%(source)s))\n"
 
 
-    def item_to_html(itemid, level):
+    def write_item(itemid, level):
         itemdata = sbdata.DESC[itemid]
         if not itemdata:
             sys.stderr.write("ERROR: description for item %s not exist.\n" % itemid)
@@ -250,8 +250,14 @@ def scrapbook_to_markdown(sbdata, output):
                 if not seq:
                     sys.stderr.write("ERROR: seq for item %s not exist.\n" % itemid)
                 else:
+                    # write all articles first, then folders
                     for item in seq:
-                        item_to_html(item, level + 1)
+                        if sbdata.DESC[item]["type"] != "folder":
+                            write_item(item, level + 1)
+                    for item in seq:
+                        if sbdata.DESC[item]["type"] == "folder":
+                            write_item(item, level + 1)
+                            
                     output.write((HTML_TMPL_END_FOLDER % itemdata).encode('utf-8'))
         else:  #site, bookmark, marked,
             try:
@@ -261,8 +267,9 @@ def scrapbook_to_markdown(sbdata, output):
                 sys.stderr.write("  %s\n" % ex)
 
     output.write(HTML_TMPL_HEADER)
+    # FIXME: what if non-folder items on root
     for item in sbdata.ROOT["li"]:
-        item_to_html(item, 2)
+        write_item(item, 2)
     output.write(HTML_TMPL_FOOTER)    
 
 if __name__=='__main__':
