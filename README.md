@@ -11,6 +11,8 @@
   * [Unicode for dummies – just use UTF-8 | Python Conquers The Universe](http://bamanzi.github.io/scrapbook/data/20140220223640/) ([original url](http://pythonconquerstheuniverse.wordpress.com/2010/06/04/unicode-for-dummies-just-use-utf-8/))
   * [Python 包工具之间的关系 | Life @ Refactoring](http://bamanzi.github.io/scrapbook/data/20140220223747/) ([original url](http://blog.yangyubo.com/2012/07/27/python-packaging/))
   * [Using IPython for parallel computing — IPython 1.2.0: An Afternoon Hack documentation](http://bamanzi.github.io/scrapbook/data/20140220223802/) ([original url](http://ipython.org/ipython-doc/stable/parallel/index.html))
+  * [Parsing XML and HTML with lxml](http://bamanzi.github.io/scrapbook/data/20140301131452/) ([original url](http://lxml.de/parsing.html))
+  * [惊帆之静默 » Blog Archive » Stackless Python并发式编程介绍[已校对版]](http://bamanzi.github.io/scrapbook/data/20140301131856/) ([original url](http://gashero.yeax.com/?p=30))
 
 ## ## firefox
 
@@ -20,8 +22,9 @@
   * [Tips · mooz/keysnail Wiki](http://bamanzi.github.io/scrapbook/data/20140220221522/) ([original url](https://github.com/mooz/keysnail/wiki/tips))
   * [50 Best Firefox Addons Of 2013](http://bamanzi.github.io/scrapbook/data/20140220221700/) ([original url](http://www.addictivetips.com/web/best-firefox-extensions-of-2013/))
   * [keyconfig快捷键的自定义 - 公子姬良 - 博客园](http://bamanzi.github.io/scrapbook/data/20140220221740/) ([original url](http://www.cnblogs.com/sinianyufang/archive/2011/03/28/1997682.html))
-  * [Tips · mooz/keysnail Wiki](http://bamanzi.github.io/scrapbook/data/20140226211949/) ([original url](https://github.com/mooz/keysnail/wiki/tips))
   * [25 Most Popular Firefox Support Tips in 2010 - Firefox Facts](http://bamanzi.github.io/scrapbook/data/20140226212258/) ([original url](http://www.firefoxfacts.com/2010/12/13/25-most-popular-firefox-support-tips-in-2010/))
+  * [100 Best Google Chrome Extensions Of 2013](http://bamanzi.github.io/scrapbook/data/20140220223042/) ([original url](http://www.addictivetips.com/web/best-google-chrome-extensions-of-2013/))
+  * [Pentadactyl/Vimperator：VIM化的Firefox | 善用佳软](http://bamanzi.github.io/scrapbook/data/20140301183214/) ([original url](http://xbeta.info/vimperator.htm))
 
 ## ## emacs
 
@@ -55,10 +58,6 @@
   * [GNU Emacs FAQ For MS Windows](http://bamanzi.github.io/scrapbook/data/20110925164421/) ([original url](http://www.gnu.org/software/emacs/windows/faq.html))
   * [Emacs - Cygwin Customizations](http://bamanzi.github.io/scrapbook/data/20120624223319/) ([original url](http://www.khngai.com/emacs/cygwin.php))
 
-### ### chinese
-
-  * [Pluskid's Emacs Wiki](http://bamanzi.github.io/scrapbook/data/20101226144126/) ([original url](http://lifegoo.pluskid.org/wiki/Emacs.html))
-
 ### ### org-mode
 
   * [Org-mode Frequently Asked Questions](http://bamanzi.github.io/scrapbook/data/20120212203834/) ([original url](http://orgmode.org/worg/org-faq.html))
@@ -78,6 +77,7 @@
   * [polls - The single most useful Emacs feature (page 2) - Stack Overflow](http://bamanzi.github.io/scrapbook/data/20110925155346/) ([original url](http://stackoverflow.com/questions/60367/the-single-most-useful-emacs-feature?page=2&tab=votes#tab-top))
   * [How To Set Emacs's User Interface to Modern Conventions](http://bamanzi.github.io/scrapbook/data/20110925164933/) ([original url](http://xahlee.org/emacs/emacs_make_modern.html))
   * [Great Emacs Features](http://bamanzi.github.io/scrapbook/data/20140301135148/) ([original url](http://c2.com/cgi/wiki?GreatEmacsFeatures))
+  * [Pluskid's Emacs Wiki](http://bamanzi.github.io/scrapbook/data/20101226144126/) ([original url](http://lifegoo.pluskid.org/wiki/Emacs.html))
 
 ### ### programming
 
@@ -178,11 +178,18 @@
 ## ## unix
 
 
-### ### shell
+### ### CLI
 
   * [World's best introduction to sed - good coders code, great reuse](http://bamanzi.github.io/scrapbook/data/20120108140426/) ([original url](http://www.catonmat.net/blog/worlds-best-introduction-to-sed/))
   * [《SED单行脚本快速参考》的 awk 实现 - I am LAZY bones ? ](http://bamanzi.github.io/scrapbook/data/20101114123207/) ([original url](http://luy.li/2009/12/07/sed_awk/))
   * [Zsh 技巧三则 — LinuxTOY](http://bamanzi.github.io/scrapbook/data/20140220211517/) ([original url](https://linuxtoy.org/archives/zsh_per_dir_hist.html))
+  * [wget 使用技巧 — LinuxTOY](http://bamanzi.github.io/scrapbook/data/20101024213013/) ([original url](http://linuxtoy.org/archives/wget-tips.html))
+  * [20 Funny Commands of Linux or Linux is Fun in Terminal](http://bamanzi.github.io/scrapbook/data/20140220211738/) ([original url](http://www.tecmint.com/20-funny-commands-of-linux-or-linux-is-fun-in-terminal/))
+  * [The funny side of Linux command line | MyLinuxBook](http://bamanzi.github.io/scrapbook/data/20140220212721/) ([original url](http://mylinuxbook.com/funny-side-of-linux-command-line/))
+  * [精选37条强大的常用linux shell命令组合 - 忘我的追寻](http://bamanzi.github.io/scrapbook/data/20140301181908/) ([original url](http://shentar.me/%E7%B2%BE%E9%80%8937%E6%9D%A1%E5%BC%BA%E5%A4%A7%E7%9A%84%E5%B8%B8%E7%94%A8linux-shell%E5%91%BD%E4%BB%A4%E7%BB%84%E5%90%88/))
+  * [Shell programming with bash: by example, by counter-example](http://bamanzi.github.io/scrapbook/data/20140301182247/) ([original url](http://matt.might.net/articles/bash-by-example/))
+  * [How To Make A Hotkey On The Linux Console LG #55 (.inputrc)](http://bamanzi.github.io/scrapbook/data/20140301184152/) ([original url](http://linuxgazette.net/issue55/henderson.html))
+  * [Learn Perl in about 2 hours 30 minutes](http://bamanzi.github.io/scrapbook/data/20120109200432/) ([original url](http://qntm.org/files/perl/perl.html))
 
 #### #### grep
 
@@ -200,28 +207,34 @@
   * [10 Awesome PuTTY Tips and Tricks You Probably Didn’t Know](http://bamanzi.github.io/scrapbook/data/20140220211754/) ([original url](http://www.thegeekstuff.com/2009/07/10-practical-putty-tips-and-tricks-you-probably-didnt-know/))
   * [Turbocharge PuTTY with 12 Powerful Add-Ons – Software for Geeks #3](http://bamanzi.github.io/scrapbook/data/20140220211933/) ([original url](http://www.thegeekstuff.com/2008/08/turbocharge-putty-with-12-powerful-add-ons-software-for-geeks-3/))
   * [Mounting Remote Directories With SSHFS On Ubuntu 11.10 | HowtoForge - Linux Howtos and Tutorials](http://bamanzi.github.io/scrapbook/data/20140220220507/) ([original url](http://www.howtoforge.com/mounting-remote-directories-with-sshfs-on-ubuntu-11.10))
+  * [Tips for Remote Unix Work (SSH, screen, and VNC) - #! (shebang)](http://bamanzi.github.io/scrapbook/data/20120611225855/) ([original url](http://shebang.brandonmintern.com/tips-for-remote-unix-work-ssh-screen-and-vnc))
 
 ### ### misc
 
   * [Linux 包管理速查表 — LinuxTOY](http://bamanzi.github.io/scrapbook/data/20100829221151/) ([original url](http://linuxtoy.org/archives/linux-package-management-cheatsheet.html))
-  * [10 Linux rescue tools for recovering Linux, Windows, or Mac machines | TechRepublic](http://bamanzi.github.io/scrapbook/data/20110925164945/) ([original url](http://www.techrepublic.com/blog/10things/10-linux-rescue-tools-for-recovering-linux-windows-or-mac-machines/1458))
-  * [wget 使用技巧 — LinuxTOY](http://bamanzi.github.io/scrapbook/data/20101024213013/) ([original url](http://linuxtoy.org/archives/wget-tips.html))
   * [How to View and Extract Files from rpm, deb, depot and msi Packages](http://bamanzi.github.io/scrapbook/data/20101114125748/) ([original url](http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/04/view-and-extract-packages/))
-  * [Sysresccd-manual-en How to install SystemRescueCd on an USB-stick - SystemRescueCd](http://bamanzi.github.io/scrapbook/data/20101108071440/) ([original url](http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick))
   * [segfault.in » Keep Track Of Configuration Changes Using etckeeper](http://bamanzi.github.io/scrapbook/data/20110925155000/) ([original url](http://segfault.in/2010/03/keep-track-of-configuration-changes-using-etckeeper/))
-  * [How To Boot 10 Different Live CDs From 1 USB Flash Drive - How-To Geek](http://bamanzi.github.io/scrapbook/data/20110925162931/) ([original url](http://www.howtogeek.com/howto/39747/how-to-boot-10-different-live-cds-from-1-usb-flash-drive/))
-  * [How to Combine Rescue Disks to Create the Ultimate Windows Repair Disk - How-To Geek](http://bamanzi.github.io/scrapbook/data/20110925162956/) ([original url](http://www.howtogeek.com/howto/39880/how-to-combine-rescue-disks-to-create-the-ultimate-windows-repair-disk/))
   * [Lifehacker Pack for Linux: Our List of the Best Linux Downloads](http://bamanzi.github.io/scrapbook/data/20110925165338/) ([original url](http://lifehacker.com/5827968/lifehacker-pack-for-linux-our-list-of-the-best-linux-downloads))
   * [Run KDE4 in Chroot (Gentoo/Debian/Ubuntu Howto) « Dedors’s Weblog](http://bamanzi.github.io/scrapbook/data/20110926050011/) ([original url](http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/))
-  * [Benchmark PC Hardware To Diagnose System Issues With Ubuntu Live Disk](http://bamanzi.github.io/scrapbook/data/20120125172044/) ([original url](http://www.addictivetips.com/windows-tips/benchmark-pc-hardware-to-diagnose-system-issues-with-ubuntu-live-disk/))
   * [Best 60 Ubuntu Linux Applications For Year 2011 [Editor's Pick]](http://bamanzi.github.io/scrapbook/data/20120218120618/) ([original url](http://www.addictivetips.com/ubuntu-linux-tips/best-60-linux-applications-for-year-2011-editors-pick/))
   * [50 Handy Applications For Ubuntu & Other Linux Operating Systems | WML Cloud](http://bamanzi.github.io/scrapbook/data/20120218120627/) ([original url](http://www.wmlcloud.com/linux/50-handy-applications-for-ubuntu-other-linux-operating-systems/))
-  * [Learn Perl in about 2 hours 30 minutes](http://bamanzi.github.io/scrapbook/data/20120109200432/) ([original url](http://qntm.org/files/perl/perl.html))
   * [Ubuntu Hacks/Virtualization and Emulation - WikiContent](http://bamanzi.github.io/scrapbook/data/20120108140516/) ([original url](http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation))
-  * [Tips for Remote Unix Work (SSH, screen, and VNC) - #! (shebang)](http://bamanzi.github.io/scrapbook/data/20120611225855/) ([original url](http://shebang.brandonmintern.com/tips-for-remote-unix-work-ssh-screen-and-vnc))
+  * [HTG Explains: Which Linux File System Should You Choose? - How-To Geek](http://bamanzi.github.io/scrapbook/data/20110307220056/) ([original url](http://www.howtogeek.com/howto/33552/htg-explains-which-linux-file-system-should-you-choose/))
+  * [10 Best Linux.com Tutorials of 2011 | Linux.com](http://bamanzi.github.io/scrapbook/data/20140301182730/) ([original url](https://www.linux.com/learn/tutorials/530661-10-best-linuxcom-tutorials-of-2011))
+  * [Deprecated Linux networking commands and their replacements | Doug Vitale Tech Blog](http://bamanzi.github.io/scrapbook/data/20140301182737/) ([original url](http://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/))
+  * [6 Steps for Minimal Ubuntu Installation Using debootstrap](http://bamanzi.github.io/scrapbook/data/20140301182754/) ([original url](http://www.thegeekstuff.com/2010/01/debootstrap-minimal-debian-ubuntu-installation/))
+  * [The 20 Best How-To Geek Linux Articles of 2010](http://bamanzi.github.io/scrapbook/data/20140301184430/) ([original url](http://www.howtogeek.com/howto/39595/the-20-best-how-to-geek-linux-articles-of-2010/))
+  * [（原创）RHEL/CentOS 5.x使用第三方软件库（EPEL与RPMForge、RPMFusion软件库）](http://bamanzi.github.io/scrapbook/data/20140301184512/) ([original url](http://www.ha97.com/2626.html))
+  * [colinux简明安装说明 - 巴蛮子 - 博客园](http://bamanzi.github.io/scrapbook/data/20120221221939/) ([original url](http://www.cnblogs.com/bamanzi/archive/2012/01/28/colinux-simple-guide.html))
+
+#### #### rescue
+
+  * [10 Linux rescue tools for recovering Linux, Windows, or Mac machines | TechRepublic](http://bamanzi.github.io/scrapbook/data/20110925164945/) ([original url](http://www.techrepublic.com/blog/10things/10-linux-rescue-tools-for-recovering-linux-windows-or-mac-machines/1458))
+  * [Sysresccd-manual-en How to install SystemRescueCd on an USB-stick - SystemRescueCd](http://bamanzi.github.io/scrapbook/data/20101108071440/) ([original url](http://www.sysresccd.org/Sysresccd-manual-en_How_to_install_SystemRescueCd_on_an_USB-stick))
+  * [How to Combine Rescue Disks to Create the Ultimate Windows Repair Disk - How-To Geek](http://bamanzi.github.io/scrapbook/data/20110925162956/) ([original url](http://www.howtogeek.com/howto/39880/how-to-combine-rescue-disks-to-create-the-ultimate-windows-repair-disk/))
+  * [Benchmark PC Hardware To Diagnose System Issues With Ubuntu Live Disk](http://bamanzi.github.io/scrapbook/data/20120125172044/) ([original url](http://www.addictivetips.com/windows-tips/benchmark-pc-hardware-to-diagnose-system-issues-with-ubuntu-live-disk/))
   * [The 10 Cleverest Ways to Use Linux to Fix Your Windows PC - How-To Geek](http://bamanzi.github.io/scrapbook/data/20110925162942/) ([original url](http://www.howtogeek.com/howto/31804/the-10-cleverest-ways-to-use-linux-to-fix-your-windows-pc/))
-  * [20 Funny Commands of Linux or Linux is Fun in Terminal](http://bamanzi.github.io/scrapbook/data/20140220211738/) ([original url](http://www.tecmint.com/20-funny-commands-of-linux-or-linux-is-fun-in-terminal/))
-  * [The funny side of Linux command line | MyLinuxBook](http://bamanzi.github.io/scrapbook/data/20140220212721/) ([original url](http://mylinuxbook.com/funny-side-of-linux-command-line/))
+  * [How To Boot 10 Different Live CDs From 1 USB Flash Drive - How-To Geek](http://bamanzi.github.io/scrapbook/data/20110925162931/) ([original url](http://www.howtogeek.com/howto/39747/how-to-boot-10-different-live-cds-from-1-usb-flash-drive/))
 
 ### ### tmux
 
@@ -236,6 +249,9 @@
   * [Debian Cleanup Tip #1: Get rid of useless configuration files](http://bamanzi.github.io/scrapbook/data/20140226214022/) ([original url](http://raphaelhertzog.com/2011/01/31/debian-cleanup-tip-1-get-rid-of-useless-configuration-files/))
   * [Debian Cleanup Tip #2: Get rid of obsolete packages](http://bamanzi.github.io/scrapbook/data/20140226214028/) ([original url](http://raphaelhertzog.com/2011/02/07/debian-cleanup-tip-2-get-rid-of-obsolete-packages/))
   * [Debian Cleanup Tip #3: get rid of third-party packages](http://bamanzi.github.io/scrapbook/data/20140226214033/) ([original url](http://raphaelhertzog.com/2011/02/14/debian-cleanup-tip-3-get-rid-of-third-party-packages/))
+  * [Debian Cleanup Tip #4: find broken packages and reinstall them | apt-get install debian-wizard](http://bamanzi.github.io/scrapbook/data/20110307221127/) ([original url](http://raphaelhertzog.com/2011/02/21/debian-cleanup-tip-4-find-broken-packages-and-reinstall-them/))
+  * [Debian Cleanup Tip #5: identify cruft that can be removed from your Debian system | apt-get install debian-wizard](http://bamanzi.github.io/scrapbook/data/20110307221124/) ([original url](http://raphaelhertzog.com/2011/02/28/debian-cleanup-tip-5-identify-cruft-that-can-be-removed-from-your-debian-system/))
+  * [Debian Cleanup Tip #6: Remove automatically installed packages that are no longer needed | apt-get install debian-wizard](http://bamanzi.github.io/scrapbook/data/20110307220642/) ([original url](http://raphaelhertzog.com/2011/03/07/debian-cleanup-tip-6-remove-automatically-installed-packages/))
   * [Howto to rebuild Debian packages](http://bamanzi.github.io/scrapbook/data/20140226214037/) ([original url](http://raphaelhertzog.com/2010/12/15/howto-to-rebuild-debian-packages/))
   * [segfault.in » How To Expand Usable Storage Space In Ubuntu](http://bamanzi.github.io/scrapbook/data/20110925154546/) ([original url](http://segfault.in/2010/10/how-to-expand-usable-storage-space-in-ubuntu/))
   * [segfault.in » Recording and copying system configuration in Debian/Ubuntu](http://bamanzi.github.io/scrapbook/data/20110925154552/) ([original url](http://segfault.in/2010/07/recording-and-copying-system-configuration-in-debian-ubuntu/))
@@ -258,10 +274,16 @@
   * [Top 10 Clever Uses for Dropbox](http://bamanzi.github.io/scrapbook/data/20130519161157/) ([original url](http://lifehacker.com/5933884/top-10-clever-uses-for-dropbox))
   * [Markdown 语法说明(简体中文版)](http://bamanzi.github.io/scrapbook/data/20120120210421/) ([original url](http://wowubuntu.com/markdown/))
   * [Sublime Text 手冊](http://bamanzi.github.io/scrapbook/data/20130519160256/) ([original url](http://docs.sublimetext.tw/))
-  * [100 Best Google Chrome Extensions Of 2013](http://bamanzi.github.io/scrapbook/data/20140220223042/) ([original url](http://www.addictivetips.com/web/best-google-chrome-extensions-of-2013/))
+  * [The Best How-To Geek Guides of 2011](http://bamanzi.github.io/scrapbook/data/20140301184354/) ([original url](http://www.howtogeek.com/100484/the-best-how-to-geek-guides-of-2011/))
 
 ## ## delphi
 
   * [Lazarus For Delphi Users - Lazarus wiki](http://bamanzi.github.io/scrapbook/data/20110925154441/) ([original url](http://wiki.lazarus.freepascal.org/Lazarus_For_Delphi_Users))
   * [New Delphi language features since Delphi 7](http://bamanzi.github.io/scrapbook/data/20110925155133/) ([original url](http://edn.embarcadero.com/article/34324))
   * [The Building Blocks of a Delphi Project - Tools You Need Before You Start a New Delphi Project](http://bamanzi.github.io/scrapbook/data/20110925164903/) ([original url](http://delphi.about.com/od/objectpascalide/bb/delphi_project.htm))
+
+## ## windows
+
+  * [The Ultimate Guide To Keyboard Remapping | gHacks Technology News](http://bamanzi.github.io/scrapbook/data/20140301184013/) ([original url](http://www.ghacks.net/2010/06/06/the-ultimate-guide-to-keyboard-remapping/))
+  * [The Beginner’s Guide to Using an AutoHotkey Script](http://bamanzi.github.io/scrapbook/data/20140301183147/) ([original url](http://www.howtogeek.com/56481/the-beginners-guide-to-using-an-autohotkey-script/))
+  * [AutoHotkey Tutorial](http://bamanzi.github.io/scrapbook/data/20140301183156/) ([original url](http://xahlee.info/mswin/autohotkey.html))
