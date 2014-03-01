@@ -1,0 +1,955 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta charset="UTF-8">
+
+<title>Vim Text Objects: The Definitive Guide | The Carbon Emitter</title>
+<link rel="profile" href="http://gmpg.org/xfn/11">
+
+
+<link rel="pingback" href="http://blog.carbonfive.com/xmlrpc.php">
+<link rel="alternate" type="application/rss+xml" title="The Carbon Emitter » Feed" href="http://blog.carbonfive.com/feed/">
+<link rel="alternate" type="application/rss+xml" title="The Carbon Emitter » Comments Feed" href="http://blog.carbonfive.com/comments/feed/">
+<link rel="alternate" type="application/rss+xml" title="The Carbon Emitter » Vim Text Objects: The Definitive Guide Comments Feed" href="http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/feed/">
+
+
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://blog.carbonfive.com/xmlrpc.php?rsd">
+<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="http://blog.carbonfive.com/wp-includes/wlwmanifest.xml"> 
+<link rel="prev" title="A Modern Guide to Threads" href="http://blog.carbonfive.com/2011/10/11/a-modern-guide-to-threads/">
+<link rel="next" title="There’s a (Vim Plugin) for That! Part I: Fuzzy Finder" href="http://blog.carbonfive.com/2011/10/18/theres-a-vim-plugin-for-that-fuzzy-finder/">
+<meta name="generator" content="WordPress 3.8.1">
+<link rel="canonical" href="http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/">
+<link rel="shortlink" href="http://wp.me/p1CKEo-1lV">
+
+<!-- Jetpack Open Graph Tags -->
+<meta property="og:type" content="article">
+<meta property="og:title" content="Vim Text Objects: The Definitive Guide">
+<meta property="og:url" content="http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/">
+<meta property="og:description" content="To edit efficiently in Vim, you have to edit beyond individual characters. Instead, edit by word, sentence, and paragraph. In Vim, these higher-level contexts are called text objects. Vim provides ...">
+<meta property="article:published_time" content="2011-10-17T17:29:48+00:00">
+<meta property="article:modified_time" content="2011-10-17T21:13:43+00:00">
+<meta property="article:author" content="http://blog.carbonfive.com/author/jcarroll/">
+<meta property="og:site_name" content="The Carbon Emitter">
+<meta property="og:image" content="http://wordpress.com/i/blank.jpg">
+<meta name="twitter:site" content="@jetpack">
+<meta name="twitter:card" content="summary">
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="single single-post postid-5203 single-format-standard">
+<div id="wrapper" class="hfeed">
+	<div id="header">
+		<div id="masthead">
+			<div id="branding" role="banner">
+								<div id="site-title">
+					<span>
+						<a href="http://blog.carbonfive.com/" title="The Carbon Emitter" rel="home">The Carbon Emitter</a>
+					</span>
+				</div>
+				<div id="site-description"><a href="http://www.carbonfive.com/">The blog of Carbon Five</a></div>
+
+							</div><!-- #branding -->
+
+			<div id="access" role="navigation">
+			  				<div class="skip-link screen-reader-text"><a href="#content" title="Skip to content">Skip to content</a></div>
+								<div class="menu-header"><ul id="menu-header" class="menu"><li id="menu-item-3869" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-home menu-item-3869"><a href="http://blog.carbonfive.com/">All</a></li>
+<li id="menu-item-3873" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3873"><a href="http://blog.carbonfive.com/category/web/">Web</a></li>
+<li id="menu-item-3867" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3867"><a href="http://blog.carbonfive.com/category/mobile/">Mobile</a></li>
+<li id="menu-item-3865" class="menu-item menu-item-type-taxonomy menu-item-object-category current-post-ancestor current-menu-parent current-post-parent menu-item-3865"><a href="http://blog.carbonfive.com/category/process/">Process</a></li>
+<li id="menu-item-3874" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-3874"><a href="http://blog.carbonfive.com/category/design/">Design</a></li>
+</ul></div>			</div><!-- #access -->
+		</div><!-- #masthead -->
+	</div><!-- #header -->
+
+	<div id="main">
+
+		<div id="container">
+			<div id="content" role="main">
+
+			
+
+				<div id="nav-above" class="navigation">
+					<div class="nav-previous"><a href="http://blog.carbonfive.com/2011/10/11/a-modern-guide-to-threads/" rel="prev"><span class="meta-nav">←</span> A Modern Guide to Threads</a></div>
+					<div class="nav-next"><a href="http://blog.carbonfive.com/2011/10/18/theres-a-vim-plugin-for-that-fuzzy-finder/" rel="next">There’s a (Vim Plugin) for That! Part I: Fuzzy Finder <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-above -->
+
+				<div id="post-5203" class="post-5203 post type-post status-publish format-standard hentry category-process tag-vim-vim-text-objects">
+					<div class="entry-heading">
+                                		<div class="author-avatar">
+                                        		<a href="http://blog.carbonfive.com/author/jcarroll/"><img id="grav-987def7741e1f36805e45f92d66ccf92-0" alt="" src="987def7741e1f36805e45f92d66ccf92" class="avatar avatar-100 photo grav-hashed" height="100" width="100"></a>                                		</div><!-- #author-avatar -->
+
+						<h1 class="entry-title">Vim Text Objects: The Definitive Guide</h1>
+
+						<div class="entry-meta">
+							<span class="meta-prep meta-prep-author">Posted on</span> <a href="http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/" title="10:29 am" rel="bookmark"><span class="entry-date">October 17, 2011</span></a> <span class="meta-sep">by</span> <span class="author vcard"><a class="url fn n" href="http://blog.carbonfive.com/author/jcarroll/" title="View all posts by Jared Carroll">Jared Carroll</a></span>						</div><!-- .entry-meta -->
+					</div>
+
+					<div class="entry-content">
+						<p>
+To edit efficiently in Vim, you have to edit beyond individual characters. Instead, edit by word, sentence, and paragraph. In Vim, these higher-level contexts are called <strong>text objects</strong>.
+</p>
+<p>
+Vim provides text objects for both plaintext and common programming language constructs. You can also define new text objects using Vim script.
+</p>
+<p>
+Learning these text objects can take your Vim editing to a whole new level of precision and speed.
+</p>
+<p><span id="more-5203"></span></p>
+<h2>Structure of an Editing Command</h2>
+<p>
+In Vim, editing commands have the following structure:
+</p>
+<p></p><pre class="callout">  &lt;number&gt;&lt;command&gt;&lt;text object or motion&gt;
+</pre>
+<p></p>
+<p>
+The <strong>number</strong> is used to perform the command over multiple text objects or motions, e.g., backward three words, forward two paragraphs. The number is optional and can appear either before or after the command.
+</p>
+<p>
+The <strong>command</strong> is an operation, e.g., change, delete (cut), or yank (copy). The command is also optional; but without it, you only have a motion command, not an edit command
+</p>
+<p>
+The <strong>text object</strong> or <strong>motion</strong> can either be a text construct, e.g., a word, a sentence, a paragraph, or a motion, e.g., forward a line, back one page, end of the line.
+</p>
+<p>
+An <strong>editing command</strong> is a command plus a text object or motion, e.g., delete this word, change the next sentence, copy this paragraph.
+</p>
+<h2>Plaintext Text Objects</h2>
+<p>
+Vim provides text objects for the three building blocks of plaintext: words, sentences and paragraphs.
+</p>
+<h3> Words </h3>
+<ul>
+<li> aw – a word (includes surrounding white space)</li>
+<li> iw – inner word (does <strong>not</strong> include surrounding white space)</li>
+</ul>
+<p></p><pre class="callout">Lorem ip<span class="cursor">s</span>um dolor sit amet...
+</pre>
+<p></p>
+<p><code>daw</code></p>
+<p></p><pre class="callout">Lorem <span class="cursor">d</span>olor sit amet...
+</pre>
+<p></p>
+<p>
+Text objects beginning with <code>a</code> include the surrounding white space in the text object, those starting with <code>i</code> do not. This convention is followed by all text objects.
+</p>
+<p>
+The motion <code>w</code> may seem similar to the text object <code>aw</code>. The difference is in the allowed cursor position. For example, to delete a word using <code>dw</code> the cursor must be at the start of the word, any other position would delete only part of the word; however, <code>daw</code> allows the cursor to be at any position in the word.
+</p>
+<h3> Sentences </h3>
+<ul>
+<li> as – a sentence</li>
+<li> is – inner sentence</li>
+</ul>
+<p></p><pre class="callout">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt
+ut l<span class="cursor">a</span>bore et dolore magna aliqua. Ut enim ad minim veniam, quis
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+</pre>
+<p></p>
+<p><code>cis</code></p>
+<p></p><pre class="callout"><span class="cursor">&nbsp;</span>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
+nisi ut aliquip ex ea commodo consequat.
+</pre>
+<p></p>
+<p>
+Notice how the “inner” text object does <strong>not</strong> include the trailing white space.
+</p>
+<p>
+Like <code>aw</code>, <code>as</code> offers the same cursor position advantage over its motion counterparts <code>(</code> <code>)</code>, forward and backward a sentence. To operate on the entire previous sentence <code>(</code> requires the cursor to be at the end of the sentence; to operate on the entire next sentence <code>)</code> requires your cursor to be at the start of the sentence.
+</p>
+<h3> Paragraphs </h3>
+<ul>
+<li> ap – a paragraph</li>
+<li> ip – inner paragraph</li>
+</ul>
+<p></p><pre class="callout">Lorem ipsum dolor <span class="cursor">s</span>it amet, consectetur adipisicing elit, sed do
+eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis 
+nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+
+Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+mollit anim id est laborum.
+</pre>
+<p></p>
+<p><code>dap</code></p>
+<p></p><pre class="callout"><span class="cursor">D</span>uis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt
+mollit anim id est laborum.
+</pre>
+<p></p>
+<p>
+Again, <code>ap</code> and <code>ip</code> provide the same cursor position advantage that Vim’s sentence and word text objects provide: your cursor can be anywhere within the paragraph in order to operate on it.
+</p>
+<h2>Motion Commands vs. Text Objects Commands</h2>
+<p>
+A command using a motion, e.g., <code>cw</code>, operates from the current cursor position. A command using a text-object, e.g., <code>ciw</code> operates on the whole object regardless of the cursor position. We saw this behavior in each of the various plaintext text objects. Although this requires one more character, it saves you the time and effort of moving the cursor into the “right” position.
+</p>
+<h2>Programming Language Text Objects</h2>
+<p>
+Vim provides several text objects based on common programming language constructs.
+</p>
+<h3> Strings </h3>
+<ul>
+<li> a” – a double quoted string</li>
+<li> i” – inner double quoted string</li>
+<li> a’ – a single quoted string</li>
+<li> i’ – inner single quoted string</li>
+<li> a` – a back quoted string</li>
+<li> i` – inner back quoted string</li>
+</ul>
+<p></p><pre class="callout"><span class="cursor">p</span>uts 'Hello "world"'
+</pre>
+<p></p>
+<p><code>ci"</code></p>
+<p></p><pre class="callout">puts 'Hello "<span class="cursor">"</span>'
+</pre>
+<p></p>
+<p>
+Notice that the cursor was <strong>not</strong> even within the double-quoted phrase (“world”); the command defaulted to changing the first double-quoted phrase in the line.
+</p>
+<p></p><pre class="callout">puts <span class="cursor">'</span>Hello "world"'
+</pre>
+<p></p>
+<p><code>ci'</code></p>
+<p></p><pre class="callout">puts '<span class="cursor">'</span>
+</pre>
+<p></p>
+<p>
+Current line searches offer an alternative way to delete a quoted phrase. Continuing with the previous example, placing the cursor on the first <code>'</code> and executing <code>ct'</code> would delete the contents of the single quoted string and place us in insert mode. However, this is less flexible than using a text object because it requires the cursor to be on the opening <code>'</code>.
+</p>
+<p>
+A search pattern <code>/'</code> could also be used, but it too requires the cursor to be on the opening <code>'</code>. It also deletes the closing <code>'</code>.
+</p>
+<p>
+It’s best to use search commands for searching and <strong>not</strong> editing.
+</p>
+<h3> Parentheses </h3>
+<ul>
+<li> a) – a parenthesized block </li>
+<li> i) – inner parenthesized block </li>
+</ul>
+<p></p><pre class="callout">Project.all(:conditions =&gt; { :published =&gt; true }<span class="cursor">)</span>
+</pre>
+<p></p>
+<p><code>da)</code></p>
+<p></p><pre class="callout">Project.al<span class="cursor">l</span>
+</pre>
+<p></p>
+<p>
+Both of these text objects are also available as <code>ab</code> and <code>ib</code>, however I find these less intuitive than using the version that includes a parenthesis character.
+</p>
+<p>
+The <code>%</code> motion is another way to match a pair of parentheses. Entering <code>%</code> on an opening parenthesis will move the cursor to the closing parenthesis. Combined with a command, this can provide the same<br>
+functionality as <code>a)</code>, e.g., <code>c%</code> is equivalent to <code>ca)</code>. However, the disadvantage to using <code>%</code> is that the cursor <strong>must</strong> be on the opening or closing parenthesis; with <code>a)</code> the cursor can be anywhere on <strong>or</strong> the parenthesized phrase. There is also no way to replicate <code>i)</code> using <code>%</code>.
+</p>
+<h3> Brackets </h3>
+<ul>
+<li> a] – a bracketed block </li>
+<li> i] – inner bracketed block </li>
+</ul>
+<p></p><pre class="callout">(defn sum [<span class="cursor">x</span> y]
+  (+ x y))
+</pre>
+<p></p>
+<p><code>di]</code></p>
+<p></p><pre class="callout">(defn sum [<span class="cursor">]</span>
+  (+ x y))
+</pre>
+<p></p>
+<p>
+The <code>%</code> movement can also be with <code>[]</code>. However, it has the same limited flexibility when using it with <code>()</code>.
+</p>
+<h3>Braces</h3>
+<ul>
+<li> a} – a brace block  </li>
+<li> i} – inner brace block  </li>
+</ul>
+<p></p><pre class="callout">puts "Name: #{<span class="cursor">u</span>ser.name}"
+</pre>
+<p></p>
+<p><code>ci}</code></p>
+<p></p><pre class="callout">puts "Name: #{<span class="cursor">}</span>"
+</pre>
+<p></p>
+<p>
+Both of these text objects are also available as <code>aB</code> and <code>iB</code>, however, I find these less intuitive than using the version that includes a brace character.
+</p>
+<p>
+Again, the <code>%</code> movement can also be with <code>{}</code>. However, it has the same limited flexibility when using it with <code>()</code> or <code>[]</code>.
+</p>
+<h3> Markup Language Tags </h3>
+<ul>
+<li> at – a tag block </li>
+<li> it – inner tag block </li>
+</ul>
+<p></p><pre class="callout"><span class="cursor">&lt;</span>h2&gt;Sample Title&lt;/h2&gt;
+</pre>
+<p></p>
+<p><code>cit</code></p>
+<p></p><pre class="callout">&lt;h2&gt;<span class="cursor">&lt;</span>/h2&gt;
+</pre>
+<p></p>
+<p>
+Notice that the cursor was <strong>not</strong> even within the <code>&lt;h2&gt;</code>. This is a very efficient way to quickly replace tag content.
+</p>
+<ul>
+<li> a&gt; – a single tag</li>
+<li> i&gt; – inner single tag </li>
+</ul>
+<p></p><pre class="callout">&lt;div <span class="cursor">i</span>d="content"&gt;&lt;/div&gt;
+</pre>
+<p></p>
+<p><code>di&gt;</code></p>
+<p></p><pre class="callout">&lt;<span class="cursor">&gt;</span>&lt;/div&gt;
+</pre>
+<p></p>
+<p>
+This text object can be used to quickly operate on a single tag and its attributes.
+</p>
+<h2>Vim Scripts Providing Additional Text Objects</h2>
+<p>
+Using Vim script, it’s possible to create new text objects. Here’s a few of my favorite scripts that introduce new programming language text objects.
+</p>
+<h3> CamelCaseMotion </h3>
+<p>
+<a href="https://github.com/bkad/CamelCaseMotion">CamelCaseMotion</a> provides a text object to move by words within a camel or snake-cased word.
+</p>
+<ul>
+<li> i,w – inner camel or snake-cased word </li>
+</ul>
+<p></p><pre class="callout"><span class="cursor">B</span>eanFactoryTransactionAttributeSourceAdvisor</pre>
+<p></p>
+<p><code>ci,w</code></p>
+<p></p><pre class="callout"><span class="cursor">F</span>actoryTransactionAttributeSourceAdvisor</pre>
+<p></p>
+<h3> VimTextObj </h3>
+<p>
+<a href="https://github.com/vim-scripts/argtextobj.vim">VimTextObj</a> provides a text object for function arguments.
+</p>
+<ul>
+<li> aa – an argument </li>
+<li> ia – inner argument </li>
+</ul>
+<p></p><pre class="callout">foo(42, <span class="cursor">b</span>ar(5), 'hello');</pre>
+<p></p>
+<p><code>cia</code></p>
+<p></p><pre class="callout">foo(42, <span class="cursor">,</span> 'hello');</pre>
+<p></p>
+<h3> Indent Object </h3>
+<p>
+<a href="https://github.com/michaeljsmith/vim-indent-object">Indent Object</a> provides a text object based on indentation level. This script is aimed at programming languages that use significant whitespace to delimit code blocks, e.g., Python, CoffeeScript, because its text object does <strong>not</strong> include the line after the last line of the indentation level.
+</p>
+<ul>
+<li> ai – the current indentation level and the line above </li>
+<li> ii – the current indentation level excluding the line above </li>
+</ul>
+<p></p><pre class="callout">def foo():
+  if 3 &gt; 5:
+    <span class="cursor">r</span>eturn True
+  return "foo"
+</pre>
+<p></p>
+<p><code>dai</code></p>
+<p></p><pre class="callout">def foo():
+  <span class="cursor">r</span>eturn "foo"
+</pre>
+<p></p>
+<h3> Ruby Block </h3>
+<p>
+<a href="https://github.com/nelstrom/vim-textobj-rubyblock">Ruby Block</a> provides a text object based on a Ruby block, i.e., any expression that is closed with the <code>end</code> keyword.
+</p>
+<ul>
+<li> ar – a Ruby block </li>
+<li> ir – inner Ruby block </li>
+</ul>
+<p></p><pre class="callout">hash.each do |key, value|
+  puts key
+  puts valu<span class="cursor">e</span>
+end
+</pre>
+<p></p>
+<p><code>cir</code></p>
+<p></p><pre class="callout">hash.each do |key, value|
+  <span class="cursor">&nbsp;</span>
+end
+</pre>
+<p></p>
+<h2>Vi Command Line Editing</h2>
+<p>
+If you use Vi command line editing in your shell, enabled with <code>set -o vi</code> in bash and <code>bindkey -v</code> in zsh, Vim’s text objects are <strong>not</strong> available. Text objects were introduced by Vim but shell command line editing is based on Vi.
+</p>
+<h2>Precision Editing</h2>
+<p>
+Vim’s text objects provide an incredible level of precision. The key is to try to always edit by text objects. Editing by motions e.g., by part of a line, to the next occurrence of a character, is tedious, clumsy, and slow. Instead of correcting a misspelling character by character, change the entire word and re-type it.
+</p>
+<p>
+Don’t be discouraged by the large number of text objects, their conventions make them intuitive and easy to learn. After some practice, like every other Vim command, they’ll quickly become just another muscle memory.
+</p>
+<p><!-- SimpleReach Analytics Plugin Version: 0.0.1 --><br>
+</p>
+<div class="sharedaddy sd-sharing-enabled"><div class="robots-nocontent sd-block sd-social sd-social-icon-text sd-sharing"><h3 class="sd-title">Share this:</h3><div class="sd-content"><ul><li class="share-email"><a rel="nofollow" class="share-email sd-button share-icon" href="http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/?share=email" title="Click to email this to a friend"><span>Email</span></a></li><li class="share-facebook"><a rel="nofollow" class="share-facebook sd-button share-icon" href="http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/?share=facebook" title="Share on Facebook" id="sharing-facebook-5203"><span>Facebook</span></a></li><li class="share-twitter"><a rel="nofollow" class="share-twitter sd-button share-icon" href="http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/?share=twitter" title="Click to share on Twitter" id="sharing-twitter-5203"><span>Twitter</span></a></li><li class="share-google-plus-1"><a rel="nofollow" class="share-google-plus-1 sd-button share-icon" href="http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/?share=google-plus-1" title="Click to share on Google+" id="sharing-google-5203"><span>Google</span></a></li><li class="share-reddit"><a rel="nofollow" class="share-reddit sd-button share-icon" href="http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/?share=reddit" title="Click to share on Reddit"><span>Reddit</span></a></li><li class="share-end"></li></ul></div></div></div>											</div><!-- .entry-content -->
+
+					<div id="entry-author-info">
+						<div id="author-avatar">
+							<img id="grav-987def7741e1f36805e45f92d66ccf92-1" alt="" src="987def7741e1f36805e45f92d66ccf92_001.dat" class="avatar avatar-60 photo grav-hashed grav-hijack" height="60" width="60">						</div><!-- #author-avatar -->
+						<div id="author-description">
+							<h2>About Jared Carroll</h2>
+							After a short stint in the fashion industry Jared found his true calling at Carbon Five.  Yes... he looks like a serial killer in this photo.  But really he is as gentle as a flower.							<div id="author-link">
+								<a href="http://blog.carbonfive.com/author/jcarroll/">
+									View all posts by Jared Carroll <span class="meta-nav">→</span>								</a>
+							</div><!-- #author-link	-->
+						</div><!-- #author-description -->
+					</div><!-- #entry-author-info -->
+
+					<div class="entry-utility">
+						This entry was posted in <a href="http://blog.carbonfive.com/category/process/" title="View all posts in Process" rel="category tag">Process</a> and tagged <a href="http://blog.carbonfive.com/tag/vim-vim-text-objects/" rel="tag">vim vim-text-objects</a>. Bookmark the <a href="http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/" title="Permalink to Vim Text Objects: The Definitive Guide" rel="bookmark">permalink</a>.											</div><!-- .entry-utility -->
+				</div><!-- #post-## -->
+
+				<div id="nav-below" class="navigation">
+					<div class="nav-previous"><a href="http://blog.carbonfive.com/2011/10/11/a-modern-guide-to-threads/" rel="prev"><span class="meta-nav">←</span> A Modern Guide to Threads</a></div>
+					<div class="nav-next"><a href="http://blog.carbonfive.com/2011/10/18/theres-a-vim-plugin-for-that-fuzzy-finder/" rel="next">There’s a (Vim Plugin) for That! Part I: Fuzzy Finder <span class="meta-nav">→</span></a></div>
+				</div><!-- #nav-below -->
+
+				
+<div id="disqus_thread">
+                    <div id="dsq-content">
+
+
+            <ul id="dsq-comments">
+                    <li class="comment even thread-even depth-1" id="dsq-comment-4064">
+        <div id="dsq-comment-header-4064" class="dsq-comment-header">
+            <cite id="dsq-cite-4064">
+                <span id="dsq-author-user-4064">Anonymous</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4064" class="dsq-comment-body">
+            <div id="dsq-comment-message-4064" class="dsq-comment-message"><p>This stuff looks pretty powerful.  I really like how the commands are mostly acronyms for what you want to do:</p>
+<p>daw = Delete A Word<br>
+cip = Change Inner Paragraph<br>
+da,w = Delete A Comma (Camel) Word</p>
+<p>I need to get better at vim…</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-4065">
+        <div id="dsq-comment-header-4065" class="dsq-comment-header">
+            <cite id="dsq-cite-4065">
+                <span id="dsq-author-user-4065">Aaron</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4065" class="dsq-comment-body">
+            <div id="dsq-comment-message-4065" class="dsq-comment-message"><p>“If you use Vi command line editing in your shell, enabled with set -o vi in bash and bindkey -v in zsh, Vim’s text objects are not available.”</p>
+<p>However, if you’re editing a command (in set -o vi mode), you can ESC and then press the ‘v’ key, which will open a full vim session initialized with your command line. Edit the command, then “:wq” which will exit vim and execute the command.</p>
+<p>Works in bash, probably similar or the same in other modern shells.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-4066">
+        <div id="dsq-comment-header-4066" class="dsq-comment-header">
+            <cite id="dsq-cite-4066">
+                <span id="dsq-author-user-4066">Jared Carroll</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4066" class="dsq-comment-body">
+            <div id="dsq-comment-message-4066" class="dsq-comment-message"><p>Good tip Aaron. ‘v’ from the command line is a sweet way to get access to Vim’s text objects.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-4067">
+        <div id="dsq-comment-header-4067" class="dsq-comment-header">
+            <cite id="dsq-cite-4067">
+http://joshtriplett.org/                <span id="dsq-author-user-4067">Josh Triplett</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4067" class="dsq-comment-body">
+            <div id="dsq-comment-message-4067" class="dsq-comment-message"><p>You don’t have to have the cursor on a (, [, or { to use %.  % will actually find the next bracketing character on the line, and then go to the matching character.  So, if you have “foo(bar);” , with the cursor on the first ‘o’, and press d%, you’ll end up with just “f”.</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment even depth-2" id="dsq-comment-4071">
+        <div id="dsq-comment-header-4071" class="dsq-comment-header">
+            <cite id="dsq-cite-4071">
+                <span id="dsq-author-user-4071">Jared Carroll</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4071" class="dsq-comment-body">
+            <div id="dsq-comment-message-4071" class="dsq-comment-message"><p>You’re right Josh. What I meant to say about ‘%’ was that when trying to replicate a command on a parenthesized block such as ‘ca)’ you have to have the cursor on one of the parentheses when executing ‘c%’.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment odd alt thread-odd thread-alt depth-1" id="dsq-comment-4068">
+        <div id="dsq-comment-header-4068" class="dsq-comment-header">
+            <cite id="dsq-cite-4068">
+                <span id="dsq-author-user-4068">Rob Pak</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4068" class="dsq-comment-body">
+            <div id="dsq-comment-message-4068" class="dsq-comment-message"><p>Thanks for the post. This will be helpful to all vimmers.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-even depth-1" id="dsq-comment-4069">
+        <div id="dsq-comment-header-4069" class="dsq-comment-header">
+            <cite id="dsq-cite-4069">
+                <span id="dsq-author-user-4069">Johan Hilding</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4069" class="dsq-comment-body">
+            <div id="dsq-comment-message-4069" class="dsq-comment-message"><p>So *b is the suffix for both ( and {, or did you just have the same sentence copied twice?</p>
+</div>
+        </div>
+
+    <ul class="children">
+    <li class="comment odd alt depth-2" id="dsq-comment-4070">
+        <div id="dsq-comment-header-4070" class="dsq-comment-header">
+            <cite id="dsq-cite-4070">
+                <span id="dsq-author-user-4070">Jared Carroll</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4070" class="dsq-comment-body">
+            <div id="dsq-comment-message-4070" class="dsq-comment-message"><p>Good catch. It’s ‘b’ for ‘(‘ and ‘B’ for ‘{‘. I’ll update the post.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+</ul><!-- .children -->
+</li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-4072">
+        <div id="dsq-comment-header-4072" class="dsq-comment-header">
+            <cite id="dsq-cite-4072">
+http://rudyjahchan.com                <span id="dsq-author-user-4072">Rudy Jahchan</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4072" class="dsq-comment-body">
+            <div id="dsq-comment-message-4072" class="dsq-comment-message"><p>Love these tips actually; will make writing in Vim in general (with the word, sentence, and paragraph objects) a joy.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-4073">
+        <div id="dsq-comment-header-4073" class="dsq-comment-header">
+            <cite id="dsq-cite-4073">
+http://twitter.com/omargomez                <span id="dsq-author-user-4073">Omar Gomez</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4073" class="dsq-comment-body">
+            <div id="dsq-comment-message-4073" class="dsq-comment-message"><p>Terrific post. Thanks for making this look so simple.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-4075">
+        <div id="dsq-comment-header-4075" class="dsq-comment-header">
+            <cite id="dsq-cite-4075">
+http://twitter.com/umamipanda                <span id="dsq-author-user-4075">Niklas Schmücker</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4075" class="dsq-comment-body">
+            <div id="dsq-comment-message-4075" class="dsq-comment-message"><p>How could I have missed half of this for my whole life?? +1</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-4077">
+        <div id="dsq-comment-header-4077" class="dsq-comment-header">
+            <cite id="dsq-cite-4077">
+                <span id="dsq-author-user-4077">Validid</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4077" class="dsq-comment-body">
+            <div id="dsq-comment-message-4077" class="dsq-comment-message"><p>This VIM text objects are simple, intuitive and powerful. Thanks for sharing.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-4079">
+        <div id="dsq-comment-header-4079" class="dsq-comment-header">
+            <cite id="dsq-cite-4079">
+                <span id="dsq-author-user-4079">Vimmer</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4079" class="dsq-comment-body">
+            <div id="dsq-comment-message-4079" class="dsq-comment-message"><p>like “c” for change — “v” is another handy command for it will visualize or highlight the area in question. For example, “vas” is useful for sentences which contain odd punctuations within; it can double-check the area before a delete or change (given by d or c respectively *after* the visualize operation).</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-4084">
+        <div id="dsq-comment-header-4084" class="dsq-comment-header">
+            <cite id="dsq-cite-4084">
+                <span id="dsq-author-user-4084">Alan MacDougall</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4084" class="dsq-comment-body">
+            <div id="dsq-comment-message-4084" class="dsq-comment-message"><p>Tim Pope’s remarkable surround.vim makes use of text objects, and is very handy: <a href="https://github.com/tpope/vim-surround" rel="nofollow">https://github.com/tpope/vim-surround</a></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://rhe.name/main/?p=36480" rel="external nofollow" class="url">A Look at Vim Text Objects |</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-4090">
+        <div id="dsq-comment-header-4090" class="dsq-comment-header">
+            <cite id="dsq-cite-4090">
+http://twitter.com/PeterAzP                <span id="dsq-author-user-4090">PeterAzP</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4090" class="dsq-comment-body">
+            <div id="dsq-comment-message-4090" class="dsq-comment-message"><p>This is friggin insanely good. I came to this post thinking “Hell, I’m pretty good at the whole sentence/paragraph/block-editing but obviously I knew nothing! Just like Jon Snow.</p>
+<p>I will immediately start using text-objects, this was awesome! So much easier to remember das or di” than its movement counterparts as well!</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://nationalcybersecurity.mobi/four-short-links-19-october-2011/" rel="external nofollow" class="url">Four short links: 19 October 2011 | National Cyber Security</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-4092">
+        <div id="dsq-comment-header-4092" class="dsq-comment-header">
+            <cite id="dsq-cite-4092">
+                <span id="dsq-author-user-4092">Microbe</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4092" class="dsq-comment-body">
+            <div id="dsq-comment-message-4092" class="dsq-comment-message"><p>Wow, great. I recently learned gqip. It is very useful but I couldn’t quite decompose the command. Now I know what it means.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://techrights.org/2011/10/20/gnome-pie-0-2/" rel="external nofollow" class="url">Links 20/10/2011: Linux 3.1 RC 10, Gnome Pie 0.2 | Techrights</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://www.nakedtechnologist.com/?p=703" rel="external nofollow" class="url">Guides, Papers and APIs – Part 1 | The Naked Technologist</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://www.ghazaliridzwan.com/2011/10/a-look-at-vim-text-objects/" rel="external nofollow" class="url">A Look at Vim Text Objects « GhazaliRidzwan.com</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://blog.xquant.net/?p=118" rel="external nofollow" class="url">Weekly links for 11/10/30 | xQuant</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-4245">
+        <div id="dsq-comment-header-4245" class="dsq-comment-header">
+            <cite id="dsq-cite-4245">
+                <span id="dsq-author-user-4245">Paul Grayson</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4245" class="dsq-comment-body">
+            <div id="dsq-comment-message-4245" class="dsq-comment-message"><p>Jared, this is great! Thanks very much for writing this.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://okpanico.wordpress.com/2011/12/04/frattanto-nella-blogosfera-50/" rel="external nofollow" class="url">Frattanto nella blogosfera #50 « Ok, panico</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-4299">
+        <div id="dsq-comment-header-4299" class="dsq-comment-header">
+            <cite id="dsq-cite-4299">
+                <span id="dsq-author-user-4299">John F. Mercer</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4299" class="dsq-comment-body">
+            <div id="dsq-comment-message-4299" class="dsq-comment-message"><p>Great article. Many thanks.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://jontai.me/blog/2012/01/vim-text-objects/" rel="external nofollow" class="url">Vim Text Objects - Control+R</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://justaguyinphilly.com/2012/01/19/yavp/" rel="external nofollow" class="url">Yet another Vim post « justaguyinphilly</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-4355">
+        <div id="dsq-comment-header-4355" class="dsq-comment-header">
+            <cite id="dsq-cite-4355">
+                <span id="dsq-author-user-4355">Zhopon</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4355" class="dsq-comment-body">
+            <div id="dsq-comment-message-4355" class="dsq-comment-message"><p>best VIM tutorial that I ever read<br>
+THANKS!</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-4366">
+        <div id="dsq-comment-header-4366" class="dsq-comment-header">
+            <cite id="dsq-cite-4366">
+                <span id="dsq-author-user-4366">Anonymous</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4366" class="dsq-comment-body">
+            <div id="dsq-comment-message-4366" class="dsq-comment-message"><p>Thanks for such a simple and clear writing.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://bcreatures.wordpress.com/2012/03/25/vim-compensating-no-visual-studio-part-1/" rel="external nofollow" class="url">VIM – Compensating no Visual Studio (part 1) « Binarycreatures's Blog</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-4451">
+        <div id="dsq-comment-header-4451" class="dsq-comment-header">
+            <cite id="dsq-cite-4451">
+                <span id="dsq-author-user-4451">Arhuman</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4451" class="dsq-comment-body">
+            <div id="dsq-comment-message-4451" class="dsq-comment-message"><p>Great article !</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-4456">
+        <div id="dsq-comment-header-4456" class="dsq-comment-header">
+            <cite id="dsq-cite-4456">
+                <span id="dsq-author-user-4456">David Kinzer</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4456" class="dsq-comment-body">
+            <div id="dsq-comment-message-4456" class="dsq-comment-message"><p>Thanks! Great Article.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-4484">
+        <div id="dsq-comment-header-4484" class="dsq-comment-header">
+            <cite id="dsq-cite-4484">
+                <span id="dsq-author-user-4484">Sergio Luiz Araújo Silva</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4484" class="dsq-comment-body">
+            <div id="dsq-comment-message-4484" class="dsq-comment-message"><p>Creating new text objects by wikia: <a href="http://vim.wikia.com/wiki/Creating_new_text_objects" rel="nofollow">http://vim.wikia.com/wiki/Creating_new_text_objects</a></p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-4548">
+        <div id="dsq-comment-header-4548" class="dsq-comment-header">
+            <cite id="dsq-cite-4548">
+                <span id="dsq-author-user-4548">dimko_desu</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4548" class="dsq-comment-body">
+            <div id="dsq-comment-message-4548" class="dsq-comment-message"><p>Thanks you for this very usefull post.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://imbuzu.wordpress.com/2012/11/28/links-of-the-day-vim-edition-11272012/" rel="external nofollow" class="url">Links of the Day (Vim Edition) – 11/27/2012 | Buzu’s Oficial Blog</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-4769">
+        <div id="dsq-comment-header-4769" class="dsq-comment-header">
+            <cite id="dsq-cite-4769">
+http://mneorr.com/                <span id="dsq-author-user-4769">Marin Usalj</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4769" class="dsq-comment-body">
+            <div id="dsq-comment-message-4769" class="dsq-comment-message"><p>Very nice! thanks</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="comment odd alt thread-even depth-1" id="dsq-comment-4801">
+        <div id="dsq-comment-header-4801" class="dsq-comment-header">
+            <cite id="dsq-cite-4801">
+                <span id="dsq-author-user-4801">dmmmdfll</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4801" class="dsq-comment-body">
+            <div id="dsq-comment-message-4801" class="dsq-comment-message"><p>Thanks for writing this.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="https://annotary.com/collections/19754/computer-tips" rel="external nofollow" class="url">Computer Tips | Annotary</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://jeremiahtillman.wordpress.com/2013/10/27/vim-text-objects-the-definitive-guide/" rel="external nofollow" class="url">Vim Text Objects: The Definitive Guide | Enjoying The Moment</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://www.rocketboom.com/news/vim-text-objects-the-definitive-guide/" rel="external nofollow" class="url">Vim Text Objects: The Definitive Guide | Rocketboom</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://www.multiframes.com/traffic/smartlink/skafi.php?sk=4913" rel="external nofollow" class="url">Lebanon web design company</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="comment even thread-odd thread-alt depth-1" id="dsq-comment-4845">
+        <div id="dsq-comment-header-4845" class="dsq-comment-header">
+            <cite id="dsq-cite-4845">
+http://jeditux.wordpress.com/                <span id="dsq-author-user-4845">Fernando Basso</span>
+            </cite>
+        </div>
+        <div id="dsq-comment-body-4845" class="dsq-comment-body">
+            <div id="dsq-comment-message-4845" class="dsq-comment-message"><p>Nice guide. Thanks. We should add it to vimgor bot in #vim.</p>
+</div>
+        </div>
+
+    </li><!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://blogueun.wordpress.com/2013/08/16/why-vim/" rel="external nofollow" class="url">Why Vim? | Blog 1</a></p>
+    </li>
+    <!-- #comment-## -->
+    <li class="post pingback">
+        <p>Pingback: <a href="http://thewolfdev.wordpress.com/2014/02/05/simple-vim-commands-i-discovered-that-i-wish-i-new-about-earlier/" rel="external nofollow" class="url">Simple Vim commands I discovered, that I wish I new about earlier. | Development blog of @martynthewolf</a></p>
+    </li>
+    <!-- #comment-## -->
+            </ul>
+
+
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+			</div><!-- #content -->
+		</div><!-- #container -->
+
+
+		<div id="primary" class="widget-area" role="complementary">
+			<ul class="xoxo">
+
+<li id="search-3" class="widget-container widget_search"><h3 class="widget-title">Search</h3><form role="search" method="get" id="searchform" class="searchform" action="http://blog.carbonfive.com/">
+				<div>
+					<label class="screen-reader-text" for="s">Search for:</label>
+					<input placeholder="Search" value="" name="s" id="s" type="text">
+					<input id="searchsubmit" value="Go" type="submit">
+				</div>
+			</form></li><li id="nav_menu-4" class="widget-container widget_nav_menu"><h3 class="widget-title">Sound interesting?</h3><div class="menu-jobs-3-container"><ul id="menu-jobs-3" class="menu"><li id="menu-item-6168" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-6168"><a href="http://blog.carbonfive.com/jobs">Work With Us</a></li>
+</ul></div></li>		<li id="recent-posts-3" class="widget-container widget_recent_entries">		<h3 class="widget-title">Recent Posts</h3>		<ul>
+					<li>
+				<a href="http://blog.carbonfive.com/2014/02/28/taking-advantage-of-multi-processor-environments-in-node-js/">Taking Advantage of Multi-Processor Environments in Node.js</a>
+						</li>
+					<li>
+				<a href="http://blog.carbonfive.com/2014/02/21/raygun-generating-rails-apps-for-the-last-year/">Raygun: Generating Rails Apps for the Last Year</a>
+						</li>
+					<li>
+				<a href="http://blog.carbonfive.com/2014/02/11/angularjs-scopes-an-introduction/">AngularJS Scopes: An Introduction</a>
+						</li>
+				</ul>
+		</li><li id="nav_menu-3" class="widget-container widget_nav_menu"><div class="menu-subscribe-container"><ul id="menu-subscribe" class="menu"><li id="menu-item-3870" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-3870"><a href="http://blog.carbonfive.com/feed"><span id="rss-icon">RSS</span>Subscribe</a></li>
+</ul></div></li>			</ul>
+		</div><!-- #primary .widget-area -->
+
+	</div><!-- #main -->
+
+	<div id="footer" role="contentinfo">
+		<div id="colophon">
+
+
+
+			<div id="site-info">
+				<a href="http://blog.carbonfive.com/" title="The Carbon Emitter" rel="home">
+					The Carbon Emitter				</a>
+			</div><!-- #site-info -->
+
+			<div id="site-generator">
+								<a href="http://wordpress.org/" title="Semantic Personal Publishing Platform" rel="generator">Proudly powered by WordPress.</a>
+			</div><!-- #site-generator -->
+
+		</div><!-- #colophon -->
+	</div><!-- #footer -->
+
+</div><!-- #wrapper -->
+
+
+
+
+	<div style="display: none;">
+	<div class="grofile-hash-map-987def7741e1f36805e45f92d66ccf92">
+	</div>
+	</div>
+
+	
+	<div id="sharing_email" style="display: none;">
+		<form action="http://blog.carbonfive.com/2011/10/17/vim-text-objects-the-definitive-guide/" method="post">
+			<label for="target_email">Send to Email Address</label>
+			<input name="target_email" id="target_email" value="" type="text">
+
+			
+				<label for="source_name">Your Name</label>
+				<input name="source_name" id="source_name" value="" type="text">
+
+				<label for="source_email">Your Email Address</label>
+				<input name="source_email" id="source_email" value="" type="text">
+
+			
+			
+			<img style="float: right; display: none;" class="loading" src="loading.gif" alt="loading" height="16" width="16">
+			<input value="Send Email" class="sharing_send" type="submit">
+			<a href="#cancel" class="sharing_cancel">Cancel</a>
+
+			<div class="errors errors-1" style="display: none;">
+				Post was not sent - check your email addresses!			</div>
+
+			<div class="errors errors-2" style="display: none;">
+				Email check failed, please try again			</div>
+
+			<div class="errors errors-3" style="display: none;">
+				Sorry, your blog cannot share posts by email.			</div>
+		</form>
+	</div>
+		
+				
+				
+		
+
+
+
+
+
+
+	
+	<img id="wpstats" src="g.gif" alt="">
+
+
+
+
+
+
+</body>
+</html>

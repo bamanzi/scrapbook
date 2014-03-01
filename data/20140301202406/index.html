@@ -1,0 +1,2315 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Publishing Org-mode files to HTML</title>
+<!-- 2013-12-31 Tue 15:03 -->
+
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Sebastian Rose">
+
+<link rel="alternate stylesheet" title="Zenburn" href="http://orgmode.org/worg/style/worg-zenburn.css" type="text/css">
+<link rel="alternate stylesheet" title="Classic" href="http://orgmode.org/worg/style/worg-classic.css" type="text/css">
+<link rel="SHORTCUT ICON" href="org-mode-unicorn.ico" type="image/x-icon">
+<link rel="icon" href="org-mode-unicorn.ico" type="image/ico">
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body><div style="display: none;" id="MathJax_Message"></div>
+<div id="preamble" class="status">
+
+</div>
+<div id="content">
+<h1 class="title">Publishing Org-mode files to HTML</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#sec-1">Introduction</a></li>
+<li><a href="#sec-2">Basics</a></li>
+<li><a href="#sec-3">Publishing the <i>org</i> project</a>
+<ul>
+<li><a href="#sec-3-1">The <i>notes</i> component</a></li>
+<li><a href="#sec-3-2">The <i>static</i> component</a></li>
+<li><a href="#sec-3-3">The <i>publish</i> component</a></li>
+<li><a href="#sec-3-4">Pooh - can we publish now?</a></li>
+</ul>
+</li>
+<li><a href="#sec-4">Adding directories</a></li>
+<li><a href="#sec-5">Overwrite the defaults</a>
+<ul>
+<li><a href="#sec-5-1">The export options template</a></li>
+<li><a href="#sec-5-2">Special comment section</a></li>
+</ul>
+</li>
+<li><a href="#sec-6">Tired of export templates?</a>
+<ul>
+<li><a href="#sec-6-1">More level files</a></li>
+</ul>
+</li>
+<li><a href="#sec-7">More Projects</a>
+<ul>
+<li><a href="#sec-7-1">The <i>inherit</i> component</a>
+<ul>
+<li><a href="#sec-7-1-1">One more Example</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#sec-8">Overview</a>
+<ul>
+<li><a href="#sec-8-1">The sitemap</a></li>
+<li><a href="#sec-8-2">org-info.js</a></li>
+</ul>
+</li>
+<li><a href="#sec-9">Special symbols</a></li>
+<li><a href="#sec-10">Further reading</a></li>
+</ul>
+</div>
+</div>
+<p>
+<a href="http://orgmode.org/worg/index.html">{Back to Worg's index}</a>
+</p>
+
+<div id="outline-container-sec-1" class="outline-2">
+<h2 id="sec-1">Introduction</h2>
+<div class="outline-text-2" id="text-1">
+<p>
+This Tutorial describes one of many ways to publishing Org-mode files to
+XHTML. We use the publishing mechanism to keep the <code>*.html</code> files separated
+from our <code>*.org</code> files and to access them via web browser. Simply exporting the
+Org-mode files to HTML would leave them in <code>~/org/</code>.
+</p>
+
+<p>
+The XHTML files we create will work every where, on any host, with or without
+network access, and even when accessed through the <code>file:///</code> protocol. To
+achieve this goal, we use
+</p>
+
+<ul class="org-ul">
+<li>no absolute paths in HTML,
+</li>
+<li>no server side scripting to navigate our output directories,
+</li>
+<li>no <code>base</code> element (which is optional as of XHTML 1.0 strict) and
+</li>
+<li>no software, but emacs, Org-mode and a web browser.
+</li>
+</ul>
+
+<p>
+All this means, we are able to check and use the result of work immediately,
+everywhere.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-2" class="outline-2">
+<h2 id="sec-2">Basics</h2>
+<div class="outline-text-2" id="text-2">
+<p>
+Throughout this tutorial, let's assume that all our Org-mode files live beneath
+<code>~/org/</code> and we publish them to <code>~/public_html/</code>.
+</p>
+
+<p>
+Let's further assume you're already familiar with the note taking basics in
+org and able to add a little content to the Org-mode files we add to our project
+during this tutorial. Please add at least one headline to each of the files.
+</p>
+
+<p>
+The first thing to do is to create the folder <code>~/org</code>. This is where our notes
+files live. Inside <code>~/org/</code> we have a folder <code>css/</code> for stylesheets and
+scripts, and a folder called <code>img/</code> (guess what's in there).
+</p>
+
+<p>
+The first file we add to that folder (and to subdirectories later on) is called
+<code>index.org</code>. This name was choosen, since Org will publish the files to those
+with the basename of the source file plus the extension <code>.html</code> <sup><a id="fnr.1" name="fnr.1" class="footref" href="#fn.1">1</a></sup>. Thus
+<code>~/org/index.org</code> will once be <code>~/public_html/index.html</code> – the startpage.
+</p>
+
+<p>
+Let's add another file and call it <code>~/org/remember.org</code>. After adding a
+stylesheet, <code>~/org/</code> looks like this:
+</p>
+
+<pre class="example">~/org/
+   |- css/
+   |  `- stylesheet.css
+   |- img/
+   |- index.org
+   `- remember.org
+</pre>
+
+<p>
+When ever you want to add link to a file, do it the usual way. To link from
+<code>index.org</code> to <code>remember.org</code>, just write
+</p>
+<pre class="example">[[file:remember.org][remember]]
+</pre>
+<p>
+Org will convert those links to HTML links for you on export:
+</p>
+<pre class="example">&lt;a href="./remember.html"&gt;remember&lt;/a&gt;
+</pre>
+
+<p>
+Same is true for images. To add an image, put it in <code>~/org/img/test.jpg</code> and
+refer to it by
+</p>
+<pre class="example">[[file:img/test.jpg]]
+</pre>
+
+<p>
+You may test your links by clicking on them. To test image links you may also
+try to turn on <code>iimage-mode</code> <sup><a id="fnr.2" name="fnr.2" class="footref" href="#fn.2">2</a></sup> which works without problems here.
+</p>
+
+<p>
+Optionally, set up the stylesheet as shown in section <a href="#Special-comment-section">Special comment section</a>. The recommended way is to use a real stylesheet though.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3" class="outline-2">
+<h2 id="sec-3">Publishing the <i>org</i> project</h2>
+<div class="outline-text-2" id="text-3">
+<p>
+To publish the <code>~/org/</code> project to HTML, we'll have to setup the variable
+<code>org-publish-project-alist</code> <sup><a id="fnr.3" name="fnr.3" class="footref" href="#fn.3">3</a></sup>.  I tend to split each project in three basic
+<i>components</i> as described in the manual. We need these different components,
+since we want org to use two different functions to publish dynamic content
+(org =&gt; html) and static content like scripts, images, stylesheets or even
+.htaccess files (org =&gt; copy). The third component is just for convenience and
+tells org to execute the former ones.
+</p>
+
+<p>
+<code>org-publish-project-alist</code> may be adjusted using customize (<code>M-x
+  customize-variable RET org-publish-project-alist RET</code>), but I prefere to
+use an extra file to setup my projects, since there are quite a few. To follow
+this tutorial use the <code>*scratch*</code> buffer and put all the Lisp in this section
+in there.
+</p>
+
+<p>
+First of all, enter this into the <code>*scratch*</code> buffer:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: rgb(0, 191, 255); font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">org-publish</span>)
+(setq org-publish-project-alist
+      '(
+
+       <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">... add all the components here (see below)...</span>
+
+      ))
+</pre>
+</div>
+
+<p>
+Be sure to put all the <i>components</i> below right there where the comment line
+is now.
+</p>
+</div>
+
+<div id="outline-container-sec-3-1" class="outline-3">
+<h3 id="sec-3-1">The <i>notes</i> component</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+The <i>notes</i> component publishes all the Org-mode files to HTML. Hence the
+<code>publishing-function</code> is set to <code>org-publish-org-to-html</code>. Here is an example
+of the notes component:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: rgb(218, 165, 32); font-style: italic;">"org-notes"</span>
+ <span style="font-weight: bold;">:base-directory</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"~/org/"</span>
+ <span style="font-weight: bold;">:base-extension</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"org"</span>
+ <span style="font-weight: bold;">:publishing-directory</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"~/public_html/"</span>
+ <span style="font-weight: bold;">:recursive</span> t
+ <span style="font-weight: bold;">:publishing-function</span> org-publish-org-to-html
+ <span style="font-weight: bold;">:headline-levels</span> 4             <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Just the default for this project.</span>
+ <span style="font-weight: bold;">:auto-preamble</span> t
+ )
+</pre>
+</div>
+
+<p>
+Note, that <code>headline-levels</code> may be adjusted <a href="#sec-5">on a per file basis</a> to overwrite
+the default.
+</p>
+
+<p>
+The most important settings here are:
+</p>
+
+<table rules="groups" frame="hsides" border="2" cellpadding="6" cellspacing="0">
+
+
+<colgroup>
+<col class="left">
+
+<col class="left">
+</colgroup>
+<tbody>
+<tr>
+<td class="left"><code>base-directory</code></td>
+<td class="left">The components root directory.</td>
+</tr>
+
+<tr>
+<td class="left"><code>base-extension</code></td>
+<td class="left">Filename suffix without the dot.</td>
+</tr>
+
+<tr>
+<td class="left"><code>publishing-directory</code></td>
+<td class="left">The base directory where all our files will be published.</td>
+</tr>
+
+<tr>
+<td class="left"><code>recursive</code></td>
+<td class="left">If <code>t</code>, include subdirectories - we want that. Subdirectories in <code>:publishing-directory</code> are created if they don't yet exist.</td>
+</tr>
+
+<tr>
+<td class="left"><code>publishing-function</code></td>
+<td class="left">If and how org should process the files in this component. In this case: convert the Org-mode files to HTML.</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div id="outline-container-sec-3-2" class="outline-3">
+<h3 id="sec-3-2">The <i>static</i> component</h3>
+<div class="outline-text-3" id="text-3-2">
+<p>
+The <i>static</i> component just copies files (and their folders) from
+<code>:base-directory</code> to <code>:publishing-directory</code> without changing them. Thus
+let's tell Org-mode to use the function <code>org-publish-attachment</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: rgb(218, 165, 32); font-style: italic;">"org-static"</span>
+ <span style="font-weight: bold;">:base-directory</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"~/org/"</span>
+ <span style="font-weight: bold;">:base-extension</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"css</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">js</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">png</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">jpg</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">gif</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">pdf</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">mp3</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">ogg</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">swf"</span>
+ <span style="font-weight: bold;">:publishing-directory</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"~/public_html/"</span>
+ <span style="font-weight: bold;">:recursive</span> t
+ <span style="font-weight: bold;">:publishing-function</span> org-publish-attachment
+ )
+</pre>
+</div>
+
+<p>
+<b>Note</b> that <code>:publishing-function</code> is set to <code>org-publish-attachment</code>.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-3" class="outline-3">
+<h3 id="sec-3-3">The <i>publish</i> component</h3>
+<div class="outline-text-3" id="text-3-3">
+<p>
+To publish all with one command, we add the <i>publish</i> component. For this
+component I usually drop the suffix and just use the basename of the
+project.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: rgb(218, 165, 32); font-style: italic;">"org"</span> <span style="font-weight: bold;">:components</span> (<span style="color: rgb(218, 165, 32); font-style: italic;">"org-notes"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"org-static"</span>))
+</pre>
+</div>
+
+<p>
+Now <code>M-x org-publish-project RET org RET</code> publishes everything
+recursively to <code>~/public_html/</code>. Target directories are created, if they
+don't yet exist.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-3-4" class="outline-3">
+<h3 id="sec-3-4">Pooh - can we publish now?</h3>
+<div class="outline-text-3" id="text-3-4">
+<p>
+The good message is <b>yes, we can</b>. Just one little hump. Since we've put the
+definition for our publishing components in the <code>*scratch*</code> buffer, again,
+make sure all the <i>components</i> are enclosed by the lines
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: rgb(0, 191, 255); font-weight: bold;">require</span> '<span style="font-weight: bold; text-decoration: underline;">org-publish</span>)
+(setq org-publish-project-alist
+      '(
+
+       <span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">... all the components ...</span>
+
+      ))
+</pre>
+</div>
+
+<p>
+Move to the end of the first line and press <code>C-x C-e</code> to load
+<code>org-publish</code>. Now go to the end of the last line and press <code>C-x C-e</code>
+again. Repeat the last step after every change to your
+<code>org-publish-project-alist</code>.
+</p>
+
+<p>
+To publish your Org-mode files just type
+<code>M-x org-publish-project RET org RET</code> or use one of the shortcuts listed in
+the manual. If nothing went wrong, you should now be able to point your
+browser to <a href="http://localhost/%7Euser/">http://localhost/~user/</a>, if <code>mod_userdir</code> is set up. If
+not, simply navigate to <a href="file:////home/user/public_html">file:////home/user/public_html</a> (you might use
+<i>file -&gt; open</i> from the file menu of your browser.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-4" class="outline-2">
+<h2 id="sec-4">Adding directories</h2>
+<div class="outline-text-2" id="text-4">
+<p>
+As we add more and more files to <code>~/org/</code>, we will soon end up with filenames
+like '<code>networking-ssh-sshd-config.org</code>' or longer. What we need is a
+directory structure:
+</p>
+
+<pre class="example">~/org/
+  |- css/
+  |  `- stylesheet.css
+  |- Emacs
+  |  |- index.org
+  |  |- gnus.org
+  |  |- org.org
+  |  `- snippets.org
+  |- img/
+  |- index.org
+  `- remember.org
+</pre>
+
+<p>
+If we hadn't added
+</p>
+<pre class="example">:recursive t
+</pre>
+<p>
+in the <i>notes</i> and <i>static</i> components already, we would have to do it now at
+the latest to export the subdirectories too.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Overwrite the defaults</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+The defaults set by <code>org-publish-project-alist</code> may be overwritten. You might
+want to justify the export properties for single files. Be it the level of
+headlines, include extry scripts or different stylesheets. Org offers ways to adjust
+the settings for a single file.
+</p>
+</div>
+
+<div id="outline-container-sec-5-1" class="outline-3">
+<h3 id="sec-5-1">The export options template</h3>
+<div class="outline-text-3" id="text-5-1">
+<p>
+The first choice is the <i>export options template</i> on top of the file. When in
+an Org-mode file, you may insert basic information using <code>C-c C-e #</code>
+(<code>org-export-dispatch</code>) plus "template".  You will be prompted for a template
+choice.  "default" will provide a template for common options, and "html"
+will provide a template for HTML-specific options.
+</p>
+
+<p>
+WARNING: Do <b>not</b> copy lines from the sample output below into your
+files. The template might change from release to release. Instead,
+insert a template as above and delete any entries that are not
+applicable.
+</p>
+
+<p>
+The default option inserts the following lines:
+</p>
+
+<pre class="example">#+TITLE: filename with the extension omitted
+#+DATE: &lt;2013-06-04 Tue&gt;
+#+AUTHOR: Your name
+#+EMAIL: Your email address
+#+OPTIONS: ':t *:t -:t ::t &lt;:t H:3 \n:nil ^:t arch:headline author:t c:nil
+#+OPTIONS: creator:comment d:(not LOGBOOK) date:t e:t email:nil f:t inline:t
+#+OPTIONS: num:t p:nil pri:nil stat:t tags:t tasks:t tex:t timestamp:t toc:t
+#+OPTIONS: todo:t |:t
+#+CREATOR: Emacs 24.3.50.3 (Org mode 8.0.3)
+#+DESCRIPTION:
+#+EXCLUDE_TAGS: noexport
+#+KEYWORDS:
+#+LANGUAGE: en
+#+SELECT_TAGS: export
+</pre>
+
+<p>
+and the html option will add the following:
+</p>
+
+<pre class="example">#+OPTIONS: html-postamble:auto html-preamble:t tex:t
+#+CREATOR: &lt;a href="http://www.gnu.org/software/emacs/"&gt;Emacs&lt;/a&gt; 24.3.50.3 (&lt;a href="http://orgmode.org"&gt;Org&lt;/a&gt; mode 8.0.3)
+#+HTML_CONTAINER: div
+#+HTML_DOCTYPE: xhtml-strict
+#+HTML_HEAD:
+#+HTML_HEAD_EXTRA:
+#+HTML_HTML5_FANCY:
+#+HTML_INCLUDE_SCRIPTS:
+#+HTML_INCLUDE_STYLE:
+#+HTML_LINK_HOME:
+#+HTML_LINK_UP:
+#+HTML_MATHJAX:
+#+INFOJS_OPT:
+</pre>
+
+<p>
+All we have to do now is to alter the options to match our needs. All the
+options are listed in the wonderful Org-mode manual. Note though, that these
+options are only parsed on startup (i.e., when you first open the file). To
+explicitly apply your new options move on any of those lines and press <code>C-c</code>
+twice.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-5-2" class="outline-3">
+<h3 id="sec-5-2"><a id="Special-comment-section" name="Special-comment-section">Special comment section</a></h3>
+<div class="outline-text-3" id="text-5-2">
+<p>
+Also, CSS style variables may be using a special section may be
+#insert/appended to Org-mode files:
+</p>
+
+<pre class="example">* COMMENT html style specifications
+
+# Local Variables:
+# org-export-html-style: "&lt;link rel=\"stylesheet\" type=\"text/css\" href=\"css/stylesheet.css\" /&gt;"
+# End:
+</pre>
+
+<p>
+<code>css/stylesheet.css</code> suits the needs for a file in the root folder. Use <br>
+   <code>../css/stylesheet.css</code> in a subfolder (first level), <br>
+   <code>../../css/stylesheet.css</code> for a file in a sub-sub-folder.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-6" class="outline-2">
+<h2 id="sec-6">Tired of export templates?</h2>
+<div class="outline-text-2" id="text-6">
+<p>
+If you're like me, you will soon get tired of adding the same export options
+template to numerous files and adjust the title and paths in it. Luckily,
+Org-mode supports laziness and offers an additional way to set up files. All
+we need is a directory (e.g. <code>~/.emacs.d/org-templates/</code>) and create the
+following files there:
+</p>
+
+<ul class="org-ul">
+<li><code>level-0.org</code> <br>
+   This file contains all export options lines. The <a href="#special-comment-section">Special comment section</a>
+will not work for files in subdirectories. Hence we always use the export
+options line
+<p>
+:#+STYLE: &lt;link rel="stylesheet" type="text/css" href="stylesheet.css" /&gt;
+…suitable for each file in the projects root folder
+(<code>~/org/</code> or <code>~/B/</code> in the examples). Just drop the <code>#+TITLE</code> since this
+will be different for every file and automatically set on export (based on
+the filename if omitted).
+</p>
+</li>
+<li><code>level-1.org</code> <br>
+   This file contains all export options lines for the stylesheet suitable for
+each file in a subfolder of the projects root folder (e.g. <code>~/org/emacs/</code>
+or <code>~/org/networking/</code>). Just drop the <code>#+TITLE</code> again. The options line
+for the stylesheet looks like this:
+<p>
+:#+STYLE: &lt;link rel="stylesheet" type="text/css" href="../stylesheet.css" /&gt;
+</p>
+</li>
+
+<li>Add more files for more levels.
+</li>
+</ul>
+
+<p>
+Now remove the <a href="#special-comment-section">Special comment section</a> from the end of your Org-mode files in
+the project folders and change the export options template to
+</p>
+
+<pre class="example">#+SETUPFILE: ~/.emacs.d/org-templates/level-N.org
+#+TITLE: My Title
+</pre>
+
+<p>
+Replace <code>N</code> with distance to the root folder (<code>0</code>, <code>1</code> etc.) of your project
+and press <code>C-c</code> twice while still on this line to apply the
+changes. Subsequent lines still overwrite the settings for just this one file.
+</p>
+</div>
+
+
+<div id="outline-container-sec-6-1" class="outline-3">
+<h3 id="sec-6-1">More level files</h3>
+<div class="outline-text-3" id="text-6-1">
+<p>
+Also, these <i>level-N</i> files give us the chance to easily switch between different
+export setups. As an example, we could have a separate stylesheet and
+<code>org-info.js</code> setup for presentations, and put the appropriate options in a
+file named <code>level-0-slides.org</code>:
+</p>
+
+<pre class="example">#+INFOJS_OPT: path:org-info.js
+#+INFOJS_OPT: toc:nil view:slide
+#+STYLE: &lt;link rel="stylesheet" type="text/css" href="slides.css" /&gt;
+</pre>
+
+<p>
+Now it's as simple as typing '<i>-slides</i>' to change the appearance of any file
+in our project.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-7" class="outline-2">
+<h2 id="sec-7">More Projects</h2>
+<div class="outline-text-2" id="text-7">
+<p>
+As we get used to note taking in org, we might add an <code>org</code> directory to most
+of our projects. All those projects are published as well. Project '<code>~/B/</code>'
+is published to '<code>~/public_html/B/</code>', '<code>~/C/</code>' is published to
+'<code>~/public_html/C/</code>', and so on. This leads to the problem of common
+stylesheets and current JavaScripts — and to a new <i>component</i>.
+</p>
+</div>
+
+<div id="outline-container-sec-7-1" class="outline-3">
+<h3 id="sec-7-1">The <i>inherit</i> component</h3>
+<div class="outline-text-3" id="text-7-1">
+<p>
+Once we get tired of copying the static files from one project to another, the
+following configuration does the trick for us. We simply add the <i>inherit</i>
+component, that imports all the static files from our <code>~/org/</code> directory <sup><a id="fnr.4" name="fnr.4" class="footref" href="#fn.4">4</a></sup>.
+From now on, it will be sufficient to edit stylesheets and scripts just
+there.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: rgb(218, 165, 32); font-style: italic;">"B-inherit"</span>
+ <span style="font-weight: bold;">:base-directory</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"~/org/"</span>
+ <span style="font-weight: bold;">:recursive</span> t
+ <span style="font-weight: bold;">:base-extension</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"css</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">js"</span>
+ <span style="font-weight: bold;">:publishing-directory</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"~/public_html/B/"</span>
+ <span style="font-weight: bold;">:publishing-function</span> org-publish-attachment
+)
+
+(<span style="color: rgb(218, 165, 32); font-style: italic;">"B-org"</span>
+<span style="font-weight: bold;">:base-directory</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"~/B/"</span>
+<span style="font-weight: bold;">:auto-index</span> t
+<span style="font-weight: bold;">:index-filename</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"sitemap.org"</span>
+<span style="font-weight: bold;">:index-title</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"Sitemap"</span>
+<span style="font-weight: bold;">:recursive</span> t
+<span style="font-weight: bold;">:base-extension</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"org"</span>
+<span style="font-weight: bold;">:publishing-directory</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"~/public_html/B/"</span>
+<span style="font-weight: bold;">:publishing-function</span> org-publish-org-to-html
+<span style="font-weight: bold;">:headline-levels</span> 3
+<span style="font-weight: bold;">:auto-preamble</span> t
+)
+(<span style="color: rgb(218, 165, 32); font-style: italic;">"B-static"</span>
+ <span style="font-weight: bold;">:base-directory</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"~/B/"</span>
+ <span style="font-weight: bold;">:recursive</span> t
+ <span style="font-weight: bold;">:base-extension</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"css</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">js</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">png</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">jpg</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">gif</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">pdf</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">mp3</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">ogg</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">\\</span><span style="color: rgb(218, 165, 32); font-weight: bold; font-style: italic;">|</span><span style="color: rgb(218, 165, 32); font-style: italic;">swf"</span>
+ <span style="font-weight: bold;">:publishing-directory</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"~/public_html/B/"</span>
+ <span style="font-weight: bold;">:publishing-function</span> org-publish-attachment)
+
+(<span style="color: rgb(218, 165, 32); font-style: italic;">"B"</span> <span style="font-weight: bold;">:components</span> (<span style="color: rgb(218, 165, 32); font-style: italic;">"B-inherit"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"B-notes"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"B-static"</span>))
+</pre>
+</div>
+
+<p>
+<b>Note</b>, that the inheritance trick works for non org directories. You might
+want to keep all your stylesheets and scripts in a single place, or even add
+more <i>inheritance</i> to your projects, to import sources from upstream.
+</p>
+
+<p>
+<b>Note</b> also, that <code>B-inherit</code> exports directly to the web. If you want to track
+the changes to <code>~org/*.css</code> directly in <code>~/B</code>, you must ensure, that <code>B-inherit</code> is
+the first component in <code>B</code> since the components in <code>B</code> are executed in
+the sequence listed: first get the new stylesheet into <code>B</code>, then execute
+<code>B-static</code>.
+</p>
+</div>
+
+<div id="outline-container-sec-7-1-1" class="outline-4">
+<h4 id="sec-7-1-1">One more Example</h4>
+<div class="outline-text-4" id="text-7-1-1">
+<p>
+As I use <a href="http://orgmode.org/worg/code/org-info-js/index.html">org-info.js</a> and track Worg git, I use "<code>inherit-org-info-js</code>" in all
+my <code>org</code> projects:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp">(<span style="color: rgb(218, 165, 32); font-style: italic;">"inherit-org-info-js"</span>
+ <span style="font-weight: bold;">:base-directory</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"~/develop/org/Worg/code/org-info-js/"</span>
+ <span style="font-weight: bold;">:recursive</span> t
+ <span style="font-weight: bold;">:base-extension</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"js"</span>
+ <span style="font-weight: bold;">:publishing-directory</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"~/org/"</span>
+ <span style="font-weight: bold;">:publishing-function</span> org-publish-attachment)
+
+<span style="font-weight: bold; font-style: italic;">;; </span><span style="font-weight: bold; font-style: italic;">... all the rest ... ;;</span>
+
+(<span style="color: rgb(218, 165, 32); font-style: italic;">"B"</span> <span style="font-weight: bold;">:components</span> (<span style="color: rgb(218, 165, 32); font-style: italic;">"inherit-org-info-js"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"B-inherit"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"B-notes"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"B-static"</span>))
+(<span style="color: rgb(218, 165, 32); font-style: italic;">"C"</span> <span style="font-weight: bold;">:components</span> (<span style="color: rgb(218, 165, 32); font-style: italic;">"inherit-org-info-js"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"C-inherit"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"C-notes"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"C-static"</span>))
+(<span style="color: rgb(218, 165, 32); font-style: italic;">"D"</span> <span style="font-weight: bold;">:components</span> (<span style="color: rgb(218, 165, 32); font-style: italic;">"inherit-org-info-js"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"D-inherit"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"D-notes"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"D-static"</span>))
+(<span style="color: rgb(218, 165, 32); font-style: italic;">"E"</span> <span style="font-weight: bold;">:components</span> (<span style="color: rgb(218, 165, 32); font-style: italic;">"inherit-org-info-js"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"E-inherit"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"E-notes"</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"E-static"</span>))
+</pre>
+</div>
+
+<p>
+…means, <code>B</code> <code>C</code> <code>D</code> and <code>E</code> use my local stylesheets and always the latest
+version of <code>org-info.js</code>.
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-8" class="outline-2">
+<h2 id="sec-8">Overview</h2>
+<div class="outline-text-2" id="text-8">
+<p>
+Once there are lots of files and subdirectories, we're in the need of ways to
+easily navigate our notes in a browser. What we need now, is an index, an
+overview of all our note files.
+</p>
+</div>
+
+<div id="outline-container-sec-8-1" class="outline-3">
+<h3 id="sec-8-1">The sitemap</h3>
+<div class="outline-text-3" id="text-8-1">
+<p>
+Org-modes great publishing also generates a recursive sitemap. Its name 
+defaults to <code>sitemap.org</code>, which get's in our way, since we have a real 
+startpage as <code>sitemap.html</code> <sup><a id="fnr.5" name="fnr.5" class="footref" href="#fn.5">5</a></sup>. Fortunately there is a configuration 
+option to change the name of the generated sitemap. To generate the sitemap,
+add these lines to the <i>notes</i> component:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-emacs-lisp"><span style="font-weight: bold;">:auto-sitemap</span> t                <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">Generate sitemap.org automagically...</span>
+<span style="font-weight: bold;">:sitemap-filename</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"sitemap.org"</span>  <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">... call it sitemap.org (it's the default)...</span>
+<span style="font-weight: bold;">:sitemap-title</span> <span style="color: rgb(218, 165, 32); font-style: italic;">"Sitemap"</span>         <span style="font-weight: bold; font-style: italic;">; </span><span style="font-weight: bold; font-style: italic;">... with title 'Sitemap'.</span>
+</pre>
+</div>
+
+<p>
+The sitemap will reflect the tree structure of the project. To access the
+sitemap easily, we could do two things:
+</p>
+
+<ol class="org-ol">
+<li>Setup the '<i>UP</i>' link of the Startpage to link to <code>sitemap.html</code> (see next
+section),
+</li>
+<li>use the '<code>#+INCLUDE: sitemap.org</code>' directive. Most of my Org-mode files
+contain a chapter called "<i>Links</i>" at the end of the file, which contains
+a subsection <i>Sitemap</i> that in turn just consists of that
+diretive. For the <code>index.org</code> files in the root directory, I include the
+sitemap as the first section.
+</li>
+</ol>
+
+<p>
+You can also change the position of folders with <code>:sitemap-sort-folders</code>,
+this can be set to <code>last</code> or <code>first</code> (default), to display folders last or 
+first.
+</p>
+</div>
+</div>
+<div id="outline-container-sec-8-2" class="outline-3">
+<h3 id="sec-8-2">org-info.js</h3>
+<div class="outline-text-3" id="text-8-2">
+<p>
+Another way to get additional links to navigate the structure is
+<a href="http://orgmode.org/worg/code/org-info-js/index.html">org-info.js</a>. Let's set it up like this (either in every file, or in
+<code>org-level-N.org</code>, where <code>N &gt; 0</code>):
+</p>
+
+<pre class="example">#+LINK_UP: index.html
+</pre>
+
+<p>
+This makes the little <i>UP</i> link ('<code>h</code>') point to the <code>index.html</code> in the
+current directory.
+</p>
+
+<p>
+The <code>index.org</code> in the root of the project has the <i>index file</i> as section 2
+(which I may reach pressing '<code>n</code>' then), and the same option set like this:
+</p>
+
+<pre class="example">#+LINK_UP: sitemap.html
+</pre>
+
+<p>
+For an <code>index.org</code> in a subdirectory:
+</p>
+
+<pre class="example">#+LINK_UP: ../index.html
+</pre>
+
+<p>
+The <code>LINK_HOME</code> always points to the same file:
+</p>
+
+<pre class="example">#+LINK_HOME: http://localhost/~user/index.html
+</pre>
+
+<p>
+Please consider replacing the last one with a relative path (which will be
+different for every level of subdirectories).
+</p>
+
+<p>
+No matter where we are, we may always press <code>H n</code> and we face the sitemap.
+No matter where we are, we may always press <code>h</code> to move up the tree.
+</p>
+</div>
+</div>
+</div>
+<div id="outline-container-sec-9" class="outline-2">
+<h2 id="sec-9">Special symbols</h2>
+<div class="outline-text-2" id="text-9">
+<p>
+This is a list of LaTeX symbols understood by Org-mode. You may use most of
+those LaTeX symbols to get the desired results (shown in the first column)
+when exporting to HTML. Note though, that not all symbols are translated to
+HTML. They are listed anyway, since they may be used for LaTeX export
+nonetheless. Some characters in the first column are invisible (spaces). To
+see them, mark the part of the table using the mouse.
+</p>
+
+<p>
+You may produce special HTML characters for verbatim <code>#+BEGIN\_HTML</code> sections
+using <a href="http://www-atm.physics.ox.ac.uk/user/iwi/charmap.html">http://www-atm.physics.ox.ac.uk/user/iwi/charmap.html</a> (download link on
+the bottom of that page).
+</p>
+
+
+<table rules="groups" frame="hsides" border="2" cellpadding="6" cellspacing="0">
+
+
+<colgroup>
+<col class="left">
+
+<col class="left">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">Symbol</th>
+<th scope="col" class="left">LaTeX</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">&nbsp;</td>
+<td class="left"><code>\nbsp</code></td>
+</tr>
+
+<tr>
+<td class="left">¡</td>
+<td class="left"><code>\iexcl</code></td>
+</tr>
+
+<tr>
+<td class="left">¢</td>
+<td class="left"><code>\cent</code></td>
+</tr>
+
+<tr>
+<td class="left">£</td>
+<td class="left"><code>\pound</code></td>
+</tr>
+
+<tr>
+<td class="left">¤</td>
+<td class="left"><code>\curren</code></td>
+</tr>
+
+<tr>
+<td class="left">¥</td>
+<td class="left"><code>\yen</code></td>
+</tr>
+
+<tr>
+<td class="left">¦</td>
+<td class="left"><code>\brvbar</code></td>
+</tr>
+
+<tr>
+<td class="left">|</td>
+<td class="left"><code>\vert</code></td>
+</tr>
+
+<tr>
+<td class="left">§</td>
+<td class="left"><code>\sect</code></td>
+</tr>
+
+<tr>
+<td class="left">¨</td>
+<td class="left"><code>\uml</code></td>
+</tr>
+
+<tr>
+<td class="left">©</td>
+<td class="left"><code>\copy</code></td>
+</tr>
+
+<tr>
+<td class="left">ª</td>
+<td class="left"><code>\ordf</code></td>
+</tr>
+
+<tr>
+<td class="left">«</td>
+<td class="left"><code>\laquo</code></td>
+</tr>
+
+<tr>
+<td class="left">¬</td>
+<td class="left"><code>\not</code></td>
+</tr>
+
+<tr>
+<td class="left">­</td>
+<td class="left"><code>\shy</code></td>
+</tr>
+
+<tr>
+<td class="left">®</td>
+<td class="left"><code>\reg</code></td>
+</tr>
+
+<tr>
+<td class="left">¯</td>
+<td class="left"><code>\macr</code></td>
+</tr>
+
+<tr>
+<td class="left">°</td>
+<td class="left"><code>\deg</code></td>
+</tr>
+
+<tr>
+<td class="left">±</td>
+<td class="left"><code>\plusmn</code></td>
+</tr>
+
+<tr>
+<td class="left">¹</td>
+<td class="left"><code>\sup1</code></td>
+</tr>
+
+<tr>
+<td class="left">²</td>
+<td class="left"><code>\sup2</code></td>
+</tr>
+
+<tr>
+<td class="left">³</td>
+<td class="left"><code>\sup3</code></td>
+</tr>
+
+<tr>
+<td class="left">´</td>
+<td class="left"><code>\acute</code></td>
+</tr>
+
+<tr>
+<td class="left">µ</td>
+<td class="left"><code>\micro</code></td>
+</tr>
+
+<tr>
+<td class="left">¶</td>
+<td class="left"><code>\para</code></td>
+</tr>
+
+<tr>
+<td class="left">·</td>
+<td class="left"><code>\middot</code></td>
+</tr>
+
+<tr>
+<td class="left">o</td>
+<td class="left"><code>\odot</code></td>
+</tr>
+
+<tr>
+<td class="left">*</td>
+<td class="left"><code>\star</code></td>
+</tr>
+
+<tr>
+<td class="left">¸</td>
+<td class="left"><code>\cedil</code></td>
+</tr>
+
+<tr>
+<td class="left">º</td>
+<td class="left"><code>\ordm</code></td>
+</tr>
+
+<tr>
+<td class="left">»</td>
+<td class="left"><code>\raquo</code></td>
+</tr>
+
+<tr>
+<td class="left">¼</td>
+<td class="left"><code>\frac14</code></td>
+</tr>
+
+<tr>
+<td class="left">½</td>
+<td class="left"><code>\frac12</code></td>
+</tr>
+
+<tr>
+<td class="left">¾</td>
+<td class="left"><code>\frac34</code></td>
+</tr>
+
+<tr>
+<td class="left">¿</td>
+<td class="left"><code>\iquest</code></td>
+</tr>
+
+<tr>
+<td class="left">À</td>
+<td class="left"><code>\Agrave</code></td>
+</tr>
+
+<tr>
+<td class="left">Á</td>
+<td class="left"><code>\Aacute</code></td>
+</tr>
+
+<tr>
+<td class="left">Â</td>
+<td class="left"><code>\Acirc</code></td>
+</tr>
+
+<tr>
+<td class="left">Ã</td>
+<td class="left"><code>\Atilde</code></td>
+</tr>
+
+<tr>
+<td class="left">Ä</td>
+<td class="left"><code>\Auml</code></td>
+</tr>
+
+<tr>
+<td class="left">Å</td>
+<td class="left"><code>\Aring</code> <code>\AA</code></td>
+</tr>
+
+<tr>
+<td class="left">Æ</td>
+<td class="left"><code>\AElig</code></td>
+</tr>
+
+<tr>
+<td class="left">Ç</td>
+<td class="left"><code>\Ccedil</code></td>
+</tr>
+
+<tr>
+<td class="left">È</td>
+<td class="left"><code>\Egrave</code></td>
+</tr>
+
+<tr>
+<td class="left">É</td>
+<td class="left"><code>\Eacute</code></td>
+</tr>
+
+<tr>
+<td class="left">Ê</td>
+<td class="left"><code>\Ecirc</code></td>
+</tr>
+
+<tr>
+<td class="left">Ë</td>
+<td class="left"><code>\Euml</code></td>
+</tr>
+
+<tr>
+<td class="left">Ì</td>
+<td class="left"><code>\Igrave</code></td>
+</tr>
+
+<tr>
+<td class="left">Í</td>
+<td class="left"><code>\Iacute</code></td>
+</tr>
+
+<tr>
+<td class="left">Î</td>
+<td class="left"><code>\Icirc</code></td>
+</tr>
+
+<tr>
+<td class="left">Ï</td>
+<td class="left"><code>\Iuml</code></td>
+</tr>
+
+<tr>
+<td class="left">Ð</td>
+<td class="left"><code>\ETH</code></td>
+</tr>
+
+<tr>
+<td class="left">Ñ</td>
+<td class="left"><code>\Ntilde</code></td>
+</tr>
+
+<tr>
+<td class="left">Ò</td>
+<td class="left"><code>\Ograve</code></td>
+</tr>
+
+<tr>
+<td class="left">Ó</td>
+<td class="left"><code>\Oacute</code></td>
+</tr>
+
+<tr>
+<td class="left">Ô</td>
+<td class="left"><code>\Ocirc</code></td>
+</tr>
+
+<tr>
+<td class="left">Õ</td>
+<td class="left"><code>\Otilde</code></td>
+</tr>
+
+<tr>
+<td class="left">Ö</td>
+<td class="left"><code>\Ouml</code></td>
+</tr>
+
+<tr>
+<td class="left">×</td>
+<td class="left"><code>\times</code></td>
+</tr>
+
+<tr>
+<td class="left">Ø</td>
+<td class="left"><code>\Oslash</code></td>
+</tr>
+
+<tr>
+<td class="left">Ù</td>
+<td class="left"><code>\Ugrave</code></td>
+</tr>
+
+<tr>
+<td class="left">Ú</td>
+<td class="left"><code>\Uacute</code></td>
+</tr>
+
+<tr>
+<td class="left">Û</td>
+<td class="left"><code>\Ucirc</code></td>
+</tr>
+
+<tr>
+<td class="left">Ü</td>
+<td class="left"><code>\Uuml</code></td>
+</tr>
+
+<tr>
+<td class="left">Ý</td>
+<td class="left"><code>\Yacute</code></td>
+</tr>
+
+<tr>
+<td class="left">Þ</td>
+<td class="left"><code>\THORN</code></td>
+</tr>
+
+<tr>
+<td class="left">ß</td>
+<td class="left"><code>\szlig</code></td>
+</tr>
+
+<tr>
+<td class="left">à</td>
+<td class="left"><code>\agrave</code></td>
+</tr>
+
+<tr>
+<td class="left">á</td>
+<td class="left"><code>\aacute</code></td>
+</tr>
+
+<tr>
+<td class="left">â</td>
+<td class="left"><code>\acirc</code></td>
+</tr>
+
+<tr>
+<td class="left">ã</td>
+<td class="left"><code>\atilde</code></td>
+</tr>
+
+<tr>
+<td class="left">ä</td>
+<td class="left"><code>\auml</code></td>
+</tr>
+
+<tr>
+<td class="left">å</td>
+<td class="left"><code>\aring</code></td>
+</tr>
+
+<tr>
+<td class="left">æ</td>
+<td class="left"><code>\aelig</code></td>
+</tr>
+
+<tr>
+<td class="left">ç</td>
+<td class="left"><code>\ccedil</code></td>
+</tr>
+
+<tr>
+<td class="left">è</td>
+<td class="left"><code>\egrave</code></td>
+</tr>
+
+<tr>
+<td class="left">é</td>
+<td class="left"><code>\eacute</code></td>
+</tr>
+
+<tr>
+<td class="left">ê</td>
+<td class="left"><code>\ecirc</code></td>
+</tr>
+
+<tr>
+<td class="left">ë</td>
+<td class="left"><code>\euml</code></td>
+</tr>
+
+<tr>
+<td class="left">ì</td>
+<td class="left"><code>\igrave</code></td>
+</tr>
+
+<tr>
+<td class="left">í</td>
+<td class="left"><code>\iacute</code></td>
+</tr>
+
+<tr>
+<td class="left">î</td>
+<td class="left"><code>\icirc</code></td>
+</tr>
+
+<tr>
+<td class="left">ï</td>
+<td class="left"><code>\iuml</code></td>
+</tr>
+
+<tr>
+<td class="left">ð</td>
+<td class="left"><code>\eth</code></td>
+</tr>
+
+<tr>
+<td class="left">ñ</td>
+<td class="left"><code>\ntilde</code></td>
+</tr>
+
+<tr>
+<td class="left">ò</td>
+<td class="left"><code>\ograve</code></td>
+</tr>
+
+<tr>
+<td class="left">ó</td>
+<td class="left"><code>\oacute</code></td>
+</tr>
+
+<tr>
+<td class="left">ô</td>
+<td class="left"><code>\ocirc</code></td>
+</tr>
+
+<tr>
+<td class="left">õ</td>
+<td class="left"><code>\otilde</code></td>
+</tr>
+
+<tr>
+<td class="left">ö</td>
+<td class="left"><code>\ouml</code></td>
+</tr>
+
+<tr>
+<td class="left">ø</td>
+<td class="left"><code>\oslash</code></td>
+</tr>
+
+<tr>
+<td class="left">ù</td>
+<td class="left"><code>\ugrave</code></td>
+</tr>
+
+<tr>
+<td class="left">ú</td>
+<td class="left"><code>\uacute</code></td>
+</tr>
+
+<tr>
+<td class="left">û</td>
+<td class="left"><code>\ucirc</code></td>
+</tr>
+
+<tr>
+<td class="left">ü</td>
+<td class="left"><code>\uuml</code></td>
+</tr>
+
+<tr>
+<td class="left">ý</td>
+<td class="left"><code>\yacute</code></td>
+</tr>
+
+<tr>
+<td class="left">þ</td>
+<td class="left"><code>\thorn</code></td>
+</tr>
+
+<tr>
+<td class="left">ÿ</td>
+<td class="left"><code>\yuml</code></td>
+</tr>
+
+<tr>
+<td class="left">ƒ</td>
+<td class="left"><code>\fnof</code></td>
+</tr>
+
+<tr>
+<td class="left">Α</td>
+<td class="left"><code>\Alpha</code></td>
+</tr>
+
+<tr>
+<td class="left">Β</td>
+<td class="left"><code>\Beta</code></td>
+</tr>
+
+<tr>
+<td class="left">Γ</td>
+<td class="left"><code>\Gamma</code></td>
+</tr>
+
+<tr>
+<td class="left">Δ</td>
+<td class="left"><code>\Delta</code></td>
+</tr>
+
+<tr>
+<td class="left">Ε</td>
+<td class="left"><code>\Epsilon</code></td>
+</tr>
+
+<tr>
+<td class="left">Ζ</td>
+<td class="left"><code>\Zeta</code></td>
+</tr>
+
+<tr>
+<td class="left">Η</td>
+<td class="left"><code>\Eta</code></td>
+</tr>
+
+<tr>
+<td class="left">Θ</td>
+<td class="left"><code>\Theta</code></td>
+</tr>
+
+<tr>
+<td class="left">Ι</td>
+<td class="left"><code>\Iota</code></td>
+</tr>
+
+<tr>
+<td class="left">Κ</td>
+<td class="left"><code>\Kappa</code></td>
+</tr>
+
+<tr>
+<td class="left">Λ</td>
+<td class="left"><code>\Lambda</code></td>
+</tr>
+
+<tr>
+<td class="left">Μ</td>
+<td class="left"><code>\Mu</code></td>
+</tr>
+
+<tr>
+<td class="left">Ν</td>
+<td class="left"><code>\Nu</code></td>
+</tr>
+
+<tr>
+<td class="left">Ξ</td>
+<td class="left"><code>\Xi</code></td>
+</tr>
+
+<tr>
+<td class="left">Ο</td>
+<td class="left"><code>\Omicron</code></td>
+</tr>
+
+<tr>
+<td class="left">Π</td>
+<td class="left"><code>\Pi</code></td>
+</tr>
+
+<tr>
+<td class="left">Ρ</td>
+<td class="left"><code>\Rho</code></td>
+</tr>
+
+<tr>
+<td class="left">Σ</td>
+<td class="left"><code>\Sigma</code></td>
+</tr>
+
+<tr>
+<td class="left">Τ</td>
+<td class="left"><code>\Tau</code></td>
+</tr>
+
+<tr>
+<td class="left">Υ</td>
+<td class="left"><code>\Upsilon</code></td>
+</tr>
+
+<tr>
+<td class="left">Φ</td>
+<td class="left"><code>\Phi</code></td>
+</tr>
+
+<tr>
+<td class="left">Χ</td>
+<td class="left"><code>\Chi</code></td>
+</tr>
+
+<tr>
+<td class="left">Ψ</td>
+<td class="left"><code>\Psi</code></td>
+</tr>
+
+<tr>
+<td class="left">Ω</td>
+<td class="left"><code>\Omega</code></td>
+</tr>
+
+<tr>
+<td class="left">α</td>
+<td class="left"><code>\alpha</code></td>
+</tr>
+
+<tr>
+<td class="left">β</td>
+<td class="left"><code>\beta</code></td>
+</tr>
+
+<tr>
+<td class="left">γ</td>
+<td class="left"><code>\gamma</code></td>
+</tr>
+
+<tr>
+<td class="left">δ</td>
+<td class="left"><code>\delta</code></td>
+</tr>
+
+<tr>
+<td class="left">ε</td>
+<td class="left"><code>\epsilon</code></td>
+</tr>
+
+<tr>
+<td class="left">ε</td>
+<td class="left"><code>\varepsilon</code></td>
+</tr>
+
+<tr>
+<td class="left">ζ</td>
+<td class="left"><code>\zeta</code></td>
+</tr>
+
+<tr>
+<td class="left">η</td>
+<td class="left"><code>\eta</code></td>
+</tr>
+
+<tr>
+<td class="left">θ</td>
+<td class="left"><code>\theta</code></td>
+</tr>
+
+<tr>
+<td class="left">ι</td>
+<td class="left"><code>\iota</code></td>
+</tr>
+
+<tr>
+<td class="left">κ</td>
+<td class="left"><code>\kappa</code></td>
+</tr>
+
+<tr>
+<td class="left">λ</td>
+<td class="left"><code>\lambda</code></td>
+</tr>
+
+<tr>
+<td class="left">μ</td>
+<td class="left"><code>\mu</code></td>
+</tr>
+
+<tr>
+<td class="left">ν</td>
+<td class="left"><code>\nu</code></td>
+</tr>
+
+<tr>
+<td class="left">ξ</td>
+<td class="left"><code>\xi</code></td>
+</tr>
+
+<tr>
+<td class="left">ο</td>
+<td class="left"><code>\omicron</code></td>
+</tr>
+
+<tr>
+<td class="left">π</td>
+<td class="left"><code>\pi</code></td>
+</tr>
+
+<tr>
+<td class="left">ρ</td>
+<td class="left"><code>\rho</code></td>
+</tr>
+
+<tr>
+<td class="left">ς</td>
+<td class="left"><code>\sigmaf</code>  <code>\varsigma</code></td>
+</tr>
+
+<tr>
+<td class="left">σ</td>
+<td class="left"><code>\sigma</code></td>
+</tr>
+
+<tr>
+<td class="left">τ</td>
+<td class="left"><code>\tau</code></td>
+</tr>
+
+<tr>
+<td class="left">υ</td>
+<td class="left"><code>\upsilon</code></td>
+</tr>
+
+<tr>
+<td class="left">φ</td>
+<td class="left"><code>\phi</code></td>
+</tr>
+
+<tr>
+<td class="left">χ</td>
+<td class="left"><code>\chi</code></td>
+</tr>
+
+<tr>
+<td class="left">ψ</td>
+<td class="left"><code>\psi</code></td>
+</tr>
+
+<tr>
+<td class="left">ω</td>
+<td class="left"><code>\omega</code></td>
+</tr>
+
+<tr>
+<td class="left">ϑ</td>
+<td class="left"><code>\thetasym</code>  <code>\vartheta</code></td>
+</tr>
+
+<tr>
+<td class="left">ϒ</td>
+<td class="left"><code>\upsih</code></td>
+</tr>
+
+<tr>
+<td class="left">ϖ</td>
+<td class="left"><code>\piv</code></td>
+</tr>
+
+<tr>
+<td class="left">•</td>
+<td class="left"><code>\bull</code>  <code>\bullet</code></td>
+</tr>
+
+<tr>
+<td class="left">…</td>
+<td class="left"><code>\hellip</code>  <code>\dots</code></td>
+</tr>
+
+<tr>
+<td class="left">′</td>
+<td class="left"><code>\prime</code></td>
+</tr>
+
+<tr>
+<td class="left">″</td>
+<td class="left"><code>\Prime</code></td>
+</tr>
+
+<tr>
+<td class="left">‾</td>
+<td class="left"><code>\oline</code></td>
+</tr>
+
+<tr>
+<td class="left">⁄</td>
+<td class="left"><code>\frasl</code></td>
+</tr>
+
+<tr>
+<td class="left">℘</td>
+<td class="left"><code>\weierp</code></td>
+</tr>
+
+<tr>
+<td class="left">ℑ</td>
+<td class="left"><code>\image</code></td>
+</tr>
+
+<tr>
+<td class="left">ℜ</td>
+<td class="left"><code>\real</code></td>
+</tr>
+
+<tr>
+<td class="left">™</td>
+<td class="left"><code>\trade</code></td>
+</tr>
+
+<tr>
+<td class="left">ℵ</td>
+<td class="left"><code>\alefsym</code></td>
+</tr>
+
+<tr>
+<td class="left">←</td>
+<td class="left"><code>\larr</code></td>
+</tr>
+
+<tr>
+<td class="left">↑</td>
+<td class="left"><code>\uarr</code></td>
+</tr>
+
+<tr>
+<td class="left">→</td>
+<td class="left"><code>\rarr</code></td>
+</tr>
+
+<tr>
+<td class="left">↓</td>
+<td class="left"><code>\darr</code></td>
+</tr>
+
+<tr>
+<td class="left">↔</td>
+<td class="left"><code>\harr</code></td>
+</tr>
+
+<tr>
+<td class="left">↵</td>
+<td class="left"><code>\crarr</code></td>
+</tr>
+
+<tr>
+<td class="left">⇐</td>
+<td class="left"><code>\lArr</code></td>
+</tr>
+
+<tr>
+<td class="left">⇑</td>
+<td class="left"><code>\uArr</code></td>
+</tr>
+
+<tr>
+<td class="left">⇒</td>
+<td class="left"><code>\rArr</code></td>
+</tr>
+
+<tr>
+<td class="left">⇓</td>
+<td class="left"><code>\dArr</code></td>
+</tr>
+
+<tr>
+<td class="left">⇔</td>
+<td class="left"><code>\hArr</code></td>
+</tr>
+
+<tr>
+<td class="left">∀</td>
+<td class="left"><code>\forall</code></td>
+</tr>
+
+<tr>
+<td class="left">\part</td>
+<td class="left"><code>\part</code></td>
+</tr>
+
+<tr>
+<td class="left">∃</td>
+<td class="left"><code>\exist</code></td>
+</tr>
+
+<tr>
+<td class="left">∅</td>
+<td class="left"><code>\empty</code></td>
+</tr>
+
+<tr>
+<td class="left">∇</td>
+<td class="left"><code>\nabla</code></td>
+</tr>
+
+<tr>
+<td class="left">∈</td>
+<td class="left"><code>\isin</code></td>
+</tr>
+
+<tr>
+<td class="left">∉</td>
+<td class="left"><code>\notin</code></td>
+</tr>
+
+<tr>
+<td class="left">∋</td>
+<td class="left"><code>\ni</code></td>
+</tr>
+
+<tr>
+<td class="left">∏</td>
+<td class="left"><code>\prod</code></td>
+</tr>
+
+<tr>
+<td class="left">∑</td>
+<td class="left"><code>\sum</code></td>
+</tr>
+
+<tr>
+<td class="left">−</td>
+<td class="left"><code>\minus</code></td>
+</tr>
+
+<tr>
+<td class="left">∗</td>
+<td class="left"><code>\lowast</code></td>
+</tr>
+
+<tr>
+<td class="left">√</td>
+<td class="left"><code>\radic</code></td>
+</tr>
+
+<tr>
+<td class="left">∝</td>
+<td class="left"><code>\prop</code></td>
+</tr>
+
+<tr>
+<td class="left">∞</td>
+<td class="left"><code>\infin</code></td>
+</tr>
+
+<tr>
+<td class="left">∠</td>
+<td class="left"><code>\ang</code></td>
+</tr>
+
+<tr>
+<td class="left">∩</td>
+<td class="left"><code>\cap</code></td>
+</tr>
+
+<tr>
+<td class="left">∪</td>
+<td class="left"><code>\cup</code></td>
+</tr>
+
+<tr>
+<td class="left">∫</td>
+<td class="left"><code>\int</code></td>
+</tr>
+
+<tr>
+<td class="left">∴</td>
+<td class="left"><code>\there4</code></td>
+</tr>
+
+<tr>
+<td class="left">∼</td>
+<td class="left"><code>\sim</code></td>
+</tr>
+
+<tr>
+<td class="left">≅</td>
+<td class="left"><code>\cong</code></td>
+</tr>
+
+<tr>
+<td class="left">≈</td>
+<td class="left"><code>\asymp</code></td>
+</tr>
+
+<tr>
+<td class="left">≠</td>
+<td class="left"><code>\ne</code></td>
+</tr>
+
+<tr>
+<td class="left">≡</td>
+<td class="left"><code>\equiv</code></td>
+</tr>
+
+<tr>
+<td class="left">≤</td>
+<td class="left"><code>\le</code></td>
+</tr>
+
+<tr>
+<td class="left">≥</td>
+<td class="left"><code>\ge</code></td>
+</tr>
+
+<tr>
+<td class="left">⊂</td>
+<td class="left"><code>\sub</code></td>
+</tr>
+
+<tr>
+<td class="left">⊃</td>
+<td class="left"><code>\sup</code></td>
+</tr>
+
+<tr>
+<td class="left">⊄</td>
+<td class="left"><code>\nsub</code></td>
+</tr>
+
+<tr>
+<td class="left">⊆</td>
+<td class="left"><code>\sube</code></td>
+</tr>
+
+<tr>
+<td class="left">⊇</td>
+<td class="left"><code>\supe</code></td>
+</tr>
+
+<tr>
+<td class="left">⊕</td>
+<td class="left"><code>\oplus</code></td>
+</tr>
+
+<tr>
+<td class="left">⊗</td>
+<td class="left"><code>\otimes</code></td>
+</tr>
+
+<tr>
+<td class="left">⊥</td>
+<td class="left"><code>\perp</code></td>
+</tr>
+
+<tr>
+<td class="left">⋅</td>
+<td class="left"><code>\sdot</code></td>
+</tr>
+
+<tr>
+<td class="left">⌈</td>
+<td class="left"><code>\lceil</code></td>
+</tr>
+
+<tr>
+<td class="left">⌉</td>
+<td class="left"><code>\rceil</code></td>
+</tr>
+
+<tr>
+<td class="left">⌊</td>
+<td class="left"><code>\lfloor</code></td>
+</tr>
+
+<tr>
+<td class="left">⌋</td>
+<td class="left"><code>\rfloor</code></td>
+</tr>
+
+<tr>
+<td class="left">⟨</td>
+<td class="left"><code>\lang</code></td>
+</tr>
+
+<tr>
+<td class="left">⟩</td>
+<td class="left"><code>\rang</code></td>
+</tr>
+
+<tr>
+<td class="left">◊</td>
+<td class="left"><code>\loz</code></td>
+</tr>
+
+<tr>
+<td class="left">♠</td>
+<td class="left"><code>\spades</code></td>
+</tr>
+
+<tr>
+<td class="left">♣</td>
+<td class="left"><code>\clubs</code></td>
+</tr>
+
+<tr>
+<td class="left">♥</td>
+<td class="left"><code>\hearts</code></td>
+</tr>
+
+<tr>
+<td class="left">♦</td>
+<td class="left"><code>\diams</code></td>
+</tr>
+
+<tr>
+<td class="left">⌣</td>
+<td class="left"><code>\smile</code></td>
+</tr>
+
+<tr>
+<td class="left">"</td>
+<td class="left"><code>\quot</code></td>
+</tr>
+
+<tr>
+<td class="left">&amp;</td>
+<td class="left"><code>\amp</code></td>
+</tr>
+
+<tr>
+<td class="left">&lt;</td>
+<td class="left"><code>\lt</code></td>
+</tr>
+
+<tr>
+<td class="left">&gt;</td>
+<td class="left"><code>\gt</code></td>
+</tr>
+
+<tr>
+<td class="left">Œ</td>
+<td class="left"><code>\OElig</code></td>
+</tr>
+
+<tr>
+<td class="left">œ</td>
+<td class="left"><code>\oelig</code></td>
+</tr>
+
+<tr>
+<td class="left">Š</td>
+<td class="left"><code>\Scaron</code></td>
+</tr>
+
+<tr>
+<td class="left">š</td>
+<td class="left"><code>\scaron</code></td>
+</tr>
+
+<tr>
+<td class="left">Ÿ</td>
+<td class="left"><code>\Yuml</code></td>
+</tr>
+
+<tr>
+<td class="left">ˆ</td>
+<td class="left"><code>\circ</code></td>
+</tr>
+
+<tr>
+<td class="left">~</td>
+<td class="left"><code>\tilde</code></td>
+</tr>
+
+<tr>
+<td class="left"> </td>
+<td class="left"><code>\ensp</code></td>
+</tr>
+
+<tr>
+<td class="left"> </td>
+<td class="left"><code>\emsp</code></td>
+</tr>
+
+<tr>
+<td class="left"> </td>
+<td class="left"><code>\thinsp</code></td>
+</tr>
+
+<tr>
+<td class="left">‌</td>
+<td class="left"><code>\zwnj</code></td>
+</tr>
+
+<tr>
+<td class="left">‍</td>
+<td class="left"><code>\zwj</code></td>
+</tr>
+
+<tr>
+<td class="left">‎</td>
+<td class="left"><code>\lrm</code></td>
+</tr>
+
+<tr>
+<td class="left">‏</td>
+<td class="left"><code>\rlm</code></td>
+</tr>
+
+<tr>
+<td class="left">–</td>
+<td class="left"><code>\ndash</code></td>
+</tr>
+
+<tr>
+<td class="left">—</td>
+<td class="left"><code>\mdash</code></td>
+</tr>
+
+<tr>
+<td class="left">‘</td>
+<td class="left"><code>\lsquo</code></td>
+</tr>
+
+<tr>
+<td class="left">’</td>
+<td class="left"><code>\rsquo</code></td>
+</tr>
+
+<tr>
+<td class="left">‚</td>
+<td class="left"><code>\sbquo</code></td>
+</tr>
+
+<tr>
+<td class="left">“</td>
+<td class="left"><code>\ldquo</code></td>
+</tr>
+
+<tr>
+<td class="left">”</td>
+<td class="left"><code>\rdquo</code></td>
+</tr>
+
+<tr>
+<td class="left">„</td>
+<td class="left"><code>\bdquo</code></td>
+</tr>
+
+<tr>
+<td class="left">†</td>
+<td class="left"><code>\dagger</code></td>
+</tr>
+
+<tr>
+<td class="left">‡</td>
+<td class="left"><code>\Dagger</code></td>
+</tr>
+
+<tr>
+<td class="left">‰</td>
+<td class="left"><code>\permil</code></td>
+</tr>
+
+<tr>
+<td class="left">‹</td>
+<td class="left"><code>\lsaquo</code></td>
+</tr>
+
+<tr>
+<td class="left">›</td>
+<td class="left"><code>\rsaquo</code></td>
+</tr>
+
+<tr>
+<td class="left">€</td>
+<td class="left"><code>\euro</code></td>
+</tr>
+
+<tr>
+<td class="left">arccos</td>
+<td class="left"><code>\arccos</code></td>
+</tr>
+
+<tr>
+<td class="left">arcsin</td>
+<td class="left"><code>\arcsin</code></td>
+</tr>
+
+<tr>
+<td class="left">arctan</td>
+<td class="left"><code>\arctan</code></td>
+</tr>
+
+<tr>
+<td class="left">arg</td>
+<td class="left"><code>\arg</code></td>
+</tr>
+
+<tr>
+<td class="left">cos</td>
+<td class="left"><code>\cos</code></td>
+</tr>
+
+<tr>
+<td class="left">cosh</td>
+<td class="left"><code>\cosh</code></td>
+</tr>
+
+<tr>
+<td class="left">cot</td>
+<td class="left"><code>\cot</code></td>
+</tr>
+
+<tr>
+<td class="left">coth</td>
+<td class="left"><code>\coth</code></td>
+</tr>
+
+<tr>
+<td class="left">csc</td>
+<td class="left"><code>\csc</code></td>
+</tr>
+
+<tr>
+<td class="left">°</td>
+<td class="left"><code>\deg</code></td>
+</tr>
+
+<tr>
+<td class="left">det</td>
+<td class="left"><code>\det</code></td>
+</tr>
+
+<tr>
+<td class="left">dim</td>
+<td class="left"><code>\dim</code></td>
+</tr>
+
+<tr>
+<td class="left">exp</td>
+<td class="left"><code>\exp</code></td>
+</tr>
+
+<tr>
+<td class="left">gcd</td>
+<td class="left"><code>\gcd</code></td>
+</tr>
+
+<tr>
+<td class="left">hom</td>
+<td class="left"><code>\hom</code></td>
+</tr>
+
+<tr>
+<td class="left">inf</td>
+<td class="left"><code>\inf</code></td>
+</tr>
+
+<tr>
+<td class="left">ker</td>
+<td class="left"><code>\ker</code></td>
+</tr>
+
+<tr>
+<td class="left">lg</td>
+<td class="left"><code>\lg</code></td>
+</tr>
+
+<tr>
+<td class="left">lim</td>
+<td class="left"><code>\lim</code></td>
+</tr>
+
+<tr>
+<td class="left">liminf</td>
+<td class="left"><code>\liminf</code></td>
+</tr>
+
+<tr>
+<td class="left">limsup</td>
+<td class="left"><code>\limsup</code></td>
+</tr>
+
+<tr>
+<td class="left">ln</td>
+<td class="left"><code>\ln</code></td>
+</tr>
+
+<tr>
+<td class="left">log</td>
+<td class="left"><code>\log</code></td>
+</tr>
+
+<tr>
+<td class="left">max</td>
+<td class="left"><code>\max</code></td>
+</tr>
+
+<tr>
+<td class="left">min</td>
+<td class="left"><code>\min</code></td>
+</tr>
+
+<tr>
+<td class="left">Pr</td>
+<td class="left"><code>\Pr</code></td>
+</tr>
+
+<tr>
+<td class="left">sec</td>
+<td class="left"><code>\sec</code></td>
+</tr>
+
+<tr>
+<td class="left">sin</td>
+<td class="left"><code>\sin</code></td>
+</tr>
+
+<tr>
+<td class="left">sinh</td>
+<td class="left"><code>\sinh</code></td>
+</tr>
+
+<tr>
+<td class="left">tan</td>
+<td class="left"><code>\tan</code></td>
+</tr>
+
+<tr>
+<td class="left">tanh</td>
+<td class="left"><code>\tanh</code></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div id="outline-container-sec-10" class="outline-2">
+<h2 id="sec-10">Further reading</h2>
+<div class="outline-text-2" id="text-10">
+<p>
+For more information you might want to read the great <a href="http://orgmode.org/manual/">Org-mode manual</a>. One of
+the nicest mailing lists on this planet, BTW, is <a href="http://lists.gnu.org/archive/html/emacs-orgmode/">emacs-orgmode (archive)</a>
+where you might as well find answers to your questions.
+</p>
+
+
+<p>
+Have fun!
+</p>
+</div>
+</div>
+<div id="footnotes">
+<h2 class="footnotes">Footnotes: </h2>
+<div id="text-footnotes">
+
+<div class="footdef"><sup><a id="fn.1" name="fn.1" class="footnum" href="#fnr.1">1</a></sup> <p class="footpara">
+You may customize the file suffix for exported files like this:
+ <code>M-x customize RET org-export-html-extension</code>.
+</p></div>
+
+<div class="footdef"><sup><a id="fn.2" name="fn.2" class="footnum" href="#fnr.2">2</a></sup> <p class="footpara">
+…by typing <code>M-x iimage-mode RET</code>. iimage-mode even shows *.svg images, if
+ <code>librsvg</code> was present on compile time. FIXME: is this true for emacs22 ?
+</p></div>
+
+<div class="footdef"><sup><a id="fn.3" name="fn.3" class="footnum" href="#fnr.3">3</a></sup> <p class="footpara">
+All components of <code>org-publish-projects-alist</code> are documented in the <a href="http://orgmode.org/manual/Project-alist.html#Project-alist">Org Mode
+Manual</a>.
+</p></div>
+
+<div class="footdef"><sup><a id="fn.4" name="fn.4" class="footnum" href="#fnr.4">4</a></sup> <p class="footpara">
+Files may be copied from arbitrary src directories to any target directory
+desired.
+</p></div>
+
+<div class="footdef"><sup><a id="fn.5" name="fn.5" class="footnum" href="#fnr.5">5</a></sup> <p class="footpara">
+This is primarily because of the behaviour of servers. When we navigate
+to <a href="http://orgmode.org/worg/">http://orgmode.org/worg/</a> we will face the <code>index.html</code> if present.
+</p></div>
+
+
+</div>
+</div></div>
+<div id="postamble" class="status">
+<div id="show_source"><input value="Show Org source" onclick="show_org_source()" type="button"></div><div id="license"><p>Documentation from the http://orgmode.org/worg/ website (either in its HTML format or in its Org format) is licensed under the <a href="http://www.gnu.org/copyleft/fdl.html">GNU Free Documentation License version 1.3</a> or later.  The code examples and css stylesheets are licensed under the <a href="http://www.gnu.org/licenses/gpl.html">GNU General Public License v3</a> or later.</p></div>
+</div>
+
+
+</body>
+</html>
