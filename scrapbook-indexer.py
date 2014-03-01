@@ -217,6 +217,53 @@ attach(window, 'load', function() {
         item_to_html(item)
     output.write(HTML_TMPL_FOOTER)
 
+def scrapbook_to_markdown(sbdata, output):
+    HTML_TMPL_HEADER = "# ScrapBook of my favorites articles downloaded from the Web\n"
+    HTML_TMPL_FOOTER = ""
+    HTML_TMPL_BEGIN_FOLDER = "%(indent)s %(title)s\n"
+    HTML_TMPL_END_FOLDER   = "\n"
+    HTML_TMPL_ITEM         = "  * [%(title)s](http://bamanzi.github.io/scrapbook/data/%(id)s/)] [original url](%(source)s)\n"
+
+
+    def item_to_html(itemid, level):
+        itemdata = sbdata.DESC[itemid]
+        if not itemdata:
+            sys.stderr.write("ERROR: description for item %s not exist.\n" % itemid)
+            return
+
+        itemdata['indent'] = '#' * level
+        type = itemdata["type"]
+
+        if type=="folder":
+            if not itemdata:
+                sys.stderr.write("ERROR: itemdata is null. id=%s\n" % itemid)
+            else:
+                try:
+                    output.write((HTML_TMPL_BEGIN_FOLDER % itemdata).encode('utf-8'))
+                except:
+                    result="error in folder %s\n" % itemid
+                    for key in itemdata.keys():
+                        result = result + "   %s: %s\n" %(key, itemdata[key].decode('UTF-8'))
+                    sys.stderr.write(result)
+
+                seq = sbdata.SEQ[itemid]
+                if not seq:
+                    sys.stderr.write("ERROR: seq for item %s not exist.\n" % itemid)
+                else:
+                    for item in seq:
+                        item_to_html(item, level + 1)
+                    output.write((HTML_TMPL_END_FOLDER % itemdata).encode('utf-8'))
+        else:  #site, bookmark, marked,
+            try:
+                output.write((HTML_TMPL_ITEM % itemdata).encode('UTF-8'))
+            except UnicodeDecodeError as ex:
+                sys.stderr.write("error in item %s:\n" % itemid)
+                sys.stderr.write("  %s\n" % ex)
+
+    output.write(HTML_TMPL_HEADER)
+    for item in sbdata.ROOT["li"]:
+        item_to_html(item, 2)
+    output.write(HTML_TMPL_FOOTER)    
 
 if __name__=='__main__':
     import sys
@@ -232,4 +279,6 @@ if __name__=='__main__':
     output = open('index.html', 'w')
     scrapbook_to_html(sbdata, output)
 
+    output = open('README.md', 'w')
+    scrapbook_to_markdown(sbdata, output)
 
