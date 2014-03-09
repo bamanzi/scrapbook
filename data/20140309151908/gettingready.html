@@ -1,0 +1,142 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Getting ready for SquashFS</title><meta name="GENERATOR" content="Modular DocBook HTML Stylesheet Version 1.7"><link rel="HOME" title="SquashFS HOWTO" href="http://tldp.org/HOWTO/SquashFS-HOWTO/index.html"><link rel="PREVIOUS" title="What is SquashFS" href="http://tldp.org/HOWTO/SquashFS-HOWTO/whatis.html"><link rel="NEXT" title="The SquashFS tools exposed" href="http://tldp.org/HOWTO/SquashFS-HOWTO/mksqoverview.html"></head>
+<body class="sect1" alink="#0000FF" bgcolor="#FFFFFF" link="#0000FF" text="#000000" vlink="#840084"><div class="NAVHEADER"><table summary="Header navigation table" border="0" width="100%" cellpadding="0" cellspacing="0"><tbody><tr><th colspan="3" align="center">SquashFS HOWTO</th></tr><tr><td align="left" valign="bottom" width="10%"><a indepth="true" href="whatis.html" accesskey="P">Prev</a></td><td align="center" valign="bottom" width="80%"></td><td align="right" valign="bottom" width="10%"><a indepth="true" href="mksqoverview.html" accesskey="N">Next</a></td></tr></tbody></table><hr align="LEFT" width="100%"></div><div class="sect1"><h1 class="sect1"><a name="gettingready"></a>2. Getting ready for SquashFS</h1><div class="sect2"><h2 class="sect2"><a name="acquiring"></a>2.1. Acquiring SquashFS</h2><p>
+The SquashFS home site is located at 
+<a href="http://squashfs.sourceforge.net/" target="_top">http://squashfs.sourceforge.net/</a> 
+- it contains news for the latest release and it's changelog, as well as general information 
+about SquashFS. You can grab the latest version at the SquashFS
+<a href="http://sourceforge.net/project/showfiles.php?group_id=63835" target="_top">project page</a>
+at SourceForge.
+</p><p>
+Squashfs is also avaliable with LZMA compression at
+<a href="http://www.squashfs-lzma.org/" target="_top">http://www.squashfs-lzma.org/</a>
+</p></div><div class="sect2"><h2 class="sect2"><a name="preparing"></a>2.2. Preparing a SquashFS-capable kernel</h2><p>
+In order to read SquashFS, you need it supported in your kernel - just as if it was a 
+<tt class="filename">reiserfs</tt> or <tt class="filename">ext3</tt> file system. You have to make sure 
+there is an appropriate patch for your kernel version. It should be located in
+<tt class="filename">kernel-patches/linux-2.x.y</tt> subdirectory of the SquashFS source tree. Also, remember 
+that in most cases you will need a <em>clean</em> (original) Linux kernel 
+source from <a href="http://kernel.org/" target="_top">kernel.org</a>. If your kernel source is 
+from a distro vendor, it may be already pre-patched with custom vendor patches, and patching 
+with a SquashFS patch will almost surely not work, as SquashFS patches are made against 
+<em>original</em> Linux kernels. 
+However some distributions make avaliable SquashFS-kernel-modules and SquashFS-tools packages from the repositories.
+If you consider to use these packages from your distro, you don't need to patch your kernel or 
+to build SquashFS tools from source. In such case, make sure to get the proper module for your kernel from the distro 
+repositories. Please note that doing so you will have an easy installation step, but no control on 
+kernel configuration parameters if you mind to use SquashFS for particular purposes (eg. for embedded systems).
+</p><div class="sect3"><h3 class="sect3"><a name="patching"></a>2.2.1. Patching the kernel source</h3><p>
+With a kernel source and a proper SquashFS patch present, all you have to do is 
+(we'll assume that you have your Linux kernel source in <tt class="filename">/usr/src/linux</tt> and 
+that you have the SquashFS source in <tt class="filename">/usr/src/squashfs</tt>):
+</p><p>
+Change to the SquashFS source directory and
+copy the kernel patch (we'll assume it's named <tt class="filename">squashfs-patch</tt>) to 
+<tt class="filename">/usr/src/linux</tt>.
+</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# cd /usr/src/squashfs
+	bash# cp linux-2.x.y/squashfs-patch /usr/src/linux
+</pre></font></td></tr></tbody></table><p>
+Go to the linux kernel source directory <tt class="filename">/usr/src/linux</tt>:
+</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# cd /usr/src/linux
+</pre></font></td></tr></tbody></table><p><em>Note:</em> please remember that we will not be leaving this 
+directory during all further kernel-related procedures, and all paths
+will be given relative to <tt class="filename">/usr/src/linux</tt>.</p><p>Now patch the source with the SquashFS patch:</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# patch -p1 &lt; squashfs-patch
+</pre></font></td></tr></tbody></table></div><div class="sect3"><h3 class="sect3"><a name="compiling1"></a>2.2.2. Compiling a 2.6.x kernel</h3><p>Cleanup and prepare the kernel source:</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# make distclean
+	bash# make mrproper
+</pre></font></td></tr></tbody></table><p>Configure the kernel using your favourite method
+(config/menuconfig/xconfig/gconfig):</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# make menuconfig
+</pre></font></td></tr></tbody></table><p></p><ol type="1"><li><p>
+In the <span class="QUOTE">"<em>File systems</em>"</span> section, 
+<span class="QUOTE">"<em>Miscellaneous file systems</em>"</span> subsection, enable 
+the <span class="QUOTE">"<em>Squashed filesystem</em>"</span> option, whether as 
+module or bundled with the kernel. It is only obligatory to compile SquashFS inside 
+the kernel if you plan using squashed initial RAM disks (<b class="command">initrd</b>). 
+</p></li><li><p>
+In the same subsection, <b class="command">"do NOT"</b> enable the <span class="QUOTE">"<em>Additional option for memory-constrained system</em>"</span>, unless
+you are configuring your kernel for an embedded system.
+</p></li><li><p>
+If you would like to use a squashed initial RAM disk, enable the 
+<span class="QUOTE">"<em>Initial RAM disk support</em>"</span>  in the 
+<span class="QUOTE">"<em>Device drivers</em>"</span>  section, 
+<span class="QUOTE">"<em>Block devices</em>"</span>  subsection.
+</p></li><li><p>
+If you want to be able to mount the squashed file system via a <em>loopback device</em> in future, you should enable 
+<span class="QUOTE">"<em>Loopback device support</em>"</span>  in the 
+<span class="QUOTE">"<em>Device drivers</em>"</span>  section, 
+<span class="QUOTE">"<em>Block devices</em>"</span>  subsection.
+</p></li></ol><p>Now you may compile the kernel and modules:</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# make
+</pre></font></td></tr></tbody></table></div><div class="sect3"><h3 class="sect3"><a name="compiling2"></a>2.2.3. Compiling a 2.4.x kernel</h3><p>Configure the kernel:</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# make menuconfig
+</pre></font></td></tr></tbody></table><p></p><ol type="1"><li><p>
+In the <span class="QUOTE">"<em>File systems</em>"</span>  section, enable 
+the <span class="QUOTE">"<em>Squashed filesystem</em>"</span>  option, whether as 
+module or bundled with the kernel. It is only obligatory to compile SquashFS inside 
+the kernel if you plan using squashed initial RAM disks (<b class="command">initrd</b>). 
+</p></li><li><p>
+If you would like to use a squashed initial RAM disk, enable the 
+<span class="QUOTE">"<em>Initial RAM disk support</em>"</span>  in the <span class="QUOTE">"<em>Block 
+devices</em>"</span>  section.
+</p></li><li><p>
+If you want to be able to mount the squashed file system via a <em>loopback 
+device</em> in future, you should enable <span class="QUOTE">"<em> Loopback device 
+support </em>"</span> in the <span class="QUOTE">"<em>Block devices </em>"</span>  section.
+</p></li></ol><p>Now you may compile the kernel and modules:</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# make dep
+	bash# make bzImage
+	bash# make modules
+</pre></font></td></tr></tbody></table></div><div class="sect3"><h3 class="sect3"><a name="installkernel"></a>2.2.4. Installing and testing the kernel</h3><p>It's time to install your new SquashFS-enabled kernel.
+The instructions below are for installing and booting the kernel
+on the host machine. You may want to install and test it on the
+target system.
+</p><p>We assume that the kernel was compiled for a x86 
+architecture, and the compressed kernel image is located in the 
+<tt class="filename">arch/i386/boot/</tt> subdirectory of the kernel tree. 
+Now copy the kernel to the <tt class="filename">/boot</tt> directory (and name it 
+<tt class="filename">bzImage-sqsh</tt> for convenience, if you like):</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# cp arch/i386/boot/bzImage /boot/bzImage-sqsh
+</pre></font></td></tr></tbody></table><p>
+Don't forget to install the kernel modules
+if you have any:
+</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# make modules_install
+</pre></font></td></tr></tbody></table><p>
+Modify your boot loader's configuration file to include your new kernel and install
+(update) the boot loader. Now you may reboot with your new kernel. When it boots, check that 
+everything went fine:
+</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# cat /proc/filesystems
+</pre></font></td></tr></tbody></table><p>
+Or, if you built SquashFS support as a kernel module:
+</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# insmod squashfs
+	bash# cat /proc/filesystems
+</pre></font></td></tr></tbody></table><p>
+If you see the <tt class="computeroutput">squashfs</tt> line among other file systems,
+this means you have successfully enabled SquashFS in your kernel.
+</p></div></div><div class="sect2"><h2 class="sect2"><a name="tools"></a>2.3. Compiling the SquashFS tools</h2><p>
+Now you need to compile <b class="command">mksquashfs</b> - the tool for creating squashed file systems and the
+<b class="command">unsquashfs</b> which extracts files from an existing squashed file system.
+</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# cd /usr/src/squashfs/squashfs-tools
+</pre></font></td></tr></tbody></table><p>
+Compile and install the tools:
+</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# make
+	bash# cp mksquashfs /usr/sbin
+	bash# cp unsquashfs /usr/sbin
+</pre></font></td></tr></tbody></table><p>
+If everything went fine, typing <b class="command">mksquashfs</b> or <b class="command">unsquashfs</b> at the shell prompt should print the <span class="QUOTE">"usage"</span> message.
+</p></div><div class="sect2"><h2 class="sect2"><a name="debian"></a>2.4. Installing SquashFS on Debian</h2><p>If you use Debian (or onother Linux distribution) you may want to get SquashFS module and tools from the distro repositories. With Debian you have to install the proper kernel module and the tools with the following commands:
+</p><p>
+(Assuming your architecture is x86)
+</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# apt-get install squashfs-modules-2.6-486  squashfs-tools
+</pre></font></td></tr></tbody></table><p> Now load the squashfs module for the Linux kernel and if it was correctly loaded you should find it in the relative list
+</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# modprobe squashfs
+	
+	bash# lsmod|grep squash
+	squashfs               39620  0
+
+	
+</pre></font></td></tr></tbody></table><p>
+Then you have to add the squashfs module to /etc/modules if you need it loaded at boot time.
+</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# echo squashfs &gt;&gt; /etc/modules
+</pre></font></td></tr></tbody></table><p>
+Note that at the time of writing, the Debian packages (Etch. 4.0 r2) relates to squashfs 3.1 release. Some latest options and features of 3.2 release may be not supported. Look at the next section for details.
+</p></div></div><div class="NAVFOOTER"><hr align="LEFT" width="100%"><table summary="Footer navigation table" border="0" width="100%" cellpadding="0" cellspacing="0"><tbody><tr><td align="left" valign="top" width="33%"><a indepth="true" href="whatis.html" accesskey="P">Prev</a></td><td align="center" valign="top" width="34%"><a href="http://tldp.org/HOWTO/SquashFS-HOWTO/index.html" accesskey="H">Home</a></td><td align="right" valign="top" width="33%"><a indepth="true" href="mksqoverview.html" accesskey="N">Next</a></td></tr><tr><td align="left" valign="top" width="33%">What is SquashFS</td><td align="center" valign="top" width="34%">&nbsp;</td><td align="right" valign="top" width="33%">The SquashFS tools exposed</td></tr></tbody></table></div>
+
+</body></html>

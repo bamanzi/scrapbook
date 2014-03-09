@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>The SquashFS tools exposed</title><meta name="GENERATOR" content="Modular DocBook HTML Stylesheet Version 1.7"><link rel="HOME" title="SquashFS HOWTO" href="http://tldp.org/HOWTO/SquashFS-HOWTO/index.html"><link rel="PREVIOUS" title="Getting ready for SquashFS" href="http://tldp.org/HOWTO/SquashFS-HOWTO/gettingready.html"><link rel="NEXT" title="Creating and using squashed file systems" href="http://tldp.org/HOWTO/SquashFS-HOWTO/creatingandusing.html"></head>
+<body class="sect1" alink="#0000FF" bgcolor="#FFFFFF" link="#0000FF" text="#000000" vlink="#840084"><div class="NAVHEADER"><table summary="Header navigation table" border="0" width="100%" cellpadding="0" cellspacing="0"><tbody><tr><th colspan="3" align="center">SquashFS HOWTO</th></tr><tr><td align="left" valign="bottom" width="10%"><a indepth="true" href="gettingready.html" accesskey="P">Prev</a></td><td align="center" valign="bottom" width="80%"></td><td align="right" valign="bottom" width="10%"><a indepth="true" href="creatingandusing.html" accesskey="N">Next</a></td></tr></tbody></table><hr align="LEFT" width="100%"></div><div class="sect1"><h1 class="sect1"><a name="mksqoverview"></a>3. The SquashFS tools exposed</h1><div class="sect2"><h2 class="sect2"><a name="mksqusing"></a>3.1. Using mksquashfs</h2><p>
+<b class="command">mksquashfs</b> is the tool for creating new squashed 
+file systems, and for appending new data to existing squashed file 
+systems. The general command-line format for <b class="command">mksquashfs</b> is:
+</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">	bash# mksquashfs source1 source2 ... destination [options]
+</pre></font></td></tr></tbody></table><p></p><ul><li><p><tt class="filename">source1</tt>, <tt class="filename">source2</tt>, etc.: files and directories to be
+added to the resulting file system, given with relative and/or absolute paths 
+</p></li><li><p><tt class="filename">destination</tt>: a regular file (filesystem 
+image file), or a block device (such as <tt class="filename">/dev/fd0</tt> or <tt class="filename">/dev/hda3</tt>)
+where you want to have your squashed file system
+</p></li></ul><p>
+Notes for default <b class="command">mksquashfs</b> behavior:
+
+</p><p></p><ul><li><p>
+When the new files are added to the new file system or appended to an existing one,
+<b class="command">mksquashfs </b> will automatically rename files with duplicate names:
+if two or more files named <tt class="filename">text</tt> will appear in the same
+resulting directory, the second file will be renamed to
+<tt class="filename">text_1</tt>, third one to <tt class="filename">text_2</tt> and so on.
+</p></li><li><p>
+Duplicate files will be removed, so there will be only one physical instance
+(By the SquashFS 2.x, you can disable the detection/removal of the duplicates
+with the <b class="command">-no-duplicates </b> option).
+</p></li><li><p>
+If <em>destination </em> has a pre-existing SquashFS
+file system on it, by default, the new <em>source</em> items will be appended to
+the existing root directory. Examine the options table below to force <b class="command">mksquashfs </b> to overwrite the whole destination
+and/or change the way new source items are added. 
+</p></li><li><p>
+If a single source file or directory is given, it becomes the root in a newly created file system. If two
+or more source files and/or directories are given, they will all become sub-items in the root of
+the new file system.
+</p></li><li><p>
+The resulting filesystem will be padded to a multiple of 4 Kb: this
+is required for filesystems to be used on block devices. If you are very sure
+you don't ned this, use the <b class="command">-nopad </b> option to disable this
+operation.
+</p></li></ul>
+
+<p></p><p>
+See the next section for more details about all possible options.
+</p></div><div class="sect2"><h2 class="sect2"><a name="mksqoptions"></a>3.2. Command-line options</h2><p>
+All possible options for <b class="command">mksquashfs</b> are shown in the table below.
+</p><div class="table"><a name="AEN317"></a><p><b>Table 1. Command-line options of the <b class="command">mksquashfs</b> tool</b></p><table class="CALSTABLE" border="1"><thead><tr><th align="LEFT" valign="MIDDLE">Option</th><th align="LEFT" valign="MIDDLE">Description</th></tr></thead><tbody><tr><td align="LEFT" valign="MIDDLE"><b class="command">-2.0 </b></td><td align="LEFT" valign="MIDDLE">force <b class="command">mksquashfs</b> version 2.1 to create a version 2.0 
+filesystem</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-all-root</b> or <b class="command">-root-owned</b></td><td align="LEFT" valign="MIDDLE">make all files in the target file system owned by root (UID=0, GID=0)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-always-use-fragments</b></td><td align="LEFT" valign="MIDDLE">divide all files greater than block size into fragments (by the version 2.x).
+It will result in greater compression ratios</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-b [block size]</b></td><td align="LEFT" valign="MIDDLE">use [block size] filesystem block size (32 Kbytes default for 2.x, 128 kbytes for 3.x) - this can be either 4096, 8192, 16384, 32768, 65536 or 131072</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-be</b> or <b class="command">-le</b></td><td align="LEFT" valign="MIDDLE">force a big or little endian file system, respectively</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-check-data</b></td><td align="LEFT" valign="MIDDLE">enable additional file system checks</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-e [file1] ( [file2] ... )</b></td><td align="LEFT" valign="MIDDLE">specify which files and/or directories to omit
+from the new file system that is to be created</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-ef [file]</b></td><td align="LEFT" valign="MIDDLE">specify a <tt class="filename">file</tt> which contains the list of
+files/directories to exclude</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-force-gid [GID]</b></td><td align="LEFT" valign="MIDDLE">set all group IDs in target file system to [GID]
+(can be specified as a name or a number)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-force-uid [UID]</b></td><td align="LEFT" valign="MIDDLE">set all user IDs in target file system to [UID]
+(can be specified as a name or a number)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-info</b></td><td align="LEFT" valign="MIDDLE">print files, their original size and compression ratio, as they are added to 
+the file system</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-keep-as-directory</b></td><td align="LEFT" valign="MIDDLE">if the source is a single directory, force this directory to be a subdirectory 
+of the root in the created file system</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-noappend</b></td><td align="LEFT" valign="MIDDLE">if the destination file/device already contains a squashed file system, 
+overwrite it, rather than append the new data to an existing file system</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-no-duplicates</b></td><td align="LEFT" valign="MIDDLE">do not detect/remove duplicate file names</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-noD</b> or <b class="command">-noDataCompression</b></td><td align="LEFT" valign="MIDDLE">do not compress the data</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-noF</b> or <b class="command">-noFragmentCompression</b></td><td align="LEFT" valign="MIDDLE">do not compress the fragments (avaliable by 2.x)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-no-fragments</b></td><td align="LEFT" valign="MIDDLE">do not generate fragment blocks (avaliable by 2.x, this will
+produce almost the same filesystem as 1.x did)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-noI</b> or <b class="command">-noInodeCompression</b></td><td align="LEFT" valign="MIDDLE">do not compress the inode table</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-nopad</b></td><td align="LEFT" valign="MIDDLE">do not pad the resulting file system to a multiple of 4 KBytes</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-root-becomes [name]</b></td><td align="LEFT" valign="MIDDLE">can be used while appending to a pre-existing squashed file system: it will make a new root, 
+and [name] directory will contain all pre-existing files/directories
+</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-version</b></td><td align="LEFT" valign="MIDDLE">print the version, copyright and license message
+</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-recover [name]</b></td><td align="LEFT" valign="MIDDLE">recover filesystem data using recovery file [name] (3.3)
+</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-no-recovery</b></td><td align="LEFT" valign="MIDDLE">don't create a recovery file (3.3). 
+</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-no-exports</b></td><td align="LEFT" valign="MIDDLE">don't make avaliable file system to export via NFS (3.x)
+</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-no-sparse</b></td><td align="LEFT" valign="MIDDLE">don't check for sparse files (3.x)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-processors [number]</b></td><td align="LEFT" valign="MIDDLE">set the number of CPU to create file system. By default it will be used all avaliable processors (3.x)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">--read-queue [size]</b></td><td align="LEFT" valign="MIDDLE">set input queue to [size] Mb.  (Default is 64 Mb)(3.x)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-write-queue [size]</b></td><td align="LEFT" valign="MIDDLE">set output queue to [size] Mb (3.x)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-sort [sort_file]</b></td><td align="LEFT" valign="MIDDLE">sort files relating to priorities in [sort_file] (3.x)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-wildcards</b></td><td align="LEFT" valign="MIDDLE">enable the extended shell wildcards to exclude directories/files (to be used with -e)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-regex</b></td><td align="LEFT" valign="MIDDLE">enable to use POSIX regular expressions (3.3)</td></tr></tbody></table></div><p>
+In most cases, you should leave all compression/block options by default, as they allow 
+<b class="command">mksquashfs</b> to achieve the best possible compression ratios.
+</p></div><div class="sect2"><h2 class="sect2"><a name="unsquashing"></a>3.3. Using unsquashfs</h2><p>
+<b class="command">unsquashfs</b> is the tool for extracting data from squashed 
+file systems. The general command-line format for <b class="command">unsquashfs</b> is:
+</p><table bgcolor="#E0E0E0" border="0" width="100%"><tbody><tr><td><font color="#000000"><pre class="programlisting">unsquashfs [options] target [files/directories to extract]
+</pre></font></td></tr></tbody></table><p></p><ul><li><p>
+target is the squashed file system to extract.
+</p></li></ul><p>
+Notes for <b class="command">unsquashfs</b> behavior:
+</p><p></p><ul><li><p> 
+By not specifying any <em>destination path</em>, unsquashfs extracts the compressed file system in the
+<em>./squashfs-root </em> directory.
+</p></li><li><p> 
+The tool does not extract a squashed file system on already exsisting directory
+unless the <b class="command">-f</b> option is specified.
+</p></li><li><p>
+You can specify on the command line, a multiple number of files/directories to extract and the items
+to be extracted can be also be given in a file with <b class="command">-e [file]</b> option.
+</p></li></ul><p>
+All possible options for <b class="command">unsquashfs</b> are shown in the table below.
+</p><div class="table"><a name="AEN483"></a><p><b>Table 2. Command-line options of the <b class="command">unsquashfs</b> tool</b></p><table class="CALSTABLE" border="1"><thead><tr><th align="LEFT" valign="MIDDLE">Option</th><th align="LEFT" valign="MIDDLE">Description</th></tr></thead><tbody><tr><td align="LEFT" valign="MIDDLE"><b class="command">-v[ersion] </b></td><td align="LEFT" valign="MIDDLE">print the version, licence and copyright message
+</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-i[nfo]</b></td><td align="LEFT" valign="MIDDLE">print the files as they are extracted from the file system</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-l[ist]</b></td><td align="LEFT" valign="MIDDLE">list the squashed file system without extracting files</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-li</b></td><td align="LEFT" valign="MIDDLE">list files with theyr attributes as they are unsquashed (3.3)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-ll</b></td><td align="LEFT" valign="MIDDLE">list the squashed file system files with attributes without any extraction (3.3)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-d[estination] path</b></td><td align="LEFT" valign="MIDDLE">specify a destination path for unsquashed items</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-f[orce]</b></td><td align="LEFT" valign="MIDDLE">if files exist overwrite them</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-s[tat]</b></td><td align="LEFT" valign="MIDDLE">display file system's superblock informations (it can discover the file system version and the options used to compress it) (3.3)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-e[f] [extract file]</b></td><td align="LEFT" valign="MIDDLE">list of directories or files to extract (entries given one per line) (3.3)</td></tr><tr><td align="LEFT" valign="MIDDLE"><b class="command">-r[egex]</b></td><td align="LEFT" valign="MIDDLE">treat extract names as POSIX regular expressions (3.3)</td></tr></tbody></table></div><p>
+Note that by 3.x release you can extract 1.x and 2.x squashed file system too.
+</p></div></div><div class="NAVFOOTER"><hr align="LEFT" width="100%"><table summary="Footer navigation table" border="0" width="100%" cellpadding="0" cellspacing="0"><tbody><tr><td align="left" valign="top" width="33%"><a indepth="true" href="gettingready.html" accesskey="P">Prev</a></td><td align="center" valign="top" width="34%"><a href="http://tldp.org/HOWTO/SquashFS-HOWTO/index.html" accesskey="H">Home</a></td><td align="right" valign="top" width="33%"><a indepth="true" href="creatingandusing.html" accesskey="N">Next</a></td></tr><tr><td align="left" valign="top" width="33%">Getting ready for SquashFS</td><td align="center" valign="top" width="34%">&nbsp;</td><td align="right" valign="top" width="33%">Creating and using squashed file systems</td></tr></tbody></table></div>
+
+</body></html>
