@@ -1,5 +1,10 @@
 # ScrapBook of my favorites articles downloaded from the Web
 
+## ## programming
+
+  * [函数式编程另类指南 - 糖人GG - ITeye技术网站](http://bamanzi.github.io/scrapbook/data/20140309134837/) ([original url](http://tangrengg.iteye.com/blog/39161))
+  * [Functional Programming For The Rest of Us 翻译，重译 （剩人们的函数式编程） - ZetaZ - 博客园](http://bamanzi.github.io/scrapbook/data/20140309135032/) ([original url](http://www.cnblogs.com/Zetazzz/archive/2011/02/04/1949197.html))
+
 ## ## python
 
   * [Hidden features of Python - Stack Overflow](http://bamanzi.github.io/scrapbook/data/20120212203349/) ([original url](http://stackoverflow.com/questions/101268/hidden-features-of-python))
@@ -12,7 +17,10 @@
   * [Python 包工具之间的关系 | Life @ Refactoring](http://bamanzi.github.io/scrapbook/data/20140220223747/) ([original url](http://blog.yangyubo.com/2012/07/27/python-packaging/))
   * [Using IPython for parallel computing — IPython 1.2.0: An Afternoon Hack documentation](http://bamanzi.github.io/scrapbook/data/20140220223802/) ([original url](http://ipython.org/ipython-doc/stable/parallel/index.html))
   * [Parsing XML and HTML with lxml](http://bamanzi.github.io/scrapbook/data/20140301131452/) ([original url](http://lxml.de/parsing.html))
-  * [惊帆之静默 » Blog Archive » Stackless Python并发式编程介绍[已校对版]](http://bamanzi.github.io/scrapbook/data/20140301131856/) ([original url](http://gashero.yeax.com/?p=30))
+  * [Stackless Python并发式编程介绍[已校对版]](http://bamanzi.github.io/scrapbook/data/20140301131856/) ([original url](http://gashero.yeax.com/?p=30))
+  * [IPython Tips & Tricks — IPython 1.2.1: An Afternoon Hack documentation](http://bamanzi.github.io/scrapbook/data/20140301223214/) ([original url](http://ipython.org/ipython-doc/stable/interactive/tips.html))
+  * [Python 代码调试技巧](http://bamanzi.github.io/scrapbook/data/20140301223330/) ([original url](http://www.ibm.com/developerworks/cn/linux/l-cn-pythondebugger/))
+  * [Unicode In Python, Completely Demystified](http://bamanzi.github.io/scrapbook/data/20140309132632/) ([original url](http://farmdev.com/talks/unicode/))
 
 ## ## firefox
 
@@ -36,6 +44,7 @@
   * [Effective Emacs中文版 - Mike Manilone's Open-Source Base](http://bamanzi.github.io/scrapbook/data/20110925155554/) ([original url](http://ekd123.is-programmer.com/posts/26121.html))
   * [Fun With Emacs](http://bamanzi.github.io/scrapbook/data/20101226145415/) ([original url](http://xahlee.org/emacs/emacs_fun.html))
   * [Ten Essential Emacs tips](http://bamanzi.github.io/scrapbook/data/20110925155609/) ([original url](http://web.psung.name/emacstips/essential.html))
+  * [Being Productive With Emacs](http://bamanzi.github.io/scrapbook/data/20140309151113/) ([original url](http://web.psung.name/emacs/))
   * [Ben's Journal: 11 Concepts The Emacs Newbie Should Master](http://bamanzi.github.io/scrapbook/data/20110925163909/) ([original url](http://benjisimon.blogspot.com/2011/04/10-concepts-emacs-newbie-should-master.html))
   * [The Ultimate Collection of Emacs Resources - (think)](http://bamanzi.github.io/scrapbook/data/20140301135301/) ([original url](http://batsov.com/articles/2011/11/30/the-ultimate-collection-of-emacs-resources/))
 
@@ -179,7 +188,7 @@
 
 ### ### programming
 
-  * [sontek's humble adode - John Anderson](http://bamanzi.github.io/scrapbook/data/20140301132056/) ([original url](http://sontek.net/blog/detail/turning-vim-into-a-modern-python-ide))
+  * [Turning Vim into a modern Python IDE](http://bamanzi.github.io/scrapbook/data/20140301132056/) ([original url](http://sontek.net/blog/detail/turning-vim-into-a-modern-python-ide))
   * [手把手教你把Vim改装成一个IDE编程环境(图文) - 吴垠的专栏 - 博客频道 - CSDN.NET](http://bamanzi.github.io/scrapbook/data/20140301131745/) ([original url](http://blog.csdn.net/wooin/article/details/1858917))
 
 ## ## unix
@@ -222,14 +231,12 @@
   * [How to View and Extract Files from rpm, deb, depot and msi Packages](http://bamanzi.github.io/scrapbook/data/20101114125748/) ([original url](http://wagagate.appspot.com/EfrpZwkhjhhnvwxiiZzzz/http/2010/04/view-and-extract-packages/))
   * [segfault.in » Keep Track Of Configuration Changes Using etckeeper](http://bamanzi.github.io/scrapbook/data/20110925155000/) ([original url](http://segfault.in/2010/03/keep-track-of-configuration-changes-using-etckeeper/))
   * [Lifehacker Pack for Linux: Our List of the Best Linux Downloads](http://bamanzi.github.io/scrapbook/data/20110925165338/) ([original url](http://lifehacker.com/5827968/lifehacker-pack-for-linux-our-list-of-the-best-linux-downloads))
-  * [Run KDE4 in Chroot (Gentoo/Debian/Ubuntu Howto) « Dedors’s Weblog](http://bamanzi.github.io/scrapbook/data/20110926050011/) ([original url](http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/))
   * [Best 60 Ubuntu Linux Applications For Year 2011 [Editor's Pick]](http://bamanzi.github.io/scrapbook/data/20120218120618/) ([original url](http://www.addictivetips.com/ubuntu-linux-tips/best-60-linux-applications-for-year-2011-editors-pick/))
   * [50 Handy Applications For Ubuntu & Other Linux Operating Systems | WML Cloud](http://bamanzi.github.io/scrapbook/data/20120218120627/) ([original url](http://www.wmlcloud.com/linux/50-handy-applications-for-ubuntu-other-linux-operating-systems/))
   * [Ubuntu Hacks/Virtualization and Emulation - WikiContent](http://bamanzi.github.io/scrapbook/data/20120108140516/) ([original url](http://commons.oreilly.com/wiki/index.php/Ubuntu_Hacks/Virtualization_and_Emulation))
   * [HTG Explains: Which Linux File System Should You Choose? - How-To Geek](http://bamanzi.github.io/scrapbook/data/20110307220056/) ([original url](http://www.howtogeek.com/howto/33552/htg-explains-which-linux-file-system-should-you-choose/))
   * [10 Best Linux.com Tutorials of 2011 | Linux.com](http://bamanzi.github.io/scrapbook/data/20140301182730/) ([original url](https://www.linux.com/learn/tutorials/530661-10-best-linuxcom-tutorials-of-2011))
   * [Deprecated Linux networking commands and their replacements | Doug Vitale Tech Blog](http://bamanzi.github.io/scrapbook/data/20140301182737/) ([original url](http://dougvitale.wordpress.com/2011/12/21/deprecated-linux-networking-commands-and-their-replacements/))
-  * [6 Steps for Minimal Ubuntu Installation Using debootstrap](http://bamanzi.github.io/scrapbook/data/20140301182754/) ([original url](http://www.thegeekstuff.com/2010/01/debootstrap-minimal-debian-ubuntu-installation/))
   * [The 20 Best How-To Geek Linux Articles of 2010](http://bamanzi.github.io/scrapbook/data/20140301184430/) ([original url](http://www.howtogeek.com/howto/39595/the-20-best-how-to-geek-linux-articles-of-2010/))
   * [（原创）RHEL/CentOS 5.x使用第三方软件库（EPEL与RPMForge、RPMFusion软件库）](http://bamanzi.github.io/scrapbook/data/20140301184512/) ([original url](http://www.ha97.com/2626.html))
   * [colinux简明安装说明 - 巴蛮子 - 博客园](http://bamanzi.github.io/scrapbook/data/20120221221939/) ([original url](http://www.cnblogs.com/bamanzi/archive/2012/01/28/colinux-simple-guide.html))
@@ -242,6 +249,12 @@
   * [Benchmark PC Hardware To Diagnose System Issues With Ubuntu Live Disk](http://bamanzi.github.io/scrapbook/data/20120125172044/) ([original url](http://www.addictivetips.com/windows-tips/benchmark-pc-hardware-to-diagnose-system-issues-with-ubuntu-live-disk/))
   * [The 10 Cleverest Ways to Use Linux to Fix Your Windows PC - How-To Geek](http://bamanzi.github.io/scrapbook/data/20110925162942/) ([original url](http://www.howtogeek.com/howto/31804/the-10-cleverest-ways-to-use-linux-to-fix-your-windows-pc/))
   * [How To Boot 10 Different Live CDs From 1 USB Flash Drive - How-To Geek](http://bamanzi.github.io/scrapbook/data/20110925162931/) ([original url](http://www.howtogeek.com/howto/39747/how-to-boot-10-different-live-cds-from-1-usb-flash-drive/))
+
+#### #### advanced
+
+  * [SquashFS HOWTO](http://bamanzi.github.io/scrapbook/data/20140309151908/) ([original url](http://tldp.org/HOWTO/SquashFS-HOWTO/))
+  * [Run KDE4 in Chroot (Gentoo/Debian/Ubuntu Howto) « Dedors’s Weblog](http://bamanzi.github.io/scrapbook/data/20110926050011/) ([original url](http://dedors.wordpress.com/2008/12/10/run-kde4-in-chroot-gentoodebianubuntu-howto/))
+  * [6 Steps for Minimal Ubuntu Installation Using debootstrap](http://bamanzi.github.io/scrapbook/data/20140301182754/) ([original url](http://www.thegeekstuff.com/2010/01/debootstrap-minimal-debian-ubuntu-installation/))
 
 ### ### tmux
 

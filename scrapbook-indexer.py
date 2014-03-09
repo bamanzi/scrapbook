@@ -156,7 +156,7 @@ attach(window, 'load', function() {
 	//--></script>
 </head>
 
-<body onload="toggleAll(false);">
+<body onload="toggleAll(true);">
 <ul id="folder-root">
 """
     HTML_TMPL_FOOTER       = """
@@ -171,8 +171,8 @@ attach(window, 'load', function() {
 <img src="./tree/treeitem.png" width="16" height="16" alt="">%(title)s</a>
   <div class="hide">
     <table class="info">
-      <tr><td>Folder:</td><td><a href="data/%(id)s" target="main">data/%(id)s</a></td></tr>
-      <tr><td>Source:</td><td><a href=%(source)s"   target="main">%(source)s</a></td></tr>
+      <tr><td>Folder:</td><td><a href="$(data_folder_url)s/%(id)s" target="main">data/%(id)s</a></td></tr>
+      <tr><td>Source:</td><td><a href="%(source)s"   target="main">%(source)s</a></td></tr>
     </table>
   </div
 </li>
@@ -184,6 +184,8 @@ attach(window, 'load', function() {
             sys.stderr.write("ERROR: description for item %s not exist.\n" % itemid)
             return
 
+        #itemdata['data_folder_url'] = "data"
+        itemdata['data_folder_url'] = "http://github.com/bamanzi/scrapbook/tree/gh-pages/data"
         type = itemdata["type"]
             
         if type=="folder":
@@ -283,7 +285,7 @@ if __name__=='__main__':
     # pickle.dump(sbdata, output)
     #output.close
 
-    output = open('index.html', 'w')
+    output = open('index1.html', 'w')
     scrapbook_to_html(sbdata, output)
 
     output = open('README.md', 'w')
