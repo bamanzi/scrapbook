@@ -171,7 +171,7 @@ attach(window, 'load', function() {
 <img src="./tree/treeitem.png" width="16" height="16" alt="">%(title)s</a>
   <div class="hide">
     <table class="info">
-      <tr><td>Folder:</td><td><a href="$(data_folder_url)s/%(id)s" target="main">data/%(id)s</a></td></tr>
+      <tr><td>Folder:</td><td><a href="%(data_folder_url)s/%(id)s" target="main">data/%(id)s</a></td></tr>
       <tr><td>Source:</td><td><a href="%(source)s"   target="main">%(source)s</a></td></tr>
     </table>
   </div
