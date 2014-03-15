@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en" class=" js no-flexbox canvas canvastext webgl no-touch geolocation postmessage no-websqldatabase indexeddb hashchange history draganddrop websockets rgba hsla multiplebgs backgroundsize borderimage borderradius boxshadow textshadow opacity cssanimations csscolumns cssgradients no-cssreflections csstransforms csstransforms3d csstransitions fontface generatedcontent video audio localstorage sessionstorage webworkers applicationcache svg inlinesvg smil svgclippaths" style="">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>User Guide — pip 1.5.4 documentation</title>
+  
+
+  
+  
+
+  
+  
+
+  
+  
+
+    
+      
+      
+      
+      
+      
+
+    
+
+  
+
+  
+  
+
+  
+  
+    
+  
+
+  
+    
+  
+    
+  
+    <link rel="top" title="pip 1.5.4 documentation" href="http://www.pip-installer.org/en/latest/index.html">
+        <link rel="next" title="Reference Guide" href="http://www.pip-installer.org/en/latest/reference/index.html">
+        <link rel="prev" title="Installation" href="http://www.pip-installer.org/en/latest/installing.html">
+ 
+<!-- RTD Extra Head -->
+
+
+
+<!-- 
+Read the Docs is acting as the canonical URL for your project. 
+If you want to change it, more info is available in our docs:
+  http://docs.readthedocs.org/en/latest/canonical.html
+-->
+<link rel="canonical" href="http://pip.readthedocs.org/en/latest/user_guide.html">
+
+
+<!-- RTD Analytics Code -->
+<!-- Included in the header because you don't have a footer block. -->
+
+<!-- end RTD Analytics Code -->
+
+
+<!-- end RTD <extrahead> -->
+
+
+  
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        <a href="http://www.pip-installer.org/en/latest/index.html" class="fa fa-home"> pip</a>
+        <div role="search">
+  <form id="rtd-search-form" class="wy-form" action="http://www.pip-installer.org/en/latest/search.html" method="get">
+    <input value="" name="q" placeholder="Search docs" type="text">
+    <input name="check_keywords" value="yes" type="hidden">
+    <input name="area" value="default" type="hidden">
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+        
+            <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="http://www.pip-installer.org/en/latest/quickstart.html">Quickstart</a></li>
+<li class="toctree-l1"><a class="reference internal" href="http://www.pip-installer.org/en/latest/installing.html">Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/installing.html#python-os-support">Python &amp; OS Support</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/installing.html#install-or-upgrade-pip">Install or Upgrade pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/installing.html#using-package-managers">Using Package Managers</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="http://www.pip-installer.org/en/latest/user_guide.html">User Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#installing-packages">Installing Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#requirements-files">Requirements Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#installing-from-wheels">Installing from Wheels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#uninstalling-packages">Uninstalling Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#listing-packages">Listing Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#searching-for-packages">Searching for Packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#fast-local-installs">Fast &amp; Local Installs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#non-recursive-upgrades">Non-recursive upgrades</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#user-installs">User Installs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#ensuring-repeatability">Ensuring Repeatability</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/index.html">Reference Guide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip.html">pip</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_install.html">pip install</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_uninstall.html">pip uninstall</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_freeze.html">pip freeze</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_list.html">pip list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_show.html">pip show</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_search.html">pip search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_wheel.html">pip wheel</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://www.pip-installer.org/en/latest/development.html">Development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/development.html#pull-requests">Pull Requests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/development.html#automated-testing">Automated Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/development.html#running-tests">Running tests</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/development.html#getting-involved">Getting Involved</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http://www.pip-installer.org/en/latest/development.html#release-process">Release Process</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="http://www.pip-installer.org/en/latest/news.html">Release Notes</a></li>
+</ul>
+
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="http://www.pip-installer.org/en/latest/index.html">pip</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="http://www.pip-installer.org/en/latest/index.html">Docs</a> »</li>
+      
+    <li>User Guide</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          <a href="https://github.com/pypa/pip/blob/master/docs/user_guide.rst" class="fa fa-github"> Edit on GitHub</a>
+        
+      </li>
+  </ul>
+  <hr>
+</div>
+          <div role="main">
+            
+  <div class="section" id="user-guide">
+<h1><a class="toc-backref" href="#id6">User Guide</a><a class="headerlink" href="#user-guide" title="Permalink to this headline">¶</a></h1>
+<div class="contents topic" id="contents">
+<p class="topic-title first">Contents</p>
+<ul class="simple">
+<li><a class="reference internal" href="#user-guide" id="id6">User Guide</a><ul>
+<li><a class="reference internal" href="#installing-packages" id="id7">Installing Packages</a></li>
+<li><a class="reference internal" href="#requirements-files" id="id8">Requirements Files</a></li>
+<li><a class="reference internal" href="#installing-from-wheels" id="id9">Installing from Wheels</a></li>
+<li><a class="reference internal" href="#uninstalling-packages" id="id10">Uninstalling Packages</a></li>
+<li><a class="reference internal" href="#listing-packages" id="id11">Listing Packages</a></li>
+<li><a class="reference internal" href="#searching-for-packages" id="id12">Searching for Packages</a></li>
+<li><a class="reference internal" href="#configuration" id="id13">Configuration</a><ul>
+<li><a class="reference internal" href="#config-file" id="id14">Config file</a></li>
+<li><a class="reference internal" href="#environment-variables" id="id15">Environment Variables</a></li>
+<li><a class="reference internal" href="#config-precedence" id="id16">Config Precedence</a></li>
+<li><a class="reference internal" href="#command-completion" id="id17">Command Completion</a></li>
+</ul>
+</li>
+<li><a class="reference internal" href="#fast-local-installs" id="id18">Fast &amp; Local Installs</a></li>
+<li><a class="reference internal" href="#non-recursive-upgrades" id="id19">Non-recursive upgrades</a></li>
+<li><a class="reference internal" href="#user-installs" id="id20">User Installs</a></li>
+<li><a class="reference internal" href="#ensuring-repeatability" id="id21">Ensuring Repeatability</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="installing-packages">
+<h2><a class="toc-backref" href="#id7">Installing Packages</a><a class="headerlink" href="#installing-packages" title="Permalink to this headline">¶</a></h2>
+<p>pip supports installing from <a class="reference external" href="http://pypi.python.org/pypi/">PyPI</a>, version control, local projects, and
+directly from distribution files.</p>
+<p>The most common scenario is to install from <a class="reference external" href="http://pypi.python.org/pypi/">PyPI</a> using <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_install.html#requirement-specifiers"><em>Requirement Specifiers</em></a></p>
+<blockquote>
+<div><div class="highlight-python"><pre>$ pip install SomePackage            # latest version
+$ pip install SomePackage==1.0.4     # specific version
+$ pip install 'SomePackage&gt;=1.0.4'     # minimum version</pre>
+</div>
+</div></blockquote>
+<p>For more information and examples, see the <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_install.html#pip-install"><em>pip install</em></a> reference.</p>
+</div>
+<div class="section" id="requirements-files">
+<span id="id1"></span><h2><a class="toc-backref" href="#id8">Requirements Files</a><a class="headerlink" href="#requirements-files" title="Permalink to this headline">¶</a></h2>
+<p>“Requirements files” are files containing a list of items to be
+installed using <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_install.html#pip-install"><em>pip install</em></a> like so:</p>
+<blockquote>
+<div><div class="highlight-python"><pre>pip install -r requirements.txt</pre>
+</div>
+</div></blockquote>
+<p>Details on the format of the files are here: <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_install.html#requirements-file-format"><em>Requirements File Format</em></a>.</p>
+<p>Logically, a Requirements file is just a list of <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_install.html#pip-install"><em>pip install</em></a> arguments
+placed in a file.</p>
+<p>In practice, there are 4 common uses of Requirements files:</p>
+<ol class="arabic">
+<li><p class="first">Requirements files are used to hold the result from <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_freeze.html#pip-freeze"><em>pip freeze</em></a> for the
+purpose of achieving <a class="reference internal" href="#repeatability"><em>repeatable installations</em></a>.  In
+this case, your requirement file contains a pinned version of everything that
+was installed when <cite>pip freeze</cite> was run.</p>
+<div class="highlight-python"><pre>pip freeze &gt; requirements.txt
+pip install -r requirements.txt</pre>
+</div>
+</li>
+<li><p class="first">Requirements files are used to force pip to properly resolve dependencies.
+As it is now, pip <a class="reference external" href="https://github.com/pypa/pip/issues/988">doesn’t have true dependency resolution</a>, but instead simply uses the first
+specification it finds for a project. E.g if <cite>pkg1</cite> requires <cite>pkg3&gt;=1.0</cite> and
+<cite>pkg2</cite> requires <cite>pkg3&gt;=1.0,&lt;=2.0</cite>, and if <cite>pkg1</cite> is resolved first, pip will
+only use <cite>pkg3&gt;=1.0</cite>, and could easily end up installing a version of <cite>pkg3</cite>
+that conflicts with the needs of <cite>pkg2</cite>.  To solve this problem, you can
+place <cite>pkg3&gt;=1.0,&lt;=2.0</cite> (i.e. the correct specification) into your
+requirements file directly along with the other top level requirements. Like
+so:</p>
+<div class="highlight-python"><pre>pkg1
+pkg2
+pkg3&gt;=1.0,&lt;=2.0</pre>
+</div>
+</li>
+<li><p class="first">Requirements files are used to force pip to install an alternate version of a
+sub-dependency.  For example, suppose <cite>ProjectA</cite> in your requirements file
+requires <cite>ProjectB</cite>, but the latest version (v1.3) has a bug, you can force
+pip to accept earlier versions like so:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">ProjectA</span>
+<span class="n">ProjectB</span><span class="o">&lt;</span><span class="mf">1.3</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Requirements files are used to override a dependency with a local patch that
+lives in version control.  For example, suppose a dependency,
+<cite>SomeDependency</cite> from PyPI has a bug, and you can’t wait for an upstream fix.
+You could clone/copy the src, make the fix, and place it in vcs with the tag
+<cite>sometag</cite>.  You’d reference it in your requirements file with a line like so:</p>
+<div class="highlight-python"><pre>git+https://myvcs.com/some_dependency@sometag#egg=SomeDependency</pre>
+</div>
+<p>If <cite>SomeDependency</cite> was previously a top-level requirement in your
+requirements file, then <strong>replace</strong> that line with the new line. If
+<cite>SomeDependency</cite> is a sub-dependency, then <strong>add</strong> the new line.</p>
+</li>
+</ol>
+<p>It’s important to be clear that pip determines package dependencies using
+<a class="reference external" href="http://pythonhosted.org/setuptools/setuptools.html#declaring-dependencies">install_requires metadata</a>,
+not by discovering <cite>requirements.txt</cite> files embedded in projects.</p>
+<p>See also:</p>
+<ul class="simple">
+<li><a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_install.html#requirements-file-format"><em>Requirements File Format</em></a></li>
+<li><a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_freeze.html#pip-freeze"><em>pip freeze</em></a></li>
+<li><a class="reference external" href="https://caremad.io/blog/setup-vs-requirement/">“setup.py vs requirements.txt” (an article by Donald Stufft)</a></li>
+</ul>
+</div>
+<div class="section" id="installing-from-wheels">
+<span id="id2"></span><h2><a class="toc-backref" href="#id9">Installing from Wheels</a><a class="headerlink" href="#installing-from-wheels" title="Permalink to this headline">¶</a></h2>
+<p>“Wheel” is a built, archive format that can greatly speed installation compared
+to building and installing from source archives. For more information, see the
+<a class="reference external" href="http://wheel.readthedocs.org/">Wheel docs</a> ,
+<a class="reference external" href="http://www.python.org/dev/peps/pep-0427">PEP427</a>, and
+<a class="reference external" href="http://www.python.org/dev/peps/pep-0425">PEP425</a></p>
+<p>Pip prefers Wheels where they are available. To disable this, use the
+<a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_install.html#install-no-use-wheel"><em>–no-use-wheel</em></a> flag for <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_install.html#pip-install"><em>pip install</em></a>.</p>
+<p>If no satisfactory wheels are found, pip will default to finding source archives.</p>
+<p>To install directly from a wheel archive:</p>
+<div class="highlight-python"><pre>pip install SomePackage-1.0-py2.py3-none-any.whl</pre>
+</div>
+<p>For the cases where wheels are not available, pip offers <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_wheel.html#pip-wheel"><em>pip wheel</em></a> as a
+convenience, to build wheels for all your requirements and dependencies.</p>
+<p><a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_wheel.html#pip-wheel"><em>pip wheel</em></a> requires the <a class="reference external" href="https://pypi.python.org/pypi/wheel">wheel package</a> to be installed, which provides the
+“bdist_wheel” setuptools extension that it uses.</p>
+<p>To build wheels for your requirements and all their dependencies to a local directory:</p>
+<div class="highlight-python"><pre>pip install wheel
+pip wheel --wheel-dir=/local/wheels -r requirements.txt</pre>
+</div>
+<p>And <em>then</em> to install those requirements just using your local directory of wheels (and not from PyPI):</p>
+<div class="highlight-python"><pre>pip install --no-index --find-links=/local/wheels -r requirements.txt</pre>
+</div>
+</div>
+<div class="section" id="uninstalling-packages">
+<h2><a class="toc-backref" href="#id10">Uninstalling Packages</a><a class="headerlink" href="#uninstalling-packages" title="Permalink to this headline">¶</a></h2>
+<p>pip is able to uninstall most packages like so:</p>
+<div class="highlight-python"><pre>$ pip uninstall SomePackage</pre>
+</div>
+<p>pip also performs an automatic uninstall of an old version of a package
+before upgrading to a newer version.</p>
+<p>For more information and examples, see the <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_uninstall.html#pip-uninstall"><em>pip uninstall</em></a> reference.</p>
+</div>
+<div class="section" id="listing-packages">
+<h2><a class="toc-backref" href="#id11">Listing Packages</a><a class="headerlink" href="#listing-packages" title="Permalink to this headline">¶</a></h2>
+<p>To list installed packages:</p>
+<div class="highlight-python"><pre>$ pip list
+Pygments (1.5)
+docutils (0.9.1)
+Sphinx (1.1.2)
+Jinja2 (2.6)</pre>
+</div>
+<p>To list outdated packages, and show the latest version available:</p>
+<div class="highlight-python"><pre>$ pip list --outdated
+docutils (Current: 0.9.1 Latest: 0.10)
+Sphinx (Current: 1.1.2 Latest: 1.1.3)</pre>
+</div>
+<p>To show details about an installed package:</p>
+<div class="highlight-python"><pre>$ pip show sphinx
+---
+Name: Sphinx
+Version: 1.1.3
+Location: /my/env/lib/pythonx.x/site-packages
+Requires: Pygments, Jinja2, docutils</pre>
+</div>
+<p>For more information and examples, see the <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_list.html#pip-list"><em>pip list</em></a> and <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_show.html#pip-show"><em>pip show</em></a>
+reference pages.</p>
+</div>
+<div class="section" id="searching-for-packages">
+<h2><a class="toc-backref" href="#id12">Searching for Packages</a><a class="headerlink" href="#searching-for-packages" title="Permalink to this headline">¶</a></h2>
+<p>pip can search <a class="reference external" href="http://pypi.python.org/pypi/">PyPI</a> for packages using the <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">search</span></tt>
+command:</p>
+<div class="highlight-python"><pre>$ pip search "query"</pre>
+</div>
+<p>The query will be used to search the names and summaries of all
+packages.</p>
+<p>For more information and examples, see the <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_search.html#pip-search"><em>pip search</em></a> reference.</p>
+</div>
+<div class="section" id="configuration">
+<span id="id3"></span><h2><a class="toc-backref" href="#id13">Configuration</a><a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="config-file">
+<span id="id4"></span><h3><a class="toc-backref" href="#id14">Config file</a><a class="headerlink" href="#config-file" title="Permalink to this headline">¶</a></h3>
+<p>pip allows you to set all command line option defaults in a standard ini
+style config file.</p>
+<p>The names and locations of the configuration files vary slightly across
+platforms.</p>
+<ul class="simple">
+<li>On Unix and Mac OS X the configuration file is: <tt class="file docutils literal"><span class="pre">$HOME/.pip/pip.conf</span></tt></li>
+<li>On Windows, the configuration file is: <tt class="file docutils literal"><span class="pre">%HOME%\pip\pip.ini</span></tt></li>
+</ul>
+<p>You can set a custom path location for the config file using the environment variable <tt class="docutils literal"><span class="pre">PIP_CONFIG_FILE</span></tt>.</p>
+<p>In a virtual environment, an additional config file will be read from the base
+directory of the virtualenv (<tt class="docutils literal"><span class="pre">sys.prefix</span></tt> as reported by Python). The base
+name of the file is the same as the user configuration file (<tt class="file docutils literal"><span class="pre">pip.conf</span></tt>
+on Unix and OSX, <tt class="file docutils literal"><span class="pre">pip.ini</span></tt> on Windows). Values in the virtualenv-specific
+configuration file take precedence over those in the user’s configuration file
+(whether from the user home or specified via <tt class="docutils literal"><span class="pre">PIP_CONFIG_FILE</span></tt>).</p>
+<p>The names of the settings are derived from the long command line option, e.g.
+if you want to use a different package index (<tt class="docutils literal"><span class="pre">--index-url</span></tt>) and set the
+HTTP timeout (<tt class="docutils literal"><span class="pre">--default-timeout</span></tt>) to 60 seconds your config file would
+look like this:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span class="k">[global]</span>
+<span class="na">timeout</span> <span class="o">=</span> <span class="s">60</span>
+<span class="na">index-url</span> <span class="o">=</span> <span class="s">http://download.zope.org/ppix</span>
+</pre></div>
+</div>
+<p>Each subcommand can be configured optionally in its own section so that every
+global setting with the same name will be overridden; e.g. decreasing the
+<tt class="docutils literal"><span class="pre">timeout</span></tt> to <tt class="docutils literal"><span class="pre">10</span></tt> seconds when running the <cite>freeze</cite>
+(<a class="reference external" href="http://www.pip-installer.org/en/latest/#freezing-requirements">Freezing Requirements</a>) command and using
+<tt class="docutils literal"><span class="pre">60</span></tt> seconds for all other commands is possible with:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span class="k">[global]</span>
+<span class="na">timeout</span> <span class="o">=</span> <span class="s">60</span>
+
+<span class="k">[freeze]</span>
+<span class="na">timeout</span> <span class="o">=</span> <span class="s">10</span>
+</pre></div>
+</div>
+<p>Boolean options like <tt class="docutils literal"><span class="pre">--ignore-installed</span></tt> or <tt class="docutils literal"><span class="pre">--no-dependencies</span></tt> can be
+set like this:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span class="k">[install]</span>
+<span class="na">ignore-installed</span> <span class="o">=</span> <span class="s">true</span>
+<span class="na">no-dependencies</span> <span class="o">=</span> <span class="s">yes</span>
+</pre></div>
+</div>
+<p>Appending options like <tt class="docutils literal"><span class="pre">--find-links</span></tt> can be written on multiple lines:</p>
+<div class="highlight-ini"><div class="highlight"><pre><span class="k">[global]</span>
+<span class="na">find-links</span> <span class="o">=</span><span class="s"></span>
+<span class="s">    http://download.example.com</span>
+
+<span class="k">[install]</span>
+<span class="na">find-links</span> <span class="o">=</span><span class="s"></span>
+<span class="s">    http://mirror1.example.com</span>
+<span class="s">    http://mirror2.example.com</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="environment-variables">
+<h3><a class="toc-backref" href="#id15">Environment Variables</a><a class="headerlink" href="#environment-variables" title="Permalink to this headline">¶</a></h3>
+<p>pip’s command line options can be set with environment variables using the
+format <tt class="docutils literal"><span class="pre">PIP_&lt;UPPER_LONG_NAME&gt;</span></tt> . Dashes (<tt class="docutils literal"><span class="pre">-</span></tt>) have to be replaced with
+underscores (<tt class="docutils literal"><span class="pre">_</span></tt>).</p>
+<p>For example, to set the default timeout:</p>
+<div class="highlight-python"><pre>export PIP_DEFAULT_TIMEOUT=60</pre>
+</div>
+<p>This is the same as passing the option to pip directly:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">pip</span> <span class="o">--</span><span class="n">default</span><span class="o">-</span><span class="n">timeout</span><span class="o">=</span><span class="mi">60</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>To set options that can be set multiple times on the command line, just add
+spaces in between values. For example:</p>
+<div class="highlight-python"><pre>export PIP_FIND_LINKS="http://mirror1.example.com http://mirror2.example.com"</pre>
+</div>
+<p>is the same as calling:</p>
+<div class="highlight-python"><pre>pip install --find-links=http://mirror1.example.com --find-links=http://mirror2.example.com</pre>
+</div>
+</div>
+<div class="section" id="config-precedence">
+<h3><a class="toc-backref" href="#id16">Config Precedence</a><a class="headerlink" href="#config-precedence" title="Permalink to this headline">¶</a></h3>
+<p>Command line options have precedence over environment variables, which have precedence over the config file.</p>
+<p>Within the config file, command specific sections have precedence over the global section.</p>
+<p>Examples:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">--host=foo</span></tt> overrides <tt class="docutils literal"><span class="pre">PIP_HOST=foo</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">PIP_HOST=foo</span></tt> overrides a config file with <tt class="docutils literal"><span class="pre">[global]</span> <span class="pre">host</span> <span class="pre">=</span> <span class="pre">foo</span></tt></li>
+<li>A command specific section in the config file <tt class="docutils literal"><span class="pre">[&lt;command&gt;]</span> <span class="pre">host</span> <span class="pre">=</span> <span class="pre">bar</span></tt>
+overrides the option with same name in the <tt class="docutils literal"><span class="pre">[global]</span></tt> config file section</li>
+</ul>
+</div>
+<div class="section" id="command-completion">
+<h3><a class="toc-backref" href="#id17">Command Completion</a><a class="headerlink" href="#command-completion" title="Permalink to this headline">¶</a></h3>
+<p>pip comes with support for command line completion in bash and zsh.</p>
+<p>To setup for bash:</p>
+<div class="highlight-python"><pre>$ pip completion --bash &gt;&gt; ~/.profile</pre>
+</div>
+<p>To setup for zsh:</p>
+<div class="highlight-python"><pre>$ pip completion --zsh &gt;&gt; ~/.zprofile</pre>
+</div>
+<p>Alternatively, you can use the result of the <tt class="docutils literal"><span class="pre">completion</span></tt> command
+directly with the eval function of you shell, e.g. by adding the following to your startup file:</p>
+<div class="highlight-python"><pre>eval "`pip completion --bash`"</pre>
+</div>
+</div>
+</div>
+<div class="section" id="fast-local-installs">
+<span id="id5"></span><h2><a class="toc-backref" href="#id18">Fast &amp; Local Installs</a><a class="headerlink" href="#fast-local-installs" title="Permalink to this headline">¶</a></h2>
+<p>Often, you will want a fast install from local archives, without probing PyPI.</p>
+<p>First, download the archives that fulfill your requirements:</p>
+<div class="highlight-python"><pre>$ pip install --download &lt;DIR&gt; -r requirements.txt</pre>
+</div>
+<p>Then, install using  <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_wheel.html#find-links"><em>–find-links</em></a> and <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_wheel.html#no-index"><em>–no-index</em></a>:</p>
+<div class="highlight-python"><pre>$ pip install --no-index --find-links=[file://]&lt;DIR&gt; -r requirements.txt</pre>
+</div>
+</div>
+<div class="section" id="non-recursive-upgrades">
+<h2><a class="toc-backref" href="#id19">Non-recursive upgrades</a><a class="headerlink" href="#non-recursive-upgrades" title="Permalink to this headline">¶</a></h2>
+<p><tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span></tt> is currently written to perform a recursive upgrade.</p>
+<p>E.g. supposing:</p>
+<ul class="simple">
+<li><cite>SomePackage-1.0</cite> requires <cite>AnotherPackage&gt;=1.0</cite></li>
+<li><cite>SomePackage-2.0</cite> requires <cite>AnotherPackage&gt;=1.0</cite> and <cite>OneMorePoject==1.0</cite></li>
+<li><cite>SomePackage-1.0</cite> and <cite>AnotherPackage-1.0</cite> are currently installed</li>
+<li><cite>SomePackage-2.0</cite> and <cite>AnotherPackage-2.0</cite> are the latest versions available on PyPI.</li>
+</ul>
+<p>Running <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--upgrade</span> <span class="pre">SomePackage</span></tt> would upgrade <cite>SomePackage</cite> <em>and</em> <cite>AnotherPackage</cite>
+despite <cite>AnotherPackage</cite> already being satisifed.</p>
+<p>If you would like to perform a non-recursive upgrade perform these 2 steps:</p>
+<div class="highlight-python"><pre>pip install --upgrade --no-deps SomePackage
+pip install SomePackage</pre>
+</div>
+<p>The first line will upgrade <cite>SomePackage</cite>, but not dependencies like <cite>AnotherPackage</cite>.  The 2nd line will fill in new dependencies like <cite>OneMorePackage</cite>.</p>
+</div>
+<div class="section" id="user-installs">
+<h2><a class="toc-backref" href="#id20">User Installs</a><a class="headerlink" href="#user-installs" title="Permalink to this headline">¶</a></h2>
+<p>With Python 2.6 came the <a class="reference external" href="http://docs.python.org/install/index.html#alternate-installation-the-user-scheme">“user scheme” for installation</a>,
+which means that all Python distributions support an alternative install
+location that is specific to a user.  The default location for each OS is
+explained in the python documentation for the <a class="reference external" href="http://docs.python.org/library/site.html#site.USER_BASE">site.USER_BASE</a> variable.  This mode
+of installation can be turned on by specifying the <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_install.html#install-user"><em>–user</em></a> option to <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span></tt>.</p>
+<p>Moreover, the “user scheme” can be customized by setting the
+<tt class="docutils literal"><span class="pre">PYTHONUSERBASE</span></tt> environment variable, which updates the value of <tt class="docutils literal"><span class="pre">site.USER_BASE</span></tt>.</p>
+<p>To install “SomePackage” into an environment with site.USER_BASE customized to ‘/myappenv’, do the following:</p>
+<div class="highlight-python"><pre>export PYTHONUSERBASE=/myappenv
+pip install --user SomePackage</pre>
+</div>
+<p><tt class="docutils literal"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">--user</span></tt> follows four rules:</p>
+<ol class="arabic simple">
+<li>When globally installed packages are on the python path, and they <em>conflict</em>
+with the installation requirements, they are ignored, and <em>not</em>
+uninstalled.</li>
+<li>When globally installed packages are on the python path, and they <em>satisfy</em>
+the installation requirements, pip does nothing, and reports that
+requirement is satisfied (similar to how global packages can satisfy
+requirements when installing packages in a <tt class="docutils literal"><span class="pre">--system-site-packages</span></tt>
+virtualenv).</li>
+<li>pip will not perform a <tt class="docutils literal"><span class="pre">--user</span></tt> install in a <tt class="docutils literal"><span class="pre">--no-site-packages</span></tt>
+virtualenv (i.e. the default kind of virtualenv), due to the user site not
+being on the python path.  The installation would be pointless.</li>
+<li>In a <tt class="docutils literal"><span class="pre">--system-site-packages</span></tt> virtualenv, pip will not install a package
+that conflicts with a package in the virtualenv site-packages.  The –user
+installation would lack sys.path precedence and be pointless.</li>
+</ol>
+<p>To make the rules clearer, here are some examples:</p>
+<p>From within a <tt class="docutils literal"><span class="pre">--no-site-packages</span></tt> virtualenv (i.e. the default kind):</p>
+<div class="highlight-python"><pre>$ pip install --user SomePackage
+Can not perform a '--user' install. User site-packages are not visible in this virtualenv.</pre>
+</div>
+<p>From within a <tt class="docutils literal"><span class="pre">--system-site-packages</span></tt> virtualenv where <tt class="docutils literal"><span class="pre">SomePackage==0.3</span></tt> is already installed in the virtualenv:</p>
+<div class="highlight-python"><pre>$ pip install --user SomePackage==0.4
+Will not install to the user site because it will lack sys.path precedence</pre>
+</div>
+<p>From within a real python, where <tt class="docutils literal"><span class="pre">SomePackage</span></tt> is <em>not</em> installed globally:</p>
+<div class="highlight-python"><pre>$ pip install --user SomePackage
+[...]
+Successfully installed SomePackage</pre>
+</div>
+<p>From within a real python, where <tt class="docutils literal"><span class="pre">SomePackage</span></tt> <em>is</em> installed globally, but is <em>not</em> the latest version:</p>
+<div class="highlight-python"><pre>$ pip install --user SomePackage
+[...]
+Requirement already satisfied (use --upgrade to upgrade)
+
+$ pip install --user --upgrade SomePackage
+[...]
+Successfully installed SomePackage</pre>
+</div>
+<p>From within a real python, where <tt class="docutils literal"><span class="pre">SomePackage</span></tt> <em>is</em> installed globally, and is the latest version:</p>
+<div class="highlight-python"><pre>$ pip install --user SomePackage
+[...]
+Requirement already satisfied (use --upgrade to upgrade)
+
+$ pip install --user --upgrade SomePackage
+[...]
+Requirement already up-to-date: SomePackage
+
+# force the install
+$ pip install --user --ignore-installed SomePackage
+[...]
+Successfully installed SomePackage</pre>
+</div>
+</div>
+<div class="section" id="ensuring-repeatability">
+<span id="repeatability"></span><h2><a class="toc-backref" href="#id21">Ensuring Repeatability</a><a class="headerlink" href="#ensuring-repeatability" title="Permalink to this headline">¶</a></h2>
+<p>Three things are required to fully guarantee a repeatable installation using requirements files.</p>
+<ol class="arabic simple">
+<li>The requirements file was generated by <tt class="docutils literal"><span class="pre">pip</span> <span class="pre">freeze</span></tt> or you’re sure it only
+contains requirements that specify a specific version.</li>
+<li>The installation is performed using <a class="reference internal" href="http://www.pip-installer.org/en/latest/reference/pip_install.html#install-no-deps"><em>–no-deps</em></a>.
+This guarantees that only what is explicitly listed in the requirements file is
+installed.</li>
+<li>The installation is performed against an index or find-links location that is
+guaranteed to <em>not</em> allow archives to be changed and updated without a
+version increase.  Unfortunately, this is <em>not</em> true on PyPI. It is possible
+for the same pypi distribution to have a different hash over time. Project
+authors are allowed to delete a distribution, and then upload a new one with
+the same name and version, but a different hash. See <a class="reference external" href="https://github.com/pypa/pip/issues/1175">Issue #1175</a> for plans to add hash
+confirmation to pip, or a new “lock file” notion, but for now, know that the <a class="reference external" href="https://pypi.python.org/pypi/peep">peep
+project</a> offers this feature on top of pip
+using requirements file comments.</li>
+</ol>
+</div>
+</div>
+
+
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="http://www.pip-installer.org/en/latest/reference/index.html" class="btn btn-neutral float-right" title="Reference Guide">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="http://www.pip-installer.org/en/latest/installing.html" class="btn btn-neutral" title="Installation"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr>
+
+  <div role="contentinfo">
+    <p>
+        © Copyright 2008-2014, PyPA.
+      Last updated on Feb 21, 2014.
+    </p>
+  </div>
+
+  <a href="https://github.com/snide/sphinx_rtd_theme">Sphinx theme</a> provided by <a href="https://readthedocs.org/">Read the Docs</a>
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions"><!-- Inserted RTD Footer -->
+<div class="injected">
+
+  
+
+      
+       
+      <dl>
+        <dt>Versions</dt>
+        
+           <strong> 
+              
+              <dd><a href="http://www.pip-installer.org/en/latest/">latest</a></dd>
+              
+           </strong> 
+        
+          
+              
+              <dd><a href="http://www.pip-installer.org/en/develop/">develop</a></dd>
+              
+          
+        
+          
+              
+              <dd><a href="http://www.pip-installer.org/en/1.5.X/">1.5.X</a></dd>
+              
+          
+        
+          
+              
+              <dd><a href="http://www.pip-installer.org/en/1.4.1/">1.4.1</a></dd>
+              
+          
+        
+          
+              
+              <dd><a href="http://www.pip-installer.org/en/1.3.1/">1.3.1</a></dd>
+              
+          
+        
+          
+              
+              <dd><a href="http://www.pip-installer.org/en/1.2.1/">1.2.1</a></dd>
+              
+          
+        
+          
+              
+              <dd><a href="http://www.pip-installer.org/en/1.1/">1.1</a></dd>
+              
+          
+        
+          
+              
+              <dd><a href="http://www.pip-installer.org/en/1.0.2/">1.0.2</a></dd>
+              
+          
+        
+          
+              
+              <dd><a href="http://www.pip-installer.org/en/0.8.3/">0.8.3</a></dd>
+              
+          
+        
+          
+              
+              <dd><a href="http://www.pip-installer.org/en/0.7.2/">0.7.2</a></dd>
+              
+          
+        
+      </dl>
+      
+      
+      <dl>
+        <dt>Downloads</dt>
+        
+          <dd><a href="https://media.readthedocs.org/pdf/pip/latest/pip.pdf">PDF</a></dd>
+        
+          <dd><a href="https://media.readthedocs.org/htmlzip/pip/latest/pip.zip">HTML</a></dd>
+        
+          <dd><a href="https://media.readthedocs.org/epub/pip/latest/pip.epub">Epub</a></dd>
+        
+      </dl>
+      
+      <dl>
+        <!-- These are kept as relative links for internal installs that are http -->
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="http://readthedocs.org/projects/pip/?fromdocs=pip">Project Home</a>
+          </dd>
+          <dd>
+            <a href="http://readthedocs.org/builds/pip/?fromdocs=pip">Builds</a>
+          </dd>
+      </dl>
+      
+      <dl>
+        <dt>On GitHub</dt>
+          <dd>
+            <a href="https://github.com/pypa/pip/blob/master/docs/user_guide.rst">Edit</a>
+          </dd>
+      </dl>
+      
+      <hr>
+      Free document hosting provided by <a href="https://readthedocs.org/">Read the Docs</a>. Support us on <a href="https://www.gittip.com/readthedocs/">Gittip</a>.
+
+  
+
+</div>
+</div>
+  </div>
+
+
+
+</body>
+</html>

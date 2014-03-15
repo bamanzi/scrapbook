@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+## head
 import sys
 import os
 
@@ -90,6 +90,7 @@ def parse_scrapbook_rdf(sbrdffile):
 
     return CF.DICTRDF
 
+## * generate html
 def scrapbook_to_html(sbdata, output):
     HTML_TMPL_HEADER = """<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -275,7 +276,16 @@ def scrapbook_to_markdown(sbdata, output):
     output.write(HTML_TMPL_FOOTER)    
 
 if __name__=='__main__':
-    import sys
+    ## * test
+    """
+    >>> import sys
+    >>> rdffile = "/users/bamanzi/projects/scrapbook/scrapbook.rdf"
+    >>> sbdata = parse_scrapbook_rdf(rdffile)
+    
+    >>> import json
+    >>> print json.dumps(sbdata, indent=4)
+    """
+    ## 
     #sys.setdefaultencoding('utf-8')
     rdffile = os.path.abspath(sys.argv[1])
     sbdata = parse_scrapbook_rdf(rdffile)
