@@ -1,0 +1,1198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" id="sixapart-standard">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Movable Type  5.2.2">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--link rel="stylesheet" href="http://www.ruanyifeng.com/blog/styles.css" type="text/css" /-->
+<link rel="start" href="https://www.ruanyifeng.com/blog/" title="Home">
+<link rel="alternate" type="application/atom+xml" title="Recent Entries" href="https://feeds.feedburner.com/ruanyifeng">
+<script src="about:blank"></script><script async="" src="about:blank"></script><script type="text/javascript" src="about:blank"></script>
+<script type="text/javascript" src="about:blank"></script>
+<!--
+<rdf:RDF xmlns="http://web.resource.org/cc/"
+         xmlns:dc="http://purl.org/dc/elements/1.1/"
+         xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+<Work rdf:about="http://www.ruanyifeng.com/blog/2012/11/require_js.html">
+<dc:title>Javascript模块化编程（三）：require.js的用法</dc:title>
+<dc:description>这个系列的第一部分和第二部分，介绍了Javascript模块原型和理论概念，今天介绍如何将它们用于实战。...</dc:description>
+<dc:creator>阮一峰</dc:creator>
+<dc:date>2012-11-07T18:06:27+08:00</dc:date>
+<license rdf:resource="http://creativecommons.org/licenses/by-nc-nd/3.0/" />
+</Work>
+<License rdf:about="http://creativecommons.org/licenses/by-nc-nd/3.0/">
+</License>
+</rdf:RDF>
+-->
+
+<style>
+/* Code tidied up by ScrapBook */
+body { background-color: rgb(245, 245, 213); }
+#container::before { display: block; width: 100%; padding: 10px; background: rgba(0, 0, 0, 0.1) none repeat scroll 0% 0%; text-align: center; content: "本站显示不正常，可能因为您使用了广告拦截器。"; }
+</style>
+<script>/* Code removed by ScrapBook */</script><link rel="stylesheet" type="text/css" href="theme_scrapbook.min.css">
+
+    
+    <link rel="prev" href="https://www.ruanyifeng.com/blog/2019/12/github_actions.html" title="GitHub Actions 教程：定时发送天气邮件">
+    <link rel="next" href="https://www.ruanyifeng.com/blog/2019/12/weekly-issue-88.html" title="科技爱好者周刊：第 88 期">
+    
+    <title>如何撤销 Git 操作？ - 阮一峰的网络日志</title>
+<script async="" src="about:blank"></script><style>
+/* Code tidied up by ScrapBook */
+</style></head>
+<body id="scrapbook" class="mt-entry-archive one-column">
+<script>/* Code removed by ScrapBook */</script>
+    <div id="container">
+        <div id="container-inner">
+
+            <div id="header">
+    <div id="header-inner">
+        <div id="header-content">
+
+
+            <div id="header-name">阮一峰的网络日志 <span id="site_location"> » <a href="https://www.ruanyifeng.com/blog/" accesskey="1">首页</a></span><span id="site_archive"> » <a href="https://www.ruanyifeng.com/blog/archives.html">档案</a></span>
+</div>
+
+<div id="google_search">
+<!-- SiteSearch Google -->
+<form action="https://www.baidu.com/s" target="_blank" method="get" id="cse-search-box">
+  <div>
+  <input size="20" name="origin" class="searchbox" id="sbi" value="" type="text">
+  <input name="wd" value="" type="hidden">
+  <!--input type="image" src="/static/themes/theme_scrapbook/images/top_search_submit.gif" class="searchbox_submit" value="" alt="搜索" name="sa" onclick="this.form.wd.value = this.form.origin.value + ' inurl:www.ruanyifeng.com/blog'" /-->
+  <input src="top_search_submit.gif" class="searchbox_submit" value="" alt="搜索" name="sa" type="image">
+</div>
+</form>
+
+<!-- SiteSearch Google -->
+</div>
+<div id="feed_icon">
+<a href="http://www.ruanyifeng.com/feed.html?utm_source=" title="订阅Feed">
+<!--img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAUzSURBVHjavFdbbFRVFF3nPjoz7dTWTittaW0jUDRAUqaNojyqREnEQKgfUj9MqqAmhqRt/OCD4CuY+Kckoh+aiGKC+gMJbdHoRysJ8dkhhmJLNdDKtJU+6GMK87j3Hs85d2Z6HzNtMYWb3Dn3NWftvfba+5xNYDl+e6Fkj6yqb/oDRbWq14vlPBLRKCITkxf0ROLt+hNjp1PPSRK4kA3vF1dXNRcWlyA2OQU9eos9opAkAiKxD+XkKO6t15aRWO7J/MgmAZU8MEgexgZHMX518Dh72sYMmVKShnxWuWHdHtxKIDIYTgMuDzgfmSOIQkYMpdUF8OY92Hytt4/jvkg47czzU16iQovM3QFwmNck+Yyduu7D6NA0Z6JR4THntFs9V4tWQg6Ui3s6MwKDncsFTnXKLJhDSeUK3AgPtyhccDzmVs999buRt/1Vm4i0od+hX7+MRG87jPGB/w1u8FPj9xEw7McVrnYuOCvtpjTth3J/nTg99c8LRhKhr6D3dTB5R24bXFwbMXBsyZzeoXaycEpJ95TB09AGX/NpqLVNtw8urnVzLvHjFNxiFqRy2OOHuqUVnue+ACkoWzo4O6lGzTmuHq6nPvY2m9rVqjrIK2rMEKxqyG5NPAKt+wjo0LklgfNxJkZMA3KJvqRUk3z5UFY3QH14P0h+WUY79HPvgv7VuSg4ZRGY1YgZgqXmORccF17sy2ehnf9AeO085K2HQFbtXBScj0LcpgF2cN+WV+DZ/LJQu6gD4R7oV7pBJwbSgtMvfiPoVp56DySwxm7EtkMs1WdAB7qzggsDJKQYsHucSkOudrkiCPWR/fA2nYCn8SNIK4NptSMyAu3sAdDRkIsJdfth0LzSrODUoPNZ4KI9SxJI5UHk7D4GdQfz2us31c7CoHMjRkKuDPHseCMrONVhNcDJwMJpKFVvg9L4OaTiNWm1x789KCqkrXhVBiEz0WYCT2nAzQAD1/vaETv1GrRfP4Vx5cfMNcDPwvP0h0DhanPym7OIf/+O67vcJ1/PCJ4KgdzaUP6Wz+dU+5yIL6fV+PsHGAOdwlPpvvUOyeeAVGyCdqkDNB6DPjsBSrnndfOGevOh3RhGItxvA+fX1CtbGFhgYUFkFMZPR6F1HnClHq8HyubWtJexX06CRmdt33hrd7nA7SFY4qoGpnYuOKcRykPPgDCBcsHx9Iv+fNL2PueBehCWUfYQIIMGLOCcOmXDXsh1+yCt35tUPfvzGFuSvzvoinXOxqa02qOhM6733nVP2MAdaej2XN11DPKjLZCD+yBvahGCo7JfTKAN9UD7s8Oe9zUNIhz8fWI8DG2k38WCFdxugANcXrvTVd1IEbuv3Jour7Hzn7jLMBNfKs7R3i67gRVrbeCOEDhinmWhAatsqdquM2XzHZINhK2cqTjHr/XZdVJUbgN3MWAVXKbSyg9jesRW2xP9di+lwrL5ojM3m2H/kG9hwcIA37c71W6wJdW2J2S5nrjYbq/t1AHAhJsKQeyfPvf6IMJgghPJhFZ4x0KlfLFvt22du45Au/A1SOlGc0P672XXwhLtOcM0kTTEMMd0qkVmMNXxMd/tsedUjInr4SQDgOfeXMSiN0FCL5WHah4L1qqYXPJOJlttd+a5M+YpcG5poLYKQ5f+6JJ4r8bbJYP47hq4r7QAs9PjYNhHJd4o8l5taiwuOpa7AS4XKqI/5NjJbTnaWK92nLdLuhQAJayRNMiygXPBeQN+Qbvu0zDc3y+aUzhbkGR73sI7ljvUnndx2q3t+X8CDAD66FtrIL864AAAAABJRU5ErkJggg==" alt="" style="border: 0pt none;" /-->
+<img src="bg2021072117.png" alt="" style="border: 0pt none;">
+</a></div>
+
+        </div>
+    </div>
+</div>
+
+
+
+            <div id="content">
+                <div id="content-inner">
+
+
+                    <div id="alpha">
+                        <div id="alpha-inner">
+
+
+                            <div id="entry-2146" class="entry-asset asset hentry">
+                                <div class="asset-header">
+<div class="asset-nav entry-nav">
+
+<div class="entry-location">
+<ul>
+<li>上一篇：<a href="https://www.ruanyifeng.com/blog/2019/12/github_actions.html" title="GitHub Actions 教程：定时发送天气邮件">GitHub&nbsp;Acti</a></li>
+<li>下一篇：<a href="https://www.ruanyifeng.com/blog/2019/12/weekly-issue-88.html" title="科技爱好者周刊：第 88 期">科技爱好者周刊：第&nbsp;8</a></li>
+</ul>
+</div>
+
+
+    
+                                    <div class="entry-categories">
+                                        <p>分类<span class="delimiter">：</span></p>
+                                        <ul>
+                                            <li><a href="https://www.ruanyifeng.com/blog/developer/" rel="tag">开发者手册</a></li>
+                                        </ul>
+                                    </div>
+    
+
+
+                                            
+<div class="entry-location-mobile" style="float: right;">
+<ul>
+<li><a href="https://www.ruanyifeng.com/blog/2019/12/github_actions.html" title="GitHub Actions 教程：定时发送天气邮件">⇐&nbsp;</a></li>
+<li><a href="https://www.ruanyifeng.com/blog/2019/12/weekly-issue-88.html" title="科技爱好者周刊：第 88 期">&nbsp;⇒</a></li>
+</ul>
+</div>
+
+</div>
+</div>
+
+                          
+<article class="hentry">
+                                    <h1 id="page-title" class="asset-name entry-title">如何撤销 Git 操作？</h1>
+
+
+
+<div class="asset-meta">
+                                        
+
+                                            <p class="vcard author">作者： <a class="fn url" href="https://www.ruanyifeng.com/">阮一峰</a></p>
+                                    <p>日期： <a href="https://www.ruanyifeng.com/blog/2019/12/"><abbr class="published" title="2019-12-24T18:06:20+08:00">2019年12月24日</abbr></a></p>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+                                
+                                <div class="asset-content entry-content" id="main-content">
+
+                                    <!-- div class="asset-body" -->
+                                        <p>Git 版本管理时，往往需要撤销某些操作。</p>
+
+                                    <!-- /div -->
+
+
+                                    <!-- div id="more" class="asset-more" -->
+                                        <p>本文介绍几种最主要的情况，给出详细的解释。更多的命令可以参考<a href="https://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank">《常用 Git 命令清单》</a>一文。</p>
+
+<p><img src="bg2019122401.jpg" alt="" title=""></p>
+
+<h2>一、撤销提交</h2>
+
+<p>一种常见的场景是，提交代码以后，你突然意识到这个提交有问题，应该撤销掉，这时执行下面的命令就可以了。</p>
+
+<blockquote><pre class=" language-bash"><code class=" language-bash">
+$ git revert HEAD
+</code></pre></blockquote>
+
+<p>上面命令的原理是，在当前提交后面，新增一次提交，抵消掉上一次提交导致的所有变化。它不会改变过去的历史，所以是首选方式，没有任何丢失代码的风险。</p>
+
+<p><code>git revert</code> 命令只能抵消上一个提交，如果想抵消多个提交，必须在命令行依次指定这些提交。比如，抵消前两个提交，要像下面这样写。</p>
+
+<blockquote><pre class=" language-bash"><code class=" language-bash">
+$ git revert <span class="token punctuation">[</span>倒数第一个提交<span class="token punctuation">]</span> <span class="token punctuation">[</span>倒数第二个提交<span class="token punctuation">]</span>
+</code></pre></blockquote>
+
+<p><code>git revert</code>命令还有两个参数。</p>
+
+<blockquote>
+  <ul>
+<li><code>--no-edit</code>：执行时不打开默认编辑器，直接使用 Git 自动生成的提交信息。</li>
+<li><code>--no-commit</code>：只抵消暂存区和工作区的文件变化，不产生新的提交。</li>
+</ul>
+</blockquote>
+
+<h2>二、丢弃提交</h2>
+
+<p>如果希望以前的提交在历史中彻底消失，而不是被抵消掉，可以使用<code>git reset</code>命令，丢弃掉某个提交之后的所有提交。</p>
+
+<blockquote><pre class=" language-bash"><code class=" language-bash">
+$ git reset <span class="token punctuation">[</span>last good SHA<span class="token punctuation">]</span>
+</code></pre></blockquote>
+
+<p><code>git reset</code>的原理是，让最新提交的指针回到以前某个时点，该时点之后的提交都从历史中消失。</p>
+
+<p>默认情况下，<code>git reset</code>不改变工作区的文件（但会改变暂存区），<code>--hard</code>参数可以让工作区里面的文件也回到以前的状态。</p>
+
+<blockquote><pre class=" language-bash"><code class=" language-bash">
+$ git reset <span class="token operator">--</span>hard <span class="token punctuation">[</span>last good SHA<span class="token punctuation">]</span>
+</code></pre></blockquote>
+
+<p>执行<code>git reset</code>命令之后，如果想找回那些丢弃掉的提交，可以使用<code>git reflog</code>命令，具体做法参考<a href="https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/#redo-after-undo-local" target="_blank">这里</a>。不过，这种做法有时效性，时间长了可能找不回来。</p>
+
+<h2>三、替换上一次提交</h2>
+
+<p>提交以后，发现提交信息写错了，这时可以使用<code>git commit</code>命令的<code>--amend</code>参数，可以修改上一次的提交信息。</p>
+
+<blockquote><pre class=" language-bash"><code class=" language-bash">
+$ git commit <span class="token operator">--</span>amend <span class="token operator">-</span>m "Fixes bug <span class="token comment" spellcheck="true">#42"
+</span></code></pre></blockquote>
+
+<p>它的原理是产生一个新的提交对象，替换掉上一次提交产生的提交对象。</p>
+
+<p>这时如果暂存区有发生变化的文件，会一起提交到仓库。所以，<code>--amend</code>不仅可以修改提交信息，还可以整个把上一次提交替换掉。</p>
+
+<h2>四、撤销工作区的文件修改</h2>
+
+<p>如果工作区的某个文件被改乱了，但还没有提交，可以用<code>git checkout</code>命令找回本次修改之前的文件。</p>
+
+<blockquote><pre class=" language-bash"><code class=" language-bash">
+$ git checkout <span class="token operator">--</span> <span class="token punctuation">[</span>filename<span class="token punctuation">]</span>
+</code></pre></blockquote>
+
+<p>它的原理是先找暂存区，如果该文件有暂存的版本，则恢复该版本，否则恢复上一次提交的版本。</p>
+
+<p>注意，工作区的文件变化一旦被撤销，就无法找回了。</p>
+
+<h2>五、从暂存区撤销文件</h2>
+
+<p>如果不小心把一个文件添加到暂存区，可以用下面的命令撤销。</p>
+
+<blockquote><pre class=" language-bash"><code class=" language-bash">
+$ git rm <span class="token operator">--</span>cached <span class="token punctuation">[</span>filename<span class="token punctuation">]</span>
+</code></pre></blockquote>
+
+<p>上面的命令不影响已经提交的内容。</p>
+
+<h2>六、撤销当前分支的变化</h2>
+
+<p>你在当前分支上做了几次提交，突然发现放错了分支，这几个提交本应该放到另一个分支。</p>
+
+<blockquote><pre class=" language-bash"><code class=" language-bash">
+<span class="token comment" spellcheck="true"># 新建一个 feature 分支，指向当前最新的提交
+</span><span class="token comment" spellcheck="true"># 注意，这时依然停留在当前分支
+</span>$ git branch feature
+
+<span class="token comment" spellcheck="true"># 切换到这几次提交之前的状态
+</span>$ git reset <span class="token operator">--</span>hard <span class="token punctuation">[</span>当前分支此前的最后一次提交<span class="token punctuation">]</span>
+
+<span class="token comment" spellcheck="true"># 切换到 feature 分支
+</span>$ git checkout feature
+</code></pre></blockquote>
+
+<p>上面的操作等于是撤销当前分支的变化，将这些变化放到一个新建的分支。</p>
+
+<p>（完）</p>
+
+                                    <!-- /div -->
+
+                                </div>
+    <script type="text/javascript" src="about:blank"></script>
+                                <div class="asset-footer">
+
+<h3>文档信息</h3>
+<ul>
+<li>版权声明：自由转载-非商用-非衍生-保持署名（<a href="https://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh">创意共享3.0许可证</a>）</li>
+<li>发表日期： <abbr class="published" title="2019-12-24T18:06:20+08:00">2019年12月24日</abbr></li>
+
+</ul>
+                                </div>
+</article>
+                            </div>
+
+
+
+  <div style="display: inline-block !important; width: 100%;">
+  
+  </div>
+
+
+
+<div id="related_entries">
+<h2>相关文章</h2>
+<ul>
+
+<li><strong>2021.09.07: <a href="https://www.ruanyifeng.com/blog/2021/09/c-language-tutorial.html">《C 语言入门教程》发布了</a></strong>
+
+                           <div class="entry-body">
+                              向大家报告，我写了一本《C 语言入门教程》，已经上线了，欢迎访问。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2021.08.26: <a href="https://www.ruanyifeng.com/blog/2021/08/best-note-taking-software-for-programmers.html">最适合程序员的笔记软件</a></strong>
+
+                           <div class="entry-body">
+                              程序员的笔记软件，应该满足下面几个条件。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2021.05.10: <a href="https://www.ruanyifeng.com/blog/2021/05/scaling-problem.html">软件工程的最大难题</a></strong>
+
+                           <div class="entry-body">
+                              一、引言
+
+大学有一门课程《软件工程》，研究如何组织和管理软件项目。
+
+                           </div>
+
+</li>
+
+ 
+<li><strong>2020.12.13: <a href="https://www.ruanyifeng.com/blog/2020/12/ssh-tutorial.html">《SSH 入门教程》发布了</a></strong>
+
+                           <div class="entry-body">
+                              SSH 是登录 Linux 服务器的必备工具，只要你在做互联网开发，多多少少都会用到它。
+
+                           </div>
+
+</li>
+
+ 
+</ul>
+</div>
+
+
+
+                    
+
+                    <div id="comments" class="comments" style="!important">
+
+
+    
+    
+        
+    <h2 class="comments-header">留言（21条）</h2>
+
+    <div id="comments-content" class="comments-content" style="clear: left;">
+        
+        <div id="comment-415372" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">强子</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415372">
+            <p>git reflog<br>
+git reset --hard ******</p>
+
+<p>Git后悔药</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 24, 2019  6:39 PM">2019年12月24日 18:39</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415372">#</a>
+ | <a href="#comment-text" title="引用强子的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415373" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">别样风采</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415373">
+            <p>写的很好</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 24, 2019  8:46 PM">2019年12月24日 20:46</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415373">#</a>
+ | <a href="#comment-text" title="引用别样风采的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415374" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">李不白</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415374">
+            <p>没有一定的逻辑能力，用不起来这玩意儿</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 24, 2019  8:54 PM">2019年12月24日 20:54</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415374">#</a>
+ | <a href="#comment-text" title="引用李不白的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415377" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">Payne</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415377">
+            <p>最常用的 git reset --hard<br>
+最喜欢的后悔药 git reflog </p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 24, 2019 10:53 PM">2019年12月24日 22:53</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415377">#</a>
+ | <a href="#comment-text" title="引用Payne的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415393" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">冯罡</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415393">
+            <p>简洁明了</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 25, 2019  9:14 AM">2019年12月25日 09:14</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415393">#</a>
+ | <a href="#comment-text" title="引用冯罡的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415394" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">小学生之手</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415394">
+            <p>老阮总是能普及一些很欠缺的常识点。 爱死你了。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 25, 2019 10:28 AM">2019年12月25日 10:28</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415394">#</a>
+ | <a href="#comment-text" title="引用小学生之手的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415400" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">cxx</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415400">
+            <p>我之前也写了篇关于撤销git操作的博客，今天又学到新的「git revert」～感谢阮老师！<br>
+不知道能不能把我那篇博客放上来呢嘻嘻</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 25, 2019  4:08 PM">2019年12月25日 16:08</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415400">#</a>
+ | <a href="#comment-text" title="引用cxx的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415426" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">小财神的奋斗</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415426">
+            <p>谢谢普及，我以前原来都是反复折腾。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 26, 2019  7:48 AM">2019年12月26日 07:48</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415426">#</a>
+ | <a href="#comment-text" title="引用小财神的奋斗的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415432" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">石樱灯笼</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415432">
+            <p>常年在个人分支上使用rebase来处理nighty commit。<br>
+不过我感觉rebase一般人都驾驭不了，不论国内还是国外都为rebase互相喷来喷去。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 26, 2019  2:00 PM">2019年12月26日 14:00</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415432">#</a>
+ | <a href="#comment-text" title="引用石樱灯笼的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415437" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">米斯特先生</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415437">
+            <p>git reset --hard</p>
+
+<p>用的最多<br>
+其他的嘛<br>
+哈哈</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 26, 2019  5:44 PM">2019年12月26日 17:44</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415437">#</a>
+ | <a href="#comment-text" title="引用米斯特先生的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415463" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">沈扬东</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415463">
+            <p>看了会儿命令，发现都是平时在 vscode 和 github desktop 上用的可视化操作了。推荐用点点点的方式，直观不出错~</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 27, 2019 10:11 AM">2019年12月27日 10:11</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415463">#</a>
+ | <a href="#comment-text" title="引用沈扬东的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415486" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">liquid</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415486">
+            <p>冒昧的问下，阮兄是否是翻译的这篇文章 <a href="https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/" rel="nofollow">https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/</a> ？</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 27, 2019 12:11 PM">2019年12月27日 12:11</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415486">#</a>
+ | <a href="#comment-text" title="引用liquid的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415489" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">liquid</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415489">
+            <p>和 “How to undo (almost) anything with Git “ 这篇文章很相似，如果是翻译的话，注明下会比较好。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 27, 2019 12:30 PM">2019年12月27日 12:30</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415489">#</a>
+ | <a href="#comment-text" title="引用liquid的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415525" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">潘昊宇</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415525">
+            <p>我一个小程序员就用过一次撤销，一次一不小心回退后找不到了，后来发现，只要是提交到git的东西，不管在不在分支里，都可以找回，就觉得很NB</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 29, 2019 10:34 AM">2019年12月29日 10:34</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415525">#</a>
+ | <a href="#comment-text" title="引用潘昊宇的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415585" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">AlexMaxes</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415585">
+            <p>想知道如何撤回中间某一次提交 网上找了很多都不一样... 感谢！</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 30, 2019 10:46 AM">2019年12月30日 10:46</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415585">#</a>
+ | <a href="#comment-text" title="引用AlexMaxes的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415623" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">路人丙</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415623">
+            <blockquote>
+<pre>引用AlexMaxes的发言：</pre>
+
+<p>想知道如何撤回中间某一次提交 网上找了很多都不一样... 感谢！</p>
+
+</blockquote>
+
+<p>假如你想撤回倒数第三次提交，你可以这么做：<br>
+$ git rebase -i HEAD~4<br>
+在出现的编辑窗口中，将倒数第三条 commit 删除，然後保存。<br>
+就这么简单。</p>
+
+<p><br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="December 31, 2019 11:01 PM">2019年12月31日 23:01</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415623">#</a>
+ | <a href="#comment-text" title="引用路人丙的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415624" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">路人丙</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415624">
+            <blockquote>
+<pre>引用潘昊宇的发言：</pre>
+
+<p>我一个小程序员就用过一次撤销，一次一不小心回退后找不到了，后来发现，只要是提交到git的东西，不管在不在分支里，都可以找回，就觉得很NB</p>
+
+</blockquote>
+
+<p>如果你执行过 prune 和 gc 操作，可能就找不回。<br>
+</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January  1, 2020  7:57 AM">2020年1月 1日 07:57</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415624">#</a>
+ | <a href="#comment-text" title="引用路人丙的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-415801" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">浪里白条</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-415801">
+            <p>一口气把您以前的文章都看了一遍，文笔真好，真切务实，充满了人文关怀。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January 10, 2020  4:43 PM">2020年1月10日 16:43</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-415801">#</a>
+ | <a href="#comment-text" title="引用浪里白条的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-416880" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">西蒙</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-416880">
+            <p><br>
+大神，你好，第五点好像不对哈，我找了下资料，如果要取消暂存，是使用git reset HEAD filename,而git rm --cached filename 是从git索引中删除文件，即不做版本控制</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 16, 2020  4:16 PM">2020年3月16日 16:16</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-416880">#</a>
+ | <a href="#comment-text" title="引用西蒙的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-417208" class="comment">
+    <div class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">nina</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-417208">
+            <blockquote>
+<pre>引用西蒙的发言：</pre>
+
+<p><br>
+大神，你好，第五点好像不对哈，我找了下资料，如果要取消暂存，是使用git reset HEAD filename,而git rm --cached filename 是从git索引中删除文件，即不做版本控制</p>
+
+</blockquote>
+
+<p>是的，看到这点我也是一懵</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="March 26, 2020 11:32 AM">2020年3月26日 11:32</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-417208">#</a>
+ | <a href="#comment-text" title="引用nina的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    
+        
+        <div id="comment-425032" class="comment">
+    <div id="comment-last" class="inner">
+        <div class="comment-header">
+            <div class="asset-meta">
+<p>
+                <span class="byline">
+                    
+
+                    <span class="vcard author">tanjuntao</span>
+
+ 说：
+                </span>
+</p>
+            </div>
+        </div>
+        <div class="comment-content" id="comment-quote-425032">
+            <blockquote>
+<pre>引用西蒙的发言：</pre>
+
+<p><br>
+大神，你好，第五点好像不对哈，我找了下资料，如果要取消暂存，是使用git reset HEAD filename,而git rm --cached filename 是从git索引中删除文件，即不做版本控制</p>
+
+</blockquote>
+
+<p>对的，这一点我也发现了，第五点阮老师应该是写错了。一般 git rm --catch  是用来将 index 里面的文件 untrack 掉的。</p>
+        </div>
+<div class="comment-footer">
+<div class="comment-footer-inner">
+<p>
+                   <abbr class="published" title="January 15, 2021  7:29 PM">2021年1月15日 19:29</abbr>
+ | <a href="https://www.ruanyifeng.com/blog/2019/12/git-undo.html#comment-425032">#</a>
+ | <a href="#comment-text" title="引用tanjuntao的这条留言">引用</a>
+</p>
+</div>
+</div>
+    </div>
+</div>
+        
+    </div>
+        
+    
+
+
+    
+    
+    <div class="comments-open" id="comments-open">
+        <h2 class="comments-open-header">我要发表看法</h2>
+        <div class="comments-open-content">
+
+        
+            <div id="comment-greeting"></div>
+
+            <form method="post" action="https://www.ruanyifeng.com/cgi-bin/mtos/mt-comments.cgi" name="comments_form" id="comments-form">
+                <input name="static" value="1" type="hidden">
+                <input name="entry_id" value="2146" type="hidden">
+                <input name="__lang" value="en" type="hidden">
+                <input name="parent_id" value="" id="comment-parent-id" type="hidden">
+                <input name="armor" value="1" type="hidden">
+                <input name="preview" value="" type="hidden">
+                <input name="sid" value="" type="hidden">
+                <div id="comments-open-data">
+            <div id="comments-open-text">
+                    <p><label for="comment-text">您的留言
+                    （HTML标签部分可用）</label></p>
+                    <p><textarea id="comment-text" name="text" rows="10" cols="50"></textarea></p>
+                </div>
+                    <div id="comment-form-name">
+                        <p><label for="comment-author">您的大名：</label></p>
+                        <p><input id="comment-author" name="author" size="30" value="">  <span class="hint"> «-必填</span></p>
+                    </div>
+                    <div id="comment-form-email">
+                        <p><label for="comment-email">电子邮件：</label></p>
+                        <p><input id="comment-email" name="email" size="30" value="">  <span class="hint"> «-必填，不公开</span></p>
+                    </div>
+                    <div id="comment-form-url">
+                        <p><label for="comment-url">个人网址：</label></p>
+                        <p><input id="comment-url" name="url" size="30" value="">  <span class="hint"> «-我信任你，不会填写广告链接</span></p>
+                    </div>
+                    <div id="comment-form-remember-me">
+                        <p>
+                        <label for="comment-bake-cookie">记住个人信息？</label><input id="comment-bake-cookie" name="bakecookie" value="1" accesskey="r" type="checkbox"></p>
+                    </div>
+                </div>
+                    <div id="comment-form-reply" style="display: none;">
+                    <input id="comment-reply" name="comment_reply" value="" type="checkbox">
+                    <label for="comment-reply" id="comment-reply-label"></label>
+                </div>
+                <div id="comments-open-captcha"></div>
+                <div id="comments-open-footer">
+<div id="wait" style="display: none;">
+<p><strong>正在发表您的评论，请稍候</strong></p>
+<p>
+<input name="percent" size="3" style="font-family: Arial; color: black; text-align: center; border-width: medium; border-style: none;" type="text">           
+<input name="chart" size="46" style="font-family: Arial; font-weight: bolder; color: black; padding: 0px; border-style: none;" type="text">
+</p>
+</div>
+
+                    <p><input accesskey="s" name="post" id="comment-submit" value="发表" type="submit">  <span class="hint"> «- 点击按钮</span></p>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+
+    
+
+
+</div>
+
+
+
+
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        <script type="text/javascript" src="about:blank"></script>
+        <script type="text/javascript" src="about:blank"></script> 
+            <div id="footer">
+<div id="footer-inner">
+  <div id="footer-content">
+
+      
+<!--
+      <section> 
+     </section>
+  <p><a title="Instagram" target="_blank" href="http://instagram.com/ruanyf">Instagram</a></p>
+       <p><a title="订阅" href="https://app.feedblitz.com/f/f.fbz?Sub=348868" target="_blank">邮件订阅</a></p>
+  
+       <h2>Feed</h2>
+       <p><a title="FeedBurner" href="http://feeds.feedburner.com/ruanyifeng" target="_blank">FeedBurner</a></p>
+       <p><a title="atom.xml" href="http://www.ruanyifeng.com/blog/atom.xml" target="_blank">atom.xml</a></p>
+     
+      <p>支付宝：<a title="支付宝" href="alipays://platformapi/startapp?appId=20000067&url=http%3A%2F%2Fwww.ruanyifeng.com%2Fblog" target="_blank">yifeng.ruan@gmail.com</a></p>
+-->
+
+     <section>
+<!--
+       <h2>授权方式</h2>
+       <p><a title="许可证" href="http://creativecommons.org/licenses/by-nc-nd/3.0/deed.zh" target="_blank">自由转载-非商用-非衍生-保持署名</a></p>
+       <h2>微信公号</h2>
+       <h2>社交帐号</h2>
+       <h2>联系方式</h2>
+     -->
+       <p><img src="bg2020013101.jpg" alt="微信扫描"></p>
+       <p>
+         <a title="微博" href="https://weibo.com/ruanyf" target="_blank">Weibo</a> | 
+         <a title="Twitter" target="_blank" href="https://twitter.com/ruanyf">Twitter</a> |
+         <a title="GitHub" target="_blank" href="https://github.com/ruanyf">GitHub</a>
+       </p>
+     
+     <p>Email: <a title="电子邮件" href="mailto:yifeng.ruan@gmail.com" target="_blank">yifeng.ruan@gmail.com</a></p>
+     </section>
+  
+  
+
+
+  </div>
+</div>
+</div>
+<script>/* Code removed by ScrapBook */</script>                                                                                                                                                                                                                                                                                                                                                                                                                                                     
+<script>/* Code removed by ScrapBook */</script>
+
+<script type="text/javascript" src="about:blank"></script>
+<script>/* Code removed by ScrapBook */</script>
+
+
+
+        </div>
+    </div>
+<script type="text/javascript">/* Code removed by ScrapBook */</script>
+</body><div style="all: initial;"></div>
+</html>

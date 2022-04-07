@@ -1,0 +1,72 @@
+/* Code tidied up by ScrapBook */
+.navbar { box-shadow: 0px 2px 6px rgba(100, 100, 100, 0.15); }
+* { margin: 0px; padding: 0px; }
+html { height: 100%; }
+body { color: rgb(0, 0, 0); background-color: rgb(230, 230, 230); font-family: "Helvetica Neue",Helvetica,Verdana,Arial,sans-serif; font-size: 12px; min-height: 101%; }
+table { border-collapse: collapse; border-spacing: 0px; }
+fieldset, img { border: 0px none; }
+li { list-style: outside none none; }
+h1, h2, h3, h4, h5, h6 { font-size: 100%; font-weight: normal; }
+a { outline: medium none; color: rgb(33, 117, 155); }
+a:link { color: rgb(0, 0, 0); text-decoration: none; }
+a:visited { color: rgb(0, 0, 0); text-decoration: none; }
+a:hover { color: rgb(33, 117, 155); }
+a:active { color: rgb(0, 0, 0); text-decoration: none; }
+.clear { clear: both; }
+#home { margin: 50px auto; width: 65%; min-width: 950px; background-color: rgb(255, 255, 255); padding: 30px; box-shadow: 0px 2px 6px rgba(100, 100, 100, 0.3); }
+#header { padding-bottom: 5px; margin-top: 10px; }
+#blogTitle { height: 60px; clear: both; }
+#blogTitle h1 { font-size: 26px; font-weight: bold; line-height: 1.5em; margin-top: 20px; }
+#blogTitle h1 a { color: rgb(81, 81, 81); }
+#blogTitle h1 a:hover { color: rgb(33, 117, 155); }
+#blogTitle h2 { font-weight: normal; font-size: 0.928571rem; line-height: 1.84615; color: rgb(117, 117, 117); float: left; }
+#blogLogo { float: right; }
+#navigator { font-size: 13px; border-bottom: 1px solid rgb(237, 237, 237); border-top: 1px solid rgb(237, 237, 237); height: 50px; clear: both; margin-top: 25px; }
+#navList { min-height: 30px; float: left; }
+#navList li { float: left; margin: 0px 40px 0px 0px; }
+#navList a { display: block; width: 5em; height: 22px; float: left; text-align: center; padding-top: 19px; }
+#navList a:link, #navList a:visited, #navList a:active { color: rgb(106, 106, 106); font-weight: bold; }
+#navList a:hover { color: rgb(0, 0, 0); text-decoration: none; }
+.blogStats { float: right; color: rgb(117, 117, 117); margin-top: 19px; margin-right: 2px; text-align: right; }
+#main { width: 100%; text-align: left; margin-top: 30px; }
+#mainContent .forFlow { margin-left: 22em; float: none; width: auto; }
+#mainContent { min-height: 200px; padding: 0px 0px 10px; text-overflow: ellipsis; overflow: hidden; float: left; margin-left: -22em; width: 100%; }
+.postTitle { border-left: 3px solid rgb(33, 117, 155); margin-bottom: 10px; font-size: 20px; float: right; width: 100%; clear: both; }
+.postTitle a:link, .postTitle a:visited, .postTitle a:active { color: rgb(33, 117, 155); transition: all 0.4s linear 0s; }
+.postTitle a:hover { margin-left: 30px; color: rgb(15, 54, 71); text-decoration: none; }
+.postDesc { font-size: 13px; background: rgba(0, 0, 0, 0) url("posted_time.png") no-repeat scroll 0px 1px; color: rgb(117, 117, 117); float: left; width: 100%; clear: both; text-align: left; padding-left: 20px; padding-right: 5px; margin-top: 20px; line-height: 1.5; }
+.postDesc a:link, .postDesc a:visited, .postDesc a:active { color: rgb(102, 102, 102); }
+.postDesc a:hover { color: rgb(33, 117, 155); text-decoration: none; }
+#sideBar { margin-top: -15px; width: 230px; min-height: 200px; padding: 0px 0px 0px 5px; float: right; text-overflow: ellipsis; overflow: hidden; }
+#sideBar a { color: rgb(117, 117, 117); }
+#sideBar a:hover { color: rgb(33, 117, 155); text-decoration: underline; }
+.newsItem, .catListEssay, .catListLink, .catListNoteBook, .catListTag, .catListPostCategory, .catListPostArchive, .catListImageCategory, .catListArticleArchive, .catListView, .catListFeedback, .mySearch, .catListComment, .catListBlogRank, .catList, .catListArticleCategory { background: rgb(255, 255, 255) none repeat scroll 0% 0%; margin-bottom: 35px; overflow-wrap: break-word; }
+#blog-calendar { width: 228px; padding-bottom: 5px; margin-bottom: 35px; box-shadow: 0px 1px 3px rgb(204, 204, 204); border: 1px solid rgb(237, 237, 237); }
+#blog-calendar td { font-size: 12px; font-family: "Comic Sans MS"; }
+#blog-calendar th { font-size: 12px; }
+.Cal { border: medium none; color: rgb(102, 102, 102); }
+.CalWeekendDay { padding-top: 4px; padding-bottom: 4px; }
+.CalOtherMonthDay { color: rgb(204, 204, 204); padding-top: 4px; padding-bottom: 4px; }
+.CalDayHeader { background: rgb(248, 248, 248) none repeat scroll 0% 0%; font-weight: 100; color: rgb(94, 95, 99); }
+.CalTitle { background: rgb(98, 147, 187) none repeat scroll 0% 0%; width: 100%; height: 25px; text-align: center; font-size: 14px; font-weight: bold; padding: 5px 0px; color: rgb(255, 255, 255); }
+.CalTitle td { background: rgb(248, 248, 248) none repeat scroll 0% 0% !important; border: 0px none !important; color: rgb(94, 95, 99); font-family: "Comic Sans MS"; }
+.catListTitle { font-weight: bold; line-height: 1.2; font-size: 110%; margin-top: 15px; margin-bottom: 10px; text-align: left; }
+.catListComment { line-height: 1.5em; }
+#sideBarMain ul { line-height: 1.5em; }
+#sideBarMain li { line-height: 1.8; }
+#topics { width: 100%; min-height: 200px; padding: 0px 0px 10px; float: left; text-overflow: ellipsis; overflow: hidden; }
+#topics .postTitle { border: 0px none; font-size: 130%; font-weight: bold; float: left; line-height: 1.5; width: 100%; padding-left: 5px; }
+#BlogPostCategory { color: rgb(102, 102, 102); }
+#BlogPostCategory a { height: 20px; line-height: 20px; color: rgb(51, 51, 51); padding: 3px 14px; border-radius: 10px; margin: 2px 5px 0px; background: rgb(231, 231, 231) none repeat scroll 0% 0%; text-decoration: none; }
+#BlogPostCategory a:link, #BlogPostCategory a:visited, #BlogPostCategory a:active { color: rgb(102, 102, 102); }
+#BlogPostCategory a:hover { color: rgb(245, 245, 245); background: rgb(33, 117, 155) none repeat scroll 0% 0%; }
+#topics .postDesc { padding-left: 0px; width: 100%; text-align: left; color: rgb(102, 102, 102); margin-top: 5px; background: rgba(0, 0, 0, 0) none repeat scroll 0% 0%; }
+#footer { color: rgb(104, 104, 104); text-align: center; min-height: 15px; border-top: 1px solid rgb(237, 237, 237); margin-top: 50px; padding-top: 10px; margin-bottom: 10px; }
+.postBody { color: rgb(0, 0, 0); line-height: 1.7; font-size: 14px; }
+.postBody p, .postCon p { text-indent: 2em; margin: 0px auto 1em; }
+.postBody h3 { font-size: 120%; margin: 15px auto 2px; font-weight: bold; }
+.postBody a:link, .postBody a:visited, .postBody a:active { text-decoration: underline; }
+.postBody ul, .postCon ul { margin-left: 2em; }
+.postBody li, .postCon li { list-style-type: disc; margin-bottom: 1em; }
+#sideBar { font-size: 12px; }
+#sideBar h3 { font-size: 14px; }

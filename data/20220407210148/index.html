@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html class="jetpack-lazy-images-js-enabled" lang="en-US">
+<head>
+		<meta charset="UTF-8">
+		<link rel="stylesheet" href="index.css" media="screen">
+	
+	
+	
+	
+	<link rel="shortcut icon" type="image/x-icon" href="favicon">
+	
+
+	<!-- This site is optimized with the Yoast SEO Premium plugin v17.0 (Yoast SEO v17.0) - https://yoast.com/wordpress/plugins/seo/ -->
+	<title>How to undo (almost) anything with Git | The GitHub Blog</title>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<!-- / Yoast SEO Premium plugin. -->
+
+
+
+
+
+
+
+
+
+
+	
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+				
+			
+		<link rel="shortcut icon" href="favicon.png" sizes="32x32">
+<link rel="shortcut icon" href="favicon.png" sizes="192x192">
+<link rel="shortcut icon" href="favicon.png">
+
+<style>hcfy-result.__hcfy__result__loaded__.__hcfy__result__both__{border: 1px dotted}</style></head>
+
+<body class="post-template-default single single-post postid-30697 single-format-standard font-mktg no-sidebar">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-dark-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0 0.49803921568627"></feFuncR><feFuncG type="table" tableValues="0 0.49803921568627"></feFuncG><feFuncB type="table" tableValues="0 0.49803921568627"></feFuncB><feFuncA type="table" tableValues="1 1"></feFuncA></feComponentTransfer><feComposite in2="SourceGraphic" operator="in"></feComposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-grayscale"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0 1"></feFuncR><feFuncG type="table" tableValues="0 1"></feFuncG><feFuncB type="table" tableValues="0 1"></feFuncB><feFuncA type="table" tableValues="1 1"></feFuncA></feComponentTransfer><feComposite in2="SourceGraphic" operator="in"></feComposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-purple-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0.54901960784314 0.98823529411765"></feFuncR><feFuncG type="table" tableValues="0 1"></feFuncG><feFuncB type="table" tableValues="0.71764705882353 0.25490196078431"></feFuncB><feFuncA type="table" tableValues="1 1"></feFuncA></feComponentTransfer><feComposite in2="SourceGraphic" operator="in"></feComposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-blue-red"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0 1"></feFuncR><feFuncG type="table" tableValues="0 0.27843137254902"></feFuncG><feFuncB type="table" tableValues="0.5921568627451 0.27843137254902"></feFuncB><feFuncA type="table" tableValues="1 1"></feFuncA></feComponentTransfer><feComposite in2="SourceGraphic" operator="in"></feComposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-midnight"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0 0"></feFuncR><feFuncG type="table" tableValues="0 0.64705882352941"></feFuncG><feFuncB type="table" tableValues="0 1"></feFuncB><feFuncA type="table" tableValues="1 1"></feFuncA></feComponentTransfer><feComposite in2="SourceGraphic" operator="in"></feComposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-magenta-yellow"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0.78039215686275 1"></feFuncR><feFuncG type="table" tableValues="0 0.94901960784314"></feFuncG><feFuncB type="table" tableValues="0.35294117647059 0.47058823529412"></feFuncB><feFuncA type="table" tableValues="1 1"></feFuncA></feComponentTransfer><feComposite in2="SourceGraphic" operator="in"></feComposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-purple-green"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0.65098039215686 0.40392156862745"></feFuncR><feFuncG type="table" tableValues="0 1"></feFuncG><feFuncB type="table" tableValues="0.44705882352941 0.4"></feFuncB><feFuncA type="table" tableValues="1 1"></feFuncA></feComponentTransfer><feComposite in2="SourceGraphic" operator="in"></feComposite></filter></defs></svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 0 0" width="0" height="0" focusable="false" role="none" style="visibility: hidden; position: absolute; left: -9999px; overflow: hidden;"><defs><filter id="wp-duotone-blue-orange"><feColorMatrix color-interpolation-filters="sRGB" type="matrix" values=" .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 .299 .587 .114 0 0 "></feColorMatrix><feComponentTransfer color-interpolation-filters="sRGB"><feFuncR type="table" tableValues="0.098039215686275 1"></feFuncR><feFuncG type="table" tableValues="0 0.66274509803922"></feFuncG><feFuncB type="table" tableValues="0.84705882352941 0.41960784313725"></feFuncB><feFuncA type="table" tableValues="1 1"></feFuncA></feComponentTransfer><feComposite in2="SourceGraphic" operator="in"></feComposite></filter></defs></svg>
+<header class="position-relative z-1">
+
+		<div data-color-mode="light" data-light-theme="light" data-dark-theme="dark_dimmed">
+	<nav class="nav-header-with-logo nav-bar-include-search container-xl mx-auto p-responsive position-relative">
+		<div class="d-flex flex-justify-between flex-items-center pt-3 pt-md-4 pb-3 border-bottom color-fg-default">
+
+			<a href="https://github.blog/" class="color-fg-default flex-shrink-0 blog-logo"><svg width="100" height="40" viewBox="0 0 100 40" fill="currentColor" xmlns="http://www.w3.org/2000/svg" class="d-block">
+						<path fill-rule="evenodd" clip-rule="evenodd" d="M19.9996 4.375C11.1749 4.375 4.02734 11.5226 4.02734 20.3472C4.02734 27.4149 8.59939 33.3845 14.9484 35.5009C15.747 35.6406 16.0464 35.1615 16.0464 34.7422C16.0464 34.3628 16.0265 33.105 16.0265 31.7674C12.0135 32.5061 10.9753 30.7891 10.6558 29.8906C10.4761 29.4314 9.69748 28.0139 9.01866 27.6345C8.45964 27.3351 7.66102 26.5964 8.9987 26.5764C10.2565 26.5564 11.1549 27.7344 11.4544 28.2135C12.8919 30.6293 15.1879 29.9505 16.1063 29.5312C16.2461 28.4931 16.6654 27.7943 17.1246 27.395C13.5707 26.9957 9.85721 25.6181 9.85721 19.5087C9.85721 17.7717 10.4761 16.3342 11.4944 15.2161C11.3346 14.8168 10.7756 13.1797 11.6541 10.9835C11.6541 10.9835 12.9918 10.5642 16.0464 12.6207C17.3242 12.2613 18.6819 12.0816 20.0395 12.0816C21.3971 12.0816 22.7548 12.2613 24.0326 12.6207C27.0872 10.5443 28.4249 10.9835 28.4249 10.9835C29.3034 13.1797 28.7444 14.8168 28.5846 15.2161C29.6029 16.3342 30.2218 17.7517 30.2218 19.5087C30.2218 25.638 26.4883 26.9957 22.9345 27.395C23.5135 27.8941 24.0126 28.8524 24.0126 30.3498C24.0126 32.4861 23.9926 34.2031 23.9926 34.7422C23.9926 35.1615 24.2921 35.6606 25.0907 35.5009C31.3997 33.3845 35.9718 27.395 35.9718 20.3472C35.9718 11.5226 28.8242 4.375 19.9996 4.375Z"></path>
+						<path d="M52.8652 29C56.8757 29 59.3105 26.9688 59.3105 23.6615C59.3105 21.1745 57.5267 19.3385 54.9746 19.0911V18.987C56.9017 18.6745 58.3991 16.9167 58.3991 14.8984C58.3991 12.0469 56.1986 10.2109 52.7871 10.2109H44.9876V29H52.8652ZM48.347 12.8281H51.9408C53.946 12.8281 55.0788 13.7526 55.0788 15.3932C55.0788 17.138 53.7637 18.1276 51.4199 18.1276H48.347V12.8281ZM48.347 26.3828V20.5104H51.9538C54.5319 20.5104 55.8861 21.513 55.8861 23.4271C55.8861 25.3542 54.571 26.3828 52.097 26.3828H48.347ZM61.472 29H64.7142V10.2109H61.472V29ZM73.5814 29.2734C77.6309 29.2734 80.2611 26.5781 80.2611 22.099C80.2611 17.6328 77.6048 14.9115 73.5814 14.9115C69.5579 14.9115 66.9017 17.6458 66.9017 22.099C66.9017 26.5781 69.5319 29.2734 73.5814 29.2734ZM73.5814 26.7083C71.5241 26.7083 70.196 25.0417 70.196 22.099C70.196 19.1693 71.5371 17.4896 73.5814 17.4896C75.6387 17.4896 76.9668 19.1693 76.9668 22.099C76.9668 25.0417 75.6387 26.7083 73.5814 26.7083ZM88.4251 34.2083C92.4486 34.2083 95.0918 32.0729 95.0918 28.7786V15.1979H91.9147V17.5677H91.8626C91.0684 15.9792 89.4798 14.9635 87.5137 14.9635C83.985 14.9635 81.7715 17.6849 81.7715 22.0469C81.7715 26.3438 84.0371 29.013 87.4486 29.013C89.4277 29.013 91.0553 28.0234 91.7715 26.5391H91.8496V28.8698C91.8496 30.6276 90.6387 31.8125 88.5293 31.8125C86.9928 31.8125 85.8079 31.0964 85.4564 30.0417H82.2402C82.5658 32.4635 85.0137 34.2083 88.4251 34.2083ZM88.4381 26.4349C86.3939 26.4349 85.0918 24.7943 85.0918 22.0599C85.0918 19.3516 86.3939 17.6328 88.4381 17.6328C90.5085 17.6328 91.8496 19.3776 91.8496 22.0599C91.8496 24.7552 90.5085 26.4349 88.4381 26.4349Z"></path>
+					</svg></a>
+			<div class="p-plus-container" data-container="true">
+      <div data-main="" class="p-plus">
+        <div class="p-plus__primary-wrapper" data-primary-nav-wrapper=""><ul class="d-flex flex-row flex-nowrap overflow-hidden flex-grow-0 list-style-none js-p-target p-plus__primary" style="margin-left: auto;" data-primary-nav="" aria-hidden="false"><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/engineering/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Engineering</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/community/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Community</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/product/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Product</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/security/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Security</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/open-source/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Open Source</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/enterprise/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Enterprise</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/education/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Education</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/company/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Company</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/changelog/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Changelog</a></li></ul></div>
+        <button data-toggle-btn="" class="p-plus__toggle-btn" aria-expanded="false">+</button>
+        <ul data-overflow-nav="" class="p-plus__overflow" aria-hidden="true"></ul>
+      </div>
+    
+      <div data-main="" class="p-plus p-plus--clone p-plus--is-showing-toggle" aria-hidden="true" data-clone="true">
+        <div class="p-plus__primary-wrapper" data-primary-nav-wrapper=""><ul class="d-flex flex-row flex-nowrap overflow-hidden flex-grow-0 list-style-none js-p-target p-plus__primary" style="margin-left: auto;" data-primary-nav="">
+			<li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/engineering/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Engineering</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/community/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Community</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/product/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Product</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/security/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Security</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/open-source/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Open Source</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/enterprise/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Enterprise</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/education/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Education</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/category/company/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Company</a></li><li class="ml-4 p-plus__primary-nav-item" data-nav-item=""><a href="https://github.blog/changelog/" class="d-block no-wrap f4-mktg color-fg-default text-medium">Changelog</a></li>			</ul></div>
+        <button data-toggle-btn="" class="p-plus__toggle-btn" aria-expanded="false">+</button>
+        <ul data-overflow-nav="" class="p-plus__overflow" aria-hidden="true">
+        </ul>
+      </div>
+    </div>
+
+			<a href="#" class="ml-4 color-fg-default search-field-icon-toggle">
+				<svg height="20" class="octicon octicon-search d-block mt-1" aria-label="search" viewBox="0 0 16 16" version="1.1" width="20" role="img"><path fill-rule="evenodd" d="M11.5 7a4.499 4.499 0 11-8.998 0A4.499 4.499 0 0111.5 7zm-.82 4.74a6 6 0 111.06-1.06l3.04 3.04a.75.75 0 11-1.06 1.06l-3.04-3.04z"></path></svg>
+			</a>
+
+				<div id="js-header-search" class="header-search d-none box-shadow-large p-3" aria-hidden="true">
+		<form role="search" method="get" class="header-search__form col-12" action="https://github.blog">
+			<label class="search-form__label screen-reader-text" for="search-input">Search by Keyword</label>
+
+			<div class="header-search__form-fields d-flex flex-row flex-items-center">
+				<input class="search-field form-control flex-auto p-2 mr-2" placeholder="Search …" value="" name="s" id="search-input" type="search">
+
+				<div class="site-search__submit ml-2">
+					<button type="submit" class="btn btn-outline px-4 py-2 search-submit">
+						Search					</button>
+				</div>
+			</div>
+		</form>
+	</div>
+		</div>
+	</nav>
+</div>
+
+</header>
+
+<section class="post-hero">
+
+	<div class="post-hero__title" data-color-mode="dark" data-light-theme="light" data-dark-theme="dark_dimmed">
+		<div class="container-xl mx-auto p-responsive py-6">
+			<div class="col-lg-10 col-xl-9 offset-xl-1">
+			<ul class="d-inline-block list-style-none my-4 post-hero__categories"><li class="d-inline-block mr-3"><a href="https://github.blog/category/open-source/" class="f4-mktg text-gradient-purple-coral text-bold">Open Source</a></li><li class="d-inline-block mr-3"><a href="https://github.blog/category/product/" class="f4-mktg text-gradient-purple-coral text-bold">Product</a></li></ul><h1 class="h1-mktg lh-condensed mb-3 color-fg-default">How to undo (almost) anything with Git</h1><p class="f3-mktg">One of the most useful features of any version control system is the ability to "undo" your mistakes. In Git, "undo" can mean many slightly different things.</p>			</div>
+		</div>
+	</div>
+
+	<div class="position-relative post-hero__img" data-color-mode="dark" data-light-theme="light" data-dark-theme="dark_dimmed"><div class="position-relative container-xl mx-auto p-responsive"></div></div>
+	<div class="container-xl mx-auto mt-4 mb-4 mb-lg-8 p-responsive post-hero__byline">
+		<div class="d-flex flex-items-center">
+
+			<div class="col-lg-1">
+				
+			<a href="https://github.blog/author/jaw6/">
+				<img src="ad46d08c01c8c69.jpeg" class="d-block circle mr-3 byline__photo" alt="Joshua Wehner">
+			</a>
+					</div>
+
+			<div class="col-lg-11 d-flex flex-column flex-sm-row flex-justify-between flex-items-end flex-1 border-bottom pb-2">
+				<span class="f4-mktg text-bold">By <a href="https://github.blog/author/jaw6/" class="Link--primary">Joshua Wehner</a></span>				<!--
+				<span class="f4-mktg text-bold">By <a href="https://github.blog/author/jaw6/" class="Link--primary">Joshua Wehner</a></span>
+				-->
+
+				<span class="text-mono f5-mktg color-text-secondary">June 8, 2015</span>
+			</div>
+		</div>
+	</div>
+
+</section>
+<div class="container-xl mx-auto p-responsive"><div class="d-flex flex-wrap gutter">
+<div class="col-12 col-lg-1 post__social">
+	<ul class="list-style-none pt-2 d-flex flex-lg-column">
+
+		<li class="mr-4 mr-lg-0 mb-4">
+			<a href="https://twitter.com/share?text=How to undo (almost) anything with Git&amp;url=https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/" target="_blank" rel="noopener noreferrer" class="d-flex flex-justify-center flex-items-center border circle gh-social-aside">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 273.5 222.3" height="18">
+					<path d="M273.5 26.3a109.77 109.77 0 0 1-32.2 8.8 56.07 56.07 0 0 0 24.7-31 113.39 113.39 0 0 1-35.7 13.6 56.1 56.1 0 0 0-97 38.4 54 54 0 0 0 1.5 12.8A159.68 159.68 0 0 1 19.1 10.3a56.12 56.12 0 0 0 17.4 74.9 56.06 56.06 0 0 1-25.4-7v.7a56.11 56.11 0 0 0 45 55 55.65 55.65 0 0 1-14.8 2 62.39 62.39 0 0 1-10.6-1 56.24 56.24 0 0 0 52.4 39 112.87 112.87 0 0 1-69.7 24 119 119 0 0 1-13.4-.8 158.83 158.83 0 0 0 86 25.2c103.2 0 159.6-85.5 159.6-159.6 0-2.4-.1-4.9-.2-7.3a114.25 114.25 0 0 0 28.1-29.1" fill="currentColor"></path>
+				</svg>
+			</a>
+		</li>
+		<li class="mr-4 mr-lg-0 mb-4">
+			<a href="https://www.facebook.com/sharer/sharer.php?u=https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/&amp;t=How%20to%20undo%20%28almost%29%20anything%20with%20Git" target="_blank" rel="noopener noreferrer" class="d-flex flex-justify-center flex-items-center border circle gh-social-aside">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.3 15.4" height="18">
+					<path d="M14.5 0H.8a.88.88 0 0 0-.8.9v13.6a.88.88 0 0 0 .8.9h7.3v-6h-2V7.1h2V5.4a2.87 2.87 0 0 1 2.5-3.1h.5a10.87 10.87 0 0 1 1.8.1v2.1h-1.3c-1 0-1.1.5-1.1 1.1v1.5h2.3l-.3 2.3h-2v5.9h3.9a.88.88 0 0 0 .9-.8V.8a.86.86 0 0 0-.8-.8z" fill="currentColor"></path>
+				</svg>
+			</a>
+		</li>
+		<li class="mr-4 mr-lg-0 mb-4">
+			<a href="https://www.linkedin.com/shareArticle?url=https://github.blog/2015-06-08-how-to-undo-almost-anything-with-git/&amp;title=How%20to%20undo%20%28almost%29%20anything%20with%20Git" target="_blank" rel="noopener noreferrer" class="d-flex flex-justify-center flex-items-center border circle gh-social-aside">
+				<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 18" height="18">
+					<path d="M3.94 2A2 2 0 1 1 2 0a2 2 0 0 1 1.94 2zM4 5.48H0V18h4zm6.32 0H6.34V18h3.94v-6.57c0-3.66 4.77-4 4.77 0V18H19v-7.93c0-6.17-7.06-5.94-8.72-2.91z" fill="currentColor"></path>
+				</svg>
+			</a>
+		</li>
+
+	</ul>
+</div>
+
+<div id="post-30697" class="col-12 col-md-8 col-lg-7 f3-mktg post__content post-30697 post type-post status-publish format-standard has-post-thumbnail hentry category-open-source category-product tag-git">
+	<p>One of the most useful features of any version control system is the ability to “undo” your mistakes. In Git, “undo” can mean many slightly different things.</p>
+<p>When you make a new commit, Git stores a snapshot of your repository at that specific moment in time; later, you can use Git to go back to an earlier version of your project.</p>
+<p>In this post, I’m going to take a look at some common scenarios where you might want to “undo” a change you’ve made and the best way to do it using Git.</p>
+<h2>Undo a “public” change</h2>
+<p><strong>Scenario:</strong> You just ran <code>git push</code>, sending your changes to GitHub, now you realize there’s a problem with one of those commits. You’d like to undo that commit.</p>
+<p><strong>Undo with:</strong> <code>git revert &lt;SHA&gt;</code></p>
+<p><strong>What’s happening:</strong> <code>git revert</code> will create a new commit that’s the opposite (or inverse) of the given SHA. If the old commit is “matter”, the new commit is “anti-matter”—anything removed in the old commit will be added in the new commit and anything added in the old commit will be removed in the new commit.</p>
+<p>This is Git’s safest, most basic “undo” scenario, because it doesn’t <em>alter</em> history—so you can now <code>git push</code> the new “inverse” commit to undo your mistaken commit.</p>
+<h2>Fix the last commit message</h2>
+<p><strong>Scenario:</strong> You just typo’d the last commit message, you did <code>git commit -m "Fxies bug #42"</code> but before <code>git push</code> you realized that really should say “Fixes bug #42”.</p>
+<p><strong>Undo with:</strong> <code>git commit --amend</code> or <code>git commit --amend -m "Fixes bug #42"</code></p>
+<p><strong>What’s happening:</strong> <code>git commit --amend</code> will update and replace the most recent commit with a new commit that combines any staged changes with the contents of the previous commit. With nothing currently staged, this just rewrites the previous commit message.</p>
+<h2>Undo “local” changes</h2>
+<p><strong>Scenario:</strong> The cat walked across the keyboard and somehow saved the changes, then crashed the editor. You haven’t committed those changes, though. You want to undo everything in that file—just go back to the way it looked in the last commit.</p>
+<p><strong>Undo with:</strong> <code>git checkout -- &lt;bad filename&gt;</code></p>
+<p><strong>What’s happening:</strong> <code>git checkout</code> alters files in the working directory to a state previously known to Git. You could provide a branch name or specific SHA you want to go back to or, by default, Git will assume you want to checkout <code>HEAD</code>, the last commit on the currently-checked-out branch.</p>
+<p>Keep in mind: any changes you “undo” this way are <em>really</em> gone. They were never committed, so Git can’t help us recover them later. Be sure you know what you’re throwing away here! (Maybe use <code>git diff</code> to confirm.)</p>
+<h2>Reset “local” changes</h2>
+<p><strong>Scenario:</strong> You’ve made some commits locally (not yet pushed), but everything is terrible, you want to undo the last three commits—like they never happened.</p>
+<p><strong>Undo with:</strong> <code>git reset &lt;last good SHA&gt;</code> or <code>git reset --hard &lt;last good SHA&gt;</code></p>
+<p><strong>What’s happening:</strong> <code>git reset</code> rewinds your repository’s history all the way back to the specified SHA. It’s as if those commits never happened. By default, <code>git reset</code> preserves the working directory. The commits are gone, but the <em>contents</em> are still on disk. This is the safest option, but often, you’ll want to “undo” the commits <em>and</em> the changes in one move—that’s what <code>--hard</code> does.</p>
+<h2>Redo after undo “local”</h2>
+<p><strong>Scenario:</strong> You made some commits, did a <code>git reset --hard</code> to “undo” those changes (see above), and <em>then</em> realized: you want those changes back!</p>
+<p><strong>Undo with:</strong> <code>git reflog</code> and <code>git reset</code> or <code>git checkout</code></p>
+<p><strong>What’s happening:</strong> <code>git reflog</code> is an amazing resource for recovering project history. You can recover <em>almost</em> anything—anything you’ve committed—via the reflog.</p>
+<p>You’re probably familiar with the <code>git log</code> command, which shows a list of commits. <code>git reflog</code> is similar, but instead shows a list of times when <code>HEAD</code> changed.</p>
+<p>Some caveats:</p>
+<ul>
+<li>
+<code>HEAD</code> changes <em>only</em>.<code>HEAD</code> changes when you switch branches, make commits with <code>git commit</code> and un-make commits with <code>git reset</code>, but <code>HEAD</code> does <em>not</em> change when you <code>git checkout -- &lt;bad filename&gt;</code> (from an earlier scenario—as mentioned before, those changes were never committed, so the reflog can’t help us recover those.</li>
+<li>
+<code>git reflog</code> doesn’t last forever. Git will periodically clean up objects which are “unreachable.” Don’t expect to find months-old commits lying around in the reflog forever.</li>
+<li>Your <code>reflog</code> is yours and yours alone. You can’t use <code>git reflog</code> to restore another developer’s un-pushed commits.</li>
+</ul>
+<p><img src="fb62b21cce90899.png" class="attachment-full size-full jetpack-lazy-image jetpack-lazy-image--handled" alt="reflog" data-recalc-dims="1" data-lazy-loaded="1" loading="eager" width="1429" height="644"><noscript><img width="1429" height="644" src="https://github.blog/wp-content/uploads/2015/06/f6b9f054-d891-11e4-8c53-838eff9f40ae.png?resize=1429%2C644" class="attachment-full size-full" alt="reflog" data-recalc-dims="1"></noscript></p>
+<p>So… how do you use the reflog to “redo” a previously “undone” commit or commits? It depends on what exactly you want to accomplish:</p>
+<ul>
+<li>If you want to restore the project’s history as it was at that moment in time use <code>git reset --hard &lt;SHA&gt;</code>
+</li>
+<li>If you want to recreate one or more files in your working directory as they were at that moment in time, without altering history use <code>git checkout &lt;SHA&gt; -- &lt;filename&gt;</code>
+</li>
+<li>If you want to replay <em>exactly one</em> of those commits into your repository use <code>git cherry-pick &lt;SHA&gt;</code>
+</li>
+</ul>
+<h2>Once more, with branching</h2>
+<p><strong>Scenario:</strong> You made some commits, then realized you were checked out on <code>master</code>. You wish you could make those commits on a feature branch instead.</p>
+<p><strong>Undo with:</strong> <code>git branch feature</code>, <code>git reset --hard origin/master</code>, and <code>git checkout feature</code></p>
+<p><strong>What’s happening:</strong> You may be used to creating new branches with <code>git checkout -b &lt;name&gt;</code>—it’s a popular short-cut for creating a new branch and checking it out right away—but you don’t want to switch branches just yet. Here, <code>git branch feature</code> creates a new branch called <code>feature</code> pointing at your most recent commit, but leaves you checked out to <code>master</code>.</p>
+<p>Next, <code>git reset --hard</code> rewinds <code>master</code> back to <code>origin/master</code>, before any of your new commits. Don’t worry, though, they are still available on <code>feature</code>.</p>
+<p>Finally, <code>git checkout</code> switches to the new <code>feature</code> branch, with all of your recent work intact.</p>
+<h2>Branch in time saves nine</h2>
+<p><strong>Scenario:</strong> You started a new branch <code>feature</code> based on <code>master</code>, but <code>master</code> was pretty far behind <code>origin/master</code>. Now that <code>master</code> branch is in sync with <code>origin/master</code>, you wish commits on <code>feature</code> were starting <em>now</em>, instead of being so far behind.</p>
+<p><strong>Undo with:</strong> <code>git checkout feature</code> and <code>git rebase master</code></p>
+<p><strong>What’s happening:</strong> You could have done this with <code>git reset</code> (no <code>--hard</code>, intentionally preserving changes on disk) then <code>git checkout -b &lt;new branch name&gt;</code> and then re-commit the changes, but that way, you’d lose the commit history. There’s a better way.</p>
+<p><code>git rebase master</code> does a couple of things:</p>
+<ul>
+<li>First it locates the common ancestor between your currently-checked-out branch and <code>master</code>.</li>
+<li>Then it resets the currently-checked-out branch to that ancestor, holding all later commits in a temporary holding area.</li>
+<li>Then it advances the currently-checked-out-branch to the end of <code>master</code> and replays the commits from the holding area <em>after</em> <code>master</code>‘s last commit.</li>
+</ul>
+<h2>Mass undo/redo</h2>
+<p><strong>Scenario:</strong> You started this feature in one direction, but mid-way through, you realized another solution was better. You’ve got a dozen or so commits, but you only want some of them. You’d like the others to just disappear.</p>
+<p><strong>Undo with:</strong> <code>git rebase -i &lt;earlier SHA&gt;</code></p>
+<p><strong>What’s happening:</strong> <code>-i</code> puts <code>rebase</code> in “interactive mode”. It starts off like the rebase discussed above, but before replaying any commits, it pauses and allows you to gently modify each commit as it’s replayed.</p>
+<p><code>rebase -i</code> will open in your default text editor, with a list of commits being applied, like this:</p>
+<p><img loading="eager" src="b492d28ce880dec.png" class="attachment-full size-full jetpack-lazy-image jetpack-lazy-image--handled" alt="rebase-interactive1" data-recalc-dims="1" data-lazy-loaded="1" width="1459" height="495"><noscript><img loading="lazy" width="1459" height="495" src="https://github.blog/wp-content/uploads/2015/06/f6b1ab88-d891-11e4-97c1-e0630ac74e74.png?resize=1459%2C495" class="attachment-full size-full" alt="rebase-interactive1" data-recalc-dims="1"></noscript></p>
+<p>The first two columns are key: the first is the selected command for the commit identified by the SHA in the second column. By default, <code>rebase -i</code> assumes each commit is being applied, via the <code>pick</code> command.</p>
+<p>To drop a commit, just delete that line in your editor. If you no longer want the bad commits in your project, you can delete lines 1 and 3-4 above.</p>
+<p>If you want to preserve the <em>contents</em> of the commit but edit the commit <em>message</em>, you use the <code>reword</code> command. Just replace the word <code>pick</code> in the first column with the word <code>reword</code> (or just <code>r</code>). It can be tempting to rewrite the commit message right now, but that won’t work—<code>rebase -i</code> ignores everything after the SHA column. The text after that is really just to help us remember what <code>0835fe2</code> is all about. When you’ve finished with <code>rebase -i</code>, you’ll be prompted for any new commit messages you need to write.</p>
+<p>If you want to combine two commits together, you can use the <code>squash</code> or <code>fixup</code> commands, like this:</p>
+<p><img loading="eager" src="0058dfc714abd52.png" class="attachment-full size-full jetpack-lazy-image jetpack-lazy-image--handled" alt="rebase-interactive2" data-recalc-dims="1" data-lazy-loaded="1" width="1449" height="339"><noscript><img loading="lazy" width="1449" height="339" src="https://github.blog/wp-content/uploads/2015/06/f6b605ca-d891-11e4-98cf-d567ca9f4edc.png?resize=1449%2C339" class="attachment-full size-full" alt="rebase-interactive2" data-recalc-dims="1"></noscript></p>
+<p><code>squash</code> and <code>fixup</code> combine “up”—the commit with the “combine” command will be merged into the commit immediately before it. In this scenario, <code>0835fe2</code> and <code>6943e85</code> will be combined into one commit, then <code>38f5e4e</code> and <code>af67f82</code> will be combined together into another.</p>
+<p>When you select <code>squash</code>, Git will prompt us to give the new, combined commit a new commit message; <code>fixup</code> will give the new commit the message from the first commit in the list. Here, you know that <code>af67f82</code> is an “ooops” commit, so you’ll just use the commit message from <code>38f5e4e</code> as is, but you’ll write a new message for the new commit you get from combining <code>0835fe2</code> and <code>6943e85</code>.</p>
+<p>When you save and exit your editor, Git will apply your commits in order from top to bottom. You can alter the order commits apply by changing the order of commits before saving. If you’d wanted, you could have combined <code>af67f82</code> with <code>0835fe2</code> by arranging things like this:</p>
+<p><img loading="eager" src="2bf66c50d42d6b1.png" class="attachment-full size-full jetpack-lazy-image jetpack-lazy-image--handled" alt="rebase-interactive3" data-recalc-dims="1" data-lazy-loaded="1" width="1445" height="326"><noscript><img loading="lazy" width="1445" height="326" src="https://github.blog/wp-content/uploads/2015/06/f6b4a9d2-d891-11e4-9ac9-10039c031d06.png?resize=1445%2C326" class="attachment-full size-full" alt="rebase-interactive3" data-recalc-dims="1"></noscript></p>
+<h2>Fix an earlier commit</h2>
+<p><strong>Scenario:</strong> You failed to include a file in an earlier commit, it’d be great if that earlier commit could somehow include the stuff you left out. You haven’t pushed, yet, but it wasn’t the most recent commit, so you can’t use <code>commit --amend</code>.</p>
+<p><strong>Undo with:</strong> <code>git commit --squash &lt;SHA of the earlier commit&gt;</code> and <code>git rebase --autosquash -i &lt;even earlier SHA&gt;</code></p>
+<p><strong>What’s happening:</strong> <code>git commit --squash</code> will create a new commit with a commit message like <code>squash! Earlier commit</code>. (You could manually create a commit with a message like that, but <code>commit --squash</code> saves you some typing.)</p>
+<p>You can also use <code>git commit --fixup</code> if you don’t want to be prompted to write a new commit message for the combined commit. In this scenario, you’d probably use <code>commit --fixup</code>, since you just want to use the earlier commit’s commit message during <code>rebase</code>.</p>
+<p><code>rebase --autosquash -i</code> will launch an interactive <code>rebase</code> editor, but the editor will open with any <code>squash!</code> and <code>fixup!</code> commits already paired to the commit target in the list of commits, like so:</p>
+<p><img loading="eager" src="b4c7c4ffe2b8885.png" class="attachment-full size-full jetpack-lazy-image jetpack-lazy-image--handled" alt="rebase-autosquash" data-recalc-dims="1" data-lazy-loaded="1" width="1446" height="294"><noscript><img loading="lazy" width="1446" height="294" src="https://github.blog/wp-content/uploads/2015/06/f6a7a1d8-d891-11e4-8784-c32262ff54da.png?resize=1446%2C294" class="attachment-full size-full" alt="rebase-autosquash" data-recalc-dims="1"></noscript></p>
+<p>When using <code>--squash</code> and <code>--fixup</code>, you might not remember the SHA of the commit you want to fix—only that it was one or five commits ago. You might find using Git’s <code>^</code> and <code>~</code> operators especially handy. <code>HEAD^</code> is one commit before <code>HEAD</code>. <code>HEAD~4</code> is four commits before <code>HEAD</code> – or, altogether, five commits back.</p>
+<h2>Stop tracking a tracked file</h2>
+<p><strong>Scenario:</strong> You accidentally added <code>application.log</code> to the repository, now every time you run the application, Git reports there are unstaged changes in <code>application.log</code>. You put <code>*.log</code> in the <code>.gitignore</code> file, but it’s still there—how do you tell git to to “undo” tracking changes in this file?</p>
+<p><strong>Undo with:</strong> <code>git rm --cached application.log</code></p>
+<p><strong>What’s happening:</strong> While <code>.gitignore</code> prevents Git from tracking changes to files or even noticing the existence of files it’s never tracked before, once a file has been added and committed, Git will continue noticing changes in that file. Similarly, if you’ve used <code>git add -f</code> to “force”, or override, <code>.gitignore</code>, Git will keep tracking changes. You won’t have to use <code>-f</code> to add it in the future.</p>
+<p>If you want to remove that should-be-ignored file from Git’s tracking, <code>git rm --cached</code> will remove it from tracking but leave the file untouched on disk. Since it’s now being ignored, you won’t see that file in <code>git status</code> or accidentally commit changes from that file again.</p>
+<hr>
+<p>That’s how to undo anything with Git. To learn more about any of the Git commands used here, check out the relevant documentation:</p>
+<ul>
+<li><a href="http://git-scm.com/docs/git-checkout">checkout</a></li>
+<li><a href="http://git-scm.com/docs/git-commit">commit</a></li>
+<li><a href="http://git-scm.com/docs/git-rebase">rebase</a></li>
+<li><a href="http://git-scm.com/docs/git-reflog">reflog</a></li>
+<li><a href="http://git-scm.com/docs/git-reset">reset</a></li>
+<li><a href="http://git-scm.com/docs/git-revert">revert</a></li>
+<li><a href="http://git-scm.com/docs/git-rm">rm</a></li>
+</ul>
+
+    <div class="text-mono color-text-secondary f5-mktg mt-8">
+        Tags: <ul class="d-inline-block list-style-none"><li class="d-inline-block"><a href="https://github.blog/tag/git/" rel="tag">Git</a></li></ul>    </div>
+
+</div>
+
+<div class="col-12 col-md-4 col-lg-3 offset-lg-1 mt-9 mt-md-0 post__sidebar">
+
+	<aside class="mb-8"><h2 class="f3-mktg pt-1 pb-2 color-text-secondary section-heading">More on <a href="https://github.blog/tag/git/" class="Link--primary text-bold">Git</a></h2><article class="py-4 d-flex flex-column"><a href="https://github.blog/2022-01-24-highlights-from-git-2-35/" class="d-block col-12 position-relative rounded-2 mb-4 overflow-hidden tease-thumbnail  "><img src="ebc47fa832fb2b2.png" class="d-block width-fit rounded-2 tease-thumbnail__img" alt="GitHub’s Engineering Team has moved to Codespaces"></a><div class="col-12  tease-text"><h3 class="h5-mktg mb-2"><a href="https://github.blog/2022-01-24-highlights-from-git-2-35/" class="Link--primary">Highlights from Git 2.35</a></h3><p class="f4-mktg color-text-secondary">The open source Git project just released Git 2.35. Here's GitHub's look at some of the most interesting features and changes introduced since last time.</p><div class=""><div class="d-flex flex-items-center"><div class="d-flex flex-items-end flex-wrap"><span class="f4-mktg text-bold mr-3"><a href="https://github.blog/author/ttaylorr/" class="Link--primary">Taylor Blau</a></span></div></div></div></div></article><article class="py-4 d-flex flex-column border-top"><div class="col-12  tease-text"><h3 class="h5-mktg mb-2"><a href="https://github.blog/2021-11-15-highlights-from-git-2-34/" class="Link--primary">Highlights from Git 2.34</a></h3><p class="f4-mktg color-text-secondary">To celebrate this most recent release, here's GitHub's look at some of the most interesting features and changes introduced since last time.</p><div class=""><div class="d-flex flex-items-center"><div class="d-flex flex-items-end flex-wrap"><span class="f4-mktg text-bold mr-3"><a href="https://github.blog/author/ttaylorr/" class="Link--primary">Taylor Blau</a></span></div></div></div></div></article><article class="py-4 d-flex flex-column border-top"><div class="col-12  tease-text"><h3 class="h5-mktg mb-2"><a href="https://github.blog/2021-11-10-make-your-monorepo-feel-small-with-gits-sparse-index/" class="Link--primary">Make your monorepo feel small with Git’s sparse index</a></h3><p class="f4-mktg color-text-secondary">The new sparse index feature makes it feel like you are working in a small repository when working in a focused portion of a monorepo.</p><div class=""><div class="d-flex flex-items-center"><div class="d-flex flex-items-end flex-wrap"><span class="f4-mktg text-bold mr-3"><a href="https://github.blog/author/dstolee/" class="Link--primary">Derrick Stolee</a></span></div></div></div></div></article></aside>
+</div>
+</div></div>
+<div data-color-mode="dark" data-light-theme="light" data-dark-theme="dark">
+	<footer class="footer mt-6">
+
+		
+<div class="container-xl p-responsive">
+	
+</div>
+
+		
+<div class="color-bg-secondary">
+	<div class="container-xl p-responsive f6 py-4 d-sm-flex flex-justify-between flex-row-reverse flex-items-center">
+
+		<ul class="list-style-none d-flex flex-items-center mb-3 mb-sm-0 lh-condensed-ultra">
+			<li class="mr-3">
+				<a href="https://twitter.com/github" data-ga-click="Resources, go to Twitter, resources footer" style="color: rgb(149, 157, 165);">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 273.5 222.3" class="d-block" height="18">
+						<path d="M273.5 26.3a109.77 109.77 0 0 1-32.2 8.8 56.07 56.07 0 0 0 24.7-31 113.39 113.39 0 0 1-35.7 13.6 56.1 56.1 0 0 0-97 38.4 54 54 0 0 0 1.5 12.8A159.68 159.68 0 0 1 19.1 10.3a56.12 56.12 0 0 0 17.4 74.9 56.06 56.06 0 0 1-25.4-7v.7a56.11 56.11 0 0 0 45 55 55.65 55.65 0 0 1-14.8 2 62.39 62.39 0 0 1-10.6-1 56.24 56.24 0 0 0 52.4 39 112.87 112.87 0 0 1-69.7 24 119 119 0 0 1-13.4-.8 158.83 158.83 0 0 0 86 25.2c103.2 0 159.6-85.5 159.6-159.6 0-2.4-.1-4.9-.2-7.3a114.25 114.25 0 0 0 28.1-29.1" fill="currentColor"></path>
+					</svg>
+
+					<span class="sr-only">GitHub on Twitter</span>
+				</a>
+			</li>
+			<li class="mr-3">
+				<a href="https://www.facebook.com/GitHub" data-ga-click="Resources, go to Facebook, resources footer" style="color: rgb(149, 157, 165);">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 15.3 15.4" class="d-block" height="18">
+						<path d="M14.5 0H.8a.88.88 0 0 0-.8.9v13.6a.88.88 0 0 0 .8.9h7.3v-6h-2V7.1h2V5.4a2.87 2.87 0 0 1 2.5-3.1h.5a10.87 10.87 0 0 1 1.8.1v2.1h-1.3c-1 0-1.1.5-1.1 1.1v1.5h2.3l-.3 2.3h-2v5.9h3.9a.88.88 0 0 0 .9-.8V.8a.86.86 0 0 0-.8-.8z" fill="currentColor"></path>
+					</svg>
+
+					<span class="sr-only">GitHub on Facebook</span>
+				</a>
+			</li>
+			<li class="mr-3">
+				<a href="https://www.youtube.com/github" data-ga-click="Resources, go to YouTube, resources footer" style="color: rgb(149, 157, 165);">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19.17 13.6" class="d-block" height="16">
+						<path d="M18.77 2.13A2.4 2.4 0 0 0 17.09.42C15.59 0 9.58 0 9.58 0a57.55 57.55 0 0 0-7.5.4A2.49 2.49 0 0 0 .39 2.13 26.27 26.27 0 0 0 0 6.8a26.15 26.15 0 0 0 .39 4.67 2.43 2.43 0 0 0 1.69 1.71c1.52.42 7.5.42 7.5.42a57.69 57.69 0 0 0 7.51-.4 2.4 2.4 0 0 0 1.68-1.71 25.63 25.63 0 0 0 .4-4.67 24 24 0 0 0-.4-4.69zM7.67 9.71V3.89l5 2.91z" fill="currentColor"></path>
+					</svg>
+
+					<span class="sr-only">GitHub on YouTube</span>
+				</a>
+			</li>
+			<li class="mr-3 flex-self-start">
+				<a href="https://www.linkedin.com/company/github" data-ga-click="Resources, go to Linkedin, resources footer" style="color: rgb(149, 157, 165);">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 19 18" class="d-block" height="18">
+						<path d="M3.94 2A2 2 0 1 1 2 0a2 2 0 0 1 1.94 2zM4 5.48H0V18h4zm6.32 0H6.34V18h3.94v-6.57c0-3.66 4.77-4 4.77 0V18H19v-7.93c0-6.17-7.06-5.94-8.72-2.91z" fill="currentColor"></path>
+					</svg>
+
+					<span class="sr-only">GitHub on LinkedIn</span>
+				</a>
+			</li>
+			<li>
+				<a href="https://github.com/github" data-ga-click="Resources, go to github's org, resources footer" style="color: rgb(149, 157, 165);">
+					<svg height="20" class="octicon octicon-mark-github d-block" alt="" viewBox="0 0 16 16" version="1.1" width="20" aria-hidden="true">
+						<path fill-rule="evenodd" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path>
+					</svg>
+					<span class="sr-only">GitHub’s organization on GitHub</span>
+				</a>
+			</li>
+		</ul>
+
+		<ul class="list-style-none d-flex flex-wrap text-gray">
+			<li class="mr-3">© 2022 GitHub, Inc.</li>
+
+			<li class="mr-3">
+				<a href="https://docs.github.com/en/github/site-policy/github-terms-of-service" data-ga-click="Site Foundation Components, go to terms, site foundation components footer" class="Link--secondary">Terms</a>
+			</li>
+
+			<li class="mr-3">
+				<a href="https://docs.github.com/en/github/site-policy/github-privacy-statement" data-ga-click="Site Foundation Components, go to privacy, site foundation components footer" class="Link--secondary">Privacy</a>
+			</li>
+
+		</ul>
+
+	</div>
+</div>
+	</footer>
+</div>
+
+
+
+
+
+	
+	
+
+
+
+
+
+</body><div style="all: initial;"></div></html>
