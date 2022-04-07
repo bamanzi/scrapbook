@@ -1,0 +1,2525 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="canonical" href="http://ehneilsen.net/notebook/orgExamples/org-examples.html">
+<title>Emacs org-mode examples and cookbook</title>
+<!-- 2015-07-20 Mon 09:44 -->
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="generator" content="Org-mode">
+<meta name="author" content="Eric H. Neilsen, Jr.">
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body><div style="visibility: hidden; overflow: hidden; height: 1px; position: absolute; top: 0px;"><div id="MathJax_Hidden"></div></div><div style="display: none;" id="MathJax_Message"></div>
+<div id="org-div-home-and-up">
+ <a accesskey="h" href="http://home.fnal.gov/~neilsen/"> UP </a>
+ |
+ <a accesskey="H" href="http://home.fnal.gov/~neilsen"> HOME </a>
+</div><div id="content"><div id="org-info-js_console-container" style="position: relative; margin-top: -50px; top: -50px; left: 0px; width: 100%; height: 40px; overflow: hidden; vertical-align: middle; z-index: 9; border: 0px solid rgb(204, 204, 204);"><form lpformnum="2" action="" style="margin: 0px; padding: 0px;"><table id="org-info-js_console" style="width: 100%; margin: 0px; border-style: none;" summary="minibuffer" cellpadding="0" cellspacing="0"><tbody><tr><td id="org-info-js_console-icon" style="padding: 0px; border-style: none;">&nbsp;</td><td style="width: 100%; vertical-align: middle; padding: 0px; border-style: none;"><table style="width: 100%; margin: 0px; border-style: none;" cellpadding="0" cellspacing="2"><tbody><tr><td id="org-info-js_console-label" style="white-space: nowrap; padding: 0px; border-style: none;"></td></tr><tr><td style="width: 100%; vertical-align: middle; padding: 0px; border-style: none;"><input id="org-info-js_console-input" maxlength="150" style="width: 100%; padding: 0px; margin: 0px; border-style: none;" value="" type="text"></td></tr></tbody></table></td><td style="padding: 0px; border-style: none;">&nbsp;</td></tr></tbody></table></form></div><p id="text-before-first-headline">
+</p><h1 style="display: block; visibility: visible;" class="title">Emacs org-mode examples and cookbook</h1>
+<div id="org-info-js-window" style="margin-bottom: 40px; display: none; visibility: hidden;"></div><div style="display: block; visibility: visible;" id="table-of-contents"><h1 style="display: none; visibility: hidden;" class="title">Emacs org-mode examples and cookbook</h1>
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;">Table of Contents</h2>
+<div style="display: block; visibility: visible;" id="text-table-of-contents">
+<ul>
+<li><a tabindex="1000">1. Introduction</a></li>
+<li><a tabindex="1058">2. Header</a>
+<ul>
+<li><a tabindex="1002">2.1. General metadata</a></li>
+<li><a tabindex="1003">2.2. Common export parameters</a></li>
+<li><a tabindex="1004">2.3. <code>emacs</code> options</a></li>
+<li><a tabindex="1005">2.4. HTML export options</a></li>
+<li><a tabindex="1006">2.5. LaTeX export options</a></li>
+<li><a tabindex="1007">2.6. An example full header</a></li>
+</ul>
+</li>
+<li><a tabindex="1008">3. Setting per-file <code>emacs</code> variables</a></li>
+<li><a tabindex="1009">4. Subversion headers and introduction</a></li>
+<li><a tabindex="1059">5. <code>ditaa</code> figures</a>
+<ul>
+<li><a tabindex="1011">5.1. About <code>ditaa</code></a></li>
+<li><a tabindex="1012">5.2. Simple boxes</a></li>
+<li><a tabindex="1013">5.3. Unseparated boxes</a></li>
+<li><a tabindex="1014">5.4. Connected elements with colors</a></li>
+</ul>
+</li>
+<li><a tabindex="1060">6. UML diagrams with <code>PlantUML</code></a>
+<ul>
+<li><a tabindex="1016">6.1. Class diagrams</a></li>
+<li><a tabindex="1017">6.2. Sequences diagrams</a></li>
+</ul>
+</li>
+<li><a tabindex="1061">7. Symbolic algebra with <code>GNU calc</code></a>
+<ul>
+<li><a tabindex="1019">7.1. Calculation using a formula</a></li>
+<li><a tabindex="1020">7.2. Exporting GNU calc input as well as output</a></li>
+<li><a tabindex="1021">7.3. Solving formula</a></li>
+<li><a tabindex="1022">7.4. Solving systems of equations</a></li>
+<li><a tabindex="1023">7.5. Inverting equations</a></li>
+<li><a tabindex="1024">7.6. Differentials</a></li>
+<li><a tabindex="1025">7.7. Integration</a></li>
+<li><a tabindex="1026">7.8. Taylor series</a></li>
+<li><a tabindex="1027">7.9. Applying a formula repeatedly in <code>org-mode</code></a></li>
+</ul>
+</li>
+<li><a tabindex="1062">8. Using <code>org-mode</code> as a spread sheet</a>
+<ul>
+<li><a tabindex="1029">8.1. Define one column using a formula in terms of others</a></li>
+<li><a tabindex="1030">8.2. Using an arbitrary code block as a table formula</a></li>
+</ul>
+</li>
+<li><a tabindex="1063">9. LaTeX equations</a>
+<ul>
+<li><a tabindex="1032">9.1. Inline equations</a></li>
+<li><a tabindex="1033">9.2. Simple equations</a></li>
+<li><a tabindex="1034">9.3. Aligned sets of equations</a></li>
+</ul>
+</li>
+<li><a tabindex="1035">10. Inline formula</a></li>
+<li><a tabindex="1036">11. Figures and tables with captions and labels</a></li>
+<li><a tabindex="1037">12. Figures and tables spanning multiple text columns</a></li>
+<li><a tabindex="1038">13. Verbatim examples</a></li>
+<li><a tabindex="1039">14. Code examples</a></li>
+<li><a tabindex="1040">15. Running code, returning raw output</a></li>
+<li><a tabindex="1041">16. Running code, return <code>org-mode</code> tables</a></li>
+<li><a tabindex="1042">17. Running code remotely</a></li>
+<li><a tabindex="1043">18. Running C code</a></li>
+<li><a tabindex="1044">19. Running java code</a></li>
+<li><a tabindex="1045">20. Margin notes in LaTeX</a></li>
+<li><a tabindex="1046">21. Querying a <code>PostgreSQL</code> database</a></li>
+<li><a tabindex="1064">22. Interacting with <code>R</code></a>
+<ul>
+<li><a tabindex="1048">22.1. Using an <code>org-mode</code> table as an R data frame</a></li>
+<li><a tabindex="1049">22.2. Generate a plot in your document using <code>R</code></a></li>
+<li><a tabindex="1050">22.3. Generating an <code>org-mode</code> table from an <code>R</code> data frame</a></li>
+</ul>
+</li>
+<li><a tabindex="1065">23. Interacting with <code>python</code></a>
+<ul>
+<li><a tabindex="1052">23.1. Using an <code>org-mode</code> table in python</a></li>
+<li><a tabindex="1053">23.2. Plotting with python</a></li>
+</ul>
+</li>
+<li><a tabindex="1054">24. Setting environment variables (like <code>PYTHONPATH</code>)</a></li>
+<li><a tabindex="1066">25. Writing literate <code>python</code> code</a>
+<ul>
+<li><a tabindex="1056">25.1. Creating the high level structure of the file</a></li>
+<li><a tabindex="1057">25.2. Generating functionality for <code>HelloWorld.py</code></a></li>
+<li><a tabindex="1067">25.3. Generating a <code>main</code> function for <code>HelloWorld</code></a></li>
+<li><a tabindex="1068">25.4. Running main from bash</a></li>
+</ul>
+</li>
+<li><a tabindex="1069">26. Doing automated testing of literate <code>python</code> programs</a>
+<ul>
+<li><a tabindex="1070">26.1. Making <code>test_HelloWorld.txt</code></a></li>
+<li><a tabindex="1071">26.2. Running just the doctests</a></li>
+<li><a tabindex="1072">26.3. Defining <code>unittest</code> tests</a></li>
+<li><a tabindex="1073">26.4. Making <code>TestHelloWorld.py</code></a></li>
+<li><a tabindex="1074">26.5. Running all tests</a></li>
+</ul>
+</li>
+<li><a tabindex="1075">27. Generating an <code>org-mode</code> source block within an <code>org-mode</code> document</a></li>
+<li><a tabindex="1076">28. LaTeX presentations with beamer</a></li>
+</ul>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-1" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-1"><span class="section-number-2">1</span> Introduction</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-1">
+<p>
+This document provides examples of different things that can be done
+in <code>emacs</code> <code>org-mode</code> files. This is <b>not</b> intended to be a
+tutorial. The examples should provide a clue of what you need to look
+up in the <a href="http://orgmode.org/#docs">org-mode manual</a>.
+</p>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-2" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-2"><span class="section-number-2">2</span> Header</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-2">
+<p>
+The first set of lines of an <code>org-mode</code> file, each starting with <code>#+</code>,
+configure <code>org-mode</code>'s interpretation of the remainder of the file.
+</p>
+<div class="org-info-js_local-toc">Contents:<br><ul><li><a>2.1 General metadata</a></li><li><a>2.2 Common export parameters</a></li><li><a>2.3 emacs options</a></li><li><a>2.4 HTML export options</a></li><li><a>2.5 LaTeX export options</a></li><li><a>2.6 An example full header</a></li></ul></div></div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-2-1" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-2-1"><span class="section-number-3">2.1</span> General metadata</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-2-1">
+<p>
+An initial group sets the metadata used in any title pages, headers,
+footers, etc. used by the various exporters:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org" id="orgmode-header-metadata"><span style="color: rgb(127, 127, 127);">#+TITLE:</span>     <span style="color: rgb(25, 25, 112); font-weight: bold;">Emacs org-mode examples</span>
+<span style="color: rgb(127, 127, 127);">#+AUTHOR:</span>    <span style="color: rgb(25, 25, 112);">Eric H. Neilsen, Jr.</span>
+<span style="color: rgb(127, 127, 127);">#+EMAIL:</span>     <span style="color: rgb(25, 25, 112);">neilsen@fnal.gov</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-2-2" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-2-2"><span class="section-number-3">2.2</span> Common export parameters</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-2-2">
+<p>
+Configue the <code>org-mode</code> tags for forcing inclusion of exclusion of
+sections in exported documents
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org" id="orgmode-header-exclude"><span style="color: rgb(178, 34, 34);">#+EXPORT_SELECT_TAGS: export</span>
+<span style="color: rgb(178, 34, 34);">#+EXPORT_EXCLUDE_TAGS: noexport</span>
+</pre>
+</div>
+
+<p>
+Additional options handle interpretation of special characters in the
+buffer, numbering of headings, etc.
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org" id="orgmode-header-options"><span style="color: rgb(178, 34, 34);">#+OPTIONS: H:2 num:nil toc:nil \n:nil @:t ::t |:t ^:{} _:{} *:t TeX:t LaTeX:t</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-2-3" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-2-3"><span class="section-number-3">2.3</span> <code>emacs</code> options</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-2-3">
+<p>
+THE <code>STARTUP</code> keyword sets how the buffer is displayed when the file
+is opened in <code>emacs</code>:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org" id="orgmode-header-emacs"><span style="color: rgb(178, 34, 34);">#+STARTUP: showall</span>
+</pre>
+</div>
+</div>
+</div>
+
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-2-4" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-2-4"><span class="section-number-3">2.4</span> HTML export options</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-2-4">
+<p>
+A few other are used exclusively by the <code>html</code> exporter:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org" id="orgmode-header-html"><span style="color: rgb(178, 34, 34);">#+LANGUAGE:  en</span>
+<span style="color: rgb(178, 34, 34);">#+INFOJS_OPT: view:showall toc:t ltoc:t mouse:underline path:<a href="http://orgmode.org/org-info.js">http://orgmode.org/org-info.js</a></span>
+<span style="color: rgb(178, 34, 34);">#+LINK_HOME: <a href="http://home.fnal.gov/~neilsen">http://home.fnal.gov/~neilsen</a></span>
+<span style="color: rgb(178, 34, 34);">#+LINK_UP: <a href="http://home.fnal.gov/~neilsen/notebook">http://home.fnal.gov/~neilsen/notebook</a></span>
+<span style="color: rgb(178, 34, 34);">#+HTML_HEAD: &lt;link rel="stylesheet" type="text/css" href="../css/notebook.css" /&gt;</span>
+</pre>
+</div>
+
+<p>
+The <code>LANGUAGE</code> keyword sets the <code>lang</code> option in the <code>html</code>
+declaration.
+</p>
+
+<p>
+The <code>INFOJS_OPT</code> keyword configures the <a href="http://orgmode.org/manual/JavaScript-support.html">org-info.js</a>, javascript used
+to assist navigation of <code>org-mode</code> generated pages.
+</p>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-2-5" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-2-5"><span class="section-number-3">2.5</span> LaTeX export options</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-2-5">
+<p>
+The LaTeX class and any LaTeX commands to be included at the head of
+exported LaTeX files. For example, on my laptop the header looks like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org" id="orgmode-header-latex"><span style="color: rgb(178, 34, 34);">#+LaTeX_CLASS: smarticle</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \pdfmapfile{/home/neilsen/texmf/fonts/map/dvips/libertine/libertine.map}</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \usepackage[ttscale=.875]{libertine}</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \usepackage{sectsty}</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}</span>
+</pre>
+</div>
+
+<p>
+It looks a little different in my account on the DES cluster:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+LaTeX_CLASS: smarticle</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \pdfmapfile{/home/s1/neilsen/texmf/fonts/map/dvips/libertine/libertine.map}</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \usepackage{sectsty}</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \usepackage{libertine}</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \usepackage[T1]{fontenc}</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}</span>
+</pre>
+</div>
+
+<p>
+Of course, LaTeX should be installed, and for the above to work, so
+must the libertine package, and the pdfmapfile must be set.
+</p>
+
+<p>
+LaTeX installaction instruction can be found <a href="http://en.wikibooks.org/wiki/LaTeX/Installing_Extra_Packages">here</a>. 
+</p>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-2-6" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-2-6"><span class="section-number-3">2.6</span> An example full header</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-2-6">
+<p>
+A typical header that I use for <code>org-mode</code> files:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(127, 127, 127);">#+TITLE:</span>     <span style="color: rgb(25, 25, 112); font-weight: bold;">Emacs org-mode examples</span>
+<span style="color: rgb(127, 127, 127);">#+AUTHOR:</span>    <span style="color: rgb(25, 25, 112);">Eric H. Neilsen, Jr.</span>
+<span style="color: rgb(127, 127, 127);">#+EMAIL:</span>     <span style="color: rgb(25, 25, 112);">neilsen@fnal.gov</span>
+<span style="color: rgb(178, 34, 34);">#+LANGUAGE:  en</span>
+<span style="color: rgb(178, 34, 34);">#+INFOJS_OPT: view:showall toc:t ltoc:t mouse:underline path:<a href="http://orgmode.org/org-info.js">http://orgmode.org/org-info.js</a></span>
+<span style="color: rgb(178, 34, 34);">#+LINK_HOME: <a href="http://home.fnal.gov/~neilsen">http://home.fnal.gov/~neilsen</a></span>
+<span style="color: rgb(178, 34, 34);">#+LINK_UP: <a href="http://home.fnal.gov/~neilsen/notebook">http://home.fnal.gov/~neilsen/notebook</a></span>
+<span style="color: rgb(178, 34, 34);">#+HTML_HEAD: &lt;link rel="stylesheet" type="text/css" href="../css/notebook.css" /&gt;</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_CLASS: smarticle</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \pdfmapfile{/home/neilsen/texmf/fonts/map/dvips/libertine/libertine.map}</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \usepackage[ttscale=.875]{libertine}</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \usepackage{sectsty}</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \sectionfont{\normalfont\scshape}</span>
+<span style="color: rgb(178, 34, 34);">#+LaTeX_HEADER: \subsectionfont{\normalfont\itshape}</span>
+<span style="color: rgb(178, 34, 34);">#+EXPORT_SELECT_TAGS: export</span>
+<span style="color: rgb(178, 34, 34);">#+EXPORT_EXCLUDE_TAGS: noexport</span>
+<span style="color: rgb(178, 34, 34);">#+OPTIONS: H:2 num:nil toc:nil \n:nil @:t ::t |:t ^:{} _:{} *:t TeX:t LaTeX:t</span>
+<span style="color: rgb(178, 34, 34);">#+STARTUP: showall</span>
+</pre>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-3" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-3"><span class="section-number-2">3</span> Setting per-file <code>emacs</code> variables</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-3">
+<p>
+Follow the <a href="http://www.gnu.org/software/emacs/manual/html_node/emacs/Specifying-File-Variables.html">instructions in the emacs manual</a>; begin the file with a
+line of the form:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);"># -*- foo: "bar"; baz: "ham" -*-</span>
+</pre>
+</div>
+
+<p>
+For example, to set the "Up" and "Home" links for an org-mode file,
+begin it with:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);"># -*- org-html-link-up: "<a href="http://decam03.fnal.gov:8080/notes/neilsen/">http://decam03.fnal.gov:8080/notes/neilsen/</a>";  org-html-link-home: "<a href="http://home.fnal.gov/~neilsen">http://home.fnal.gov/~neilsen</a>" -*-</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-4" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-4"><span class="section-number-2">4</span> Subversion headers and introduction</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-4">
+<p>
+If you wish to have subversion keyword substitution, it can be done like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"> - <span style="font-weight: bold;">Revision ::</span> $Revision: 1.3 $
+ - <span style="font-weight: bold;">Date ::</span> $Date: 2013/05/17 15:19:53 $
+ - <span style="font-weight: bold;">Source ::</span> $Source: /Users/neilsen/Documents/CTIOTime/RCS/ctio_time.org,v $
+</pre>
+</div>
+
+<p>
+The result looks like this:
+</p>
+
+<dl class="org-dl">
+<dt> Revision </dt><dd>$Revision: 1.3 $
+</dd>
+<dt> Date </dt><dd>$Date: 2013/05/17 15:19:53 $
+</dd>
+<dt> Source </dt><dd>$Source: /Users/neilsen/Documents/CTIOTime/RCS/ctio_time.org,v $
+</dd>
+</dl>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-5" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-5"><span class="section-number-2">5</span> <code>ditaa</code> figures</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-5">
+<div class="org-info-js_local-toc">Contents:<br><ul><li><a>5.1 About ditaa</a></li><li><a>5.2 Simple boxes</a></li><li><a>5.3 Unseparated boxes</a></li><li><a>5.4 Connected elements with colors</a></li></ul></div></div><div style="display: block; visibility: visible;" id="outline-container-sec-5-1" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-5-1"><span class="section-number-3">5.1</span> About <code>ditaa</code></h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-5-1">
+<p>
+<code>dataa</code> generates figures from ASCII "art". Examples of <code>ditaa</code> syntax
+can be found <a href="http://ditaa.sourceforge.net/">here</a>.
+</p>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-5-2" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-5-2"><span class="section-number-3">5.2</span> Simple boxes</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-5-2">
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+begin_src ditaa :file ditaa-simpleboxes.png</span>
+<span style="text-decoration: line-through;">+---------+</span>
+<span style="color: rgb(0, 0, 255);">|         |</span>
+<span style="color: rgb(0, 0, 255);">| Foo     |</span>
+<span style="color: rgb(0, 0, 255);">|         |</span>
+<span style="text-decoration: line-through;">+----+</span><span style="color: rgb(0, 0, 255);">----+---+</span>
+<span style="color: rgb(0, 0, 255);">|Bar |Baz     |</span>
+<span style="color: rgb(0, 0, 255);">|    |        |</span>
+<span style="text-decoration: line-through;">+----+</span><span style="color: rgb(0, 0, 255);">--------+</span>
+<span style="color: rgb(178, 34, 34);">#+end_src</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="ditaa-simpleboxes.png" alt="ditaa-simpleboxes.png">
+</p>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-5-3" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-5-3"><span class="section-number-3">5.3</span> Unseparated boxes</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-5-3">
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+begin_src ditaa :file ditaa-simpleboxes-unsep.png :cmdline -E</span>
+<span style="text-decoration: line-through;">+---------+</span>
+<span style="color: rgb(0, 0, 255);">|         |</span>
+<span style="color: rgb(0, 0, 255);">| Foo     |</span>
+<span style="color: rgb(0, 0, 255);">|         |</span>
+<span style="text-decoration: line-through;">+----+</span><span style="color: rgb(0, 0, 255);">----+---+</span>
+<span style="color: rgb(0, 0, 255);">|Bar |Baz     |</span>
+<span style="color: rgb(0, 0, 255);">|    |        |</span>
+<span style="text-decoration: line-through;">+----+</span><span style="color: rgb(0, 0, 255);">--------+</span>
+<span style="color: rgb(178, 34, 34);">#+end_src</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="ditaa-simpleboxes-unsep.png" alt="ditaa-simpleboxes-unsep.png">
+</p>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-5-4" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-5-4"><span class="section-number-3">5.4</span> Connected elements with colors</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-5-4">
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+begin_src ditaa :file ditaa-seqboxes.png</span>
+<span style="text-decoration: line-through;">+------+</span><span style="color: rgb(0, 0, 255);">   </span><span style="text-decoration: line-through;">+-----+</span><span style="color: rgb(0, 0, 255);">   </span><span style="text-decoration: line-through;">+-----+</span><span style="color: rgb(0, 0, 255);">   </span><span style="text-decoration: line-through;">+-----+</span>
+<span style="color: rgb(0, 0, 255);">|{io}  |   |{d}  |   |{s}  |   |cBLU |</span>
+<span style="color: rgb(0, 0, 255);">| Foo  </span><span style="text-decoration: line-through;">+---+</span><span style="color: rgb(0, 0, 255);"> Bar </span><span style="text-decoration: line-through;">+---+</span><span style="color: rgb(0, 0, 255);"> Baz </span><span style="text-decoration: line-through;">+---+</span><span style="color: rgb(0, 0, 255);"> Moo |</span>
+<span style="color: rgb(0, 0, 255);">|      |   |     |   |     |   |     |</span>
+<span style="text-decoration: line-through;">+------+</span><span style="color: rgb(0, 0, 255);">   </span><span style="text-decoration: line-through;">+-----+</span><span style="color: rgb(0, 0, 255);">   </span><span style="text-decoration: line-through;">+--+</span><span style="color: rgb(0, 0, 255);">--+   </span><span style="text-decoration: line-through;">+-----+</span>
+                        |
+           /-----\      |      <span style="text-decoration: line-through;">+------+</span>
+           <span style="color: rgb(0, 0, 255);">|     |      |      | c1AB |</span>
+           <span style="color: rgb(0, 0, 255);">| Goo </span><span style="text-decoration: line-through;">+------+</span><span style="color: rgb(0, 0, 255);">---=--+ Shoo |</span>
+           \-----/             |      |
+                               <span style="text-decoration: line-through;">+------+</span>
+<span style="color: rgb(178, 34, 34);">#+end_src</span>
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="ditaa-seqboxes.png" alt="ditaa-seqboxes.png">
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-6" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-6"><span class="section-number-2">6</span> UML diagrams with <code>PlantUML</code></h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-6">
+<div class="org-info-js_local-toc">Contents:<br><ul><li><a>6.1 Class diagrams</a></li><li><a>6.2 Sequences diagrams</a></li></ul></div></div><div style="display: block; visibility: visible;" id="outline-container-sec-6-1" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-6-1"><span class="section-number-3">6.1</span> Class diagrams</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-6-1">
+<p>
+This:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+begin_src plantuml :file class_diagram.png</span>
+skinparam monochrome true
+FitsHdu &lt;|-- PrimaryHdu
+FitsHdu &lt;|-- ExtensionHdu
+
+FitsHdu : header
+FitsHdu : getHeaderKeyword()
+
+ExtensionHdu &lt;|-- ImageHdu
+ImageHdu : image
+ImageHdu : getPixel(row, column)
+
+ExtensionHdu &lt;|-- BinaryTableHdu
+BinaryTableHdu : table
+BinaryTableHdu : getRow(row)
+BinaryTableHdu : getColumn(column)
+<span style="color: rgb(178, 34, 34);">#+end_src</span>
+</pre>
+</div>
+
+<p>
+gives this:
+</p>
+
+<div class="figure">
+<p><img src="class_diagram.png" alt="class_diagram.png">
+</p>
+</div>
+</div>
+</div>
+
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-6-2" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-6-2"><span class="section-number-3">6.2</span> Sequences diagrams</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-6-2">
+<p>
+This:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+begin_src plantuml :file sequence_diagram.png</span>
+skinparam monochrome true
+ Foo -&gt; Bar: synchronous call
+ Foo -&gt;&gt; Bar: asynchronous call
+<span style="color: rgb(178, 34, 34);">#+end_src</span>
+</pre>
+</div>
+
+<p>
+results in this:
+</p>
+
+
+<div class="figure">
+<p><img src="sequence_diagram.png" alt="sequence_diagram.png">
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-7" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-7"><span class="section-number-2">7</span> Symbolic algebra with <code>GNU calc</code></h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-7">
+<p>
+Full documentation on how to use <code>GNU calc</code> can be found 
+<a href="http://www.gnu.org/software/emacs/manual/html_node/calc/Algebra.html">here</a>. Same examples:
+</p>
+<div class="org-info-js_local-toc">Contents:<br><ul><li><a>7.1 Calculation using a formula</a></li><li><a>7.2 Exporting GNU calc input as well as output</a></li><li><a>7.3 Solving formula</a></li><li><a>7.4 Solving systems of equations</a></li><li><a>7.5 Inverting equations</a></li><li><a>7.6 Differentials</a></li><li><a>7.7 Integration</a></li><li><a>7.8 Taylor series</a></li><li><a>7.9 Applying a formula repeatedly in org-mode</a></li></ul></div></div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-7-1" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-7-1"><span class="section-number-3">7.1</span> Calculation using a formula</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-7-1">
+<p>
+Starting with this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC calc :var x=5 :var y=2</span>
+2+a*x**y
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+If you place the cursor on the <code>#+BEGIN_SRC</code> and hit ctrl-c <i>twice</i>,
+it will produce a "results" section thus:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC calc :var x=5 :var y=2</span>
+2+a*x**y
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: 25 a + 2</span>
+</pre>
+</div>
+
+<p>
+Which results in this if the exported document
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-calc">2+a*x**y
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-7-2" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-7-2"><span class="section-number-3">7.2</span> Exporting GNU calc input as well as output</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-7-2">
+<p>
+If you want the original formula in the exported document, you need to
+add an <code>:exports both</code> flag, thus:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC calc :exports both</span>
+x*2+x=4
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+results:</span>
+<span style="color: rgb(127, 127, 127);">: 3 x = 4</span>
+</pre>
+</div>
+
+<p>
+Which results in this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-calc">x*2+x=4
+</pre>
+</div>
+
+<pre class="example">3 x = 4
+</pre>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-7-3" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-7-3"><span class="section-number-3">7.3</span> Solving formula</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-7-3">
+<p>
+<code>GNU calc</code> has many additional capabilities. It can be used to solve formula:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC calc :exports both</span>
+fsolve(x*2+x=4,x)
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+results:</span>
+<span style="color: rgb(127, 127, 127);">: x = 1.33333333333</span>
+</pre>
+</div>
+
+<p>
+which exports to:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-calc">fsolve(x*2+x=4,x)
+</pre>
+</div>
+
+<pre class="example">x = 1.33333333333
+</pre>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-7-4" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-7-4"><span class="section-number-3">7.4</span> Solving systems of equations</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-7-4">
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC calc</span>
+fsolve([x + y = a, x - y = b],[x,y])
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: [x = a + (b - a) / 2, y = (a - b) / 2]</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-7-5" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-7-5"><span class="section-number-3">7.5</span> Inverting equations</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-7-5">
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC calc :exports both</span>
+finv(sqrt(x),x)
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+results:</span>
+<span style="color: rgb(127, 127, 127);">: x^2</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-7-6" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-7-6"><span class="section-number-3">7.6</span> Differentials</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-7-6">
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC calc :exports both</span>
+deriv(sqrt(x),x)
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: 0.5 / sqrt(x)</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-7-7" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-7-7"><span class="section-number-3">7.7</span> Integration</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-7-7">
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC calc :exports both</span>
+integ(x**2,x)
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: x^3 / 3</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-7-8" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-7-8"><span class="section-number-3">7.8</span> Taylor series</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-7-8">
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC calc :exports both</span>
+taylor(sin(x),x,6)
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: 0.0174532925199 x - 8.86096155693e-7 x^3 + 1.34960162314e-11 x^5</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-7-9" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-7-9"><span class="section-number-3">7.9</span> Applying a formula repeatedly in <code>org-mode</code></h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-7-9">
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+name: myformula</span>
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC calc</span>
+2+a*x**y
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC calc :noweb yes :var x=5 :var y=2</span>
+<span style="text-decoration: underline;">&lt;&lt;myformula&gt;&gt;</span>
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: 25 a + 2</span>
+
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC calc :noweb yes :var x=10 :var y=2</span>
+<span style="text-decoration: underline;">&lt;&lt;myformula&gt;&gt;</span>
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: 100 a + 2</span>
+</pre>
+</div>
+
+<p>
+You can accomplish roughtly the same thing like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+NAME: mynewformula</span>
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC calc</span>
+2+a*x**y
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+CALL: mynewformula(x=10,y=2)</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: 100 a + 2</span>
+</pre>
+</div>
+
+<div class="org-src-container">
+
+<pre class="src src-calc" id="mynewformula">2+a*x**y
+</pre>
+</div>
+
+<pre class="example">100 a + 2
+</pre>
+
+<p>
+The first mechanism is somewhat more versatile, as you can combine
+multiple code blocks.
+</p>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-8" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-8"><span class="section-number-2">8</span> Using <code>org-mode</code> as a spread sheet</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-8">
+<div class="org-info-js_local-toc">Contents:<br><ul><li><a>8.1 Define one column using a formula in terms of others</a></li><li><a>8.2 Using an arbitrary code block as a table formula</a></li></ul></div></div><div style="display: block; visibility: visible;" id="outline-container-sec-8-1" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-8-1"><span class="section-number-3">8.1</span> Define one column using a formula in terms of others</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-8-1">
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(0, 0, 255);">| airmass | zenith_seeing | delivered_seeing |</span>
+<span style="color: rgb(0, 0, 255);">|---------+---------------+------------------|</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |          0.95 |        1.1119612 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.0 |        1.1704854 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.1 |        1.2875340 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.2 |        1.4045825 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |          1.25 |        1.4631068 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.3 |        1.5216311 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.5 |        1.7557281 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.8 |        2.1068738 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.2 |           1.8 |        2.0080811 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           2.0 |        2.3409709 |</span>
+<span style="color: rgb(178, 34, 34);">#+TBLFM: $3=$2*($1**0.6)</span>
+</pre>
+</div>
+
+<p>
+results in this in the output:
+</p>
+
+<table rules="groups" frame="hsides" border="2" cellpadding="6" cellspacing="0">
+
+
+<colgroup>
+<col class="right">
+
+<col class="right">
+
+<col class="right">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">airmass</th>
+<th scope="col" class="right">zenith_seeing</th>
+<th scope="col" class="right">delivered_seeing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">1.3</td>
+<td class="right">0.95</td>
+<td class="right">1.1119612</td>
+</tr>
+
+<tr>
+<td class="right">1.3</td>
+<td class="right">1.0</td>
+<td class="right">1.1704854</td>
+</tr>
+
+<tr>
+<td class="right">1.3</td>
+<td class="right">1.1</td>
+<td class="right">1.2875340</td>
+</tr>
+
+<tr>
+<td class="right">1.3</td>
+<td class="right">1.2</td>
+<td class="right">1.4045825</td>
+</tr>
+
+<tr>
+<td class="right">1.3</td>
+<td class="right">1.25</td>
+<td class="right">1.4631068</td>
+</tr>
+
+<tr>
+<td class="right">1.3</td>
+<td class="right">1.3</td>
+<td class="right">1.5216311</td>
+</tr>
+
+<tr>
+<td class="right">1.3</td>
+<td class="right">1.5</td>
+<td class="right">1.7557281</td>
+</tr>
+
+<tr>
+<td class="right">1.3</td>
+<td class="right">1.8</td>
+<td class="right">2.1068738</td>
+</tr>
+
+<tr>
+<td class="right">1.2</td>
+<td class="right">1.8</td>
+<td class="right">2.0080811</td>
+</tr>
+
+<tr>
+<td class="right">1.3</td>
+<td class="right">2.1</td>
+<td class="right">2.4580194</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+To recalculate the column, put the cursor on the <code>#+TBLFM</code> column and
+hit ctrl-c <i>twice</i>.
+</p>
+</div>
+</div>
+<div style="display: block; visibility: visible;" id="outline-container-sec-8-2" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-8-2"><span class="section-number-3">8.2</span> Using an arbitrary code block as a table formula</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-8-2">
+<p>
+This:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+NAME: sampformula</span>
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC python :var angle=90 :var r=2 :exports none</span>
+from math import radians, cos
+result = r*cos(radians(angle))
+return result
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(0, 0, 255);">| angle |  r |             x |</span>
+<span style="color: rgb(0, 0, 255);">|-------+----+---------------|</span>
+<span style="color: rgb(0, 0, 255);">|    30 | 10 | 8.66025403784 |</span>
+<span style="color: rgb(0, 0, 255);">|    45 | 10 | 7.07106781187 |</span>
+<span style="color: rgb(0, 0, 255);">|    60 | 10 |           5.0 |</span>
+<span style="color: rgb(178, 34, 34);">#+TBLFM: $3='(org-sbe "sampformula" (angle $1) (r $2))</span>
+</pre>
+</div>
+
+<p>
+Results in this:
+</p>
+
+<table rules="groups" frame="hsides" border="2" cellpadding="6" cellspacing="0">
+
+
+<colgroup>
+<col class="right">
+
+<col class="right">
+
+<col class="right">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">angle</th>
+<th scope="col" class="right">r</th>
+<th scope="col" class="right">x</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">30</td>
+<td class="right">10</td>
+<td class="right">8.66025403784</td>
+</tr>
+
+<tr>
+<td class="right">45</td>
+<td class="right">10</td>
+<td class="right">7.07106781187</td>
+</tr>
+
+<tr>
+<td class="right">60</td>
+<td class="right">10</td>
+<td class="right">5.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-9" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-9"><span class="section-number-2">9</span> LaTeX equations</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-9">
+<div class="org-info-js_local-toc">Contents:<br><ul><li><a>9.1 Inline equations</a></li><li><a>9.2 Simple equations</a></li><li><a>9.3 Aligned sets of equations</a></li></ul></div></div><div style="display: block; visibility: visible;" id="outline-container-sec-9-1" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-9-1"><span class="section-number-3">9.1</span> Inline equations</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-9-1">
+<p>
+This:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-org">Foo bar \(f(x) = \frac{x^3}{n}\) chicken checken.
+</pre>
+</div>
+
+<p>
+renders as this:
+</p>
+
+<p>
+Foo bar <span style="display: none;" class="MathJax_Preview"></span><span style="" aria-readonly="true" role="textbox" class="MathJax"><nobr style=""><span id="MathJax-Span-1" class="math"><span style="display: inline-block; position: relative; width: 4.279em; height: 0px; font-size: 130%;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(1.074em, 1000em, 2.698em, -0.38em);"><span id="MathJax-Span-2" class="mrow"><span id="MathJax-Span-3" class="mi"><img style="width: 11px; height: 18px; vertical-align: -4px; margin-right: -0.058em;" src="0066.png"></span><span id="MathJax-Span-4" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-5" class="mi"><img style="width: 11px; height: 9px; margin-right: 0.047em;" src="0078.png"></span><span id="MathJax-Span-6" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span><span style="padding-left: 0.278em;" id="MathJax-Span-7" class="mo"><img style="width: 15px; height: 5px; vertical-align: 3px; margin-right: 0.054em;" src="003D.png"></span><span style="padding-left: 0.398em; padding-right: 0.12em;" id="MathJax-Span-8" class="mfrac"><span style="display: inline-block; position: relative; width: 0.889em; height: 0px;"><span style="position: absolute; top: -2.609em; left: 50%; clip: rect(1.481em, 1000em, 2.354em, -0.409em); margin-left: -0.385em;"><span id="MathJax-Span-9" class="msubsup"><span style="display: inline-block; position: relative; width: 0.779em; height: 0px;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(1.76em, 1000em, 2.354em, -0.409em);"><span style="font-size: 70.7%;" id="MathJax-Span-10" class="mi"><img style="width: 8px; height: 6px; margin-right: 0.047em;" src="0078_001.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.459em; left: 0.486em;"><span style="font-size: 50%;" id="MathJax-Span-11" class="mn"><img style="width: 5px; height: 8px; margin-right: 0.041em;" src="0033.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -1.857em; left: 50%; clip: rect(1.76em, 1000em, 2.354em, -0.419em); margin-left: -0.192em;"><span style="font-size: 70.7%;" id="MathJax-Span-12" class="mi"><img style="width: 8px; height: 6px; margin-right: 0.019em;" src="006E.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.422em; left: 0em; clip: rect(1.998em, 1000em, 2.346em, -0.433em);"><span style="border-left: 0.889em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.06em; vertical-align: 0em;"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 1.737em; vertical-align: -0.458em;"></span></span></nobr></span> chicken checken.
+</p>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-9-2" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-9-2"><span class="section-number-3">9.2</span> Simple equations</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-9-2">
+<p>
+This:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-org">Our best estimate of F(\nu) will be 
+\[
+\hat{F}(\nu) = \frac{G(\nu)}{H(\nu)}.
+\]
+</pre>
+</div>
+
+<p>
+renders as this:
+</p>
+
+<p>
+Our best estimate of F(ν) will be 
+<span style="display: none;" class="MathJax_Preview"></span><div aria-readonly="true" role="textbox" style="width: 100%; position: relative; text-align: center;" class="MathJax_Display"><span style="" class="MathJax"><nobr style=""><span id="MathJax-Span-13" class="math"><span style="display: inline-block; position: relative; width: 6.106em; height: 0px; font-size: 130%;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(0.634em, 1000em, 3.273em, -0.404em);"><span id="MathJax-Span-14" class="mrow"><span id="MathJax-Span-15" class="munderover"><span style="display: inline-block; position: relative; width: 0.636em; height: 0px;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(1.403em, 1000em, 2.346em, -0.404em);"><span id="MathJax-Span-16" class="mi"><img style="width: 15px; height: 14px; margin-right: -0.102em;" src="0046.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.466em; left: 0.155em; clip: rect(1.39em, 1000em, 1.836em, -0.325em);"><span id="MathJax-Span-17" class="mo"><img style="width: 8px; height: 4px; vertical-align: 10px; margin-right: 0.109em;" src="02C6.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span><span id="MathJax-Span-18" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-19" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-20" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span><span style="padding-left: 0.278em;" id="MathJax-Span-21" class="mo"><img style="width: 15px; height: 5px; vertical-align: 3px; margin-right: 0.054em;" src="003D.png"></span><span style="padding-left: 0.398em; padding-right: 0.12em;" id="MathJax-Span-22" class="mfrac"><span style="display: inline-block; position: relative; width: 2.187em; height: 0px;"><span style="position: absolute; top: -2.903em; left: 50%; clip: rect(1.336em, 1000em, 2.587em, -0.385em); margin-left: -1.01em;"><span id="MathJax-Span-23" class="mrow"><span id="MathJax-Span-24" class="mi"><img style="width: 15px; height: 14px; margin-right: 0.025em;" src="0047.png"></span><span id="MathJax-Span-25" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-26" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-27" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -1.516em; left: 50%; clip: rect(1.336em, 1000em, 2.587em, -0.403em); margin-left: -1.034em;"><span id="MathJax-Span-28" class="mrow"><span id="MathJax-Span-29" class="mi"><img style="width: 18px; height: 15px; margin-right: -0.056em;" src="0048.png"></span><span id="MathJax-Span-30" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-31" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-32" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.422em; left: 0em; clip: rect(1.998em, 1000em, 2.346em, -0.433em);"><span style="border-left: 2.187em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.06em; vertical-align: 0em;"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span><span style="padding-left: 0.167em;" id="MathJax-Span-33" class="mo"><img style="width: 4px; height: 3px; margin-right: 0.076em;" src="002E.png"></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 3.056em; vertical-align: -1.205em;"></span></span></nobr></span></div>
+</p>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-9-3" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-9-3"><span class="section-number-3">9.3</span> Aligned sets of equations</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-9-3">
+<p>
+This:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-org">\begin{eqnarray*}
+\hat{f}(x) &amp; \propto &amp; \sum_{\nu} \frac{|F(\nu)H(\nu)|^2}{|N(\nu)|^2}  
+           \frac{G(\nu)}{H(\nu)} e^{\frac{2 \pi i \nu x}{N}}\\
+           &amp; \propto &amp; \sum_{\nu} \frac{|F(\nu)|^2}{|N(\nu)|^2} H(\nu) H^*(\nu) 
+           \frac{G(\nu)}{H(\nu)} e^{\frac{2 \pi i \nu x}{N}}\\
+           &amp; \propto &amp; \sum_{\nu} H^*(\nu) G(\nu) e^{\frac{2 \pi i \nu x}{N}}
+\end{eqnarray*}
+</pre>
+</div>
+
+<p>
+renders as this:
+</p>
+<span style="display: none;" class="MathJax_Preview"></span><div aria-readonly="true" role="textbox" style="width: 100%; position: relative; text-align: center;" class="MathJax_Display"><span style="" class="MathJax"><nobr style=""><span id="MathJax-Span-36" class="math"><span style="display: inline-block; position: relative; width: 18.606em; height: 0px; font-size: 130%;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(-2.519em, 1000em, 6.423em, -0.266em);"><span id="MathJax-Span-37" class="mrow"><span style="padding-right: 0.1667em; padding-left: 0.1667em;" id="MathJax-Span-38" class="mtable"><span style="display: inline-block; position: relative; width: 18.248em; height: 0px;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(-1.866em, 1000em, 5.299em, -0.433em);"><span style="display: inline-block; position: relative; width: 1.971em; height: 0px;"><span style="position: absolute; top: -5.171em; clip: rect(1.103em, 1000em, 2.587em, -0.38em); right: 0em;"><span id="MathJax-Span-39" class="mtd"><span id="MathJax-Span-40" class="mrow"><span id="MathJax-Span-41" class="munderover"><span style="display: inline-block; position: relative; width: 0.648em; height: 0px;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(1.38em, 1000em, 2.543em, -0.38em);"><span id="MathJax-Span-42" class="mi"><img style="width: 11px; height: 18px; vertical-align: -4px; margin-right: -0.058em;" src="0066.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.489em; left: 0.167em; clip: rect(1.39em, 1000em, 1.836em, -0.325em);"><span id="MathJax-Span-43" class="mo"><img style="width: 8px; height: 4px; vertical-align: 10px; margin-right: 0.109em;" src="02C6.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span><span id="MathJax-Span-44" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-45" class="mi"><img style="width: 11px; height: 9px; margin-right: 0.047em;" src="0078.png"></span><span id="MathJax-Span-46" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -0.737em; clip: rect(0.856em, 1000em, 1.144em, -0.433em); right: 0em;"><span id="MathJax-Span-113" class="mtd"><span id="MathJax-Span-114" class="mrow"></span></span><span style="display: inline-block; width: 0px; height: 1em;"></span></span><span style="position: absolute; top: 1.952em; clip: rect(0.856em, 1000em, 1.144em, -0.433em); right: 0em;"><span id="MathJax-Span-187" class="mtd"><span id="MathJax-Span-188" class="mrow"></span></span><span style="display: inline-block; width: 0px; height: 1em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.202em; left: 2.249em; clip: rect(-1.337em, 1000em, 5.309em, -0.379em);"><span style="display: inline-block; position: relative; width: 0.769em; height: 0px;"><span style="position: absolute; top: -5.171em; left: 50%; clip: rect(1.633em, 1000em, 2.357em, -0.379em); margin-left: -0.385em;"><span id="MathJax-Span-47" class="mtd"><span id="MathJax-Span-48" class="mrow"><span id="MathJax-Span-49" class="mo"><img style="width: 15px; height: 9px; margin-right: 0.054em;" src="221D.png"></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -1.939em; left: 50%; clip: rect(1.633em, 1000em, 2.357em, -0.379em); margin-left: -0.385em;"><span id="MathJax-Span-115" class="mtd"><span id="MathJax-Span-116" class="mrow"><span id="MathJax-Span-117" class="mo"><img style="width: 15px; height: 9px; margin-right: 0.054em;" src="221D.png"></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: 0.75em; left: 50%; clip: rect(1.633em, 1000em, 2.357em, -0.379em); margin-left: -0.385em;"><span id="MathJax-Span-189" class="mtd"><span id="MathJax-Span-190" class="mrow"><span id="MathJax-Span-191" class="mo"><img style="width: 15px; height: 9px; margin-right: 0.054em;" src="221D.png"></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.202em; left: 3.296em; clip: rect(-2.519em, 1000em, 6.423em, -0.38em);"><span style="display: inline-block; position: relative; width: 14.952em; height: 0px;"><span style="position: absolute; top: -5.171em; left: 0em; clip: rect(0.45em, 1000em, 3.471em, -0.38em);"><span id="MathJax-Span-50" class="mtd"><span id="MathJax-Span-51" class="mrow"><span id="MathJax-Span-52" class="texatom"><span id="MathJax-Span-53" class="mrow"><span id="MathJax-Span-54" class="munderover"><span style="display: inline-block; position: relative; width: 1.394em; height: 0px;"><span style="position: absolute; top: -2.394em; left: 0em; clip: rect(1.327em, 1000em, 2.962em, -0.38em);"><span style="vertical-align: 0.01em;" id="MathJax-Span-55" class="mo"><img style="width: 28px; height: 28px; vertical-align: -9px; margin-right: 0.054em;" src="2211.png"></span><span style="display: inline-block; width: 0px; height: 2.394em;"></span></span><span style="position: absolute; top: -1.179em; left: 0.505em; clip: rect(1.76em, 1000em, 2.447em, -0.402em);"><span id="MathJax-Span-56" class="texatom"><span id="MathJax-Span-57" class="mrow"><span style="font-size: 70.7%;" id="MathJax-Span-58" class="mi"><img style="width: 8px; height: 6px; margin-right: -0.034em;" src="03BD_001.png"></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span></span><span style="padding-left: 0.287em; padding-right: 0.12em;" id="MathJax-Span-59" class="mfrac"><span style="display: inline-block; position: relative; width: 5.216em; height: 0px;"><span style="position: absolute; top: -2.903em; left: 50%; clip: rect(1.152em, 1000em, 2.587em, -0.318em); margin-left: -2.548em;"><span id="MathJax-Span-60" class="mrow"><span id="MathJax-Span-61" class="texatom"><span id="MathJax-Span-62" class="mrow"><span style="vertical-align: 0.01em;" id="MathJax-Span-63" class="mo"><span><img style="width: 4px; height: 21px; vertical-align: -5px; margin-right: 0.114em;" src="007C.png"></span></span></span></span><span id="MathJax-Span-64" class="mi"><img style="width: 15px; height: 14px; margin-right: -0.102em;" src="0046.png"></span><span id="MathJax-Span-65" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-66" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-67" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span><span id="MathJax-Span-68" class="mi"><img style="width: 18px; height: 15px; margin-right: -0.056em;" src="0048.png"></span><span id="MathJax-Span-69" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-70" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-71" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span><span id="MathJax-Span-72" class="msubsup"><span style="display: inline-block; position: relative; width: 0.823em; height: 0px;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(1.327em, 1000em, 2.577em, -0.318em);"><span id="MathJax-Span-73" class="texatom"><span id="MathJax-Span-74" class="mrow"><span style="vertical-align: 0.01em;" id="MathJax-Span-75" class="mo"><span><img style="width: 4px; height: 21px; vertical-align: -5px; margin-right: 0.114em;" src="007C.png"></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.66em; left: 0.363em;"><span style="font-size: 70.7%;" id="MathJax-Span-76" class="mn"><img style="width: 7px; height: 9px; margin-right: 0.049em;" src="0032.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -1.336em; left: 50%; clip: rect(1.152em, 1000em, 2.587em, -0.318em); margin-left: -1.587em;"><span id="MathJax-Span-77" class="mrow"><span id="MathJax-Span-78" class="texatom"><span id="MathJax-Span-79" class="mrow"><span style="vertical-align: 0.01em;" id="MathJax-Span-80" class="mo"><span><img style="width: 4px; height: 21px; vertical-align: -5px; margin-right: 0.114em;" src="007C.png"></span></span></span></span><span id="MathJax-Span-81" class="mi"><img style="width: 18px; height: 15px; margin-right: -0.082em;" src="004E.png"></span><span id="MathJax-Span-82" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-83" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-84" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span><span id="MathJax-Span-85" class="msubsup"><span style="display: inline-block; position: relative; width: 0.823em; height: 0px;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(1.327em, 1000em, 2.577em, -0.318em);"><span id="MathJax-Span-86" class="texatom"><span id="MathJax-Span-87" class="mrow"><span style="vertical-align: 0.01em;" id="MathJax-Span-88" class="mo"><span><img style="width: 4px; height: 21px; vertical-align: -5px; margin-right: 0.114em;" src="007C.png"></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.66em; left: 0.363em;"><span style="font-size: 70.7%;" id="MathJax-Span-89" class="mn"><img style="width: 7px; height: 9px; margin-right: 0.049em;" src="0032.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.422em; left: 0em; clip: rect(1.998em, 1000em, 2.346em, -0.433em);"><span style="border-left: 5.216em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.06em; vertical-align: 0em;"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span><span style="padding-left: 0.287em; padding-right: 0.12em;" id="MathJax-Span-90" class="mfrac"><span style="display: inline-block; position: relative; width: 2.187em; height: 0px;"><span style="position: absolute; top: -2.903em; left: 50%; clip: rect(1.336em, 1000em, 2.587em, -0.385em); margin-left: -1.01em;"><span id="MathJax-Span-91" class="mrow"><span id="MathJax-Span-92" class="mi"><img style="width: 15px; height: 14px; margin-right: 0.025em;" src="0047.png"></span><span id="MathJax-Span-93" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-94" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-95" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -1.516em; left: 50%; clip: rect(1.336em, 1000em, 2.587em, -0.403em); margin-left: -1.034em;"><span id="MathJax-Span-96" class="mrow"><span id="MathJax-Span-97" class="mi"><img style="width: 18px; height: 15px; margin-right: -0.056em;" src="0048.png"></span><span id="MathJax-Span-98" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-99" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-100" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.422em; left: 0em; clip: rect(1.998em, 1000em, 2.346em, -0.433em);"><span style="border-left: 2.187em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.06em; vertical-align: 0em;"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span><span style="padding-left: 0.167em;" id="MathJax-Span-101" class="msubsup"><span style="display: inline-block; position: relative; width: 2.313em; height: 0px;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(1.633em, 1000em, 2.357em, -0.395em);"><span id="MathJax-Span-102" class="mi"><img style="width: 9px; height: 9px; margin-right: 0.036em;" src="0065.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.615em; left: 0.556em;"><span id="MathJax-Span-103" class="texatom"><span id="MathJax-Span-104" class="mrow"><span style="padding-left: 0.12em; padding-right: 0.12em;" id="MathJax-Span-105" class="mfrac"><span style="display: inline-block; position: relative; width: 1.418em; height: 0px;"><span style="position: absolute; top: -2.534em; left: 50%; clip: rect(1.737em, 1000em, 2.351em, -0.409em); margin-left: -0.649em;"><span id="MathJax-Span-106" class="mrow"><span style="font-size: 50%;" id="MathJax-Span-107" class="mn"><img style="width: 5px; height: 8px; margin-right: 0.049em;" src="0032_001.png"></span><span style="font-size: 50%;" id="MathJax-Span-108" class="mi"><img style="width: 6px; height: 4px; margin-right: -0.003em;" src="03C0.png"></span><span style="font-size: 50%;" id="MathJax-Span-109" class="mi"><img style="width: 3px; height: 6px; margin-right: 0.04em;" src="0069.png"></span><span style="font-size: 50%;" id="MathJax-Span-110" class="mi"><img style="width: 6px; height: 4px; margin-right: -0.035em;" src="03BD_002.png"></span><span style="font-size: 50%;" id="MathJax-Span-111" class="mi"><img style="width: 6px; height: 4px; margin-right: 0.047em;" src="0078_002.png"></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -1.9em; left: 50%; clip: rect(1.729em, 1000em, 2.346em, -0.418em); margin-left: -0.192em;"><span style="font-size: 50%;" id="MathJax-Span-112" class="mi"><img style="width: 9px; height: 6px; margin-right: -0.082em;" src="004E_001.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.349em; left: 0em; clip: rect(1.998em, 1000em, 2.346em, -0.433em);"><span style="border-left: 1.418em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.06em; vertical-align: 0em;"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -1.939em; left: 0em; clip: rect(0.45em, 1000em, 3.471em, -0.38em);"><span id="MathJax-Span-118" class="mtd"><span id="MathJax-Span-119" class="mrow"><span id="MathJax-Span-120" class="texatom"><span id="MathJax-Span-121" class="mrow"><span id="MathJax-Span-122" class="munderover"><span style="display: inline-block; position: relative; width: 1.394em; height: 0px;"><span style="position: absolute; top: -2.394em; left: 0em; clip: rect(1.327em, 1000em, 2.962em, -0.38em);"><span style="vertical-align: 0.01em;" id="MathJax-Span-123" class="mo"><img style="width: 28px; height: 28px; vertical-align: -9px; margin-right: 0.054em;" src="2211.png"></span><span style="display: inline-block; width: 0px; height: 2.394em;"></span></span><span style="position: absolute; top: -1.179em; left: 0.505em; clip: rect(1.76em, 1000em, 2.447em, -0.402em);"><span id="MathJax-Span-124" class="texatom"><span id="MathJax-Span-125" class="mrow"><span style="font-size: 70.7%;" id="MathJax-Span-126" class="mi"><img style="width: 8px; height: 6px; margin-right: -0.034em;" src="03BD_001.png"></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span></span><span style="padding-left: 0.287em; padding-right: 0.12em;" id="MathJax-Span-127" class="mfrac"><span style="display: inline-block; position: relative; width: 3.293em; height: 0px;"><span style="position: absolute; top: -2.903em; left: 50%; clip: rect(1.152em, 1000em, 2.587em, -0.318em); margin-left: -1.514em;"><span id="MathJax-Span-128" class="mrow"><span id="MathJax-Span-129" class="texatom"><span id="MathJax-Span-130" class="mrow"><span style="vertical-align: 0.01em;" id="MathJax-Span-131" class="mo"><span><img style="width: 4px; height: 21px; vertical-align: -5px; margin-right: 0.114em;" src="007C.png"></span></span></span></span><span id="MathJax-Span-132" class="mi"><img style="width: 15px; height: 14px; margin-right: -0.102em;" src="0046.png"></span><span id="MathJax-Span-133" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-134" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-135" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span><span id="MathJax-Span-136" class="msubsup"><span style="display: inline-block; position: relative; width: 0.823em; height: 0px;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(1.327em, 1000em, 2.577em, -0.318em);"><span id="MathJax-Span-137" class="texatom"><span id="MathJax-Span-138" class="mrow"><span style="vertical-align: 0.01em;" id="MathJax-Span-139" class="mo"><span><img style="width: 4px; height: 21px; vertical-align: -5px; margin-right: 0.114em;" src="007C.png"></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.66em; left: 0.363em;"><span style="font-size: 70.7%;" id="MathJax-Span-140" class="mn"><img style="width: 7px; height: 9px; margin-right: 0.049em;" src="0032.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -1.336em; left: 50%; clip: rect(1.152em, 1000em, 2.587em, -0.318em); margin-left: -1.587em;"><span id="MathJax-Span-141" class="mrow"><span id="MathJax-Span-142" class="texatom"><span id="MathJax-Span-143" class="mrow"><span style="vertical-align: 0.01em;" id="MathJax-Span-144" class="mo"><span><img style="width: 4px; height: 21px; vertical-align: -5px; margin-right: 0.114em;" src="007C.png"></span></span></span></span><span id="MathJax-Span-145" class="mi"><img style="width: 18px; height: 15px; margin-right: -0.082em;" src="004E.png"></span><span id="MathJax-Span-146" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-147" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-148" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span><span id="MathJax-Span-149" class="msubsup"><span style="display: inline-block; position: relative; width: 0.823em; height: 0px;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(1.327em, 1000em, 2.577em, -0.318em);"><span id="MathJax-Span-150" class="texatom"><span id="MathJax-Span-151" class="mrow"><span style="vertical-align: 0.01em;" id="MathJax-Span-152" class="mo"><span><img style="width: 4px; height: 21px; vertical-align: -5px; margin-right: 0.114em;" src="007C.png"></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.66em; left: 0.363em;"><span style="font-size: 70.7%;" id="MathJax-Span-153" class="mn"><img style="width: 7px; height: 9px; margin-right: 0.049em;" src="0032.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.422em; left: 0em; clip: rect(1.998em, 1000em, 2.346em, -0.433em);"><span style="border-left: 3.293em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.06em; vertical-align: 0em;"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span><span style="padding-left: 0.167em;" id="MathJax-Span-154" class="mi"><img style="width: 18px; height: 15px; margin-right: -0.056em;" src="0048.png"></span><span id="MathJax-Span-155" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-156" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-157" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span><span id="MathJax-Span-158" class="msubsup"><span style="display: inline-block; position: relative; width: 1.304em; height: 0px;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(1.401em, 1000em, 2.346em, -0.403em);"><span id="MathJax-Span-159" class="mi"><img style="width: 18px; height: 15px; margin-right: -0.056em;" src="0048.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.615em; left: 0.892em;"><span style="font-size: 70.7%;" id="MathJax-Span-160" class="mo"><img style="width: 6px; height: 7px; margin-right: 0.062em;" src="2217.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span><span id="MathJax-Span-161" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-162" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-163" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span><span style="padding-left: 0.287em; padding-right: 0.12em;" id="MathJax-Span-164" class="mfrac"><span style="display: inline-block; position: relative; width: 2.187em; height: 0px;"><span style="position: absolute; top: -2.903em; left: 50%; clip: rect(1.336em, 1000em, 2.587em, -0.385em); margin-left: -1.01em;"><span id="MathJax-Span-165" class="mrow"><span id="MathJax-Span-166" class="mi"><img style="width: 15px; height: 14px; margin-right: 0.025em;" src="0047.png"></span><span id="MathJax-Span-167" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-168" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-169" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -1.516em; left: 50%; clip: rect(1.336em, 1000em, 2.587em, -0.403em); margin-left: -1.034em;"><span id="MathJax-Span-170" class="mrow"><span id="MathJax-Span-171" class="mi"><img style="width: 18px; height: 15px; margin-right: -0.056em;" src="0048.png"></span><span id="MathJax-Span-172" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-173" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-174" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.422em; left: 0em; clip: rect(1.998em, 1000em, 2.346em, -0.433em);"><span style="border-left: 2.187em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.06em; vertical-align: 0em;"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span><span style="padding-left: 0.167em;" id="MathJax-Span-175" class="msubsup"><span style="display: inline-block; position: relative; width: 2.313em; height: 0px;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(1.633em, 1000em, 2.357em, -0.395em);"><span id="MathJax-Span-176" class="mi"><img style="width: 9px; height: 9px; margin-right: 0.036em;" src="0065.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.615em; left: 0.556em;"><span id="MathJax-Span-177" class="texatom"><span id="MathJax-Span-178" class="mrow"><span style="padding-left: 0.12em; padding-right: 0.12em;" id="MathJax-Span-179" class="mfrac"><span style="display: inline-block; position: relative; width: 1.418em; height: 0px;"><span style="position: absolute; top: -2.534em; left: 50%; clip: rect(1.737em, 1000em, 2.351em, -0.409em); margin-left: -0.649em;"><span id="MathJax-Span-180" class="mrow"><span style="font-size: 50%;" id="MathJax-Span-181" class="mn"><img style="width: 5px; height: 8px; margin-right: 0.049em;" src="0032_001.png"></span><span style="font-size: 50%;" id="MathJax-Span-182" class="mi"><img style="width: 6px; height: 4px; margin-right: -0.003em;" src="03C0.png"></span><span style="font-size: 50%;" id="MathJax-Span-183" class="mi"><img style="width: 3px; height: 6px; margin-right: 0.04em;" src="0069.png"></span><span style="font-size: 50%;" id="MathJax-Span-184" class="mi"><img style="width: 6px; height: 4px; margin-right: -0.035em;" src="03BD_002.png"></span><span style="font-size: 50%;" id="MathJax-Span-185" class="mi"><img style="width: 6px; height: 4px; margin-right: 0.047em;" src="0078_002.png"></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -1.9em; left: 50%; clip: rect(1.729em, 1000em, 2.346em, -0.418em); margin-left: -0.192em;"><span style="font-size: 50%;" id="MathJax-Span-186" class="mi"><img style="width: 9px; height: 6px; margin-right: -0.082em;" src="004E_001.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.349em; left: 0em; clip: rect(1.998em, 1000em, 2.346em, -0.433em);"><span style="border-left: 1.418em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.06em; vertical-align: 0em;"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: 0.75em; left: 0em; clip: rect(0.992em, 1000em, 3.471em, -0.38em);"><span id="MathJax-Span-192" class="mtd"><span id="MathJax-Span-193" class="mrow"><span id="MathJax-Span-194" class="texatom"><span id="MathJax-Span-195" class="mrow"><span id="MathJax-Span-196" class="munderover"><span style="display: inline-block; position: relative; width: 1.394em; height: 0px;"><span style="position: absolute; top: -2.394em; left: 0em; clip: rect(1.327em, 1000em, 2.962em, -0.38em);"><span style="vertical-align: 0.01em;" id="MathJax-Span-197" class="mo"><img style="width: 28px; height: 28px; vertical-align: -9px; margin-right: 0.054em;" src="2211.png"></span><span style="display: inline-block; width: 0px; height: 2.394em;"></span></span><span style="position: absolute; top: -1.179em; left: 0.505em; clip: rect(1.76em, 1000em, 2.447em, -0.402em);"><span id="MathJax-Span-198" class="texatom"><span id="MathJax-Span-199" class="mrow"><span style="font-size: 70.7%;" id="MathJax-Span-200" class="mi"><img style="width: 8px; height: 6px; margin-right: -0.034em;" src="03BD_001.png"></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span></span><span id="MathJax-Span-201" class="msubsup"><span style="display: inline-block; position: relative; width: 1.304em; height: 0px;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(1.401em, 1000em, 2.346em, -0.403em);"><span id="MathJax-Span-202" class="mi"><img style="width: 18px; height: 15px; margin-right: -0.056em;" src="0048.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.615em; left: 0.892em;"><span style="font-size: 70.7%;" id="MathJax-Span-203" class="mo"><img style="width: 6px; height: 7px; margin-right: 0.062em;" src="2217.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span><span id="MathJax-Span-204" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-205" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-206" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span><span id="MathJax-Span-207" class="mi"><img style="width: 15px; height: 14px; margin-right: 0.025em;" src="0047.png"></span><span id="MathJax-Span-208" class="mo"><img style="width: 7px; height: 21px; vertical-align: -5px; margin-right: 0.054em;" src="0028.png"></span><span id="MathJax-Span-209" class="mi"><img style="width: 11px; height: 9px; margin-right: -0.035em;" src="03BD.png"></span><span id="MathJax-Span-210" class="mo"><img style="width: 6px; height: 21px; vertical-align: -5px; margin-right: 0.091em;" src="0029.png"></span><span id="MathJax-Span-211" class="msubsup"><span style="display: inline-block; position: relative; width: 2.313em; height: 0px;"><span style="position: absolute; top: -2.202em; left: 0em; clip: rect(1.633em, 1000em, 2.357em, -0.395em);"><span id="MathJax-Span-212" class="mi"><img style="width: 9px; height: 9px; margin-right: 0.036em;" src="0065.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.615em; left: 0.556em;"><span id="MathJax-Span-213" class="texatom"><span id="MathJax-Span-214" class="mrow"><span style="padding-left: 0.12em; padding-right: 0.12em;" id="MathJax-Span-215" class="mfrac"><span style="display: inline-block; position: relative; width: 1.418em; height: 0px;"><span style="position: absolute; top: -2.534em; left: 50%; clip: rect(1.737em, 1000em, 2.351em, -0.409em); margin-left: -0.649em;"><span id="MathJax-Span-216" class="mrow"><span style="font-size: 50%;" id="MathJax-Span-217" class="mn"><img style="width: 5px; height: 8px; margin-right: 0.049em;" src="0032_001.png"></span><span style="font-size: 50%;" id="MathJax-Span-218" class="mi"><img style="width: 6px; height: 4px; margin-right: -0.003em;" src="03C0.png"></span><span style="font-size: 50%;" id="MathJax-Span-219" class="mi"><img style="width: 3px; height: 6px; margin-right: 0.04em;" src="0069.png"></span><span style="font-size: 50%;" id="MathJax-Span-220" class="mi"><img style="width: 6px; height: 4px; margin-right: -0.035em;" src="03BD_002.png"></span><span style="font-size: 50%;" id="MathJax-Span-221" class="mi"><img style="width: 6px; height: 4px; margin-right: 0.047em;" src="0078_002.png"></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -1.9em; left: 50%; clip: rect(1.729em, 1000em, 2.346em, -0.418em); margin-left: -0.192em;"><span style="font-size: 50%;" id="MathJax-Span-222" class="mi"><img style="width: 9px; height: 6px; margin-right: -0.082em;" src="004E_001.png"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span><span style="position: absolute; top: -2.349em; left: 0em; clip: rect(1.998em, 1000em, 2.346em, -0.433em);"><span style="border-left: 1.418em solid; display: inline-block; overflow: hidden; width: 0px; height: 0.06em; vertical-align: 0em;"></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span></span></span><span style="display: inline-block; width: 0px; height: 2.202em;"></span></span></span><span style="border-left: 0em solid; display: inline-block; overflow: hidden; width: 0px; height: 11.25em; vertical-align: -5.3em;"></span></span></nobr></span></div>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-10" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-10"><span class="section-number-2">10</span> Inline formula</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-10">
+<p>
+<code>org-mode</code> can have automatically calcualted inline formula. For
+example, this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org">The scaling for 1.3 airmasses is src_R{format(1.3**(3.0/5.0),digits=3)} <span style="color: rgb(127, 127, 127);">=1.17=</span> 
+
+The scaling for 1.3 airmasses is src_calc{round(1.3**(3.0/5.0),4)} <span style="color: rgb(127, 127, 127);">=1.1705=</span>
+
+The scaling for 1.3 airmasses is src_python{return "%4.1f" % (1.3**(3.0/5.0))} <span style="color: rgb(127, 127, 127);">=1.2=</span>
+</pre>
+</div>
+
+<p>
+produces this:
+</p>
+
+<p>
+The scaling for 1.3 airmasses is <code>1.17</code> 
+</p>
+
+<p>
+The scaling for 1.3 airmasses is <code>1.1705</code> 
+</p>
+
+<p>
+The scaling for 1.3 airmasses is <code>1.2</code>
+</p>
+
+<p>
+Calculations can be repeated by putting the cursor on the formula and
+hitting ctrl-c twice.
+</p>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-11" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-11"><span class="section-number-2">11</span> Figures and tables with captions and labels</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-11">
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+CAPTION:    This was the ditaa example</span>
+<span style="color: rgb(178, 34, 34);">#+LABEL:      fig:ditaaex</span>
+<span style="color: rgb(178, 34, 34);">#+ATTR_LaTeX: width=5cm,angle=90</span>
+<span style="color: rgb(58, 95, 205); text-decoration: underline;"><a href="file:ditaa-simpleboxes.png">file:ditaa-simpleboxes.png</a></span>
+
+This is some sample text in which I reference \ref{fig:ditaaex}.
+</pre>
+</div>
+
+
+<div id="fig:ditaaex" class="figure">
+<p><img src="ditaa-simpleboxes.png" alt="ditaa-simpleboxes.png">
+</p>
+<p><span class="figure-number">Figure 6:</span> This was the ditaa example</p>
+</div>
+
+<p>
+This is some sample text in which I reference \ref{fig:ditaaex}.
+</p>
+
+<p>
+(The reference works in LaTeX, but not html export.)
+</p>
+
+<p>
+More elaborate LaTeX attributes can be used:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+ATTR_LaTeX: width=0.38\textwidth wrap placement={r}{0.4\textwidth}</span>
+</pre>
+</div>
+
+<p>
+Captions and references can also be applied to tables.
+</p>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-12" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-12"><span class="section-number-2">12</span> Figures and tables spanning multiple text columns</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-12">
+<p>
+Images, plots, code listings, and tables often need to span multiple
+text columns to fit when exporting to multi-column latex styles. This
+can be done by preceeding the relevant block with 
+a <code>#+ATTR_LATEX: :float multicolumn</code> line, for example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+CAPTION: This is a wide table</span>
+<span style="color: rgb(178, 34, 34);">#+ATTR_LATEX: :float multicolumn</span>
+<span style="color: rgb(0, 0, 255);">| A       | B          | C       | D          | E       | F          | G       | H          |</span>
+<span style="color: rgb(0, 0, 255);">|---------+------------+---------+------------+---------+------------+---------+------------|</span>
+<span style="color: rgb(0, 0, 255);">| foo bar | baz boggle | foo bar | baz boggle | foo bar | baz boggle | foo bar | baz boggle |</span>
+<span style="color: rgb(0, 0, 255);">| foo bar | baz boggle | foo bar | baz boggle | foo bar | baz boggle | foo bar | baz boggle |</span>
+<span style="color: rgb(0, 0, 255);">| foo bar | baz boggle | foo bar | baz boggle | foo bar | baz boggle | foo bar | baz boggle |</span>
+</pre>
+</div>
+
+<p>
+or 
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+CAPTION: Here is my python code.</span>
+<span style="color: rgb(178, 34, 34);">#+ATTR_LATEX: :float multicolumn</span>
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC python</span>
+print "This is a longish line of code that needs to span multiple columns in a latex export"
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-13" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-13"><span class="section-number-2">13</span> Verbatim examples</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-13">
+<p>
+Verbatim example code can be marked. For example, this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_EXAMPLE</span>
+Last login: Mon Dec  2 08:44:25 on ttys000
+argos:~ neilsen$ echo "foo"
+foo
+argos:~ neilsen$ 
+<span style="color: rgb(178, 34, 34);">#+END_EXAMPLE</span>
+</pre>
+</div>
+
+<p>
+results in this:
+</p>
+
+<pre class="example">Last login: Mon Dec  2 08:44:25 on ttys000
+argos:~ neilsen$ echo "foo"
+foo
+argos:~ neilsen$
+</pre>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-14" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-14"><span class="section-number-2">14</span> Code examples</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-14">
+<p>
+Source code can be displayed using the native modes in <code>emacs</code>. For
+example, this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC python</span>
+  def times_two(x):
+       y = x*2
+       return y
+  
+  print times_two(5)    
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+produces this:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-python">  <span style="color: rgb(160, 32, 240);">def</span> <span style="color: rgb(0, 0, 255);">times_two</span>(x):
+       <span style="color: rgb(160, 82, 45);">y</span> = x*2
+       <span style="color: rgb(160, 32, 240);">return</span> y
+  
+  <span style="color: rgb(160, 32, 240);">print</span> times_two(5)
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-15" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-15"><span class="section-number-2">15</span> Running code, returning raw output</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-15">
+<p>
+This:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC python :results output :exports both</span>
+  def times_two(x):
+       y = x*2
+       return y
+  
+  print times_two(5)    
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: 10</span>
+</pre>
+</div>
+
+<p>
+produces this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python">  <span style="color: rgb(160, 32, 240);">def</span> <span style="color: rgb(0, 0, 255);">times_two</span>(x):
+       <span style="color: rgb(160, 82, 45);">y</span> = x*2
+       <span style="color: rgb(160, 32, 240);">return</span> y
+  
+  <span style="color: rgb(160, 32, 240);">print</span> times_two(5)
+</pre>
+</div>
+
+<pre class="example">10
+</pre>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-16" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-16"><span class="section-number-2">16</span> Running code, return <code>org-mode</code> tables</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-16">
+<p>
+This:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC python :exports both</span>
+a = ('b', 200)
+b = ('x', 10)
+c = ('q', -42)
+return (a, b, c)
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(0, 0, 255);">| b | 200 |</span>
+<span style="color: rgb(0, 0, 255);">| x |  10 |</span>
+<span style="color: rgb(0, 0, 255);">| q | -42 |</span>
+</pre>
+</div>
+
+<p>
+produces this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python"><span style="color: rgb(160, 82, 45);">a</span> = (<span style="color: rgb(139, 34, 82);">'b'</span>, 200)
+<span style="color: rgb(160, 82, 45);">b</span> = (<span style="color: rgb(139, 34, 82);">'x'</span>, 10)
+<span style="color: rgb(160, 82, 45);">c</span> = (<span style="color: rgb(139, 34, 82);">'q'</span>, -42)
+<span style="color: rgb(160, 32, 240);">return</span> (a, b, c)
+</pre>
+</div>
+
+<table rules="groups" frame="hsides" border="2" cellpadding="6" cellspacing="0">
+
+
+<colgroup>
+<col class="left">
+
+<col class="right">
+</colgroup>
+<tbody>
+<tr>
+<td class="left">b</td>
+<td class="right">200</td>
+</tr>
+
+<tr>
+<td class="left">x</td>
+<td class="right">10</td>
+</tr>
+
+<tr>
+<td class="left">q</td>
+<td class="right">-42</td>
+</tr>
+</tbody>
+</table>
+
+<p>
+By removing the <code>:exports both</code>, you can export just the code and not
+the output. By replaceing it with <code>:exports results</code>, you can export
+the output without the source.
+</p>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-17" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-17"><span class="section-number-2">17</span> Running code remotely</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-17">
+<p>
+Adding appropriate <code>:dir</code> parameters runs the code in other working
+direcories, or even on remote machines:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC sh :results output :exports both</span>
+echo $PWD
+echo $HOSTNAME
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: /Users/neilsen/Notebook/org/orgExamples</span>
+<span style="color: rgb(127, 127, 127);">: argos.dhcp.fnal.gov</span>
+
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC sh :results output :exports both :dir /tmp</span>
+echo $PWD
+echo $HOSTNAME
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: /private/tmp</span>
+<span style="color: rgb(127, 127, 127);">: argos.dhcp.fnal.gov</span>
+
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC sh :results output :exports both :dir :dir /ssh:neilsen@decam03.fnal.gov:/home/neilsen</span>
+echo $PWD
+echo $HOSTNAME
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: /home/neilsen</span>
+<span style="color: rgb(127, 127, 127);">: decam03.fnal.gov</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-18" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-18"><span class="section-number-2">18</span> Running C code</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-18">
+<p>
+C code is handled a little differently, as it must be compiled and run.
+</p>
+
+<p>
+This block:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+HEADERS: :includes &lt;math.h&gt; :flags -lm </span>
+<span style="color: rgb(178, 34, 34);">#+HEADERS: :var x=1.0 :var y=4.0 :var z=10.0</span>
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC C :exports both</span>
+double pi = 4*atan(1);
+double r, theta, phi;
+r = sqrt(x*x+y*y+z*z);
+theta = acos(z/r) * 180.0/pi;
+phi = atan2(y,x) * 180.0/pi;
+printf("%f %f %f", r, theta, phi);
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+Generates, compiles, and runs this C code:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: rgb(72, 61, 139);">#include</span> <span style="color: rgb(139, 34, 82);">&lt;math.h&gt;</span>
+
+<span style="color: rgb(34, 139, 34);">double</span> <span style="color: rgb(160, 82, 45);">x</span> = 1.000000;
+<span style="color: rgb(34, 139, 34);">double</span> <span style="color: rgb(160, 82, 45);">y</span> = 4.000000;
+<span style="color: rgb(34, 139, 34);">double</span> <span style="color: rgb(160, 82, 45);">z</span> = 10.000000;
+<span style="color: rgb(34, 139, 34);">int</span> <span style="color: rgb(0, 0, 255);">main</span>() {
+<span style="color: rgb(34, 139, 34);">double</span> <span style="color: rgb(160, 82, 45);">pi</span> = 4*atan(1);
+<span style="color: rgb(34, 139, 34);">double</span> <span style="color: rgb(160, 82, 45);">r</span>, <span style="color: rgb(160, 82, 45);">theta</span>, <span style="color: rgb(160, 82, 45);">phi</span>;
+r = sqrt(x*x+y*y+z*z);
+theta = acos(z/r) * 180.0/pi;
+phi = atan2(y,x) * 180.0/pi;
+printf(<span style="color: rgb(139, 34, 82);">"%f %f %f"</span>, r, theta, phi);
+<span style="color: rgb(160, 32, 240);">return</span> 0;
+}
+</pre>
+</div>
+
+<p>
+which results in:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: 10.816654 22.406871 75.963757</span>
+</pre>
+</div>
+
+<p>
+So the final result looks like this when evaluated and exported:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-C"><span style="color: rgb(34, 139, 34);">double</span> <span style="color: rgb(160, 82, 45);">pi</span> = 4*atan(1);
+<span style="color: rgb(34, 139, 34);">double</span> <span style="color: rgb(160, 82, 45);">r</span>, <span style="color: rgb(160, 82, 45);">theta</span>, <span style="color: rgb(160, 82, 45);">phi</span>;
+r = sqrt(x*x+y*y+z*z);
+theta = acos(z/r) * 180.0/pi;
+phi = atan2(y,x) * 180.0/pi;
+printf(<span style="color: rgb(139, 34, 82);">"%f %f %f"</span>, r, theta, phi);
+</pre>
+</div>
+
+<pre class="example">10.816654 22.406871 75.963757
+</pre>
+
+<p>
+There is a trick to multiple includes: they must be passed as elisp lists, for example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org">#+BEGIN_SRC C :includes '(&lt;math.h&gt; &lt;time.h&gt;)
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-19" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-19"><span class="section-number-2">19</span> Running java code</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-19">
+<p>
+Java code can be evaluated as well, for example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+HEADERS: :classname HelloWorld :cmdline "-cp ."</span>
+<span style="color: rgb(178, 34, 34);">#+begin_src java  :results output :exports both</span>
+  public class HelloWorld {
+      public static void main(String[] args) {
+          System.out.println("Hello, World");
+      }
+  }
+<span style="color: rgb(178, 34, 34);">#+end_src</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: Hello, World</span>
+</pre>
+</div>
+
+<p>
+This exports to:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-java">  <span style="color: rgb(160, 32, 240);">public</span> <span style="color: rgb(160, 32, 240);">class</span> <span style="color: rgb(34, 139, 34);">HelloWorld</span> {
+      <span style="color: rgb(160, 32, 240);">public</span> <span style="color: rgb(160, 32, 240);">static</span> <span style="color: rgb(34, 139, 34);">void</span> <span style="color: rgb(0, 0, 255);">main</span>(<span style="color: rgb(34, 139, 34);">String</span>[] <span style="color: rgb(160, 82, 45);">args</span>) {
+          System.out.println(<span style="color: rgb(139, 34, 82);">"Hello, World"</span>);
+      }
+  }
+</pre>
+</div>
+
+<pre class="example">Hello, World
+</pre>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-20" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-20"><span class="section-number-2">20</span> Margin notes in LaTeX</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-20">
+<p>
+Margin notes can be generated for the latex export, but not in a way
+portable to other export methods (like html):
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_LaTeX</span>
+\marginpar{\color{blue} \tiny \raggedright
+\vspace{18pt}
+In the Molly 23 layout, not all tilings have the same numbers of
+hexes (pointings); the offsets for each tiling can push different hexes into or
+out of the footprint.}
+<span style="color: rgb(178, 34, 34);">#+END_LaTeX</span>
+</pre>
+</div>
+
+<p>
+The vspace help tweak the placement to put it next the text you want
+it next to.
+</p>
+
+<p>
+Note that you can use the same trick with figure. If you use the
+<code>capt-of</code> latex package, you can even get the figure numbered
+correctly. For example,
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_LATEX</span>
+\marginpar{
+\includegraphics[width=\marginparwidth]{test_img.png}
+\captionof{figure}{This is a test figure}\label{testimg}
+}
+<span style="color: rgb(178, 34, 34);">#+END_LATEX</span>
+</pre>
+</div>
+
+<p>
+If you have fiddled with the margins using the LaTeX <code>geometry</code>
+package, be sure to set the <code>marginparwidth</code> parameter in your
+<code>geometry</code> statement.
+</p>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-21" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-21"><span class="section-number-2">21</span> Querying a <code>PostgreSQL</code> database</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-21">
+<p>
+Provided your account is configured with appropriate passwords, this:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC sql :engine postgresql :exports results :cmdline -p 5443 -h des20.fnal.gov -U decam_reader -d decam_prd</span>
+SELECT date, ra, declination FROM exposure.exposure LIMIT 10
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+Results in this:
+</p>
+<table rules="groups" frame="hsides" border="2" cellpadding="6" cellspacing="0">
+
+
+<colgroup>
+<col class="left">
+
+<col class="right">
+
+<col class="right">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">date</th>
+<th scope="col" class="right">ra</th>
+<th scope="col" class="right">declination</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">2013-06-04 21:48:01.54791+00</td>
+<td class="right">271.125446</td>
+<td class="right">-31.316167</td>
+</tr>
+
+<tr>
+<td class="left">2013-06-04 21:48:38.329063+00</td>
+<td class="right">271.125446</td>
+<td class="right">-31.316167</td>
+</tr>
+
+<tr>
+<td class="left">2013-04-25 00:09:21.976324+00</td>
+<td class="right">144.404229</td>
+<td class="right">15.058917</td>
+</tr>
+
+<tr>
+<td class="left">2013-01-11 03:16:40.700054+00</td>
+<td class="right">111.02375</td>
+<td class="right">-1.490556</td>
+</tr>
+
+<tr>
+<td class="left">2013-03-17 19:36:44.482928+00</td>
+<td class="right">200.013333</td>
+<td class="right">-20.65</td>
+</tr>
+
+<tr>
+<td class="left">2013-06-24 07:12:00.531216+00</td>
+<td class="right">9.5</td>
+<td class="right">-43.998</td>
+</tr>
+
+<tr>
+<td class="left">2013-06-12 01:42:20.851991+00</td>
+<td class="right">269.261287</td>
+<td class="right">-27.892739</td>
+</tr>
+
+<tr>
+<td class="left">2013-06-24 07:15:49.054427+00</td>
+<td class="right">9.5</td>
+<td class="right">-43.998</td>
+</tr>
+
+<tr>
+<td class="left">2013-09-02 20:25:33.523124+00</td>
+<td class="right">50</td>
+<td class="right">0</td>
+</tr>
+
+<tr>
+<td class="left">2013-09-02 20:26:24.503093+00</td>
+<td class="right">50</td>
+<td class="right">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-22" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-22"><span class="section-number-2">22</span> Interacting with <code>R</code></h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-22">
+<div class="org-info-js_local-toc">Contents:<br><ul><li><a>22.1 Using an org-mode table as an R data frame</a></li><li><a>22.2 Generate a plot in your document using R</a></li><li><a>22.3 Generating an org-mode table from an R data frame</a></li></ul></div></div><div style="display: block; visibility: visible;" id="outline-container-sec-22-1" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-22-1"><span class="section-number-3">22.1</span> Using an <code>org-mode</code> table as an R data frame</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-22-1">
+<p>
+If you have an <code>org-mode</code> table with a name:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+tblname: delsee</span>
+<span style="color: rgb(0, 0, 255);">| airmass | zenith_seeing | delivered_seeing |</span>
+<span style="color: rgb(0, 0, 255);">|---------+---------------+------------------|</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |          0.95 |        1.1119612 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.0 |        1.1704854 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.1 |        1.2875340 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.2 |        1.4045825 |</span>
+<span style="color: rgb(178, 34, 34);">#+TBLFM: $3=$2*($1**0.6)</span>
+</pre>
+</div>
+
+<p>
+you can use it from within <code>R</code> code as a data frame:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+begin_src R :results output :var delsee=delsee </span>
+summary(delsee)
+<span style="color: rgb(178, 34, 34);">#+end_src</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">:     airmass    zenith_seeing    delivered_seeing</span>
+<span style="color: rgb(127, 127, 127);">:  Min.   :1.3   Min.   :0.9500   Min.   :1.112   </span>
+<span style="color: rgb(127, 127, 127);">:  1st Qu.:1.3   1st Qu.:0.9875   1st Qu.:1.156   </span>
+<span style="color: rgb(127, 127, 127);">:  Median :1.3   Median :1.0500   Median :1.229   </span>
+<span style="color: rgb(127, 127, 127);">:  Mean   :1.3   Mean   :1.0625   Mean   :1.244   </span>
+<span style="color: rgb(127, 127, 127);">:  3rd Qu.:1.3   3rd Qu.:1.1250   3rd Qu.:1.317   </span>
+<span style="color: rgb(127, 127, 127);">:  Max.   :1.3   Max.   :1.2000   Max.   :1.405</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-22-2" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-22-2"><span class="section-number-3">22.2</span> Generate a plot in your document using <code>R</code></h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-22-2">
+<p>
+This:
+</p>
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+tblname: delsee</span>
+<span style="color: rgb(0, 0, 255);">| airmass | zenith_seeing | delivered_seeing |</span>
+<span style="color: rgb(0, 0, 255);">|---------+---------------+------------------|</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |          0.95 |        1.1119612 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.0 |        1.1704854 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.1 |        1.2875340 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.2 |        1.4045825 |</span>
+<span style="color: rgb(178, 34, 34);">#+TBLFM: $3=$2*($1**0.6)</span>
+
+<span style="color: rgb(178, 34, 34);">#+begin_src R :exports both :results output graphics :var delsee=delsee :file delsee-r.png :width 400 :height 300</span>
+library(ggplot2)
+p &lt;- ggplot(delsee, aes(zenith_seeing, delivered_seeing))
+p &lt;- p + geom_point()
+p
+<span style="color: rgb(178, 34, 34);">#+end_src</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(58, 95, 205); text-decoration: underline;"><a href="file:delsee-r.png">file:delsee-r.png</a></span>
+</pre>
+</div>
+
+<p>
+Results in this:
+</p>
+<table id="delsee" rules="groups" frame="hsides" border="2" cellpadding="6" cellspacing="0">
+
+
+<colgroup>
+<col class="right">
+
+<col class="right">
+
+<col class="right">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="right">airmass</th>
+<th scope="col" class="right">zenith_seeing</th>
+<th scope="col" class="right">delivered_seeing</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="right">1.3</td>
+<td class="right">0.95</td>
+<td class="right">1.1119612</td>
+</tr>
+
+<tr>
+<td class="right">1.3</td>
+<td class="right">1.0</td>
+<td class="right">1.1704854</td>
+</tr>
+
+<tr>
+<td class="right">1.3</td>
+<td class="right">1.1</td>
+<td class="right">1.2875340</td>
+</tr>
+
+<tr>
+<td class="right">1.3</td>
+<td class="right">1.2</td>
+<td class="right">1.4045825</td>
+</tr>
+</tbody>
+</table>
+
+<div class="org-src-container">
+
+<pre class="src src-R"><span style="color: rgb(0, 139, 139);">library</span>(ggplot2)
+p <span style="color: rgb(0, 139, 139);">&lt;-</span> ggplot(delsee, aes(zenith_seeing, delivered_seeing))
+p <span style="color: rgb(0, 139, 139);">&lt;-</span> p + geom_point()
+p
+</pre>
+</div>
+
+
+<div class="figure">
+<p><img src="delsee-r_001.png" alt="delsee-r.png">
+</p>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-22-3" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-22-3"><span class="section-number-3">22.3</span> Generating an <code>org-mode</code> table from an <code>R</code> data frame</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-22-3">
+<p>
+The simple way is just to return the value of the data frame:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC R :colnames yes</span>
+d &lt;- data.frame(foo=c('a','b','n'), bar=c(1.0/3.0,22,32))
+d
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(0, 0, 255);">| foo |               bar |</span>
+<span style="color: rgb(0, 0, 255);">|-----+-------------------|</span>
+<span style="color: rgb(0, 0, 255);">| a   | 0.333333333333333 |</span>
+<span style="color: rgb(0, 0, 255);">| b   |                22 |</span>
+<span style="color: rgb(0, 0, 255);">| n   |                32 |</span>
+</pre>
+</div>
+
+<p>
+To limit significant figures, use the <code>ascii</code> <code>R</code> package. For
+example, this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC R :results output raw :exports both</span>
+d &lt;- data.frame(foo=c('a','b','n'), bar=c(1.0/3.0,22,32))
+
+library(ascii)
+options(asciiType="org")
+ascii(d,format=c('s','f'),digits=c(5,4),include.rownames=FALSE)
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(0, 0, 255);">| foo |     bar |</span>
+<span style="color: rgb(0, 0, 255);">|-----+---------|</span>
+<span style="color: rgb(0, 0, 255);">| a   |  0.3333 |</span>
+<span style="color: rgb(0, 0, 255);">| b   | 22.0000 |</span>
+<span style="color: rgb(0, 0, 255);">| n   | 32.0000 |</span>
+</pre>
+</div>
+
+<p>
+produces this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-R">d <span style="color: rgb(0, 139, 139);">&lt;-</span> data.frame(foo=c(<span style="color: rgb(139, 34, 82);">'a'</span>,<span style="color: rgb(139, 34, 82);">'b'</span>,<span style="color: rgb(139, 34, 82);">'n'</span>), bar=c(1.0/3.0,22,32))
+
+<span style="color: rgb(0, 139, 139);">library</span>(ascii)
+options(asciiType=<span style="color: rgb(139, 34, 82);">"org"</span>)
+ascii(d,format=c(<span style="color: rgb(139, 34, 82);">'s'</span>,<span style="color: rgb(139, 34, 82);">'f'</span>),digits=c(5,4),include.rownames=<span style="color: rgb(34, 139, 34);">FALSE</span>)
+</pre>
+</div>
+
+<table rules="groups" frame="hsides" border="2" cellpadding="6" cellspacing="0">
+
+
+<colgroup>
+<col class="left">
+
+<col class="right">
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="left">foo</th>
+<th scope="col" class="right">bar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="left">a</td>
+<td class="right">0.3333</td>
+</tr>
+
+<tr>
+<td class="left">b</td>
+<td class="right">22.0000</td>
+</tr>
+
+<tr>
+<td class="left">n</td>
+<td class="right">32.0000</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-23" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-23"><span class="section-number-2">23</span> Interacting with <code>python</code></h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-23">
+<div class="org-info-js_local-toc">Contents:<br><ul><li><a>23.1 Using an org-mode table in python</a></li><li><a>23.2 Plotting with python</a></li></ul></div></div><div style="display: block; visibility: visible;" id="outline-container-sec-23-1" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-23-1"><span class="section-number-3">23.1</span> Using an <code>org-mode</code> table in python</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-23-1">
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+tblname: delsee</span>
+<span style="color: rgb(0, 0, 255);">| airmass | zenith_seeing | delivered_seeing |</span>
+<span style="color: rgb(0, 0, 255);">|---------+---------------+------------------|</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |          0.95 |        1.1119612 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.0 |        1.1704854 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.1 |        1.2875340 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.2 |        1.4045825 |</span>
+<span style="color: rgb(178, 34, 34);">#+TBLFM: $3=$2*($1**0.6)</span>
+
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC python :var delsee=delsee :results output</span>
+print delsee
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(127, 127, 127);">: [[1.3, 0.95, 1.1119612], [1.3, 1.0, 1.1704854], [1.3, 1.1, 1.287534], [1.3, 1.2, 1.4045825]]</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-23-2" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-23-2"><span class="section-number-3">23.2</span> Plotting with python</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-23-2">
+<p>
+This:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+tblname: delsee</span>
+<span style="color: rgb(0, 0, 255);">| airmass | zenith_seeing | delivered_seeing |</span>
+<span style="color: rgb(0, 0, 255);">|---------+---------------+------------------|</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |          0.95 |        1.1119612 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.0 |        1.1704854 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.1 |        1.2875340 |</span>
+<span style="color: rgb(0, 0, 255);">|     1.3 |           1.2 |        1.4045825 |</span>
+<span style="color: rgb(178, 34, 34);">#+TBLFM: $3=$2*($1**0.6)</span>
+
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC python :var fname="delseepy.png" :var delsee=delsee :results file</span>
+import matplotlib.pyplot as plt
+
+x, y, z = zip(*delsee)
+
+fig = plt.figure()
+axes = fig.add_subplot(1,1,1)
+axes.plot(y, z, marker='o')
+fig.savefig(fname)
+
+return fname
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+
+<span style="color: rgb(178, 34, 34);">#+RESULTS:</span>
+<span style="color: rgb(58, 95, 205); text-decoration: underline;"><a href="file:delseepy.png">file:delseepy.png</a></span>
+</pre>
+</div>
+
+<p>
+Results in this:
+</p>
+
+
+<div class="figure">
+<p><img src="delseepy_001.png" alt="delseepy.png">
+</p>
+</div>
+</div>
+</div>
+</div>
+<div style="display: block; visibility: visible;" id="outline-container-sec-24" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-24"><span class="section-number-2">24</span> Setting environment variables (like <code>PYTHONPATH</code>)</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-24">
+<p>
+Create an <code>emacs-lisp</code> code block that looks like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC emacs-lisp</span>
+(setenv "PYTHONPATH" "/Users/neilsen/Development/obswatch-trunk/common/python")
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+Execute it, and it changes the environment accordingly.
+</p>
+
+<p>
+Note that you can also append to environment variables like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC emacs-lisp</span>
+(setenv "PYTHONPATH" (concat (getenv "PYTHONPATH") ":" (getenv "DQSTATS_DIR")))
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-25" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-25"><span class="section-number-2">25</span> Writing literate <code>python</code> code</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-25">
+<div class="org-info-js_local-toc">Contents:<br><ul><li><a>25.1 Creating the high level structure of the file</a></li><li><a>25.2 Generating functionality for HelloWorld.py</a></li><li><a>25.3 Generating a main function for HelloWorld</a></li><li><a>25.4 Running main from bash</a></li></ul></div></div><div style="display: block; visibility: visible;" id="outline-container-sec-25-1" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-25-1"><span class="section-number-3">25.1</span> Creating the high level structure of the file</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-25-1">
+<p>
+Following the structure outlined in <a href="http://python.net/~goodger/projects/pycon/2007/idiomatic/handout.html#module-structure">Code Like a Pythonista</a>, construct
+the python source file in sections:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC python :noweb yes :tangle HelloWorld.py :exports none</span>
+"""This is a hello world example document"""
+
+# imports
+import sys
+<span style="text-decoration: underline;">&lt;&lt;helloworld-main-imports&gt;&gt;</span>
+
+# constants
+
+# exception classes
+
+# interface functions
+
+# classes
+<span style="text-decoration: underline;">&lt;&lt;HelloWorld-defn&gt;&gt;</span>
+
+# internal functions &amp; classes
+
+<span style="text-decoration: underline;">&lt;&lt;helloworld-main&gt;&gt;</span>
+
+if __name__ == '__main__':
+    status = main()
+    sys.exit(status)
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+When <code>M-x org-babel-tangle</code> is run within <code>emacs</code>, the 
+<code>:tangle HelloWorld.py</code> line will cause it to generate a the file
+<code>HelloWorld.py</code> from the contents of the code blocks. 
+</p>
+
+<p>
+The bracketed lines (<code>helloworld-classes</code>, for example) are code
+fragments that will be defined later. <code>org-mode</code> will automatically
+substitute these blocks when createing the <code>HelloWorld.py</code> file.
+</p>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-25-2" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-25-2"><span class="section-number-3">25.2</span> Generating functionality for <code>HelloWorld.py</code></h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-25-2">
+<p>
+Define the <code>HelloWorld</code> class thus:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+NAME: HelloWorld-defn</span>
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC python</span>
+  class HelloWorld(object):
+      def __init__(self, who):
+          self.who = who
+  
+      def say_hello(self):
+          print "Hello %s" % self.who
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+In the org-mode document, it will look like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python" id="HelloWorld-defn">  <span style="color: rgb(160, 32, 240);">class</span> <span style="color: rgb(34, 139, 34);">HelloWorld</span>(<span style="color: rgb(72, 61, 139);">object</span>):
+      <span style="color: rgb(160, 32, 240);">def</span> <span style="color: rgb(0, 0, 255);">__init__</span>(<span style="color: rgb(160, 32, 240);">self</span>, who):
+          <span style="color: rgb(160, 32, 240);">self</span>.who = who
+  
+      <span style="color: rgb(160, 32, 240);">def</span> <span style="color: rgb(0, 0, 255);">say_hello</span>(<span style="color: rgb(160, 32, 240);">self</span>):
+          <span style="color: rgb(160, 32, 240);">print</span> <span style="color: rgb(139, 34, 82);">"Hello %s"</span> % <span style="color: rgb(160, 32, 240);">self</span>.who
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-25-3" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-25-3"><span class="section-number-3">25.3</span> Generating a <code>main</code> function for <code>HelloWorld</code></h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-25-3">
+<p>
+It's usually a good idea to have an argument parser in <code>main</code>. Start
+by creating a code block the performs the required imports:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+NAME: helloworld-main-imports</span>
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC python</span>
+from argparse import ArgumentParser
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+which comes out like this in the document:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python" id="helloworld-main-imports"><span style="color: rgb(160, 32, 240);">from</span> argparse <span style="color: rgb(160, 32, 240);">import</span> ArgumentParser
+</pre>
+</div>
+
+<p>
+Then, define the <code>main</code> function itself:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+NAME: helloworld-main</span>
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC python</span>
+  def main():
+      parser = ArgumentParser(description="Say hi")
+      parser.add_argument("-w", "--who", 
+                          type=str,
+                          default="world",
+                          help="Who to say hello to")
+      args = parser.parse_args()
+  
+      who = args.who
+  
+      greeter = HelloWorld(who)
+      greeter.say_hello()
+  
+      return 0
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+which comes out like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-python" id="helloworld-main">  <span style="color: rgb(160, 32, 240);">def</span> <span style="color: rgb(0, 0, 255);">main</span>():
+      <span style="color: rgb(160, 82, 45);">parser</span> = ArgumentParser(description=<span style="color: rgb(139, 34, 82);">"Say hi"</span>)
+      parser.add_argument(<span style="color: rgb(139, 34, 82);">"-w"</span>, <span style="color: rgb(139, 34, 82);">"--who"</span>, 
+                          <span style="color: rgb(72, 61, 139);">type</span>=<span style="color: rgb(72, 61, 139);">str</span>,
+                          default=<span style="color: rgb(139, 34, 82);">"world"</span>,
+                          <span style="color: rgb(72, 61, 139);">help</span>=<span style="color: rgb(139, 34, 82);">"Who to say hello to"</span>)
+      <span style="color: rgb(160, 82, 45);">args</span> = parser.parse_args()
+  
+      <span style="color: rgb(160, 82, 45);">who</span> = args.who
+  
+      <span style="color: rgb(160, 82, 45);">greeter</span> = HelloWorld(who)
+      greeter.say_hello()
+  
+      <span style="color: rgb(160, 32, 240);">return</span> 0
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-25-4" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-25-4"><span class="section-number-3">25.4</span> Running main from bash</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-25-4">
+<p>
+Create a section to make it easy to run the generated code from within
+the orgmode document:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+NAME: bashrun-helloworld</span>
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC sh :results output :exports none</span>
+python HelloWorld.py --w Eric 2&gt;&amp;1
+true
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+The "true" command at the end of this shell script makes sure that the
+output gets incorportated into the <code>org-mode</code> buffer even if the code
+crashes.
+</p>
+
+<p>
+The output looks like this in your orgmode buffer:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh" id="bashrun-helloworld">python HelloWorld.py --w Eric 2&gt;&amp;1
+true
+</pre>
+</div>
+
+<pre class="example">Hello Eric
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-26" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-26"><span class="section-number-2">26</span> Doing automated testing of literate <code>python</code> programs</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-26">
+<div class="org-info-js_local-toc">Contents:<br><ul><li><a>26.1 Making test_HelloWorld.txt</a></li><li><a>26.2 Running just the doctests</a></li><li><a>26.3 Defining unittest tests</a></li><li><a>26.4 Making TestHelloWorld.py</a></li><li><a>26.5 Running all tests</a></li></ul></div></div><div style="display: block; visibility: visible;" id="outline-container-sec-26-1" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-26-1"><span class="section-number-3">26.1</span> Making <code>test_HelloWorld.txt</code></h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-26-1">
+<p>
+Create interactive tests. It's a good idea to use the restructured
+text mode in emacs, so that the result can be a ReStructuredText test
+document, traditional to <code>python</code>.
+</p>
+
+<p>
+Here is one, for example:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+NAME: doctest-foo</span>
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC rst</span>
+  example foo::
+    &gt;&gt;&gt; from HelloWorld import *
+    &gt;&gt;&gt;
+    &gt;&gt;&gt; foo = HelloWorld('foo')
+    &gt;&gt;&gt; foo.say_hello()
+    Hello foo
+
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+and another:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+NAME: doctest-bar</span>
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC rst</span>
+  example bar::
+    &gt;&gt;&gt; from HelloWorld import *
+    &gt;&gt;&gt;
+    &gt;&gt;&gt; bar = HelloWorld('bar')
+    &gt;&gt;&gt; bar.say_hello()
+    Hello bar
+
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+Create a document to "tangle" them into
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC text :noweb yes :tangle test_HelloWorld.txt :exports none</span>
+<span style="text-decoration: underline;">&lt;&lt;doctest-foo&gt;&gt;</span>
+<span style="text-decoration: underline;">&lt;&lt;doctest-bar&gt;&gt;</span>
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-26-2" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-26-2"><span class="section-number-3">26.2</span> Running just the doctests</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-26-2">
+<p>
+You can run the doctests from with <code>org-mode</code> with this bash code snippet:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+NAME: bashrun-helloworld-doctest</span>
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC sh :results output :exports both</span>
+python -m doctest test_HelloWorld.txt 2&gt;&amp;1
+true
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+If the test succeeds, it will produce no output
+</p>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-26-3" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-26-3"><span class="section-number-3">26.3</span> Defining <code>unittest</code> tests</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-26-3">
+<p>
+Define the unit test like any other piece of <code>python</code> code:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+NAME: unittest-foo</span>
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC python</span>
+  class TestFoo(unittest.TestCase):
+      def test_foo(self):
+          greeter = HelloWorld('foo')
+          self.assertEqual(greeter.who, 'foo')
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-26-4" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-26-4"><span class="section-number-3">26.4</span> Making <code>TestHelloWorld.py</code></h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-26-4">
+<p>
+Define the main testing module like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC python :noweb yes :tangle TestHelloWorld.py :exports none</span>
+  import sys
+  import unittest
+  from doctest import DocFileSuite
+  from HelloWorld import *
+  
+  <span style="text-decoration: underline;">&lt;&lt;unittest-foo&gt;&gt;</span>
+  
+  def main():
+      suite = unittest.TestSuite()
+      suite.addTests( DocFileSuite('test_HelloWorld.txt') )
+      suite.addTests( 
+          unittest.defaultTestLoader.loadTestsFromModule(sys.modules[__name__]))
+      unittest.TextTestRunner(verbosity=2).run(suite)
+      return 0
+  
+  if __name__ == '__main__':
+      status = main()
+      sys.exit(status)
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-26-5" class="outline-3">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h3 style="cursor: pointer;" id="sec-26-5"><span class="section-number-3">26.5</span> Running all tests</h3>
+<div style="display: block; visibility: visible;" class="outline-text-3" id="text-26-5">
+<p>
+Use this <code>bash</code> source block to run all tests:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+NAME: bashrun-helloworld-alltest</span>
+<span style="color: rgb(178, 34, 34);">#+BEGIN_SRC sh :results output :exports both</span>
+python -m doctest test_HelloWorld.py 2&gt;&amp;1
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+The output looks like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-sh" id="bashrun-helloworld-alltest">python TestHelloWorld.py 2&gt;&amp;1
+</pre>
+</div>
+
+<pre class="example">test_HelloWorld.txt
+Doctest: test_HelloWorld.txt ... ok
+test_foo (__main__.TestFoo) ... ok
+
+----------------------------------------------------------------------
+Ran 2 tests in 0.004s
+
+OK
+</pre>
+</div>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-27" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-27"><span class="section-number-2">27</span> Generating an <code>org-mode</code> source block within an <code>org-mode</code> document</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-27">
+<p>
+This document often needs to quote org-mode code within org-mode,
+which is slightly tricky, because you need to escape the <code>#+END_SRC</code>
+block. Do this using a comma in the first line. So to get this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC python</span>
+print "foo"
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+Do this:
+</p>
+
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(178, 34, 34);">#+BEGIN_SRC org</span>
+#+BEGIN_SRC python
+print "foo"
+,#+END_SRC
+<span style="color: rgb(178, 34, 34);">#+END_SRC</span>
+</pre>
+</div>
+
+<p>
+Sometimes additional elements (particularly lines with special meaning
+in org-mode, like those starting with <code>#</code> or <code>*</code>) need escaping with a
+comma as well, but not always.
+</p>
+</div>
+</div>
+
+<div style="display: block; visibility: visible;" id="outline-container-sec-28" class="outline-2">
+<div style="display: none; visibility: hidden;"><div class="org-info-js_header-navigation" style="display: inline; float: right; text-align: right; font-size: 70%; font-weight: normal;"><a href="http://home.fnal.gov/~neilsen/">Up</a> / <a href="http://home.fnal.gov/~neilsen">HOME</a> / <a>HELP</a> / <a accesskey="m">toggle view</a></div></div><h2 style="cursor: pointer;" id="sec-28"><span class="section-number-2">28</span> LaTeX presentations with beamer</h2>
+<div style="display: block; visibility: visible;" class="outline-text-2" id="text-28">
+<p>
+To generate a presentation PDF file using the beamer mode in LaTeX, do
+something like this:
+</p>
+
+<div class="org-src-container">
+
+<pre class="src src-org"><span style="color: rgb(127, 127, 127);">#+TITLE:</span>
+<span style="color: rgb(127, 127, 127);">#+AUTHOR:</span>
+<span style="color: rgb(178, 34, 34);">#+OPTIONS: H:1 toc:nil \n:nil @:t ::t |:t ^:t *:t TeX:t LaTeX:t</span>
+<span style="color: rgb(178, 34, 34);">#+LATEX_CLASS: beamer</span>
+<span style="color: rgb(178, 34, 34);">#+LATEX_CLASS_OPTIONS: [presentation]</span>
+<span style="color: rgb(178, 34, 34);">#+BEAMER_THEME: default</span>
+<span style="color: rgb(178, 34, 34);">#+BEAMER_FONT_THEME: default</span>
+<span style="color: rgb(178, 34, 34);">#+BEAMER_COLOR_THEME: dove</span>
+<span style="color: rgb(178, 34, 34);">#+COLUMNS: %45ITEM %10BEAMER_ENV(Env) %10BEAMER_ACT(Act) %4BEAMER_COL(Col) %8BEAMER_OPT(Opt)</span>
+<span style="color: rgb(178, 34, 34);">#+STARTUP: beamer</span>
+
+<span style="color: rgb(0, 0, 255);">* Slide one</span>
+
+ - Foo
+   + baz
+   + qux
+ - Bar
+
+
+<span style="color: rgb(0, 0, 255);">* Next slide foo</span>
+
+ - Foo
+   + baz
+   + qux
+ - Bar
+</pre>
+</div>
+
+<p>
+The present <code>#+TITLE:</code> and <code>#+AUTHOR:</code> lines without values prevent
+the generation of a title page. If these have values, a title pages is
+generated.
+</p>
+</div>
+</div>
+</div>
+<div style="display: block; visibility: visible;" id="postamble" class="status">
+<p class="author">Author: Eric H. Neilsen, Jr.</p>
+<p class="date">Created: 2015-07-20 Mon 09:44</p>
+<p class="creator"><a href="http://www.gnu.org/software/emacs/">Emacs</a> 24.3.1 (<a href="http://orgmode.org/">Org</a> mode 8.2.7)</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+
+
+<div style="position: absolute; visibility: hidden; top: 0px; left: 0px; font-size: 40px; font-weight: normal; font-style: normal; font-family: 'MathJax_Size4',monospace;">() [] {} </div></body>
+</html>

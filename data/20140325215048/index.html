@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en" style="background:#43484C">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<title>Nine Features of Mercurial | zeroturnaround.com</title>
+
+<meta name="viewport" content="width=device-width, user-scalable=1, initial-scale=1">
+<link rel="shortcut icon" href="//static.zeroturnaround.com/theme55/images/favicon-rl.ico">
+<link rel="alternate" type="application/rss+xml" title="ZeroTurnaround feed" href="http://zeroturnaround.com/feed/">
+
+
+
+
+<!--[if lte IE 8]>
+<link rel='stylesheet' id='ie8-styles-css'  href='//static.zeroturnaround.com/theme55/stylesheets/ie8.css?ver=3.8.1' type='text/css' media='all' />
+<![endif]-->
+
+
+
+
+
+
+
+
+
+
+
+<link rel="EditURI" type="application/rsd+xml" title="RSD" href="http://zeroturnaround.com/xmlrpc.php?rsd">
+<link rel="shortlink" href="http://zeroturnaround.com/?p=38827">
+<meta property="og:title" content="Nine awesome features and extensions for Mercurial (Hg)">
+<meta property="og:type" content="article">
+<meta property="og:url" content="http://zeroturnaround.com/rebellabs/nine-awesome-features-and-extensions-for-mercurial-hg/">
+<meta property="og:site_name" content="zeroturnaround.com">
+<meta property="fb:page_id" content="on">
+
+	<link rel="apple-touch-icon-precomposed" href="http://static.zeroturnaround.com/img/icons/touch-icon-precomposed-144.png" sizes="144x144">
+	<link rel="apple-touch-icon-precomposed" href="http://static.zeroturnaround.com/img/icons/touch-icon-precomposed-114.png" sizes="114x114">
+	<link rel="apple-touch-icon-precomposed" href="http://static.zeroturnaround.com/img/icons/touch-icon-precomposed-72.png" sizes="72x72">
+	<link rel="apple-touch-icon-precomposed" href="http://static.zeroturnaround.com/img/icons/touch-icon-precomposed.png">
+	
+	
+
+
+<!-- All in One SEO Pack 2.1.4 by Michael Torbert of Semper Fi Web Design[67,157] -->
+<link rel="author" href="https://plus.google.com/113457864957289075144/">
+<meta name="description" content="Nine awesome features and extensions for Mercurial (Hg)">
+
+<link rel="canonical" href="http://zeroturnaround.com/rebellabs/nine-awesome-features-and-extensions-for-mercurial-hg/">
+<!-- /all in one seo pack -->
+<div style="width: 1px; height: 1px; display: inline;"><img style="border-style: none;" alt="" src="http://d.adroll.com/cm/f/out" height="1" width="1">
+<img style="border-style: none;" alt="" src="http://d.adroll.com/cm/w/out" height="1" width="1">
+<img style="border-style: none;" alt="" src="http://d.adroll.com/cm/x/out" height="1" width="1">
+<img style="border-style: none;" alt="" src="http://www.googleadservices.com/pagead/conversion/1011350631/?label=HAupCMnvlwgQ5_if4gM&amp;guid=ON&amp;script=0&amp;ord=3347696379618898.5" height="1" width="1">
+<img style="border-style: none;" alt="" src="http://d.adroll.com/cm/g/out?google_nid=adroll2" height="1" width="1">
+</div>
+<link rel="stylesheet" type="text/css" href="index.css" media="all">
+</head>
+<body class="ztwp slug-nine-awesome-features-and-extensions-for-mercurial-hg ztwp-rebellabs">
+<div id="viewport">
+<header>
+	<div id="hud">
+		<div class="wrapper">
+				<ul class="site-hud">
+				<li style="display: list-item;" id="zthud-5a9697f9ac9ee677cd29d15bcee66069" class="item headsup-notice hidden center">
+			<p style="font-size: 0.9em; margin: 0.5em;">By using our site you understand and agree that zeroturnaround.com website uses various cookies. More info available in <a href="http://zeroturnaround.com/terms-and-conditions/">website terms and conditions</a>. <button onclick="closeSiteHud(this);" href="#!" style="padding: 0.2em 0.5em; margin-left: 0.5em;" class="button">OK</button></p>			
+		</li>
+			</ul>
+				
+					</div>
+	</div>
+	<div id="top">
+		<div class="wrapper">
+			<a id="main-logo" class="logo zt-logo" href="http://zeroturnaround.com/" title="ZeroTurnaround">
+	<img src="//static.zeroturnaround.com/theme55/images/logos/logo-zt.png" alt="ZeroTurnaround logo">
+</a>
+<ul id="top-menu" class="menu"><li id="menu-item-11342" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11342"><a href="http://zeroturnaround.com/">Home</a></li>
+<li id="menu-item-27789" class="alt menu-item menu-item-type-post_type menu-item-object-page menu-item-27789"><a href="http://zeroturnaround.com/software/jrebel/">JRebel</a></li>
+<li id="menu-item-11347" class="alt menu-item menu-item-type-post_type menu-item-object-page menu-item-11347"><a href="http://zeroturnaround.com/software/liverebel/">LiveRebel</a></li>
+<li id="menu-item-31162" class="menu-item menu-item-type-custom menu-item-object-custom highlight menu-item-31162"><a href="http://zeroturnaround.com/rebellabs/">RebelLabs</a></li>
+<li id="menu-item-11346" class="small item-blog menu-item menu-item-type-post_type menu-item-object-page current_page_parent menu-item-11346"><a href="http://zeroturnaround.com/blog/">Blog</a></li>
+<li id="menu-item-11822" class="small item-forum menu-item menu-item-type-custom menu-item-object-custom menu-item-11822"><a href="http://zeroturnaround.com/forums/">Forum</a></li>
+<li id="menu-item-11377" class="small menu-item menu-item-type-post_type menu-item-object-page menu-item-11377"><a href="http://zeroturnaround.com/company/">Company</a></li>
+</ul><form id="main-search" action="http://zeroturnaround.com/search/">
+	<label for="search-q" class="label">Search the site</label>
+	<div class="fields">
+		<input id="search-q" name="q" value="" type="text">
+		<button type="submit">Find it!</button>
+	</div>
+</form>
+<ul id="user-menu" class="menu">
+	</ul>
+		</div>
+	</div>
+	<div id="header">
+		<div class="wrapper">
+			
+
+		</div>
+	</div>
+</header>
+
+<div id="content">
+
+<section><div id="blog-content" class="content-body">
+<div class="content">
+	<div class="card intro odd-zebra">
+<div class="card-row left two-col">
+	<div class="card-col center bottom-img" style="margin-top: -1em;"><img src="/wp-content/uploads/2013/09/RebelLabsIntro.png"></div>
+	<div class="card-col" style="margin-bottom: -1em;">
+<img src="/wp-content/uploads/2014/01/RebelLabs-white-blue-250.png"> <br>
+<div style="font-size: 1.2em;">Imagine a bacon-wrapped Ferrari. Still not better than our free technical reports.</div>
+<a class="em upper bigger button" href="http://zeroturnaround.com/rebellabs/reports/" style="margin-left: 5px; margin-top: 20px; margin-bottom: 20px;">See all our reports</a>
+</div>
+</div>
+</div>
+		<div id="rebellabs-sidebar" class="sidebar">
+	<div id="text-5" class="widget widget_text">			<div class="textwidget"><div class="widget-subscribe-form">
+	<div class="section">
+		<h2 class="widgettitle">Sign me up!</h2>
+		<p class="note">Yep, RebelLabs is awesome. Just you wait. We got Newsletters. Tweets. Googles. RSSesses. Even email. Email dude!</p>
+	
+		<ul class="subscribe-options">
+			<li class="twitter-badge"><a class="icon icon-twitter" href="https://twitter.com/rebellabs" target="_top" title="RebelLabs at Twitter">@RebelLabs</a></li>
+			<li class="googleplus-badge"><a class="icon icon-google-plus" href="https://plus.google.com/114975725961644361569/" target="_top" title="RebelLabs at Google+">Google+</a></li>
+			<li class="rss-badge"><a class="icon icon-rss" href="http://zeroturnaround.com/rebellabs/feed/" target="_top" title="RebelLabs RSS">RSS</a></li>
+		</ul>
+	</div>
+	
+	<form method="post" action="http://zeroturnaround.com/newsletter/" class="section">
+		<h2 class="widgettitle"><div style="font-size: 0.8em;">Subscribe to occasional emails</div></h2>
+		<p><input required="" placeholder="Email" name="email" type="email"></p>
+		<button type="submit" class="button em">SUBSCRIBE</button>
+	</form>
+</div></div>
+		</div><div id="text-17" class="widget widget_text">			<div class="textwidget"><div>
+	<a class="twitter-timeline" href="https://twitter.com/RebelLabs" data-widget-id="388204964759101440" width="230" height="500" data-chrome="nofooter transparent noborder">
+	@RebelLabs
+	</a>
+
+	
+</div></div>
+		</div>			<div id="zt-promoted-posts-2" class="widget widget_zt_promoted_entries">						<ul class="tab-switcher">
+								<li class="tab active">
+					<a class="tab-title" href="#">Reports</a>
+					<ul class="tab-content">
+												<li class="item">
+							<a href="http://zeroturnaround.com/rebellabs/the-curious-coders-java-web-frameworks-comparison-spring-mvc-grails-vaadin-gwt-wicket-play-struts-and-jsf/" title="The Curious Coder’s Java Web Frameworks Comparison: Spring MVC, Grails, Vaadin, GWT, Wicket, Play, Struts and JSF">The Curious Coder’s Java Web Frameworks Comparison: Spring MVC, Grails, Vaadin, GWT, Wicket, Play, Struts and JSF</a>
+							<span class="note">30 July 2013</span>
+						</li>
+												<li class="item">
+							<a href="http://zeroturnaround.com/rebellabs/the-great-java-application-server-debate-with-tomcat-jboss-glassfish-jetty-and-liberty-profile/" title="The Great Java Application Server Debate with Tomcat, JBoss, GlassFish, Jetty and Liberty Profile">The Great Java Application Server Debate with Tomcat, JBoss, GlassFish, Jetty and Liberty Profile</a>
+							<span class="note">21 May 2013</span>
+						</li>
+												<li class="item">
+							<a href="http://zeroturnaround.com/rebellabs/java-8-revealed-lambdas-default-methods-and-bulk-data-operations/" title="Java 8 Revealed: Lambdas, Default Methods and Bulk Data Operations">Java 8 Revealed: Lambdas, Default Methods and Bulk Data Operations</a>
+							<span class="note">25 June 2013</span>
+						</li>
+											</ul>
+				</li>
+								<li class="tab ">
+					<a class="tab-title" href="#">Posts</a>
+					<ul class="tab-content">
+												<li class="item">
+							<a href="http://zeroturnaround.com/rebellabs/is-java-8-the-fastest-jvm-ever-performance-benchmarking-of-fork-join/" title="Is Java 8 the fastest JVM ever? Performance benchmarking of Fork-Join">Is Java 8 the fastest JVM ever? Performance benchmarking of Fork-Join</a>
+							<span class="note">25 March 2014</span>
+						</li>
+												<li class="item">
+							<a href="http://zeroturnaround.com/rebellabs/complete-this-3-minute-java-tools-technology-survey-and-well-donate-cash-to-charity/" title="Complete this 3-minute Java Tools &amp; Technology survey and we’ll donate cash to charity">Complete this 3-minute Java Tools &amp; Technology survey and we’ll donate cash to charity</a>
+							<span class="note">21 March 2014</span>
+						</li>
+												<li class="item">
+							<a href="http://zeroturnaround.com/rebellabs/vjug-session-with-stuart-marks-java-8-parallel-streams/" title="vJUG session with Stuart Marks: “Java 8 Parallel Streams Workshop”">vJUG session with Stuart Marks: “Java 8 Parallel Streams Workshop”</a>
+							<span class="note"></span>
+						</li>
+											</ul>
+				</li>
+							</ul>
+			</div>			<div id="tag_cloud-3" class="widget widget_tag_cloud"><h2 class="widgettitle">Tags</h2>
+<div class="tagcloud"><a href="http://zeroturnaround.com/tag/continuous-delivery/" class="tag-link-94" title="21" style="font-size: 1em;">continuous delivery</a>
+<a href="http://zeroturnaround.com/tag/development/" class="tag-link-16" title="16" style="font-size: 1em;">development</a>
+<a href="http://zeroturnaround.com/tag/devops/" class="tag-link-17" title="25" style="font-size: 1em;">DevOps</a>
+<a href="http://zeroturnaround.com/tag/eclipse/" class="tag-link-20" title="18" style="font-size: 1em;">eclipse</a>
+<a href="http://zeroturnaround.com/tag/geekout/" class="tag-link-129" title="15" style="font-size: 1em;">GeekOut</a>
+<a href="http://zeroturnaround.com/tag/java/" class="tag-link-32" title="83" style="font-size: 1em;">java</a>
+<a href="http://zeroturnaround.com/tag/jboss/" class="tag-link-35" title="17" style="font-size: 1em;">JBoss</a>
+<a href="http://zeroturnaround.com/tag/jenkins/" class="tag-link-127" title="15" style="font-size: 1em;">jenkins</a>
+<a href="http://zeroturnaround.com/tag/jevgeni-kabanov/" class="tag-link-1996" title="14" style="font-size: 1em;">Jevgeni Kabanov</a>
+<a href="http://zeroturnaround.com/tag/jrebel/" class="tag-link-38" title="77" style="font-size: 1em;">JRebel</a>
+<a href="http://zeroturnaround.com/tag/jvm/" class="tag-link-90" title="17" style="font-size: 1em;">JVM</a>
+<a href="http://zeroturnaround.com/tag/liverebel/" class="tag-link-109" title="45" style="font-size: 1em;">LiveRebel</a>
+<a href="http://zeroturnaround.com/tag/maven/" class="tag-link-41" title="16" style="font-size: 1em;">Maven</a>
+<a href="http://zeroturnaround.com/tag/press-release/" class="tag-link-9512" title="29" style="font-size: 1em;">Press Release</a>
+<a href="http://zeroturnaround.com/tag/productivity/" class="tag-link-49" title="26" style="font-size: 1em;">productivity</a>
+<a href="http://zeroturnaround.com/tag/rebelcast/" class="tag-link-5773" title="16" style="font-size: 1em;">rebelcast</a>
+<a href="http://zeroturnaround.com/tag/rebellabs/" class="tag-link-1750" title="25" style="font-size: 1em;">RebelLabs</a>
+<a href="http://zeroturnaround.com/tag/spring/" class="tag-link-55" title="14" style="font-size: 1em;">spring</a>
+<a href="http://zeroturnaround.com/tag/tomcat/" class="tag-link-58" title="13" style="font-size: 1em;">tomcat</a>
+<a href="http://zeroturnaround.com/tag/zeroturnaround/" class="tag-link-65" title="45" style="font-size: 1em;">zeroturnaround</a></div>
+</div>	</div>
+	
+			<div class="post single">
+	
+		<h1 class="title"><a href="http://zeroturnaround.com/rebellabs/nine-awesome-features-and-extensions-for-mercurial-hg/" title="Nine awesome features and extensions for Mercurial (Hg)">Nine awesome features and extensions for Mercurial (Hg)</a></h1>
+		<ul class="meta head">
+			<li class="date">
+				<span class="icon icon-calendar"></span>
+				December 3, 2013			</li>
+			<li class="author">
+				<span class="icon icon-user"></span>
+				<a href="http://zeroturnaround.com/author/toomasr/" title="Posts by Toomas Römer" rel="author">Toomas Römer</a>			</li>
+			<li class="comments">
+				<span class="icon icon-comments"></span>
+				<a href="http://zeroturnaround.com/rebellabs/nine-awesome-features-and-extensions-for-mercurial-hg/#disqus_thread">No comments</a>
+			</li>
+					</ul>
+		<div class="excerpt">
+			<div class="socialize-in-content socialize-in-content-right"><div class="socialize-in-button socialize-in-button-right"><a href="http://twitter.com/share" class="twitter-share-button" data-url="http://zeroturnaround.com/rebellabs/nine-awesome-features-and-extensions-for-mercurial-hg/" data-text="Nine awesome features and extensions for Mercurial (Hg)" data-count="horizontal" data-via="rebellabs"><!--Tweetter--></a></div><div class="socialize-in-button socialize-in-button-right"><iframe src="index_1.html" style="border: medium none; overflow: hidden; width: 100px; height: 21px;" allowtransparency="true" frameborder="0" scrolling="no"></iframe></div><div class="socialize-in-button socialize-in-button-right"><div class="g-plusone" data-size="medium" data-href="http://zeroturnaround.com/rebellabs/nine-awesome-features-and-extensions-for-mercurial-hg/"></div></div><div class="socialize-in-button socialize-in-button-right"></div></div><p style="float: left; margin: 1px 20px 1px 1px;"><a href="http://www.selenic.com/hg-logo/logo-droplets-200.png"><img src="/wp-content/uploads/2013/12/logo-droplets-200.png" alt="logo-droplets-200" class="alignnone size-full wp-image-38872" height="192" width="160"></a></p>
+<p>Years and years ago, ZeroTurnaround’s small, geeky engineering team started looking into Git and Mercurial. We had been using Subversion for ages, and felt like it was time to look into other alternatives, namely to migrate to a decentralized version control system (DVCS) so that we could alienate our partners in life by committing code while on vacation with them. This was back when it wasn’t possible to use Git on our Windows workstations and recently-released <a href="http://www.fogcreek.com/kiln/">Kiln</a> was supporting only Mercurial. So, not wanting to wait for things to improve on their own, we chose to use Mercurial rather than Git.</p>
+<p>Now, years later, I can’t tell you if we made the right decision but I do know that a lot has changed on how source code is managed. DVCS systems have made the life of developers just so much simpler and pack so much power that it would be a shame not to take advantage of it. Also, I’ve noticed that developers very often use only a subset of features of their version control systems.</p>
+<p>After some preaching around the office and emails to the engineering team, I got this urge to share my experiences with Mercurial. I chose a list of 9 Mercurial features/extensions that I find useful, powerful or just like and I really do have them enabled in my <a href="https://gist.github.com/toomasr/142ffc6c206430a9e6fe">.hgrc</a> file.</p>
+<h3>Rebase</h3>
+<p>The <a href="http://mercurial.selenic.com/wiki/RebaseExtension">Rebase extension</a> is a very powerful one and great for productivity. I personally use this daily, since the repository I work with gets a lot of heat, with dozens of added changesets a day in at least in 4 different branches. Most of the time, when I want to push something I already need to pull a little.</p>
+<p>There is a <b>deprecated extension</b> that makes this pulling a less cumbersome: the <code>fetch</code> extension. It will pull and then do a merge for you with a message “Automated merge with ….”. These will litter your changeset history with merge messages!</p>
+<p>Another option would be to <code>pull</code> and rebase. Or in short <code>hg pull --rebase</code>. The result is that it will move your local changes onto to the most recent head of the checked-out branch. If it doesn’t succeed, you need to manually merge but that is always the case when you have conflicts. Most of the time you will save a merge!</p>
+<h3>Histedit</h3>
+<p>The <a href="http://mercurial.selenic.com/wiki/HisteditExtension">Histedit extension</a> is probably the most powerful of all the extensions mentioned here. The usage scenario for this plugin is to go over your commits and reorder them and/or fold them into fewer ones. Imagine you were working on feature X and made some commits to implement it. Later on you feel that it would be really nice if these commits would be just a single commit for easier reviewing.</p>
+<p>This is where the extension comes to play. You can fire up for example <code>hg histedit -o</code> and it will drop you into an editor with the list of outgoing changesets and you can pick an action what to do with each of them. You can reorder, pick, fold, edit or drop them as you please.</p>
+<p>You can do these operations on local changes and not on the permanent history of the repository (see <a href="http://mercurial.selenic.com/wiki/Phases">Mercurial Phases</a> for more).</p>
+<h3>Shelve</h3>
+<p>This is <a href="http://mercurial.selenic.com/wiki/ShelveExtension">an extension</a> that is bundled with Mercurial 2.8 and offers an easy way to shelve away your local changes so that you can either be interrupted with other work or you can go back to the branch you were thinking you were at :).</p>
+<p>For example, let’s say you have made some local changes that you don’t want to commit yet but at the same time you want to do a quick bug fix. Shelve comes in helpful here.</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="bash" style="font-family: monospace;">toomasr<span style="color: rgb(0, 0, 0); font-weight: bold;">@</span>cigarillo ~<span style="color: rgb(0, 0, 0); font-weight: bold;">/</span>tmp<span style="color: rgb(0, 0, 0); font-weight: bold;">/</span>tmp » hg shelve
+shelved <span style="color: rgb(194, 12, 185); font-weight: bold;">as</span> default
+<span style="color: rgb(0, 0, 0);">1</span> files updated, <span style="color: rgb(0, 0, 0);">0</span> files merged, <span style="color: rgb(0, 0, 0);">0</span> files removed, <span style="color: rgb(0, 0, 0);">0</span> files unresolved</pre></td></tr></tbody></table></div>
+
+<p>Now your work has been shelved away under a name <em>default</em>. Later on you can call <code>unshelve</code></p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="bash" style="font-family: monospace;">toomasr<span style="color: rgb(0, 0, 0); font-weight: bold;">@</span>cigarillo-<span style="color: rgb(0, 0, 0);">2</span> ~<span style="color: rgb(0, 0, 0); font-weight: bold;">/</span>tmp<span style="color: rgb(0, 0, 0); font-weight: bold;">/</span>tmp » hg unshelve default
+adding changesets
+adding manifests
+adding <span style="color: rgb(194, 12, 185); font-weight: bold;">file</span> changes
+added <span style="color: rgb(0, 0, 0);">1</span> changesets with <span style="color: rgb(0, 0, 0);">1</span> changes to <span style="color: rgb(0, 0, 0);">1</span> files <span style="color: rgb(122, 8, 116); font-weight: bold;">(</span>+<span style="color: rgb(0, 0, 0);">1</span> heads<span style="color: rgb(122, 8, 116); font-weight: bold;">)</span></pre></td></tr></tbody></table></div>
+
+<p>And voila! You have your old state back and you can continue from where you left off. Handy, right?</p>
+<h3>Unbundle</h3>
+<p>Have you seen the message <code>saved backup bundle to projectX/.hg/strip-backup/7bf31c6f3fec-backup.hg</code>? Well, nice to know, but what do you do with it? These are the Mercurial backup files and you can restore your previous state by issuing <code>hg unbundle</code> and specifying which backup bundle you want to unbundle. This is the undo mechanism for tasks that change and destroy history.</p>
+<h3>Purge</h3>
+<p><a href="http://mercurial.selenic.com/wiki/PurgeExtension">Purge is another extension</a> that I use daily. I don’t know if I’m super sloppy but I very often have some files lying around in my repository that are not supposed to be there. Maybe they are some temporary files that I haven’t put into <code>.hgignore</code> or just some data files that I’ve used but have not intended to keep.</p>
+<p>This is where <code>hg purge</code> comes into play. This command will remove all files and directories that are not being tracked in the current repository.</p>
+<h3>Alias</h3>
+<p>Mercurial has <a href="http://mercurial.selenic.com/wiki/AliasExtension">built in aliases</a> so that you don’t have to rely on your system aliases. You can define your Hg aliases in a section in your configuration file.</p>
+
+<div class="wp_syntax"><table><tbody><tr><td class="code"><pre class="python" style="font-family: monospace;"><span style="color: black;">[</span>alias<span style="color: black;">]</span>
+<span style="color: rgb(128, 128, 128); font-style: italic;"># lets introduce hg blame</span>
+blame <span style="color: rgb(102, 204, 102);">=</span> annotate --<span style="color: rgb(220, 20, 60);">user</span> -c
+<span style="color: rgb(128, 128, 128); font-style: italic;"># short log</span>
+llog <span style="color: rgb(102, 204, 102);">=</span> log --limit <span style="color: rgb(255, 69, 0);">10</span></pre></td></tr></tbody></table></div>
+
+<h3>Color</h3>
+<p>You like terminal colours? Well go and <a href="http://mercurial.selenic.com/wiki/ColorExtension">enable the extension</a>. Quick! I have no idea why this isn’t enabled by default.</p>
+<p><img src="/wp-content/uploads/2013/12/color.png" alt="Color" class="alignnone size-full wp-image-38840" height="209" width="600"></p>
+<h3>Progress</h3>
+<p>So now you have color in your terminal, so how about some progress bars? Sure thing, go enable <a href="http://mercurial.selenic.com/wiki/ProgressExtension">the progress extension</a> and you’ll get your progress bars.</p>
+<h3>Pager</h3>
+<p>Are you tired of piping Hg commands to less or more or what not? Well there is <a href="http://mercurial.selenic.com/wiki/PagerExtension">an extension for that</a>. After 4 lines of configuration you will have a pager for your commands. It also supports having a pager for only couple of the commands. It actually has more options that you would think a pager could have :)</p>
+<h3>Conclusions</h3>
+<p>Needless to say, Mercurial has a <a href="http://mercurial.selenic.com/wiki/UsingExtensions">lot of extensions</a>. These are only the best 9 that I could think of, but if my “grepping” skills are correct, then there are 193 as of today. What extensions do you like? Please share them with us in the comments section below, or by tweeting <a href="http://twitter.com/toomasr">@toomasr</a> or <a href="http://twitter.com/rebellabs">@RebelLabs</a>!</p>
+<p>&nbsp;</p>
+<div class="socialize-containter" style="background-color: rgb(255, 255, 255); border: 0px solid rgb(221, 221, 221);"></div></div></div></div></div></section></div></div></body>
+</html>
